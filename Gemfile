@@ -33,10 +33,27 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+
+group :production do
+  gem 'newrelic_rpm'
+  gem 'asset_sync'
+end
+
+gem "paperclip"
+gem 'aws-sdk'
+
+gem 'devise'
+gem 'rails_admin', '~> 0.6.5'
+gem 'rails_admin_example_theme', :git => 'git://github.com/bbenezech/rails_admin_example_theme.git'
+
+gem 'paper_trail', '~> 3.0.6'
+
+gem 'geocoder'
+gem 'area'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
