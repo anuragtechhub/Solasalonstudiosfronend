@@ -1,4 +1,38 @@
 <% content_for(:stylesheets) { stylesheet_link_tag 'digital_directory' } %>
 <% content_for(:scripts) { javascript_include_tag 'digital_directory' } %>
 
-<h1><strong>Welcome to</strong><br>Sola Salons</h1>
+<div class="container">
+
+  <div class="left-col">
+
+    <h1><strong>Welcome to</strong><br>Sola Salons</h1>
+
+    <div class="listings">
+      <div class="half-col-left">
+        <% (1..20).each do |num| %>
+          <div class="listing">
+            <div class="number"><%= num %></div>
+            <div class="name">Rani's Beauty Bar<br>Rani Reidel</div>
+          </div>
+        <% end %>
+      </div>
+      <div class="half-col-right">
+        <% (21..40).each do |num| %>
+          <div class="listing">
+            <div class="number"><%= num %></div>
+            <div class="name">Rani's Beauty Bar<br>Rani Reidel</div>
+          </div>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+  </div>
+
+  <div class="right-col">
+
+    <%= image_tag 'logo_white.png', :id => 'logo' %>
+
+  </div>
+
+</div>

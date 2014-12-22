@@ -1,3 +1,119 @@
+@import 'variables';
+@import 'mixins';
+
+
 body {
   background: asset-url('digital_directory_bg.gif');
+}
+
+h1 {
+  text-align: center;
+  font-size: 68px;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  font-family: 'Raleway', sans-serif;
+  color: #FFFFFF;
+
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+
+  strong {
+    font-family: "Dosis", sans-serif;
+    color: #FEA700;
+    text-transform: uppercase;
+    border-bottom: 3px solid #FEA700;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* grid */
+
+.container {
+  position: relative;
+  width: 95%;
+  margin: 10px auto 0 auto;
+}
+
+.left-col, .right-col {
+  position: absolute;
+  top: 0;
+  min-height: 200px;
+}
+
+.left-col {
+  left: 0;
+  width: 33%;
+}
+
+.right-col {
+  left: 33%;
+  width: 67%;
+}
+
+/* listings */
+
+.listings {
+  margin-top: 10px;
+
+  .half-col-left, .half-col-right {
+    width: 48%;
+    float: left;
+  }
+
+  .half-col-left {
+    margin-right: 2%;
+  }
+  
+  .half-col-right {
+    margin-left: 2%;
+  }
+
+  .listing {
+    display: block;
+    border: 2px solid #46413D;
+    @include box-shadow(2px 2px 8px rgba(0,0,0,0.5));
+    margin-bottom: 10px;
+    height: 44px;
+    position: relative;
+
+    .number, .name {
+      position: absolute;
+      top: 0;
+    }
+
+    .number {
+      left: 0;
+      font-family: "Dosis", sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      background: #46413D;
+      color: #FFFFFF;
+      height: 40px;
+      padding: 8px 0 0 0;
+      text-align: center;
+      width: 40px;
+      border-right: 2px solid #46413D;
+    }
+
+    .name {
+      left: 40px;
+      right: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      line-height: 16px;
+      font-weight: normal;
+      background: #FFFFFF;
+      color: #333;
+      height: 40px;
+      padding: 4px 0 0 8px;
+    }
+  }
 }

@@ -10,20 +10,6 @@ body {
   background: $brand-primary;
 }
 
-h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  margin-bottom: 25px;
-
-  .inset & {
-    font-size: 26px;
-    margin-bottom: -10px;
-  }
-}
-
 a, a:link, a:visited, a:hover, a:active {
   color: $brand-primary;
   text-decoration: none;
@@ -31,11 +17,6 @@ a, a:link, a:visited, a:hover, a:active {
 
 a:hover, a:active {
   color: #000;
-}
-
-img.full-width {
-  width: 100%;
-  height: auto;
 }
 
 .mobile-only, .tablet-only {
