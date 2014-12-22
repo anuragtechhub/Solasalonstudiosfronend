@@ -274,7 +274,6 @@ DEPENDENCIES
   asset_sync
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
-  coffee-rails (~> 4.0.0)
   devise
   geocoder
   jbuilder (~> 1.2)

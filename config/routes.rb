@@ -1,4 +1,8 @@
 Solasalonstudios::Application.routes.draw do
+  
+
+  get "digital-directory/:location_id" => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
+  
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
