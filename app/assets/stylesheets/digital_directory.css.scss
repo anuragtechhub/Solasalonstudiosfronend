@@ -28,6 +28,16 @@ h1 {
   }
 }
 
+h2 {
+  font-family: "Dosis", sans-serif;
+  font-weight: bold;
+  font-size: 31px;
+  letter-spacing: 1px;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
 #logo {
   position: absolute;
   top: 0;
@@ -61,19 +71,12 @@ h1 {
 /* listings */
 
 .listings {
-  margin-top: 15px;
+  margin: 15px 0 5px 0;
 
   .half-col-left, .half-col-right {
-    width: 48%;
+    width: 46%;
     float: left;
-  }
-
-  .half-col-left {
-    margin-right: 2%;
-  }
-  
-  .half-col-right {
-    margin-left: 2%;
+    margin: 0 2%;
   }
 
   .listing {
