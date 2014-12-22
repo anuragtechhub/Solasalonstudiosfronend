@@ -1,0 +1,15 @@
+$brand-primary: #449bd4;
+$brand-secondary: #03c4b6;
+$brand-gray: #585a59;
+
+@mixin kult() {
+  font-family: "kulturista-web", serif;
+  font-style: normal;
+  font-weight: 400 !important;
+}
+
+@mixin kultsemibold() {
+  font-family: "kulturista-web", serif;
+  font-style: normal;
+  font-weight: 600 !important;
+}
