@@ -61,7 +61,7 @@ h1 {
 /* listings */
 
 .listings {
-  margin-top: 10px;
+  margin-top: 15px;
 
   .half-col-left, .half-col-right {
     width: 48%;
@@ -81,7 +81,7 @@ h1 {
     border: 2px solid #46413D;
     @include box-shadow(2px 2px 8px rgba(0,0,0,0.5));
     margin-bottom: 10px;
-    height: 44px;
+    height: 43px;
     position: relative;
 
     .number, .name {
@@ -96,7 +96,7 @@ h1 {
       font-size: 24px;
       background: #46413D;
       color: #FFFFFF;
-      height: 40px;
+      height: 39px;
       padding: 8px 0 0 0;
       text-align: center;
       width: 40px;
@@ -112,7 +112,7 @@ h1 {
       font-weight: normal;
       background: #FFFFFF;
       color: #333;
-      height: 40px;
+      height: 39px;
       padding: 4px 0 0 8px;
     }
   }
