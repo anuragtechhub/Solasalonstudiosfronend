@@ -1,0 +1,55 @@
+<h1>Listing locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Postal code</th>
+      <th>Email address for inquiries</th>
+      <th>Phone number</th>
+      <th>General contact name</th>
+      <th>Description</th>
+      <th>Facebook url</th>
+      <th>Twitter url</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.url_name %></td>
+        <td><%= location.address_1 %></td>
+        <td><%= location.address_2 %></td>
+        <td><%= location.city %></td>
+        <td><%= location.state %></td>
+        <td><%= location.postal_code %></td>
+        <td><%= location.email_address_for_inquiries %></td>
+        <td><%= location.phone_number %></td>
+        <td><%= location.general_contact_name %></td>
+        <td><%= location.description %></td>
+        <td><%= location.facebook_url %></td>
+        <td><%= location.twitter_url %></td>
+        <td><%= location.latitude %></td>
+        <td><%= location.longitude %></td>
+        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_location_path %>

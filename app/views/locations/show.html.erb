@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+
+<p>
+  <strong>Url name:</strong>
+  <%= @location.url_name %>
+</p>
+
+<p>
+  <strong>Address 1:</strong>
+  <%= @location.address_1 %>
+</p>
+
+<p>
+  <strong>Address 2:</strong>
+  <%= @location.address_2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @location.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @location.state %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @location.postal_code %>
+</p>
+
+<p>
+  <strong>Email address for inquiries:</strong>
+  <%= @location.email_address_for_inquiries %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @location.phone_number %>
+</p>
+
+<p>
+  <strong>General contact name:</strong>
+  <%= @location.general_contact_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @location.description %>
+</p>
+
+<p>
+  <strong>Facebook url:</strong>
+  <%= @location.facebook_url %>
+</p>
+
+<p>
+  <strong>Twitter url:</strong>
+  <%= @location.twitter_url %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>
