@@ -1,0 +1,7 @@
+.navbar-inner
+  .container-fluid
+    %a.brand.pjax{href: dashboard_path}
+      = 'Sola Stylist Site'
+      %small= 'Admin'
+    .navbar-collapse
+      = render partial: 'layouts/rails_admin/secondary_navigation'
