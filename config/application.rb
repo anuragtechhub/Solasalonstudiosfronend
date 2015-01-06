@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+ENV['RAILS_ADMIN_THEME'] = 'custom'
+
 module Solasalonstudios
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -24,6 +26,9 @@ module Solasalonstudios
     config.assets.digest = true
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
+
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
+    config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => 'AKIAJAKSXVOSIU7IYOTA', :secret_access_key => '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'}}
   end

@@ -1,0 +1,142 @@
+/* reset */
+/* line 15, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 25, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 34, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+body {
+  line-height: 1;
+}
+
+/* line 37, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 40, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 44, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 48, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 53, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* box-sizing, clearfix, etc */
+/* line 58, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 63, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/* line 71, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix {
+  display: inline-block;
+}
+
+/* start commented backslash hack \*/
+/* line 73, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+* html .clearfix {
+  height: 1%;
+}
+
+/* line 74, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix {
+  display: block;
+}
+
+/* close commented backslash hack */
+/* general styles */
+/* line 8, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/solasalonstudios.css.scss */
+body {
+  font-family: 'Dosis', Arial, sans-serif;
+  background: #449bd4;
+}
+
+/* line 13, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/solasalonstudios.css.scss */
+a, a:link, a:visited, a:hover, a:active {
+  color: #449bd4;
+  text-decoration: none;
+}
+
+/* line 18, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/solasalonstudios.css.scss */
+a:hover, a:active {
+  color: #000;
+}
+
+/* line 22, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/solasalonstudios.css.scss */
+.mobile-only, .tablet-only {
+  display: none !important;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ *= 
+ */
+

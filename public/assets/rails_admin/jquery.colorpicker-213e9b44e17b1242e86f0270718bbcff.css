@@ -1,0 +1,232 @@
+/* line 1, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorSelector {
+  display: inline-block;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: url(/assets/rails_admin/colorpicker/select2-beff0fcf1ccc244ff11006d6f21faf0c.png);
+}
+
+/* line 9, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorSelector div {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 30px;
+  height: 30px;
+  background: url(/assets/rails_admin/colorpicker/select2-beff0fcf1ccc244ff11006d6f21faf0c.png) center;
+}
+
+/* line 18, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker {
+  width: 356px;
+  height: 176px;
+  overflow: hidden;
+  position: absolute;
+  background: url(/assets/rails_admin/colorpicker/custom_background-c7e4c465362f2625def934c621872826.png);
+  font-family: Arial, Helvetica, sans-serif;
+  display: none;
+  z-index: 11000;
+  /* bootstrap + 1 */
+}
+
+/* line 28, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_color {
+  width: 150px;
+  height: 150px;
+  left: 14px;
+  top: 13px;
+  position: absolute;
+  background: #f00;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+/* line 38, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_color div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  background: url(/assets/rails_admin/colorpicker/colorpicker_overlay-03d86f8e95b5351a031664b0f2592070.png);
+}
+
+/* line 46, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_color div div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  overflow: hidden;
+  background: url(/assets/rails_admin/colorpicker/colorpicker_select-86ad4e1b4f95abb527aa00764efb792f.gif);
+  margin: -5px 0 0 -5px;
+}
+
+/* line 56, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hue {
+  position: absolute;
+  top: 13px;
+  left: 171px;
+  width: 35px;
+  height: 150px;
+  cursor: n-resize;
+}
+
+/* line 64, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hue div {
+  position: absolute;
+  width: 35px;
+  height: 9px;
+  overflow: hidden;
+  background: url(/assets/rails_admin/colorpicker/custom_indic-d8c602b659e9da84c29f4c3a163b75d4.gif) left top;
+  margin: -4px 0 0 0;
+  left: 0px;
+}
+
+/* line 73, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_new_color {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  left: 213px;
+  top: 13px;
+  background: #f00;
+}
+
+/* line 81, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_current_color {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  left: 283px;
+  top: 13px;
+  background: #f00;
+}
+
+/* line 89, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker input {
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  position: absolute !important;
+  font-size: 10px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  color: #898989 !important;
+  top: 4px !important;
+  right: 11px !important;
+  text-align: right !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 11px !important;
+  width: auto !important;
+  line-height: normal !important;
+}
+
+/* line 105, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hex {
+  position: absolute;
+  width: 72px;
+  height: 22px;
+  background: url(/assets/rails_admin/colorpicker/custom_hex-ed43bae99df75fe9bc427ddb6300238a.png) top;
+  left: 212px;
+  top: 142px;
+}
+
+/* line 113, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hex input {
+  right: 6px;
+}
+
+/* line 116, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_field {
+  height: 22px;
+  width: 62px;
+  background-position: top;
+  position: absolute;
+}
+
+/* line 122, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_field span {
+  position: absolute;
+  width: 12px;
+  height: 22px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  cursor: n-resize;
+}
+
+/* line 131, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_rgb_r {
+  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_r-0f20fc1b4e72a5e828aa87254f06816d.png);
+  top: 52px;
+  left: 212px;
+}
+
+/* line 136, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_rgb_g {
+  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_g-2ffe792ce6d2059f25c37cffe7110795.png);
+  top: 82px;
+  left: 212px;
+}
+
+/* line 141, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_rgb_b {
+  background-image: url(/assets/rails_admin/colorpicker/custom_rgb_b-78315fd8eb51f8b04af60312fef2f53a.png);
+  top: 112px;
+  left: 212px;
+}
+
+/* line 146, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hsb_h {
+  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_h-1ac3e74b380ded4a526f99a05045fecf.png);
+  top: 52px;
+  left: 282px;
+}
+
+/* line 151, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hsb_s {
+  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_s-452e98c3534004c5565b787c49d7406d.png);
+  top: 82px;
+  left: 282px;
+}
+
+/* line 156, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hsb_b {
+  background-image: url(/assets/rails_admin/colorpicker/custom_hsb_b-2280ae317edf0322c77b7c2f094bdd55.png);
+  top: 112px;
+  left: 282px;
+}
+
+/* line 161, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_submit {
+  display: none;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: url(/assets/rails_admin/colorpicker/custom_submit-5f45d6223305afdba5f0a4886dec58d6.png) top;
+  left: 322px;
+  top: 142px;
+  overflow: hidden;
+}
+
+/* line 171, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_focus {
+  background-position: center;
+}
+
+/* line 174, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_hex.colorpicker_focus {
+  background-position: bottom;
+}
+
+/* line 177, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_submit.colorpicker_focus {
+  background-position: bottom;
+}
+
+/* line 180, /Users/jeffbail/.rvm/gems/ruby-2.0.0-p0/gems/rails_admin-0.6.6/app/assets/stylesheets/rails_admin/jquery.colorpicker.scss */
+.colorpicker_slider {
+  background-position: bottom;
+}
