@@ -36,7 +36,6 @@ RailsAdmin.config do |config|
       field :name
       field :url_name
       field :address_1
-      field :address_2
       field :city
       field :state
       field :postal_code
