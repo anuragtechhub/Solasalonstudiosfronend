@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
   has_attached_file :floorplan_image
   validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/
 
-  validates :name, :presence => true, :uniquness => true
+  validates :name, :presence => true, :uniqueness => true
   validates :url_name, :presence => true, :uniqueness => true
 
   def full_address

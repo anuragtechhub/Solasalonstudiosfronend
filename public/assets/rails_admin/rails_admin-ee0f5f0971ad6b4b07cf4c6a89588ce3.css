@@ -12767,37 +12767,49 @@ input[type="file"] {
 }
 
 /* line 633, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+fieldset {
+  margin-top: 10px;
+}
+
+/* line 637, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 legend {
+  background: #ecf0f1;
+  padding-left: 10px;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 5px;
   border-bottom: none;
   color: #2c3e50;
 }
 
-/* line 638, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 647, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 label.control-label {
   text-transform: capitalize;
 }
 
-/* line 642, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 651, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .form-actions {
   border-top: none;
   border-radius: 6px;
   background-color: #dde4e6;
 }
 
-/* line 648, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 657, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin .form-horizontal input[type=file] {
   margin-top: 6px;
   margin-bottom: -8px;
 }
 
-/* line 653, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 662, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin .form-horizontal.denser .help-block {
   margin-top: 2px;
   font-size: 13px;
   color: #777;
+  max-width: 360px;
+  width: 100%;
 }
 
-/* line 661, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 672, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin .form-horizontal.denser .filtering-select input {
   width: 316px !important;
   -webkit-border-top-left-radius: 6px;
@@ -12807,76 +12819,76 @@ body.rails_admin .form-horizontal.denser .filtering-select input {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-/* line 671, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 682, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin .form-horizontal.denser .filtering-select .add-on {
   background-color: #dce4ec;
   height: 23px;
   margin-top: -1px;
 }
 
-/* line 680, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 691, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .ui-menu li {
   border: 0 !important;
   margin-right: 2px;
 }
 
-/* line 684, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 695, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .ui-menu li a, .ui-menu li a:link, .ui-menu li a:visited {
   font-size: 15px;
   border: 0 !important;
 }
-/* line 688, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 699, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .ui-menu li a:hover, .ui-menu li a:active, .ui-menu li a:link:hover, .ui-menu li a:link:active, .ui-menu li a:visited:hover, .ui-menu li a:visited:active {
   border: 0;
   background: #428bca;
   color: #FFF;
 }
 
-/* line 698, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 709, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .alert {
   background-color: #03c4b6;
   color: white;
   text-shadow: none;
   border-radius: 4px;
 }
-/* line 704, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 715, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .alert h1, .alert h2, .alert h3, .alert h4, .alert h5, .alert h6 {
   color: white;
 }
-/* line 708, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 719, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .alert .alert-error {
   background-color: #03c4b6;
 }
-/* line 712, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 723, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .alert .alert-success {
   background-color: #18bc9c;
 }
-/* line 716, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 727, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .alert .alert-info {
   background-color: #3498db;
 }
 
-/* line 721, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 732, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .label {
   padding: 6px 10px;
   text-shadow: none;
 }
 
-/* line 726, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 737, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .badge {
   padding: 6px 10px;
   border-radius: 10px;
   text-shadow: none;
 }
 
-/* line 736, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 747, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .well {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-/* line 742, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 753, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress {
   background: #ecf0f1;
   border-radius: 32px;
@@ -12884,75 +12896,75 @@ body.rails_admin .form-horizontal.denser .filtering-select .add-on {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 749, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 760, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress .bar {
   background-color: #2c3e50;
   background-image: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 755, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 766, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress .bar + .bar {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-/* line 761, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 772, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress-striped .bar #gradient > {
   background-image: -webkit-linear-gradient(45deg, #2c3e50 25%, transparent 25%, transparent 50%, #2c3e50 50%, #2c3e50 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, #2c3e50 25%, transparent 25%, transparent 50%, #2c3e50 50%, #2c3e50 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, #2c3e50 25%, transparent 25%, transparent 50%, #2c3e50 50%, #2c3e50 75%, transparent 75%, transparent);
 }
 
-/* line 766, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 777, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress-success .bar,
 .progress-success.progress-striped .bar,
 .bar-success {
   background-color: #18bc9c;
 }
 
-/* line 772, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 783, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress-warning .bar,
 .progress-warning.progress-striped .bar,
 .bar-warning {
   background-color: #03c4b6;
 }
 
-/* line 778, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 789, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress-danger .bar,
 .progress-danger.progress-striped .bar,
 .bar-danger {
   background-color: #03c4b6;
 }
 
-/* line 784, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 795, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .progress-info .bar,
 .progress-info.progress-striped .bar,
 .bar-info {
   background-color: #3498db;
 }
 
-/* line 790, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 801, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .tooltip.in {
   opacity: 1;
 }
 
-/* line 795, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 806, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .popover {
   color: white;
 }
-/* line 798, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 809, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .popover .popover-title {
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 805, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 816, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .modal .modal-header {
   background-color: #2c3e50;
   border-bottom: none;
   color: white;
 }
-/* line 811, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 822, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .modal .modal-footer {
   background-color: #ecf0f1;
   border-top: none;
@@ -12960,28 +12972,28 @@ body.rails_admin .form-horizontal.denser .filtering-select .add-on {
   box-shadow: none;
 }
 
-/* line 818, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 829, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .close {
   text-shadow: none;
 }
 
 @media (max-width: 723px) {
-  /* line 830, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 841, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   div.subnav .nav > li:first-child > a,
   div.subnav .nav > li + li > a {
     border-color: transparent;
   }
-  /* line 833, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 844, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   div.subnav .nav > li:first-child > a:hover,
   div.subnav .nav > li + li > a:hover {
     background-color: #cfd9db;
   }
-  /* line 838, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 849, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   div.subnav .nav > li:last-child > a {
     border-radius: 0 0 4px 4px;
   }
 
-  /* line 846, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 857, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .input-append .add-on, .input-append .btn,
   .input-prepend .add-on,
   .input-prepend .btn {
@@ -12989,41 +13001,41 @@ body.rails_admin .form-horizontal.denser .filtering-select .add-on {
   }
 }
 @media (max-width: 979px) {
-  /* line 856, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 867, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar .nav-collapse .nav > li > a {
     color: white;
   }
-  /* line 859, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 870, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar .nav-collapse .nav > li > a:hover {
     color: #18bc9c;
     background-color: #2c3e50;
   }
-  /* line 865, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 876, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar .nav-collapse ul.nav.pull-right {
     display: table;
   }
-  /* line 867, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 878, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar .nav-collapse ul.nav.pull-right li {
     float: none;
     vertical-align: middle;
   }
-  /* line 870, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 881, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar .nav-collapse ul.nav.pull-right li img {
     padding: 0 !important;
   }
 }
 @media (max-width: 1023px) {
-  /* line 879, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 890, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   body.rails_admin {
     min-width: 1024px;
   }
 
-  /* line 880, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+  /* line 891, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
   .navbar-inner {
     min-width: 800px;
   }
 }
-/* line 884, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
+/* line 895, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin {
   padding-top: 70px;
 }

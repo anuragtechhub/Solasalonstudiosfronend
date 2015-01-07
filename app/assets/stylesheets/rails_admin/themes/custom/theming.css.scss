@@ -630,7 +630,16 @@ input[type="file"]{
   line-height: 16px;
 }
 
+fieldset {
+  margin-top: 10px;
+}
+
 legend {
+  background: $grayLighter;
+  padding-left: 10px;
+  max-width: 700px;
+  width: 100%;
+  border-radius: 5px;
   border-bottom: none;
   color: $textColor;
 }
@@ -654,6 +663,8 @@ body.rails_admin .form-horizontal.denser .help-block {
   margin-top: 2px;
   font-size: 13px;
   color: #777;
+  max-width: 360px;
+  width: 100%;  
 }
 
 body.rails_admin .form-horizontal.denser .filtering-select {
