@@ -33,10 +33,48 @@ RailsAdmin.config do |config|
 
   config.model 'Location' do  
     list do
-
+      field :name
+      field :url_name
+      field :address_1
+      field :address_2
+      field :city
+      field :state
+      field :postal_code
     end
     show do
- 
+      group :general do
+        field :name
+        field :url_name do
+          label 'URL Name'
+        end
+        field :description
+      end
+      group :contact do
+        field :general_contact_name do
+          label 'General Contact Name'
+        end
+        field :email_address_for_inquiries do
+          label 'Email Address for Inquiries'
+        end
+        field :phone_number
+      end
+      group :address do
+        field :address_1
+        field :address_2
+        field :city
+        field :state
+        field :postal_code
+        field :latitude
+        field :longitude
+      end
+      group :images do
+        field :floorplan_image
+      end
+      group :extras do
+        field :facebook_url
+        field :twitter_url
+        field :chat_code
+      end
     end
     edit do
       group :general do
