@@ -12871,7 +12871,7 @@ body.rails_admin .form-horizontal.denser .filtering-select .add-on {
 /* line 732, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 .label {
   padding: 6px 10px;
-  text-shadow: none;
+  text-transform: capitalize;
 }
 
 /* line 737, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
