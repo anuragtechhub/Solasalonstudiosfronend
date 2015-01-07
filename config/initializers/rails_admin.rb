@@ -31,4 +31,16 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Location' do  
+    list do
+
+    end
+    show do
+ 
+    end
+    edit do
+   
+    end
+  end
+
 end
