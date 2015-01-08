@@ -6,6 +6,7 @@ Solasalonstudios::Application.routes.draw do
   root 'welcome#index'
 
   #resources :locations
+  #resources :stylists
 
   get 'digital-directory/:location_id' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
   

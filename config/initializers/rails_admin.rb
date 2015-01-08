@@ -34,7 +34,9 @@ RailsAdmin.config do |config|
   config.model 'Location' do  
     list do
       field :name
-      field :url_name
+      field :url_name do
+        label 'URL Name'
+      end
       field :address_1
       field :city
       field :state
@@ -113,6 +115,89 @@ RailsAdmin.config do |config|
         field :facebook_url
         field :twitter_url
         field :chat_code
+      end
+    end
+  end
+
+  config.model 'Stylist' do
+    list do
+      field :name
+      field :url_name do
+        label 'URL Name'
+      end
+      field :email_address
+      field :phone_number
+      field :business_name
+      field :studio_number
+    end
+    show do
+      group :general do
+        field :name
+        field :url_name do
+          label 'URL Name'
+          help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
+        end
+        field :biography
+      end
+      group :contact do
+        field :email_address
+        field :phone_number
+      end      
+      group :business do
+        field :business_name
+        field :studio_number
+        field :work_hours
+        field :accepting_new_clients
+        field :booking_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
+      end
+      group :services do
+        field :hair
+        field :skin
+        field :nails
+        field :massage
+        field :teeth_whitening
+        field :eyelash_extensions
+        field :makeup
+        field :tanning
+        field :waxing
+        field :brows
+      end
+    end
+    edit do
+      group :general do
+        field :name
+        field :url_name do
+          label 'URL Name'
+          help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
+        end
+        field :biography
+      end
+      group :contact do
+        field :email_address
+        field :phone_number
+      end      
+      group :business do
+        field :business_name
+        field :studio_number
+        field :work_hours
+        field :booking_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
+        field :accepting_new_clients        
+      end
+      group :services do
+        field :hair
+        field :skin
+        field :nails
+        field :massage
+        field :teeth_whitening
+        field :eyelash_extensions
+        field :makeup
+        field :tanning
+        field :waxing
+        field :brows
       end
     end
   end

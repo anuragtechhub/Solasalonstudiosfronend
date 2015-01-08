@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  url_name: MyString
+  biography: MyText
+  email_address: MyString
+  phone_number: MyString
+  studio_number: MyString
+  work_hours: MyText
+  website: MyString
+  business_name: MyString
+  hair: false
+  skin: false
+  nails: false
+  massage: false
+  teeth_whitening: false
+  eyelash_extensions: false
+  makeup: false
+  tanning: false
+  waxing: false
+  brows: false
+  accepting_new_clients: false
+  booking_url: MyString
+
+two:
+  name: MyString
+  url_name: MyString
+  biography: MyText
+  email_address: MyString
+  phone_number: MyString
+  studio_number: MyString
+  work_hours: MyText
+  website: MyString
+  business_name: MyString
+  hair: false
+  skin: false
+  nails: false
+  massage: false
+  teeth_whitening: false
+  eyelash_extensions: false
+  makeup: false
+  tanning: false
+  waxing: false
+  brows: false
+  accepting_new_clients: false
+  booking_url: MyString

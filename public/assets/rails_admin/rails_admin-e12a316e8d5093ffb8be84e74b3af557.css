@@ -12811,7 +12811,7 @@ body.rails_admin .form-horizontal.denser .help-block {
 
 /* line 672, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/rails_admin/themes/custom/theming.css.scss */
 body.rails_admin .form-horizontal.denser .filtering-select input {
-  width: 316px !important;
+  width: auto !important;
   -webkit-border-top-left-radius: 6px;
   -webkit-border-bottom-left-radius: 6px;
   -moz-border-radius-topleft: 6px;

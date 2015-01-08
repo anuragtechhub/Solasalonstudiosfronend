@@ -1,0 +1,67 @@
+<h1>Listing stylists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url name</th>
+      <th>Biography</th>
+      <th>Email address</th>
+      <th>Phone number</th>
+      <th>Studio number</th>
+      <th>Work hours</th>
+      <th>Website</th>
+      <th>Business name</th>
+      <th>Hair</th>
+      <th>Skin</th>
+      <th>Nails</th>
+      <th>Massage</th>
+      <th>Teeth whitening</th>
+      <th>Eyelash extensions</th>
+      <th>Makeup</th>
+      <th>Tanning</th>
+      <th>Waxing</th>
+      <th>Brows</th>
+      <th>Accepting new clients</th>
+      <th>Booking url</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stylists.each do |stylist| %>
+      <tr>
+        <td><%= stylist.name %></td>
+        <td><%= stylist.url_name %></td>
+        <td><%= stylist.biography %></td>
+        <td><%= stylist.email_address %></td>
+        <td><%= stylist.phone_number %></td>
+        <td><%= stylist.studio_number %></td>
+        <td><%= stylist.work_hours %></td>
+        <td><%= stylist.website %></td>
+        <td><%= stylist.business_name %></td>
+        <td><%= stylist.hair %></td>
+        <td><%= stylist.skin %></td>
+        <td><%= stylist.nails %></td>
+        <td><%= stylist.massage %></td>
+        <td><%= stylist.teeth_whitening %></td>
+        <td><%= stylist.eyelash_extensions %></td>
+        <td><%= stylist.makeup %></td>
+        <td><%= stylist.tanning %></td>
+        <td><%= stylist.waxing %></td>
+        <td><%= stylist.brows %></td>
+        <td><%= stylist.accepting_new_clients %></td>
+        <td><%= stylist.booking_url %></td>
+        <td><%= link_to 'Show', stylist %></td>
+        <td><%= link_to 'Edit', edit_stylist_path(stylist) %></td>
+        <td><%= link_to 'Destroy', stylist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stylist', new_stylist_path %>

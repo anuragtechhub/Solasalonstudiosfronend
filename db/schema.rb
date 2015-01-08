@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106223137) do
+ActiveRecord::Schema.define(version: 20150107233034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,32 @@ ActiveRecord::Schema.define(version: 20150106223137) do
     t.integer  "floorplan_image_file_size"
     t.datetime "floorplan_image_updated_at"
     t.text     "chat_code"
+  end
+
+  create_table "stylists", force: true do |t|
+    t.string   "name"
+    t.string   "url_name"
+    t.text     "biography"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "studio_number"
+    t.text     "work_hours"
+    t.string   "website"
+    t.string   "business_name"
+    t.boolean  "hair"
+    t.boolean  "skin"
+    t.boolean  "nails"
+    t.boolean  "massage"
+    t.boolean  "teeth_whitening"
+    t.boolean  "eyelash_extensions"
+    t.boolean  "makeup"
+    t.boolean  "tanning"
+    t.boolean  "waxing"
+    t.boolean  "brows"
+    t.boolean  "accepting_new_clients"
+    t.string   "booking_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
