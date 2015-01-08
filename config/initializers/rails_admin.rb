@@ -70,6 +70,16 @@ RailsAdmin.config do |config|
       end
       group :images do
         field :floorplan_image
+        field :image_1
+        field :image_2
+        field :image_3
+        field :image_4
+        field :image_5
+        field :image_6
+        field :image_7
+        field :image_8
+        field :image_9
+        field :image_10
       end
       group :extras do
         field :facebook_url
@@ -110,6 +120,16 @@ RailsAdmin.config do |config|
       end
       group :images do
         field :floorplan_image
+        field :image_1
+        field :image_2
+        field :image_3
+        field :image_4
+        field :image_5
+        field :image_6
+        field :image_7
+        field :image_8
+        field :image_9
+        field :image_10
       end
       group :extras do
         field :facebook_url

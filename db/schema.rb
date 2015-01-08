@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107233034) do
+ActiveRecord::Schema.define(version: 20150108144255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,46 @@ ActiveRecord::Schema.define(version: 20150107233034) do
     t.integer  "floorplan_image_file_size"
     t.datetime "floorplan_image_updated_at"
     t.text     "chat_code"
+    t.string   "image_1_file_name"
+    t.string   "image_1_content_type"
+    t.integer  "image_1_file_size"
+    t.datetime "image_1_updated_at"
+    t.string   "image_2_file_name"
+    t.string   "image_2_content_type"
+    t.integer  "image_2_file_size"
+    t.datetime "image_2_updated_at"
+    t.string   "image_3_file_name"
+    t.string   "image_3_content_type"
+    t.integer  "image_3_file_size"
+    t.datetime "image_3_updated_at"
+    t.string   "image_4_file_name"
+    t.string   "image_4_content_type"
+    t.integer  "image_4_file_size"
+    t.datetime "image_4_updated_at"
+    t.string   "image_5_file_name"
+    t.string   "image_5_content_type"
+    t.integer  "image_5_file_size"
+    t.datetime "image_5_updated_at"
+    t.string   "image_6_file_name"
+    t.string   "image_6_content_type"
+    t.integer  "image_6_file_size"
+    t.datetime "image_6_updated_at"
+    t.string   "image_7_file_name"
+    t.string   "image_7_content_type"
+    t.integer  "image_7_file_size"
+    t.datetime "image_7_updated_at"
+    t.string   "image_8_file_name"
+    t.string   "image_8_content_type"
+    t.integer  "image_8_file_size"
+    t.datetime "image_8_updated_at"
+    t.string   "image_9_file_name"
+    t.string   "image_9_content_type"
+    t.integer  "image_9_file_size"
+    t.datetime "image_9_updated_at"
+    t.string   "image_10_file_name"
+    t.string   "image_10_content_type"
+    t.integer  "image_10_file_size"
+    t.datetime "image_10_updated_at"
   end
 
   create_table "stylists", force: true do |t|
