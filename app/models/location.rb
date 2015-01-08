@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
 
+  has_many :stylists
+
   after_validation :geocode
   geocoded_by :full_address
 

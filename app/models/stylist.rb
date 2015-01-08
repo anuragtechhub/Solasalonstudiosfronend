@@ -1,5 +1,7 @@
 class Stylist < ActiveRecord::Base
 
+  belongs_to :location
+
   validates :name, :presence => true, :uniqueness => true
   validates :url_name, :presence => true, :uniqueness => true
 

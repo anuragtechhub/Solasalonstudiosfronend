@@ -164,6 +164,7 @@ RailsAdmin.config do |config|
         field :phone_number
       end      
       group :business do
+        field :location
         field :business_name
         field :studio_number
         field :work_hours
@@ -199,6 +200,7 @@ RailsAdmin.config do |config|
         field :phone_number
       end      
       group :business do
+        field :location
         field :business_name
         field :studio_number
         field :work_hours
