@@ -8,6 +8,6 @@ Solasalonstudios::Application.routes.draw do
   #resources :locations
   #resources :stylists
 
-  get 'digital-directory/:location_id' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
+  get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
   
 end

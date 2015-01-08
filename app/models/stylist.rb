@@ -2,7 +2,7 @@ class Stylist < ActiveRecord::Base
 
   belongs_to :location
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
   # define rails_admin enums
