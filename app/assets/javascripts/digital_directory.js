@@ -1,41 +1,52 @@
+//= require jquery
+
 $(function () {
 
-  function randomIndex (max) {
-    return Math.floor(Math.random() * max);
+  /* 
+  * Gets an random integer index value given an integer array length 
+  * @param {Integer} length
+  * @returns {Integer} index
+  */
+  function randomIndex (length) {
+    return Math.floor(Math.random() * length);
   };
 
+  /* 
+  * Gets an random integer value between two min and max integers
+  * @param {Integer} min
+  * @param {Integer} max
+  * @returns {Integer} value
+  */
   function randomInterval (min, max) {
     return Math.floor(Math.random() * ( max - min + 1) + min);
   };
 
-  function imageVisible (image) {
-    return $('.photo[data-image=' + image.attr('src') + ']').length > 0;
-  };
-
   function swapImage (photo) {
-    var img = randomIndex(images.length);
+    var image;
 
-    photo.attr('data-image', img.attr('src'));
+    do {
+      image = images.eq(randomIndex(images.length));
+    } while (photos.filter('[data-image="' + image.attr('src') + '"]').length > 0);
+
+    image = image.clone().hide();
+    photo.append(image).attr('data-image', image.attr('src'));
+    photo.find('img').fadeOut('slow'); image.fadeIn('slow');
+
+    if (images.length > 3) {
+      //refresh after random interval
+      setTimeout(function () {
+        swapImage(photo);
+      }, randomInterval(min_interval, max_interval) * 1000);
+    }
   };
   
-  var images = $('.images img'),
-      photos = $('.photo'),
-      min = 2, max = 8;
+  var images = $('#photo-gallery-images img'),
+      photos = $('#photo-gallery .photo'),
+      min_interval = 6, max_interval = 12;
 
-  // photo 1
-
-  // photo 2
-
-  // photo 3
-
-  photos.eq(1).on('click', function () {
-    alert('2')
-  })
-
-  photos.eq(2).on('click', function () {
-    alert('3')
-  }) 
-
-  console.log(images.length, randomIndex(images.length))
+  //init images
+  swapImage(photos.eq(0));
+  swapImage(photos.eq(1));
+  swapImage(photos.eq(2));
 
 });

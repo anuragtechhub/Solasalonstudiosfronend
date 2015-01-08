@@ -68,11 +68,13 @@ h2 {
 .left-col {
   left: 0;
   width: 30%;
+  margin-bottom: 30px;
 }
 
 .right-col {
   left: 30%;
   width: 70%;
+  margin-bottom: 30px;
 }
 
 /* listings */
@@ -144,15 +146,12 @@ h2 {
   width: 1187px;
   height: 405px;
   margin: 0 auto;
-  
-  .images {
-    display: none;
-  }
-  
+
   .photo {
+    position: relative;
     float: left;
     clear: none;
-    padding: 15px;
+    padding: 0;
     margin: 0 15px 0 0;
     width: 375px;
     height: 375px;
@@ -160,6 +159,12 @@ h2 {
 
     &:last-child {
       margin-right: 0;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 }

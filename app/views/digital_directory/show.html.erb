@@ -1,5 +1,17 @@
-<% content_for(:stylesheets) { stylesheet_link_tag 'digital_directory' } %>
-<% content_for(:scripts) { javascript_include_tag 'digital_directory' } %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sola Salon Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>  
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= yield :stylesheets %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
 <div class="container">
 
@@ -40,19 +52,20 @@
 
     <div class="floorplan-image"><%= image_tag @location.floorplan_image.url(:original) %></div>
 
-    <div class="photo-gallery">
-      <div class="images">
-        <%= image_tag @location.image_1.url(:directory) if @location.image_1.exists? %>
-        <%= image_tag @location.image_2.url(:directory) if @location.image_2.exists? %>
-        <%= image_tag @location.image_3.url(:directory) if @location.image_3.exists? %>
-        <%= image_tag @location.image_4.url(:directory) if @location.image_4.exists? %>
-        <%= image_tag @location.image_5.url(:directory) if @location.image_5.exists? %>
-        <%= image_tag @location.image_6.url(:directory) if @location.image_6.exists? %>
-        <%= image_tag @location.image_7.url(:directory) if @location.image_7.exists? %>
-        <%= image_tag @location.image_8.url(:directory) if @location.image_8.exists? %>
-        <%= image_tag @location.image_9.url(:directory) if @location.image_9.exists? %>
-        <%= image_tag @location.image_10.url(:directory) if @location.image_10.exists? %>
-      </div>
+    <div id="photo-gallery-images" style="display:none">
+      <%= image_tag @location.image_1.url(:directory) if @location.image_1.exists? %>
+      <%= image_tag @location.image_2.url(:directory) if @location.image_2.exists? %>
+      <%= image_tag @location.image_3.url(:directory) if @location.image_3.exists? %>
+      <%= image_tag @location.image_4.url(:directory) if @location.image_4.exists? %>
+      <%= image_tag @location.image_5.url(:directory) if @location.image_5.exists? %>
+      <%= image_tag @location.image_6.url(:directory) if @location.image_6.exists? %>
+      <%= image_tag @location.image_7.url(:directory) if @location.image_7.exists? %>
+      <%= image_tag @location.image_8.url(:directory) if @location.image_8.exists? %>
+      <%= image_tag @location.image_9.url(:directory) if @location.image_9.exists? %>
+      <%= image_tag @location.image_10.url(:directory) if @location.image_10.exists? %>
+    </div>
+
+    <div id="photo-gallery" class="photo-gallery">
       <div class="photo"></div>
       <div class="photo"></div>
       <div class="photo"></div>
@@ -61,3 +74,12 @@
   </div>
 
 </div>
+
+  <%= stylesheet_link_tag 'digital_directory' %>
+  <%= javascript_include_tag 'digital_directory' %>
+
+</body>
+</html>
+
+
+
