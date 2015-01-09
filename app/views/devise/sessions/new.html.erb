@@ -1,0 +1,25 @@
+<div class="sign-in">
+
+  <div style="text-align:center"><%= image_tag 'logo_white.png' %></div>
+
+  <h2>Admin Sign In</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Sign in</button>
+    </div>
+  <% end %>
+
+</div>
+
+<% content_for(:stylesheets) { stylesheet_link_tag 'devise' } %>

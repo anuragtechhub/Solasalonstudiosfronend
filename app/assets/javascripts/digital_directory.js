@@ -42,7 +42,7 @@ $(function () {
   
   var images = $('#photo-gallery-images img'),
       photos = $('#photo-gallery .photo'),
-      min_interval = 6, max_interval = 12;
+      min_interval = 7, max_interval = 14;
 
   //init images
   swapImage(photos.eq(0));

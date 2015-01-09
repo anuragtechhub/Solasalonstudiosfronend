@@ -1,0 +1,44 @@
+.sign-in {
+  max-width: 400px;
+  width: 100%;
+  margin: 30px auto;
+  font-size: 19px;
+  background: rgba(0,0,0,0.25);
+  padding: 30px;
+
+  h2 {
+    font-size: 21px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  label {
+    font-size: 19px;
+    display: block;
+    margin: 15px 0 3px 0;
+    font-weight: bold;
+  }
+
+  input {
+    font-size: 19px;
+    padding: 5px;
+    width: 100%;
+  }
+
+  .actions {
+    margin: 15px auto;
+
+    button {
+      width: 100%;
+      padding: 10px 30px;
+      font-size: 19px;
+      font-weight: bold;
+      border: 0;
+      background: #FFF;
+      border-radius: 3px;
+    }
+  }
+}
