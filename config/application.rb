@@ -33,7 +33,7 @@ module Solasalonstudios
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  
     config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
-    config.assets.precompile += ['devise.css', 'digital_directory.css', 'digital_directory.js']
+    config.assets.precompile += ['digital_directory.css', 'digital_directory.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => 'AKIAJAKSXVOSIU7IYOTA', :secret_access_key => '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'}}
   end
