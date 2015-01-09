@@ -220,8 +220,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
-    rdoc (4.2.0)
-      json (~> 1.4)
     remotipart (1.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -232,9 +230,6 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -286,7 +281,6 @@ DEPENDENCIES
   rails_admin (= 0.6.5)
   rails_admin_example_theme!
   sass-rails (~> 4.0.0)
-  sdoc
   turbolinks
   uglifier (>= 1.3.0)
   unicorn
