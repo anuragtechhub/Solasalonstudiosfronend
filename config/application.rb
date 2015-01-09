@@ -22,12 +22,16 @@ module Solasalonstudios
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.time_zone = 'UTC'
+    config.active_record.default_timezone = :utc   
+
     config.serve_static_assets = true
     config.assets.digest = true
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
+    config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  
     config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => 'AKIAJAKSXVOSIU7IYOTA', :secret_access_key => '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'}}
