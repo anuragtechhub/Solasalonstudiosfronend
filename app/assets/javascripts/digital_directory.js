@@ -21,32 +21,35 @@ $(function () {
     return Math.floor(Math.random() * ( max - min + 1) + min);
   };
 
-  function swapImage (photo) {
-    var image;
+  function swapImage () {
+    var $slot, $image;
 
+    //select random photo slot
+    $slot = $photos.eq(randomIndex($photos.length));
+
+    //select random image
     do {
-      image = images.eq(randomIndex(images.length));
-    } while (photos.filter('[data-image="' + image.attr('src') + '"]').length > 0);
+      $image = $images.eq(randomIndex($images.length));
+    } while ($image.is(':visible'));
 
-    image = image.clone().hide();
-    photo.append(image).attr('data-image', image.attr('src'));
-    photo.find('img').fadeOut('slow'); image.fadeIn('slow');
+    $image.hide();
+    $slot.append($image).find('img').not($image).fadeOut('slow');
+    $image.fadeIn('slow');
 
-    if (images.length > 3) {
-      //refresh after random interval
-      setTimeout(function () {
-        swapImage(photo);
-      }, randomInterval(min_interval, max_interval) * 1000);
-    }
-  };
-  
-  var images = $('#photo-gallery-images img'),
-      photos = $('#photo-gallery .photo'),
-      min_interval = 7, max_interval = 14;
+    setTimeout(swapImage, randomInterval(min_interval, max_interval) * 1000);
+  }
 
-  //init images
-  swapImage(photos.eq(0));
-  swapImage(photos.eq(1));
-  swapImage(photos.eq(2));
+
+  var $images = $('#photo-gallery-images img'),
+      $photos = $('#photo-gallery .photo'),
+      min_interval = 4, max_interval = 6;
+
+  //init    
+  $photos.eq(0).append($images.eq(0));
+  $photos.eq(1).append($images.eq(1));
+  $photos.eq(2).append($images.eq(2));
+
+  swapImage();
+
 
 });
