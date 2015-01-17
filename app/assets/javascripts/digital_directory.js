@@ -25,7 +25,11 @@ $(function () {
     var $slot, $image;
 
     //select random photo slot
-    $slot = $photos.eq(randomIndex($photos.length));
+    do {
+      $slot = $photos.eq(randomIndex($photos.length));
+    } while ($slot.is($last_slot));
+    $last_slot = $slot;
+    
 
     //select random image
     do {
@@ -42,7 +46,7 @@ $(function () {
 
   var $images = $('#photo-gallery-images img'),
       $photos = $('#photo-gallery .photo'),
-      min_interval = 4, max_interval = 6;
+      min_interval = 4, max_interval = 6, $last_slot;
 
   //init    
   $photos.eq(0).append($images.eq(0));
