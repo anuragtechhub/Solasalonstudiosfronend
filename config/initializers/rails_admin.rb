@@ -69,27 +69,111 @@ RailsAdmin.config do |config|
         field :longitude
       end
       group :images do
-        field :floorplan_image
-        field :image_1
-        field :image_2
-        field :image_3
-        field :image_4
-        field :image_5
-        field :image_6
-        field :image_7
-        field :image_8
-        field :image_9
-        field :image_10
-        field :image_11
-        field :image_12
-        field :image_13
-        field :image_14
-        field :image_15
-        field :image_16
-        field :image_17
-        field :image_18
-        field :image_19
-        field :image_20
+        field :floorplan_image do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_1 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_2 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_3 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_4 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_5 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_6 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_7 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_8 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_9 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_10 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_11 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_12 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_13 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_14 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_15 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_16 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_17 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_18 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_19 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_20 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
       end
       group :extras do
         field :facebook_url
@@ -129,27 +213,111 @@ RailsAdmin.config do |config|
         end
       end
       group :images do
-        field :floorplan_image
-        field :image_1
-        field :image_2
-        field :image_3
-        field :image_4
-        field :image_5
-        field :image_6
-        field :image_7
-        field :image_8
-        field :image_9
-        field :image_10
-        field :image_11
-        field :image_12
-        field :image_13
-        field :image_14
-        field :image_15
-        field :image_16
-        field :image_17
-        field :image_18
-        field :image_19
-        field :image_20
+        field :floorplan_image do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_1 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_2 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_3 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_4 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_5 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_6 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_7 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_8 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_9 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_10 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_11 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_12 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_13 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_14 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_15 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_16 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_17 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_18 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_19 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_20 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
       end
       group :extras do
         field :facebook_url
