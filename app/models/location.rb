@@ -38,6 +38,36 @@ class Location < ActiveRecord::Base
   has_attached_file :image_10, :styles => { :directory => '375x375#' }
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/              
 
+  has_attached_file :image_11, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_11, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_12, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_12, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_13, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_13, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_14, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_14, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_15, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_15, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_16, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_16, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_17, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_17, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_18, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_18, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_19, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_19, :content_type => /\Aimage\/.*\Z/       
+
+  has_attached_file :image_20, :styles => { :directory => '375x375#' }
+  validates_attachment_content_type :image_20, :content_type => /\Aimage\/.*\Z/                         
+
   validates :name, :presence => true, :uniqueness => true
   validates :url_name, :presence => true, :uniqueness => true
 

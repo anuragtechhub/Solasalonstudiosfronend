@@ -45,6 +45,8 @@ namespace :sync do
       location.image_19 = open(get_img_src row['field_id_252']) if row['field_id_252']
       location.image_20 = nil
 
+      #location. = open(get_img_src row['field_id_308']) {filedir_2}directory1.png 
+
       #location. = row['field_id_']
       break
     end
@@ -55,9 +57,13 @@ namespace :sync do
   end
 
   def get_img_src(html)
+    filedir_2 = 
     filedir_4 = 'http://www.solasalonstudios.com/images/uploads/store_photos/'
 
-    Nokogiri::HTML(html.gsub(/\{filedir_4\}/, filedir_4)).xpath('//img/@src').to_s
+    html.gsub!(/\{filedir_2\}/, filedir_2)
+    html.gsub!(/\{filedir_4\}/, filedir_4)
+
+    Nokogiri::HTML(html).xpath('//img/@src').to_s
   end
 
 end
