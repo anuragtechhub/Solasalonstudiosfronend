@@ -80,6 +80,16 @@ RailsAdmin.config do |config|
         field :image_8
         field :image_9
         field :image_10
+        field :image_11
+        field :image_12
+        field :image_13
+        field :image_14
+        field :image_15
+        field :image_16
+        field :image_17
+        field :image_18
+        field :image_19
+        field :image_20
       end
       group :extras do
         field :facebook_url
@@ -130,6 +140,16 @@ RailsAdmin.config do |config|
         field :image_8
         field :image_9
         field :image_10
+        field :image_11
+        field :image_12
+        field :image_13
+        field :image_14
+        field :image_15
+        field :image_16
+        field :image_17
+        field :image_18
+        field :image_19
+        field :image_20
       end
       group :extras do
         field :facebook_url

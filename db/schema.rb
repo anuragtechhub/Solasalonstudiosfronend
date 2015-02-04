@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108150142) do
+ActiveRecord::Schema.define(version: 20150204213102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,47 @@ ActiveRecord::Schema.define(version: 20150108150142) do
     t.string   "image_10_content_type"
     t.integer  "image_10_file_size"
     t.datetime "image_10_updated_at"
+    t.string   "legacy_id"
+    t.string   "image_11_file_name"
+    t.string   "image_11_content_type"
+    t.integer  "image_11_file_size"
+    t.datetime "image_11_updated_at"
+    t.string   "image_12_file_name"
+    t.string   "image_12_content_type"
+    t.integer  "image_12_file_size"
+    t.datetime "image_12_updated_at"
+    t.string   "image_13_file_name"
+    t.string   "image_13_content_type"
+    t.integer  "image_13_file_size"
+    t.datetime "image_13_updated_at"
+    t.string   "image_14_file_name"
+    t.string   "image_14_content_type"
+    t.integer  "image_14_file_size"
+    t.datetime "image_14_updated_at"
+    t.string   "image_15_file_name"
+    t.string   "image_15_content_type"
+    t.integer  "image_15_file_size"
+    t.datetime "image_15_updated_at"
+    t.string   "image_16_file_name"
+    t.string   "image_16_content_type"
+    t.integer  "image_16_file_size"
+    t.datetime "image_16_updated_at"
+    t.string   "image_17_file_name"
+    t.string   "image_17_content_type"
+    t.integer  "image_17_file_size"
+    t.datetime "image_17_updated_at"
+    t.string   "image_18_file_name"
+    t.string   "image_18_content_type"
+    t.integer  "image_18_file_size"
+    t.datetime "image_18_updated_at"
+    t.string   "image_19_file_name"
+    t.string   "image_19_content_type"
+    t.integer  "image_19_file_size"
+    t.datetime "image_19_updated_at"
+    t.string   "image_20_file_name"
+    t.string   "image_20_content_type"
+    t.integer  "image_20_file_size"
+    t.datetime "image_20_updated_at"
   end
 
   create_table "stylists", force: true do |t|
