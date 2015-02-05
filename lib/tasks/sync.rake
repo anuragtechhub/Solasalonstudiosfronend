@@ -1,5 +1,15 @@
 namespace :sync do
-  
+
+  task :all => :environment do
+    Rake::Task["sync:locations"].execute
+    Rake::Task["sync:stylists"].execute
+    Rake::Task["sync:blogs"].execute
+  end
+
+  task :blogs => :environment do
+    p 'sync blogs!'
+  end
+
   task :locations => :environment do
     p 'sync locations!'
     db = get_database_client

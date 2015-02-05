@@ -48,7 +48,11 @@ RailsAdmin.config do |config|
         field :url_name do
           label 'URL Name'
         end
-        field :description
+        field :description do
+          pretty_value do
+            value.html_safe
+          end
+        end
         field :status
       end
       group :contact do
@@ -347,7 +351,11 @@ RailsAdmin.config do |config|
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
-        field :biography
+        field :biography do
+          pretty_value do
+            value.html_safe
+          end
+        end
         field :status
       end
       group :contact do
