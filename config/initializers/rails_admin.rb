@@ -428,6 +428,18 @@ RailsAdmin.config do |config|
           end
         end
       end
+      group :testimonials do
+        field :testimonial_1
+        field :testimonial_2
+        field :testimonial_3
+        field :testimonial_4
+        field :testimonial_5
+        field :testimonial_6
+        field :testimonial_7
+        field :testimonial_8
+        field :testimonial_9
+        field :testimonial_10
+      end 
     end
     edit do
       group :general do
@@ -517,7 +529,23 @@ RailsAdmin.config do |config|
           end
         end
       end
+      group :testimonials do
+        field :testimonial_1
+        field :testimonial_2
+        field :testimonial_3
+        field :testimonial_4
+        field :testimonial_5
+        field :testimonial_6
+        field :testimonial_7
+        field :testimonial_8
+        field :testimonial_9
+        field :testimonial_10
+      end
     end
+  end
+
+  config.model 'Testimonial' do
+    visible false
   end
 
 end

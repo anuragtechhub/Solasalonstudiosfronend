@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205162459) do
+ActiveRecord::Schema.define(version: 20150205173123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,16 @@ ActiveRecord::Schema.define(version: 20150205162459) do
     t.string   "image_10_content_type"
     t.integer  "image_10_file_size"
     t.datetime "image_10_updated_at"
+    t.integer  "testimonial_id_1"
+    t.integer  "testimonial_id_2"
+    t.integer  "testimonial_id_3"
+    t.integer  "testimonial_id_4"
+    t.integer  "testimonial_id_5"
+    t.integer  "testimonial_id_6"
+    t.integer  "testimonial_id_7"
+    t.integer  "testimonial_id_8"
+    t.integer  "testimonial_id_9"
+    t.integer  "testimonial_id_10"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

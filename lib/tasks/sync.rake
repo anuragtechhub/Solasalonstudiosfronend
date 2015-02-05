@@ -16,7 +16,7 @@ namespace :sync do
       location.status = meta['status']
       location.name = meta['title']
       location.url_name = meta['url_title']
-      location.description = row['field_id_19']
+      location.description = row['field_id_19'].strip
 
       location.city = row['field_id_15']
       location.state = row['field_id_18']
@@ -199,7 +199,7 @@ namespace :sync do
       stylist.name = meta['title']
       stylist.url_name = meta['url_title']
 
-      stylist.biography = row['field_id_8']
+      stylist.biography = row['field_id_8'].strip
       stylist.email_address = row['field_id_9']
       stylist.phone_number = row['field_id_9']
 
@@ -207,7 +207,7 @@ namespace :sync do
       stylist.studio_number = row['field_id_11']
       stylist.work_hours = row['field_id_13']
       stylist.website = row['field_id_14']
-      stylist.studio_name = row['field_id_29']
+      stylist.business_name = row['field_id_29']
       stylist.booking_url = row['field_id_220']
 
       stylist.hair = row['field_id_25']
@@ -290,6 +290,48 @@ namespace :sync do
       rescue => e
         p "image 10 error = #{e.inspect}"
       end       
+
+      # testimonials
+
+      if row['field_id_273'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_273'], :name => row['field_id_274'], :region => row['field_id_275'])
+      end
+
+      if row['field_id_276'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_276'], :name => row['field_id_277'], :region => row['field_id_278'])
+      end
+
+      if row['field_id_279'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_279'], :name => row['field_id_280'], :region => row['field_id_281'])
+      end
+
+      if row['field_id_282'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_282'], :name => row['field_id_283'], :region => row['field_id_284'])
+      end
+
+      if row['field_id_285'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_285'], :name => row['field_id_286'], :region => row['field_id_287'])
+      end
+
+      if row['field_id_288'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_288'], :name => row['field_id_289'], :region => row['field_id_290'])
+      end
+
+      if row['field_id_291'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_291'], :name => row['field_id_292'], :region => row['field_id_293'])
+      end
+
+      if row['field_id_294'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_294'], :name => row['field_id_295'], :region => row['field_id_296'])
+      end
+
+      if row['field_id_297'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_297'], :name => row['field_id_298'], :region => row['field_id_299'])
+      end
+
+      if row['field_id_300'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'], :name => row['field_id_301'], :region => row['field_id_302'])
+      end
 
       p "stylist=#{stylist.inspect}"
       #location. = row['field_id_']

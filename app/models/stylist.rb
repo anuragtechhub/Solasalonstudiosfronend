@@ -5,6 +5,17 @@ class Stylist < ActiveRecord::Base
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
+  belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
+  belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
+  belongs_to :testimonial_3, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_3'
+  belongs_to :testimonial_4, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_4'
+  belongs_to :testimonial_5, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_5'
+  belongs_to :testimonial_6, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_6'
+  belongs_to :testimonial_7, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_7'
+  belongs_to :testimonial_8, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_8'
+  belongs_to :testimonial_9, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_9'
+  belongs_to :testimonial_10, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_10'
+
   has_attached_file :image_1, :styles => { :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
 
@@ -40,6 +51,26 @@ class Stylist < ActiveRecord::Base
     define_method "#{name}_enum" do
       [['Yes', true], ['No', false]]
     end
+  end
+
+  # helper function to return images as array
+  def images
+    images_array = []
+    (1..10).each do |num|
+      image = self.send("image_#{num}")
+      images_array << image if image.present?
+    end
+    images_array
+  end
+
+  # helper function to return testimonials as array
+  def testimonials
+    testimonial_array = []
+    (1..10).each do |num|
+      testimonial = self.send("testimonial_#{num}")
+      testimonial_array << testimonial if testimonial.present?
+    end
+    testimonial_array
   end
 
 end

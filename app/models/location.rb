@@ -75,4 +75,14 @@ class Location < ActiveRecord::Base
     "#{address_1} #{address_2} #{city}, #{state} #{postal_code}"
   end
 
+  # helper function to return images as array
+  def images
+    imgs = []
+    (1..20).each do |num|
+      img = self.send("image_#{num}")
+      imgs << img if img.present?
+    end
+    imgs
+  end
+
 end
