@@ -203,6 +203,14 @@ namespace :sync do
       stylist.email_address = row['field_id_9']
       stylist.phone_number = row['field_id_9']
 
+      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) AND parent_id = 120 LIMIT 1").first
+      if location_row
+        p "we have a location #{location_row.first['cat_url_title']}"
+        stylist.location = location_row.first['cat_url_title']
+      else
+        p "no location :{"
+      end
+
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
       stylist.studio_number = row['field_id_11']
       stylist.work_hours = row['field_id_13']
@@ -333,9 +341,12 @@ namespace :sync do
         stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'], :name => row['field_id_301'], :region => row['field_id_302'])
       end
 
-      p "stylist=#{stylist.inspect}"
+      if stylist.save
+        p "Saved #{row['entry_id']}!"
+      else 
+        p "ERROR saving #{row['entry_id']} - #{stylist.errors.inspect}"
+      end
       #location. = row['field_id_']
-      break
     end
   end
 
