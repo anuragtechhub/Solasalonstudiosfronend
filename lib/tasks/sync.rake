@@ -13,6 +13,7 @@ namespace :sync do
       location = Location.find_by(:legacy_id => row['entry_id'].to_s) || Location.new
       
       location.legacy_id = row['entry_id']
+      location.status = meta['status']
       location.name = meta['title']
       location.url_name = meta['url_title']
       location.description = row['field_id_19']
@@ -187,9 +188,18 @@ namespace :sync do
     results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6")
     p "results.size = #{results.size}"
     results.each do |row|
-      p "Processing #{row['field_id_15']} (#{row['entry_id']})..."
+      p "Processing (#{row['entry_id']})..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
+
+      stylist = Stylist.find_by(:legacy_id => row['entry_id'].to_s) || Stylist.new
+      
+      stylist.legacy_id = row['entry_id']
+      stylist.status = meta['status']
+      stylist.name = meta['title']
+      stylist.url_name = meta['url_title']
+
+      p "stylist=#{stylist.inspect}"
       break
     end
   end
