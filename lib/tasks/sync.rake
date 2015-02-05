@@ -191,24 +191,38 @@ namespace :sync do
       p "Processing (#{row['entry_id']})..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
+      p "meta #{meta}"
 
       stylist = Stylist.find_by(:legacy_id => row['entry_id'].to_s) || Stylist.new
+
+      p "gotta stylist"
       
       stylist.legacy_id = row['entry_id']
       stylist.status = meta['status']
       stylist.name = meta['title']
       stylist.url_name = meta['url_title']
 
+      p "thru url name"
+
       stylist.biography = row['field_id_8'].strip
       stylist.email_address = row['field_id_9']
-      stylist.phone_number = row['field_id_9']
+      stylist.phone_number = row['field_id_10']
+
+      p "thru phone number"
 
       location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) AND parent_id = 120 LIMIT 1").first
-      if location_row
-        p "we have a location #{location_row.first['cat_url_title']}"
-        stylist.location = location_row.first['cat_url_title']
-      else
-        p "no location :{"
+      if location_row 
+        location = Location.find_by :url_name => location_row['cat_url_title']
+        if location
+          p "*"
+          p "*"
+          p "*"
+          p "we have a location #{location_row['cat_url_title']}!"
+          p "*"
+          p "*"
+          p "*"          
+          stylist.location = location
+        end
       end
 
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
@@ -217,6 +231,8 @@ namespace :sync do
       stylist.website = row['field_id_14']
       stylist.business_name = row['field_id_29']
       stylist.booking_url = row['field_id_220']
+
+      p "thru booking url"
 
       stylist.hair = row['field_id_25']
       stylist.skin = row['field_id_27']
@@ -228,6 +244,8 @@ namespace :sync do
       stylist.tanning = row['field_id_303']
       stylist.waxing = row['field_id_305']
       stylist.brows = row['field_id_307']
+
+      p "thru services"
 
       p "image 1"
       begin
@@ -299,6 +317,8 @@ namespace :sync do
         p "image 10 error = #{e.inspect}"
       end       
 
+      p "thru images"
+
       # testimonials
 
       if row['field_id_273'].present?
@@ -340,6 +360,8 @@ namespace :sync do
       if row['field_id_300'].present?
         stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'], :name => row['field_id_301'], :region => row['field_id_302'])
       end
+
+      p "thru testimonials"
 
       if stylist.save
         p "Saved #{row['entry_id']}!"
