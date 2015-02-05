@@ -199,7 +199,82 @@ namespace :sync do
       stylist.name = meta['title']
       stylist.url_name = meta['url_title']
 
+      stylist.biography = row['field_id_8']
+      stylist.email_address = row['field_id_9']
+      stylist.phone_number = row['field_id_9']
+      stylist.studio_number = row['field_id_11']
+      stylist.work_hours = row['field_id_13']
+      stylist.website = row['field_id_14']
+      stylist.studio_name = row['field_id_29']
+      stylist.booking_url = row['field_id_220']
+
+      p "image 1"
+      begin
+        stylist.image_1 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
+      rescue => e
+        p "image 1 error = #{e.inspect}"
+      end
+
+      p "image 2"
+      begin
+        stylist.image_2 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
+      rescue => e
+        p "image 2 error = #{e.inspect}"
+      end
+
+      p "image 3"
+      begin
+        stylist.image_3 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
+      rescue => e
+        p "image 3 error = #{e.inspect}"
+      end
+
+      p "image 4"
+      begin
+        stylist.image_4 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
+      rescue => e
+        p "image 4 error = #{e.inspect}"
+      end
+
+      p "image 5"
+      begin
+        stylist.image_5 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
+      rescue => e
+        p "image 5 error = #{e.inspect}"
+      end      
+
+      p "image 6"
+      begin
+        stylist.image_6 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
+      rescue => e
+        p "image 6 error = #{e.inspect}"
+      end 
+
+      p "image 7"
+      begin
+        stylist.image_7 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
+      rescue => e
+        p "image 7 error = #{e.inspect}"
+      end 
+
+      p "image 8"
+      begin
+        stylist.image_8 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
+      rescue => e
+        p "image 8 error = #{e.inspect}"
+      end 
+
+      p "image 9"
+      begin
+        stylist.image_9 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
+      rescue => e
+        p "image 9 error = #{e.inspect}"
+      end 
+
+      stylist.image_10 = nil      
+
       p "stylist=#{stylist.inspect}"
+      #location. = row['field_id_']
       break
     end
   end

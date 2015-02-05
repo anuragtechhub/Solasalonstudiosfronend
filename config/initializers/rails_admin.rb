@@ -49,6 +49,7 @@ RailsAdmin.config do |config|
           label 'URL Name'
         end
         field :description
+        field :status
       end
       group :contact do
         field :general_contact_name do
@@ -189,6 +190,7 @@ RailsAdmin.config do |config|
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
         field :description
+        field :status
       end
       group :contact do
         field :general_contact_name do
@@ -346,6 +348,7 @@ RailsAdmin.config do |config|
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
         field :biography
+        field :status
       end
       group :contact do
         field :email_address
@@ -373,6 +376,58 @@ RailsAdmin.config do |config|
         field :waxing
         field :brows
       end
+      group :images do
+        field :image_1 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_2 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_3 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_4 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_5 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_6 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_7 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_8 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_9 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+        field :image_10 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+          end
+        end
+      end
     end
     edit do
       group :general do
@@ -382,6 +437,7 @@ RailsAdmin.config do |config|
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
         field :biography
+        field :status
       end
       group :contact do
         field :email_address
@@ -408,6 +464,58 @@ RailsAdmin.config do |config|
         field :tanning
         field :waxing
         field :brows
+      end
+      group :images do
+        field :image_1 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_2 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_3 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_4 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_5 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_6 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_7 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_8 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_9 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
+        field :image_10 do 
+          pretty_value do 
+            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+          end
+        end
       end
     end
   end
