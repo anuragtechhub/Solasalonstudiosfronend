@@ -13,7 +13,7 @@ namespace :sync do
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
-      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
+      p "Processing (#{row['entry_id']}) #{idx + 1} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
@@ -48,7 +48,7 @@ namespace :sync do
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
-      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
+      p "Processing (#{row['entry_id']}) #{idx + 1} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
@@ -231,7 +231,7 @@ namespace :sync do
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
-      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
+      p "Processing (#{row['entry_id']}) #{idx + 1} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
       p "meta #{meta}"
