@@ -24,7 +24,8 @@ namespace :sync do
       blog.summary = filedir_replacement row['field_id_202']
       blog.body = filedir_replacement row['field_id_203']
       blog.author = row['field_id_252']
-      p "image #{filedir row['field_id_201']}"
+      
+      p "image #{filedir_replacement row['field_id_201']}"
       begin
         blog.image = open(filedir_replacement row['field_id_201']) unless row['field_id_201'].blank?
       rescue => e
