@@ -40,7 +40,11 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      field :author
+      field :author do
+        pretty_value do
+          value.html_safe
+        end
+      end
       field :created_at
     end
     show do
@@ -63,7 +67,11 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      field :author
+      field :author do
+        pretty_value do
+          value.html_safe
+        end
+      end
     end
     edit do
       field :title
