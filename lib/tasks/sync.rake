@@ -11,8 +11,9 @@ namespace :sync do
     db = get_database_client
     results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 18")
     p "results.size = #{results.size}"
-    results.each do |row|
-      p "Processing (#{row['entry_id']})..."
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
@@ -45,8 +46,9 @@ namespace :sync do
     db = get_database_client
     results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 5")
     p "results.size = #{results.size}"
-    results.each do |row|
-      p "Processing #{row['field_id_15']} (#{row['entry_id']})..."
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
@@ -227,8 +229,9 @@ namespace :sync do
     p "mysql db = #{db}"
     results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6")
     p "results.size = #{results.size}"
-    results.each do |row|
-      p "Processing (#{row['entry_id']})..."
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['entry_id']}) #{idx} of #{count}..."
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
       p "meta #{meta}"
