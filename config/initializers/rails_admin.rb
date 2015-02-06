@@ -31,6 +31,52 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Blog' do
+    list do
+      field :title
+      field :url_title
+      field :summary do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :author
+      field :created_at
+    end
+    show do
+      field :title
+      field :url_title do
+        label 'URL Title'
+      end
+      field :image do 
+        pretty_value do 
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+        end
+      end
+      field :summary do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :body do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :author
+    end
+    edit do
+      field :title
+      field :url_title do
+        label 'URL Title'
+      end
+      field :image
+      field :summary
+      field :body
+      field :author
+    end
+  end
+
   config.model 'Location' do  
     list do
       field :name
@@ -76,107 +122,107 @@ RailsAdmin.config do |config|
       group :images do
         field :floorplan_image do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_1 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_2 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_3 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_4 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_5 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_6 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_7 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_8 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_9 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_10 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_11 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_12 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_13 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_14 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_15 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_16 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_17 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_18 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_19 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_20 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
       end
@@ -221,107 +267,107 @@ RailsAdmin.config do |config|
       group :images do
         field :floorplan_image do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_1 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_2 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_3 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_4 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_5 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_6 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_7 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_8 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_9 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_10 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_11 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_12 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_13 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_14 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_15 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_16 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_17 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_18 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_19 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_20 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
       end
@@ -387,52 +433,52 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_2 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_3 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_4 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_5 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_6 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_7 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_8 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_9 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
         field :image_10 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) })
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
         end
       end
@@ -488,52 +534,52 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_2 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_3 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_4 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_5 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_6 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_7 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_8 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_9 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
         field :image_10 do 
           pretty_value do 
-            bindings[:view].tag(:img, { :src => value.url(:thumbnail) }) unless value.blank?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
       end

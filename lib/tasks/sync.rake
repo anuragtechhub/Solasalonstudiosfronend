@@ -8,6 +8,35 @@ namespace :sync do
 
   task :blogs => :environment do
     p 'sync blogs!'
+    db = get_database_client
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 18")
+    p "results.size = #{results.size}"
+    results.each do |row|
+      p "Processing (#{row['entry_id']})..."
+
+      meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
+
+      blog = Blog.find_by(:legacy_id => row['entry_id'].to_s) || Blog.new
+
+      blog.legacy_id = row['entry_id']
+      blog.title = meta['title']
+      blog.url_title = meta['url_title']
+      blog.summary = filedir_replacement row['field_id_202']
+      blog.body = filedir_replacement row['field_id_203']
+      blog.author = row['field_id_252']
+      p "image #{filedir row['field_id_201']}"
+      begin
+        blog.image = open(filedir_replacement row['field_id_201']) unless row['field_id_201'].blank?
+      rescue => e
+        p "image error = #{e.inspect}"
+      end
+
+      if blog.save
+        p "Saved (#{row['entry_id']})!"
+      else 
+        p "ERROR saving (#{row['entry_id']}) - #{blog.errors.inspect}"
+      end
+    end
   end
 
   task :locations => :environment do
@@ -386,11 +415,17 @@ namespace :sync do
     Mysql2::Client.new(:host => 'solasalonstudios.com', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)
   end
 
-  def get_img_src(html)
+  def filedir_replacement(html)
     html.gsub!(/\{filedir_1\}/, 'http://www.solasalonstudios.com/images/uploads/')
     html.gsub!(/\{filedir_2\}/, 'http://www.solasalonstudios.com/images/uploads/assets/')
     html.gsub!(/\{filedir_3\}/, 'http://www.solasalonstudios.com/images/uploads/stylist_photos/')
     html.gsub!(/\{filedir_4\}/, 'http://www.solasalonstudios.com/images/uploads/store_photos/')
+
+    html
+  end
+
+  def get_img_src(html)
+    html = filedir_replacement(html)
 
     Nokogiri::HTML(html).xpath('//img/@src').to_s
   end
