@@ -19,11 +19,11 @@ namespace :sync do
       blog = Blog.find_by(:legacy_id => row['entry_id'].to_s) || Blog.new
 
       blog.legacy_id = row['entry_id']
-      blog.title = meta['title']
-      blog.url_title = meta['url_title']
-      blog.summary = filedir_replacement row['field_id_202']
-      blog.body = filedir_replacement row['field_id_203']
-      blog.author = row['field_id_252']
+      blog.title = meta['title'].encode('UTF-8')
+      blog.url_title = meta['url_title'].encode('UTF-8')
+      blog.summary = filedir_replacement(row['field_id_202']).encode('UTF-8')
+      blog.body = filedir_replacement(row['field_id_203']).encode('UTF-8')
+      blog.author = row['field_id_252'].encode('UTF-8')
       
       p "image #{filedir_replacement row['field_id_201']}"
       begin
@@ -54,22 +54,22 @@ namespace :sync do
       
       location.legacy_id = row['entry_id']
       location.status = meta['status']
-      location.name = meta['title']
-      location.url_name = meta['url_title']
-      location.description = row['field_id_19'].strip
+      location.name = meta['title'].encode('UTF-8')
+      location.url_name = meta['url_title'].encode('UTF-8')
+      location.description = row['field_id_19'].strip.encode('UTF-8')
 
-      location.city = row['field_id_15']
-      location.state = row['field_id_18']
-      location.address_1 = row['field_id_16']
-      location.postal_code = row['field_id_23']
+      location.city = row['field_id_15'].encode('UTF-8')
+      location.state = row['field_id_18'].encode('UTF-8')
+      location.address_1 = row['field_id_16'].encode('UTF-8')
+      location.postal_code = row['field_id_23'].encode('UTF-8')
+      location.chat_code = row['field_id_304'].encode('UTF-8')
       
-      
-      location.email_address_for_inquiries = row['field_id_33']
-      location.general_contact_name = row['field_id_34']
-      location.phone_number = row['field_id_32']
+      location.email_address_for_inquiries = row['field_id_33'].encode('UTF-8')
+      location.general_contact_name = row['field_id_34'].encode('UTF-8')
+      location.phone_number = row['field_id_32'].encode('UTF-8')
 
-      location.facebook_url = row['field_id_221']
-      location.twitter_url = row['field_id_222']
+      location.facebook_url = row['field_id_221'].encode('UTF-8')
+      location.twitter_url = row['field_id_222'].encode('UTF-8')
 
       p "image 1"
       begin
@@ -239,14 +239,14 @@ namespace :sync do
       
       stylist.legacy_id = row['entry_id']
       stylist.status = meta['status']
-      stylist.name = meta['title']
-      stylist.url_name = meta['url_title']
+      stylist.name = meta['title'].encode('UTF-8')
+      stylist.url_name = meta['url_title'].encode('UTF-8')
 
       p "thru url name"
 
-      stylist.biography = row['field_id_8'].strip
-      stylist.email_address = row['field_id_9']
-      stylist.phone_number = row['field_id_10']
+      stylist.biography = row['field_id_8'].strip.encode('UTF-8')
+      stylist.email_address = row['field_id_9'].encode('UTF-8')
+      stylist.phone_number = row['field_id_10'].encode('UTF-8')
 
       p "thru phone number"
 
@@ -266,11 +266,11 @@ namespace :sync do
       end
 
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
-      stylist.studio_number = row['field_id_11']
-      stylist.work_hours = row['field_id_13']
-      stylist.website = row['field_id_14']
-      stylist.business_name = row['field_id_29']
-      stylist.booking_url = row['field_id_220']
+      stylist.studio_number = row['field_id_11'].encode('UTF-8')
+      stylist.work_hours = row['field_id_13'].encode('UTF-8')
+      stylist.website = row['field_id_14'].encode('UTF-8')
+      stylist.business_name = row['field_id_29'].encode('UTF-8')
+      stylist.booking_url = row['field_id_220'].encode('UTF-8')
 
       p "thru booking url"
 
@@ -362,43 +362,43 @@ namespace :sync do
       # testimonials
 
       if row['field_id_273'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_273'], :name => row['field_id_274'], :region => row['field_id_275'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_273'].encode('UTF-8'), :name => row['field_id_274'].encode('UTF-8'), :region => row['field_id_275'].encode('UTF-8'))
       end
 
       if row['field_id_276'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_276'], :name => row['field_id_277'], :region => row['field_id_278'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_276'].encode('UTF-8'), :name => row['field_id_277'].encode('UTF-8'), :region => row['field_id_278'].encode('UTF-8'))
       end
 
       if row['field_id_279'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_279'], :name => row['field_id_280'], :region => row['field_id_281'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_279'].encode('UTF-8'), :name => row['field_id_280'].encode('UTF-8'), :region => row['field_id_281'].encode('UTF-8'))
       end
 
       if row['field_id_282'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_282'], :name => row['field_id_283'], :region => row['field_id_284'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_282'].encode('UTF-8'), :name => row['field_id_283'].encode('UTF-8'), :region => row['field_id_284'].encode('UTF-8'))
       end
 
       if row['field_id_285'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_285'], :name => row['field_id_286'], :region => row['field_id_287'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_285'].encode('UTF-8'), :name => row['field_id_286'].encode('UTF-8'), :region => row['field_id_287'].encode('UTF-8'))
       end
 
       if row['field_id_288'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_288'], :name => row['field_id_289'], :region => row['field_id_290'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_288'].encode('UTF-8'), :name => row['field_id_289'].encode('UTF-8'), :region => row['field_id_290'].encode('UTF-8'))
       end
 
       if row['field_id_291'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_291'], :name => row['field_id_292'], :region => row['field_id_293'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_291'].encode('UTF-8'), :name => row['field_id_292'].encode('UTF-8'), :region => row['field_id_293'].encode('UTF-8'))
       end
 
       if row['field_id_294'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_294'], :name => row['field_id_295'], :region => row['field_id_296'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_294'].encode('UTF-8'), :name => row['field_id_295'].encode('UTF-8'), :region => row['field_id_296'].encode('UTF-8'))
       end
 
       if row['field_id_297'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_297'], :name => row['field_id_298'], :region => row['field_id_299'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_297'].encode('UTF-8'), :name => row['field_id_298'].encode('UTF-8'), :region => row['field_id_299'].encode('UTF-8'))
       end
 
       if row['field_id_300'].present?
-        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'], :name => row['field_id_301'], :region => row['field_id_302'])
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'].encode('UTF-8'), :name => row['field_id_301'].encode('UTF-8'), :region => row['field_id_302'].encode('UTF-8'))
       end
 
       p "thru testimonials"
