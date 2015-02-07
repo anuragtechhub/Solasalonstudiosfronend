@@ -4,6 +4,43 @@ namespace :sync do
     Rake::Task["sync:locations"].execute
     Rake::Task["sync:stylists"].execute
     Rake::Task["sync:blogs"].execute
+    Rake::Task["sync:articles"].execute
+  end
+
+  task :articles => :environment do
+    p 'sync articles!'
+    db = get_database_client
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 2")
+    p "results.size = #{results.size}"
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['entry_id']}) #{idx + 1} of #{count}..."
+
+      meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
+
+      article = Article.find_by(:legacy_id => row['entry_id'].to_s) || Article.new
+
+      article.legacy_id = row['entry_id']
+      article.title = meta['title'].encode('UTF-8')
+      article.url_title = meta['url_title'].encode('UTF-8')
+
+      article.summary = row['field_id_1'].encode('UTF-8')
+      article.body = row['field_id_2'].encode('UTF-8')
+      article.extended_text = filedir_replacement row['field_id_3'].encode('UTF-8')
+
+      p "image #{get_img_src row['field_id_12']}"
+      begin
+        article.image = open(get_img_src row['field_id_12']) unless row['field_id_12'].blank?
+      rescue => e
+        p "image error = #{e.inspect}"
+      end
+
+      if article.save
+        p "Saved (#{row['entry_id']})!"
+      else 
+        p "ERROR saving (#{row['entry_id']}) - #{article.errors.inspect}"
+      end
+    end
   end
 
   task :blogs => :environment do

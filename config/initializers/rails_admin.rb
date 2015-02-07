@@ -31,6 +31,67 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Article' do
+    list do
+      field :title
+      field :url_title
+      field :summary do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :created_at
+    end 
+    show do
+      field :title
+      field :url_title
+      field :summary do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :body do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :extended_text do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :image do 
+        pretty_value do 
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+        end
+      end
+    end 
+    edit do
+      field :title
+      field :url_title
+      field :summary do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :body do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :extended_text do
+        pretty_value do
+          value.html_safe
+        end
+      end
+      field :image do 
+        pretty_value do 
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+        end
+      end
+    end 
+  end
+
   config.model 'Blog' do
     list do
       field :title
