@@ -71,6 +71,10 @@ class Location < ActiveRecord::Base
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
+  def status_enum
+    [['Open', 'open'], ['Closed', 'closed']]
+  end
+
   def full_address
     "#{address_1} #{address_2} #{city}, #{state} #{postal_code}"
   end

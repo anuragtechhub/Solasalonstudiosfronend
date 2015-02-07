@@ -637,8 +637,7 @@ fieldset {
 legend {
   background: $grayLighter;
   padding-left: 10px;
-  max-width: 850px;
-  width: 100%;
+  width: calc(100% - 10px);
   border-radius: 5px;
   border-bottom: none;
   color: $textColor;

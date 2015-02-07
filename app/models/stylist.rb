@@ -53,6 +53,10 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def status_enum
+    [['Open', 'open'], ['Closed', 'closed']]
+  end
+
   # helper function to return images as array
   def images
     images_array = []
