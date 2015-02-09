@@ -81,7 +81,7 @@ class Stylist < ActiveRecord::Base
   private
 
   def update_computed_fields
-    self.location_name = location.name if location
+    self.location_name = location.name if location && location.name
   end
 
 end
