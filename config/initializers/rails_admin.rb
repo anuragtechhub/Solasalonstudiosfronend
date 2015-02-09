@@ -454,6 +454,7 @@ RailsAdmin.config do |config|
       field :url_name do
         label 'URL Name'
       end
+      field :location
       field :email_address
       field :phone_number
       field :business_name
