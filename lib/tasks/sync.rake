@@ -7,6 +7,72 @@ namespace :sync do
     Rake::Task["sync:articles"].execute
   end
 
+  task :stylists1 => :environment do
+    sync_stylists(0)
+  end            
+
+  task :stylists2 => :environment do
+    sync_stylists(500)
+  end   
+
+  task :stylists3 => :environment do
+    sync_stylists(1000)
+  end   
+
+  task :stylists4 => :environment do
+    sync_stylists(1500)
+  end     
+
+  task :stylists5 => :environment do
+    sync_stylists(2000)
+  end   
+
+  task :stylists6 => :environment do
+    sync_stylists(2500)
+  end     
+
+  task :stylists7 => :environment do
+    sync_stylists(3000)
+  end   
+
+  task :stylists8 => :environment do
+    sync_stylists(3500)
+  end   
+
+  task :stylists9 => :environment do
+    sync_stylists(4000)
+  end    
+
+  task :stylists10 => :environment do
+    sync_stylists(4500)
+  end      
+
+  task :stylists11 => :environment do
+    sync_stylists(5000)
+  end     
+
+  task :stylists12 => :environment do
+    sync_stylists(5500)
+  end   
+
+  task :stylists13 => :environment do
+    sync_stylists(6000)
+  end   
+
+  task :stylists14 => :environment do
+    sync_stylists(6500)
+  end     
+
+  task :stylists15 => :environment do
+    sync_stylists(7000)
+  end   
+
+  task :stylists => :environment do
+    (1..15).each do |num|
+      Rake::Task["sync:stylists#{num}"].execute
+    end
+  end
+
   task :articles => :environment do
     p 'sync articles!'
     db = get_database_client
@@ -260,11 +326,11 @@ namespace :sync do
     end
   end 
 
-  task :stylists => :environment do
+  def sync_stylists(offset)
     p 'sync stylists!'
     db = get_database_client
     p "mysql db = #{db}"
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 LIMIT 500 OFFSET #{offset}")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
@@ -450,7 +516,7 @@ namespace :sync do
       end
       #location. = row['field_id_']
     end
-  end
+  end 
 
   def get_database_client
     Mysql2::Client.new(:host => 'solasalonstudios.com', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)
