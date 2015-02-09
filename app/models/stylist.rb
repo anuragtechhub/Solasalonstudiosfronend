@@ -1,6 +1,7 @@
 class Stylist < ActiveRecord::Base
 
   belongs_to :location
+  before_save :update_computed_fields
 
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
@@ -77,8 +78,10 @@ class Stylist < ActiveRecord::Base
     testimonial_array
   end
 
-  def location_name
-    location.present? ? location.name : 'None'
+  private
+
+  def update_computed_fields
+    self.location_name = location.name if location
   end
 
 end
