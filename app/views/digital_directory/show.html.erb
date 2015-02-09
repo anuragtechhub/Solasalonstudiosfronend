@@ -21,24 +21,31 @@
     <% if @stylists && @stylists.size > 0 %>
       <div class="listings">
         <% left_stylists, right_stylists = @stylists.each_slice((@stylists.size / 2.0).round).to_a %>
-        <div class="half-col-left">
-          <% left_stylists.each do |stylist| %>
-            <div class="listing">
-              <div class="number"><%= stylist.studio_number %></div>
-              <div class="name"><%= stylist.business_name %><br><%= stylist.name %></div>
-            </div>
-          <% end %>
+        
+          <div class="half-col-left">
+            <% if left_stylists && left_stylists.size > 0 %>
+              <% left_stylists.each do |stylist| %>
+                <div class="listing">
+                  <div class="number"><%= stylist.studio_number %></div>
+                  <div class="name"><%= stylist.business_name %><br><%= stylist.name %></div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        
+        
+          <div class="half-col-right">
+            <% if right_stylists && right_stylists.size > 0 %>
+              <% right_stylists.each do |stylist| %>
+                <div class="listing">
+                  <div class="number"><%= stylist.studio_number %></div>
+                  <div class="name"><%= stylist.business_name %><br><%= stylist.name %></div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
         </div>
-        <div class="half-col-right">
-          <% right_stylists.each do |stylist| %>
-            <div class="listing">
-              <div class="number"><%= stylist.studio_number %></div>
-              <div class="name"><%= stylist.business_name %><br><%= stylist.name %></div>
-            </div>
-          <% end %>
-        </div>
-        <div class="clearfix"></div>
-      </div>
 
       <h2>Locate Your Studio Number On The Map</h2>
     <% else %>
