@@ -385,6 +385,7 @@ namespace :sync do
       stylist.nails = row['field_id_26']
       stylist.massage = row['field_id_28']
       stylist.teeth_whitening = row['field_id_36']
+      stylist.hair_extensions = row['field_id_314']
       stylist.eyelash_extensions = row['field_id_198']
       stylist.makeup = row['field_id_219']
       stylist.tanning = row['field_id_303']

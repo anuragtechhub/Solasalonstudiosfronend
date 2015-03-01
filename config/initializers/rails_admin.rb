@@ -496,6 +496,7 @@ RailsAdmin.config do |config|
         field :nails
         field :massage
         field :teeth_whitening
+        field :hair_extensions
         field :eyelash_extensions
         field :makeup
         field :tanning
@@ -597,6 +598,7 @@ RailsAdmin.config do |config|
         field :nails
         field :massage
         field :teeth_whitening
+        field :hair_extensions
         field :eyelash_extensions
         field :makeup
         field :tanning
