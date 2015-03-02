@@ -12,6 +12,21 @@ html {
 body {
   background: asset-url('digital_directory_bg.gif');
   zoom: 0.67;
+  font-family: 'Dosis', Arial, sans-serif;
+  background: $brand-primary;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: $brand-primary;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #000;
+}
+
+.mobile-only, .tablet-only {
+  display: none !important;
 }
 
 h1 {

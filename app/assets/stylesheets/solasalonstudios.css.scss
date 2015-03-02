@@ -3,22 +3,3 @@
 
 
 
-/* general styles */
-
-body {
-  font-family: 'Dosis', Arial, sans-serif;
-  background: $brand-primary;
-}
-
-a, a:link, a:visited, a:hover, a:active {
-  color: $brand-primary;
-  text-decoration: none;
-}
-
-a:hover, a:active {
-  color: #000;
-}
-
-.mobile-only, .tablet-only {
-  display: none !important;
-}

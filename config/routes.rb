@@ -4,11 +4,12 @@ Solasalonstudios::Application.routes.draw do
   get "locations/city"
   get "locations/state"
   get "locations/salon"
+
   get "home/index"
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  root 'welcome#index'
+  root 'home#index'
 
   #resources :locations
   #resources :stylists
