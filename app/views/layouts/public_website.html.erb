@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sola Salon Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag "public_website", media: "all", "data-turbolinks-track" => true %>
+  <%= yield :stylesheets %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <%= render 'shared/public_website/header' %>
+
+  <%= yield %>
+
+  <%= render 'shared/public_website/footer' %>
+
+  <%= javascript_include_tag "public_website", "data-turbolinks-track" => true %>
+  <%= yield :scripts %>
+
+</body>
+</html>
