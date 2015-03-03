@@ -3,7 +3,7 @@ class LocationsController < PublicWebsiteController
   before_action :map_defaults
 
   def index
-    @locations = Locations.all
+    @locations = Location.all
   end
 
   def city
