@@ -1,2 +1,10 @@
-<h1>Locations#state</h1>
-<p>Find me in app/views/locations/state.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>Locations in <%= params[:state] %></h1>
+    <ul>
+      <% @locations.each do |location| %>
+        <li><%= link_to location.name, salon_location_path(location.state, location.city, location.url_name) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
