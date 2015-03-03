@@ -141,7 +141,10 @@ h2 {
       background: #FFFFFF;
       color: #333;
       height: 100%;
-      padding: 6px 0 0 8px;
+      padding: 6px 4px 0 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
