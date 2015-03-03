@@ -1,2 +1,21 @@
-<h1>Search#results</h1>
-<p>Find me in app/views/search/results.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>Search Results</h1>
+    <% if @locations && @locations.size > 0 %>
+      <h4>Locations</h4>
+      <ul>
+        <% @locations.each do |location| %>
+          <li><%= link_to location.name, salon_location_path(location.state, location.city, location.url_name) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if @stylists && @stylists.size > 0 %>
+      <h4>Stylists</h4>
+      <ul>
+        <% @stylists.each do |stylist| %>
+          <li><%= link_to stylist.name, show_stylist_path(stylist) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

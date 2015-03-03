@@ -13,11 +13,11 @@
       </ul>
 
       <div id="sb-search" class="sb-search">
-        <form>
-          <input class="sb-search-input" placeholder="Search by city, state, zip code, location or stylist..." type="search" name="search" id="search">
+        <%= form_tag :action => :results, :controller => :search do %>
+          <input class="sb-search-input" placeholder="Search by city, state, location or stylist..." type="search" name="query" id="search">
           <input class="sb-search-submit" type="submit" value="">
           <span class="sb-icon-search">?</span>
-        </form>
+        <% end %>
       </div>
 
     </div>

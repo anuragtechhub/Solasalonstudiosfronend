@@ -89,4 +89,8 @@ class Location < ActiveRecord::Base
     imgs
   end
 
+  def to_param
+    "#{state}/#{city}/#{url_name}"
+  end
+
 end

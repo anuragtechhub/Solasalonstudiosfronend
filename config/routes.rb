@@ -1,16 +1,16 @@
 Solasalonstudios::Application.routes.draw do
 
-  get "search/results"
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
   get "about_us" => 'about_us#index', :as => :about_us
   get "own_your_salon" => 'own_your_salon#index', :as => :own_your_salon
+  match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
   get "locations" => 'locations#index', :as => :locations
-  get "locations/city/:city" => 'locations#city', :as => :locations_by_city
-  get "locations/state/:state" => 'locations#state', :as => :locations_by_state
-  get "locations/salon/:url_name" => 'locations#salon', :as => :salon_location
+  get "locations/:state" => 'locations#state', :as => :locations_by_state
+  get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
+  get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
 
   get 'stylists' => 'stylists#index', :as => :stylists
   get 'stylists/:id' => 'stylists#show', :as => :show_stylist
