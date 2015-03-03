@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
     <h1><%= @location.name %></h1>
+    <div class="row" id="map" style="height: 500px"></div>
   </div>
 </div>
+
+<%= render 'shared/public_website/hidden_map_inputs' %>
+
+<% content_for(:scripts) { javascript_include_tag('locations') } %>

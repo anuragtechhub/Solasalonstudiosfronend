@@ -6,5 +6,10 @@
         <li><%= link_to location.name, salon_location_path(location.state, location.city, location.url_name) %></li>
       <% end %>
     </ul>
+    <div class="row" id="map" style="height: 500px"></div>
   </div>
 </div>
+
+<%= render 'shared/public_website/hidden_map_inputs' %>
+
+<% content_for(:scripts) { javascript_include_tag('locations') } %>
