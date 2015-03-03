@@ -1,4 +1,4 @@
-class OwnYourSalonController < ApplicationController
+class OwnYourSalonController < PublicWebsiteController
   def index
   end
 end
