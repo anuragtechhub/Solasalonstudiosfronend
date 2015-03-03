@@ -14,7 +14,7 @@ module Solasalonstudios
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
 
-    config.serve_static_assets = false
+    config.serve_static_assets = true
     config.assets.digest = true
     config.assets.enabled = true
     config.assets.initialize_on_precompile = false
