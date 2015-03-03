@@ -1,5 +1,6 @@
 Solasalonstudios::Application.routes.draw do
 
+  get "search/results"
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
