@@ -1,7 +1,19 @@
 <div class="container">
   <div class="row">
     <h1><%= @location.name %></h1>
-    <div class="row" id="map" style="height: 500px"></div>
+    <p><%= @location.full_address.html_safe %></p>
+    <p><%= @location.description.html_safe %></p>
+    <p>
+    <div class="row" id="map" style="height: 250px"></div>
+    <% if @location.stylists && @location.stylists.size > 0 %>
+      <hr>
+      <h3>Stylists</h3>
+      <ul>
+        <% @location.stylists.each do |stylist| %>
+          <li><%= link_to stylist.name, show_stylist_path(stylist) %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 

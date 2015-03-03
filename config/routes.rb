@@ -13,7 +13,7 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
 
   get 'stylists' => 'stylists#index', :as => :stylists
-  get 'stylists/:id' => 'stylists#show', :as => :show_stylist
+  get 'stylists/:url_name' => 'stylists#show', :as => :show_stylist
 
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog

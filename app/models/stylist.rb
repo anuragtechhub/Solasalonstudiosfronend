@@ -78,6 +78,10 @@ class Stylist < ActiveRecord::Base
     testimonial_array
   end
 
+  def to_param
+    url_name
+  end
+
   private
 
   def update_computed_fields
