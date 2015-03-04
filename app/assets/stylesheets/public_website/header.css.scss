@@ -1,5 +1,46 @@
 @import 'mixins';
+@import 'variables';
 
 #header {
+  position: relative;
+  background: $brand-primary;
+
+  .logo {
+    display: inline-block;
+  }
+
+  ul.nav {
+    position: absolute;
+    top: 30px;
+    right: 80px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    li {
+      float: left;
+
+      a {
+        display: inline-block;
+        padding: 5px 15px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: #FFF;
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+    }
+  }
+
+  #sb-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .sb-search-input {
+    max-width: 700px;
+    height: 60px;
+  }
 
 }

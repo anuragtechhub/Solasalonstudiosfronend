@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       
-      <div class="logo"><%= link_to 'Sola', :home %></div>
+      <%= link_to :home, :class => 'logo' do %><%= image_tag 'logo.png' %><% end %>
       
       <ul class="nav">
         <li><%= link_to 'Own Your Salon', :own_your_salon %></li>
