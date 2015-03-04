@@ -2,6 +2,21 @@
 
 $(function () {
 
+  /**
+  * Auto refreshes the page
+  * @param {Integer} hours (default is 1)
+  */
+  startRefreshTimeout = function (hours) {
+    var hours = hours || 1;
+    setTimeout(function () {
+      if (navigator && navigator.onLine) {
+        window.location.reload(true);
+      } else {
+        startRefreshTimeout(0.25);
+      }
+    }, 1000 * 60 * 60 * hours);
+  };
+
   /* 
   * Gets an random integer index value given an integer array length 
   * @param {Integer} length
@@ -54,6 +69,6 @@ $(function () {
   $photos.eq(2).append($images.eq(2));
 
   swapImage();
-
+  startRefreshTimeout();
 
 });
