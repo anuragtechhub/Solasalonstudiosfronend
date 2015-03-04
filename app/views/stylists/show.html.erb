@@ -3,16 +3,16 @@
     
     <h1><%= @stylist.name.html_safe %></h1>
     <div class="stylist-photos">
-      <%= link_to(image_tag(@stylist.image_1(:thumbnail)).html_safe, @stylist.image_1(:original), :target => '_blank') if @stylist.image_1.exists? %>
-      <%= link_to(image_tag(@stylist.image_2(:thumbnail)).html_safe, @stylist.image_2(:original), :target => '_blank') if @stylist.image_2.exists? %>
-      <%= link_to(image_tag(@stylist.image_3(:thumbnail)).html_safe, @stylist.image_3(:original), :target => '_blank') if @stylist.image_3.exists? %>
-      <%= link_to(image_tag(@stylist.image_4(:thumbnail)).html_safe, @stylist.image_4(:original), :target => '_blank') if @stylist.image_4.exists? %>
-      <%= link_to(image_tag(@stylist.image_5(:thumbnail)).html_safe, @stylist.image_5(:original), :target => '_blank') if @stylist.image_5.exists? %>
-      <%= link_to(image_tag(@stylist.image_6(:thumbnail)).html_safe, @stylist.image_6(:original), :target => '_blank') if @stylist.image_6.exists? %>
-      <%= link_to(image_tag(@stylist.image_7(:thumbnail)).html_safe, @stylist.image_7(:original), :target => '_blank') if @stylist.image_7.exists? %>
-      <%= link_to(image_tag(@stylist.image_8(:thumbnail)).html_safe, @stylist.image_8(:original), :target => '_blank') if @stylist.image_8.exists? %>
-      <%= link_to(image_tag(@stylist.image_9(:thumbnail)).html_safe, @stylist.image_9(:original), :target => '_blank') if @stylist.image_9.exists? %>
-      <%= link_to(image_tag(@stylist.image_10(:thumbnail)).html_safe, @stylist.image_10(:original), :target => '_blank') if @stylist.image_10.exists? %>
+      <%= link_to(image_tag(@stylist.image_1(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_1(:original), :target => '_blank') if @stylist.image_1.exists? %>
+      <%= link_to(image_tag(@stylist.image_2(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_2(:original), :target => '_blank') if @stylist.image_2.exists? %>
+      <%= link_to(image_tag(@stylist.image_3(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_3(:original), :target => '_blank') if @stylist.image_3.exists? %>
+      <%= link_to(image_tag(@stylist.image_4(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_4(:original), :target => '_blank') if @stylist.image_4.exists? %>
+      <%= link_to(image_tag(@stylist.image_5(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_5(:original), :target => '_blank') if @stylist.image_5.exists? %>
+      <%= link_to(image_tag(@stylist.image_6(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_6(:original), :target => '_blank') if @stylist.image_6.exists? %>
+      <%= link_to(image_tag(@stylist.image_7(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_7(:original), :target => '_blank') if @stylist.image_7.exists? %>
+      <%= link_to(image_tag(@stylist.image_8(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_8(:original), :target => '_blank') if @stylist.image_8.exists? %>
+      <%= link_to(image_tag(@stylist.image_9(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_9(:original), :target => '_blank') if @stylist.image_9.exists? %>
+      <%= link_to(image_tag(@stylist.image_10(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_10(:original), :target => '_blank') if @stylist.image_10.exists? %>
     </div>
     <p><%= @stylist.biography.html_safe %></p>
     
