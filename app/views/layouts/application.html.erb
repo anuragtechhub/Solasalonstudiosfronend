@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>  
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>  
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all" %>
   <%= yield :stylesheets %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,7 +15,7 @@
 
   <%= yield %>
 
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= yield :scripts %>
 
 </body>
