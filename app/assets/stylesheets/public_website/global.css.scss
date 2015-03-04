@@ -1,0 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
+a, a:link, a:visited {
+  color: $brand-primary;
+}

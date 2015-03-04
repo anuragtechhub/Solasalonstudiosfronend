@@ -1,5 +1,6 @@
 Solasalonstudios::Application.routes.draw do
 
+  get "tour/request-a-tour" => 'tour#request_a_tour', :as => :request_a_tour
   get "home" => 'home#index', :as => :home
   root 'home#index'
 

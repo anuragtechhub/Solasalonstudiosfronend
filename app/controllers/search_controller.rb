@@ -6,7 +6,7 @@ class SearchController < PublicWebsiteController
       # locations
       locations1 = Location.near(params[:query])
       locations2 = Location.where('state LIKE ? OR name LIKE ? OR url_name LIKE ?', query_param, query_param, query_param)
-      @locations = locations1 + locations2
+      @locations = locations1.open + locations2.open
       if @locations
         @locations.uniq!
         @locations.sort! { |a, b| a.name <=> b.name }
@@ -15,6 +15,7 @@ class SearchController < PublicWebsiteController
       # stylists
       @stylists = Stylist.where('business_name LIKE ? OR name LIKE ? OR url_name LIKE ?', query_param, query_param, query_param)
       if @stylists
+        @stylist = @stylists.open
         @stylists.uniq!
         @stylists.sort! { |a, b| a.name <=> b.name }
       end

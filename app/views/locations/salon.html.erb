@@ -9,7 +9,7 @@
       <hr>
       <h3>Stylists</h3>
       <ul>
-        <% @location.stylists.each do |stylist| %>
+        <% @location.stylists.open.each do |stylist| %>
           <li><%= link_to stylist.name, show_stylist_path(stylist) %></li>
         <% end %>
       </ul>

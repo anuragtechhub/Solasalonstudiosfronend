@@ -1,7 +1,22 @@
+<div id="top-header">
+  <div class="container">
+    <div class="row">
+      <ul class="nav">
+        <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %>Pinterest<% end %></li>
+        <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %>Twitter<% end %></li>
+        <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %>Facebook<% end %></li>
+        <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %>Instagram<% end %></li>
+        <li class="border-left"><%= link_to :request_a_tour do %>Request a Tour<% end %></li>
+        <li class="border-left border-right"><%= link_to 'http://solastylists.herokuapp.com', :target => '_blank' do %>Salon Professional Login<% end %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div id="header">
   <div class="container">
     <div class="row">
-      
+
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'logo.png' %><% end %>
       
       <ul class="nav">

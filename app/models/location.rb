@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
 
+  scope :open, -> { where(:status => 'open') }
+
   has_many :stylists
 
   after_validation :geocode

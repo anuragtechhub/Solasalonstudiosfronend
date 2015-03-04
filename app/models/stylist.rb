@@ -1,10 +1,9 @@
 class Stylist < ActiveRecord::Base
 
+  scope :open, -> { where(:status => 'open') }
+
   belongs_to :location
   before_save :update_computed_fields
-
-  validates :name, :presence => true
-  validates :url_name, :presence => true, :uniqueness => true
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
@@ -46,6 +45,9 @@ class Stylist < ActiveRecord::Base
 
   has_attached_file :image_10, :styles => { :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/    
+
+  validates :name, :presence => true
+  validates :url_name, :presence => true, :uniqueness => true
 
   # define rails_admin enums
   [:hair, :skin, :nails, :massage, :teeth_whitening, :hair_extensions, :eyelash_extensions, :makeup, :tanning, :waxing, :brows, :accepting_new_clients].each do |name|

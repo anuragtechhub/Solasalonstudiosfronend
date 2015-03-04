@@ -1,6 +1,41 @@
 @import 'mixins';
 @import 'variables';
 
+#top-header {
+  position: relative;
+  height: 30px;
+
+  ul.nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      float: left;
+
+      &.border-left {
+        border-left: 1px solid $gray-lighter;
+      }
+
+      &.border-right {
+        border-right: 1px solid $gray-lighter;
+      }
+
+      a {
+        display: inline-block;
+        padding: 7px 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+
 #header {
   position: relative;
   background: $brand-primary;
