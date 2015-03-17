@@ -69,6 +69,6 @@ $(function () {
   $photos.eq(2).append($images.eq(2));
 
   swapImage();
-  startRefreshTimeout();
+  //startRefreshTimeout();
 
 });
