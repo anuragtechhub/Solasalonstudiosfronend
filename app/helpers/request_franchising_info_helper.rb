@@ -1,0 +1,2 @@
+module RequestFranchisingInfoHelper
+end

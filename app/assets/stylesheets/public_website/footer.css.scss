@@ -12,19 +12,19 @@
 
   .one-third {
     margin: 0;
-    padding: 30px 60px;
+    padding: 50px;
 
     &.first {
-      width: 27%;
+      width: 23%;
       padding-left: 0;
     }
     &.second {
       border-left: 1px solid #E6E6E6;
       border-right: 1px solid #E6E6E6;
-      width: 40%;
+      width: 45%;
     }
     &.third {
-      width: 33%;
+      width: 32%;
       padding-right: 0;
     }
   }

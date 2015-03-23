@@ -12,6 +12,7 @@ Solasalonstudios::Application.routes.draw do
   get 'gallery' => 'gallery#index', :as => :gallery
   get 'news' => 'news#index', :as => :news
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
+  get "request-franchising-info" => "request_franchising_info#index", :as => :request_franchising_info
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
   get "locations" => 'locations#index', :as => :locations

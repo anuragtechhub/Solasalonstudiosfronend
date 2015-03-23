@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+button, input[type=button], input[type=submit], .button, a.button {
+
+  font-family: 'Dosis', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  line-height: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  border-radius: 0px;
+  border: 2px solid #000;
+  height: auto;
+  padding: 15px 30px;
+  text-align: center;
+  vertical-align: middle;
+
+  &:link, &:visited {
+    color: #000;
+  }
+
+  &:hover, &:active {
+    color: #FFF;
+    border: 2px solid transparent;
+    @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+  }
+
+  &.inverted {
+    border: 2px solid #FFF;
+    color: #FFF;
+  }
+
+  &.primary {
+    border: 2px solid transparent;
+    background: $brand-pink;
+    color: #FFF;
+  }
+
+}
