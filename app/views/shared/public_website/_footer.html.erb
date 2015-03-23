@@ -2,6 +2,7 @@
   <div class="container">
     
     <div class="row first">
+      
       <div class="one-third column first">
         <h3>Sola Franchising</h3>
         <p>Call our corporate office to learn more about franchising:
@@ -11,6 +12,7 @@
             <%= link_to 'Request Info', :request_franchising_info, :class => 'button' %>
         </p>
       </div>
+      
       <div class="one-third column second">
         <h3>More Information</h3>
         <div class="row">
@@ -33,10 +35,25 @@
           </div>
         </div>
       </div>
+      
       <div class="one-third column third">
         <h3>Stay in Touch</h3>
+
         <p>Stay informed with newsletters and events.</p>
+        
+        <div class="newsletter-sign-up">
+          <input type="email" class="input" placeholder="Your email address" >
+          <button type="button" class="button">Join</button>
+        </div>
+
+        <ul class="social">
+          <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+          <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+        </ul>
       </div>
+
     </div>
 
     <div class="row second">
