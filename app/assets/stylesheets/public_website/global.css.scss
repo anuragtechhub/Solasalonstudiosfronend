@@ -1,6 +1,15 @@
 @import 'mixins';
 @import 'variables';
 
+html {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: 'Lato', Arial, sans-serif;
 }
