@@ -1,10 +1,16 @@
 Solasalonstudios::Application.routes.draw do
 
+  
   get "tour/request-a-tour" => 'tour#request_a_tour', :as => :request_a_tour
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
   get "about-us" => 'about_us#index', :as => :about_us
+  get "contact-us" => "contact_us#index", :as => :contact_us
+  get "faq" => 'faq#index', :as => :faqs
+  get "testimonials" => 'testimonials#index', :as => :testimonials
+  get 'gallery' => 'gallery#index', :as => :gallery
+  get 'news' => 'news#index', :as => :news
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 

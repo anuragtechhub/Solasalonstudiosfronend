@@ -1,7 +1,42 @@
 <div id="footer">
   <div class="container">
+    
+    <div class="row">
+      <div class="one-third column">
+        <h3>Sola Franchising</h3>
+        <p>Call our corporate office to learn more about franchising:<br><br><strong>303.377.7652</strong></p>
+      </div>
+      <div class="one-third column">
+        <h3>More Information</h3>
+        <div class="row">
+          <div class="one-half column">
+            <ul class="p">
+              <li><%= link_to 'Contact Us', :contact_us %></li>
+              <li><%= link_to 'News &amp; PR'.html_safe, :news %></li>
+              <li><%= link_to 'Testimonials', :testimonials %></li>
+              <li><%= link_to 'FAQs', :faqs %></li>
+              <li><%= link_to 'Blog', :blog %></li>
+            </ul>
+          </div>
+          <div class="one-half column">
+            <ul class="p">
+              <li><%= link_to 'Own Your Salon', :own_your_salon %></li>
+              <li><%= link_to 'Find a Salon Professional', :stylists %></li>
+              <li><%= link_to 'Sola Locations', :locations %></li>
+              <li><%= link_to 'Gallery', :gallery %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="one-third column">
+        <h3>Stay in Touch</h3>
+        <p>Stay informed with newsletters and events.</p>
+      </div>
+    </div>
+
     <div class="row">
       <p class="subtle">Sola Salon Studios - Your Life, Your Style &copy; Copyright <%= Time.now.year %></p>
     </div>
+
   </div>
 </div>
