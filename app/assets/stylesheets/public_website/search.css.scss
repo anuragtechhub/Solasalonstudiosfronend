@@ -97,6 +97,7 @@ input[type="search"].sb-search-input {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-align: center;
+  cursor: pointer;
 
   .ss-search {
     display: inline-block;
@@ -109,6 +110,7 @@ input[type="search"].sb-search-input {
     vertical-align: middle;
     border: 2px solid #FFF;
     border-radius: 50%;
+    cursor: pointer;
   }
 }
 
