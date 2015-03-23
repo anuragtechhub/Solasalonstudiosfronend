@@ -1,6 +1,10 @@
 @import 'mixins';
 @import 'variables';
 
+body {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
 a, a:link, a:visited {
   color: $brand-primary;
 }
