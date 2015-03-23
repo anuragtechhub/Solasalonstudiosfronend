@@ -37,7 +37,7 @@ group :production do
 end
 
 gem "paperclip"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'
