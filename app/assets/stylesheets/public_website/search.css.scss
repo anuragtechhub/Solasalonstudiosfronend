@@ -73,8 +73,8 @@ input[type="search"].sb-search-input {
   filter: alpha(opacity=0); /* IE 5-7 */
   opacity: 0;
   color: transparent;
-  border: none;
-  outline: none;
+  border: none !important;
+  outline: none !important;
   z-index: -1;
 }
 

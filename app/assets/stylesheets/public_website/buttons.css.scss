@@ -16,9 +16,15 @@ button, input[type=button], input[type=submit], .button, a.button {
   padding: 15px 30px;
   text-align: center;
   vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
 
   &:link, &:visited {
     color: #000;
+    text-decoration: none;
   }
 
   &:hover, &:active {
