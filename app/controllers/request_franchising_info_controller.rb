@@ -1,4 +1,4 @@
-class RequestFranchisingInfoController < ApplicationController
+class RequestFranchisingInfoController < PublicWebsiteController
   def index
   end
 end

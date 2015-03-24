@@ -1,4 +1,4 @@
-class TestimonialsController < ApplicationController
+class TestimonialsController < PublicWebsiteController
   def index
   end
 end
