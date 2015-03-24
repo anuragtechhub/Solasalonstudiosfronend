@@ -1,10 +1,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require classie
+//= require fastclick
 //= require search
 //= require gmaps
 
 $(function () {
+
+  FastClick.attach(document.body);
 
   var $headerNav = $('#header .nav');
   var $window = $(window);
