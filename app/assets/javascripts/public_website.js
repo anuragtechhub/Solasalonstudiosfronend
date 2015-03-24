@@ -31,6 +31,7 @@ $(function () {
     //   console.log('close')
     //   uiSearch.close();
     // }
+    $('#sb-search').removeClass('sb-search-open');
     if ($window.width() > 1000) {
       $headerNav.show();
     } else {
