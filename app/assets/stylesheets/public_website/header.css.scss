@@ -61,7 +61,7 @@
   .logo {
     display: inline-block;
     margin-top: 4px;
-    
+
     img {
       width: 133px;
       height: 81px;
@@ -71,7 +71,7 @@
   ul.nav {
     position: absolute;
     top: 33px;
-    right: 80px;
+    right: 70px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -105,6 +105,39 @@
   .sb-search-input {
     max-width: 700px;
     height: 60px;
+  }
+
+}
+
+
+@media (max-width: 750px) {
+  
+  #top-header {
+    display: none;
+  }
+
+  #header {
+    height: 70px;
+
+    .logo  {
+      width: 88.67px;
+      display: block;
+      margin: 0 auto;
+
+      img {
+        margin-top: 8px;
+        width: 88.67px;
+        height: 54px;
+      }
+    }
+    
+    .nav {
+      display: none;
+    }
+
+    .sb-icon-search {
+
+    }
   }
 
 }
