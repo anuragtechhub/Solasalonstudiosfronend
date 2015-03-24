@@ -54,19 +54,24 @@
   }
 
   .newsletter-sign-up {
-    margin-top: 10px;
+    margin: 10px 0 -5px 0;
+    overflow: hidden;
 
     input, button {
+      position: relative;
+      top: 0;
       font-size: 12px;
       height: 40px;
       border: 1px solid #DBDBDB;
       background: #FBFBFB;
       margin: 0;
       border-radius: 0;
+      display: block;
+      float: left;
     }
 
     input {
-      margin-right: -4px;
+      margin-right: 0;
       width: 74%;
     }
 
@@ -79,6 +84,7 @@
       text-transform: none;
       letter-spacing: 0px;
       font-size: 13px;
+      border-left: 0;
 
       &:hover, &:active {
         color: #000;
