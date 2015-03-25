@@ -1,5 +1,5 @@
 .hero-carousel {
-  width: 100%;
+  display: block;
   height: 460px;
 
   img {
@@ -8,7 +8,9 @@
   }
 }
 
+/* 1000px and below, the hero goes responsive height */
 @media (max-width: 1000px) {
+  
   .hero-carousel {
     height: auto;
     max-height: 460px;
