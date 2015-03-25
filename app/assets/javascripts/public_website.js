@@ -5,6 +5,7 @@
 //= require search
 //= require gmaps
 //= require owl.carousel
+//= require jquery.tooltipster
 
 $(function () {
 
@@ -63,6 +64,24 @@ $(function () {
   // focus search input when icon clicked
   $('.search-input-with-icon .ss-search').on('click', function () {
     $(this).siblings('input').focus();
+  });
+
+  // footer newsletter sign up
+  $('.footer-newsletter-sign-up').on('submit', function () {
+    var $form = $(this);
+
+    $.ajax({
+      method: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(data) {
+      if (data && data.success) {
+        $form.attr('title', data.success).find('input').val('').end().tooltipster({theme: 'tooltipster-noir'}).tooltipster('show');
+      } else {
+        $form.attr('title', data.error).tooltipster({theme: 'tooltipster-noir'}).tooltipster('show');
+      }
+    });
+    return false;
   });
 
 });

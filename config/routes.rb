@@ -11,6 +11,7 @@ Solasalonstudios::Application.routes.draw do
   get "testimonials" => 'testimonials#index', :as => :testimonials
   get 'gallery' => 'gallery#index', :as => :gallery
   get 'news' => 'news#index', :as => :news
+  match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "request-franchising-info" => "request_franchising_info#index", :as => :request_franchising_info
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results

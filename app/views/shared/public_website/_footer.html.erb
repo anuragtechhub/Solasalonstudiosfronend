@@ -41,10 +41,12 @@
 
         <p>Stay informed with newsletters and events.</p>
         
-        <div class="newsletter-sign-up">
-          <input type="email" class="input" placeholder="Your email address" >
-          <button type="button" class="button">Join</button>
-        </div>
+        <%= form_tag :newsletter_sign_up, :class => 'footer-newsletter-sign-up' do %>
+          <div class="newsletter-sign-up">
+            <input type="email" name="email" class="input" placeholder="Your email address" >
+            <button type="submit" class="button">Join</button>
+          </div>
+        <% end %>
 
         <ul class="social">
           <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
