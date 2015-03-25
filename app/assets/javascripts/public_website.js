@@ -52,7 +52,7 @@ $(function () {
       pagination: false,
       paginationSpeed: 400,
       singleItem: true
- 
+    
       // "singleItem:true" is a shortcut for:
       // items : 1, 
       // itemsDesktop : false,
@@ -76,12 +76,15 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        $form.attr('title', data.success).find('input').val('').end().tooltipster({theme: 'tooltipster-noir'}).tooltipster('show');
+        $form.find('input').val('').end().tooltipster('content', data.success).tooltipster('show');
       } else {
-        $form.attr('title', data.error).tooltipster({theme: 'tooltipster-noir'}).tooltipster('show');
+        $form.tooltipster('content', data.error).tooltipster('show');
       }
     });
     return false;
   });
+
+  // footer tooltip init
+  $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'})
 
 });
