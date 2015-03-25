@@ -44,6 +44,7 @@ $(function () {
     }
   });
 
+  // hero carousel
   $('.hero-carousel').owlCarousel({
       navigation: false, // hide next and prev buttons
       slideSpeed: 300,
@@ -57,6 +58,11 @@ $(function () {
       // itemsDesktopSmall : false,
       // itemsTablet: false,
       // itemsMobile : false
+  });
+
+  // focus search input when icon clicked
+  $('.search-input-with-icon .ss-search').on('click', function () {
+    $(this).siblings('input').focus();
   });
 
 });
