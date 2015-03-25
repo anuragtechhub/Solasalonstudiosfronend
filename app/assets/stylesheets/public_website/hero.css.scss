@@ -1,6 +1,9 @@
-.hero {
+.hero-carousel {
+  width: 100%;
 
-  .full-width {
-
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 460px;
   }
 }
