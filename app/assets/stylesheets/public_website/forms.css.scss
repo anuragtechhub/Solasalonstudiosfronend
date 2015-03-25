@@ -14,4 +14,13 @@ select {
   border-radius: 0px;
   box-shadow: none;
   box-sizing: border-box; 
+  font-size: 14px;
+
+  &.large {
+    padding: 30px 15px;
+  }
+  
+  &.full-width {
+    width: 100%;
+  }
 }

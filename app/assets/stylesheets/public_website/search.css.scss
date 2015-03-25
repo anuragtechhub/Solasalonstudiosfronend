@@ -1,6 +1,19 @@
 @import 'mixins';
 @import 'variables';
 
+
+.search-input-with-icon {
+  position: relative;
+
+  .ss-search {
+    font-size: 20px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+}
+
+
 .sb-search {
   position: relative;
   margin-top: 10px;
