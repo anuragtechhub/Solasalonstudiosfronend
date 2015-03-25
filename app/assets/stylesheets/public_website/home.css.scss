@@ -26,3 +26,24 @@
     border-left: 1px solid #E6E6E6;
   }
 }
+
+img.recently-featured-in {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 50px;
+}
+
+
+
+
+@media (min-width: 400px) {
+
+  .home-tile {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
