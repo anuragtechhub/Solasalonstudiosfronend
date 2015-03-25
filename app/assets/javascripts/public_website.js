@@ -10,6 +10,7 @@ $(function () {
   FastClick.attach(document.body);
 
   var $headerNav = $('#header .nav');
+  var $search = $('#search');
   var $window = $(window);
 
   // expandable search
@@ -28,12 +29,12 @@ $(function () {
     return false;
   });
 
+  $('#sb-icon-search').on('click', function () {
+    $search.focus();
+  });
+
   // window resize handler
   $window.on('resize', function () {
-    // if (uiSearch && typeof uiSearch.close === 'function') {
-    //   console.log('close')
-    //   uiSearch.close();
-    // }
     $('#sb-search').removeClass('sb-search-open');
     if ($window.width() > 1000) {
       $headerNav.show();

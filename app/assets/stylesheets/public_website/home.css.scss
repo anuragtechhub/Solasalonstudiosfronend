@@ -1,0 +1,28 @@
+.home-slogan {
+  font-size: 16px;
+  margin: 30px;
+}
+
+.home-tile {
+
+  h3 {
+    margin: 20px 0 10px 0;
+  }
+
+  p {
+    margin: 0 30px;
+  }
+}
+
+.home-recently-featured-box {
+  margin: 50px 0 40px 0;
+  border: 1px solid #E6E6E6;
+
+  .column {
+    padding: 30px;
+  }
+
+  .column:last-child {
+    border-left: 1px solid #E6E6E6;
+  }
+}
