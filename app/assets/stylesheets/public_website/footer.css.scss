@@ -11,10 +11,14 @@
   }
 
   ul.p {
-    margin-top: -15px;
+    margin-top: -10px;
 
+    &.last {
+      margin-top: 0;
+    }
+    
     a {
-      padding: 15px 0;
+      padding: 10px 0;
     }
   }
 
