@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require classie
 //= require fastclick
-//= require search
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
@@ -12,11 +11,18 @@ $(function () {
   FastClick.attach(document.body);
 
   var $headerNav = $('#header .nav');
-  var $search = $('#search');
   var $window = $(window);
 
-  // expandable search
-  //var uiSearch = new UISearch( document.getElementById('sb-search'));
+  // expandable top nav search
+  var $searchForm = $('.nav-search');
+  var $searchButton = $('.nav-search-button');
+  var $searchInput = $('.nav-search-input');
+
+  $searchButton.on('click', function () {
+    $searchForm.toggleClass('open');
+    $searchInput.focus();
+    return false;
+  });
 
   // mobile top nav menu
   $('#mobile-top-nav-button').on('click', function () {
@@ -29,13 +35,9 @@ $(function () {
     return false;
   });
 
-  // $('#sb-icon-search').on('click', function () {
-  //   $search.focus();
-  // });
-
   // window resize handler
   $window.on('resize', function () {
-    $('#sb-search').removeClass('sb-search-open');
+    $searchForm.removeClass('open');
     if ($window.width() > 1000) {
       $headerNav.show();
     } else {
@@ -51,11 +53,6 @@ $(function () {
       paginationSpeed: 400,
       singleItem: true
   });
-
-  // focus search input when icon clicked
-  // $('.search-input-with-icon .ss-search').on('click', function () {
-  //   $(this).siblings('input').focus();
-  // });
 
   // footer newsletter sign up
   $('.footer-newsletter-sign-up').on('submit', function () {

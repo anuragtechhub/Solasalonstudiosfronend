@@ -8,6 +8,51 @@
   }
 }
 
+/* Larger than mobile */
+// @media (max-width: 400px) {
+
+//   .hero-carousel {
+//     height: auto;
+//     max-height: 280px;
+
+//     img {
+//       height: auto;
+//       max-height: 280px;
+//     }
+//   }
+
+// }
+
+// /* Larger than phablet (also point when grid becomes active) */
+// @media (max-width: 550px) {
+
+//   .hero-carousel {
+//     height: auto;
+//     max-height: 340px;
+
+//     img {
+//       height: auto;
+//       max-height: 340px;
+//     }
+//   }
+
+// }
+
+// /* Larger than tablet */
+// @media (max-width: 750px) {
+
+//   .hero-carousel {
+//     height: auto;
+//     max-height: 400px;
+
+//     img {
+//       height: auto;
+//       max-height: 400px;
+//     }
+//   } 
+
+// }
+
 /* 1000px and below, the hero goes responsive height */
 @media (max-width: 1000px) {
   
