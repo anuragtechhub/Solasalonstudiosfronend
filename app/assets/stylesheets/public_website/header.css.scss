@@ -55,8 +55,12 @@
 
 #header {
   height: 90px;
-  position: relative;
+  // position: relative;
   background: $brand-primary;
+
+  .container {
+    position: relative;
+  }
 
   .logo {
     display: inline-block;

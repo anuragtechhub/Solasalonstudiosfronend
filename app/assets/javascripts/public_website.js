@@ -16,12 +16,10 @@ $(function () {
   var $window = $(window);
 
   // expandable search
-  var uiSearch = new UISearch( document.getElementById('sb-search'));
+  //var uiSearch = new UISearch( document.getElementById('sb-search'));
 
   // mobile top nav menu
   $('#mobile-top-nav-button').on('click', function () {
-    
-
     if ($headerNav.is(':visible')) {
       $headerNav.slideUp('fast');
     } else {
@@ -31,9 +29,9 @@ $(function () {
     return false;
   });
 
-  $('#sb-icon-search').on('click', function () {
-    $search.focus();
-  });
+  // $('#sb-icon-search').on('click', function () {
+  //   $search.focus();
+  // });
 
   // window resize handler
   $window.on('resize', function () {
@@ -52,19 +50,12 @@ $(function () {
       pagination: false,
       paginationSpeed: 400,
       singleItem: true
-    
-      // "singleItem:true" is a shortcut for:
-      // items : 1, 
-      // itemsDesktop : false,
-      // itemsDesktopSmall : false,
-      // itemsTablet: false,
-      // itemsMobile : false
   });
 
   // focus search input when icon clicked
-  $('.search-input-with-icon .ss-search').on('click', function () {
-    $(this).siblings('input').focus();
-  });
+  // $('.search-input-with-icon .ss-search').on('click', function () {
+  //   $(this).siblings('input').focus();
+  // });
 
   // footer newsletter sign up
   $('.footer-newsletter-sign-up').on('submit', function () {

@@ -13,6 +13,40 @@
   }
 }
 
+.nav-search {
+  float: right;
+  margin: 0;
+
+  .nav-search-input {
+    margin: 0;
+  }
+
+
+
+    .ss-search {
+      display: inline-block;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      top: 10px;
+      padding: 5px 0 0 0;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid #FFF;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      color: #FFF;
+      background: $brand-blue;
+    }
+  
+}
+
+
+
+
+
+
 
 .sb-search {
   position: relative;

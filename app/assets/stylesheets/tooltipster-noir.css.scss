@@ -1,6 +1,8 @@
+@import 'variables';
+
 .tooltipster-noir {
 	border-radius: 0px; 
-	border: 1px solid #E6E6E6;
+	border: 2px solid $brand-yellow;
 	background: #fff;
 	color: #2c2c2c;
 }

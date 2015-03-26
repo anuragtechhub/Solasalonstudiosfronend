@@ -30,13 +30,18 @@
         <li><h3><%= link_to 'Blog', :blog %></h3></li>
       </ul>
 
-      <div id="sb-search" class="sb-search">
+      <%= form_tag [:search, :results], :class => 'nav-search' do %>
+        <input class="nav-search-input" placeholder="Search by city, location or stylist..." type="search" name="query">
+        <span class="ss-search"></span>
+      <% end %>
+
+<!--       <div id="sb-search" class="sb-search">
         <%= form_tag :action => :results, :controller => :search do %>
           <input class="sb-search-input" placeholder="Search by city, location or stylist..." type="search" name="query" id="search">
           <input class="sb-search-submit" type="submit" value="">
           <span class="sb-icon-search"><span class="ss-search"></span></span>
         <% end %>
-      </div>
+      </div> -->
 
     </div>
   </div>
