@@ -37,7 +37,7 @@
   &.open {
 
     .nav-search-input {
-      width: calc(100% - 10px);
+      width: calc(100% - 180px);
     }
   }
   
@@ -51,5 +51,11 @@
     position: absolute;
     top: 18px;
     right: 18px;
+  }
+}
+
+@media (max-width: 550px) {
+  .nav-search.open .nav-search-input {
+    width: calc(100% - 5px);
   }
 }

@@ -10,6 +10,14 @@
     border-bottom: 1px solid $gray-lighter;
   }
 
+  ul.p {
+    margin-top: -5px;
+    
+    a {
+      padding: 5px 0;
+    }
+  }
+
   .one-third {
     margin: 0 !important;
     padding: 50px;
