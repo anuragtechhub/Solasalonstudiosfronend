@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require classie
-// require fastclick
+// fastclick
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
@@ -20,7 +20,7 @@ $(function () {
 
   $searchButton.on('click', function () {
     $searchForm.toggleClass('open');
-    $searchInput.focus();
+    setTimeout(function () { $searchInput.focus(); }, 1000);
     return false;
   });
 
