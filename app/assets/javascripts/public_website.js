@@ -20,7 +20,7 @@ $(function () {
 
   $searchButton.on('click', function () {
     $searchForm.toggleClass('open');
-    $searchInput.focus();
+    setTimeout(function () { $searchInput.focus(); }, 250);
     return false;
   });
 
@@ -68,7 +68,7 @@ $(function () {
         $form.tooltipster('content', data.error).tooltipster('show');
       }
     });
-    
+
     return false;
   });
 
