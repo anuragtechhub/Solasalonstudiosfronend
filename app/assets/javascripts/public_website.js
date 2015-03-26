@@ -1,14 +1,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require classie
-// fastclick
+//= require fastclick
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
 
 $(function () {
 
-  //FastClick.attach(document.body);
+  FastClick.attach(document.body);
 
   var $headerNav = $('#header .nav');
   var $window = $(window);
@@ -18,25 +18,36 @@ $(function () {
   var $searchButton = $('.nav-search-button');
   var $searchInput = $('.nav-search-input');
 
+  $searchInput.on('focus', function (e) {
+    alert('focus')
+    e.stopPropagation();
+  });
+
   $searchButton.on('click', function () {
+    alert('serach click');
     $searchForm.toggleClass('open');
-    setTimeout(function () { $searchInput.focus(); }, 1000);
+    $searchInput.focus();
     return false;
   });
 
   // mobile top nav menu
-  $('#mobile-top-nav-button').on('click', function () {
+  $('#mobile-top-nav-button').on('click', function (e) {
+    alert('mobile nav click')
+    e.stopPropagation();
+    e.preventDefault();
+
     if ($headerNav.is(':visible')) {
       $headerNav.slideUp('fast');
     } else {
       $headerNav.slideDown('fast');
     }
-    return false;
   });
 
   // window resize handler
   $window.on('resize', function () {
+    alert('resize')
     $searchForm.removeClass('open');
+    
     if ($window.width() > 1000) {
       $headerNav.show();
     } else {
