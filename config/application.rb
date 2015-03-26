@@ -11,6 +11,9 @@ ENV['RAILS_ADMIN_THEME'] = 'custom'
 module Solasalonstudios
   class Application < Rails::Application
     
+    config.middleware.use Rack::Deflater
+    config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false}
+    
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
 

@@ -48,6 +48,8 @@ gem 'paper_trail', '~> 3.0.6'
 gem 'geocoder'
 gem 'area'
 
+gem 'htmlcompressor'
+
 gem 'gibbon'
 
 # Use Capistrano for deployment
