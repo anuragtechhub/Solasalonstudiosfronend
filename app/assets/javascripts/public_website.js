@@ -50,8 +50,8 @@ $(function () {
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
   $window.on('resize', function () {
-    if ($window.width() !== windowWidth || $window.height !== windowHeight) {
-      alert('resize')
+    if ($window.width() != windowWidth || $window.height != windowHeight) {
+      alert('resize');
 
       windowWidth = $window.width();
       windowHeight = $window.height();
