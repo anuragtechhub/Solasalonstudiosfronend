@@ -19,12 +19,10 @@ $(function () {
   var $searchInput = $('.nav-search-input');
 
   $searchInput.on('focus', function (e) {
-    //alert('focus')
     e.stopPropagation();
   });
 
   $searchButton.on('click', function () {
-    //alert('serach click');
     if ($searchForm.hasClass('open')) {
       $searchForm.removeClass('open')
     } else {
@@ -36,7 +34,6 @@ $(function () {
 
   // mobile top nav menu
   $('#mobile-top-nav-button').on('click', function (e) {
-    //alert('mobile nav click')
     e.stopPropagation();
     e.preventDefault();
 
@@ -51,8 +48,6 @@ $(function () {
   var windowWidth = $window.width(), windowHeight = $window.height();
   $window.on('resize', function () {
     if ($window.width() != windowWidth && $window.height != windowHeight) {
-      alert('resize');
-
       windowWidth = $window.width();
       windowHeight = $window.height();
       
