@@ -1,0 +1,4 @@
+<style type="text/css" media="all">
+<% compressor = HtmlCompressor::Compressor.new %>
+<%= raw compressor.compress(Rails.application.assets.find_asset(stylesheet).to_s) %>
+</style>
