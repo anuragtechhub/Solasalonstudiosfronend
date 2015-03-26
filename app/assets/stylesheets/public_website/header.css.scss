@@ -55,10 +55,9 @@
 
 #header {
   height: 90px;
-  // position: relative;
   background: $brand-primary;
 
-  .container {
+  .container .row {
     position: relative;
   }
 

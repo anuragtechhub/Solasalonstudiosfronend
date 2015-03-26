@@ -31,7 +31,6 @@ $(function () {
     } else {
       $headerNav.slideDown('fast');
     }
-
     return false;
   });
 
@@ -69,6 +68,7 @@ $(function () {
         $form.tooltipster('content', data.error).tooltipster('show');
       }
     });
+    
     return false;
   });
 
