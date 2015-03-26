@@ -1,14 +1,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require classie
-//= require fastclick
+// require fastclick
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
 
 $(function () {
 
-  FastClick.attach(document.body);
+  //FastClick.attach(document.body);
 
   var $headerNav = $('#header .nav');
   var $window = $(window);
@@ -20,7 +20,7 @@ $(function () {
 
   $searchButton.on('click', function () {
     $searchForm.toggleClass('open');
-    setTimeout(function () { $searchInput.focus(); }, 250);
+    $searchInput.focus();
     return false;
   });
 
