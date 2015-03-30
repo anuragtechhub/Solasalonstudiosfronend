@@ -12,6 +12,8 @@
     right: 10px;
     width: 0;
     z-index: 3;
+    border-radius: 18px;
+    padding: 5px 16px;
     @include transition(width ease 0.2s);
   }
 

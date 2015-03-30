@@ -63,10 +63,15 @@ $(function () {
 
   // hero carousel
   $('.hero-carousel').owlCarousel({
-      navigation: false, // hide next and prev buttons
+      navigation: true,
+      navigationText: [
+        "<i class='arrow-left'></i>",
+        "<i class='arrow-right'></i>"
+      ],
       slideSpeed: 300,
       pagination: false,
       paginationSpeed: 400,
+      autoPlay: 5000,
       singleItem: true
   });
 
