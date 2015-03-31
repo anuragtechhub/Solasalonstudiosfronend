@@ -39,8 +39,10 @@
     <div class="one-half column">
       <h3>Find a Salon Professional</h3>
       <div class="search-input-with-icon">
-        <input type="text" placeholder="Search by name or location" class="large full-width">
+        <%= form_tag [:search, :results] do %>
+        <input type="text" placeholder="Search by name or location" name="query" class="large full-width">
         <span class="ss-search"></span>
+        <% end %>
       </div>
     </div>
   </div>
