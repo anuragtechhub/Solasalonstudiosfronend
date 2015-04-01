@@ -40,14 +40,15 @@ class LocationsController < PublicWebsiteController
     end
   end
 
+  def fullscreen
+    @locations = Location.all
+    render :layout => 'fullscreen'
+  end
+
   private 
 
   def map_defaults
-    if params[:action] == 'index'
-      @lat = 38.850033
-      @lng = -95.6500523
-      @zoom = 4
-    elsif params[:action] == 'city'
+    if params[:action] == 'city'
       coords = Geocoder.coordinates("#{params[:city]}, #{params[:state]}")
       @lat = coords[0]
       @lng = coords[1]
@@ -57,6 +58,10 @@ class LocationsController < PublicWebsiteController
       @lat = coords[0]
       @lng = coords[1]
       @zoom = 6
+    else
+      @lat = 38.850033
+      @lng = -95.6500523
+      @zoom = 4
     end
   end
 end

@@ -164,4 +164,8 @@ $(function () {
     }, 0);
   });
 
+ if ($('#map').hasClass('fullscreen')) {
+    $('#map').css('height', $(window).height());
+ }
+
 });
