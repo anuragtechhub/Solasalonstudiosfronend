@@ -16,11 +16,12 @@
 }
 
 .home-recently-featured-box {
-  margin: 20px 0 40px 0;
+  margin: 10px 0 40px 0;
   border: 1px solid #E6E6E6;
 
   .column {
     padding: 30px;
+    margin-bottom: 0;
   }
 
   .column:last-child {
@@ -29,7 +30,7 @@
 }
 
 img.recently-featured-in {
-  margin-top: 25px;
+  margin-top: 23px;
   width: 100%;
   height: auto;
   max-width: 400px;

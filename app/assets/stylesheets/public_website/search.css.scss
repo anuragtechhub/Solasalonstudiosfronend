@@ -1,6 +1,40 @@
 @import 'mixins';
 @import 'variables';
 
+
+.search-results {
+  margin-bottom: 30px;
+
+  h2 {
+    margin: 40px 0;
+  }
+}
+
+.search-result {
+  padding: 25px 0;
+  border-top: 1px solid #E6E6E6;
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin: 15px 0;
+  }
+
+  div {
+    line-height: 100%;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    font-weight: bold;
+    text-decoration: none;
+    color: $brand-pink;
+    font-size: 13px;
+  }
+}
+
+
 .nav-search {
   float: right;
   margin: 0;
@@ -47,6 +81,10 @@
 
 .search-input-with-icon {
   position: relative;
+
+  input[type=text] {
+    margin-bottom: 0;
+  }
 
   .ss-search {
     font-size: 20px;

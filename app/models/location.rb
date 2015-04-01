@@ -77,6 +77,17 @@ class Location < ActiveRecord::Base
     [['Open', 'open'], ['Closed', 'closed']]
   end
 
+  def html_address
+    address = ''
+
+    address += address_1 if address_1.present?
+    address += ' ' + address_2 if address_2.present?
+    address += '<br>'
+    address += "#{city}, #{state} #{postal_code}"
+
+    return address.html_safe
+  end
+
   def full_address
     "#{address_1} #{address_2} #{city}, #{state} #{postal_code}"
   end

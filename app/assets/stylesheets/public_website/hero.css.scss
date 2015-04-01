@@ -27,6 +27,7 @@
   display: block;
   // height: 460px;
   overflow: hidden;
+  margin-bottom: -15px;
 
   img {
     width: 100%;
@@ -40,7 +41,6 @@
   .hero-carousel {
     height: auto;
     max-height: 460px;
-    margin-bottom: -10px;
 
     img {
       height: auto;

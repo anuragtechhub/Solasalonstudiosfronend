@@ -2,11 +2,12 @@
 
 #footer {
   border-top: 1px solid $gray-lighter;
-  // margin: 30px 0;
 
   .row.first {
     display: flex;
+    display: -webkit-flex;
     flex-direction: row;
+    align-items: stretch;
     border-bottom: 1px solid $gray-lighter;
   }
 
