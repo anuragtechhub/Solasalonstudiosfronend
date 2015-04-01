@@ -39,7 +39,7 @@ $(function () {
                 "visibility": "on"
             },
             {
-                "color": "#48bfec"
+                "color": "#C1E6F3"
             }
         ]
     },
