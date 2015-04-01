@@ -25,3 +25,7 @@
     font-size: 13px;
   }
 }
+
+.infoBox {
+  @include transition(all .15s ease);
+}

@@ -35,7 +35,7 @@ class LocationsController < PublicWebsiteController
     if @location
       @lat = @location.latitude
       @lng = @location.longitude
-      @zoom = 15
+      @zoom = 14
       @locations = [@location]
     end
   end
@@ -51,12 +51,12 @@ class LocationsController < PublicWebsiteController
       coords = Geocoder.coordinates("#{params[:city]}, #{params[:state]}")
       @lat = coords[0]
       @lng = coords[1]
-      @zoom = 10
+      @zoom = 9
     elsif params[:action] == 'state'
       coords = Geocoder.coordinates("#{params[:state]}")
       @lat = coords[0]
       @lng = coords[1]
-      @zoom = 7
+      @zoom = 6
     end
   end
 end

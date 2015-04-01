@@ -134,21 +134,31 @@ $(function () {
         url = $this.data('url');
     
     setTimeout(function () {
-      var marker = map.addMarker({
+      var markerIcon = new google.maps.MarkerImage($('#marker-icon-url').val(), null, null, null, new google.maps.Size(19,19)),
+        marker = map.addMarker({
         lat: coords[0],
         lng: coords[1],
+        icon: markerIcon,
         title: name,
         click: function(e) {
           var ib = new InfoBox({
             content: '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a></div>',
             closeBoxURL: '',
-            pixelOffset: new google.maps.Size(-50, -100)
+            pixelOffset: new google.maps.Size(-100, -200)
           });
           if (openWindow && typeof openWindow.close === 'function') {
             openWindow.close();
           }
           ib.open(map.map, marker);
           openWindow = ib;
+
+          map.map.panTo(marker.getPosition());
+          
+          //position infobox
+          setTimeout(function () {
+            var $div = $('.infoBox');
+            $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 50) - 200)});
+          }, 0);
         }
       });
     }, 0);

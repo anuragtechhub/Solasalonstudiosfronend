@@ -1,6 +1,7 @@
 <input type="hidden" name="lat" id="lat" value="<%= @lat %>" />
 <input type="hidden" name="lng" id="lng" value="<%= @lng %>" />
 <input type="hidden" name="zoom" id="zoom" value="<%= @zoom %>" />
+<input type="hidden" name="marker-icon-url" id="marker-icon-url" value="<%= image_url 'Marker_Normal_Icon@2x.png' %>" />
 <% if @locations && @locations.size > 0 %>
   <% @locations.each do |location| %>
     <input type="hidden" name="marker" value="<%= "#{location.latitude}, #{location.longitude}" %>" data-name="<%= location.name %>" 
