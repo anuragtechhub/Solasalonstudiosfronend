@@ -1,0 +1,27 @@
+@import 'mixins';
+@import 'variables';
+
+.sola-infobox {
+  padding: 15px;
+  border: 1px solid #E6E6E6;
+  background: #FFF;
+
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin: 15px 0;
+  }
+
+  div {
+    line-height: 100%;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    font-weight: bold;
+    text-decoration: none;
+    color: $brand-pink;
+    font-size: 13px;
+  }
+}

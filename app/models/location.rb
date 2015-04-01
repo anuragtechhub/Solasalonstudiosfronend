@@ -85,7 +85,7 @@ class Location < ActiveRecord::Base
     address += '<br>'
     address += "#{city}, #{state} #{postal_code}"
 
-    return address.html_safe
+    return address
   end
 
   def full_address

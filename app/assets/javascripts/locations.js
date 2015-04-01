@@ -113,6 +113,7 @@ $(function () {
   ];
 
   // map
+  
   var map = new GMaps({
     div: '#map',
     lat: parseFloat($('#lat').val(), 10),
@@ -122,20 +123,35 @@ $(function () {
   });
 
   // markers
+  
+  var openWindow = null;
+
   $('input[name=marker]').each(function () {
     var $this = $(this),
         coords = $this.val().split(', '),
-        name = $this.data('name');
+        name = $this.data('name'),
+        address = $this.data('address'),
+        url = $this.data('url');
+    
     setTimeout(function () {
-      map.addMarker({
+      var marker = map.addMarker({
         lat: coords[0],
         lng: coords[1],
         title: name,
         click: function(e) {
-          alert('You clicked ' + name);
+          var ib = new InfoBox({
+            content: '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a></div>',
+            closeBoxURL: '',
+            pixelOffset: new google.maps.Size(-50, -100)
+          });
+          if (openWindow && typeof openWindow.close === 'function') {
+            openWindow.close();
+          }
+          ib.open(map.map, marker);
+          openWindow = ib;
         }
       });
-    }, 1);
+    }, 0);
   });
 
 });

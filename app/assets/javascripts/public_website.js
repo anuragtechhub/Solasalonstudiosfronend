@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require classie
 //= require fastclick
+//= require infobox
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
