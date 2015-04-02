@@ -103,8 +103,11 @@ $(function () {
     }, 0);
   });
 
- if ($('#map').hasClass('fullscreen')) {
-    $('#map').css('height', $(window).height());
+ var $map = $('#map');
+ if ($map.hasClass('fullscreen')) {
+    $map.css('height', $(window).height());
  }
+
+ $('#map-overlay').css('top', $map.offset().top).show().on('click', function () { $('#map-overlay').remove(); });
 
 });

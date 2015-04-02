@@ -63,8 +63,8 @@
 }
 
 #map-overlay {
-  background: green;
+  display: none;
+  background: transparent;
   position: absolute;
   z-index: 99;
-  cursor: pointer;
 }
