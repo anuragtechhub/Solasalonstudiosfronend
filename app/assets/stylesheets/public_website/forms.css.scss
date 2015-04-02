@@ -30,6 +30,7 @@ select {
   position: relative;
 
   .option-placeholder {
+    cursor: pointer;
     display: block;
     float: left;
     border: 1px solid #DBDBDB;
@@ -45,7 +46,7 @@ select {
   }
 
   .arrow {
-    margin: 0;
+    cursor: pointer;
     display: block;
     float: left;
 
@@ -66,6 +67,8 @@ select {
   }  
 
   .options {
+    display: none;
+    
     position: absolute;
     top: 49px;
     left: 0;

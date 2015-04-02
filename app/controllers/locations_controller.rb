@@ -7,6 +7,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def city
+    @all_locations = Location.all
     query_param = "%#{params[:city]}%"
 
     locations1 = Location.near(params[:city])
@@ -19,6 +20,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def state
+    @all_locations = Location.all
     query_param = "%#{params[:state]}%"
 
     locations1 = Location.near(params[:state])
@@ -28,6 +30,7 @@ class LocationsController < PublicWebsiteController
       @locations.uniq!
       @locations.sort! { |a, b| a.name <=> b.name }
     end
+    p "@locations=#{@locations.size}"
   end
 
   def salon
