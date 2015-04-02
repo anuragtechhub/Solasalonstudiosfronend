@@ -1,0 +1,21 @@
+@import 'mixins';
+@import 'variables';
+
+.salon-services {
+
+  .service {
+    display: inline-block;
+    background: #FFF;
+    border: 1px solid #CDCDCD;
+    font-size: 14px;
+    font-weight: normal;
+    color: $gray;
+    border-radius: 3px;
+    padding: 1px 10px;
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

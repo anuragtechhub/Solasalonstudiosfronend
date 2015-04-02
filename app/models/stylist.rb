@@ -70,6 +70,24 @@ class Stylist < ActiveRecord::Base
     images_array
   end
 
+  def services 
+    services = []
+
+    services << 'Hair' if hair
+    services << 'Skin' if skin
+    services << 'Nails' if nails
+    services << 'Massage' if massage
+    services << 'Teeth Whitening' if teeth_whitening
+    services << 'Hair Extensions' if hair_extensions
+    services << 'Eyelash Extensions' if eyelash_extensions
+    services << 'Makeup' if makeup
+    services << 'Tanning' if tanning
+    services << 'Waxing' if waxing
+    services << 'Brows' if brows
+
+    services
+  end
+
   # helper function to return testimonials as array
   def testimonials
     testimonial_array = []

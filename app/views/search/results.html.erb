@@ -24,7 +24,12 @@
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result">
             <h3><%= stylist.name %></h3>
-            <p></p>
+            <p class="salon-services">
+              <% stylist.services.each do |service| %>
+                <span class="service"><%= service %></span>
+              <% end %>
+            </p>
+            <div><%= stylist.phone_number %></div>
             <div><%= link_to 'View Profile', show_stylist_path(stylist) %></div>
           </div>
         <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
