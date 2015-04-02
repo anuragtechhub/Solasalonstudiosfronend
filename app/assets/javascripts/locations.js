@@ -66,8 +66,30 @@ $(function () {
             
             setTimeout(function () {
                 $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
+
+                setupMapChangeEventListeners();
             }, 100);
           }, 100);
+
+          function setupMapChangeEventListeners () {
+            google.maps.event.addListenerOnce(map.map, 'drag', function () {   
+              if (openWindow && typeof openWindow.close === 'function') {
+                openWindow.close();
+              }
+            }); 
+
+            google.maps.event.addListenerOnce(map.map, 'bounds_changed', function () {   
+              if (openWindow && typeof openWindow.close === 'function') {
+                openWindow.close();
+              }
+            });  
+
+            google.maps.event.addListenerOnce(map.map, 'zoom_changed', function () {   
+              if (openWindow && typeof openWindow.close === 'function') {
+                openWindow.close();
+              }
+            }); 
+          }
         }
       });
 
@@ -77,7 +99,7 @@ $(function () {
               new google.maps.event.trigger(marker, 'click'); 
           }, 100);
         }
-      });
+      });    
     }, 0);
   });
 
