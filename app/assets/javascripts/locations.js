@@ -74,7 +74,7 @@ $(function () {
       if (salon) {
         setTimeout(function () {
             new google.maps.event.trigger(marker, 'click'); 
-        }, 350)
+        }, 500)
       }
     }, 0);
   });
