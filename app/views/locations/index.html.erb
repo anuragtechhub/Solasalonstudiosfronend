@@ -1,10 +1,30 @@
 <div class="container content-container">
 
-  <h1>Find a Sola Location</h1>
+  <div class="row">
+    <div class="one-half column">
+        <h1>Find a Sola Location</h1>
+        <h3 class="subtle">Over 150 Salons</h3>
+    </div>
 
-  <h3 class="subtle">Over 150 Salons</h3>
+    <div class="one-half column text-right">
+
+      <div class="sola-select">
+        <div class="row">
+          <div class="option-placeholder"><h3>Select a State</h3></div>
+          <div class="arrow"><span class="ss-dropdown"></span></div>
+        </div>
+        <div class="options">
+          <% @locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+          <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="row" id="map" style="height: 525px"></div>
+
 </div>
 
 <%= render 'shared/public_website/hidden_map_inputs' %>

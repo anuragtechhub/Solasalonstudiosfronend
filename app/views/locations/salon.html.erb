@@ -7,7 +7,7 @@
     <div class="row" id="map" style="height: 250px"></div>
     <% if @location.stylists && @location.stylists.size > 0 %>
       <hr>
-      <h3>Stylists</h3>
+      <h3>Salon Professionals</h3>
       <ul>
         <% @location.stylists.open.each do |stylist| %>
           <li><%= link_to stylist.name, show_stylist_path(stylist) %></li>

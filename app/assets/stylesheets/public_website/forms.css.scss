@@ -7,6 +7,7 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
+  font-family: 'Lato', Arial, sans-serif;
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #FBFBFB;
@@ -23,4 +24,73 @@ select {
   &.full-width {
     width: 100%;
   }
+}
+
+.sola-select {
+  position: relative;
+
+  .option-placeholder {
+    display: block;
+    float: left;
+    border: 1px solid #DBDBDB;
+    text-align: left;
+    padding: 17px 20px;
+
+    width: calc(100% - 60px);
+    height: 50px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .arrow {
+    margin: 0;
+    display: block;
+    float: left;
+
+    border: 1px solid #DBDBDB;
+    border-left: 0;
+    padding: 12px 0;
+
+    width: 60px;
+    height: 50px;
+
+    text-align: center;
+
+
+    span {
+      vertical-align: middle;
+      font-size: 10px;
+    }
+  }  
+
+  .options {
+    position: absolute;
+    top: 49px;
+    left: 0;
+    right: 61px;
+    z-index: 9;
+
+    background: #FFF;
+    border: 1px solid #DBDBDB;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 200px;
+    padding: 20px;
+  }
+
+  .option {
+    cursor: pointer;
+    display: block;
+    clear: both;
+    text-decoration: none;
+    padding: 4px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+
 }
