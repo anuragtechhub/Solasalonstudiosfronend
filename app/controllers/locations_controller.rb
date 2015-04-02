@@ -22,14 +22,15 @@ class LocationsController < PublicWebsiteController
   def state
     @all_locations = Location.all
     query_param = "%#{params[:state]}%"
+    @locations = Location.where('state LIKE ?', query_param)
 
-    locations1 = Location.near(params[:state])
-    locations2 = Location.where('state LIKE ?', query_param)
-    @locations = locations1 + locations2
-    if @locations
-      @locations.uniq!
-      @locations.sort! { |a, b| a.name <=> b.name }
-    end
+    # locations1 = Location.near(params[:state])
+    # locations2 = Location.where('state LIKE ?', query_param)
+    # @locations = locations1 + locations2
+    # if @locations
+    #   @locations.uniq!
+    #   @locations.sort! { |a, b| a.name <=> b.name }
+    # end
     p "@locations=#{@locations.size}"
   end
 
