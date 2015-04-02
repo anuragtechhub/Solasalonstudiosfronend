@@ -9,6 +9,10 @@ $(function () {
     lat: parseFloat($('#lat').val(), 10),
     lng: parseFloat($('#lng').val(), 10),
     zoom: parseInt($('#zoom').val(), 10),
+    streetViewControl: false,
+    mapTypeControlOptions: {
+      mapTypeIds: []
+    },
     styles: mapStyles
   });
 
@@ -70,7 +74,7 @@ $(function () {
       if (salon) {
         setTimeout(function () {
             new google.maps.event.trigger(marker, 'click'); 
-        }, 300)
+        }, 350)
       }
     }, 0);
   });
