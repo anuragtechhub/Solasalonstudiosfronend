@@ -19,6 +19,10 @@ $(function () {
   // markers
   
   var openWindow = null;
+  var latlngbounds = new google.maps.LatLngBounds();
+  var $markers = $('input[name=marker]');
+  var closeMarker = false;
+  // var markersPlaced = 0;
 
   var getMarkerContent = function (name, saddress, address, url, salon) {
     if (salon) {
@@ -28,7 +32,7 @@ $(function () {
     }
   };
 
-  $('input[name=marker]').each(function () {
+  $markers.each(function () {
     var $this = $(this),
         coords = $this.val().split(', '),
         name = $this.data('name'),
@@ -36,6 +40,8 @@ $(function () {
         address = $this.data('address'),
         url = $this.data('url'),
         salon = $this.data('salon');
+    
+    latlngbounds.extend(new google.maps.LatLng(coords[0], coords[1]));
     
     setTimeout(function () {
       var markerIcon = new google.maps.MarkerImage($('#marker-icon-url').val(), null, null, null, new google.maps.Size(19,19)),
@@ -56,6 +62,7 @@ $(function () {
           ib.open(map.map, marker);
           openWindow = ib;
 
+          closeMarker = false;
           map.map.panTo(marker.getPosition());
           
           //position infobox
@@ -66,38 +73,66 @@ $(function () {
             
             setTimeout(function () {
                 $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
-
-                setupMapChangeEventListeners();
+                closeMarker = true;
             }, 100);
           }, 100);
 
-          function setupMapChangeEventListeners () {
-            google.maps.event.addListenerOnce(map.map, 'drag', function () {   
-              if (openWindow && typeof openWindow.close === 'function') {
-                openWindow.close();
-              }
-            }); 
-
-            google.maps.event.addListenerOnce(map.map, 'bounds_changed', function () {   
-              if (openWindow && typeof openWindow.close === 'function') {
-                openWindow.close();
-              }
-            });  
-
-            google.maps.event.addListenerOnce(map.map, 'zoom_changed', function () {   
-              if (openWindow && typeof openWindow.close === 'function') {
-                openWindow.close();
-              }
-            }); 
-          }
+          
         }
       });
 
+      function setupMapChangeEventListeners () {
+        google.maps.event.addListener(map.map, 'drag', function () {  
+          if (closeMarker && openWindow && typeof openWindow.close === 'function') {
+            openWindow.close();
+          }
+        }); 
+
+        google.maps.event.addListener(map.map, 'bounds_changed', function () {   
+          if (closeMarker && openWindow && typeof openWindow.close === 'function') {
+            openWindow.close();
+          }
+        });  
+
+        google.maps.event.addListener(map.map, 'zoom_changed', function () {   
+          if (closeMarker && openWindow && typeof openWindow.close === 'function') {
+            openWindow.close();
+          }
+        }); 
+      };
+      
+      setupMapChangeEventListeners();
+      
       google.maps.event.addListenerOnce(map.map, 'idle', function() {
         if (salon) {
           setTimeout(function () {
               new google.maps.event.trigger(marker, 'click'); 
           }, 100);
+        } else {
+          // autocenter and zoom
+          function getZoomByBounds( map, bounds ){
+            var MAX_ZOOM = map.mapTypes.get( map.getMapTypeId() ).maxZoom || 21 ;
+            var MIN_ZOOM = map.mapTypes.get( map.getMapTypeId() ).minZoom || 0 ;
+
+            var ne= map.getProjection().fromLatLngToPoint( bounds.getNorthEast() );
+            var sw= map.getProjection().fromLatLngToPoint( bounds.getSouthWest() ); 
+
+            var worldCoordWidth = Math.abs(ne.x-sw.x);
+            var worldCoordHeight = Math.abs(ne.y-sw.y);
+
+            //Fit padding in pixels 
+            var FIT_PAD = 40;
+
+            for( var zoom = MAX_ZOOM; zoom >= MIN_ZOOM; --zoom ){ 
+                if( worldCoordWidth*(1<<zoom)+2*FIT_PAD < $(map.getDiv()).width() && 
+                    worldCoordHeight*(1<<zoom)+2*FIT_PAD < $(map.getDiv()).height() )
+                    return zoom;
+            }
+            return 0;
+          }
+          
+          map.map.setCenter(latlngbounds.getCenter());
+          map.map.setZoom(getZoomByBounds(map.map, latlngbounds));
         }
       });    
     }, 0);
