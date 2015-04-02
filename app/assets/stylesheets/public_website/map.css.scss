@@ -61,3 +61,10 @@
   opacity: 0;
   @include transition(opacity .25s ease);
 }
+
+#map-overlay {
+  background: green;
+  position: absolute;
+  z-index: 99;
+  cursor: pointer;
+}

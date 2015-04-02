@@ -71,11 +71,13 @@ $(function () {
         }
       });
 
-      if (salon) {
-        setTimeout(function () {
-            new google.maps.event.trigger(marker, 'click'); 
-        }, 500)
-      }
+      google.maps.event.addListenerOnce(map.map, 'idle', function() {
+        if (salon) {
+          setTimeout(function () {
+              new google.maps.event.trigger(marker, 'click'); 
+          }, 100);
+        }
+      });
     }, 0);
   });
 
