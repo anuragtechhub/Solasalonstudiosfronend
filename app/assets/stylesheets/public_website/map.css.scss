@@ -2,9 +2,11 @@
 @import 'variables';
 
 .sola-infobox {
+  position: relative;
   padding: 15px;
   border: 1px solid #E6E6E6;
   background: #FFF;
+  box-shadow: 0 1px 0px rgba(195,195,195, 0.8);
 
   h3 {
     margin: 0;
@@ -23,6 +25,32 @@
     text-decoration: none;
     color: $brand-pink;
     font-size: 13px;
+  }
+
+  .tail1 {
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-color: #C3C3C3 transparent transparent transparent;
+    border-width: 10px;
+    border-style: solid;
+    z-index: 3;
+  }
+  
+  .tail2 {
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0; 
+    height: 0;
+    border-color: #FFF transparent transparent transparent;
+    border-width: 10px;
+    border-style: solid;
+    z-index: 4;
   }
 }
 
