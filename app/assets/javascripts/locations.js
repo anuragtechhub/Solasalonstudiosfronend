@@ -61,7 +61,7 @@ $(function () {
             $div.show();
             
             setTimeout(function () {
-                $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 33) - 200)}).css('opacity', 1);
+                $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
             }, 100);
           }, 100);
         }
