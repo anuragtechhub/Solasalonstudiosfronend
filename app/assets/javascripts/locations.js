@@ -16,12 +16,22 @@ $(function () {
   
   var openWindow = null;
 
+  var getMarkerContent = function (name, saddress, address, url, salon) {
+    if (salon) {
+        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?saddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+    } else {
+        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
+    }
+  };
+
   $('input[name=marker]').each(function () {
     var $this = $(this),
         coords = $this.val().split(', '),
         name = $this.data('name'),
+        saddress = $this.data('saddress'),
         address = $this.data('address'),
-        url = $this.data('url');
+        url = $this.data('url'),
+        salon = $this.data('salon');
     
     setTimeout(function () {
       var markerIcon = new google.maps.MarkerImage($('#marker-icon-url').val(), null, null, null, new google.maps.Size(19,19)),
@@ -32,7 +42,7 @@ $(function () {
         title: name,
         click: function(e) {
           var ib = new InfoBox({
-            content: '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>',
+            content: getMarkerContent(name, saddress, address, url, salon),
             closeBoxURL: '',
             pixelOffset: new google.maps.Size(-100, -200)
           });
@@ -56,6 +66,12 @@ $(function () {
           }, 100);
         }
       });
+
+      if (salon) {
+        setTimeout(function () {
+            new google.maps.event.trigger(marker, 'click'); 
+        }, 300)
+      }
     }, 0);
   });
 
