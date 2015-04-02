@@ -47,8 +47,13 @@ $(function () {
           //position infobox
           setTimeout(function () {
             var $div = $('.infoBox');
-            $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 33) - 200)});
-          }, 0);
+            
+            $div.show();
+            
+            setTimeout(function () {
+                $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 33) - 200)}).css('opacity', 1);
+            }, 100);
+          }, 100);
         }
       });
     }, 0);

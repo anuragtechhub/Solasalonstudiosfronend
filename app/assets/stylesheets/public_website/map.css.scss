@@ -54,6 +54,8 @@
   }
 }
 
+
 .infoBox {
-  @include transition(all .15s ease);
+  opacity: 0;
+  @include transition(opacity .25s ease);
 }
