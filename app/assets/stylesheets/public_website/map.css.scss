@@ -68,3 +68,34 @@
   position: absolute;
   z-index: 99;
 }
+
+.location-breadcrumb {
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  background: #FBFBFB;
+  padding: 8px 0 10px 0;
+
+  .container {
+    line-height: 100%;
+    vertical-align: middle;
+  }
+
+  .divider {
+    vertical-align: middle;
+    line-height: 10px;
+    font-size: 10px;
+    color: $gray;
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: bold;
+    color: #737373;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+}

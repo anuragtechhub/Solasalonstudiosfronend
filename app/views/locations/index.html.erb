@@ -25,7 +25,14 @@
 
 </div>
 
+<div class="location-breadcrumb">
+  <div class="container">
+    <%= link_to 'United States', :locations %>
+  </div>
+</div>
+
 <div class="row" id="map" style="height: 525px; width: 100%;"></div>
+<div id="map-overlay" style="height: 525px; width: 100%;"></div>
 
 <%= render 'shared/public_website/hidden_map_inputs' %>
 
