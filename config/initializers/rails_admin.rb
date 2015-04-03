@@ -640,7 +640,20 @@ RailsAdmin.config do |config|
         field :phone_number
       end      
       group :business do
-        field :location
+        field :location do
+          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          associated_collection_scope do
+            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+            admin = bindings[:controller]._current_user
+            Proc.new { |scope|
+              # scoping all Players currently, let's limit them to the team's league
+              # Be sure to limit if there are a lot of Players and order them by position
+              if (admin.franchisee == true)
+                scope = scope.where(:admin_id => admin.id)
+              end
+            }
+          end
+        end
         field :business_name
         field :studio_number
         field :work_hours
