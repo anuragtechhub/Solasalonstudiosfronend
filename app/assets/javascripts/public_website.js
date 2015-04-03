@@ -11,8 +11,14 @@ $(function () {
 
   FastClick.attach(document.body);
 
-  // hero carousel
-  $('.hero-carousel').owlCarousel({
+  // size salon carousel before init
+  var $salonCarousel = $('.salon-carousel');
+  if ($salonCarousel.length) {
+    $salonCarousel.find('img').css('max-height', $('.salon-info').height() - 1);
+  }
+
+  // carousel
+  $('.owl-carousel').owlCarousel({
       navigation: true,
       navigationText: [
         "<i class='arrow-left'></i>",

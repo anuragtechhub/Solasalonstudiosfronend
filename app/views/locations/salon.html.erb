@@ -8,7 +8,7 @@
 <div class="container content-container">
   <div class="row">
 
-    <div class="one-third column">
+    <div class="one-third column salon-info">
       <h1><%= @location.name %></h1>
       <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
       <div class="salon-buttons">
@@ -20,7 +20,15 @@
     </div>
 
     <div class="two-thirds column">
-
+      <div class="salon-carousel owl-carousel owl-theme">
+        <% @location.images.each do |image| %>
+          <% if image.exists?(:salon) %>
+            <div class="item"><%= image_tag image.url(:salon) %></div>
+          <% else %>
+            <div class="item"><%= image_tag image.url(:original) %></div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
   </div>
