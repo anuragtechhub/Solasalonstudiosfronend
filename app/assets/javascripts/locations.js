@@ -132,7 +132,12 @@ $(function () {
           }
           
           map.map.setCenter(latlngbounds.getCenter());
-          map.map.setZoom(getZoomByBounds(map.map, latlngbounds));
+
+          if ($markers.length == 1) {
+            map.map.setZoom(14);
+          } else {
+            map.map.setZoom(getZoomByBounds(map.map, latlngbounds));
+          }  
         }
       });    
     }, 0);
