@@ -31,7 +31,6 @@ class LocationsController < PublicWebsiteController
     #   @locations.uniq!
     #   @locations.sort! { |a, b| a.name <=> b.name }
     # end
-    p "@locations=#{@locations.size}"
   end
 
   def salon
