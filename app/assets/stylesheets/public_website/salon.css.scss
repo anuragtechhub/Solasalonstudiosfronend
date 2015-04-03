@@ -42,6 +42,25 @@
   }
 }
 
+.sola-story {
+  padding: 80px 50px 50px 80px;
+
+  h2 {
+    line-height: 36px;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-right: 30px;
+  }
+
+  .button {
+    position: relative;
+    top: 30px;
+  }
+}
+
+
+
+
 @media (max-width: 550px) {
 
   .about-this-location {
