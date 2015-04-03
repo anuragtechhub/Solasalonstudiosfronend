@@ -1,0 +1,42 @@
+@import 'variables';
+@import 'mixins';
+
+.salon-buttons {
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #E6E6E6;
+
+  .button {
+    padding: 15px;
+  }
+}
+
+.about-this-location {
+  margin: 40px 0;
+}
+
+.salon-amenities-benefits {
+  padding: 0;
+
+  ul {
+    list-style-type: disc;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .one-half {
+    width: 50%;
+    margin: 0;
+    padding: 80px 0;
+  }
+
+  .column:first-child {
+    padding-left: 20px;
+  }
+  .column:last-child {
+    padding-left: 120px;
+    border-left: 1px solid #E6E6E6;
+  }
+}

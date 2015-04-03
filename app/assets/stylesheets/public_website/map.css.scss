@@ -4,6 +4,10 @@
 #map, #map-overlay {
   height: 525px; 
   width: 100%;
+
+  &.salon-map {
+    height: 250px !important;
+  }
 }
 
 .sola-infobox {

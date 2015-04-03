@@ -44,4 +44,9 @@ button, input[type=button], input[type=submit], .button, a.button {
     color: #FFF;
   }
 
+  &.block {
+    display: block;
+    width: 100%;
+  }
+
 }

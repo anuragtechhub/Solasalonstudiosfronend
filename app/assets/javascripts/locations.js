@@ -10,6 +10,9 @@ $(function () {
     lng: parseFloat($('#lng').val(), 10),
     zoom: parseInt($('#zoom').val(), 10),
     streetViewControl: false,
+    draggable: $('#is_salon').length > 0 ? false : true,
+    scrollwheel: false,//$('#is_salon').length > 0 ? false : true,
+    disableDefaultUI: $('#is_salon').length > 0 ? true : false,
     mapTypeControlOptions: {
       mapTypeIds: []
     },
@@ -134,7 +137,7 @@ $(function () {
           map.map.setCenter(latlngbounds.getCenter());
 
           if ($markers.length == 1) {
-            map.map.setZoom(14);
+            map.map.setZoom(15);
           } else {
             map.map.setZoom(getZoomByBounds(map.map, latlngbounds));
           }  

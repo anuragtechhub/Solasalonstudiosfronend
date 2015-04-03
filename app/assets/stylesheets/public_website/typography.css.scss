@@ -34,11 +34,15 @@ h3, .h3 {
 
 h4, .h4 {
   font-family: 'Lato', Arial, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0px;
   line-height: 35px;
   font-weight: 300;
-  color: #C7C7C7;
+  color: #474747;
+
+  &.subtle {
+    color: #C7C7C7;
+  }
 }
 
 p, .p {

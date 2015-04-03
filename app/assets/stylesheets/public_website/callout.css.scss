@@ -16,8 +16,30 @@
     font-weight: 400;
   }
 
+  h3 {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  .icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
   &.blue {
     background: $brand-blue;
     color: #FFF;
+  }
+
+  &.green {
+    background: $brand-green;
+    color: #FFF;
+
+    h3, h4, .icon {
+      color: #FFF;
+    }
   }
 }

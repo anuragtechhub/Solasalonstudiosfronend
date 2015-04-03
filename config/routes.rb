@@ -22,8 +22,8 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
 
-  get 'stylists' => 'stylists#index', :as => :stylists
-  get 'stylists/:url_name' => 'stylists#show', :as => :show_stylist
+  get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
+  get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
 
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog

@@ -1,10 +1,88 @@
+<div class="location-breadcrumb">
+  <div class="container">
+    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
+  </div>
+</div>
+
 <div class="container content-container">
   <div class="row">
-    <h1><%= @location.name %></h1>
-    <p><%= @location.full_address.html_safe %></p>
-    <p><%= @location.description.html_safe %></p>
-    <p>
-    <div class="row" id="map" style="height: 250px"></div>
+
+    <div class="one-third column">
+      <h1><%= @location.name %></h1>
+      <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
+      <div class="salon-buttons">
+        <%= link_to 'Find a Salon Professional', :salon_professionals, :class => 'button block' %>
+        <%= link_to 'Request a Tour', :request_a_tour, :class => 'button block' %>
+      </div>
+      <div class="row salon-map" id="map"></div>
+      <div id="map-overlay" class="salon-map"></div>
+    </div>
+
+    <div class="two-thirds column">
+
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row about-this-location">
+    <h3 class="text-center">About this Location</h3>
+    <h4 class="text-center"><%= @location.description.html_safe %></h4>
+  </div>
+
+</div>
+
+<div class="callout green">
+  <div class="icon"><span class="ss-star"></span></div>
+  <h3>Move in Special</h3>
+  <h4>2 weeks of free rent + $400 retail bonus + custom painting of your studio walls!</h4>
+</div>
+
+<div class="container">
+
+  <div class="row salon-amenities-benefits">
+
+    <div class="one-half column">
+      <h3>Studio Amenities</h3>
+      <h4>
+      <ul>
+        <li>Full enclosed, private, locking studio</li>
+        <li>High end styling chair and shampoo bowl</li>
+        <li>Full-spectrum lighting and oversize mirrors</li>
+        <li>Luxurious cabinets and fixtures</li>
+        <li>Individual ventilation in each studio</li>
+        <li>Instant and abundant hot water supply</li>
+        <li>Onsite laundry and shared amenities</li>
+        <li>All utilities and Wi-Fi included</li>
+        <li>And much more...</li>
+      </ul>
+      </h4>
+    </div>
+
+    <div class="one-half column">
+      <h3>Salon Professional Benefits</h3>
+      <h4>
+      <ul>
+        <li>Access group insurance and Sola discounts</li>
+        <li>Escape salon politics and drama</li>
+        <li>Manage your own schedule</li>
+        <li>Personalize your salon space</li>
+        <li>Set pricing for services and products</li>
+        <li>Sell the retail products you love</li>
+        <li>Play your own music</li>
+        <li>Enjoy private conversations</li>
+        <li>Keep 100% of your profits</li>
+      </ul>
+      </h4>
+    </div>
+
+  </div>
+</div>
+
+    
     <% if @location.stylists && @location.stylists.size > 0 %>
       <hr>
       <h3>Salon Professionals</h3>
@@ -14,9 +92,8 @@
         <% end %>
       </ul>
     <% end %>
-  </div>
-</div>
 
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
+<input type="hidden" id="is_salon" value="y" />
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
