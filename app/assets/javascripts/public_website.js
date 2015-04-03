@@ -24,11 +24,12 @@ $(function () {
         "<i class='arrow-left'></i>",
         "<i class='arrow-right'></i>"
       ],
-      //slideSpeed: 300,
+      slideSpeed: 300,
       pagination: false,
       paginationSpeed: 400,
-      autoPlay: false,//5000,
-      singleItem: true
+      autoPlay: 5000,
+      singleItem: true,
+      transitionStyle : "fade"
   });
 
   // header and nav
