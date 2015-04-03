@@ -1,6 +1,11 @@
 @import 'mixins';
 @import 'variables';
 
+#map, #map-overlay {
+  height: 525px; 
+  width: 100%;
+}
+
 .sola-infobox {
   position: relative;
   padding: 15px 20px;
@@ -102,4 +107,24 @@
 
 h2.city {
   margin: 20px 0 35px 0;
+}
+
+
+
+
+
+
+
+@media (max-width: 750px) {
+  #map, #map-overlay {
+    height: 425px; 
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  #map, #map-overlay {
+    height: 275px; 
+    width: 100%;
+  }
 }
