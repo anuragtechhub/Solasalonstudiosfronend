@@ -4,6 +4,7 @@ class Location < ActiveRecord::Base
 
   has_many :stylists
 
+  before_save :fix_url_name
   after_validation :geocode
   geocoded_by :full_address
 
@@ -102,8 +103,14 @@ class Location < ActiveRecord::Base
     imgs
   end
 
+  private
+
   def to_param
     "#{state}/#{city}/#{url_name}"
+  end
+
+  def fix_url_name
+    self.url_name = self.url_name.gsub(/\./, '') if self.url_name.present?
   end
 
 end

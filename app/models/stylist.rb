@@ -3,7 +3,7 @@ class Stylist < ActiveRecord::Base
   scope :open, -> { where(:status => 'open') }
 
   belongs_to :location
-  before_save :update_computed_fields
+  before_save :update_computed_fields, :fix_url_name
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
@@ -106,6 +106,10 @@ class Stylist < ActiveRecord::Base
 
   def update_computed_fields
     self.location_name = location.name if location && location.name
+  end
+
+  def fix_url_name
+    self.url_name = self.url_name.gsub(/\./, '') if self.url_name.present?
   end
 
 end
