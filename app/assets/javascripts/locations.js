@@ -110,7 +110,7 @@ $(function () {
         if (salon) {
           setTimeout(function () {
               new google.maps.event.trigger(marker, 'click'); 
-          }, 100);
+          }, 250);
         } else {
           // autocenter and zoom
           function getZoomByBounds( map, bounds ){
