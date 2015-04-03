@@ -1,5 +1,6 @@
 class Testimonial < ActiveRecord::Base
 
+  has_paper_trail
 
   def to_html
     html = "<hr>"

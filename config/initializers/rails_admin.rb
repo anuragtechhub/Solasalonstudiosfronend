@@ -3,7 +3,14 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     warden.authenticate! scope: :admin
   end
+
+  config.authorize_with :cancan
+
   config.current_user_method(&:current_admin)
+
+  # config.current_user_method do
+  #   current_admin
+  # end
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
 
@@ -11,16 +18,40 @@ RailsAdmin.config do |config|
   # config.excluded_models << 'ResetPassword'
   # config.excluded_models << 'ExpressionEngine'
 
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+ 
+    # collection actions
+    index                         # mandatory
+    new
+    export
+    # history_index
+    bulk_delete
+ 
+    # member actions
+    show
+    edit
+    delete
+    # history_show
+    # show_in_app
+  end
+
   config.model 'Admin' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
     #label 'Administrator'
     #label_plural 'Administrators'    
     list do
       field :email
+      field :franchisee
       field :sign_in_count
       field :last_sign_in_at
     end
     show do
       field :email
+      field :franchisee
       field :sign_in_count
       field :last_sign_in_at      
     end
@@ -28,10 +59,14 @@ RailsAdmin.config do |config|
       field :email
       field :password
       field :password_confirmation     
+      field :franchisee
     end
   end
 
   config.model 'Article' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
     list do
       field :title
       field :url_title
@@ -93,6 +128,9 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Blog' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
     list do
       field :title
       field :url_title
@@ -155,7 +193,12 @@ RailsAdmin.config do |config|
       field :address_1
       field :city
       field :state
-      field :postal_code
+      field :admin do
+        label 'Franchisee'
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
     end
     show do
       group :general do
@@ -166,6 +209,12 @@ RailsAdmin.config do |config|
         field :description do
           pretty_value do
             value.html_safe
+          end
+        end
+        field :admin do
+          label 'Franchisee'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
           end
         end
         field :status
@@ -309,6 +358,12 @@ RailsAdmin.config do |config|
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
         field :description
+        field :admin do
+          label 'Franchisee'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
         field :status
       end
       group :contact do

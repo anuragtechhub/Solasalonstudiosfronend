@@ -1,7 +1,10 @@
 class Location < ActiveRecord::Base
 
+  has_paper_trail
+
   scope :open, -> { where(:status => 'open') }
 
+  belongs_to :admin
   has_many :stylists
 
   before_save :fix_url_name
@@ -87,6 +90,10 @@ class Location < ActiveRecord::Base
     address += "#{city}, #{state} #{postal_code}"
 
     return address
+  end
+
+  def franchisee
+    admin.email if admin && admin.franchisee
   end
 
   def full_address

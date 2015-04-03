@@ -52,6 +52,8 @@ gem 'htmlcompressor'
 
 gem 'gibbon'
 
+gem 'cancan'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

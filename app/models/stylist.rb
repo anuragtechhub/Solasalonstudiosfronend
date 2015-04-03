@@ -1,5 +1,7 @@
 class Stylist < ActiveRecord::Base
 
+  has_paper_trail
+  
   scope :open, -> { where(:status => 'open') }
 
   belongs_to :location
