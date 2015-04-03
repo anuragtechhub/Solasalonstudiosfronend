@@ -82,16 +82,41 @@
   </div>
 </div>
 
-    
-    <% if @location.stylists && @location.stylists.size > 0 %>
-      <hr>
-      <h3>Salon Professionals</h3>
-      <ul>
-        <% @location.stylists.open.each do |stylist| %>
-          <li><%= link_to stylist.name, show_stylist_path(stylist) %></li>
+<div class="callout blue no-padding">
+  <div class="container">
+    <div class="row text-left">
+      
+      <div class="one-half column">
+        <%= link_to :testimonials, :class => 'link' do %>
+          <div class="row">
+            <div class="one-third column">
+              <span class="ss-chat"></span>
+            </div>
+            <div class="two-thirds column">
+              <h3 class="large">SEE WHAT OTHERS ARE SAYING</h3>
+              <h3 class="subtle">VIEW SOLA TESTIMONIALS</h3>
+            </div>
+          </div>
         <% end %>
-      </ul>
-    <% end %>
+      </div>
+
+      <div class="one-half column">
+        <%= link_to :salon_professionals, :class => 'link' do %>
+          <div class="row">
+            <div class="one-third column">
+              <span class="ss-search"></span>
+            </div>  
+             <div class="two-thirds column">    
+              <h3 class="large">FIND A SALON PROFESSIONAL</h3>
+              <h3 class="subtle">AT <%= @location.name.upcase %> SOLA</h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
 <input type="hidden" id="is_salon" value="y" />
