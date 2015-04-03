@@ -148,6 +148,6 @@ $(function () {
     $map.css('height', $(window).height());
  }
 
- //$('#map-overlay').css('top', $map.offset().top).show().on('click', function () { $('#map-overlay').remove(); });
+ $('#map-overlay').css('top', $map.offset().top).show().on('click', function () { $('#map-overlay').remove(); });
 
 });
