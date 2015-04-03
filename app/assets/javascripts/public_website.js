@@ -24,10 +24,10 @@ $(function () {
         "<i class='arrow-left'></i>",
         "<i class='arrow-right'></i>"
       ],
-      slideSpeed: 300,
+      //slideSpeed: 300,
       pagination: false,
       paginationSpeed: 400,
-      autoPlay: 5000,
+      autoPlay: false,//5000,
       singleItem: true
   });
 
