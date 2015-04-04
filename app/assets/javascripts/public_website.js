@@ -14,6 +14,7 @@ $(function () {
   // size salon carousel before init
   var $salonCarousel = $('.salon-carousel');
   if ($salonCarousel.length) {
+    console.log('sizing to', $('.salon-info').height());
     $salonCarousel.find('img').css('max-height', $('.salon-info').height() - 1);
   }
 
