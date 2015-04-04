@@ -109,10 +109,10 @@ $(function () {
       google.maps.event.addListenerOnce(map.map, 'idle', function() {
         if (salon) {
           setTimeout(function () {
-              new google.maps.event.trigger(marker, 'click'); 
+              //new google.maps.event.trigger(marker, 'click'); 
               setTimeout(function () {
                 new google.maps.event.trigger(marker, 'click');
-              }, 500);
+              }, 500); //don't ask
           }, 500);
         } else {
           // autocenter and zoom
