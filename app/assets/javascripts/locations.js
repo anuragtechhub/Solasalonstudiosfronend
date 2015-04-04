@@ -42,45 +42,52 @@ $(function () {
         saddress = $this.data('saddress'),
         address = $this.data('address'),
         url = $this.data('url'),
-        salon = $this.data('salon');
+        salon = $this.data('salon'),
+        marker, markerIcon;
     
     latlngbounds.extend(new google.maps.LatLng(coords[0], coords[1]));
     
+
+  function openInfoBox() {
+    var ib = new InfoBox({
+      content: getMarkerContent(name, saddress, address, url, salon),
+      closeBoxURL: '',
+      pixelOffset: new google.maps.Size(-100, -200)
+    });
+    
+    if (openWindow && typeof openWindow.close === 'function') {
+      openWindow.close();
+    }
+    
+    ib.open(map.map, marker);
+    openWindow = ib;
+
+    closeMarker = false;
+    map.map.panTo(marker.getPosition());
+
+    //position infobox
     setTimeout(function () {
-      var markerIcon = new google.maps.MarkerImage($('#marker-icon-url').val(), null, null, null, new google.maps.Size(19,19)),
-        marker = map.addMarker({
+      var $div = $('.infoBox');
+
+      $div.show();
+
+      setTimeout(function () {
+        $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
+        closeMarker = true;
+      }, 100);
+    }, 100);     
+  }
+
+
+    setTimeout(function () {
+      markerIcon = new google.maps.MarkerImage($('#marker-icon-url').val(), null, null, null, new google.maps.Size(19,19));
+      marker = map.addMarker({
         lat: coords[0],
         lng: coords[1],
         icon: markerIcon,
         title: name,
         click: function(e) {
-          var ib = new InfoBox({
-            content: getMarkerContent(name, saddress, address, url, salon),
-            closeBoxURL: '',
-            pixelOffset: new google.maps.Size(-100, -200)
-          });
-          if (openWindow && typeof openWindow.close === 'function') {
-            openWindow.close();
-          }
-          ib.open(map.map, marker);
-          openWindow = ib;
-
-          closeMarker = false;
-          map.map.panTo(marker.getPosition());
-          
-          //position infobox
-          setTimeout(function () {
-            var $div = $('.infoBox');
-            
-            $div.show();
-            
-            setTimeout(function () {
-                $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
-                closeMarker = true;
-            }, 100);
-          }, 100);
-
-          
+          openInfoBox();
         }
       });
 
@@ -109,10 +116,7 @@ $(function () {
       google.maps.event.addListenerOnce(map.map, 'idle', function() {
         if (salon) {
           setTimeout(function () {
-              //new google.maps.event.trigger(marker, 'click'); 
-              setTimeout(function () {
-                new google.maps.event.trigger(marker, 'click');
-              }, 500); //don't ask
+            openInfoBox();
           }, 500);
         } else {
           // autocenter and zoom
