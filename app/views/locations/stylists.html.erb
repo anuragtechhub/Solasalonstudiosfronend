@@ -1,0 +1,74 @@
+<div class="location-breadcrumb">
+  <div class="container">
+    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
+  </div>
+</div>
+
+<div class="container content-container">
+  <div class="row">
+
+    <div class="one-half column">
+      <h1>Salon Professionals</h1>
+      <h3 class="subtle"><%= @location.name %></h3>
+    </div>
+
+    <div class="one-half column text-right">
+
+      <div class="sola-select">
+        <div class="row">
+          <div class="option-placeholder"><h3><%= params[:service] || 'Filter by Service' %></h3></div>
+          <div class="arrow"><span class="ss-dropdown"></span></div>
+        </div>
+        <div class="options">
+          <% @location.services.each do |service| %>
+            <div class="option" data-value="<%= salon_stylists_path(@location.state, @location.city, @location.url_name, service) %>"><%= service %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="row stylists-map" id="map"></div>
+<div id="map-overlay" class="stylists-map"></div>
+
+<div class="callout green small">
+  <h4><strong>Contact your salon professional directly to schedule an appointment or for more information</strong></h4>
+</div>
+
+<div class="container content-container">
+  <div class="row">
+
+    <% if @stylists && @stylists.size > 0 %>
+      <% @stylists.each_with_index do |stylist, index| %>
+        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
+          <div class="one-third column search-result stylist">
+            <h3><%= stylist.name %></h3>
+            <h3 class="subtle business-name"><%= stylist.business_name.present? ? stylist.business_name.html_safe : '&nbsp;'.html_safe %></h3>
+            <p class="salon-services">
+              <% if stylist.services && stylist.services.size > 0 %>
+                <% stylist.services.each do |service| %>
+                  <span class="service" data-service="<%= service %>"><%= service %></span>
+                <% end %>
+              <% else %>
+                <span class="service" style="visibility:hidden">&nbsp;</span>
+              <% end %>
+            </p>
+            <div><%= stylist.phone_number %></div>
+            <div class='view-profile'><%= link_to 'View Profile', show_salon_professional_path(stylist) %></div>
+          </div>
+        <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
+<input type="hidden" id="is_salon" value="y" />
+
+<% content_for(:scripts) { javascript_include_tag('locations'); } %>
+<% content_for(:scripts) { javascript_include_tag('salon_stylists'); } %>

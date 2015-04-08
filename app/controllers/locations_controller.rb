@@ -23,18 +23,26 @@ class LocationsController < PublicWebsiteController
     @all_locations = Location.all
     query_param = "%#{params[:state]}%"
     @locations = Location.where('state LIKE ?', query_param)
-
-    # locations1 = Location.near(params[:state])
-    # locations2 = Location.where('state LIKE ?', query_param)
-    # @locations = locations1 + locations2
-    # if @locations
-    #   @locations.uniq!
-    #   @locations.sort! { |a, b| a.name <=> b.name }
-    # end
   end
 
   def salon
     @location = Location.find_by(:url_name => params[:url_name])
+    if @location
+      @lat = @location.latitude
+      @lng = @location.longitude
+      @zoom = 14
+      @locations = [@location]
+    end
+  end
+
+  def stylists
+    @location = Location.find_by(:url_name => params[:url_name])
+    @stylists = @location.stylists
+
+    if (params[:service]) 
+      @stylists = @location.stylists.select { |s| true if s.services.include?(params[:service]) }
+    end
+
     if @location
       @lat = @location.latitude
       @lng = @location.longitude

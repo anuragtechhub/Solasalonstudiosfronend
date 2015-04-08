@@ -12,7 +12,7 @@
       <h1><%= @location.name %></h1>
       <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
       <div class="salon-buttons">
-        <%= link_to 'Find a Salon Professional', :salon_professionals, :class => 'button block' %>
+        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block' %>
         <%= link_to 'Request a Tour', :request_a_tour, :class => 'button block' %>
       </div>
       <div class="row salon-map" id="map"></div>

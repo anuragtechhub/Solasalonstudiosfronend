@@ -77,6 +77,16 @@ class Location < ActiveRecord::Base
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
+  def services
+    services = []
+
+    stylists.each do |stylist|
+      services = services + stylist.services
+    end
+
+    services.uniq.sort
+  end
+
   def status_enum
     [['Open', 'open'], ['Closed', 'closed']]
   end

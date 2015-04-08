@@ -1,7 +1,13 @@
 @import 'mixins';
 @import 'variables';
 
+h3.business-name {
+  margin: 3px 0 0 0 !important;
+  height: 42px;
+}
+
 .salon-services {
+  margin-top: 0 !important;
 
   .service {
     display: inline-block;
@@ -18,4 +24,8 @@
       margin-right: 0;
     }
   }
+}
+
+.view-profile {
+  margin-top: 5px;
 }

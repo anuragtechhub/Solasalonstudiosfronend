@@ -11,6 +11,14 @@
   font-size: 29px;
   line-height: 33px;
 
+  &.small {
+    padding: 20px;
+
+    h4 {
+      font-size: 15px;
+    }
+  }
+
   .text-left {
     text-align: left;
   }
