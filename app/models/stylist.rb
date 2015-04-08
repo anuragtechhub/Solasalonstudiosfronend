@@ -104,6 +104,14 @@ class Stylist < ActiveRecord::Base
     url_name
   end
 
+  def website_url
+    if website.start_with? 'http://'
+      return website
+    else 
+      return "http://#{website}"
+    end
+  end
+
   private
 
   def update_computed_fields

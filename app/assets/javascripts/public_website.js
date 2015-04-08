@@ -12,10 +12,17 @@ $(function () {
   FastClick.attach(document.body);
 
   // size salon carousel before init
-  var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
-  if ($salonCarousel.length) {
-    $salonCarousel.find('img').css('max-height', $('.salon-info, .salon-pro-info').height() - 1);
+  function sizeCarousel() {
+    var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
+    if ($salonCarousel.length) {
+      console.log('height', $('.salon-info, .salon-pro-info').height());
+      $salonCarousel.find('img').css('height', $('.salon-info, .salon-pro-info').height() - 1);
+    }
   }
+
+  setTimeout(sizeCarousel, 100);
+
+  $(window).on('resize', sizeCarousel);
 
   // carousel
   $('.owl-carousel').owlCarousel({

@@ -9,7 +9,7 @@
 <div class="container content-container content-container-mobile-full">
   <div class="row">
 
-    <div class="two-thirds column ">
+    <div class="two-thirds column push-one-third">
       <div class="salon-pro-carousel owl-carousel owl-theme">
         <% if @stylist.images.size > 0 %>
         <% @stylist.images.each do |image| %>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="one-third column salon-pro-info">
+    <div class="one-third column salon-pro-info pull-two-thirds">
       <h1><%= @stylist.name.html_safe %></h1>
       <% if @stylist.business_name.present? %>
         <h3><%= @stylist.business_name.html_safe %></h3>
@@ -43,7 +43,7 @@
           <li><%= @stylist.phone_number %></li>
         <% end %>
         <% if @stylist.website.present? %>
-          <li><%= link_to 'Visit my website', @stylist.website, :target => '_blank' %></li>
+          <li><%= link_to 'Visit my website', @stylist.website_url, :target => '_blank' %></li>
         <% end %>
       </ul>
       <div class="row salon-map" id="map"></div>
@@ -62,7 +62,6 @@
     </div>
 
   </div>
-  <hr>
 <% end %>
 
 <% if @stylist.biography.present? %>
@@ -74,7 +73,6 @@
     </div>
 
   </div>
-  <hr>
 <% end %>
 
 <% if @stylist.services.size > 0 %>
@@ -97,7 +95,6 @@
     </div>
 
   </div>
-  <hr>
 <% end %>
 
 <% if @stylist.testimonials.size > 0 %>
@@ -121,7 +118,6 @@
     </div>
 
   </div>
-  <hr>
 <% end %>
 
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
