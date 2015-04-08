@@ -1,7 +1,49 @@
+<div class="location-breadcrumb">
+  <div class="container">
+    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
+    <span class="divider">/</span> <%= link_to @stylist.name, show_salon_professional_path(@stylist) %>
+  </div>
+</div>
+
+<div class="salon-professional-hero">
+  <div class="container">
+    <div class="row">
+
+      <div class="two-thirds column">
+        <h1><%= @stylist.name.html_safe %></h1>
+        <h3><%= @stylist.business_name.html_safe %></h3>
+      </div>
+
+      <div class="one-third column studio-number-badge-column">
+        <div class="studio-number-badge">
+          <div class="studio"><h3 class="subtle">Studio</h3></div>
+          <div class="number"><h1><%= @stylist.studio_number %></h1></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container content-container">
+  <div class="row">
+
+    <div class="one-third column">
+
+    </div>
+
+    <div class="two-thirds column">
+
+    </div>
+
+  </div>
+</div>
+
 <div class="container content-container">
   <div class="row">
     
-    <h1><%= @stylist.name.html_safe %></h1>
+    
     <div class="stylist-photos">
       <%= link_to(image_tag(@stylist.image_1(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_1(:original), :target => '_blank') if @stylist.image_1.exists? %>
       <%= link_to(image_tag(@stylist.image_2(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_2(:original), :target => '_blank') if @stylist.image_2.exists? %>

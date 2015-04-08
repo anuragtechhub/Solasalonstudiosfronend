@@ -113,6 +113,7 @@
     color: #737373;
     letter-spacing: 1px;
     text-decoration: none;
+    white-space: nowrap;
   }
 }
 
@@ -137,5 +138,8 @@ h2.city {
   #map, #map-overlay {
     height: 275px; 
     width: 100%;
+  }
+  .location-breadcrumb {
+    display: none !important;
   }
 }

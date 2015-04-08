@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="row">
-      <div class="one-half column">
+      <div class="one-half column locations-hero">
           <h1>Find a Sola Location</h1>
           <h3 class="subtle">Over 150 Salons</h3>
       </div>
@@ -45,7 +45,7 @@
       <% locations.each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result">
-            <h3><%= location.name %></h3>
+            <h3><%= location.name.html_safe %></h3>
             <p><%= location.html_address.html_safe %></p>
             <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
           </div>

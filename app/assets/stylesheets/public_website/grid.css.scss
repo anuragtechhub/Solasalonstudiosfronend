@@ -2,3 +2,16 @@
 .content-container {
   padding-top: 20px;
 }
+
+@media (max-width: 550px) {
+
+  .container.content-container.content-container-mobile-full {
+    padding: 0 !important;
+  }
+
+  .content-container-mobile-padded {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+}

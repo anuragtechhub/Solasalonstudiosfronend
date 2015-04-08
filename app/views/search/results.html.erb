@@ -10,7 +10,7 @@
       <% @locations.each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result">
-            <h3><%= location.name %></h3>
+            <h3><%= location.name.html_safe %></h3>
             <p><%= location.html_address.html_safe %></p>
             <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
           </div>
@@ -23,7 +23,7 @@
       <% @stylists.each_with_index do |stylist, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result">
-            <h3><%= stylist.name %></h3>
+            <h3><%= stylist.name.html_safe %></h3>
             <h3 class="subtle business-name"><%= stylist.business_name.present? ? stylist.business_name.html_safe : '&nbsp;'.html_safe %></h3>
             <p class="salon-services">
               <% if stylist.services && stylist.services.size > 0 %>

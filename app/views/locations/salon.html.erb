@@ -5,21 +5,10 @@
   </div>
 </div>
 
-<div class="container content-container">
+<div class="container content-container content-container-mobile-full">
   <div class="row">
 
-    <div class="one-third column salon-info">
-      <h1><%= @location.name %></h1>
-      <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
-      <div class="salon-buttons">
-        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block' %>
-        <%= link_to 'Request a Tour', :request_a_tour, :class => 'button block' %>
-      </div>
-      <div class="row salon-map" id="map"></div>
-      <div id="map-overlay" class="salon-map"></div>
-    </div>
-
-    <div class="two-thirds column">
+    <div class="two-thirds column push-one-third">
       <div class="salon-carousel owl-carousel owl-theme">
         <% @location.images.each do |image| %>
           <% if image.exists?(:salon) %>
@@ -29,6 +18,17 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+
+    <div class="one-third column salon-info pull-two-thirds content-container-mobile-padded">
+      <h1><%= @location.name.html_safe %></h1>
+      <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
+      <div class="salon-buttons">
+        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block' %>
+        <%= link_to 'Request a Tour', :request_a_tour, :class => 'button block' %>
+      </div>
+      <div class="row salon-map" id="map"></div>
+      <div id="map-overlay" class="salon-map"></div>
     </div>
 
   </div>
