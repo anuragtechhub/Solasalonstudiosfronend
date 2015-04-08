@@ -17,7 +17,7 @@ $(function () {
       mapTypeIds: []
     },
     styles: mapStyles
-  });
+  });  
 
   // markers
   
@@ -25,7 +25,7 @@ $(function () {
   var latlngbounds = new google.maps.LatLngBounds();
   var $markers = $('input[name=marker]');
   var closeMarker = false;
-  // var markersPlaced = 0;
+  var ib;
 
   var getMarkerContent = function (name, saddress, address, url, salon) {
     if (salon) {
@@ -48,12 +48,22 @@ $(function () {
     latlngbounds.extend(new google.maps.LatLng(coords[0], coords[1]));
     
 
+  function isInfoWindowOpen () {
+    if (ib && $(ib.div_).length > 0 && $(ib.div_).is(':visible')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  //window.isInfoWindowOpen = isInfoWindowOpen;
+
   function openInfoBox() {
-    var ib = new InfoBox({
+    ib = new InfoBox({
       content: getMarkerContent(name, saddress, address, url, salon),
       closeBoxURL: '',
       pixelOffset: new google.maps.Size(-100, -200)
     });
+    window.ib = ib;
     
     if (openWindow && typeof openWindow.close === 'function') {
       openWindow.close();
@@ -65,6 +75,8 @@ $(function () {
     closeMarker = false;
     map.map.panTo(marker.getPosition());
 
+
+
     //position infobox
     setTimeout(function () {
       var $div = $('.infoBox');
@@ -74,6 +86,10 @@ $(function () {
       setTimeout(function () {
         $div.show().css({'left': '-=' + (($div.width() / 2) - 100), 'top': '-=' + (($div.height() + 31) - 200)}).css('opacity', 1);
         closeMarker = true;
+
+        if (!isInfoWindowOpen()) {
+          setTimeout(openInfoBox, 100);
+        }
       }, 100);
     }, 100);     
   }
@@ -117,7 +133,7 @@ $(function () {
         if (salon) {
           setTimeout(function () {
             openInfoBox();
-          }, 500);
+          }, 100);
         } else {
           // autocenter and zoom
           function getZoomByBounds( map, bounds ){

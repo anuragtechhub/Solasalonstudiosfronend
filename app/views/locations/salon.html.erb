@@ -10,12 +10,16 @@
 
     <div class="two-thirds column push-one-third">
       <div class="salon-carousel owl-carousel owl-theme">
-        <% @location.images.each do |image| %>
-          <% if image.exists?(:carousel) %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
-          <% else %>
-            <div class="item"><%= image_tag image.url(:original) %></div>
+        <% if @location.images.size > 0 %>
+          <% @location.images.each do |image| %>
+            <% if image.exists?(:carousel) %>
+              <div class="item"><%= image_tag image.url(:carousel) %></div>
+            <% else %>
+              <div class="item"><%= image_tag image.url(:original) %></div>
+            <% end %>
           <% end %>
+        <% else %>
+          <div class="item"><%= image_tag 'gray.gif' %></div>
         <% end %>
       </div>
     </div>

@@ -15,7 +15,7 @@ $(function () {
   function sizeCarousel() {
     var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
     if ($salonCarousel.length) {
-      $salonCarousel.find('img').css('height', $('.salon-info, .salon-pro-info').height());
+      $salonCarousel.find('img').css('height', $('.salon-info, .salon-pro-info').height() - 1);
     }
   }
 
