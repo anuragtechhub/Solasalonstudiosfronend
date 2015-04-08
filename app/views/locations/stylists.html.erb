@@ -25,17 +25,7 @@
   </div>
 </div>
 
-<div class="location-breadcrumb">
-  <div class="container">
-    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
-    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
-  </div>
-</div>
-
-<div class="row stylists-map" id="map"></div>
-<div id="map-overlay" class="stylists-map"></div>
-
-<div class="callout green small">
+<div class="callout green small" style="margin-bottom: -19px;">
   <h4><strong>Contact your salon professional directly to schedule an appointment or for more information</strong></h4>
 </div>
 
@@ -64,6 +54,16 @@
       <% end %>
     <% end %>
 
+  </div>
+</div>
+
+<div class="row stylists-map" id="map"></div>
+<div id="map-overlay" class="stylists-map"></div>
+
+<div class="location-breadcrumb" style="border-bottom: 0">
+  <div class="container">
+    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
   </div>
 </div>
 
