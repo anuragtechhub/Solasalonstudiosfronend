@@ -12,9 +12,9 @@ $(function () {
   FastClick.attach(document.body);
 
   // size salon carousel before init
-  var $salonCarousel = $('.salon-carousel');
+  var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
   if ($salonCarousel.length) {
-    $salonCarousel.find('img').css('max-height', $('.salon-info').height() - 1);
+    $salonCarousel.find('img').css('max-height', $('.salon-info, .salon-pro-info').height() - 1);
   }
 
   // carousel

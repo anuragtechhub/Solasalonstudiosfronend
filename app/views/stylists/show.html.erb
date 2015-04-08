@@ -6,78 +6,125 @@
   </div>
 </div>
 
-<div class="salon-professional-hero">
-  <div class="container">
-    <div class="row">
+<div class="container content-container content-container-mobile-full">
+  <div class="row">
 
-      <div class="two-thirds column">
-        <h1><%= @stylist.name.html_safe %></h1>
+    <div class="two-thirds column ">
+      <div class="salon-pro-carousel owl-carousel owl-theme">
+        <% if @stylist.images.size > 0 %>
+        <% @stylist.images.each do |image| %>
+          <% if image.exists?(:carousel) %>
+            <div class="item"><%= image_tag image.url(:carousel) %></div>
+          <% else %>
+            <div class="item"><%= image_tag image.url(:original) %></div>
+          <% end %>
+        <% end %>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </div>
+    </div>
+
+    <div class="one-third column salon-pro-info">
+      <h1><%= @stylist.name.html_safe %></h1>
+      <% if @stylist.business_name.present? %>
         <h3><%= @stylist.business_name.html_safe %></h3>
-      </div>
+      <% end %>
+      <h4>Studio <%= @stylist.studio_number %></h4>
 
-      <div class="one-third column studio-number-badge-column">
-        <div class="studio-number-badge">
-          <div class="studio"><h3 class="subtle">Studio</h3></div>
-          <div class="number"><h1><%= @stylist.studio_number %></h1></div>
+      <div class="salon-pro-buttons">
+        <% if @stylist.booking_url.present? %>
+          <%= link_to 'Book Now', @stylist.booking_url, :class => 'button block', :target => '_blank' %>
+        <% end %>
+        <%= link_to 'Send a Message', '#', :class => 'button block' %>
+      </div>
+      <ul class="contact-info">
+        <% if @stylist.phone_number.present? %>
+          <li><%= @stylist.phone_number %></li>
+        <% end %>
+        <% if @stylist.website.present? %>
+          <li><%= link_to 'Visit my website', @stylist.website, :target => '_blank' %></li>
+        <% end %>
+      </ul>
+      <div class="row salon-map" id="map"></div>
+      <div id="map-overlay" class="salon-map"></div>
+    </div>
+
+  </div>
+</div>
+
+<% if @stylist.work_hours.present? %>
+  <div class="container">
+
+    <div class="row about-this-location">
+      <h3 class="text-center">Availability</h3>
+      <h4 class="text-center"><%= @stylist.work_hours.html_safe %></h4>
+    </div>
+
+  </div>
+  <hr>
+<% end %>
+
+<% if @stylist.biography.present? %>
+  <div class="container">
+
+    <div class="row about-this-location">
+      <h3 class="text-center">About <%= @stylist.name %></h3>
+      <h4 class="text-center"><%= @stylist.biography.html_safe %></h4>
+    </div>
+
+  </div>
+  <hr>
+<% end %>
+
+<% if @stylist.services.size > 0 %>
+  <div class="container">
+
+    <div class="row about-this-location">
+      <h3 class="text-center">Services</h3>
+      <ul class="stylist-services">
+        <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
+        <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
+        <%= '<li>Nails</li>'.html_safe if @stylist.nails %>
+        <%= '<li>Massage</li>'.html_safe if @stylist.massage %>
+        <%= '<li>Teeth Whitening</li>'.html_safe if @stylist.teeth_whitening %>
+        <%= '<li>Eyelash Extensions</li>'.html_safe if @stylist.eyelash_extensions %>
+        <%= '<li>Hair Extensions</li>'.html_safe if @stylist.hair_extensions %>
+        <%= '<li>Makeup</li>'.html_safe if @stylist.makeup %>
+        <%= '<li>Tanning</li>'.html_safe if @stylist.tanning %>
+        <%= '<li>Waxing</li>'.html_safe if @stylist.waxing %>
+      </ul>
+    </div>
+
+  </div>
+  <hr>
+<% end %>
+
+<% if @stylist.testimonials.size > 0 %>
+  <div class="container">
+
+    <div class="row about-this-location">
+      <h3 class="text-center">Testimonials</h3>
+      <% @stylist.testimonials.each do |testimonial| %>
+        <div class="testimonial">
+          <div class="text"><%= testimonial.text.html_safe %></div>
+          <% if testimonial.name.present? %>
+          <div class="name-region">
+            <%= testimonial.name %>
+            <% if testimonial.region.present? %>
+             , <%= testimonial.region %>
+            <% end %>
+          </div>
+          <% end %>
         </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="container content-container">
-  <div class="row">
-
-    <div class="one-third column">
-
-    </div>
-
-    <div class="two-thirds column">
-
+      <% end %>
     </div>
 
   </div>
-</div>
+  <hr>
+<% end %>
 
-<div class="container content-container">
-  <div class="row">
-    
-    
-    <div class="stylist-photos">
-      <%= link_to(image_tag(@stylist.image_1(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_1(:original), :target => '_blank') if @stylist.image_1.exists? %>
-      <%= link_to(image_tag(@stylist.image_2(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_2(:original), :target => '_blank') if @stylist.image_2.exists? %>
-      <%= link_to(image_tag(@stylist.image_3(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_3(:original), :target => '_blank') if @stylist.image_3.exists? %>
-      <%= link_to(image_tag(@stylist.image_4(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_4(:original), :target => '_blank') if @stylist.image_4.exists? %>
-      <%= link_to(image_tag(@stylist.image_5(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_5(:original), :target => '_blank') if @stylist.image_5.exists? %>
-      <%= link_to(image_tag(@stylist.image_6(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_6(:original), :target => '_blank') if @stylist.image_6.exists? %>
-      <%= link_to(image_tag(@stylist.image_7(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_7(:original), :target => '_blank') if @stylist.image_7.exists? %>
-      <%= link_to(image_tag(@stylist.image_8(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_8(:original), :target => '_blank') if @stylist.image_8.exists? %>
-      <%= link_to(image_tag(@stylist.image_9(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_9(:original), :target => '_blank') if @stylist.image_9.exists? %>
-      <%= link_to(image_tag(@stylist.image_10(:thumbnail), :class => 'thumbnail').html_safe, @stylist.image_10(:original), :target => '_blank') if @stylist.image_10.exists? %>
-    </div>
-    <p><%= @stylist.biography.html_safe %></p>
-    
-    <hr>
-    
-    <h4>Services</h4>
-    <ul class="stylist-services">
-      <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
-      <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
-      <%= '<li>Nails</li>'.html_safe if @stylist.nails %>
-      <%= '<li>Massage</li>'.html_safe if @stylist.massage %>
-      <%= '<li>Teeth Whitening</li>'.html_safe if @stylist.teeth_whitening %>
-      <%= '<li>Eyelash Extensions</li>'.html_safe if @stylist.eyelash_extensions %>
-      <%= '<li>Hair Extensions</li>'.html_safe if @stylist.hair_extensions %>
-      <%= '<li>Makeup</li>'.html_safe if @stylist.makeup %>
-      <%= '<li>Tanning</li>'.html_safe if @stylist.tanning %>
-      <%= '<li>Waxing</li>'.html_safe if @stylist.waxing %>
-    </ul>
+<%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
+<input type="hidden" id="is_salon" value="y" />
 
-    <hr>
-
-    <h4>Hours</h4>
-    <p><%= @stylist.work_hours %></p>
-
-  </div>
-</div>
+<% content_for(:scripts) { javascript_include_tag('locations') } %>

@@ -14,64 +14,64 @@ class Location < ActiveRecord::Base
   has_attached_file :floorplan_image, :styles => { :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_1, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_1, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_2, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_2, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_2, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_3, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_3, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_3, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_4, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_4, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_4, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_5, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_5, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_5, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_6, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_6, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_6, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_7, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_7, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_7, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_8, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_8, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_8, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_9, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_9, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_9, :content_type => /\Aimage\/.*\Z/
 
-  has_attached_file :image_10, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_10, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/              
 
-  has_attached_file :image_11, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_11, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_11, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_12, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_12, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_12, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_13, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_13, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_13, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_14, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_14, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_14, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_15, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_15, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_15, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_16, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_16, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_16, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_17, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_17, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_17, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_18, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_18, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_18, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_19, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_19, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_19, :content_type => /\Aimage\/.*\Z/       
 
-  has_attached_file :image_20, :styles => { :salon => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
+  has_attached_file :image_20, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_20, :content_type => /\Aimage\/.*\Z/                         
 
   validates :name, :presence => true
