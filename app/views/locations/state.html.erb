@@ -38,7 +38,7 @@
 
 <div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
 
-    <% @locations.group_by(&:city).each do |city, locations| %>
+    <% @locations.group_by(&:city).sort.each do |city, locations| %>
 
       <h2 class="city"><%= city %></h2>
 
