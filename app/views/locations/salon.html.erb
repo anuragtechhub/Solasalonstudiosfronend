@@ -109,9 +109,10 @@
 
       <div class="one-half column">
         <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour' do %>
-          <input name="your_name" placeholder="Your Name">
-          <input name="email_address" placeholder="Email Address">
-          <input name="Phone Number" placeholder="Phone Number (Optional)">
+          <input name="name" type="text" placeholder="Your Name">
+          <input name="email" type="text" placeholder="Email Address">
+          <input name="phone" type="text" placeholder="Phone Number (Optional)">
+          <input name="location_id" type="hidden" value="<%= @location.id %>">
           <button class="big-btn">Submit Request Tour</button>
         <% end %>
       </div>

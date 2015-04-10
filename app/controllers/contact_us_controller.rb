@@ -5,9 +5,9 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-      if params[:your_name] && params[:your_name].present? && params[:email_address] && params[:email_address].present?
-
-        render :json => {:success => 'Thank you! We will get in touch to schedule your tour soon.'}
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present?
+        RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id])
+        render :json => {:success => 'Thank you! We will get in touch soon to schedule a tour'}
       else
         render :json => {:error => 'Please enter your name and email address'}
       end
