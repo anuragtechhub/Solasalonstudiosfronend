@@ -1,3 +1,4 @@
+
 <div class="container content-container">
   <div class="row">
 
@@ -33,27 +34,28 @@
   </div>
 </div>
 
+<div class="map-list-wrapper">
 
-<div class="row" id="map"></div>
-<div id="map-overlay"></div>
-
-<div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
-
+  <div class="one-third column">
     <% @locations.group_by(&:city).sort.each do |city, locations| %>
 
       <h2 class="city"><%= city %></h2>
 
       <% locations.each_with_index do |location, index| %>
-        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-          <div class="one-third column search-result">
+          <div class="search-result">
             <h3><%= location.name.html_safe %></h3>
             <p><%= location.html_address.html_safe %></p>
             <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
           </div>
-        <% if ((index + 1) % 3) == 0 || index + 1 == locations.size %></div><% end %>
       <% end %>
 
     <% end %>
+  </div>
+
+  <div class="two-thirds column">
+    <div class="row" id="map"></div>
+    <div id="map-overlay"></div>
+  </div>
 
 </div>
 
