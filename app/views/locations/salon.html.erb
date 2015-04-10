@@ -108,10 +108,12 @@
       </div>
 
       <div class="one-half column">
-        <input name="your_name" placeholder="Your Name">
-        <input name="email_address" placeholder="Email Address">
-        <input name="Phone Number" placeholder="Phone Number (Optional)">
-        <button class="big-btn">Submit Request Tour</button>
+        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour' do %>
+          <input name="your_name" placeholder="Your Name">
+          <input name="email_address" placeholder="Email Address">
+          <input name="Phone Number" placeholder="Phone Number (Optional)">
+          <button class="big-btn">Submit Request Tour</button>
+        <% end %>
       </div>
 
     </div>

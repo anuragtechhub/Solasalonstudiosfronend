@@ -15,6 +15,8 @@ Solasalonstudios::Application.routes.draw do
   get "request-franchising-info" => "request_franchising_info#index", :as => :request_franchising_info
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
+  match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour
+
   get "locations" => 'locations#index', :as => :locations
   get "locations/:state" => 'locations#state', :as => :locations_by_state
   get "locations/:state/:city" => 'locations#city', :as => :locations_by_city

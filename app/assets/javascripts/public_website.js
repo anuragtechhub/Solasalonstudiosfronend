@@ -90,6 +90,28 @@ $(function () {
     }
   });
 
+  // contact-us-request-a-tour
+  $('#contact-us-request-a-tour').on('submit', function () {
+    var $form = $(this);
+
+    $.ajax({
+      method: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(data) {
+      if (data && data.success) {
+        $form.find('input').val('').end().tooltipster('content', data.success).tooltipster('show');
+      } else {
+        $form.tooltipster('content', data.error).tooltipster('show');
+      }
+    });
+
+    return false;
+  });
+
+  // contact-us-request-a-tour tooltip init
+  $('#contact-us-request-a-tour').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
   // footer newsletter sign up
   $('.footer-newsletter-sign-up').on('submit', function () {
     var $form = $(this);
@@ -110,6 +132,6 @@ $(function () {
   });
 
   // footer tooltip init
-  $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'})
+  $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
 });
