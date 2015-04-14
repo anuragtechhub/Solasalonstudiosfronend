@@ -54,6 +54,7 @@
   .container {
 
     .row {
+      display: -webkit-flex;
       display: flex;
       align-items: stretch;
     }
