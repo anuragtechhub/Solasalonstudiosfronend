@@ -10,7 +10,6 @@ ul.social {
     width: 25%;
     text-align: center;
     border-right: 1px solid #DBDBDB;
-
     
     &:last-child {
       border-right: 0;
@@ -30,5 +29,12 @@ ul.social {
         top: 2px;
       }
     }
+  }
+}
+
+ul.social.three {
+
+  li {
+    width: 33%;
   }
 }

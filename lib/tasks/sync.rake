@@ -88,7 +88,7 @@ namespace :sync do
 
       article.legacy_id = row['entry_id']
       article.title = meta['title'].encode('UTF-8')
-      article.url_title = meta['url_title'].encode('UTF-8')
+      article.url_name = meta['url_title'].encode('UTF-8')
 
       article.summary = filedir_replacement row['field_id_1'].encode('UTF-8')
       article.body = filedir_replacement row['field_id_2'].encode('UTF-8')
@@ -124,7 +124,7 @@ namespace :sync do
 
       blog.legacy_id = row['entry_id']
       blog.title = meta['title'].encode('UTF-8')
-      blog.url_title = meta['url_title'].encode('UTF-8')
+      blog.url_name = meta['url_title'].encode('UTF-8')
       blog.summary = filedir_replacement(row['field_id_202']).encode('UTF-8')
       blog.body = filedir_replacement(row['field_id_203']).encode('UTF-8')
       blog.author = row['field_id_252'].encode('UTF-8')

@@ -15,11 +15,10 @@
         <h4><%= @post.title.html_safe %></h4>
         <p class="subtle">Posted on <%= @post.created_at.strftime('%B %e, %Y') %><br><%= @post.author %></p>
         <div class="share-socially"><h3>Share Socially</h3></div>
-        <ul class="social">
-          <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-          <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+        <ul class="social three">
+          <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@post.image(:original)}&description=#{@post.safe_title}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+          <li><%= link_to "http://twitter.com/home/?status=#{@post.safe_title} #{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         </ul>
       </div>
       <div class="two-thirds column">

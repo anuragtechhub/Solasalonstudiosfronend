@@ -5,6 +5,5 @@ class BlogController < PublicWebsiteController
 
   def show
     @post = Blog.find_by(:url_name => params[:url_name])
-    p "@post.body=#{@post.body}"
   end
 end

@@ -8,6 +8,10 @@ class Blog < ActiveRecord::Base
 
   has_paper_trail
 
+  def safe_title
+    title.gsub(/&#8211;/, '-')
+  end
+
   def to_param
     url_name
   end
