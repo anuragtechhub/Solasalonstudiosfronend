@@ -69,7 +69,7 @@ RailsAdmin.config do |config|
     end
     list do
       field :title
-      field :url_title
+      field :url_name
       field :summary do
         pretty_value do
           value.html_safe
@@ -79,7 +79,7 @@ RailsAdmin.config do |config|
     end 
     show do
       field :title
-      field :url_title
+      field :url_name
       field :summary do
         pretty_value do
           value.html_safe
@@ -103,7 +103,7 @@ RailsAdmin.config do |config|
     end 
     edit do
       field :title
-      field :url_title
+      field :url_name
       field :summary do
         pretty_value do
           value.html_safe
@@ -133,7 +133,7 @@ RailsAdmin.config do |config|
     end
     list do
       field :title
-      field :url_title
+      field :url_name
       field :summary do
         pretty_value do
           value.html_safe
@@ -148,7 +148,7 @@ RailsAdmin.config do |config|
     end
     show do
       field :title
-      field :url_title do
+      field :url_name do
         label 'URL Title'
       end
       field :image do 
@@ -174,7 +174,7 @@ RailsAdmin.config do |config|
     end
     edit do
       field :title
-      field :url_title do
+      field :url_name do
         label 'URL Title'
       end
       field :image

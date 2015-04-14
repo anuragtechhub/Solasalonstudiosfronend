@@ -1,5 +1,32 @@
 <div class="container content-container">
+  
   <div class="row">
-    <h1>Blog Show</h1>
+    <h1>Our Blog</h1>
   </div>
+
+  <div class="blog-post-article">
+
+    <div class="row">
+      <div class="twelve columns"><%= link_to show_blog_path(@post) do %><%= image_tag @post.image(:original), :class => 'full-width' %><% end %></div>
+    </div>
+
+    <div class="row">
+      <div class="one-third column">
+        <h4><%= @post.title.html_safe %></h4>
+        <p class="subtle">Posted on <%= @post.created_at.strftime('%B %e, %Y') %><br><%= @post.author %></p>
+        <div class="share-socially"><h3>Share Socially</h3></div>
+        <ul class="social">
+          <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+          <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+        </ul>
+      </div>
+      <div class="two-thirds column">
+        <p class="summary"><%= @post.body.gsub(/\n\n/, '<br><br>').html_safe %></p>
+      </div>
+    </div>
+
+  </div>
+
 </div>

@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.blog-post-summary, .blog-post-article {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #CECECE;
+  margin-bottom: 50px;
+
+  img.full-width {
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    color: #000;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  p.subtle {
+    color: #9F9F9F;
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  p.summary {
+    line-height: 26px;
+
+    a, a:link, a:visited, a:hover, a:active {
+      color: $brand-pink;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .share-socially {
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #CECECE;
+
+    h3 {
+      margin: 0;
+    }
+  }
+}
