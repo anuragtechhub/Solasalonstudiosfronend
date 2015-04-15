@@ -7,7 +7,7 @@
   margin-bottom: 50px;
 
   img.full-width {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   h4 {
@@ -38,6 +38,51 @@
 
     h3 {
       margin: 0;
+    }
+  }
+}
+
+.blog-list-picture {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+
+  .blog-list-picture-overlay {
+    z-index: 2;
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    background: rgba(74, 158, 209, 0.9);
+
+    .large-button {
+      display: block;
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      font-family: 'Dosis', Arial, sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 30px;
+      color: #FFF;
+      padding: 5px 15px;
+      border: 1px solid #FFF;
+      display: inline-block;
+      width: 240px;
+      height: 60px;
+      margin-top: -30px;
+      margin-left: -120px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+
+  &:hover, &:active {
+    .blog-list-picture-overlay {
+      display: block;
     }
   }
 }

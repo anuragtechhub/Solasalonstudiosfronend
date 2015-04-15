@@ -39,7 +39,14 @@
   <% @posts.each do |post| %>
     <div class="blog-post-summary">
       <div class="row">
-        <div class="twelve columns"><%= link_to show_blog_path(post) do %><%= image_tag post.image(:original), :class => 'full-width' %><% end %></div>
+        <div class="twelve columns">
+          <%= link_to show_blog_path(post), :class => 'blog-list-picture' do %>
+            <%= image_tag post.image(:original), :class => 'full-width' %>
+            <div class="blog-list-picture-overlay">
+              <div class="large-button">Read Article</div>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div class="row">
         <div class="one-third column"><h4><%= post.title.html_safe %></h4><p class="subtle">Posted on <%= post.created_at.strftime('%B %e, %Y') %><br><%= post.author.html_safe %></p></div>
