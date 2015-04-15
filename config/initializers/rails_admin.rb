@@ -17,6 +17,8 @@ RailsAdmin.config do |config|
   # config.excluded_models << 'GetFeatured'
   # config.excluded_models << 'ResetPassword'
   # config.excluded_models << 'ExpressionEngine'
+  # config.excluded_models << 'BlogCategory'
+  # config.excluded_models << 'BlogBlogCategory'
 
   config.actions do
     # root actions
@@ -171,6 +173,9 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
+      field :blog_categories do
+        label 'Categories'
+      end
     end
     edit do
       field :title
@@ -181,7 +186,24 @@ RailsAdmin.config do |config|
       field :summary
       field :body
       field :author
+      field :blog_categories do
+        label 'Categories'
+      end
     end
+  end
+
+  config.model 'BlogCategory' do
+    visible false
+    label 'Category'
+    label_plural 'Categories'      
+    edit do 
+      field :name
+      field :url_name
+    end
+  end
+
+  config.model 'BlogBlogCategory' do
+    visible false
   end
 
   config.model 'Location' do  

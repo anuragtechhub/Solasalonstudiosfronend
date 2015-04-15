@@ -136,6 +136,24 @@ namespace :sync do
         p "image error = #{e.inspect}"
       end
 
+      categories = db.query("SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}")
+      if categories and categories.size > 0
+        p "WE HAVE CATEGORIES #{categories}"
+        categories.each do |category|
+          p "category=#{category}"
+          blog_category = db.query("SELECT * FROM exp_categories WHERE cat_id = #{category['cat_id']} LIMIT 1").first
+          if blog_category and blog_category.size > 0
+            blog_category = BlogCategory.find_or_create_by(:name => blog_category['cat_name'], :url_name => blog_category['cat_url_title'])
+            blog_category.legacy_id = blog_category['cat_id']
+            blog.blog_categories << blog_category
+          end
+        end
+      else
+        p "WE DO NOT HAVE ANY categories"
+      end
+      #
+
+
       if blog.save
         p "Saved (#{row['entry_id']})!"
       else 
