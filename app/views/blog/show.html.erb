@@ -9,11 +9,14 @@
     <div class="one-half column text-right">
       <div class="sola-select blog-select">
         <div class="row">
-          <div class="option-placeholder"><h3><%= params[:category] || 'Choose a Category' %></h3></div>
+          <div class="option-placeholder"><h3><%= @category ? @category.name : 'Choose a Category' %></h3></div>
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
-          
+          <% @categories.each do |category| %>
+            <div class="option" data-value="<%= blog_category_path(category.url_name) %>"><%= category.name.html_safe %></div>
+          <% end %>
+          <!--<div class="option" data-value="<%= blog_path %>">All Categories</div>-->
         </div>
       </div>
     </div>
@@ -24,7 +27,11 @@
 
 <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
-    <%= link_to 'Blog', :blog %> <span class="divider">/</span> <%= link_to @post.safe_title, show_blog_path(@post) %>
+    <%= link_to 'Blog', :blog %>     
+    <% if @category %>
+      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
+    <% end %>
+     <span class="divider">/</span> <%= link_to @post.safe_title, show_blog_path(@post) %>
   </div>
 </div>
 
@@ -54,3 +61,5 @@
   </div>
 
 </div>
+
+<% content_for(:scripts) { javascript_include_tag('blog') } %>

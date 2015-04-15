@@ -29,6 +29,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog
+  get "blog/category/:category_url_name" => 'blog#index', :as => :blog_category
 
   get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
 

@@ -151,7 +151,7 @@ RailsAdmin.config do |config|
     show do
       field :title
       field :url_name do
-        label 'URL Title'
+        label 'URL Name'
       end
       field :image do 
         pretty_value do 
@@ -180,7 +180,7 @@ RailsAdmin.config do |config|
     edit do
       field :title
       field :url_name do
-        label 'URL Title'
+        label 'URL Name'
       end
       field :image
       field :summary
