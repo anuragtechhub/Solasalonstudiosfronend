@@ -6,6 +6,7 @@
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
+//= require affix
 
 $(function () {
 
