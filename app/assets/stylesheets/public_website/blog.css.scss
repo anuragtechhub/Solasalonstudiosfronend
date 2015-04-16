@@ -59,6 +59,10 @@
     a, a:link, a:visited, a:hover, a:active {
       text-decoration: none !important;
     }
+
+    p.subtle {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -150,6 +154,18 @@
       margin-bottom: 25px;
       margin-top: 15px;
       border-bottom: 1px dashed #CECECE;
+    }
+
+    .related-blog {
+      margin-bottom: 35px;
+      border-bottom: 1px solid #E7E7E7;
+      padding-bottom: 30px;
+    }
+
+    .one-third:last-child .related-blog {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 20px;
     }
   }  
 }
