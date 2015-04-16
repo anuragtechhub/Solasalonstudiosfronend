@@ -11,7 +11,7 @@ html {
 
 body {
   background: $brand-primary asset-url('digital_directory_bg.gif');
-  zoom: 0.67;
+  // zoom: 0.67;
   font-family: 'Dosis', Arial, sans-serif;
 }
 
@@ -70,8 +70,8 @@ h2 {
 
 .container {
   position: relative;
-  width: 95%;
-  margin: 10px auto 0 auto;
+  width: 100%;
+  margin: 10px;
 }
 
 .left-col, .right-col {
@@ -84,12 +84,14 @@ h2 {
   left: 0;
   width: 35%;
   margin-bottom: 30px;
+  zoom: 0.7;
 }
 
 .right-col {
   left: 35%;
   width: 65%;
   margin-bottom: 30px;
+  zoom: 0.7;
 }
 
 /* listings */
