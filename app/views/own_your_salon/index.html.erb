@@ -1,5 +1,88 @@
 <div class="container content-container">
+
+
   <div class="row">
-    <h1>Own Your Salon</h1>
+    <div class="one-half column">
+      <h1>Be Your Own Boss</h1>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <p><%= link_to 'Testimonials', :testimonials, :class => 'button' %>
+    </div>
+
+    <div class="one-half column">
+      <%= image_tag 'gray.gif', :class => 'full-width' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-half column">
+      <%= image_tag 'gray.gif', :class => 'full-width' %>
+    </div>
+
+    <div class="one-half column">
+      <h1>Build Your Studio</h1>
+      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      <p><%= link_to 'Salon Gallery', :gallery, :class => 'button' %>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <h1 class="text-center">Amenities</h1>
+  <div class="row salon-amenities-benefits">
+
+    <div class="one-half column">
+      <h3>Studio Amenities</h3>
+      <h4>
+      <ul>
+        <li>Full enclosed, private, locking studio</li>
+        <li>High end styling chair and shampoo bowl</li>
+        <li>Full-spectrum lighting and oversize mirrors</li>
+        <li>Luxurious cabinets and fixtures</li>
+        <li>Individual ventilation in each studio</li>
+        <li>Instant and abundant hot water supply</li>
+        <li>Onsite laundry and shared amenities</li>
+        <li>All utilities and Wi-Fi included</li>
+        <li>And much more...</li>
+      </ul>
+      </h4>
+    </div>
+
+    <div class="one-half column">
+      <h3>Salon Professional Benefits</h3>
+      <h4>
+      <ul>
+        <li>Access group insurance and Sola discounts</li>
+        <li>Escape salon politics and drama</li>
+        <li>Manage your own schedule</li>
+        <li>Personalize your salon space</li>
+        <li>Set pricing for services and products</li>
+        <li>Sell the retail products you love</li>
+        <li>Play your own music</li>
+        <li>Enjoy private conversations</li>
+        <li>Keep 100% of your profits</li>
+      </ul>
+      </h4>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="sola-story">
+    <div class="row">
+      <div class="two-thirds column">
+        <h2>Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else.</h2>
+      </div>
+      <div class="one-third column">
+        <%= link_to 'The Sola Story', :about_us, :class => 'button' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="callout blue">
+  <div class="container">
+    <h3 class="large"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
   </div>
 </div>
