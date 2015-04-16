@@ -15,6 +15,32 @@ class Blog < ActiveRecord::Base
     title.gsub(/&#8211;/, '-')
   end
 
+  def related_blogs
+    blogs = []
+    if self.blog_categories.size > 0
+      self.blog_categories.each do |category|
+        if category.blogs && category.blogs.size > 0
+          category.blogs.order(:created_at => :desc).each do |blog|
+            if blog.id != self.id
+              blogs << blog
+              break if blogs.size == 3
+            end
+          end
+        end
+        break if blogs.size == 3
+      end
+    end
+    if blogs.size < 3
+      Blog.order(:created_at).limit(4).each do |blog|
+        if blog.id != self.id
+          blogs << blog
+          break if blogs.size == 3
+        end
+      end
+    end
+    blogs
+  end
+
   def to_param
     url_name
   end

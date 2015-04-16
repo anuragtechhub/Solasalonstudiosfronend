@@ -43,6 +43,7 @@
     </div>
 
     <div class="row">
+      
       <div class="one-third column">
         <h4><%= @post.title.html_safe %></h4>
         <p class="subtle">Posted on <%= @post.created_at.strftime('%B %e, %Y') %><br><%= @post.author.html_safe %></p>
@@ -53,12 +54,23 @@
           <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         </ul>
       </div>
+      
       <div class="two-thirds column">
         <p class="summary"><%= @post.body.gsub(/\n\n/, '<br><br>').html_safe %></p>
 
         <div class="disqus-comments">
           <%= render 'shared/disqus' %>
         </div>
+      </div>
+
+    </div>
+
+    <div class="related-articles">
+      <h3>Related Articles</h3>
+      <div class="row">
+        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[0] %></div>
+        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[1] %></div>
+        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[2] %></div>
       </div>
     </div>
 

@@ -47,6 +47,21 @@
   }
 }
 
+.related-articles {
+  h3 {
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+    margin-top: 50px;
+    border-bottom: 1px dashed #CECECE;
+  }
+  .related-blog {
+
+    a, a:link, a:visited, a:hover, a:active {
+      text-decoration: none !important;
+    }
+  }
+}
+
 .blog-list-picture {
   display: block;
   position: relative;
@@ -128,4 +143,13 @@
   .blog-post-summary h4, .blog-post-article h4 {
     margin-bottom: 10px;
   }
+
+  .related-articles {
+    h3 {
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      margin-top: 15px;
+      border-bottom: 1px dashed #CECECE;
+    }
+  }  
 }
