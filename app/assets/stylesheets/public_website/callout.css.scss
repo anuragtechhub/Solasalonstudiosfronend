@@ -6,7 +6,7 @@
   display: block;
   clear: both;
   width: 100%;
-  padding: 45px 30px;
+  padding: 35px 30px;
   text-align: center;
   font-size: 29px;
   line-height: 33px;
@@ -104,6 +104,26 @@
     h3, h4, .icon {
       color: #FFF;
     }
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-weight: bold;
+      color: #FFF;
+      text-decoration: none;
+    }
+  }
+}
+
+.callout-testimonial {
+  h1, h3 {
+    text-align: left;
+    color: #FFF;
+  }
+  h1 {
+    margin-top: 40px;
+  }
+  h3 {
+    margin-top: 15px;
+    font-weight: normal;
   }
 }
 
@@ -131,6 +151,12 @@
         border-left: 0;
       }
 
+    }
+  }
+
+  .callout-testimonial {
+    h1 {
+      margin-top: 30px;
     }
   }
 
