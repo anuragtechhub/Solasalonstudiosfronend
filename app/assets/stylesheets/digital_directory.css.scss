@@ -82,13 +82,13 @@ h2 {
 
 .left-col {
   left: 0;
-  width: 40%;
+  width: 35%;
   margin-bottom: 30px;
 }
 
 .right-col {
-  left: 40%;
-  width: 60%;
+  left: 35%;
+  width: 65%;
   margin-bottom: 30px;
 }
 
@@ -153,6 +153,11 @@ h2 {
 .floorplan-image {
   text-align: center;
   margin: 60px auto 60px auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* photo gallery */
@@ -165,6 +170,7 @@ h2 {
   width: 1187px;
   height: 405px;
   margin: 0 auto;
+  zoom: 0.85;
 
   .photo {
     position: absolute;
