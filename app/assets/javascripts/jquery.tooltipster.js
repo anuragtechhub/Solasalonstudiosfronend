@@ -888,7 +888,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				if(practicalPosition == 'top') {
 					var leftDifference = (proxy.offset.left + tooltipWidth) - (proxy.offset.left + proxy.dimension.width);
 					myLeft = (proxy.offset.left + offsetX) - (leftDifference / 2);
-					myTop = (proxy.offset.top - tooltipHeight) - offsetY - 12;
+					myTop = (proxy.offset.top - tooltipHeight) - offsetY - 12 - 9;
 					dontGoOffScreenX();
 					dontGoOffScreenY('bottom', 'top');
 				}
@@ -910,7 +910,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				if(practicalPosition == 'bottom') {
 					var leftDifference = (proxy.offset.left + tooltipWidth) - (proxy.offset.left + proxy.dimension.width);
 					myLeft = proxy.offset.left - (leftDifference / 2) + offsetX;
-					myTop = (proxy.offset.top + proxy.dimension.height) + offsetY + 12;
+					myTop = (proxy.offset.top + proxy.dimension.height) + offsetY + 12 + 9;
 					dontGoOffScreenX();
 					dontGoOffScreenY('top', 'bottom');
 				}
