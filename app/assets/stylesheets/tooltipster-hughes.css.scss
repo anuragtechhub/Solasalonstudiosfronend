@@ -36,3 +36,12 @@
   border-bottom: 20px solid;
   top: -19px;
 }
+
+@media (max-width: 550px) {
+  .tooltipster-hughes {
+    max-width: 200px;
+  }
+  .tooltipster-hughes .tooltipster-content {
+    padding: 20px;
+  }
+}
