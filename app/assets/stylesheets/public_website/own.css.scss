@@ -1,0 +1,114 @@
+.explore-studio {
+  position: relative;
+
+  h1 {
+    position: absolute;
+    color: #FFF;
+    top: 15px;
+    left: 15px;
+  }
+
+  .dot {
+    position: absolute;
+    background: asset-data-url('Marker_Normal_Icon@2x.png') no-repeat;
+    background-size: 19px 19px;
+    width: 19px;
+    height: 19px;
+    z-index: 3;
+    cursor: pointer;
+
+    &.mirror {
+      top: 23%;
+      left: 69%;
+    }
+
+    &.insulated-walls {
+      top: 5%;
+      left: 35%;
+    }
+
+    &.storage {
+      top: 55%;
+      left: 36%;
+    }
+
+    &.products {
+      top: 27%;
+      left: 12%;
+    }
+
+    &.chair {
+      top: 55%;
+      left: 60%;
+    }    
+
+    &.wash-basin {
+      top: 44%;
+      left: 54%;
+    } 
+
+    &.tool-cabinet {
+      top: 50%;
+      left: 77%;
+    }    
+
+    &.cabinetry {
+      top: 35%;
+      left: 90%;
+    } 
+
+  }
+}
+
+@media (max-width: 550px) {
+
+  .explore-studio {
+
+    h1 {
+      display: none;
+    }
+
+    .dot {
+      &.mirror {
+        top: 16%;
+        left: 68%;
+      }
+
+      &.insulated-walls {
+        top: 3%;
+        left: 34%;
+      }
+
+      &.storage {
+        top: 55%;
+        left: 34%;
+      }
+
+      &.products {
+        top: 23%;
+        left: 11%;
+      }
+
+      &.chair {
+        top: 52%;
+        left: 58%;
+      }    
+
+      &.wash-basin {
+        top: 41%;
+        left: 52%;
+      } 
+
+      &.tool-cabinet {
+        top: 50%;
+        left: 75%;
+      }    
+
+      &.cabinetry {
+        top: 35%;
+        left: 88%;
+      } 
+    }
+  }
+
+}
