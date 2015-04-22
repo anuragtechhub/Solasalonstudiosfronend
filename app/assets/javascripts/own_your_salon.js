@@ -4,7 +4,7 @@ $(function () {
 
   $('.dot').each(function () {
     var $this = $(this);
-    $this.tooltipster({theme: 'tooltipster-hughes', trigger: 'click', content: $($this.data('tooltip'))});
+    $this.tooltipster({theme: 'tooltipster-hughes', content: $($this.data('tooltip'))});
   });
 
 });
