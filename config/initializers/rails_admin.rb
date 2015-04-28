@@ -40,20 +40,28 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Admin' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
+    # visible do
+    #   bindings[:controller]._current_user.franchisee != true
+    # end
     #label 'Administrator'
     #label_plural 'Administrators'    
     list do
       field :email
-      field :franchisee
+      field :franchisee do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
       field :sign_in_count
       field :last_sign_in_at
     end
     show do
       field :email
-      field :franchisee
+      field :franchisee do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
       field :sign_in_count
       field :last_sign_in_at      
     end
@@ -61,7 +69,11 @@ RailsAdmin.config do |config|
       field :email
       field :password
       field :password_confirmation     
-      field :franchisee
+      field :franchisee do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
     end
   end
 

@@ -16,9 +16,11 @@ class Ability
 
       can :read, Location, :admin_id => admin.id 
       can :read, Stylist, :location => { :admin_id => admin.id }
+      can :read, Admin, :id => admin.id
       
       can :update, Location, :admin_id => admin.id 
       can :update, Stylist, :location => { :admin_id => admin.id }
+      can :update, Admin, :id => admin.id
 
       can :export, Location, :admin_id => admin.id 
       can :export, Stylist, :location => { :admin_id => admin.id }
