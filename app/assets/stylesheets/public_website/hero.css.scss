@@ -40,6 +40,7 @@
   height: 595px;
   position: relative;
   overflow: hidden;
+  margin-bottom: -10px;
 
   img {
     width: 100%;
@@ -91,13 +92,34 @@
 /* 1000px and below, the hero goes responsive height */
 @media (max-width: 1000px) {
   
-  .hero-carousel, .hero-text {
+  .hero-carousel {
     height: auto;
     max-height: 460px;
 
     img {
       height: auto;
       max-height: 460px;
+    }
+  }
+
+  .hero-text {
+    height: auto;
+    max-height: 560px;
+
+    .text {
+      margin: 30px 0 0 0;
+
+      h1 {
+        font-size: 32px;
+        line-height: 42px;
+        font-weight: 300;
+        margin-bottom: 20px;
+      } 
+    }
+
+    img {
+      height: auto;
+      max-height: 560px;
     }
   }
 
