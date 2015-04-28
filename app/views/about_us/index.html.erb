@@ -11,7 +11,49 @@
 </div>
 
 <div class="container content-container">
+  
   <div class="row">
-    <h1>About Us</h1>
+    <div class="one-third column"></div>
+    <div class="two-thirds column"></div>
+  </div>
+
+  <div class="row">
+    <div class="one-third column"></div>
+    <div class="two-thirds column"></div>
+  </div>
+
+</div>
+
+<div class="callout blue callout-testimonial">
+  <div class="container">
+    <div class="row">
+      <div class="one-third column">
+        <%= image_tag 'gray.gif', :class => 'testimonial-portrait' %>
+      </div>
+      <div class="two-thirds column">
+        <h1>"Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."</h1>
+        <h3>Katina Eisenbeis</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="callout green">
+  <div class="container">
+    <h3 class="large" style="margin-bottom:0;"><%= link_to 'View more testimonials'.html_safe, :testimonials %></h3>
+  </div>
+</div>
+
+<div class="container">
+  <div class="sola-story">
+    <div class="row">
+      <div class="two-thirds column">
+        <h2>Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else.</h2>
+      </div>
+      <div class="one-third column">
+        <%= link_to 'Own Your Salon', :own_your_salon, :class => 'button' %>
+        <%= link_to 'Contact Us', :contact_us, :class => 'button' %>
+      </div>
+    </div>
   </div>
 </div>
