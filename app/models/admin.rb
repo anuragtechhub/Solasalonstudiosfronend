@@ -11,4 +11,8 @@ class Admin < ActiveRecord::Base
   def title 
     email
   end
+
+  def location_ids
+    locations.pluck(:id) if locations
+  end
 end

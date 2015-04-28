@@ -13,10 +13,22 @@ class Ability
       can :dashboard
 
       can :new, [Stylist] 
-      can :read, [Location, Stylist]         # included in :read
-      can :update, [Location, Stylist]       # included in :create
-      can :export, [Location, Stylist]
-      can :destroy, [Location, Stylist]
+
+      can :read, Location, :admin_id => admin.id 
+      can :read, Stylist, :location => { :admin_id => admin.id }
+      
+      can :update, Location, :admin_id => admin.id 
+      can :update, Stylist, :location => { :admin_id => admin.id }
+
+      can :export, Location, :admin_id => admin.id 
+      can :export, Stylist, :location => { :admin_id => admin.id }
+
+      can :destroy, Location, :admin_id => admin.id 
+      can :destroy, Stylist, :location => { :admin_id => admin.id }
+
+      # can :update, [Location, Stylist]       # included in :create
+      # can :export, [Location, Stylist]
+      # can :destroy, [Location, Stylist]
     end
   end
 end
