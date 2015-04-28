@@ -13,13 +13,32 @@
 <div class="container content-container">
   
   <div class="row">
-    <div class="one-third column"></div>
-    <div class="two-thirds column"></div>
+    <div class="three columns">
+      <div class="info-box">
+        <h1>225+</h1>
+        <h3>Locations<br>Nationwide</h3>
+        <%= link_to 'View Locations', :locations %>
+      </div>
+      <div class="info-box">
+        <h1>5,000+</h1>
+        <h3>Salon<br>Professionals</h3>
+        <%= link_to 'Find a Stylist', :salon_professionals %>
+      </div>
+    </div>
+    <div class="nine columns">
+      <h1>About Sola</h1>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
   </div>
 
   <div class="row">
-    <div class="one-third column"></div>
-    <div class="two-thirds column"></div>
+    <div class="one-third column">
+      <%= image_tag 'gray.gif', :class => 'testimonial-portrait' %>
+    </div>
+    <div class="two-thirds column">
+      <h1>About the Founders</h1>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
   </div>
 
 </div>
@@ -45,15 +64,13 @@
 </div>
 
 <div class="container">
-  <div class="sola-story">
+  <div class="sola-story large">
     <div class="row">
-      <div class="two-thirds column">
         <h2>Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else.</h2>
-      </div>
-      <div class="one-third column">
-        <%= link_to 'Own Your Salon', :own_your_salon, :class => 'button' %>
-        <%= link_to 'Contact Us', :contact_us, :class => 'button' %>
-      </div>
+    </div>
+    <div class="row">
+      <%= link_to 'Own Your Salon', :own_your_salon, :class => 'button first' %>
+      <%= link_to 'Contact Us', :contact_us, :class => 'button' %>
     </div>
   </div>
 </div>

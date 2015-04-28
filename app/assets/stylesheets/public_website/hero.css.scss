@@ -91,7 +91,7 @@
 /* 1000px and below, the hero goes responsive height */
 @media (max-width: 1000px) {
   
-  .hero-carousel {
+  .hero-carousel, .hero-text {
     height: auto;
     max-height: 460px;
 
