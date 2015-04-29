@@ -24,12 +24,16 @@
 
     li {
       margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
   .one-half {
     width: 50%;
-    margin: 30px 0;
+    margin: 30px 0 50px 0;
     padding: 0;
 
     &:first-child {
