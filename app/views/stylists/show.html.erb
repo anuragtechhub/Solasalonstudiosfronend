@@ -4,6 +4,19 @@
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
     <span class="divider">/</span> <%= link_to @stylist.name, show_salon_professional_path(@stylist) %>
   </div>
+</div> 
+
+<div class="heading">
+  <div class="container">
+    <h1><%= @stylist.name.html_safe %></h1>
+    <h3><%= @stylist.business_name.html_safe %></h3>
+    <div class="badge">
+      <div class="studio-number-badge">
+        <div class="studio"><h3>Studio</h3></div>
+        <div class="number"><h1><%= @stylist.studio_number %></h1></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container content-container content-container-mobile-full">
@@ -26,12 +39,6 @@
     </div>
 
     <div class="one-third column salon-pro-info pull-two-thirds">
-      <h1><%= @stylist.name.html_safe %></h1>
-      <% if @stylist.business_name.present? %>
-        <h3><%= @stylist.business_name.html_safe %></h3>
-      <% end %>
-      <h4>Studio <%= @stylist.studio_number %></h4>
-
       <div class="salon-pro-buttons">
         <% if @stylist.booking_url.present? %>
           <%= link_to 'Book Now', @stylist.booking_url, :class => 'button block', :target => '_blank' %>

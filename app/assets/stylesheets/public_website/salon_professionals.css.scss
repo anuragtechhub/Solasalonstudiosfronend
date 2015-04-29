@@ -53,19 +53,23 @@ h3.business-name {
   padding: 0;
   margin: 0;
   border-radius: 50%;
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   text-align: center;
 
   .studio {
-    padding-top: 13px;
+    padding-top: 20px;
 
     h3 {
-      font-size: 11px;
-      line-height: 11px;
+      display: inline !important;
+      font-size: 13px;
+      line-height: 13px;
       border: 0;
       padding: 0;
       margin: 0;
+      color: #A5A5A5;
+      letter-spacing: 4px;
+      width: auto !important;
     }
   }
 
@@ -73,9 +77,11 @@ h3.business-name {
     margin-top: -2px;
 
     h1 {
-      font-size: 37px;
-      line-height: 37px;
+      font-size: 57px;
+      line-height: 57px;
+      font-weight: normal;
       letter-spacing: 3px;
+      width: auto !important;
     }
   }
 }
@@ -138,18 +144,6 @@ h3.business-name {
 
     h3 {
       display: block;
-    }
-  }
-
-  .studio-number-badge-column {
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .studio-number-badge {
-
-    .studio {
-      padding-top: 23px;
     }
   }
 
