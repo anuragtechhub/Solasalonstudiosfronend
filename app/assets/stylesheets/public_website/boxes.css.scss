@@ -1,18 +1,75 @@
 .half-boxes {
+  display: block;
+  clear: both;
+  height: 480px;
+  position: relative;
   
+  &.bottom-border {
+    margin-bottom: 40px;
+    border-bottom: 1px solid #DDDDDD;
+  }
+
   .box {
-    float: left;
-    clear: none;
-    width: 50%;
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 50%;
+
+    &.right {
+      left: 50%;
+    }
+  }
+
+  .box-text {
+    padding: 0 80px;
+    display: table-cell;
+    vertical-align: middle;
+
+    p {
+      margin: 60px 0 0 0;
+
+      a.button {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .box-image {
     background-repeat: no-repeat;
-    background-position: center center fixed; 
+    background-position: center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
   }
+}
+
+@media (max-width: 920px) {
+
+  .half-boxes {
+    height: auto;
+    
+    .box {
+      position: static;
+      top: auto;
+      left: auto;
+      width: 100%;
+    }
+
+    .box-text {
+      padding: 30px;
+
+      p {
+        margin-top: 30px;
+      }
+    }
+
+    .box-image {
+      height: 240px;
+    }
+  }
+
+
 }
