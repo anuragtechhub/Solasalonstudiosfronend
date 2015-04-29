@@ -1,21 +1,32 @@
-<div class="hero-text" style="background-image:url('<%= image_path 'About_Banner_1.jpg' %>')">
+<div class="hero-text find-a-salon-professional" style="margin-bottom: 0;background-image:url('<%= image_path 'About_Banner_1.jpg' %>')">
   <div class="text">
+    
     <h1>Find a Sola Salon<br>Professional Near You</h1>
+    
     <div class="find-salon-professional-search">
-      <%= form_tag [:search, :results], :class => 'nav-search' do %>
-        <input type="text" type="search" name="query">
-        <button type="submit" class="button primary">Search</button>
-      <% end %>
+      <div class="container">
+        <%= form_tag [:search, :results] do %>
+          <input type="text" type="search" name="query">
+          <button type="submit" class="button primary">Search</button>
+        <% end %>
+      </div>
     </div>
+    
     <div class="find-a-salon-professional-stats">
       <div class="stat">
         <h1>5,000+</h1>
         <h3>Salon Professionals</h3>
       </div>
-      <div class="stat">
+      <div class="stat right">
         <h1>225+</h1>
         <h3>Locations Nationwide</h3>
       </div>
     </div>
+
   </div>
+
+  <div class="find-a-salon-professional-disclaimer">
+    <p>Please note that at Sola Salon Studios, each of our studios is independently operated!<br>To find a salon professional, search for the location nearest to you.</p>
+    <p><strong>To schedule an appointment, please contact your salon professional directly</strong></p>
+  </div>  
 </div>
