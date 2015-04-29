@@ -3,6 +3,13 @@
   padding-top: 20px;
 }
 
+.row {
+
+  &.top-padded {
+    margin-top: 40px;
+  }
+}
+
 @media (max-width: 550px) {
 
   .container.content-container.content-container-mobile-full {

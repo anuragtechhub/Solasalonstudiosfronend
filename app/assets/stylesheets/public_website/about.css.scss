@@ -1,6 +1,7 @@
 .view-gallery {
   position: relative;
   text-align: center;
+  margin-top: 40px;
   margin-bottom: -10px;
 
   img {
@@ -17,3 +18,20 @@
   }
 }
 
+@media (min-width: 550px) {
+  .about-us {
+    .nine.columns { 
+      margin-left: 6%;
+      width: 72%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .about-us {
+    .column, .columns {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+  }
+}
