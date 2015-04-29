@@ -1,0 +1,18 @@
+.half-boxes {
+  
+  .box {
+    float: left;
+    clear: none;
+    width: 50%;
+    height: 100%;
+  }
+
+  .box-image {
+    background-repeat: no-repeat;
+    background-position: center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}

@@ -1,16 +1,16 @@
-<div class="hero-text">
+<div class="hero-text" style="background-image:url('<%= image_path 'Salon_Image_1.jpg' %>')">
   <div class="text">
     <h1>Don't just dream, do.<br>Become a salon owner today.</h1>
     <h3>Click to watch video</h3>
+    <a href="//www.youtube.com/watch?v=77gzVR-50Wo" class="play-button"></a>
   </div>
-  <%= image_tag 'gray.gif' %>
   <div class="learn-more">
     <h3>Learn More</h3>
     <span class="ss-navigatedown"></span>
   </div>
 </div>
 
-<div class="callout blue">
+<div class="callout blue image">
   <div class="container text-center">
     <%= link_to :contact_us do %>
       <h3>Contact Sola Today If You</h3>
@@ -19,23 +19,20 @@
   </div>
 </div>
 
+<div class="half-boxes">
+  <div class="box">
+    <h1>Be Your Own Boss</h1>
+    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+    <p><%= link_to 'Testimonials', :testimonials, :class => 'button' %>
+  </div>
+  <div class="box box-image" style="background-image:url('<%= image_path 'Salon_Image_2.jpg' %>')">&nbsp;</div>
+</div>
+
 <div class="container content-container">
 
   <div class="row">
     <div class="one-half column">
-      <h1>Be Your Own Boss</h1>
-      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-      <p><%= link_to 'Testimonials', :testimonials, :class => 'button' %>
-    </div>
-
-    <div class="one-half column">
-      <%= image_tag 'gray.gif', :class => 'full-width' %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="one-half column">
-      <%= image_tag 'gray.gif', :class => 'full-width' %>
+      <%= image_tag 'Salon_Image_3.jpg', :class => 'full-width' %>
     </div>
 
     <div class="one-half column">
@@ -92,7 +89,7 @@
   <div class="container">
     <div class="row">
       <div class="one-third column">
-        <%= image_tag 'gray.gif', :class => 'testimonial-portrait' %>
+        <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait' %>
       </div>
       <div class="two-thirds column">
         <h1>"Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."</h1>

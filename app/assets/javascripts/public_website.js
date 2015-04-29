@@ -7,6 +7,7 @@
 //= require owl.carousel
 //= require jquery.tooltipster
 //= require affix
+//= require jquery.swipebox
 
 $(function () {
 
@@ -73,6 +74,9 @@ $(function () {
       $headerNav.slideDown('fast');
     }
   });
+
+  // play videos
+  $('.play-button').swipebox();
 
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
