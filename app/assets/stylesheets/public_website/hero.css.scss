@@ -41,7 +41,8 @@
   margin-bottom: -10px;
 
   background-repeat: no-repeat;
-  background-position: center center fixed; 
+  background-position: center center;
+  background-attachment: fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
