@@ -1,5 +1,21 @@
-<div class="container content-container">
-  <div class="row">
-    <h1>Find a Stylist</h1>
+<div class="hero-text" style="background-image:url('<%= image_path 'About_Banner_1.jpg' %>')">
+  <div class="text">
+    <h1>Find a Sola Salon<br>Professional Near You</h1>
+    <div class="find-salon-professional-search">
+      <%= form_tag [:search, :results], :class => 'nav-search' do %>
+        <input type="text" type="search" name="query">
+        <button type="submit" class="button primary">Search</button>
+      <% end %>
+    </div>
+    <div class="find-a-salon-professional-stats">
+      <div class="stat">
+        <h1>5,000+</h1>
+        <h3>Salon Professionals</h3>
+      </div>
+      <div class="stat">
+        <h1>225+</h1>
+        <h3>Locations Nationwide</h3>
+      </div>
+    </div>
   </div>
 </div>

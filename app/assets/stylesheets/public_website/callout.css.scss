@@ -141,6 +141,15 @@
   }
 }
 
+@media (max-width: 800px) {
+
+  .callout-testimonial {
+    .column, .columns {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+  }
+}
 
 @media (max-width: 550px) {
 
