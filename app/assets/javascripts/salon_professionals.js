@@ -18,7 +18,7 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        $form.find('input').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
         $form.tooltipster('content', data.error).tooltipster('show');
       }
