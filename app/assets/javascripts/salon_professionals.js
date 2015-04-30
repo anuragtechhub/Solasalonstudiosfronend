@@ -19,6 +19,9 @@ $(function () {
     }).done(function(data) {
       if (data && data.success) {
         $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        setTimeout(function () {
+          modal.data('modal').fadeOut();
+        }, 3300);
       } else {
         $form.tooltipster('content', data.error).tooltipster('show');
       }

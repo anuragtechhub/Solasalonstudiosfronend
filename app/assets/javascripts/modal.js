@@ -38,6 +38,14 @@ $.widget('solasalonstudios.modal', {
     self.$overlay.hide();  
   },
 
+  fadeOut: function () {
+    var self = this;
+
+    self.$body.css('overflow', 'auto');
+    self.$modal.fadeOut('slow');
+    self.$overlay.fadeOut('slow')
+  },
+
   reposition: function () {
     var self = this;
 
