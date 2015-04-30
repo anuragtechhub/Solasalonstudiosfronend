@@ -11,7 +11,7 @@
     <div class="two-thirds column">
       <p>Start the conversation with your desired Sola Salon Studios&reg; location today by filling out the Contact Us form. We look forward to hearing from you!</p>
       <p>If you have a general question, check out our <%= link_to 'Frequently Asked Questions', :faqs, :class => 'pink-link' %></p>
-
+      <br>
       <div class="sola-select select-a-state form">
         <div class="row">
           <div class="option-placeholder"><h3><%= params[:state] || 'Select a State' %></h3></div>
@@ -42,24 +42,20 @@
       </div>
 
       <div id="contact-us-info">
-        <% @all_locations.each do |location| %>
-          <div class="contact-us-info" id="contact_us_<%= location.id %>">
-
-                <div class="row">
-
-                    <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour' do %>
-                      <input name="name" type="text" placeholder="Your Name">
-                      <input name="email" type="text" placeholder="Email Address">
-                      <input name="phone" type="text" placeholder="Phone Number (Optional)">
-                      <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
-                      <input name="location_id" type="hidden" value="<%= location.id %>">
-                      <button class="button block primary">Submit</button>
-                    <% end %>
-
-                </div>
-
+        <div class="contact-us-info">
+          <div class="row">
+            <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
+              <div class="wrapper">
+                <input name="name" type="text" placeholder="Your Name">
+                <input name="email" type="text" placeholder="Email Address">
+                <input name="phone" type="text" placeholder="Phone Number (Optional)">
+                <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
+                <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+                <button class="button block primary">Submit</button>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
 
     </div>

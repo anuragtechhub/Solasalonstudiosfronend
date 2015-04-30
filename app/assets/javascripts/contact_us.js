@@ -10,6 +10,7 @@ $(function () {
     $select.find('.option-placeholder, .arrow').on('click', function () {
       $('.sola-select .options').not($options).hide();
 
+
       if ($options.is(':visible')) {
         $options.hide();
         $(window).off('click.solaselect');
@@ -24,7 +25,7 @@ $(function () {
 
     $select.find('.option').on('click', function () {
       var state = $(event.target).data('value');
-      console.log('state', state);
+      $('.contact-us-info').hide();
       
       $('.sola-select .options').hide();
       $(window).off('click.solaselect');
@@ -66,12 +67,32 @@ $(function () {
       $('.sola-select .options').hide();
       $(window).off('click.solaselect');
       $select.find('.option-placeholder h3').html(locationName);
+      $('#contact_us_location_id').val(locationId);
 
-      $('.contact-us-info').hide();
-      $('#contact_us_' + locationId).show();
+      $('.contact-us-info').show();
       return false;
     });
 
   }).disableSelection();
+
+  // form handler
+  $('form.contact-us-form').on('submit', function () {
+    var $form = $(this);
+
+    $.ajax({
+      method: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(data) {
+      if (data && data.success) {
+        $form.find('input, textarea').val('').blur().end().find('.wrapper').tooltipster('content', data.success).tooltipster('show');
+      } else {
+        $form.find('.wrapper').tooltipster('content', data.error).tooltipster('show');
+      }
+    });
+
+    return false;
+  });
+  $('form.contact-us-form .wrapper').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
 });
