@@ -124,6 +124,15 @@
       text-decoration: none;
     }
   }
+
+  &.pink {
+    background: $brand-pink;
+    
+    h1 {
+      color: #FFF;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .callout-testimonial {

@@ -47,7 +47,7 @@ button, input[type=button], input[type=submit], .button, a.button {
     &:hover, &:active {
       color: #FFF;
       @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
-    }    
+    }  
   }
 
   &.block {
