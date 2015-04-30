@@ -45,14 +45,12 @@
         <div class="contact-us-info">
           <div class="row">
             <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
-              <div class="wrapper">
-                <input name="name" type="text" placeholder="Your Name">
-                <input name="email" type="text" placeholder="Email Address">
-                <input name="phone" type="text" placeholder="Phone Number (Optional)">
-                <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
-                <input name="location_id" id="contact_us_location_id" type="hidden" value="">
-                <button class="button block primary">Submit</button>
-              </div>
+              <input name="name" type="text" placeholder="Your Name">
+              <input name="email" type="text" placeholder="Email Address">
+              <input name="phone" type="text" placeholder="Phone Number (Optional)">
+              <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
+              <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+              <button class="button block primary">Submit</button>
             <% end %>
           </div>
         </div>

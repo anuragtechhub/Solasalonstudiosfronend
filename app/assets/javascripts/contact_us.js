@@ -85,14 +85,14 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        $form.find('input, textarea').val('').blur().end().find('.wrapper').tooltipster('content', data.success).tooltipster('show');
+        $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
-        $form.find('.wrapper').tooltipster('content', data.error).tooltipster('show');
+        $form.tooltipster('content', data.error).tooltipster('show');
       }
     });
 
     return false;
   });
-  $('form.contact-us-form .wrapper').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+  $('form.contact-us-form').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
 });
