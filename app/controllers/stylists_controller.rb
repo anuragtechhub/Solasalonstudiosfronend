@@ -15,6 +15,13 @@ class StylistsController < PublicWebsiteController
   end
 
   def send_a_message
-    
+    if request.post?
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present?
+        StylistMessage.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :message => params[:message], :stylist_id => params[:stylist_id])
+        render :json => {:success => 'Thank you for your message!'}
+      else
+        render :json => {:error => 'Please enter your name and email address'}
+      end
+    end
   end
 end

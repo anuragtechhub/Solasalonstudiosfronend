@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415211556) do
+ActiveRecord::Schema.define(version: 20150430164715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,18 @@ ActiveRecord::Schema.define(version: 20150415211556) do
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
+
+  create_table "stylist_messages", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "message"
+    t.integer  "stylist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stylist_messages", ["stylist_id"], name: "index_stylist_messages_on_stylist_id", using: :btree
 
   create_table "stylists", force: true do |t|
     t.string   "name"

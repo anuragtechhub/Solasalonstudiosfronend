@@ -129,12 +129,13 @@
 
 <div class="send-a-message-modal modal-content">
   <h4>Send a Message</h4>
-  <%= form_tag :salon_professional_send_a_message do %>
-    <input type="text" name="full_name" placeholder="Full Name" />
-    <input type="text" name="email_address" placeholder="Email Address" />
-    <input type="text" name="phone_number" placeholder="Phone Number (Optional)" />
+  <%= form_tag :salon_professional_send_a_message, :id => 'send-a-message' do %>
+    <input type="text" name="name" placeholder="Full Name" />
+    <input type="text" name="email" placeholder="Email Address" />
+    <input type="text" name="phone" placeholder="Phone Number (Optional)" />
     <textarea name="message" placeholder="Leave a Message"></textarea>
     <button class="primary block">Submit</button>
+    <input type="hidden" name="stylist_id" value="<%= @stylist.id %>" />
   <% end %>
 </div>
 

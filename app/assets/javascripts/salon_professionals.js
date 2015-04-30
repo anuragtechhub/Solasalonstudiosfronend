@@ -8,4 +8,24 @@ $(function () {
     return false;
   })
 
+  // form handler
+  $('#send-a-message').on('submit', function () {
+    var $form = $(this);
+
+    $.ajax({
+      method: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(data) {
+      if (data && data.success) {
+        $form.find('input').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+      } else {
+        $form.tooltipster('content', data.error).tooltipster('show');
+      }
+    });
+
+    return false;
+  });
+  $('#send-a-message').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
 });
