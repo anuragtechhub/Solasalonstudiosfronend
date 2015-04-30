@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.widget
 //= require classie
 //= require fastclick
 //= require infobox
@@ -8,6 +9,7 @@
 //= require jquery.tooltipster
 //= require affix
 //= require jquery.swipebox
+//= require modal
 
 $(function () {
 

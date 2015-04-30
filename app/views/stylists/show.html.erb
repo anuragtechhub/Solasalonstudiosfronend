@@ -43,7 +43,7 @@
         <% if @stylist.booking_url.present? %>
           <%= link_to 'Book Now', @stylist.booking_url, :class => 'button block', :target => '_blank' %>
         <% end %>
-        <%= link_to 'Send a Message', '#', :class => 'button block' %>
+        <%= link_to 'Send a Message', '#', :class => 'button block send-a-message-button' %>
       </div>
       <ul class="contact-info">
         <% if @stylist.phone_number.present? %>
@@ -127,7 +127,17 @@
   </div>
 <% end %>
 
+<div class="send-a-message-modal modal-content">
+  <h4>Send a Message</h4>
+  <input type="text" name="full_name" placeholder="Full Name" />
+  <input type="text" name="email_address" placeholder="Email Address" />
+  <input type="text" name="phone_number" placeholder="Phone Number (Optional)" />
+  <textarea name="message" placeholder="Leave a Message"></textarea>
+  <button class="primary block">Submit</button>
+</div>
+
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
 <input type="hidden" id="is_salon" value="y" />
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
+<% content_for(:scripts) { javascript_include_tag('salon_professionals') } %>
