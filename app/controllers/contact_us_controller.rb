@@ -1,6 +1,7 @@
 class ContactUsController < PublicWebsiteController
   
   def index
+    @all_locations = Location.all
   end
 
   def request_a_tour

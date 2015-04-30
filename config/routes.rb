@@ -1,6 +1,6 @@
 Solasalonstudios::Application.routes.draw do
 
-  get "tour/request-a-tour" => 'tour#request_a_tour', :as => :request_a_tour
+  
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
@@ -12,7 +12,10 @@ Solasalonstudios::Application.routes.draw do
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
-  get "request-franchising-info" => "request_franchising_info#index", :as => :request_franchising_info
+  
+  get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
+  get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
+  
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
   match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour

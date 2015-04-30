@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.widget
+//= require disableSelection
 //= require classie
 //= require fastclick
 //= require infobox
