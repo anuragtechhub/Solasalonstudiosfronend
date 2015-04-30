@@ -13,4 +13,8 @@ class StylistsController < PublicWebsiteController
     end
     redirect_to :home unless @stylist
   end
+
+  def send_a_message
+    
+  end
 end
