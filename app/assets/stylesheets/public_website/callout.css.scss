@@ -136,9 +136,11 @@
 }
 
 .callout-testimonial {
+  background: #F9F9F9;
+
   h1, h3 {
     text-align: left;
-    color: #FFF;
+    color: #000;
   }
   h1 {
     margin-top: 40px;
@@ -147,6 +149,14 @@
     margin-top: 20px;
     line-height: 16px;
     font-weight: 700;    
+  }
+
+  &.blue {
+    background: $brand-blue;
+    
+    h1, h3 {
+      color: #FFF;
+    }
   }
 }
 
