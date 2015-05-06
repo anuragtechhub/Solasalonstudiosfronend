@@ -59,7 +59,7 @@
   }
 
   .arrow-right {
-    right: 0;
+    right: 3px;
     background: $brand-pink asset-data-url('Arrow_Right_Large@2x.png') no-repeat 20px 12px;
     background-size: 14px 27.5px;
   }
@@ -72,12 +72,6 @@
     width: 100%;
     border-right: 3px solid #FFF;
     height: 540px;
-  }
-
-  &.no-border {
-    img {
-      border-right: 0;
-    }
   }
 
   h1, h3 {
