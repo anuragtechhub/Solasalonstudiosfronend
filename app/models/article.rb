@@ -12,4 +12,8 @@ class Article < ActiveRecord::Base
     url_name
   end
 
+  def safe_title
+    title.gsub(/&#8211;/, '-')
+  end
+
 end
