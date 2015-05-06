@@ -46,7 +46,9 @@ RailsAdmin.config do |config|
     #label 'Administrator'
     #label_plural 'Administrators'    
     list do
-      field :email
+      field :email do
+        label 'Username'
+      end
       field :franchisee do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -56,7 +58,9 @@ RailsAdmin.config do |config|
       field :last_sign_in_at
     end
     show do
-      field :email
+      field :email do
+        label 'Username'
+      end
       field :franchisee do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -66,7 +70,9 @@ RailsAdmin.config do |config|
       field :last_sign_in_at      
     end
     edit do
-      field :email
+      field :email do
+        label 'Username'
+      end
       field :password
       field :password_confirmation     
       field :franchisee do

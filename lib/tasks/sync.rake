@@ -73,6 +73,44 @@ namespace :sync do
     end
   end
 
+  task :franchisees => :environment do
+    p 'sync franchisees!'
+    db = get_database_client
+    results = db.query("SELECT * FROM exp_members WHERE group_id = 7")
+    p "results.size = #{results.size}"
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['member_id']}) #{idx + 1} of #{count}..."
+
+      admin = Admin.find_by(:legacy_id => row['member_id'].to_s) || Admin.new
+      
+      admin.franchisee = true
+      admin.legacy_id = row['member_id']
+      admin.email = row['username']
+      admin.password = 'stylists'
+      admin.password_confirmation = 'stylists'
+
+      if admin.save
+        p "Saved admin"
+      else
+        p "ERROR saving admin #{admin.errors.inspect}"
+      end
+
+      # save admin locations
+      location_rows = db.query("SELECT * FROM exp_weblog_titles WHERE weblog_id = 5 AND author_id = #{admin.legacy_id}")
+      p "admin locations = #{location_rows.size}"
+      location_rows.each do |location_row|
+        location = Location.find_by(:legacy_id => location_row['entry_id'].to_s)
+        location.admin_id = admin.id if location && admin
+        if location && location.save
+          p "saved location for admin"
+        else
+          p "problem saving location #{location_row.inspect} | #{location.inspect}"
+        end
+      end
+    end    
+  end
+
   task :articles => :environment do
     p 'sync articles!'
     db = get_database_client
@@ -85,7 +123,8 @@ namespace :sync do
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
       article = Article.find_by(:legacy_id => row['entry_id'].to_s) || Article.new
-
+      
+      article.created_at = Date.new(meta['year'].to_i, meta['month'].to_i, meta['day'].to_i)
       article.legacy_id = row['entry_id']
       article.title = meta['title'].encode('UTF-8')
       article.url_name = meta['url_title'].encode('UTF-8')
@@ -93,7 +132,7 @@ namespace :sync do
       article.summary = filedir_replacement row['field_id_1'].encode('UTF-8')
       article.body = filedir_replacement row['field_id_2'].encode('UTF-8')
       article.extended_text = filedir_replacement row['field_id_3'].encode('UTF-8')
-
+      
       p "image #{get_img_src row['field_id_12']}"
       begin
         article.image = open(get_img_src row['field_id_12']) unless row['field_id_12'].blank?
@@ -122,6 +161,7 @@ namespace :sync do
 
       blog = Blog.find_by(:legacy_id => row['entry_id'].to_s) || Blog.new
 
+      blog.created_at = Date.new(meta['year'].to_i, meta['month'].to_i, meta['day'].to_i)
       blog.legacy_id = row['entry_id']
       blog.title = meta['title'].encode('UTF-8')
       blog.url_name = meta['url_title'].encode('UTF-8')
