@@ -29,7 +29,9 @@ $(function () {
   $(window).on('resize', sizeCarousel);
 
   // carousel
-  $('.owl-carousel').owlCarousel({
+  $('.owl-carousel').each(function () {
+    var $this = $(this);
+    var options = {
       navigation: true,
       navigationText: [
         "<i class='arrow-left'></i>",
@@ -39,8 +41,18 @@ $(function () {
       pagination: false,
       paginationSpeed: 400,
       autoPlay: 5000,
-      singleItem: true,
       transitionStyle : "fade"
+    };
+
+    if ($this.data('items')) {
+      options['items'] = $this.data('items');
+    } else {
+      options['singleItem'] = true;
+    }
+
+    console.log('options', options)
+
+    $this.owlCarousel(options);
   });
 
   // header and nav

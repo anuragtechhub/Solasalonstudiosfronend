@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 .testimonial-portrait {
   width: 200px;
   height: 200px;
@@ -21,8 +24,6 @@
   }
 
   .arrow-left, .arrow-right {
-    color: #000;
-    background: #FFF;
     border: 2px solid #000;
     width: 50px;
     height: 50px;
@@ -30,16 +31,70 @@
 
   .arrow-left {
     left: 0;
-    background: #FFF asset-data-url('Arrow_Left_Large_Black@2x.png') no-repeat center;
+    background: #FFF asset-data-url('Arrow_Left_Large_Black@2x.png') no-repeat 15px 10px;
     background-size: 14px 27.5px;
   }
 
   .arrow-right {
     right: 0;
-    background: #FFF asset-data-url('Arrow_Right_Large_Black@2x.png') no-repeat center;
+    background: #FFF asset-data-url('Arrow_Right_Large_Black@2x.png') no-repeat 18px 10px;
     background-size: 14px 27.5px;
   }
 }
+
+
+.sola-spotlights {
+  margin-top: 30px;
+  margin-bottom: -2px;
+
+  .arrow-left, .arrow-right {
+    width: 50px;
+    height: 50px;
+  }
+
+  .arrow-left {
+    left: 0;
+    background: $brand-pink asset-data-url('Arrow_Left_Large@2x.png') no-repeat 17px 12px;
+    background-size: 14px 27.5px;
+  }
+
+  .arrow-right {
+    right: 0;
+    background: $brand-pink asset-data-url('Arrow_Right_Large@2x.png') no-repeat 20px 12px;
+    background-size: 14px 27.5px;
+  }
+}
+
+.sola-spotlight {
+  position: relative; 
+
+  img {
+    width: 100%;
+    border-right: 3px solid #FFF;
+    height: 540px;
+
+    &.no-border {
+      border-right: 0;
+    }
+  }
+
+  h1, h3 {
+    left: 0;
+    right: 0;
+    position: absolute;
+    text-align: center;
+    color: #FFF;
+  }
+
+  h1 {
+    bottom: 120px;
+  }
+  h3 {
+    bottom: 100px;
+  }
+}
+
+
 
 .half-testimonial {
   margin: 60px 0 0 0;
