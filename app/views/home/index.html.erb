@@ -12,19 +12,21 @@
 
   <div class="row">
     <div class="one-third column home-tile">
-      <%= image_tag 'Home/Freedom_Banner@2x.jpg', :class => 'u-full-width' %>
+      <%= link_to :own_your_salon do %><%= image_tag 'Home/Freedom_Banner@2x.jpg', :class => 'u-full-width' %><% end %>
       <h3 class="text-center">Freedom to live<br>the life you love</h3>
       <p class="text-center">Customize your studio, create your culture, own your salon.</p>
     </div>
 
     <div class="one-third column home-tile">
-      <%= image_tag 'Home/Locations_Banner@2x.jpg', :class => 'u-full-width' %>
+      <%= link_to :locations do %><%= image_tag 'Home/Locations_Banner@2x.jpg', :class => 'u-full-width' %><% end %>
       <h3 class="text-center">Find the location<br>nearest to you</h3>
       <p class="text-center">Join our community of 5,000+ salon professionals nationwide.</p>
     </div>
 
     <div class="one-third column home-tile">
+      <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video">
       <%= image_tag 'Home/Video_Banner@2x.jpg', :class => 'u-full-width' %>
+      </a>
       <h3 class="text-center">Take a look inside<br>Sola Salon Studios</h3>
       <p class="text-center">Watch our video to learn more about what goes on in our studios.</p>
     </div>        
@@ -40,6 +42,7 @@
       <div class="search-input-with-icon">
         <%= form_tag [:search, :results] do %>
         <input type="text" placeholder="Search by name or location" name="query" class="large full-width">
+        <input type="hidden" name="first" value="salon_professionals" />
         <span class="ss-search"></span>
         <% end %>
       </div>

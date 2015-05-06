@@ -79,7 +79,7 @@ $(function () {
   });
 
   // play videos
-  $('.play-button').swipebox();
+  $('.play-button, .play-video').swipebox();
 
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
