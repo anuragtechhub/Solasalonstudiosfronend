@@ -30,10 +30,14 @@
 
   .arrow-left {
     left: 0;
+    background: #FFF asset-data-url('Arrow_Left_Large_Black@2x.png') no-repeat center;
+    background-size: 14px 27.5px;
   }
 
   .arrow-right {
     right: 0;
+    background: #FFF asset-data-url('Arrow_Right_Large_Black@2x.png') no-repeat center;
+    background-size: 14px 27.5px;
   }
 }
 
