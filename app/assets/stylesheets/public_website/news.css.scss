@@ -60,6 +60,13 @@
   }
 }
 
+.news-pr {
+  p.subtle {
+    margin-top:-20px;
+    margin-bottom:30px;
+  }
+}
+
 
 @media (max-width: 850px) {
 
@@ -76,6 +83,13 @@
       img {
         display: none;
       }
+    }
+  }
+
+  .news-pr {
+    p.subtle {
+      margin-top: -10px;
+      margin-bottom: 20px;
     }
   }
 
