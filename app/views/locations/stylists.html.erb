@@ -8,6 +8,7 @@
 
     <div class="one-half column text-right">
 
+      <% if @location && @location.services && @location.services.size > 0 %>
       <div class="sola-select">
         <div class="row">
           <div class="option-placeholder"><h3><%= params[:service] || 'Filter by Service' %></h3></div>
@@ -19,6 +20,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
 
     </div>
 
