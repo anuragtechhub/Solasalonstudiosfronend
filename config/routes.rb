@@ -31,6 +31,8 @@ Solasalonstudios::Application.routes.draw do
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message
 
+  get "article/:url_name" => 'article#show', :as => :show_article
+
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog
   get "blog/category/:category_url_name" => 'blog#index', :as => :blog_category

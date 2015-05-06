@@ -27,6 +27,12 @@ a, a:link, a:visited, a:hover, a:active {
   }
 }
 
+h1, h2, h3, h4 {
+  a.pink-link {
+    font-weight: bold;
+  }
+}
+
 p {
   margin-bottom: 1rem;
 }
