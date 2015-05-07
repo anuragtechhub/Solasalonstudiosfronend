@@ -41,7 +41,7 @@
     <div class="one-third column salon-pro-info pull-two-thirds">
       <% if valid_email?(@stylist.email_address) || @stylist.booking_url.present? %>
         <div class="salon-pro-buttons">
-          <%= link_to('Book Now', @stylist.booking_url, :class => 'button block', :target => '_blank') if @stylist.booking_url.present? %>
+          <%= link_to('Book Now', url_helper(@stylist.booking_url), :class => 'button block', :target => '_blank') if @stylist.booking_url.present? %>
           <%= link_to('Send a Message', '#', :class => 'button block send-a-message-button') if valid_email?(@stylist.email_address) %>
         </div>
       <% end %>
