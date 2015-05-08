@@ -87,7 +87,7 @@ select {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     max-height: 200px;
-    padding: 20px;
+    padding: 12px;
   }
 
   .option {
@@ -95,10 +95,15 @@ select {
     display: block;
     clear: both;
     text-decoration: none;
-    padding: 4px;
+    padding: 8px;
     text-align: left;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 14px;
+
+    &:hover, &:active {
+      color: #000;
+      background: #efefef;
+    }
   }
 
 
