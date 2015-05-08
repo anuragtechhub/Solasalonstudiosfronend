@@ -1,10 +1,13 @@
-h2 {
-  margin-top: 40px;
+h2.faq-question {
+  line-height: 32px;
+  margin: 40px 0;
   padding-top: 40px;
   border-top: 1px dashed #DDDDDD;
 }
 
-.answer {
+.faq-answer {
+  display: none;
+  margin-top: -20px;
   margin-bottom: 40px;
 
   p, ul, ol, li {

@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function () {
+
+  $('.faq-question').click(function () {
+    var $question = $(this);
+    var $answer = $question.next('.faq-answer')
+
+    $('.faq-answer').not($answer).slideUp('fast');
+    $answer.slideDown('fast');
+  });
+
+});
