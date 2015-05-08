@@ -1,0 +1,22 @@
+h2 {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px dashed #DDDDDD;
+}
+
+.answer {
+  margin-bottom: 40px;
+
+  p, ul, ol, li {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0px;
+    line-height: 19px;
+    font-weight: 400;
+    color: #4A4A4A;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
