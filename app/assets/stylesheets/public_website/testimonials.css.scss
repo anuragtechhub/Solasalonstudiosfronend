@@ -24,21 +24,30 @@
   }
 
   .arrow-left, .arrow-right {
-    border: 2px solid #000;
-    width: 50px;
-    height: 50px;
+    width: 49px;
+    height: 49px;
   }
 
   .arrow-left {
     left: 0;
-    background: #FFF asset-data-url('Arrow_Left_Large_Black@2x.png') no-repeat 15px 10px;
-    background-size: 14px 27.5px;
+    background: #FFF asset-data-url('Left_Inactive@2x.png') no-repeat center;
+    background-size: 49px 49px;
+
+    &:hover, &:active {
+      background: #FFF asset-data-url('Left_Active@2x.png') no-repeat center;
+      background-size: 49px 49px;
+    }
   }
 
   .arrow-right {
     right: 0;
-    background: #FFF asset-data-url('Arrow_Right_Large_Black@2x.png') no-repeat 18px 10px;
-    background-size: 14px 27.5px;
+    background: #FFF asset-data-url('Right_Inactive@2x.png') no-repeat center;
+    background-size: 49px 49px;
+
+    &:hover, &:active {
+      background: #FFF asset-data-url('Right_Active@2x.png') no-repeat center;
+      background-size: 49px 49px;
+    }
   }
 }
 
@@ -68,10 +77,15 @@
 .sola-spotlight {
   position: relative; 
 
+  .item {
+    width: 320px;
+    height: 432px;
+  }
+
   img {
-    width: 100%;
+    width: 320px;
+    height: 432px;
     border-right: 3px solid #FFF;
-    height: 540px;
   }
 
   h1, h3 {
@@ -83,10 +97,10 @@
   }
 
   h1 {
-    bottom: 60px;
+    bottom: 30px;
   }
   h3 {
-    bottom: 40px;
+    bottom: 15px;
   }
 }
 
