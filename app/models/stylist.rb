@@ -62,6 +62,10 @@ class Stylist < ActiveRecord::Base
     [['Open', 'open'], ['Closed', 'closed']]
   end
 
+  def send_a_message_button_enum
+    [['Visible', true], ['Hidden', false]]
+  end
+
   # helper function to return images as array
   def images
     images_array = []

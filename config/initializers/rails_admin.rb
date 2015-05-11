@@ -583,8 +583,13 @@ RailsAdmin.config do |config|
         field :studio_number
         field :work_hours
         field :accepting_new_clients
+      end
+      group :website do
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
+        field :send_a_message_button do
+          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
       end
       group :services do
@@ -697,10 +702,15 @@ RailsAdmin.config do |config|
         field :business_name
         field :studio_number
         field :work_hours
+        field :accepting_new_clients        
+      end
+      group :website do
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
-        field :accepting_new_clients        
+        field :send_a_message_button do
+          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
+        end
       end
       group :services do
         field :hair

@@ -197,3 +197,5 @@
 <input type="hidden" id="is_salon" value="y" />
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
+
+<%= @location.chat_code.html_safe if @location.chat_code.present? %>
