@@ -11,6 +11,10 @@
   font-size: 29px;
   line-height: 33px;
 
+  li {
+    list-style: none;
+  }
+
   &.small {
     padding: 20px;
 
