@@ -32,14 +32,13 @@ $(function () {
   $('.owl-carousel').each(function () {
     var $this = $(this);
     var options = {
-      navigation: true,
+      navigation: $this.data('nonav') ? false : true,
       navigationText: [
         "<i class='arrow-left'></i>",
         "<i class='arrow-right'></i>"
       ],
       slideSpeed: 300,
       pagination: false,
-      paginationSpeed: 400,
       autoPlay: 5000,
       transitionStyle : "fade"
     };
@@ -48,6 +47,11 @@ $(function () {
       options['items'] = $this.data('items');
     } else {
       options['singleItem'] = true;
+    }
+
+    if ($this.data('animation')) {
+      delete options['transitionStyle']; 
+      options['animateOut'] = 'fadeOut'
     }
 
     console.log('options', options)
