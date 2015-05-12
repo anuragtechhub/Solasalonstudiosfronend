@@ -17,16 +17,16 @@ $(function () {
   FastClick.attach(document.body);
 
   // size salon carousel before init
-  function sizeCarousel() {
-    var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
-    if ($salonCarousel.length) {
-      $salonCarousel.find('img').css('height', $('.salon-info, .salon-pro-info').height() - 1);
-    }
-  }
+  // function sizeCarousel() {
+  //   var $salonCarousel = $('.salon-carousel, .salon-pro-carousel');
+  //   if ($salonCarousel.length) {
+  //     $salonCarousel.find('img').css('height', $('.salon-info, .salon-pro-info').height() - 1);
+  //   }
+  // }
 
-  setTimeout(sizeCarousel, 100);
+  // setTimeout(sizeCarousel, 100);
 
-  $(window).on('resize', sizeCarousel);
+  // $(window).on('resize', sizeCarousel);
 
   // carousel
   $('.owl-carousel').each(function () {
