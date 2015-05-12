@@ -141,6 +141,27 @@
   }
 }
 
+.stylist-services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 -30px;
+
+  li {
+    list-style: none;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 17px;
+    letter-spacing: 0px;
+    line-height: 35px;
+    font-weight: 300;
+    color: #474747;
+    border-bottom: 1px dashed #D7D7D7;
+    flex: 1;
+    margin: 30px;
+    min-width: 90px
+  }
+}
 
 h3.business-name {
   margin: 3px 0 0 0 !important;
@@ -160,6 +181,7 @@ h3.business-name {
     border-radius: 3px;
     padding: 1px 10px;
     margin-right: 5px;
+    margin-bottom: 8px;
 
     &:last-child {
       margin-right: 0;
@@ -279,6 +301,13 @@ h3.business-name {
 @media (max-width: 550px) {
   .find-a-salon-professional-disclaimer { 
     text-align: left;
+  }
+
+  .stylist-services {
+
+    li {
+      width: 100%;
+    }
   }
 
   .salon-pro-info {

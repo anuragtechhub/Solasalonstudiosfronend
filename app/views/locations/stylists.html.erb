@@ -59,18 +59,4 @@
   </div>
 </div>
 
-<div class="row stylists-map" id="map"></div>
-<div id="map-overlay" class="stylists-map"></div>
-
-<div class="location-breadcrumb" style="border-bottom: 0">
-  <div class="container">
-    <%= link_to 'United States', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
-    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
-  </div>
-</div>
-
-<%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
-<input type="hidden" id="is_salon" value="y" />
-
-<% content_for(:scripts) { javascript_include_tag('locations'); } %>
 <% content_for(:scripts) { javascript_include_tag('salon_stylists'); } %>
