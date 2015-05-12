@@ -69,6 +69,10 @@
       border-radius: 0;
       display: block;
       float: left;
+
+      &:focus, &:active {
+        border: 1px solid $brand-blue;
+      }
     }
 
     input {

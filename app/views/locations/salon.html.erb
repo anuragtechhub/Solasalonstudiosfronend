@@ -38,14 +38,16 @@
   </div>
 </div>
 
-<div class="container">
+<% if @location.description.present? %>
+  <div class="container">
 
-  <div class="row about-this-location">
-    <h3 class="text-center">About this Location</h3>
-    <h4 class="text-center"><%= @location.description.html_safe %></h4>
+    <div class="row about-this-location">
+      <h3 class="text-center">About this Location</h3>
+      <h4 class="text-center"><%= @location.description.html_safe %></h4>
+    </div>
+
   </div>
-
-</div>
+<% end %>
 
 <div class="callout green">
   <div class="icon"><span class="ss-star"></span></div>
@@ -176,7 +178,7 @@
       </div>
 
       <div class="one-half column">
-        <%= link_to :salon_professionals, :class => 'link' do %>
+        <%= link_to salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'link' do %>
           <div class="row">
             <div class="one-third column">
               <span class="ss-search"></span>
