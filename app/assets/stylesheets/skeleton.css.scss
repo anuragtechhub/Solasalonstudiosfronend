@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache
@@ -278,7 +281,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
+  border: 1px solid $brand-pink;
   outline: 0; }
 label,
 legend {

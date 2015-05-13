@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'bootstrap/mixins';
 
 #footer {
   border-top: 1px solid $gray-lighter;
@@ -71,7 +72,7 @@
       float: left;
 
       &:focus, &:active {
-        border: 1px solid $brand-blue;
+        border: 1px solid $brand-pink;
       }
     }
 
@@ -92,7 +93,8 @@
       border-left: 0;
 
       &:hover, &:active {
-        color: #000;
+        @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+        color: #FFF;
       }
     }
   }
@@ -100,7 +102,7 @@
   ul.social {
     overflow: hidden;
     margin-top: 30px;
-    border: 1px solid #DBDBDB;
+    border: 0;
 
     li {
       margin: 0;
@@ -108,12 +110,11 @@
       float: left;
       width: 25%;
       text-align: center;
-      border-right: 1px solid #DBDBDB;
-
+      border: 0;
       
-      &:last-child {
-        border-right: 0;
-      }
+      // &:last-child {
+      //   border-right: 0;
+      // }
 
       a, a:link, a:visited, a:hover, a:active {
         padding: 5px 0;
@@ -122,11 +123,25 @@
         display: block;
         font-size: 20px;
         color: #000;
+        border: 1px solid #DBDBDB;
+        border-right: 0;
 
         span {
           position: relative;
           top: 2px;
         }
+
+        &:hover, &:active {
+          @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+          color: #FFF;
+        }
+      }
+
+      &:last-child {
+        a, a:link, a:visited, a:hover, a:active {
+          border-right: 1px solid #DBDBDB;
+        }
+        
       }
     }
   }
