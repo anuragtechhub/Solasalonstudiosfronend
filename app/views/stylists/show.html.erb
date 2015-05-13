@@ -47,8 +47,17 @@
         </ul>
       <% end %>
 
-      <div class="row salon-map" id="map" style="margin-bottom: 15px"></div>
+      <div class="row salon-map stylist-salon-map" id="map"></div>
       <div id="map-overlay" class="salon-map"></div>
+
+      <% if @stylist.work_hours.present? %>
+
+          <div class="row">
+            <h3 class="bordered">Availability</h3>
+            <h4 class="availability"><%= @stylist.work_hours.html_safe %></h4>
+          </div>
+
+      <% end %>      
     </div>
 
     <div class="two-thirds column">
@@ -66,15 +75,6 @@
           <div class="item"><%= image_tag 'gray.gif' %></div>
         <% end %>
       </div>
-
-      <% if @stylist.work_hours.present? %>
-
-          <div class="row about-this-location">
-            <h3>Availability</h3>
-            <h4><%= @stylist.work_hours.html_safe %></h4>
-          </div>
-
-      <% end %>
 
       <% if @stylist.biography.present? %>
 

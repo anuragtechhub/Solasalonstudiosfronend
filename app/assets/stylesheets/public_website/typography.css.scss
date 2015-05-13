@@ -36,6 +36,12 @@ h3, .h3 {
     color: #C7C7C7;
     margin-top: -20px;
   }
+
+  &.bordered {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #D7D7D7;
+  }
 }
 
 h4, .h4 {
