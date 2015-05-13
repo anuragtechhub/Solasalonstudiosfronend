@@ -18,7 +18,7 @@ class PublicWebsiteMailer < ActionMailer::Base
   def franchising_request(franchisingRequest)
     if franchisingRequest
       @message = franchisingRequest
-      mail(to: 'jeff@jeffbail.com', subject: 'Sola Salon Studios Franchising Request')
+      mail(to: 'jeff@jeffbail.com', subject: 'Sola Salon Studios Franchising Request') #mark@solasalonstudios.com
     end
   end
 

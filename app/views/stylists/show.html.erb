@@ -22,23 +22,7 @@
 <div class="container content-container content-container-mobile-full">
   <div class="row">
 
-    <div class="two-thirds column push-one-third">
-      <div class="salon-pro-carousel owl-carousel owl-theme">
-        <% if @stylist.images.size > 0 %>
-        <% @stylist.images.each do |image| %>
-          <% if image.exists?(:carousel) %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
-          <% else %>
-            <div class="item"><%= image_tag image.url(:original) %></div>
-          <% end %>
-        <% end %>
-        <% else %>
-          <div class="item"><%= image_tag 'gray.gif' %></div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="one-third column salon-pro-info pull-two-thirds">
+    <div class="one-third column salon-pro-info">
       <% if (@stylist.send_a_message_button && valid_email?(@stylist.email_address)) || @stylist.booking_url.present? %>
         <div class="salon-pro-buttons">
           <%= link_to('Book Now', url_helper(@stylist.booking_url), :class => 'button block', :target => '_blank') if @stylist.booking_url.present? %>
@@ -53,79 +37,89 @@
           <li><%= link_to 'Visit my website', @stylist.website_url, :target => '_blank' %></li>
         <% end %>
       </ul>
-      <div class="row salon-map" id="map"></div>
+      <div class="row salon-map" id="map" style="margin-bottom: 15px"></div>
       <div id="map-overlay" class="salon-map"></div>
+    </div>
+
+    <div class="two-thirds column">
+      
+      <div class="salon-pro-carousel owl-carousel owl-theme">
+        <% if @stylist.images.size > 0 %>
+        <% @stylist.images.each do |image| %>
+          <% if image.exists?(:carousel) %>
+            <div class="item"><%= image_tag image.url(:carousel) %></div>
+          <% else %>
+            <div class="item"><%= image_tag image.url(:original) %></div>
+          <% end %>
+        <% end %>
+        <% else %>
+          <div class="item"><%= image_tag 'gray.gif' %></div>
+        <% end %>
+      </div>
+
+      <% if @stylist.work_hours.present? %>
+
+          <div class="row about-this-location">
+            <h3 class="text-center">Availability</h3>
+            <h4 class="text-center"><%= @stylist.work_hours.html_safe %></h4>
+          </div>
+
+      <% end %>
+
+      <% if @stylist.biography.present? %>
+
+          <div class="row about-this-location">
+            <h3 class="text-center">About <%= @stylist.name %></h3>
+            <h4 class="text-center"><%= @stylist.biography.html_safe %></h4>
+          </div>
+
+      <% end %>
+
+      <% if @stylist.services.size > 0 %>
+
+          <div class="row about-this-location">
+            <h3 class="text-center">Services</h3>
+            <ul class="stylist-services">
+              <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
+              <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
+              <%= '<li>Nails</li>'.html_safe if @stylist.nails %>
+              <%= '<li>Massage</li>'.html_safe if @stylist.massage %>
+              <%= '<li>Teeth Whitening</li>'.html_safe if @stylist.teeth_whitening %>
+              <%= '<li>Eyelash Extensions</li>'.html_safe if @stylist.eyelash_extensions %>
+              <%= '<li>Hair Extensions</li>'.html_safe if @stylist.hair_extensions %>
+              <%= '<li>Makeup</li>'.html_safe if @stylist.makeup %>
+              <%= '<li>Tanning</li>'.html_safe if @stylist.tanning %>
+              <%= '<li>Waxing</li>'.html_safe if @stylist.waxing %>
+            </ul>
+          </div>
+
+      <% end %>
+
+      <% if @stylist.testimonials.size > 0 %>
+
+          <div class="row about-this-location">
+            <h3 class="text-center">Testimonials</h3>
+            <% @stylist.testimonials.each do |testimonial| %>
+              <div class="testimonial">
+                <div class="text"><%= testimonial.text.html_safe %></div>
+                <% if testimonial.name.present? %>
+                <div class="name-region">
+                  <%= testimonial.name %>
+                  <% if testimonial.region.present? %>
+                   , <%= testimonial.region %>
+                  <% end %>
+                </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+      <% end %>
+
     </div>
 
   </div>
 </div>
-
-<% if @stylist.work_hours.present? %>
-  <div class="container">
-
-    <div class="row about-this-location">
-      <h3 class="text-center">Availability</h3>
-      <h4 class="text-center"><%= @stylist.work_hours.html_safe %></h4>
-    </div>
-
-  </div>
-<% end %>
-
-<% if @stylist.biography.present? %>
-  <div class="container">
-
-    <div class="row about-this-location">
-      <h3 class="text-center">About <%= @stylist.name %></h3>
-      <h4 class="text-center"><%= @stylist.biography.html_safe %></h4>
-    </div>
-
-  </div>
-<% end %>
-
-<% if @stylist.services.size > 0 %>
-  <div class="container">
-
-    <div class="row about-this-location">
-      <h3 class="text-center">Services</h3>
-      <ul class="stylist-services">
-        <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
-        <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
-        <%= '<li>Nails</li>'.html_safe if @stylist.nails %>
-        <%= '<li>Massage</li>'.html_safe if @stylist.massage %>
-        <%= '<li>Teeth Whitening</li>'.html_safe if @stylist.teeth_whitening %>
-        <%= '<li>Eyelash Extensions</li>'.html_safe if @stylist.eyelash_extensions %>
-        <%= '<li>Hair Extensions</li>'.html_safe if @stylist.hair_extensions %>
-        <%= '<li>Makeup</li>'.html_safe if @stylist.makeup %>
-        <%= '<li>Tanning</li>'.html_safe if @stylist.tanning %>
-        <%= '<li>Waxing</li>'.html_safe if @stylist.waxing %>
-      </ul>
-    </div>
-
-  </div>
-<% end %>
-
-<% if @stylist.testimonials.size > 0 %>
-  <div class="container">
-
-    <div class="row about-this-location">
-      <h3 class="text-center">Testimonials</h3>
-      <% @stylist.testimonials.each do |testimonial| %>
-        <div class="testimonial">
-          <div class="text"><%= testimonial.text.html_safe %></div>
-          <% if testimonial.name.present? %>
-          <div class="name-region">
-            <%= testimonial.name %>
-            <% if testimonial.region.present? %>
-             , <%= testimonial.region %>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-<% end %>
 
 <div class="send-a-message-modal modal-content">
   <h4>Send a Message</h4>
