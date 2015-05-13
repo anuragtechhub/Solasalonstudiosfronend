@@ -9,7 +9,7 @@
             <br><br>
             <strong>303.377.7652</strong>
             <br><br>
-            <%= link_to 'Request Info', :request_franchising_info, :class => 'button' %>
+            <%= link_to 'Request Info', :request_franchising_info, :class => 'button request-franchising-info' %>
         </p>
       </div>
       
@@ -63,4 +63,17 @@
     </div>
 
   </div>
+</div>
+
+<div class="request-franchising-modal modal-content">
+  <h4 style="margin-bottom:15px;">Franchising</h4>
+  <p style="margin-bottom:30px">Interested in opening a Sola Salon Studios franchise?<br>Complete the form below and we will be in touch!</p>
+  <%= form_tag :franchising_request, :id => 'franchising_request' do %>
+    <input type="text" name="name" placeholder="Full Name" />
+    <input type="text" name="email" placeholder="Email Address" />
+    <input type="text" name="phone" placeholder="Phone Number" />
+    <input type="text" name="profession" placeholder="Your Profession" />
+    <textarea name="message" placeholder="Leave a Message"></textarea>
+    <button class="primary block">Submit Request</button>
+  <% end %>
 </div>

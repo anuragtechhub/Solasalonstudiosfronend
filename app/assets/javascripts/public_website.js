@@ -158,4 +158,37 @@ $(function () {
   // footer tooltip init
   $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
+  // request franchising info
+
+  var $franchsing_modal = $('.request-franchising-modal').modal();
+
+  // open send a message modal
+  $('.request-franchising-info').on('click', function () {
+    $franchsing_modal.data('modal').open();
+    return false;
+  });
+
+  // form handler
+  $('#franchising_request').on('submit', function () {
+    var $form = $(this);
+
+    $.ajax({
+      method: 'POST',
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(data) {
+      if (data && data.success) {
+        $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        setTimeout(function () {
+          $franchsing_modal.data('modal').fadeOut();
+        }, 3300);
+      } else {
+        $form.tooltipster('content', data.error).tooltipster('show');
+      }
+    });
+
+    return false;
+  });
+  $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
 });

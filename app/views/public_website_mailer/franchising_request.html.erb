@@ -1,0 +1,21 @@
+<h3>Franchising Request</h3>
+
+<hr>
+
+<p><strong>Name:</strong> <%= @message.name %></p>
+
+<% if @message.email.present? %>
+  <p><strong>Email:</strong> <%= @message.email %></p>
+<% end %>
+
+<% if @message.phone.present? %>
+  <p><strong>Phone:</strong> <%= @message.phone %></p>
+<% end %>
+
+<% if @message.profession.present? %>
+  <p><strong>Profession:</strong> <%= @message.profession %></p>
+<% end %>
+
+<% if @message.message.present? %>
+  <p><strong>Leave a Message:</strong> <%= @message.message %></p>
+<% end %>

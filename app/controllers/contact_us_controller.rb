@@ -4,6 +4,17 @@ class ContactUsController < PublicWebsiteController
     @all_locations = Location.all
   end
 
+  def franchising_request
+    if request.post?
+      if params[:name].present? && (params[:email].present? || params[:phone].present?)
+        FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :profession => params[:profession], :message => params[:message])
+        render :json => {:success => 'Thank you! We will get in touch soon'}
+      else
+        render :json => {:error => 'Please enter your name and email address or phone number'}
+      end
+    end
+  end
+
   def request_a_tour
     if request.post?
       if params[:name] && params[:name].present? && params[:email] && params[:email].present?
