@@ -1,11 +1,11 @@
 class SearchController < PublicWebsiteController
   def results
     if params[:query]
-      query_param = "%#{params[:query]}%"
+      query_param = "%#{params[:query].downcase}%"
 
       # locations
       locations1 = Location.near(params[:query])
-      locations2 = Location.where('state LIKE ? OR name LIKE ? OR url_name LIKE ?', query_param, query_param, query_param)
+      locations2 = Location.where('LOWER(state) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ? AND LOWER(status) = ?', query_param, query_param, query_param, 'open')
       @locations = locations1.open + locations2.open
       if @locations
         @locations.uniq!
@@ -13,7 +13,7 @@ class SearchController < PublicWebsiteController
       end
 
       # stylists
-      @stylists = Stylist.where('business_name LIKE ? OR name LIKE ? OR url_name LIKE ?', query_param, query_param, query_param)
+      @stylists = Stylist.where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ? AND LOWER(status) = ?', query_param, query_param, query_param, 'open')
       if @stylists
         @stylist = @stylists.open
         @stylists.uniq!

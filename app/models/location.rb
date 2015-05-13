@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
   scope :open, -> { where(:status => 'open') }
 
   belongs_to :admin
-  has_many :stylists
+  has_many :stylists, -> { where(:status => 'open') }
 
   before_save :fix_url_name
   after_validation :geocode
