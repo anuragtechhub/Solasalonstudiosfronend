@@ -5,61 +5,55 @@
   </div>
 
   <div class="row dashed">
-    <div class="one-third column">
+    <div class="one-half column">
       <h1 class="small">Contact a Sola<br>Nearest You</h1>
     </div>
-    <div class="two-thirds column">
+    <div class="one-half column">
       <p>Start the conversation with your desired Sola Salon Studios&reg; location today by filling out the Contact Us form. We look forward to hearing from you!</p>
       <p>If you have a general question, check out our <%= link_to 'Frequently Asked Questions', :faqs, :class => 'pink-link' %></p>
       <br>
+      <div class="sola-select select-a-state form">
+        <div class="row">
+          <div class="option-placeholder"><h3><%= params[:state] || 'Select a State' %></h3></div>
+          <div class="arrow"><span class="ss-dropdown"></span></div>
+        </div>
+        <div class="options">
+          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+          <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+          <% end %>
+        </div>
+      </div>
 
-      <div class="row">
-        <div class="one-half column">
-          <div class="sola-select select-a-state form">
+      <div id="contact-us-states">
+        <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+          <div class="sola-select form select-a-location" id="state_select_<%= location.state %>">
+            
             <div class="row">
-              <div class="option-placeholder"><h3><%= params[:state] || 'Select a State' %></h3></div>
+              <div class="option-placeholder"><h3><%= params[:location] || 'Select a Location' %></h3></div>
               <div class="arrow"><span class="ss-dropdown"></span></div>
             </div>
             <div class="options">
-              <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-              <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+              <% Location.where(:state => location.state).order(:name => :asc).each do |location| %> 
+                <div class="option" data-value="<%= location.id %>" data-phone="<%= location.phone_number %>"><%= location.name.html_safe %></div>
               <% end %>
             </div>
           </div>
-        </div>
+        <% end %>  
       </div>
 
-      <div class="row">
-        <div class="one-half column">
-          <div id="contact-us-states">
-            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-              <div class="sola-select form select-a-location" id="state_select_<%= location.state %>">
-                
-                <div class="row">
-                  <div class="option-placeholder"><h3><%= params[:location] || 'Select a Location' %></h3></div>
-                  <div class="arrow"><span class="ss-dropdown"></span></div>
-                </div>
-                <div class="options">
-                  <% Location.where(:state => location.state).order(:name => :asc).each do |location| %> 
-                    <div class="option" data-value="<%= location.id %>"><%= location.name.html_safe %></div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>  
-          </div>
-        </div>
-      </div>
-      
       <div id="contact-us-info">
         <div class="contact-us-info">
           <div class="row">
+            <h3>Call for Leasing Information</h3>
+            <h1 id="contact-us-number">(303) 377-7652</h1>
+            <h3>Leave a Message</h3>
             <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
               <input name="name" type="text" placeholder="Your Name">
               <input name="email" type="text" placeholder="Email Address">
               <input name="phone" type="text" placeholder="Phone Number (Optional)">
               <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
               <input name="location_id" id="contact_us_location_id" type="hidden" value="">
-              <button class="button block primary">Submit</button>
+              <button class="button block primary">Submit Message</button>
             <% end %>
           </div>
         </div>
