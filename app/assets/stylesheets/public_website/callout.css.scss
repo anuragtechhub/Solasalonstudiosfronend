@@ -127,6 +127,17 @@
       color: #FFF;
       text-decoration: none;
     }
+
+    &.coupon {
+      margin: 15px auto;
+      background: #FFF;
+      border: 2px dashed $brand-green;
+      border-radius: 8px;
+
+      h3, h4, .icon, a, a:link, a:visited, a:hover, a:active {
+        color: $brand-green;
+      }
+    }
   }
 
   &.pink {

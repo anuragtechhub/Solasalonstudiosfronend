@@ -429,6 +429,7 @@ RailsAdmin.config do |config|
         end
       end
       group :images do
+        active false
         field :floorplan_image do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
@@ -592,6 +593,12 @@ RailsAdmin.config do |config|
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
       end
+      group :social do
+        field :facebook_url
+        field :instagram_url
+        field :pinterest_url
+        field :twitter_url
+      end
       group :services do
         field :hair
         field :skin
@@ -712,7 +719,14 @@ RailsAdmin.config do |config|
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
       end
+      group :social do
+        field :facebook_url
+        field :instagram_url
+        field :pinterest_url
+        field :twitter_url
+      end
       group :services do
+        active false
         field :hair
         field :skin
         field :nails
@@ -726,6 +740,7 @@ RailsAdmin.config do |config|
         field :brows
       end
       group :images do
+        active false
         field :image_1 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
@@ -778,6 +793,7 @@ RailsAdmin.config do |config|
         end
       end
       group :testimonials do
+        active false
         field :testimonial_1
         field :testimonial_2
         field :testimonial_3

@@ -159,8 +159,8 @@
     color: #474747;
     border-bottom: 1px dashed #D7D7D7;
     flex: 1;
-    margin: 30px;
-    min-width: 90px
+    margin: 0 30px 15px 30px;
+    min-width: 120px
   }
 }
 
@@ -292,6 +292,33 @@ h3.business-name {
     }
   }
 
+}
+
+.testimonial {
+  
+  .text {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 17px;
+    letter-spacing: 0px;
+    line-height: 35px;
+    font-weight: 300;
+    color: #474747;
+  }
+
+  .name-region {
+    font-family: 'Dosis', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    line-height: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #C7C7C7;
+    margin-top: 30px;
+  }
+
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px dashed #D7D7D7;
 }
 
 

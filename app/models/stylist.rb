@@ -58,6 +58,10 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def social_links_present?
+    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present?
+  end
+
   def status_enum
     [['Open', 'open'], ['Closed', 'closed']]
   end

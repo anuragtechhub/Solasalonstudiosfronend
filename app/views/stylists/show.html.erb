@@ -37,6 +37,16 @@
           <li><%= link_to 'Visit my website', @stylist.website_url, :target => '_blank' %></li>
         <% end %>
       </ul>
+
+      <% if @stylist.social_links_present? %>
+        <ul class="social stylist-social">
+          <% if @stylist.pinterest_url.present? %><li><%= link_to @stylist.pinterest_url, :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li><% end %>
+          <% if @stylist.twitter_url.present? %><li><%= link_to @stylist.twitter_url, :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li><% end %>
+          <% if @stylist.facebook_url.present? %><li><%= link_to @stylist.facebook_url, :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li><% end %>
+          <% if @stylist.instagram_url.present? %><li><%= link_to @stylist.instagram_url, :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li><% end %>
+        </ul>
+      <% end %>
+
       <div class="row salon-map" id="map" style="margin-bottom: 15px"></div>
       <div id="map-overlay" class="salon-map"></div>
     </div>
@@ -60,8 +70,8 @@
       <% if @stylist.work_hours.present? %>
 
           <div class="row about-this-location">
-            <h3 class="text-center">Availability</h3>
-            <h4 class="text-center"><%= @stylist.work_hours.html_safe %></h4>
+            <h3>Availability</h3>
+            <h4><%= @stylist.work_hours.html_safe %></h4>
           </div>
 
       <% end %>
@@ -69,8 +79,8 @@
       <% if @stylist.biography.present? %>
 
           <div class="row about-this-location">
-            <h3 class="text-center">About <%= @stylist.name %></h3>
-            <h4 class="text-center"><%= @stylist.biography.html_safe %></h4>
+            <h3>About <%= @stylist.name %></h3>
+            <h4><%= @stylist.biography.html_safe %></h4>
           </div>
 
       <% end %>
@@ -78,7 +88,7 @@
       <% if @stylist.services.size > 0 %>
 
           <div class="row about-this-location">
-            <h3 class="text-center">Services</h3>
+            <h3>Services</h3>
             <ul class="stylist-services">
               <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
               <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
@@ -97,8 +107,8 @@
 
       <% if @stylist.testimonials.size > 0 %>
 
-          <div class="row about-this-location">
-            <h3 class="text-center">Testimonials</h3>
+          <div class="row testimonials">
+            <h3>Testimonials</h3>
             <% @stylist.testimonials.each do |testimonial| %>
               <div class="testimonial">
                 <div class="text"><%= testimonial.text.html_safe %></div>

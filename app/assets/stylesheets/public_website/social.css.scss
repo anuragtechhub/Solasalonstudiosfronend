@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
 ul.social {
   overflow: hidden;
   margin-top: 25px;
@@ -27,6 +30,34 @@ ul.social {
       span {
         position: relative;
         top: 2px;
+      }
+    }
+
+    a:hover, a:active {
+      @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+      color: #FFF;
+    }
+  }
+
+  &.stylist-social {
+    margin: -15px 0 15px 0;
+    border: 0;
+    display: flex;
+    display: -webkit-flex;
+    align-content: stretch;
+    
+    li {
+      border: 0;
+      flex: 1;
+
+      a {
+        flex: 1;
+        border: 0;
+
+        &:hover, &:active {
+          background: transparent;
+          color: $brand-pink;
+        }
       }
     }
   }
