@@ -167,13 +167,13 @@
 
 				$( 'body' ).append( html );
 
-				if ( supportSVG && plugin.settings.useSVG === true ) {
-					bg = $( '#swipebox-close' ).css( 'background-image' );
-					bg = bg.replace( 'png', 'svg' );
-					$( '#swipebox-prev, #swipebox-next, #swipebox-close' ).css( {
-						'background-image' : bg
-					} );
-				}
+				// if ( supportSVG && plugin.settings.useSVG === true ) {
+				// 	bg = $( '#swipebox-close' ).css( 'background-image' );
+				// 	bg = bg.replace( 'png', 'svg' );
+				// 	$( '#swipebox-prev, #swipebox-next, #swipebox-close' ).css( {
+				// 		'background-image' : bg
+				// 	} );
+				// }
 
 				if ( isMobile && plugin.settings.removeBarsOnMobile ) {
 					$( '#swipebox-bottom-bar, #swipebox-top-bar' ).remove();

@@ -31,6 +31,7 @@ $(function () {
   // carousel
   $('.owl-carousel').each(function () {
     var $this = $(this);
+    
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
@@ -99,8 +100,13 @@ $(function () {
 
   // image-gallery
   $('.view-image-gallery').on('click', function () {
-    alert('view image gallery');
+    var images = [];
 
+    $('#image_gallery input').each(function () {
+      images.push({href: $(this).val()});
+    });
+
+    $.swipebox(images);
     return false;
   });
 

@@ -50,7 +50,7 @@ html.swipebox-html.swipebox-touch {
 	white-space: nowrap;
 	position: absolute;
 	display: none;
-	cursor: pointer;
+	// cursor: pointer;
 	
 	.slide {
 		height: 100%;
@@ -104,36 +104,44 @@ html.swipebox-html.swipebox-touch {
 	}
 	
 	.slide-loading {
-		background: asset-data-url('loader.gif') no-repeat center center;
+		background: asset-data-url('swipebox_loader.gif') no-repeat center center;
+		// margin-top: 30px;
 	}
 
-}
-
-#swipebox-bottom-bar,
-#swipebox-top-bar{
-	transition : 0.5s;
-	position: absolute;
-	left: 0;
-	z-index: 999;
-	height: 50px;
-	width: 100%;
 }
 
 #swipebox-bottom-bar {
-	bottom: -50px;
-
-	&.visible-bars {
-		transform: translate3d(0,-50px,0);
-	}
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
 }
 
-#swipebox-top-bar {
-	top: -50px;
+// #swipebox-bottom-bar,
+// #swipebox-top-bar{
+// 	transition : 0.5s;
+// 	position: absolute;
+// 	left: 0;
+// 	z-index: 999;
+// 	height: 50px;
+// 	width: 100%;
+// }
+
+// #swipebox-bottom-bar {
+// 	bottom: -50px;
+
+// 	&.visible-bars {
+// 		transform: translate3d(0,-50px,0);
+// 	}
+// }
+
+// #swipebox-top-bar {
+// 	top: -50px;
 	
-	&.visible-bars {
-		transform: translate3d(0,50px,0);
-	}
-}
+// 	&.visible-bars {
+// 		transform: translate3d(0,50px,0);
+// 	}
+// }
 
 #swipebox-title{
 	display:block;
@@ -154,6 +162,8 @@ html.swipebox-html.swipebox-touch {
 	height: 50px;
 	top: 0;
 }
+
+
 
 #swipebox-arrows{
 	display: block;
@@ -188,8 +198,38 @@ html.swipebox-html.swipebox-touch {
 #swipebox-next{
 	&.disabled{
 		opacity: 0.3;
+		cursor: default;
 	}
 }
+
+
+/* custom arrows */
+#swipebox-prev, 
+#swipebox-next {
+  position: absolute;
+  top: 50%;
+  z-index: 9;
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+  background-size: 28px 55px;
+  width: 28px;
+  height: 55px;
+  margin-top: -27.5px;
+}
+
+#swipebox-prev {
+  background-image: asset-data-url('Arrow_Left_Large@2x.png');
+  left: 30px;
+}
+
+#swipebox-next {
+  background-image: asset-data-url('Arrow_Right_Large@2x.png');
+  right: 30px;
+}
+
+
+
 
 .swipebox-no-touch{
 	#swipebox-overlay.rightSpring #swipebox-slider {
@@ -287,13 +327,13 @@ html.swipebox-html.swipebox-touch {
 	background: rgba(0,0,0,0.85);
 }
 
-#swipebox-bottom-bar,
-#swipebox-top-bar {
-	text-shadow: 1px 1px 1px black;
-	background: #000;
-	//@include bar(#0d0d0d);
-	opacity: 0.95;
-}
+// #swipebox-bottom-bar,
+// #swipebox-top-bar {
+// 	text-shadow: 1px 1px 1px black;
+// 	background: #000;
+// 	//@include bar(#0d0d0d);
+// 	opacity: 0.95;
+// }
 
 #swipebox-bottom-bar {
 	//border-top: 1px solid rgba(255, 255, 255, 0.1);
