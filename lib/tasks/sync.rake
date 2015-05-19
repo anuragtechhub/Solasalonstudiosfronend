@@ -422,7 +422,7 @@ namespace :sync do
 
       p "thru phone number"
 
-      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) AND parent_id = 120 LIMIT 1").first
+      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY cat_id DESC LIMIT 1").first
       if location_row 
         location = Location.find_by :url_name => location_row['cat_url_title']
         if location
