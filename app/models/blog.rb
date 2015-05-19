@@ -17,6 +17,7 @@ class Blog < ActiveRecord::Base
 
   def related_blogs
     blogs = []
+    
     if self.blog_categories.size > 0
       self.blog_categories.each do |category|
         if category.blogs && category.blogs.size > 0
@@ -30,6 +31,7 @@ class Blog < ActiveRecord::Base
         break if blogs.size == 3
       end
     end
+    
     if blogs.size < 3
       Blog.order(:created_at).limit(4).each do |blog|
         if blog.id != self.id

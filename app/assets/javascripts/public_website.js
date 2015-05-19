@@ -54,7 +54,7 @@ $(function () {
       options['animateOut'] = 'fadeOut'
     }
 
-    console.log('options', options)
+    //console.log('options', options)
 
     $this.owlCarousel(options);
   });
@@ -159,7 +159,6 @@ $(function () {
   $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
   // request franchising info
-
   var $franchsing_modal = $('.request-franchising-modal').modal();
 
   // open send a message modal
