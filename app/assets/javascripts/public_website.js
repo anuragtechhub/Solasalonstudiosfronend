@@ -100,6 +100,8 @@ $(function () {
   // image-gallery
   $('.view-image-gallery').on('click', function () {
     alert('view image gallery');
+
+    return false;
   });
 
   // window resize handler

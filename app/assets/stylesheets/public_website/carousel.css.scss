@@ -5,6 +5,15 @@
   }
 }
 
+ul.owl-carousel {
+  margin: 0 0 40px 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+}
+
 @media (max-width: 550px) {
 
   .owl-carousel {
