@@ -110,6 +110,10 @@ $(function () {
     return false;
   });
 
+  $(document).on('click', '#swipebox-overlay', function (e) {
+    $('#swipebox-close').trigger('click');
+  });
+
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
   $window.on('resize', function () {
