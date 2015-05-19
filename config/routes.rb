@@ -4,6 +4,8 @@ Solasalonstudios::Application.routes.draw do
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
+  get '5000' => 'home#sola_5000', :as => :sola_5000
+
   get "about-us" => 'about_us#index', :as => :about_us
   get "contact-us" => "contact_us#index", :as => :contact_us
   get "faq" => 'faq#index', :as => :faqs
@@ -25,7 +27,7 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:state" => 'locations#state', :as => :locations_by_state
   get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
   get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
-  get "locations/:state/:city/:url_name/stylists(/:service)" => 'locations#stylists', :as => :salon_stylists
+  get "locations/:state/:city/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
 
   get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
