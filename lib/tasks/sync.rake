@@ -67,8 +67,16 @@ namespace :sync do
     sync_stylists(7000)
   end   
 
+  task :stylists16 => :environment do
+    sync_stylists(7500)
+  end 
+
+  task :stylists17 => :environment do
+    sync_stylists(8000)
+  end   
+
   task :stylists => :environment do
-    (1..15).each do |num|
+    (1..17).each do |num|
       Rake::Task["sync:stylists#{num}"].execute
     end
   end

@@ -97,6 +97,11 @@ $(function () {
   // play videos
   $('.play-button, .play-video').swipebox();
 
+  // image-gallery
+  $('.view-image-gallery').on('click', function () {
+    alert('view image gallery');
+  });
+
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
   $window.on('resize', function () {
