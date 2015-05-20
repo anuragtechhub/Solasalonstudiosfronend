@@ -20,6 +20,10 @@ button, input[type=button], input[type=submit], .button, a.button {
   text-decoration: none;
   text-overflow: ellipsis;
   overflow: hidden;
+  -moz-transition-property: none !important;
+  -webkit-transition-property: none !important;
+  -o-transition-property: none !important;
+  transition-property: none !important;
 
 
   &:link, &:visited {

@@ -129,6 +129,10 @@
         color: #000;
         border: 1px solid #DBDBDB;
         border-right: 0;
+        -moz-transition-property: none !important;
+        -webkit-transition-property: none !important;
+        -o-transition-property: none !important;
+        transition-property: none !important;
 
         span {
           position: relative;
