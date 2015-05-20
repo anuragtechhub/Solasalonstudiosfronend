@@ -44,6 +44,11 @@
       color: #4A4A4A;
       text-decoration: none;
       padding: 2px 0;
+
+      &:hover, &:active {
+        color: #AFAFAF;
+        text-decoration: underline;
+      }
     }
   }
 
