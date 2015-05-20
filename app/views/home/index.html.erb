@@ -39,7 +39,11 @@
   <div class="row home-recently-featured-box">
     <div class="one-half column">
       <h3>Recently Featured In</h3>
-      <%= image_tag 'Home/News_Logos@2x.jpg', :class=> 'recently-featured-in' %>
+      <%= image_tag 'Home/News_Logos@2x.jpg', :class=> 'recently-featured-in', :usemap => '#image-map-recently-featured-in' %>
+      <map name="image-map-recently-featured-in" id="image-map-recently-featured-in">
+        <area  alt="" title="" href="http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio" shape="rect" coords="0,0,263,66" style="outline:none;" target="_self"     />
+        <area  alt="" title="" href="http://behindthechair.com/displayarticle.aspx?ID=4133&ITID=7" shape="rect" coords="313,0,794,66" style="outline:none;" target="_self"     />
+      </map>
     </div>
     <div class="one-half column">
       <h3>Find a Salon Professional</h3>

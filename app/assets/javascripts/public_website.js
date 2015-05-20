@@ -11,6 +11,7 @@
 //= require affix
 //= require jquery.swipebox
 //= require modal
+//= require rwd_image_maps
 
 $(function () {
 
@@ -227,5 +228,8 @@ $(function () {
     return false;
   });
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
+  // home image map
+  $('img[usemap]').rwdImageMaps();
 
 });
