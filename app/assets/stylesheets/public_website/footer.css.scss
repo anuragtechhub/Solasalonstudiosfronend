@@ -79,6 +79,10 @@
     input {
       margin-right: 0;
       width: 75%;
+
+      &:focus {
+        border: 1px solid $brand-pink;
+      }
     }
 
     button {

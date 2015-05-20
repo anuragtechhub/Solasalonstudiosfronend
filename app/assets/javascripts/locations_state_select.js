@@ -20,7 +20,7 @@ $(function () {
       return false;
     });
 
-    $select.find('.option').on('click', function () {
+    $select.find('.option').on('click', function (event) {
       window.location.href = $(event.target).data('value');
       return false;
     });
