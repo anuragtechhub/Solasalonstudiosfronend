@@ -74,10 +74,6 @@
       border-radius: 0;
       display: block;
       float: left;
-
-      &:focus, &:active {
-        border: 1px solid $brand-pink;
-      }
     }
 
     input {
@@ -99,6 +95,7 @@
       &:hover, &:active {
         @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
         color: #FFF;
+        border: 1px solid $brand-pink;
       }
     }
   }
@@ -142,6 +139,7 @@
         &:hover, &:active {
           @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
           color: #FFF;
+          border: 1px solid $brand-pink;
         }
       }
 
@@ -149,7 +147,9 @@
         a, a:link, a:visited, a:hover, a:active {
           border-right: 1px solid #DBDBDB;
         }
-        
+        a:hover, a:active {
+          border-right: 1px solid $brand-pink;
+        }
       }
     }
   }

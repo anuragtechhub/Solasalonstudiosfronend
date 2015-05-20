@@ -1,5 +1,5 @@
-@import 'mixins';
 @import 'variables';
+@import 'bootstrap/mixins';
 
 .info-box {
   border: 1px solid #DBDBDB;
@@ -30,5 +30,11 @@
     text-decoration: none;
     text-align: center;
     padding: 7px 0;
+
+
+    &:hover, &:active {
+      color: #FFF;
+      @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+    }
   }
 }
