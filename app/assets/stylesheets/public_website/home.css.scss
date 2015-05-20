@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 .home-slogan {
   font-size: 16px;
   line-height: 22px;
@@ -7,11 +10,25 @@
 .home-tile {
 
   h3 {
+    @include transition(color .25s ease);
+  }
+
+  h3 {
     margin: 20px 0 10px 0;
   }
 
   p {
     margin: 0 30px;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+  }
+
+  a:hover, a:active {
+    h3 {
+      color: #BABABA !important;
+    }
   }
 }
 
