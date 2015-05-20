@@ -52,7 +52,7 @@
   <div class="box box-image view-image-gallery" style="cursor:pointer;background-image:url('<%= image_path 'Salon_Image_3.jpg' %>')">&nbsp;</div>
   <div class="box right">
     <div class="box-text">
-      <h1>Your Life, Your Style&reg;</h1>
+      <h1>Your Life, Your Style<small>&reg;</small></h1>
       <h4>Whether you’re a hairdresser, nail tech, esthetician or massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you completely control the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance for you. Sell the retail products you love and set your own prices to maximize your income. Sola studios come furnished with all of the major equipment that you’ll need to help make your transition easy!</h4>
       <p><%= link_to 'View Gallery', :gallery, :class => 'button view-image-gallery' %></p>
     </div>
@@ -130,6 +130,19 @@
   </div>
 </div>
 
+<div class="explore-studio">
+  <h1>Explore a Studio</h1>
+  <%= image_tag 'Own_Salon_Explore.jpg', :class => 'full-width' %>
+  <div class="dot storage" data-tooltip="<h3>Storage</h3><p>A locking cash drawer to keep your money safe and pull out drawers for additional storage</p>"></div>
+  <div class="dot insulated-walls" data-tooltip="<h3>Insulated Walls</h3><p>Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.</p>"></div>
+  <div class="dot tool-cabinet" data-tooltip="<h3>Tool Cabinet</h3><p>Tool cabinet with dedicated outlets helps to keep cords neat and tidy.</p>"></div>
+  <div class="dot chair" data-tooltip="<h3>Chair</h3><p>Provide comfort for your clients in a high-end hydraulic chair.</p>"></div>
+  <div class="dot cabinetry" data-tooltip="<h3>Cabinets</h3><p>High end custom cabinetry with abundant storage helps keep your studio organized.</p>"></div>
+  <div class="dot mirror" data-tooltip="<h3>Mirror</h3><p>Style clients in front of large, well-lit mirrors.</p>"></div>
+  <div class="dot products" data-tooltip="<h3>Products</h3><p>Proudly display and sell the products you love</p>"></div>
+  <div class="dot wash-basin" data-tooltip="<h3>Shampoo Bowl</h3><p>Shampoo, rinse and repeat in a shampoo bowl. Instant hot water supply saves time and water.</p>"></div>
+</div>
+
 <div class="callout blue callout-testimonial">
   <div class="container">
     <div class="row">
@@ -148,19 +161,6 @@
   <div class="container">
     <h3 class="large" style="margin-bottom:0;"><%= link_to 'View more testimonials'.html_safe, :testimonials %></h3>
   </div>
-</div>
-
-<div class="explore-studio">
-  <h1>Explore a Studio</h1>
-  <%= image_tag 'Own_Salon_Explore.jpg', :class => 'full-width' %>
-  <div class="dot storage" data-tooltip="<h3>Storage</h3><p>A locking cash drawer to keep your money safe and pull out drawers for additional storage</p>"></div>
-  <div class="dot insulated-walls" data-tooltip="<h3>Insulated Walls</h3><p>Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.</p>"></div>
-  <div class="dot tool-cabinet" data-tooltip="<h3>Tool Cabinet</h3><p>Tool cabinet with dedicated outlets helps to keep cords neat and tidy.</p>"></div>
-  <div class="dot chair" data-tooltip="<h3>Chair</h3><p>Provide comfort for your clients in a high-end hydraulic chair.</p>"></div>
-  <div class="dot cabinetry" data-tooltip="<h3>Cabinets</h3><p>High end custom cabinetry with abundant storage helps keep your studio organized.</p>"></div>
-  <div class="dot mirror" data-tooltip="<h3>Mirror</h3><p>Style clients in front of large, well-lit mirrors.</p>"></div>
-  <div class="dot products" data-tooltip="<h3>Products</h3><p>Proudly display and sell the products you love</p>"></div>
-  <div class="dot wash-basin" data-tooltip="<h3>Shampoo Bowl</h3><p>Shampoo, rinse and repeat in a shampoo bowl. Instant hot water supply saves time and water.</p>"></div>
 </div>
 
 <div class="container">
