@@ -16,7 +16,7 @@ body {
 
 a, a:link, a:visited, a:hover, a:active {
   color: $brand-blue;
-  @include transition(color .3s ease);
+  @include transition(color .25s ease);
 
   &.pink-link {
     text-decoration: none;
