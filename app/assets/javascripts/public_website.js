@@ -61,6 +61,10 @@ $(function () {
     $this.owlCarousel(options);
   });
 
+  $(document.body).on('click', '.arrow-left, .arrow-right', function (e) {
+    e.preventDefault();
+  });
+
   // header and nav
   var $headerNav = $('#header .nav');
   var $window = $(window);
