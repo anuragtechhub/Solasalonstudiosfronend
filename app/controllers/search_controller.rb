@@ -13,11 +13,13 @@ class SearchController < PublicWebsiteController
       end
 
       # stylists
-      @stylists = Stylist.where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ? AND LOWER(status) = ?', query_param, query_param, query_param, 'open')
-      if @stylists
-        @stylist = @stylists.open
-        @stylists.uniq!
-        @stylists.sort! { |a, b| a.name <=> b.name }
+      if params[:stylists] != 'hidden'
+        @stylists = Stylist.where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ? AND LOWER(status) = ?', query_param, query_param, query_param, 'open')
+        if @stylists
+          @stylist = @stylists.open
+          @stylists.uniq!
+          @stylists.sort! { |a, b| a.name <=> b.name }
+        end
       end
     end
   end

@@ -73,14 +73,35 @@ $(function () {
     e.stopPropagation();
   });
 
+  function openSearch() {
+    $searchForm.addClass('open animating');
+    $searchInput.focus();
+    setTimeout(function () {
+      $searchForm.removeClass('animating') 
+    }, 1000);
+  }
+
+  function closeSearch() {
+    $searchForm.removeClass('open');
+    $searchInput.val('');
+  } 
+
   $searchButton.on('click', function () {
-    if ($searchForm.hasClass('open')) {
-      $searchForm.removeClass('open')
+    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
+      closeSearch();
     } else {
-      $searchForm.addClass('open');
-      $searchInput.focus();
+      openSearch();
     }
     return false;
+  }).on('mouseover', function () {
+    openSearch();
+  }).on('mouseout', function () {
+    console.log('$searchInput.val()', $searchInput.val(), $searchInput.val() !== '')
+    if ($searchInput.val()) {
+      // do nothing
+    } else {
+      closeSearch();
+    }
   });
 
   // mobile top nav menu

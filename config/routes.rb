@@ -17,6 +17,7 @@ Solasalonstudios::Application.routes.draw do
   
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
+  get "rent-a-studio" => 'contact_us#index', :as => :rent_a_studio
   match "franchising-request" => 'contact_us#franchising_request', :via => [:get, :post], :as => :franchising_request
   
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
