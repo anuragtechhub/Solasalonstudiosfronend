@@ -68,6 +68,11 @@
     color: #FFF;
     background: $brand-blue;
     z-index: 4;
+
+    // &:hover, &:active {
+    //   color: #AFDFFF;
+    //   border: 2px solid #AFDFFF;
+    // }
   }
 
   &.open {

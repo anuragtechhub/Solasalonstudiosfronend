@@ -32,6 +32,11 @@
         font-size: 10px;
         letter-spacing: 2px;
         font-weight: bold;
+        color: $brand-blue;
+
+        &:hover, &:active {
+          color: $brand-pink;
+        }
       }
     }
 
@@ -94,6 +99,10 @@
         padding: 5px 15px;
         text-decoration: none;
         color: #FFF;
+
+        &:hover, &:active {
+          color: #AFDFFF;
+        }
       }
     }
   }
