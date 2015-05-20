@@ -23,7 +23,7 @@ $(function () {
       return false;
     });
 
-    $select.find('.option').on('click', function () {
+    $select.find('.option').on('click', function (event) {
       var state = $(event.target).data('value');
       $('.contact-us-info').hide();
       
@@ -60,7 +60,7 @@ $(function () {
       return false;
     });
 
-    $select.find('.option').on('click', function () {
+    $select.find('.option').on('click', function (event) {
       var locationId = $(event.target).data('value');
       var locationName = $(event.target).html();
 

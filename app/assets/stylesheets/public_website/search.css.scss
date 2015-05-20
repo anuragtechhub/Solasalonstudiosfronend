@@ -32,6 +32,10 @@
     color: $brand-pink;
     font-size: 13px;
   }
+
+  a:hover, a:active {
+    color: $brand-pink-hover;
+  }
 }
 
 

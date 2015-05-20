@@ -23,7 +23,7 @@ a, a:link, a:visited, a:hover, a:active {
     color: $brand-pink;
 
     &:hover, &:active {
-      color: darken($brand-pink, 20%)
+      color: $brand-pink-hover;
     }
   }
 }
