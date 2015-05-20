@@ -22,11 +22,13 @@
 
   h4 {
     line-height: 25px;
+    margin-bottom: 0;
   }
 
   ul {
     list-style-type: disc;
     list-style-position: outside;
+    margin-bottom: 0;
 
     li {
       margin-bottom: 15px;
@@ -39,7 +41,7 @@
 
   .one-half {
     width: 50%;
-    margin: 30px 0 50px 0;
+    margin: 40px 0;
     padding: 0;
 
     &:first-child {
@@ -247,9 +249,15 @@
       }
 
       &:last-child {
+        margin-top: 30px;
         border-top: 1px solid #E6E6E6;
         padding-top: 40px;
         padding-bottom: 0px;
+      }
+
+      ul {
+        padding-left: 15px;
+        padding-right: 15px;
       }
     }
   }
