@@ -24,7 +24,7 @@ class ContactUsController < PublicWebsiteController
           # if there's a message, this is a general contact us submission
           render :json => {:success => 'Thank you! We will get in touch soon'}
         else
-          render :json => {:success => 'Thank you! We will get in touch soon to schedule a tour'}
+          render :json => {:success => 'Thank you! We will get in touch soon'}
         end
       else
         render :json => {:error => 'Please enter your name and email address'}

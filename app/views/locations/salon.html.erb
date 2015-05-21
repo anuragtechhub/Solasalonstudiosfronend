@@ -29,7 +29,7 @@
       <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
       <div class="salon-buttons">
         <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block' %>
-        <%= link_to 'Request a Tour', '#request-a-tour', :class => 'button block request-a-tour' %>
+        <%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button block rent-a-studio' %>
       </div>
       <div class="row salon-map" id="map"></div>
       <div id="map-overlay" class="salon-map"></div>
@@ -54,6 +54,12 @@
   <h3>Move in Special</h3>
   <h4>2 weeks of free rent + $400 retail bonus + custom painting of your studio walls!</h4>
 </div>
+
+<!-- <div class="callout blue image small">
+  <div class="container text-center">
+    <h1>Your Life, Your Style&reg;</h1>
+  </div>
+</div> -->
 
 <div class="container">
 
@@ -134,16 +140,16 @@
   </div>
 </div>
 
-<a name="request-a-tour" id="request-a-tour"></a>
+<a name="rent-a-studio" id="rent-a-studio"></a>
 <div class="salon-request-a-tour">
   <div class="container">
     <div class="row">
       
       <div class='one-half column'>
-        <h2>Schedule a Tour</h2>
+        <h2>Contact Us for Leasing Information</h2>
         <h3 class="subtle"><%= @location.name %></h3>
         <div class="tour-information">
-          <p>Call <%= @location.general_contact_name %> to schedule a tour</p>
+          <p>Call <%= @location.general_contact_name %> for leasing information</p>
           <h1><%= @location.phone_number %></h1>
           <p class="contact-link"><a href="mailto:<%= @location.email_address_for_inquiries %>"><%= @location.email_address_for_inquiries %></a></p>
         </div>
@@ -155,7 +161,7 @@
           <input name="email" type="text" placeholder="Email Address">
           <input name="phone" type="text" placeholder="Phone Number (Optional)">
           <input name="location_id" type="hidden" value="<%= @location.id %>">
-          <button class="big-btn">Submit Request Tour</button>
+          <button class="big-btn">Submit Request</button>
         <% end %>
       </div>
 
@@ -170,10 +176,16 @@
         <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait' %>
       </div>
       <div class="two-thirds column">
-        <h1>"Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."</h1>
-        <h3>Katina Eisenbeis</h3>
+        <h1>"I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."</h1>
+        <h3>Katina Eisenbeis, Katina's Salon</h3>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="callout green">
+  <div class="container">
+    <h3 class="large" style="margin-bottom:0;"><%= link_to 'View more testimonials'.html_safe, :testimonials %></h3>
   </div>
 </div>
 

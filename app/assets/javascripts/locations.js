@@ -180,8 +180,8 @@ $(function () {
  //$('#map-overlay').css('top', $map.offset().top).show().on('click', function () { $('#map-overlay').remove(); });
 
  // scroll to request tour anchor
- $('.request-a-tour').on('click', function () {
-   $('html, body').animate({scrollTop: $('#request-a-tour').offset().top}, 'slow');
+ $('.rent-a-studio').on('click', function () {
+   $('html, body').animate({scrollTop: $('#rent-a-studio').offset().top}, 'slow');
  });
 
 });
