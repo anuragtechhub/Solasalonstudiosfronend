@@ -62,19 +62,17 @@
 
     <div class="two-thirds column">
       
-      <div class="salon-pro-carousel owl-carousel owl-theme">
-        <% if @stylist.images.size > 0 %>
-        <% @stylist.images.each do |image| %>
-          <% if image.exists?(:carousel) %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
-          <% else %>
-            <div class="item"><%= image_tag image.url(:original) %></div>
+      <% if @stylist.images.size > 0 %>
+        <div class="salon-pro-carousel owl-carousel owl-theme">
+          <% @stylist.images.each do |image| %>
+            <% if image.exists?(:carousel) %>
+              <div class="item"><%= image_tag image.url(:carousel) %></div>
+            <% else %>
+              <div class="item"><%= image_tag image.url(:original) %></div>
+            <% end %>
           <% end %>
-        <% end %>
-        <% else %>
-          <div class="item"><%= image_tag 'gray.gif' %></div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <% if @stylist.biography.present? %>
 
