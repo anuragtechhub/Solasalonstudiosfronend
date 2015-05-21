@@ -24,6 +24,16 @@ select {
   &.full-width {
     width: 100%;
   }
+
+  &:-webkit-placeholder {
+    color: #AAAAAA;
+  }
+  &:-moz-placeholder {
+    color: #AAAAAA;
+  }
+  &:placeholder {
+    color: #AAAAAA;
+  }  
 }
 
 .sola-select {
