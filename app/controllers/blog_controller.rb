@@ -3,7 +3,7 @@ class BlogController < PublicWebsiteController
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
     if @category
       #filter posts by category id
-      @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ?', @category.id).uniq
+      @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ?', @category.id).uniq.order(:created_at => :desc)
     else
       @posts = Blog.order(:created_at => :desc)
     end
