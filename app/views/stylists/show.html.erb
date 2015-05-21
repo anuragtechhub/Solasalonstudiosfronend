@@ -54,7 +54,7 @@
 
           <div class="row">
             <h3>Availability</h3>
-            <h4 class="availability"><%= @stylist.work_hours.html_safe %></h4>
+            <h4 class="availability"><%= @stylist.work_hours.gsub(/\n/, '<br>').html_safe %></h4>
           </div>
 
       <% end %>      
