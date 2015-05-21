@@ -55,8 +55,6 @@ $(function () {
       options['animateOut'] = 'fadeOut'
     }
 
-    //console.log('options', options)
-
     $this.owlCarousel(options);
   });
 
@@ -91,16 +89,15 @@ $(function () {
   } 
 
   $searchButton.on('click', function () {
-    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
-      closeSearch();
-    } else {
+    //if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
+    //  closeSearch();
+    //} else {
       openSearch();
-    }
+    //}
     return false;
   }).on('mouseover', function () {
     openSearch();
   }).on('mouseout', function () {
-    console.log('$searchInput.val()', $searchInput.val(), $searchInput.val() !== '')
     if ($searchInput.val()) {
       // do nothing
     } else {
