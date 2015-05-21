@@ -11,9 +11,17 @@
   }
 
   h4 {
-    color: #000;
-    font-size: 24px;
-    line-height: 30px;
+    a, a:link, a:visited, a:hover, a:active {
+      color: #000;
+      font-size: 24px;
+      line-height: 32px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    a:hover, a:active {
+      color: #7A7A7A;
+    }
   }
 
   p.subtle {
