@@ -33,6 +33,9 @@
 }
 
 .home-recently-featured-box {
+  display: flex;
+  display: -webkit-flex;
+
   margin: 10px 0 40px 0;
   border: 1px solid #E6E6E6;
 
@@ -54,8 +57,67 @@ img.recently-featured-in {
   max-height: 50px;
 }
 
+.modern-salon {
+  margin-top: 20px;
+  margin-right: 20px;
 
+  &:link, &:visited {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('Home/Modern_Logo_Black@2x.png') no-repeat center center;
+    background-size: 128px 33px;
+    width: 128px;
+    height: 33px;
+  }
+  
+  &:hover, &:active {
+    background: asset-data-url('Home/Modern_Logo_Pink@2x.png') no-repeat center center;
+    background-size: 128px 33px;
+    width: 128px;
+    height: 33px;
+  }
+}
 
+.behind-the-chair {
+  margin-top: 20px;
+
+  &:link, &:visited {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('Home/Behind_Logo_Black@2x.png') no-repeat center center;
+    background-size: 241px 27px;
+    width: 241px;
+    height: 27px;
+  }
+
+  &:hover, &:active {
+    background: asset-data-url('Home/Behind_Logo_Pink@2x.png') no-repeat center center;
+    background-size: 241px 27px;
+    width: 241px;
+    height: 27px;
+  }
+}
+
+@media (max-width: 650px) {
+  .home-recently-featured-box {
+    display: block !important;
+    
+    .column {
+      display: block;
+      width: 100%;
+      margin: 0;
+
+      &:first-child {
+        border-bottom: 1px solid #E6E6E6;
+      }
+
+      &:last-child {
+        border-left: 0;
+      }
+    }
+  }
+
+}
 
 @media (min-width: 400px) {
 

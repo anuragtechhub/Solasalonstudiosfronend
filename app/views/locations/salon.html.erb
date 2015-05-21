@@ -29,7 +29,7 @@
       <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
       <div class="salon-buttons">
         <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block' %>
-        <%= link_to 'Request a Tour', :request_a_tour, :class => 'button block' %>
+        <%= link_to 'Request a Tour', '#request-a-tour', :class => 'button block request-a-tour' %>
       </div>
       <div class="row salon-map" id="map"></div>
       <div id="map-overlay" class="salon-map"></div>
@@ -134,6 +134,7 @@
   </div>
 </div>
 
+<a name="request-a-tour" id="request-a-tour"></a>
 <div class="salon-request-a-tour">
   <div class="container">
     <div class="row">
