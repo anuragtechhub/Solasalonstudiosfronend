@@ -131,6 +131,17 @@
   </div>
 </div>
 
+<div class="callout blue">
+  <div class="container">
+    <div class="row">
+      <%= link_to "http://maps.google.com/maps?daddr=#{@location.full_address}", :target => '_blank' do %>
+        <h4 class="large">Visit <%= @stylist.name.html_safe %> at Sola <%= @location.name.html_safe %></h4>
+        <h3><%= @location.full_address %></h3>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="send-a-message-modal modal-content">
   <h4>Send a Message</h4>
   <%= form_tag :salon_professional_send_a_message, :id => 'send-a-message' do %>

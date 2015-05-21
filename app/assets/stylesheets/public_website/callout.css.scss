@@ -1,3 +1,4 @@
+@import 'mixins';
 @import 'variables';
 
 .callout {
@@ -112,6 +113,7 @@
 
     h1, h3, h4, .icon {
       color: #FFF;
+      @include transition(color .25s ease);
     }
 
     .one-half:last-child {
@@ -125,6 +127,10 @@
 
       &:hover, &:active {
         color: #AFDFFF;
+
+        h1, h2, h3, h4 {
+          color: #AFDFFF;
+        }
       }
     }
   }
