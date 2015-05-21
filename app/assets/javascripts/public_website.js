@@ -80,25 +80,28 @@ $(function () {
     $searchInput.focus();
     setTimeout(function () {
       $searchForm.removeClass('animating') 
-    }, 1000);
+    }, 500);
   }
 
   function closeSearch() {
-    $searchForm.removeClass('open');
+    $searchForm.removeClass('open clicked');
     $searchInput.val('');
   } 
 
   $searchButton.on('click', function () {
-    //if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
+    //console.log($searchForm.hasClass('clicked'), $searchForm.hasClass('open'), !$searchForm.hasClass('animating'))
+    $searchForm.addClass('clicked');
+    //if ($searchForm.hasClass('clicked') && $searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
     //  closeSearch();
     //} else {
-      openSearch();
+    openSearch();
     //}
+    //
     return false;
   }).on('mouseover', function () {
     openSearch();
   }).on('mouseout', function () {
-    if ($searchInput.val()) {
+    if ($searchInput.val() || $searchForm.hasClass('clicked')) {
       // do nothing
     } else {
       closeSearch();
