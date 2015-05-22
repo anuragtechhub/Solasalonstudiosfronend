@@ -210,6 +210,39 @@ namespace :sync do
     end
   end
 
+  task :msas => :environment do
+    db = get_database_client
+    Location.all.each do |location|
+      if location.legacy_id && location.url_name
+        #p 
+        #p
+        #p "SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{location.legacy_id}) ORDER BY parent_id DESC LIMIT 1"
+        row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{location.legacy_id}) AND cat_url_title != '#{location.url_name}' AND parent_id != 0 ORDER BY cat_order ASC LIMIT 1").first
+        #p "#{location.legacy_id}, #{location.name}, #{row.inspect}"
+
+        msa = Msa.find_by(:legacy_id => row['cat_id'].to_s) || Msa.new
+
+        msa.legacy_id = row['cat_id']
+        msa.name = row['cat_name']
+        msa.url_name = row['cat_url_name']
+        msa.description = row['cat_description']
+
+        if msa.save
+          p "MSA Saved!!!! #{location.legacy_id}, #{location.name}, #{msa.inspect}"
+        else
+          p "ERROR saving MSA #{msa.errors.inspect}"
+        end
+
+        location.msa = msa
+        if location.save
+          p "saved location"
+        else
+          p "error saving location #{location.errors.inspect}"
+        end
+      end
+    end
+  end
+
   task :locations => :environment do
     p 'sync locations!'
     db = get_database_client

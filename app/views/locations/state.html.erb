@@ -39,9 +39,9 @@
 
 <div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
 
-    <% @locations.group_by(&:city).sort.each do |city, locations| %>
+    <% @locations.group_by(&:msa_name).each do |msa_name, locations| %>
 
-      <h2 class="city"><%= city %></h2>
+      <h2 class="city"><%= msa_name %></h2>
 
       <% locations.each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>

@@ -59,6 +59,10 @@ $(function () {
       options['autoHeight'] = true;
     }
 
+    if ($this.data('autoplay')) {
+      options['autoPlay'] = parseInt($this.data('autoplay'), 10);
+    }
+
     $this.owlCarousel(options);
   });
 
@@ -139,9 +143,9 @@ $(function () {
     return false;
   });
 
-  $(document).on('click', '#swipebox-overlay', function (e) {
-    $('#swipebox-close').trigger('click');
-  });
+  // $(document).on('click', '#swipebox-overlay', function (e) {
+  //   $('#swipebox-close').trigger('click');
+  // });
 
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();

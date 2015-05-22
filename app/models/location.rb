@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
   scope :open, -> { where(:status => 'open') }
 
   belongs_to :admin
+  belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
   before_save :fix_url_name
@@ -76,6 +77,10 @@ class Location < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
+
+  def msa_name
+    msa.name if msa
+  end
 
   def services
     services = []

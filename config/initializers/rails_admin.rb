@@ -233,6 +233,12 @@ RailsAdmin.config do |config|
       field :address_1
       field :city
       field :state
+      field :msa do
+        label "MSA"
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
       field :admin do
         label 'Franchisee'
         visible do
@@ -253,6 +259,12 @@ RailsAdmin.config do |config|
         end
         field :admin do
           label 'Franchisee'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
+        field :msa do
+          label "MSA"
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
@@ -398,6 +410,12 @@ RailsAdmin.config do |config|
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
         end
         field :description
+        field :msa do
+          label "MSA"
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
         field :admin do
           label 'Franchisee'
           visible do
