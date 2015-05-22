@@ -68,6 +68,22 @@
 
 @media (max-width: 550px) {
 
+  .contact-sola-today-carousel {
+    .owl-theme .owl-controls {
+      left: -25px;
+      right: -25px;
+    }
+    .arrow-left {
+      left: 0 !important;
+    }
+    .arrow-right {
+      right: 0 !important;
+    }
+    .contact-sola-today {
+      margin: 0 30px;
+    }
+  }
+
   .explore-studio {
 
     h1 {
