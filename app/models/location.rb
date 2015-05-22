@@ -112,7 +112,7 @@ class Location < ActiveRecord::Base
   end
 
   def full_address
-    "#{address_1} #{address_2} #{city}, #{state} #{postal_code}"
+    "#{address_1} #{address_2}, #{city}, #{state} #{postal_code}"
   end
 
   # helper function to return images as array
