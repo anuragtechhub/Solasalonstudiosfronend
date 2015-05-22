@@ -136,6 +136,11 @@ $(function () {
   //   $('#swipebox-close').trigger('click');
   // });
 
+  // optgroup click handler
+  $('.optgroup').on('click', function () {
+    return false;
+  });
+
   // window resize handler
   var windowWidth = $window.width(), windowHeight = $window.height();
   $window.on('resize', function () {
