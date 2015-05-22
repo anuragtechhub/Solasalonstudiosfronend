@@ -225,7 +225,14 @@ namespace :sync do
           msa.legacy_id = row['cat_id']
           msa.name = row['cat_name']
           msa.url_name = row['cat_url_title']
-          msa.description = row['cat_description']
+
+          description = db.query("SELECT * FROM exp_weblog_data WHERE entry_id = (SELECT entry_id FROM exp_weblog_titles WHERE url_title = '#{row['cat_url_title']}' LIMIT 1) LIMIT 1").first
+          if description
+            p "DESCRIPTION = #{description['field_id_75']}"
+            msa.description = description['field_id_75']
+          else
+            p "NO DESCRIPTION"
+          end
 
           if msa.save
             p "MSA Saved!!!! #{location.legacy_id}, #{location.name}, #{msa.inspect}"
@@ -246,10 +253,44 @@ namespace :sync do
     end
   end
 
+  task :locations1 => :environment do
+    sync_locations(0)
+  end            
+
+  task :locations2 => :environment do
+    sync_locations(50)
+  end   
+
+  task :locations3 => :environment do
+    sync_locations(100)
+  end   
+
+  task :locations4 => :environment do
+    sync_locations(150)
+  end 
+
+  task :locations5 => :environment do
+    sync_locations(200)
+  end
+
+  task :locations6 => :environment do
+    sync_locations(250)
+  end  
+
+  task :locations7 => :environment do
+    sync_locations(300)
+  end  
+
   task :locations => :environment do
+    (1..7).each do |num|
+      Rake::Task["sync:locations#{num}"].execute
+    end
+  end
+
+  def sync_locations(offset)
     p 'sync locations!'
     db = get_database_client
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 5")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 5 LIMIT 50 OFFSET #{offset}")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|

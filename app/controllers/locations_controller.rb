@@ -9,7 +9,7 @@ class LocationsController < PublicWebsiteController
   def region
     @msa = Msa.find_by(:url_name => params[:url_name])
     @all_locations = Location.all
-    @locations = Location.where('msa_id =', @msa.id)
+    @locations = @all_locations.where('msa_id = ?', @msa.id)
   end
 
   def city
