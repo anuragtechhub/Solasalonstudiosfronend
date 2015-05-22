@@ -116,6 +116,17 @@ select {
     }
   }
 
+  .optgroup {
+    cursor: default;
+    padding: 8px;
+    margin: 15px 0 5px 0;
+
+    h3 {
+      color: darken(#C7C7C7, 20%) !important;
+      margin: 0;
+    }
+  }
+
 
 }
 
