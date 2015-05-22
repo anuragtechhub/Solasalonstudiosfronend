@@ -422,7 +422,7 @@ namespace :sync do
 
       p "thru phone number"
 
-      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY cat_id DESC LIMIT 1").first
+      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY cat_order ASC LIMIT 1").first
       if location_row 
         location = Location.find_by :url_name => location_row['cat_url_title']
         if location
@@ -584,6 +584,200 @@ namespace :sync do
       #location. = row['field_id_']
     end
   end 
+
+  task :stylist => :environment do
+    p 'sync stylists!'
+    db = get_database_client
+    p "mysql db = #{db}"
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 4247")
+    p "results.size = #{results.size}"
+    count = results.size
+    results.each_with_index do |row, idx|
+      p "Processing (#{row['entry_id']}) #{idx + 1} of #{count}..."
+
+      meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
+      p "meta #{meta}"
+
+      stylist = Stylist.find_by(:legacy_id => row['entry_id'].to_s) || Stylist.new
+
+      p "gotta stylist"
+      
+      stylist.legacy_id = row['entry_id']
+      stylist.status = meta['status']
+      stylist.name = meta['title'].encode('UTF-8')
+      stylist.url_name = meta['url_title'].encode('UTF-8')
+
+      p "thru url name"
+
+      stylist.biography = row['field_id_8'].strip.encode('UTF-8')
+      stylist.email_address = row['field_id_9'].encode('UTF-8')
+      stylist.phone_number = row['field_id_10'].encode('UTF-8')
+
+      p "thru phone number"
+
+      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY cat_order ASC LIMIT 1").first
+      if location_row 
+        p "location_row = #{location_row.inspect}"
+        location = Location.find_by :url_name => location_row['cat_url_title']
+        if location
+          p "*"
+          p "*"
+          p "*"
+          p "we have a location #{location_row['cat_url_title']}!"
+          p "*"
+          p "*"
+          p "*"          
+          stylist.location = location
+        end
+      end
+
+      stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
+      stylist.studio_number = row['field_id_11'].encode('UTF-8')
+      stylist.work_hours = row['field_id_13'].encode('UTF-8')
+      stylist.website = row['field_id_14'].encode('UTF-8')
+      stylist.business_name = row['field_id_29'].encode('UTF-8')
+      stylist.booking_url = row['field_id_220'].encode('UTF-8')
+
+      p "thru booking url"
+
+      stylist.hair = row['field_id_25']
+      stylist.skin = row['field_id_27']
+      stylist.nails = row['field_id_26']
+      stylist.massage = row['field_id_28']
+      stylist.teeth_whitening = row['field_id_36']
+      stylist.hair_extensions = row['field_id_314']
+      stylist.eyelash_extensions = row['field_id_198']
+      stylist.makeup = row['field_id_219']
+      stylist.tanning = row['field_id_303']
+      stylist.waxing = row['field_id_305']
+      stylist.brows = row['field_id_307']
+
+      p "thru services"
+
+      p "image 1"
+      begin
+        stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
+      rescue => e
+        p "image 1 error = #{e.inspect}"
+      end
+
+      p "image 2"
+      begin
+        stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
+      rescue => e
+        p "image 2 error = #{e.inspect}"
+      end
+
+      p "image 3"
+      begin
+        stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
+      rescue => e
+        p "image 3 error = #{e.inspect}"
+      end
+
+      p "image 4"
+      begin
+        stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
+      rescue => e
+        p "image 4 error = #{e.inspect}"
+      end
+
+      p "image 5"
+      begin
+        stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
+      rescue => e
+        p "image 5 error = #{e.inspect}"
+      end      
+
+      p "image 6"
+      begin
+        stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
+      rescue => e
+        p "image 6 error = #{e.inspect}"
+      end 
+
+      p "image 7"
+      begin
+        stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
+      rescue => e
+        p "image 7 error = #{e.inspect}"
+      end 
+
+      p "image 8"
+      begin
+        stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
+      rescue => e
+        p "image 8 error = #{e.inspect}"
+      end 
+
+      p "image 9"
+      begin
+        stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
+      rescue => e
+        p "image 9 error = #{e.inspect}"
+      end 
+
+      p "image 10"
+      begin
+        stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
+      rescue => e
+        p "image 10 error = #{e.inspect}"
+      end       
+
+      p "thru images"
+
+      # testimonials
+
+      if row['field_id_273'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_273'].encode('UTF-8'), :name => row['field_id_274'].encode('UTF-8'), :region => row['field_id_275'].encode('UTF-8'))
+      end
+
+      if row['field_id_276'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_276'].encode('UTF-8'), :name => row['field_id_277'].encode('UTF-8'), :region => row['field_id_278'].encode('UTF-8'))
+      end
+
+      if row['field_id_279'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_279'].encode('UTF-8'), :name => row['field_id_280'].encode('UTF-8'), :region => row['field_id_281'].encode('UTF-8'))
+      end
+
+      if row['field_id_282'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_282'].encode('UTF-8'), :name => row['field_id_283'].encode('UTF-8'), :region => row['field_id_284'].encode('UTF-8'))
+      end
+
+      if row['field_id_285'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_285'].encode('UTF-8'), :name => row['field_id_286'].encode('UTF-8'), :region => row['field_id_287'].encode('UTF-8'))
+      end
+
+      if row['field_id_288'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_288'].encode('UTF-8'), :name => row['field_id_289'].encode('UTF-8'), :region => row['field_id_290'].encode('UTF-8'))
+      end
+
+      if row['field_id_291'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_291'].encode('UTF-8'), :name => row['field_id_292'].encode('UTF-8'), :region => row['field_id_293'].encode('UTF-8'))
+      end
+
+      if row['field_id_294'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_294'].encode('UTF-8'), :name => row['field_id_295'].encode('UTF-8'), :region => row['field_id_296'].encode('UTF-8'))
+      end
+
+      if row['field_id_297'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_297'].encode('UTF-8'), :name => row['field_id_298'].encode('UTF-8'), :region => row['field_id_299'].encode('UTF-8'))
+      end
+
+      if row['field_id_300'].present?
+        stylist.testimonial_1 = Testimonial.new(:text => row['field_id_300'].encode('UTF-8'), :name => row['field_id_301'].encode('UTF-8'), :region => row['field_id_302'].encode('UTF-8'))
+      end
+
+      p "thru testimonials"
+
+      if stylist.save
+        p "Saved #{row['entry_id']}!"
+      else 
+        p "ERROR saving #{row['entry_id']} - #{stylist.errors.inspect}"
+      end
+      #location. = row['field_id_']
+    end
+  end
 
   def get_database_client
     Mysql2::Client.new(:host => 'solasalonstudios.com', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)
