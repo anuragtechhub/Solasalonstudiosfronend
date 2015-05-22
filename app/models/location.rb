@@ -79,7 +79,7 @@ class Location < ActiveRecord::Base
   validates :url_name, :presence => true, :uniqueness => true
 
   def msa_name
-    msa.name if msa
+    msa ? msa.name : ''
   end
 
   def services

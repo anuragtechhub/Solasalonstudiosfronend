@@ -12,7 +12,7 @@
 
 <div class="container featured-testimonials">
 
-  <div class="owl-carousel owl-theme" data-autoplay="10000" data-autoheight="yes">
+  <div class="owl-carousel owl-theme" data-autoplay="10000">
 
     <div class="item featured-testimonial">
       <h1>"Having my own studio at Sola has allowed me to be more creative in what I do! And the privacy has allowed me to have better relationships with my clients."</h1>
@@ -165,14 +165,14 @@
 <div class="callout blue image">
   <div class="container text-center">
     <%= link_to :contact_us do %>
-      <h1 style="margin-top:0">Join more than 5,000 Sola Salon Professionals!</h1>
+      <h1 style="margin-top:0">Join more than 5,000 salon professionals!</h1>
     <% end %>
   </div>
 </div>
 
 <div class="container sola-spotlights">
 
-  <div class="owl-carousel owl-theme" data-items="3">
+  <div class="owl-carousel owl-theme" data-items="3" data-autoplayoff="true">
    
     <div class="item sola-spotlight">
       <%= link_to show_blog_path('stylist_profile_autumn_morris') do %>
@@ -290,26 +290,6 @@
 
   <div class="row">
     <div class="one-half column half-testimonial">
-      <h4>"I love owning my own business, being my own boss and the environment here. If you are a salon professional, you owe it to yourself to come check out Sola. You won't regret it!"</h4>
-      <div class="testimoinal-author">
-        <%= image_tag 'Erika_Avatar@2x.png' %>
-        <div class="author-info"><h3>Erika LaDawn</h3>
-        <h3 class="subtle">Thrive Salon</h3></div>
-      </div>
-    </div>
-
-    <div class="one-half column half-testimonial">
-      <h4>"Having my own salon allows me the freedom of creating my own schedule to work smarter not harder."</h4>
-      <div class="testimoinal-author">
-        <%= image_tag 'Kim_Avatar@2x.png' %>
-        <div class="author-info"><h3>Kim Bennett Horvath</h3>
-        <h3 class="subtle">Kim Bennett Studios</h3></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row last">
-    <div class="one-half column half-testimonial">
       <h4>"My studio provides total relaxation for the client and a wonderful one-on-one experience where it's all about them."</h4>
       <div class="testimoinal-author">
         <%= image_tag 'Jo_Avatar@2x.png' %>
@@ -328,6 +308,25 @@
     </div> 
   </div>
 
+  <div class="row last">
+    <div class="one-half column half-testimonial">
+      <h4>"Having my own salon allows me the freedom of creating my own schedule to work smarter not harder."</h4>
+      <div class="testimoinal-author">
+        <%= image_tag 'Kim_Avatar@2x.png' %>
+        <div class="author-info"><h3>Kim Bennett Horvath</h3>
+        <h3 class="subtle">Kim Bennett Studios</h3></div>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h4>"I've created a 4 wall atmosphere for my clients that they love. Sola made the esthetics modern; I love the cabinetry, privacy and being in a 2 chair studio with my own shampoo bowl. I couldn't ask for more."</h4>
+      <div class="testimoinal-author">
+        <%= image_tag 'Fernando_Avatar@2x.png' %>
+        <div class="author-info"><h3>Fernando Adame</h3>
+        <h3 class="subtle">Final Cut</h3></div>
+      </div>
+    </div>    
+  </div>
 
 <!--   <div class="row">
     <div class="one-half column half-testimonial">

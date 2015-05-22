@@ -63,6 +63,10 @@ $(function () {
       options['autoPlay'] = parseInt($this.data('autoplay'), 10);
     }
 
+    if ($this.data('autoplayoff')) {
+      options['autoPlay'] = false
+    }
+
     $this.owlCarousel(options);
   });
 
