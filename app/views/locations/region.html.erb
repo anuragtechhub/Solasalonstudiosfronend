@@ -31,18 +31,7 @@
   </div>
 </div>
 
-<div class="location-breadcrumb">
-  <div class="container">
-    <!--<%= link_to 'United States', :locations %> <span class="divider">/</span> --><%= link_to params[:state], locations_by_state_path(params[:state]) %> 
-    <span class="divider">/</span> <%= link_to @msa.name.html_safe, region_path(@msa.url_name) %>
-  </div>
-</div>
-
-
-<div class="row" id="map"></div>
-<div id="map-overlay"></div>
-
-<div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
+<div class="container">
 
   <% @locations.each_with_index do |location, index| %>
     <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
@@ -55,6 +44,16 @@
   <% end %>
 
 </div>
+
+<div class="location-breadcrumb">
+  <div class="container">
+    <!--<%= link_to 'United States', :locations %> <span class="divider">/</span> --><%= link_to params[:state], locations_by_state_path(params[:state]) %> 
+    <span class="divider">/</span> <%= link_to @msa.name.html_safe, region_path(@msa.url_name) %>
+  </div>
+</div>
+
+<div class="row" id="map"></div>
+<div id="map-overlay"></div>
 
 <%= render 'shared/public_website/hidden_map_inputs' %>
 
