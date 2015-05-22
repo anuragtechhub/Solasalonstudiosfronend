@@ -55,6 +55,10 @@ $(function () {
       options['animateOut'] = 'fadeOut'
     }
 
+    if ($this.data('autoheight')) {
+      options['autoHeight'] = true;
+    }
+
     $this.owlCarousel(options);
   });
 
