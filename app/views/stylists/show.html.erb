@@ -78,7 +78,7 @@
 
           <div class="row about-this-location">
             <h3>About <%= @stylist.name %></h3>
-            <h4><%= @stylist.biography.html_safe %></h4>
+            <h4><%= @stylist.biography.gsub(/\n/, '<br>').html_safe %></h4>
           </div>
 
       <% end %>
