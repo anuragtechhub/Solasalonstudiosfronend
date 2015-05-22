@@ -5,7 +5,6 @@
       <div class="seven columns locations-hero">
           <h1><%= @msa.name.html_safe %></h1>
           <h3 class="subtle">&nbsp;</h3>
-          <h4><%= @msa.description.html_safe %></h4>
       </div>
 
       <div class="five columns text-right">
@@ -24,6 +23,10 @@
 
       </div>
     </div>
+
+    <div class="row">
+      <h4><%= @msa.description.html_safe %></h4>
+    </div>
     
   </div>
 </div>
@@ -31,7 +34,7 @@
 <div class="location-breadcrumb">
   <div class="container">
     <!--<%= link_to 'United States', :locations %> <span class="divider">/</span> --><%= link_to params[:state], locations_by_state_path(params[:state]) %> 
-    <span class="divider">/</span> <%= link_to params[:city], locations_by_city_path(params[:state], params[:city]) %>
+    <span class="divider">/</span> <%= link_to @msa.name.html_safe, region_path(@msa.url_name) %>
   </div>
 </div>
 

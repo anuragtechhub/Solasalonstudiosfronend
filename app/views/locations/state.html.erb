@@ -39,7 +39,7 @@
 
 <div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
 
-    <% @locations.group_by(&:msa_name).each do |msa_name, locations| %>
+    <% @locations.group_by(&:msa_name).sort.each do |msa_name, locations| %>
 
       <h2 class="city"><%= link_to msa_name, region_path(locations.first.msa.url_name) %></h2>
 

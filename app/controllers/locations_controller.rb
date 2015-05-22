@@ -10,6 +10,7 @@ class LocationsController < PublicWebsiteController
     @msa = Msa.find_by(:url_name => params[:url_name])
     @all_locations = Location.all
     @locations = @all_locations.where('msa_id = ?', @msa.id)
+    params[:state] = @locations.first.state
   end
 
   def city
