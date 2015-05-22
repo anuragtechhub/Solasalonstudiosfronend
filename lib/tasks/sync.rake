@@ -499,20 +499,45 @@ namespace :sync do
 
       p "thru phone number"
 
-      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
-      if location_row 
-        location = Location.find_by(:name => location_row['cat_name']) || Location.find_by(:url_name => location_row['cat_url_title'])
-        if location
-          p "*"
-          p "*"
-          p "*"
-          p "we have a location #{location_row['cat_url_title']}!"
-          p "*"
-          p "*"
-          p "*"          
-          stylist.location = location
+      msa_ids = db.query("SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']} ORDER BY cat_id DESC")
+      if msa_ids 
+        #p "location_row = #{location_row.inspect}"
+        p "msa_ids=#{msa_ids.inspect}"
+        msa_ids.each do |msa_id|
+          p "msa_id=#{msa_id}"
+          msa = Msa.where(:legacy_id => msa_id['cat_id'].to_s)
+          if msa && msa.size > 0
+            location = Location.find_by(:msa_id => msa.first.id) #|| Location.find_by(:name => location_row['cat_name']) || Location.find_by(:url_name => location_row['cat_url_title'])
+            p "location=#{location.inspect}"
+            if location
+              p "*"
+              p "*"
+              p "*"
+              p "we have a location!"
+              p "*"
+              p "*"
+              p "*"          
+              stylist.location = location
+              break;
+            end
+          end
         end
       end
+
+      # location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
+      # if location_row 
+      #   location = Location.find_by(:name => location_row['cat_name']) || Location.find_by(:url_name => location_row['cat_url_title'])
+      #   if location
+      #     p "*"
+      #     p "*"
+      #     p "*"
+      #     p "we have a location #{location_row['cat_url_title']}!"
+      #     p "*"
+      #     p "*"
+      #     p "*"          
+      #     stylist.location = location
+      #   end
+      # end
 
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
       stylist.studio_number = row['field_id_11'].encode('UTF-8')
@@ -666,7 +691,7 @@ namespace :sync do
     p 'sync stylists!'
     db = get_database_client
     p "mysql db = #{db}"
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 2750")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 9701")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
@@ -692,20 +717,28 @@ namespace :sync do
 
       p "thru phone number"
 
-      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
-      if location_row 
-        p "location_row = #{location_row.inspect}"
-        location = Location.find_by(:name => location_row['cat_name'])
-        p "location=#{location.inspect}"
-        if location
-          p "*"
-          p "*"
-          p "*"
-          p "we have a location #{location_row['cat_url_title']}!"
-          p "*"
-          p "*"
-          p "*"          
-          stylist.location = location
+      msa_ids = db.query("SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']} ORDER BY cat_id DESC")
+      if msa_ids 
+        #p "location_row = #{location_row.inspect}"
+        p "msa_ids=#{msa_ids.inspect}"
+        msa_ids.each do |msa_id|
+          p "msa_id=#{msa_id}"
+          msa = Msa.where(:legacy_id => msa_id['cat_id'].to_s)
+          if msa && msa.size > 0
+            location = Location.find_by(:msa_id => msa.first.id) #|| Location.find_by(:name => location_row['cat_name']) || Location.find_by(:url_name => location_row['cat_url_title'])
+            p "location=#{location.inspect}"
+            if location
+              p "*"
+              p "*"
+              p "*"
+              p "we have a location!"
+              p "*"
+              p "*"
+              p "*"          
+              stylist.location = location
+              break;
+            end
+          end
         end
       end
 
