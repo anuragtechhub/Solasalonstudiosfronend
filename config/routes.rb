@@ -43,6 +43,8 @@ Solasalonstudios::Application.routes.draw do
 
   get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
 
+  get 'region/:url_name' => 'locations#region', :as => :region
+
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   

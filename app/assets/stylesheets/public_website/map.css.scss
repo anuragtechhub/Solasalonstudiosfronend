@@ -141,6 +141,16 @@
 
 h2.city {
   margin: 20px 0 35px 0;
+
+  a, a:link, a:visited {
+    color: #000;
+    text-decoration: none;
+    @include transition(color .25s ease);
+  }
+
+  a:hover, a:active {
+    color: #7A7A7A;
+  }
 }
 
 

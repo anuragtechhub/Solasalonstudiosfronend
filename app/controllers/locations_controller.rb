@@ -6,6 +6,12 @@ class LocationsController < PublicWebsiteController
     @locations = Location.all
   end
 
+  def region
+    @msa = Msa.find_by(:url_name => params[:url_name])
+    @all_locations = Location.all
+    @locations = Location.where('msa_id =', @msa.id)
+  end
+
   def city
     @all_locations = Location.all
     query_param = "%#{params[:city]}%"
