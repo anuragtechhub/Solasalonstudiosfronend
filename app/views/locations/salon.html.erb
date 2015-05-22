@@ -19,6 +19,8 @@
               <div class="item"><%= image_tag image.url(:original) %></div>
             <% end %>
           <% end %>
+        <% else %>
+          <div class="item"><%= image_tag 'gray.gif' %></div>
         <% end %>
       </div>
     </div>
