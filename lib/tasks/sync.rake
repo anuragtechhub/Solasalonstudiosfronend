@@ -666,7 +666,7 @@ namespace :sync do
     p 'sync stylists!'
     db = get_database_client
     p "mysql db = #{db}"
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 4247")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 2750")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
@@ -692,10 +692,11 @@ namespace :sync do
 
       p "thru phone number"
 
-      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY cat_order ASC LIMIT 1").first
+      location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
       if location_row 
         p "location_row = #{location_row.inspect}"
-        location = Location.find_by :url_name => location_row['cat_url_title']
+        location = Location.find_by(:url_name => location_row['cat_url_title'])
+        p "location=#{location.inspect}"
         if location
           p "*"
           p "*"
