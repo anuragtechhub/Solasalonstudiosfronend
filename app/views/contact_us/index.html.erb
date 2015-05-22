@@ -33,7 +33,7 @@
               <div class="arrow"><span class="ss-dropdown"></span></div>
             </div>
             <div class="options">
-              <% Location.where(:state => location.state).group_by(&:msa_name).each do |msa_name, locations| %>
+              <% Location.where(:state => location.state).order(:name => :asc).group_by(&:msa_name).each do |msa_name, locations| %>
                 <% if msa_name %>
                   <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
                   <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
