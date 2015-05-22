@@ -92,28 +92,17 @@ $(function () {
   }
 
   function closeSearch() {
-    $searchForm.removeClass('open clicked');
+    $searchForm.removeClass('open animating');
     $searchInput.val('');
   } 
 
   $searchButton.on('click', function () {
-    //console.log($searchForm.hasClass('clicked'), $searchForm.hasClass('open'), !$searchForm.hasClass('animating'))
-    $searchForm.addClass('clicked');
-    //if ($searchForm.hasClass('clicked') && $searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
-    //  closeSearch();
-    //} else {
-    openSearch();
-    //}
-    //
-    return false;
-  }).on('mouseover', function () {
-    openSearch();
-  }).on('mouseout', function () {
-    if ($searchInput.val() || $searchForm.hasClass('clicked')) {
-      // do nothing
-    } else {
+    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
       closeSearch();
+    } else {
+      openSearch();
     }
+    return false;
   });
 
   // mobile top nav menu
