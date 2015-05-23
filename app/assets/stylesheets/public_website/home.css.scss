@@ -8,6 +8,7 @@
 }
 
 .home-tile {
+  margin-bottom: 15px;
 
   h3 {
     @include transition(color .25s ease);
@@ -124,7 +125,7 @@ img.recently-featured-in {
 //   .home-tile {
 //     margin-bottom: 20px;
 //   }
-  
+
 // }
 
 // @media (min-width: 400px) {
