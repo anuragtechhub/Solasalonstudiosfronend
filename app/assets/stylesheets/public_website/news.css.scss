@@ -29,13 +29,23 @@
 
     h4 {
       -webkit-font-smoothing: subpixel-antialiased;
-      margin: 0;
+      margin: -2px 0 2px 0;
       font-size: 25px;
       line-height: 31px;
 
       &.date {
         font-size: 15px;
         line-height: 21px;
+      }
+
+      a, a:link, a:visited, a:hover, a:active {
+        color: #474747;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      a:hover, a:active {
+        color: #9A9A9A;
       }
     }
 

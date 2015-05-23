@@ -9,10 +9,10 @@
   <% @articles.each do |article| %>
     <div class="news-article">
       <div class="image">
-        <%= image_tag article.image.url(:directory) %>
+        <%= link_to show_article_path(article) do %><%= image_tag article.image.url(:directory) %><% end %>
       </div>
       <div class="text">
-        <h4><%= article.title.html_safe %></h4>
+        <h4><%= link_to article.title.html_safe, show_article_path(article) %></h4>
         <h4 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h4>
         <p><%= article.summary.html_safe %><br><strong><%= link_to 'Read More', show_article_path(article), :class => 'pink-link' %></strong></p>
         <ul class="social">
