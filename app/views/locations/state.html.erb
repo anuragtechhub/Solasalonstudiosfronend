@@ -39,19 +39,19 @@
 <div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
 
     <% @locations.group_by(&:msa_name).sort.each do |msa_name, locations| %>
-      <% if msa_name && locations && locations.size > 0 %>
-        <h2 class="city"><%= link_to msa_name, region_path(locations.first.msa.url_name) %></h2>
 
-        <% locations.each_with_index do |location, index| %>
-          <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-            <div class="one-third column search-result">
-              <h3><%= location.name.html_safe %></h3>
-              <p><%= location.html_address.html_safe %></p>
-              <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
-            </div>
-          <% if ((index + 1) % 3) == 0 || index + 1 == locations.size %></div><% end %>
-        <% end %>
+      <h2 class="city"><%= link_to msa_name, region_path(Msa.find_by(:name => msa_name).url_name) %></h2>
+
+      <% locations.each_with_index do |location, index| %>
+        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
+          <div class="one-third column search-result">
+            <h3><%= location.name.html_safe %></h3>
+            <p><%= location.html_address.html_safe %></p>
+            <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
+          </div>
+        <% if ((index + 1) % 3) == 0 || index + 1 == locations.size %></div><% end %>
       <% end %>
+
     <% end %>
 
 </div>
