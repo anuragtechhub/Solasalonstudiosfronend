@@ -119,21 +119,21 @@ img.recently-featured-in {
 
 }
 
-@media (max-width: 550px) {
+// @media (max-width: 550px) {
 
-  .home-tile {
-    margin-bottom: 20px;
-  }
+//   .home-tile {
+//     margin-bottom: 20px;
+//   }
   
-}
+// }
 
-@media (min-width: 400px) {
+// @media (min-width: 400px) {
 
-  .home-tile {
-    margin-bottom: 40px;
+//   .home-tile {
+//     margin-bottom: 40px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
+//     &:last-child {
+//       margin-bottom: 0;
+//     }
+//   }
+// }
