@@ -31,7 +31,7 @@
     <% if @category %>
       <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
     <% end %>
-     <span class="divider">/</span> <%= link_to @post.safe_title, show_blog_path(@post) %>
+     <span class="divider">/</span> <%= link_to @post.title.html_safe, show_blog_path(@post) %>
   </div>
 </div>
 
