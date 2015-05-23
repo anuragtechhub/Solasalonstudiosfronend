@@ -12,6 +12,9 @@ html {
 
 body {
   font-family: 'Lato', Arial, sans-serif;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 a, a:link, a:visited, a:hover, a:active {
