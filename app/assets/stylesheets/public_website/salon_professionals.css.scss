@@ -300,9 +300,13 @@ h3.business-name {
       font-size: 17px;
 
       a, a:link, a:visited, a:hover, a:active {
-        color: $brand-pink !important;
+        color: $brand-pink;
         font-size: 17px;
         text-decoration: none;
+      }
+
+      a:hover, a:active {
+        color: $brand-pink-hover;
       }
     }
   }

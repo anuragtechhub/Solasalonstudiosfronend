@@ -15,7 +15,7 @@
       </div>
       
       <div class="two-thirds column">
-        <p class="summary"><%= @article.body.gsub(/\n\n/, '<br><br>').html_safe %></p>
+        <p class="summary"><%= @article.body.gsub(/\n/, '<hr class="br">').html_safe %></p>
       </div>
 
     </div>

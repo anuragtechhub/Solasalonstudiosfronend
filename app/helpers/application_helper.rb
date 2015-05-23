@@ -8,5 +8,6 @@ module ApplicationHelper
     unless url && url.starts_with?('http')
       url = 'http://' + url;
     end
+    url
   end
 end

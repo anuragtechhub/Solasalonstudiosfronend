@@ -55,7 +55,7 @@
 
           <div class="row">
             <h3>Availability</h3>
-            <h4 class="availability"><%= @stylist.work_hours.gsub(/\n/, '<br>').html_safe %></h4>
+            <h4 class="availability"><%= @stylist.work_hours.gsub(/\n/, '<hr class="br">').html_safe %></h4>
           </div>
 
       <% end %>      
@@ -75,7 +75,7 @@
 
           <div class="row about-this-location">
             <h3>About <%= @stylist.name %></h3>
-            <h4><%= @stylist.biography.gsub(/\n/, '<br>').html_safe %></h4>
+            <h4><%= @stylist.biography.gsub(/\n/, '<hr class="br">').html_safe %></h4>
           </div>
 
       <% end %>

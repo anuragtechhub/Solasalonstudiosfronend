@@ -4,7 +4,6 @@
 ul.social {
   overflow: hidden;
   margin-top: 25px;
-  border: 1px solid #DBDBDB;
 
   li {
     margin: 0;
@@ -12,11 +11,6 @@ ul.social {
     float: left;
     width: 25%;
     text-align: center;
-    border-right: 1px solid #DBDBDB;
-    
-    &:last-child {
-      border-right: 0;
-    }
 
     a, a:link, a:visited, a:hover, a:active {
       padding: 5px 0;
@@ -27,6 +21,11 @@ ul.social {
       color: #000;
       text-decoration: none;
 
+      border: 1px solid #DBDBDB;
+      border-right: 1px solid transparent;
+      @include transition(none);
+
+
       span {
         position: relative;
         top: 2px;
@@ -36,7 +35,16 @@ ul.social {
     a:hover, a:active {
       @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
       color: #FFF;
+      border: 1px solid $brand-pink;
     }
+
+    &:last-child a {
+      border: 1px solid #DBDBDB;
+
+      &:hover, &:active {
+        border: 1px solid $brand-pink;
+      }
+    }    
   }
 
   &.stylist-social {
@@ -52,7 +60,8 @@ ul.social {
 
       a {
         flex: 1;
-        border: 0;
+        border: 0 !important;
+        @include transition(color .2s ease);
 
         &:hover, &:active {
           background: transparent;

@@ -63,7 +63,7 @@ h4, .h4 {
   &.large {
     font-size: 27px;
     margin-bottom: 10px;
-  }
+  } 
 }
 
 p, .p {
@@ -78,3 +78,10 @@ p, .p {
 p.subtle, .psubtle {
   color: #C7C7C7;
 }
+
+hr.br {
+  display: block;
+  margin: 6px;
+  padding: 0;
+  visibility: hidden;
+} 
