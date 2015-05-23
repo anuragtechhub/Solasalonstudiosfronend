@@ -4,7 +4,7 @@
     <div class="row">
       
       <div class="one-third column">
-        <h4><%= @article.title.html_safe %></h4>
+        <h4 class="large"><%= @article.title.html_safe %></h4>
         <p class="subtle">Posted on <%= @article.created_at.strftime('%B %e, %Y') %></p>
         <div class="share-socially"><h3>Share Socially</h3></div>
         <ul class="social three">
@@ -15,7 +15,7 @@
       </div>
       
       <div class="two-thirds column">
-        <p class="summary"><%= @article.body.gsub(/\n/, '<hr class="br">').html_safe %></p>
+        <div class="summary"><%= @article.body.gsub(/\n/, '<hr class="br" />').html_safe %></div>
       </div>
 
     </div>
