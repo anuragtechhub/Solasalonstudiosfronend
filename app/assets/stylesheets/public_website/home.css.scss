@@ -119,10 +119,12 @@ img.recently-featured-in {
 
 }
 
-@media (max-width: 550px) }
+@media (max-width: 550px) {
+
   .home-tile {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
+  
 }
 
 @media (min-width: 400px) {
