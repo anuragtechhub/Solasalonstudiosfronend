@@ -136,6 +136,11 @@
     letter-spacing: 1px;
     text-decoration: none;
     white-space: nowrap;
+    @include transition(color .3s ease);
+  }
+
+  a:hover, a:active {
+    color: lighten(#737373, 25%);
   }
 }
 
