@@ -73,11 +73,12 @@
     color: #FFF;
     background: $brand-blue;
     z-index: 4;
+    @include transition(all ease 0.2s);
 
-    // &:hover, &:active {
-    //   color: #AFDFFF;
-    //   border: 2px solid #AFDFFF;
-    // }
+    &:hover, &:active {
+      color: #AFDFFF;
+      border: 2px solid #AFDFFF;
+    }
   }
 
   &.open {
@@ -85,6 +86,11 @@
     .nav-search-input {
       width: 100%;
       
+    }
+
+    .ss-search {
+      color: #FFF !important;
+      border: 2px solid #FFF !important;
     }
   }
   
