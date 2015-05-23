@@ -73,6 +73,12 @@
     img {
       width: 133px;
       height: 81px;
+      opacity: 1;
+      @include transition(opacity 0.3s ease)
+
+      &:hover, &:active {
+        opacity: 0.45;
+      }
     }
   }
 
