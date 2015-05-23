@@ -110,7 +110,7 @@ $(function () {
   });
 
   // mobile top nav menu
-  $('#mobile-top-nav-button').on('click', function (e) {
+  $('#mobile-top-nav-button').on('click touchstart', function (e) {
     e.stopPropagation();
     e.preventDefault();
 

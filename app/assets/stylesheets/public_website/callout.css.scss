@@ -236,9 +236,12 @@
 @media (max-width: 550px) {
 
   .callout {
-
+    padding-left: 0;
+    padding-right: 0;
+    
     .container {
-      width: 100%;
+      width: 90%;
+      padding: 0;
     }
 
     .one-half {
