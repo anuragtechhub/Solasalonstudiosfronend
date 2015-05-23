@@ -1,7 +1,7 @@
 class SearchController < PublicWebsiteController
   def results
     if params[:query]
-      query_param = "%#{params[:query].downcase}%"
+      query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
 
       # locations
       locations1 = Location.near(params[:query])
