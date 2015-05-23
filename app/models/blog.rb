@@ -25,7 +25,7 @@ class Blog < ActiveRecord::Base
       self.blog_categories.each do |category|
         if category.blogs && category.blogs.size > 0
           category.blogs.order(:created_at => :desc).each do |blog|
-            if blog.id != self.id
+            if blog.id != self.id && !blogs.include?(blog)
               blogs << blog
               break if blogs.size == 3
             end
@@ -34,15 +34,16 @@ class Blog < ActiveRecord::Base
         break if blogs.size == 3
       end
     end
-    
+
     if blogs.size < 3
-      Blog.order(:created_at).limit(4).each do |blog|
+      Blog.order(:created_at).limit(5).each do |blog|
         if blog.id != self.id
           blogs << blog
           break if blogs.size == 3
         end
       end
     end
+
     blogs
   end
 
