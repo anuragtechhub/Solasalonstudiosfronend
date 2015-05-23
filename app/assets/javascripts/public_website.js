@@ -100,7 +100,7 @@ $(function () {
     $searchInput.val('');
   } 
 
-  $searchButton.on('click', function () {
+  $searchButton.on('click touchstart', function () {
     if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
       closeSearch();
     } else {
