@@ -68,6 +68,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    escape_utils (1.1.0)
     excon (0.44.4)
     execjs (2.4.0)
     exifr (1.2.0)
@@ -316,6 +317,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   cancan
   devise
+  escape_utils
   geocoder
   gibbon
   htmlcompressor

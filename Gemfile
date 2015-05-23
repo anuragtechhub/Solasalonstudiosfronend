@@ -59,6 +59,7 @@ gem 'gibbon'
 
 gem 'cancan'
 
+gem 'escape_utils'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

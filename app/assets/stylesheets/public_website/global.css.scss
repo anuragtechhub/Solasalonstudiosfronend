@@ -21,7 +21,7 @@ html, body {
 }
 
 a, a:link, a:visited, a:hover, a:active {
-  color: $brand-blue;
+  color: $brand-pink;
   @include transition(color .25s ease);
 
   &.pink-link {
@@ -31,6 +31,10 @@ a, a:link, a:visited, a:hover, a:active {
     &:hover, &:active {
       color: $brand-pink-hover;
     }
+  }
+
+  &:hover, &:active {
+    color: $brand-pink-hover;
   }
 }
 

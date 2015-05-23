@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
   end
 
   def safe_title
-    title.gsub(/&#8211;/, '-')
+    EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
   end
 
 end

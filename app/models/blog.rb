@@ -15,7 +15,7 @@ class Blog < ActiveRecord::Base
   has_paper_trail
 
   def safe_title
-    title.gsub(/&#8211;/, '-')
+    EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
   end
 
   def related_blogs

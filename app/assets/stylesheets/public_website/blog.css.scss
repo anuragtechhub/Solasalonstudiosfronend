@@ -11,6 +11,7 @@
   }
 
   h4 {
+    margin-bottom: 0;
     a, a:link, a:visited, a:hover, a:active {
       color: #000;
       font-size: 24px;
@@ -165,9 +166,9 @@
     margin-bottom: 5px !important;
   }
 
-  .blog-post-summary h4, .blog-post-article h4 {
-    margin-bottom: 10px;
-  }
+  // .blog-post-summary h4, .blog-post-article h4 {
+  //   margin-bottom: 10px;
+  // }
 
   .related-articles {
     h3 {
