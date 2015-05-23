@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<div class="container content-container content-container-mobile-full">
+<div class="container content-container">
   <div class="row">
 
     <div class="one-third column salon-pro-info">
@@ -64,7 +64,7 @@
     <div class="two-thirds column">
       
       <% if @stylist.images.size > 0 %>
-        <div class="salon-pro-carousel owl-carousel owl-theme" data-autoheight="true">
+        <div class="salon-pro-carousel owl-carousel owl-theme" data-autoheight="true" data-autoplayoff="true">
           <% @stylist.images.each do |image| %>
             <div class="item"><%= image_tag image.url(:original) %></div>
           <% end %>

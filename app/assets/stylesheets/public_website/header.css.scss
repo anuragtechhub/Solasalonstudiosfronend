@@ -59,7 +59,7 @@
 }
 
 #header {
-  height: 90px;
+  height: 94px;
   background: $brand-primary;
 
   .container .row {
@@ -68,7 +68,7 @@
 
   .logo {
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 6px;
 
     img {
       width: 133px;
@@ -78,7 +78,7 @@
 
   ul.nav {
     position: absolute;
-    top: 33px;
+    top: 35px;
     right: 70px;
     margin: 0;
     padding: 0;
@@ -134,7 +134,17 @@
 }
 
 
+#chatbutton {
+  position: absolute !important;
+  z-index: 9 !important;
+}
+
+
 @media (max-width: 960px) {
+
+  #chatbutton {
+    top: 70px !important;
+  }
 
   #mobile-top-nav-button {
     display: block;
@@ -189,6 +199,10 @@
           margin: 0 30px;
           border-bottom: 1px solid #E5E5E5;
           color: #000;
+
+          &:hover, &:active {
+            color: #BABABA;
+          }
         }
 
         &:last-child a {
