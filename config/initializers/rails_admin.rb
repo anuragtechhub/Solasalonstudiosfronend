@@ -257,6 +257,7 @@ RailsAdmin.config do |config|
     end
     show do
       group :general do
+        #field :legacy_id
         field :name
         field :url_name do
           label 'URL Name'
@@ -589,6 +590,7 @@ RailsAdmin.config do |config|
     end
     show do
       group :general do
+        #field :legacy_id
         field :name
         field :url_name do
           label 'URL Name'
@@ -600,7 +602,6 @@ RailsAdmin.config do |config|
           end
         end
         field :status
-        field :legacy_id
       end
       group :contact do
         field :email_address
