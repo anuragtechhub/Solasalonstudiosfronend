@@ -194,6 +194,10 @@ RailsAdmin.config do |config|
       field :blog_categories do
         label 'Categories'
       end
+      group 'Carousel' do
+        field :carousel_image
+        field :carousel_text
+      end      
     end
     edit do
       field :title
@@ -206,6 +210,11 @@ RailsAdmin.config do |config|
       field :author
       field :blog_categories do
         label 'Categories'
+      end
+      group 'Carousel' do
+        active false
+        field :carousel_image
+        field :carousel_text
       end
     end
   end

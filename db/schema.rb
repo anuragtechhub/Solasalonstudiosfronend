@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522182721) do
+ActiveRecord::Schema.define(version: 20150523004746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20150522182721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "legacy_id"
+    t.string   "carousel_image_file_name"
+    t.string   "carousel_image_content_type"
+    t.integer  "carousel_image_file_size"
+    t.datetime "carousel_image_updated_at"
+    t.string   "carousel_text"
   end
 
   create_table "franchising_requests", force: true do |t|
