@@ -70,7 +70,10 @@
     border-bottom: 1px dashed #CECECE;
   }
   .related-blog {
-
+    h4, p {
+      @include transition(color .3s ease);
+    }
+    
     h4 {
       line-height: 25px;
       margin: 5px 0 10px 0;
@@ -78,6 +81,12 @@
 
     a, a:link, a:visited, a:hover, a:active {
       text-decoration: none !important;
+    }
+
+    a:hover, a:active {
+      h4, p {
+      color: #BABABA !important;
+      }
     }
 
     p.subtle {
