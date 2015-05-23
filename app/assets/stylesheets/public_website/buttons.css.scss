@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'bootstrap/mixins';
 
-button, input[type=button], input[type=submit], .button, a.button {
+button, input[type=button], input[type=submit], .button, a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
 
   font-family: 'Dosis', Arial, sans-serif;
   font-size: 13px;
@@ -46,10 +46,10 @@ button, input[type=button], input[type=submit], .button, a.button {
     border: 0 solid transparent;
     padding: 18px 30px;
     background: $brand-pink;
-    color: #FFF;
+    color: #FFF !important;
 
     &:hover, &:active {
-      color: #FFF;
+      color: #FFF !important;
       @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
     }  
   }
@@ -57,6 +57,12 @@ button, input[type=button], input[type=submit], .button, a.button {
   &.block {
     display: block;
     width: 100%;
+  }
+
+  &.long-text {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
   }
 
 }
