@@ -36,8 +36,8 @@ class Blog < ActiveRecord::Base
     end
 
     if blogs.size < 3
-      Blog.order(:created_at).limit(5).each do |blog|
-        if blog.id != self.id
+      Blog.order(:created_at => :desc).limit(5).each do |blog|
+        if blog.id != self.id && !blogs.include?(blog)
           blogs << blog
           break if blogs.size == 3
         end
