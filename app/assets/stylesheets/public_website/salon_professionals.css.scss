@@ -65,6 +65,7 @@
   .container {
     margin: 0;
     width: 100%;
+    padding: 0;
 
     h3 {
       margin-bottom: 10px;
@@ -72,6 +73,14 @@
 
     input, button {
       margin: 0;
+    }
+
+    input {
+      text-overflow: ellipsis;
+    }
+
+    .button {
+      padding: 18px;
     }
   }
 }
