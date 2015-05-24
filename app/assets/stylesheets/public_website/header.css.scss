@@ -141,7 +141,6 @@
 
 
 #chatbutton {
-  position: absolute !important;
   z-index: 9 !important;
 }
 
@@ -149,7 +148,7 @@
 @media (max-width: 960px) {
 
   #chatbutton {
-    top: 70px !important;
+    zoom: 0.66 !important;
   }
 
   #mobile-top-nav-button {
@@ -227,4 +226,11 @@
 
   }
 
+}
+
+@media (max-width: 550px) {
+  #chatbutton {
+    position: absolute !important;
+    top: 106px !important;
+  }
 }
