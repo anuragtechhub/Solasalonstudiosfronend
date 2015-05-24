@@ -97,7 +97,8 @@ $(function () {
 
   function closeSearch() {
     $searchForm.removeClass('open animating');
-    $searchInput.val('');
+    $searchInput.val('').blur();
+    $(document.body).click();
   } 
 
   $searchButton.on('click touchstart', function () {
