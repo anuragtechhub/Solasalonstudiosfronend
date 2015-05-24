@@ -11,6 +11,39 @@ ENV['RAILS_ADMIN_THEME'] = 'custom'
 module Solasalonstudios
   class Application < Rails::Application
     
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+      r301 %r{^/printing.*$}, 'https://www.conquestgraphics.com/login?ATN=SolaSalon'
+
+      r301 %r{^/virtual_tour.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/welcome.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/concept.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/contact.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/directory.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/homepage.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/index.php/welcome.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/index.php/concept.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/index.php/directory.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/index.php/welcome.*$}, 'http://www.solasalonstudios.com/'
+      r301 %r{^/index.php/gallery.*$}, 'http://www.solasalonstudios.com/'
+
+      r301 %r{^/forums.*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/member/messages.*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/member/memberlist$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/member/profile$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/member/[0-9]*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/viewcategory/?[0-9]*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/viewforum/?[0-9]*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/viewthread/?[0-9]*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/newreply/?[0-9]*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/forums/do_search.*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/assets/?$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/operations/?$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/operations/training/?$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/operations/manual/?$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/operations/disclaimer/?$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+      r301 %r{^/resourcecenter*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
+    end
+
     config.middleware.use Rack::Deflater
     config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false}
     
