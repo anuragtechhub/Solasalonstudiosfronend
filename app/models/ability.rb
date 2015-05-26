@@ -12,12 +12,14 @@ class Ability
       can :access, :rails_admin   # grant access to rails_admin
       can :dashboard
 
-      can :new, [Stylist] 
+      can :new, [Stylist, Testimonial] 
 
+      can :read, Testimonial
       can :read, Location, :admin_id => admin.id 
       can :read, Stylist, :location => { :admin_id => admin.id }
       can :read, Admin, :id => admin.id
       
+      can :update, Testimonial
       can :update, Location, :admin_id => admin.id 
       can :update, Stylist, :location => { :admin_id => admin.id }
       can :update, Admin, :id => admin.id
