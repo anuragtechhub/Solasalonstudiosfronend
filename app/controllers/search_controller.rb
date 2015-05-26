@@ -1,4 +1,7 @@
 class SearchController < PublicWebsiteController
+  
+  skip_before_filter :verify_authenticity_token
+
   def results
     if params[:query]
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"

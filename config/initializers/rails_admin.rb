@@ -864,6 +864,11 @@ RailsAdmin.config do |config|
         field :testimonial_10
       end
     end
+    export do
+      group :options do
+        active false
+      end
+    end
   end
 
   config.model 'StylistMessage' do
