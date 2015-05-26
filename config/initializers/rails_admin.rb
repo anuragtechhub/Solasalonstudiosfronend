@@ -761,11 +761,21 @@ RailsAdmin.config do |config|
         end
       end
       group :social do
-        field :facebook_url
-        field :instagram_url
-        field :pinterest_url
-        field :twitter_url
-        field :yelp_url
+        field :facebook_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :instagram_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :pinterest_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :twitter_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :yelp_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
       end
       group :services do
         active false
