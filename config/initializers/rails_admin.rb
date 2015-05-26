@@ -43,8 +43,8 @@ RailsAdmin.config do |config|
     # visible do
     #   bindings[:controller]._current_user.franchisee != true
     # end
-    #label 'Administrator'
-    #label_plural 'Administrators'    
+    label 'My Account'
+    label_plural 'My Account'    
     list do
       field :email do
         label 'Username'
