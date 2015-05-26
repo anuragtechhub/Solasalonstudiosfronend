@@ -307,7 +307,10 @@ RailsAdmin.config do |config|
         field :longitude
       end
       group :images do
-        field :floorplan_image do 
+        field :floorplan_image do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
@@ -466,6 +469,9 @@ RailsAdmin.config do |config|
       group :images do
         active false
         field :floorplan_image do 
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
