@@ -865,9 +865,34 @@ RailsAdmin.config do |config|
       end
     end
     export do
-      group :options do
-        active false
-      end
+      field :name
+      field :url_name
+      field :email_address
+      field :phone_number
+      field :biography
+      field :status
+      field :business_name
+      field :studio_number
+      field :work_hours
+      field :accepting_new_clients     
+      field :booking_url
+      field :send_a_message_button  
+      field :hair
+      field :skin
+      field :nails
+      field :massage
+      field :teeth_whitening
+      field :hair_extensions
+      field :eyelash_extensions
+      field :makeup
+      field :tanning
+      field :waxing
+      field :brows
+      field :facebook_url
+      field :instagram_url
+      field :pinterest_url
+      field :twitter_url
+      field :yelp_url
     end
   end
 
