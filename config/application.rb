@@ -17,7 +17,7 @@ module Solasalonstudios
       r301 %r{^/virtual_tour.*$}, 'http://www.solasalonstudios.com/'
       r301 %r{^/welcome.*$}, 'http://www.solasalonstudios.com/'
       r301 %r{^/concept.*$}, 'http://www.solasalonstudios.com/'
-      r301 %r{^/contact.*$}, 'http://www.solasalonstudios.com/'
+      #r301 %r{^/contact.*$}, 'http://www.solasalonstudios.com/'
       r301 %r{^/directory.*$}, 'http://www.solasalonstudios.com/'
       r301 %r{^/homepage.*$}, 'http://www.solasalonstudios.com/'
       r301 %r{^/index.php/welcome.*$}, 'http://www.solasalonstudios.com/'
