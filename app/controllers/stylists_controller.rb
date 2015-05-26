@@ -1,4 +1,7 @@
 class StylistsController < PublicWebsiteController
+
+  skip_before_filter :verify_authenticity_token, :only => :send_a_message
+
   def index
   end
 

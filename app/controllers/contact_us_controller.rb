@@ -1,5 +1,7 @@
 class ContactUsController < PublicWebsiteController
   
+  skip_before_filter :verify_authenticity_token, :only => [:franchising_request, :request_a_tour]
+
   def index
     @all_locations = Location.all
   end

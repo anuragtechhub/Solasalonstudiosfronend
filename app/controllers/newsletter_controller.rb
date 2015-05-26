@@ -1,6 +1,6 @@
 class NewsletterController < PublicWebsiteController
 
-
+  skip_before_filter :verify_authenticity_token, :only => :sign_up
 
   def sign_up
     if request.post?
