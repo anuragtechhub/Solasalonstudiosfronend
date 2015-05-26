@@ -1,7 +1,7 @@
 .half-boxes {
   display: block;
   clear: both;
-  height: 580px;
+  height: 650px;
   position: relative;
   
   &.bottom-border {
@@ -46,7 +46,7 @@
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1125px) {
 
   .half-boxes {
     height: auto;
