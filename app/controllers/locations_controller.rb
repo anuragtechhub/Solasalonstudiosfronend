@@ -8,7 +8,7 @@ class LocationsController < PublicWebsiteController
 
   def region
     @msa = Msa.find_by(:url_name => params[:url_name])
-    @all_locations = Location.all
+    @all_locations = Location.where(:status => 'open')
     @locations = @all_locations.where('msa_id = ?', @msa.id)
     params[:state] = @locations.first.state
   end
@@ -17,8 +17,8 @@ class LocationsController < PublicWebsiteController
     @all_locations = Location.all
     query_param = "%#{params[:city]}%"
 
-    locations1 = Location.near(params[:city])
-    locations2 = Location.where('city LIKE ?', query_param)
+    locations1 = Location.where(:status => 'open').near(params[:city])
+    locations2 = Location.where(:status => 'open').where('city LIKE ?', query_param)
     @locations = locations1 + locations2
     if @locations
       @locations.uniq!
@@ -27,9 +27,9 @@ class LocationsController < PublicWebsiteController
   end
 
   def state
-    @all_locations = Location.all
+    @all_locations = Location.where(:status => 'open')
     query_param = "%#{params[:state]}%"
-    @locations = Location.where('state LIKE ?', query_param)
+    @locations = Location.where(:status => 'open').where('state LIKE ?', query_param)
   end
 
   def salon

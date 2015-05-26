@@ -48,6 +48,7 @@ class Stylist < ActiveRecord::Base
   has_attached_file :image_10, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/    
 
+  validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
   validates :name, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
@@ -59,7 +60,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def social_links_present?
-    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present?
+    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
   end
 
   def status_enum

@@ -8,7 +8,7 @@ class Admin < ActiveRecord::Base
 
   has_paper_trail
 
-  #validates :email, :presence => true, :email => true
+  validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
 
   def title 
     email

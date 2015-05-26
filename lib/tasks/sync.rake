@@ -95,8 +95,9 @@ namespace :sync do
       admin.franchisee = true
       admin.legacy_id = row['member_id']
       admin.email = row['username']
-      admin.password = 'stylists'
-      admin.password_confirmation = 'stylists'
+      admin.email_address = row['email']
+      admin.password = 'solastyle777'
+      admin.password_confirmation = 'solastyle777'
 
       if admin.save
         p "Saved admin"
@@ -298,7 +299,7 @@ namespace :sync do
 
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
-      location = Location.find_by(:legacy_id => row['entry_id'].to_s) || Location.new
+      location = Location.where(:status => 'open').find_by(:legacy_id => row['entry_id'].to_s) || Location.new
       
       location.legacy_id = row['entry_id']
       location.status = meta['status']
@@ -502,7 +503,7 @@ namespace :sync do
       msa_way = false
       location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
       if location_row 
-        location = Location.find_by(:name => location_row['cat_name']) || Location.find_by(:url_name => location_row['cat_url_title'])
+        location = Location.where(:status => 'open').find_by(:name => location_row['cat_name']) || Location.where(:status => 'open').find_by(:url_name => location_row['cat_url_title'])
         if location
           p "*"
           p "*"

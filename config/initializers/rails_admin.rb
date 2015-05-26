@@ -49,6 +49,7 @@ RailsAdmin.config do |config|
       field :email do
         label 'Username'
       end
+      field :email_address
       field :franchisee do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -61,6 +62,7 @@ RailsAdmin.config do |config|
       field :email do
         label 'Username'
       end
+      field :email_address
       field :franchisee do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -73,6 +75,7 @@ RailsAdmin.config do |config|
       field :email do
         label 'Username'
       end
+      field :email_address
       field :password
       field :password_confirmation     
       field :franchisee do
@@ -230,6 +233,10 @@ RailsAdmin.config do |config|
   end
 
   config.model 'BlogBlogCategory' do
+    visible false
+  end
+
+  config.model 'FranchisingRequest' do
     visible false
   end
 
@@ -572,6 +579,10 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'RequestTourInquiry' do
+    visible false
+  end
+
   config.model 'Stylist' do
     label 'Salon Professional'
     label_plural 'Salon Professionals' 
@@ -627,6 +638,7 @@ RailsAdmin.config do |config|
         field :instagram_url
         field :pinterest_url
         field :twitter_url
+        field :yelp_url
       end
       group :services do
         field :hair
@@ -753,6 +765,7 @@ RailsAdmin.config do |config|
         field :instagram_url
         field :pinterest_url
         field :twitter_url
+        field :yelp_url
       end
       group :services do
         active false
@@ -835,6 +848,10 @@ RailsAdmin.config do |config|
         field :testimonial_10
       end
     end
+  end
+
+  config.model 'StylistMessage' do
+    visible false
   end
 
   config.model 'Testimonial' do
