@@ -11,7 +11,7 @@ class Location < ActiveRecord::Base
   before_save :fix_url_name
   after_validation :geocode
   geocoded_by :full_address
-  after_save :expire_cache
+  #after_save :expire_cache
 
   has_attached_file :floorplan_image, :styles => { :directory => '375x375#', :thumbnail => '100x100#' }
   validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/
@@ -126,9 +126,9 @@ class Location < ActiveRecord::Base
     imgs
   end
 
-  def expire_cache
-    expire_action(:controller => '/locations', :action => 'index')
-  end
+  # def expire_cache
+  #   LocationsController.new.expire_action(:action => 'index')
+  # end
 
   private
 
@@ -140,4 +140,9 @@ class Location < ActiveRecord::Base
     self.url_name = self.url_name.gsub(/\./, '') if self.url_name.present?
   end
 
+  # protected    
+
+  # def instantiate_controller      
+  #   @controller ||= ApplicationController.new    
+  # end
 end
