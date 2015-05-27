@@ -11,7 +11,7 @@
   <div class="row">
 
     <div class="two-thirds column push-one-third">
-      <div class="salon-carousel owl-carousel owl-theme">
+      <div class="salon-carousel owl-carousel owl-theme" data-autoheight="true" data-autoplayoff="true">
         <% if @location.images.size > 0 %>
           <% @location.images.each do |image| %>
             <% if image.exists?(:carousel) %>

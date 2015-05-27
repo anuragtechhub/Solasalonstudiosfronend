@@ -19,7 +19,7 @@
             <% if params[:first] == 'salon_professionals' %>
               <div><%= link_to 'View Directory', salon_stylists_path(location.state, location.city, location.url_name) %></div>
             <% else %>
-              <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name) %></div>
+              <div><%= link_to 'View Location', salon_location_path(location.state, location.city, location.url_name).gsub(/\./, '') %></div>
             <% end %>
           </div>
         <% if ((index + 1) % 3) == 0 || index + 1 == @locations.size %></div><% end %>
