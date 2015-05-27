@@ -1,6 +1,7 @@
 class LocationsController < PublicWebsiteController
 
   before_action :map_defaults
+  caches_action :index
 
   def index
     @locations = Location.all
