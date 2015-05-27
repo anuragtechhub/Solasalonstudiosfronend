@@ -1,3 +1,5 @@
+<% cache ["locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}"] do %>
+
 <div class="container content-container">
 
   <div class="row">
@@ -14,7 +16,7 @@
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
-          <% @locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+          <% @states.each do |location| %>
           <div class="option" data-value="<%= locations_by_state_path(location.state) %>"><%= location.state %></div>
           <% end %>
         </div>
@@ -25,12 +27,6 @@
 
 </div>
 
-<!-- <div class="location-breadcrumb">
-  <div class="container">
-    <%= link_to 'United States', :locations %>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="row" id="map"></div>
   <div id="map-overlay"></div>
@@ -38,16 +34,11 @@
 </div>
 
 <div class="container location-grid">
-  <% 
-    @states = Location.select('DISTINCT state').order(:state => :asc)
-    p "@states=#{@states.inspect}"
-  %>
-
   <div class="row">
     <div class="one-third column">
       <% @states[0,9].each do |state| %>
         <div class="state-wrapper">
-          <h2 class="city"><%= state.state.html_safe %></h2>
+          <h2 class="city"><%= link_to state.state.html_safe, locations_by_state_path(state.state) %></h2>
           <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
             <% unless msa_name.blank? %>
               <% locations.each_with_index do |location, index| %>
@@ -61,7 +52,7 @@
     <div class="one-third column">
       <% @states[9,18].each do |state| %>
         <div class="state-wrapper">
-          <h2 class="city"><%= state.state.html_safe %></h2>
+          <h2 class="city"><%= link_to state.state.html_safe, locations_by_state_path(state.state) %></h2>
           <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
             <% unless msa_name.blank? || locations.size == 0 %>
               <% locations.each_with_index do |location, index| %>
@@ -75,7 +66,7 @@
     <div class="one-third column">
       <% @states[27, @states.length].each do |state| %>
         <div class="state-wrapper">
-          <h2 class="city"><%= state.state.html_safe %></h2>
+          <h2 class="city"><%= link_to state.state.html_safe, locations_by_state_path(state.state) %></h2>
           <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
             <% unless msa_name.blank? || locations.size == 0 %>
               <% locations.each_with_index do |location, index| %>
@@ -90,7 +81,7 @@
 
 </div>
 
-
+<% end %>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>

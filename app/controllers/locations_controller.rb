@@ -4,7 +4,11 @@ class LocationsController < PublicWebsiteController
   caches_action :index
 
   def index
-    @locations = Location.all
+    @locations = Location.where(:status => 'open')
+    @states = @locations.select('DISTINCT state').order(:state => :asc)
+
+    @last_location = Location.order(:updated_at => :desc).first
+    @last_msa = Msa.order(:updated_at => :desc).first
   end
 
   def region
