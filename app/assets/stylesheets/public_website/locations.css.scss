@@ -1,0 +1,32 @@
+.location-grid {
+  margin-bottom: 40px;
+  
+  h2.city {
+    margin: 40px 0 20px 0;
+  }
+
+  .link {
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a {
+      font-weight: bold;
+      -webkit-font-smoothing: subpixel-antialiased;
+
+      &.text {
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        color: #333;
+        text-decoration: none;
+
+        &:hover, &:active {
+          color: #A8A8A8;
+        }
+      }
+    }
+  }
+}

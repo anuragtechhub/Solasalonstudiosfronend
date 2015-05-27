@@ -31,10 +31,66 @@
   </div>
 </div> -->
 
-<div class="row" id="map"></div>
-<div id="map-overlay"></div>
+<div class="container">
+  <div class="row" id="map"></div>
+  <div id="map-overlay"></div>
+  <%= render 'shared/public_website/hidden_map_inputs' %>
+</div>
 
-<%= render 'shared/public_website/hidden_map_inputs' %>
+<div class="container location-grid">
+  <% 
+    @states = Location.select('DISTINCT state').order(:state => :asc)
+    p "@states=#{@states.inspect}"
+  %>
+
+  <div class="row">
+    <div class="one-third column">
+      <% @states[0,9].each do |state| %>
+        <div class="state-wrapper">
+          <h2 class="city"><%= state.state.html_safe %></h2>
+          <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+            <% unless msa_name.blank? %>
+              <% locations.each_with_index do |location, index| %>
+                <div class="link"><%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name), :class => 'text' %>, <%= link_to location.name.html_safe, salon_location_path(location.state, location.city, location.url_name) %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="one-third column">
+      <% @states[9,18].each do |state| %>
+        <div class="state-wrapper">
+          <h2 class="city"><%= state.state.html_safe %></h2>
+          <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+            <% unless msa_name.blank? || locations.size == 0 %>
+              <% locations.each_with_index do |location, index| %>
+                <div class="link"><%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name), :class => 'text' %>, <%= link_to location.name.html_safe, salon_location_path(location.state, location.city, location.url_name) %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="one-third column">
+      <% @states[27, @states.length].each do |state| %>
+        <div class="state-wrapper">
+          <h2 class="city"><%= state.state.html_safe %></h2>
+          <% Location.where(:state => state.state, :status => :open).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+            <% unless msa_name.blank? || locations.size == 0 %>
+              <% locations.each_with_index do |location, index| %>
+                <div class="link"><%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name), :class => 'text' %>, <%= link_to location.name.html_safe, salon_location_path(location.state, location.city, location.url_name) %></div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>

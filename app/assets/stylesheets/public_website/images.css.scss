@@ -15,14 +15,6 @@ img.directory {
 
 .image-grid {
 
-  .more {
-    display: none;
-  }
-
-  .row {
-    margin-bottom: -3px;
-  }
-
   .three.columns {
     width: calc(25% - 5px);
     margin: 0 5px 0 0;
@@ -30,6 +22,10 @@ img.directory {
     img {
       width: 100%;
       height: auto;
+    }
+
+    &.more {
+      display: none;
     }
   }
 }
