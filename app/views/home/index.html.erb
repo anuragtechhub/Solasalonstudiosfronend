@@ -47,7 +47,7 @@
     <div class="one-half column">
       <h3>Find a Salon Professional</h3>
       <div class="search-input-with-icon">
-        <%= form_tag [:search, :results] do %>
+        <%= form_tag [:search, :results], :method => :get do %>
         <input type="text" placeholder="Search by name or location" name="query" class="large full-width">
         <input type="hidden" name="first" value="salon_professionals" />
         <span class="ss-search"></span>

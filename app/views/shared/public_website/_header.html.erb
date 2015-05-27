@@ -29,7 +29,7 @@
         <li><h3><%= link_to 'Blog', :blog %></h3></li>
       </ul>
 
-      <%= form_tag [:search, :results], :class => 'nav-search' do %>
+      <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>
         <input class="nav-search-input" placeholder="Search by city, location or stylist..." type="search" name="query">
         <span class="nav-search-button ss-search"></span>
       <% end %>

@@ -5,7 +5,7 @@
     
     <div class="find-salon-professional-search">
       <div class="container">
-        <%= form_tag [:search, :results] do %>
+        <%= form_tag [:search, :results], :method => :get do %>
           <input type="text" type="search" name="query" placeholder="Search by name or location" />
           <input type="hidden" name="first" value="salon_professionals" />
           <button type="submit" class="button primary">Search</button>
