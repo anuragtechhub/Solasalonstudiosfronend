@@ -4,7 +4,7 @@ class PublicWebsiteMailer < ActionMailer::Base
   def request_a_tour(requestTourInquiry)
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
-      mail(to: 'jeff@jeffbail.com', from: (@inquiry.email || "inquiry@solasalonstudios.com"), subject: @inquiry.message.present? ? 'Contact Us' : 'Request a Tour Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: 'jeff@jeffbail.com', from: (@inquiry.email || "inquiry@solasalonstudios.com"), subject: @inquiry.message.present? ? 'Sola Contact Us Inquiry' : 'Sola Rent a Studio Inquiry') #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 
@@ -18,7 +18,7 @@ class PublicWebsiteMailer < ActionMailer::Base
   def franchising_request(franchisingRequest)
     if franchisingRequest
       @message = franchisingRequest
-      mail(to: 'jeff@jeffbail.com', from: (@message.email || "inquiry@solasalonstudios.com"), subject: 'Sola Salon Studios Franchising Request') #mark@solasalonstudios.com
+      mail(to: 'jeff@jeffbail.com', from: (@message.email || "inquiry@solasalonstudios.com"), subject: 'Sola Franchising Request') #mark@solasalonstudios.com
     end
   end
 

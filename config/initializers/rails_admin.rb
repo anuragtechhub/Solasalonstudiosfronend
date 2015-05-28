@@ -237,7 +237,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'FranchisingRequest' do
-    visible false
+    label 'Franchsing Inquiry'
+    label_plural 'Franchising Inquiries'
   end
 
   config.model 'Location' do  
@@ -586,7 +587,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'RequestTourInquiry' do
-    visible false
+    label 'Contact Inquiry'
+    label_plural 'Contact Inquiries'
   end
 
   config.model 'Stylist' do
@@ -897,7 +899,8 @@ RailsAdmin.config do |config|
   end
 
   config.model 'StylistMessage' do
-    visible false
+    label 'Stylist Message'
+    label_plural 'Stylist Messages'
   end
 
   config.model 'Testimonial' do
