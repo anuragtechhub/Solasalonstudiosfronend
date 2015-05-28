@@ -307,6 +307,10 @@ RailsAdmin.config do |config|
         field :latitude
         field :longitude
       end
+      group :promotions do
+        field :move_in_special
+        field :open_house
+      end
       group :images do
         field :floorplan_image do
           visible do
@@ -466,6 +470,10 @@ RailsAdmin.config do |config|
         field :longitude do
           help 'The longitude will be automatically set when a valid address is entered. You do not need to set the longitude manually (but you can if you really want to)'
         end
+      end
+      group :promotions do
+        field :move_in_special
+        field :open_house
       end
       group :images do
         active false

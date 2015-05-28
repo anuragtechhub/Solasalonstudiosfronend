@@ -173,6 +173,20 @@
       color: #FFF;
       margin-bottom: 0;
     }
+
+    &.coupon {
+      padding: 15px;
+      margin: 30px auto 15px auto;
+      background: #FFF;
+      border: 2px dashed $brand-pink;
+      border-radius: 8px;
+
+      h3, h4, .icon, a, a:link, a:visited, a:hover, a:active {
+        color: $brand-pink;
+        margin: 0;
+        font-weight: bold;
+      }
+    }
   }
 
   &.special {

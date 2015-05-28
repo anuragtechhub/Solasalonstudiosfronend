@@ -7,6 +7,14 @@
   </div>
 </div>
 
+<% if @location.open_house %>
+<div class="container">
+  <div class="callout coupon pink">
+    <h4><%= @location.open_house %></h4>
+  </div>
+</div>
+<% end %>
+
 <div class="container content-container content-container-mobile-full tablet-portrait">
   <div class="row">
 
@@ -21,7 +29,7 @@
             <% end %>
           <% end %>
         <% else %>
-          <div class="item"><%= image_tag 'gray.gif' %></div>
+          <div class="item"><%= image_tag 'default_location.png' %></div>
         <% end %>
       </div>
     </div>
@@ -51,11 +59,13 @@
   </div>
 <% end %>
 
-<div class="callout special">
-  <h2>Move in Special</h2>
-  <p><strong>2 weeks of free rent + $400 retail bonus + custom painting of your studio walls!</strong></p>
-  <div class="button-wrapper"><%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button rent-a-studio' %></div>
-</div>
+<% if @location.move_in_special %>
+  <div class="callout special">
+    <h2>Move in Special</h2>
+    <p><strong><%= @location.move_in_special.html_safe %></strong></p>
+    <div class="button-wrapper"><%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button rent-a-studio' %></div>
+  </div>
+<% end %>
 
 <div class="callout blue image your-life-your-style">
   <div class="text-center">
