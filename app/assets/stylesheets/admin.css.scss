@@ -1,0 +1,36 @@
+body {
+  background: #ECF0F1;
+  font-family: 'Dosis', Arial, sans-serif;
+}
+
+.devise-sign-in {
+  background: #2C3E50;
+  border-radius: 7px;
+  padding: 15px 30px;
+
+  label {
+    color: white;
+    font-size: 17px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+}
+
+#error {
+  background: red;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+}
+
+.actions button {
+  cursor: pointer;
+}
+
+.copyright {
+  margin: 30px auto;
+  text-align: center;
+  font-size: 13px;
+  color: #787878;
+}
