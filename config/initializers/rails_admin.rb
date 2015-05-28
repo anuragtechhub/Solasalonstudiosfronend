@@ -586,6 +586,11 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'PartnerInquiry' do
+    label 'Partner Inquiry'
+    label_plural 'Partner Inquiries'
+  end
+
   config.model 'RequestTourInquiry' do
     label 'Contact Inquiry'
     label_plural 'Contact Inquiries'
