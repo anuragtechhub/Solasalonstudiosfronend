@@ -17,4 +17,18 @@ class Admin < ActiveRecord::Base
   def location_ids
     locations.pluck(:id) if locations
   end
+
+  def forgot_password
+    self.forgot_password_key = "#{SecureRandom.urlsafe_base64(3).gsub(/-|_/, '')}#{SecureRandom.hex(3)}".split('').shuffle.join
+    if self.save
+      email = PublicWebsiteMailer.forgot_password(self)
+      if email && email.deliver 
+        true
+      else
+        false
+      end
+    else
+      false
+    end
+  end
 end

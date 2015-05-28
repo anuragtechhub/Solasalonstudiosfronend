@@ -29,4 +29,11 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def forgot_password(admin)
+    if admin
+      @key = admin.forgot_password_key
+      @username = admin.email
+      mail(to: admin.email_address, from: 'inquiry@solasalonstudios.com', subject: 'Sola Forgot Password Reset')
+    end
+  end
 end
