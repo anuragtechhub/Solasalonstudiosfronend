@@ -6,7 +6,7 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
    
-    <% if flash && flash.keys && flash.keys.size > 0 %>
+    <% if request && request.post? && flash && flash.keys && flash.keys.size > 0 %>
       <div id="error">Invalid username or password</div>
     <% end %>   
 
