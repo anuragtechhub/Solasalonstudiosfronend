@@ -94,7 +94,7 @@
 
 <div class="container image-grid">
   <% (1..84).each do |i| %>
-    <div class="three columns <%= 'more' if i > 16 %>"><%= image_tag "http://s3.amazonaws.com/solasalonstudios/5000/sola5000-#{i}.jpg" %></div>
+    <div class="three columns <%= 'more' if i > 16 %>"><%= image_tag "https://s3.amazonaws.com/solasalonstudios/5000/sola5000-#{i}.jpg" %></div>
   <% end %>
 </div>
 
@@ -111,10 +111,24 @@
         <%= link_to 'Join our community', '#', :class => 'button primary block' %>
       </div>
       <div class="one-half column">
-        <%= link_to 'Partner with us', '#', :class => 'button primary block' %>
+        <%= link_to 'Partner with us', '#', :class => 'button primary block partner-button' %>
       </div>
     </div>
   </div>
+</div>
+
+<div class="partner-modal modal-content">
+  <h4 style="margin-bottom:15px;">Partner With Us</h4>
+  <p style="margin-bottom:30px">Interested in partnering with Sola Salon Studios? Tell us a little bit about your company, brand or product and we will be in touch!</p>
+  <%= form_tag :partner_inquiry, :id => 'partner_inquiry' do %>
+    <input type="text" name="subject" placeholder="Subject" />
+    <input type="text" name="name" placeholder="Full Name" />
+    <input type="text" name="company_name" placeholder="Company Name" />
+    <input type="text" name="email" placeholder="Email Address" />
+    <input type="text" name="phone" placeholder="Phone Number" />
+    <textarea name="message" placeholder="Leave a Message"></textarea>
+    <button class="primary block">Submit Request</button>
+  <% end %>
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('sola5000') } %>

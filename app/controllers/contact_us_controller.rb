@@ -34,4 +34,15 @@ class ContactUsController < PublicWebsiteController
     end
   end
 
+  def partner_inquiry
+    if request.post?
+      if params[:name].present? && (params[:email].present? || params[:phone].present?)
+        PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message])
+        render :json => {:success => 'Thank you! We will get in touch soon'}
+      else
+        render :json => {:error => 'Please enter your name and email address or phone number'}
+      end
+    end
+  end
+
 end

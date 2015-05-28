@@ -22,4 +22,11 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def partner_inquiry(partnerInquiry)
+    if partnerInquiry
+      @inquiry = partnerInquiry
+      mail(to: 'jeff@jeffbail.com', from: (@inquiry.email || "inquiry@solasalonstudios.com"), subject: 'Sola Partner Inquiry') #mark@solasalonstudios.com
+    end
+  end
+
 end

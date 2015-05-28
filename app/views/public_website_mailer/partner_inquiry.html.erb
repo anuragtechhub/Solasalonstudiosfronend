@@ -1,0 +1,23 @@
+<h3>Sola Partner Inquiry</h3>
+
+<hr>
+
+<p><strong>Subject:</strong> <%= @inquiry.subject %></p>
+
+<p><strong>Name:</strong> <%= @inquiry.name %></p>
+
+<% if @inquiry.company_name.present? %>
+  <p><strong>Company Name:</strong> <%= @inquiry.company_name %></p>
+<% end %>
+
+<% if @inquiry.email.present? %>
+  <p><strong>Email:</strong> <%= @inquiry.email %></p>
+<% end %>
+
+<% if @inquiry.phone.present? %>
+  <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
+<% end %>
+
+<% if @inquiry.message.present? %>
+  <p><strong>Leave a Message:</strong> <%= @inquiry.message %></p>
+<% end %>
