@@ -1,6 +1,5 @@
 Solasalonstudios::Application.routes.draw do
 
-  
   get "home" => 'home#index', :as => :home
   root 'home#index'
 
@@ -57,6 +56,9 @@ Solasalonstudios::Application.routes.draw do
   get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
 
   get 'regions/:url_name' => 'locations#region', :as => :region
+
+  match "forgot_password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
+  match "forgot_password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

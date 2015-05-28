@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag "admin", media: "all" %>
+
+<div class="devise-sign-in">
+
+  <div style="text-align:center"><%= image_tag 'logo_white.png' %></div>
+
+  <%= form_for :forgot_password_form do |f| %>
+   
+    <h1>Forgot Password?</h1>
+
+    <% if @error %>
+      <div id="error">We couldn't find an administrator record with that username. Please check your input and try again.</div>
+    <% end %>   
+
+    <div class="field">
+      <%= f.label :username %>
+      <%= f.text_field :email, autofocus: true %>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Submit</button>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="copyright">&copy;<%= Time.now.year %> Sola Salon Studios</div>

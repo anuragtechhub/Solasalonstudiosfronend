@@ -7,12 +7,21 @@ body {
   background: #2C3E50;
   border-radius: 7px;
   padding: 15px 30px;
+  margin: 20px auto;
 
   label {
     color: white;
     font-size: 17px;
     margin-bottom: 5px;
     display: inline-block;
+  }
+
+  h1 {
+    font-weight: bold;
+    color: #FFF;
+    font-size: 22px;
+    text-align: center;
+    margin: 15px auto;
   }
 }
 
@@ -24,12 +33,34 @@ body {
   padding: 15px;
 }
 
+#success {
+  background: green;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+}
+
 .actions button {
   cursor: pointer;
 }
 
+.link {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto;
+
+  a, a:link, a:visited {
+    color: #2C3E50;
+  } 
+
+  a:hover, a:active {
+    color: lighten(#2C3E50, 20%);
+  }
+}
+
 .copyright {
-  margin: 30px auto;
+  margin: 0 auto;
   text-align: center;
   font-size: 13px;
   color: #787878;
