@@ -86,16 +86,9 @@
           <div class="row about-this-location">
             <h3>Services</h3>
             <ul class="stylist-services">
-              <%= '<li>Hair</li>'.html_safe if @stylist.hair %>
-              <%= '<li>Skin</li>'.html_safe if @stylist.skin %>
-              <%= '<li>Nails</li>'.html_safe if @stylist.nails %>
-              <%= '<li>Massage</li>'.html_safe if @stylist.massage %>
-              <%= '<li>Teeth Whitening</li>'.html_safe if @stylist.teeth_whitening %>
-              <%= '<li>Eyelash Extensions</li>'.html_safe if @stylist.eyelash_extensions %>
-              <%= '<li>Hair Extensions</li>'.html_safe if @stylist.hair_extensions %>
-              <%= '<li>Makeup</li>'.html_safe if @stylist.makeup %>
-              <%= '<li>Tanning</li>'.html_safe if @stylist.tanning %>
-              <%= '<li>Waxing</li>'.html_safe if @stylist.waxing %>
+              <% @stylist.services.each do |service| %>
+                <li><%= service.html_safe %></li>
+              <% end %>
             </ul>
           </div>
 

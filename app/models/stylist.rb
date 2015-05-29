@@ -53,11 +53,11 @@ class Stylist < ActiveRecord::Base
   validates :url_name, :presence => true, :uniqueness => true
 
   # define rails_admin enums
-  [:hair, :skin, :nails, :massage, :teeth_whitening, :hair_extensions, :eyelash_extensions, :makeup, :tanning, :waxing, :brows, :accepting_new_clients].each do |name|
-    define_method "#{name}_enum" do
-      [['Yes', true], ['No', false]]
-    end
-  end
+  # [:hair, :skin, :nails, :massage, :teeth_whitening, :hair_extensions, :eyelash_extensions, :makeup, :tanning, :waxing, :brows, :threading, :laser_hair_removal, :permanent_makeup, :accepting_new_clients].each do |name|
+  #   define_method "#{name}_enum" do
+  #     [['Yes', true], ['No', false]]
+  #   end
+  # end
 
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
@@ -84,17 +84,20 @@ class Stylist < ActiveRecord::Base
   def services 
     services = []
 
-    services << 'Hair' if hair
-    services << 'Skincare' if skin
-    services << 'Nails' if nails
-    services << 'Massage' if massage
-    services << 'Teeth Whitening' if teeth_whitening
-    services << 'Hair Extensions' if hair_extensions
-    services << 'Eyelash Extensions' if eyelash_extensions
-    services << 'Makeup' if makeup
-    services << 'Tanning' if tanning
-    services << 'Waxing' if waxing
     services << 'Brows' if brows
+    services << 'Hair' if hair
+    services << 'Hair Extensions' if hair_extensions
+    services << 'Laser Hair Removal' if laser_hair_removal
+    services << 'Lashes' if eyelash_extensions
+    services << 'Makeup' if makeup
+    services << 'Massage' if massage
+    services << 'Nails' if nails
+    services << 'Permanent Makeup' if permanent_makeup
+    services << 'Skincare' if skin
+    services << 'Tanning' if tanning
+    services << 'Teeth Whitening' if teeth_whitening
+    services << 'Theading' if threading
+    services << 'Waxing' if waxing
 
     services
   end

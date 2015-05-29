@@ -673,17 +673,24 @@ RailsAdmin.config do |config|
         field :yelp_url
       end
       group :services do
-        field :hair
-        field :skin
-        field :nails
-        field :massage
-        field :teeth_whitening
-        field :hair_extensions
-        field :eyelash_extensions
-        field :makeup
-        field :tanning
-        field :waxing
         field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
+        field :eyelash_extensions do
+          label 'Lashes'
+        end 
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
+        field :skin do
+          label 'Skincare'
+        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
       end
       group :images do
         field :image_1 do 
@@ -811,17 +818,24 @@ RailsAdmin.config do |config|
       end
       group :services do
         active false
-        field :hair
-        field :skin
-        field :nails
-        field :massage
-        field :teeth_whitening
-        field :hair_extensions
-        field :eyelash_extensions
-        field :makeup
-        field :tanning
-        field :waxing
         field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
+        field :eyelash_extensions do
+          label 'Lashes'
+        end 
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
+        field :skin do
+          label 'Skincare'
+        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
       end
       group :images do
         active false
