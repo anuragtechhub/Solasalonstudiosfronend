@@ -9,8 +9,8 @@ module ApplicationHelper
       url = 'http://' + url;
     end
     
-    url.gsub(/http\/\/www/, 'http://www')
-    url.gsub(/https\/\/www/, 'https://www')
+    url = url.gsub(/http\/\/www/, 'http://www')
+    url = url.gsub(/https\/\/www/, 'https://www')
 
     url
   end
