@@ -45,7 +45,7 @@
   <div class="row">
 
     <% if @stylists && @stylists.size > 0 %>
-      <% @stylists.each_with_index do |stylist, index| %>
+      <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result stylist">
             <h3><%= stylist.name.html_safe %></h3>

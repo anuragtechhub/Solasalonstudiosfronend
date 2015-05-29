@@ -21,9 +21,9 @@ class LocationsController < PublicWebsiteController
     @all_locations = Location.all
     query_param = "%#{params[:city]}%"
 
-    locations1 = Location.where(:status => 'open').near(params[:city])
-    locations2 = Location.where(:status => 'open').where('city LIKE ?', query_param)
-    @locations = locations1 + locations2
+    #locations1 = Location.where(:status => 'open').near(params[:city])
+    @locations = Location.where(:status => 'open').where('city LIKE ?', query_param)
+    #@locations = locations1 + locations2
     if @locations
       @locations.uniq!
       @locations.sort! { |a, b| a.name <=> b.name }

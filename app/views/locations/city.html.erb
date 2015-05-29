@@ -45,7 +45,7 @@
 
       <h2 class="city"><%= city %></h2>
 
-      <% locations.each_with_index do |location, index| %>
+      <% locations.sort_by(&:name).each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result">
             <h3><%= location.name.html_safe %></h3>

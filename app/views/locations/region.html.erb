@@ -31,16 +31,25 @@
       </div>
     </div>
 
-    <div class="row">
-      <h4><%= @msa.description.gsub(/\n/, '<hr class="br" />').html_safe %></h4>
-    </div>
+    <% if @msa && @msa.description && @msa.description.present? %>
+      <div class="row">
+        <h4><%= @msa.description.gsub(/\n/, '<hr class="br" />').html_safe %></h4>
+      </div>
+    <% end %>
     
   </div>
 </div>
 
 <div class="container">
+  <div class="row" id="map"></div>
+  <div id="map-overlay"></div>
+</div>
 
-  <% @locations.each_with_index do |location, index| %>
+<%= render 'shared/public_website/hidden_map_inputs' %>
+
+<div class="container content-container">
+
+  <% @locations.sort_by(&:name).each_with_index do |location, index| %>
     <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
       <div class="one-third column search-result">
         <h3><%= location.name.html_safe %></h3>
@@ -51,13 +60,6 @@
   <% end %>
 
 </div>
-
-<div class="container">
-  <div class="row" id="map"></div>
-  <div id="map-overlay"></div>
-</div>
-
-<%= render 'shared/public_website/hidden_map_inputs' %>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
