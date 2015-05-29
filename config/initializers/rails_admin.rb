@@ -113,11 +113,7 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      field :extended_text do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      field :article_url
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
@@ -137,11 +133,7 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      field :extended_text do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      field :article_url
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe

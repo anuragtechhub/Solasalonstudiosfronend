@@ -77,8 +77,27 @@
   }
 }
 
+.blog-post-article.news-pr {
+  h4.large {
+    margin-top: 15px;
+  }
+
+  p.subtle {
+    margin-top: -3px;
+  }
+}
+
 
 @media (max-width: 850px) {
+
+  .blog-post-article.news-pr {
+    .one-third.column, .two-thirds.column {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  }
 
   .news-article {
     padding-top: 30px;

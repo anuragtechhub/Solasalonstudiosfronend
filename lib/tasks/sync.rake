@@ -140,7 +140,7 @@ namespace :sync do
 
       article.summary = filedir_replacement row['field_id_1'].encode('UTF-8')
       article.body = filedir_replacement row['field_id_2'].encode('UTF-8')
-      article.extended_text = filedir_replacement row['field_id_3'].encode('UTF-8')
+      article.article_url = filedir_replacement row['field_id_3'].encode('UTF-8')
       
       p "image #{get_img_src row['field_id_12']}"
       begin
