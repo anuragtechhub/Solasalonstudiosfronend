@@ -2,7 +2,7 @@
 
 <div class="devise-sign-in">
 
-  <div style="text-align:center"><%= image_tag 'logo_white.png' %></div>
+  <div style="text-align:center"><%= image_tag 'logo_white.png', :width => 200, :height => 127 %></div>
 
   <%= form_for :forgot_password_form do |f| %>
    
@@ -12,9 +12,13 @@
       <div id="error">We couldn't find an administrator record with that username. Please try again.</div>
     <% end %>   
 
+    <% if @success %>
+      <div id="success"><%= @success %></div>
+    <% end %>  
+
     <div class="field">
-      <%= f.label :username %>
-      <%= f.text_field :email, autofocus: true %>
+      <label>Username</label>
+      <input type="text" name="username" value="<%= params[:username] %>" autofocus="autofocus">
     </div>
 
     <div class="actions">

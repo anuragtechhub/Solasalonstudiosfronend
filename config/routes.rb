@@ -57,8 +57,8 @@ Solasalonstudios::Application.routes.draw do
 
   get 'regions/:url_name' => 'locations#region', :as => :region
 
-  match "forgot_password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
-  match "forgot_password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
+  match "forgot-password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
+  match "forgot-password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
