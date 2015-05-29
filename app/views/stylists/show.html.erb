@@ -35,7 +35,7 @@
           <li><%= @stylist.phone_number %></li>
         <% end %>
         <% if @stylist.website.present? %>
-          <li><%= link_to 'Visit my website', @stylist.website_url, :target => '_blank' %></li>
+          <li><%= link_to 'Visit my website', url_helper(@stylist.website_url), :target => '_blank' %></li>
         <% end %>
       </ul>
 
