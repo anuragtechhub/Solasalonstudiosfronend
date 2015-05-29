@@ -29,14 +29,14 @@ Solasalonstudios::Application.configure do
   config.action_controller.asset_host = '//s3.amazonaws.com/solasalonstudios'  
   # config.assets.css_compressor = :sass
 
-  # config.cache_store = :dalli_store,
-  #                   (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-  #                   {:username => ENV["MEMCACHIER_USERNAME"],
-  #                    :password => ENV["MEMCACHIER_PASSWORD"],
-  #                    :failover => true,
-  #                    :socket_timeout => 1.5,
-  #                    :socket_failure_delay => 0.2
-  #                   }
+  config.cache_store = :dalli_store,
+                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"],
+                     :failover => true,
+                     :socket_timeout => 1.5,
+                     :socket_failure_delay => 0.2
+                    }
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 

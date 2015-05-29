@@ -1,4 +1,4 @@
-
+<% cache ["locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}"] do %>
 
 <div class="container content-container">
 
@@ -90,6 +90,7 @@
 
 </div>
 
+<% end %>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>

@@ -60,6 +60,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1)
+    dalli (2.7.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -317,6 +318,7 @@ DEPENDENCIES
   aws-sdk (< 2.0)
   bcrypt-ruby (~> 3.0.0)
   cancan
+  dalli
   devise
   escape_utils
   geocoder
