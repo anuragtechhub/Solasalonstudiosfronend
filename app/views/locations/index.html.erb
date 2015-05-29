@@ -1,4 +1,4 @@
-<% cache ["locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}"] do %>
+<% cache "locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}" do %>
 
 <div class="container content-container">
 
@@ -30,7 +30,9 @@
 <div class="container">
   <div class="row" id="map"></div>
   <div id="map-overlay"></div>
-  <%= render 'shared/public_website/hidden_map_inputs' %>
+  <% cache "hiddenMapInputs#{@last_location.updated_at}" do %>
+    <%= render 'shared/public_website/hidden_map_inputs' %>
+  <% end %>
 </div>
 
 <div class="container location-grid">
