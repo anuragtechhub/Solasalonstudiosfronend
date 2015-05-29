@@ -9,11 +9,11 @@
     <h1>Reset Your Password</h1>
 
     <% if @error %>
-      <div id="error"><%= @error %></div>
+      <div id="error"><%= @error.html_safe %></div>
     <% end %>   
 
     <% if @success %>
-      <div id="success"><%= @success %></div>
+      <div id="success"><%= @success.html_safe %></div>
     <% end %>  
 
     <div class="field">
@@ -29,6 +29,9 @@
     <div class="actions">
       <button type="submit">Submit</button>
     </div>
+
+    <input type="hidden" name="key" value="<%= params[:key] %>">
+    <input type="hidden" name="username" value="<%= params[:username] %>">
   <% end %>
 
 </div>
