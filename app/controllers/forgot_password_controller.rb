@@ -36,7 +36,7 @@ class ForgotPasswordController < ApplicationController
           admin.password_confirmation = params[:password_confirmation]
           admin.forgot_password_key = nil
           if admin.save
-            @success = "Your password was updated successfully! #{view_context.link_to 'Click here to login', :rails_admin}"
+            @success = "Your password is updated!<br><br>We will automatically redirect you to the login screen in 10 seconds or #{view_context.link_to 'click here to login now', :rails_admin} <script>setTimeout(function () { window.location = '/admin'; }, 10000);</script>"
           else
             @error = 'There was a problem updating your password. Please try again. If the problem persists, please contact support'
           end
