@@ -1,3 +1,5 @@
+<% cache "blogIndex#{@last_blog.updated_at}|#{@last_category.updated_at}|#{@last_blog_category.updated_at}" do %>
+
 <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
     <%= link_to 'Blog', :blog %>
@@ -56,6 +58,8 @@
   <% end %>
   
 </div>
+
+<% end %>
 
 <% content_for(:scripts) { javascript_include_tag('blog') } %>
 <% content_for(:title) { 'Our Blog' } %>

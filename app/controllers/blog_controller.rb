@@ -8,6 +8,10 @@ class BlogController < PublicWebsiteController
       @posts = Blog.order(:created_at => :desc)
     end
     @categories = BlogCategory.order(:name => :asc)
+
+    @last_blog = Blog.order(:updated_at => :desc).first
+    @last_category = BlogCategory.order(:updated_at => :desc).first
+    @last_blog_category = BlogBlogCategory.order(:updated_at => :desc).first
   end
 
   def show
