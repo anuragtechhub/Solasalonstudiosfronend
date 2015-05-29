@@ -43,7 +43,7 @@
       <div class="row">
         <div class="twelve columns">
           <%= link_to show_blog_path(post), :class => 'blog-list-picture' do %>
-            <%= image_tag post.image(:original), :class => 'full-width' %>
+            <%= image_tag post.image(:original), :class => 'full-width', :width => 960, :height => 306 %>
             <div class="blog-list-picture-overlay">
               <div class="large-button">Read Article</div>
             </div>
