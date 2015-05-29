@@ -1,3 +1,12 @@
+<div class="location-breadcrumb blog-breadcrumb">
+  <div class="container">
+    <%= link_to 'Blog', :blog %>
+    <% if @category %>
+      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
+    <% end %>
+  </div>
+</div>
+
 <div class="container content-container">
   
   <div class="row">
@@ -23,15 +32,6 @@
 
   </div>
 
-</div>
-
-<div class="location-breadcrumb blog-breadcrumb">
-  <div class="container">
-    <%= link_to 'Blog', :blog %>
-    <% if @category %>
-      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
-    <% end %>
-  </div>
 </div>
 
 <div class="container content-container">
