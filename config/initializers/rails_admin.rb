@@ -311,6 +311,16 @@ RailsAdmin.config do |config|
         field :move_in_special
         field :open_house
       end
+      group :social do
+        field :facebook_url
+        field :instagram_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+      end
+      group :website do
+        field :chat_code
+      end
       group :images do
         field :floorplan_image do
           visible do
@@ -421,11 +431,6 @@ RailsAdmin.config do |config|
           end
         end
       end
-      group :extras do
-        field :facebook_url
-        field :twitter_url
-        field :chat_code
-      end
     end
     edit do
       group :general do
@@ -474,6 +479,17 @@ RailsAdmin.config do |config|
       group :promotions do
         field :move_in_special
         field :open_house
+      end
+      group :social do
+        field :facebook_url
+        field :instagram_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+      end
+      group :website do
+        active false
+        field :chat_code
       end
       group :images do
         active false
@@ -585,11 +601,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
-      end
-      group :extras do
-        field :facebook_url
-        field :twitter_url
-        field :chat_code
       end
     end
   end

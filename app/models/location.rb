@@ -116,6 +116,7 @@ class Location < ActiveRecord::Base
     "#{address_1} #{address_2}, #{city}, #{state} #{postal_code}"
   end
 
+
   # helper function to return images as array
   def images
     imgs = []
@@ -124,6 +125,10 @@ class Location < ActiveRecord::Base
       imgs << img if img.present?
     end
     imgs
+  end
+
+  def social_links_present?
+    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
   end
 
   # def expire_cache
