@@ -25,7 +25,9 @@
 
   <%= render 'shared/public_website/footer' %>
 
-  <%= render 'shared/gallery' %>
+  <% cache 'gallery1' do %>
+    <%= render 'shared/gallery' %>
+  <% end %>
 
   <script src="//maps.google.com/maps/api/js"></script>
   <script>
