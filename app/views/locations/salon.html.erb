@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<% if @location.open_house %>
+<% if @location.open_house && @location.open_house.present? %>
 <div class="container">
   <div class="callout coupon pink">
     <h4><%= @location.open_house %></h4>
@@ -59,7 +59,7 @@
   </div>
 <% end %>
 
-<% if @location.move_in_special %>
+<% if @location.move_in_special && @location.move_in_special.present? %>
   <div class="callout special">
     <h2>Move in Special</h2>
     <p><strong><%= @location.move_in_special.html_safe %></strong></p>
