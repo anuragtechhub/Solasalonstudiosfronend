@@ -1,4 +1,4 @@
-<% cache "locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}" do %>
+
 
 <div class="container content-container">
 
@@ -34,6 +34,8 @@
     <%= render 'shared/public_website/hidden_map_inputs' %>
   <% end %>
 </div>
+
+<% cache "locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}" do %>
 
 <div class="container location-grid">
   <div class="row">
