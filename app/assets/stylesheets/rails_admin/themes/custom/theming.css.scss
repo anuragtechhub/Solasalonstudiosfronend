@@ -3,6 +3,12 @@
 @import 'bootstrap/mixins';
 @import 'variables';
 
+// Custom
+li[data-model^="ckeditor"], li.nav-header:not(:first-child) {
+  display: none !important;
+}
+
+
 // TYPOGRAPHY
 // --------------------------------------------------
 
