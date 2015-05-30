@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.widget
+//= require modernizr
 //= require disableSelection
 //= require classie
 //= require fastclick
