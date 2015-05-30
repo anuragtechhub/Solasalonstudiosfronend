@@ -29,62 +29,7 @@
   </div>
 </div>
 
-<div class="container sola-spotlights">
-
-  <div class="owl-carousel owl-theme" data-items="3" data-autoplayoff="true">
-   
-    <div class="item sola-spotlight">
-      <%= link_to show_blog_path('stylist_profile_autumn_morris') do %>
-        <%= image_tag 'Autumn.jpg' %>
-        <h1>Autumn Morris</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div>
-   
-    <div class="item sola-spotlight">
-      <%= link_to show_blog_path('sola_spotlight_brandie_kekoa') do %>
-        <%= image_tag 'Brandie.jpg' %>
-        <h1>Brandie Kekoa</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div> 
-
-    <div class="item sola-spotlight">
-      <%= link_to show_blog_path('sola_spotlight_nyki_nechiporenko') do %>
-        <%= image_tag 'Nyki.jpg' %>
-        <h1>Nyki Nechiporenko</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div>  
-
-    <div class="item sola-spotlight">
-      <%= link_to show_blog_path('sola_spotlight_vannora_hawkins') do %>
-        <%= image_tag 'Vannora.jpg' %>
-        <h1>Vannora Hawkins</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div>
-
-    <div class="item sola-spotlight no-border">
-      <%= link_to show_blog_path('sola_spotlight_calynn_colceri') do %>
-        <%= image_tag 'Calyn.jpg' %>
-        <h1>Calyn Colceri</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div>  
-
-    <div class="item sola-spotlight no-border">
-      <%= link_to show_blog_path('georgette_vetock_small_acts_of_kindness') do %>
-        <%= image_tag 'Georgette.jpg' %>
-        <h1>Georgette Vetock</h1>
-        <h3>Sola Spotlight</h3>
-      <% end %>
-    </div> 
-   
-   
-  </div> 
-
-</div>
+<%= render 'shared/carousels/sola_spotlight' %>
 
 <div class="container text-center">
   <div class="row">
