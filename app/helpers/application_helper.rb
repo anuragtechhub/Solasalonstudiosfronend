@@ -5,6 +5,9 @@ module ApplicationHelper
   end
 
   def url_helper(url = '')
+    url = url.gsub(/http:\/\/https:\/\//, 'http://')
+    url = url.gsub(/https:\/\/https:\/\//, 'http://')
+    url = url.gsub(/https:\/\/http:\/\//, 'http://')
     url = url.gsub(/http\/\/www/, 'http://www')
     url = url.gsub(/https\/\/www/, 'https://www')
 

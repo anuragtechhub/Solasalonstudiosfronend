@@ -634,6 +634,9 @@ RailsAdmin.config do |config|
         field :accepting_new_clients
       end
       group :website do
+        field :website_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
@@ -768,6 +771,9 @@ RailsAdmin.config do |config|
         field :accepting_new_clients        
       end
       group :website do
+        field :website_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
