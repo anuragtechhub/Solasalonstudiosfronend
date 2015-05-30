@@ -8,7 +8,7 @@ module ApplicationHelper
     url = url.gsub(/http\/\/www/, 'http://www')
     url = url.gsub(/https\/\/www/, 'https://www')
 
-    unless url && url.starts_with?('http')
+    unless url && (url.starts_with?('http') || url.starts_with?('https'))
       url = 'http://' + url;
     end
 
