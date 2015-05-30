@@ -93,11 +93,7 @@ RailsAdmin.config do |config|
     list do
       field :title
       field :url_name
-      field :summary do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      field :summary
       field :created_at
     end 
     show do
@@ -123,16 +119,8 @@ RailsAdmin.config do |config|
     edit do
       field :title
       field :url_name
-      field :summary do
-        pretty_value do
-          value.html_safe
-        end
-      end
-      field :body do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      field :summary, :ck_editor
+      field :body, :ck_editor
       field :article_url
       field :image do 
         pretty_value do 
@@ -149,11 +137,7 @@ RailsAdmin.config do |config|
     list do
       field :title
       field :url_name
-      field :summary do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      field :summary
       field :author do
         pretty_value do
           value.html_safe
@@ -200,8 +184,8 @@ RailsAdmin.config do |config|
         label 'URL Name'
       end
       field :image
-      field :summary
-      field :body
+      field :summary, :ck_editor
+      field :body, :ck_editor
       field :author
       field :blog_categories do
         label 'Categories'

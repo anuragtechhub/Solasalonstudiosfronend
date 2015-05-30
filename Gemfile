@@ -63,6 +63,8 @@ gem 'escape_utils'
 
 gem 'rack-rewrite', '~> 1.5.0'
 gem 'dalli'
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
 #gem 'actionpack-action_caching'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

@@ -1,5 +1,3 @@
-require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -59,7 +57,7 @@ module Solasalonstudios
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  
     config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
-    config.assets.precompile += ['digital_directory.css', 'digital_directory.js']
+    config.assets.precompile += ['digital_directory.css', 'digital_directory.js', 'ckeditor/*']
     config.assets.precompile += ['public_website.css', 'public_website.js', 'locations.js', 'locations_state_select.js', 'salon_stylists.js', 'blog.js', 'contact_us.js', 'own_your_salon.js', 'salon_professionals.js', 'faq.js', 'sola5000.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => 'AKIAJAKSXVOSIU7IYOTA', :secret_access_key => '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'}}
