@@ -113,7 +113,14 @@ class Location < ActiveRecord::Base
   end
 
   def full_address
-    "#{address_1} #{address_2}, #{city}, #{state} #{postal_code}"
+    address = ''
+
+    address += address_1.strip if address_1.present?
+    address += " #{address_2.strip}" if address_2.present?
+    address += ', '
+    address += "#{city}, #{state} #{postal_code}"
+    
+    address
   end
 
 
