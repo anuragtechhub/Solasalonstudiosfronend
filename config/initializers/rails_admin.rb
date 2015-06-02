@@ -298,14 +298,6 @@ RailsAdmin.config do |config|
         field :chat_code
       end
       group :images do
-        field :floorplan_image do
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
-          end
-        end
         field :image_1 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
@@ -402,6 +394,14 @@ RailsAdmin.config do |config|
           end
         end
         field :image_20 do 
+          pretty_value do 
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+          end
+        end
+        field :floorplan_image do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
           end
@@ -469,14 +469,6 @@ RailsAdmin.config do |config|
       end
       group :images do
         active false
-        field :floorplan_image do 
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
-          end
-        end
         field :image_1 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
@@ -577,6 +569,14 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
         end
+        field :floorplan_image do 
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+          pretty_value do 
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
+          end
+        end        
       end
     end
   end
