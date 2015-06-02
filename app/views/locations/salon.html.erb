@@ -36,7 +36,7 @@
 
     <div class="one-third column salon-info pull-two-thirds content-container-mobile-padded">
       <h1><%= @location.name.html_safe %></h1>
-      <h3 class="subtle"><%= @location.city %>, <%= @location.state %></h3>
+      <h3 class="subtle"><%= @location.city.html_safe %>, <%= @location.state.html_safe %></h3>
       <div class="salon-buttons">
         <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block long-text' %>
         <%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button block rent-a-studio' %>
