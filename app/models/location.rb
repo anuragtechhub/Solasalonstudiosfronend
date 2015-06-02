@@ -11,7 +11,6 @@ class Location < ActiveRecord::Base
   before_save :fix_url_name
   after_validation :geocode
   geocoded_by :full_address
-  #after_save :expire_cache
 
   after_initialize do
     if new_record?
@@ -129,7 +128,6 @@ class Location < ActiveRecord::Base
     address
   end
 
-
   # helper function to return images as array
   def images
     imgs = []
@@ -144,10 +142,6 @@ class Location < ActiveRecord::Base
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
   end
 
-  # def expire_cache
-  #   LocationsController.new.expire_action(:action => 'index')
-  # end
-
   private
 
   def to_param
@@ -158,9 +152,4 @@ class Location < ActiveRecord::Base
     self.url_name = self.url_name.gsub(/\./, '') if self.url_name.present?
   end
 
-  # protected    
-
-  # def instantiate_controller      
-  #   @controller ||= ApplicationController.new    
-  # end
 end
