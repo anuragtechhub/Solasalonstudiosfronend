@@ -263,7 +263,11 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :status
+        field :status do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
       end
       group :contact do
         field :general_contact_name do
@@ -428,7 +432,11 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :status
+        field :status do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
       end
       group :contact do
         field :general_contact_name do

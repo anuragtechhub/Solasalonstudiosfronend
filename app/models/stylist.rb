@@ -4,6 +4,12 @@ class Stylist < ActiveRecord::Base
   
   scope :open, -> { where(:status => 'open') }
 
+  after_initialize do
+    if new_record?
+      self.status ||= 'open'
+    end
+  end
+
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
 
