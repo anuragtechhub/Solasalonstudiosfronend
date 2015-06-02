@@ -551,7 +551,7 @@ namespace :sync do
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
       stylist.studio_number = row['field_id_11'].encode('UTF-8')
       stylist.work_hours = row['field_id_13'].encode('UTF-8')
-      stylist.website = row['field_id_14'].encode('UTF-8')
+      stylist.website_url = row['field_id_14'].encode('UTF-8')
       stylist.business_name = row['field_id_29'].encode('UTF-8')
       stylist.booking_url = row['field_id_220'].encode('UTF-8')
 
