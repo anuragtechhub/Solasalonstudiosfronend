@@ -665,8 +665,11 @@ RailsAdmin.config do |config|
         field :status
       end
       group :contact do
-        field :email_address
         field :phone_number
+        field :email_address
+        field :send_a_message_button do
+          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
+        end
       end      
       group :business do
         field :location
@@ -682,9 +685,7 @@ RailsAdmin.config do |config|
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
-        field :send_a_message_button do
-          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
-        end
+
       end
       group :social do
         field :facebook_url
@@ -792,8 +793,11 @@ RailsAdmin.config do |config|
         field :status
       end
       group :contact do
-        field :email_address
         field :phone_number
+        field :email_address
+        field :send_a_message_button do
+          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
+        end
       end      
       group :business do
         field :location do
@@ -822,9 +826,6 @@ RailsAdmin.config do |config|
         end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
-        end
-        field :send_a_message_button do
-          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
       end
       group :social do
