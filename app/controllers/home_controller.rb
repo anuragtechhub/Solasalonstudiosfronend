@@ -4,7 +4,10 @@ class HomeController < PublicWebsiteController
   end
 
   def five_thousand
+  end
 
+  def new_cms
+    render :layout => 'fullscreen'
   end
 
 end

@@ -25,6 +25,29 @@ body {
   }
 }
 
+.form {
+  background: #2C3E50;
+  border-radius: 7px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 420px;
+
+  img {
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #FFF;
+    font-size: 15px;
+    line-height: 19px;
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 #error {
   background: red;
   color: white;
