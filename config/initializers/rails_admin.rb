@@ -855,51 +855,61 @@ RailsAdmin.config do |config|
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_1
         end
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_2
         end
         field :image_3 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_3
         end
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_4
         end
         field :image_5 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_5
         end
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_6
         end
         field :image_7 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_7
         end
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_8
         end
         field :image_9 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_9
         end
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe unless value.blank?
           end
+          delete_method :delete_image_10
         end
       end
       group :testimonials do

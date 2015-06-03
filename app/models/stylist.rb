@@ -26,33 +26,53 @@ class Stylist < ActiveRecord::Base
 
   has_attached_file :image_1, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_1
+  before_validation { self.image_1.destroy if self.delete_image_1 == '1' }
 
   has_attached_file :image_2, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_2, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_2
+  before_validation { self.image_2.destroy if self.delete_image_2 == '1' }
 
   has_attached_file :image_3, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_3, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_3
+  before_validation { self.image_3.destroy if self.delete_image_3 == '1' }
 
   has_attached_file :image_4, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_4, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_4
+  before_validation { self.image_4.destroy if self.delete_image_4 == '1' }
 
   has_attached_file :image_5, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_5, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_5
+  before_validation { self.image_5.destroy if self.delete_image_5 == '1' }
 
   has_attached_file :image_6, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_6, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_6
+  before_validation { self.image_6.destroy if self.delete_image_6 == '1' }
 
   has_attached_file :image_7, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_7, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_7
+  before_validation { self.image_7.destroy if self.delete_image_7 == '1' }
 
   has_attached_file :image_8, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_8, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_8
+  before_validation { self.image_8.destroy if self.delete_image_8 == '1' }
 
   has_attached_file :image_9, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_9, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image_9
+  before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
 
   has_attached_file :image_10, :styles => { :carousel => '625x495#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/    
+  attr_accessor :delete_image_10
+  before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
   validates :name, :presence => true
@@ -113,14 +133,6 @@ class Stylist < ActiveRecord::Base
 
   def to_param
     url_name
-  end
-
-  def website_url
-    if website.start_with? 'http://'
-      return website
-    else 
-      return "http://#{website}"
-    end
   end
 
   private
