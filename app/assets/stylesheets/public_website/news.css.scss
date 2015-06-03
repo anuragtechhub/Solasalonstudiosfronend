@@ -97,6 +97,10 @@
       margin: 0;
       padding: 0;
     }
+
+    .news-image {
+      border: 1px solid #D7D7D7;
+    }
   }
 
   .news-article {
@@ -115,6 +119,7 @@
     // }
     .image {
       text-align: center;
+      margin-bottom: 15px;
 
       img {
         border: 1px solid #D7D7D7;
