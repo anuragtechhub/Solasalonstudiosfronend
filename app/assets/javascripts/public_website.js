@@ -75,6 +75,9 @@ $(function () {
     e.preventDefault();
   });
 
+  // show hero carousel images (to minimize page bounce)
+  $('.hero-carousel .item').show();
+
   // header and nav
   var $headerNav = $('#header .nav');
   var $window = $(window);
