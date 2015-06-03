@@ -8,9 +8,13 @@ class Blog < ActiveRecord::Base
 
   has_attached_file :carousel_image, :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#', :carousel => '400x540#' }, :s3_protocol => :https
   validates_attachment_content_type :carousel_image, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_carousel_image
+  before_validation { self.carousel_image.destroy if self.delete_carousel_image == '1' }
 
   has_attached_file :image, :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_image
+  before_validation { self.image.destroy if self.delete_image == '1' }
 
   has_paper_trail
 

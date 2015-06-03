@@ -99,6 +99,11 @@ RailsAdmin.config do |config|
     show do
       field :title
       field :url_name
+      field :image do 
+        pretty_value do 
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+        end
+      end
       field :summary do
         pretty_value do
           value.html_safe
@@ -110,23 +115,19 @@ RailsAdmin.config do |config|
         end
       end
       field :article_url
-      field :image do 
-        pretty_value do 
-          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
-        end
-      end
     end 
     edit do
       field :title
       field :url_name
-      field :summary, :ck_editor
-      field :body, :ck_editor
-      field :article_url
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
         end
+        delete_method :delete_image
       end
+      field :summary, :ck_editor
+      field :body, :ck_editor
+      field :article_url
     end 
   end
 
@@ -183,7 +184,12 @@ RailsAdmin.config do |config|
       field :url_name do
         label 'URL Name'
       end
-      field :image
+      field :image do
+        pretty_value do 
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+        end
+        delete_method :delete_image
+      end
       field :summary, :ck_editor
       field :body, :ck_editor
       field :author
@@ -192,7 +198,12 @@ RailsAdmin.config do |config|
       end
       group 'Carousel' do
         active false
-        field :carousel_image
+        field :carousel_image do
+          pretty_value do 
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe
+          end
+          delete_method :delete_carousel_image
+        end
         field :carousel_text
       end
     end
