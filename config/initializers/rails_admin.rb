@@ -414,6 +414,9 @@ RailsAdmin.config do |config|
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
         end
         field :description
         field :msa do
@@ -770,6 +773,9 @@ RailsAdmin.config do |config|
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
         end
         field :biography
         field :status

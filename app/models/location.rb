@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
+  before_create :generate_url_name
   before_save :fix_url_name
   after_validation :geocode
   geocoded_by :full_address
@@ -124,7 +125,7 @@ class Location < ActiveRecord::Base
   before_validation { self.image_20.destroy if self.delete_image_20 == '1' }
 
   validates :name, :presence => true
-  validates :url_name, :presence => true, :uniqueness => true
+  #validates :url_name, :presence => true, :uniqueness => true
 
   def msa_name
     msa ? msa.name : ''
@@ -188,6 +189,20 @@ class Location < ActiveRecord::Base
 
   def to_param
     "#{state}/#{city}/#{url_name}"
+  end
+
+  def generate_url_name
+    if self.name
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      count = 1
+      
+      while Location.where(:url_name => url).size > 0 do
+        url = "#{url}#{count}"
+        count = count + 1
+      end
+
+      self.url_name = url
+    end
   end
 
   def fix_url_name

@@ -10,6 +10,7 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  before_create :generate_url_name
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
 
@@ -76,7 +77,7 @@ class Stylist < ActiveRecord::Base
 
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
   validates :name, :presence => true
-  validates :url_name, :presence => true, :uniqueness => true
+  #validates :url_name, :presence => true, :uniqueness => true
 
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
@@ -139,6 +140,20 @@ class Stylist < ActiveRecord::Base
 
   def update_computed_fields
     self.location_name = location.name if location && location.name
+  end
+
+  def generate_url_name
+    if self.name
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      count = 1
+      
+      while Stylist.where(:url_name => url).size > 0 do
+        url = "#{url}#{count}"
+        count = count + 1
+      end
+
+      self.url_name = url
+    end
   end
 
   def fix_url_name
