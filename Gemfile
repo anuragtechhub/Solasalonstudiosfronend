@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
+gem 'puma'
 
 group :production do
   gem 'newrelic_rpm'
