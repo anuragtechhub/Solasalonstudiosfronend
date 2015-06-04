@@ -22,7 +22,11 @@
       <div class="salon-carousel owl-carousel owl-theme" data-autoheight="true" data-autoplayoff="true">
         <% if @location.images.size > 0 %>
           <% @location.images.each do |image| %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
+            <% if image.exists?(:carousel) %>
+              <div class="item"><%= image_tag image.url(:carousel) %></div>
+            <% else %>
+              <div class="item"><%= image_tag image.url(:original) %></div>
+            <% end %>
           <% end %>
         <% else %>
           <div class="item"><%= image_tag 'default_location.png' %></div>
