@@ -170,6 +170,14 @@
   &.pink {
     background: $brand-pink;
     
+    &.image {
+      background: $brand-pink asset-url('Pink_Background.jpg') no-repeat center center; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
     h1 {
       color: #FFF;
       margin-bottom: 0;

@@ -10,6 +10,9 @@ $(function () {
     }
   });
 
+  // gallery
+  $('a[rel=sola5000]').swipebox();
+
   // partner inquiry
   var $partner_modal = $('.partner-modal').modal();
 
