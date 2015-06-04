@@ -700,7 +700,7 @@ namespace :sync do
     p 'sync stylists!'
     db = get_database_client
     p "mysql db = #{db}"
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 9701")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 414")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
@@ -754,7 +754,7 @@ namespace :sync do
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
       stylist.studio_number = row['field_id_11'].encode('UTF-8')
       stylist.work_hours = row['field_id_13'].encode('UTF-8')
-      stylist.website = row['field_id_14'].encode('UTF-8')
+      stylist.website_url = row['field_id_14'].encode('UTF-8')
       stylist.business_name = row['field_id_29'].encode('UTF-8')
       stylist.booking_url = row['field_id_220'].encode('UTF-8')
 

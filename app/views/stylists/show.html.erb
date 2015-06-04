@@ -67,7 +67,7 @@
       <% if @stylist.images.size > 0 %>
         <div class="salon-pro-carousel owl-carousel owl-theme" data-autoheight="true" data-autoplayoff="true">
           <% @stylist.images.each do |image| %>
-            <div class="item"><%= image_tag image.url(:original) %></div>
+            <div class="item"><%= image_tag image.url(:carousel) %></div>
           <% end %>
         </div>
       <% end %>
