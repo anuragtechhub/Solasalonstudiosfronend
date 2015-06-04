@@ -1,10 +1,14 @@
 class BlogController < PublicWebsiteController
   def index
+    p "BlogController #{params[:category_url_name]}"
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
+    p "@category=#{@category}"
     if @category
       #filter posts by category id
+      p "going to filter by category id"
       @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ?', @category.id).uniq.order(:created_at => :desc)
     else
+      p "not going to filter by category"
       @posts = Blog.order(:created_at => :desc)
     end
     @categories = BlogCategory.order(:name => :asc)
