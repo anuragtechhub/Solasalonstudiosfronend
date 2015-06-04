@@ -4,7 +4,7 @@
     <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
       <div class="one-third column search-result">
         <h3><%= stylist.name.html_safe %><%= " - #{stylist.location.name.html_safe}" if stylist.location %></h3>
-        <h3 class="subtle business-name"><%= stylist.business_name.present? ? stylist.business_name.html_safe : '&nbsp;'.html_safe %></h3>
+        <h3 class="subtle business-name"><%= stylist.business_name.present? ? stylist.business_name.html_safe : '&nbsp;'.html_safe %><br>Studio <%= stylist.studio_number %></h3>
         <p class="salon-services">
           <% if stylist.services && stylist.services.size > 0 %>
             <% stylist.services.each do |service| %>

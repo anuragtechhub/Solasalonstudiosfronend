@@ -103,9 +103,9 @@
 .search-input-with-icon {
   position: relative;
 
-  input[type=text] {
+  input.query {
     margin-bottom: 0;
-    height: 60px;
+    height: 60px !important;
   }
 
   .ss-search {
