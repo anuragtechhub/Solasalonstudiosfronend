@@ -1,4 +1,4 @@
-<% cache "blogIndex#{@last_blog.updated_at}|#{@last_category.updated_at}|#{@last_blog_category.updated_at}" do %>
+<% cache "blogIndex#{@last_blog.updated_at}|#{@last_category.updated_at}|#{@last_blog_category.updated_at}|#{@category ? @category.url_name : ''}" do %>
 
 <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
