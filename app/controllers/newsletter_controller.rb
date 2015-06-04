@@ -12,6 +12,8 @@ class NewsletterController < PublicWebsiteController
         render :json => {:error => 'Please enter a valid email address'}
       end
     end
+  rescue Gibbon::MailChimpError => e
+    render :json => {:success => 'Thank you for subscribing!'}
   end
 
 end
