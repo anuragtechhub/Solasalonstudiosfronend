@@ -75,27 +75,30 @@ $(function () {
   var $searchButton = $('.nav-search-button');
   var $searchInput = $('.nav-search-input');
 
-  $searchInput.on('focus', function (e) {
+  $searchInput.on('focus click', function (e) {
     e.stopPropagation();
   });
 
   function openSearch() {
     $searchForm.addClass('open animating');
     $searchInput.focus();
+    $(document.body).on('click.search', closeSearch);
     setTimeout(function () {
       $searchForm.removeClass('animating') 
-    }, 500);
+    }, 400);
   }
 
   function closeSearch() {
     $searchForm.removeClass('open animating');
     $searchInput.val('').blur();
-    $(document.body).click();
+    $(document.body).off('click.search').click();
   } 
 
   $searchButton.on('click touchstart', function () {
-    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating')) {
+    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating') && $searchInput.val() == '') {
       closeSearch();
+    } else if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating') && $searchInput.val() != '') {
+      $searchForm.trigger('submit');
     } else {
       openSearch();
     }
