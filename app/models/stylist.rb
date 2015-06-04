@@ -13,6 +13,7 @@ class Stylist < ActiveRecord::Base
   before_create :generate_url_name
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
+  after_destroy :touch_stylist
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
@@ -137,6 +138,10 @@ class Stylist < ActiveRecord::Base
   end
 
   private
+
+  def touch_stylist
+    Stylist.all.first.touch
+  end
 
   def update_computed_fields
     self.location_name = location.name if location && location.name

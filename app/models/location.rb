@@ -12,6 +12,7 @@ class Location < ActiveRecord::Base
   before_save :fix_url_name
   after_validation :geocode
   geocoded_by :full_address
+  after_destroy :touch_location
 
   after_initialize do
     if new_record?
@@ -189,6 +190,10 @@ class Location < ActiveRecord::Base
 
   def to_param
     "#{state}/#{city}/#{url_name}"
+  end
+
+  def touch_location
+    Location.all.first.touch
   end
 
   def generate_url_name

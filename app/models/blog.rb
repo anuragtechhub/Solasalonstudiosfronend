@@ -1,5 +1,7 @@
 class Blog < ActiveRecord::Base
 
+  after_destroy :touch_blog
+
   has_many :blog_blog_categories
   has_many :blog_categories, :through => :blog_blog_categories
 
@@ -53,6 +55,12 @@ class Blog < ActiveRecord::Base
 
   def to_param
     url_name
+  end
+
+  private
+
+  def touch_blog
+    Blog.all.first.touch
   end
 
 end

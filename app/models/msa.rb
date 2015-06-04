@@ -1,8 +1,10 @@
 class Msa < ActiveRecord::Base
 
-  #after_save :expire_cache
+  after_destroy :touch_msa
 
-  # def expire_cache
-  #   ActionController::Base.new.expire_action(:controller => '/locations', :action => 'index')
-  # end
+  private
+
+  def touch_msa
+    Msa.all.first.touch
+  end
 end
