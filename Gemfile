@@ -39,7 +39,8 @@ group :production do
   gem 'rails_12factor'
   gem "image_optim"
   gem 'image_optim_pack'
-  gem "paperclip-optimizer"    
+  gem "paperclip-optimizer"
+  gem 'rmagick'    
 end
 
 gem "paperclip"
