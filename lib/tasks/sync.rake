@@ -192,9 +192,13 @@ namespace :sync do
           p "category=#{category}"
           blog_category = db.query("SELECT * FROM exp_categories WHERE cat_id = #{category['cat_id']} LIMIT 1").first
           if blog_category and blog_category.size > 0
-            blog_category = BlogCategory.find_or_create_by(:name => blog_category['cat_name'], :url_name => blog_category['cat_url_title'])
-            blog_category.legacy_id = blog_category['cat_id']
-            blog.blog_categories << blog_category
+            category = BlogCategory.find_or_create_by(:url_name => blog_category['cat_url_title'])
+            category.legacy_id = blog_category['cat_id'].to_s
+            category.url_name = blog_category['cat_url_title']
+            category.name = blog_category['cat_name']
+            category.save
+            
+            blog.blog_categories << category
           end
         end
       else
