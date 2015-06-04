@@ -59,6 +59,7 @@ ul.social {
       flex: 1;
 
       a {
+        font-size: 25px;
         flex: 1;
         border: 0 !important;
         @include transition(color .2s ease);
