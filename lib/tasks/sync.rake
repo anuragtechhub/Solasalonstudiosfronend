@@ -81,44 +81,44 @@ namespace :sync do
     end
   end
 
-  task :franchisees => :environment do
-    p 'sync franchisees!'
-    db = get_database_client
-    results = db.query("SELECT * FROM exp_members WHERE group_id = 7")
-    p "results.size = #{results.size}"
-    count = results.size
-    results.each_with_index do |row, idx|
-      p "Processing (#{row['member_id']}) #{idx + 1} of #{count}..."
+  # task :franchisees => :environment do
+  #   p 'sync franchisees!'
+  #   db = get_database_client
+  #   results = db.query("SELECT * FROM exp_members WHERE group_id = 7")
+  #   p "results.size = #{results.size}"
+  #   count = results.size
+  #   results.each_with_index do |row, idx|
+  #     p "Processing (#{row['member_id']}) #{idx + 1} of #{count}..."
 
-      admin = Admin.find_by(:legacy_id => row['member_id'].to_s) || Admin.new
+  #     admin = Admin.find_by(:legacy_id => row['member_id'].to_s) || Admin.new
       
-      admin.franchisee = true
-      admin.legacy_id = row['member_id']
-      admin.email = row['username']
-      admin.email_address = row['email']
-      admin.password = 'solastyle777'
-      admin.password_confirmation = 'solastyle777'
+  #     admin.franchisee = true
+  #     admin.legacy_id = row['member_id']
+  #     admin.email = row['username']
+  #     admin.email_address = row['email']
+  #     admin.password = 'solastyle777'
+  #     admin.password_confirmation = 'solastyle777'
 
-      if admin.save
-        p "Saved admin"
-      else
-        p "ERROR saving admin #{admin.errors.inspect}"
-      end
+  #     if admin.save
+  #       p "Saved admin"
+  #     else
+  #       p "ERROR saving admin #{admin.errors.inspect}"
+  #     end
 
-      # save admin locations
-      location_rows = db.query("SELECT * FROM exp_weblog_titles WHERE weblog_id = 5 AND author_id = #{admin.legacy_id}")
-      p "admin locations = #{location_rows.size}"
-      location_rows.each do |location_row|
-        location = Location.find_by(:legacy_id => location_row['entry_id'].to_s)
-        location.admin_id = admin.id if location && admin
-        if location && location.save
-          p "saved location for admin"
-        else
-          p "problem saving location #{location_row.inspect} | #{location.inspect}"
-        end
-      end
-    end    
-  end
+  #     # save admin locations
+  #     location_rows = db.query("SELECT * FROM exp_weblog_titles WHERE weblog_id = 5 AND author_id = #{admin.legacy_id}")
+  #     p "admin locations = #{location_rows.size}"
+  #     location_rows.each do |location_row|
+  #       location = Location.find_by(:legacy_id => location_row['entry_id'].to_s)
+  #       location.admin_id = admin.id if location && admin
+  #       if location && location.save
+  #         p "saved location for admin"
+  #       else
+  #         p "problem saving location #{location_row.inspect} | #{location.inspect}"
+  #       end
+  #     end
+  #   end    
+  # end
 
   task :articles => :environment do
     p 'sync articles!'
@@ -320,146 +320,146 @@ namespace :sync do
       location.facebook_url = row['field_id_221'].encode('UTF-8')
       location.twitter_url = row['field_id_222'].encode('UTF-8')
 
-      # p "image 1"
-      # begin
-      #   location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
-      # rescue => e
-      #   p "image 1 error = #{e.inspect}"
-      # end
+      p "image 1"
+      begin
+        location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
+      rescue => e
+        p "image 1 error = #{e.inspect}"
+      end
 
-      # p "image 2"
-      # begin
-      # location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
-      # rescue => e
-      #   p "image 2 error = #{e.inspect}"
-      # end
+      p "image 2"
+      begin
+      location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
+      rescue => e
+        p "image 2 error = #{e.inspect}"
+      end
 
-      # p "image 3"
-      # begin
-      # location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
-      # rescue => e
-      #   p "image 3 error = #{e.inspect}"
-      # end
+      p "image 3"
+      begin
+      location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
+      rescue => e
+        p "image 3 error = #{e.inspect}"
+      end
 
-      # p "image 4"
-      # begin
-      # location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
-      # rescue => e
-      #   p "image 4 error = #{e.inspect}"
-      # end
+      p "image 4"
+      begin
+      location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
+      rescue => e
+        p "image 4 error = #{e.inspect}"
+      end
 
-      # p "image 5"
-      # begin
-      # location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
-      # rescue => e
-      #   p "image 5 error = #{e.inspect}"
-      # end
+      p "image 5"
+      begin
+      location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
+      rescue => e
+        p "image 5 error = #{e.inspect}"
+      end
 
-      # p "image 6"
-      # begin
-      # location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
-      # rescue => e
-      #   p "image 6 error = #{e.inspect}"
-      # end
+      p "image 6"
+      begin
+      location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
+      rescue => e
+        p "image 6 error = #{e.inspect}"
+      end
 
-      # p "image 7"
-      # begin
-      # location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
-      # rescue => e
-      #   p "image 7 error = #{e.inspect}"
-      # end
+      p "image 7"
+      begin
+      location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
+      rescue => e
+        p "image 7 error = #{e.inspect}"
+      end
 
-      # p "image 8"
-      # begin
-      # location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
-      # rescue => e
-      #   p "image 8 error = #{e.inspect}"
-      # end
+      p "image 8"
+      begin
+      location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
+      rescue => e
+        p "image 8 error = #{e.inspect}"
+      end
 
-      # p "image 9"
-      # begin
-      # location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
-      # rescue => e
-      #   p "image 9 error = #{e.inspect}"
-      # end
+      p "image 9"
+      begin
+      location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
+      rescue => e
+        p "image 9 error = #{e.inspect}"
+      end
 
-      # p "image 10"
-      # begin
-      # location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
-      # rescue => e
-      #   p "image 10 error = #{e.inspect}"
-      # end
+      p "image 10"
+      begin
+      location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
+      rescue => e
+        p "image 10 error = #{e.inspect}"
+      end
 
-      # p "image 11"
-      # begin
-      # location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
-      # rescue => e
-      #   p "image 11 error = #{e.inspect}"
-      # end
+      p "image 11"
+      begin
+      location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
+      rescue => e
+        p "image 11 error = #{e.inspect}"
+      end
 
-      # p "image 12"
-      # begin
-      # location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
-      # rescue => e
-      #   p "image 12 error = #{e.inspect}"
-      # end
+      p "image 12"
+      begin
+      location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
+      rescue => e
+        p "image 12 error = #{e.inspect}"
+      end
 
-      # p "image 13"
-      # begin
-      # location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
-      # rescue => e
-      #   p "image 13 error = #{e.inspect}"
-      # end
+      p "image 13"
+      begin
+      location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
+      rescue => e
+        p "image 13 error = #{e.inspect}"
+      end
 
-      # p "image 14"
-      # begin
-      # location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
-      # rescue => e
-      #   p "image 14 error = #{e.inspect}"
-      # end
+      p "image 14"
+      begin
+      location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
+      rescue => e
+        p "image 14 error = #{e.inspect}"
+      end
 
-      # p "image 15"
-      # begin
-      # location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
-      # rescue => e
-      #   p "image 15 error = #{e.inspect}"
-      # end
+      p "image 15"
+      begin
+      location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
+      rescue => e
+        p "image 15 error = #{e.inspect}"
+      end
 
-      # p "image 16"
-      # begin
-      # location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
-      # rescue => e
-      #   p "image 16 error = #{e.inspect}"
-      # end
+      p "image 16"
+      begin
+      location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
+      rescue => e
+        p "image 16 error = #{e.inspect}"
+      end
 
-      # p "image 17"
-      # begin
-      # location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
-      # rescue => e
-      #   p "image 17 error = #{e.inspect}"
-      # end
+      p "image 17"
+      begin
+      location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
+      rescue => e
+        p "image 17 error = #{e.inspect}"
+      end
 
-      # p "image 18"
-      # begin
-      # location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
-      # rescue => e
-      #   p "image 18 error = #{e.inspect}"
-      # end
+      p "image 18"
+      begin
+      location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
+      rescue => e
+        p "image 18 error = #{e.inspect}"
+      end
 
-      # p "image 19"
-      # begin
-      # location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
-      # rescue => e
-      #   p "image 19 error = #{e.inspect}"
-      # end
-      # location.image_20 = nil
+      p "image 19"
+      begin
+      location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
+      rescue => e
+        p "image 19 error = #{e.inspect}"
+      end
+      location.image_20 = nil
 
-      # p "floorplan image"
-      # begin
-      #   location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
-      # rescue => e
-      #   p "image floorplan image error = #{e.inspect}"
-      # end
+      p "floorplan image"
+      begin
+        location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
+      rescue => e
+        p "image floorplan image error = #{e.inspect}"
+      end
 
       #location. = row['field_id_']
       if location.save
@@ -571,77 +571,77 @@ namespace :sync do
 
       p "thru services"
 
-      # p "image 1"
-      # begin
-      #   stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
-      # rescue => e
-      #   p "image 1 error = #{e.inspect}"
-      # end
+      p "image 1"
+      begin
+        stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
+      rescue => e
+        p "image 1 error = #{e.inspect}"
+      end
 
-      # p "image 2"
-      # begin
-      #   stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
-      # rescue => e
-      #   p "image 2 error = #{e.inspect}"
-      # end
+      p "image 2"
+      begin
+        stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
+      rescue => e
+        p "image 2 error = #{e.inspect}"
+      end
 
-      # p "image 3"
-      # begin
-      #   stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
-      # rescue => e
-      #   p "image 3 error = #{e.inspect}"
-      # end
+      p "image 3"
+      begin
+        stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
+      rescue => e
+        p "image 3 error = #{e.inspect}"
+      end
 
-      # p "image 4"
-      # begin
-      #   stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
-      # rescue => e
-      #   p "image 4 error = #{e.inspect}"
-      # end
+      p "image 4"
+      begin
+        stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
+      rescue => e
+        p "image 4 error = #{e.inspect}"
+      end
 
-      # p "image 5"
-      # begin
-      #   stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
-      # rescue => e
-      #   p "image 5 error = #{e.inspect}"
-      # end      
+      p "image 5"
+      begin
+        stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
+      rescue => e
+        p "image 5 error = #{e.inspect}"
+      end      
 
-      # p "image 6"
-      # begin
-      #   stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
-      # rescue => e
-      #   p "image 6 error = #{e.inspect}"
-      # end 
+      p "image 6"
+      begin
+        stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
+      rescue => e
+        p "image 6 error = #{e.inspect}"
+      end 
 
-      # p "image 7"
-      # begin
-      #   stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
-      # rescue => e
-      #   p "image 7 error = #{e.inspect}"
-      # end 
+      p "image 7"
+      begin
+        stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
+      rescue => e
+        p "image 7 error = #{e.inspect}"
+      end 
 
-      # p "image 8"
-      # begin
-      #   stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
-      # rescue => e
-      #   p "image 8 error = #{e.inspect}"
-      # end 
+      p "image 8"
+      begin
+        stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
+      rescue => e
+        p "image 8 error = #{e.inspect}"
+      end 
 
-      # p "image 9"
-      # begin
-      #   stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
-      # rescue => e
-      #   p "image 9 error = #{e.inspect}"
-      # end 
+      p "image 9"
+      begin
+        stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
+      rescue => e
+        p "image 9 error = #{e.inspect}"
+      end 
 
-      # p "image 10"
-      # begin
-      #   stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
-      # rescue => e
-      #   p "image 10 error = #{e.inspect}"
-      # end       
+      p "image 10"
+      begin
+        stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
+      rescue => e
+        p "image 10 error = #{e.inspect}"
+      end       
 
-      # p "thru images"
+      p "thru images"
 
       # testimonials
 
