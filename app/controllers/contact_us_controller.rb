@@ -11,18 +11,18 @@ class ContactUsController < PublicWebsiteController
 
   def franchising_request
     if request.post?
-      if params[:name].present? && (params[:email].present? || params[:phone].present?)
+      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?)
         FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message])
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
-        render :json => {:error => 'Please enter your name and email address or phone number'}
+        render :json => {:error => 'Please enter your name and a valid email address or phone number'}
       end
     end
   end
 
   def request_a_tour
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present?
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])
         RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message])
         
         if params[:message]
@@ -32,20 +32,26 @@ class ContactUsController < PublicWebsiteController
           render :json => {:success => 'Thank you! We will get in touch soon'}
         end
       else
-        render :json => {:error => 'Please enter your name and email address'}
+        render :json => {:error => 'Please enter your name and a valid email address'}
       end
     end
   end
 
   def partner_inquiry
     if request.post?
-      if params[:name].present? && (params[:email].present? || params[:phone].present?)
+      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?)
         PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message])
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
-        render :json => {:error => 'Please enter your name and email address or phone number'}
+        render :json => {:error => 'Please enter your name and a valid email address or phone number'}
       end
     end
+  end
+
+  private
+
+  def is_valid_email?(email = '')
+    email =~ /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   end
 
 end

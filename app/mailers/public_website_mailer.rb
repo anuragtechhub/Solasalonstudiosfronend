@@ -36,4 +36,5 @@ class PublicWebsiteMailer < ActionMailer::Base
       mail(to: admin.email_address, from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Forgot Password Reset')
     end
   end
+
 end
