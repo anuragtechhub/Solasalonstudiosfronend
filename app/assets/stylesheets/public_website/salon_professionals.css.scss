@@ -179,9 +179,19 @@
   }
 }
 
+h3.salon-professional-name {
+  a, a:link a:visited {
+    color: #000 !important;
+  }
+
+  a:hover, a:active {
+    color: $brand-pink !important;
+  }
+}
+
 h3.business-name {
   margin: 3px 0 0 0 !important;
-  height: 42px;
+  height: 52px;
 }
 
 .salon-services {
