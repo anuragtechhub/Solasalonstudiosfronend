@@ -3,6 +3,16 @@
   img {
     width: 100% !important;
   }
+
+  &.salon-professional {
+    .item {
+      text-align: center;
+    }
+    
+    img {
+      width: auto !important;
+    }
+  }
 }
 
 ul.owl-carousel {

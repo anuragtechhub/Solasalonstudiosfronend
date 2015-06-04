@@ -7,6 +7,14 @@
   margin: 30px;
 }
 
+.home-all {
+  display: block !important;
+}
+
+.home-mobile {
+  display: none !important;
+}
+
 .home-tile {
   margin-bottom: 20px;
 
@@ -124,12 +132,14 @@ img.recently-featured-in {
 
 }
 
-// @media (max-width: 550px) {
+@media (max-width: 550px) {
 
-//   .home-tile {
-//     p.text-center {
-//       text-align: left;
-//     }
-//   }
+.home-all {
+  display: none !important;
+}
 
-// }
+.home-mobile {
+  display: block !important;
+}
+
+}
