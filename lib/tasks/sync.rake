@@ -7,37 +7,24 @@ namespace :sync do
     Rake::Task["sync:articles"].execute
   end
 
-  task :locfix => :environment do
+  task :locfix, [:legacy_id, :cat_id] => :environment do |task, args|
+    location = Location.find_by :legacy_id => args.legacy_id
+    p "Location fix in progress for #{location.name}"
+
     db = get_database_client
-    
-    # Returns the cat_url_title of the location
-    # 
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id IN (SELECT entry_id FROM exp_category_posts WHERE cat_id = #{args.cat_id})");
+    p "There are #{results.size} results for this location"
 
-    # Returns the cat_url_title of the user's location
-    #SELECT cat_url_title FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM `exp_category_posts` WHERE entry_id = 1293 AND parent_id != 0)
-
-    # results = db.query("SELECT entry_id FROM exp_category_posts WHERE cat_id = 66") #SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id IN (SELECT entry_id FROM exp_category_posts WHERE cat_id = 66)
-    # p "results=#{results}"
-    equal = 0
-    not_equal = 0
-
-    Location.all.each do |location|
-      results = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM `exp_category_posts` WHERE entry_id = #{location.legacy_id} AND parent_id != 0 ORDER BY cat_order) ORDER BY cat_order LIMIT 1");
-      results.each do |row|
-        if row['cat_url_title'] != location.url_name
-          p "URL NAMES DO NOT EQUAL #{location.legacy_id}, #{location.url_name}, #{row['cat_url_title']}"
-          not_equal = not_equal + 1
-        else 
-          p "URL NAMES EQUAL #{location.legacy_id}, #{location.url_name}, #{row['cat_url_title']}"
-          equal = equal + 1
-        end
+    results.each do |row|
+      stylist = Stylist.find_by :legacy_id => row['entry_id'].to_s
+      if stylist
+        p "Found stylist #{stylist.name}, #{stylist.location.name if stylist.location}"
+        stylist.location = location
+        stylist.save
+      else
+        p "No stylist found with legacy_id of #{row['entry_id']}"
       end
     end
-
-    p ""
-    p "----------"
-    p "Equal=#{equal}, Not Equal=#{not_equal}"
-
   end
 
   task :imgfix => :environment do
