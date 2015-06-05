@@ -17,6 +17,8 @@ class ContactUsController < PublicWebsiteController
       else
         render :json => {:error => 'Please enter your name and a valid email address or phone number'}
       end
+    else
+      redirect_to :contact_us
     end
   end
 
@@ -34,6 +36,8 @@ class ContactUsController < PublicWebsiteController
       else
         render :json => {:error => 'Please enter your name and a valid email address'}
       end
+    else
+      redirect_to :contact_us
     end
   end
 
@@ -45,6 +49,8 @@ class ContactUsController < PublicWebsiteController
       else
         render :json => {:error => 'Please enter your name and a valid email address or phone number'}
       end
+    else
+      redirect_to :contact_us
     end
   end
 
