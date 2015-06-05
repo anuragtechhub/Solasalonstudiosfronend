@@ -19,6 +19,7 @@ RailsAdmin.config do |config|
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
   # config.excluded_models << 'BlogBlogCategory'
+  config.label_methods.unshift :display_name
 
   config.actions do
     # root actions
@@ -228,7 +229,7 @@ RailsAdmin.config do |config|
     label_plural 'Franchising Inquiries'
   end
 
-  config.model 'Location' do  
+  config.model 'Location' do    
     list do
       field :name
       field :url_name do
@@ -643,7 +644,7 @@ RailsAdmin.config do |config|
         label 'URL Name'
       end
       field :email_address
-      field :location_name do
+      field :location do
         label 'Location'
       end
       field :business_name

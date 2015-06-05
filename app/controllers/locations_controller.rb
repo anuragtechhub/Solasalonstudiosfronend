@@ -33,12 +33,14 @@ class LocationsController < PublicWebsiteController
       @locations.uniq!
       @locations.sort! { |a, b| a.name <=> b.name }
     end
+    redirect_to :locations unless @locations.size > 0 && @lat && @lng
   end
 
   def state
     @all_locations = Location.where(:status => 'open')
     query_param = "%#{params[:state]}%"
     @locations = Location.where(:status => 'open').where('state LIKE ?', query_param)
+    redirect_to :locations unless @locations.size > 0 && @lat && @lng
   end
 
   def salon
@@ -48,6 +50,8 @@ class LocationsController < PublicWebsiteController
       @lng = @location.longitude
       @zoom = 14
       @locations = [@location]
+    else
+      redirect_to :locations
     end
   end
 
@@ -64,6 +68,8 @@ class LocationsController < PublicWebsiteController
       @lng = @location.longitude
       @zoom = 14
       @locations = [@location]
+    else
+      redirect_to :locations
     end
   end
 
@@ -77,14 +83,18 @@ class LocationsController < PublicWebsiteController
   def map_defaults
     if params[:action] == 'city'
       coords = Geocoder.coordinates("#{params[:city]}, #{params[:state]}")
-      @lat = coords[0]
-      @lng = coords[1]
-      @zoom = 9
+      if coords && coords.size > 1
+        @lat = coords[0]
+        @lng = coords[1]
+        @zoom = 9
+      end
     elsif params[:action] == 'state'
       coords = Geocoder.coordinates("#{params[:state]}")
-      @lat = coords[0]
-      @lng = coords[1]
-      @zoom = 6
+      if coords && coords.size > 1
+        @lat = coords[0]
+        @lng = coords[1]
+        @zoom = 6
+      end
     else
       @lat = 38.850033
       @lng = -95.6500523

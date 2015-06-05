@@ -186,6 +186,10 @@ class Location < ActiveRecord::Base
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
   end
 
+  def display_name
+    "#{name} (#{state})"
+  end
+
   private
 
   def to_param
