@@ -18,5 +18,6 @@ class BlogController < PublicWebsiteController
     @post = Blog.find_by(:url_name => params[:url_name])
     @category = @post.blog_categories.first if @post && @post.blog_categories
     @categories = BlogCategory.order(:name => :asc)
+    redirect_to :blog unless @post
   end
 end

@@ -14,7 +14,7 @@ class StylistsController < PublicWebsiteController
       @zoom = 14
       @locations = [@location]
     end
-    #redirect_to :home unless @stylist && @location
+    redirect_to :salon_professionals unless @stylist && @location
   end
 
   def send_a_message
