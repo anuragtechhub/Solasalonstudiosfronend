@@ -34,7 +34,7 @@ class SearchController < PublicWebsiteController
 
       # stylists
       if params[:stylists] != 'hidden'
-        @stylists = Stylist.where(:status => 'open').where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param)
+        @stylists = Stylist.where(:status => 'open').where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         if @stylists
           @stylist = @stylists.open
           @stylists.uniq!
