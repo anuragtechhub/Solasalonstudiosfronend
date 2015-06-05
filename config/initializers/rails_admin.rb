@@ -75,6 +75,9 @@ RailsAdmin.config do |config|
     edit do
       field :email do
         label 'Username'
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
       end
       field :email_address
       field :password
