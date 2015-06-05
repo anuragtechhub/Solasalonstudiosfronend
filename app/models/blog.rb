@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
 
   after_destroy :touch_blog
+  before_save :fix_url_name
 
   has_many :blog_blog_categories
   has_many :blog_categories, :through => :blog_blog_categories
@@ -61,6 +62,10 @@ class Blog < ActiveRecord::Base
 
   def touch_blog
     Blog.all.first.touch
+  end
+
+  def fix_url_name
+    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
 end

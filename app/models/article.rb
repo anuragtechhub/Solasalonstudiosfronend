@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
 
+  before_save :fix_url_name
   validates :title, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
@@ -16,6 +17,12 @@ class Article < ActiveRecord::Base
 
   def safe_title
     EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
+  end
+
+  private
+
+  def fix_url_name
+    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
 end

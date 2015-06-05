@@ -162,7 +162,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def fix_url_name
-    self.url_name = self.url_name.gsub(/\./, '') if self.url_name.present?
+    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
 end
