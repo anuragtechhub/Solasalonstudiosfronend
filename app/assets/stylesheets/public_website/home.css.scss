@@ -140,6 +140,10 @@ img.recently-featured-in {
 
 .home-mobile {
   display: block !important;
+
+  .arrow-left, .arrow-right {
+    display: none !important;
+  }
 }
 
 }
