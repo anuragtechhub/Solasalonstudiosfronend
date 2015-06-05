@@ -5,6 +5,35 @@
   }
 
   &.salon-professional {
+    .arrow-left {
+      width: 49px;
+      height: 49px;
+      margin-top: -24.5px;
+
+      left: 1px;
+      background: #FFF asset-data-url('Left_Inactive@2x.png') no-repeat center;
+      background-size: 49px 49px;
+
+      &:hover, &:active {
+        background: #FFF asset-data-url('Left_Active@2x.png') no-repeat center;
+        background-size: 49px 49px;
+      }
+    }
+
+    .arrow-right {
+      width:49px;
+      height: 49px;
+      margin-top: -24.5px;
+
+      right: 1px;
+      background: #FFF asset-data-url('Right_Inactive@2x.png') no-repeat center;
+      background-size: 49px 49px;
+
+      &:hover, &:active {
+        background: #FFF asset-data-url('Right_Active@2x.png') no-repeat center;
+        background-size: 49px 49px;
+      }
+    }
     .item {
       text-align: center;
     }
