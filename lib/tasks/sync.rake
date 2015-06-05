@@ -7,6 +7,37 @@ namespace :sync do
     Rake::Task["sync:articles"].execute
   end
 
+  task :imgfix => :environment do
+    imatches = {}
+    Blog.all.each do |blog|
+
+      blog.body.gsub!(/<img[^>]+\>/) { |img|
+        p "img=#{img}"
+        matches = /src="([^"]+)"/.match(img)
+
+        if matches && matches.size > 0
+          src = matches[1].gsub(/www.solasalonstudios.com/, '69.73.148.8')
+          #p "src=#{src}"
+          #p "open=#{open(src)}"
+          
+          obj = S3_BUCKET.objects[src]
+          obj.write(file: open(src), acl: :public_read)
+          p "obj.public_url=#{obj.public_url}"
+          "<img src='#{obj.public_url}'>"
+        else
+          p 'NO MATCHES'
+        end
+      }
+      p ""
+      p "blog.body=#{blog.body}"
+      if blog.save
+        p "blog saved! #{blog.url_name}"
+      else
+        p "ERROR saving #{blog.errors.inspect}"
+      end
+    end
+  end
+
   task :stylists1 => :environment do
     sync_stylists(0)
   end            
@@ -1087,7 +1118,7 @@ namespace :sync do
   end 
 
   def get_database_client
-    Mysql2::Client.new(:host => 'solasalonstudios.com', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)
+    Mysql2::Client.new(:host => '69.73.148.8', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)
   end
 
   def filedir_replacement(html)
