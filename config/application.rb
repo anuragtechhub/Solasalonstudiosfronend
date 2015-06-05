@@ -24,6 +24,7 @@ module Solasalonstudios
       r301 %r{^/index.php/directory.*$}, 'https://www.solasalonstudios.com/'
       r301 %r{^/index.php/welcome.*$}, 'https://www.solasalonstudios.com/'
       r301 %r{^/index.php/gallery.*$}, 'https://www.solasalonstudios.com/'
+      r301 %r{^/store.*$}, 'https://www.solasalonstudios.com/locations'
 
       r301 %r{^/forums.*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
       r301 %r{^/forums/member/messages.*$}, 'http://solasalonstudios.franchisesoftwaresystems.com/index.aspx'
