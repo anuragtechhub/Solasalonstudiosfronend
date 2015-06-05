@@ -12,11 +12,14 @@ class LocationsController < PublicWebsiteController
 
   def region
     @msa = Msa.find_by(:url_name => params[:url_name])
-    redirect_to :locations unless @msa
-
-    @all_locations = Location.where(:status => 'open')
-    @locations = @all_locations.where('msa_id = ?', @msa.id)
-    params[:state] = @locations.first.state
+    
+    if @msa
+      @all_locations = Location.where(:status => 'open')
+      @locations = @all_locations.where('msa_id = ?', @msa.id)
+      params[:state] = @locations.first.state
+    else
+      redirect_to :locations
+    end
   end
 
   def city
