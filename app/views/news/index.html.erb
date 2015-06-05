@@ -14,7 +14,7 @@
       <div class="text">
         <h4><%= link_to article.title.html_safe, show_article_path(article) %></h4>
         <h4 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h4>
-        <p><%= article.summary.html_safe %><br><strong><%= link_to 'Read More', show_article_path(article), :class => 'pink-link' %></strong></p>
+        <p><%= article.summary.gsub(/<img[^>]+\>/, '').html_safe if article.summary %><br><strong><%= link_to 'Read More', show_article_path(article), :class => 'pink-link' %></strong></p>
         <ul class="social">
           <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{show_article_url(article)}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <li><%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{show_article_url(article)}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
