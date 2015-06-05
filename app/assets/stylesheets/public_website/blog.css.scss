@@ -173,6 +173,14 @@
     margin-bottom: 5px !important;
   }
 
+  .blog-post-summary, .blog-post-article {
+
+    img {
+      width: 100%;
+      height: auto
+    }
+  }
+
   .related-articles {
     h3 {
       padding-bottom: 15px;
