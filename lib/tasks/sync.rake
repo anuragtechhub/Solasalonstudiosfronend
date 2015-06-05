@@ -7,6 +7,13 @@ namespace :sync do
     Rake::Task["sync:articles"].execute
   end
 
+  task :locfix => :environment do
+    db = get_database_client
+    results = db.query("SELECT entry_id FROM exp_category_posts WHERE cat_id = 66") #SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id IN (SELECT entry_id FROM exp_category_posts WHERE cat_id = 66)
+    p "results=#{results}"
+
+  end
+
   task :imgfix => :environment do
     Blog.all.each do |blog|
 
