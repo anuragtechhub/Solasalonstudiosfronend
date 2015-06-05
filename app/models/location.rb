@@ -187,7 +187,7 @@ class Location < ActiveRecord::Base
   end
 
   def display_name
-    "#{name} (#{state})"
+    "#{name} (#{city}, #{state})"
   end
 
   private
