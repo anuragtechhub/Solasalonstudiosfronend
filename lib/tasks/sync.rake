@@ -8,10 +8,9 @@ namespace :sync do
   end
 
   task :imgfix => :environment do
-    imatches = {}
     Blog.all.each do |blog|
 
-      blog.body.gsub!(/<img[^>]+\>/) { |img|
+      blog.body = blog.body.gsub(/<img[^>]+\>/) { |img|
         p "img=#{img}"
         matches = /src="([^"]+)"/.match(img)
 
@@ -23,9 +22,7 @@ namespace :sync do
           obj = S3_BUCKET.objects[src]
           obj.write(file: open(src), acl: :public_read)
           p "obj.public_url=#{obj.public_url}"
-          "<img src='#{obj.public_url}'>"
-        else
-          p 'NO MATCHES'
+          "<img src=\"#{obj.public_url}\">"
         end
       }
       p ""
@@ -36,6 +33,31 @@ namespace :sync do
         p "ERROR saving #{blog.errors.inspect}"
       end
     end
+    Article.all.each do |article|
+
+      article.body = article.body.gsub(/<img[^>]+\>/) { |img|
+        p "img=#{img}"
+        matches = /src="([^"]+)"/.match(img)
+
+        if matches && matches.size > 0
+          src = matches[1].gsub(/www.solasalonstudios.com/, '69.73.148.8')
+          #p "src=#{src}"
+          #p "open=#{open(src)}"
+          
+          obj = S3_BUCKET.objects[src]
+          obj.write(file: open(src), acl: :public_read)
+          p "obj.public_url=#{obj.public_url}"
+          "<img src=\"#{obj.public_url}\">"
+        end
+      }
+      p ""
+      p "article.body=#{article.body}"
+      if article.save
+        p "article saved! #{article.url_name}"
+      else
+        p "ERROR saving #{article.errors.inspect}"
+      end
+    end    
   end
 
   task :stylists1 => :environment do
