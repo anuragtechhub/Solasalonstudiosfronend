@@ -38,7 +38,7 @@
       <h1><%= @location.name.html_safe %></h1>
       <h3 class="subtle"><%= @location.city.html_safe %>, <%= @location.state.html_safe %></h3>
       <div class="salon-buttons">
-        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button block long-text' %>
+        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name).gsub(/\./, ''), :class => 'button block long-text' %>
         <%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button block rent-a-studio' %>
       </div>
       <div class="row salon-map" id="map"></div>

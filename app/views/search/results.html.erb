@@ -1,7 +1,7 @@
 <div class="container content-container search-results">
   <div class="row">
 
-    <% if params[:query].present? && @locations.size == 0 && @stylists.size == 0 %>
+    <% if params[:query].present? && (@locations && @locations.size == 0) && (@stylists && @stylists.size == 0) %>
       <p>There were no results found for your search query "<%= params[:query] %>"</p>
     <% end %>
 

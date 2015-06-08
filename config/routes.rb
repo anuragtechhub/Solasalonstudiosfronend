@@ -44,6 +44,7 @@ Solasalonstudios::Application.routes.draw do
 
   get 'stylist' => 'stylists#index'
   get 'stylist/:name' => 'stylists#index'
+  get 'stylist/:name/:url' => 'stylists#index'
   get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
