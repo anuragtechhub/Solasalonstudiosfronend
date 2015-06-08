@@ -320,7 +320,7 @@ namespace :sync do
 
   task :expire => :environment do
     db = get_database_client
-    [3310, 6110, 4170, 4171, 8009, 5275, 3172].each do |id|
+    [3301, 6110, 4170, 4171, 8009, 5275, 3172].each do |id|
       location = Location.find_by :legacy_id => id.to_s
       if location
         p "Expire stylists for #{location.name}"
