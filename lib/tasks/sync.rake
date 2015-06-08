@@ -310,7 +310,8 @@ namespace :sync do
           if stylist.save
             p "stylist saved"
           else
-            p "stylists NOT saved #{stylists.errors.inspect}"
+            p "stylist NOT saved #{stylist.errors.inspect}"
+          end
         else
           p "No stylist found with legacy_id of #{row['entry_id']}"
         end
