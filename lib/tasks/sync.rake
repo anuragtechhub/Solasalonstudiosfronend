@@ -318,25 +318,39 @@ namespace :sync do
 
   end
 
-  # task :expirestylists => :environment do
-  #   db = get_database_client
-  #   [5474, 6109, 4170, 4171, 8009, 5275, 3172].each do |id|
-  #     location = Location.find_by :legacy_id => id.to_s
-  #     if location
-  #       p "Expire stylists for #{location.name}"
-  #       stylists = Stylist.where :location_id => location.id
-  #       if stylists && stylists.size > 0
-  #         stylists.each do |stylist|
-  #           results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = #{stylist.legacy_id} LIMIT 1")
-  #           p "Stylist #{stylist.name}, #{results.inspect}"
-  #         end
-  #       else
-  #         p "No stylists found for #{location.name}"
-  #       end
-  #     else
-  #       p "Location not found for #{id}"
-  #     end
-  # end
+  task :expire => :environment do
+    db = get_database_client
+    [5474, 6109, 4170, 4171, 8009, 5275, 3172].each do |id|
+      location = Location.find_by :legacy_id => id.to_s
+      if location
+        p "Expire stylists for #{location.name}"
+        stylists = Stylist.where :location_id => location.id
+        if stylists && stylists.size > 0
+          stylists.each do |stylist|
+            results = db.query("SELECT * FROM exp_weblog_titles WHERE weblog_id = 6 AND entry_id = #{stylist.legacy_id} LIMIT 1")
+            results.each do |result|
+              p "Stylist #{stylist.name}, #{result['expiration_date'].inspect}"
+              if result['expiration_date'] && result['expiration_date'] > 0
+                date = Date.strptime(result['expiration_date'].to_s, '%s')
+                p "date=#{date}"
+                if date <= Date.today
+                  p "EXPIRE IT"
+                  stylist.status = 'closed'
+                  stylist.save
+                else
+                  p "NO EXPIRE"
+                end
+              end
+            end
+          end
+        else
+          p "No stylists found for #{location.name}"
+        end
+      else
+        p "Location not found for #{id}"
+      end
+    end
+  end
 
   # task :imgfix => :environment do
   #   Blog.all.each do |blog|
