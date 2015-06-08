@@ -5,7 +5,9 @@
 <% end %>
 
 <hr>
-
+<% if @inquiry.location && @inquiry.location.name.present? %>
+  <p><strong>Location:</strong> <%= @inquiry.location.name.html_safe %></p>
+<% end %>
 <p><strong>Name:</strong> <%= @inquiry.name %></p>
 <p><strong>Email:</strong> <%= @inquiry.email %></p>
 <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
