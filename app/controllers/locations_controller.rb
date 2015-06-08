@@ -57,13 +57,14 @@ class LocationsController < PublicWebsiteController
 
   def stylists
     @location = Location.find_by(:url_name => params[:url_name])
-    @stylists = @location.stylists
 
-    if (params[:service]) 
-      @stylists = @location.stylists.select { |s| true if s.services.include?(params[:service]) }
-    end
+    if @location && @location.stylists
+      @stylists = @location.stylists
 
-    if @location
+      if (params[:service]) 
+        @stylists = @location.stylists.select { |s| true if s.services.include?(params[:service]) }
+      end
+
       @lat = @location.latitude
       @lng = @location.longitude
       @zoom = 14
