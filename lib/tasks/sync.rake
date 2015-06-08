@@ -1103,7 +1103,7 @@ namespace :sync do
     p 'sync stylists!'
     db = get_database_client
     p "mysql db = #{db}"
-    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 414")
+    results = db.query("SELECT * FROM exp_weblog_data WHERE weblog_id = 6 AND entry_id = 5871")
     p "results.size = #{results.size}"
     count = results.size
     results.each_with_index do |row, idx|
@@ -1500,7 +1500,7 @@ namespace :sync do
   def get_img_src(html)
     html = filedir_replacement(html)
 
-    Nokogiri::HTML(html).xpath('//img/@src').to_s
+    Nokogiri::HTML(html).xpath('//img/@src').to_s.gsub('(www)?\.?solasalonstudios\.com', '69.73.148.8')
   end
 
 end

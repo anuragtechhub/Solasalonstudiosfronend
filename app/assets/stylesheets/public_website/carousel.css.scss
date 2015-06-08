@@ -63,6 +63,12 @@ ul.owl-carousel {
     }
 
     &.salon-professional { 
+      .arrow-right {
+        right: 0;
+      }
+      .arrow-left {
+        left: 0;
+      }
       img {
         width: 100% !important;
         height: auto !important;
