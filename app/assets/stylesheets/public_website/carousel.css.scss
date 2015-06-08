@@ -61,6 +61,15 @@ ul.owl-carousel {
       height: auto !important;
       width: 100% !important;
     }
+
+    &.salon-professional { 
+      img {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
   }
+
+
 
 }
