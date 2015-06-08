@@ -307,7 +307,10 @@ namespace :sync do
         if stylist
           p "Found stylist #{stylist.name}, #{stylist.location.name if stylist.location}"
           stylist.location = location
-          stylist.save
+          if stylist.save
+            p "stylist saved"
+          else
+            p "stylists NOT saved #{stylists.errors.inspect}"
         else
           p "No stylist found with legacy_id of #{row['entry_id']}"
         end

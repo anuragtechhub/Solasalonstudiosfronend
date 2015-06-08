@@ -29,8 +29,8 @@
 
 <div class="location-breadcrumb">
   <div class="container">
-    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to params[:state], locations_by_state_path(params[:state]) %> 
-    <span class="divider">/</span> <%= link_to params[:city], locations_by_city_path(params[:state], params[:city]) %>
+    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to params[:state], locations_by_state_path(params[:state]).gsub(/\./, '') %> 
+    <span class="divider">/</span> <%= link_to params[:city], locations_by_city_path(params[:state], params[:city]).gsub(/\./, '') %>
   </div>
 </div>
 
