@@ -56,7 +56,7 @@
       </div>
       
       <div class="two-thirds column">
-        <div class="summary"><%= @post.body.gsub(/\n/, '<hr class="br" />').html_safe %></div>
+        <div class="summary"><%= @post.body.html_safe %></div>
 
         <div class="disqus-comments">
           <%= render 'shared/disqus' %>
