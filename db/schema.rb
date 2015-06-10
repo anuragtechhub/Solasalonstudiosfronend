@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610163531) do
+ActiveRecord::Schema.define(version: 20150610165700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -237,6 +237,54 @@ ActiveRecord::Schema.define(version: 20150610163531) do
     t.string   "pinterest_url"
     t.string   "instagram_url"
     t.string   "yelp_url"
+    t.string   "directory_image_1_file_name"
+    t.string   "directory_image_1_content_type"
+    t.integer  "directory_image_1_file_size"
+    t.datetime "directory_image_1_updated_at"
+    t.string   "directory_image_2_file_name"
+    t.string   "directory_image_2_content_type"
+    t.integer  "directory_image_2_file_size"
+    t.datetime "directory_image_2_updated_at"
+    t.string   "directory_image_3_file_name"
+    t.string   "directory_image_3_content_type"
+    t.integer  "directory_image_3_file_size"
+    t.datetime "directory_image_3_updated_at"
+    t.string   "directory_image_4_file_name"
+    t.string   "directory_image_4_content_type"
+    t.integer  "directory_image_4_file_size"
+    t.datetime "directory_image_4_updated_at"
+    t.string   "directory_image_5_file_name"
+    t.string   "directory_image_5_content_type"
+    t.integer  "directory_image_5_file_size"
+    t.datetime "directory_image_5_updated_at"
+    t.string   "directory_image_6_file_name"
+    t.string   "directory_image_6_content_type"
+    t.integer  "directory_image_6_file_size"
+    t.datetime "directory_image_6_updated_at"
+    t.string   "directory_image_7_file_name"
+    t.string   "directory_image_7_content_type"
+    t.integer  "directory_image_7_file_size"
+    t.datetime "directory_image_7_updated_at"
+    t.string   "directory_image_8_file_name"
+    t.string   "directory_image_8_content_type"
+    t.integer  "directory_image_8_file_size"
+    t.datetime "directory_image_8_updated_at"
+    t.string   "directory_image_9_file_name"
+    t.string   "directory_image_9_content_type"
+    t.integer  "directory_image_9_file_size"
+    t.datetime "directory_image_9_updated_at"
+    t.string   "directory_image_10_file_name"
+    t.string   "directory_image_10_content_type"
+    t.integer  "directory_image_10_file_size"
+    t.datetime "directory_image_10_updated_at"
+    t.string   "directory_image_11_file_name"
+    t.string   "directory_image_11_content_type"
+    t.integer  "directory_image_11_file_size"
+    t.datetime "directory_image_11_updated_at"
+    t.string   "directory_image_12_file_name"
+    t.string   "directory_image_12_content_type"
+    t.integer  "directory_image_12_file_size"
+    t.datetime "directory_image_12_updated_at"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

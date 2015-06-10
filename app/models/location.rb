@@ -125,6 +125,68 @@ class Location < ActiveRecord::Base
   attr_accessor :delete_image_20
   before_validation { self.image_20.destroy if self.delete_image_20 == '1' }
 
+  # directory images below...
+
+  has_attached_file :directory_image_1, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_1, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_1
+  before_validation { self.directory_image_1.destroy if self.delete_directory_image_1 == '1' }
+
+  has_attached_file :directory_image_2, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_2, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_2
+  before_validation { self.directory_image_2.destroy if self.delete_directory_image_2 == '1' }
+
+  has_attached_file :directory_image_3, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_3, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_3
+  before_validation { self.directory_image_3.destroy if self.delete_directory_image_3 == '1' }
+
+  has_attached_file :directory_image_4, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_4, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_4
+  before_validation { self.directory_image_4.destroy if self.delete_directory_image_4 == '1' }
+
+  has_attached_file :directory_image_5, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_5, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_5
+  before_validation { self.directory_image_5.destroy if self.delete_directory_image_5 == '1' }
+
+  has_attached_file :directory_image_6, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_6, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_6
+  before_validation { self.directory_image_6.destroy if self.delete_directory_image_6 == '1' }
+
+  has_attached_file :directory_image_7, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_7, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_7
+  before_validation { self.directory_image_7.destroy if self.delete_directory_image_7 == '1' }
+
+  has_attached_file :directory_image_8, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_8, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_8
+  before_validation { self.directory_image_8.destroy if self.delete_directory_image_8 == '1' }
+
+  has_attached_file :directory_image_9, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_9, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_9
+  before_validation { self.directory_image_9.destroy if self.delete_directory_image_9 == '1' }
+
+  has_attached_file :directory_image_10, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_10, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_10
+  before_validation { self.directory_image_10.destroy if self.delete_directory_image_10 == '1' }
+
+  has_attached_file :directory_image_11, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_11, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_11
+  before_validation { self.directory_image_11.destroy if self.delete_directory_image_11 == '1' }
+
+  has_attached_file :directory_image_12, :styles => { :carousel => '625x>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}, :convert_options => { :all => '-auto-orient' } 
+  validates_attachment_content_type :directory_image_12, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_directory_image_12
+  before_validation { self.directory_image_12.destroy if self.delete_directory_image_12 == '1' }                    
+
   validates :name, :presence => true
   #validates :url_name, :presence => true, :uniqueness => true
 
