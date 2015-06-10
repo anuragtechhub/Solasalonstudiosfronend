@@ -190,6 +190,10 @@ class Location < ActiveRecord::Base
     "#{name} (#{city}, #{state})"
   end
 
+  def as_json(options={})
+    super(:except => [:created_at, :updated_at])
+  end
+
   private
 
   def to_param
