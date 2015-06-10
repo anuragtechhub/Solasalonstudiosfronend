@@ -70,6 +70,7 @@ Solasalonstudios::Application.routes.draw do
     namespace :v1 do
 
       match 'locations' => 'locations#index', :via => [:get, :post]
+      match 'locations/:id' => 'locations#show', :via => [:get, :post]
 
     end
   end
