@@ -694,6 +694,7 @@ RailsAdmin.config do |config|
       group :social do
         field :facebook_url
         field :instagram_url
+        field :linkedin_url
         field :pinterest_url
         field :twitter_url
         field :yelp_url
@@ -838,6 +839,9 @@ RailsAdmin.config do |config|
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
         field :instagram_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :linkedin_url do
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
         field :pinterest_url do
