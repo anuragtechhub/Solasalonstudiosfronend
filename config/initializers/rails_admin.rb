@@ -181,6 +181,9 @@ RailsAdmin.config do |config|
       group 'Carousel' do
         field :carousel_image
         field :carousel_text
+      end
+      group 'Tracking' do
+        field :fb_conversion_pixel
       end      
     end
     edit do
@@ -210,6 +213,10 @@ RailsAdmin.config do |config|
         end
         field :carousel_text
       end
+      group 'Tracking' do
+        active false
+        field :fb_conversion_pixel
+      end 
     end
   end
 

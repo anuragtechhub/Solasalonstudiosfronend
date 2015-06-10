@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610142059) do
+ActiveRecord::Schema.define(version: 20150610152514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150610142059) do
     t.integer  "carousel_image_file_size"
     t.datetime "carousel_image_updated_at"
     t.string   "carousel_text"
+    t.text     "fb_conversion_pixel"
   end
 
   create_table "ckeditor_assets", force: true do |t|
