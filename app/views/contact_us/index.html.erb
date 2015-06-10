@@ -48,6 +48,24 @@
         <% end %>  
       </div>
 
+      <div id="contact-us-info-disabled">
+        <div class="contact-us-info-disabled">
+          <div class="row">
+            <h3>&nbsp;</h3>
+            <h1>Select a Sola Location Above</h1>
+            <h3>&nbsp;</h3>
+            <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
+              <input name="name" type="text" placeholder="Your Name" disabled="disabled">
+              <input name="email" type="text" placeholder="Email Address" disabled="disabled">
+              <input name="phone" type="text" placeholder="Phone Number (Optional)" disabled="disabled">
+              <textarea name="message" type="text" placeholder="Leave a Message" disabled="disabled"></textarea>
+              <input name="location_id" id="contact_us_location_id" type="hidden" value="" disabled="disabled">
+              <button class="button block primary" disabled="disabled">Submit Message</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <div id="contact-us-info">
         <div class="contact-us-info">
           <div class="row">

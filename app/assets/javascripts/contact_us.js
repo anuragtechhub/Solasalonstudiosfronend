@@ -25,6 +25,7 @@ $(function () {
 
     $select.find('.option').on('click', function (event) {
       var state = $(event.target).data('value');
+      $('#contact-us-info-disabled').show();
       $('.contact-us-info').hide();
       
       $('.sola-select .options').hide();
@@ -76,6 +77,7 @@ $(function () {
       }
       
 
+      $('#contact-us-info-disabled').hide();
       $('.contact-us-info').show();
       return false;
     });
