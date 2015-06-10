@@ -41,6 +41,10 @@
       line-height: 25px !important;
     }
 
+    p, .p { 
+      margin-bottom: 20px !important;
+    }
+
     a, a:link, a:visited, a:hover, a:active {
       color: $brand-pink;
       font-weight: bold;
