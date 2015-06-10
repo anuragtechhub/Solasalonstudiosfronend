@@ -120,17 +120,17 @@ $(function () {
   // play videos
   $('.play-button, .play-video').swipebox();
 
-  // image-gallery
-  $('.view-image-gallery').on('click', function () {
-    var images = [];
+  // // image-gallery
+  // $('.view-image-gallery').on('click', function () {
+  //   var images = [];
 
-    $('#image_gallery input').each(function () {
-      images.push({href: $(this).val()});
-    });
+  //   $('#image_gallery input').each(function () {
+  //     images.push({href: $(this).val()});
+  //   });
 
-    $.swipebox(images);
-    return false;
-  });
+  //   $.swipebox(images);
+  //   return false;
+  // });
 
   // optgroup click handler
   $('.optgroup').on('click', function () {
