@@ -40,6 +40,10 @@ RailsAdmin.config do |config|
     # show_in_app
   end
 
+  config.model 'Account' do
+    visible false
+  end
+
   config.model 'Admin' do
     # visible do
     #   bindings[:controller]._current_user.franchisee != true
