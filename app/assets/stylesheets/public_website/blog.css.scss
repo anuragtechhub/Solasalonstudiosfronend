@@ -36,6 +36,11 @@
   .summary {
     line-height: 26px;
 
+    *, & {
+      font-size: 15px !important;
+      line-height: 25px !important;
+    }
+
     a, a:link, a:visited, a:hover, a:active {
       color: $brand-pink;
       font-weight: bold;
