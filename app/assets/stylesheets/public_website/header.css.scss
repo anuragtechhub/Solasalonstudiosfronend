@@ -135,8 +135,9 @@
   width: 21px;
 }
 
-.nav-search-input {
+.nav-search-input, input[type="search"].nav-search-input {
   border: 0 !important;
+  // border: 1px solid #FFF !important;
 }
 
 
