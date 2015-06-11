@@ -79,7 +79,7 @@
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('blog') } %>
-<% content_for(:title) { @post.title } %>
+<% content_for(:title) { @post.title.html_safe } %>
 <% content_for(:og_image) { @post.image(:original) } %>
 <% content_for(:og_description) { @post.summary } %>
 <% content_for(:fb_conversion_pixel) { 
