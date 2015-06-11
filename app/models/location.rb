@@ -314,11 +314,11 @@ class Location < ActiveRecord::Base
     pros
   end                
 
-  private
-
   def to_param
     "#{state}/#{city}/#{url_name}"
   end
+
+  private
 
   def touch_location
     Location.all.first.touch

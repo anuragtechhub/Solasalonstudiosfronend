@@ -27,4 +27,14 @@ class StylistsController < PublicWebsiteController
       end
     end
   end
+
+  def redirect
+    @stylist = Stylist.find_by(:url_name => params[:url_name])
+    @location = @stylist.location if (@stylist && @stylist.location)
+    if @stylist && @location
+      redirect_to show_salon_professional_path(@stylist).gsub(/\./, '')
+    else
+      redirect_to :salon_professionals
+    end
+  end
 end

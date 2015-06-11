@@ -55,6 +55,15 @@ class LocationsController < PublicWebsiteController
     end
   end
 
+  def salon_redirect
+    @location = Location.find_by(:url_name => params[:url_name])
+    if @location && @location.state && @location.city
+      redirect_to salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, '')
+    else
+      redirect_to :locations
+    end
+  end
+
   def stylists
     @location = Location.find_by(:url_name => params[:url_name])
 

@@ -41,10 +41,13 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
   get "locations/:state/:city/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
+  get "stores/:url_name" => 'locations#salon_redirect'
+  get "store/:url_name" => 'locations#salon_redirect'
 
   get 'stylist' => 'stylists#index'
-  get 'stylist/:name' => 'stylists#index'
-  get 'stylist/:name/:url' => 'stylists#index'
+  get 'stylists/:url_name' => 'stylists#redirect'
+  get 'stylist/:url_name' => 'stylists#redirect'
+  get 'stylist/:url_name/:url' => 'stylists#redirect'
   get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
