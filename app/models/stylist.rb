@@ -78,6 +78,7 @@ class Stylist < ActiveRecord::Base
 
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true, :on => :create
   validates :name, :presence => true
+  validates :other_service, length: {maximum: 18}, allow_blank: true
   #validates :url_name, :presence => true, :uniqueness => true
 
   def social_links_present?
@@ -102,7 +103,7 @@ class Stylist < ActiveRecord::Base
     images_array
   end
 
-  def services 
+  def services(show_other = true) 
     services = []
 
     services << 'Brows' if brows
@@ -119,6 +120,7 @@ class Stylist < ActiveRecord::Base
     services << 'Teeth Whitening' if teeth_whitening
     services << 'Theading' if threading
     services << 'Waxing' if waxing
+    services << other_service if (show_other && other_service)
 
     services
   end

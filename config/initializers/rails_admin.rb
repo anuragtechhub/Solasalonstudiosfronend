@@ -869,6 +869,9 @@ RailsAdmin.config do |config|
         field :teeth_whitening
         field :threading
         field :waxing
+        field :other_service do
+          label 'Other'
+        end
       end
       group :images do
         field :image_1 do 
@@ -1025,6 +1028,12 @@ RailsAdmin.config do |config|
         field :teeth_whitening
         field :threading
         field :waxing
+        field :other_service do
+          label 'Other'
+          html_attributes do
+           {:maxlength => 18}
+          end
+        end
       end
       group :images do
         active false

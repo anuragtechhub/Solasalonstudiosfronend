@@ -71,7 +71,7 @@ class LocationsController < PublicWebsiteController
       @stylists = @location.stylists
 
       if (params[:service]) 
-        @stylists = @location.stylists.select { |s| true if s.services.include?(params[:service]) }
+        @stylists = @location.stylists.select { |s| true if (s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service)) }
       end
 
       @lat = @location.latitude

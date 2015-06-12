@@ -198,7 +198,8 @@ class Location < ActiveRecord::Base
     services = []
 
     stylists.each do |stylist|
-      services = services + stylist.services
+      services = services + stylist.services(false)
+      services << 'Other' if stylist.other_service
     end
 
     services.uniq.sort
