@@ -23,6 +23,7 @@
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
+            <div class="option" data-value="<%= salon_stylists_path(@location.state, @location.city, @location.url_name) %>">All Services</div>
           <% @location.services.each do |service| %>
             <div class="option" data-value="<%= salon_stylists_path(@location.state, @location.city, @location.url_name, service) %>"><%= service %></div>
           <% end %>

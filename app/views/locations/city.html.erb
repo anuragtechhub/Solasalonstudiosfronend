@@ -15,6 +15,7 @@
             <div class="arrow"><span class="ss-dropdown"></span></div>
           </div>
           <div class="options">
+            <div class="option" data-value="<%= locations_path() %>">All Locations</div>
             <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
             <div class="option" data-value="<%= locations_by_state_path(location.state) %>"><%= location.state %></div>
             <% end %>
