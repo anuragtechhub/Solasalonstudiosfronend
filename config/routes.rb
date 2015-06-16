@@ -64,6 +64,7 @@ Solasalonstudios::Application.routes.draw do
   get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
 
   get 'regions' => 'locations#index'
+  get 'region/:url_name' => 'locations#region'
   get 'regions/:url_name' => 'locations#region', :as => :region
 
   match "forgot-password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
