@@ -9,7 +9,7 @@
   left: 50%;
   margin: -200px 0 0 -100px;
   width: 100%;
-  max-width: 390px;
+  max-width: 392px;
   z-index: 9999;
   overflow: hidden;
   overflow-y: scroll;
@@ -66,3 +66,16 @@
   z-index: 999;
 }
 
+.recaptchaContainer {
+  margin-bottom: 10px;
+}
+
+.request-franchising-modal {
+
+  input, textarea {
+    max-width: 302px !important;
+    border-radius: 2px !important;
+    background: #f9f9f9 !important;
+    border: 1px solid #d3d3d3 !important; 
+  }
+}

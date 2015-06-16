@@ -11,11 +11,16 @@ class ContactUsController < PublicWebsiteController
 
   def franchising_request
     if request.post?
-      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?)
+      captcha_verified = verify_recaptcha
+      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?) && captcha_verified
         FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message])
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
-        render :json => {:error => 'Please enter your name and a valid email address or phone number'}
+        if captcha_verified
+          render :json => {:error => 'Please enter your name and a valid email address or phone number'}
+        else
+          render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
+        end
       end
     else
       redirect_to :contact_us

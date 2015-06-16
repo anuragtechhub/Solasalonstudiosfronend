@@ -195,6 +195,13 @@ $(function () {
     return false;
   });
 
+  // refresh recaptcha
+  function refreshCaptcha() {
+    if (grecaptcha && typeof grecaptcha.reset === 'function') {
+      grecaptcha.reset();
+    }
+  }
+
   // footer tooltip init
   $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
@@ -211,23 +218,32 @@ $(function () {
   $('#franchising_request').on('submit', function () {
     var $form = $(this);
 
-    $.ajax({
-      method: 'POST',
-      url: $form.attr('action'),
-      data: $form.serialize()
-    }).done(function(data) {
-      if (data && data.success) {
-        $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
-        setTimeout(function () {
-          $franchsing_modal.data('modal').fadeOut();
-        }, 3300);
-      } else {
-        $form.tooltipster('content', data.error).tooltipster('show');
-      }
-    });
+    if ($('#g-recaptcha-response').val() !== '') {
+      $.ajax({
+        method: 'POST',
+        url: $form.attr('action'),
+        data: $form.serialize()
+      }).done(function(data) {
+        refreshCaptcha();
+        if (data && data.success) {
+          $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+          setTimeout(function () {
+            $franchsing_modal.data('modal').fadeOut();
+          }, 3300);
+        } else {
+          $form.tooltipster('content', data.error).tooltipster('show');
+        }
+      });
+
+    } else {
+      $form.tooltipster('content', 'No robots allowed. Please check the box to prove you are a human').tooltipster('show');
+    }
 
     return false;
   });
+
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
+
 
 });
