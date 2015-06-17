@@ -34,6 +34,16 @@
         background-size: 49px 49px;
       }
     }
+
+    &.salon-carousel {
+      .arrow-left {
+        left: 0;
+      }
+      .arrow-right {
+        right: 0;
+      }
+    }
+
     .item {
       text-align: center;
     }
