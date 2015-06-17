@@ -126,27 +126,27 @@
   }
 }
 
-@media (max-width: 768px) {
-  .tablet-portrait {
+// @media (max-width: 768px) {
+//   .tablet-portrait {
 
-    .container {
-      position: relative;
-      width: 100%;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box; 
-    }
+//     .container {
+//       position: relative;
+//       width: 100%;
+//       max-width: 960px;
+//       margin: 0 auto;
+//       padding: 0 20px;
+//       box-sizing: border-box; 
+//     }
   
-    .column, .columns {
-      width: 100% !important;
-      float: none !important;
-      margin: 0 !important;
-      box-sizing: border-box; 
-      left: auto;
-    }
-  }
-}
+//     .column, .columns {
+//       width: 100% !important;
+//       float: none !important;
+//       margin: 0 !important;
+//       box-sizing: border-box; 
+//       left: auto;
+//     }
+//   }
+// }
 
 
 /* Base Styles

@@ -4,7 +4,7 @@
     width: 100% !important;
   }
 
-  &.salon-professional {
+  &.salon-professional, &.salon-carousel {
     .arrow-left {
       width: 49px;
       height: 49px;
@@ -102,6 +102,10 @@ ul.owl-carousel {
 @media (max-width: 550px) {
 
   .owl-carousel {
+
+    &.salon-carousel {
+      margin: 30px 0 -30px 0;
+    }
 
     img {
       height: auto !important;
