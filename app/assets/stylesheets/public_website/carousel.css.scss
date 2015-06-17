@@ -4,7 +4,7 @@
     width: 100% !important;
   }
 
-  &.salon-professional {
+  &.salon-professional, &.salon-carousel {
     .arrow-left {
       width: 49px;
       height: 49px;
@@ -53,30 +53,32 @@ ul.owl-carousel {
   }
 }
 
-// .salon-carousel {
-//   .item {
-//     height: 500px;
+.salon-carousel {
+  .item {
+    height: 500px;
+    text-align: center;
 
-//     img {
-//       max-height: 500px !important;
-//       width: auto !important;
-//       margin: auto;
-//       display: inline-block;
-//       vertical-align: middle;
-//     }    
-//   }
+    img {
+      max-height: 500px !important;
+      width: auto !important;
+      margin: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }    
+  }
 
-//   .item:before {
-//     content: '';
-//     display: inline-block;
-//     height: 100%;
-//     vertical-align: middle;
-//   }
-// }
+  .item:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
 
 .salon-pro-carousel {
   .item {
     height: 420px;
+    text-align: center;
 
     img {
       max-height: 420px !important;
