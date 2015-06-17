@@ -27,7 +27,6 @@
           <% @categories.each do |category| %>
             <div class="option" data-value="<%= blog_category_path(category.url_name) %>"><%= category.name.html_safe %></div>
           <% end %>
-          <!--<div class="option" data-value="<%= blog_path %>">All Categories</div>-->
         </div>
       </div>
     </div>

@@ -60,6 +60,10 @@
   .column:last-child {
     border-left: 1px solid #E6E6E6;
   }
+
+  .search-input-with-icon input.large {
+    margin-bottom: 0;
+  }
 }
 
 img.recently-featured-in {
@@ -71,7 +75,7 @@ img.recently-featured-in {
 }
 
 .modern-salon {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: 20px;
 
   &:link, &:visited {
@@ -92,7 +96,7 @@ img.recently-featured-in {
 }
 
 .behind-the-chair {
-  margin-top: 20px;
+  margin-top: 30px;
 
   &:link, &:visited {
     display: inline-block;

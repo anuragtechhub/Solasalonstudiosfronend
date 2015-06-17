@@ -58,6 +58,16 @@
     img {
       max-width: 100%;
       height: auto;
+
+      &.left {
+        margin: 7px 20px 0 0;
+        float: left;
+      }
+
+      &.right {
+        margin: 7px 0 0 20px;
+        float: right;
+      }
     }
   }
 
