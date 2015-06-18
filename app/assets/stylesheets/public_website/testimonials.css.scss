@@ -88,6 +88,16 @@
     border-right: 3px solid #FFF;
   }
 
+  .carousel-text-bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 2px;
+    height: 33%;
+    padding: 15px 0;
+    @include background-gradient(transparent, rgba(0,0,0,0.9));
+  }
+
   h1, h3 {
     left: 0;
     right: 0;
@@ -97,8 +107,11 @@
   }
 
   h1 {
-    bottom: 30px;
+    font-size: 32px;
+    line-height: 38px;
+    bottom: 36px;
   }
+
   h3 {
     bottom: 15px;
   }
