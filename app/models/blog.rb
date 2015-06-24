@@ -2,12 +2,12 @@ class Blog < ActiveRecord::Base
 
   after_destroy :touch_blog
   before_create :generate_url_name
-  before_save :fix_url_name
+  before_save :fix_url_name, :check_publish_date
 
   has_many :blog_blog_categories
   has_many :blog_categories, :through => :blog_blog_categories
 
-  validates :title, :presence => true
+  validates :title, :status, :presence => true
   #validates :url_name, :presence => true, :uniqueness => true
 
   has_attached_file :carousel_image, :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#', :carousel => '400x540#' }, :s3_protocol => :https
@@ -56,7 +56,7 @@ class Blog < ActiveRecord::Base
   end
 
   def status_enum
-    [['Published', 'published'], ['Scheduled', 'scheduled'], ['Draft', 'draft']]
+    [['Published', 'published'], ['Draft', 'draft']]
   end
 
   def to_param
@@ -85,6 +85,19 @@ class Blog < ActiveRecord::Base
 
   def fix_url_name
     self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
+  end
+
+  def check_publish_date
+    if self.publish_date && self.publish_date <= DateTime.now
+      self.status = 'published' 
+    elsif self.publish_date && self.publish_date > DateTime.now
+      self.status = 'draft'
+    elsif self.status == 'published' && self.publish_date == nil
+      self.publish_date = self.created_at || DateTime.now
+    else
+      self.status = 'draft'
+      self.publish_date = nil
+    end
   end
 
 end
