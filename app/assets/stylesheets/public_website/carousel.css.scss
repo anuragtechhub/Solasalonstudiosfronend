@@ -5,6 +5,8 @@
   }
 
   &.salon-professional, &.salon-carousel {
+    //background: #595959;
+
     .arrow-left {
       width: 49px;
       height: 49px;
@@ -44,6 +46,7 @@
     //   }
     // }
 
+
     .item {
       text-align: center;
     }
@@ -65,11 +68,11 @@ ul.owl-carousel {
 
 // .salon-carousel {
 //   .item {
-//     height: 500px;
+//     height: 495px;
 //     text-align: center;
 
 //     img {
-//       max-height: 500px !important;
+//       max-height: 495px !important;
 //       width: auto !important;
 //       margin: auto;
 //       display: inline-block;

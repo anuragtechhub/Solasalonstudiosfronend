@@ -55,11 +55,11 @@
       <h3 class="text-center">About this Location</h3>
       <h4 class="text-center"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></h4>
       
-        <ul class="social location-social">
-          <% if @location.facebook_url.present? %>
-            <li><%= link_to url_helper(@location.facebook_url), :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+        <ul class="location-social">
+          <% if @location.pinterest_url.present? %>
+            <li><%= link_to url_helper(@location.pinterest_url), :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <% else %>
-            <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+            <li><%= link_to 'https://www.pinterest.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <% end %>
 
           <% if @location.twitter_url.present? %>
@@ -67,6 +67,18 @@
           <% else %>
             <li><%= link_to 'https://www.twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
           <% end %>
+
+          <% if @location.facebook_url.present? %>
+            <li><%= link_to url_helper(@location.facebook_url), :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <% else %>
+            <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <% end %>
+
+          <% if @location.instagram_url.present? %>
+            <li><%= link_to url_helper(@location.instagram_url), :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <% else %>
+            <li><%= link_to 'https://www.instagram.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <% end %>          
         </ul>
       
     </div>
