@@ -58,7 +58,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog
-  get "blog-draft/:url_name" => 'blog#show_draft', :as => :show_blog_draft
+  get "blog-preview/:url_name" => 'blog#show_preview', :as => :show_blog_preview
   get "blog-readmore/:url_name" => 'blog#show'
   get "blog/category/:category_url_name" => 'blog#index', :as => :blog_category
 
