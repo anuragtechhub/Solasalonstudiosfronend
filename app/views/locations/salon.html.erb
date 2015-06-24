@@ -161,6 +161,7 @@
           <input name="phone" type="text" placeholder="Phone Number (Optional)">
           <textarea name="message" placeholder="Leave a Message (Optional)"></textarea>
           <input name="location_id" type="hidden" value="<%= @location.id %>">
+          <input name="request_url" type="hidden" value="<%= request.original_url %>">
           <button class="big-btn">Submit Request</button>
         <% end %>
       </div>

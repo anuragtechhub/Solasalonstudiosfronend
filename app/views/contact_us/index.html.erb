@@ -59,7 +59,6 @@
               <input name="email" type="text" placeholder="Email Address" disabled="disabled">
               <input name="phone" type="text" placeholder="Phone Number (Optional)" disabled="disabled">
               <textarea name="message" type="text" placeholder="Leave a Message" disabled="disabled"></textarea>
-              <input name="location_id" id="contact_us_location_id" type="hidden" value="" disabled="disabled">
               <button class="button block primary" disabled="disabled">Submit Message</button>
             <% end %>
           </div>
@@ -78,6 +77,7 @@
               <input name="phone" type="text" placeholder="Phone Number (Optional)">
               <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
               <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+              <input name="request_url" type="hidden" value="<%= request.original_url %>">
               <button class="button block primary">Submit Message</button>
             <% end %>
           </div>

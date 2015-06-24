@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612150118) do
+ActiveRecord::Schema.define(version: 20150624151516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20150612150118) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "request_url"
   end
 
   create_table "locations", force: true do |t|
@@ -314,6 +315,7 @@ ActiveRecord::Schema.define(version: 20150612150118) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "request_url"
   end
 
   create_table "request_tour_inquiries", force: true do |t|
@@ -324,6 +326,7 @@ ActiveRecord::Schema.define(version: 20150612150118) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "message"
+    t.string   "request_url"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree

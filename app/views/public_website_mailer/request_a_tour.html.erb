@@ -5,6 +5,7 @@
 <% end %>
 
 <hr>
+<p><strong>Request URL:</strong> <%= @inquiry.request_url %></p>
 <% if @inquiry.location && @inquiry.location.name.present? %>
   <p><strong>Location:</strong> <%= @inquiry.location.name.html_safe %></p>
 <% end %>

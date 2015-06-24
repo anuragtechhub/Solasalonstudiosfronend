@@ -13,7 +13,7 @@ class ContactUsController < PublicWebsiteController
     if request.post?
       captcha_verified = verify_recaptcha
       if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?) && captcha_verified
-        FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message])
+        FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message], :request_url => params[:request_url])
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
         if captcha_verified
@@ -30,7 +30,7 @@ class ContactUsController < PublicWebsiteController
   def request_a_tour
     if request.post?
       if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])
-        RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message])
+        RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url])
         
         if params[:message]
           # if there's a message, this is a general contact us submission
@@ -49,7 +49,7 @@ class ContactUsController < PublicWebsiteController
   def partner_inquiry
     if request.post?
       if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?)
-        PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message])
+        PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message], :request_url => params[:request_url])
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
         render :json => {:error => 'Please enter your name and a valid email address or phone number'}

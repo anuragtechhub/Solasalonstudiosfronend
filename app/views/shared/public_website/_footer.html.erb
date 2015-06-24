@@ -73,5 +73,6 @@
     <textarea name="message" placeholder="Leave a Message"></textarea>
     <div class="recaptchaContainer"><%= recaptcha_tags %></div>
     <button class="primary block">Submit Request</button>
+    <input name="request_url" type="hidden" value="<%= request.original_url %>">
   <% end %>
 </div>
