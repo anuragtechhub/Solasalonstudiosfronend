@@ -12,9 +12,9 @@ class LocationsController < PublicWebsiteController
 
   def region
     @msa = Msa.find_by(:url_name => params[:url_name])
+    @all_locations = Location.where(:status => 'open')
     
     if @msa
-      @all_locations = Location.where(:status => 'open')
       @locations = @all_locations.where('msa_id = ?', @msa.id)
       params[:state] = @locations.first.state
     else
@@ -23,7 +23,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def city
-    @all_locations = Location.all
+    @all_locations = Location.where(:status => 'open')
     query_param = "%#{params[:city]}%"
 
     #locations1 = Location.where(:status => 'open').near(params[:city])
