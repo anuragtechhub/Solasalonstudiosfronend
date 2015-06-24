@@ -15,7 +15,7 @@
 
 $(function () {
 
-  FastClick.attach(document.body);
+  //FastClick.attach(document.body);
 
   // carousel
   $('.owl-carousel').each(function () {

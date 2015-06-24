@@ -5,7 +5,9 @@
   }
 
   &.salon-professional, &.salon-carousel {
-    //background: #595959;
+    background: #595959;
+    border-top: 1px solid #595959;
+    border-bottom: 1px solid #595959;
 
     .arrow-left {
       width: 49px;
@@ -37,16 +39,6 @@
       }
     }
 
-    // &.salon-carousel {
-    //   .arrow-left {
-    //     left: 0;
-    //   }
-    //   .arrow-right {
-    //     right: 0;
-    //   }
-    // }
-
-
     .item {
       text-align: center;
     }
@@ -65,28 +57,6 @@ ul.owl-carousel {
     margin: 0;
   }
 }
-
-// .salon-carousel {
-//   .item {
-//     height: 495px;
-//     text-align: center;
-
-//     img {
-//       max-height: 495px !important;
-//       width: auto !important;
-//       margin: auto;
-//       display: inline-block;
-//       vertical-align: middle;
-//     }    
-//   }
-
-//   .item:before {
-//     content: '';
-//     display: inline-block;
-//     height: 100%;
-//     vertical-align: middle;
-//   }
-// }
 
 .salon-pro-carousel {
   .item {
@@ -110,6 +80,27 @@ ul.owl-carousel {
   }
 }
 
+.salon-carousel {
+  .item {
+    height: 495px;
+    text-align: center;
+
+    img {
+      max-height: 495px !important;
+      width: auto !important;
+      margin: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }    
+  }
+
+  .item:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
 
 
 @media (max-width: 550px) {
@@ -118,11 +109,11 @@ ul.owl-carousel {
 
     &.salon-carousel {
       margin: 30px 0 -30px 0;
-    }
-
-    img {
-      height: auto !important;
-      width: 100% !important;
+      
+      .item {
+        height: 285px;
+      }
+     
     }
 
     &.salon-professional { 
@@ -132,13 +123,16 @@ ul.owl-carousel {
       .arrow-left {
         left: 0;
       }
-      img {
-        max-width: 100% !important;
-        height: auto !important;
+      .item {
+        height: 285px;
+        img {
+          max-height: 285px !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
       }
+
     }
   }
-
-
 
 }
