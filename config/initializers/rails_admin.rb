@@ -217,7 +217,7 @@ RailsAdmin.config do |config|
       group 'Publish' do
         field :status
         field :publish_date do
-          help 'Times are saved in UTC which is 6 hours ahead of Denver (e.g. 18:30 UTC is 12:30 in Denver)'
+          help 'Times are saved in UTC which is 6 hours ahead of Denver<br>(e.g. 18:30 UTC is 12:30 in Denver)'.html_safe
         end
       end
       group 'Carousel' do
