@@ -66,17 +66,17 @@
             <li><%= link_to 'https://www.twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
           <% end %>
 
-          <% if @location.instagram_url.present? %>
-            <li><%= link_to url_helper(@location.instagram_url), :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% else %>
-            <li><%= link_to 'https://www.instagram.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% end %>     
-
           <% if @location.pinterest_url.present? %>
             <li><%= link_to url_helper(@location.pinterest_url), :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <% else %>
             <li><%= link_to 'https://www.pinterest.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <% end %>    
+          <% end %> 
+
+          <% if @location.instagram_url.present? %>
+            <li><%= link_to url_helper(@location.instagram_url), :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <% else %>
+            <li><%= link_to 'https://www.instagram.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <% end %>        
         </ul>
       
     </div>
