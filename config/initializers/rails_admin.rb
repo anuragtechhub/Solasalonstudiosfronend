@@ -156,9 +156,12 @@ RailsAdmin.config do |config|
       field :created_at
     end
     show do
-      field :title
+      field :title 
       field :url_name do
         label 'URL Name'
+        pretty_value do
+          "#{value}<br><br>#{bindings[:view].link_to('View in website', bindings[:view].main_app.show_blog_draft_path(bindings[:object]))}".html_safe
+        end
       end
       field :status
       field :publish_date
