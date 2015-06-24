@@ -146,6 +146,7 @@ RailsAdmin.config do |config|
     list do
       field :title
       field :url_name
+      field :status
       field :summary
       field :author do
         pretty_value do
@@ -159,6 +160,8 @@ RailsAdmin.config do |config|
       field :url_name do
         label 'URL Name'
       end
+      field :status
+      field :publish_date
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
@@ -182,13 +185,17 @@ RailsAdmin.config do |config|
       field :blog_categories do
         label 'Categories'
       end
+      group 'Publish' do
+        field :status
+        field :publish_date
+      end
       group 'Carousel' do
         field :carousel_image
         field :carousel_text
       end
       group 'Tracking' do
         field :fb_conversion_pixel
-      end      
+      end  
     end
     edit do
       field :title
@@ -207,6 +214,10 @@ RailsAdmin.config do |config|
       field :blog_categories do
         label 'Categories'
       end
+      group 'Publish' do
+        field :status
+        field :publish_date
+      end
       group 'Carousel' do
         active false
         field :carousel_image do
@@ -220,7 +231,7 @@ RailsAdmin.config do |config|
       group 'Tracking' do
         active false
         field :fb_conversion_pixel
-      end 
+      end
     end
   end
 

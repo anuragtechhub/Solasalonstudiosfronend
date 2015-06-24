@@ -55,6 +55,10 @@ class Blog < ActiveRecord::Base
     blogs
   end
 
+  def status_enum
+    [['Published', 'published'], ['Scheduled', 'scheduled'], ['Draft', 'draft']]
+  end
+
   def to_param
     url_name
   end
