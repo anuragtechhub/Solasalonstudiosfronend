@@ -67,15 +67,19 @@ ul.owl-carousel {
       margin: auto;
       display: inline-block;
       vertical-align: middle;
+
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }    
   }
 
-  .item:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
+  // .item:before {
+  //   content: '';
+  //   display: inline-block;
+  //   height: 100%;
+  //   vertical-align: middle;
+  // }
 }
 
 .salon-carousel {
@@ -89,15 +93,19 @@ ul.owl-carousel {
       margin: auto;
       display: inline-block;
       vertical-align: middle;
+
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }    
   }
 
-  .item:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
+  // .item:before {
+  //   content: '';
+  //   display: inline-block;
+  //   height: 100%;
+  //   vertical-align: middle;
+  // }
 }
 
 
