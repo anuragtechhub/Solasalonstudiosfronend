@@ -117,11 +117,11 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      field :body do
-        pretty_value do
-          value.html_safe
-        end
-      end
+      # field :body do
+      #   pretty_value do
+      #     value.html_safe
+      #   end
+      # end
       field :article_url
     end 
     edit do
@@ -134,7 +134,7 @@ RailsAdmin.config do |config|
         delete_method :delete_image
       end
       field :summary, :ck_editor
-      field :body, :ck_editor
+      #field :body, :ck_editor
       field :article_url
     end 
   end
