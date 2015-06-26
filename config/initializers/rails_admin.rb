@@ -964,7 +964,7 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :biography
+        field :biography, :ck_editor
         field :status
       end
       group :contact do

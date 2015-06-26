@@ -120,7 +120,7 @@ class Stylist < ActiveRecord::Base
     services << 'Teeth Whitening' if teeth_whitening
     services << 'Theading' if threading
     services << 'Waxing' if waxing
-    services << other_service if (show_other && other_service)
+    services << other_service if (show_other && other_service.present?)
 
     services
   end
