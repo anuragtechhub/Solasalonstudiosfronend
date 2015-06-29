@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624175430) do
+ActiveRecord::Schema.define(version: 20150629135038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -435,6 +435,7 @@ ActiveRecord::Schema.define(version: 20150624175430) do
     t.boolean  "permanent_makeup"
     t.string   "linkedin_url"
     t.string   "other_service"
+    t.string   "google_plus_url"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

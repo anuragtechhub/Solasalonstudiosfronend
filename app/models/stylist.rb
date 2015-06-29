@@ -82,7 +82,7 @@ class Stylist < ActiveRecord::Base
   #validates :url_name, :presence => true, :uniqueness => true
 
   def social_links_present?
-    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present?
+    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present? || google_plus_url.present?
   end
 
   def status_enum

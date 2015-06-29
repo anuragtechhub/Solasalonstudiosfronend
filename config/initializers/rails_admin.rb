@@ -860,6 +860,7 @@ RailsAdmin.config do |config|
       end
       group :social do
         field :facebook_url
+        field :google_plus_url
         field :instagram_url
         field :linkedin_url
         field :pinterest_url
@@ -1006,6 +1007,9 @@ RailsAdmin.config do |config|
       group :social do
         active false
         field :facebook_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :google_plus_url do
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
         field :instagram_url do
@@ -1162,6 +1166,7 @@ RailsAdmin.config do |config|
       field :waxing
       field :brows
       field :facebook_url
+      field :google_plus_url
       field :instagram_url
       field :pinterest_url
       field :twitter_url
