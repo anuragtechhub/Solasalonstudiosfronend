@@ -21,7 +21,7 @@ namespace :mailchimp do
 
         p "batch.size=#{batch.size}"
         #p "batch=#{batch.inspect}"
-        gb.lists.batch_subscribe(:id => 'e5443d78c6', :batch => batch, :update_existing => true)
+        gb.lists.batch_subscribe(:id => 'e5443d78c6', :batch => batch, :double_optin => false, :update_existing => true)
       end
     else
       p "today is not saturday"
@@ -48,7 +48,7 @@ namespace :mailchimp do
 
   #     p "batch.size=#{batch.size}"
   #     p "batch=#{batch.inspect}"
-  #     gb.lists.batch_subscribe(:id => 'e5443d78c6', :batch => batch, :update_existing => true)
+  #     gb.lists.batch_subscribe(:id => 'e5443d78c6', :batch => batch, :double_optin => false, :update_existing => true)
   #   end
   # end
 

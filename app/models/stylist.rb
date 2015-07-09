@@ -13,7 +13,8 @@ class Stylist < ActiveRecord::Base
   before_create :generate_url_name
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_destroy :touch_stylist
+  after_save :remove_from_mailchimp_if_closed
+  after_destroy :remove_from_mailchimp, :touch_stylist
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
@@ -140,6 +141,19 @@ class Stylist < ActiveRecord::Base
   end
 
   private
+
+  def remove_from_mailchimp
+    if self.email_address && self.email_address.present?
+      gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+      gb.lists.unsubscribe(:id => 'e5443d78c6', :email => {:email => self.email_address}, :delete_member => true, :send_goodbye => false, :send_notify => false)
+    end
+  rescue
+    # shh...
+  end
+
+  def remove_from_mailchimp_if_closed
+    remove_from_mailchimp if self.status && self.status == 'closed'
+  end 
 
   def touch_stylist
     Stylist.all.first.touch
