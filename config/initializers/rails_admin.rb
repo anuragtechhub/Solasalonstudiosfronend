@@ -538,7 +538,7 @@ RailsAdmin.config do |config|
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
         field :callfire_list_ids do
-          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+          help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
       end
     end
@@ -822,7 +822,7 @@ RailsAdmin.config do |config|
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
         field :callfire_list_ids do
-          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+          help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
       end
     end
