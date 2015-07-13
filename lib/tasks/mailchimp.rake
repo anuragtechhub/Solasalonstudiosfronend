@@ -1,7 +1,7 @@
 namespace :mailchimp do
 
   task :stylists => :environment do
-    if Date.today.wday == 1
+    if Date.today.wday == 6
       gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
 
       Stylist.where(:status => 'open').find_in_batches do |stylists|
@@ -29,6 +29,7 @@ namespace :mailchimp do
   end
 
   task :franchises => :environment do
+    if Date.today.wday == 6
     Admin.where('mailchimp_api_key IS NOT NULL').each do |admin|
       begin
         gb = Gibbon::API.new(admin.mailchimp_api_key)
@@ -60,6 +61,9 @@ namespace :mailchimp do
         p "error processing franchise mailchimp #{admin.email}, #{e}"
       end
     end
+    else
+      p "today is not saturday"
+    end    
   end
 
   task :today => :environment do
