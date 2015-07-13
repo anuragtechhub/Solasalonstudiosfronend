@@ -73,6 +73,14 @@ RailsAdmin.config do |config|
           bindings[:controller]._current_user.franchisee != true
         end
       end
+      group 'External Services' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :mailchimp_api_key
+        field :callfire_app_login
+        field :callfire_app_password
+      end
       field :sign_in_count
       field :last_sign_in_at      
     end
@@ -90,6 +98,14 @@ RailsAdmin.config do |config|
         visible do
           bindings[:controller]._current_user.franchisee != true
         end
+      end
+      group 'External Services' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :mailchimp_api_key
+        field :callfire_app_login
+        field :callfire_app_password
       end
     end
   end
@@ -514,6 +530,17 @@ RailsAdmin.config do |config|
           end
         end                                        
       end
+      group 'External Services' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :mailchimp_list_ids do
+          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
+        field :callfire_list_ids do
+          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
+      end
     end
     edit do
       group :general do
@@ -785,6 +812,18 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_directory_image_12
         end                                        
+      end
+      group 'External Services' do
+        active false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :mailchimp_list_ids do
+          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
+        field :callfire_list_ids do
+          help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
       end
     end
   end

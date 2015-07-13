@@ -71,7 +71,14 @@
 }
 
 .request-franchising-modal {
-
+  .ForbesBestFranchise {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+  
   input, textarea {
     max-width: 302px !important;
     border-radius: 2px !important;

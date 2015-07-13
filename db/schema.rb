@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629135038) do
+ActiveRecord::Schema.define(version: 20150713144544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(version: 20150629135038) do
     t.string   "legacy_id"
     t.string   "email_address"
     t.string   "forgot_password_key"
+    t.string   "mailchimp_api_key"
+    t.string   "callfire_app_login"
+    t.string   "callfire_app_password"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -288,6 +291,8 @@ ActiveRecord::Schema.define(version: 20150629135038) do
     t.string   "directory_image_12_content_type"
     t.integer  "directory_image_12_file_size"
     t.datetime "directory_image_12_updated_at"
+    t.text     "mailchimp_list_ids"
+    t.text     "callfire_list_ids"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
