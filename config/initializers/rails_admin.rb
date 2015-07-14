@@ -340,6 +340,10 @@ RailsAdmin.config do |config|
         field :postal_code
         field :latitude
         field :longitude
+        field :custom_maps_url do
+          label 'Custom Maps URL'
+          help 'If you specify a custom maps URL, it will be used for your Map It link instead of using the link auto-generated from your address'
+        end
       end
       group :promotions do
         field :move_in_special
@@ -587,6 +591,10 @@ RailsAdmin.config do |config|
         end
         field :longitude do
           help 'The longitude will be automatically set when a valid address is entered. You do not need to set the longitude manually (but you can if you really want to)'
+        end
+        field :custom_maps_url do
+          label 'Custom Maps URL'
+          help 'If you specify a custom maps URL, it will be used for your Map It link instead of using the link auto-generated from your address'
         end
       end
       group :promotions do
@@ -1000,9 +1008,9 @@ RailsAdmin.config do |config|
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
+          # visible do
+          #   bindings[:controller]._current_user.franchisee != true
+          # end
         end
         field :biography, :ck_editor
         field :status

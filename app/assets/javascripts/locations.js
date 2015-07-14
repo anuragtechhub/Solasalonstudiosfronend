@@ -33,9 +33,13 @@ $(function () {
   var ib;
   var zoomCount = 0;
 
-  var getMarkerContent = function (name, saddress, address, url, salon) {
+  var getMarkerContent = function (name, saddress, address, url, salon, custom_maps_url) {
     if (salon) {
+      if (custom_maps_url) {
+        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+      } else {
         return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+      }
     } else {
         return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
     }
@@ -49,6 +53,7 @@ $(function () {
           saddress = $this.data('saddress'),
           address = $this.data('address'),
           url = $this.data('url'),
+          custom_maps_url = $this.data('custom-maps-url'),
           salon = $this.data('salon'),
           marker, markerIcon;
       
@@ -64,7 +69,7 @@ $(function () {
 
     function openInfoBox() {
       ib = new InfoBox({
-        content: getMarkerContent(name, saddress, address, url, salon),
+        content: getMarkerContent(name, saddress, address, url, salon, custom_maps_url),
         closeBoxURL: '',
         pixelOffset: new google.maps.Size(-100, -200)
       });
@@ -127,7 +132,8 @@ $(function () {
 
           google.maps.event.addListener(map.map, 'zoom_changed', function () { 
             zoomCount = zoomCount + 1;
-            if (zoomCount == 3) {
+
+            if (zoomCount == $markers.length + 1) {
               loadAllLocationMarkers();
             }
             if (closeMarker && openWindow && typeof openWindow.close === 'function') {
