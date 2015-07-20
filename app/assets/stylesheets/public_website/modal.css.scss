@@ -1,3 +1,5 @@
+@import 'variables';
+
 .modal-content {
   display: none;
 }
@@ -14,27 +16,16 @@
   overflow: hidden;
   overflow-y: scroll;
 
-  &.double-wide {
-    max-width: 600px;
-    overflow: hidden;
-
-    .half-col {
-      float: left;
-      display: block;
-      width: 50%;
-      clear: none;
-      margin: 0;
-      padding: 0;
-    }
-  }
-
   .content {
     background: #FFF;
     padding: 45px;
-
+    overflow: hidden;
+    overflow-y: scroll;
 
     .modal-content {
       display: block;
+      overflow: hidden;
+      overflow-y: scroll;
     }
 
     .close {
@@ -85,18 +76,90 @@
 }
 
 .request-franchising-modal {
-  .ForbesBestFranchise {
-    width: 50%;
-    height: auto;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-  }
   
   input, textarea {
     max-width: 302px !important;
     border-radius: 2px !important;
     background: #f9f9f9 !important;
     border: 1px solid #d3d3d3 !important; 
+
+    &:focus, &:active {
+      border: 1px solid $brand-pink !important;
+    }
+  }
+
+  .half-column.right {
+    max-width: 302px !important;
+  }
+}
+
+.modal.double-wide {
+  max-width: 700px;
+
+  .content .modal-content {
+    -webkit-display: flex;
+    display: flex;
+  }
+
+  .half-column {
+    float: left;
+    display: block;
+    width: 50%;
+    max-width: 300px;
+    clear: none;
+    margin: 0;
+    padding: 0;
+
+    &.left {
+      -webkit-display: flex;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+
+    img.ForbesBestFranchise {
+      width: 75%;
+      height: auto;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: -45px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  
+  .modal.double-wide {
+    top: 50%;
+    left: 50%;
+    margin: -200px 0 0 -100px;
+    width: 100%;
+    max-width: 392px;
+
+    .content .modal-content {
+      display: block;
+    }
+
+    .request-franchising-modal {
+
+      .half-column {
+        width: 100%;
+        float: none;
+        clear: both;
+
+        &.left {
+          text-align: center;
+        }
+
+        img.ForbesBestFranchise {
+          max-width: 200px;
+          margin-left: 0;
+        }
+      }
+    }
   }
 }

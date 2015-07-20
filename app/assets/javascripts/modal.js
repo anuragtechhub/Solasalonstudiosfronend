@@ -56,10 +56,18 @@ $.widget('solasalonstudios.modal', {
 
     var modalWidth = self.$modal.outerWidth();
     var modalHeight = self.$modal.outerHeight();
-    //var windowWidth = self.$window.outerWidth();
-    //var windowHeight = self.$window.outerHeight();
+    var windowWidth = self.$window.outerWidth();
+    var windowHeight = self.$window.outerHeight();
+    
+    self.$modal.css({top: '50%', left: '50%', bottom: 'auto', right: 'auto', marginTop: '-' + (modalHeight / 2) + 'px', marginLeft:  '-' + (modalWidth / 2) + 'px'});
 
-    self.$modal.css({marginTop: '-' + (modalHeight / 2) + 'px', marginLeft:  '-' + (modalWidth / 2) + 'px'})
+    if (modalHeight > windowHeight) {
+      self.$modal.css({marginTop: 0, top: 0, bottom: 0});
+    }
+
+    if (modalWidth > windowWidth) {
+      self.$modal.css({marginLeft: 0, left: 0, right: 0});
+    }
   },
 
 });
