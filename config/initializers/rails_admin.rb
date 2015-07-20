@@ -152,6 +152,7 @@ RailsAdmin.config do |config|
       field :summary, :ck_editor
       #field :body, :ck_editor
       field :article_url
+      field :created_at
     end 
   end
 

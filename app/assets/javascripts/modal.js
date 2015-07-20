@@ -9,6 +9,11 @@ $.widget('solasalonstudios.modal', {
     self.$content = $('<div class="content"></div>');
     self.$close = $('<div class="close"><span class="ss-delete"></span></div>');
 
+    // add classes
+    if (self.element.data('modal-class')) {
+      self.$modal.addClass(self.element.data('modal-class'));
+    }
+
     // bind events
     self.$close.on('click', self.close.bind(this));
 
