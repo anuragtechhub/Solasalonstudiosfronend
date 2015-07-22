@@ -9,9 +9,9 @@ ENV['RAILS_ADMIN_THEME'] = 'custom'
 module Solasalonstudios
   class Application < Rails::Application
 
-    config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
-    }
+    # config.action_dispatch.default_headers = {
+    #   'X-Frame-Options' => 'ALLOWALL'
+    # }
     
     config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
       r301 %r{^/printing.*$}, 'https://www.conquestgraphics.com/login?ATN=SolaSalon'
