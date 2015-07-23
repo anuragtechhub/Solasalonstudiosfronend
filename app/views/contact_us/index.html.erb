@@ -28,7 +28,7 @@
 
       <div id="contact-us-states">
         <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-          <div class="sola-select form select-a-location" id="state_select_<%= location.state %>">
+          <div class="sola-select form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
             
             <div class="row">
               <div class="option-placeholder"><h3><%= params[:location] || 'Select a Location' %></h3></div>

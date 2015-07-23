@@ -37,7 +37,6 @@ class LocationsController < PublicWebsiteController
   end
 
   def state
-    p "locations by state #{params[:state]}"
     @all_locations = Location.where(:status => 'open')
     query_param = "%#{params[:state]}%"
     @locations = Location.where(:status => 'open').where('state LIKE ?', query_param)

@@ -33,7 +33,7 @@ $(function () {
       $select.find('.option-placeholder h3').html(state);
 
       $('.select-a-location').hide();
-      $('#state_select_' + state).show();
+      $('#state_select_' + state.replace(/ /g, '_')).show();
       return false;
     });
 
