@@ -228,7 +228,7 @@ RailsAdmin.config do |config|
         end
         delete_method :delete_image
       end
-      field :summary, :ck_editor
+      field :summary
       field :body, :ck_editor
       field :author
       field :blog_categories do
