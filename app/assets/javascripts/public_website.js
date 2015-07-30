@@ -4,7 +4,6 @@
 //= require modernizr
 //= require disableSelection
 //= require classie
-//= require fastclick
 //= require infobox
 //= require gmaps
 //= require owl.carousel
@@ -14,8 +13,6 @@
 //= require modal
 
 $(function () {
-
-  //FastClick.attach(document.body);
 
   // carousel
   $('.owl-carousel').each(function () {

@@ -1,3 +1,16 @@
 #image_gallery {
   display: none;
 }
+
+.play-video-gallery-item {
+  position: relative;
+  cursor: pointer;
+
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -37.5px;
+  }
+}
