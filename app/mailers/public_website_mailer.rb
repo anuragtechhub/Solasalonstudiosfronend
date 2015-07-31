@@ -4,28 +4,28 @@ class PublicWebsiteMailer < ActionMailer::Base
   def request_a_tour(requestTourInquiry)
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
-      mail(to: requestTourInquiry.location.email_address_for_inquiries, from: (@inquiry.email || "Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @inquiry.message.present? ? 'Sola Contact Us Inquiry' : 'Sola Rent a Studio Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: requestTourInquiry.location.email_address_for_inquiries, from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @inquiry.message.present? ? 'Sola Contact Us Inquiry' : 'Sola Rent a Studio Inquiry') #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 
   def stylist_message(stylistMessage)
     if stylistMessage && stylistMessage.stylist && stylistMessage.stylist.email_address && stylistMessage.stylist.email_address.present?
       @message = stylistMessage
-      mail(to: stylistMessage.stylist.email_address, from: (@message.email || "Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Website Inquiry') #stylistMessage.stylist.email_address
+      mail(to: stylistMessage.stylist.email_address, from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Sola Website Inquiry') #stylistMessage.stylist.email_address
     end
   end
 
   def franchising_request(franchisingRequest)
     if franchisingRequest
       @message = franchisingRequest
-      mail(to: 'info@solasalonstudios.com', from: (@message.email || "Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Franchising Request') #mark@solasalonstudios.com
+      mail(to: 'info@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Sola Franchising Request')
     end
   end
 
   def partner_inquiry(partnerInquiry)
     if partnerInquiry
       @inquiry = partnerInquiry
-      mail(to: 'info@solasalonstudios.com', from: (@inquiry.email || "Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Partner Inquiry') #mark@solasalonstudios.com
+      mail(to: 'info@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Sola Partner Inquiry')
     end
   end
 
