@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 #image_gallery {
   display: none;
 }
@@ -13,4 +16,21 @@
     margin-top: -40px;
     margin-left: -37.5px;
   }
+
+  .carousel-text-bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    padding: 40px 0;
+    @include background-gradient(transparent, rgba(0,0,0,0.9));
+    text-align: center;
+    pointer-events: none;
+    -webkit-pointer-events: none;
+
+    h1 {
+      margin: 0;
+      color: #FFF;
+    }
+  }  
 }
