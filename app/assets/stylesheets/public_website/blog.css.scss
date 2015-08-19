@@ -56,8 +56,8 @@
     }
 
     img {
-      max-width: 100%;
-      height: auto;
+      max-width: 100% !important;
+      height: auto !important;
 
       &.left {
         margin: 7px 20px 0 0;
