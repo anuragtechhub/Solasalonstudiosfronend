@@ -835,6 +835,27 @@ RailsAdmin.config do |config|
         end
       end
     end
+    export do
+      field :name
+      field :url_name
+      field :address_1
+      field :address_2
+      field :city
+      field :state
+      field :postal_code
+      field :status
+      field :email_address_for_inquiries
+      field :phone_number
+      field :general_contact_name
+      field :description
+      field :move_in_special
+      field :open_house
+      field :website_url
+      field :facebook_url
+      field :twitter_url
+      field :instagram_url
+      field :yelp_url
+    end
   end
 
   config.model 'Msa' do

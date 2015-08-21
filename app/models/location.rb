@@ -319,6 +319,10 @@ class Location < ActiveRecord::Base
     "#{state}/#{city}/#{url_name}"
   end
 
+  def website_url
+    'https://www.solasalonstudios.com' + Rails.application.routes.url_helpers.salon_location_path(self.state, self.city, self.url_name).gsub(/\./, '')
+  end  
+
   private
 
   def touch_location
