@@ -30,6 +30,9 @@ class Ability
       can :destroy, Location, :admin_id => admin.id 
       can :destroy, Stylist, :location => { :admin_id => admin.id }
 
+      can :read, RequestTourInquiry, :location => { :admin_id => admin.id }
+      can :export, RequestTourInquiry, :location => { :admin_id => admin.id }
+
       # can :update, [Location, Stylist]       # included in :create
       # can :export, [Location, Stylist]
       # can :destroy, [Location, Stylist]
