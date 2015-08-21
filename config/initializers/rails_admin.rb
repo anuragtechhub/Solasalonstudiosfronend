@@ -851,6 +851,7 @@ RailsAdmin.config do |config|
       field :move_in_special
       field :open_house
       field :website_url
+      field :services_list
       field :facebook_url
       field :twitter_url
       field :instagram_url
