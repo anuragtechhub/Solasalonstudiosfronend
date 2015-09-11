@@ -359,6 +359,7 @@ RailsAdmin.config do |config|
       end
       group :website do
         field :chat_code
+        field :tracking_code
       end
       group :images do
         field :image_1 do 
@@ -614,6 +615,7 @@ RailsAdmin.config do |config|
       group :website do
         active false
         field :chat_code
+        field :tracking_code
       end
       group :images do
         active false

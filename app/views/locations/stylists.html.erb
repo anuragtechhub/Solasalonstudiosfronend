@@ -71,4 +71,5 @@
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('salon_stylists'); } %>
+<%= @location.tracking_code.html_safe if @location.tracking_code.present? %>
 <% content_for(:title) { "Salon Professionals at #{@location.name}" } %>

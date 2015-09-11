@@ -255,4 +255,5 @@
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 
 <%= @location.chat_code.html_safe if @location.chat_code.present? %>
+<%= @location.tracking_code.html_safe if @location.tracking_code.present? %>
 <% content_for(:title) { @location.name.html_safe } %>
