@@ -14,7 +14,7 @@ Solasalonstudios::Application.routes.draw do
   get "contact-us" => "contact_us#index", :as => :contact_us
   get 'contact_us' => "contact_us#index"
 
-  get "diversity", :as => :diversity
+  get "diversity" => 'diversity#index' , :as => :diversity
 
   get "faq" => 'faq#index', :as => :faqs
   get "testimonials" => 'testimonials#index', :as => :testimonials

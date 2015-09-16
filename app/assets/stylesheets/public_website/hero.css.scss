@@ -47,6 +47,26 @@
   -o-background-size: cover;
   background-size: cover;
 
+  &.centered {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -webkit-align-content: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    .text {
+      margin-top: -50px !important;
+    }
+  }
+
+
   h3 {
     color: #FFF;
     letter-spacing: 3px;
