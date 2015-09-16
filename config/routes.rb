@@ -1,5 +1,6 @@
 Solasalonstudios::Application.routes.draw do
 
+  
   mount Ckeditor::Engine => '/ckeditor'
   get "home" => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
@@ -12,6 +13,8 @@ Solasalonstudios::Application.routes.draw do
   
   get "contact-us" => "contact_us#index", :as => :contact_us
   get 'contact_us' => "contact_us#index"
+
+  get "diversity/index", :as => :diversity
 
   get "faq" => 'faq#index', :as => :faqs
   get "testimonials" => 'testimonials#index', :as => :testimonials
