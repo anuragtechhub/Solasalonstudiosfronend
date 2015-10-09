@@ -17,6 +17,31 @@
 
 .home-tile {
   margin-bottom: 20px;
+  position: relative;
+
+  .locations_callout_text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    color: #FFF;
+    padding: 30px;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    line-height: 100%;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 55px;
+    .locations_count {
+      display: block;
+      font-size: 61px;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+  }
 
   h3 {
     @include transition(color .25s ease);
