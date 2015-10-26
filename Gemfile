@@ -74,6 +74,8 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'nokogiri'
 
 gem "recaptcha", :require => "recaptcha/rails"
+
+gem "puma_worker_killer"
 #gem 'actionpack-action_caching'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
