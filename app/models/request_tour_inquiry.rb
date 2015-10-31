@@ -1,6 +1,6 @@
 class RequestTourInquiry < ActiveRecord::Base
   belongs_to :location
-
+  belongs_to :visit
   after_create :send_notification_email
 
   private

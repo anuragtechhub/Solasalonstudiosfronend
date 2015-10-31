@@ -18,7 +18,9 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
+        var stylist_id = $('input[name=stylist_id]').val();
         $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        $('input[name=stylist_id]').val(stylist_id);
         setTimeout(function () {
           modal.data('modal').fadeOut();
         }, 3300);

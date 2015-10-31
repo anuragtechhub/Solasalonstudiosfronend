@@ -1,8 +1,9 @@
 class StylistMessage < ActiveRecord::Base
-  
+
   after_create :send_email
 
   belongs_to :stylist
+  belongs_to :visit
 
   private
 

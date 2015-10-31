@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911001629) do
+ActiveRecord::Schema.define(version: 20151031211310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "accounts", force: true do |t|
     t.string   "api_key"
@@ -129,7 +130,10 @@ ActiveRecord::Schema.define(version: 20150911001629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "request_url"
+    t.integer  "visit_id"
   end
+
+  add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -325,7 +329,10 @@ ActiveRecord::Schema.define(version: 20150911001629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "request_url"
+    t.integer  "visit_id"
   end
+
+  add_index "partner_inquiries", ["visit_id"], name: "index_partner_inquiries_on_visit_id", using: :btree
 
   create_table "request_tour_inquiries", force: true do |t|
     t.string   "name"
@@ -336,9 +343,11 @@ ActiveRecord::Schema.define(version: 20150911001629) do
     t.datetime "updated_at"
     t.text     "message"
     t.string   "request_url"
+    t.integer  "visit_id"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
+  add_index "request_tour_inquiries", ["visit_id"], name: "index_request_tour_inquiries_on_visit_id", using: :btree
 
   create_table "stylist_messages", force: true do |t|
     t.string   "name"
@@ -348,9 +357,11 @@ ActiveRecord::Schema.define(version: 20150911001629) do
     t.integer  "stylist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "visit_id"
   end
 
   add_index "stylist_messages", ["stylist_id"], name: "index_stylist_messages_on_stylist_id", using: :btree
+  add_index "stylist_messages", ["visit_id"], name: "index_stylist_messages_on_visit_id", using: :btree
 
   create_table "stylists", force: true do |t|
     t.string   "name"
@@ -467,5 +478,13 @@ ActiveRecord::Schema.define(version: 20150911001629) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "visits", force: true do |t|
+    t.string   "ip_address"
+    t.string   "user_agent_string"
+    t.string   "uuid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

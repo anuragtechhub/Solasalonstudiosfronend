@@ -1,6 +1,7 @@
 class FranchisingRequest < ActiveRecord::Base
 
   after_create :send_notification_email
+  belongs_to :visit
 
   private
 
