@@ -1203,11 +1203,11 @@ RailsAdmin.config do |config|
         field :testimonial_9
         field :testimonial_10
       end
-      group :credentials do
-        active false
-        field :password
-        field :password_confirmation
-      end
+      # group :credentials do
+      #   active false
+      #   field :password
+      #   field :password_confirmation
+      # end
     end
     export do
       field :name
