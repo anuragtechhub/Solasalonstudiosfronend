@@ -1,7 +1,7 @@
 class Stylist < ActiveRecord::Base
 
   has_paper_trail
-  has_secure_password
+  has_secure_password :validations => false
   
   scope :open, -> { where(:status => 'open') }
 
