@@ -74,9 +74,6 @@ RailsAdmin.config do |config|
         end
       end
       group 'External Services' do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
         field :mailchimp_api_key
         field :callfire_app_login
         field :callfire_app_password
@@ -100,9 +97,6 @@ RailsAdmin.config do |config|
         end
       end
       group 'External Services' do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
         field :mailchimp_api_key
         field :callfire_app_login
         field :callfire_app_password
@@ -537,9 +531,6 @@ RailsAdmin.config do |config|
         end                                        
       end
       group 'External Services' do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
         field :mailchimp_list_ids do
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
@@ -826,9 +817,6 @@ RailsAdmin.config do |config|
       end
       group 'External Services' do
         active false
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
         field :mailchimp_list_ids do
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
