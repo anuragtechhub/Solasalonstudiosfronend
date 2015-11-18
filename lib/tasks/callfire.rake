@@ -2,7 +2,7 @@ namespace :callfire do
 
 
   task :stylists => :environment do
-    if Date.today.wday == 6
+    #if Date.today.wday == 6
       require 'net/https'
       http = Net::HTTP.new('www.callfire.com', 443)
       http.use_ssl = true
@@ -58,13 +58,13 @@ namespace :callfire do
         end
 
       end
-    else
-      p "today is not saturday"
-    end
+    #else
+    #  p "today is not saturday"
+    #end
   end
 
   task :franchises => :environment do
-    if Date.today.wday == 6
+    #if Date.today.wday == 6
     Admin.where('callfire_app_login IS NOT NULL AND callfire_app_password IS NOT NULL').each do |admin|
       begin
         #gb = Gibbon::API.new(admin.mailchimp_api_key)
@@ -162,9 +162,9 @@ namespace :callfire do
         p "error processing franchise callfire #{admin.email}, #{e}"
       end
     end
-    else
-      p "today is not saturday"
-    end    
+    #else
+    #  p "today is not saturday"
+    #end    
   end
 
   # rake callfire:franchise['jeff@jeffbail.com']
