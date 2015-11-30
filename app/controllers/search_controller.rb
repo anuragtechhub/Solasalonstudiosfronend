@@ -24,7 +24,7 @@ class SearchController < PublicWebsiteController
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
 
       # locations
-      locations1 = Location.near(params[:query])
+      locations1 = Location.near(params[:query].downcase)
       locations2 = Location.where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param)
       @locations = locations1.open + locations2.open
       if @locations
