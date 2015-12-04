@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104164802) do
+ActiveRecord::Schema.define(version: 20151204231735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 20151104164802) do
   end
 
   create_table "admins", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20151104164802) do
     t.string   "mailchimp_api_key"
     t.string   "callfire_app_login"
     t.string   "callfire_app_password"
+    t.string   "push_notification_token"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -442,7 +443,7 @@ ActiveRecord::Schema.define(version: 20151104164802) do
     t.integer  "testimonial_id_10"
     t.string   "location_name"
     t.boolean  "hair_extensions"
-    t.boolean  "send_a_message_button", default: true
+    t.boolean  "send_a_message_button",   default: true
     t.string   "pinterest_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
@@ -455,6 +456,7 @@ ActiveRecord::Schema.define(version: 20151104164802) do
     t.string   "other_service"
     t.string   "google_plus_url"
     t.string   "password_digest"
+    t.string   "push_notification_token"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
