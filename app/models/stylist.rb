@@ -1,7 +1,10 @@
 class Stylist < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :authentication_keys => [:email_address]
+  devise :registerable, :recoverable, :rememberable, :trackable
 
   has_paper_trail
-  has_secure_password :validations => false
   
   scope :open, -> { where(:status => 'open') }
 
