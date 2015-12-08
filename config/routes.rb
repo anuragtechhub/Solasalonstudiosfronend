@@ -74,6 +74,9 @@ Solasalonstudios::Application.routes.draw do
   match "forgot-password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
   match "forgot-password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
 
+  match 'sessions' => 'sessions#index', :via => [:get, :post]
+  match 'sessions/denver' => 'sessions#denver', :via => [:get, :post]
+
   namespace :api do
     namespace :v1 do
 
