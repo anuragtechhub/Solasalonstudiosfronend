@@ -89,12 +89,17 @@
 
   &.black {
     background: #333;
+    margin-bottom: 5px;
 
     .container {
-      font-size: 15px;
-      line-height: 21px;
+      font-size: 21px;
+      line-height: 29px;
       font-weight: bold;
       color: #FFF;
+
+      .brand-blue {
+        color: $brand-blue;
+      }
     }
   }
 
