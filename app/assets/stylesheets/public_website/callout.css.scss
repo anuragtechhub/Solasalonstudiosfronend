@@ -91,15 +91,20 @@
     background: #333;
     margin-bottom: 5px;
 
-    .container {
+    a, a:link, a:visited, a:hover, a:active {
       font-size: 21px;
       line-height: 29px;
       font-weight: bold;
       color: #FFF;
+      text-decoration: none;
 
       .brand-blue {
         color: $brand-blue;
       }
+    }
+
+    a:hover, a:active {
+      color: $brand-blue;
     }
   }
 
