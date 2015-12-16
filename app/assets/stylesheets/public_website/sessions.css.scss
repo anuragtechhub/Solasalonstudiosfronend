@@ -109,6 +109,7 @@
       text-align: center;
       color: $brand-blue;
       letter-spacing: 0px;
+      line-height: 120%;
     }
   }
 
@@ -147,6 +148,18 @@
 
   .agenda {
     margin-top: 15px;
+    position: relative;
+    padding-top: 55px;
+
+    .banner {
+      background: asset-data-url('sessions/agenda-banner.png') no-repeat center center;
+      position: absolute;
+      top: -7px;
+      left: -7px;
+      width: 161px;
+      height: 38px;
+    }
+
     p {
       font-size: 24px;
       margin: 0 0 28px 0;
@@ -207,6 +220,20 @@
     letter-spacing: 0;
   }
 
+  h1 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 55px;
+    line-height: 65px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: bold;
+  }
+
   .circles {
     margin: 40px 0;
 
@@ -219,12 +246,69 @@
 
 @media (max-width: 550px) {
 
-  .future-sessions {
-    .circles {
-      img {
-        margin-bottom: 20px;
+  .session {
+
+    .description {
+      font-size: 22px;
+      line-height: 36px;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      margin-top: 0;
+
+      h1 {
+        font-size: 24px;
+        line-height: 24px;
+      }
+      h2 {
+        font-size: 34px;
+        line-height: 34px;
+      }
+      h3 {
+        font-size: 24px;
+        line-height: 24px;
+      }
+      h4 {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+
+    .agenda {
+      p {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+
+    .ticketing {
+      h1 {
+        font-size: 40px;
+        line-height: 40px;
+
+        span {
+          font-size: 20px;
+        }
       }
     }
   }
 
+.future-sessions {
+  h1 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .circles {
+    margin-bottom: 0;
+    
+    img {
+      margin-bottom: 20px;
+    }
+  }
+}  
 }

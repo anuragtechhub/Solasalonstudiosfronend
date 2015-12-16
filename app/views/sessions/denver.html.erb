@@ -10,10 +10,10 @@
 
     <div class="container">
       <div class="row cities">
-        <div class="three columns"><a href="#" class="button block primary long-text">Denver</a></div>
-        <div class="three columns"><a href="#" class="button block long-text">Minneapolis</a></div>
-        <div class="three columns"><a href="#" class="button block long-text">Orange County</a></div>
-        <div class="three columns"><a href="#" class="button block long-text">Charlotte</a></div>
+        <div class="three columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">Denver</a></div>
+        <div class="three columns"><a href="#future-sessions" class="button block long-text">Minneapolis</a></div>
+        <div class="three columns"><a href="#future-sessions" class="button block long-text">Orange County</a></div>
+        <div class="three columns"><a href="#future-sessions" class="button block long-text">Charlotte</a></div>
       </div>
     </div>
 
@@ -32,44 +32,44 @@
           <div class="three columns">
             <%= image_tag 'sessions/kovner.png' %>
             <span class="name">Nina Kovner</span>
-            <span class="company"><a href="#">Passion Squared</a></span>
+            <span class="company"><a href="http://passionsquared.net/" target="_blank">Passion Squared</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/horvath.png' %>
             <span class="name">Kim Bennett Horvath</span>
-            <span class="company"><a href="#">Sola Salon Studios</a></span>
+            <span class="company"><a href="http://www.solasalonstudios.com" target="_blank">Sola Salon Studios</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/alvarez.png' %>
             <span class="name">Luis Alvarez</span>
-            <span class="company"><a href="#">Aquage</a></span>
+            <span class="company"><a href="http://www.aquage.com/" target="_blank">Aquage</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/founders.png' %>
             <span class="name">Stratton Smith &amp; Matt Briger</span>
-            <span class="company"><a href="#">Sola Salon Studios</a></span>
+            <span class="company"><a href="http://www.solasalonstudios.com" target="_blank">Sola Salon Studios</a></span>
           </div>
         </div>
         <div class="row">
           <div class="three columns">
             <%= image_tag 'sessions/muldoon.png' %>
             <span class="name">DJ Muldoon</span>
-            <span class="company"><a href="#">theFactory</a></span>
+            <span class="company"><a href="http://www.thefactoryhair.com/" target="_blank">theFactory</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/villa.png' %>
             <span class="name">Sam Villa</span>
-            <span class="company"><a href="#">Sam Villa</a></span>
+            <span class="company"><a href="http://www.redken.com/international/" target="_blank">Redken</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/wolff.png' %>
             <span class="name">Jennie Wolff</span>
-            <span class="company"><a href="#">Sola Salon Studios</a></span>
+            <span class="company"><a href="http://www.solasalonstudios.com" target="_blank">Sola Salon Studios</a></span>
           </div>
           <div class="three columns">
             <%= image_tag 'sessions/cole.png' %>
             <span class="name">Michael Cole</span>
-            <span class="company"><a href="#">Redken</a></span>
+            <span class="company"><a href="http://www.redken.com/international/" target="_blank">Redken</a></span>
           </div>
         </div>
 
@@ -106,6 +106,7 @@
 
     <div class="container">
       <div class="agenda">
+        <div class="banner"></div>
         <p><span class="time">8:00am:</span> Registration Opens. Coffee, Tea &amp; Light Breakfast.</p>
         <p><span class="time">9:00am-11:30am:</span> Inspiration. Business &amp; Marketing.</p>
         <p><span class="time">11:30am-12:30pm:</span> Lunch.</p>
@@ -128,9 +129,10 @@
   </div>
 </div>
 
+<a name="future-sessions"></a>
 <div class="future-sessions">
   <div class="container">
-    <h1>Mark Your Calendar for the Sola Sessions</h1>
+    <h1>Mark Your Calendar<br>for the Sola Sessions</h1>
     <div class="row circles">
       <div class="four columns"><%= image_tag 'sessions/minneapolis-circle.png' %></div>
       <div class="four columns"><%= image_tag 'sessions/orange-county-circle.png' %></div>
