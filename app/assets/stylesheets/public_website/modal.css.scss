@@ -77,6 +77,13 @@
 
 .request-franchising-modal {
   
+  .forbes-image {
+    background: asset-data-url('ForbesBestFranchise.jpg') no-repeat center center;
+    width: 249px;
+    height: 406px;
+    margin-right: 40px; 
+  }
+
   input, textarea {
     max-width: 302px !important;
     border-radius: 2px !important;
@@ -87,6 +94,9 @@
       border: 1px solid $brand-pink !important;
     }
   }
+
+
+  .half
 
   .half-column.right {
     max-width: 302px !important;
@@ -125,18 +135,18 @@
       align-items: center;
     }
 
-    img.ForbesBestFranchise {
-      width: 75%;
-      height: auto;
-      margin-bottom: 15px;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-justify-content: center;
-      -webkit-align-items: center;      
-      justify-content: center;
-      align-items: center;
-      margin-left: -45px;
-    }
+    // img.ForbesBestFranchise {
+    //   width: 75%;
+    //   height: auto;
+    //   margin-bottom: 15px;
+    //   display: -webkit-flex;
+    //   display: flex;
+    //   -webkit-justify-content: center;
+    //   -webkit-align-items: center;      
+    //   justify-content: center;
+    //   align-items: center;
+    //   margin-left: -45px;
+    // }
   }
 }
 
@@ -159,6 +169,11 @@
         width: 100%;
         float: none;
         clear: both;
+
+        .forbes-image {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
 
         &.left {
           text-align: center;
