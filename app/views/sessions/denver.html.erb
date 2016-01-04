@@ -205,4 +205,4 @@
 
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions - Denver' } %>
-<% content_for(:og_image) { "#{request.protocol}#{request.host_with_port}#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>
+<% content_for(:og_image) { "http://#{request.host_with_port}#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>
