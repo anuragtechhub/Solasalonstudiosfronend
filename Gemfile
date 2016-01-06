@@ -36,6 +36,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'unicorn'
 gem 'puma'
 
+gem "font-awesome-rails"
+
 group :production do
   gem 'newrelic_rpm'
   gem 'asset_sync'

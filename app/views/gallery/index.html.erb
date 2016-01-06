@@ -1,7 +1,8 @@
 <div class="container content-container">
-  <div class="row">
-    <h1>Gallery</h1>
+  
+  <h1>Gallery</h1>
 
+  <div class="row">
     <ul class="owl-carousel">
       <% [1,2,3,4,5,6,7,8,10,12,13,14,16,17,18,20,26,27,29,30,31,32,33,36,37,38,39,44,45,47,50].each do |number| %>
         <li><%= image_tag "https://s3.amazonaws.com/solasalonstudios/assets/Gallery/#{number}.jpg" %></li>
@@ -9,38 +10,55 @@
     </ul>    
   </div>
 
+  <h1>Videos</h1>
+
   <div class="row">
-    <h1>Videos</h1>
-    <ul class="owl-carousel">
-      <li class="play-video-gallery-item">
-        <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video" rel="nbHFs0XjS8s">
-          <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg">
-          <span class="play-btn" />
-        </a>
-        <div class="carousel-text-bottom">
-          <h1>The Sola Story</h1>
-        </div>
-      </li>
-      <li class="play-video-gallery-item">
-        <a href="//www.youtube.com/watch?v=77gzVR-50Wo" class="play-video" rel="77gzVR-50Wo">
-          <img src="//img.youtube.com/vi/77gzVR-50Wo/maxresdefault.jpg">
-          <span class="play-btn" />
-        </a>
-        <div class="carousel-text-bottom">
-          <h1>Sola Testimonials Video</h1>
-        </div>
-      </li>
-      <li class="play-video-gallery-item">
-        <a href="//www.youtube.com/watch?v=b9Ocv4vfvqc" class="play-video" rel="b9Ocv4vfvqc">
-          <img src="//img.youtube.com/vi/b9Ocv4vfvqc/maxresdefault.jpg">
-          <span class="play-btn" />
-        </a>
-        <div class="carousel-text-bottom">
-          <h1>Celebrating 5,000 Stylists Nationwide</h1>
-        </div>
-      </li>
-    </ul>   
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video play-video-gallery" rel="St-c9SRjbhE">
+        <img src="//s3.amazonaws.com/solasalonstudios/sola_logo_poster.png">
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title">2016 Faces of Sola: Testimonials Video</h1>
+      
+    </div>
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video play-video-gallery" rel="nbHFs0XjS8s">
+        <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg">
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title">The Sola Story</h1>
+      
+    </div>
+
   </div>
+
+  <div class="row">
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=77gzVR-50Wo" class="play-video play-video-gallery" rel="77gzVR-50Wo">
+        <img src="//img.youtube.com/vi/77gzVR-50Wo/maxresdefault.jpg">
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title">Sola Testimonials Video</h1>
+    </div>
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=b9Ocv4vfvqc" class="play-video play-video-gallery" rel="b9Ocv4vfvqc">
+        <img src="//img.youtube.com/vi/b9Ocv4vfvqc/maxresdefault.jpg">
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title">Celebrating 5,000 Stylists Nationwide</h1>
+    </div>
+
+  </div>
+
+  
 </div>
 
 <% content_for(:title) { 'Gallery' } %>

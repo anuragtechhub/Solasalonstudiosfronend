@@ -377,6 +377,7 @@ DEPENDENCIES
   dalli
   devise
   escape_utils
+  font-awesome-rails
   geocoder
   gibbon
   htmlcompressor
