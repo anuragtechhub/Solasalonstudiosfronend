@@ -147,7 +147,11 @@
 //     }
 //   }
 // }
-
+.centered-column {
+  float: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 /* Base Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

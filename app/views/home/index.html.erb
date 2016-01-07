@@ -19,13 +19,13 @@
 <div class="container">
 
   <div class="row">
-    <h2 class="text-center home-slogan">Don't just dream, DO! <strong>Become a boutique salon owner today.</strong></h2>
+    <h2 class="text-center home-slogan">Don't Just Dream. DO!<br />Become a Boutique Salon Owner Today.</h2>
   </div>
 
   <div class="row">
     <div class="one-third column home-tile">
       <%= link_to :own_your_salon do %>
-        <%= image_tag 'Home/Freedom_Banner@2x.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'freedom_banner.jpg', :class => 'u-full-width' %>
         <h3 class="text-center">Freedom to live<br>the life you love</h3>
       <% end %>
       <p class="text-center">Customize your studio, create your culture, own your salon.</p>
@@ -33,11 +33,6 @@
 
     <div class="one-third column home-tile">
       <%= link_to :locations do %>
-        <div class="locations_callout_text">
-          MORE THAN
-          <span class="locations_count">250</span>
-          LOCATIONS
-        </div>
         <%= image_tag 'locations_callout.jpg', :class => 'u-full-width' %>
         <h3 class="text-center">Find the location<br>nearest to you</h3>
       <% end %>
@@ -45,22 +40,23 @@
     </div>
 
     <div class="one-third column home-tile">
-      <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video">
-        <%= image_tag 'Home/Video_Banner@2x.jpg', :class => 'u-full-width' %>
-        <h3 class="text-center">Take a look inside<br>Sola Salon Studios</h3>
+      <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video">
+        <%= image_tag 'watch_our_video.jpg', :class => 'u-full-width' %>
+        <h3 class="text-center">Watch<br>our video</h3>
       </a>
-      <p class="text-center">Watch our video to learn more about the Sola story.</p>
+      <p class="text-center">Find out what the Sola pros have to say.</p>
     </div>        
   </div>
 
   <div class="row home-recently-featured-box">
-    <div class="one-half column">
       <h3>Recently Featured In</h3>
-      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern-salon pull-left', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://behindthechair.com/displayarticle.aspx?ID=4133&ITID=7", :class => 'behind-the-chair pull-right', :target => '_blank' %>
-    </div>
-    <div class="one-half column">
-      <h3>Find a Salon Professional</h3>
+      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern-salon', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://behindthechair.com/displayarticle.aspx?ID=4133&ITID=7", :class => 'behind-the-chair', :target => '_blank' %>
+  </div>
+
+  <div class="row home-find-a-salon-pro">
+    <div class="one-half column centered-column">
+      <h3 class="home-slogan">Find a Salon Professional.</h3>
       <div class="search-input-with-icon">
         <%= form_tag [:search, :results], :method => :get do %>
         <input type="text" placeholder="Search by name or location" name="query" class="large full-width query">
