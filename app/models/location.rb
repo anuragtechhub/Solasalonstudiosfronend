@@ -10,7 +10,8 @@ class Location < ActiveRecord::Base
 
   before_create :generate_url_name
   before_save :fix_url_name
-  after_validation :geocode
+  after_save :update_computed_fields
+  after_validation :geocode, if: Proc.new { |location| location.latitude.blank? && location.longitude.blank? }
   geocoded_by :full_address
   after_destroy :touch_location
 
@@ -328,6 +329,14 @@ class Location < ActiveRecord::Base
   end
 
   private
+
+  def update_computed_fields
+    # update stylist location_name
+    stylists.each do |stylist|
+      stylist.location_name = self.name
+      stylist.save
+    end
+  end
 
   def touch_location
     Location.all.first.touch

@@ -868,7 +868,6 @@ RailsAdmin.config do |config|
     label 'Salon Professional'
     label_plural 'Salon Professionals' 
     list do
-      #filters [:name, :url_name, :email_address, :location_name, :business_name, :studio_number]
       field :name
       field :url_name do
         label 'URL Name'
@@ -876,6 +875,9 @@ RailsAdmin.config do |config|
       field :email_address
       field :location_name do
         label 'Location'
+      end
+      field :msa_name do
+        label 'MSA'
       end
       field :business_name
       field :studio_number

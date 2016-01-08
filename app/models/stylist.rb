@@ -142,12 +142,15 @@ class Stylist < ActiveRecord::Base
     testimonial_array
   end
 
-  def location_name
-    location.name if location
-  end
-
   def to_param
     url_name
+  end
+
+  def update_computed_fields
+    self.location_name = location.name if location && location.name
+    if location && location.msa
+      self.msa_name = location.msa.name 
+    end
   end
 
   private
@@ -181,9 +184,7 @@ class Stylist < ActiveRecord::Base
     Stylist.all.first.touch
   end
 
-  def update_computed_fields
-    self.location_name = location.name if location && location.name
-  end
+
 
   def generate_url_name
     if self.name
