@@ -142,6 +142,10 @@ class Stylist < ActiveRecord::Base
     testimonial_array
   end
 
+  def location_name
+    location.name if location
+  end
+
   def to_param
     url_name
   end

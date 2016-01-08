@@ -1204,15 +1204,16 @@ RailsAdmin.config do |config|
       field :phone_number
       field :biography
       field :status
-      field :location_id do
-        label 'Location'
-        export_value do 
-          Location.find_by(:id => value).name
-        end
-        pretty_value do 
-          Location.find_by(:id => value).name
-        end
-      end
+      # field :location_id do
+      #   label 'Location'
+      #   export_value do 
+      #     Location.find_by(:id => value).name
+      #   end
+      #   pretty_value do 
+      #     Location.find_by(:id => value).name
+      #   end
+      # end
+      field :location_name
       field :business_name
       field :studio_number
       field :work_hours

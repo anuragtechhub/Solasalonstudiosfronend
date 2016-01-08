@@ -86,8 +86,16 @@
     margin: 0 0 20px 0;
   }
 
-  input.full-width, input.full-width:focus, input.full-width:hover, input.full-width:active {
-    border: 3px solid $brand-pink !important;
+  .search-input-with-icon input.query {
+    &, &:focus, &:active {
+      border: 3px solid $brand-pink !important;
+      padding: 15px !important;
+      height: 65px !important;
+    }
+  }
+  .search-input-with-icon .ss-search {
+    top: 50%;
+    margin-top: -12px;
   }
 }
 
