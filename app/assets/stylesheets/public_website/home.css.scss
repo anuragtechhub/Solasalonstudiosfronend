@@ -102,7 +102,7 @@
   text-align: center;
 
   h3 {
-    margin: 0;
+    margin: 0 0 20px 0;
     text-align: center;
   }
 
@@ -128,46 +128,112 @@ img.recently-featured-in {
   max-height: 50px;
 }
 
-.modern-salon {
-  margin-top: 30px;
-  margin-right: 20px;
-
-  &:link, &:visited {
+.modern_salon_logo {
+  position: relative;
+  top: 3px;
+  opacity: 0.5;
+  &:link, &:visited, &:hover, &:active {
     display: inline-block;
     text-decoration: none;
-    background: asset-data-url('Home/Modern_Logo_Black@2x.png') no-repeat center center;
-    background-size: 128px 33px;
-    width: 128px;
-    height: 33px;
+    background: asset-data-url('modern_salon_logo.png') no-repeat center center;
+    background-size: 140px 51px;
+    width: 140px;
+    height: 51px;
   }
+}
+
+.american_salon_logo {
+  opacity: 0.5;
+  &:link, &:visited, &:hover, &:active {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('american_salon_logo.png') no-repeat center center;
+    background-size: 160px 51px;
+    width: 160px;
+    height: 51px;
+  }
+}
+
+.beauty_launchpad_logo {
+  opacity: 0.5;
+  &:link, &:visited, &:hover, &:active {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('beauty_launchpad_logo.png') no-repeat center center;
+    background-size: 193px 51px;
+    width: 193px;
+    height: 51px;
+  }
+}
+
+.behind_the_chair_logo {
+  position: relative;
+  top: 1px;
+  opacity: 0.5;
+  &:link, &:visited, &:hover, &:active {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('behind_the_chair_logo.png') no-repeat center center;
+    background-size: 242px 51px;
+    width: 242px;
+    height: 51px;
+  }
+}
+
+.forbes_logo {
+  position: relative;
+  top: -2px;
+  opacity: 0.5;
+  &:link, &:visited, &:hover, &:active {
+    display: inline-block;
+    text-decoration: none;
+    background: asset-data-url('forbes_logo.png') no-repeat center center;
+    background-size: 122px 51px;
+    width: 122px;
+    height: 51px;
+  }
+}
+
+// .modern-salon {
+//   margin-top: 30px;
+//   margin-right: 20px;
+
+//   &:link, &:visited {
+//     display: inline-block;
+//     text-decoration: none;
+//     background: asset-data-url('Home/Modern_Logo_Black@2x.png') no-repeat center center;
+//     background-size: 128px 33px;
+//     width: 128px;
+//     height: 33px;
+//   }
   
-  &:hover, &:active {
-    background: asset-data-url('Home/Modern_Logo_Pink@2x.png') no-repeat center center;
-    background-size: 128px 33px;
-    width: 128px;
-    height: 33px;
-  }
-}
+//   &:hover, &:active {
+//     background: asset-data-url('Home/Modern_Logo_Pink@2x.png') no-repeat center center;
+//     background-size: 128px 33px;
+//     width: 128px;
+//     height: 33px;
+//   }
+// }
 
-.behind-the-chair {
-  margin-top: 30px;
+// .behind-the-chair {
+//   margin-top: 30px;
 
-  &:link, &:visited {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-data-url('Home/Behind_Logo_Black@2x.png') no-repeat center center;
-    background-size: 241px 27px;
-    width: 241px;
-    height: 27px;
-  }
+//   &:link, &:visited {
+//     display: inline-block;
+//     text-decoration: none;
+//     background: asset-data-url('Home/Behind_Logo_Black@2x.png') no-repeat center center;
+//     background-size: 241px 27px;
+//     width: 241px;
+//     height: 27px;
+//   }
 
-  &:hover, &:active {
-    background: asset-data-url('Home/Behind_Logo_Pink@2x.png') no-repeat center center;
-    background-size: 241px 27px;
-    width: 241px;
-    height: 27px;
-  }
-}
+//   &:hover, &:active {
+//     background: asset-data-url('Home/Behind_Logo_Pink@2x.png') no-repeat center center;
+//     background-size: 241px 27px;
+//     width: 241px;
+//     height: 27px;
+//   }
+// }
 
 @media (max-width: 650px) {
   .home-recently-featured-box {
