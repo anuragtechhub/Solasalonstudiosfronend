@@ -21,7 +21,9 @@ $(function () {
     });
 
     $select.find('.option').on('click', function (event) {
-      window.location.href = $(event.target).data('value');
+      //var $this = $(this);
+      //console.log('oh yeah!', $this.data('value'));
+      window.location.href = $(this).data('value');
       return false;
     });
 

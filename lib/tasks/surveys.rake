@@ -1,14 +1,20 @@
 namespace :surveys do
 
   task :locations => :environment do
-
+    Stylist.where(:status => 'open').each do |stylist|
+      if stylist.email_address && stylist.email_address.present?
+        begin
+          p "send survey to #{stylist.email_address}"
+          send_survey(stylist.email_address, 3846)
+        rescue
+          p "error sending survey to #{stylist.email_address}"
+        end
+      end
+    end
   end
 
   task :locations_test => :environment do 
-    email = 'jeff@jeffbail.com'
-    survey_id = 3846
-
-    response = send_survey('jeff@jeffbail.com', 3846)
+    response = send_survey('adam@solasalonstudios.com', 3846)
 
     p "response=#{response}"
   end
