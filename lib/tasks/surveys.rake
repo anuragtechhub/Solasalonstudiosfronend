@@ -27,7 +27,8 @@ namespace :surveys do
         -d '{
               "email":"#{email}",
               "send_at":"#{DateTime.now.to_s}",
-              "survey_id":#{survey_id}
+              "survey_id":#{survey_id},
+              "email_template_id":106
             }' \
        https://api.customersure.com/feedback_requests`
   end
