@@ -189,7 +189,7 @@ class Location < ActiveRecord::Base
   before_validation { self.directory_image_12.destroy if self.delete_directory_image_12 == '1' }                    
 
   validates :name, :presence => true
-  #validates :url_name, :presence => true, :uniqueness => true
+  validates :url_name, :uniqueness => true
 
   def msa_name
     msa ? msa.name : ''
