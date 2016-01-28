@@ -14,7 +14,7 @@ class Stylist < ActiveRecord::Base
     end
   end
 
-  before_create :generate_url_name
+  before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
   after_save :remove_from_mailchimp_if_closed
@@ -184,19 +184,16 @@ class Stylist < ActiveRecord::Base
     Stylist.all.first.touch
   end
 
-
-
   def generate_url_name
     if self.name
       url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
       count = 1
       
-      while Stylist.where(:url_name => url).size > 0 do
-        url = "#{url}#{count}"
+      while Stylist.where(:url_name => "#{url}#{count}").size > 0 do
         count = count + 1
       end
 
-      self.url_name = url
+      self.url_name = "#{url}#{count}"
     end
   end
 

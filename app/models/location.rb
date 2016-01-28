@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
-  before_create :generate_url_name
+  before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields
   after_validation :geocode, if: Proc.new { |location| location.latitude.blank? && location.longitude.blank? }
@@ -347,12 +347,11 @@ class Location < ActiveRecord::Base
       url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
       count = 1
       
-      while Location.where(:url_name => url).size > 0 do
-        url = "#{url}#{count}"
+      while Location.where(:url_name => "#{url}#{count}").size > 0 do
         count = count + 1
       end
 
-      self.url_name = url
+      self.url_name = "#{url}#{count}"
     end
   end
 
