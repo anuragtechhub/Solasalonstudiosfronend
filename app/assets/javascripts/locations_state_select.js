@@ -22,7 +22,9 @@ $(function () {
 
     $select.find('.option').on('click', function (event) {
       //var $this = $(this);
-      //console.log('oh yeah!', $this.data('value'));
+      if (console && typeof console.log == 'function') {
+        console.log($(this).data('value'));
+      }
       window.location.href = $(this).data('value');
       return false;
     });

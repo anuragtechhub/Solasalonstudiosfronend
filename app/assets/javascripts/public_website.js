@@ -241,6 +241,4 @@ $(function () {
 
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
-
-
 });
