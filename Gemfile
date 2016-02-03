@@ -81,8 +81,5 @@ gem "puma_worker_killer"
 
 gem "addressable"
 gem 'dotenv-rails', :groups => [:development, :test]
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'kaminari'

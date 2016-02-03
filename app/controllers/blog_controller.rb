@@ -4,11 +4,18 @@ class BlogController < PublicWebsiteController
   def index
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
     if @category
-      #filter posts by category id
+      # filter posts by category id
       @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ? AND status = ?', @category.id, 'published').uniq.order(:publish_date => :desc)
+    elsif params[:query].present?
+      # filter posts by search query
+      query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
+      @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
     else
+      # show all posts
       @posts = Blog.where('status = ?', 'published').order(:publish_date => :desc)
     end
+
+    @posts = @posts.page(params[:page] || 1)
     @categories = BlogCategory.order(:name => :asc)
 
     @last_blog = Blog.order(:publish_date => :desc).first

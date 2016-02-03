@@ -393,6 +393,7 @@ DEPENDENCIES
   image_optim_pack
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   mysql2
   newrelic_rpm
   nokogiri

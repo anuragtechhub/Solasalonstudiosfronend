@@ -116,8 +116,40 @@
   }
 }
 
+.search-and-filter-row {
+  overflow: hidden;
+  margin-bottom: -30px;
+
+  form {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .search-input {
+    display: block;
+    width: 100%;
+    height: 50px;
+    margin: 0 0 30px 0;
+  }
+
+  .search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 15px;
+    height: 50px;
+  }
+}
+
 @media (max-width: 550px) {
   .nav-search.open .nav-search-input {
     width: calc(100% - 5px);
+  }
+  .search-and-filter-row {
+    margin-bottom: -20px;
+
+    .search-input {
+      margin-bottom: 20px;
+    }
   }
 }
