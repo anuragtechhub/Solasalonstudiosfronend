@@ -1,4 +1,4 @@
-<div class="container content-container search-results">
+<div class="container search-results">
   <div class="row">
 
     <% if params[:query].present? && (@locations && @locations.size == 0) && (@stylists && @stylists.size == 0) %>
@@ -28,6 +28,13 @@
 
     <% if params[:first] != 'salon_professionals' %>
       <%= render 'shared/public_website/stylist_search_results' %>
+    <% end %>
+
+    <% if @posts && @posts.size > 0 %>
+      <h2>Blog Results</h2>
+      <% @posts.each_with_index do |post| %>
+        <%= render 'shared/blog_post_summary', :post => post %>
+      <% end %>
     <% end %>
 
   </div>

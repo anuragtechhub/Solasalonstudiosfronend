@@ -41,6 +41,9 @@ class SearchController < PublicWebsiteController
           @stylists.sort! { |a, b| a.name <=> b.name }
         end
       end
+
+      # blog posts
+      @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
     end
   end
 end

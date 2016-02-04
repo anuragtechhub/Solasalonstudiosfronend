@@ -117,8 +117,7 @@
 }
 
 .search-and-filter-row {
-  overflow: hidden;
-  margin-bottom: -30px;
+  margin-bottom: -300px;
 
   form {
     position: relative;
@@ -139,6 +138,14 @@
     font-size: 15px;
     height: 50px;
   }
+}
+
+.search-results-label {
+  margin: 0;
+  padding: 0;
+  color: gray;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 @media (max-width: 550px) {

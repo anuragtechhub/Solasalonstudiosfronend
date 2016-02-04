@@ -9,10 +9,19 @@
 
 <div class="container content-container">
   
-  <h1>Our Blog</h1>
+  <div class="row">
+    <div class="twelve columns">
+      <h1>Our Blog</h1>
+      <% if params[:query].present? %>
+        <p class="search-results-label">Found <%= pluralize @posts.total_count, 'result' %></p>
+      <% end %>          
+    </div>
+  </div>
 
   <div class="row">
+    
     <div class="search-and-filter-row">
+      
       <div class="one-half column">
         <form method="get" action="<%= blog_path %>">
           <input type="text" name="query" value="<%= params[:query] %>" class="search-input" placeholder="Search..." />
@@ -34,30 +43,17 @@
           </div>
         </div>
       </div>
+
     </div>
+
   </div>
 
 </div>
 
-<div class="container content-container">
+<div class="container">
 
   <% @posts.each do |post| %>
-    <div class="blog-post-summary">
-      <div class="row">
-        <div class="twelve columns">
-          <%= link_to show_blog_path(post), :class => 'blog-list-picture' do %>
-            <%= image_tag post.image(:original), :class => 'full-width', :width => 960, :height => 306 %>
-            <div class="blog-list-picture-overlay">
-              <div class="large-button">Read Article</div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="one-third column"><h4><%= link_to show_blog_path(post) do %><%= post.title.html_safe %><% end %></h4><p class="subtle">Posted on <%= post.publish_date.strftime('%B %e, %Y') %><br><%= post.author.html_safe %></p></div>
-        <div class="two-thirds column"><p class="summary"><%= post.summary.html_safe %> &nbsp;<%= link_to 'Read More', show_blog_path(post) %></p></div>
-      </div>
-    </div>
+    <%= render 'shared/blog_post_summary', :post => post %>
   <% end %>
 
   <%= paginate @posts %>
