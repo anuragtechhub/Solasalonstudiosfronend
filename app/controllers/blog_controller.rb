@@ -3,6 +3,7 @@ class BlogController < PublicWebsiteController
 
   def index
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
+    
     if @category
       # filter posts by category id
       @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ? AND status = ?', @category.id, 'published').uniq.order(:publish_date => :desc)
