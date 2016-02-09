@@ -11,6 +11,20 @@ namespace :surveys do
     p "response=#{response}"
   end
 
+  task :send_test => :environment do
+    tomorrow = DateTime.now.tomorrow.change({hour: 10, min: 0, sec: 0}).to_s
+    Stylist.where(:status => 'open', :location_id => [167, 168]).each do |stylist|
+      if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
+        begin
+          p "send survey to #{stylist.email_address}, #{stylist.location.url_name}, #{tomorrow}"
+          send_survey(stylist.email_address, stylist.location.url_name, 3846, tomorrow)
+        rescue
+          p "error sending survey to #{stylist.email_address}"
+        end
+      end
+    end
+  end
+
   def send_surveys
     Stylist.where(:status => 'open').each do |stylist|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
@@ -24,14 +38,14 @@ namespace :surveys do
     end
   end
 
-  def send_survey(email, site_code, survey_id)
+  def send_survey(email, site_code, survey_id, date=DateTime.now.to_s)
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
               "email":"#{email}",
-              "send_at":"#{DateTime.now.to_s}",
+              "send_at":"#{date}",
               "survey_id":#{survey_id},
               "email_template_id":106,
               "query_params":[{"key": "site_code", "value": "#{site_code}"}]
