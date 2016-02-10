@@ -1,7 +1,7 @@
 <div class="container sola-spotlights">
   <div class="owl-carousel owl-theme" data-items="3" data-autoplayoff="true">
     <% Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ?', 4).order(:created_at => :desc).uniq.each do |blog| %>
-      <% if blog.carousel_image.exists? %>
+      <% if blog.carousel_image.present? %>
         <div class="item sola-spotlight">
           <%= link_to show_blog_path(blog.url_name) do %>
             <%= image_tag blog.carousel_image(:carousel) %>

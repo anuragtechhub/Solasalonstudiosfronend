@@ -6,7 +6,7 @@ namespace :surveys do
   end
 
   task :send_survey_test => :environment do 
-    response = send_survey('jeff2@jeffbail.com', 'abq_paseo', 3846)
+    response = send_survey('adam@solasalonstudios.com', 'sola_hq', 3846)
 
     p "response=#{response}"
   end
@@ -58,7 +58,7 @@ namespace :surveys do
   end
 
   task :update_site_test => :environment do
-    sync_location('sobo', 'Salon SoBo', 'Denver', 'Colorado')
+    sync_location('sola_hq', 'Sola HQ', 'Denver', 'Colorado')
   end
 
   def update_sites

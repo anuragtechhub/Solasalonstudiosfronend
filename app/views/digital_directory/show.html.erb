@@ -59,16 +59,16 @@
     <div class="floorplan-image"><%= image_tag @location.floorplan_image.url(:original) %></div>
 
     <div id="photo-gallery-images" style="display:none">
-      <%= image_tag @location.image_1.url(:directory) if @location.image_1.exists? %>
-      <%= image_tag @location.image_2.url(:directory) if @location.image_2.exists? %>
-      <%= image_tag @location.image_3.url(:directory) if @location.image_3.exists? %>
-      <%= image_tag @location.image_4.url(:directory) if @location.image_4.exists? %>
-      <%= image_tag @location.image_5.url(:directory) if @location.image_5.exists? %>
-      <%= image_tag @location.image_6.url(:directory) if @location.image_6.exists? %>
-      <%= image_tag @location.image_7.url(:directory) if @location.image_7.exists? %>
-      <%= image_tag @location.image_8.url(:directory) if @location.image_8.exists? %>
-      <%= image_tag @location.image_9.url(:directory) if @location.image_9.exists? %>
-      <%= image_tag @location.image_10.url(:directory) if @location.image_10.exists? %>
+      <%= image_tag @location.image_1.url(:directory) if @location.image_1.present? %>
+      <%= image_tag @location.image_2.url(:directory) if @location.image_2.present? %>
+      <%= image_tag @location.image_3.url(:directory) if @location.image_3.present? %>
+      <%= image_tag @location.image_4.url(:directory) if @location.image_4.present? %>
+      <%= image_tag @location.image_5.url(:directory) if @location.image_5.present? %>
+      <%= image_tag @location.image_6.url(:directory) if @location.image_6.present? %>
+      <%= image_tag @location.image_7.url(:directory) if @location.image_7.present? %>
+      <%= image_tag @location.image_8.url(:directory) if @location.image_8.present? %>
+      <%= image_tag @location.image_9.url(:directory) if @location.image_9.present? %>
+      <%= image_tag @location.image_10.url(:directory) if @location.image_10.present? %>
     </div>
 
     <div id="photo-gallery" class="photo-gallery">

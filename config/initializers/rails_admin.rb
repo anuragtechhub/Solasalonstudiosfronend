@@ -119,7 +119,7 @@ RailsAdmin.config do |config|
       field :url_name
       field :image do 
         pretty_value do 
-          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
       end
       field :summary do
@@ -139,7 +139,7 @@ RailsAdmin.config do |config|
       field :url_name
       field :image do 
         pretty_value do 
-          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
         delete_method :delete_image
       end
@@ -178,7 +178,7 @@ RailsAdmin.config do |config|
       field :publish_date
       field :image do 
         pretty_value do 
-          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
       end
       field :summary do
@@ -218,7 +218,7 @@ RailsAdmin.config do |config|
       end
       field :image do
         pretty_value do 
-          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
         delete_method :delete_image
       end
@@ -238,7 +238,7 @@ RailsAdmin.config do |config|
         active false
         field :carousel_image do
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_carousel_image
         end
@@ -358,102 +358,102 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_11 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_12 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_13 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_14 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_15 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_16 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_17 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_18 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_19 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_20 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
       end
@@ -466,67 +466,67 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_11 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :directory_image_12 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end                                        
       end
@@ -612,121 +612,121 @@ RailsAdmin.config do |config|
         active false
         field :image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_1
         end
         field :image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
         end
         field :image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_3
         end
         field :image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
         end
         field :image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_5
         end
         field :image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
         end
         field :image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_7
         end
         field :image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
         end
         field :image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_9
         end
         field :image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
         end
         field :image_11 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_11
         end
         field :image_12 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_12
         end
         field :image_13 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_13
         end
         field :image_14 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_14
         end
         field :image_15 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_15
         end
         field :image_16 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_16
         end
         field :image_17 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_17
         end
         field :image_18 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_18
         end
         field :image_19 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_19
         end
         field :image_20 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_20
         end      
@@ -738,79 +738,79 @@ RailsAdmin.config do |config|
         end
         field :floorplan_image do
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_floorplan_image
         end
         field :directory_image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_1
         end
         field :directory_image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_2
         end
         field :directory_image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_3
         end
         field :directory_image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_4
         end
         field :directory_image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_5
         end
         field :directory_image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_6
         end
         field :directory_image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_7
         end
         field :directory_image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_8
         end
         field :directory_image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_9
         end
         field :directory_image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_10
         end
         field :directory_image_11 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_11
         end
         field :directory_image_12 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_directory_image_12
         end                                        
@@ -955,52 +955,52 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
       end
@@ -1121,61 +1121,61 @@ RailsAdmin.config do |config|
         active false
         field :image_1 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_1
         end
         field :image_2 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
         end
         field :image_3 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_3
         end
         field :image_4 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
         end
         field :image_5 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_5
         end
         field :image_6 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
         end
         field :image_7 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_7
         end
         field :image_8 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
         end
         field :image_9 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_9
         end
         field :image_10 do 
           pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.exists?
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
         end
