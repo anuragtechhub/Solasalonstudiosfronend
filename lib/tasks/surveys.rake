@@ -44,13 +44,13 @@ namespace :surveys do
 
   def send_survey(email, site_code, survey_id, date=DateTime.now.to_s)
     require 'uri'
-    
+
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-              "email":"#{URI.escape email}",
+              "email":"#{email}",
               "send_at":"#{date}",
               "survey_id":#{survey_id},
               "email_template_id":106,
@@ -73,7 +73,7 @@ namespace :surveys do
         if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
           p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
           sync_location(location.url_name, location.name, location.city, location.state) 
-          sleep 1
+          sleep 2
         end
       rescue
         p "error syncing location"
@@ -114,15 +114,15 @@ namespace :surveys do
         -X PATCH \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{URI.escape name}",
-              "city": "#{URI.escape city}",
-              "region": "#{URI.escape state}"
+              "name": "#{escapeString name}",
+              "city": "#{escapeString city}",
+              "region": "#{escapeString state}"
             }' \
        https://api.customersure.com/sites/#{site_code}`
   end
 
   def create_site(site_code, name, city, state)
-    require 'uri'
+    
 
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
@@ -130,11 +130,18 @@ namespace :surveys do
         -X POST \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{URI.escape name}",
-              "city": "#{URI.escape city}",
-              "region": "#{URI.escape state}"
+              "name": "#{escapeString name}",
+              "city": "#{escapeString city}",
+              "region": "#{escapeString state}"
             }' \
        https://api.customersure.com/sites`
+  end
+
+  def escapeString(str)
+    require 'uri'
+    str = str.gsub(/'/, '')
+    str = URI.escape str
+    str
   end
 
 end
