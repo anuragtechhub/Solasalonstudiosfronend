@@ -138,9 +138,9 @@ namespace :surveys do
   end
 
   def escapeString(str)
-    require 'uri'
+    #require 'uri'
     str = str.gsub(/'/, '')
-    str = URI.escape str
+    #str = URI.escape str
     str
   end
 
