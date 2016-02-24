@@ -43,12 +43,14 @@ namespace :surveys do
   end
 
   def send_survey(email, site_code, survey_id, date=DateTime.now.to_s)
+    require 'uri'
+    
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-              "email":"#{email}",
+              "email":"#{URI.escape email}",
               "send_at":"#{date}",
               "survey_id":#{survey_id},
               "email_template_id":106,
@@ -104,29 +106,33 @@ namespace :surveys do
   end
 
   def update_site(site_code, name, city, state)
+    require 'uri'
+
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
         -H 'Content-Type: application/json' \
         -X PATCH \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{name}",
-              "city": "#{city}",
-              "region": "#{state}"
+              "name": "#{URI.escape name}",
+              "city": "#{URI.escape city}",
+              "region": "#{URI.escape state}"
             }' \
        https://api.customersure.com/sites/#{site_code}`
   end
 
   def create_site(site_code, name, city, state)
+    require 'uri'
+
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{name}",
-              "city": "#{city}",
-              "region": "#{state}"
+              "name": "#{URI.escape name}",
+              "city": "#{URI.escape city}",
+              "region": "#{URI.escape state}"
             }' \
        https://api.customersure.com/sites`
   end
