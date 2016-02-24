@@ -14,10 +14,10 @@
   .description {
     font-family: 'Dosis', Arial, sans-serif;
     color: #333;
-    font-size: 26px;
-    line-height: 44px;
-    margin-bottom: 40px;
-    text-align: center;
+    font-size: 22px;
+    line-height: 42px;
+    margin: 25px 0 40px 0;
+    text-align: left;
   }
 
   .details {
@@ -120,6 +120,14 @@
     }
   }
 
+  #showBios {
+    margin-top: -5px;
+  }
+  
+  #showBios, #hideBios {
+    margin-bottom: 15px;
+  }
+
   #hideBios {
     display: none;
   }
@@ -160,9 +168,10 @@
   }
 
   .agenda, .ticketing {
-    border: 7px solid $brand-blue;
+    border: 10px solid $brand-blue;
     padding: 30px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
+    max-width: 600px;
   }
 
   .agenda {
@@ -173,8 +182,8 @@
     .banner {
       background: asset-data-url('sessions/agenda-banner.png') no-repeat center center;
       position: absolute;
-      top: -7px;
-      left: -7px;
+      top: -10px;
+      left: -10px;
       width: 161px;
       height: 38px;
     }
@@ -210,6 +219,13 @@
         vertical-align: text-top;
       }
     }
+    h4 {
+      font-weight: bold;
+      color: #000;
+      font-size: 20px;
+      line-height: 30px;
+      margin: 25px 0 0 0;
+    }
     .button-wrapper {
       margin-top: 30px;
       text-align: center;
@@ -221,6 +237,26 @@
         margin-bottom: 0;
       }
     }
+  }
+}
+
+.discount-rooms {
+  margin-bottom: 0 !important;
+  word-spacing: 1px;
+
+  .container {
+    max-width: 800px;
+  }
+
+  .number, .link {
+    //color: $brand-blue;
+  }
+
+  .code {
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 0 3px;
+    display: inline-block;
   }
 }
 
@@ -271,9 +307,9 @@
   .session {
 
     .description {
-      font-size: 22px;
-      line-height: 36px;
-      margin-bottom: 20px;
+      font-size: 20px;
+      line-height: 30px;
+      margin: 10px 0 20px 0;
     }
 
     .details {
