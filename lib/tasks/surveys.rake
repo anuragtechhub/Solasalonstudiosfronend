@@ -1,7 +1,7 @@
 namespace :surveys do
 
   task :locations => :environment do
-    update_sites
+    #update_sites
     send_surveys
   end
 
@@ -26,9 +26,11 @@ namespace :surveys do
     end
   end
 
-  excluded_locations = [2, 35, 9, 72, 7, 3, 92, 21, 226, 17, 167, 67, 168, 4]
+  
 
   def send_surveys
+    excluded_locations = [2, 35, 9, 72, 7, 3, 92, 21, 226, 17, 167, 67, 168, 4]
+
     Stylist.where(:status => 'open').order(:id).each do |stylist|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? && !excluded_locations.include?(stylist.location_id)
         begin
