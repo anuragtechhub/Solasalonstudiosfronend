@@ -67,8 +67,15 @@ namespace :surveys do
 
   def update_sites
     Location.all.each do |location|
-      sync_location(location.url_name, location.name, location.city, location.state) if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
-      sleep 1
+      begin
+        if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
+          p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
+          sync_location(location.url_name, location.name, location.city, location.state) 
+          sleep 1
+        end
+      rescue
+        p "error syncing location"
+      end
     end
   end
 
