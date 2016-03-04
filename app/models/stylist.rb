@@ -100,6 +100,10 @@ class Stylist < ActiveRecord::Base
     [['Visible', true], ['Hidden', false]]
   end
 
+  def phone_number_display_enum
+    [['Visible', true], ['Hidden', false]]
+  end
+
   # helper function to return images as array
   def images
     images_array = []

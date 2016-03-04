@@ -899,6 +899,9 @@ RailsAdmin.config do |config|
       end
       group :contact do
         field :phone_number
+        field :phone_number_display do
+          help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
+        end
         field :email_address
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
@@ -1032,6 +1035,9 @@ RailsAdmin.config do |config|
       end
       group :contact do
         field :phone_number
+        field :phone_number_display do
+          help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
+        end
         field :email_address
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'

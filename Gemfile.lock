@@ -251,7 +251,6 @@ GEM
     minitest (4.7.5)
     multi_json (1.11.2)
     multi_xml (0.5.5)
-    mysql2 (0.4.2)
     nested_form (0.3.2)
     newrelic_rpm (3.14.1.311)
     nokogiri (1.6.7.1)
@@ -394,7 +393,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
-  mysql2
   newrelic_rpm
   nokogiri
   oj

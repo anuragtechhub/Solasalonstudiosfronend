@@ -31,7 +31,7 @@
         </div>
       <% end %>
       <ul class="contact-info">
-        <% if @stylist.phone_number.present? %>
+        <% if @stylist.phone_number.present? && @stylist.phone_number_display %>
           <li><%= @stylist.phone_number %></li>
         <% end %>
         <% if @stylist.website_url.present? && valid_url?(url_helper(@stylist.website_url)) %>

@@ -14,7 +14,7 @@
             <span class="service" style="visibility:hidden">&nbsp;</span>
           <% end %>
         </p>
-        <div><%= stylist.phone_number %></div>
+        <div><%= stylist.phone_number.present? && stylist.phone_number_display ? stylist.phone_number : '&nbsp;'.html_safe %></div>
         <div class="view-profile"><%= link_to 'View Profile', show_salon_professional_path(stylist).gsub(/\./, '') %></div>
       </div>
     <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
