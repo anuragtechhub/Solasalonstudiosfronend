@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
-  after_create :sync_with_moz
+  #after_create :submit_to_moz
   before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields
@@ -192,6 +192,8 @@ class Location < ActiveRecord::Base
   validates :name, :presence => true
   validates :url_name, :uniqueness => true
 
+  # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
+
   def msa_name
     msa ? msa.name : ''
   end
@@ -329,7 +331,118 @@ class Location < ActiveRecord::Base
     services.join(', ')
   end
 
+  def state_province
+    states = {"Alabama" => "AL",
+              "Alaska" => "AK",
+              "Alberta" => "AB",
+              "American Samoa" => "AS",
+              "Arizona" => "AZ",
+              "Arkansas" => "AR",
+              "Armed Forces (AE)" => "AE",
+              "Armed Forces Americas" => "AA",
+              "Armed Forces Pacific" => "AP",
+              "British Columbia" => "BC",
+              "California" => "CA",
+              "Colorado" => "CO",
+              "Connecticut" => "CT",
+              "Delaware" => "DE",
+              "District Of Columbia" => "DC",
+              "Florida" => "FL",
+              "Georgia" => "GA",
+              "Guam" => "GU",
+              "Hawaii" => "HI",
+              "Idaho" => "ID",
+              "Illinois" => "IL",
+              "Indiana" => "IN",
+              "Iowa" => "IA",
+              "Kansas" => "KS",
+              "Kentucky" => "KY",
+              "Louisiana" => "LA",
+              "Maine" => "ME",
+              "Manitoba" => "MB",
+              "Maryland" => "MD",
+              "Massachusetts" => "MA",
+              "Michigan" => "MI",
+              "Minnesota" => "MN",
+              "Mississippi" => "MS",
+              "Missouri" => "MO",
+              "Montana" => "MT",
+              "Nebraska" => "NE",
+              "Nevada" => "NV",
+              "New Brunswick" => "NB",
+              "New Hampshire" => "NH",
+              "New Jersey" => "NJ",
+              "New Mexico" => "NM",
+              "New York" => "NY",
+              "Newfoundland" => "NF",
+              "North Carolina" => "NC",
+              "North Dakota" => "ND",
+              "Northwest Territories" => "NT",
+              "Nova Scotia" => "NS",
+              "Nunavut" => "NU",
+              "Ohio" => "OH",
+              "Oklahoma" => "OK",
+              "Ontario" => "ON",
+              "Oregon" => "OR",
+              "Pennsylvania" => "PA",
+              "Prince Edward Island" => "PE",
+              "Puerto Rico" => "PR",
+              "Quebec" => "QC",
+              "Rhode Island" => "RI",
+              "Saskatchewan" => "SK",
+              "South Carolina" => "SC",
+              "South Dakota" => "SD",
+              "Tennessee" => "TN",
+              "Texas" => "TX",
+              "Utah" => "UT",
+              "Vermont" => "VT",
+              "Virgin Islands" => "VI",
+              "Virginia" => "VA",
+              "Washington" => "WA",
+              "West Virginia" => "WV",
+              "Wisconsin" => "WI",
+              "Wyoming" => "WY",
+              "Yukon Territory" => "YT"}
+
+    states[self.state]
+  end
+
   private
+
+  def submit_to_moz
+    p "submit to moz"
+    require 'net/https'
+    require 'json'
+
+    #http = Net::HTTP.new('moz.com', 443)
+    http = Net::HTTP.new('sandbox.moz.com', 443)
+    http.use_ssl = true
+
+    http.start do |http|
+      req = Net::HTTP::Post.new("/local/api/v1/submissions?access_token=lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL")
+
+      form_data = {}
+      #form_data['access_token'] = 'JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb' #production
+      #form_data['access_token'] = 'lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL' #sandbox
+      form_data['name'] = self.name
+      form_data['address1'] = self.address_1
+      form_data['address2'] = self.address_2
+      form_data['city'] = self.city
+      form_data['stateProvince'] = self.state_province
+      form_data['country'] = 'US'
+      form_data['postalCode'] = self.postal_code
+      form_data['phone'] = self.phone_number
+      form_data['email'] = self.email_address_for_inquiries
+      form_data['description'] = self.description
+      form_data['categories'] = ['Beauty Salon', 'Hair Salon']
+      form_data['destinationURL'] = 'https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}'
+
+      req.set_form_data(form_data)
+      resp = http.request(req)
+      p "resp=#{resp.inspect}"
+      p "resp.body=#{resp.body}"
+    end
+  end
 
   def update_computed_fields
     # update stylist location_name
