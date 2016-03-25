@@ -16,6 +16,7 @@
   <%= stylesheet_link_tag "public_website", media: "all" %>
   <%= yield :stylesheets %>
   <%= csrf_meta_tags %>
+  <%= render 'shared/global_fb_conversion_pixel' %>
   <%= yield :fb_conversion_pixel if content_for?(:fb_conversion_pixel) %>
 </head>
 <body>

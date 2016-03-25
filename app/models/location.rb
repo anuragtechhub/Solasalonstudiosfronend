@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
+  after_create :sync_with_moz
   before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields
