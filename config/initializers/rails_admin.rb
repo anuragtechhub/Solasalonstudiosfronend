@@ -1199,6 +1199,14 @@ RailsAdmin.config do |config|
         field :testimonial_9
         field :testimonial_10
       end
+      group :password do
+        active false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :password
+        field :password_confirmation
+      end
       # group :credentials do
       #   active false
       #   field :password

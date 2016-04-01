@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
 
-  #after_create :submit_to_moz
+  #after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields
@@ -414,12 +414,12 @@ class Location < ActiveRecord::Base
     require 'net/https'
     require 'json'
 
-    #http = Net::HTTP.new('moz.com', 443)
-    http = Net::HTTP.new('sandbox.moz.com', 443)
+    http = Net::HTTP.new('moz.com', 443)
+    #http = Net::HTTP.new('sandbox.moz.com', 443)
     http.use_ssl = true
 
     http.start do |http|
-      req = Net::HTTP::Post.new("/local/api/v1/submissions?access_token=lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL")
+      req = Net::HTTP::Post.new("/local/api/v1/submissions?access_token=JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb")
 
       form_data = {}
       #form_data['access_token'] = 'JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb' #production
@@ -435,7 +435,7 @@ class Location < ActiveRecord::Base
       form_data['email'] = self.email_address_for_inquiries
       form_data['description'] = self.description
       form_data['categories'] = ['Beauty Salon', 'Hair Salon']
-      form_data['destinationURL'] = 'https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}'
+      form_data['destinationURL'] = "https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}"
 
       req.set_form_data(form_data)
       resp = http.request(req)
