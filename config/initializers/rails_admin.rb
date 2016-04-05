@@ -1220,6 +1220,7 @@ RailsAdmin.config do |config|
       field :phone_number
       field :biography
       field :status
+      field :has_sola_pro_login
       # field :location_id do
       #   label 'Location'
       #   export_value do 

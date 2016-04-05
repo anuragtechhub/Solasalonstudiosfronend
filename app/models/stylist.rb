@@ -157,6 +157,10 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def has_sola_pro_login
+    self.encrypted_password.present?
+  end
+  
   private
 
   def remove_from_mailchimp
