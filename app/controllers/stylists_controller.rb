@@ -19,13 +19,18 @@ class StylistsController < PublicWebsiteController
 
   def send_a_message
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present?
+      captcha_verified = verify_recaptcha
+      if (params[:name] && params[:name].present? && params[:email] && params[:email].present?) && captcha_verified
         msg = StylistMessage.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :message => params[:message], :stylist_id => params[:stylist_id])
         msg.visit = save_visit
         msg.save
         render :json => {:success => 'Thank you for your message!'}
       else
-        render :json => {:error => 'Please enter your name and email address'}
+        if captcha_verified
+          render :json => {:error => 'Please enter your name and email address'}
+        else
+          render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
+        end
       end
     end
   end

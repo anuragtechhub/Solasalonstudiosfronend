@@ -424,7 +424,7 @@ class Location < ActiveRecord::Base
       form_data = {}
       #form_data['access_token'] = 'JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb' #production
       #form_data['access_token'] = 'lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL' #sandbox
-      form_data['name'] = self.name
+      form_data['name'] = 'Sola Salon Studios'#self.name
       form_data['address1'] = self.address_1
       form_data['address2'] = self.address_2
       form_data['city'] = self.city
@@ -435,7 +435,7 @@ class Location < ActiveRecord::Base
       form_data['email'] = self.email_address_for_inquiries
       form_data['description'] = self.description
       form_data['categories'] = ['Beauty Salon', 'Hair Salon']
-      form_data['destinationURL'] = "https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}"
+      form_data['destinationURL'] = "https://www.solasalonstudios.com/store/#{self.url_name}" #"https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}"
 
       req.set_form_data(form_data)
       resp = http.request(req)
