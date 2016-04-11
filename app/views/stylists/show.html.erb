@@ -101,17 +101,19 @@
           <div class="row testimonials">
             <h3>Testimonials</h3>
             <% @stylist.testimonials.each do |testimonial| %>
-              <div class="testimonial">
-                <div class="text"><%= testimonial.text.html_safe %></div>
-                <% if testimonial.name.present? %>
-                <div class="name-region">
-                  <%= testimonial.name %>
-                  <% if testimonial.region.present? %>
-                   , <%= testimonial.region %>
+              <% if testimonial.text.present? %>
+                <div class="testimonial">
+                  <div class="text"><%= testimonial.text.html_safe %></div>
+                  <% if testimonial.name.present? %>
+                  <div class="name-region">
+                    <%= testimonial.name %>
+                    <% if testimonial.region.present? %>
+                     , <%= testimonial.region %>
+                    <% end %>
+                  </div>
                   <% end %>
                 </div>
-                <% end %>
-              </div>
+              <% end %>
             <% end %>
           </div>
 
