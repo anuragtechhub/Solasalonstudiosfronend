@@ -1,0 +1,34 @@
+<% if @location && @location.tours && @location.tours.size > 0 %>
+  <% tours = @location.tours %>
+  
+  <div class="container">
+    <h3 class="text-center">Take a Tour</h3>
+    <div class="row take-a-tour">
+      
+      <% if tours.size == 1 %>
+        <div class="one-tour">
+          <% tours.each do |tour| %>
+            <%= tour.html_safe %>
+          <% end %>
+        </div>
+      <% end %>
+    
+      <% if tours.size == 2 %>
+        <div class="two-tours">
+          <% tours.each do |tour| %>
+            <%= tour.html_safe %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if tours.size == 3 %>
+        <div class="three-tours">
+          <% tours.each do |tour| %>
+            <%= tour.html_safe %>
+          <% end %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>

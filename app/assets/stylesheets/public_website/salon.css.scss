@@ -32,6 +32,60 @@
   }
 }
 
+.take-a-tour {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  iframe {
+    max-width: 100%;
+    max-height: auto;
+    margin-bottom: 10px;
+  }
+
+  .one-tour {
+    text-align: center;
+  }
+
+  .two-tours {
+
+    iframe {
+      width: calc(50% - 11px);
+      float: left;
+      clear: none;
+
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .three-tours {
+
+    iframe {
+      width: calc(33% - 11.333px);
+      float: left;
+      clear: none;
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }  
+}
+
+@media (max-width: 660px) {
+  .take-a-tour {
+
+    iframe {
+      width: 100% !important;
+      float: none !important;
+      clear: both !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+
 .salon-amenities-benefits {
   padding: 0;
 

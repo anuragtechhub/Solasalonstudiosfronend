@@ -457,6 +457,17 @@ RailsAdmin.config do |config|
           end
         end
       end
+      group '360 Tours' do
+        field :tour_iframe_1 do
+          label 'Tour iFrame #1'
+        end
+        field :tour_iframe_2 do
+          label 'Tour iFrame #2'
+        end
+        field :tour_iframe_3 do
+          label 'Tour iFrame #3'
+        end
+      end
       group :digital_directory do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -731,6 +742,21 @@ RailsAdmin.config do |config|
           delete_method :delete_image_20
         end      
       end
+      group '360 Tours' do
+        active false
+        field :tour_iframe_1 do
+          label 'Tour iFrame #1'
+          help "If you need help finding your tour iframe code, please <a href='http://www.ambientlight.co.uk/google-maps-business-view-virtual-tours/add-your-tour-to-your-website' target='_blank'>click here</a>".html_safe
+        end
+        field :tour_iframe_2 do
+          label 'Tour iFrame #2'
+          help "If you need help finding your tour iframe code, please <a href='http://www.ambientlight.co.uk/google-maps-business-view-virtual-tours/add-your-tour-to-your-website' target='_blank'>click here</a>".html_safe
+        end
+        field :tour_iframe_3 do
+          label 'Tour iFrame #3'
+          help "If you need help finding your tour iframe code, please <a href='http://www.ambientlight.co.uk/google-maps-business-view-virtual-tours/add-your-tour-to-your-website' target='_blank'>click here</a>".html_safe
+        end
+      end      
       group :digital_directory do
         active false
         visible do

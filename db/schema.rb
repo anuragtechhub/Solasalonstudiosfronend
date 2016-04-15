@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304154555) do
+ActiveRecord::Schema.define(version: 20160415165225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -299,6 +299,9 @@ ActiveRecord::Schema.define(version: 20160304154555) do
     t.text     "callfire_list_ids"
     t.text     "custom_maps_url"
     t.text     "tracking_code"
+    t.text     "tour_iframe_1"
+    t.text     "tour_iframe_2"
+    t.text     "tour_iframe_3"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

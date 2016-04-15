@@ -331,6 +331,24 @@ class Location < ActiveRecord::Base
     services.join(', ')
   end
 
+  def tours
+    t = []
+
+    if self.tour_iframe_1.present?
+      t << self.tour_iframe_1
+    end
+
+    if self.tour_iframe_2.present?
+      t << self.tour_iframe_2
+    end
+
+    if self.tour_iframe_3.present?
+      t << self.tour_iframe_3
+    end    
+
+    return t
+  end
+
   def state_province
     states = {"Alabama" => "AL",
               "Alaska" => "AK",
