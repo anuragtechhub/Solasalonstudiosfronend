@@ -66,6 +66,24 @@
   }
 }
 
+.own.half-boxes {
+  margin-top: 10px;
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: 0;
+    
+    li h4 {
+      margin: 0 0 0 0 !important;
+      line-height: 29px;
+    }
+  }
+}
+.own.half-boxes.bottom-border {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 @media (max-width: 550px) {
 
   .contact-sola-today-carousel {
