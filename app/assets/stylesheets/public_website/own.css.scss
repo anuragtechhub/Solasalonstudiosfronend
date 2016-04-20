@@ -90,6 +90,22 @@ ul.own-list {
   }
 }
 
+.half-boxes.sola-pro {
+  height: 740px;
+}
+
+@media (max-width: 1125px) {
+  .half-boxes.sola-pro {
+    height: auto;
+  }
+
+  // .half-boxes.sola-sessions, .half-boxes.sola-pro {
+  //   .box-image {
+  //     height: 420px;
+  //   }
+  // }
+}
+
 @media (max-width: 550px) {
 
   .contact-sola-today-carousel {
