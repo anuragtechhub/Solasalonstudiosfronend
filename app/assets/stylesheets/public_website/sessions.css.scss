@@ -462,6 +462,10 @@
 
   .session {
 
+    .play-video {
+      margin-top: 20px;
+    }
+
     .description {
       font-size: 20px;
       line-height: 30px;
@@ -514,6 +518,33 @@
         padding-left: 30px;
         padding-right: 30px;
       }
+    }
+
+    .testimonials {
+
+      .owl-wrapper {
+
+        .owl-item {
+
+          .item {
+            margin: 0 60px;
+          }
+        }
+      }
+
+      .featured-testimonial {
+        
+        h1 {
+          font-size: 19px;
+          line-height: 31px;
+        }
+        
+        h3.subtle {
+          font-size: 19px;
+          line-height: 31px;
+        }
+      }
+
     }
   }
 
