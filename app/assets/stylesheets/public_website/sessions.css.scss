@@ -285,7 +285,11 @@
       text-transform: none;
       font-size: 39px;
       text-align: center;
-      margin: 0 0 30px 0;
+      margin: 0 0 60px 0;
+    }
+
+    .news-article {
+      border-top: 1px solid #E8E8E8;
     }
   }
 
@@ -293,14 +297,49 @@
     padding: 50px 0;
     background: #F8F8F8;
 
+    .arrow-left, .arrow-right {
+      -webkit-filter: contrast(100%) invert(100%);
+      filter: contrast(100%) invert(100%);
+    }
+
+    .arrow-left {
+      margin-left: -30px;
+    }
+    
+    .arrow-right {
+      margin-right: -30px;
+    }
+
     h2 {
       font-weight: normal;
       letter-spacing: 2px;
       color: #000;
       text-transform: none;
-      font-size: 39px;
+      font-size: 46px;
       text-align: center;
-      margin: 0 0 30px 0;
+      margin: 0 0 50px 0;
+    }
+
+    .featured-testimonial {
+      margin: 0 90px;
+      
+      h1 {
+        font-size: 33px;
+        line-height: 47px;
+        text-align: center;
+        color: #000;
+        margin-bottom: 40px;
+      }
+      
+      h3.subtle {
+        font-size: 33px;
+        line-height: 47px;
+        text-transform: none;
+        font-weight: normal;
+        text-align: center;
+        color: $brand-pink;
+        margin: 0;
+      }
     }
   }
 
