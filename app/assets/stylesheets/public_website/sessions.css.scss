@@ -11,6 +11,41 @@
     }
   }
 
+  .play-video {
+    display: block;
+    position: relative;
+    margin: 40px 0 0 0;
+
+    img {
+      border: 3px solid $brand-pink;
+      width: 100%;
+      height: auto;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -44px 0 0 -44px;
+      width: 88px;
+      height: 88px;
+      background: $brand-pink;
+      border-radius: 44px;
+
+      .fa-play {
+        font-size: 30px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -15px 0 0 -7.5px;
+        pointer-events: none;
+        color: #FFF;
+        //z-index: 3;
+     } 
+    }
+   
+  }
+
   .description {
     font-family: 'Dosis', Arial, sans-serif;
     color: #333;
