@@ -239,6 +239,71 @@
     }
   }
 
+  .past-events {
+    padding-top: 30px;
+    background: #f8f8f8;
+
+    h2 {
+      font-weight: normal;
+      letter-spacing: 2px;
+      color: $brand-pink;
+      text-transform: none;
+      font-size: 39px;
+      text-align: center;
+      margin: 0 0 30px 0;
+    }
+
+    .event {
+      margin-bottom: 60px;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        text-align: center;
+
+        .button:first-child {
+          margin-right: 15px;
+        }
+        .button:last-child {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+
+  .in-the-news {
+    margin-top: 30px;
+
+    h2 {
+      font-weight: normal;
+      letter-spacing: 2px;
+      color: $brand-pink;
+      text-transform: none;
+      font-size: 39px;
+      text-align: center;
+      margin: 0 0 30px 0;
+    }
+  }
+
+  .testimonials {
+    padding: 50px 0;
+    background: #F8F8F8;
+
+    h2 {
+      font-weight: normal;
+      letter-spacing: 2px;
+      color: #000;
+      text-transform: none;
+      font-size: 39px;
+      text-align: center;
+      margin: 0 0 30px 0;
+    }
+  }
+
   .ticketing {
     h1 {
       font-family: 'Lato', Arial, sans-serif;
@@ -413,4 +478,29 @@
     }
   }
 }  
+}
+
+@media (max-width: 450px) {
+
+  .session {
+
+    .past-events {
+
+      .event {
+        margin-bottom: 40px;
+
+        img {
+          margin-bottom: 20px;
+        }
+
+        .buttons {
+          .button {
+            margin: 0 0 10px 0 !important;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
 }

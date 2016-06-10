@@ -7,21 +7,7 @@
 
 <div class="container content-container news-articles">
   <% @articles.each do |article| %>
-    <div class="news-article">
-      <div class="image">
-        <%= link_to article.article_url, :target => '_blank' do %><%= image_tag article.image.url(:directory), :width => 240, :height => 240 %><% end %>
-      </div>
-      <div class="text">
-        <h4><%= link_to article.title.html_safe, article.article_url, :target => '_blank' %></h4>
-        <h4 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h4>
-        <p><%= article.summary.gsub(/<img[^>]+\>/, '').html_safe if article.summary %><br><strong><%= link_to 'Read More', article.article_url, :class => 'pink-link', :target => '_blank' %></strong></p>
-        <ul class="social">
-          <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{article.article_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <li><%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.article_url}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-          <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article.article_url}", :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-        </ul>
-      </div>
-    </div>
+    <%= render 'shared/news_summary', :article => article %>
   <% end %>
 </div>
 
