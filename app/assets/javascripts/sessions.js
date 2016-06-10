@@ -18,4 +18,30 @@ $(function () {
     $(document.body).animate({scrollTop: scrollTop});
   });
 
+  // galleries
+
+  $('#view-denver-gallery').click(function () {
+    var images = [];
+
+    $('#denver-gallery').find('span').each(function () {
+      images.push({href: $(this).data('src')});
+    });
+
+    $.swipebox(images);
+
+    return false;
+  });
+
+  $('#view-minneapolis-gallery').click(function () {
+    var images = [];
+
+    $('#minneapolis-gallery').find('span').each(function () {
+      images.push({href: $(this).data('src')});
+    });
+
+    $.swipebox(images);
+
+    return false;
+  });
+
 });
