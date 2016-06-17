@@ -5,6 +5,7 @@
   </div>
 
   <div class="hero-content">
+    <div class="hero-content-wrapper">
 
     <div class="hero-tabs">
       <div class="container">
@@ -18,20 +19,18 @@
     </div>
 
     <div class="hero-heading">
-      <div class="container">
-        <span class="light">Beautiful Studios. Exclusive Perks.</span><br /><span class="bold">At Sola, You Simply Get More!</span>
-      </div>
+      <span class="light">Beautiful Studios. Exclusive Perks.</span><br /><span class="bold">At Sola, You Simply Get More!</span>
     </div>
 
     <div class="hero-search">
       <div class="search-input-with-button">
         <%= form_tag [:search, :results], :method => :get do %>
-        <input type="text" placeholder="Find a Sola near you" name="query" class="large full-width query">
-        <button type="submit">Search</button>
+        <input type="text" placeholder="Find a Sola near you" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
         <% end %>
       </div>
     </div>
 
+    </div>
   </div>
 
 </div>

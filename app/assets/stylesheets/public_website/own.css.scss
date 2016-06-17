@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
 .own-your-salon {
 
   .hero-fullscreen {
@@ -14,28 +17,19 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0;  
-  }
+    right: 0; 
 
-  .hero-heading {
-    margin-top: 60px;
-  
-    text-align: center;
-    font-size: 49px;
-    line-height: 63px;
-    color: #FFF;
-
-    .light {
-      font-weight: 100;
-    }
-
-    .bold {
-      font-weight: bold;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
   }
 
   .hero-tabs {
-    margin-top: 60px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
 
     ul {
       list-style: none;
@@ -72,13 +66,47 @@
     }
   }  
 
+  .hero-heading {
+    //margin-top: -60px;
+
+    text-align: center;
+    font-size: 49px;
+    line-height: 63px;
+    color: #FFF;
+
+    .light {
+      font-weight: 100;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+  }
+
   .hero-search {
+    margin-top: 60px;
+
     .search-input-with-button {
+      width: 400px;
+      max-width: 400px;
+      margin: 0 auto;
+      white-space: nowrap;
+
       input {
-        height: 44px;
+        font-family: 'Dosis', Arial, sans-serif;
+        font-weight: bold;
+        display: inline-block;
+        height: 44px !important;
+        width: 270px;
+        padding: 5px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         background: transparent;
         color: #FFF;
         border: 1px solid #FFF;
+        text-align: center;
+        margin: 0;
+        vertical-align: top;
 
         &::-moz-placeholder {
           color: #FFF;
@@ -86,10 +114,26 @@
         }
         &:-ms-input-placeholder { color: #FFF; } // Internet Explorer 10+
         &::-webkit-input-placeholder  { color: #FFF; } // Safari and Chrome
+        &:focus::-moz-placeholder {
+          color: transparent;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        }
+        &:focus:-ms-input-placeholder { color: transparent; } // Internet Explorer 10+
+        &:focus::-webkit-input-placeholder  { color: transparent; } // Safari and Chrome
       }
 
       button {
+        width: 130px;
+        display: inline-block;
         height: 44px;
+        background: #FFF;
+        border: 0;
+        color: $brand-pink;
+
+        &:hover, &:active {
+          background: $brand-pink;
+          color: #FFF;
+        }
       }
     }
   }  
