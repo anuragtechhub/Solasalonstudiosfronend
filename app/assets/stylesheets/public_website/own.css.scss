@@ -60,7 +60,7 @@
       transition-property: none;
 
       &.active, &:hover, &:active {
-        border-bottom: 10px solid #FFF;
+        border-bottom-color: #FFF;
         color: #FFF;
       }
     }
@@ -84,7 +84,7 @@
   }
 
   .hero-search {
-    margin-top: 60px;
+    margin-top: 70px;
 
     .search-input-with-button {
       width: 400px;
@@ -139,6 +139,48 @@
   }  
 }
 
+@media (max-width: 750px) {
+
+  .own-your-salon {
+
+    .hero-tabs {
+      top: 15px;
+
+      a {
+        font-size: 10px;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        border-bottom-width: 6px;
+      }
+    }
+
+    .hero-heading {
+      margin-top: -15px;
+      font-size: 23px;
+      line-height: 31px;
+    }
+
+    .hero-search {
+      position: absolute;
+      bottom: 15px;
+
+      .search-input-with-button {
+        width: 330px;
+
+        input {
+          width: 200px;
+          font-size: 11px;
+        }
+
+        button {
+          font-size: 11px;
+        }
+      }
+    }
+
+  }
+
+}
 
 .explore-studio {
   position: relative;
