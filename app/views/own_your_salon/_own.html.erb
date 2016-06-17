@@ -1,4 +1,8 @@
-<div class="hero hero-fullscreen">
+<div class="hero-fullscreen">
+
+  <div class="hero-carousel owl-carousel owl-theme" data-autoplayoff="true">
+    <div class="item"><%= image_tag 'own/hero_1_desktop.jpg' %></div>
+  </div>
 
   <div class="hero-content">
 
@@ -19,8 +23,15 @@
       </div>
     </div>
 
-  </div>
+    <div class="hero-search">
+      <div class="search-input-with-button">
+        <%= form_tag [:search, :results], :method => :get do %>
+        <input type="text" placeholder="Find a Sola near you" name="query" class="large full-width query">
+        <button type="submit">Search</button>
+        <% end %>
+      </div>
+    </div>
 
-  <%= image_tag 'own/hero_1_desktop.jpg' %>
+  </div>
 
 </div>

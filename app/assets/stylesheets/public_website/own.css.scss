@@ -70,7 +70,29 @@
         color: #FFF;
       }
     }
-  }    
+  }  
+
+  .hero-search {
+    .search-input-with-button {
+      input {
+        height: 44px;
+        background: transparent;
+        color: #FFF;
+        border: 1px solid #FFF;
+
+        &::-moz-placeholder {
+          color: #FFF;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        }
+        &:-ms-input-placeholder { color: #FFF; } // Internet Explorer 10+
+        &::-webkit-input-placeholder  { color: #FFF; } // Safari and Chrome
+      }
+
+      button {
+        height: 44px;
+      }
+    }
+  }  
 }
 
 
