@@ -2,7 +2,12 @@
 
 en:
 
+  brand_name: Sola Salon Studios
+
   page:
+
+    about:
+      title: About Us
     
     blog:
       title: Blog
@@ -20,7 +25,8 @@ en:
       title: Gallery
     
     locations:
-      title: Sola Locations
+      title: Locations
+      title_long: Sola Locations
     
     news:
       title: In the news
@@ -30,6 +36,10 @@ en:
     
     testimonials:
       title: Testimonials
+
+  header:
+    rent_studio_button: Rent a Studio
+    search_placeholder: Search by city, location or stylist...
 
   footer:
     rent_studio_button: Rent a Studio

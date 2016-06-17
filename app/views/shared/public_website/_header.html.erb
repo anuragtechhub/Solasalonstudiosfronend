@@ -6,8 +6,7 @@
         <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
         <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
         <li class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-        <li class="border-left border-right"><%= link_to :rent_a_studio do %>Rent a Studio<% end %></li>
-        <!-- <li class="border-left border-right"><%= link_to 'http://solastylists.herokuapp.com', :target => '_blank' do %>Salon Professional Login<% end %></li> -->
+        <li class="border-left border-right"><%= link_to :rent_a_studio do %><%= raw t 'header.rent_studio_button' %><% end %></li>
       </ul>
     </div>
   </div>
@@ -19,18 +18,18 @@
 
       <div id="mobile-top-nav-button"></div>
 
-      <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => 'Sola Salon Studios' %><% end %>
+      <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
       
       <ul class="nav">
-        <li><h3><%= link_to 'Own Your Salon', :own_your_salon %></h3></li>
-        <li><h3><%= link_to 'About Us', :about_us %></h3></li>
-        <li><h3><%= link_to 'Locations', :locations %></h3></li>
-        <li><h3><%= link_to 'Find a Salon Professional', :salon_professionals %></h3></li>
-        <li><h3><%= link_to 'Blog', :blog %></h3></li>
+        <li><h3><%= link_to raw(t('page.own.title')), :own_your_salon %></h3></li>
+        <li><h3><%= link_to raw(t('page.about.title')), :about_us %></h3></li>
+        <li><h3><%= link_to raw(t('page.locations.title')), :locations %></h3></li>
+        <li><h3><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h3></li>
+        <li><h3><%= link_to raw(t('page.blog.title')), :blog %></h3></li>
       </ul>
 
       <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>
-        <input class="nav-search-input" placeholder="Search by city, location or stylist..." type="search" name="query">
+        <input class="nav-search-input" placeholder="<%= raw t 'header.search_placeholder' %>" type="search" name="query">
         <span class="nav-search-button ss-search"></span>
       <% end %>
 
