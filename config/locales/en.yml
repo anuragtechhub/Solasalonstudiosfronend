@@ -1,8 +1,41 @@
 
 
 en:
-  dont_just_dream_do: "Don't Just Dream. DO!"
-  become_a_salon_owner: "Become a Boutique Salon Owner Today."
-  freedom_to_live_the_life_you_love: "Freedom to live the life you love"
-  find_the_location_nearest_to_you: "Find the location nearest to you"
-  watch_our_video: "Watch our video"
+
+  page:
+    
+    blog:
+      title: Blog
+    
+    contact:
+      title: Contact Us
+    
+    faqs:
+      title: FAQs
+    
+    find_salon_pro:
+      title: Find a Salon Professional
+    
+    gallery:
+      title: Gallery
+    
+    locations:
+      title: Sola Locations
+    
+    news:
+      title: In the news
+    
+    own:
+      title: Own Your Salon
+    
+    testimonials:
+      title: Testimonials
+
+  footer:
+    rent_studio_button: Rent a Studio
+    second_column_heading: More Information
+    third_column_heading: Stay in Touch
+    join_newsletter: Join our newsletter
+    email_placeholder: Your email address
+    join_button: Join
+    legal: Sola Salon Studios - Your Life, Your Style &copy; Copyright

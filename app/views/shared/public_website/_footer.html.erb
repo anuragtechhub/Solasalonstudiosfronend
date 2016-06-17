@@ -4,42 +4,42 @@
     <div class="row first">
       
       <div class="one-third column first">
-          <%= link_to 'Rent a Studio', :contact_us, :class => 'button block long-text' %>          
+          <%= link_to raw(t('footer.rent_studio_button')), :contact_us, :class => 'button block long-text' %>          
         </p>
       </div>
       
       <div class="one-third column second">
-        <h3>More Information</h3>
+        <h3><%= raw t 'footer.second_column_heading' %></h3>
         <div class="row">
           <div class="one-half column">
             <ul class="p">
-              <li><%= link_to 'Contact Us', :contact_us %></li>
-              <li><%= link_to 'In the News'.html_safe, :news %></li>
-              <li><%= link_to 'Testimonials', :testimonials %></li>
-              <li><%= link_to 'FAQs', :faqs %></li>
-              <li><%= link_to 'Blog', :blog %></li>
+              <li><%= link_to raw(t('page.contact.title')), :contact_us %></li>
+              <li><%= link_to raw(t('page.news.title')), :news %></li>
+              <li><%= link_to raw(t('page.testimonials.title')), :testimonials %></li>
+              <li><%= link_to raw(t('page.faqs.title')), :faqs %></li>
+              <li><%= link_to raw(t('page.blog.title')), :blog %></li>
             </ul>
           </div>
           <div class="one-half column last">
             <ul class="p last">
-              <li><%= link_to 'Own Your Salon', :own_your_salon %></li>
-              <li><%= link_to 'Find a Salon Professional', :salon_professionals %></li>
-              <li><%= link_to 'Sola Locations', :locations %></li>
-              <li><%= link_to 'Gallery', :gallery %></li>
+              <li><%= link_to raw(t('page.own.title')), :own_your_salon %></li>
+              <li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
+              <li><%= link_to raw(t('page.locations.title')), :locations %></li>
+              <li><%= link_to raw(t('page.gallery.title')), :gallery %></li>
             </ul>
           </div>
         </div>
       </div>
       
       <div class="one-third column third">
-        <h3>Stay in Touch</h3>
+        <h3><%= raw t 'footer.third_column_heading' %></h3>
 
-        <p>Join our newsletter</p>
+        <p><%= raw t 'footer.join_newsletter' %></p>
         
         <%= form_tag :newsletter_sign_up, :class => 'footer-newsletter-sign-up' do %>
           <div class="newsletter-sign-up">
-            <input type="email" name="email" class="input" placeholder="Your email address" >
-            <button type="submit" class="button">Join</button>
+            <input type="email" name="email" class="input" placeholder="<%= raw t 'footer.email_placeholder' %>" >
+            <button type="submit" class="button"><%= raw t 'footer.join_button' %></button>
           </div>
         <% end %>
 
@@ -54,7 +54,7 @@
     </div>
 
     <div class="row second">
-      <p class="subtle">Sola Salon Studios - Your Life, Your Style &copy; Copyright <%= Time.now.year %></p>
+      <p class="subtle"><%= raw t 'footer.legal' %> <%= Time.now.year %></p>
     </div>
 
   </div>
