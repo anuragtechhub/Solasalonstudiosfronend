@@ -1,3 +1,79 @@
+.own-your-salon {
+
+  .hero-fullscreen {
+    position: relative;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;  
+  }
+
+  .hero-heading {
+    margin-top: 60px;
+  
+    text-align: center;
+    font-size: 49px;
+    line-height: 63px;
+    color: #FFF;
+
+    .light {
+      font-weight: 100;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+  }
+
+  .hero-tabs {
+    margin-top: 60px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      display: block;
+      float: left;
+      width: calc(25% - 3px);
+      margin-right: 3px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      padding-bottom: 15px;
+      text-align: center;
+      border-bottom: 10px solid rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.6);
+
+      -moz-transition-property: none;
+      -webkit-transition-property: none;
+      -o-transition-property: none;
+      transition-property: none;
+
+      &.active, &:hover, &:active {
+        border-bottom: 10px solid #FFF;
+        color: #FFF;
+      }
+    }
+  }    
+}
+
+
 .explore-studio {
   position: relative;
   margin-bottom: -7px;

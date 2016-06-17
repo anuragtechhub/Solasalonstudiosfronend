@@ -1,7 +1,7 @@
 Solasalonstudios::Application.routes.draw do
 
-  
   mount Ckeditor::Engine => '/ckeditor'
+
   get "home" => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
   root 'home#index'
@@ -26,6 +26,7 @@ Solasalonstudios::Application.routes.draw do
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get 'own' => 'own_your_salon#index'
+  get 'own-new' => 'own_your_salon#new'
   get 'amenities' => 'own_your_salon#index'
   
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
