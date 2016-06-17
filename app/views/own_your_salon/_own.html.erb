@@ -1,4 +1,4 @@
-<div class="hero-fullscreen">
+<div class="hero-fullscreen hero-tab-content" data-ref="#own">
 
   <div class="hero-carousel owl-carousel owl-theme" data-autoplayoff="true">
     <div class="item"><%= image_tag 'own/hero_1_desktop.jpg' %></div>
@@ -7,28 +7,19 @@
   <div class="hero-content">
     <div class="hero-content-wrapper">
 
-    <div class="hero-tabs">
-      <div class="container">
-        <ul>
-          <li><a href="#own" class="active">Own Your Salon</a></li>
-          <li><a href="#amenities">Studio Amenities</a></li>
-          <li><a href="#sola_pro">Sola Pro</a></li>
-          <li><a href="#sola_sessions">Sola Sessions</a></li>
-        </ul>
-      </div>
-    </div>
+      <%= render 'tabs', :active => 'own' %>
 
-    <div class="hero-heading">
-      <span class="light">Beautiful Studios. Exclusive Perks.</span><br /><span class="bold">At Sola, You Simply Get More!</span>
-    </div>
-
-    <div class="hero-search">
-      <div class="search-input-with-button">
-        <%= form_tag [:search, :results], :method => :get do %>
-        <input type="text" placeholder="Find a Sola near you" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
-        <% end %>
+      <div class="hero-heading">
+        <span class="light">Beautiful Studios. Exclusive Perks.</span><br /><span class="bold">At Sola, You Simply Get More!</span>
       </div>
-    </div>
+
+      <div class="hero-search">
+        <div class="search-input-with-button">
+          <%= form_tag [:search, :results], :method => :get do %>
+          <input type="text" placeholder="Find a Sola near you" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
+          <% end %>
+        </div>
+      </div>
 
     </div>
   </div>
