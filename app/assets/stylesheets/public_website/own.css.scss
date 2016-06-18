@@ -163,9 +163,28 @@
   }  
 }
 
+@media (max-width: 1150px) {
+  .own-your-salon {
+
+    .hero-fullscreen {
+
+      img {
+        min-height: 450px;
+      }
+    }
+  }
+}
+
 @media (max-width: 750px) {
 
   .own-your-salon {
+
+    .hero-fullscreen {
+
+      img {
+        min-height: initial;
+      }
+    }
 
     .hero-tabs {
       top: 15px;
