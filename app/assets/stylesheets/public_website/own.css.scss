@@ -9,6 +9,24 @@
     img {
       width: 100%;
       height: auto;
+      min-height: 650px;
+    }
+  }
+
+  .owl-carousel-poster {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; 
+    z-index: 99;
+  }
+
+  .hero-tab-content {
+    display: none;
+
+    &:first-child {
+      display: block;
     }
   }
 
@@ -19,7 +37,12 @@
     left: 0;
     right: 0; 
 
-    display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex; 
+
     flex-direction: column;
     justify-content: center;
     align-items: center;     
@@ -30,6 +53,7 @@
     top: 60px;
     left: 0;
     right: 0;
+    z-index: 9999;
 
     ul {
       list-style: none;

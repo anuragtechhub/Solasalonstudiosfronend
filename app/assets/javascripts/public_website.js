@@ -24,6 +24,7 @@ $(function () {
         "<i class='arrow-left'></i>",
         "<i class='arrow-right'></i>"
       ],
+      lazyEffect: false,
       slideSpeed: 300,
       pagination: false,
       autoPlay: 5000,
@@ -51,6 +52,11 @@ $(function () {
 
     if ($this.data('autoplayoff')) {
       options['autoPlay'] = false
+    }
+
+    if ($this.data('pagination')) {
+      console.log('pagination')
+      options['pagination'] = true;
     }
 
     $this.owlCarousel(options);
