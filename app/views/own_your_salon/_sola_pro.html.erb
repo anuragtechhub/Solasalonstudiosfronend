@@ -16,7 +16,57 @@
   </div>
 
   <div class="container">
-    <h1>Sola Pro</h1>
+
+    <div class="row">
+      <div class="one-third column">
+        <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570 %>
+      </div>
+      <div class="two-thirds column">
+        <h2 class="light">Sola Pro</h2>
+
+        <ul class="sola-pro-benefits">
+          <li><strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.</li>
+          <li><strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!</li>
+          <li><strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.</li>
+          <li><strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!</li>
+          <li><strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lead">Download app or view <%= link_to 'solaprofessional.com', 'https://www.solaprofessional.com' %></p>
+
+    <h2 class="brand">Check Out a Sneak Peek of Sola Pro!</h2>
+
+    <div class="session">
+      <a href="//www.youtube.com/watch?v=St-c9SRjbhE"" class="play-video" rel="St-c9SRjbhE">
+        <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456 %>
+        <div class="play-btn">
+          <span class="fa fa-5x fa-play"></span>
+        </div>
+      </a>
+    </div> 
+       
+  </div>
+
+  <div class="callout black callout-testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="one-third column">
+          <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait' %>
+        </div>
+        <div class="two-thirds column">
+          <h1>"There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!"</h1>
+          <h3>Jessica Zeinstra</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+    </div>
   </div>
 
 </div>
