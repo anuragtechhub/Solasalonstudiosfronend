@@ -55,7 +55,6 @@ $(function () {
     }
 
     if ($this.data('pagination')) {
-      console.log('pagination')
       options['pagination'] = true;
     }
 
