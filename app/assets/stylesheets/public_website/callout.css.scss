@@ -223,6 +223,31 @@
     }
   }
 
+  &.pure-black {
+    background: #000;
+
+    .testimonial-portrait {
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .content {
+      padding-top: 30px;
+
+      h1 {
+        font-family: 'Lato', sans-serif;
+        color: #FFF;
+        font-size: 25px;
+        line-height: 35px;
+
+        span {
+          color: $brand-pink;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
   &.special {
     background: #F9F9F9;
     border-top: 1px solid #EAEAEA;

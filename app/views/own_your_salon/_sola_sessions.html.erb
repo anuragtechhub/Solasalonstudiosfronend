@@ -21,7 +21,41 @@
   </div>
 
   <div class="container">
-    <h1>Sola Sessions</h1>
+    
+    <h2 class="text-center">The Sola Sessions</h2>
+
+    <p class="text-center">Inspiration. Education. Community. The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community.</p>
+    <p class="text-center">&#9679; Learn from the industry's best! &#9679; Intimate, Sola-exclusive events</p>
+    <p class="text-center">&#9679; <%= link_to '4 cities per year', :sessions %> – Join us in a city near you!</p>
+
+    <div class="session">
+      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
+        <%= image_tag 'sessions/video_thumb.jpg' %>
+        <div class="play-btn">
+          <span class="fa fa-5x fa-play"></span>
+        </div>
+      </a>
+    </div>
+
+    <p class="text-center"><%= link_to 'Learn More', :sessions, :class => 'button primary' %>
+
+  </div>
+
+  <div class="callout pure-black callout-testimonial">
+    <div class="container">
+      <div class="row">
+        <%= image_tag 'own/tammy_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
+        <div class="content">
+          <h1>"My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous." <span>Tammy Muniz</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+    </div>
   </div>
 
 </div>
