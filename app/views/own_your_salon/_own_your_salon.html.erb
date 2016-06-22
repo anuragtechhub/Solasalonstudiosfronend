@@ -28,18 +28,20 @@
 
   </div>
 
-  <div class="container">
+  <div class="container inset-container">
 
-    <div class="row">
-      <p><strong>Don't Just Dream. DO! Become a Boutique Salon Owner Today.</strong></p>
+    <div class="row" style="margin-top: 15px; margin-bottom: 15px">
+      <p class="lead text-center"><strong>Don't Just Dream. DO! Become a Boutique Salon Owner Today.</strong></p>
     </div>
+
+    <hr />
 
     <div class="row">
       <div class="one-third column">
         <%= image_tag 'own/own1.jpg', :class => 'u-full-width', :width => 419, :height => 443 %>
       </div>
       <div class="two-thirds column">
-        <h2 class="light">Be In Business For Yoursef, Not By Yourself</h2>
+        <h2 class="light">Be In Business For Yoursef,<br />Not By Yourself</h2>
         <p>Salon professionals choose Sola for many reasons: to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money, for starters. But mainly, it’s about freedom and control. Sola empowers stylists by alleviating the risks and hassles associated with traditional salon ownership. We provide high-end, move-in ready studios along with the support and tools you need to launch your salon business in no time. So, join our community of 6,000+ like-minded salon professionals and get one step closer to living the life you love!</p>
       </div>
     </div>
@@ -56,10 +58,12 @@
       </div>
     </div>
 
-    <h2 class="brand">Find Out Why Salon<br />Professionals Choose Sola!</h2>
+    <hr />
+
+    <h2 class="brand text-center" style="margin-top:30px">Find Out Why Salon<br />Professionals Choose Sola!</h2>
 
     <div class="session">
-      <a href="//www.youtube.com/watch?v=St-c9SRjbhE"" class="play-video" rel="St-c9SRjbhE">
+      <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video" rel="St-c9SRjbhE">
         <%= image_tag 'video_poster_2016.png', :width => 1280, :height => 720 %>
         <div class="play-btn">
           <span class="fa fa-5x fa-play"></span>
@@ -67,8 +71,32 @@
       </a>
     </div>
 
-    <p class="text-center">Join our community and experience a level of creative independence and career support you won't find anywhere else. <%= link_to raw(t('page.about.title')), :about %></p>
+    <p class="larger text-center inset-p">Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else. <%= link_to 'About Sola', :about %></p>
 
+  </div>
+
+  <div class="callout pure-black callout-testimonial">
+    <div class="container">
+      <div class="row">
+        <%= image_tag 'own/brandie_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
+        <div class="content">
+          <h1>"When I moved to Sola, I fell in love with my craft again. The privacy of my own suite allows me to create my own vibes, energy and focus."</h1>
+          <h1><span>Brandie Kekoa</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout green" style="margin-bottom: 5px">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><%= link_to 'View More Testimonials'.html_safe, :testimonials %></h3>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+    </div>
   </div>
 
 </div>

@@ -225,6 +225,8 @@
 
   &.pure-black {
     background: #000;
+    margin-bottom: 5px;
+    padding-bottom: 45px;
 
     .testimonial-portrait {
       border-radius: 0;
@@ -233,16 +235,19 @@
 
     .content {
       padding-top: 30px;
+      text-align: center;
 
       h1 {
         font-family: 'Lato', sans-serif;
         color: #FFF;
         font-size: 25px;
         line-height: 35px;
+        text-align: center;
+        margin-bottom: 5px;
 
         span {
           color: $brand-pink;
-          font-weight: bold;
+          font-weight: normal;
         }
       }
     }
