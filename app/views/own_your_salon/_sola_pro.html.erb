@@ -19,26 +19,35 @@
 
     <div class="row">
       <div class="one-third column">
-        <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570 %>
+        <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
       </div>
       <div class="two-thirds column">
-        <h2 class="light">Sola Pro</h2>
+        <div class="left-padding">
+          <h2 class="light">Sola Pro</h2>
 
-        <ul class="sola-pro-benefits">
-          <li><strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.</li>
-          <li><strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!</li>
-          <li><strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.</li>
-          <li><strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!</li>
-          <li><strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.</li>
-        </ul>
+          <ul class="sola-pro-benefits">
+            <li><strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.</li>
+            <li><strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!</li>
+            <li><strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.</li>
+            <li><strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!</li>
+            <li><strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <p class="lead">Download app or view <%= link_to 'solaprofessional.com', 'https://www.solaprofessional.com' %></p>
+    <div class="download-buttons text-center">
+      <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8"><%= image_tag 'own/ios_appstore.png', :width => 257, :height => 79 %></a>
+      <a href="https://play.google.com/store/apps/details?id=com.solaprofessional"><%= image_tag 'own/android_appstore.png', :width => 242, :height => 80 %></a>
+    </div>
 
-    <h2 class="brand">Check Out a Sneak Peek of Sola Pro!</h2>
+    <p class="larger text-center">Download app or view <%= link_to 'solaprofessional.com', 'https://www.solaprofessional.com' %></p>
 
-    <div class="session">
+    <hr />
+
+    <h2 class="brand text-center" style="margin-top: 15px">Check Out a Sneak Peek of Sola Pro!</h2>
+
+    <div class="session" style="margin-bottom: 30px">
       <a href="//www.youtube.com/watch?v=St-c9SRjbhE"" class="play-video" rel="St-c9SRjbhE">
         <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456 %>
         <div class="play-btn">

@@ -346,6 +346,15 @@
       }
 
     }
+
+    &.pure-black {
+      .content {
+        h1 {
+          font-size: 20px;
+          line-height: 30px;
+        }
+      }
+    }
   }
 
   .callout-testimonial {

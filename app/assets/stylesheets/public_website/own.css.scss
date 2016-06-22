@@ -272,15 +272,37 @@
 
   .sola-pro-benefits {
     margin: 20px auto;
-    max-width: 500px;
 
     li {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: 17px;
+      line-height: 27px;
       list-style: none;
-      margin: 25px 0;
+      margin: 30px 0;
     }
   } 
+
+  .download-buttons {
+    margin-top: 40px;
+    overflow: visible;
+    white-space: nowrap;
+    text-align: center;
+
+    a {
+      opacity: 0.5;
+
+      &:first-child {
+        margin-right: 40px;
+      }
+
+      &:last-child {
+        margin-left: 40px;
+      }
+    }
+  }
+
+  .left-padding {
+    padding-left: 40px;
+  }
 }
 
 @media (max-width: 1150px) {
@@ -296,6 +318,27 @@
 }
 
 @media (max-width: 750px) {
+  .own-your-salon {
+    .download-buttons {
+      margin-top: 20px;
+
+      a {
+
+        img {
+          max-width: calc(50% - 20px);
+          height: auto;
+        }
+
+        &:first-child {
+          margin-right: 20px;
+        }
+
+        &:last-child {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 
   .own-your-salon {
 
@@ -454,6 +497,14 @@ ul.own-list {
 }
 
 @media (max-width: 550px) {
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .left-padding {
+    padding-left: 0px !important;
+  }
 
   .contact-sola-today-carousel {
     .owl-theme .owl-controls {
