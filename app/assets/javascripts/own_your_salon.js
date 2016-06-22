@@ -3,6 +3,7 @@
 $(function () {
 
   // visibility check (to hide owl-carousel-poster)
+
   setInterval(function () {
     $('.hero-tab-content').each(function () {
       var $this = $(this);
@@ -13,13 +14,21 @@ $(function () {
     });
   }, 200);
 
+  /* amenities dots */
+
   $('.dot').each(function () {
     var $this = $(this);
     $this.tooltipster({theme: 'tooltipster-hughes', content: $($this.data('tooltip'))});
   });
 
+  /* tabs */
+
   $('.hero-tabs a').on('click', function () {
-    $('.hero-tab-content').hide().filter('[data-ref=' + $(this).attr('href') + ']').show();
+    var href = $(this).attr('href').slice(1);
+
+    $('.hero-tab-content').hide().filter('[data-ref=#' + href + ']').show();
+    window.history.pushState(null, null, '/own-new/' + href);
+
     return false;
   });
 
