@@ -20,15 +20,18 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container container-inset">
     
-    <h2 class="text-center">The Sola Sessions</h2>
+    <p class="lead text-center" style="font-size: 25px;margin-bottom: 30px;"><strong>The Sola Sessions</strong></h2>
 
-    <p class="text-center">Inspiration. Education. Community. The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community.</p>
-    <p class="text-center">&#9679; Learn from the industry's best! &#9679; Intimate, Sola-exclusive events</p>
-    <p class="text-center">&#9679; <%= link_to '4 cities per year', :sessions %> – Join us in a city near you!</p>
+    <p class="largest text-center"><strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community.</p>
+    <p class="largest text-center">
+      <span class="bullet">&#9679;</span> Learn from the industry's best! &nbsp;<span class="bullet">&#9679;</span> Intimate, Sola-exclusive events
+      <br />
+      <span class="bullet">&#9679;</span> <%= link_to '4 cities per year', :sessions %> – Join us in a city near you!
+    </p>
 
-    <div class="session">
+    <div class="session" style="margin: 40px auto">
       <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
         <%= image_tag 'sessions/video_thumb.jpg' %>
         <div class="play-btn">
@@ -37,7 +40,7 @@
       </a>
     </div>
 
-    <p class="text-center"><%= link_to 'Learn More', :sessions, :class => 'button primary' %>
+    <p class="text-center" style="margin-bottom: 40px"><%= link_to 'Learn More', :sessions, :class => 'button primary' %>
 
   </div>
 

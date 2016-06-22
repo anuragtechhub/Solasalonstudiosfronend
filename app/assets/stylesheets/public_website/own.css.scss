@@ -41,6 +41,19 @@
       margin: 40px auto 45px auto;
     }
 
+    &.largest {
+      font-size: 16px;
+      color: #000;
+      margin: 20px auto 25px auto;
+
+      .bullet {
+        font-size: 13px;
+        margin-right: 1px;
+        position: relative;
+        top: -1px;
+      }
+    }
+
     &.lead {
       font-size: 19px;
       color: #000;
