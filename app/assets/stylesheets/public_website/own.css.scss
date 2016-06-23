@@ -221,8 +221,8 @@
           color: transparent;
           opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
         }
-        &:focus:-ms-input-placeholder { color: transparent; } // Internet Explorer 10+
-        &:focus::-webkit-input-placeholder  { color: transparent; } // Safari and Chrome
+        // &:focus:-ms-input-placeholder { color: transparent; } // Internet Explorer 10+
+        // &:focus::-webkit-input-placeholder  { color: transparent; } // Safari and Chrome
       }
 
       button {

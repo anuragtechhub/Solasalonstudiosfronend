@@ -18,7 +18,7 @@
         <div class="hero-search">
           <div class="search-input-with-button">
             <%= form_tag [:search, :results], :method => :get do %>
-            <input type="text" placeholder="Find a Sola near you" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
+            <input type="text" placeholder="Find a Sola near you" data-placeholder-blur="Find a Sola near you" data-placeholder-focus="Search by city, state or zip" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
             <% end %>
           </div>
         </div>

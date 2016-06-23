@@ -32,4 +32,13 @@ $(function () {
     return false;
   });
 
+  /* placeholder text toggle */
+  $('input[data-placeholder-focus][data-placeholder-blur]').focus(function() {
+    var $this = $(this);
+    $this.attr('placeholder', $this.data('placeholder-focus'));
+  }).blur(function() {
+    var $this = $(this);
+    $this.attr('placeholder', $this.data('placeholder-blur'));
+  });
+
 });
