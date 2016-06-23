@@ -180,9 +180,9 @@ $(function () {
   // contact-us-request-a-tour tooltip init
   if (window.location.hash == '#contact-us-success') {
     $('#contact-us-request-a-tour').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', 'Thank you! We will get in touch soon').tooltipster('show');
-    setTimeout(function () {
-      window.location.hash = '#rent-a-studio';
-    }, 3000);
+    // setTimeout(function () {
+    //   window.location.hash = '#rent-a-studio';
+    // }, 3000);
   }
   
 
