@@ -226,12 +226,15 @@
       }
 
       button {
-        width: 130px;
+        width: 110px;
         display: inline-block;
         height: 44px;
         background: #FFF;
         border: 0;
         color: $brand-pink;
+        text-overflow: visible;
+        padding-left: 0;
+        padding-right: 0;
 
         &:hover, &:active {
           background: $brand-pink;
@@ -428,18 +431,32 @@
 
     #amenity-description {
       position: absolute;
-      bottom: 10px;
-      padding: 0 15px;
+      bottom: 5px;
+      padding: 0 10px;
 
       h3 {
-        font-size: 20px;
+        font-size: 18px;
+        margin-bottom: 5px;
       }
 
       p {
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 13px;
+        line-height: 18px;
       }
     }
+
+    .play-btn {
+      margin: -22px 0 0 -22px !important;
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 22px !important;
+
+      .fa-play {
+        font-size: 20px !important;
+        line-height: 20px !important;
+        margin: -10px 0 0 -5px !important;
+      }
+     } 
 
   }
 }
@@ -481,7 +498,10 @@
   }
 
   .own-your-salon {
-
+    h2.brand {
+      font-size: 31px;
+      line-height: 39px;    
+    }
     .hero-fullscreen {
 
       img {
@@ -637,6 +657,12 @@ ul.own-list {
 }
 
 @media (max-width: 550px) {
+
+  .own-your-salon {
+    .own-mobile-img {
+      margin-bottom: 15px;
+    }
+  }
 
   .hide-on-mobile {
     display: none !important;
