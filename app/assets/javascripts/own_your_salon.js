@@ -1,5 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+
+
 $(function () {
 
   // visibility check (to hide owl-carousel-poster)
@@ -40,20 +42,5 @@ $(function () {
     var $this = $(this);
     $this.attr('placeholder', $this.data('placeholder-blur'));
   });
-
-
-  function fullscreenImage() {
-    var $win = $(window);
-    var $header = $('#header');
-    var $top_header = $('#top-header');
-
-    console.log('window', $win.width(), $win.outerHeight());
-    console.log('$header', $header.outerHeight());
-    console.log('$top_header', $top_header.outerHeight());
-
-    $('.hero-carousel .item img:first-child').width($win.width()).height($win.height() - $header.outerHeight() - $top_header.outerHeight());
-  };
-  
-  fullscreenImage();
 
 });
