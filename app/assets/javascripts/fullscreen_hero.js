@@ -9,7 +9,7 @@
       var $item = $(this);
       var $image = $item.find('img.fullscreen');
       
-      var idealHeight = $window.height() - $header.height() - $top_header.height();
+      var idealHeight = $window.height() - $header.height() - ($top_header.is(':visible') ? $top_header.height() : 0);
       var idealWidth = $window.width();
 
       $item.width(idealWidth).height(idealHeight);
