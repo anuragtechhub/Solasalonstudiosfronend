@@ -18,10 +18,17 @@
       var imageHeight = $image.data('height');
       var aspectRatio = imageWidth / imageHeight;
       
-      var newWidth = idealHeight * aspectRatio;
+      var newHeight = idealHeight;
+      var newWidth = newHeight * aspectRatio;
       var newLeft = -Math.abs((newWidth - idealWidth) / 2);
 
-      $image.width(newWidth).height(idealHeight).css('left', newLeft);
+      if (newWidth < idealWidth) {
+        newWidth = idealWidth;
+        newHeight = newWidth * (imageHeight / imageWidth);
+        newLeft = 0;
+      }
+
+      $image.width(newWidth).height(newHeight).css('left', newLeft);
     });
   };
 
