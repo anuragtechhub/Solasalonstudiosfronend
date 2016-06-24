@@ -9,8 +9,7 @@
   function studioAmenitiesCheck(idealHeight) {
     // check Studio Amenities to see if its taller than the fold
     if ($studio_amenities_image.is(':visible') && $studio_amenities_image.height() > idealHeight) {
-      console.log('amenities image is taller than the ideal height');
-      $amenity_description.css('bottom', $studio_amenities_image.height() - idealHeight);
+      $amenity_description.css('bottom', $studio_amenities_image.height() - idealHeight + 10);
     } else {
       $amenity_description.removeAttr('style');
     }
