@@ -727,9 +727,11 @@ ul.own-list {
   .own-your-salon {
     .arrow-left {
       left: 10px;
+      zoom: 0.75;
     }
     .arrow-right {
       right: 10px;
+      zoom: 0.75;
     }
     .own-mobile-img {
       margin-bottom: 15px;
@@ -768,11 +770,11 @@ ul.own-list {
     }
     .arrow-left {
       display: none !important;
-      left: -5px !important;
+      left: 0px !important;
     }
     .arrow-right {
       display: none !important;
-      right: -5px !important;
+      right: 0px !important;
     }
     .contact-sola-today {
       margin: 0 30px;
