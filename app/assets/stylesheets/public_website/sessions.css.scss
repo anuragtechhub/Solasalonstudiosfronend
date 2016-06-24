@@ -26,18 +26,18 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      margin: -44px 0 0 -44px;
-      width: 88px;
-      height: 88px;
+      margin: -34px 0 0 -34px;
+      width: 68px;
+      height: 68px;
       background: $brand-pink;
-      border-radius: 44px;
+      border-radius: 34px;
 
       .fa-play {
-        font-size: 30px;
+        font-size: 28px;
         position: absolute;
         top: 50%;
         left: 50%;
-        margin: -15px 0 0 -7.5px;
+        margin: -14px 0 0 -7px;
         pointer-events: none;
         color: #FFF;
         //z-index: 3;

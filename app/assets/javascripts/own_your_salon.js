@@ -6,15 +6,15 @@ $(function () {
 
   // visibility check (to hide owl-carousel-poster)
 
-  setInterval(function () {
-    $('.hero-tab-content').each(function () {
-      var $this = $(this);
+  // setInterval(function () {
+  //   $('.hero-tab-content').each(function () {
+  //     var $this = $(this);
 
-      if ($this.is(':visible') && $this.find('.owl-carousel-poster').is(':visible')) {
-        $this.find('.owl-carousel-poster').fadeOut(2000);
-      }
-    });
-  }, 200);
+  //     if ($this.is(':visible') && $this.find('.owl-carousel-poster').is(':visible')) {
+  //       $this.find('.owl-carousel-poster').fadeOut(2000);
+  //     }
+  //   });
+  // }, 200);
 
   /* amenities dots */
 
