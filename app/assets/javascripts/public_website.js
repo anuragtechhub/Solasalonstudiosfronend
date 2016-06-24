@@ -27,7 +27,7 @@ $(function () {
       lazyEffect: false,
       slideSpeed: 300,
       pagination: false,
-      //autoPlay: 5000,
+      autoPlay: 5000,
       transitionStyle : "fade"
     };
 
