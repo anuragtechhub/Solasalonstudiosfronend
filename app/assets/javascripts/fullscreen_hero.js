@@ -3,15 +3,27 @@
   var $window = $(window);
   var $header = $('#header');
   var $top_header = $('#top-header');
+  var $studio_amenities_image = $('#studio_amenities_img');
+  var $amenity_description = $('#amenity-description');
+
+  function studioAmenitiesCheck(idealHeight) {
+    // check Studio Amenities to see if its taller than the fold
+    if ($studio_amenities_image.is(':visible') && $studio_amenities_image.height() > idealHeight) {
+      console.log('amenities image is taller than the ideal height');
+      $amenity_description.css('bottom', $studio_amenities_image.height() - idealHeight);
+    } else {
+      $amenity_description.removeAttr('style');
+    }
+  }
 
   function fullscreenImage() {
+    var idealHeight = $window.height() - $header.height() - ($top_header.is(':visible') ? $top_header.height() : 0);
+    var idealWidth = $window.width();
+
     $('.hero-carousel-fullscreen .item').each(function () {
       var $item = $(this);
       var $image = $item.find('img.fullscreen');
       
-      var idealHeight = $window.height() - $header.height() - ($top_header.is(':visible') ? $top_header.height() : 0);
-      var idealWidth = $window.width();
-
       $item.width(idealWidth).height(idealHeight);
 
       var imageWidth = $image.data('width');
@@ -30,6 +42,8 @@
 
       $image.width(newWidth).height(newHeight).css('left', newLeft);
     });
+
+    setTimeout(function () { studioAmenitiesCheck(idealHeight); }, 500);
   };
 
   fullscreenImage();

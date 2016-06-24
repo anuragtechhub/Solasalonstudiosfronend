@@ -244,6 +244,22 @@
     }
   }
 
+  .own-studio {
+    position: relative;
+
+    .button {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      padding: 12px !important;
+      font-size: 12px !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      text-overflow: visible !important;
+    }
+  }
+
   .explore-studio {
     position: absolute;
     margin-bottom: 0;
