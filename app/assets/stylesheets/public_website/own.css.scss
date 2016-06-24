@@ -420,6 +420,16 @@
     min-height: auto !important;
   }
 
+  .sola_sessions_logo {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    margin: -84px 0 0 -282.5px !important;
+    width: 565px !important;
+    height: 168px !important;
+    min-height: auto !important;
+  }  
+
   .download-buttons {
     margin-top: 40px;
     overflow: visible;
@@ -699,6 +709,16 @@ ul.own-list {
       height: 98px  !important;
       min-height: auto !important;
     }
+
+    .sola_sessions_logo {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: -48px 0 0 -161.4285px !important;
+      width: 322.857px !important;
+      height: 96px !important;
+      min-height: auto !important;
+    }   
   }
 }
 
