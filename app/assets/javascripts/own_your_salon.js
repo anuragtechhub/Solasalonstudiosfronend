@@ -18,9 +18,17 @@ $(function () {
 
   /* amenities dots */
 
-  $('.dot').each(function () {
+  $('.dot').not('.no-tooltip').each(function () {
     var $this = $(this);
     $this.tooltipster({theme: 'tooltipster-hughes', content: $($this.data('tooltip'))});
+  });
+
+  $('.hero-fullscreen .dot').on('click', function () {
+    var $this = $(this);
+    
+    $('.hero-fullscreen .dot').removeClass('active');
+    $this.addClass('active');
+    $('#amenity-description').html($this.data('html'));
   });
 
   /* tabs */
