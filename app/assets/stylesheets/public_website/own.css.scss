@@ -659,8 +659,17 @@ ul.own-list {
 @media (max-width: 550px) {
 
   .own-your-salon {
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
     .own-mobile-img {
       margin-bottom: 15px;
+    }
+    .owl-pagination {
+      bottom: 10px !important;
     }
   }
 
