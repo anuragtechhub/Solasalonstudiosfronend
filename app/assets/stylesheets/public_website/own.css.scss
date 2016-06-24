@@ -410,6 +410,16 @@
     }    
   }
 
+  .sola_pro_logo {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    margin: -85.75px 0 0 -262.75px !important;
+    width: 525.5px !important;
+    height: 171.5px !important;
+    min-height: auto !important;
+  }
+
   .download-buttons {
     margin-top: 40px;
     overflow: visible;
@@ -678,6 +688,20 @@ ul.own-list {
   // }
 }
 
+@media (max-width: 700px) {
+  .own-your-salon {
+    .sola_pro_logo {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: -49px 0 0 -145.1425px !important;
+      width: 300.285px !important;
+      height: 98px  !important;
+      min-height: auto !important;
+    }
+  }
+}
+
 @media (max-width: 550px) {
 
   .own-your-salon {
@@ -693,6 +717,7 @@ ul.own-list {
     .owl-pagination {
       bottom: 10px !important;
     }
+
     .sola-pro-copy {
       position: absolute;
       bottom: 10px;
