@@ -12,14 +12,14 @@ class ContactUsController < PublicWebsiteController
   def franchising_request
     if request.post?
       captcha_verified = verify_recaptcha
-      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?) && captcha_verified
+      if params[:name].present? && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? && captcha_verified
         fr = FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message], :request_url => params[:request_url])
         fr.visit = save_visit
         fr.save
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
         if captcha_verified
-          render :json => {:error => 'Please enter your name and a valid email address or phone number'}
+          render :json => {:error => 'Please enter your name, a valid email address and phone number'}
         else
           render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
         end
@@ -31,7 +31,7 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present?
         rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url])
         rti.visit = save_visit
         rti.save
@@ -42,7 +42,7 @@ class ContactUsController < PublicWebsiteController
           render :json => {:success => 'Thank you! We will get in touch soon'}
         end
       else
-        render :json => {:error => 'Please enter your name and a valid email address'}
+        render :json => {:error => 'Please enter your name, a valid email address and phone number'}
       end
     else
       redirect_to :contact_us
@@ -51,13 +51,13 @@ class ContactUsController < PublicWebsiteController
 
   def partner_inquiry
     if request.post?
-      if params[:name].present? && ((params[:email].present? && is_valid_email?(params[:email])) || params[:phone].present?)
+      if params[:name].present? && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present?
         pi = PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message], :request_url => params[:request_url])
         pi.visit = save_visit
         pi.save
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
-        render :json => {:error => 'Please enter your name and a valid email address or phone number'}
+        render :json => {:error => 'Please enter your name, a valid email address and phone number'}
       end
     else
       redirect_to :contact_us

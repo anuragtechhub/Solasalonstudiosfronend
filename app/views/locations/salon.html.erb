@@ -169,7 +169,7 @@
         <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour' do %>
           <input name="name" type="text" placeholder="Your Name">
           <input name="email" type="text" placeholder="Email Address">
-          <input name="phone" type="text" placeholder="Phone Number (Optional)">
+          <input name="phone" type="text" placeholder="Phone Number">
           <textarea name="message" placeholder="Leave a Message (Optional)"></textarea>
           <input name="location_id" type="hidden" value="<%= @location.id %>">
           <input name="request_url" type="hidden" value="<%= request.original_url %>">

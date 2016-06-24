@@ -170,7 +170,7 @@ $(function () {
         window.location.reload();
         //$form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
-        $form.tooltipster('content', data.error).tooltipster('show');
+        $form.tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', data.error).tooltipster('show');
       }
     });
 
