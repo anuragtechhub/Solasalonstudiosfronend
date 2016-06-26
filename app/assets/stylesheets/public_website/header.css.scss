@@ -37,6 +37,14 @@
         &:hover, &:active {
           color: $brand-pink;
         }
+
+        &.sola-pro-sign-in {
+          color: #000;
+
+          &:hover, &:active {
+            color: $brand-pink;
+          }
+        }
       }
     }
 
