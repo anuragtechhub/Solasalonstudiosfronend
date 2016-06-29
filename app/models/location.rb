@@ -425,6 +425,15 @@ class Location < ActiveRecord::Base
     states[self.state]
   end
 
+  def fix_url_name
+    if self.url_name.present?
+      self.url_name = self.url_name .gsub('___', '_')
+      self.url_name = self.url_name .gsub('_-_', '_')
+      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
+      self.url_name .split('_').map { |u| u.capitalize }.join('-')
+    end
+  end
+
   private
 
   def submit_to_moz
@@ -476,7 +485,7 @@ class Location < ActiveRecord::Base
 
   def generate_url_name
     if self.name
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
       count = 1
       
       while Location.where(:url_name => "#{url}#{count}").size > 0 do
@@ -485,10 +494,6 @@ class Location < ActiveRecord::Base
 
       self.url_name = "#{url}#{count}"
     end
-  end
-
-  def fix_url_name
-    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
 end

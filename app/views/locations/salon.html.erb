@@ -88,9 +88,11 @@
 
 <% if @location.move_in_special && @location.move_in_special.present? %>
   <div class="callout special">
-    <h2>Move-In Special</h2>
-    <p><strong><%= @location.move_in_special.html_safe %></strong></p>
-    <div class="button-wrapper"><%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button rent-a-studio' %></div>
+    <div class="container">
+      <h2>Move-In Special</h2>
+      <p><strong><%= @location.move_in_special.html_safe %></strong></p>
+      <div class="button-wrapper"><%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button rent-a-studio' %></div>
+    </div>
   </div>
 <% end %>
 
