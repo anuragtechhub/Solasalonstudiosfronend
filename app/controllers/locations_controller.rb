@@ -38,8 +38,8 @@ class LocationsController < PublicWebsiteController
 
   def state
     @all_locations = Location.where(:status => 'open')
-    query_param = "%#{params[:state]}%"
-    @locations = Location.where(:status => 'open').where('state LIKE ?', query_param)
+    query_param = "%#{params[:state].gsub(/-/, ' ')}%"
+    @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param)
     redirect_to :locations unless @locations.size > 0 && @lat && @lng
   end
 

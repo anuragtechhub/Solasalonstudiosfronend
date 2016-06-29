@@ -427,10 +427,12 @@ class Location < ActiveRecord::Base
 
   def fix_url_name
     if self.url_name.present?
-      self.url_name = self.url_name .gsub('___', '_')
-      self.url_name = self.url_name .gsub('_-_', '_')
       self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
-      self.url_name .split('_').map { |u| u.capitalize }.join('-')
+      self.url_name = self.url_name.gsub('___', '_')
+      self.url_name = self.url_name.gsub('_-_', '_')
+      self.url_name = self.url_name.split('_')
+      self.url_name = self.url_name.map{ |u| u.downcase }
+      self.url_name = self.url_name.join('-')
     end
   end
 

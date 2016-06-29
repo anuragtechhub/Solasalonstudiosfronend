@@ -44,10 +44,10 @@ Solasalonstudios::Application.routes.draw do
   match 'partner-inquiry' => 'contact_us#partner_inquiry', :via => [:get, :post], :as => :partner_inquiry
 
   get "locations" => 'locations#index', :as => :locations
-  get "locations/:state" => 'locations#state', :as => :locations_by_state
-  get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
-  get "locations/:state/:city/:url_name" => 'locations#salon', :as => :salon_location
-  get "locations/:state/:city/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
+  get "states/:state" => 'locations#state', :as => :locations_by_state
+  #get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
+  get "locations/:url_name" => 'locations#salon', :as => :salon_location
+  get "locations/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'
   get "store/:url_name" => 'locations#salon_redirect'

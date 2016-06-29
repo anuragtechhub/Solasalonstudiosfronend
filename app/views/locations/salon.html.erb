@@ -1,9 +1,9 @@
 
 <div class="location-breadcrumb">
   <div class="container">
-    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state).gsub(/\./, '') %> 
+    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(beautify_url_segment @location.state).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name).gsub(/\./, '') %> 
-    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, '') %>
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name).gsub(/\./, '') %>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
       <h1><%= @location.name.html_safe %></h1>
       <h3 class="subtle"><%= @location.city.html_safe %>, <%= @location.state.html_safe %></h3>
       <div class="salon-buttons">
-        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.state, @location.city, @location.url_name).gsub(/\./, ''), :class => 'button block long-text' %>
+        <%= link_to 'Find a Salon Professional', salon_stylists_path(@location.url_name).gsub(/\./, ''), :class => 'button block long-text' %>
         <%= link_to 'Rent a Studio', '#rent-a-studio', :class => 'button block rent-a-studio' %>
       </div>
       <div class="row salon-map" id="map"></div>
@@ -147,7 +147,8 @@
   <div class="container">
     <h1>Looking for a Salon Professional?</h1>
     <br>
-    <%= link_to 'View our directory', salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'button inverted' %>
+    <%= link_to 'View our directory', salon_stylists_path(
+    @location.url_name), :class => 'button inverted' %>
   </div>
 </div>
 
@@ -235,7 +236,7 @@
       </div>
 
       <div class="one-half column">
-        <%= link_to salon_stylists_path(@location.state, @location.city, @location.url_name), :class => 'link' do %>
+        <%= link_to salon_stylists_path(@location.url_name), :class => 'link' do %>
           <div class="row">
             <div class="one-third column">
               <span class="ss-search"></span>

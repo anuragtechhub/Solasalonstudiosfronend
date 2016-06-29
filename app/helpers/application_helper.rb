@@ -25,4 +25,13 @@ module ApplicationHelper
 
     url
   end
+
+  def beautify_url_segment(url)
+    #url = url.gsub('___', '_')
+    #url = url.gsub('_-_', '_')
+    #url = url.gsub(/[^0-9a-zA-Z]/, '_')
+    url = url.split(/_|\s/)
+    url = url.map{|u| u.downcase}
+    url.join('-')
+  end
 end

@@ -1,8 +1,8 @@
 <div class="location-breadcrumb">
   <div class="container">
-    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state) %> 
+    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(beautify_url_segment @location.state) %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name) %>
-    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.state, @location.city, @location.url_name) %>
+    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name) %>
     <span class="divider">/</span> <%= link_to @stylist.name, show_salon_professional_path(@stylist) %>
   </div>
 </div> 
