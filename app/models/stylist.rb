@@ -161,6 +161,17 @@ class Stylist < ActiveRecord::Base
     self.encrypted_password.present?
   end
   
+  def fix_url_name
+    if self.url_name.present?
+      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
+      self.url_name = self.url_name.gsub('___', '_')
+      self.url_name = self.url_name.gsub('_-_', '_')
+      self.url_name = self.url_name.split('_')
+      self.url_name = self.url_name.map{ |u| u.downcase }
+      self.url_name = self.url_name.join('-')
+    end
+  end
+
   private
 
   def remove_from_mailchimp
@@ -194,7 +205,7 @@ class Stylist < ActiveRecord::Base
 
   def generate_url_name
     if self.name
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
       count = 1
       
       while Stylist.where(:url_name => "#{url}#{count}").size > 0 do
@@ -203,10 +214,6 @@ class Stylist < ActiveRecord::Base
 
       self.url_name = "#{url}#{count}"
     end
-  end
-
-  def fix_url_name
-    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
 end

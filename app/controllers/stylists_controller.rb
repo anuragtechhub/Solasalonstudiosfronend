@@ -7,6 +7,12 @@ class StylistsController < PublicWebsiteController
 
   def show
     @stylist = Stylist.find_by(:url_name => params[:url_name])
+
+    unless @stylist
+      @stylist = Stylist.find_by(:url_name => params[:url_name].split('_').join('-'))
+      redirect_to show_salon_professional_path(:url_name => @stylist.url_name) if @stylist
+    end
+
     @location = @stylist.location if (@stylist && @stylist.location)
     if @location
       @lat = @location.latitude

@@ -63,11 +63,22 @@ class Blog < ActiveRecord::Base
     url_name
   end
 
+  def fix_url_name
+    if self.url_name.present?
+      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
+      self.url_name = self.url_name.gsub('___', '_')
+      self.url_name = self.url_name.gsub('_-_', '_')
+      self.url_name = self.url_name.split('_')
+      self.url_name = self.url_name.map{ |u| u.downcase }
+      self.url_name = self.url_name.join('-')
+    end
+  end
+
   private
 
   def generate_url_name
     if self.title
-      url = self.title.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      url = self.title.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
       count = 1
       
       while Blog.where(:url_name => url).size > 0 do
@@ -81,10 +92,6 @@ class Blog < ActiveRecord::Base
 
   def touch_blog
     Blog.all.first.touch
-  end
-
-  def fix_url_name
-    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
   end
 
   def https_images

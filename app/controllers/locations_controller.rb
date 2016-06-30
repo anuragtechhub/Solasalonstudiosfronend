@@ -12,6 +12,12 @@ class LocationsController < PublicWebsiteController
 
   def region
     @msa = Msa.find_by(:url_name => params[:url_name])
+
+    unless @msa
+      @msa = Msa.find_by(:url_name => params[:url_name].split('_').join('-'))
+      redirect_to region_path(:url_name => @msa.url_name) if @msa
+    end
+
     @all_locations = Location.where(:status => 'open')
     
     if @msa
@@ -53,6 +59,10 @@ class LocationsController < PublicWebsiteController
     else
       redirect_to :locations
     end
+  end
+
+  def old_salon
+    redirect_to salon_location_path(:url_name => params[:url_name].split('_').join('-'))
   end
 
   def salon_redirect
