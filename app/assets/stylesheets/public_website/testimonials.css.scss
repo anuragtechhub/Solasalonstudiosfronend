@@ -30,22 +30,22 @@
 
   .arrow-left {
     left: 0;
-    background: #FFF asset-data-url('Left_Inactive@2x.png') no-repeat center;
+    background: #FFF asset-url('Left_Inactive@2x.png') no-repeat center;
     background-size: 49px 49px;
 
     &:hover, &:active {
-      background: #FFF asset-data-url('Left_Active@2x.png') no-repeat center;
+      background: #FFF asset-url('Left_Active@2x.png') no-repeat center;
       background-size: 49px 49px;
     }
   }
 
   .arrow-right {
     right: 0;
-    background: #FFF asset-data-url('Right_Inactive@2x.png') no-repeat center;
+    background: #FFF asset-url('Right_Inactive@2x.png') no-repeat center;
     background-size: 49px 49px;
 
     &:hover, &:active {
-      background: #FFF asset-data-url('Right_Active@2x.png') no-repeat center;
+      background: #FFF asset-url('Right_Active@2x.png') no-repeat center;
       background-size: 49px 49px;
     }
   }
@@ -63,13 +63,13 @@
 
   .arrow-left {
     left: 0;
-    background: $brand-pink asset-data-url('Arrow_Left_Large@2x.png') no-repeat 17px 12px;
+    background: $brand-pink asset-url('Arrow_Left_Large@2x.png') no-repeat 17px 12px;
     background-size: 14px 27.5px;
   }
 
   .arrow-right {
     right: 3px;
-    background: $brand-pink asset-data-url('Arrow_Right_Large@2x.png') no-repeat 20px 12px;
+    background: $brand-pink asset-url('Arrow_Right_Large@2x.png') no-repeat 20px 12px;
     background-size: 14px 27.5px;
   }
 }

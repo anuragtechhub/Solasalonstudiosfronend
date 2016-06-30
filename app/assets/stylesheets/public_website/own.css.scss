@@ -103,10 +103,6 @@
 
   .hero-tab-content {
     display: none;
-
-    // &:first-child {
-    //   display: block;
-    // }
   }
 
   .hero-content {
@@ -221,8 +217,6 @@
           color: transparent;
           opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
         }
-        // &:focus:-ms-input-placeholder { color: transparent; } // Internet Explorer 10+
-        // &:focus::-webkit-input-placeholder  { color: transparent; } // Safari and Chrome
       }
 
       button {
@@ -624,7 +618,7 @@
 
   .dot {
     position: absolute;
-    background: asset-data-url('Marker_Normal_Icon@2x.png') no-repeat;
+    background: asset-url('Marker_Normal_Icon@2x.png') no-repeat;
     background-size: 19px 19px;
     width: 19px;
     height: 19px;
