@@ -48,4 +48,6 @@
   fullscreenImage();
 
   $window.on('resize', fullscreenImage);
+
+  $('.hero-tab-content[data-hero-active]').addClass('hero-active');
 })();

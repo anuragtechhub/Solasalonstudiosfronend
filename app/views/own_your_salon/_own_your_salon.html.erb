@@ -1,8 +1,8 @@
-<div class="hero-tab-content" data-ref="#own_your_salon" <%= 'style=display:block' if params[:tab] == 'own_your_salon' || params[:tab].blank? %>>
+<div class="hero-tab-content" <%= 'data-hero-active=true' if params[:tab] == 'own_your_salon' || params[:tab].blank? %> data-ref="#own_your_salon">
 
   <div class="hero-fullscreen">
 
-    <div class="hero-carousel hero-carousel-fullscreen" data-autoplayoff="true">
+    <div class="hero-carousel-fullscreen" data-autoplayoff="true">
       <div class="item"><%= image_tag 'own/hero_1_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
     </div>
 

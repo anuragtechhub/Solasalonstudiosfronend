@@ -103,6 +103,10 @@
 
   .hero-tab-content {
     display: none;
+
+    &.hero-active {
+      display: block;
+    }
   }
 
   .hero-content {
