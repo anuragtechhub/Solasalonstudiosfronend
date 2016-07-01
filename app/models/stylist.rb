@@ -179,7 +179,7 @@ class Stylist < ActiveRecord::Base
       @stylist = Stylist.find_by(:url_name => self.url_name) || Stylist.find_by(:url_name => self.url_name.split('_').join('-'))
       @location = Location.find_by(:url_name => self.url_name) || Location.find_by(:url_name => self.url_name.split('_').join('-'))
 
-      if @stylist || @location
+      if (@stylist && @stylist.id != self.id) || @location
         errors[:base] << 'This URL name is already in use. Please enter a unique name and try again'
       end
     end
