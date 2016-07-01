@@ -98,5 +98,7 @@ Solasalonstudios::Application.routes.draw do
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  get "/:url_name" => 'redirect#short'
   
 end

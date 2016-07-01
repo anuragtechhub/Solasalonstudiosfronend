@@ -84,9 +84,9 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
-  validates :name, :presence => true
+  validates :name, :url_name, :presence => true
   validates :other_service, length: {maximum: 18}, allow_blank: true
-  validates :url_name, :uniqueness => true
+  validate :url_name_uniqueness
 
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present? || google_plus_url.present?
@@ -174,6 +174,17 @@ class Stylist < ActiveRecord::Base
 
   private
 
+  def url_name_uniqueness
+    if self.url_name
+      @stylist = Stylist.find_by(:url_name => self.url_name) || Stylist.find_by(:url_name => self.url_name.split('_').join('-'))
+      @location = Location.find_by(:url_name => self.url_name) || Location.find_by(:url_name => self.url_name.split('_').join('-'))
+
+      if @stylist || @location
+        errors[:base] << 'This URL name is already in use. Please enter a unique name and try again'
+      end
+    end
+  end
+
   def remove_from_mailchimp
     if self.email_address && self.email_address.present?
       gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
@@ -204,7 +215,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def generate_url_name
-    if self.name
+    if self.name && self.url_name.blank?
       url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
       count = 1
       

@@ -189,8 +189,8 @@ class Location < ActiveRecord::Base
   attr_accessor :delete_directory_image_12
   before_validation { self.directory_image_12.destroy if self.delete_directory_image_12 == '1' }                    
 
-  validates :name, :presence => true
-  validates :url_name, :uniqueness => true
+  validates :name, :url_name, :presence => true
+  validate :url_name_uniqueness
 
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
@@ -438,6 +438,17 @@ class Location < ActiveRecord::Base
 
   private
 
+  def url_name_uniqueness
+    if self.url_name
+      @stylist = Stylist.find_by(:url_name => self.url_name) || Stylist.find_by(:url_name => self.url_name.split('_').join('-'))
+      @location = Location.find_by(:url_name => self.url_name) || Location.find_by(:url_name => self.url_name.split('_').join('-'))
+
+      if @stylist || @location
+        errors[:base] << 'This URL name is already in use. Please enter a unique name and try again'
+      end
+    end
+  end
+
   def submit_to_moz
     p "submit to moz"
     require 'net/https'
@@ -486,7 +497,7 @@ class Location < ActiveRecord::Base
   end
 
   def generate_url_name
-    if self.name
+    if self.name && self.url_name.blank?
       url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
       count = 1
       
