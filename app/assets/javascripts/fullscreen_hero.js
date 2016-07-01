@@ -31,6 +31,7 @@
       
       var newHeight = idealHeight;
       var newWidth = newHeight * aspectRatio;
+      var newTop = 0;
       var newLeft = -Math.abs((newWidth - idealWidth) / 2);
 
       if (newWidth < idealWidth) {
@@ -39,7 +40,11 @@
         newLeft = 0;
       }
 
-      $image.width(newWidth).height(newHeight).css('left', newLeft);
+      if (newHeight > idealHeight) {
+        newTop = -Math.abs((newHeight - idealHeight) / 2);
+      }
+
+      $image.width(newWidth).height(newHeight).css({'left': newLeft, 'top': newTop});
     });
 
     setTimeout(function () { studioAmenitiesCheck(idealHeight); }, 500);
