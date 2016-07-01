@@ -5,7 +5,7 @@ class BlogController < PublicWebsiteController
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
 
     unless @category
-      @category = BlogCategory.find_by(:url_name => params[:category_url_name].split('_').join('-'))
+      @category = BlogCategory.find_by(:url_name => params[:category_url_name].split('_').join('-')) if params[:category_url_name]
       redirect_to blog_category_path(:category_url_name => @category.url_name) if @category
     end
     
