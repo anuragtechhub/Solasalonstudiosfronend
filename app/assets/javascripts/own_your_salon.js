@@ -19,7 +19,7 @@ $(function () {
     var href = $(this).attr('href').slice(1);
 
     $('.hero-tab-content').removeClass('hero-active').filter('[data-ref=#' + href + ']').addClass('hero-active');
-    window.history.pushState(null, null, '/own-new/' + href);
+    window.history.pushState(null, null, '/own/' + href);
 
     return false;
   });

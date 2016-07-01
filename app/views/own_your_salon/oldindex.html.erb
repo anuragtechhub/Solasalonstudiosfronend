@@ -1,0 +1,224 @@
+<div class="hero-text" style="background-image:url('<%= image_path 'Salon_Image_1.jpg' %>')">
+  <div class="text">
+    <h1>Don't just dream, do.<br>Become a salon owner today.</h1>
+    <h3>Click to watch video</h3>
+    <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-button"></a>
+  </div>
+  <div class="learn-more">
+    <h3>Learn More</h3>
+    <span class="ss-navigatedown"></span>
+  </div>
+</div>
+
+<div class="own half-boxes">
+  <div class="box box-image view-image-gallery right" style="cursor:pointer;background-image:url('<%= image_path 'Salon_Image_2.jpg' %>')">&nbsp;</div>
+  <div class="box">
+    <div class="box-text">
+      <h1>Be In Business For Yourself, Not By Yourself</h1>
+      <h4>Salon professionals choose Sola for many reasons: to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money, for starters. <strong>But mainly, it’s about freedom and control.</strong> Sola empowers stylists by alleviating the risks and hassles associated with traditional salon ownership. We provide high-end, move-in ready studios along with the support and tools you need to launch your salon business in no time. So, join our community of 6,000+ like-minded salon professionals and get one step closer to living the life you love!</h4>
+      
+      <div class="find-a-sola">
+        <div class="container">
+          <h3>Find the Sola Nearest To You</h3>
+          <%= form_tag [:search, :results] do %>
+            <input type="text" type="search" name="query" placeholder="Search by city, state or zip code" />
+            <input type="hidden" name="stylists" value="hidden" />
+            <button type="submit" class="button primary">Search</button>
+          <% end %>
+        </div>
+      </div>
+      <!-- <p><%= link_to 'Testimonials', :testimonials, :class => 'button' %></p> -->
+    </div>
+  </div>
+</div>
+
+<div class="own half-boxes bottom-border">
+  <div class="box box-image view-image-gallery" style="cursor:pointer;background-image:url('<%= image_path 'Salon_Image_3.jpg' %>')">&nbsp;</div>
+  <div class="box right">
+    <div class="box-text">
+      <h1>Your Life, Your Style<sup><small>&reg;</small></sup></h1>
+      <h4>Whether you’re a hairdresser, nail tech, esthetician or massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you completely control the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance for you. Sell the retail products you love and set your own prices to maximize your income. <strong>Sola studios come furnished with all of the major equipment that you’ll need to help make your transition easy!</strong></h4>
+      <p><%= link_to 'View Gallery', :gallery, :class => 'button primary view-image-gallery' %></p>
+    </div>
+  </div>  
+</div>
+
+<div class="half-boxes sola-pro">
+  <div class="box box-image view-image-gallery right" style="cursor:pointer;background-image:url('<%= image_path 'Own_Sola_Pro.jpg' %>')">&nbsp;</div>
+  <div class="box">
+    <div class="box-text">
+      <h1>Sola Pro</h1>
+      <h4><strong>A website and app exclusive to Sola professionals!</strong> Designed to provide more tools to help you take your salon studio to the next level!</h4>
+      <ul class="own-list">
+        <li>Education: Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.</li>
+        <li>Sola Events &amp; Classes Calendar: Find out what's happening in your neck of the woods!</li>
+        <li>Blog: Marketing and business ideas alongside Sola success stories to inspire you further</li>
+        <li>Deals: Exclusive offers from Sola partners you won't find anywhere else!</li>
+        <li>Perkspot: Get access to deals from movie tickets to rental cars, hotels and so much more.</li>
+      </ul>
+      <p><%= link_to 'View Sola Pro', 'https://www.solaprofessional.com', :class => 'button primary' %></p>
+    </div>
+  </div>
+</div>
+
+<div class="half-boxes bottom-border sola-sessions">
+  <div class="box box-image view-image-gallery" style="cursor:pointer;background-image:url('<%= image_path 'Own_Sola_Sessions.jpg' %>')">&nbsp;</div>
+  <div class="box right">
+    <div class="box-text">
+      <h1>The Sola Sessions</h1>
+      <h4><strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community.</h4>
+      <ul class="own-list">
+        <li>Learn from the industry's best!</li>
+        <li>Intimate, Sola-exclusive events</li>
+        <li>4 cities per year – Join us in a city near you!</li>
+      </ul>
+      <p><%= link_to 'Learn More', 'https://www.solasalonstudios.com/sessions', :class => 'button primary view-image-gallery' %></p>
+    </div>
+  </div>  
+</div>
+
+<div class="container">
+  <h1 class="text-center">Studio Amenities</h1>
+  <div class="row salon-amenities-benefits">
+
+    <div class="one-half column">
+      <h3>Studio Amenities</h3>
+      <h4>
+      <ul>
+        <li>Over-Sized Locking Door: Your studio is private and secure</li> 
+
+        <li>Retail Shelves: Showcase and sell the retail products of your choice</li> 
+
+        <li>High-end Cabinets &amp; Fixtures: Get organized with ample, functional storage</li>
+
+        <li>Comb Drawer: Keep your stuff neat and tidy</li>
+
+        <li>Oversize Mirrors: Rotate clients for different views</li>
+
+        <li>Tool Cabinet: Cleanly store your tools and cords</li>
+
+        <li>Shampoo Bowl: Shampoo clients with comfort and support</li>
+
+        <li>Styling Chair: Hydraulic chair provides superior client comfort</li>
+
+        <li>Sound Insulated Walls: Enjoy private conversations and your own music</li>
+
+        <li>Full-Spectrum Lighting: Work under light that emulates natural daylight</li> 
+
+        <li>Ventilation: Individual ventilation in each studio to eliminate odors</li>
+
+        <li>Instant Hot Water: Saves time and conserves water</li>
+
+        <li>24/7 Security: Security and video surveillance help keep valuables safe</li>
+
+        <li>Utilities Included: Weekly rental fee includes utilities and Wi-Fi</li>
+      </ul>
+      </h4>
+    </div>
+
+    <div class="one-half column">
+      <h3>Salon Professional Benefits</h3>
+      <h4>
+      <ul>
+        <li>All the equipment you need to start your business with minimum start-up costs</li>
+
+        <li>Join a community of 6,000+ salon professionals nationwide to be in business for yourself, not by yourself</li> 
+
+        <li>Boost your income and keep 100% of your profits</li>
+
+        <li>Access group insurance and Sola programs and discounts for products, scheduling and more</li>
+
+        <li>Escape salon politics and drama in your private, secure studio</li>
+
+        <li>Manage your own schedule with 24/7 studio access</li>
+
+        <li>Personalize your salon space with artwork, music, furniture and decor</li>
+
+        <li>Set pricing for services and products</li>
+
+        <li>Sell the retail products you love </li>
+
+        <li>Play your own music and enjoy private conversations</li>
+
+        <li>Enjoy an intimate setting and give your guests the one-on-one attention they deserve</li>
+      </ul>
+      </h4>
+    </div>
+
+  </div>
+</div>
+
+<div class="explore-studio">
+  <h1>Explore a Studio</h1>
+  <%= image_tag 'Own_Salon_Explore.jpg', :class => 'full-width' %>
+  <div class="dot storage" data-tooltip="<h3>Drawers</h3><p>Pull out drawers for additional storage</p>"></div>
+  <div class="dot insulated-walls" data-tooltip="<h3>Insulated Walls</h3><p>Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.</p>"></div>
+  <div class="dot tool-cabinet" data-tooltip="<h3>Tool Cabinet</h3><p>Tool cabinet with dedicated outlets helps to keep cords neat and tidy.</p>"></div>
+  <div class="dot chair" data-tooltip="<h3>Hydraulic Chair</h3><p>Provide comfort for your clients in a high-end hydraulic chair.</p>"></div>
+  <div class="dot cabinetry" data-tooltip="<h3>Cabinets</h3><p>High end custom cabinetry with abundant storage helps keep your studio organized.</p>"></div>
+  <div class="dot mirror" data-tooltip="<h3>Mirrors</h3><p>Style clients in front of large, well-lit mirrors.</p>"></div>
+  <div class="dot products" data-tooltip="<h3>Retail Shelving</h3><p>Proudly display and sell the products you love</p>"></div>
+  <div class="dot wash-basin" data-tooltip="<h3>Shampoo Bowl</h3><p>Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.</p>"></div>
+</div>
+
+<div class="callout blue callout-testimonial">
+  <div class="container">
+    <div class="row">
+      <div class="one-third column">
+        <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait' %>
+      </div>
+      <div class="two-thirds column">
+        <h1>"I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."</h1>
+        <h3>Katina Eisenbeis, Katina's Salon</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="callout green">
+  <div class="container">
+    <h3 class="large" style="margin-bottom:0;"><%= link_to 'View more testimonials'.html_safe, :testimonials %></h3>
+  </div>
+</div>
+
+
+<div class="sola-story gray large">
+  <div class="container">
+    <div class="row">
+        <h2>Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else.</h2>
+    </div>
+    <div class="row">
+      <%= link_to 'The Sola Story', :about_us, :class => 'button first' %>
+    </div>
+  </div>
+</div>
+
+
+<div class="callout blue">
+  <div class="container">
+    <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+  </div>
+</div>
+
+<% content_for(:scripts) { javascript_include_tag('own_your_salon') } %>
+<% content_for(:title) { 'Own Your Salon' } %>
+<% content_for(:fb_conversion_pixel) { 
+%{
+<!-- Facebook Conversion Code for Own Your Salon -->
+<script>(function() {
+var _fbq = window._fbq || (window._fbq = []);
+if (!_fbq.loaded) {
+var fbds = document.createElement('script');
+fbds.async = true;
+fbds.src = '//connect.facebook.net/en_US/fbds.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(fbds, s);
+_fbq.loaded = true;
+}
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', '6033481152380', {'value':'0.00','currency':'USD'}]);
+</script>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6033481152380&amp;cd[value]=0.00&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+}.html_safe
+} %>

@@ -25,11 +25,11 @@ Solasalonstudios::Application.routes.draw do
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
+  get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
+  get 'own/:tab' => 'own_your_salon#index'
   get 'amenities' => 'own_your_salon#index'
-
-  get 'own-new' => 'own_your_salon#new'
-  get 'own-new/:tab' => 'own_your_salon#new'
+  
 
   
   
