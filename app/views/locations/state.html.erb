@@ -24,7 +24,7 @@
           <div class="options">
             <div class="option" data-value="<%= locations_path() %>">All Locations</div>
             <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-            <div class="option" data-value="<%= locations_by_state_path(beautify_url_segment(location.state)) %>"><%= location.state %></div>
+            <div class="option" data-value="<%= locations_by_state_path(beautify_url_segment(location.state.downcase)) %>"><%= location.state %></div>
             <% end %>
           </div>
         </div>

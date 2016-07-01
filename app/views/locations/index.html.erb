@@ -17,7 +17,7 @@
         </div>
         <div class="options">
           <% @states.each do |location| %>
-          <div class="option" data-value="<%= locations_by_state_path(location.state) %>"><%= location.state %></div>
+          <div class="option" data-value="<%= locations_by_state_path(location.state.downcase) %>"><%= location.state %></div>
           <% end %>
         </div>
       </div>
