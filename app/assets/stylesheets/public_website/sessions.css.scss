@@ -101,13 +101,14 @@
       margin-bottom: 0
     }
 
-      h5 {
-        font-family: 'Lato', Arial, sans-serif;
-        font-size: 19px;
-        font-weight: 300;
-        color: #FFF;
-        text-align: center;
-      }    
+    h5 {
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 19px;
+      font-weight: 300;
+      color: #FFF;
+      text-align: center;
+      margin-bottom: 0;
+    }    
   }
 
   .cities {
@@ -437,6 +438,73 @@
     letter-spacing: 1px;
     margin: 0 3px;
     display: inline-block;
+  }
+}
+
+.discounted-rooms {
+  text-align: center;
+  background: #ededed;
+  padding: 40px 0;
+
+  h2 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 33px;
+    line-height: 41px;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-transform: none;
+    color: $brand-pink;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 23px;
+    line-height: 33px;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #333;
+  }
+  h4 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  img {
+    max-width: 961px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 15px auto;
+  }
+  .button {
+    margin-bottom: 0;
+  }
+}
+
+.event-partners {
+  padding: 40px 0 20px 0;
+  text-align: center;
+
+  h2 {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: none;
+    margin-bottom: 40px;
+  }
+
+  img {
+    max-width: 898px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
 }
 
