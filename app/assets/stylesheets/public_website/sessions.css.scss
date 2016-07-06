@@ -58,7 +58,7 @@
 
   .details {
     background: #000;
-    padding: 15px 0 120px 0;
+    padding: 20px 0 120px 0;
     margin: 15px 0 30px 0;
 
     h1, h2, h3, h4 {
@@ -100,6 +100,14 @@
     h3, h4 {
       margin-bottom: 0
     }
+
+      h5 {
+        font-family: 'Lato', Arial, sans-serif;
+        font-size: 19px;
+        font-weight: 300;
+        color: #FFF;
+        text-align: center;
+      }    
   }
 
   .cities {
@@ -207,7 +215,7 @@
     border: 10px solid $brand-blue;
     padding: 30px;
     margin: 0 auto 40px auto;
-    max-width: 600px;
+    max-width: 666px;
   }
 
   .agenda {
@@ -394,7 +402,22 @@
         margin-bottom: 0;
       }
     }
+    ul {
+      margin-top: 20px;
+      list-style: none;
+
+      li {
+        text-align: center;
+        font-family: 'Lato', Arial, sans-serif;
+        font-size: 17px;
+      }
+    }
   }
+}
+
+.sessions-buttons {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
 }
 
 .discount-rooms {
@@ -460,6 +483,10 @@
 }
 
 @media (max-width: 550px) {
+
+  .sessions-buttons {
+    margin-top: 20px;
+  }
 
   .session {
 

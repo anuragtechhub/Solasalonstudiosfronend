@@ -2,7 +2,7 @@ class SessionsController < PublicWebsiteController
 
   def index
     #redirect_to :home
-    render 'orange_county'
+    #render 'orange_county'
   end
 
   def denver

@@ -1,0 +1,133 @@
+  <div class="session">    
+
+    <div class="hero-image hero-desktop"><%= image_tag 'sessions/sola-sessions-hero.jpg' %></div>
+
+    <div class="container">
+      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
+        <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
+        <div class="play-btn">
+          <span class="fa fa-5x fa-play"></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="container">
+      <div class="row sessions-buttons">
+        <div class="six columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">About the Sola Sessions</a></div>
+        <div class="six columns"><a href="/sessions/orange-county" class="button block long-text">Orange County</a></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="description">
+        We hope you can join us for one of The Sola Sessions, coming to a city near you! The Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our awesome, dynamic community. We're bringing the industry's best to you for intimate, Sola-exclusive events across the country. Click on the cities below to learn more about each unique Sola Session. We can’t wait to meet you!</div>
+    </div>
+
+    <div class="details" style="padding: 30px 0; margin: 0">
+      <div class="container">
+        <h1>Orange County, California</h1>
+        <h2>September 12, 2016</h2>
+        <h4>Event Info Coming Soon</h4>
+      </div>
+    </div>
+
+    <div class="past-events">
+      <div class="container">
+        <h2>Past Events</h2>
+        <div class="event">
+          <%= image_tag "sessions/past-event-denver.jpg" %>
+          <div class="buttons">
+            <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__denver_recap" class="button">Read Blog</a>
+            <a id="view-denver-gallery" href="#" class="button">View Gallery</a>
+          </div>
+        </div> 
+
+        <div class="event">
+          <%= image_tag "sessions/past-event-minneapolis.jpg" %>
+          <div class="buttons">
+            <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__minneapolis_recap" class="button">Read Blog</a>
+            <a id="view-minneapolis-gallery" href="#" class="button">View Gallery</a>
+          </div>
+        </div> 
+      </div>
+    </div>
+
+    <div class="in-the-news">
+      <div class="container">
+        <h2>In The News</h2>
+        <div class="news-articles">
+          <% Article.where(:id => [53, 51, 48, 47]).each do |article| %>
+            <%= render 'shared/news_summary', :article => article %>
+          <% end %>
+        </div>        
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="container">
+        <h2>Testimonials</h2>
+
+        <div class="owl-carousel owl-theme" data-autoplay="10000">
+          <div class="item featured-testimonial">
+            <h1>"My daughter and I attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one time with the educators before and after their show. We loved the smaller, family like setting. And the fact that everyone there was a Sola owner was even more fabulous."</h1>
+            <h3 class="subtle">Tammy Muniz</h3>
+          </div>
+
+          <div class="item featured-testimonial">
+            <h1>"Attending the Sola Sessions was a life changing experience! I felt very empowered by the knowledge and tools presented to me and left the Sessions ready to rule the world!"</h1>
+            <h3 class="subtle">Robin Grabovski</h3>
+          </div>
+
+          <div class="item featured-testimonial">
+            <h1>"The Sola Sessions was well-rounded, informational and inspiring! It was empowering to meet and be surrounded by people like myself, who have not only taken the leap of faith to be independent, but also have other ventures going on, like being an educator."</h1>
+            <h3 class="subtle">Katherine Laundry</h3>
+          </div>
+
+          <div class="item featured-testimonial">
+            <h1>"From the atmosphere of the venue to the educators and goodie bags, the Sola Sessions was beyond what I thought it was going to be! Thank you for an awesome show!"</h1>
+            <h3 class="subtle">Jordan Ferro</h3>
+          </div>
+
+          <div class="item featured-testimonial">
+            <h1>"I gained so much knowledge, confidence, and resources from attending the Sola Sessions. Every aspect of my business was addressed and I was able to take away something to make each area of my business better. It was really neat learning from the amazing presenters. Way to go, Sola!"</h1>
+            <h3 class="subtle">Nancy Hampton</h3>
+          </div>          
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<a name="future-sessions"></a>
+<div class="future-sessions">
+  <div class="container">
+    <h1>Mark Your Calendar<br>for Future Sola Sessions!</h1>
+    <div class="row circles">
+      <div class="three columns offset-by-three"><%= image_tag 'sessions/orange-county-circle.png' %></div>
+      <div class="three columns"><%= image_tag 'sessions/charlotte-circle.png' %></div>
+    </div>
+    <h2>More Info On Future Sessions Coming Soon!</h2>
+  </div>
+</div>
+
+<div class="callout blue">
+  <div class="quote">&ldquo;There are no limits. It's <strong>your</strong> business!&rdquo;</div>
+  <div class="quote-author">Shelia Taylor &ndash; Ami Hair Studio</div>
+  <%= link_to 'View More Testimonials', :testimonials, :class => 'button inverted', :style => 'margin-top:30px' %>
+</div>
+
+<div id="denver-gallery" style="display:none">
+  <% [4801, 5232, 5697, 5804, 6223, 6480, 6765, 7089, 7175, 7335, 7445, 7547, 7677, 4810, 5320, 5795, 6032, 6240, 6594, 6772, 7101, 7205, 7372, 7451, 7558, 7702, 4889, 5323, 5796, 6072, 6241, 6607, 6802, 7118, 7256, 7394, 7460, 7579, 4967, 5353, 5797, 6154, 6246, 6680, 6884, 7146, 7273, 7410, 7512, 7599, 5128, 5387, 5799, 6172, 6304, 6686, 6951, 7152, 7323, 7422, 7533, 7608, 5155, 5654, 5800, 6198, 6463, 6722, 6986, 7155, 7327, 7434, 7546, 7610].each do |number| %>
+    <span data-src="https://s3.amazonaws.com/solasalonstudios/Sessions/Denver/IMG_<%= number %>.jpg" />
+  <% end %>
+</div>    
+
+<div id="minneapolis-gallery" style="display:none">
+  <% ['0345','0659','0686',115,135,175,204,228,256,281,37,58,'0346','0672','0687',122,136,181,206,236,258,285,42,82,'0654','0673',101,124,140,186,217,238,263,287,43,89,'0655','0676',102,126,144,190,220,244,267,288,46,90,'0656','0681',105,128,147,194,223,246,268,297,48,'0657','0683',106,130,164,196,224,249,270,300,49,'0658','0685',112,133,168,199,227,255,277,34,51].each do |number| %>
+    <span data-src="https://s3.amazonaws.com/solasalonstudios/Sessions/Minneapolis/SOLA-<%= number %>.jpg" />
+  <% end %>    
+</div>
+
+<% content_for(:scripts) { javascript_include_tag('sessions') } %>
+<% content_for(:title) { 'Sola Sessions - Orange County' } %>
+<% content_for(:og_image) { "http:#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>
