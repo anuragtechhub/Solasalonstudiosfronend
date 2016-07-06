@@ -59,6 +59,10 @@ $(function () {
     }
 
     $this.owlCarousel(options);
+
+    $this.find('a').on('click', function () {
+      console.log('click!');
+    });
   });
 
   $(document.body).on('click', '.arrow-left, .arrow-right', function (e) {
