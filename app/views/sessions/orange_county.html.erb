@@ -3,15 +3,6 @@
     <div class="hero-image hero-desktop"><%= image_tag 'sessions/oc_hero.jpg' %></div>
 
     <div class="container">
-      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
-        <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
-        <div class="play-btn">
-          <span class="fa fa-5x fa-play"></span>
-        </div>
-      </a>
-    </div>
-
-    <div class="container">
       <div class="row sessions-buttons" style="margin-bottom: 20px">
         <div class="six columns"><a href="/sessions" class="button block long-text">About the Sola Sessions</a></div>
         <div class="six columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">Orange County</a></div>
@@ -23,7 +14,7 @@
         <h1>Orange County, California</h1>
         <h2>September 12, 2016</h2>
         <h3>Hyatt Regency Newport Beach</h3>
-        <h5>1107 Jamboree Road, Newport Beach, California, USA, 92660</h5>
+        <h5>1107 Jamboree Road, Newport Beach, California 92660</h5>
       </div>
     </div>
 
@@ -38,7 +29,7 @@
           <div class="four columns">
             <%= image_tag 'sessions/kovner.png' %>
             <span class="name">Nina Kovner</span>
-            <span class="company"><a href="http://passionsquared.net/" target="_blank">Passion Squared</a></span>
+            <span class="company"><a href="http://passionsquared.net/" target="_blank">PassionSquared</a></span>
           </div>
           <div class="four columns">
             <%= image_tag 'sessions/kelly_ehlers.png' %>
@@ -103,7 +94,7 @@
           </div>
 
           <div class="bio">
-            <div class="name-and-company">Nina Kovner: <a href="http://passionsquared.net/" target="_blank">Passion Squared</a></div>
+            <div class="name-and-company">Nina Kovner: <a href="http://passionsquared.net/" target="_blank">PassionSquared</a></div>
             <div class="text">
               From the shampoo room to the boardroom, Nina L. Kovner took the world of pro beauty by storm with her thoughtful attention to detail and never-ending tenacity. After 26 years of conquering obstacles in an ever-changing business landscape and helping to build one of the most recognized professional hair care brands in the world, she respectfully walked away from a career at the top to help small business owners and artists discover and live their purpose with passion and empower their businesses. Now, as Chief Awesomeness Empowerer at Passion Squared, she wakes up every morning saying to herself… &quot;How I am going to help people create their own kind of awesome today?&quot;
             </div>
@@ -219,8 +210,8 @@
       <div class="agenda">
         <div class="banner"></div>
         <p><span class="time">8:00am:</span> Registration. Coffee &amp; Tea Provided.</p>
-        <p><span class="time">9:00am-12:00pm:</span> Inspiration. Business &amp; Marketing.</p>
-        <p><span class="time">12:00pm-1:00pm:</span> Lunch.</p>
+        <p><span class="time">9:00am-12:00pm:</span> Inspiration, Business, Marketing.</p>
+        <p><span class="time">12:00pm-1:00pm:</span> Lunch Included.</p>
         <p><span class="time">1:00pm-5:30pm:</span> Artistic Education.</p>
         <p><span class="time">5:30pm-7:30pm:</span> Mix 'n' Mingle. Cocktails, Appetizers &amp; Live Music.</p>
       </div>
@@ -276,7 +267,7 @@
 </div>
 
 <div class="callout pink">
-  <%= link_to 'To learn more about the Sola Sessions, click here!', :testimonials, :class => 'heading-link' %>
+  <%= link_to 'To learn more about the Sola Sessions, click here!', :sessions, :class => 'heading-link' %>
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>

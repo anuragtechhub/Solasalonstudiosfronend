@@ -3,6 +3,14 @@
     <div class="hero-image hero-desktop"><%= image_tag 'sessions/sola-sessions-hero.jpg' %></div>
 
     <div class="container">
+      <div class="row sessions-buttons">
+        <div class="six columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">About the Sola Sessions</a></div>
+        <div class="six columns"><a href="/sessions/orange-county" class="button block long-text">Orange County</a></div>
+      </div>
+    </div>
+
+
+    <div class="container">
       <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
         <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
         <div class="play-btn">
@@ -11,12 +19,6 @@
       </a>
     </div>
 
-    <div class="container">
-      <div class="row sessions-buttons">
-        <div class="six columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">About the Sola Sessions</a></div>
-        <div class="six columns"><a href="/sessions/orange-county" class="button block long-text">Orange County</a></div>
-      </div>
-    </div>
 
     <div class="container">
       <div class="description">
@@ -27,7 +29,7 @@
       <div class="container">
         <h1>Orange County, California</h1>
         <h2>September 12, 2016</h2>
-        <h4>Event Info Coming Soon</h4>
+        <h4><%= link_to 'Click here to learn more', :oc_session, :class => 'button primary' %></h4>
       </div>
     </div>
 
@@ -103,17 +105,11 @@
   <div class="container">
     <h1>Mark Your Calendar<br>for Future Sola Sessions!</h1>
     <div class="row circles">
-      <div class="three columns offset-by-three"><%= image_tag 'sessions/orange-county-circle.png' %></div>
+      <div class="three columns offset-by-three"><%= link_to :oc_session do %><%= image_tag 'sessions/orange-county-circle.png' %><% end %></div>
       <div class="three columns"><%= image_tag 'sessions/charlotte-circle.png' %></div>
     </div>
     <h2>More Info On Future Sessions Coming Soon!</h2>
   </div>
-</div>
-
-<div class="callout blue">
-  <div class="quote">&ldquo;There are no limits. It's <strong>your</strong> business!&rdquo;</div>
-  <div class="quote-author">Shelia Taylor &ndash; Ami Hair Studio</div>
-  <%= link_to 'View More Testimonials', :testimonials, :class => 'button inverted', :style => 'margin-top:30px' %>
 </div>
 
 <div id="denver-gallery" style="display:none">

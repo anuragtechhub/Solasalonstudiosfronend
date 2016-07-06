@@ -85,7 +85,7 @@ Solasalonstudios::Application.routes.draw do
   match 'sessions' => 'sessions#index', :via => [:get, :post]
   # match 'sessions/denver' => 'sessions#denver', :via => [:get, :post]
   # match 'sessions/minneapolis' => 'sessions#minneapolis', :via => [:get, :post]
-  match 'sessions/orange-county' => 'sessions#orange_county', :via => [:get, :post]
+  match 'sessions/orange-county' => 'sessions#orange_county', :via => [:get, :post], :as => :oc_session
 
   namespace :api do
     namespace :v1 do
