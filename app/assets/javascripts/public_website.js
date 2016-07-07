@@ -59,10 +59,6 @@ $(function () {
     }
 
     $this.owlCarousel(options);
-
-    $this.find('a').on('click', function () {
-      console.log('click!');
-    });
   });
 
   $(document.body).on('click', '.arrow-left, .arrow-right', function (e) {
@@ -170,7 +166,12 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        window.location.hash = 'contact-us-success'
+        var path = window.location.pathname;
+        if (path.indexOf('contact-us-success') == -1) {
+          path = path + '/contact-us-success';
+        }
+        window.history.pushState(null, null, path);
+        // window.location.hash = 'contact-us-success'
         window.location.reload();
         //$form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
@@ -182,7 +183,7 @@ $(function () {
   });
 
   // contact-us-request-a-tour tooltip init
-  if (window.location.hash == '#contact-us-success') {
+  if (window.location.pathname.indexOf('/contact-us-success') != -1) {
     $('#contact-us-request-a-tour').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', 'Thank you! We will get in touch soon').tooltipster('show');
     // setTimeout(function () {
     //   window.location.hash = '#rent-a-studio';
