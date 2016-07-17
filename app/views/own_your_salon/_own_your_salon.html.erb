@@ -18,7 +18,7 @@
         <div class="hero-search">
           <div class="search-input-with-button">
             <%= form_tag [:search, :results], :method => :get do %>
-            <input type="text" placeholder="Find a Sola near you" data-placeholder-blur="<%= t 'page.own.section.own_your_salon.search_placeholder_blur' %>" data-placeholder-focus="<%= t 'page.own.section.own_your_salon.search_placeholder_focus' %>" name="query" class="large query" autocomplete="off"><button type="submit"><%= t 'page.own.section.own_your_salon.search' %></button>
+            <input type="text" placeholder="<%= t 'page.own.section.own_your_salon.search_placeholder_blur' %>" data-placeholder-blur="<%= t 'page.own.section.own_your_salon.search_placeholder_blur' %>" data-placeholder-focus="<%= t 'page.own.section.own_your_salon.search_placeholder_focus' %>" name="query" class="large query" autocomplete="off"><button type="submit"><%= t 'page.own.section.own_your_salon.search' %></button>
             <% end %>
           </div>
         </div>

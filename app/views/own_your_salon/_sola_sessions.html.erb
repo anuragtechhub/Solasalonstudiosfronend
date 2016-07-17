@@ -14,7 +14,6 @@
       <div class="item"><%= image_tag 'own/sessions/5.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1278, :width => 1920, :height => 1278 %></div>
       <div class="item"><%= image_tag 'own/sessions/6.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080 %></div>
     </div>
-    <%#= image_tag 'own/hero_sola_sessions_1.jpg', :class => 'owl-carousel-poster' %>
 
     <div class="hero-content">
       <div class="hero-content-wrapper">
@@ -27,13 +26,13 @@
 
   <div class="container container-inset">
     
-    <p class="lead text-center" style="font-size: 25px;margin-bottom: 30px;"><strong>The Sola Sessions</strong></h2>
+    <p class="lead text-center" style="font-size: 25px;margin-bottom: 30px;"><strong><%= t('page.own.section.sola_sessions.heading1').html_safe %></strong></h2>
 
-    <p class="largest text-center"><strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community.</p>
+    <p class="largest text-center"><%= t('page.own.section.sola_sessions.body1').html_safe %></p>
     <p class="largest text-center">
-      <span class="bullet">&#9679;</span> Learn from the industry's best! &nbsp;<span class="bullet">&#9679;</span> Intimate, Sola-exclusive events
+      <span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet1').html_safe %> &nbsp;<span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet2').html_safe  %>
       <br />
-      <span class="bullet">&#9679;</span> <%= link_to '4 cities per year', :sessions %> – Join us in a city near you!
+      <span class="bullet">&#9679;</span> <%= link_to t('page.own.section.sola_sessions.bullet3').html_safe, :sessions %> – <%= t('page.own.section.sola_sessions.bullet4').html_safe  %>
     </p>
 
     <div class="session" style="margin: 40px auto">
@@ -45,7 +44,7 @@
       </a>
     </div>
 
-    <p class="text-center" style="margin-bottom: 40px"><%= link_to 'Learn More', :sessions, :class => 'button primary' %>
+    <p class="text-center" style="margin-bottom: 40px"><%= link_to t('page.own.section.sola_sessions.learn_more').html_safe, :sessions, :class => 'button primary' %>
 
   </div>
 
@@ -54,7 +53,7 @@
       <div class="row">
         <%= image_tag 'own/tammy_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
         <div class="content">
-          <h1>"My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous." <span>Tammy Muniz</span></h1>
+          <h1>&quot;<%= t('page.own.section.sola_sessions.testimonial_text').html_safe %>&quot; <span>Tammy Muniz</span></h1>
         </div>
       </div>
     </div>
@@ -62,7 +61,7 @@
 
   <div class="callout blue">
     <div class="container">
-      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_sessions.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_sessions.view_frequently_asked_questions').html_safe, :faqs %></h3>
     </div>
   </div>
 

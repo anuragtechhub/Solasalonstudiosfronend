@@ -145,6 +145,15 @@ en:
           view_frequently_asked_questions: "View frequently asked questions &raquo;"
         sola_sessions:
           title: Sola Sessions
-    
+          heading1: The Sola Sessions
+          body1: "<strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community."
+          bullet1: "Learn from the industry's best!"
+          bullet2: "Intimate, Sola-exclusive events"
+          bullet3: "4 cities per year"
+          bullet4: "Join us in a city near you!"
+          learn_more: Learn More
+          testimonial_text: "My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous."
+          want_to_learn_more: Want to learn more?
+          view_frequently_asked_questions: "View frequently asked questions &raquo;"    
     testimonials:
       title: Testimonials
