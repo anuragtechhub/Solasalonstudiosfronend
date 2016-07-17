@@ -3,20 +3,20 @@
 <div class="container content-container">
   
   <div class="row">
-    <h1>Get in Touch</h1>
+    <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
   </div>
 
   <div class="row dashed">
     <div class="one-half column">
-      <h1 class="small">Contact a Sola<br>Nearest You</h1>
+      <h1 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
     </div>
     <div class="one-half column">
-      <p>Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!</p>
-      <p>If you have a general question, check out our <%= link_to 'Frequently Asked Questions', :faqs, :class => 'pink-link' %></p>
+      <p><%= t('page.contact.body1').html_safe %></p>
+      <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
       <br>
       <div class="sola-select select-a-state form">
         <div class="row">
-          <div class="option-placeholder"><h3><%= params[:state] || 'Select a State' %></h3></div>
+          <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
@@ -31,7 +31,7 @@
           <div class="sola-select form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
             
             <div class="row">
-              <div class="option-placeholder"><h3><%= params[:location] || 'Select a Location' %></h3></div>
+              <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
               <div class="arrow"><span class="ss-dropdown"></span></div>
             </div>
             <div class="options">
@@ -52,14 +52,14 @@
         <div class="contact-us-info-disabled">
           <div class="row">
             <h3>&nbsp;</h3>
-            <h1>Select a Sola Location Above</h1>
+            <h1><%= t('page.contact.select_a_sola_location_above').html_safe %></h1>
             <h3>&nbsp;</h3>
             <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
-              <input name="name" type="text" placeholder="Your Name" disabled="disabled">
-              <input name="email" type="text" placeholder="Email Address" disabled="disabled">
-              <input name="phone" type="text" placeholder="Phone Number" disabled="disabled">
-              <textarea name="message" type="text" placeholder="Leave a Message" disabled="disabled"></textarea>
-              <button class="button block primary" disabled="disabled">Submit Message</button>
+              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
+              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
+              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
+              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
+              <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
             <% end %>
           </div>
         </div>
@@ -68,17 +68,17 @@
       <div id="contact-us-info">
         <div class="contact-us-info">
           <div class="row">
-            <h3>Call for Leasing Information</h3>
+            <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
             <h1 id="contact-us-number">(303) 377-7652</h1>
-            <h3>Leave a Message</h3>
+            <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
             <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
-              <input name="name" type="text" placeholder="Your Name">
-              <input name="email" type="text" placeholder="Email Address">
-              <input name="phone" type="text" placeholder="Phone Number">
-              <textarea name="message" type="text" placeholder="Leave a Message"></textarea>
+              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
+              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
+              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
+              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
               <input name="location_id" id="contact_us_location_id" type="hidden" value="">
               <input name="request_url" type="hidden" value="<%= request.original_url %>">
-              <button class="button block primary">Submit Message</button>
+              <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
             <% end %>
           </div>
         </div>
@@ -89,13 +89,13 @@
 
   <div class="row dashed">
     <div class="one-third column">
-      <h1 class="small">Sola Salon Studios Headquarters</h1>
+      <h1 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h1>
     </div>
     <div class="two-thirds column">
       <p><strong>303.377.7652</strong></p>
       <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
       <p><a href="mailto:info@solasalonstudios.com" class="pink-link">info@solasalonstudios.com</a></p>
-      <p><%= link_to 'Sola Franchising', :request_franchising_info, :class => 'button request-franchising-info' %></p>
+      <p><%= link_to t('page.contact.sola_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info' %></p>
     </div>
   </div>
 
@@ -109,20 +109,20 @@
   </div>
 
   <div class="half-column">
-    <h4 style="margin-bottom:15px;">Franchising</h4>
-    <p style="margin-bottom:30px">Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4</p>
+    <h4 style="margin-bottom:15px;"><%= t('page.contact.franchising').html_safe %></h4>
+    <p style="margin-bottom:30px"><%= t('page.contact.franchising_text').html_safe %></p>
     <%= form_tag :franchising_request, :id => 'franchising_request' do %>
-      <input type="text" name="name" placeholder="Full Name" />
-      <input type="text" name="email" placeholder="Email Address" />
-      <input type="text" name="phone" placeholder="Phone Number" />
-      <input type="text" name="market" placeholder="Market" />
-      <textarea name="message" placeholder="Leave a Message"></textarea>
+      <input type="text" name="name" placeholder="<%= t('page.contact.full_name').html_safe %>" />
+      <input type="text" name="email" placeholder="<%= t('page.contact.email_address').html_safe %>" />
+      <input type="text" name="phone" placeholder="<%= t('page.contact.phone_number').html_safe %>" />
+      <input type="text" name="market" placeholder="<%= t('page.contact.market').html_safe %>" />
+      <textarea name="message" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
       <div class="recaptchaContainer"><%= recaptcha_tags %></div>
-      <button class="primary block">Submit Request</button>
+      <button class="primary block"><%= t('page.contact.submit_message').html_safe %></button>
       <input name="request_url" type="hidden" value="<%= request.original_url %>">
     <% end %>
   </div>
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('contact_us') } %>
-<% content_for(:title) { 'Contact Us' } %>
+<% content_for(:title) { t('page.contact.title').html_safe } %>

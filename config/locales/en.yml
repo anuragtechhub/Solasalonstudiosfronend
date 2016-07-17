@@ -48,7 +48,27 @@ en:
     
     contact:
       title: Contact Us
-    
+      get_in_touch: Get in Touch
+      contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
+      body1: "Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!"
+      body2: "If you have a general question, check out our %{faq_link}"
+      frequently_asked_questions: Frequently Asked Questions
+      select_a_state: Select a State
+      select_a_location: Select a Location
+      select_a_sola_location_above: Select a Sola Location Above
+      your_name: Your Name
+      email_address: Email Address
+      phone_number: Phone Number
+      leave_a_message: Leave a Message
+      submit_message: Submit Message
+      call_for_leasing_information: Call for leasing information
+      sola_salon_studios_headquarters: Sola Salon Studios Headquarters
+      sola_franchising: Sola Franchising
+      franchising: Franchising
+      franchising_text: Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4
+      full_name: Full Name
+      market: Market
+
     faqs:
       title: FAQs
       frequently_asked_questions: Frequently Asked Questions
