@@ -43,6 +43,7 @@ en:
       testimonial_author: "Audrey Howerton, Audrey's Hair Studio"
       view_more_testimonials: View More Testimonials
       join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
+    
     blog:
       title: Blog
     
@@ -68,6 +69,12 @@ en:
       franchising_text: Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4
       full_name: Full Name
       market: Market
+
+    diversity:
+      title: Diversity
+      a_culture_of_inclusion: Sola Salon Studios:<br>A Culture of Inclusion and Diversity
+      body1: At our core, we seek to inspire and celebrate the human spirit – we feel that every individual brings a unique experience and perspective to our abundant community. Since our inception in 2004, we have supported and nurtured relationships within our diverse community of salon professionals. Our community is comprised of people who are diverse in gender, race, ethnicity, sexual orientation, religion and age, as well as cultural backgrounds, experiences and ideas.
+      body2: Embracing a diverse community drives a positive and inclusive environment at each and every Sola Salon Studios location. It is this diversity that creates, in large part, our culture of empowerment and success.
 
     faqs:
       title: FAQs

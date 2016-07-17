@@ -1,27 +1,12 @@
 <div class="hero-text centered" style="background-image:url('<%= image_path 'diversity_hero.jpeg' %>')">
   <div class="text">
-    <h1>Sola Salon Studios:<br>A Culture of Inclusion and Diversity</h1>
+    <h1><%= t('page.diversity.a_culture_of_inclusion').html_safe %></h1>
   </div>
 </div>
 
 <div class="container content-container">
-<h4 class="paragraph">At our core, we seek to inspire and celebrate the human spirit – we feel that 
-
-every individual brings a unique experience and perspective to our abundant 
-
-community. Since our inception in 2004, we have supported and nurtured 
-
-relationships within our diverse community of salon professionals. Our 
-
-community is comprised of people who are diverse in gender, race, ethnicity, 
-
-sexual orientation, religion and age, as well as cultural backgrounds, experiences 
-
-and ideas.</h4>
-
-<h4 class="paragraph">Embracing a diverse community drives a positive and inclusive environment at 
-
-each and every Sola Salon Studios location. It is this diversity that creates, in 
-
-large part, our culture of empowerment and success.</h4>
+  <h4 class="paragraph"><%= t('page.diversity.body1').html_safe %></h4>
+  <h4 class="paragraph"><%= t('page.diversity.body2').html_safe %></h4>
 </div>
+
+<% content_for(:title) { t('page.diversity.title').html_safe } %>
