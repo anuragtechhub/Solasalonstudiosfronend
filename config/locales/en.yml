@@ -241,5 +241,23 @@ en:
           want_to_learn_more: Want to learn more?
           view_frequently_asked_questions: "View frequently asked questions &raquo;"    
     
+    salon_professional:
+      all_locations: All Locations
+      studio: Studio
+      book_now: Book Now
+      send_a_message: Send a Message
+      visit_my_website: Visit my website
+      availability: Availability
+      about: About 
+      services: Services
+      testimonials: Testimonials
+      visit_salon_professional: "Visit %{salon_professional_name} at Sola %{location_name}"
+      send_a_message: Send a Message
+      full_name: Full Name
+      email_address: Email Address
+      phone_number: Phone Number
+      leave_a_message: Leave a Message
+      submit: Submit
+
     testimonials:
       title: Testimonials
