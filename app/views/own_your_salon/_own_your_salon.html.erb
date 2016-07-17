@@ -12,13 +12,13 @@
         <%= render 'tabs', :active => 'own-your-salon' %>
 
         <div class="hero-heading">
-          <span class="light">Beautiful Studios. Exclusive Perks.</span><br /><span class="bold">At Sola, You Simply Get More!</span>
+          <span class="light"><%= t 'page.own.section.own_your_salon.hero_heading1' %></span><br /><span class="bold"><%= t 'page.own.section.own_your_salon.hero_heading2' %></span>
         </div>
 
         <div class="hero-search">
           <div class="search-input-with-button">
             <%= form_tag [:search, :results], :method => :get do %>
-            <input type="text" placeholder="Find a Sola near you" data-placeholder-blur="Find a Sola near you" data-placeholder-focus="Search by city, state or zip" name="query" class="large query" autocomplete="off"><button type="submit">Search</button>
+            <input type="text" placeholder="Find a Sola near you" data-placeholder-blur="<%= t 'page.own.section.own_your_salon.search_placeholder_blur' %>" data-placeholder-focus="<%= t 'page.own.section.own_your_salon.search_placeholder_focus' %>" name="query" class="large query" autocomplete="off"><button type="submit"><%= t 'page.own.section.own_your_salon.search' %></button>
             <% end %>
           </div>
         </div>
@@ -31,7 +31,7 @@
   <div class="container container-inset">
 
     <div class="row" style="margin-top: 15px; margin-bottom: 15px">
-      <p class="lead text-center"><strong>Don't Just Dream. DO! Become a Boutique Salon Owner Today.</strong></p>
+      <p class="lead text-center"><strong><%= t 'page.own.section.own_your_salon.tagline' %></strong></p>
     </div>
 
     <hr />
@@ -41,8 +41,8 @@
         <%= image_tag 'own/own1.jpg', :class => 'u-full-width own-mobile-img', :width => 419, :height => 443 %>
       </div>
       <div class="two-thirds column">
-        <h2 class="light">Be In Business For Yourself,<br />Not By Yourself</h2>
-        <p>Salon professionals choose Sola for many reasons: to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money, for starters. But mainly, it’s about freedom and control. Sola empowers stylists by alleviating the risks and hassles associated with traditional salon ownership. We provide high-end, move-in ready studios along with the support and tools you need to launch your salon business in no time. So, join our community of 6,000+ like-minded salon professionals and get one step closer to living the life you love!</p>
+        <h2 class="light"><%= t('page.own.section.own_your_salon.heading1').html_safe %></h2>
+        <p><%= t('page.own.section.own_your_salon.body1').html_safe %></p>
       </div>
     </div>
 
@@ -51,17 +51,17 @@
     <div class="row">
       <div class="one-third column own-studio">
         <%= image_tag 'own/own2.jpg', :class => 'u-full-width own-mobile-img', :width => 464, :height => 442 %>
-        <%= link_to 'View Gallery of Studios', :gallery, :class => 'button primary' %>
+        <%= link_to t('page.own.section.own_your_salon.view_gallery_of_studios').html_safe, :gallery, :class => 'button primary' %>
       </div>
       <div class="two-thirds column">
-        <h2 class="light">Your Life, Your Style<sup>&reg;</sup></h2>
-        <p>Whether you’re a hairdresser, nail tech, esthetician or massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you completely control the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance for you. Sell the retail products you love and set your own prices to maximize your income. Sola studios come furnished with all of the major equipment that you’ll need to help make your transition easy!</p>
+        <h2 class="light"><%= t('page.own.section.own_your_salon.heading2').html_safe %></h2>
+        <p><%= t('page.own.section.own_your_salon.body2').html_safe %></p>
       </div>
     </div>
 
     <hr />
 
-    <h2 class="brand text-center" style="margin-top:30px">Find Out Why Salon<br />Professionals Choose Sola!</h2>
+    <h2 class="brand text-center" style="margin-top:30px"><%= t('page.own.section.own_your_salon.heading3').html_safe %></h2>
 
     <div class="session">
       <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video" rel='own-video-1'>
@@ -72,7 +72,7 @@
       </a>
     </div>
 
-    <p class="larger text-center inset-p">Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else. <%= link_to 'About Sola', :about %></p>
+    <p class="larger text-center inset-p"><%= t('page.own.section.own_your_salon.body3').html_safe %> <%= link_to t('page.own.section.own_your_salon.about_sola').html_safe, :about %></p>
 
   </div>
 
@@ -81,7 +81,7 @@
       <div class="row">
         <%= image_tag 'own/brandie_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
         <div class="content">
-          <h1>"When I moved to Sola, I fell in love with my craft again. The privacy of my own suite allows me to create my own vibes, energy and focus."</h1>
+          <h1>&quot;t('page.own.section.own_your_salon.testimonial_text').html_safe&quot;</h1>
           <h1><span>Brandie Kekoa</span></h1>
         </div>
       </div>
@@ -90,13 +90,13 @@
 
   <div class="callout green" style="margin-bottom: 5px">
     <div class="container">
-      <h3 class="large" style="margin-bottom:0;"><%= link_to 'View More Testimonials'.html_safe, :testimonials %></h3>
+      <h3 class="large" style="margin-bottom:0;"><%= link_to t('page.own.section.own_your_salon.view_more_testimonials').html_safe, :testimonials %></h3>
     </div>
   </div>
 
   <div class="callout blue">
     <div class="container">
-      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.own_your_salon.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.own_your_salon.view_frequently_asked_questions').html_safe, :faqs %></h3>
     </div>
   </div>
 

@@ -7,18 +7,18 @@
     </div>
 
     <div class="explore-studio">
-      <div class="dot no-tooltip storage" data-html="<h3>Drawers</h3><p>Pull out drawers for additional storage</p>"></div>
-      <div class="dot no-tooltip insulated-walls" data-html="<h3>Insulated Walls</h3><p>Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.</p>"></div>
-      <div class="dot no-tooltip tool-cabinet" data-html="<h3>Tool Cabinet</h3><p>Tool cabinet with dedicated outlets helps to keep cords neat and tidy.</p>"></div>
-      <div class="dot no-tooltip chair" data-html="<h3>Hydraulic Chair</h3><p>Provide comfort for your clients in a high-end hydraulic chair.</p>"></div>
-      <div class="dot no-tooltip cabinetry" data-html="<h3>Cabinets</h3><p>High end custom cabinetry with abundant storage helps keep your studio organized.</p>"></div>
-      <div class="dot no-tooltip mirror" data-html="<h3>Mirrors</h3><p>Style clients in front of large, well-lit mirrors.</p>"></div>
-      <div class="dot no-tooltip products" data-html="<h3>Retail Shelving</h3><p>Proudly display and sell the products you love</p>"></div>
-      <div class="dot no-tooltip wash-basin active" data-html="<h3>Shampoo Bowl</h3><p>Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.</p>"></div>
+      <div class="dot no-tooltip storage" data-html="<h3><%= t('page.own.section.studio_amenities.storage.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.storage.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip insulated-walls" data-html="<h3><%= t('page.own.section.studio_amenities.insulated_walls.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.insulated_walls.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip tool-cabinet" data-html="<h3><%= t('page.own.section.studio_amenities.tool_cabinet.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.tool_cabinet.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip chair" data-html="<h3><%= t('page.own.section.studio_amenities.chair.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.chair.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip cabinetry" data-html="<h3><%= t('page.own.section.studio_amenities.cabinetry.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.cabinetry.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip mirror" data-html="<h3><%= t('page.own.section.studio_amenities.mirror.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.mirror.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip products" data-html="<h3><%= t('page.own.section.studio_amenities.products.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.products.body').html_safe %></p>"></div>
+      <div class="dot no-tooltip wash-basin active" data-html="<h3><%= t('page.own.section.studio_amenities.wash_basin.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.wash_basin.body').html_safe %></p>"></div>
     </div>
 
     <div id="amenity-description">
-      <h3>Shampoo Bowl</h3><p>Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.</p>
+      <h3><%= t('page.own.section.studio_amenities.wash_basin.heading').html_safe %></h3><p><%= t('page.own.section.studio_amenities.wash_basin.body').html_safe %></p>
     </div>
 
     <div class="hero-content">
@@ -31,26 +31,17 @@
   </div>
     
   <div class="container" style="max-width: 550px;margin-bottom: 20px">
-    <h2 class="brand text-center">Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.</h2>
+    <h2 class="brand text-center"><%= t('page.own.section.studio_amenities.heading1').html_safe %></h2>
   </div>
 
   <div class="studio-amenities">
     <div class="container container-inset">
-      <h2 class="light text-center">Studio Amenities</h2>
+      <h2 class="light text-center"><%= t('page.own.section.studio_amenities.heading2').html_safe %></h2>
 
       <ul>
-        <li><strong>Oversized locking door:</strong> Your studio is private and secure.</li>
-        <li><strong>High-end cabinets and drawers:</strong> Keep your studio neat and tidy.</li>
-        <li><strong>Retail shelves:</strong> Showcase your favorite products.</li>
-        <li><strong>Two oversized mirrors:</strong> Creates a nice and open feel.</li>
-        <li><strong>Tool cabinet:</strong> Cleanly stores your cords.</li>
-        <li><strong>Shampoo bowl:</strong> Shampoo, rinse and repeat.</li>
-        <li><strong>Styling chair:</strong> Comfort for clients in a high-end hydraulic chair.</li>
-        <li><strong>Sound-insulated walls:</strong> Keep out noisy distractions.</li>
-        <li><strong>Full spectrum lighting:</strong> Light that emulates natural daylight.</li>
-        <li><strong>Instant hot water:</strong> Saves you time. Conserves water.</li>
-        <li><strong>Common areas:</strong> Break room with laundry facilities and refrigerator.</li>
-        <li><strong>Utilities included:</strong> Water, electricity, Wi-Fi, no added costs.</li>
+        <% t('page.own.section.studio_amenities.list2').each_line do |li| %>
+          <li><%= li.html_safe %></li>
+        <% end %>
       </ul>
 
     </div>
@@ -69,33 +60,26 @@
   <div class="sola-professional-benefits">
     <div class="container container-inset">
 
-      <h2 class="light text-center">Sola Professional Benefits</h2>
+      <h2 class="light text-center"><%= t('page.own.section.studio_amenities.heading3').html_safe %></h2>
 
       <ul>
-        <li>All the equipment you need to start your business with minimum start-up costs.</li>
-        <li>Join a community of 6,000+ salon professionals nationwide to be in business for yourself, not by yourself.</li>
-        <li>Boost your income and keep 100% of your profits.</li>
-        <li>Access group insurance and Sola programs and discounts for products, scheduling and more.</li>
-        <li>Escape salon politics and drama in your private, secure studio.</li>
-        <li>Manage your own schedule with 24/7 studio access.</li>
-        <li>Personalize your salon space with artwork, music, furniture and decor.</li>
-        <li>Set pricing for services and products.</li>
-        <li>Sell the retail products you love.</li>
-        <li>Play your own music and enjoy private conversations.</li>
-        <li>Enjoy an intimate setting and give your guests the one-on-one attention they deserve.</li>
-        <li>Utilize <%= link_to 'Sola Pro', 'https://www.solaprofessional.com' %> website and app for deals and education.</li>
-        <li>Attend national <%= link_to 'Sola Sessions', :sessions %> education events.</li>
-        <li>Create your own website page on <%= link_to 'www.solasalons.com', 'https://www.solasalonstudios.com' %></li>
+        <% t('page.own.section.studio_amenities.list3', { 
+          :sola_pro_link => link_to(t('page.own.section.sola_pro.title').html_safe, 'https://www.solaprofessional.com'),
+          :sola_sessions_link => link_to(t('page.own.section.sola_sessions.title').html_safe, :sessions),
+          :sola_salons_link => link_to(t('short_www_name').html_safe, 'https://www.solasalonstudios.com')
+          }).each_line do |li| %>
+          <li><%= li.html_safe %></li>
+        <% end %>
       </ul>
 
-      <p class="text-center gallery-button"><%= link_to 'View Gallery of Studios', :gallery, :class => 'button primary' %></p>
+      <p class="text-center gallery-button"><%= link_to t('page.own.section.studio_amenities.view_gallery_of_studios').html_safe, :gallery, :class => 'button primary' %></p>
 
     </div>
   </div>
 
   <div class="callout blue">
     <div class="container">
-      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.studio_amenities.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.studio_amenities.view_frequently_asked_questions').html_safe, :faqs %></h3>
     </div>
   </div>
 
