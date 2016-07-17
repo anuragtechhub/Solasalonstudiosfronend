@@ -14,7 +14,7 @@
         <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo' %>
 
         <div class="sola-pro-copy">
-          <strong>A website and app exclusive to Sola professionals!</strong>Designed to provide more tools to help you take your salon studio to the next level!
+          <%= t('page.own.section.sola_pro.hero_body1').html_safe %>
         </div>
 
       </div>
@@ -29,14 +29,12 @@
       </div>
       <div class="two-thirds column">
         <div class="left-padding">
-          <h2 class="light">Sola Pro</h2>
+          <h2 class="light"><%= t('page.own.section.sola_pro.heading1').html_safe %></h2>
 
           <ul class="sola-pro-benefits">
-            <li><strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.</li>
-            <li><strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!</li>
-            <li><strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.</li>
-            <li><strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!</li>
-            <li><strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.</li>
+            <% t('page.own.section.sola_pro.list1').each_line do |li| %>
+              <li><%= li.html_safe %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -47,11 +45,11 @@
       <a href="https://play.google.com/store/apps/details?id=com.solaprofessional" target="_blank"><%= image_tag 'own/android_appstore.png', :width => 266.706611569, :height => 79 %></a>
     </div>
 
-    <p class="larger text-center">Download app or view <%= link_to 'solaprofessional.com', 'https://www.solaprofessional.com' %></p>
+    <p class="larger text-center"><%= t('page.own.section.sola_pro.download_app_or_view', :sola_pro_link => link_to(t('sola_pro_www_name'), 'https://www.solaprofessional.com')).html_safe %></p>
 
     <hr />
 
-    <h2 class="brand text-center" style="margin-top: 15px">Check Out a Sneak Peek of Sola Pro!</h2>
+    <h2 class="brand text-center" style="margin-top: 15px"><%= t('page.own.section.sola_pro.heading2').html_safe %></h2>
 
     <div class="session" style="margin-bottom: 60px">
       <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
@@ -69,7 +67,7 @@
       <div class="row">
         <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
         <div class="content">
-          <h1>"There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!" <span>Jessica Zeinstra</span></h1>
+          <h1>&quot;<%= t('page.own.section.sola_pro.testimonial_text').html_safe %>&quot; <span>Jessica Zeinstra</span></h1>
         </div>
       </div>
     </div>
@@ -77,7 +75,7 @@
 
   <div class="callout blue">
     <div class="container">
-      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal">Want to learn more?</span> <%= link_to 'View frequently asked questions &raquo;'.html_safe, :faqs %></h3>
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_pro.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_pro.view_frequently_asked_questions').html_safe, :faqs %></h3>
     </div>
   </div>
 
