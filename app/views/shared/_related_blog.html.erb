@@ -2,6 +2,6 @@
   <%= link_to show_blog_path(blog) do %>
     <%= image_tag blog.image(:original), :class => 'full-width' %>
     <h4><%= blog.title.html_safe %></h4>
-    <p class="subtle">Posted on <%= blog.created_at.strftime('%B %e, %Y') %><br><%= blog.author.html_safe %></p>
+    <p class="subtle"><%= t('page.blog.posted_on', :date => blog.created_at.strftime('%B %e, %Y')).html_safe %><br><%= blog.author.html_safe %></p>
   <% end %>
 </div>

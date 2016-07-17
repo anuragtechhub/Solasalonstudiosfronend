@@ -2,7 +2,7 @@
   <% tours = @location.tours %>
   
   <div class="container">
-    <h3 class="text-center">Take a Tour</h3>
+    <h3 class="text-center"><%= t('page.locations.take_a_tour').html_safe %></h3>
     <div class="row take-a-tour">
       
       <% if tours.size == 1 %>

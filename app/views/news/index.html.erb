@@ -1,6 +1,6 @@
 <div class="container content-container">
   <div class="row">
-    <h1><%= t('page.news.in_the_news').html_safe %></h1>
+    <h1><%= t('page.news.title').html_safe %></h1>
     <h4 style="line-height:29px"><%= t('page.news.keep_up_with_the_latest', {
       :facebook_link => link_to(t('page.news.facebook').html_safe, 'https://www.facebook.com/solasalons/', :target => '_blank', :class => 'pink-link'),
       :instagram_link => link_to(t('page.news.instagram').html_safe, 'https://www.instagram.com/solasalons/', :target => '_blank', :class => 'pink-link'),
@@ -16,4 +16,4 @@
   <% end %>
 </div>
 
-<% content_for(:title) { t('page.news.in_the_news').html_safe } %>
+<% content_for(:title) { t('page.news.title').html_safe } %>

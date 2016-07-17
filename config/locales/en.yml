@@ -59,6 +59,9 @@ en:
       share_socially: Share Socially
       posted_on: "Posted on %{date}"
       related_articles: Related Articles
+      sola_spotlight: Sola Spotlight
+      read_article: Read Article
+      read_more: Read More
     
     contact:
       title: Contact Us
@@ -231,15 +234,16 @@ en:
       contact_your_salon_professional_directly: "Contact your salon professional directly to schedule an appointment or for more information"
       view_profile: View Profile
       salon_professionals_at: Salon Professionals at 
+      take_a_tour: Take a Tour
     
     news:
-      title: In the news
-      in_the_news: In the News
+      title: In the News
       keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link}, %{twitter_link} and %{pinterest_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
       facebook: Facebook
       instagram: Instagram
       pinterest: Pinterest
       twitter: Twitter
+      read_more: Read More
 
     newsletter:
       newsletter_sign_up: Newsletter Sign Up
@@ -361,6 +365,9 @@ en:
     request_franchising_info:
       title: Request Franchising Info
 
+    request_a_tour:
+      title: Request a Tour
+
     salon_professional:
       all_locations: All Locations
       studio: Studio
@@ -381,13 +388,15 @@ en:
 
     search:
       title: 
-      search_result_for_query: "Search Results for %{query}"
+      search_results_for_query: "Search Results for %{query}"
       blog_results: Blog Results
       location_results: Location Results
       salon_professional_results: Salon Professional Results
       no_results_found: "There were no results found for your search query &quot;%{query}&quot;"
       view_directory: View Directory
       view_location: View Location
+      view_profile: View Profile
+      studio: Studio
 
     testimonials:
       title: Testimonials
