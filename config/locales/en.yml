@@ -241,6 +241,12 @@ en:
       pinterest: Pinterest
       twitter: Twitter
 
+    newsletter:
+      newsletter_sign_up: Newsletter Sign Up
+      stay_informed: Stay informed with newsletters and events.
+      your_email_address: Your email address
+      join: Join
+
     own:
       title: Own Your Salon
       section:
@@ -352,6 +358,9 @@ en:
           want_to_learn_more: Want to learn more?
           view_frequently_asked_questions: "View frequently asked questions &raquo;"    
     
+    request_franchising_info:
+      title: Request Franchising Info
+
     salon_professional:
       all_locations: All Locations
       studio: Studio
@@ -369,6 +378,16 @@ en:
       phone_number: Phone Number
       leave_a_message: Leave a Message
       submit: Submit
+
+    search:
+      title: 
+      search_result_for_query: "Search Results for %{query}"
+      blog_results: Blog Results
+      location_results: Location Results
+      salon_professional_results: Salon Professional Results
+      no_results_found: "There were no results found for your search query &quot;%{query}&quot;"
+      view_directory: View Directory
+      view_location: View Location
 
     testimonials:
       title: Testimonials
