@@ -1,11 +1,11 @@
 <div class="hero-text" style="background-image:url('<%= image_path 'About_Banner_1.jpg' %>')">
   <div class="text">
-    <h1>Learn More About Sola</h1>
-    <h3>Click to watch video</h3>
+    <h1><%= t('page.about.learn_more_about_sola').html_safe %></h1>
+    <h3><%= t('page.about.click_to_watch_video').html_safe %></h3>
     <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-button"></a>
   </div>
   <div class="learn-more">
-    <h3>Learn More</h3>
+    <h3><%= t('page.about.learn_more').html_safe %></h3>
     <span class="ss-navigatedown"></span>
   </div>
 </div>
@@ -15,20 +15,20 @@
   <div class="row top-padded">
     <div class="three columns">
       <div class="info-box">
-        <h1>250+</h1>
-        <h3>Locations<br>Nationwide</h3>
-        <%= link_to 'View Locations', :locations %>
+        <h1><%= t('page.about.location_count').html_safe %></h1>
+        <h3><%= t('page.about.locations_nationwide').html_safe %></h3>
+        <%= link_to t('page.about.view_locations').html_safe, :locations %>
       </div>
       <div class="info-box">
-        <h1>6,000+</h1>
-        <h3>Salon<br>Professionals</h3>
-        <%= link_to 'Find a Stylist', :salon_professionals %>
+        <h1><%= t('page.about.salon_professional_count').html_safe %></h1>
+        <h3><%= t('page.about.salon_professionals').html_safe %></h3>
+        <%= link_to t('page.about.find_a_stylist').html_safe, :salon_professionals %>
       </div>
     </div>
     <div class="nine columns">
-      <h1>About Sola</h1>
-      <h4 class="paragraph">In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO. Now with more than 250 locations open nationwide, we are proud to offer salon professionals the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon. Our innovative salon model empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time.</h4>
-      <h4 class="paragraph">We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind: to help set them up for success. Join the Sola Salon Studios <%= link_to 'diverse community', :diversity %> &ndash; now 6,000+ strong! &ndash; and experience a level of creative independence and career support you won't find anywhere else.</h4>
+      <h1><%= t('page.about.heading1').html_safe %></h1>
+      <h4 class="paragraph"><%= t('page.about.body1').html_safe %></h4>
+      <h4 class="paragraph"><%= t('page.about.body2', :diversity_link => link_to(t('page.about.diverse_community').html_safe, :diversity)).html_safe %></h4>
     </div>
   </div>
 
@@ -37,16 +37,16 @@
       <%= image_tag 'Founders@2x.png', :class => 'testimonial-portrait founders-pic' %>
     </div>
     <div class="nine columns">
-      <h1>About the Founders</h1>
-      <h4 class="paragraph">Matt Briger and Stratton Smith are true entrepreneurs. In the early 1990s, Stratton was a successful salon owner in St. Louis, MO. In 1995, he sold his six salons and joined Matt to start and run a real estate company in Colorado. But Stratton's passion for the beauty industry never left him, and in 2004 Stratton and Matt left the corporate world to start Sola Salon Studios. They had a simple idea and a clear vision: to put the salon professional first. 11 years later, they continue to prove that they do just that.</h4>
-      <h4 class="paragraph">&quot;The goal is for every stylist to live their best life, and that's something different for everybody. At the end of the day, the stylists are the ones who win.&quot; - Matt Briger</h4>
+      <h1><%= t('page.about.heading2').html_safe %></h1>
+      <h4 class="paragraph"><%= t('page.about.body3').html_safe %></h4>
+      <h4 class="paragraph">&quot;<%= t('page.about.quote').html_safe %>&quot; - Matt Briger</h4>
     </div>
   </div>
 
 </div>
 
 <div class="view-gallery">
-  <div class="link"><%= link_to 'View Gallery', :gallery, :class => 'button primary view-image-gallery' %></div>
+  <div class="link"><%= link_to t('page.about.view_gallery').html_safe, :gallery, :class => 'button primary view-image-gallery' %></div>
 </div>
 
 <div class="callout blue callout-testimonial">
@@ -56,8 +56,8 @@
         <%= image_tag 'Audrey_photo@2x.png', :class => 'testimonial-portrait' %>
       </div>
       <div class="two-thirds column">
-        <h1>"Sola has given me the freedom to create a world that represents me that I can share with my clients. Moving here was the greatest career choice I've made, and I've never looked back!"</h1>
-        <h3>Audrey Howerton, Audrey's Hair Studio</h3>
+        <h1>&quot;<%= t('page.about.testimonial_text').html_safe %>&quot;</h1>
+        <h3><%= t('page.about.testimonial_author').html_safe %></h3>
       </div>
     </div>
   </div>
@@ -65,20 +65,20 @@
 
 <div class="callout green">
   <div class="container">
-    <h3 class="large" style="margin-bottom:0;"><%= link_to 'View more testimonials'.html_safe, :testimonials %></h3>
+    <h3 class="large" style="margin-bottom:0;"><%= link_to t('page.about.view_more_testimonials').html_safe, :testimonials %></h3>
   </div>
 </div>
 
 <div class="container">
   <div class="sola-story large">
     <div class="row">
-        <h2>Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else.</h2>
+        <h2><%= t('page.about.join_our_community').html_safe %></h2>
     </div>
     <div class="row">
-      <%= link_to 'Own Your Salon', :own_your_salon, :class => 'button first' %>
-      <%= link_to 'Contact Us', :contact_us, :class => 'button' %>
+      <%= link_to t('page.own.title').html_safe, :own_your_salon, :class => 'button first' %>
+      <%= link_to t('page.contact.title').html_safe, :contact_us, :class => 'button' %>
     </div>
   </div>
 </div>
 
-<% content_for(:title) { 'About Us' } %>
+<% content_for(:title) { t('page.about.title').html_safe } %>
