@@ -61,6 +61,61 @@ en:
     locations:
       title: Locations
       title_long: Sola Locations
+      find_a_sola_location: Find a Sola Location
+      select_a_state: Select a State
+      all_locations: All Locations
+      view_location: View Location
+      locations_in: Locations in 
+      find_a_salon_professional: Find a Salon Professional
+      rent_a_studio: Rent a Studio
+      about_this_location: About This Location
+      move_in_special: Move-In Special
+      your_life_your_style: Your Life, Your Style
+      studio_amenities: Studio Amenities
+      studio_amenities_list: |
+        Fully enclosed, private, locking studio
+        High-end styling chair and shampoo bowl
+        Full-spectrum lighting and oversize mirrors
+        Luxurious cabinets and fixtures
+        Individual ventilation in each studio
+        Instant and abundant hot water supply
+        Onsite laundry and shared amenities
+        All utilities and Wi-Fi included
+        And much more...
+      salon_professional_benefits: Salon Professional Benefits
+      salon_professional_benefits_list: |
+        Keep 100% of your profits
+        Access group insurance and Sola discounts
+        Escape salon politics and drama
+        Manage your own schedule
+        Personalize your salon space
+        Set pricing for services and products
+        Sell the retail products you love
+        Play your own music
+        Enjoy private conversations
+      looking_for_a_salon_professional: Looking for a Salon Professional?
+      view_our_directory: View Our Directory
+      contact_us_for_leasing_information: "Contact Us for<br>Leasing&nbsp;Information"
+      call_for_leasing_information: "Call %{contact_name} for leasing information"
+      your_name: Your Name
+      email_address: Email Address
+      phone_number: Phone Number
+      leave_a_message: Leave a Message (Optional)
+      submit_request: Submit Request
+      testimonial_text: "I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."
+      testimonial_author: "Katina Eisenbeis, Katina's Salon"
+      view_more_testimonials: View More Testimonials
+      join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
+      the_sola_story: The Sola Story
+      see_what_others_are_saying: See What Others Are Saying
+      view_sola_testimonials: View Sola Testimonials
+      at_location_sola: "At %{location_name} Sola"
+      salon_professionals: Salon Professionals
+      filter_by_service: Filter by Service
+      all_services: All Services
+      contact_your_salon_professional_directly: "Contact your salon professional directly to schedule an appointment or for more information"
+      view_profile: View Profile
+      salon_professionals_at: Salon Professionals at 
     
     news:
       title: In the news

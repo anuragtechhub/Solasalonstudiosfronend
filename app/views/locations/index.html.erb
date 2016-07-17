@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="six columns locations-hero">
-        <h1>Find a Sola Location</h1>
+        <h1><%= t('page.locations.find_a_sola_location').html_safe %></h1>
         <h3 class="subtle">&nbsp;</h3>
     </div>
 
@@ -12,7 +12,7 @@
 
       <div class="sola-select">
         <div class="row">
-          <div class="option-placeholder"><h3>Select a State</h3></div>
+          <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
@@ -94,4 +94,4 @@
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
-<% content_for(:title) { 'All Locations' } %>
+<% content_for(:title) { "#{t('page.locations.all_locations').html_safe}" } %>

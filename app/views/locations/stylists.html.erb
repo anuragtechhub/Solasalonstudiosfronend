@@ -1,6 +1,6 @@
 <div class="location-breadcrumb">
   <div class="container">
-    <%= link_to 'All Locations', :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state).gsub(/\./, '') %> 
+    <%= link_to t('page.locations.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(@location.state).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name).gsub(/\./, '') %>
   </div>
@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="six columns">
-      <h1>Salon Professionals</h1>
+      <h1><%= t('page.locations.salon_professionals').html_safe %></h1>
       <h3 class="subtle"><%= @location.name %></h3>
     </div>
 
@@ -19,11 +19,11 @@
       <% if @location && @location.services && @location.services.size > 0 %>
       <div class="sola-select">
         <div class="row">
-          <div class="option-placeholder"><h3><%= params[:service] || 'Filter by Service' %></h3></div>
+          <div class="option-placeholder"><h3><%= params[:service] || t('page.locations.filter_by_service').html_safe %></h3></div>
           <div class="arrow"><span class="ss-dropdown"></span></div>
         </div>
         <div class="options">
-            <div class="option" data-value="<%= salon_stylists_path(@location.url_name) %>">All Services</div>
+            <div class="option" data-value="<%= salon_stylists_path(@location.url_name) %>"><%= t('page.locations.all_services').html_safe %></div>
           <% @location.services.each do |service| %>
             <div class="option" data-value="<%= salon_stylists_path(@location.url_name, service) %>"><%= service %></div>
           <% end %>
@@ -38,7 +38,7 @@
 
 <div class="container">
   <div class="callout green coupon small">
-    <h4><strong>Contact your salon professional directly to schedule an appointment or for more information</strong></h4>
+    <h4><strong><%= t('page.locations.contact_your_salon_professional_directly').html_safe %></strong></h4>
   </div>
 </div>
 
@@ -61,7 +61,7 @@
               <% end %>
             </p>
             <div><%= (stylist.phone_number.present? && stylist.phone_number_display) ? stylist.phone_number : '&nbsp;'.html_safe %></div>
-            <div class='view-profile'><%= link_to 'View Profile', show_salon_professional_path(stylist) %></div>
+            <div class='view-profile'><%= link_to t('page.locations.view_profile').html_safe, show_salon_professional_path(stylist) %></div>
           </div>
         <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
       <% end %>
@@ -72,4 +72,4 @@
 
 <% content_for(:scripts) { javascript_include_tag('salon_stylists'); } %>
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
-<% content_for(:title) { "Salon Professionals at #{@location.name}" } %>
+<% content_for(:title) { "#{t('page.locations.salon_professionals_at').html_safe} #{@location.name}" } %>
