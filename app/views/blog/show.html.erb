@@ -1,6 +1,6 @@
 <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
-    <%= link_to 'Blog', :blog %>     
+    <%= link_to t('page.blog.title').html_safe, :blog %>     
     <% if @category %>
       <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
     <% end %>
@@ -12,7 +12,7 @@
   
   <div class="row">
     <div class="twelve columns">
-      <h1>Our Blog</h1>
+      <h1><%= t('page.blog.our_blog').html_safe %></h1>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
     <div class="search-and-filter-row">
       <div class="one-half column">
         <form method="get" action="<%= blog_path %>">
-          <input type="text" name="query" value="<%= params[:query] %>" class="search-input" placeholder="Search..." />
+          <input type="text" name="query" value="<%= params[:query] %>" class="search-input" placeholder="<%= t('page.blog.search').html_safe %>" />
           <button class="search-button button primary"><span class="ss-search"></span></button>
         </form>
       </div>
@@ -28,11 +28,11 @@
       <div class="one-half column text-right">
         <div class="sola-select blog-select">
           <div class="row">
-            <div class="option-placeholder"><h3><%= @category ? @category.name : 'Choose a Category' %></h3></div>
+            <div class="option-placeholder"><h3><%= @category ? @category.name : t('page.blog.choose_a_category').html_safe %></h3></div>
             <div class="arrow"><span class="ss-dropdown"></span></div>
           </div>
           <div class="options">
-              <div class="option" data-value="<%= blog_path() %>">All Categories</div>
+              <div class="option" data-value="<%= blog_path() %>"><%= t('page.blog.all_categories').html_safe %></div>
             <% @categories.each do |category| %>
               <div class="option" data-value="<%= blog_category_path(category.url_name) %>"><%= category.name.html_safe %></div>
             <% end %>
@@ -55,8 +55,8 @@
       
       <div class="one-third column">
         <h4 class="large"><%= @post.title.html_safe %></h4>
-        <p class="subtle">Posted on <%= @post.publish_date.strftime('%B %e, %Y') %><br><%= @post.author.html_safe %></p>
-        <div class="share-socially"><h3>Share Socially</h3></div>
+        <p class="subtle"><%= t('page.blog.posted_on', :date => @post.publish_date.strftime('%B %e, %Y')).html_safe %><br><%= @post.author.html_safe %></p>
+        <div class="share-socially"><h3><%= t('page.blog.share_socially').html_safe %></h3></div>
         <ul class="social three">
           <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@post.image(:original)}&description=#{@post.safe_title}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <li><%= link_to "https://twitter.com/intent/tweet?text=#{@post.safe_title} #{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
@@ -75,7 +75,7 @@
     </div>
 
     <div class="related-articles">
-      <h3>Related Articles</h3>
+      <h3><%= t('page.blog.related_articles').html_safe %></h3>
       <div class="row">
         <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[0] %></div>
         <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[1] %></div>
