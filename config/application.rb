@@ -50,8 +50,9 @@ module Solasalonstudios
     config.middleware.use Rack::Deflater
     config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false}
     
+    I18n.config.enforce_available_locales = false
+    config.i18n.default_locale = :en
     config.i18n.fallbacks = true
-    config.i18n.fallbacks = [:en]
 
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
