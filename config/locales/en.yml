@@ -209,7 +209,13 @@ en:
     
     news:
       title: In the news
-    
+      in_the_news: In the News
+      keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link}, %{twitter_link} and %{pinterest_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
+      facebook: Facebook
+      instagram: Instagram
+      pinterest: Pinterest
+      twitter: Twitter
+
     own:
       title: Own Your Salon
       section:
