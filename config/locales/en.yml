@@ -54,6 +54,16 @@ en:
     
     find_salon_pro:
       title: Find a Salon Professional
+      heading1: Find a Sola Salon<br>Professional Near You
+      search: Search
+      search_by_name_or_location: Search by name or location
+      salon_professional_count: 6,000+
+      salon_professionals: Salon Professionals
+      location_count: 250+
+      locations_nationwide: Locations Nationwide
+      body1: "At Sola Salon Studios, each of our studios is independently operated!"
+      body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
+      find_a_salon_professional_near_you: Find a Salon Professional Near You
     
     gallery:
       title: Gallery
@@ -230,5 +240,6 @@ en:
           testimonial_text: "My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous."
           want_to_learn_more: Want to learn more?
           view_frequently_asked_questions: "View frequently asked questions &raquo;"    
+    
     testimonials:
       title: Testimonials

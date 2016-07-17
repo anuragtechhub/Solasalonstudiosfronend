@@ -1,35 +1,35 @@
 <div class="hero-text find-a-salon-professional" style="margin-bottom: 0;background-image:url('<%= image_path 'Find_Hero.jpg' %>')">
   <div class="text">
     
-    <h1>Find a Sola Salon<br>Professional Near You</h1>
+    <h1><%= t('page.find_salon_pro.heading1').html_safe %></h1>
     
     <div class="find-salon-professional-search">
       <div class="container">
         <%= form_tag [:search, :results], :method => :get do %>
-          <input type="text" type="search" name="query" placeholder="Search by name or location" />
+          <input type="text" type="search" name="query" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location').html_safe %>" />
           <input type="hidden" name="first" value="salon_professionals" />
-          <button type="submit" class="button primary">Search</button>
+          <button type="submit" class="button primary"><%= t('page.find_salon_pro.search').html_safe %></button>
         <% end %>
       </div>
     </div>
     
     <div class="find-a-salon-professional-stats">
       <div class="stat">
-        <h1>6,000+</h1>
-        <h3>Salon Professionals</h3>
+        <h1><%= t('page.find_salon_pro.salon_professional_count').html_safe %></h1>
+        <h3><%= t('page.find_salon_pro.salon_professionals').html_safe %></h3>
       </div>
       <div class="stat right">
-        <h1>250+</h1>
-        <h3>Locations Nationwide</h3>
+        <h1><%= t('page.find_salon_pro.location_count').html_safe %></h1>
+        <h3><%= t('page.find_salon_pro.locations_nationwide').html_safe %></h3>
       </div>
     </div>
 
   </div>
 
   <div class="find-a-salon-professional-disclaimer">
-    <p><strong>At Sola Salon Studios, each of our studios is independently operated!</strong></p>
-    <p><strong>To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly.</strong></p>
+    <p><strong><%= t('page.find_salon_pro.body1').html_safe %></strong></p>
+    <p><strong><%= t('page.find_salon_pro.body2').html_safe %></strong></p>
   </div>  
 </div>
 
-<% content_for(:title) { 'Find a Salon Professional Near You' } %>
+<% content_for(:title) { t('page.find_salon_pro.find_a_salon_professional_near_you').html_safe } %>
