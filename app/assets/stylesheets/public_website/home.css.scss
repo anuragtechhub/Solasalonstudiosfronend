@@ -2,11 +2,13 @@
 @import 'variables';
 
 .home-slogan {
+  display: block;
+  clear: both;
   text-transform: none;
   font-weight: 300;
   font-size: 33px;
   line-height: 43px;
-  margin: 33px 30px 30px 30px;
+  margin: 30px 30px 30px 30px;
   letter-spacing: 0px;
 }
 
