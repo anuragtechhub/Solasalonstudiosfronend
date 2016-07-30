@@ -40,13 +40,15 @@ gem "font-awesome-rails"
 
 group :production do
   gem 'newrelic_rpm'
-  gem 'asset_sync'
+  #gem 'asset_sync'
   gem 'rails_12factor'
   gem "image_optim"
   gem 'image_optim_pack'
   gem "paperclip-optimizer"
   gem 'rmagick'    
 end
+
+gem 'rack-cors'
 
 gem "paperclip"
 gem 'aws-sdk', '< 2.0'
