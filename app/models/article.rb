@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
   validates :title, :presence => true
   #validates :url_name, :presence => true, :uniqueness => true
 
-  has_attached_file :image, :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
+  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
