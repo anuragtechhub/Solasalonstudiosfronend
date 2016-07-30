@@ -26,13 +26,7 @@ Solasalonstudios::Application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   config.assets.compile = false
-  config.serve_static_assets = true
-  config.assets.compress = true
-  config.assets.compile = true
-  config.assets.digest = true
-  config.static_cache_control = "public, max-age=31536000"
-  config.action_controller.asset_host = "dobyu981wavlb.cloudfront.net"
-
+  config.action_controller.asset_host = '//s3.amazonaws.com/solasalonstudios'  
   # config.assets.css_compressor = :sass
 
   config.cache_store = :dalli_store,
@@ -57,7 +51,7 @@ Solasalonstudios::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = false
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
