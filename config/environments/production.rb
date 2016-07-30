@@ -22,10 +22,6 @@ Solasalonstudios::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   # Disable Rails's static asset server (Apache or nginx will already do this).
 
-  config.serve_static_assets = false
-  
-  config.action_dispatch.rack_cache = nil
-
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   config.assets.compile = false
@@ -46,14 +42,9 @@ Solasalonstudios::Application.configure do
                      :socket_timeout => 1.5,
                      :socket_failure_delay => 0.2
                     }
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
-
-  # Generate digests for assets URLs.
-  config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.1'
+  config.assets.version = '1.2'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
