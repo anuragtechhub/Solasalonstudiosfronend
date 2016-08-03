@@ -212,6 +212,42 @@
     }
   }
 
+  .side-sessions {
+    border: 10px solid $brand-pink;
+    padding: 40px;
+    margin: 20px auto 40px auto;
+    max-width: 666px;
+
+    h2, li {
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: center;
+      font-size: 25px;
+      line-height: 25px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: 30px;
+    }
+
+    li {
+      font-size: 20px;
+      line-height: 20px;
+      color: $brand-pink;
+      list-style: none;
+      text-align: center;
+      margin: 15px 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
   .agenda, .ticketing {
     border: 10px solid $brand-blue;
     padding: 30px;
