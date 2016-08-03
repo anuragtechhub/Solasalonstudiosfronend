@@ -48,7 +48,7 @@ module Solasalonstudios
     end
 
     config.middleware.use Rack::Deflater
-    config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => true}
+    config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
     
     I18n.config.enforce_available_locales = false
     config.i18n.default_locale = :en
