@@ -151,7 +151,7 @@
         <h3 class="subtle"><%= @location.name %></h3>
         <div class="tour-information">
           <p><%= t('page.locations.call_for_leasing_information', :contact_name => @location.general_contact_name).html_safe %></p>
-          <h1><%= @location.phone_number %></h1>
+          <h1><a href="tel:<%= @location.phone_number %>" class="tel"><%= @location.phone_number %></a></h1>
           <p class="contact-link"><a href="mailto:<%= @location.email_address_for_inquiries %>"><%= @location.email_address_for_inquiries %></a></p>
         </div>
       </div>
