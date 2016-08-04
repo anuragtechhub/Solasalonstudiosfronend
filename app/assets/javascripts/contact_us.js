@@ -71,11 +71,10 @@ $(function () {
       $('#contact_us_location_id').val(locationId);
 
       if ($(event.target).data('phone')) {
-        $('#contact-us-number').html($(event.target).data('phone'));
+        $('#contact-us-number').html($(event.target).data('phone')).attr('href', 'tel:' + $(event.target).data('phone'));
       } else {
-        $('#contact-us-number').html('(303) 377-7652');
+        $('#contact-us-number').html('(303) 377-7652').attr('href', 'tel:(303) 377-7652');
       }
-      
 
       $('#contact-us-info-disabled').hide();
       $('.contact-us-info').show();

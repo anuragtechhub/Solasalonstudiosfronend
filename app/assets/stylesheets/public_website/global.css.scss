@@ -33,6 +33,10 @@ a, a:link, a:visited, a:hover, a:active {
   &:hover, &:active {
     color: $brand-pink-hover;
   }
+
+  &.tel {
+    text-decoration: none;
+  }
 }
 
 h1, h2, h3, h4 {
