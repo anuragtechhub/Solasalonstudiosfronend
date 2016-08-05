@@ -848,3 +848,26 @@ ul.own-list {
   }
 
 }
+
+@media (max-height: 600px) {
+  .own-your-salon .hero-tabs {
+    top: 20px;
+
+    a {
+      font-size: 16px;
+      padding-bottom: 12px;
+      border-bottom-width: 8px;
+    }
+  }
+
+  .own-your-salon .hero-content {
+    justify-content: flex-end;
+  }
+
+  .hero-own {
+    .hero-heading {
+      font-size: 29px;
+      line-height: 43px;
+    }
+  }
+}
