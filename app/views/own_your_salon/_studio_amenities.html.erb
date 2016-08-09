@@ -48,13 +48,9 @@
   </div>
 
   <div class="owl-carousel owl-theme" data-pagination="true">
-    <div class="item"><%= image_tag 'own/studio/1.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/2.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/3.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/4.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/5.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/6.jpg' %></div>
-    <div class="item"><%= image_tag 'own/studio/7.jpg' %></div>
+    <% (1..7).each do |number| %>
+      <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg" %></div>
+    <% end %>  
   </div>
 
   <div class="sola-professional-benefits">
