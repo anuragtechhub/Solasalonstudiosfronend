@@ -16,6 +16,10 @@ class ContactUsController < PublicWebsiteController
         fr = FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message], :request_url => params[:request_url])
         fr.visit = save_visit
         fr.save
+        if params[:email]
+          gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+        end
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
         if captcha_verified
@@ -27,6 +31,8 @@ class ContactUsController < PublicWebsiteController
     else
       redirect_to :contact_us
     end
+  rescue Gibbon::MailChimpError => e
+    render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
   def request_a_tour
@@ -35,6 +41,10 @@ class ContactUsController < PublicWebsiteController
         rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url])
         rti.visit = save_visit
         rti.save
+        if params[:email]
+          gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+        end
         if params[:message]
           # if there's a message, this is a general contact us submission
           render :json => {:success => 'Thank you! We will get in touch soon'}
@@ -47,6 +57,8 @@ class ContactUsController < PublicWebsiteController
     else
       redirect_to :contact_us
     end
+  rescue Gibbon::MailChimpError => e
+    render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
   def partner_inquiry
@@ -55,6 +67,10 @@ class ContactUsController < PublicWebsiteController
         pi = PartnerInquiry.create(:subject => params[:subject], :name => params[:name], :email => params[:email], :phone => params[:phone], :company_name => params[:company_name], :message => params[:message], :request_url => params[:request_url])
         pi.visit = save_visit
         pi.save
+        if params[:email]
+          gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+        end
         render :json => {:success => 'Thank you! We will get in touch soon'}
       else
         render :json => {:error => 'Please enter your name, a valid email address and phone number'}
@@ -62,6 +78,8 @@ class ContactUsController < PublicWebsiteController
     else
       redirect_to :contact_us
     end
+  rescue Gibbon::MailChimpError => e
+    render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
   private
