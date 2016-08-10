@@ -1,5 +1,43 @@
 namespace :mailchimp do
 
+  task :contact_forms => :environment do 
+    gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+    
+    FranchisingRequest.all.each do |req|
+      if req && req.email.present?
+        p "FranchisingRequest #{req.email}"
+        begin
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
+        rescue => e
+          p "FranchisingRequest error adding mailchimp #{e}"
+        end
+      end
+    end
+
+    RequestTourInquiry.all.each do |req|
+      if req && req.email.present?
+        p "RequestTourInquiry #{req.email}"
+        begin
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
+        rescue => e
+          p "RequestTourInquiry error adding mailchimp #{e}"
+        end
+      end
+    end
+
+    PartnerInquiry.all.each do |req|
+      if req && req.email.present?
+        p "PartnerInquiry #{req.email}"
+        begin
+          gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
+        rescue => e
+          p "PartnerInquiry error adding mailchimp #{e}"
+        end
+      end
+    end
+
+  end
+
   task :stylists => :environment do
     #if Date.today.wday == 6
       gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
