@@ -7,12 +7,13 @@
   var $amenity_description = $('#amenity-description');
 
   function studioAmenitiesCheck(idealHeight) {
-    // check Studio Amenities to see if its taller than the fold
-    if ($studio_amenities_image.is(':visible') && $studio_amenities_image.height() > idealHeight) {
-      $amenity_description.css('bottom', $studio_amenities_image.height() - idealHeight + 10);
-    } else {
-      $amenity_description.removeAttr('style');
-    }
+    // var newBottom = $studio_amenities_image.height() - idealHeight + 10;
+    // // check Studio Amenities to see if its taller than the fold
+    // if ($studio_amenities_image.is(':visible') && $studio_amenities_image.height() > idealHeight && (newBottom + $amenity_description.height()) < $('#explore-studio').height()) {
+    //   $amenity_description.css('bottom', newBottom);
+    // } else {
+    //   $amenity_description.removeAttr('style');
+    // }
   }
 
   function fullscreenImage() {
