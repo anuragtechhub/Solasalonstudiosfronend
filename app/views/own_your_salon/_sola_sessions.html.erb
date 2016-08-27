@@ -32,7 +32,7 @@
     <p class="largest text-center">
       <span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet1').html_safe %> &nbsp;<span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet2').html_safe  %>
       <br />
-      <span class="bullet">&#9679;</span> <%= link_to t('page.own.section.sola_sessions.bullet3').html_safe, :sessions %> – <%= t('page.own.section.sola_sessions.bullet4').html_safe  %>
+      <span class="bullet">&#9679;</span> <%= link_to t('page.own.section.sola_sessions.bullet3').html_safe, :sessions %> <% if I18n.locale == :en %>– <%= t('page.own.section.sola_sessions.bullet4').html_safe  %><% end %>
     </p>
 
     <div class="session" style="margin: 40px auto">
