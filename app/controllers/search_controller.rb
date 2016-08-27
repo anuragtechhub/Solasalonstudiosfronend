@@ -24,8 +24,8 @@ class SearchController < PublicWebsiteController
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
 
       # locations
-      locations1 = Location.near(params[:query].downcase)
-      locations2 = Location.where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param)
+      locations1 = Location.near(params[:query].downcase).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
+      locations2 = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param)
       @locations = locations1.open + locations2.open
       if @locations
         @locations.uniq!
@@ -34,7 +34,7 @@ class SearchController < PublicWebsiteController
 
       # stylists
       if params[:stylists] != 'hidden'
-        @stylists = Stylist.where(:status => 'open').where('LOWER(business_name) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
+        @stylists = Stylist.joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}'").where(:status => 'open').where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         if @stylists
           @stylist = @stylists.open
           @stylists.uniq!
