@@ -45,6 +45,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "locations" => 'locations#index', :as => :locations
   get "states/:state" => 'locations#state', :as => :locations_by_state
+  get "provinces/:state" => 'locations#state', :as => :locations_by_province
   #get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
   
   get "locations/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists

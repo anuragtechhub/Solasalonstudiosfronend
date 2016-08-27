@@ -74,7 +74,7 @@ en-CA:
       body1: "We invite you to  contact us by phone or by filling out the email form. We would be happy to begin working with you today. We look forward to hearing from you!"
       body2: "Please also have a look at our %{faq_link}"
       frequently_asked_questions: Frequently Asked Questions
-      select_a_state: Select a State
+      select_a_state: Select a Province
       select_a_location: Select a Location
       select_a_sola_location_above: Select a Sola Location Above
       your_name: Your Name
@@ -185,7 +185,7 @@ en-CA:
       title: Locations
       title_long: Sola Locations
       find_a_sola_location: Find a Sola Location
-      select_a_state: Select a State
+      select_a_state: Select a Province
       all_locations: All Locations
       view_location: View Location
       locations_in: Locations in 

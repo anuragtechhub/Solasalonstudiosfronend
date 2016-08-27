@@ -331,7 +331,9 @@ RailsAdmin.config do |config|
         field :address_1
         field :address_2
         field :city
-        field :state
+        field :state do 
+          label 'State/Province'
+        end
         field :postal_code
         field :country
         field :latitude
@@ -589,7 +591,9 @@ RailsAdmin.config do |config|
         field :address_1
         field :address_2
         field :city
-        field :state
+        field :state do 
+          label 'State/Province'
+        end
         field :postal_code
         field :country do
           help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"

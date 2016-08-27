@@ -3,8 +3,12 @@ class LocationsController < PublicWebsiteController
   before_action :map_defaults
 
   def index
-    p "I18n.locale=#{I18n.locale}"
-    @locations = Location.where(:status => 'open')
+    if I18n.locale == :en
+      @locations = Location.where(:status => 'open').where(:country => 'US')
+    else
+      @locations = Location.where(:status => 'open').where(:country => 'CA')
+    end
+
     @states = @locations.select('DISTINCT state').order(:state => :asc)
 
     @last_location = Location.order(:updated_at => :desc).first
@@ -19,7 +23,11 @@ class LocationsController < PublicWebsiteController
       redirect_to region_path(:url_name => @msa.url_name) if @msa
     end
 
-    @all_locations = Location.where(:status => 'open')
+    if I18n.locale == :en
+      @all_locations = Location.where(:status => 'open').where(:country => 'US')
+    else
+      @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+    end
     
     if @msa
       @locations = @all_locations.where('msa_id = ?', @msa.id)
@@ -34,7 +42,13 @@ class LocationsController < PublicWebsiteController
     query_param = "%#{params[:city]}%"
 
     #locations1 = Location.where(:status => 'open').near(params[:city])
-    @locations = Location.where(:status => 'open').where('city LIKE ?', query_param)
+    if I18n.locale == :en
+      @locations = Location.where(:status => 'open').where(:country => 'US')
+    else
+      @locations = Location.where(:status => 'open').where(:country => 'CA')
+    end
+
+    @locations = @locations.where('city LIKE ?', query_param)
     #@locations = locations1 + locations2
     if @locations
       @locations.uniq!
@@ -44,14 +58,26 @@ class LocationsController < PublicWebsiteController
   end
 
   def state
-    @all_locations = Location.where(:status => 'open')
+    if I18n.locale == :en
+      @all_locations = Location.where(:status => 'open').where(:country => 'US')
+    else
+      @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+    end
+
     query_param = "%#{params[:state].downcase.gsub(/-/, ' ')}%" if params[:state]
-    @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param)
+    
+    if I18n.locale == :en
+      @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param).where(:country => 'US')
+    else
+      @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param).where(:country => 'CA')
+    end
+    
     redirect_to :locations unless @locations.size > 0 && @lat && @lng
   end
 
   def salon
     @location = Location.find_by(:url_name => params[:url_name])
+    
     if @location
       @lat = @location.latitude
       @lng = @location.longitude
@@ -68,6 +94,7 @@ class LocationsController < PublicWebsiteController
 
   def salon_redirect
     @location = Location.find_by(:url_name => params[:url_name])
+    
     if @location && @location.state && @location.city
       redirect_to salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, '')
     else

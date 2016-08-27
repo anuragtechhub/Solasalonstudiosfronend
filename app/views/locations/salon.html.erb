@@ -1,7 +1,7 @@
 
 <div class="location-breadcrumb">
   <div class="container">
-    <%= link_to t('page.locations.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, locations_by_state_path(beautify_url_segment @location.state).gsub(/\./, '') %> 
+    <%= link_to t('page.locations.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, I18n.locale == :en ? locations_by_state_path(beautify_url_segment @location.state).gsub(/\./, '') : locations_by_province_path(beautify_url_segment @location.state).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name).gsub(/\./, '') %>
   </div>
