@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415165225) do
+ActiveRecord::Schema.define(version: 20160827221712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -302,6 +302,7 @@ ActiveRecord::Schema.define(version: 20160415165225) do
     t.text     "tour_iframe_1"
     t.text     "tour_iframe_2"
     t.text     "tour_iframe_3"
+    t.string   "country",                         default: "US"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

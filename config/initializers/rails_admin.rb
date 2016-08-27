@@ -333,6 +333,7 @@ RailsAdmin.config do |config|
         field :city
         field :state
         field :postal_code
+        field :country
         field :latitude
         field :longitude
         field :custom_maps_url do
@@ -590,6 +591,9 @@ RailsAdmin.config do |config|
         field :city
         field :state
         field :postal_code
+        field :country do
+          help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
+        end
         field :latitude do
           help 'The latitude will be automatically set when a valid address is entered. You do not need to set the latitude manually (but you can if you really want to)'
         end

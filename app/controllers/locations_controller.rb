@@ -3,6 +3,7 @@ class LocationsController < PublicWebsiteController
   before_action :map_defaults
 
   def index
+    p "I18n.locale=#{I18n.locale}"
     @locations = Location.where(:status => 'open')
     @states = @locations.select('DISTINCT state').order(:state => :asc)
 
