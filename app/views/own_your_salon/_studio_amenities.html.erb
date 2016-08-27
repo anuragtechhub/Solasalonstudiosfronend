@@ -48,9 +48,15 @@
   </div>
 
   <div class="owl-carousel owl-theme" data-pagination="true">
-    <% (1..9).each do |number| %>
-      <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg" %></div>
-    <% end %>  
+    <% if I18n.locale == :en %>
+      <% (1..9).each do |number| %>
+        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg" %></div>
+      <% end %> 
+    <% else %>
+      <% (1..9).each do |number| %>
+        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/amenity#{number}.jpg" %></div>
+      <% end %> 
+    <% end %> 
   </div>
 
   <div class="sola-professional-benefits">

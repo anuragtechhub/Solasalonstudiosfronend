@@ -15,6 +15,10 @@
   padding: 30px;
   text-align: center;
 
+  &.under-search {
+    bottom: 200px;
+    background: transparent;
+  }
 
   p {
     color: rgba(255,255,255,0.8);
@@ -124,6 +128,10 @@
   .hero-text.find-a-salon-professional {
     height: 590px;
   }
+
+  .under-search {
+    bottom: 150px !important;
+  }  
 }
 
 @media (max-width: 850px) {
@@ -131,6 +139,10 @@
     width: 100%;
     margin: 0;
   }
+
+  .under-search {
+    bottom: 150px !important;
+  }      
 }
 
 @media (max-width: 650px) {
@@ -154,6 +166,10 @@
   .find-salon-professional-search {
     margin: 30px auto;
   }
+
+  .under-search {
+    bottom: 220px !important;
+  }    
 }
 
 .stylist-services {

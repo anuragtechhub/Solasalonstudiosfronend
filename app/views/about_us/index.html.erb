@@ -14,21 +14,31 @@
   
   <div class="row top-padded">
     <div class="three columns">
-      <div class="info-box">
-        <h1><%= t('page.about.location_count').html_safe %></h1>
-        <h3><%= t('page.about.locations_nationwide').html_safe %></h3>
-        <%= link_to t('page.about.view_locations').html_safe, :locations %>
-      </div>
-      <div class="info-box">
-        <h1><%= t('page.about.salon_professional_count').html_safe %></h1>
-        <h3><%= t('page.about.salon_professionals').html_safe %></h3>
-        <%= link_to t('page.about.find_a_stylist').html_safe, :salon_professionals %>
-      </div>
+      <% if I18n.locale == :en %>
+        <div class="info-box">
+          <h1><%= t('page.about.location_count').html_safe %></h1>
+          <h3><%= t('page.about.locations_nationwide').html_safe %></h3>
+          <%= link_to t('page.about.view_locations').html_safe, :locations %>
+        </div>
+      <% else %>
+        <div class="info-box">
+            <h1 style="margin-top:20px;font-size:25px;line-height:30px;padding:0 20px"><%= t('page.about.coming_soon_to_canada').html_safe %></h1>
+            <%= link_to t('page.about.view_locations').html_safe, :locations %>
+          </div>
+      <% end %>
+
+      <% if I18n.locale == :en %>
+        <div class="info-box">
+          <h1><%= t('page.about.salon_professional_count').html_safe %></h1>
+          <h3><%= t('page.about.salon_professionals').html_safe %></h3>
+            <%= link_to t('page.about.find_a_stylist').html_safe, :salon_professionals %>
+        </div>
+      <% end %>
+
     </div>
     <div class="nine columns">
       <h1><%= t('page.about.heading1').html_safe %></h1>
-      <h4 class="paragraph"><%= t('page.about.body1').html_safe %></h4>
-      <h4 class="paragraph"><%= t('page.about.body2', :diversity_link => link_to(t('page.about.diverse_community').html_safe, :diversity)).html_safe %></h4>
+      <h4 class="paragraph"><%= t('page.about.body1', :diversity_link => link_to(t('page.about.diverse_community').html_safe, :diversity)).html_safe %></h4>
     </div>
   </div>
 
@@ -45,7 +55,7 @@
 
 </div>
 
-<div class="view-gallery">
+<div class="view-gallery <%= 'ca' if I18n.locale != :en %>">
   <div class="link"><%= link_to t('page.about.view_gallery').html_safe, :gallery, :class => 'button primary view-image-gallery' %></div>
 </div>
 

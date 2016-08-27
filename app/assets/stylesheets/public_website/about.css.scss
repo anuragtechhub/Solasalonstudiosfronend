@@ -11,6 +11,9 @@
   -o-background-size: cover;
   background-size: cover;
 
+  &.ca {
+    background: asset-url('About_Banner_2_CA.jpg') no-repeat center center;
+  }
 
   .link {
     position: absolute;

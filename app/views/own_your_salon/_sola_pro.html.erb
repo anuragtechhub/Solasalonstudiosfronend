@@ -45,7 +45,9 @@
       <a href="https://play.google.com/store/apps/details?id=com.solaprofessional" target="_blank"><%= image_tag 'own/android_appstore.png', :width => 266.706611569, :height => 79 %></a>
     </div>
 
-    <p class="larger text-center"><%= t('page.own.section.sola_pro.download_app_or_view', :sola_pro_link => link_to(t('sola_pro_www_name'), 'https://www.solaprofessional.com')).html_safe %></p>
+    <% if I18n.locale == :en %>
+      <p class="larger text-center"><%= t('page.own.section.sola_pro.download_app_or_view', :sola_pro_link => link_to(t('sola_pro_www_name'), 'https://www.solaprofessional.com')).html_safe %></p>
+    <% end %>
 
     <hr />
 
