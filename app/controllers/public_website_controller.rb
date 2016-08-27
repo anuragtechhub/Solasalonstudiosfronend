@@ -4,4 +4,14 @@ class PublicWebsiteController < ApplicationController
   protect_from_forgery with: :exception
 
   layout 'public_website'
+
+  before_action :set_locale
+
+  def set_locale
+    if request.domain == 'solasalonstudios.ca'
+      I18n.locale = 'en-CA' 
+    else
+      I18n.locale = 'en'
+    end
+  end
 end
