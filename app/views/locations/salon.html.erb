@@ -15,7 +15,7 @@
 </div>
 <% end %>
 
-<div class="container content-container content-container-mobile-full tablet-portrait">
+<div class="container content-container content-container-mobile-full tablet-portrait" style="margin-bottom:30px">
   <div class="row">
 
     <div class="one-third column salon-info content-container-mobile-padded">
@@ -49,7 +49,7 @@
 <% if @location.description.present? %>
   <div class="container">
 
-    <div class="row about-this-location" style="margin-top: 60px">
+    <div class="row about-this-location" style="margin-top: 40px">
       <h3 class="text-center"><%= t('page.locations.about_this_location').html_safe %></h3>
       <h4 class="text-center"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></h4>
       
@@ -96,7 +96,7 @@
   </div>
 <% end %>
 
-<div class="callout blue image your-life-your-style">
+<div class="callout blue image your-life-your-style" style="margin-top:0">
   <div class="text-center">
     <h1><%= t('page.locations.your_life_your_style').html_safe %><sup><small>&reg;</small></sup></h1>
   </div>
