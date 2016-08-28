@@ -7,5 +7,17 @@ class ApplicationController < ActionController::Base
 
   def ssl_configured?
     !Rails.env.development?
-  end  
+  end
+
+  around_filter :do_with_current_admin
+
+  def do_with_current_admin
+    Thread.current[:current_admin] = self.current_admin
+    begin
+      yield
+    ensure
+      Thread.current[:current_admin] = nil
+    end      
+  end
+
 end

@@ -84,6 +84,14 @@
   </div>
 <% end %>
 
+<% if @articles && @articles.length > 0 %>
+  <div class="container content-container news-articles">
+    <% @articles.each do |article| %>
+      <%= render 'shared/news_summary', :article => article %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= render 'shared/location_tours' %>
 
 <% if @location.move_in_special && @location.move_in_special.present? %>

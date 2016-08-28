@@ -105,13 +105,14 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Article' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
+    # visible do
+    #   bindings[:controller]._current_user.franchisee != true
+    # end
     list do
       field :title
       field :url_name
       field :summary
+      field :location
       field :created_at
     end 
     show do
@@ -133,6 +134,7 @@ RailsAdmin.config do |config|
       #   end
       # end
       field :article_url
+      field :location 
     end 
     edit do
       field :title
@@ -146,6 +148,9 @@ RailsAdmin.config do |config|
       field :summary, :ck_editor
       #field :body, :ck_editor
       field :article_url
+      field :location do
+        help ''
+      end   
       field :created_at
     end 
   end

@@ -77,6 +77,7 @@ class LocationsController < PublicWebsiteController
 
   def salon
     @location = Location.find_by(:url_name => params[:url_name])
+    @articles = Article.where(:location_id => @location.id)
     
     if @location
       @lat = @location.latitude
