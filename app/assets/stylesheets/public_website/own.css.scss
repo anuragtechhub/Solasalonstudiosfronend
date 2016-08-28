@@ -573,7 +573,7 @@
       top: 15px;
 
       a {
-        font-size: 10px !important;
+        font-size: 9px !important;
         padding-bottom: 10px !important;
         white-space: nowrap !important;
         border-bottom-width: 6px !important;
@@ -589,12 +589,14 @@
     .hero-search {
       position: absolute;
       bottom: 15px;
+      left: 15px;
+      right: 15px;
 
       .search-input-with-button {
-        width: 350px;
+        width: 320px;
 
         input {
-          width: 220px;
+          width: 180px;
           font-size: 11px;
         }
 
@@ -870,6 +872,10 @@ ul.own-list {
 
   .hero-own {
     .hero-heading {
+      position: absolute;
+      top: 160px;
+      left: 15px;
+      right: 15px;
       font-size: 29px;
       line-height: 43px;
     }
