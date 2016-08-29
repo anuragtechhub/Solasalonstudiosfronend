@@ -110,14 +110,14 @@ RailsAdmin.config do |config|
     # end
     list do
       field :title
-      field :url_name
+      field :article_url
       field :summary
       field :location
       field :created_at
     end 
     show do
       field :title
-      field :url_name
+      field :article_url
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
@@ -133,12 +133,11 @@ RailsAdmin.config do |config|
       #     value.html_safe
       #   end
       # end
-      field :article_url
       field :location 
     end 
     edit do
       field :title
-      field :url_name
+      field :article_url
       field :image do 
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
@@ -147,9 +146,8 @@ RailsAdmin.config do |config|
       end
       field :summary, :ck_editor
       #field :body, :ck_editor
-      field :article_url
       field :location do
-        help ''
+        help 'In order to have an article show up on more than one location page, you will need to create separate articles for each location page'
       end   
       field :created_at
     end 
