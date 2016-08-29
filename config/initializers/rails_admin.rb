@@ -139,6 +139,7 @@ RailsAdmin.config do |config|
       field :title
       field :article_url
       field :image do 
+        help 'Required. Image dimensions should be 375 x 375'
         pretty_value do 
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
