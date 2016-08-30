@@ -31,12 +31,6 @@
 
       </div>
     </div>
-
-    <% if @msa && @msa.description && @msa.description.present? %>
-      <div class="row">
-        <h4><%= @msa.description.gsub(/\n/, '<hr class="br" />').html_safe %></h4>
-      </div>
-    <% end %>
     
   </div>
 </div>
