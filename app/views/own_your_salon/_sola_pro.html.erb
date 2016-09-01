@@ -25,7 +25,11 @@
 
     <div class="row">
       <div class="one-third column">
-        <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
+        <% if I18n.locale == :en %>
+          <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
+        <% else %>
+          <%= image_tag 'own/sola_pro_iphone_ca.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
+        <% end %>
       </div>
       <div class="two-thirds column">
         <div class="left-padding">
@@ -55,7 +59,11 @@
 
     <div class="session" style="margin-bottom: 60px">
       <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
-        <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456 %>
+        <% if I18n.locale == :en %>
+          <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456 %>
+        <% else %>
+          <%= image_tag 'own/sola_pro_video_poster_ca.jpg', :width => 952, :height => 456 %>
+        <% end %>
         <div class="play-btn">
           <span class="fa fa-5x fa-play"></span>
         </div>
