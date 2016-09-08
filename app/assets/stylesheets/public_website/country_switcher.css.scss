@@ -2,6 +2,7 @@
 @import 'bootstrap/mixins';
 
 .country-switcher {
+  display: none;
   position: relative;
 
   .country {

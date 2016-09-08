@@ -7,8 +7,8 @@
         <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
         <li class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <li class="border-left"><%= link_to :rent_a_studio do %><%= raw t 'header.rent_studio_button' %><% end %></li>
-        <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
-        <li class="border-left border-right"><%= render 'shared/country_switcher' %></li>
+        <li class="border-left border-right"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+        <li class="border-left border-right" style="display: none"><%= render 'shared/country_switcher' %></li>
       </ul>
     </div>
   </div>
