@@ -1,7 +1,13 @@
-
-
-
 .owl-carousel {
+
+  .owl-item .item {
+    line-height: 0;
+    
+    a {
+      display: block;
+      overflow: hidden;
+    }
+  }
 
   img {
     width: 100%;
@@ -123,7 +129,6 @@ ul.owl-carousel {
   .item {
     position: relative;
     overflow: hidden;
-
 
     img.fullscreen {
       position: absolute;

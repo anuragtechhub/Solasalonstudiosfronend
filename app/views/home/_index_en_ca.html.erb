@@ -1,0 +1,60 @@
+<div class="hero-carousel owl-carousel owl-theme home-all">
+  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-1-R1.jpg' %><% end %></div>
+  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-2-R1.jpg' %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-3-R1.jpg' %><% end %></div>
+</div>
+
+<div class="hero-carousel owl-carousel owl-theme home-mobile">
+  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-1-R1.jpg' %><% end %></div>
+  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-2-R1.jpg' %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-3-R1.jpg' %><% end %></div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <h2 class="text-center home-slogan" style="margin-top:27px;font-family:'Lato', sans-serif;font-size:41px;line-height:51px;font-weight:300;letter-spacing:0px;text-transform:none">Beautiful studios. Exclusive perks and support.<br>At Sola, you simply get more!</h2>
+  </div>
+
+  <div class="row">
+    <div class="one-third column home-tile">
+      <%= link_to :own_your_salon do %>
+        <%= image_tag 'Home/OwningCanada.jpg', :class => 'u-full-width' %>
+        <h3 class="text-center">Owning your own salon<br>has never been so easy</h3>
+      <% end %>
+      <p class="text-center">Customize your studio, set your hours, create your vision.</p>
+    </div>
+
+    <div class="one-third column home-tile">
+      <%= link_to :locations do %>
+        <%= image_tag 'Home/ComingSoonToronto.jpg', :class => 'u-full-width' %>
+        <h3 class="text-center">Find out where we're<br>going first!</h3>
+      <% end %>
+      <p class="text-center">Get onboard with the beauty industry's best in salon studios!</p>
+    </div>
+
+    <div class="one-third column home-tile">
+      <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video">
+        <%= image_tag 'watch_our_video.jpg', :class => 'u-full-width' %>
+        <h3 class="text-center">Watch<br>our video</h3>
+      </a>
+      <p class="text-center">Find out what a few very successful Sola professionals have to say!</p>
+    </div>        
+  </div>
+
+  <div class="row home-recently-featured-box" style="border-bottom:0;margin-bottom:5px;">
+      <h3>Recently Featured In</h3>
+      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :class => 'beauty_launchpad_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :class => 'forbes_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :class => 'behind_the_chair_logo', :target => '_blank' %>
+  </div>
+
+</div>
+
+<div class="callout blue">
+  <div class="quote">&ldquo;There are no limits. It's <strong>your</strong> business!&rdquo;</div>
+  <div class="quote-author">Shelia Taylor &ndash; Ami Hair Studio</div>
+  <%= link_to 'View More Testimonials', :testimonials, :class => 'button inverted', :style => 'margin-top:30px' %>
+</div>
