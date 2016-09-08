@@ -1,0 +1,75 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.country-switcher {
+  position: relative;
+
+  .country {
+    overflow: hidden;
+    padding: 8px 16px 4px 16px;
+    cursor: pointer;
+
+    &:hover {
+      .name {
+        color: $brand-pink;
+      }
+    }
+
+    .name {
+      position: relative;
+      top: -2px;
+      margin: 0 7px 0 10px;
+      display: inline-block;
+      float: left;
+      color: #000;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: bold;   
+      text-transform: uppercase; 
+      @include transition(color .25s ease);  
+    }
+    
+    .flag {
+      display: inline-block;
+      float: left;
+      width: 20px;
+      height: 12px;
+
+      &.usa {
+        background: asset-data-url('Flags/usa.gif') no-repeat center;
+        background-size: 20px 12px;
+      }
+
+      &.canada {
+        background: asset-data-url('Flags/canada.gif') no-repeat center;
+        background-size: 20px 12px;
+      }
+    }
+  }
+
+  &.country-switcher-modal {
+    display: none;
+    position: absolute;
+    @include box-shadow(1px 1px 3px rgba(0,0,0,0.2));
+    z-index: 9999999;
+
+    .country {
+      background: #FFF;
+      overflow: hidden;
+      padding: 8px 16px;
+    }
+  }
+
+  .dropdown-arrow {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    display: block;
+    background: asset-data-url('down-arrow.gif') no-repeat center;
+    background-size: 8px 5px;
+    width: 8px;
+    height: 5px;
+    pointer-events: none;
+  }
+
+}
