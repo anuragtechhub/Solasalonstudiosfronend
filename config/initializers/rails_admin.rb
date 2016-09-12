@@ -1304,6 +1304,10 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'UpdateMySolaWebsite' do
+    visible false
+  end
+
   config.model 'Visit' do
     visible false
   end
