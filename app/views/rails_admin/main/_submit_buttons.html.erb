@@ -1,0 +1,39 @@
+<input name="return_to" type="<%= :hidden %>" value="<%= (params[:return_to].presence || request.referer) %>">
+  <div class="form-actions">
+    <% if @object.class.name == 'UpdateMySolaWebsite' %>
+      <button id="approve-update-button" class="btn btn-primary" data-disable-with="<%= t("admin.form.save") %>" name="_save" type="submit">
+        <i class="icon-white icon-ok"></i>
+        Approve Update
+      </button>
+      <script>
+        $(function () {
+          $('#approve-update-button').on('click', function () {
+            alert("I approve");
+            return false;
+          });
+        });
+      </script>
+    <% else %>
+      <button class="btn btn-primary" data-disable-with="<%= t("admin.form.save") %>" name="_save" type="submit">
+        <i class="icon-white icon-ok"></i>
+        <%= t("admin.form.save") %>
+      </button>
+      <span class="extra_buttons">
+        <% if authorized? :new, @abstract_model %>
+          <button class="btn btn-info" data-disable-with="<%= t("admin.form.save_and_add_another") %>" name="_add_another" type="submit">
+            <%= t("admin.form.save_and_add_another") %>
+          </button>
+        <% end %>
+        <% if authorized? :edit, @abstract_model %>
+          <button class="btn btn-info" data-disable-with="<%= t("admin.form.save_and_edit") %>" name="_add_edit" type="submit">
+            <%= t("admin.form.save_and_edit") %>
+          </button>
+        <% end %>
+        <button class="btn" data-disable-with="<%= t("admin.form.cancel") %>" name="_continue" type="submit">
+          <i class="icon-remove"></i>
+          <%= t("admin.form.cancel") %>
+        </button>
+      </span>
+    <% end %>
+  </div>
+</input>

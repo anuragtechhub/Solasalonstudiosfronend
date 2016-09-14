@@ -26,7 +26,21 @@ namespace :surveys do
     end
   end
 
-  
+  task :survey_location => :environment do 
+    Stylist.where(:status => 'open', :location_id => 281).order(:id).each do |stylist|
+      if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? && !excluded_locations.include?(stylist.location_id)
+        begin
+          p "send survey to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
+          send_survey(stylist.email_address, stylist.location.url_name, 3846)
+          sleep 1
+        rescue => e
+          p "error sending survey to #{stylist.email_address} #{e.inspect}"
+        end
+      else
+        p "not sending survey because the stylist email or location or something is not present"
+      end
+    end
+  end
 
   def send_surveys
     excluded_locations = []#[2, 35, 9, 72, 7, 3, 92, 21, 226, 17, 167, 67, 168, 4]
@@ -63,6 +77,15 @@ namespace :surveys do
 
   task :update_sites => :environment do 
     update_sites
+  end
+
+  task :update_site => :environment do
+    location = Location.find(281) # college station
+    begin
+      sync_location(location.url_name, location.name, location.city, location.state) 
+    rescue => e
+      p "error syncing location #{e.inspect}"
+    end
   end
 
   task :update_site_test => :environment do
