@@ -17,4 +17,8 @@ class SessionsController < PublicWebsiteController
     
   end
 
+  def charlotte
+
+  end
+
 end
