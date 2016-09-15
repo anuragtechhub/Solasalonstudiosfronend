@@ -1,18 +1,24 @@
 <input name="return_to" type="<%= :hidden %>" value="<%= (params[:return_to].presence || request.referer) %>">
   <div class="form-actions">
     <% if @object.class.name == 'UpdateMySolaWebsite' %>
-      <button id="approve-update-button" class="btn btn-primary" data-disable-with="<%= t("admin.form.save") %>" name="_save" type="submit">
+      <button id="approve-update-button" class="btn btn-primary" data-disable-with="Approving update..." name="_save" type="submit">
         <i class="icon-white icon-ok"></i>
         Approve Update
       </button>
       <script>
         $(function () {
           $('#approve-update-button').on('click', function () {
-            alert("I approve");
-            return false;
+            //alert("I approve");
+            $('#update_my_sola_website_approved').prop('checked', true);
+            //return false;
           });
         });
       </script>
+      <style>
+      .approved_field, .breadcrumb, .nav-tabs {
+        display: none;
+      }
+      </style>
     <% else %>
       <button class="btn btn-primary" data-disable-with="<%= t("admin.form.save") %>" name="_save" type="submit">
         <i class="icon-white icon-ok"></i>
