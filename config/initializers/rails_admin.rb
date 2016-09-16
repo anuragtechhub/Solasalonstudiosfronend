@@ -1306,6 +1306,135 @@ RailsAdmin.config do |config|
 
   config.model 'UpdateMySolaWebsite' do
     visible false
+
+    edit do
+      group :general do
+        field :name
+        field :biography
+      end
+      group :contact do
+        field :phone_number
+        field :email_address
+      end   
+      group :business do
+        field :business_name
+        field :work_hours
+      end
+      group :website do
+        field :website_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
+        field :booking_url do
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+        end
+      end
+      group :social do
+        field :facebook_url
+        field :google_plus_url
+        field :instagram_url
+        field :linkedin_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+      end
+      group :services do
+        field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
+        field :eyelash_extensions do
+          label 'Lashes'
+        end 
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
+        field :skin do
+          label 'Skincare'
+        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
+        field :other_service do
+          label 'Other'
+        end
+      end
+      group :images do
+        field :image_1_url do 
+          label 'Image #1'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_2_url do 
+          label 'Image #2'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_3_url do 
+          label 'Image #3'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_4_url do 
+          label 'Image #4'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_5_url do 
+          label 'Image #5'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_6_url do 
+          label 'Image #6'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_7_url do 
+          label 'Image #7'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_8_url do 
+          label 'Image #8'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_9_url do 
+          label 'Image #9'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+        field :image_10_url do 
+          label 'Image #10'
+          render do
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+          end
+        end
+      end
+      group :testimonials do
+        field :testimonial_1
+        field :testimonial_2
+        field :testimonial_3
+        field :testimonial_4
+        field :testimonial_5
+        field :testimonial_6
+        field :testimonial_7
+        field :testimonial_8
+        field :testimonial_9
+        field :testimonial_10
+      end 
+    end
   end
 
   config.model 'Visit' do
