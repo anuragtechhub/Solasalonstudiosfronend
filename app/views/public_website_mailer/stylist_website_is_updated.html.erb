@@ -1,0 +1,3 @@
+<p>Congratulations! Your Sola website changes were approved are now live on the Sola website. Click the link below to view your Sola website:</p>
+<% url = @update_my_sola_website.stylist.location.country == 'US' ? "https://www.solasalonstudios.com/salon-professional/#{@update_my_sola_website.stylist.url_name}" : "https://www.solasalonstudios.ca/salon-professional/#{@update_my_sola_website.stylist.url_name}" %>
+<p><a href="<%= url %>"><%= url %></a></p>

@@ -37,4 +37,11 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def stylist_website_is_updated(update_my_sola_website)
+    if update_my_sola_website
+      @update_my_sola_website = update_my_sola_website
+      mail(to: 'jeff@jeffbail.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Your Sola Website Has Been Updated!')
+    end
+  end
+
 end
