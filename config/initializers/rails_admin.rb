@@ -1353,47 +1353,260 @@ RailsAdmin.config do |config|
         end
       end   
       group :business do
-        field :business_name
-        field :work_hours
+        field :business_name do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :work_hours do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
       end
       group :website do
         field :website_url do
-          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
         end
         field :booking_url do
-          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
         end
       end
       group :social do
-        field :facebook_url
-        field :google_plus_url
-        field :instagram_url
-        field :linkedin_url
-        field :pinterest_url
-        field :twitter_url
-        field :yelp_url
+        field :facebook_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :google_plus_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :instagram_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :linkedin_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :pinterest_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :twitter_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :yelp_url do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
       end
       group :services do
-        field :brows
-        field :hair
-        field :hair_extensions
-        field :laser_hair_removal
+        field :brows do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :hair do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :hair_extensions do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :laser_hair_removal do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
         field :eyelash_extensions do
           label 'Lashes'
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
         end 
-        field :makeup
-        field :massage
-        field :nails
-        field :permanent_makeup
+        field :makeup do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :massage do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :nails do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :permanent_makeup do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
         field :skin do
           label 'Skincare'
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
         end
-        field :tanning
-        field :teeth_whitening
-        field :threading
-        field :waxing
+        field :tanning do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :teeth_whitening do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :threading do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
+        field :waxing do
+          render do
+            if value
+              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+            end
+          end
+        end
         field :other_service do
           label 'Other'
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
         end
       end
       group :images do

@@ -27,7 +27,7 @@ namespace :surveys do
   end
 
   task :survey_location => :environment do 
-    Stylist.where(:status => 'open', :location_id => 281).order(:id).each do |stylist|
+    Stylist.where(:status => 'open', :location_id => 65).order(:id).each do |stylist|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
         begin
           p "send survey to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
@@ -45,12 +45,12 @@ namespace :surveys do
   def send_surveys
     excluded_locations = []#[2, 35, 9, 72, 7, 3, 92, 21, 226, 17, 167, 67, 168, 4]
 
-    Stylist.where(:status => 'open').order(:id).each do |stylist|
+    Stylist.where(:status => 'open').order(:id).each_with_index do |stylist, idx|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? #&& !excluded_locations.include?(stylist.location_id)
         begin
-          p "send survey to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
-          send_survey(stylist.email_address, stylist.location.url_name, 3846)
-          sleep 1
+          p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
+          #send_survey(stylist.email_address, stylist.location.url_name, 3846)
+          #sleep 1
         rescue
           p "error sending survey to #{stylist.email_address}"
         end
