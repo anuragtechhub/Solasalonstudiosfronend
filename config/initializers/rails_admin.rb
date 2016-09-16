@@ -1363,62 +1363,72 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1_url do 
           label 'Image #1'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_2_url do 
           label 'Image #2'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_3_url do 
           label 'Image #3'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_4_url do 
           label 'Image #4'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_5_url do 
           label 'Image #5'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_6_url do 
           label 'Image #6'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_7_url do 
           label 'Image #7'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_8_url do 
           label 'Image #8'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_9_url do 
           label 'Image #9'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
         field :image_10_url do 
           label 'Image #10'
+          help ' '
           render do
-            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value.present?
+            "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe if value
           end
         end
       end
