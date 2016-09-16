@@ -1723,6 +1723,7 @@ RailsAdmin.config do |config|
       end
       group :testimonials do
         field :testimonial_1 do
+          label 'Testimonial #1'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1733,6 +1734,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_2 do
+          label 'Testimonial #2'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1743,6 +1745,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_3 do
+          label 'Testimonial #3'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1753,6 +1756,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_4 do
+          label 'Testimonial #4'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1763,6 +1767,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_5 do
+          label 'Testimonial #5'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1773,6 +1778,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_6 do
+          label 'Testimonial #6'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1783,6 +1789,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_7 do
+          label 'Testimonial #7'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1793,6 +1800,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_8 do
+          label 'Testimonial #8'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1803,6 +1811,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_9 do
+          label 'Testimonial #9'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
@@ -1813,6 +1822,7 @@ RailsAdmin.config do |config|
           end
         end
         field :testimonial_10 do
+          label 'Testimonial #10'
           help ''
           render do
             if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
