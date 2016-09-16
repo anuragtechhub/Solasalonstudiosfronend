@@ -1604,7 +1604,7 @@ RailsAdmin.config do |config|
             if value && value.present?
               "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
             else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
             end
           end
         end
@@ -1722,16 +1722,106 @@ RailsAdmin.config do |config|
         end
       end
       group :testimonials do
-        field :testimonial_1
-        field :testimonial_2
-        field :testimonial_3
-        field :testimonial_4
-        field :testimonial_5
-        field :testimonial_6
-        field :testimonial_7
-        field :testimonial_8
-        field :testimonial_9
-        field :testimonial_10
+        field :testimonial_1 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_2 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_3 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_4 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_5 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_6 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_7 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_8 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_9 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :testimonial_10 do
+          help ''
+          render do
+            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
       end 
     end
   end
