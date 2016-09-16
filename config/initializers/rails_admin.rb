@@ -1309,12 +1309,48 @@ RailsAdmin.config do |config|
 
     edit do
       group :general do
-        field :name
-        field :biography
+        field :name do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :biography do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
       end
       group :contact do
-        field :phone_number
-        field :email_address
+        field :phone_number do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
+        field :email_address do
+          help ' '
+          render do 
+            if value && value.present?
+              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+            else
+              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+            end
+          end
+        end
       end   
       group :business do
         field :business_name
