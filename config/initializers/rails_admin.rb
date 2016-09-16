@@ -1726,7 +1726,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #1'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1737,7 +1737,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #2'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1748,7 +1748,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #3'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1759,7 +1759,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #4'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1770,7 +1770,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #5'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1781,7 +1781,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #6'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1792,7 +1792,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #7'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1803,7 +1803,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #8'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1814,7 +1814,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #9'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
@@ -1825,7 +1825,7 @@ RailsAdmin.config do |config|
           label 'Testimonial #10'
           help ''
           render do
-            if value && value.present? && (value.name.present? || value.text.present? || value.region.present?)
+            if value && value.present? && value.text.present?
               "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
