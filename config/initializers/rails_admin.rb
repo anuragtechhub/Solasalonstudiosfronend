@@ -1832,7 +1832,8 @@ RailsAdmin.config do |config|
             end
           end
         end
-      end 
+      end
+      field :approved 
     end
   end
 
