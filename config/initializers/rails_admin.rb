@@ -353,7 +353,7 @@ RailsAdmin.config do |config|
       end
       group :social do
         field :facebook_url
-        #field :instagram_url
+        field :instagram_url
         #field :pinterest_url
         field :twitter_url
         #field :yelp_url
@@ -621,7 +621,7 @@ RailsAdmin.config do |config|
       group :social do
         active false
         field :facebook_url
-        #field :instagram_url
+        field :instagram_url
         #field :pinterest_url
         field :twitter_url
         #field :yelp_url
