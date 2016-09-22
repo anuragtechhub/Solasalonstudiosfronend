@@ -31,7 +31,7 @@ namespace :surveys do
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
         begin
           p "send survey to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
-          send_survey(stylist.email_address, stylist.location.url_name, 3846)
+          send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
           sleep 1
         rescue => e
           p "error sending survey to #{stylist.email_address} #{e.inspect}"
@@ -48,11 +48,11 @@ namespace :surveys do
     Stylist.where(:status => 'open').order(:id).each_with_index do |stylist, idx|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? #&& !excluded_locations.include?(stylist.location_id)
         begin
-          p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
-          #send_survey(stylist.email_address, stylist.location.url_name, 3846)
-          #sleep 1
-        rescue
-          p "error sending survey to #{stylist.email_address}"
+          p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address.strip}, #{stylist.location.url_name.strip}, #{stylist.location.id}"
+          send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
+          sleep 1
+        rescue => e
+          p "error sending survey to #{stylist.email_address} #{e}"
         end
       end
     end
@@ -82,7 +82,7 @@ namespace :surveys do
   task :update_site => :environment do
     location = Location.find(281) # college station
     begin
-      sync_location(location.url_name, location.name, location.city, location.state) 
+      sync_location(location.url_name.strip, location.name.strip, location.city, location.state) 
     rescue => e
       p "error syncing location #{e.inspect}"
     end
@@ -97,7 +97,7 @@ namespace :surveys do
       begin
         if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
           p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
-          sync_location(location.url_name, location.name, location.city, location.state) 
+          sync_location(location.url_name.strip, location.name.strip, location.city, location.state) 
           sleep 2
         end
       rescue
