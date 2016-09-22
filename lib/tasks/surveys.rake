@@ -48,8 +48,12 @@ namespace :surveys do
     Stylist.where(:status => 'open').order(:id).each_with_index do |stylist, idx|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? #&& !excluded_locations.include?(stylist.location_id)
         begin
+          
           p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address.strip}, #{stylist.location.url_name.strip}, #{stylist.location.id}"
-          send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
+          response = send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
+          p "#{response}"
+          p ""
+          p "* * * * * * * * * * * *"
           sleep 1
         rescue => e
           p "error sending survey to #{stylist.email_address} #{e}"
