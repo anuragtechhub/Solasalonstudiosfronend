@@ -1311,302 +1311,414 @@ RailsAdmin.config do |config|
       group :general do
         field :name do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :biography do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end
       group :contact do
         field :phone_number do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :email_address do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end   
       group :business do
         field :business_name do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :work_hours do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end
       group :website do
         field :website_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :booking_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end
       group :social do
         field :facebook_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :google_plus_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :instagram_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :linkedin_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :pinterest_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :twitter_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
         field :yelp_url do
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end
       group :services do
         field :brows do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :hair do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :hair_extensions do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :laser_hair_removal do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :eyelash_extensions do
           label 'Lashes'
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end 
         field :makeup do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :massage do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :nails do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :permanent_makeup do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :skin do
           label 'Skincare'
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :tanning do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :teeth_whitening do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :threading do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :waxing do
-          render do
-            if value
-              "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do
+          #   if value
+          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
         end
         field :other_service do
           label 'Other'
           help ' '
-          render do 
-            if value && value.present?
-              "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-            end
-          end
+          # render do 
+          #   if value && value.present?
+          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
+          #   end
+          # end
+        end
+      end
+      group :testimonials do
+        field :testimonial_1 do
+          label 'Testimonial #1'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_2 do
+          label 'Testimonial #2'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_3 do
+          label 'Testimonial #3'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_4 do
+          label 'Testimonial #4'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_5 do
+          label 'Testimonial #5'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_6 do
+          label 'Testimonial #6'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_7 do
+          label 'Testimonial #7'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_8 do
+          label 'Testimonial #8'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_9 do
+          label 'Testimonial #9'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
+        end
+        field :testimonial_10 do
+          label 'Testimonial #10'
+          help ''
+          # render do
+          #   if value && value.present? && value.text.present?
+          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
+          #   else
+          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
+          #   end
+          # end
         end
       end
       group :images do
@@ -1715,118 +1827,6 @@ RailsAdmin.config do |config|
           render do
             if value && value.present?
               "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-      end
-      group :testimonials do
-        field :testimonial_1 do
-          label 'Testimonial #1'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_2 do
-          label 'Testimonial #2'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_3 do
-          label 'Testimonial #3'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_4 do
-          label 'Testimonial #4'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_5 do
-          label 'Testimonial #5'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_6 do
-          label 'Testimonial #6'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_7 do
-          label 'Testimonial #7'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_8 do
-          label 'Testimonial #8'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_9 do
-          label 'Testimonial #9'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
-          end
-        end
-        field :testimonial_10 do
-          label 'Testimonial #10'
-          help ''
-          render do
-            if value && value.present? && value.text.present?
-              "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
