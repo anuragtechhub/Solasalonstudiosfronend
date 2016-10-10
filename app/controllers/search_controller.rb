@@ -34,7 +34,7 @@ class SearchController < PublicWebsiteController
 
       # stylists
       if params[:stylists] != 'hidden'
-        @stylists = Stylist.joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}'").where(:status => 'open').where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
+        @stylists = Stylist.joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         if @stylists
           @stylist = @stylists.open
           @stylists.uniq!
