@@ -1316,7 +1316,7 @@ RailsAdmin.config do |config|
           #   end
           # end
         end
-        field :biography do
+        field :biography, :ck_editor do
           help ' '
           # render do 
           #   if value && value.present?
