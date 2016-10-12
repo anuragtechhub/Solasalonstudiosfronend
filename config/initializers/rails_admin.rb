@@ -914,9 +914,6 @@ RailsAdmin.config do |config|
       field :location_name do
         label 'Location'
       end
-      field :msa_name do
-        label 'MSA'
-      end
       field :business_name
       field :studio_number
     end
