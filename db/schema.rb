@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914210351) do
+ActiveRecord::Schema.define(version: 20161013214533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -489,7 +489,7 @@ ActiveRecord::Schema.define(version: 20160914210351) do
 
   create_table "update_my_sola_websites", force: true do |t|
     t.string   "name"
-    t.string   "biography"
+    t.text     "biography"
     t.string   "phone_number"
     t.string   "business_name"
     t.text     "work_hours"
