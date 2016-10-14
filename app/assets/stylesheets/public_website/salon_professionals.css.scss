@@ -382,9 +382,13 @@ h4.availability {
   }
 
   .stylist-services {
+    //display: block;
 
     li {
-      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 15px;
+      width: auto;
     }
   }
 
