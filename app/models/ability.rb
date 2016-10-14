@@ -37,6 +37,9 @@ class Ability
       can :read, RequestTourInquiry, :location => { :admin_id => admin.id }
       can :export, RequestTourInquiry, :location => { :admin_id => admin.id }
 
+      can :read, UpdateMySolaWebsite, :location => { :admin_id => admin.id }
+      can :update, UpdateMySolaWebsite, :location => { :admin_id => admin.id }
+
       # can :update, [Location, Stylist]       # included in :create
       # can :export, [Location, Stylist]
       # can :destroy, [Location, Stylist]
