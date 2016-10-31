@@ -21,15 +21,34 @@ class Stylist < ActiveRecord::Base
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
+  accepts_nested_attributes_for :testimonial_1, :allow_destroy => true
+
   belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
+  accepts_nested_attributes_for :testimonial_2, :allow_destroy => true
+
   belongs_to :testimonial_3, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_3'
+  accepts_nested_attributes_for :testimonial_3, :allow_destroy => true
+
   belongs_to :testimonial_4, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_4'
+  accepts_nested_attributes_for :testimonial_4, :allow_destroy => true
+
   belongs_to :testimonial_5, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_5'
+  accepts_nested_attributes_for :testimonial_5, :allow_destroy => true
+
   belongs_to :testimonial_6, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_6'
+  accepts_nested_attributes_for :testimonial_6, :allow_destroy => true
+
   belongs_to :testimonial_7, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_7'
+  accepts_nested_attributes_for :testimonial_7, :allow_destroy => true
+
   belongs_to :testimonial_8, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_8'
+  accepts_nested_attributes_for :testimonial_8, :allow_destroy => true
+
   belongs_to :testimonial_9, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_9'
+  accepts_nested_attributes_for :testimonial_9, :allow_destroy => true
+
   belongs_to :testimonial_10, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_10'
+  accepts_nested_attributes_for :testimonial_10, :allow_destroy => true
 
   has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
