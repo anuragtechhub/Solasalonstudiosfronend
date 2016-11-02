@@ -64,12 +64,14 @@ class LocationsController < PublicWebsiteController
       @all_locations = Location.where(:status => 'open').where(:country => 'CA')
     end
 
-    query_param = "%#{params[:state].downcase.gsub(/-/, ' ')}%" if params[:state]
+    query_param = "#{params[:state].downcase.gsub(/-/, ' ')}".strip if params[:state]
+
+    p "query_param=#{query_param}"
     
     if I18n.locale == :en
-      @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param).where(:country => 'US')
+      @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'US')
     else
-      @locations = Location.where(:status => 'open').where('lower(state) LIKE ?', query_param).where(:country => 'CA')
+      @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA')
     end
     
     redirect_to :locations unless @locations.size > 0 && @lat && @lng
