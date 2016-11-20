@@ -26,7 +26,9 @@ class SearchController < PublicWebsiteController
       # locations
       locations1 = Location.near(params[:query].downcase).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
       locations2 = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param)
-      @locations = locations1.open + locations2.open
+      locations3 = Location.where(:msa_id => Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a)
+
+      @locations = locations1.open + locations2.open + locations3.open
       if @locations
         @locations.uniq!
         @locations.sort! { |a, b| a.name <=> b.name }
