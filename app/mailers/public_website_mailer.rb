@@ -46,4 +46,13 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def update_my_sola_website_reminder(update_my_sola_website)
+    if update_my_sola_website
+      @update_my_sola_website = update_my_sola_website
+      if @update_my_sola_website && @update_my_sola_website.stylist && @update_my_sola_website.stylist.email_address
+        mail(to: @update_my_sola_website.location.admin.email_address, from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Update My Sola Website Reminder for ' + @update_my_sola_website.stylist.name)
+      end
+    end
+  end
+
 end

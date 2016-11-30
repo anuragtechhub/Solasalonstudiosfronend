@@ -15,11 +15,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   after_update :publish_if_approved
 
-  private
-
   def location
     stylist.location if stylist
   end
+
+  private
 
   def email_stylist
     PublicWebsiteMailer.stylist_website_is_updated(self).deliver
