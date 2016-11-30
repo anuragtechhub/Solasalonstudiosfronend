@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row sessions-buttons">
         <div class="six columns"><a href="#" onclick="return false;" style="cursor:default" class="button block primary long-text">About the Sola Sessions</a></div>
-        <div class="six columns"><a href="/sessions/charlotte" class="button block long-text">Charlotte</a></div>
+        <div class="six columns"><a href="https://www.eventbrite.com/e/the-sola-sessions-tickets-29581651516" target="_blank" class="button block long-text">Dallas</a></div>
       </div>
     </div>
 
@@ -27,9 +27,9 @@
 
     <div class="details" style="padding: 30px 0; margin: 0">
       <div class="container">
-        <h1>Charlotte, North Carolina</h1>
-        <h2>November 14, 2016</h2>
-        <h4><%= link_to 'Click here to learn more', :charlotte_session, :class => 'button primary' %></h4>
+        <h1>Dallas, Texas</h1>
+        <h2>February 13, 2017</h2>
+        <h4><%= link_to 'Click here to learn more','https://www.eventbrite.com/e/the-sola-sessions-tickets-29581651516', :target => '_blank', :class => 'button primary' %></h4>
       </div>
     </div>
 
@@ -58,7 +58,8 @@
       <div class="container">
         <h2>In The News</h2>
         <div class="news-articles">
-          <% Article.where(:id => [53, 51, 48, 47]).each do |article| %>
+          <% Article.where(:id => [68, 62, 61, 53]).order(:id => :desc).each do |article| %>
+            <%# 51, 48, 47 %>
             <%= render 'shared/news_summary', :article => article %>
           <% end %>
         </div>        
