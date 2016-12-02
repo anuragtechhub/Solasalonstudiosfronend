@@ -217,7 +217,7 @@ class Location < ActiveRecord::Base
     address = ''
 
     address += address_1 if address_1.present?
-    address += ' ' + address_2 if address_2.present?
+    address += '<br>' + address_2 if address_2.present?
     address += '<br>'
     address += "#{city}, #{state} #{postal_code}"
 
