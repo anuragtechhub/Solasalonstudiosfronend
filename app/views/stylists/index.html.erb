@@ -4,15 +4,26 @@
     
     <h1><%= t('page.find_salon_pro.heading1').html_safe %></h1>
     
-    <div class="find-salon-professional-search">
-      <div class="container">
-        <%= form_tag [:search, :results], :method => :get do %>
-          <input type="text" type="search" name="query" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location').html_safe %>" />
-          <input type="hidden" name="first" value="salon_professionals" />
-          <button type="submit" class="button primary"><%= t('page.find_salon_pro.search').html_safe %></button>
-        <% end %>
+    <% if I18n.locale != :en %>
+      <div class="find-salon-professional-search">
+        <div class="container" style="padding:30px;background:rgba(0,0,0,0.7)">
+          <h3>Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017!</h3>
+          <div class="text-center" style="margin-bottom:0px">
+            <%= link_to 'Contact Us', :contact_us, :class => 'button primary' %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% else %>    
+      <div class="find-salon-professional-search">
+        <div class="container">
+          <%= form_tag [:search, :results], :method => :get do %>
+            <input type="text" type="search" name="query" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location').html_safe %>" />
+            <input type="hidden" name="first" value="salon_professionals" />
+            <button type="submit" class="button primary"><%= t('page.find_salon_pro.search').html_safe %></button>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     
     <% if I18n.locale == :en %>
     <div class="find-a-salon-professional-stats">

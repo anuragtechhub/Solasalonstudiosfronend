@@ -8,81 +8,94 @@
 
   <div class="row dashed">
     <div class="one-half column">
-      <h1 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
+      <% if I18n.locale != :en && @all_locations.size == 0 %>
+        <h1 class="small">Coming to Canada Spring 2017!</h1>
+      <% else %>
+        <h1 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
+      <% end %>
     </div>
     <div class="one-half column">
-      <p><%= t('page.contact.body1').html_safe %></p>
-      <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
-      <br>
-      <div class="sola-select select-a-state form">
-        <div class="row">
-          <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
-          <div class="arrow"><span class="ss-dropdown"></span></div>
-        </div>
-        <div class="options">
-          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-          <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
-          <% end %>
-        </div>
-      </div>
 
-      <div id="contact-us-states">
-        <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-          <div class="sola-select form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
-            
-            <div class="row">
-              <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
-              <div class="arrow"><span class="ss-dropdown"></span></div>
-            </div>
-            <div class="options">
-              <% Location.where(:state => location.state).order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
-                <% if msa_name %>
-                  <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
-                  <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
-                    <div class="option" data-value="<%= loc.id %>" data-phone="<%= loc.phone_number %>"><%= loc.name.html_safe %></div>
+      <% if I18n.locale != :en && @all_locations.size == 0 %>
+        <h3>Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017!</h3>
+        <p>Join our VIP circle for the latest updates on our first location in the GTA, move-in specials, invitations to VIP events, and other extra perks. You can even be the first to review and reserve salon suites before we break ground! You don't want to miss this opportunity to be a part of the fastest growing community of salon professionals in North America and empower yourself with the Freedom to Live the Life you Love! So contact us today to keep up-to-date on all of the excitement surrounding our very first Sola Salon Studios location in Toronto.</p>
+        <p style="margin-top:20px">Call us at <strong style="color:#000">416.964.1727</strong> or email <a href="mailto:klent@bex.net">klent@bex.net</a></p>
+      <% else %>
+
+        <p><%= t('page.contact.body1').html_safe %></p>
+        <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
+        <br>
+        <div class="sola-select select-a-state form">
+          <div class="row">
+            <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
+            <div class="arrow"><span class="ss-dropdown"></span></div>
+          </div>
+          <div class="options">
+            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="contact-us-states">
+          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="sola-select form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
+              
+              <div class="row">
+                <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
+                <div class="arrow"><span class="ss-dropdown"></span></div>
+              </div>
+              <div class="options">
+                <% Location.where(:state => location.state).order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+                  <% if msa_name %>
+                    <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
+                    <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
+                      <div class="option" data-value="<%= loc.id %>" data-phone="<%= loc.phone_number %>"><%= loc.name.html_safe %></div>
+                    <% end %>
                   <% end %>
                 <% end %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+
+        <div id="contact-us-info-disabled">
+          <div class="contact-us-info-disabled">
+            <div class="row">
+              <h3>&nbsp;</h3>
+              <h1><%= t('page.contact.select_a_sola_location_above').html_safe %></h1>
+              <h3>&nbsp;</h3>
+              <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
+                <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
               <% end %>
             </div>
           </div>
-        <% end %>  
-      </div>
+        </div>
 
-      <div id="contact-us-info-disabled">
-        <div class="contact-us-info-disabled">
-          <div class="row">
-            <h3>&nbsp;</h3>
-            <h1><%= t('page.contact.select_a_sola_location_above').html_safe %></h1>
-            <h3>&nbsp;</h3>
-            <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
-              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
-              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
-              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
-              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
-              <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
-            <% end %>
+        <div id="contact-us-info">
+          <div class="contact-us-info">
+            <div class="row">
+              <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
+              <h1><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h1>
+              <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
+              <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
+                <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+                <input name="request_url" type="hidden" value="<%= request.original_url %>">
+                <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="contact-us-info">
-        <div class="contact-us-info">
-          <div class="row">
-            <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
-            <h1><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h1>
-            <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
-            <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
-              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
-              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
-              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
-              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
-              <input name="location_id" id="contact_us_location_id" type="hidden" value="">
-              <input name="request_url" type="hidden" value="<%= request.original_url %>">
-              <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <% end %>
 
     </div>
   </div>

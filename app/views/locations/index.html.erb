@@ -2,28 +2,37 @@
 
 <div class="container content-container">
 
-  <div class="row">
-    <div class="six columns locations-hero">
-        <h1><%= t('page.locations.find_a_sola_location').html_safe %></h1>
-        <h3 class="subtle">&nbsp;</h3>
+  <% if I18n.locale != :en && @locations.size == 0 %>
+    <div class="row">
+      <h1 style="margin-top:-10px">Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017!</h1>
+      <div class="text-center" style="margin-bottom:20px">
+        <%= link_to 'Contact Us', :contact_us, :class => 'button primary' %>
+      </div>
     </div>
-
-    <div class="six columns text-right">
-
-      <div class="sola-select">
-        <div class="row">
-          <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
-          <div class="arrow"><span class="ss-dropdown"></span></div>
-        </div>
-        <div class="options">
-          <% @states.each do |location| %>
-          <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
-          <% end %>
-        </div>
+  <% else %>
+    <div class="row">
+      <div class="six columns locations-hero">
+          <h1><%= t('page.locations.find_a_sola_location').html_safe %></h1>
+          <h3 class="subtle">&nbsp;</h3>
       </div>
 
+      <div class="six columns text-right">
+
+        <div class="sola-select">
+          <div class="row">
+            <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
+            <div class="arrow"><span class="ss-dropdown"></span></div>
+          </div>
+          <div class="options">
+            <% @states.each do |location| %>
+            <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
+  <% end %>
 
 </div>
 
@@ -118,6 +127,10 @@
 
 <% end %>
 
-<% content_for(:scripts) { javascript_include_tag('locations') } %>
-<% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
+<% if I18n.locale != :en && @locations.size == 0 %>
+  <% content_for(:scripts) { javascript_include_tag('locations_ca') } %>
+<% else %>
+  <% content_for(:scripts) { javascript_include_tag('locations') } %>
+  <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
+<% end %>
 <% content_for(:title) { "#{t('page.locations.all_locations').html_safe}" } %>
