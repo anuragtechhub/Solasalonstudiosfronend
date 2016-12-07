@@ -6,7 +6,7 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @locations = Location.where(:status => 'open').where(:country => 'US')
     else
-      @locations = Location.where(:status => 'open').where(:country => 'CA')
+      @locations = Location.where(:status => 'open').where(:country => 'DOESNOTEXIST')
     end
 
     @states = @locations.select('DISTINCT state').order(:state => :asc)

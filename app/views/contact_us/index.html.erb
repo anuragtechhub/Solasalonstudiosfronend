@@ -8,20 +8,16 @@
 
   <div class="row dashed">
     <div class="one-half column">
-      <% if I18n.locale != :en && @all_locations.size == 0 %>
+      <% if I18n.locale != :en %>
         <h1 class="small">Coming to Canada Spring 2017!</h1>
+        <style type="text/css">
+          #contact-us-states, #contact-us-info-disabled, .contact-us-info, .select-a-state { display:none; }
+        </style>
       <% else %>
         <h1 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
       <% end %>
     </div>
     <div class="one-half column">
-
-      <% if I18n.locale != :en && @all_locations.size == 0 %>
-        <h3>Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017!</h3>
-        <p>Join our VIP circle for the latest updates on our first location in the GTA, move-in specials, invitations to VIP events, and other extra perks. You can even be the first to review and reserve salon suites before we break ground! You don't want to miss this opportunity to be a part of the fastest growing community of salon professionals in North America and empower yourself with the Freedom to Live the Life you Love! So contact us today to keep up-to-date on all of the excitement surrounding our very first Sola Salon Studios location in Toronto.</p>
-        <p style="margin-top:20px">Call us at <strong style="color:#000">416.964.1727</strong> or email <a href="mailto:klent@bex.net">klent@bex.net</a></p>
-      <% else %>
-
         <p><%= t('page.contact.body1').html_safe %></p>
         <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
         <br>
@@ -46,7 +42,7 @@
                 <div class="arrow"><span class="ss-dropdown"></span></div>
               </div>
               <div class="options">
-                <% Location.where(:state => location.state).order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+                <% Location.where(:state => location.state, :status => 'open').order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
                   <% if msa_name %>
                     <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
                     <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
@@ -95,8 +91,6 @@
           </div>
         </div>
 
-      <% end %>
-
     </div>
   </div>
 
@@ -139,3 +133,7 @@
 
 <% content_for(:scripts) { javascript_include_tag('contact_us') } %>
 <% content_for(:title) { t('page.contact.title').html_safe } %>
+
+<% if I18n.locale != :en %>
+  <% content_for(:scripts) { javascript_include_tag('contact_us_ca') } %>
+<% end %>

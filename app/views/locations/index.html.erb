@@ -2,12 +2,13 @@
 
 <div class="container content-container">
 
-  <% if I18n.locale != :en && @locations.size == 0 %>
+  <% if I18n.locale != :en %>
     <div class="row">
-      <h1 style="margin-top:-10px">Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017!</h1>
+      <h1 style="margin-top:-10px" class="text-center">Be the first to know exclusive details about the launch of<br />Sola Salon Studios Canada in Spring 2017!</h1>
       <div class="text-center" style="margin-bottom:20px">
         <%= link_to 'Contact Us', :contact_us, :class => 'button primary' %>
       </div>
+      <p class="text-center"><a href="https://www.solasalonstudios.com/locations/">View locations in the United States</a></p>
     </div>
   <% else %>
     <div class="row">

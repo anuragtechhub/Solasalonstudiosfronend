@@ -69,9 +69,9 @@ en-CA:
     
     contact:
       title: Contact Us
-      get_in_touch: Get in Touch
+      get_in_touch: Be the first to know!
       contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
-      body1: "We invite you to  contact us by phone or by filling out the email form. We would be happy to begin working with you today. We look forward to hearing from you!"
+      body1: "Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017! Fill out the form below and join our VIP circle for the latest updates on our first location in the GTA, move-in specials, invitations to VIP events, and other extra perks. You can even be the first to review and reserve salon suites before we break ground! You don't want to miss this opportunity to be a part of the fastest growing community of salon professionals in North America and empower yourself with the Freedom to Live the Life you Love! So contact us today to keep up-to-date on all of the excitement surrounding our very first Sola Salon Studios location in Toronto."
       body2: "Please also have a look at our %{faq_link}"
       frequently_asked_questions: Frequently Asked Questions
       select_a_state: Select a Province
@@ -162,7 +162,7 @@ en-CA:
 
     find_salon_pro:
       title: Find a Salon Professional
-      heading1: Find a Sola Salon<br>Professional Near You
+      heading1: Coming Soon!
       search: Search
       search_by_name_or_location: Search by name or location
       salon_professional_count: 7,000+

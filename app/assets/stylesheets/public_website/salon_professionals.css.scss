@@ -16,7 +16,13 @@
   text-align: center;
 
   &.under-search {
+    display: none;
     //bottom: 200px;
+    background: transparent;
+  }
+
+  &.disclaimer-ca {
+    position: static;
     background: transparent;
   }
 
