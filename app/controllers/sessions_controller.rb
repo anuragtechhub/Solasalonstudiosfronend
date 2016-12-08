@@ -5,6 +5,10 @@ class SessionsController < PublicWebsiteController
     #render 'orange_county'
   end
 
+  def dallas
+
+  end
+
   def denver
     #redirect_to :home
   end

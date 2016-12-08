@@ -586,6 +586,85 @@
   }
 }
 
+.session-2017 {
+
+  .watch-our-video {
+    padding: 20px 0 40px 0;
+    background: #000;
+
+    h6 {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFF;
+      text-align: center;
+      margin: 0 0 20px 0;
+    }
+
+    img {
+      border: 0 !important;
+    }
+
+    .play-video {
+      margin-top: 0 !important;
+    }
+
+    .play-btn {
+      background: #FFF !important;
+      width: 50px !important;
+      height: 50px !important;
+      margin: -25px 0 0 -25px !important;
+      text-transform: uppercase;
+      
+      span {
+        line-height: 18px !important;
+        font-size: 18px !important;
+        color: $brand-pink !important;
+        margin: -8px 0 0 -4px !important;
+      }
+
+      .text {
+        position: absolute;
+        bottom: -30px;
+        left: -4px;
+        font-size: 12px !important;
+        font-weight: bold !important;
+        color: #FFF !important;
+        display: block;
+        white-space: nowrap !important;
+        word-spacing: 1px;
+      }
+    }
+  }
+
+  .discounted-rooms {
+    h2 {
+      color: #000;
+      font-size: 39px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    h3 {
+      color: #333;
+      font-size: 29px;
+      line-height: 39px;
+      margin-bottom: 30px;
+    }
+    h4 {
+      font-size: 17px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+    .button-wrapper {
+      margin-bottom: 10px;
+    }
+    .button {
+      font-size: 19px !important;
+      padding-left: 60px !important;
+      padding-right: 60px !important;
+    }
+  }
+}
+
 @media (max-width: 550px) {
 
   .sessions-buttons {

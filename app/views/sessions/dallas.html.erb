@@ -1,4 +1,4 @@
-  <div class="session">    
+  <div class="session session-2017">    
 
     <div class="hero-image hero-desktop"><%= image_tag 'sessions/charlotte_hero.jpg' %></div>
 
@@ -200,37 +200,51 @@
       </div>
     </div>
 
-</div>
+    <div class="event-partners">
+      <div class="container">
+        <h2>Event Partners</h2>
+        <%= image_tag 'sessions/charlotte_event_partners.jpg' %>
+      </div>
+    </div>
 
-<div class="discounted-rooms">
-  <div class="container">
-    
-    <h2>Discounted Rooms Available</h2>
-    <h4>LIMITED AVAILABILITY</h4>
+    <div class="watch-our-video">
+      <div class="container">
+        <h6>Watch our video to learn more about the Sola Sessions</h6>
+        <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
+          <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
+          <div class="play-btn">
+            <span class="fa fa-5x fa-play"></span>
+            <span class="text">Play Video</span>
+          </div>
+        </a>
+      </div>
+    </div>
 
-    <%= image_tag 'sessions/charlotte_hotel.jpg' %>
+    <div class="discounted-rooms">
+      <div class="container">
+        
+        <h2>Discounted Rooms Available</h2>
+        <h4>LIMITED AVAILABILITY</h4>
 
-    <h3>$209 per night<br>Discounted Parking $10/Day</h3>
+        <%= image_tag 'sessions/charlotte_hotel.jpg' %>
 
-    <div class="button-wrapper"><a href="https://resweb.passkey.com/go/Sola2016" target="_blank" class="button primary">Book Now</a></div>
+        <h3>$179 Per Night<br>Complimentary Parking</h3>
 
-  </div>
-</div>
+        <div class="button-wrapper"><a href="https://resweb.passkey.com/go/Sola2016" target="_blank" class="button primary">Book Now</a></div>
 
-<div class="event-partners">
-  <div class="container">
-    <h2>Event Partners</h2>
-    <%= image_tag 'sessions/charlotte_event_partners.jpg' %>
-  </div>
-</div>
+      </div>
+    </div>
 
-<div class="callout blue" style="margin-top:15px;">
-  <h4 style="font-weight:bold;font-size:29px;">2017 Sola Sessions Dates To Be Announced!</h4>
 </div>
 
 <div class="callout pink">
   <%= link_to 'To learn more about the Sola Sessions, click here!', :sessions, :class => 'heading-link' %>
 </div>
+
+<div class="callout blue" style="margin-bottom:20px;">
+  <h4 style="font-weight:bold;font-size:29px;">Additional 2017 Sola Sessions Dates To Be Announced!</h4>
+</div>
+
 
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions - Dallas' } %>
