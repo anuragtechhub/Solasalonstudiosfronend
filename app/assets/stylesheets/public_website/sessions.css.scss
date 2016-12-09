@@ -586,6 +586,11 @@
   }
 }
 
+#add-to-calendar-wrapper {
+  display: block;
+  min-height: 27px;
+}
+
 .session-2017 {
 
   /* bb = bottom border */
@@ -620,7 +625,7 @@
     }
     a, a:link, a:visited {
       text-decoration: none;
-      
+
       &.add-to-calendar {
         color: $brand-primary !important;
       }

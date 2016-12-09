@@ -24,7 +24,7 @@
 .calendar-links-wrapper a {
   display: block;
   margin-left: 0px;
-  padding: 5px;
+  padding: 5px 0;
 }
 
 input[type=checkbox].add-to-calendar-checkbox {
@@ -41,14 +41,14 @@ input[type=checkbox].add-to-calendar-checkbox {
   margin-right: .5em;
   content: ' ';
   position: relative;
-  top: 1px;
+  top: 2px;
 }
 
 .calendar-links-wrapper {
   display: none;
   position: absolute;
   bottom: 0;
-  padding: 15px;
+  padding: 10px 15px;
   background: #FFF;
   box-shadow: 0 0 7px rgba(0,0,0,0.5);
   border-radius: 5px;

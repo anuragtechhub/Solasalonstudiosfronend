@@ -167,19 +167,27 @@
       return;
     }
 
+    var hideCalendarLinks = function () {
+      $(window).off('click.calendar-links');
+      $('.calendar-links-wrapper').hide();
+    };
+
+    var showCalendarLinks = function () {
+      $(window).on('click.calendar-links', function () {
+        hideCalendarLinks();
+      });
+      $('.calendar-links-wrapper').show();
+    };
+
     $(document.body).on('click', '.add-to-calendar-checkbox', function (e) {
       e.stopPropagation();
       e.preventDefault();
 
-      $('.calendar-links-wrapper').toggle();
-
-      // if ($('.calendar-links-wrapper').is(':visible')) {
-      //   console.log('is visible')
-      //   $('.calendar-links-wrapper').hide();
-      // } else {
-      //   console.log('is hidden')
-      //   $('.calendar-links-wrapper').show();
-      // }
+      if ($('.calendar-links-wrapper').is(':visible')) {
+        hideCalendarLinks();
+      } else {
+        showCalendarLinks();
+      }
     });
 
     return generateMarkup(generateCalendars(params.data),
