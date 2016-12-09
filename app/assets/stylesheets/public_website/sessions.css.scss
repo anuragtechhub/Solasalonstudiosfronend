@@ -608,11 +608,64 @@
     border-bottom: 1px solid #969696;
   }
 
+  .rangled-wrapper {
+    margin-bottom: 10px;
+  }
+
+  .rangled {
+    position: relative;
+    display: inline-block;
+    background: #000;
+    padding: 10px 15px 12px 15px;
+
+    &:before {
+      // content: '';
+      // position: absolute;
+      // top: 0; 
+      // right: 0;
+      // width: 0;
+      // border-top: 60px solid #FFF;
+      // border-right: 60px solid #000;
+    }
+
+    h1, h2 {
+      font-family: 'Lato', sans-serif;
+      color: #FFF;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 0;
+
+      &.brand-pink, .brand-pink {
+        color: $brand-pink !important;
+      }
+    }
+
+    h1 {
+      font-size: 69px;
+      line-height: 71px;
+    }
+    h2 {
+      font-size: 33px;
+      font-weight: bold;
+      line-height: 35px;
+      text-transform: none;
+
+      &.brand-pink {
+        font-size: 27px;
+        line-height: 29px;
+      }
+    }
+  }
+
+  .header {
+    margin: 30px 0;
+  }
+
   .date-and-time {
     margin: 20px 0 !important;
   }
 
-  .event-details, .date-and-time, .description {  
+  .event-details, .date-and-time, .description, .header {  
     display: block;
     clear: both;
     margin-bottom: 30px !important;
