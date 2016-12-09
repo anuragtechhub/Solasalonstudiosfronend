@@ -53,6 +53,14 @@ $(function () {
     }
   });
 
+  // hero height
+  var outerHeight = 210;
+  $('.calc-height').each(function () {
+    outerHeight += $(this).outerHeight();
+  })
+  console.log('outerHeight', outerHeight);
+  $('.header').height(outerHeight);
+
   // add to calendar
   var calendar = createCalendar({
     data: {
