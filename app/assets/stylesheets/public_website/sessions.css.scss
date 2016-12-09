@@ -609,13 +609,13 @@
   }
 
   .date-and-time {
-    margin-top: 20px;
+    margin: 20px 0 !important;
   }
 
-  .event-details, .date-and-time {  
+  .event-details, .date-and-time, .description {  
     display: block;
     clear: both;
-    margin-bottom: 10px;
+    margin-bottom: 30px !important;
 
     ul {
       margin: 0 0 0 20px !important;
@@ -656,6 +656,12 @@
   }
 
   .speakers {
+    margin-bottom: 20px !important;
+
+    h2.bb {
+      margin-bottom: 60px !important;
+    }
+
     .row:first-child {
       margin-top: 0px;
     }
