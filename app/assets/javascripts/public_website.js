@@ -11,6 +11,7 @@
 //= require affix
 //= require jquery.swipebox
 //= require modal
+//= require atc
 
 $(function () {
 

@@ -603,7 +603,13 @@
     border-bottom: 1px solid #969696;
   }
 
-  .event-details {  
+  .date-and-time {
+    margin-top: 20px;
+  }
+
+  .event-details, .date-and-time {  
+    display: block;
+    clear: both;
     margin-bottom: 10px;
 
     ul {
@@ -612,9 +618,21 @@
       list-style-type: disc;
       list-style-position: initial !important;
     }
-    a, a:link, a:visited, a:hover, a:active {
+    a, a:link, a:visited {
       text-decoration: none;
+      
+      &.add-to-calendar {
+        color: $brand-primary !important;
+      }
     }
+    a:hover, a:active {
+      text-decoration: none;
+
+      &.add-to-calendar {
+        color: lighten($brand-primary, 20%) !important;
+      }
+    }
+
     li {
       margin: 0;
       padding: 0;
@@ -629,6 +647,12 @@
     }
     strong {
       color: #262626 !important;
+    }
+  }
+
+  .speakers {
+    .row:first-child {
+      margin-top: 0px;
     }
   }
 
