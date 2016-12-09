@@ -3,6 +3,17 @@
     <div class="header">
       <div class="container">
 
+        <div class="logo calc-height">
+          <%= image_tag 'sessions/sessions-logo-white.png', :width => 559, :height => 148 %>
+        </div>
+
+        <div class="tickets-on-sale-now calc-height">
+          <h3>Tickets on Sale Now</h3>
+        </div>
+
+        <div class="buy-now calc-height">
+          <a href="#">Buy Now</a>
+        </div>
 
         <div class="rangled-wrapper text-center calc-height">
           <div class="rangled" style="padding-bottom:15px">
@@ -10,7 +21,7 @@
           </div>
         </div>
 
-        <div class="rangled-wrapper text-center calc-height" style="margin-left: -125px; margin-bottom: 90px">
+        <div class="rangled-wrapper text-center calc-height" style="margin-left: -125px; margin-bottom: 130px">
           <div class="rangled">
             <h2 class="brand-pink">2017</h2>
             <h2>FEBRUARY 13th</h2>
@@ -277,7 +288,6 @@
   <h4 style="font-weight:bold;font-size:29px;">Additional 2017 Sola Sessions Dates To Be Announced!</h4>
 </div>
 
-<% content_for(:body_class) { 'sessions-bg-2017' } %>
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions - Dallas' } %>
 <% content_for(:og_image) { "http:#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>

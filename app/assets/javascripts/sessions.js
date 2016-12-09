@@ -54,7 +54,7 @@ $(function () {
   });
 
   // hero height
-  var outerHeight = 210;
+  var outerHeight = 720;
   $('.calc-height').each(function () {
     outerHeight += $(this).outerHeight();
   })
