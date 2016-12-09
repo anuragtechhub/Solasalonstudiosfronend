@@ -19,7 +19,7 @@
   <%= render 'shared/global_fb_conversion_pixel' %>
   <%= yield :fb_conversion_pixel if content_for?(:fb_conversion_pixel) %>
 </head>
-<body>
+<body class="<%= yield :body_class %>">
 
   <%= render 'shared/public_website/header' %>
 

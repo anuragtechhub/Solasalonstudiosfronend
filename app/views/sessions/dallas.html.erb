@@ -16,6 +16,22 @@
           </div>
         </div>
 
+        <div class="ticket-details">
+          <div class="price">$99</div>
+          
+          <div class="valued-at">
+            <div class="rangled-wrapper">
+              <div class="rangled">
+              Ticket Valued at $300
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-includes">
+            Ticket Includes: Education. Swag Bag. Prizes. Vendor Expo. Lunch. Happy Hour.
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -251,7 +267,7 @@
   <h4 style="font-weight:bold;font-size:29px;">Additional 2017 Sola Sessions Dates To Be Announced!</h4>
 </div>
 
-
+<% content_for(:body_class) { 'sessions-bg-2017' } %>
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions - Dallas' } %>
 <% content_for(:og_image) { "http:#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>
