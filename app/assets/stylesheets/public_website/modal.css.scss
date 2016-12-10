@@ -58,6 +58,26 @@
       margin-bottom: 0;
     }
   }
+
+  &.sessions {
+    max-width: 420px;
+
+    .content {
+      background: #000;
+      color: #FFF;
+    }
+    .ss-delete {
+      display: block;
+      background: asset-data-url('sessions/close-x.gif') no-repeat center;
+      background-size: 24px 24px;
+      width: 24px;
+      height: 24px;
+
+      &:before {
+        content: '';
+      }
+    }
+  }
 }
 
 .modal-overlay {
@@ -69,6 +89,10 @@
   right: 0;
   background: rgba(0,0,0,0.6);
   z-index: 999;
+
+  &.sessions {
+    background: rgba(0,0,0,0.8);
+  }
 }
 
 .recaptchaContainer {

@@ -58,8 +58,20 @@ $(function () {
   $('.calc-height').each(function () {
     outerHeight += $(this).outerHeight();
   })
-  console.log('outerHeight', outerHeight);
+  //console.log('outerHeight', outerHeight);
   $('.header').height(outerHeight);
+
+  // featured presenter modals
+  function initModals() {
+    $('.bio').modal();
+  }
+  initModals();
+
+  $(document).on('click', '.speakers .columns', function () {
+    var id = $(this).data('rel');
+    $('.bio[data-rel=' + id + ']').data('modal').open();
+    return false;
+  });
 
   // add to calendar
   var calendar = createCalendar({
