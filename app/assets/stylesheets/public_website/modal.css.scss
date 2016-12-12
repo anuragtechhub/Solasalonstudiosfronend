@@ -66,6 +66,34 @@
       background: #000;
       color: #FFF;
     }
+
+    .modal-header {
+      text-align: center;
+
+      .name {
+        margin: 3px 0;
+      }
+
+      .name, .company {
+        display: block;
+        font-weight: bold;
+        font-size: 18px;
+
+        a, a:link, a:visited, a:hover, a:active {
+          text-decoration: none !important;
+        }
+      }
+
+      .line {
+        display: inline-block;
+        width: 50px;
+        line-height: 1px;
+        height: 1px;
+        background: #888888;
+        margin: 20px auto 20px auto;
+      }
+    }
+
     .ss-delete {
       display: block;
       background: asset-data-url('sessions/close-x.gif') no-repeat center;

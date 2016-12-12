@@ -73,6 +73,10 @@ $(function () {
     return false;
   });
 
+  $(document).on('click', '.modal-header .company a', function () {
+    return false;
+  });
+
   // add to calendar
   var calendar = createCalendar({
     data: {
