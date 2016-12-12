@@ -612,6 +612,11 @@
 
   .rangled-wrapper {
     margin-bottom: 10px;
+
+    &.date {
+      margin-left: -125px; 
+      margin-bottom: 130px;
+    }
   }
 
   .rangled {
@@ -657,6 +662,7 @@
       text-transform: none;
 
       &.brand-pink {
+        text-align: left;
         font-size: 27px;
         line-height: 29px;
       }
@@ -933,6 +939,147 @@
     }
   }
 }
+
+
+
+/***************************
+* Session 2017 Breakpoints *
+****************************/
+
+@media (max-width: 1600px) {
+  .session-2017 {
+
+  }
+}
+
+@media (max-width: 1200px) {
+  .session-2017 {
+
+  }
+}
+
+@media (max-width: 800px) {
+  .session-2017 {
+    .header {
+      .logo {
+        padding: 20px 0 0 0;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      .tickets-on-sale-now {
+        margin: 15px 0 20px 0;
+
+        h3 {
+          font-size: 23px;
+          line-height: 25px;
+        }
+      }
+
+      .buy-now {
+        margin: 10px 0 40px 0;
+      }
+
+      .rangled-wrapper {
+        text-align: left;
+
+        &.date {
+          margin-left: 0; 
+          margin-bottom: 60px;
+        }
+      }
+
+      .rangled h1 {
+        font-size: 49px;
+        line-height: 49px;
+      }
+
+      .rangled h2 {
+        font-size: 25px;
+        line-height: 25px;
+      }
+
+      .rangled.small {
+        p {
+          font-size: 13px !important;
+          line-height: 13px !important;
+          font-weight: bold;
+        }
+      }
+
+      .ticket-details {
+        left: 0;
+        margin-left: 0;
+        width: 100%;
+
+        .left {
+          left: -3px;
+        }
+
+        .right {
+          right: -3px;
+        }
+
+        .price {
+          .amount {
+            position: relative;
+            left: -7px;
+            font-weight: normal;
+            font-size: 144px;
+          }
+        }
+
+        .ticket-includes .text {
+          font-size: 12px;
+          line-height: 18px;
+          left: 13px;
+        }
+
+        .ticket-includes .triangle {
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          border-left: 9px solid #000;
+        }
+      }
+    }
+  }
+}
+
+// @media (max-width: 550px) {
+//   .session-2017 {
+//     .header {
+//       .logo {
+//         padding: 15px 0 0 0;
+        
+//         img {
+//           max-width: 100%;
+//           height: auto;
+//         }
+//       }
+
+//       .tickets-on-sale-now {
+//         margin: 15px 0 20px 0;
+//       }
+
+//       .buy-now {
+//         margin: 10px 0 20px 0;
+//       }
+
+//       .rangled h1 {
+//         font-size: 49px;
+//       }
+//     }
+//   }
+// }
+
+
+
+/*******************************
+* Other Responsive Breakpoints *
+*******************************/
 
 @media (max-width: 550px) {
 
