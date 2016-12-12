@@ -59,9 +59,9 @@ $(function () {
 
     //console.log('windowWidth', windowWidth);
 
-    if (windowWidth <= 800) {
+    if (windowWidth <= 900) {
       var outerHeight = 120;
-    } else if (windowWidth > 800 && windowWidth <= 1200) {
+    } else if (windowWidth > 900 && windowWidth <= 1200) {
       var outerHeight = 180;
     } else if (windowWidth > 1200 && windowWidth <= 1600) {
       var outerHeight = 280;
