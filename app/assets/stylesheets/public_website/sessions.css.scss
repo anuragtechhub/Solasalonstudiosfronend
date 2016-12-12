@@ -592,7 +592,10 @@
 }
 
 .session-2017 {
-  background: #FFF asset-data-url('sessions/sessions-bg3.jpg') no-repeat top left;
+  background: #FFF asset-url('sessions/sessions-bg.jpg') no-repeat; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
   background-size: contain;
   
   /* bb = bottom border */
@@ -716,8 +719,8 @@
   .ticket-details {
     position: absolute;
     left: 50%;
-    margin-left: -215px;
-    width: 430px;
+    margin-left: -210px;
+    width: 420px;
 
     .left {
       position: absolute;
@@ -739,9 +742,9 @@
       .amount {
         vertical-align: top;
         font-family: 'Dosis', sans-serif;
-        font-weight: bold;
+        font-weight: normal;
         font-size: 159px;
-        line-height: 129px;
+        line-height: 150px;
       }
 
       .dollar-sign {
@@ -948,18 +951,32 @@
 
 @media (max-width: 1600px) {
   .session-2017 {
-
+    // background: #FFF asset-url('sessions/sessions-bg-lg.jpg') no-repeat; 
+    // -webkit-background-size: contain;
+    // -moz-background-size: contain;
+    // -o-background-size: contain;
+    // background-size: contain;
   }
 }
 
 @media (max-width: 1200px) {
   .session-2017 {
-
+    // background: #FFF asset-url('sessions/sessions-bg-sm.jpg') no-repeat; 
+    // -webkit-background-size: contain;
+    // -moz-background-size: contain;
+    // -o-background-size: contain;
+    // background-size: contain;
   }
 }
 
 @media (max-width: 800px) {
   .session-2017 {
+    background: #FFF asset-url('sessions/sessions-bg-sm.jpg') no-repeat; 
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+
     .header {
       .logo {
         padding: 20px 0 0 0;
@@ -1010,6 +1027,15 @@
         }
       }
 
+
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .session-2017 {
+    .header {
+
       .ticket-details {
         left: 0;
         margin-left: 0;
@@ -1026,6 +1052,7 @@
         .price {
           .amount {
             position: relative;
+            top: -7px;
             left: -7px;
             font-weight: normal;
             font-size: 144px;
@@ -1036,6 +1063,7 @@
           font-size: 12px;
           line-height: 18px;
           left: 13px;
+          width: 80%;
         }
 
         .ticket-includes .triangle {
@@ -1044,36 +1072,10 @@
           border-left: 9px solid #000;
         }
       }
+
     }
   }
 }
-
-// @media (max-width: 550px) {
-//   .session-2017 {
-//     .header {
-//       .logo {
-//         padding: 15px 0 0 0;
-        
-//         img {
-//           max-width: 100%;
-//           height: auto;
-//         }
-//       }
-
-//       .tickets-on-sale-now {
-//         margin: 15px 0 20px 0;
-//       }
-
-//       .buy-now {
-//         margin: 10px 0 20px 0;
-//       }
-
-//       .rangled h1 {
-//         font-size: 49px;
-//       }
-//     }
-//   }
-// }
 
 
 

@@ -54,12 +54,30 @@ $(function () {
   });
 
   // hero height
-  var outerHeight = 120;//720;
-  $('.calc-height').each(function () {
-    outerHeight += $(this).outerHeight(true);
-  })
-  //console.log('outerHeight', outerHeight);
-  $('.header').height(outerHeight);
+  function calculateHeroHeight() {
+    var windowWidth = $(window).width();
+
+    //console.log('windowWidth', windowWidth);
+
+    if (windowWidth <= 800) {
+      var outerHeight = 120;
+    } else if (windowWidth > 800 && windowWidth <= 1200) {
+      var outerHeight = 180;
+    } else if (windowWidth > 1200 && windowWidth <= 1600) {
+      var outerHeight = 280;
+    } else {
+      var outerHeight = 420;
+    }
+
+    $('.calc-height').each(function () {
+      outerHeight += $(this).outerHeight(true);
+    })
+    //console.log('outerHeight', outerHeight);
+    $('.header').height(outerHeight);
+  }
+  calculateHeroHeight();
+
+  $(window).on('resize.heroHeight', calculateHeroHeight);
 
   // featured presenter modals
   function initModals() {
