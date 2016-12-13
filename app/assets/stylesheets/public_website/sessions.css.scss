@@ -592,7 +592,7 @@
 }
 
 .session-2017 {
-  background: #FFF asset-url('sessions/sessions-bg.jpg') no-repeat; 
+  background: #FFF asset-data-url('sessions/sessions-bg.jpg') no-repeat; 
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -618,7 +618,7 @@
 
     &.date {
       margin-left: -125px; 
-      margin-bottom: 130px;
+      margin-bottom: 90px;
     }
   }
 
@@ -700,7 +700,7 @@
 
   .buy-now {
     text-align: center;
-    margin: 10px 0 110px 0;
+    margin: 10px 0 75px 0;
 
     a, a:link, a:visited, a:hover, a:active {
       display: inline-block;
@@ -740,8 +740,11 @@
       color: $brand-pink;
 
       .amount {
+        position: relative;
+        left: -7px;
+        letter-spacing: -7px;
         vertical-align: top;
-        font-family: 'Dosis', sans-serif;
+        font-family: Arial, sans-serif;
         font-weight: normal;
         font-size: 159px;
         line-height: 150px;
@@ -835,6 +838,7 @@
       color: #6e6e6e !important;
       font-size: 17px !important;
       line-height: 27px !important;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.4);
     }
     p {
       margin-bottom: 25px;
@@ -949,29 +953,29 @@
 * Session 2017 Breakpoints *
 ****************************/
 
-@media (max-width: 1600px) {
-  .session-2017 {
-    // background: #FFF asset-url('sessions/sessions-bg-lg.jpg') no-repeat; 
-    // -webkit-background-size: contain;
-    // -moz-background-size: contain;
-    // -o-background-size: contain;
-    // background-size: contain;
-  }
-}
+// @media (max-width: 1600px) {
+//   .session-2017 {
+//     // background: #FFF asset-url('sessions/sessions-bg-lg.jpg') no-repeat; 
+//     // -webkit-background-size: contain;
+//     // -moz-background-size: contain;
+//     // -o-background-size: contain;
+//     // background-size: contain;
+//   }
+// }
 
-@media (max-width: 1200px) {
-  .session-2017 {
-    // background: #FFF asset-url('sessions/sessions-bg-sm.jpg') no-repeat; 
-    // -webkit-background-size: contain;
-    // -moz-background-size: contain;
-    // -o-background-size: contain;
-    // background-size: contain;
-  }
-}
+// @media (max-width: 1200px) {
+//   .session-2017 {
+//     // background: #FFF asset-url('sessions/sessions-bg-sm.jpg') no-repeat; 
+//     // -webkit-background-size: contain;
+//     // -moz-background-size: contain;
+//     // -o-background-size: contain;
+//     // background-size: contain;
+//   }
+// }
 
 @media (max-width: 800px) {
   .session-2017 {
-    background: #FFF asset-url('sessions/sessions-bg-sm.jpg') no-repeat; 
+    background: #FFF asset-data-url('sessions/sessions-bg-sm.jpg') no-repeat; 
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -1042,11 +1046,11 @@
         width: 100%;
 
         .left {
-          left: 10px;
+          left: 3px;
         }
 
         .right {
-          right: 3px;
+          right: 0px;
         }
 
         .price {

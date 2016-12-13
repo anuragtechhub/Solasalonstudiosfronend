@@ -12,6 +12,8 @@
 //= require jquery.swipebox
 //= require modal
 //= require atc
+//= require jquery.mousewheel
+//= require jquery.mCustomScrollbar
 
 $(function () {
 

@@ -36,7 +36,7 @@ $.widget('solasalonstudios.modal', {
 
     // bind events
     self.$close.on('click', self.close.bind(this));
-    $(window).on('resize.modal', function () { self.reposition(); });
+    $(window).on('resize.modalzzz', function () { self.reposition(); });
 
     // append elements
     self.$content.append(self.element).append(self.$spinner);

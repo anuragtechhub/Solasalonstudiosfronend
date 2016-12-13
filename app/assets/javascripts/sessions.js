@@ -62,11 +62,11 @@ $(function () {
     if (windowWidth <= 900) {
       var outerHeight = 120;
     } else if (windowWidth > 900 && windowWidth <= 1200) {
-      var outerHeight = 180;
-    } else if (windowWidth > 1200 && windowWidth <= 1600) {
-      var outerHeight = 320;
+      var outerHeight = 160;
+    //} else if (windowWidth > 1200 && windowWidth <= 1600) {
+    //  var outerHeight = 180;
     } else {
-      var outerHeight = 420;
+      var outerHeight = 160;
     }
 
     $('.calc-height').each(function () {
@@ -94,6 +94,9 @@ $(function () {
   $(document).on('click', '.modal-header .company a', function () {
     return false;
   });
+
+  // custom scroll
+  //$('.modal .content').mCustomScrollbar();
 
   // add to calendar
   var calendar = createCalendar({
