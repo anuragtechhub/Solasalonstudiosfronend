@@ -64,7 +64,7 @@ $(function () {
     } else if (windowWidth > 900 && windowWidth <= 1200) {
       var outerHeight = 180;
     } else if (windowWidth > 1200 && windowWidth <= 1600) {
-      var outerHeight = 280;
+      var outerHeight = 320;
     } else {
       var outerHeight = 420;
     }
