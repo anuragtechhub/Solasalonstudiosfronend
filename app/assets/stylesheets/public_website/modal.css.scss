@@ -63,6 +63,7 @@
     max-width: 420px;
 
     .content {
+      position: static;
       background: #000;
       color: #FFF;
     }
@@ -94,12 +95,17 @@
       }
     }
 
+    .close {
+      top: 10px;
+      right: 10px;
+    }
+
     .ss-delete {
       display: block;
       background: asset-data-url('sessions/close-x.gif') no-repeat center;
-      background-size: 24px 24px;
-      width: 24px;
-      height: 24px;
+      background-size: 20px 20px;
+      width: 20px;
+      height: 20px;
 
       &:before {
         content: '';
