@@ -102,6 +102,7 @@
     }
 
     .ss-delete {
+      cursor: pointer;
       display: block;
       background: asset-data-url('sessions/close-x.gif') no-repeat center;
       background-size: 20px 20px;
