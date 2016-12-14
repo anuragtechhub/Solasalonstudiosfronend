@@ -61,6 +61,7 @@ $.widget('solasalonstudios.modal', {
     // self.outerWidth = self.$modal.outerWidth();
     // self.outerHeight = self.$modal.outerHeight();
 
+    $(document).on('touchmove.modalzzz', function (e) { e.preventDefault(); });
     self.$body.css('overflow', 'hidden');
     self.reposition();
 
@@ -79,6 +80,7 @@ $.widget('solasalonstudios.modal', {
   close: function () {
     var self = this;
 
+    $(document).off('touchmove.modalzzz');
     self.$body.css('overflow', 'auto');
 
     if (self.animated) {
@@ -133,12 +135,15 @@ $.widget('solasalonstudios.modal', {
     var windowWidth = $window.width();
 
     //self.resize();
+    console.log('reposition', self.outerHeight);
 
     if (windowHeight <= self.outerHeight || windowWidth <= self.outerWidth) {
-      //console.log('1')
+      console.log('1')
       if (windowHeight <= self.outerHeight) {
+        console.log('a')
         self.$modal.css({top: '30px', bottom: '30px', 'margin-top': 0});
       } else {
+        console.log('b');
         self.$modal.css({top: '50%', bottom: 'auto', 'margin-top': '-' + self.outerHeight / 2 + 'px'});
       }
       if (windowWidth <= self.outerWidth) {
