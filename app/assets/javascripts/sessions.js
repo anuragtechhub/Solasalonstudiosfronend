@@ -96,7 +96,9 @@ $(function () {
   });
 
   // custom scroll
-  //$('.modal .content').mCustomScrollbar();
+  $('.modal .content').mCustomScrollbar({
+    theme: "minimal-light"
+  });
 
   // add to calendar
   var calendar = createCalendar({

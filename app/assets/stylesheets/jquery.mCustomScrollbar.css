@@ -1038,8 +1038,7 @@ yx-axis
 	/* theme: "minimal-dark" */
 	
 	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
-		background-color: #000; background-color: rgba(0,0,0,0.2);
-		filter: "alpha(opacity=20)"; -ms-filter: "alpha(opacity=20)"; 
+		background-color: rgba(0,0,0,0.4);
 	}
 	
 	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
@@ -1265,3 +1264,20 @@ yx-axis
 	.mCS-inset-3-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{ background-color: #fff; background-color: rgba(255,255,255,0.9); }
 	
 	/* ---------------------------------------- */
+
+
+.mCSB_container {
+	margin-right: 0 !important;
+}
+
+.mCS-minimal-light .mCSB_container, .mCustomScrollBox {
+	overflow: visible !important;
+}
+
+.mCS-minimal-light.mCSB_scrollTools_vertical {
+	right: -27px;
+}
+
+.mCS-minimal-light.mCSB_scrollTools_vertical .mCSB_dragger_bar {
+	background: #333 !important;
+}

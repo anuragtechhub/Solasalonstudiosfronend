@@ -45,6 +45,12 @@ $.widget('solasalonstudios.modal', {
 
     // attach to DOM
     self.$body.append(self.$modal).append(self.$overlay);
+  
+    // cache outerWidth and outerHeight
+    self.$modal.show();
+    self.outerWidth = self.$modal.outerWidth();
+    self.outerHeight = self.$content[0].scrollHeight;
+    self.$modal.hide();
   },
 
   width: 392,
@@ -52,8 +58,8 @@ $.widget('solasalonstudios.modal', {
   open: function () {
     var self = this;
 
-    self.outerWidth = self.$modal.outerWidth();
-    self.outerHeight = self.$modal.outerHeight();
+    // self.outerWidth = self.$modal.outerWidth();
+    // self.outerHeight = self.$modal.outerHeight();
 
     self.$body.css('overflow', 'hidden');
     self.reposition();
@@ -66,8 +72,8 @@ $.widget('solasalonstudios.modal', {
       self.$overlay.show();
     }
 
-    self.outerWidth = self.$modal.outerWidth();
-    self.outerHeight = self.$modal.outerHeight();    
+    // self.outerWidth = self.$modal.outerWidth();
+    // self.outerHeight = self.$modal.outerHeight();    
   },
 
   close: function () {
@@ -114,9 +120,9 @@ $.widget('solasalonstudios.modal', {
     var self = this;
 
     //console.log('outerHeight b4', self.outerHeight);
-    if (self.$content[0].scrollHeight) {
-      self.outerHeight = self.$content[0].scrollHeight;
-    }
+    // if (self.$content[0].scrollHeight) {
+    //   self.outerHeight = self.$content[0].scrollHeight;
+    // }
     //console.log('outerHeight after', self.outerHeight);
   },
 
@@ -126,7 +132,7 @@ $.widget('solasalonstudios.modal', {
     var windowHeight = $window.height();
     var windowWidth = $window.width();
 
-    self.resize();
+    //self.resize();
 
     if (windowHeight <= self.outerHeight || windowWidth <= self.outerWidth) {
       //console.log('1')
