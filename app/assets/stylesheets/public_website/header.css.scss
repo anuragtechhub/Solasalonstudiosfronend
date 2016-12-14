@@ -171,7 +171,18 @@
   }
 
   #top-header {
-    display: none;
+    display: block;
+
+    li {
+      display: none;
+
+      &.country-switcher-wrapper {
+        display: block;
+        margin-right: -20px;
+        border-left: 0 !important;
+        border-right: 0 !important;
+      }
+    }
   }
 
   #header {
