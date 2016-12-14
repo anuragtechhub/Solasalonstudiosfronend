@@ -3,11 +3,13 @@
 
 .country-switcher {
   position: relative;
+  width: 170px;
 
   .country {
     overflow: hidden;
     padding: 8px 16px 4px 16px;
     cursor: pointer;
+    white-space: nowrap;
 
     &:hover {
       .name {
