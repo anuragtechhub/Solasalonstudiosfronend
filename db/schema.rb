@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013214533) do
+ActiveRecord::Schema.define(version: 20170102182118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -449,7 +449,7 @@ ActiveRecord::Schema.define(version: 20161013214533) do
     t.integer  "testimonial_id_10"
     t.string   "location_name"
     t.boolean  "hair_extensions"
-    t.boolean  "send_a_message_button",  default: true
+    t.boolean  "send_a_message_button",   default: true
     t.string   "pinterest_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
@@ -461,17 +461,21 @@ ActiveRecord::Schema.define(version: 20161013214533) do
     t.string   "linkedin_url"
     t.string   "other_service"
     t.string   "google_plus_url"
-    t.string   "encrypted_password",     default: ""
+    t.string   "encrypted_password",      default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",           default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "msa_name"
-    t.boolean  "phone_number_display",   default: true
+    t.boolean  "phone_number_display",    default: true
+    t.boolean  "has_sola_genius_account", default: false
+    t.boolean  "sola_genius_enabled",     default: false
+    t.string   "sola_pro_platform"
+    t.string   "sola_pro_version"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

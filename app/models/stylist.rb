@@ -123,6 +123,14 @@ class Stylist < ActiveRecord::Base
     [['Visible', true], ['Hidden', false]]
   end
 
+  def sola_genius_enabled_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def has_sola_genius_account_enum
+    [['Yes', true], ['No', false]]
+  end
+
   # helper function to return images as array
   def images
     images_array = []

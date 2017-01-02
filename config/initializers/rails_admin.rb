@@ -990,6 +990,22 @@ RailsAdmin.config do |config|
           label 'Other'
         end
       end
+      group :app_settings do
+        active false
+        label 'App Settings'
+        field :sola_genius_enabled do
+          help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
+        end
+        field :has_sola_genius_account do
+          help 'If set to "Yes", the stylist has a Sola Genius account.'
+        end
+        field :sola_pro_platform do
+          help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
+        end
+        field :sola_pro_version do
+          help 'The version of the Sola Pro app the stylist is using.'
+        end
+      end
       group :images do
         field :image_1 do 
           pretty_value do 
@@ -1158,6 +1174,22 @@ RailsAdmin.config do |config|
           end
         end
       end
+      group :app_settings do
+        active false
+        label 'App Settings'
+        field :sola_genius_enabled do
+          help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
+        end
+        field :has_sola_genius_account do
+          help 'If set to "Yes", the stylist has a Sola Genius account.'
+        end
+        field :sola_pro_platform do
+          help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
+        end
+        field :sola_pro_version do
+          help 'The version of the Sola Pro app the stylist is using.'
+        end
+      end  
       group :images do
         active false
         field :image_1 do 
