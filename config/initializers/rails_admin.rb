@@ -990,9 +990,9 @@ RailsAdmin.config do |config|
           label 'Other'
         end
       end
-      group :app_settings do
+      group :sola_pro_sola_genius do
         active false
-        label 'App Settings'
+        label 'Sola Pro and Sola Genius'
         field :sola_genius_enabled do
           help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
         end
@@ -1174,9 +1174,9 @@ RailsAdmin.config do |config|
           end
         end
       end
-      group :app_settings do
+      group :sola_pro_sola_genius do
         active false
-        label 'App Settings'
+        label 'Sola Pro and Sola Genius'
         field :sola_genius_enabled do
           help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
         end
