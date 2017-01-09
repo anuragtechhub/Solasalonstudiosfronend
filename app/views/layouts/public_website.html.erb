@@ -22,21 +22,11 @@
 <body>
 
   <%= render 'shared/public_website/header' %>
-
   <%= yield %>
-
   <%= render 'shared/public_website/footer' %>
 
   <script src="//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-34803522-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-  </script>
+  <%= render 'shared/google_analytics' %>
   <%= javascript_include_tag "public_website" %>
   <%= yield :scripts %>
 
