@@ -1,0 +1,163 @@
+/* reset */
+/* line 15, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 25, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* line 34, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+body {
+  line-height: 1;
+}
+
+/* line 37, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 40, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 44, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 48, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 53, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* box-sizing, clearfix, etc */
+/* line 58, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 63, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/* line 71, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix {
+  display: inline-block;
+}
+
+/* line 72, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+* html .clearfix {
+  height: 1%;
+}
+
+/* line 73, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/reset.css.scss */
+.clearfix {
+  display: block;
+}
+/* line 1, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in {
+  max-width: 400px;
+  width: 100%;
+  margin: 30px auto;
+  font-size: 19px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 30px;
+}
+/* line 9, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in h2 {
+  font-size: 21px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 15px 0;
+}
+/* line 18, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in label {
+  font-size: 19px;
+  display: block;
+  margin: 15px 0 3px 0;
+  font-weight: bold;
+}
+/* line 25, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in input {
+  font-size: 19px;
+  padding: 5px;
+  width: 100%;
+}
+/* line 31, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in .actions {
+  margin: 15px auto;
+}
+/* line 34, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/devise.css.scss */
+.devise-sign-in .actions button {
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 19px;
+  font-weight: bold;
+  border: 0;
+  background: #FFF;
+  border-radius: 3px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+
+ *= 
+ */
+

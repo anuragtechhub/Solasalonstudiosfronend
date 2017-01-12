@@ -1,0 +1,110 @@
+/* line 1, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+body {
+  background: #ECF0F1;
+  font-family: 'Dosis', Arial, sans-serif;
+}
+
+/* line 6, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.devise-sign-in {
+  background: #2C3E50;
+  border-radius: 7px;
+  padding: 15px 30px;
+  margin: 20px auto;
+}
+/* line 12, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.devise-sign-in label {
+  color: white;
+  font-size: 17px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+/* line 19, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.devise-sign-in h1 {
+  font-weight: bold;
+  color: #FFF;
+  font-size: 22px;
+  text-align: center;
+  margin: 15px auto;
+}
+
+/* line 28, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.form {
+  background: #2C3E50;
+  border-radius: 7px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 420px;
+}
+/* line 35, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.form img {
+  margin-bottom: 10px;
+}
+/* line 39, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.form p {
+  color: #FFF;
+  font-size: 15px;
+  line-height: 19px;
+  margin-bottom: 20px;
+}
+/* line 45, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.form p:last-child {
+  margin-bottom: 0;
+}
+
+/* line 51, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+#error {
+  background: red;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  font-size: 19px;
+  line-height: 23px;
+}
+/* line 60, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+#error a, #error a:link, #error a:visited, #error a:hover, #error a:active {
+  color: #FFF;
+}
+
+/* line 65, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+#success {
+  background: green;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  font-size: 19px;
+  line-height: 23px;
+}
+/* line 74, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+#success a, #success a:link, #success a:visited, #success a:hover, #success a:active {
+  color: #FFF;
+}
+
+/* line 79, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.actions button {
+  cursor: pointer;
+}
+
+/* line 83, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.link {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px auto;
+}
+/* line 88, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.link a, .link a:link, .link a:visited {
+  color: #2C3E50;
+}
+/* line 92, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.link a:hover, .link a:active {
+  color: #507192;
+}
+
+/* line 97, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/admin.css.scss */
+.copyright {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+  color: #787878;
+}
