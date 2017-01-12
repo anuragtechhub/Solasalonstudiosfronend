@@ -87,14 +87,22 @@ $(function () {
   $('form.contact-us-form').on('submit', function () {
     var $form = $(this);
 
+    $form.find('.loading').show();
+
     $.ajax({
       method: 'POST',
       url: $form.attr('action'),
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        if (typeof window.contactUsFormSuccessHandler == 'function') {
+          window.contactUsFormSuccessHandler(data);
+        } else {
+          $form.find('.loading').hide();
+          $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+        }
       } else {
+        $form.find('.loading').hide();
         $form.tooltipster('content', data.error).tooltipster('show');
       }
     });
@@ -102,5 +110,4 @@ $(function () {
     return false;
   });
   $('form.contact-us-form').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
-
 });

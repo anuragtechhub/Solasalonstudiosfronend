@@ -56,11 +56,6 @@ module Solasalonstudios
 
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
-
-    config.serve_static_assets = true
-    config.assets.digest = true
-    config.assets.enabled = true
-    config.assets.initialize_on_precompile = false
     
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  

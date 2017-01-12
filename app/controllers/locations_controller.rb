@@ -4,8 +4,10 @@ class LocationsController < PublicWebsiteController
 
   def index
     if I18n.locale == :en
+      @country = 'US'
       @locations = Location.where(:status => 'open').where(:country => 'US')
     else
+      @country = 'CA'
       @locations = Location.where(:status => 'open').where(:country => 'DOESNOTEXIST')
     end
 

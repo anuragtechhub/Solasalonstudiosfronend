@@ -12,6 +12,7 @@ Solasalonstudios::Application.routes.draw do
   get "about" => 'about_us#index'
   
   get "contact-us" => "contact_us#index", :as => :contact_us
+  get "contact-us-thank-you" => 'contact_us#thank_you', :as => :contact_us_thank_you
   get 'contact_us' => "contact_us#index"
 
   get "diversity" => 'diversity#index' , :as => :diversity
@@ -52,7 +53,6 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:state/:city/:url_name" => 'locations#old_salon', :as => :old_salon_location
   get "locations/:url_name" => 'locations#salon', :as => :salon_location
   get "locations/:url_name/contact-us-success" => 'locations#salon'
-
   
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'

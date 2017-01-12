@@ -6,6 +6,14 @@
     <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
   </div>
 
+  <% if @thank_you && I18n.locale != :en %>
+    <div class="contact-us-success">
+      Thank you! Your submission has been received. 
+      <br /><br />
+      We will be contacting you soon with details about the launch of Sola Salon Studios Canada in Toronto this Spring.
+    </div>
+  <% end %>
+
   <div class="row dashed">
     <div class="one-half column">
       <% if I18n.locale != :en %>
@@ -86,6 +94,7 @@
                 <input name="location_id" id="contact_us_location_id" type="hidden" value="">
                 <input name="request_url" type="hidden" value="<%= request.original_url %>">
                 <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
+                <div class="loading"><div class="spinner"></div></div>
               <% end %>
             </div>
           </div>
@@ -133,7 +142,6 @@
 
 <% content_for(:scripts) { javascript_include_tag('contact_us') } %>
 <% content_for(:title) { t('page.contact.title').html_safe } %>
-
 <% if I18n.locale != :en %>
   <% content_for(:scripts) { javascript_include_tag('contact_us_ca') } %>
 <% end %>

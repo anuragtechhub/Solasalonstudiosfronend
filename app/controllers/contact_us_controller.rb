@@ -13,6 +13,20 @@ class ContactUsController < PublicWebsiteController
     @last_msa = Msa.order(:updated_at => :desc).first    
   end
 
+  def thank_you
+    if I18n.locale == :en
+      @all_locations = Location.where(:status => 'open').where(:country => 'US')
+    else
+      @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+    end
+
+    @last_location = Location.order(:updated_at => :desc).first
+    @last_msa = Msa.order(:updated_at => :desc).first 
+    
+    @thank_you = true
+    render :index
+  end
+
   def franchising_request
     if request.post?
       captcha_verified = verify_recaptcha
