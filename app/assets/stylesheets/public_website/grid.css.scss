@@ -16,6 +16,13 @@
   }
 }
 
+@media (min-width: 850px) {
+  .desktop-br {
+    display: block;
+    clear: both;
+  }
+}
+
 @media (max-width: 550px) {
 
   .container.content-container.content-container-mobile-full {

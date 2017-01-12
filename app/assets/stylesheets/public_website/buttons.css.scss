@@ -54,6 +54,46 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
     }  
   }
 
+  &.rounded, &.rounded:link, &.rounded:visited {
+    border: 0;
+    background: #EDEDED !important;
+    font-weight: bold;
+    color: #7F7F7F !important;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 17px;
+    line-height: 17px;
+    border-radius: 40px;
+    padding: 12px 28px;
+    width: 150px;
+    max-width: 150px;
+
+    &.rounded:hover, &.rounded:active {
+      color: darken(#7F7F7F, 10%) !important;
+      background: darken(#EDEDED, 10%) !important;
+    }
+
+    &.primary {
+      color: #FFF !important;
+      background: $brand-pink !important;
+
+      &:hover, &:active {
+        color: #FFF !important;
+        background: darken($brand-pink, 10%) !important;
+      }
+    }
+
+    &.active {
+      color: #FFF !important;
+      background: $brand-primary !important;
+
+      &:hover, &:active {
+        color: #FFF !important;
+        background: darken($brand-primary, 10%) !important;
+      }
+    }
+  }
+
   &.block {
     display: block;
     width: 100%;

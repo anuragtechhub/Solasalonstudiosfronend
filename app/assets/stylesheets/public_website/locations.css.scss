@@ -30,3 +30,39 @@
     }
   }
 }
+
+.container.location-selection-inputs {
+  margin-bottom: 15px !important;
+
+  &.canada-location-buttons {
+    margin-bottom: 25px !important;
+  }
+
+}
+
+.country-location-buttons {
+  position: relative;
+  top: 10px;
+  .button:link, .button:visited, .button:hover, .button:active {
+    margin-bottom: 0 !important;
+  }
+
+  .button:first-child {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 550px) {
+  .container.location-selection-inputs {
+    margin-top: 10px;
+
+    &.canada-location-buttons {
+      margin-bottom: 5px !important;
+    }    
+  }
+
+  .country-location-buttons {
+    top: 0px;
+    margin-bottom: 15px;
+  }
+}
