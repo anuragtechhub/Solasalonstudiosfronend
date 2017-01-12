@@ -61,7 +61,7 @@ module Solasalonstudios
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  
     config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
     config.assets.precompile += ['digital_directory.css', 'digital_directory.js', 'fullscreen_hero.js', 'ckeditor/*']
-    config.assets.precompile += ['public_website.css', 'public_website.js', 'locations.js', 'locations_state_select.js', 'salon_stylists.js', 'blog.js', 'contact_us.js', 'own_your_salon.js', 'salon_professionals.js', 'faq.js', 'sola5000.js', 'sessions.js']
+    config.assets.precompile += ['public_website.css', 'public_website.js', 'locations.js', 'locations_ca.js', 'locations_state_select.js', 'salon_stylists.js', 'blog.js', 'contact_us.js', 'contact_us_ca.js', 'own_your_salon.js', 'salon_professionals.js', 'faq.js', 'sola5000.js', 'sessions.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => 'AKIAIHSFVBTYHNG2XTLA', :secret_access_key => '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'}}
   end
