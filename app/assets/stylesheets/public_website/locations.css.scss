@@ -43,12 +43,18 @@
 .country-location-buttons {
   position: relative;
   top: 10px;
+
+  &.canada-country-location-buttons {
+    margin-bottom: 40px !important;
+  }
+  
   .button:link, .button:visited, .button:hover, .button:active {
+    margin-right: 15px;
     margin-bottom: 0 !important;
   }
 
-  .button:first-child {
-    margin-right: 15px;
+  .button:last-child {
+    margin-right: 0;
   }
 }
 
@@ -64,5 +70,15 @@
   .country-location-buttons {
     top: 0px;
     margin-bottom: 15px;
+
+    &.canada-country-location-buttons {
+      margin-bottom: 25px !important;
+    }
+
+    .button.rounded {
+      margin: 0 auto 15px auto !important;
+      display: block;
+      clear: both;
+    }   
   }
 }
