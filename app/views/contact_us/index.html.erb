@@ -1,4 +1,4 @@
-<% cache ["contactUsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}|#{I18n.locale}"] do %>
+<% cache ["contactUsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}|#{I18n.locale}|#{@thank_you}"] do %>
 
 <div class="container content-container">
   
@@ -6,7 +6,7 @@
     <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
   </div>
 
-  <% if @thank_you %>
+  <% if @thank_you && I18n.locale != :en %>
     <div class="contact-us-success">
       Thank you! Your submission has been received. 
       <br /><br />
