@@ -22,8 +22,8 @@ class ContactUsController < PublicWebsiteController
 
     @last_location = Location.order(:updated_at => :desc).first
     @last_msa = Msa.order(:updated_at => :desc).first 
-    
     @thank_you = true
+
     render :index
   end
 

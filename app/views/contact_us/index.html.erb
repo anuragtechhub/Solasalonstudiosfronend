@@ -6,7 +6,7 @@
     <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
   </div>
 
-  <% if @thank_you && I18n.locale != :en %>
+  <% if @thank_you %>
     <div class="contact-us-success">
       Thank you! Your submission has been received. 
       <br /><br />
