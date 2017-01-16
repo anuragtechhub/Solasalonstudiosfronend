@@ -2,6 +2,10 @@ namespace :callfire do
 
 
   task :stylists => :environment do
+    callfire_username = '3d94e1daf427'
+    callfire_password = 'bf76e377929906d7'
+
+    p "begun callfire:stylists task..."
     #if Date.today.wday == 6
       require 'net/https'
       http = Net::HTTP.new('www.callfire.com', 443)
@@ -9,28 +13,34 @@ namespace :callfire do
 
       http.start do |http|
         #get all contacts from the list
+        p "get all contacts from the list"
         req = Net::HTTP::Get.new('/api/1.1/rest/contact?MaxResults=10000&ContactListId=658274003')
-        req.basic_auth '3d94e1daf427', 'bf76e377929906d7'
+        req.basic_auth callfire_username, callfire_password
 
         resp = http.request(req)
+
+        p "got contacts #{resp.inspect}"
 
         doc = Nokogiri::XML(resp.body)
         contacts = doc.css("Contact")
         contact_ids = []
         contacts.each do |contact|
+          #p "add contact id to array #{contact.attr('id')}"
           contact_ids << contact.attr('id')
         end
 
         #delete all contacts from the list
+        p "delete all contacts from the list..."
         req = Net::HTTP::Delete.new('/api/1.1/rest/contact')
         req.set_form_data({'ContactId' => contact_ids.join(' ')})
-        req.basic_auth '3d94e1daf427', 'bf76e377929906d7'
+        req.basic_auth callfire_username, callfire_password
 
         resp = http.request(req)
 
-        p "delete all contacts #{resp}"
+        p "deleted all contacts! #{resp.inspect}"
 
         #re-add all active stylists to list
+        p 're-add all active stylists to list'
         Stylist.where(:status => 'open').find_in_batches do |stylists|
           batch = {}
 
@@ -42,14 +52,17 @@ namespace :callfire do
             end
           end
 
-          #p "batch.size=#{batch.size}"
+          p "batch.size=#{batch.size}"
           #p "batch=#{batch.inspect}"
 
           req = Net::HTTP::Post.new('/api/1.1/rest/contact/list/658274003/add')
           req.set_form_data(batch)
-          req.basic_auth '3d94e1daf427', 'bf76e377929906d7'
+          req.basic_auth callfire_username, callfire_password
 
           resp = http.request(req)
+
+          p "resp=#{resp.inspect}"
+
           if resp.is_a?(Net::HTTPNoContent)
             p 'saved to callfire successfully!'
           else
