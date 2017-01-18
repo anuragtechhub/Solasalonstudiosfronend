@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require xml2json
+//= require dropzone
+
 //= require react
 //= require react_ujs
 //= require components

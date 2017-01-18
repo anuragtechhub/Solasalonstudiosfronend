@@ -1,0 +1,80 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+// .dz-preview {
+//   display: none !important;
+// }
+
+.dropzone-image-preview, .dropzone-image-spinner {
+  position: relative;
+  padding: 18px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: $gray;
+  background: $gray-lighter;
+  height: 95px;
+
+  img, .name, .ss-delete {
+    position: absolute;
+    top: 18px;
+    z-index: 3;
+  }
+
+  img {
+    left: 12px;
+    height: 60px;
+    width: 60px;
+
+    &.spinner {
+      height: 40px;
+      width: 40px;
+      top: 27px;
+      left: 21px;
+    }
+  }
+
+  .name {
+    top: 50%;
+    margin-top: -6.5px;
+    left: 90px;
+    width: calc(100% - 120px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+  }
+
+  .progress {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background: $brand-primary;
+    @include transition(width .3s ease, background-color .3s ease);
+
+    &.processing {
+      background: darken($brand-primary, 12%);
+    }
+  }
+
+  .ss-delete {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    margin-top: -3px;
+    display: block;
+    font-size: 13px;
+    color: #b4b4b4;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: $brand-primary;
+    }
+  }
+
+  &.uploading {
+    color: $brand-secondary;
+  }
+}
