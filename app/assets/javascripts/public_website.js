@@ -1,5 +1,4 @@
-//= require jquery
-//= require jquery_ujs
+//= require application
 //= require jquery.widget
 //= require modernizr
 //= require disableSelection

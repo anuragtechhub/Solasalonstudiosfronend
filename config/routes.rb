@@ -31,9 +31,6 @@ Solasalonstudios::Application.routes.draw do
   get 'own/:tab' => 'own_your_salon#index'
   get 'amenities' => 'own_your_salon#index'
   
-
-  
-  
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
   get "rent-a-studio" => 'contact_us#index', :as => :rent_a_studio
@@ -57,6 +54,8 @@ Solasalonstudios::Application.routes.draw do
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'
   get "store/:url_name" => 'locations#salon_redirect'
+
+  match 'mysola' => 'my_sola#index', :via => [:get, :post], :as => :my_sola
 
   get 'stylist' => 'stylists#index'
   get 'stylists/:url_name' => 'stylists#redirect'
