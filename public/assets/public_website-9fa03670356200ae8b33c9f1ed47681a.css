@@ -1128,8 +1128,8 @@ there.
 */
 @font-face {
   font-family: "SSSocialRegular";
-  src: url(/assets/ss-social-regular-0e8383ebdd2655745f1cf75ba8ae3695.eot);
-  src: url(/assets/ss-social-regular-0e8383ebdd2655745f1cf75ba8ae3695.eot?#iefix) format("embedded-opentype"), url(/assets/ss-social-regular-3f6c7d3a57f26a12b2fc4d193c51e445.woff) format("woff"), url(/assets/ss-social-regular-2fa58391619dcde583ecb25f5e26af27.ttf) format("truetype"), url(/assets/ss-social-regular-ff6ec0bb0a336f16cba0dfde7f5610ca.svg#SSSocialRegular) format("svg");
+  src: url(/assets/ss-social-regular.eot);
+  src: url(/assets/ss-social-regular.eot?#iefix) format("embedded-opentype"), url(/assets/ss-social-regular.woff) format("woff"), url(/assets/ss-social-regular.ttf) format("truetype"), url(/assets/ss-social-regular.svg#SSSocialRegular) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1500,8 +1500,8 @@ html:hover [class^="ss-"] {
 */
 @font-face {
   font-family: "SSStandard";
-  src: url(/assets/ss-standard-3df7e919d5b66269f411f8ee25ede42e.eot);
-  src: url(/assets/ss-standard-3df7e919d5b66269f411f8ee25ede42e.eot?#iefix) format("embedded-opentype"), url(/assets/ss-standard-1b663d32648a9334968db0d285986df4.woff) format("woff"), url(/assets/ss-standard-60b23797add7c5d36af56e7940b8d658.ttf) format("truetype"), url(/assets/ss-standard-cde495c8b2163b50fb07296b232dbd32.svg#SSStandard) format("svg");
+  src: url(/assets/ss-standard.eot);
+  src: url(/assets/ss-standard.eot?#iefix) format("embedded-opentype"), url(/assets/ss-standard.woff) format("woff"), url(/assets/ss-standard.ttf) format("truetype"), url(/assets/ss-standard.svg#SSStandard) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3416,13 +3416,13 @@ html.swipebox-html.swipebox-touch {
 
 /* line 221, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/swipebox.scss */
 #swipebox-prev {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAABuCAYAAAByUdD0AAAAAXNSR0IArs4c6QAACgtJREFUeAHdnAeMFFUYx72KXOEOW2wxdkWwG8USOA8VEJSjqIgBAQWsRIyILRYiFjRYEKMiigRUAgIaAQuInLEltlgSNGhEgxUT7rgixxV%2F37Fv%2FObd7bG3uzP7hkmG9963e7v%2F3%2F6%2F997Mmxn22GM326qrq6eyn7WbYe3EEbitW7e2sG9jK5No1s6Xov9vVVXVDS0tLbMVST31IdkqENkqzl2N%2BCctgKbs7OyayDuIc2MAexH3tFl1OTk5FxYXF6%2FXQesHcL9JX7sUlS9ouKysrO3EKgROCCLrIGk5BLCl7LkCIhtwOyiGlpSUrGwNSMxUolSSlgPQ%2Bzpw%2BUY3cI30uctwbpmJSRm5FGX4L0f3cguumdgYG04AI%2BUgaXlOc3PzW%2BguFPGy4VwL%2B%2Fhu3brNbw1Y%2F%2BRYbWebpOXpuPY2AosskdfR5563Yl4zEilaW1t7cgyu2FNOBeemlJaWPqNjdt15QPpcr8bGxncRXmqJvx3nHrdibZreENvmFQcC9Llj6HNrcG9vLQfn7gHuIR2LV3d2kGESPxzRlewHWeJnkpbTrFjcppMpWl9ffwiK32P3weHck52BE2rnHGRAOZA%2BV0laHiECzcYk%2FixTwTWmnWjpFCADyn70ufXAHasBcO4l4MZRtuh4InVnABlQ9gZuHaKP18KBehW4KyjlaKXTmxN9EMdKgXsH9T442suBG50snPwaGZ8mgCvGvdVoOUUEmQ2oVcCNpGw0sWTKjDoIXAFwKyl7W%2BLXADccuAYr3ulmxvogUHtyfPkmivtZqiuZxAcCV2fFk2pmJEWBy8e512w4oD7BucHpgpNfJHRA4HJxbjHffaEIUNsXwA0AbpuKpVwNtQ8Cl4NzC1FdYSn%2Fhon8AuCqrHjKzdAcBC4LuHmUl2nVQG0A7jzOxv%2FR8XTVQwMkLeW87UotHLiNubm5%2FQoLC%2F%2FS8XTWQwEE7gmcm2gJ35Sfn9%2Bva9euv1nxtDYD74Oc9jwM3GRL9Wba5cD9YsXT3gzUQZybDtytWjVp%2BSd7P0bMn3Q8qHpgEz3O3YboB7VwwLYwoJQxoHyn40HWAwHEuZtw7jFL%2BNa8vLxyBpQvrXigzbT3QZy7ph24bbjXP2w4%2BeXSui7KPDeOz3yOXWdGLWk5kOPLj%2BULw960kJS%2Bm7S8nA9YiHteVuDav8ANos%2FJ%2BkpGNk9MKt%2FOUsMw%2Fn6BBSenOkMzCSdMKTtIWg4GbBl7nnygbDjXyD6CqeD1nZHM%2FZuSgwwo5wMm1%2Bg0XBPtUS7Ayc%2BaNCBp2Ze%2Fl2t0XYw%2FuCYLQ%2BNYu1xiYpkuk0pR0vLM2CKRd6UHOLmMNRHn4l7pyQRspx0kLU8DThaJPLiY8MmuwYmuTgHW1NScgEtyja4kBtVaMBVMZZ57SsdcqScMSJ%2Fr0dTUJFd69rLE34Vzj1oxZ5oJ9UEm8aNQLEvqB2jluDkD5%2B7SMdfqu3SQKz2HAra2HbhZrsPJj92hg3V1dQc3NDRU8r7DtDM49zRw1%2BuYq%2FW4gAwo%2B9PnJC2PtsTPA24CkJ2%2B0mN9TijNdgEZUPZlKngfuOO0CqAWMaCMoUzqSo%2F%2BrLDqbQCZ57rz5XIZ60RLxFKck4shTVbc6aZvkMGxbgDIPOeDI%2FYGcKOiBie%2FvOcgcKUcgq2m9F3pEWDScgjldqetiiOuFVDgmOs28h7f7Rq01%2BHcIODq4%2Fy98%2BGsmHMbKX1wQH2Ic%2F0pa52n6EBgFs59Btyp%2Bj1AVQF3JOUWHY9iPZvl8%2BEI97kEcAn9Ue6k9U5kowgnmrNZPt%2FUpUuXnu1AXoS7rwCZ1pW3sH%2Bo1mlCIBlMepKSGywBw3HSt5hkve5805sHgdvEnernUv6gVePgKJycS%2BlNKfp11%2BseoAgtKir6Q5bXqdoXRsbj5BzXYdrT5wOUNxQUFGymT8qdD7%2FqP8DBa3Fylo5Fod4GUETTJ38mVcvZf9cQQE7ByQd0zPV6h%2F1KliliZxX7aRDA72VQuk%2FHXK13CCiiZaGJ88J1uOdbi2Gh6VYOBh5xFczo2iWgvJFTKDnSWcvuW03Dyck4OVve4%2BqWEKCIZ4DpjYtyc7i3HgqgLPZOwsm5kQcUAPpkH9JVFn0LDBCArcv1OLnAxFwq2x1F4wnkUlglr%2FnODXFVPuMF0lieBHNuSzhFtXLSdRBteX7IOxjHSblkdgnpukK%2FN9P1pABFNOk6jClkMZDerSgAykXPCtJV0tiJrVMpqhWTrvIYm%2B92Y2DziS1japEjISe2pB006jmyGQuYnDvqz6pjnhxAun5g3pepMmkHjWAg5gN3rWnHygLSdyV99QwrHnozZUBRzBXdZ%2Bl%2FN1nqiwF%2FS54cs%2BKhNtMCKIoZWJ6gkNu39FYqT44xIPXSwTDrut%2Bk5XtJy7tx7j79YbgrN%2BD1JZ2%2F1%2FEw6mkHFNFM%2BvLo2zQLYDPtvqTzj1Y80GbaUlSrBOI2HJOU1Zs8SbY29mSZjgdaD8RBo5gp5BlG00mmLSXgP3Ibcx9uzAv0Tl%2FznYECytwIpMyRY80XSgnkBha4ylgD%2BlPHg6gHCiiCgcsGchHlSAvgWw4Gyhh4Arnb3nxXIH3QfLiUuNUMxGiqy3Wcei%2FS9x3AS614WpuBO2jUAiKP88hNe3Im4m38AJ%2FyA5xPuc0LprESuINGKwANgIygvcbEpAT4DMDlCTTvJFq%2Fnmo9NAeNUAHhYEBOp%2FqYWKxcy9GQPJj1rxVPqRk6oKgFsgjX3qXsrdUDtxqXK8RtHU%2BlHlqKapEA1AAygNjnOg7wQNz1nUTr15OpZwRQhAJZxX4B1a8t4RW4K%2Fd%2B51jxpJoZSVGtlDMNebT8fYB66DjwC3B5LGVKNxxlHFCgOGc8IPafAxypIanPZeCZlApkxlJUg3Bc%2Bnvsst0mHac%2BgXS1D9qtt3TcdAJQJHLZTi7XlbPLaZW3kbo3cvo10wt0suIMoOjmNOsnjk%2Flst0fFsdURtfpViyhphN90FbKwNMzNvDsY712Bz%2FCg1asw6aTgKKYtdWTGHjeo9pdE%2BDuzQw8j%2BlYR3WnUlQL5VzxK2DkYKBax%2BmTs%2BiT9jKlfouv7qyDRiWj6Nmkq9wBWWhiMm2wX8U8%2BaKJxSudBxTh9MlzuWy3kmpXAwKgXLYbTbq%2BbGLtlc6mqBbLdZB1AA1j9w7CSVXRvgB4uRUt7hYJB4160vViwOyHwXYIPOkq%2F%2FFHmy0SDhrVQLwBoPzvQN5t1bTzBJqBRw7c22yRAhT1zINLKOQgXPpg6wagPAG3gnQt2xn5%2F99Ipej%2Fspk7qquvAsy%2Bh66GI6H%2BOP2ReW%2FkHDTCgZhH%2FUbTjpVFTCmrSNfTTDyygALAFDEHx24xMLGyhPR9myOh1icHIpuiGgrH7qR9v44B%2BbcsLEfaQQPEwDMDoBmmHSvlGNb35I71evSaOPkoewunVg2MqMOiR5CAYuBmMcIOTuCtu8db%2FgN6E%2FDtAYo4%2BAAAAABJRU5ErkJggg%3D%3D);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAB4CAYAAABGtSQjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNzdGMTE3NDA3MjA2ODExOTk0Q0Q2RDdEQzk1OUQ4NCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NkU0MzNFMENDOEYxMUU2QjIzMEU1N0I1OTY3QkNERiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NkU0MzNERkNDOEYxMUU2QjIzMEU1N0I1OTY3QkNERiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Rjc3RjExNzQwNzIwNjgxMTk5NENENkQ3REM5NTlEODQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjc3RjExNzQwNzIwNjgxMTk5NENENkQ3REM5NTlEODQiLz4gPC9yZGY6RGVzY3JpcHRpb24%2BIDwvcmRmOlJERj4gPC94OnhtcG1ldGE%2BIDw%2FeHBhY2tldCBlbmQ9InIiPz4xTgEbAAAOK0lEQVR42uzdC1RUxxkA4LvL8groKiqIUm21MRqjKSrhZZSIEapCfKHUEAqpNdVoErUYFUOJBkqUo9WQoE1REzVCio0mKqJw5CRQXyEqPuAA8lTeD2F5s8v2HzKXM4z3Lq9l995t9pw5eFgZ3Y9%2FZv65%2F%2BxdiVqtZn55MIz0F4JfILo9JP9Hr%2BmpOYCcFmQGBiDh%2BLOaQlAb8tBgXzh6PcbQTIhmXFVVtbWkpGQ2BWSQQ4EFMIc2FNoIaKOgjSwsLAx58uSJGpqivLzcnYRAQ4NtUgOJBCMCwhLaEGjymzdvbpDL5R%2Fiv2tpamr6HUTHq1xRITMwBAvczBISEpZPmjRpB5UnqeDRaEhzBB8CGhbDYmNjVzo7OyMEchg0V1ZWLrexsblmiHPCM9CsoI2D9gI0188%2F%2FzwM5gMVnhfY1nrt2rXlGMyIHRrkHCFWBBkXQlRU1IfwopUUQntSUlIAPD8cDRlDgCARzDHCr6BNRQiRkZE7a2tr2ykEZWJi4gZ4fjSeQE3I6UCMEDTCcALBJTw8%2FP2ampo2EqGurk4FCH%2BF5%2B3QvIGjQca3fIoVAb245xFCSEjIlurq6mYKoSM5OTkYYw3HPyfD%2FYgSQhOC89atW9%2BBvKCJGg7qlJSUXRjBig9BTBAkghkO77HQpiCETZs2rYflsIFGSEtL%2BxhPoFZ4QjXmQhALhCYEp3Xr1q0FhHoaAZbIf%2FQWQQwQbLJEI0xGCAEBAW9WVFTU0gg%2F%2Fvjjp%2FD8eLzP6BFB6BA0ghzaGIzguGrVKv%2BysrIqGuH27dtH%2BoogBggjCuE5hLB06dLXYStdQSPcu3fvJIFg0VsEIUPQCLYY4SVPT09fQCilETIzM%2F8Nz%2F8abbf7iiBUCBbBFG%2BcEMIkhODm5rbi8ePHxTRCVlbWt2ZmZr%2FpL4IQIfgQHJycnJYVFhYW0Ai5ubkJcrl84kAQhAZBI6A9wbMIYdasWa8VFBTk0ggPHz5MtrOz%2By2%2BAmVB7B%2F6fAlOKBB8CLOmTp3qlZeXl0UjAMwPz8EDI1gOBEEoECQC2hXasAgTJ078fU5Ozn0OhGszZsyYoi0EIUCwCCYEAgr1mRDynjAJ3qYRioqK0l1cXNA1B2sCwYgZ4BVpfULwIlhbW78Ky%2BFNGgFWjAxYPqdrG0GfECSCJX5haOafASvA%2FLt3717lQMj09va2x2BDtImgLwheBAsLC%2Fc7d%2B58TyOUlpbm%2BPr6zhosBH1A0AhospsAzV4mk72Snp6eRCPAfiI%2FMDDQkUAw1TaCriHY7fRTCNDcYNucQCOUl5cXbdiwwRUvp0MHC0GXECSCBUZAKfHvoM1NS0v7lgOhJCgoaK4uEHQFQdYeLHAq3IVw5cqVeA6Eiu3bt7vjFHvQEXQBwYWAdogvQpuTlJR0ikaoqqqqDgsL89AlwmBDaEQ4d%2B7cMRqhurq6du%2FevYswgpyhijBihKARRmAElAy9fPbs2cMcCPVRUVFL8QUYnSIMFgRdjxyBrxp1IsTGxkZxIDRGR0evpBBkjA4Pc2gbgg9hGrTZJ06c2I8KLiRCTU1N09GjR1%2FHF2WH6QNB2xB8lelOhJiYmI%2FhhXdDqK2tbT116lSAvhG0CaGxPA9h%2FxFHZbotPj7%2BzxwIUkYPZ5u0AcFXme5EOHDgwN%2FgN08jKGHCRJVpVLLjrUeKCUJjZToiImIHILRRCKrz589vEhLCQCH4irKdCLt37w6C1aCVLs9fvnx5G9NDZVpMEBor08HBwe9BhvhUeT4lJSVEiAj9haARhpEIW7Zs2VhZWdlI5wqpqalhTPeirGAQ%2BgOhsTK9cePGtwBBwVGZjmT6UJkWOgRfZboTYQ08Kioq6miEGzduHBQ6Ql8gNFam%2Ffz8AsvKympohFu3bv2T6UdlWqgQGhFWrlzpV1paWkkjZGRkfCkWhL5AcJXnX%2FLy8vpDSUlJGY3w4MGDWGYAlWkhQpBVqG7l%2Bfnz5698DA%2BOyvR%2FBlqZFhoEb2V6zpw5y4uLi4tohOzs7PPaqEwLCYKrKNuJMHPmzCUFBQX5NEJOTs7lUaNGkZVp0SDwQfBWpqdPn%2B6Vn5%2BfTSPk5eWlTJgw4VlGi0VZfUPwIqAzCjzl%2Bf9OmzZtspgRuCB4ESBZqueoTN9wdHREqbXWi7L6hmCrUF1nFNCcwHWgEybL225ubi8YAgIXBHthBeUAqBQ3D%2BaEp47s1NTUKPz9%2FV9iBrEoq28IC%2FwbRiuEC7TFCxYsQIe9Wzgq1JcgIkYyOirA6BrCEs8NaNzPgbYE2hvz5s0L4sKAeeNMQECAmRgnx95EhA3OHlEV2gsautQeCJGxCeaFRxzD5NTatWuNDQ2CnCNmQJsPbRnG8HNxcVkDQ6KYo0Bz1MfHx2DmCAme9EwZ4u2CeI%2FBrgpq2GNYHD9%2BPMzc3NyW7Kijo%2BOwlZXVeubp91%2BLBoJ9oHHeAa0dWjM0BbQ63NCfW9DfT0pKUqxbt25nS0tLBdmRVCp9C%2BaR%2FYwBvOcaQaigKaG1QmuCVo8h0Ff0rtk29CLPnDlT9%2B677wa3t7dXkx3IZLJ3YM4IFzsG%2B9a%2F3mBI4%2BLiaoOCgnYqlcpaKjLehwQsVMwYUmJsq%2FAQYTEUBEYTfk567Nixyg%2FgoVKp6smOjI2NP0C3JxArBhsRLEYHERmNGKOeiIxOjOjo6LJdu3Z9AJHRSA2Tv0Oe8Y4YMcg3yas5hkkjNUy6IuPAgQOP9%2BzZEwKR0Ux2aGpqug%2BGyVqxYdB3C1DzzBlkZHRhAETBJ598EgrLaAuxJElMTEw%2BLS8v%2F6OYMCQavk8Xdtg8Q46%2FWuDnVOHh4ZNheQ2VSCTGXR1IJKrm5uY3Ro8eHSfUPIO%2BMsX0AsMYJ12WFAZbxlPt379%2FWmBg4E6GuDkHYCgh9%2FC1sbH5RogYvYXgwuCKjC6MQ4cO2fv6%2Bm7HO1MWow0iYzlExgWhYfQFQhOGnMBgq9yqmJgYhxUrVmyFf0RKYEBgtLwGkZEkJIy%2BQvBhcA0TFAnKkydPzl68ePEm8tYmaJKFyFhka2v7vVAw%2BgPBhWFORcYQEuPrr792Qxd4qD4UjY2NnmPHjr0mBIz%2BQpAYRhoig72PCzoztWDu3Ll%2Fof7xOhgm8yEyftI3xkAgesIYhiOjC%2BPixYuLnJyc%2FkT1UdPQ0DDPzs7urj4x6G14n38eN3Zv0kKk4%2BT2HT0v8%2FT0PJeenv4l1YeVpaXlpcLCwskD%2BIUMambZXwyUZjcQ6TiLgfYuxu7u7t9kZGTEUX1YDx069PLDhw%2BfFQKGRAs%2Fz3WLNHICNcfg7VevXvWfMmXKUio8i%2Brr693Gjx9fQKX5gh8avRkmbGQ0kJHh7Oz8ZW5u7vlukhLJOLlcngTftxPj0ODDaOtpmDg6Ov4rPz%2F%2FEtXHhJEjR17Oysqy1dcQ0da96nrC6IoM2LbLACP60aNHV6g%2BnoPM89KdO3dG6QNDmzft62kCbcDbenVbW5sMltSo0tLSVGqYTB03btzFzMxMK11jaPvuhSyGsgcMBvII6ezZs%2FeXl5dfpzDsITISbt26JdclxmDcxpHEYIeJgmOYMNXV1VLIPCMrKyt%2F6vafkkodYBU5l5qaaqkrjMG6n2Vv5ozOyCgrK2Mgz4gAlAwKwxWW2rOJiYnP6AJjMG%2FsqcYrBYtBX%2FLrwigqKlJ7eHh8VFdX94DswMjI6BUHB4fTsIEzG2yMwb7DKY3BGxmQR6gXLVq0C5KrbCoyPCBiYg8ePGgymBi6uNUricF1MZgtIDH37t1TeXt7f6hQKPKoyPD28%2FM7HhoaOmgVeF0uUeTFYBN87WIIkY6zRWfG1dXVND4%2BHhWdx5MddHR0nFi2bFlgSkqKShupuDZT7P5EhpJjmHSLjLS0tNbVq1eHtLS0PKaGid%2Fp06cP%2Bfj4aP2Qij7SWTIyTHkiAw0B9cKFC4ccOXIkwszMzIbsQKlUfgYp%2BcaBXsvQV0RwRQbfnIGSMcmFCxcUb7%2F9djBERhXZgUwmW19VVbWH0WIBSV%2F3xebDYM9mdNVZYSg82bx5MzqOUENhoFu87tIWhj5vEN6byOg8jvDVV19Vb9u2DR1HqKNWk%2BCKiood2sDQ953SNUVGtzprTExMBSyfCENBdmBiYrIbMDYPFEMot4zv1XGEqKio0oiIiBD6%2FveAsRc2b%2BsHgiEECL4KPOdxhMjIyKJ9%2B%2FaFAkYL2QmsLAchMt7sL4ZQIoLGaGG4jyOg54zCwsLyoqOj0XGEVmIplJiamh6GyHi9PxhCO7vQ03EEOUMUnSE6nl%2BzZk0IzjvY6xmq1tbW1dbW1vE95RkDLfDoEqPH4wiwGXvR399%2FB9P9OEI75B4%2BNjY232nCEDoEF4bG4wiHDx%2BeuWrVqm3kUAeM1qampqW2traJfBhigODD4KqzIgzlF1984bxkyZIt5HEEtJ%2BBYeIFkXGFC0MsEL3F6KrAx8XFvezp6fkedRyhASJj4ZgxY9JoDH3vNfpzyY89Jk0WkOrxqtKMVxsZDI8fkpOTP6P6sITt%2FLni4mIHTauJWI7%2F9ek4AmzWPF1cXNZSfdS2tbW5w2pym40KMUUEHRlkabGBLzJg%2B55w%2Ffr1Y1QfwyHPSCwrK5sq5ISqvxhknZU8jiD18PA4ff%2F%2B%2FeM0hrGx8fNcI0FsH0%2BlqZpGZ6BqV1fXo3l5eSfY3KK%2Bvv6NESNGnBbzHKFpzjDBc8YQorGX%2F9E2XpGdnb2xsbExyd7e%2Fgz%2BXsfPU4Ra9BBcGOQnt3VNnDhCGvAwasaR9BSEmD%2FCjtyotRHfYzdtRvgFt%2BEdbRcAV2di%2F7xPGkNNbOXZ%2BY8tSCsJCLWhQdAYDDGRSoiLPmyBqUMs23BtzBl09khGAG%2BKbUgfhaumvvI9z%2Fn4nwADAKGKSvkMYDoiAAAAAElFTkSuQmCC);
   left: 30px;
 }
 
 /* line 226, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/swipebox.scss */
 #swipebox-next {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAABuCAYAAAB2pADJAAAAAXNSR0IArs4c6QAACiBJREFUeAHtnAuMXUUZx%2Fe97m67uxVU1BgjqCgimCYQIkm33d3CUmppKwoEaCttKLGVJkLEF8ZnIIJKaAIJBSsUSK19WHnUAi3lEYiEaCAEwaZSpbwD7HZf1e7D3%2F%2Fmzsl3Zu%2B2u%2Ffe89p4ksk3852zd7%2FffN%2FMmTMz51RUmOPgwYOLenp6lhjV1MsCeCHpMGlI%2BalHCBFgSwTY3d09qkT%2BsLw7lWCrBFNZWdmLGHVgo6OjNaSNAM9zuqzLHGhzc%2FM2QC4FeNgBAVpHfgsenut0WZaV1njCdSmA60lWP1BVVdVFZTxhr81aPudRZzQwdwJ5hSvnZePIyMgDhPEZnj5TxRCoLG9tbb2NEF7jUUynAnb09%2FfP9PSZKY4BleUtLS03E67XeBStQ0NDD%2FX19X3R02eiWBBUlhPGv8Sz11oKvHrM8PDwI7Tlz1l9FvK20yloL1DX0Ua%2Fa09SAa8DPYsw32f1ac6P61FnNJ79HmA3ubIkkB9D7B4cHPyk1ac5f1SPOuPpdW8F0O%2BR%2F1lXVzersbHxNXddWuWEQYGsBPYOQL5hYfD2y9XV1W3Tpk17y%2BrTlp8wqAwHtoo2ezfyIg%2FkBXrp2YT5u54%2BNcWjtlFrKd4bAUaPcVutnvzJdFgPUwGtnj41xUl51FkNUC2e3Yqc73SSVMQzVEQnUg8JqTqKAhUBkPXA3ocMDfqBfBLYLmR%2FmkiLBs3DNtBB7SDf5kHtZnR1LrCHPH1ixUm1Ud9KQAYBmo982jvXjre34W096qXiKAlUBED2EarnIJ%2B1REB2AbsJWWP1SeVLBpXhQPYgziY9r7I7gDwP2HuQ1U6XlCypjfpG9%2Fb2fojbzGOAfd6eoyI24PVlyBGrjzNfVlAZzjPrR3mcE%2BxnPJDbac%2BXAxvMTXnnIy2WJXSthU1NTW%2FU1tZ2oNtv9eRXEMY3e7rYimUHleUM8l%2Btr69vJ3vAkuDl1Uy23WB1ceUjAZXxDQ0NrzD%2B7SBU3%2FRgrube%2BzNPF3mx7G3Ut5gO6qR8B3Wsd%2B6HPLj%2FwtNFVowcVJYzz3QqHdSjZGdYEjx%2BFb3xr60uqnxkoWsN5ln1OUJY99mDVo%2Bnf0UYf9PqosrH4lFnPL3ul4F7iHKT0%2Bl2Q1qBZ3%2FrdFHIWEEFQJudzUzig2QbHBCgGkgs4T57j9OVW8YSutbo6dOn7wFsEek%2FTs9tR3bcSSWc73TllrF71AEQxl8BcAup1umAP0z6KmF8n9OVSyYGKgB5kDa7Edhg0J%2F39HmE8c5yQep3Yg9dazxhvJnyUuCCwT7Q9aRtasv22lLziXrUGU8YXwbc7SRrTz%2F32bMI46fcdaXIRD3qDM%2FfWla7cl42EdY7uM%2Be5umLKqYCVJbTJm%2FRSMmjaMbLOzWy8vSTLqYGVJbjWQ0Hf%2BBRzNAKHm32JE8%2FqaJtE5P6wygvJlx%2FiidDS5Z0WG%2BS2qiMfxTzv1PlUQdAGP%2BI%2FI2uLAn4cbTZXazgfcrqJ5pPpUed8Xh2LYB%2BJ7U%2Fv4L3qrtuIjLVoEBqBe82QFZYGEJ4b01NTZumbaz%2BSPlUg8pwYLWC9zvkpRYE2L%2FTS7cx6HjH6sfLpx5UhgNZDey9yK97IM8DPIc2%2FZ6nH1NMZWfkWwnMML3txcjt3rlTKO%2BkAlo8%2FZhiJjzqrAaoDs9uR3Y5nSQV8DQVcRayz%2BptPlOgMhzID9BBPUC23YKQf4wQ1hrQoKfPFTMRutZwQA4BtAD5pNWTb8t7u97T54qZA5XVQPYTqvOQz1govD0X2M3I4GHenc8kaB62F1jNLP7NwUgCOR9YzVyElisz10YtlPJAHcPQcA%2FZk1U2xz5C%2FES8Pixd5kEFwWPcR3jC0QreiSqbI4DNbOgamApt5mKUtBjvBTOL%2BfMn0ENvUn5KgOLJZsJ3PTLU4wL%2BNuG7dEqAAtdEO30QeXreizkhSDqrE5C5QUSmPQqctv9or9OZFpIw1kgpgMy0R4HTcHArEHMsJB58iieaMcPBTHoUSG3R%2BwPSH%2FM%2Biyc1DBwz5g3dVG3NpDUPXDXhqsWoBZ6Nz3FOngwtTbprMgUKSO4hHOO%2F5gAkgXuRdjmXkH3f6m0%2BM6BAummVSywAkHvZGN3BvfSIMw2ZAaVNrgVwuYUk%2FwpbfdrZBeNvCPEuq6jIBChbdm7Eo6s86w9oiw%2B7Xw54%2BoLF1Pe6dDw%2Fx%2FLQUgXh%2BgZJkPsLUhVQptqjQF6LJ0NLFAC%2BQ8fTSceztwDPuKrUPr3QJq9i%2FBqarQfyPTqedu1yGZdonBPBSvM45xNR48lVeDL0UhGG9JC0Xhp60J6oganzKJ5cDuQ6krWtj3A9G8iiF4Xtj020ciK7Dk%2FqHql3WG0nOUi4zqNN7inlH9sfLOV3Sv5bbiEa7WjpIbCJNqkH6YWlQsq4VHiUcF0AYGj2DkhtxVlMuN4vQ0s9EgclXDWT9ydAgzcqABymTV6AJ7eUCuj%2BPggTp4hTslw%2FB8DQayNA5rbLlRNSTIl5lHA9k%2FukNk01ucoFUhsglxOu652uXDIRjxKupwOpjY8BpIDw7qooIPXbsYMyB%2FslgP7M%2F26WAe7Ak99mR%2FatrlxuGSsobfILTDQ%2FDMQMD%2BT7TEv%2BxtOVtRjboJ42%2BVnC9RG8eawlwJM%2FAfI6q4siH0tnxGDgeIx%2FnPRxD%2BIGwvU7ni6SYuShOzAw8Aks300KQeLJtXFBquYi9Wj%2B9a3HCddP65%2BZYx3huhLY2F7figyUjufDtMk9QPov5N3FLWRZnJCq4EhAuU9%2BEEC953KK8aKmJX8PpHaX5NYs7bmo82VvowC2kPTKRwiS8h%2BBvCQJSFViWT0K4DRuI%2FpMwRn6cXcAtwPIhcj%2FOl3csmz3UeAaCVltiwlBUt4FpBZpE4NUpZbFo0Bq749e4ejUj7oDuCeA1KcKBpwuKVlyGwVSy3ebAfAh%2FwKkPlGQOKQqt6TQBbIGT27kd87Vj5njr3lP9hpdotmiPQqkVrY2YP0ij0AfiNHyXbenT7RYlEeBrATyDuSF1nrgXmLGrpMJ5tR9BacoUEY9%2BojTMg9yH7uiO9gVncrvGk0alDZ5E0O7lRaS%2FL%2FY565Fn9c9fWqKk2qjPG5djyfXeNa%2FRrkDyH97%2BlQVJ%2BxRPPljIEPfCqRNvkXqoIfdlyqqAsZMaMCAJwV4vf17AN%2Bld53NtOQLVp%2FW%2FFFB8eQaPOmvbHVrSZ2Op6iVrSQq44htFE%2BuLADZize7sgSpih13fZT75DLOryNZr%2BsTtPOYHSh6%2BY7fS%2BSwEIEBhKsGAvoOUeBxvHiIwcB8BgO7ggszlAlAnM14UkO6DR6kHrEWZxVSbCGP4kkNzrXoE2y%2Bx5NDpPO5hWzXH2T1CDxKx9MJhP%2B5gGGgL846pJyTA2XsOou83hAKdjDjRS3fXcbca26rti7O8pEbGTF2nQlEowMBUst3V%2BDJu5xuykja55WkEUJYH%2BT%2F1pQBKwQC5OX0ulcXOvd%2FXUZq4H%2Bn6ihdVqt07gAAAABJRU5ErkJggg%3D%3D);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAB4CAYAAABLq1RkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw%2FeHBhY2tldCBiZWdpbj0i77u%2FIiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8%2BIDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNS4xIE1hY2ludG9zaCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NkU0MzNEQkNDOEYxMUU2QjIzMEU1N0I1OTY3QkNERiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NkU0MzNEQ0NDOEYxMUU2QjIzMEU1N0I1OTY3QkNERiI%2BIDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY2RTQzM0Q5Q0M4RjExRTZCMjMwRTU3QjU5NjdCQ0RGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY2RTQzM0RBQ0M4RjExRTZCMjMwRTU3QjU5NjdCQ0RGIi8%2BIDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY%2BIDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8%2BpYxbtgAADo1JREFUeNrs3QtUVNUaAOAzD2CGhyiBiIFvC6ObaakIipAiqCDp9VWidjOtvC672dW7UkuNUpdeXGJKXjKhNOKSb0FC7CIuNQgDTEIUBIl4P8cB5DXD%2FTftI5vtmWGQgTln6qy1l8DEyfn893%2F23v8%2BZ0RtbW3Mn0fHIf6T4E8QrYeoi%2B%2FZw2j7FZ0ypBSEiGgsRNsfAYYEYQHEuElIkJKSEj%2BxWGxpb2%2F%2F5R8FRYRhZNCsoNlAs0MtMzPzDYVC0QKttaysbCkGExlblyEbm1hNMQaCcII28vLlyxsQRG1tbRtqCAZQFhgbCg3CvjnUTUxwlFhC6wddpY1MOPC1VCaTfV1aWjqHyjNGd9kVESgoUuQIZfHixekxMTE74Gs1gWIql8uji4uLZxoripgjn7BdSBYYGPhjbGzsXpFI1EagyMzNzU9ABHkYI4qYuLSqoLXiP9X4NbOlS5dejYuL%2B5T6PXOIlLNFRUWTjQ1FTGE0QXsArRFaM4YxWbJkyaWkpKTPqN%2B1gkiJhZzygjGhsCDojbdgiHpoSmh1%2BHuEJQ0ICEj44YcfvujUv0Qia0i030GkPGcsKGwOURMR0gDtPm5KEmXWrFkxqampX1LnsLGwsLhQUFAwpovhvyBzSAvuMvUYREGgtHcfb2%2Fv0zdv3oyizmNnbW2dcPfu3dFCRxFRX5NjEjkek1jjZoV%2FhhBboPssGzNmzHxqkFOoVCo9hwwZki%2BUYT49uRNTEzcyUhqpSKkjI2Xy5MlHc3JyYqic4mRlZXUxLy%2FPyVjGISRKM%2B4%2BdZq6j6ur6xfw5uMplOE2NjYJ2dnZDkLsOmINax86oahUKoRyqLCwMJE6x1MwO75w48YNO6GhiLUsCNGJto64%2BtThK5K6ublZCt3nAFx6r1CR4gK5JP7WrVs2QkLRtoTIorRyoLCRglCYuro6sbu7%2B14YpCVTKM87ODjEpaenWwsFpas1VRKF7T5KKlJQ92Fqa2slHh4e%2F66srPyJOseEoUOHxiYnJ1sJAUWXReaucgrbfZjy8nLRtGnTdlVVVd3o9D8Ri91Gjx59Jj4%2B3pzvKLquurPDexalgSNS2lEglzA%2BPj47IGKyyBNIJBLPCRMmnIyOjpbxGaU7ZQgahe0%2BCjpScnNz1X5%2Bfh%2FBIO02FSkzZ8yY8d%2F9%2B%2Feb8hWlu3UZEqWJ4%2BpTj7GYzMxMlb%2B%2FP0LJo1D8AwMDj23bts3EmJYN2CG%2BGR7S20MbBQ0tBbwEbS40tP66YNKkSYElJSX32LVZtlVXVx9bvXq1wVG4Fpn1hTIIGprcvQhtOoni5eW1HC7JhTQKJN8vFi5cKDEkCg0i0kOkoG4nxTDmGIedEFriiWLb7NmzrY4cObJTJpMNIk%2FQ2tr6ma2t7Vrm0aKYwSd3j3U%2BjrUUJZVT0KBOdP78eeWaNWu2NDY2VpAnkEqlb8PYZQ9fFpj0UezWhMJefVgU8cmTJ2vXr1%2B%2FpaWlpZpCWQ%2FdJ4gPKPqq%2FusSKejqI46MjKzauHHjFugqCmqcsgkGdlsMjaLP7RDaIuU%2B%2Fr49UsLDw8u3bt26GVCU5AlMTU23V1RUvGdIlN7YH0Ki1GvIKeKDBw%2BW7tix40OVSlVP%2FrKJicluiJS%2FGwpF3yBsylYxjy5aPxIpe%2Ffu%2FTU4OHgroDSSJzEzMwsBlJWGQOmNCKFRGjlySgN%2BTQJRkh8aGrpNrVY3EZdCEaAcKisrC%2BxrFFEvn5scp6BJnQW0fsQ4xRy%2Fptq9e%2Fczq1at%2BlAkEpkQ6ymqpqampQMHDvy2t8Yp9DhE1AfgLIoJHrxZEij9SJSQkJDnVqxYsZnp2NmEUFpg7LLI3t7%2BbG%2Bg9DUIFwodKZ1QwsLCxi9atOh9sjsDStODBw%2FmDxo06Dt9oxgCRBMKHSlyjNIaERHhOm%2FevH%2FCX5bMcQ%2Bg%2B%2FhDpCTqE8VQILqimOMJY%2Bs333wzFeY%2F%2F0AJljhHfUNDw6zBgwdf1ReKIUG4UOS4%2B1hTkdKOAkP9l%2BBYS53jfl1dnY%2Bjo%2BOP%2BkAxNAiJIumi%2B7SjxMTE%2BE6ZMmU19SZqIadMh0jJ6CmKvme7jztOoUum5KqbEq%2FEte848PPzi0tOTo7oJCoS9Tc3N79QWFjoou9%2FWEPOLDUV18lIkeHXWxITExeMGzduKXWOstraWq9hw4ZlU4NCQXUZXVA4dxxcvXr1VRcXl4XUGyqCnOLp5OR093FQ%2BNBldO0%2BCqL7tBfX3d3dI2%2Ffvn2G6j5PWlpaXszPzx%2FK17lMT1CaOXJKp20Ybm5uEbm5uXEUytABAwYk5OTkPNnTqOfL7SGaqoMKhmPHAaCEFRQUXKTOMcrOzi7hl19%2Bse8JCp%2Ful9FWMn1kx4Grq2vob7%2F9lkSdwxkuxRfS09NtHxeFj4UiNtGiYbyphkSLJokiyB3q1NTU9xwcHNyoc%2FxUVFQ0ExJwTVdJlm9JVVuktHYRKe3bMGDQFlxeXp5KneMFQDp%2F%2Ffr1ft39R%2BfrLWZd5ZSHKFVVVWIPD4%2FdlZWV6Z3emFg8afjw4edg%2FGLRHRQ%2B33PHteOAM1JKS0sZb2%2FvXTU1NZnkCSQSydSxY8eePnfunFxXFL7fhKjzjgMYh6h9fX2DFApFNhUp02H88m14eLiZLihCuCtT5x0HMGhT%2B%2Fv7b1cqlTkUyuyAgIDjumzDEMptqpo27JCR0o7y888%2Ft7788svbIOHmUyhzli1bltXVNgyh7c8gF61N8YJSP%2BqSjH7OQDeRHz9%2BPEgulztRl9m86Oho5zfffLP192%2FbBA1Co5gxHeuzA6D1J8YpKogIW%2BgmweRKPkY5BUP9v3KBSAUIQpZM6YUmc%2FyaeMSIEVZbt259h8aAoyIjI%2BN1oeeQrvIKeydY%2B91gjo6OZrGxsettbW1HUpFR%2Bfnnnz%2Fr5eVVxxjZwUaGDHcTlCfGQvOCucwrMMHLoncrlZWVpb322mvDmI6Sh4gduutrS5WhMdh7jdGOpKegTYKI8AOMdBoD5jUZc%2BbMGYPzDLsKZxQgNMZABm%2F2s7GxmQkYKRwYWbNnz34e%2F7eW%2BHfFxgBCYljiN4hyxHgLC4vpkCivcGDcmTt37os4ivrhq0%2BnTX5CBeHCGAFtnEwm80pLS0ukMWB%2BkxcYGDhJG4ZQQcibqxGGHYshlUq9UlJSLnBg%2FLpq1Sq3rjCECMKFMRwaygnTrl27FsOBUfTuu%2B9O1QVDaCBkydOCxkhKSjrJcWkt27Rpk5euGEICoTFsMQYaa3h8%2F%2F33UTRGZWVlxfbt273hdQddMYQCwoUxjMWIj48%2FyrFFvHrXrl1zMIa1rhhCAKExnsAY6Fb6qWfPnj3MgaEICQkJgNcHYwyZrhh8ByExzDHGUBYDpvKhHBjKgwcPLqAwyOcqCRZEE8ZfoE2JjIzcp1Ao1BRGw5EjR17pCQZfQWgMdFvrEBYjIiJiDwCoqXttGo8dO7YCXn8ST%2B4eC4OPIJownkWLXocOHUL37qlIjJqamuaoqKg3ODAe62FRfAIhV77kGMOJxdi%2Ff%2F92ePOtVN5oOX369NvwuiPGkPcEg08gNMYAjIF2BLnt2bNnM2C0UBiq8%2BfPv4MxBugDgy8gWjE%2B%2Fvjjf0HCbCIxIKGq4uLiNuobgw8gXBjoTT4DbfIHH3yAbiR6QGGoYWS6BaPpFcPQIDRGfxJj48aN62D4XU%2BPNS5duhSEMWz0jWFIEPomgP74KoGW9VzXrVu3pqKiQkljwGx2N77q2OCrkAmj50cPGgKE3O%2FxCMZbb721CjAUNEZycnJIb2MYAoQLA40sndGi8PLly18vLS2toTHS0tJC8Uj1id7E6GsQGsOaxFi8eDG6ubmSxsjIyAjvKwxDgEgojKehTQwICHi1uLi4nMbIzMyMxLPbJ%2FBst1cx%2BhKEvA3eGq9TtGP4%2BPgsAoxiGiMrK%2BuETCYbjtc%2F%2BgSjr0BIjH4YAxWSJnh6ei4ohIPGuHPnzllDYPQFCI3BVtUmTJw4cV5BQUE%2BjZGbm%2FudnZ3dKENg9DYIF0b70yLGjRs3Ny8vL5fGuHv37v8cHR1H4QVkC4aqqgkZRCOGs7OzH2Bk0xj37t278jQcGMPSEBi9BaLx4SojR46cBfkhk8aArpMyfvx4NDAj660GeY6IvkHo4vNDDOgKvtnZ2Rk0BuTUNDc3t2f5gKFvEE0Y4wcOHOgNl9FUjuLzTV9f3%2BcwhpWhMfQJorESb21tPePmzZvXODBuzZ8%2FfzyG4wWGvkA0YbRX4mHofZnGKCkpyV2yZMmLfMPQB4jWSvz169cvchSf81euXDmZwDDjC0ZPQTRhoOKzZ0pKShxH8blw7dq17kw3is9CASExHqnEX7ly5QwHRvGGDRum8RnjcUG0VeKnJSYmfsuBUb558%2BYZTDcr8UIA0VqJT0hI%2BJpjW0LVJ5984iMEjO6CaMJA4wiPmJiYcI7ic21wcLAf07EtQcZnjO6AcG1LeFiJP3Xq1H84MO4fOHBgHsO9LUHQINoq8VOjoqI%2B5cCoDwsLW8T0sBLPRxCt2xKOHj26l96WUF1d%2FeCrr75ayuihEs83EG2V%2BCmHDx%2FeRW9LqKmpaYKI%2BRujp0o8n0C0bksIDQ0NAgC6Et984sSJ1ULG0ASiaVsCKj6779u370OObQmtZ86cQU9%2B0XvxmS8gdPG5vRK%2Fc%2BfO99EGFXpbAroXxRgwNIGQH%2BvGlgsmBQUFvQdXj0Z6WwIMxt5neqkSzwcQMZU%2F2Hvt5S4uLs4SicTsYZIRiVBV7SNvb%2B9jzO%2B3hqKnNaBnfqC7mgzytNzeOqQ4kdrhdQ32mcp%2Bx48fD2MvszCB28F0Lj4LOjI0RQj5FAby6XPsWqcahugzbW1t0eMp9jMdDzdBkaEyhsjgGnt0%2BsA%2F3B4%2BNovp%2BIimevy10WBwgUiZRz%2FFDB3NGIt9JmqjsUWGtvzBMB0PRRLhrxuJn7PP8Wg1dgyG6fyBw%2Bxn7bKfu8vgyGHvjVUbI4amLsMQb5ihrhxtVDPqQ0q8aaaLN2z0GOj4vwADAIqhvXLTg2h3AAAAAElFTkSuQmCC);
   right: 30px;
 }
 
@@ -3539,8 +3539,8 @@ html.swipebox-html.swipebox-touch {
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/assets/fontawesome-webfont-b6a2d92a0a04c016d19a927e2ea7c0d8.eot?v=4.5.0');
-  src: url('/assets/fontawesome-webfont-b6a2d92a0a04c016d19a927e2ea7c0d8.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('/assets/fontawesome-webfont-dc75f8bfcddd6db4467e283e81f12b41.woff2?v=4.5.0') format('woff2'), url('/assets/fontawesome-webfont-0113232b098d2a77284fd7c32c32cf99.woff?v=4.5.0') format('woff'), url('/assets/fontawesome-webfont-1844ed94c501ef53ca6f9e3195175736.ttf?v=4.5.0') format('truetype'), url('/assets/fontawesome-webfont-027fb6c24a1027f95042a572d706bd2b.svg?v=4.5.0#fontawesomeregular') format('svg');
+  src: url('/assets/fontawesome-webfont.eot?v=4.5.0');
+  src: url('/assets/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('/assets/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('/assets/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('/assets/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('/assets/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -5796,13 +5796,14 @@ input[type=checkbox].add-to-calendar-checkbox {
 
 /* line 102, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/modal.css.scss */
 .request-franchising-modal .ForbesBestFranchise {
+  display: block;
   width: 50%;
   height: auto;
   position: absolute;
   top: 15px;
   left: 15px;
 }
-/* line 110, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/modal.css.scss */
+/* line 111, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/modal.css.scss */
 .request-franchising-modal input, .request-franchising-modal textarea {
   max-width: 302px !important;
   border-radius: 2px !important;
@@ -7100,7 +7101,7 @@ yx-axis
   margin-top: 40px;
   margin-bottom: -10px;
   height: 400px;
-  background: url(/assets/About_Banner_2-2299798b19c4b270bd0c030c147f4370.jpg) no-repeat center center;
+  background: url(/assets/About_Banner_2.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7108,7 +7109,7 @@ yx-axis
 }
 /* line 14, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/about.css.scss */
 .view-gallery.ca {
-  background: url(/assets/About_Banner_2_CA-e5dae484c2248af7416f8f5f090e0b1e.jpg) no-repeat center center;
+  background: url(/assets/About_Banner_2_CA.jpg) no-repeat center center;
 }
 /* line 18, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/about.css.scss */
 .view-gallery .link {
@@ -7684,7 +7685,7 @@ button.long-text, input[type=button].long-text, input[type=submit].long-text, .b
 }
 /* line 119, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/callout.css.scss */
 .callout.blue.image {
-  background: #499cd3 url(/assets/callout_blue_bg-2db2aae713bd19d9da6659d810173850.jpg) no-repeat center center;
+  background: #499cd3 url(/assets/callout_blue_bg.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7767,7 +7768,7 @@ button.long-text, input[type=button].long-text, input[type=submit].long-text, .b
 }
 /* line 198, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/callout.css.scss */
 .callout.pink.image {
-  background: #ec008c url(/assets/Pink_Background-712f084b75c13c1b9dc3624ac038fabb.jpg) no-repeat center center;
+  background: #ec008c url(/assets/Pink_Background.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7962,12 +7963,12 @@ button.long-text, input[type=button].long-text, input[type=submit].long-text, .b
   height: 49px;
   margin-top: -24.5px;
   left: 0px;
-  background: url(/assets/Left_Arrow@2x-a18d205274c4f2fb27213ca88976f664.png) no-repeat center;
+  background: url(/assets/Left_Arrow@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 29, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/carousel.css.scss */
 .owl-carousel.salon-professional .arrow-left:hover, .owl-carousel.salon-professional .arrow-left:active, .owl-carousel.salon-carousel .arrow-left:hover, .owl-carousel.salon-carousel .arrow-left:active {
-  background: url(/assets/Left_Arrow@2x-a18d205274c4f2fb27213ca88976f664.png) no-repeat center;
+  background: url(/assets/Left_Arrow@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 35, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/carousel.css.scss */
@@ -7976,12 +7977,12 @@ button.long-text, input[type=button].long-text, input[type=submit].long-text, .b
   height: 49px;
   margin-top: -24.5px;
   right: 0px;
-  background: url(/assets/Right_Arrow@2x-e660f6afe56b6320427c8f80079ccee8.png) no-repeat center;
+  background: url(/assets/Right_Arrow@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 44, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/carousel.css.scss */
 .owl-carousel.salon-professional .arrow-right:hover, .owl-carousel.salon-professional .arrow-right:active, .owl-carousel.salon-carousel .arrow-right:hover, .owl-carousel.salon-carousel .arrow-right:active {
-  background: url(/assets/Right_Arrow@2x-e660f6afe56b6320427c8f80079ccee8.png) no-repeat center;
+  background: url(/assets/Right_Arrow@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 50, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/carousel.css.scss */
@@ -9195,13 +9196,13 @@ p {
 
 /* line 15, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/hero.css.scss */
 .arrow-left {
-  background-image: url(/assets/Arrow_Left_Large@2x-0ce2fb4ab2a671bc822da9fd4d1e293e.png);
+  background-image: url(/assets/Arrow_Left_Large@2x.png);
   left: 30px;
 }
 
 /* line 20, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/hero.css.scss */
 .arrow-right {
-  background-image: url(/assets/Arrow_Right_Large@2x-142ff83da02fe83c7c23468f22f0f821.png);
+  background-image: url(/assets/Arrow_Right_Large@2x.png);
   right: 30px;
 }
 
@@ -9296,7 +9297,7 @@ p {
   display: block;
   text-decoration: none !important;
   margin: 50px auto 0 auto;
-  background: url(/assets/Play_Inactive@2x-822c9ae67a43420572a82b2c6769a2e3.png) no-repeat center;
+  background: url(/assets/Play_Inactive@2x.png) no-repeat center;
   background-size: 75px 75px;
   width: 75px;
   height: 75px;
@@ -9304,7 +9305,7 @@ p {
 }
 /* line 123, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/hero.css.scss */
 .play-button:hover, .play-button:active, .play-btn:hover, .play-btn:active {
-  background: url(/assets/Play_Hover@2x-2449023e343a8b6c409d6dfbd875c79d.png) no-repeat center;
+  background: url(/assets/Play_Hover@2x.png) no-repeat center;
   background-size: 75px 75px;
 }
 
@@ -9500,7 +9501,7 @@ img.recently-featured-in {
 .modern_salon_logo:link, .modern_salon_logo:visited, .modern_salon_logo:hover, .modern_salon_logo:active {
   display: inline-block;
   text-decoration: none;
-  background: url(/assets/modern_salon_logo-b98bb09a51e7ca416453d642be5fad4b.png) no-repeat center center;
+  background: url(/assets/modern_salon_logo.png) no-repeat center center;
   background-size: 140px 51px;
   width: 140px;
   height: 51px;
@@ -9514,7 +9515,7 @@ img.recently-featured-in {
 .american_salon_logo:link, .american_salon_logo:visited, .american_salon_logo:hover, .american_salon_logo:active {
   display: inline-block;
   text-decoration: none;
-  background: url(/assets/american_salon_logo-43cb97f1ab3d5ff683ed3023c64391d2.png) no-repeat center center;
+  background: url(/assets/american_salon_logo.png) no-repeat center center;
   background-size: 160px 51px;
   width: 160px;
   height: 51px;
@@ -9528,7 +9529,7 @@ img.recently-featured-in {
 .beauty_launchpad_logo:link, .beauty_launchpad_logo:visited, .beauty_launchpad_logo:hover, .beauty_launchpad_logo:active {
   display: inline-block;
   text-decoration: none;
-  background: url(/assets/beauty_launchpad_logo-95e94d9f39fa6fd6389b4a838b0e36a8.png) no-repeat center center;
+  background: url(/assets/beauty_launchpad_logo.png) no-repeat center center;
   background-size: 193px 51px;
   width: 193px;
   height: 51px;
@@ -9544,7 +9545,7 @@ img.recently-featured-in {
 .behind_the_chair_logo:link, .behind_the_chair_logo:visited, .behind_the_chair_logo:hover, .behind_the_chair_logo:active {
   display: inline-block;
   text-decoration: none;
-  background: url(/assets/behind_the_chair_logo-0d77256bea908c8c5a9dc20bd081b421.png) no-repeat center center;
+  background: url(/assets/behind_the_chair_logo.png) no-repeat center center;
   background-size: 242px 51px;
   width: 242px;
   height: 51px;
@@ -9560,7 +9561,7 @@ img.recently-featured-in {
 .forbes_logo:link, .forbes_logo:visited, .forbes_logo:hover, .forbes_logo:active {
   display: inline-block;
   text-decoration: none;
-  background: url(/assets/forbes_logo-6e91095467ef6f01261d43528e729fc4.png) no-repeat center center;
+  background: url(/assets/forbes_logo.png) no-repeat center center;
   background-size: 122px 51px;
   width: 122px;
   height: 51px;
@@ -10071,97 +10072,54 @@ h2.city a:hover, h2.city a:active {
   margin-bottom: 10px;
 }
 
-/* line 141, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+/* line 142, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
 .request-franchising-modal .forbes-image {
-  background: url(/assets/ForbesBestFranchise-b78af407ed4184c0ee5d41e25dac69d7.jpg) no-repeat center center;
+  display: block;
+  background: url(/assets/ForbesBestFranchise.jpg) no-repeat center center;
   width: 249px;
   height: 406px;
   margin-right: 40px;
 }
-/* line 148, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+/* line 150, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
 .request-franchising-modal input, .request-franchising-modal textarea {
   max-width: 302px !important;
   border-radius: 2px !important;
   background: #f9f9f9 !important;
   border: 1px solid #d3d3d3 !important;
 }
-/* line 154, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+/* line 156, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
 .request-franchising-modal input:focus, .request-franchising-modal input:active, .request-franchising-modal textarea:focus, .request-franchising-modal textarea:active {
   border: 1px solid #ec008c !important;
 }
 /* line 162, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-.request-franchising-modal .half
-.half-column.right {
+.request-franchising-modal .half-column {
+  width: 50%;
+  clear: none;
+  float: left;
+}
+/* line 168, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+.request-franchising-modal .half-column.right {
   max-width: 302px !important;
 }
 
-/* line 167, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-.modal.double-wide {
-  max-width: 700px;
-}
-/* line 170, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-.modal.double-wide .content .modal-content {
-  display: -webkit-flex;
-  display: flex;
-}
 /* line 175, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-.modal.double-wide .half-column {
-  float: left;
-  display: block;
-  width: 50%;
-  max-width: 300px;
-  clear: none;
-  margin: 0;
-  padding: 0;
-}
-/* line 184, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-.modal.double-wide .half-column.left {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -webkit-flex-wrap: nowrap;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  -webkit-justify-content: center;
-  -webkit-align-content: center;
-  -webkit-align-items: center;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
+.franchising-modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 9;
 }
 
 @media (max-width: 700px) {
-  /* line 203, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide {
-    top: 50%;
-    left: 50%;
-    margin: -200px 0 0 -100px;
-    width: 100%;
-    max-width: 392px;
-  }
-  /* line 210, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide .content .modal-content {
-    display: block;
-  }
-  /* line 216, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide .request-franchising-modal .half-column {
-    width: 100%;
+  /* line 219, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+  .request-franchising-modal .half-column {
+    width: auto;
     float: none;
     clear: both;
   }
-  /* line 221, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide .request-franchising-modal .half-column .forbes-image {
-    margin-right: 0;
-    margin-bottom: 15px;
-  }
-  /* line 226, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide .request-franchising-modal .half-column.left {
-    text-align: center;
-  }
-  /* line 230, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
-  .modal.double-wide .request-franchising-modal .half-column img.ForbesBestFranchise {
-    max-width: 200px;
-    margin-left: 0;
+  /* line 224, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/modal.css.scss */
+  .request-franchising-modal .half-column.left {
+    display: none;
   }
 }
 /* line 1, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/news.css.scss */
@@ -10903,7 +10861,7 @@ h2.city a:hover, h2.city a:active {
 /* line 629, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/own.css.scss */
 .explore-studio .dot {
   position: absolute;
-  background: url(/assets/Marker_Normal_Icon@2x-89733cafe0f531dc85a08e3775563f14.png) no-repeat;
+  background: url(/assets/Marker_Normal_Icon@2x.png) no-repeat;
   background-size: 19px 19px;
   width: 19px;
   height: 19px;
@@ -11323,7 +11281,7 @@ ul.own-list li {
 /* line 131, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/salon.css.scss */
 .salon-request-a-tour {
   padding: 60px 0;
-  background: url(/assets/contact_bg-6fe959361102f0e04d84488390961456.jpg) no-repeat;
+  background: url(/assets/contact_bg.jpg) no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12394,7 +12352,7 @@ h4.availability {
 }
 /* line 263, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/sessions.css.scss */
 .session .agenda .banner {
-  background: url(/assets/sessions/agenda-banner-b6711063e6b7e21c80cd138b9abfdd9f.png) no-repeat center center;
+  background: url(/assets/sessions/agenda-banner.png) no-repeat center center;
   position: absolute;
   top: -10px;
   left: -10px;
@@ -12676,7 +12634,7 @@ h4.availability {
 
 /* line 547, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/sessions.css.scss */
 .future-sessions {
-  background: url(/assets/future-sessions-e4baf0bd7e93473b012ff2aa1560e4b0.jpg) no-repeat center center;
+  background: url(/assets/future-sessions.jpg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13454,23 +13412,23 @@ ul.social.three li {
 /* line 31, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .featured-testimonials .arrow-left {
   left: 0;
-  background: white url(/assets/Left_Inactive@2x-0dfaf27b7d07b5e7df0bbdb4fa880a53.png) no-repeat center;
+  background: white url(/assets/Left_Inactive@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 36, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .featured-testimonials .arrow-left:hover, .featured-testimonials .arrow-left:active {
-  background: white url(/assets/Left_Active@2x-a4be9e175914f709dd8b0242b419fd7d.png) no-repeat center;
+  background: white url(/assets/Left_Active@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 42, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .featured-testimonials .arrow-right {
   right: 0;
-  background: white url(/assets/Right_Inactive@2x-a9eec1d5a642949b92c453472024f6b9.png) no-repeat center;
+  background: white url(/assets/Right_Inactive@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 /* line 47, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .featured-testimonials .arrow-right:hover, .featured-testimonials .arrow-right:active {
-  background: white url(/assets/Right_Active@2x-7585608afa2e059ca12360baa8e18123.png) no-repeat center;
+  background: white url(/assets/Right_Active@2x.png) no-repeat center;
   background-size: 49px 49px;
 }
 
@@ -13487,13 +13445,13 @@ ul.social.three li {
 /* line 64, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .sola-spotlights .arrow-left {
   left: 0;
-  background: #ec008c url(/assets/Arrow_Left_Large@2x-374b17f4045c91080fff05bcc484953d.png) no-repeat 17px 12px;
+  background: #ec008c url(/assets/Arrow_Left_Large@2x.png) no-repeat 17px 12px;
   background-size: 14px 27.5px;
 }
 /* line 70, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/public_website/testimonials.css.scss */
 .sola-spotlights .arrow-right {
   right: 3px;
-  background: #ec008c url(/assets/Arrow_Right_Large@2x-a8e3a82a5d0defb0707a723e7d1bc9b5.png) no-repeat 20px 12px;
+  background: #ec008c url(/assets/Arrow_Right_Large@2x.png) no-repeat 20px 12px;
   background-size: 14px 27.5px;
 }
 
@@ -13716,6 +13674,93 @@ hr.br {
   padding: 0;
   visibility: hidden;
 }
+/* line 4, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/components/MySola.css.scss */
+.my-sola {
+  background: #ec008c;
+}
+/* line 8, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.image-dropzone {
+  background: #dee3e6;
+  padding: 30px;
+  color: #FFF;
+}
+
+/* line 14, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview, .dropzone-image-spinner {
+  position: relative;
+  padding: 18px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #a6a6a6;
+  background: #e6e6e6;
+  height: 95px;
+}
+/* line 23, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview img, .dropzone-image-preview .name, .dropzone-image-preview .ss-delete, .dropzone-image-spinner img, .dropzone-image-spinner .name, .dropzone-image-spinner .ss-delete {
+  position: absolute;
+  top: 18px;
+  z-index: 3;
+}
+/* line 29, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview img, .dropzone-image-spinner img {
+  left: 12px;
+  height: 60px;
+  width: 60px;
+}
+/* line 34, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview img.spinner, .dropzone-image-spinner img.spinner {
+  height: 40px;
+  width: 40px;
+  top: 27px;
+  left: 21px;
+}
+/* line 42, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview .name, .dropzone-image-spinner .name {
+  top: 50%;
+  margin-top: -6.5px;
+  left: 90px;
+  width: calc(100% - 120px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* line 52, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview .progress, .dropzone-image-spinner .progress {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  background: #499cd3;
+  -webkit-transition: width 0.3s ease, background-color 0.3s ease;
+  -o-transition: width 0.3s ease, background-color 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+/* line 62, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview .progress.processing, .dropzone-image-spinner .progress.processing {
+  background: #2b7db3;
+}
+/* line 67, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview .ss-delete, .dropzone-image-spinner .ss-delete {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  margin-top: -3px;
+  display: block;
+  font-size: 13px;
+  color: #b4b4b4;
+  cursor: pointer;
+  text-decoration: none;
+}
+/* line 78, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview .ss-delete:hover, .dropzone-image-spinner .ss-delete:hover {
+  color: #499cd3;
+}
+/* line 83, /Users/jeffbail/sites/solasalonstudios/app/assets/stylesheets/dropzone.css.scss */
+.dropzone-image-preview.uploading, .dropzone-image-spinner.uploading {
+  color: #ec008c;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13742,5 +13787,6 @@ hr.br {
 
 
 
- *= 
+
+
  */

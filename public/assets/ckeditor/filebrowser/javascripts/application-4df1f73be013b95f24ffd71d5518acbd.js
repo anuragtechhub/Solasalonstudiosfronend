@@ -199,7 +199,7 @@ qq.extend(qq.FileUploaderInput.prototype, {
             format_created_at: '',
             url_content: "#",
             controller: "assets",
-            url_thumb: "/assets/ckeditor/filebrowser/images/preloader-7162a583b4303299fa4157610bc9566b.gif"
+            url_thumb: "/assets/ckeditor/filebrowser/images/preloader.gif"
           };
 
           var item = $(this._options.template_id)

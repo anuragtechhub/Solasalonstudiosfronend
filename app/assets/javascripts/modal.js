@@ -63,6 +63,7 @@ $.widget('solasalonstudios.modal', {
 
     $(document).on('touchmove.modalzzz', function (e) { e.preventDefault(); });
     self.$body.css('overflow', 'hidden');
+    self.resize();
     self.reposition();
 
     if (self.animated) {
@@ -72,7 +73,8 @@ $.widget('solasalonstudios.modal', {
       self.$modal.show();
       self.$overlay.show();
     }
-
+    self.resize();
+    self.reposition();
     // self.outerWidth = self.$modal.outerWidth();
     // self.outerHeight = self.$modal.outerHeight();    
   },
@@ -121,10 +123,11 @@ $.widget('solasalonstudios.modal', {
   resize: function () {
     var self = this;
 
+    //console.log(self.$content[0].scrollHeight)
     //console.log('outerHeight b4', self.outerHeight);
-    // if (self.$content[0].scrollHeight) {
-    //   self.outerHeight = self.$content[0].scrollHeight;
-    // }
+    if (self.$content[0].scrollHeight) {
+      self.outerHeight = self.$content[0].scrollHeight;
+    }
     //console.log('outerHeight after', self.outerHeight);
   },
 
@@ -152,7 +155,7 @@ $.widget('solasalonstudios.modal', {
         self.$modal.css({left: '50%', right: 'auto', 'margin-left': '-' + self.outerWidth / 2 + 'px', 'width': self.width + 'px'});
       }
     } else {
-      //console.log('2')
+      //console.log('2', self.outerHeight)
       self.$modal.css({top: '50%', left: '50%', right: 'auto', bottom: 'auto', 'margin-top': '-' + self.outerHeight / 2 + 'px', 'margin-left': '-' + self.outerWidth / 2 + 'px', 'width': self.width + 'px'});
     }
 

@@ -137,8 +137,10 @@
 }
 
 .request-franchising-modal {
+
   
   .forbes-image {
+    display: block;
     background: asset-url('ForbesBestFranchise.jpg') no-repeat center center;
     width: 249px;
     height: 406px;
@@ -157,81 +159,105 @@
   }
 
 
-  .half
+  .half-column {
+    width: 50%;
+    clear: none;
+    float: left;
+  }
 
   .half-column.right {
     max-width: 302px !important;
   }
 }
 
-.modal.double-wide {
-  max-width: 700px;
+.franchising-modal {
 
-  .content .modal-content {
-    display: -webkit-flex;
-    display: flex;
-  }
-
-  .half-column {
-    float: left;
-    display: block;
-    width: 50%;
-    max-width: 300px;
-    clear: none;
-    margin: 0;
-    padding: 0;
-
-    &.left {
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: column;
-      -webkit-flex-wrap: nowrap;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      -webkit-justify-content: center;
-      -webkit-align-content: center;
-      -webkit-align-items: center;
-      justify-content: center;
-      align-content: center;
-      align-items: center;
-    }
-  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9;
+  } 
 }
 
+// .modal.double-wide {
+//   max-width: 700px;
+
+//   .content .modal-content {
+//     display: -webkit-flex;
+//     display: flex;
+//   }
+
+//   .half-column {
+//     float: left;
+//     display: block;
+//     width: 50%;
+//     max-width: 300px;
+//     clear: none;
+//     margin: 0;
+//     padding: 0;
+
+//     &.left {
+//       display: -webkit-flex;
+//       display: flex;
+//       -webkit-flex-direction: column;
+//       -webkit-flex-wrap: nowrap;
+//       flex-direction: column;
+//       flex-wrap: nowrap;
+//       -webkit-justify-content: center;
+//       -webkit-align-content: center;
+//       -webkit-align-items: center;
+//       justify-content: center;
+//       align-content: center;
+//       align-items: center;
+//     }
+//   }
+// }
+
 @media (max-width: 700px) {
-  
-  .modal.double-wide {
-    top: 50%;
-    left: 50%;
-    margin: -200px 0 0 -100px;
-    width: 100%;
-    max-width: 392px;
+  .request-franchising-modal {
+    .half-column {
+      width: auto;
+      float: none;
+      clear: both;
 
-    .content .modal-content {
-      display: block;
-    }
-
-    .request-franchising-modal {
-
-      .half-column {
-        width: 100%;
-        float: none;
-        clear: both;
-
-        .forbes-image {
-          margin-right: 0;
-          margin-bottom: 15px;
-        }
-
-        &.left {
-          text-align: center;
-        }
-
-        img.ForbesBestFranchise {
-          max-width: 200px;
-          margin-left: 0;
-        }
+      &.left {
+        display: none;
       }
     }
   }
+  // .modal.double-wide {
+  //   top: 50%;
+  //   left: 50%;
+  //   margin: -200px 0 0 -100px;
+  //   width: 100%;
+  //   max-width: 392px;
+
+  //   .content .modal-content {
+  //     display: block;
+  //   }
+
+  //   .request-franchising-modal {
+
+  //     .half-column {
+  //       width: 100%;
+  //       float: none;
+  //       clear: both;
+
+  //       .forbes-image {
+  //         margin-right: 0;
+  //         margin-bottom: 15px;
+  //       }
+
+  //       &.left {
+  //         text-align: center;
+  //       }
+
+  //       img.ForbesBestFranchise {
+  //         max-width: 200px;
+  //         margin-left: 0;
+  //       }
+  //     }
+  //   }
+  // }
 }
