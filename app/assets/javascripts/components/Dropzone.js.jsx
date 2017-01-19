@@ -102,7 +102,7 @@ var Dropzone = React.createClass({
 
     $.ajax({
       type: 'POST',
-      url: '/websites/s3_presigned_post',
+      url: '/mysola/s3-presigned-post',
       data: 'type=' + this.props.type + '&content_type=' + contentType
     }).error(function (data) {
       //console.log('getPresignedPost error', data)
