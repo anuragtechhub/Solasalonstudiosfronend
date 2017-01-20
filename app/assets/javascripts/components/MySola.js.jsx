@@ -7,6 +7,7 @@ var MySola = React.createClass({
       my_sola_is_my: '',
       name: '',
       scrollTop: 0,
+      sharePopupVisible: false,
       fileUploadOverlay: false,
     };
   },
@@ -14,13 +15,36 @@ var MySola = React.createClass({
   componentDidMount: function () {
     var self = this;
 
+    // window scroll handler
     $(window).on('scroll', function () {
       self.setState({scrollTop: $(window).scrollTop()});
     }).trigger('scroll');
+
+    // hide social sharing popup
+    window.onClickSocialShareButton = function () {
+      self.onHideSocialSharePopup();
+    },
+
+    // social sharing
+    $(this.refs.social_share_wrapper).jsSocials({
+      shares: ["twitter", "facebook"],
+      text: self.shareText(),
+      showCount: false,
+      showLabel: false,
+      shareIn: 'popup',
+    });
   },
 
   componentDidUpdate: function () {
   
+  },
+
+  shareText: function () {
+    if (this.state.i_feel) {
+      return "I feel " + this.state.i_feel + ' in #MySola';
+    } else if (this.state.my_sola_is_my) {
+      return "#MySola is my " + this.state.my_sola_is_my;
+    }
   },
 
   render: function () {
@@ -41,7 +65,10 @@ var MySola = React.createClass({
   renderBottomButtons: function () {
     return (
       <div className="bottom-buttons">
-        <a href="#" className="button block">Share</a>
+        <div className="share-button">
+          <a href="#" className="button block" onClick={this.onToggleSharePopup}>Share</a>
+          <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
+        </div>
         <a href="#" className="button block">Download</a>
         <div className="start-over"><a href="#" onClick={this.onStartOver}>Start Over</a></div>
       </div>
@@ -88,6 +115,11 @@ var MySola = React.createClass({
     this.setState(state);
   },
 
+  onHideSocialSharePopup: function () {
+    this.setState({sharePopupVisible: false});
+    $(window).off('click.share');
+  },
+
   onKeyDownMadLibsInput: function (event) {
     if (event.target.name == 'my_sola_is_my') {
       this.setState({i_feel: ''});
@@ -105,11 +137,31 @@ var MySola = React.createClass({
   },
 
   onStartOver: function (event) {
+    var self = this;
+
     if (event && typeof event.preventDefault == 'function') {
       event.preventDefault();
     }
 
-    this.setState(this.getInitialState());
+    this.setState(this.getInitialState(), function () {
+      self.onScrollToTop();
+    });
+  },
+
+  onToggleSharePopup: function (event) {
+    var self = this;
+
+    event.preventDefault();    
+    event.stopPropagation();
+
+    if (this.state.sharePopupVisible) {
+      this.onHideSocialSharePopup();
+    } else {
+      this.setState({sharePopupVisible: true});
+      $(window).on('click.share', function () {
+        self.onHideSocialSharePopup();
+      });
+    }
   },
 
 });

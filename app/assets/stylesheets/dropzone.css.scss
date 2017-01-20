@@ -10,13 +10,15 @@
   clear: both;
   position: relative;
   margin: 20px auto;
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   height: 350px;
   text-align: center;
 
   .image {
     display: inline-block !important;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 350px; 
     position: relative;
   }
@@ -24,7 +26,8 @@
   a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
     position: relative;
     display: inline-block !important;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 350px;
     border: 3px solid $brand-pink;
     background: #dee3e6 !important;

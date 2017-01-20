@@ -77,7 +77,11 @@
   }
 
   .statement-form {
-    margin: 10px auto 40px auto;
+    margin: 20px auto 40px auto;
+
+    h3 {
+      margin: 30px 0 25px 0;
+    }
 
     .madlibs {
       font-family: 'Lato', sans-serif;
@@ -123,6 +127,23 @@
   } /* end .statement-form */
 
   .bottom-buttons {
+    margin: 10px 0 0 0;
+
+    .share-button {
+      position: relative;
+    }
+
+    .social-share-icons {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      margin-left: -60px;
+      text-align: center;
+      padding: 10px 15px;
+      background: #FFF;
+      @include box-shadow(0 0 5px rgba(0,0,0,0.5));
+      border-radius: 5px;
+    }
 
     .button {
       text-transform: uppercase;
@@ -137,7 +158,7 @@
     }
 
     .start-over {
-      margin: 20px 0 40px 0;
+      margin: 40px 0;
       text-align: center;
 
       a, a:link, a:visited, a:hover, a:active {
@@ -157,8 +178,8 @@
     bottom: 20px;
     right: 20px;
     background: asset-data-url('back-to-top.png') no-repeat center;
-    background-size: 25.5px 25.5px !important;
-    width: 25.5px;
-    height: 25.5px;
+    background-size: 26.5px 26.5px !important;
+    width: 26.5px;
+    height: 26.5px;
   }
 }
