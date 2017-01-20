@@ -53,7 +53,7 @@ var MySola = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <Dropzone />
+          <ImageDropzone />
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
         </div>

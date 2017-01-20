@@ -1,4 +1,4 @@
-var Dropzone = React.createClass({
+var ImageDropzone = React.createClass({
 
   getInitialState: function () {
     return {
@@ -52,6 +52,7 @@ var Dropzone = React.createClass({
             self.getPresignedPost(file.type).done((s3_fields, s3_url) => {
               //console.log('presigned post is DONE', s3_fields, s3_url);
               self.setState({s3_fields: s3_fields, s3_url: s3_url, uploading: true});
+              console.log('thumbnail', Dropzone);
               Dropzone.forElement(self.refs.dropzone).processQueue();
             });
           },
@@ -106,9 +107,9 @@ var Dropzone = React.createClass({
       url: '/mysola/s3-presigned-post',
       data: 'type=' + this.props.type + '&content_type=' + contentType
     }).error(function (data) {
-      //console.log('getPresignedPost error', data)
+      console.log('getPresignedPost error', data)
     }).success(function (data) {
-      //console.log('getPresignedPost success', data.fields, data.url, promise);
+      console.log('getPresignedPost success', data.fields, data.url, promise);
       promise.resolve(data.fields, data.url);
     });
 

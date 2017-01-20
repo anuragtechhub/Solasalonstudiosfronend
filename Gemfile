@@ -44,14 +44,14 @@ group :production do
   gem 'rails_12factor'
   gem "image_optim"
   gem 'image_optim_pack'
-  gem "paperclip-optimizer"
-  gem 'rmagick'    
+  gem "paperclip-optimizer" 
 end
 
 gem 'rack-cors'
+gem 'rmagick'   
 
 gem "paperclip"
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~> 2'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'
