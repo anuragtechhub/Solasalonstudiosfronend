@@ -4,7 +4,7 @@
 .my-sola {
 
   .container {
-    max-width: 500px;
+    max-width: 350px;
   }
   
   .header-copy, .statement-form {
@@ -93,7 +93,6 @@
 
   .name-and-handle-form {
     margin: 40px auto;
-    max-width: 260px;
 
     input[type='text'] {
       width: 100%;
@@ -120,5 +119,17 @@
       text-transform: uppercase !important;
       text-decoration: none;
     }
+  }
+
+  .back-to-top {
+    cursor: pointer;
+    z-index: 999;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: asset-data-url('back-to-top.png') no-repeat center;
+    background-size: 25.5px 25.5px !important;
+    width: 25.5px;
+    height: 25.5px;
   }
 }

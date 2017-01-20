@@ -2,11 +2,24 @@ var MySola = React.createClass({
 
   getInitialState: function () {
     return {
-      name: '',
       handle: '',
-      my_sola_is_my: '',
       i_feel: '',
+      my_sola_is_my: '',
+      name: '',
+      scrollTop: 0,
     };
+  },
+
+  componentDidMount: function () {
+    var self = this;
+
+    $(window).on('scroll', function () {
+      self.setState({scrollTop: $(window).scrollTop()});
+    }).trigger('scroll');
+  },
+
+  componentDidUpdate: function () {
+  
   },
 
   render: function () {
@@ -17,8 +30,19 @@ var MySola = React.createClass({
           {this.renderNameAndHandleForm()}
           <Dropzone />
           {this.renderStatementForm()}
-          <div className="start-over"><a href="#" onClick={this.onStartOver}>Start Over</a></div>
+          {this.renderBottomButtons()}
         </div>
+        {this.state.scrollTop > 0 ? <div className="back-to-top" onClick={this.onScrollToTop}></div> : null}
+      </div>
+    );
+  },
+
+  renderBottomButtons: function () {
+    return (
+      <div className="bottom-buttons">
+        <a href="#" className="button block">Share</a>
+        <a href="#" className="button block">Download</a>
+        <div className="start-over"><a href="#" onClick={this.onStartOver}>Start Over</a></div>
       </div>
     );
   },
@@ -65,6 +89,14 @@ var MySola = React.createClass({
     } else if (event.target.name == 'i_feel') {
       this.setState({my_sola_is_my: ''});
     }
+  },
+
+  onScrollToTop: function (event) {
+    if (event && typeof event.preventDefault == 'function') {
+      event.preventDefault();
+    }
+
+    $("html, body").animate({scrollTop: 0}, "normal");
   },
 
   onStartOver: function (event) {
