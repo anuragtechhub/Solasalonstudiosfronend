@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102182118) do
+ActiveRecord::Schema.define(version: 20170119233248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -325,6 +325,20 @@ ActiveRecord::Schema.define(version: 20170102182118) do
 
   add_index "msas", ["name"], name: "index_msas_on_name", using: :btree
   add_index "msas", ["url_name"], name: "index_msas_on_url_name", using: :btree
+
+  create_table "my_sola_images", force: true do |t|
+    t.string   "name"
+    t.string   "instagram_handle"
+    t.text     "expression"
+    t.boolean  "approved",           default: false
+    t.datetime "approved_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "partner_inquiries", force: true do |t|
     t.string   "subject"

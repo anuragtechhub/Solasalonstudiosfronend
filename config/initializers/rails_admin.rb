@@ -892,6 +892,34 @@ RailsAdmin.config do |config|
     label_plural 'MSAs'
   end
 
+  config.model 'MySolaImage' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do 
+      field :name
+      field :instagram_handle
+      field :image do
+        pretty_value do 
+          "<img src='#{value.url(:instagram)}' width='640' height='640' />".html_safe if value.present?
+        end
+      end
+      field :approved
+    end
+    edit do
+      field :name
+      field :instagram_handle
+      field :image
+      field :approved
+    end
+    show do
+      field :name
+      field :instagram_handle
+      field :image
+      field :approved
+    end    
+  end
+
   config.model 'PartnerInquiry' do
     label 'Partner Inquiry'
     label_plural 'Partner Inquiries'
