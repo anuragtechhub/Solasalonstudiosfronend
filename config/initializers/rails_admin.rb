@@ -901,7 +901,7 @@ RailsAdmin.config do |config|
       field :instagram_handle
       field :image do
         pretty_value do 
-          "<img src='#{value.url(:instagram)}' width='640' height='640' />".html_safe if value.present?
+          "<img src='#{value.url(:instagram)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
         end
       end
       field :approved
@@ -909,14 +909,26 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :instagram_handle
-      field :image
+      field :statement
+      field :image do
+        pretty_value do 
+          "<img src='#{value.url(:instagram)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
+        end
+      end
       field :approved
     end
     show do
       field :name
       field :instagram_handle
-      field :image
+      field :statement
+      field :image do
+        pretty_value do 
+          "<img src='#{value.url(:instagram)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
+        end
+      end
       field :approved
+      field :approved_at
+      field :created_at
     end    
   end
 

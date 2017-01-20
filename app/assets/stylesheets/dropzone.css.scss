@@ -6,9 +6,49 @@
 // }
 
 .image-dropzone {
-  background: #dee3e6;
-  padding: 30px;
-  color: #FFF;
+  display: block;
+  clear: both;
+  position: relative;
+  margin: 20px auto;
+  width: 320px;
+  height: 320px;
+  text-align: center;
+
+  .image {
+    display: inline-block !important;
+    width: 320px;
+    height: 320px;  
+    position: relative;
+  }
+
+  a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
+    position: relative;
+    display: inline-block !important;
+    width: 320px;
+    height: 320px;  
+    border: 3px solid $brand-pink;
+    background: #dee3e6 !important;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    margin: 0;
+  }
+
+  .action-camera-and-text {
+    position: absolute;
+    background: asset-data-url('upload_camera.png') no-repeat top center;
+    background-size: 49px 41px !important;
+    padding: 55px 0 0 0;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: -41px 0 0 0;
+  }
 }
 
 .dropzone-image-preview, .dropzone-image-spinner {

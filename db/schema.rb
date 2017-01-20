@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119233248) do
+ActiveRecord::Schema.define(version: 20170120033640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,7 +329,7 @@ ActiveRecord::Schema.define(version: 20170119233248) do
   create_table "my_sola_images", force: true do |t|
     t.string   "name"
     t.string   "instagram_handle"
-    t.text     "expression"
+    t.text     "statement"
     t.boolean  "approved",           default: false
     t.datetime "approved_at"
     t.string   "image_file_name"

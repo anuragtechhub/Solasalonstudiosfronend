@@ -40,6 +40,7 @@ var Dropzone = React.createClass({
       if (!$dropzone.hasClass('dz-clickable')) { // don't re-init a dropzone
         $dropzone.dropzone({
           autoProcessQueue: false,
+          clickable: ['.action', '.action-camera-and-text'],
           uploadMethod: 'PUT',
           url: self.state.s3_url,
           addedfile: (file) => {
@@ -121,10 +122,15 @@ var Dropzone = React.createClass({
           {this.state.image_name && this.state.uploading ? <div className="spinner-icon" /> : null}
           {this.state.image_name ? <div className={this.nameClasses()} style={{opacity: this.state.uploading ? 0.33 : 1}}>{this.state.image_name}</div> : null}
           {this.state.image_url ? <div className="delete-icon" onClick={this.remove} /> : null}
-          <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image_name ? 'none' : 'block'}}>{this.props.addNewText || '+ Add New Image'}</a>
+          <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image_name ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload a photo'}</div></a>
         </div>
       </div>
     );
+  },
+
+  triggerActionClick: function () {
+    console.log('trigger action click');
+    $(this.refs.dropzone).trigger('click');
   },
 
   imageClasses: function () {
