@@ -2,8 +2,10 @@ var MySola = React.createClass({
 
   getInitialState: function () {
     return {
+      name: '',
+      handle: '',
       my_sola_is_my: '',
-      i_feel: ''
+      i_feel: '',
     };
   },
 
@@ -12,8 +14,10 @@ var MySola = React.createClass({
       <div className="my-sola">
         <div className="container">
           {this.renderHeaderCopy()}
+          {this.renderNameAndHandleForm()}
           <Dropzone />
           {this.renderStatementForm()}
+          <div className="start-over"><a href="#" onClick={this.onStartOver}>Start Over</a></div>
         </div>
       </div>
     );
@@ -29,18 +33,27 @@ var MySola = React.createClass({
     );
   },
 
-  renderStatementForm: function () {
+  renderNameAndHandleForm: function () {
     return (
-      <div className="statement-form">
-        <h3>Choose a statement below:</h3>
-        <div className="madlibs">#MySola is my <input type="text" name="my_sola_is_my" placeholder='Type your "expression" here' maxLength="21" value={this.state.my_sola_is_my} onChange={this.onChangeMadLibsInput} onKeyDown={this.onKeyDownMadLibsInput} /></div>
-        <h3>Or:</h3>
-        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder='Type your "expression" here' maxLength="21" value={this.state.i_feel} onChange={this.onChangeMadLibsInput} onKeyDown={this.onKeyDownMadLibsInput} /> in #MySola</div>
+      <div className="name-and-handle-form">
+        <input type="text" name="name" placeholder="Please enter your name" value={this.state.name} onChange={this.onChangeTextInput} />
+        <input type="text" name="handle" placeholder="Please enter your Instagram handle" value={this.state.handle} onChange={this.onChangeTextInput} />
       </div>
     );
   },
 
-  onChangeMadLibsInput: function (event) {
+  renderStatementForm: function () {
+    return (
+      <div className="statement-form">
+        <h3>Choose a statement below:</h3>
+        <div className="madlibs">#MySola is my <input type="text" name="my_sola_is_my" placeholder='Type your "expression" here' maxLength="21" value={this.state.my_sola_is_my} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /></div>
+        <h3>Or:</h3>
+        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder='Type your "expression" here' maxLength="21" value={this.state.i_feel} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /> in #MySola</div>
+      </div>
+    );
+  },
+
+  onChangeTextInput: function (event) {
     var state = this.state;
     state[event.target.name] = event.target.value;
     this.setState(state);
@@ -52,6 +65,14 @@ var MySola = React.createClass({
     } else if (event.target.name == 'i_feel') {
       this.setState({my_sola_is_my: ''});
     }
+  },
+
+  onStartOver: function (event) {
+    if (event && typeof event.preventDefault == 'function') {
+      event.preventDefault();
+    }
+
+    this.setState(this.getInitialState());
   },
 
 });
