@@ -56,7 +56,8 @@ Solasalonstudios::Application.routes.draw do
   get "store/:url_name" => 'locations#salon_redirect'
 
   match 'mysola' => 'my_sola#index', :via => [:get, :post], :as => :my_sola
-  match 'mysola/s3-presigned-post' => 'mysola#s3_presigned_post', :via => [:post], :as => :s3_presigned_post
+  match 'mysola/s3-presigned-post' => 'my_sola#s3_presigned_post', :via => [:post], :as => :s3_presigned_post
+  match 'mysola-image' => 'my_sola#image', :via => [:get, :post], :as => :my_sola_image
 
   get 'stylist' => 'stylists#index'
   get 'stylists/:url_name' => 'stylists#redirect'
