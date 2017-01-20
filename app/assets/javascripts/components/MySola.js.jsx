@@ -7,6 +7,7 @@ var MySola = React.createClass({
       my_sola_is_my: '',
       name: '',
       scrollTop: 0,
+      fileUploadOverlay: false,
     };
   },
 
@@ -62,6 +63,10 @@ var MySola = React.createClass({
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder="Please enter your name" value={this.state.name} onChange={this.onChangeTextInput} />
         <input type="text" name="handle" placeholder="Please enter your Instagram handle" value={this.state.handle} onChange={this.onChangeTextInput} />
+        <div className="next">
+          <h3>Next</h3>
+          <div className="next-icon"></div>
+        </div>
       </div>
     );
   },
