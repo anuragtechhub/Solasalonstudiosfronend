@@ -27,9 +27,9 @@ var ImageDropzone = React.createClass({
     this.initDropzone();
   },
 
-  componentDidUpdate: function () {
-    this.initDropzone();     
-  },
+  // componentDidUpdate: function () {
+  //   this.initDropzone();     
+  // },
 
   initDropzone: function () {
     var self = this;
@@ -42,45 +42,45 @@ var ImageDropzone = React.createClass({
           autoProcessQueue: false,
           clickable: ['.action', '.action-camera-and-text'],
           uploadMethod: 'PUT',
-          url: self.state.s3_url,
+          url: 'mysola/image-upload',
           addedfile: (file) => {
             //console.log('added file', file);
           },
           thumbnail: (file) => {
             //console.log('thumbnail file', file, file.width, file.height, file.name, file.type);
-            self.setState({image_width: file.width, image_height: file.height, image_name: file.name, uploading: false})
-            self.getPresignedPost(file.type).done((s3_fields, s3_url) => {
+            self.setState({image_width: file.width, image_height: file.height, image_name: file.name, uploading: true})
+            //self.getPresignedPost(file.type).done((s3_fields, s3_url) => {
               //console.log('presigned post is DONE', s3_fields, s3_url);
-              self.setState({s3_fields: s3_fields, s3_url: s3_url, uploading: true});
-              console.log('thumbnail', Dropzone);
+              //self.setState({s3_fields: s3_fields, s3_url: s3_url, uploading: true});
               Dropzone.forElement(self.refs.dropzone).processQueue();
-            });
+            //});
           },
           processing: function () {
-            this.options.url = self.state.s3_url;
+            //this.options.url = self.state.s3_url;
           },
           sending: function(file, xhr, formData) {
-            for (d in self.state.s3_fields) {
-              formData.append(d, self.state.s3_fields[d]);
-            }
+            // for (d in self.state.s3_fields) {
+            //   formData.append(d, self.state.s3_fields[d]);
+            // }
           },
           success: (file, response) => {
-            var json = $.xml2json(response);
-            //console.log('SUCCESS', json);
+            console.log('SUCCESS1', file, response);
+
+            self.setState({uploading: false, image_url: response.instagram_image_url});
             
-            var image = {
-              id: self.props.id,
-              url: json.PostResponse.Location.replace(/%2F/gi, '/'),
-              name: self.state.image_name,
-              width: self.state.image_width,
-              height: self.state.image_height,
-            }
+            // var image = {
+            //   id: self.props.id,
+            //   url: json.PostResponse.Location.replace(/%2F/gi, '/'),
+            //   name: self.state.image_name,
+            //   width: self.state.image_width,
+            //   height: self.state.image_height,
+            // }
 
-            self.setState({image_url: image.url, uploading: false});
+            // self.setState({image_url: image.url, uploading: false});
 
-            if (typeof self.props.onChange == 'function') {
-              self.props.onChange(image);
-            }
+            // if (typeof self.props.onChange == 'function') {
+            //   self.props.onChange(image);
+            // }
           }           
         });
       }
@@ -98,40 +98,36 @@ var ImageDropzone = React.createClass({
     }, false);     
   },
 
-  getPresignedPost: function (contentType) {
-    var self = this;
-    var promise = $.Deferred();
+  // getPresignedPost: function (contentType) {
+  //   var self = this;
+  //   var promise = $.Deferred();
 
-    $.ajax({
-      type: 'POST',
-      url: '/mysola/s3-presigned-post',
-      data: 'type=' + this.props.type + '&content_type=' + contentType
-    }).error(function (data) {
-      console.log('getPresignedPost error', data)
-    }).success(function (data) {
-      console.log('getPresignedPost success', data.fields, data.url, promise);
-      promise.resolve(data.fields, data.url);
-    });
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: '/mysola/s3-presigned-post',
+  //     data: 'type=' + this.props.type + '&content_type=' + contentType
+  //   }).error(function (data) {
+  //     //console.log('getPresignedPost error', data)
+  //   }).success(function (data) {
+  //     //console.log('getPresignedPost success', data.fields, data.url, promise);
+  //     promise.resolve(data.fields, data.url);
+  //   });
 
-    return promise;
-  },
+  //   return promise;
+  // },
 
   render: function () {
     return (
       <div className="image-dropzone" data-id={this.props.id}>
         <div className={this.imageClasses()}>
-          {this.state.image_name && this.state.uploading ? <div className="spinner-icon" /> : null}
-          {this.state.image_name ? <div className={this.nameClasses()} style={{opacity: this.state.uploading ? 0.33 : 1}}>{this.state.image_name}</div> : null}
-          {this.state.image_url ? <div className="delete-icon" onClick={this.remove} /> : null}
-          <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image_name ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload a photo'}</div></a>
+          {this.state.uploading ? <div className="loading"><div className="spinner"></div></div> : null}
+          {this.state.image_url ? <img src={this.state.image_url} className="dropzone-image" /> : null}
+          {/*this.state.image_name ? <div className={this.nameClasses()} style={{opacity: this.state.uploading ? 0.33 : 1}}>{this.state.image_name}</div> : null*/}
+          {/*this.state.image_url ? <div className="delete-icon" onClick={this.remove} /> : null*/}
+          {this.state.image_url ? null : <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image_name ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload a photo'}</div></a>}
         </div>
       </div>
     );
-  },
-
-  triggerActionClick: function () {
-    console.log('trigger action click');
-    $(this.refs.dropzone).trigger('click');
   },
 
   imageClasses: function () {

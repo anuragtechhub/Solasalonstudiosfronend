@@ -11,6 +11,14 @@ class MySolaImage < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def instagram_image_url
+    image.url(:instagram) if image.present?
+  end
+
+  def as_json(options={})
+    super(:methods => [:instagram_image_url]).merge(options)
+  end
+
   private
 
   def set_approved_at
