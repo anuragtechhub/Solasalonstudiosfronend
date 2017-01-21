@@ -16,7 +16,7 @@ class MySolaController < PublicWebsiteController
     @my_sola_image = MySolaImage.create
     #@my_sola_image.image = params[:file]
 
-    m_image = Magick::Image.read(params[:file].open).first
+    m_image = Magick::Image.read(params[:file].open).first.resize_to_fill!(1080, 1080)
     m_logo = Magick::Image.read(Rails.root.join('app/assets/images/logo_white.png')).first
     m_combined = m_image.composite(m_logo, 860, 940, Magick::OverCompositeOp)
 
