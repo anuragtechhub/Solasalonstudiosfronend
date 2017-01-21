@@ -18,9 +18,9 @@ class MySolaController < PublicWebsiteController
 
     m_image = Magick::Image.read(params[:file].open).first
     m_logo = Magick::Image.read(Rails.root.join('app/assets/images/logo_white.png')).first
-    #m_logo.background_color = 'none'
+    m_combined = m_image.composite(m_logo, 860, 940, Magick::OverCompositeOp)
 
-    @my_sola_image.image = StringIO.open(m_image.composite(m_logo, 860, 940, Magick::OverCompositeOp).to_blob)
+    @my_sola_image.image = StringIO.open(m_combined.to_blob)
     @my_sola_image.save
 
     render :json => @my_sola_image
