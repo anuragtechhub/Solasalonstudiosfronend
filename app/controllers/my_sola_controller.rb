@@ -35,13 +35,12 @@ class MySolaController < PublicWebsiteController
     # I feel [BLANK] in #MySola
     if params[:statement].present? && params[:statement_variant] == 'i_feel'
       p "DOING I FEEL"
-      # MySola is [BLANK]
-      text = Magick::Draw.new
-      m_image.annotate(text, 1080, 100, 0, 300, "I feel") do
-        text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
-        text.gravity = Magick::NorthGravity
-        text.pointsize = 100
-        text.fill = '#ffffff'
+      top_text = Magick::Draw.new
+      m_image.annotate(top_text, 1080, 100, 0, 300, "I feel") do
+        top_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
+        top_text.gravity = Magick::NorthGravity
+        top_text.pointsize = 100
+        top_text.fill = '#ffffff'
       end
       cursive_text = Magick::Draw.new
       cursive_pointsize = get_cursive_pointsize
@@ -51,6 +50,13 @@ class MySolaController < PublicWebsiteController
         cursive_text.pointsize = cursive_pointsize
         cursive_text.fill = '#ffffff'
       end 
+      bottom_text = Magick::Draw.new
+      m_image.annotate(bottom_text, 1080, 100, 0, 800, "in #MySola") do
+        bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
+        bottom_text.gravity = Magick::NorthGravity
+        bottom_text.pointsize = 100
+        bottom_text.fill = '#ffffff'
+      end
     end  
 
     # logo

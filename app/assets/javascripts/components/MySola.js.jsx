@@ -58,7 +58,7 @@ var MySola = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <MySolaImageDropzone ref="image_dropzone" statement={this.state.statement} statement_variant={this.state.statement_variant} />
+          <MySolaImageDropzone ref="image_dropzone" statement={this.state.statement} statement_variant={this.state.statement_variant} onChangeImage={this.onChangeImage} />
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
         </div>
@@ -129,6 +129,10 @@ var MySola = React.createClass({
 
   onBlurInput: function (event) {
     this.setState({focusedInputName: null});
+  },
+
+  onChangeImage: function (image) {
+    this.setState({image: image});
   },
 
   onChangeTextInput: function (event) {
