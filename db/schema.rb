@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120033640) do
+ActiveRecord::Schema.define(version: 20170122210243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -338,6 +338,7 @@ ActiveRecord::Schema.define(version: 20170120033640) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "statement_variant"
   end
 
   create_table "partner_inquiries", force: true do |t|

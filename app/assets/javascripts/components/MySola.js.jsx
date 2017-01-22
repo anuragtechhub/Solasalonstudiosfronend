@@ -2,15 +2,18 @@ var MySola = React.createClass({
 
   getInitialState: function () {
     return {
+      fileUploadOverlay: false,
       focusedInputName: null,
-      handle: '',
-      id: null,
+      instagram_handle: '',
       i_feel: '',
+      image: null,
       mysola_is: '',
       name: '',
       scrollTop: 0,
       sharePopupVisible: false,
-      fileUploadOverlay: false,
+      statement: '',
+      statement_variant: 'mysola_is',
+      typingTimer: null,
     };
   },
 
@@ -55,26 +58,39 @@ var MySola = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <ImageDropzone />
+          <MySolaImageDropzone ref="image_dropzone" statement={this.state.statement} statement_variant={this.state.statement_variant} />
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
         </div>
-        {this.state.scrollTop > 0 ? <div className="back-to-top" onClick={this.onScrollToTop}></div> : null}
+        {this.state.scrollTop > 0 ? <div className="back-to-top" onClick={this.scrollToTop}></div> : null}
       </div>
     );
   },
 
   renderBottomButtons: function () {
-    return (
-      <div className="bottom-buttons">
-        <div className="share-button">
-          <a href="#" className="button block" onClick={this.onToggleSharePopup}>Share</a>
-          <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
+    if (this.state.image && this.state.image.id) {
+      return (
+        <div className="bottom-buttons">
+          <div className="share-button">
+            <a href="#" className="button block" onClick={this.toggleSharePopup}>Share</a>
+            <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
+          </div>
+          <a href={'/mysola/image/' + this.state.image.id + '?statement=' + this.state.statement + '&statement_variant=' + this.state.statement_variant} className="button block">Download</a>
+          <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
         </div>
-        <a href="#" className="button block">Download</a>
-        <div className="start-over"><a href="#" onClick={this.onStartOver}>Start Over</a></div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="bottom-buttons">
+          <div className="share-button">
+            <a href="#" className="button disabled block" onClick={this.shhh}>Share</a>
+            <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
+          </div>
+          <a href="#" className="button disabled block" onClick={this.shhh}>Download</a>
+          <div className="start-over"><a href="#" className="disabled" onClick={this.shhh}>Start Over</a></div>
+        </div>
+      );
+    }
   },
 
   renderHeaderCopy: function () {
@@ -104,9 +120,9 @@ var MySola = React.createClass({
     return (
       <div className="statement-form">
         <h3>Choose a statement below:</h3>
-        <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /></div>
+        <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
         <h3>Or:</h3>
-        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /> in #MySola</div>
+        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> in #MySola</div>
       </div>
     );
   },
@@ -118,14 +134,15 @@ var MySola = React.createClass({
   onChangeTextInput: function (event) {
     var state = this.state;
     state[event.target.name] = event.target.value;
+
     this.setState(state);
   },
 
   onFocusInput: function (event) {
     if (event.target.name == 'mysola_is') {
-      this.setState({i_feel: ''});
+      this.setState({i_feel: '', statement_variant: 'mysola_is', statement: event.target.value});
     } else if (event.target.name == 'i_feel') {
-      this.setState({mysola_is: ''});
+      this.setState({mysola_is: '', statement_variant: 'i_feel', statement: event.target.value});
     }
 
     this.setState({focusedInputName: event.target.name});
@@ -144,7 +161,15 @@ var MySola = React.createClass({
     // }
   },
 
-  onScrollToTop: function (event) {
+  doneTyping: function () {
+    if (this.state.mysola_is) {
+      this.setState({statement: this.state.mysola_is});
+    } else if (this.state.i_feel) {
+      this.setState({statement: this.state.i_feel});
+    }
+  },
+
+  scrollToTop: function (event) {
     if (event && typeof event.preventDefault == 'function') {
       event.preventDefault();
     }
@@ -152,19 +177,29 @@ var MySola = React.createClass({
     $("html, body").animate({scrollTop: 0}, "normal");
   },
 
-  onStartOver: function (event) {
+  shhh: function (event) {
+    event.preventDefault();
+  },
+
+  startOver: function (event) {
     var self = this;
 
     if (event && typeof event.preventDefault == 'function') {
       event.preventDefault();
     }
 
+    this.refs.image_dropzone.reset();
     this.setState(this.getInitialState(), function () {
-      self.onScrollToTop();
+      self.scrollToTop();
     });
   },
 
-  onToggleSharePopup: function (event) {
+  startTypingTimer: function () {
+    clearTimeout(this.state.typingTimer);
+    this.setState({typingTimer: setTimeout(this.doneTyping, 1000)});
+  },
+
+  toggleSharePopup: function (event) {
     var self = this;
 
     event.preventDefault();    
@@ -178,6 +213,6 @@ var MySola = React.createClass({
         self.onHideSocialSharePopup();
       });
     }
-  },
+  },  
 
 });

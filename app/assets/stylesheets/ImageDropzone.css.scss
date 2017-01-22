@@ -21,6 +21,10 @@
     max-width: 350px;
     height: 350px; 
     position: relative;
+
+    &.exists img {
+      z-index: 9;
+    }
   }
 
   a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {

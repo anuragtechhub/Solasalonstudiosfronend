@@ -909,6 +909,7 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :instagram_handle
+      field :statement_variant
       field :statement
       field :image do
         pretty_value do 
@@ -920,6 +921,7 @@ RailsAdmin.config do |config|
     show do
       field :name
       field :instagram_handle
+      field :statement_variant
       field :statement
       field :image do
         pretty_value do 

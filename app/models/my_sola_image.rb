@@ -11,12 +11,16 @@ class MySolaImage < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def as_json(options={})
+    super(:methods => [:instagram_image_url]).merge(options)
+  end
+
   def instagram_image_url
     image.url(:instagram) if image.present?
   end
 
-  def as_json(options={})
-    super(:methods => [:instagram_image_url]).merge(options)
+  def statement_variant_enum
+    [['#MySola is [BLANK]', 'mysola_is'], ['I feel [BLANK] in #MySola', 'i_feel']]
   end
 
   private
