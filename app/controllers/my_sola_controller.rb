@@ -51,7 +51,7 @@ class MySolaController < PublicWebsiteController
 
 
     # @my_sola_image.image = StringIO.open(m_combined.to_blob)
-    # @my_sola_image.save
+    @my_sola_image.save
 
     render :json => @my_sola_image
   end
