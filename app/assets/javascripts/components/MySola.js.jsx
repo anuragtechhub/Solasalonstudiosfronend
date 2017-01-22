@@ -2,9 +2,11 @@ var MySola = React.createClass({
 
   getInitialState: function () {
     return {
+      focusedInputName: null,
       handle: '',
+      id: null,
       i_feel: '',
-      my_sola_is_my: '',
+      mysola_is: '',
       name: '',
       scrollTop: 0,
       sharePopupVisible: false,
@@ -42,8 +44,8 @@ var MySola = React.createClass({
   shareText: function () {
     if (this.state.i_feel) {
       return "I feel " + this.state.i_feel + ' in #MySola';
-    } else if (this.state.my_sola_is_my) {
-      return "#MySola is my " + this.state.my_sola_is_my;
+    } else if (this.state.mysola_is) {
+      return "#MySola is my " + this.state.mysola_is;
     }
   },
 
@@ -88,8 +90,8 @@ var MySola = React.createClass({
   renderNameAndHandleForm: function () {
     return (
       <div className="name-and-handle-form">
-        <input type="text" name="name" placeholder="Please enter your name" value={this.state.name} onChange={this.onChangeTextInput} />
-        <input type="text" name="handle" placeholder="Please enter your Instagram handle" value={this.state.handle} onChange={this.onChangeTextInput} />
+        <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Please enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
+        <input type="text" name="handle" placeholder={this.state.focusedInputName == 'handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInput} onBlur={this.onBlurInput} value={this.state.handle} onChange={this.onChangeTextInput} />
         <div className="next">
           <h3>Next</h3>
           <div className="next-icon"></div>
@@ -102,11 +104,15 @@ var MySola = React.createClass({
     return (
       <div className="statement-form">
         <h3>Choose a statement below:</h3>
-        <div className="madlibs">#MySola is my <input type="text" name="my_sola_is_my" placeholder='Type your "expression" here' maxLength="21" value={this.state.my_sola_is_my} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /></div>
+        <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /></div>
         <h3>Or:</h3>
-        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder='Type your "expression" here' maxLength="21" value={this.state.i_feel} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /> in #MySola</div>
+        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} /> in #MySola</div>
       </div>
     );
+  },
+
+  onBlurInput: function (event) {
+    this.setState({focusedInputName: null});
   },
 
   onChangeTextInput: function (event) {
@@ -115,17 +121,27 @@ var MySola = React.createClass({
     this.setState(state);
   },
 
+  onFocusInput: function (event) {
+    if (event.target.name == 'mysola_is') {
+      this.setState({i_feel: ''});
+    } else if (event.target.name == 'i_feel') {
+      this.setState({mysola_is: ''});
+    }
+
+    this.setState({focusedInputName: event.target.name});
+  },
+
   onHideSocialSharePopup: function () {
     this.setState({sharePopupVisible: false});
     $(window).off('click.share');
   },
 
   onKeyDownMadLibsInput: function (event) {
-    if (event.target.name == 'my_sola_is_my') {
-      this.setState({i_feel: ''});
-    } else if (event.target.name == 'i_feel') {
-      this.setState({my_sola_is_my: ''});
-    }
+    // if (event.target.name == 'mysola_is') {
+    //   this.setState({i_feel: ''});
+    // } else if (event.target.name == 'i_feel') {
+    //   this.setState({mysola_is: ''});
+    // }
   },
 
   onScrollToTop: function (event) {
