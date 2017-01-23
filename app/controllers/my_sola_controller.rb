@@ -28,7 +28,7 @@ class MySolaController < PublicWebsiteController
       cursive_text = Magick::Draw.new
       cursive_pointsize = get_cursive_pointsize
       m_image.annotate(cursive_text, 1080, cursive_pointsize, 0, 450, params[:statement]) do
-        cursive_text.font = "#{Rails.root}/lib/fonts/Pacifico-Regular.ttf"
+        cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
         cursive_text.gravity = Magick::NorthGravity
         cursive_text.pointsize = cursive_pointsize
         cursive_text.fill = '#ffffff'
@@ -47,7 +47,7 @@ class MySolaController < PublicWebsiteController
       cursive_text = Magick::Draw.new
       cursive_pointsize = get_cursive_pointsize
       m_image.annotate(cursive_text, 1080, cursive_pointsize, 0, 450, params[:statement]) do
-        cursive_text.font = "#{Rails.root}/lib/fonts/Pacifico-Regular.ttf"
+        cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
         cursive_text.gravity = Magick::NorthGravity
         cursive_text.pointsize = cursive_pointsize
         cursive_text.fill = '#ffffff'
@@ -80,13 +80,13 @@ class MySolaController < PublicWebsiteController
 
   def get_cursive_pointsize
     if params[:statement] && params[:statement].length > 18
-      100
+      300
     elsif params[:statement] && params[:statement].length > 14 && params[:statement].length <= 18
-      120
+      320
     elsif params[:statement] && params[:statement].length > 11 && params[:statement].length <= 14
-      150
+      350
     else
-      200
+      400
     end
   end
 
