@@ -27,9 +27,9 @@ class MySolaController < PublicWebsiteController
       end
       cursive_text = Magick::Draw.new
       cursive_pointsize = get_cursive_pointsize
-      m_image.annotate(cursive_text, 1080, cursive_pointsize, 0, 450, params[:statement]) do
+      m_image.annotate(cursive_text, 1080, 1080, 0, 0, params[:statement]) do
         cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
-        cursive_text.gravity = Magick::NorthGravity
+        cursive_text.gravity = Magick::CenterGravity
         cursive_text.pointsize = cursive_pointsize
         cursive_text.fill = '#ffffff'
       end 
@@ -46,9 +46,9 @@ class MySolaController < PublicWebsiteController
       end
       cursive_text = Magick::Draw.new
       cursive_pointsize = get_cursive_pointsize
-      m_image.annotate(cursive_text, 1080, cursive_pointsize, 0, 450, params[:statement]) do
+      m_image.annotate(cursive_text, 1080, 1080, 0, 0, params[:statement]) do
         cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
-        cursive_text.gravity = Magick::NorthGravity
+        cursive_text.gravity = Magick::CenterGravity
         cursive_text.pointsize = cursive_pointsize
         cursive_text.fill = '#ffffff'
       end 
