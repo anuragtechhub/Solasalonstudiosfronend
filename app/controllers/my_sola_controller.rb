@@ -9,36 +9,37 @@ class MySolaController < PublicWebsiteController
   end
 
   def image
+    width = params[:width] || 320
+    height = params[:height] || 320
+
     @my_sola_image = MySolaImage.find(params[:id])
     @my_sola_image.statement = params[:statement]
     @my_sola_image.statement_variant = params[:statement_variant]
     @my_sola_image.save
     
-    m_image = Magick::Image.read(@my_sola_image.image.url(:instagram)).first
+    m_image = Magick::Image.read(@my_sola_image.image.url(:original)).first
 
     # #MySola is [BLANK]
     if params[:statement].present? && params[:statement_variant] == 'mysola_is'
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 100, 0, 300, "#MySola is my") do
+      m_image.annotate(text, 1080, 1080, 0, 250, "#MySola is my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
         text.gravity = Magick::NorthGravity
-        text.pointsize = 100
+        text.pointsize = 60
         text.fill = '#ffffff'
       end
       cursive_text = Magick::Draw.new
-      cursive_pointsize = get_cursive_pointsize
-      m_image.annotate(cursive_text, 1080, 1080, 0, 0, params[:statement]) do
-        cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
-        cursive_text.gravity = Magick::CenterGravity
-        cursive_text.pointsize = cursive_pointsize
-        cursive_text.fill = '#ffffff'
-      end 
+      cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
+      cursive_text.gravity = Magick::CenterGravity
+      cursive_text.fill = '#ffffff'
+      cursive_text.pointsize = calculate_cursive_pointsize(m_image, cursive_text, params[:statement])
+      m_image.annotate(cursive_text, 1080, 1080, 0, 0, params[:statement]) 
     end   
 
     # I feel [BLANK] in #MySola
     if params[:statement].present? && params[:statement_variant] == 'i_feel'
       top_text = Magick::Draw.new
-      m_image.annotate(top_text, 1080, 100, 0, 300, "I feel") do
+      m_image.annotate(top_text, 1080, 1080, 0, 300, "I feel") do
         top_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
         top_text.gravity = Magick::NorthGravity
         top_text.pointsize = 100
@@ -53,7 +54,7 @@ class MySolaController < PublicWebsiteController
         cursive_text.fill = '#ffffff'
       end 
       bottom_text = Magick::Draw.new
-      m_image.annotate(bottom_text, 1080, 100, 0, 800, "in #MySola") do
+      m_image.annotate(bottom_text, 1080, 1080, 0, 800, "in #MySola") do
         bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
         bottom_text.gravity = Magick::NorthGravity
         bottom_text.pointsize = 100
@@ -78,15 +79,28 @@ class MySolaController < PublicWebsiteController
 
   private
 
+  def calculate_cursive_pointsize(image, draw, text)
+    pointsize = 820
+    width = 980
+    while width >= 980
+      pointsize = pointsize - 20
+      draw.pointsize = pointsize
+      width = draw.get_type_metrics(image, text)[:width]
+      p "pointsize=#{pointsize}, width=#{width}"
+    end
+    p "returning pointsize #{pointsize}"
+    pointsize
+  end
+
   def get_cursive_pointsize
     if params[:statement] && params[:statement].length > 18
-      300
+      700
     elsif params[:statement] && params[:statement].length > 14 && params[:statement].length <= 18
-      320
+      720
     elsif params[:statement] && params[:statement].length > 11 && params[:statement].length <= 14
-      350
+      750
     else
-      400
+      800
     end
   end
 

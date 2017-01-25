@@ -2,7 +2,7 @@ class MySolaImage < ActiveRecord::Base
 
   before_save :set_approved_at, :if => :was_just_approved
 
-  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :instagram => '1080x1080#' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
+  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
@@ -12,11 +12,15 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:methods => [:instagram_image_url]).merge(options)
+    super(:methods => [:instagram_image_url, :mobile_image_url]).merge(options)
   end
 
   def instagram_image_url
     image.url(:instagram) if image.present?
+  end
+
+  def mobile_image_url
+    image.url(:mobile) if image.present?
   end
 
   def statement_variant_enum
