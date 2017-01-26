@@ -17,23 +17,31 @@ class MySolaController < PublicWebsiteController
     @my_sola_image.statement_variant = params[:statement_variant]
     @my_sola_image.save
     
-    m_image = Magick::Image.read(@my_sola_image.image.url(:original)).first
+    m_image = Magick::Image.read(@my_sola_image.image.url(:original)).first.resize_to_fill!(width, height)
+
+    # blue overlay
+
+    # logo
+    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/logo_white.png')).first
+    m_combined = m_image.composite(m_logo, width - 20, height - 20, Magick::OverCompositeOp)
 
     # #MySola is [BLANK]
     if params[:statement].present? && params[:statement_variant] == 'mysola_is'
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 0, 250, "#MySola is my") do
+      
+      m_image.annotate(text, width, height, 0, 250, "#MySola is my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
         text.gravity = Magick::NorthGravity
         text.pointsize = 60
         text.fill = '#ffffff'
       end
+
       cursive_text = Magick::Draw.new
       cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
       cursive_text.gravity = Magick::CenterGravity
       cursive_text.fill = '#ffffff'
       cursive_text.pointsize = calculate_cursive_pointsize(m_image, cursive_text, params[:statement])
-      m_image.annotate(cursive_text, 1080, 1080, 0, 0, params[:statement]) 
+      m_image.annotate(cursive_text, width, height, 0, 0, params[:statement]) 
     end   
 
     # I feel [BLANK] in #MySola
@@ -61,10 +69,6 @@ class MySolaController < PublicWebsiteController
         bottom_text.fill = '#ffffff'
       end
     end  
-
-    # logo
-    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/logo_white.png')).first
-    m_combined = m_image.composite(m_logo, 860, 940, Magick::OverCompositeOp)
 
     send_data m_combined.to_blob, filename: "mysola.jpg", type: :jpg
   end
