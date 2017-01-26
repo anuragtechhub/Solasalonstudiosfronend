@@ -52,6 +52,12 @@ class MySolaController < PublicWebsiteController
   def generate_image(image, statement, statement_variant)
     m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080)
 
+    # blue overlay
+    blue_overlay = Magick::Draw.new
+    blue_overlay.fill = 'rgba(73, 156, 211, 0.1)'
+    blue_overlay.rectangle(0, 0, 1080, 1080)
+    blue_overlay.draw(m_image)
+
     # #MySola is [BLANK]
     if statement.present? && statement_variant == 'mysola_is'
       text = Magick::Draw.new
