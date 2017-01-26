@@ -58,6 +58,17 @@
 	background: rgba(255, 255, 255, 0.4);
 }
 
+.mysola-carousel.owl-theme .owl-controls .owl-page span{
+	display: block;
+	width: 5px;
+	height: 5px;
+	margin: 5px 3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.4);
+}
+
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span{
 	background: #FFF;
