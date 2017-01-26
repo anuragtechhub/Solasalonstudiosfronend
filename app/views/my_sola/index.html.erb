@@ -1,3 +1,16 @@
+<div class="hero-carousel owl-carousel owl-theme home-all">
+  <div class="item"><%= image_tag 'mysola-hero.jpg' %></div>
+</div>
+
+
+<div class="hero-carousel owl-carousel owl-theme home-mobile">
+  <div class="item"><%= image_tag 'mysola-hero1.jpg' %></div>
+  <div class="item"><%= image_tag 'mysola-hero2.jpg' %></div>
+  <div class="item"><%= image_tag 'mysola-hero3.jpg' %></div>
+  <div class="item"><%= image_tag 'mysola-hero4.jpg' %></div>
+</div>
+
+
 <%= react_component 'MySola', {}, {prerender: true} %>
 
 <% content_for(:title) { "#MySola" } %>
