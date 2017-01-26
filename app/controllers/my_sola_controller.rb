@@ -38,9 +38,9 @@ class MySolaController < PublicWebsiteController
 
   def calculate_cursive_pointsize(image, draw, text)
     pointsize = 820
-    width = 980
+    width = 920
     
-    while width >= 980
+    while width >= 920
       pointsize = pointsize - 20
       draw.pointsize = pointsize
       width = draw.get_type_metrics(image, text)[:width]
@@ -102,9 +102,9 @@ class MySolaController < PublicWebsiteController
       end
     end  
 
-    # logo
-    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/logo_white.png')).first
-    m_combined = m_image.composite(m_logo, 860, 940, Magick::OverCompositeOp)
+    # logo (200 x 119)
+    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
+    m_combined = m_image.composite(m_logo, 855, 935, Magick::OverCompositeOp)
 
     m_combined
   end
