@@ -49,6 +49,8 @@ module Solasalonstudios
 
     config.middleware.use Rack::Deflater
     config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
+
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     
     I18n.config.enforce_available_locales = false
     config.i18n.default_locale = :en
