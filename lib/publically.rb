@@ -6,7 +6,6 @@ module Publically extend ActiveSupport::Concern
 
   def generate_public_id
     str = "#{SecureRandom.urlsafe_base64(3).gsub(/-|_/, '')}#{SecureRandom.hex(3)}".split('').shuffle.join
-    str += Time.now.to_i.to_s
     str
   end
 

@@ -14,7 +14,7 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:methods => [:original_image_url]).merge(options)
+    super(:methods => [:original_image_url, :share_url]).merge(options)
   end
 
   def original_image_url
@@ -23,6 +23,10 @@ class MySolaImage < ActiveRecord::Base
 
   def statement_variant_enum
     [['#MySola is [BLANK]', 'mysola_is'], ['I feel [BLANK] in #MySola', 'i_feel']]
+  end
+
+  def share_url
+    "http://solasalons.com/mysola/#{public_id}"
   end
 
   private

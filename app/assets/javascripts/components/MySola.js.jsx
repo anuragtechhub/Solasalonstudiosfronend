@@ -37,11 +37,25 @@ var MySola = React.createClass({
       showCount: false,
       showLabel: false,
       shareIn: 'popup',
+      shareText: this.shareText(),
+      shareUrl: this.shareUrl(),
     });
+
+    window.getShareText = function () {
+      return self.shareText();
+    };
+
+    window.getShareUrl = function () {
+      return self.shareUrl();
+    };
   },
 
   componentDidUpdate: function () {
-  
+    $(this.refs.social_share_wrapper).jsSocials('refresh');
+  },
+
+  shareUrl: function () {
+    return this.state.image ? this.state.image.share_url : null;
   },
 
   shareText: function () {
@@ -49,6 +63,8 @@ var MySola = React.createClass({
       return "I feel " + this.state.i_feel + ' in #MySola';
     } else if (this.state.mysola_is) {
       return "#MySola is my " + this.state.mysola_is;
+    } else {
+      return '#MySola'
     }
   },
 

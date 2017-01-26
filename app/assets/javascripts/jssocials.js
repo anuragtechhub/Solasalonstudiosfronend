@@ -200,6 +200,11 @@
 
         _getShareUrl: function(share) {
             var shareUrl = getOrApply(share.shareUrl, share);
+
+            if (window.getShareUrl) {
+                share.url = window.getShareUrl();
+            }
+
             return this._formatShareUrl(shareUrl, share);
         },
 
@@ -280,7 +285,11 @@
 
         _formatShareUrl: function(url, share) {
             return url.replace(URL_PARAMS_REGEX, function(match, key, field) {
-                var value = share[field] || "";
+                if (field == 'text' && window.getShareText) {
+                    var value = window.getShareText();
+                } else {
+                    var value = share[field] || "";
+                }
                 return value ? (key || "") + window.encodeURIComponent(value) : "";
             });
         },
