@@ -22,7 +22,7 @@ var MySolaImageDropzone = React.createClass({
           autoProcessQueue: false,
           clickable: ['.action', '.action-camera-and-text'],
           uploadMethod: 'PUT',
-          url: 'mysola/image-upload',
+          url: 'mysola-image-upload',
           addedfile: (file) => {
             //shhh...
           },
@@ -72,7 +72,7 @@ var MySolaImageDropzone = React.createClass({
   },
 
   getImageSource: function () {
-    return '/mysola/image-preview/' + this.state.image.public_id + '?statement=' + this.props.statement + '&statement_variant=' + this.props.statement_variant + '&instagram_handle=' + this.props.instagram_handle + '&name=' + this.props.name;
+    return '/mysola-image-preview/' + this.state.image.public_id + '?statement=' + this.props.statement + '&statement_variant=' + this.props.statement_variant + '&instagram_handle=' + this.props.instagram_handle + '&name=' + this.props.name;
   },
 
   classNames: function () {
