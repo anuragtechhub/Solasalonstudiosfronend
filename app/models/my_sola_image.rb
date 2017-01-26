@@ -1,5 +1,7 @@
 class MySolaImage < ActiveRecord::Base
 
+  include Publically
+
   before_save :set_approved_at, :if => :was_just_approved
 
   has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
@@ -12,15 +14,11 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:methods => [:instagram_image_url, :mobile_image_url]).merge(options)
+    super(:methods => [:original_image_url]).merge(options)
   end
 
-  def instagram_image_url
-    image.url(:instagram) if image.present?
-  end
-
-  def mobile_image_url
-    image.url(:mobile) if image.present?
+  def original_image_url
+    image.url(:original) if image.present?
   end
 
   def statement_variant_enum

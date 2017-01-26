@@ -8,15 +8,18 @@ class MySolaController < PublicWebsiteController
     
   end
 
-  def image
-    width = params[:width] || 320
-    height = params[:height] || 320
-
+  def image_preview
+    # update and save MySolaImage with statement, variant, etc
     @my_sola_image = MySolaImage.find(params[:id])
+    @my_sola_image.name = params[:name]
+    @my_sola_image.instagram_handle = params[:instagram_handle]
     @my_sola_image.statement = params[:statement]
     @my_sola_image.statement_variant = params[:statement_variant]
     @my_sola_image.save
     
+    width = params[:width] || 320
+    height = params[:height] || 320
+
     m_image = Magick::Image.read(@my_sola_image.image.url(:original)).first.resize_to_fill!(1080, 1080)
 
     # #MySola is [BLANK]
