@@ -91,7 +91,7 @@ var MySola = React.createClass({
             <a href="#" className="button block" onClick={this.toggleSharePopup}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
-          <a href={'/mysola/image/' + this.state.image.id + '?statement=' + this.state.statement + '&statement_variant=' + this.state.statement_variant} className="button block">Download</a>
+          <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download</a>
           <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
         </div>
       );
@@ -123,7 +123,7 @@ var MySola = React.createClass({
     return (
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Please enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
-        <input type="text" name="handle" placeholder={this.state.focusedInputName == 'handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInput} onBlur={this.onBlurInput} value={this.state.handle} onChange={this.onChangeTextInput} />
+        <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
         <div className="next">
           <h3>Next</h3>
           <div className="next-icon"></div>

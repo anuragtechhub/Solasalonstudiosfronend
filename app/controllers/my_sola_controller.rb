@@ -15,13 +15,14 @@ class MySolaController < PublicWebsiteController
   def image_preview
     # update and save MySolaImage with statement, variant, etc
     @my_sola_image = MySolaImage.find_by(:public_id => params[:id]) || MySolaImage.new
-    @my_sola_image.name = params[:name]
-    @my_sola_image.instagram_handle = params[:instagram_handle]
-    @my_sola_image.statement = params[:statement]
-    @my_sola_image.statement_variant = params[:statement_variant]
-    @my_sola_image.save
+    @my_sola_image.name = params[:name] if params[:name].present?
+    @my_sola_image.instagram_handle = params[:instagram_handle] if params[:instagram_handle].present?
+    @my_sola_image.statement_variant = params[:statement_variant] if params[:statement_variant].present?
+    @my_sola_image.statement = params[:statement] if (params[:statement].present? || @my_sola_image.statement_variant_changed?)
     
-    image = generate_image(@my_sola_image.image, params[:statement], params[:statement_variant])
+    @my_sola_image.save if @my_sola_image.changed?
+    
+    image = generate_image(@my_sola_image.image, @my_sola_image.statement, @my_sola_image.statement_variant)
 
     send_data image.to_blob, filename: "mysola.jpg", type: :jpg
   end

@@ -21,12 +21,20 @@ class MySolaImage < ActiveRecord::Base
     image.url(:original) if image.present?
   end
 
-  def statement_variant_enum
-    [['#MySola is [BLANK]', 'mysola_is'], ['I feel [BLANK] in #MySola', 'i_feel']]
+  def share_url
+    "solasalons.com/mysola/#{public_id}"
   end
 
-  def share_url
-    "http://solasalons.com/mysola/#{public_id}"
+  def statement_text
+    if statement_variant == 'mysola_is'
+      "#MySola is my #{statement}"
+    elsif statement_variant == 'i_feel'
+      "I feel #{statement} in #MySola"
+    end
+  end
+
+  def statement_variant_enum
+    [['#MySola is my [BLANK]', 'mysola_is'], ['I feel [BLANK] in #MySola', 'i_feel']]
   end
 
   private
