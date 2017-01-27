@@ -51,6 +51,7 @@ class MySolaController < PublicWebsiteController
   end
 
   def generate_image(image, statement, statement_variant)
+    p "generate image"
     m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080)
 
     # blue overlay
@@ -61,11 +62,13 @@ class MySolaController < PublicWebsiteController
 
     # #MySola is [BLANK]
     if statement.present? && statement_variant == 'mysola_is'
+      p "#MySola is BlANK"
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 0, 250, "#MySola is my") do
+      m_image.annotate(text, 1080, 1080 - 350, 0, 350, "#MySola is my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
         text.gravity = Magick::NorthGravity
-        text.pointsize = 60
+        text.pointsize = 70
+        text.kerning = 2
         text.fill = '#ffffff'
       end
       
@@ -74,11 +77,12 @@ class MySolaController < PublicWebsiteController
       cursive_text.gravity = Magick::CenterGravity
       cursive_text.fill = '#ffffff'
       cursive_text.pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
-      m_image.annotate(cursive_text, 1080, 1080, 0, 0, statement) 
+      m_image.annotate(cursive_text, 1080, 1080 - 160, 0, 160, statement) 
     end   
 
     # I feel [BLANK] in #MySola
     if statement.present? && statement_variant == 'i_feel'
+      p "I feel BlANK"
       top_text = Magick::Draw.new
       m_image.annotate(top_text, 1080, 1080, 0, 300, "I feel") do
         top_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
