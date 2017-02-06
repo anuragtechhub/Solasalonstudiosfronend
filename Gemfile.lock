@@ -292,7 +292,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin (= 0.6.5)
   rails_admin_example_theme!
-  react-rails (~> 1.6.0)
+  react-rails (~> 1.6.1)
   recaptcha
   rmagick
   sass-rails (~> 4.0.2)
