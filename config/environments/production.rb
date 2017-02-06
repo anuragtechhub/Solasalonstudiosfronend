@@ -1,5 +1,3 @@
-React::ServerRendering::SprocketsRenderer.asset_container_class = React::ServerRendering::SprocketsRenderer::EnvironmentContainer
-
 Solasalonstudios::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -26,7 +24,7 @@ Solasalonstudios::Application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  config.assets.compile = true
+  config.assets.compile = false
   config.serve_static_assets = true
   config.assets.digest = true
   config.assets.enabled = true
