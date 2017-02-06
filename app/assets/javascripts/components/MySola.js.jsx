@@ -55,6 +55,7 @@ var MySola = React.createClass({
   },
 
   shareUrl: function () {
+    console.log('shareUrl', this.state.image ? this.state.image.share_url : null)
     return this.state.image ? this.state.image.share_url : null;
   },
 

@@ -22,7 +22,7 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def share_url
-    "solasalons.com/mysola/#{public_id}"
+    "http://solasalons.com/mysola/#{public_id}"
   end
 
   def statement_text
