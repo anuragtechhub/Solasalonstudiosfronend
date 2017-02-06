@@ -27,4 +27,14 @@ class ApplicationController < ActionController::Base
     end      
   end
 
+  def self.get_asset(name)
+    if Rails.application.assets
+      asse = Rails.application.assets[name]
+      return asse.to_s if asse 
+    end
+    asse = Rails.application.assets_manifest.assets[name]
+    return nil unless asse
+    return File.binread(File.join(Rails.application.assets_manifest.dir, asse))
+  end
+
 end
