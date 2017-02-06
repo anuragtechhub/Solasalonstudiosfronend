@@ -1,3 +1,5 @@
+React::ServerRendering::SprocketsRenderer.asset_container_class = React::ServerRendering::SprocketsRenderer::EnvironmentContainer
+
 Solasalonstudios::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 

@@ -39,7 +39,7 @@ var MySolaImageDropzone = React.createClass({
             //shhh...
           },
           success: (file, response) => {
-            console.log('SUCCESS1', file, response);
+            //console.log('SUCCESS1', file, response);
 
             self.setState({image: response});
           }           
