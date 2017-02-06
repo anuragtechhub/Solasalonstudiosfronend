@@ -943,6 +943,24 @@ RailsAdmin.config do |config|
   config.model 'RequestTourInquiry' do
     label 'Contact Inquiry'
     label_plural 'Contact Inquiries'
+    fields = proc do
+      field :location
+      include_all_fields
+    end
+    #export &fields
+    export do
+      field :location_name do
+        label 'Location'
+      end
+      field :name
+      field :email
+      field :phone
+      field :message
+      field :request_url do
+        label 'Request URL'
+      end
+      field :created_at
+    end
   end
 
   config.model 'Stylist' do

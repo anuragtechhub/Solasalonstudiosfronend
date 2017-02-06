@@ -3,6 +3,10 @@ class RequestTourInquiry < ActiveRecord::Base
   belongs_to :visit
   after_create :send_notification_email
 
+  def location_name
+    location.display_name if location
+  end
+
   private
 
   def send_notification_email
