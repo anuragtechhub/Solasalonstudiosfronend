@@ -87,7 +87,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'kaminari'
 
 gem 'execjs'
-#gem 'sprockets-commonjs', github: 'maccman/sprockets-commonjs'
+gem 'sprockets-commonjs', github: 'maccman/sprockets-commonjs'
 gem 'react-rails'#, '~> 1.6.0'#, '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'flux-rails', github: 'KurtRMueller/flux-rails'
 gem "therubyracer"
