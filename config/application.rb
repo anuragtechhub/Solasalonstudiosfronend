@@ -59,7 +59,7 @@ module Solasalonstudios
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
     
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'lib')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)  
     config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
     config.assets.precompile += ['digital_directory.css', 'digital_directory.js', 'fullscreen_hero.js', 'ckeditor/*']
