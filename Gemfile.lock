@@ -227,7 +227,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.1)
-    react-rails (1.6.2)
+    react-rails (1.7.2)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -314,7 +314,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin (= 0.6.5)
   rails_admin_example_theme!
-  react-rails
+  react-rails (~> 1.7.1)
   recaptcha
   rmagick
   sass-rails (~> 4.0.2)
