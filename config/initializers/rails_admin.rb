@@ -905,6 +905,7 @@ RailsAdmin.config do |config|
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
         end
       end
+      field :share_url
       field :approved
     end
     edit do
@@ -929,6 +930,7 @@ RailsAdmin.config do |config|
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
         end
       end
+      field :share_url
       field :approved
       field :approved_at
       field :created_at
