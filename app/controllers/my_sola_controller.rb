@@ -1,7 +1,7 @@
 class MySolaController < PublicWebsiteController
   
   require 'RMagick'
-  require 'FileUtils'
+  #require 'FileUtils'
 
   skip_before_filter :verify_authenticity_token
 
@@ -29,12 +29,13 @@ class MySolaController < PublicWebsiteController
       # generated_image_file = File.open("mysola#{@my_sola_image.id}.jpg", 'wb') do |file|
       #   file.write generated_image.to_blob
       # end
-      generated_image.write("mysola#{@my_sola_image.id}.jpg")
+      generated_image_file = Tempfile.new("mysola#{@my_sola_image.id}")
+      generated_image.write(generated_image_file.path)
       #p "generated_image_file!!!"
-      @my_sola_image.generated_image = File.open("mysola#{@my_sola_image.id}.jpg")
+      @my_sola_image.generated_image = generated_image_file#File.open("mysola#{@my_sola_image.id}.jpg")
       @my_sola_image.save
       #p "finished saving image to my_sola_image" 
-      FileUtils.rm("mysola#{@my_sola_image.id}.jpg")
+      #FileUtils.rm("mysola#{@my_sola_image.id}.jpg")
       #p "finished removing mysolaimage"
     end
     
