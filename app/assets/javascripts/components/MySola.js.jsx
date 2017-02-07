@@ -124,7 +124,7 @@ var MySola = React.createClass({
     return (
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Please enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
-        <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
+        <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInstagramInput} onKeyDown={this.onKeyDownInstagramInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
         <div className="next">
           <h3>Next</h3>
           <div className="next-icon"></div>
@@ -169,9 +169,25 @@ var MySola = React.createClass({
     this.setState({focusedInputName: event.target.name});
   },
 
+  onFocusInstagramInput: function () {
+    if (this.state.instagram_handle == '') {
+      this.setState({instagram_handle: '@', focusedInputName: event.target.name});
+    } else {
+      this.setState({focusedInputName: event.target.name});
+    }
+  },
+
   onHideSocialSharePopup: function () {
     this.setState({sharePopupVisible: false});
     $(window).off('click.share');
+  },
+
+  onKeyDownInstagramInput: function (event) {
+    if (event.target.value.startsWith('@')) {
+      //all good
+    } else {
+      this.setState({instagram_handle: '@' + event.target.value});
+    }
   },
 
   onKeyDownMadLibsInput: function (event) {
