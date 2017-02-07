@@ -1,5 +1,8 @@
-<div class="hero-carousel owl-carousel owl-theme home-all mysola-carousel">
-  <div class="item"><%= image_tag 'mysola-hero.jpg' %></div>
+<div class="hero-carousel owl-carousel owl-theme home-all mysola-carousel" data-items="4">
+  <div class="item" style="display:none"><%= image_tag 'MySola/Hero1.jpg' %></div>
+  <div class="item" style="display:none"><%= image_tag 'MySola/Hero2.jpg' %></div>
+  <div class="item" style="display:none"><%= image_tag 'MySola/Hero3.jpg' %></div>
+  <div class="item" style="display:none"><%= image_tag 'MySola/Hero4.jpg' %></div>
 </div>
 
 
@@ -10,7 +13,8 @@
   <div class="item" style="display:none"><%= image_tag 'mysola-hero4.jpg' %></div>
 </div>
 
-
-<%= react_component 'MySola', {}, {prerender: true} %>
+<div style="min-height: 60px">
+  <%= react_component 'MySola' %>
+</div>
 
 <% content_for(:title) { "#MySola" } %>
