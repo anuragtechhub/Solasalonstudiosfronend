@@ -899,10 +899,10 @@ RailsAdmin.config do |config|
     list do 
       field :name
       field :instagram_handle
-      field :statement_text
-      field :image do
+      #field :statement_text
+      field :generated_image do
         pretty_value do 
-          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :share_url
@@ -915,9 +915,14 @@ RailsAdmin.config do |config|
       field :statement_variant
       field :image do
         pretty_value do 
-          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
+      field :generated_image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end 
       field :approved
     end
     show do
@@ -927,7 +932,12 @@ RailsAdmin.config do |config|
       field :statement_variant
       field :image do
         pretty_value do 
-          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto' />".html_safe if value.present?
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end
+      field :generated_image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :share_url

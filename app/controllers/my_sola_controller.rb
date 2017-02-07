@@ -24,16 +24,18 @@ class MySolaController < PublicWebsiteController
     generated_image = generate_image(@my_sola_image.image, @my_sola_image.statement, @my_sola_image.statement_variant)
 
     if @my_sola_image.changed?
-      p "WE CHANGED!!!"
-      generated_image_file = File.open("mysola#{@my_sola_image.id}.jpg", 'wb') do |file|
-        file.write generated_image.to_blob
-      end
-      p "generated_image_file!!!"
-      @my_sola_image.generated_image = generated_image_file
+      #flat_image = Magick::ImageList.new(generated_image).flatten_images
+      #p "WE CHANGED!!!"
+      # generated_image_file = File.open("mysola#{@my_sola_image.id}.jpg", 'wb') do |file|
+      #   file.write generated_image.to_blob
+      # end
+      generated_image.write("mysola#{@my_sola_image.id}.jpg")
+      #p "generated_image_file!!!"
+      @my_sola_image.generated_image = File.open("mysola#{@my_sola_image.id}.jpg")
       @my_sola_image.save
-      p "finished saving image to my_sola_image" 
+      #p "finished saving image to my_sola_image" 
       FileUtils.rm("mysola#{@my_sola_image.id}.jpg")
-      p "finished removing mysolaimage"
+      #p "finished removing mysolaimage"
     end
     
     send_data generated_image.to_blob, filename: "mysola.jpg", type: :jpg
@@ -63,7 +65,7 @@ class MySolaController < PublicWebsiteController
   end
 
   def generate_image(image, statement, statement_variant)
-    p "generate image"
+    #p "generate image"
     m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080)
 
     # blue overlay
@@ -74,7 +76,7 @@ class MySolaController < PublicWebsiteController
 
     # #MySola is [BLANK]
     if statement.present? && statement_variant == 'mysola_is'
-      p "#MySola is BlANK"
+      #p "#MySola is BlANK"
       text = Magick::Draw.new
       m_image.annotate(text, 1080, 1080 - 350, 0, 350, "#MySola is my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
@@ -94,7 +96,7 @@ class MySolaController < PublicWebsiteController
 
     # I feel [BLANK] in #MySola
     if statement.present? && statement_variant == 'i_feel'
-      p "I feel BlANK"
+      #p "I feel BlANK"
       top_text = Magick::Draw.new
       m_image.annotate(top_text, 1080, 1080, 0, 300, "I feel") do
         top_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
