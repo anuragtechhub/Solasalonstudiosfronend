@@ -145,7 +145,11 @@ var MySola = React.createClass({
   },
 
   onBlurInput: function (event) {
-    this.setState({focusedInputName: null});
+    if (event.target.name == 'instagram_handle' && this.state.instagram_handle == '@') {
+      this.setState({focusedInputName: null, instagram_handle: ''});
+    } else {
+      this.setState({focusedInputName: null});
+    }
   },
 
   onChangeImage: function (image) {
