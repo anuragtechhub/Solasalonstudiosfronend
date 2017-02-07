@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126173329) do
+ActiveRecord::Schema.define(version: 20170207001809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -330,7 +330,7 @@ ActiveRecord::Schema.define(version: 20170126173329) do
     t.string   "name"
     t.string   "instagram_handle"
     t.text     "statement"
-    t.boolean  "approved",           default: false
+    t.boolean  "approved",                     default: false
     t.datetime "approved_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -340,6 +340,10 @@ ActiveRecord::Schema.define(version: 20170126173329) do
     t.datetime "updated_at"
     t.string   "statement_variant"
     t.string   "public_id"
+    t.string   "generated_image_file_name"
+    t.string   "generated_image_content_type"
+    t.integer  "generated_image_file_size"
+    t.datetime "generated_image_updated_at"
   end
 
   create_table "partner_inquiries", force: true do |t|

@@ -1,6 +1,7 @@
 class MySolaController < PublicWebsiteController
   
   require 'RMagick'
+  require 'tempfile'
 
   skip_before_filter :verify_authenticity_token
 
@@ -20,11 +21,17 @@ class MySolaController < PublicWebsiteController
     @my_sola_image.statement_variant = params[:statement_variant] if params[:statement_variant].present?
     @my_sola_image.statement = params[:statement] if (params[:statement].present? || @my_sola_image.statement_variant_changed?)
     
-    @my_sola_image.save if @my_sola_image.changed?
-    
-    image = generate_image(@my_sola_image.image, @my_sola_image.statement, @my_sola_image.statement_variant)
+    generated_image = generate_image(@my_sola_image.image, @my_sola_image.statement, @my_sola_image.statement_variant)
 
-    send_data image.to_blob, filename: "mysola.jpg", type: :jpg
+    if @my_sola_image.changed?
+      generated_image_file = File.open("mysola#{@my_sola_image.id}|#{DateTime.now}.jpg", 'wb') do |file|
+        file.write generated_image.to_blob
+      end
+      @my_sola_image.generated_image = generated_image_file
+      @my_sola_image.save 
+    end
+    
+    send_data generated_image.to_blob, filename: "mysola.jpg", type: :jpg
   end
 
   def image_upload
