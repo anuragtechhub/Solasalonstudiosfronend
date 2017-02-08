@@ -21,7 +21,11 @@ namespace :umsw do
 
   task :orient => :environment do
     UpdateMySolaWebsite.where('approved = ?', false).each do |umsw|
-      umsw.force_orient
+      begin
+        umsw.force_orient
+      rescue => e
+        p "error #{e.inspect}"
+      end
     end
   end
 
