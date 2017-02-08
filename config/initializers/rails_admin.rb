@@ -1819,111 +1819,111 @@ RailsAdmin.config do |config|
         end
       end
       group :images do
-        field :image_1_url do 
+        field :image_1 do 
           label 'Image #1'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_2_url do 
+        field :image_2 do 
           label 'Image #2'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_3_url do 
+        field :image_3 do 
           label 'Image #3'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_4_url do 
+        field :image_4 do 
           label 'Image #4'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_5_url do 
+        field :image_5 do 
           label 'Image #5'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_6_url do 
+        field :image_6 do 
           label 'Image #6'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_7_url do 
+        field :image_7 do 
           label 'Image #7'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_8_url do 
+        field :image_8 do 
           label 'Image #8'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_9_url do 
+        field :image_9 do 
           label 'Image #9'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
         end
-        field :image_10_url do 
+        field :image_10 do 
           label 'Image #10'
           help ' '
           render do
             if value && value.present?
-              "<a href='#{value}' target='_blank'><img src='#{value}' style='max-width:100%;height:auto;' /></a>".html_safe
+              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
