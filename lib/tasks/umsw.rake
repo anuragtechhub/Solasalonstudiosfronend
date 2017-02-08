@@ -19,6 +19,12 @@ namespace :umsw do
     umsw_reminder(Date.today() - 12.days)
   end
 
+  task :orient => :environment do
+    UpdateMySolaWebsite.where('approved = ?', false).each do |umsw|
+      umsw.force_orient
+    end
+  end
+
   private
 
   def umsw_reminder(time_frame=nil)
