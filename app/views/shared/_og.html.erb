@@ -4,7 +4,11 @@
   <meta property="og:title" content="<%= yield(:title).html_safe %>" />
 <% end %> 
 
-<meta property="og:type" content="website" />
+<% if defined?(@hide_og_type) && @hide_og_type == true %>
+  <!-- no og type -->
+<% else %>
+  <meta property="og:type" content="website" />
+<% end %>
 
 <meta property="og:url" content="<%= request.original_url %>" />
 
