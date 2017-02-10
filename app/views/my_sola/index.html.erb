@@ -14,7 +14,8 @@
 </div>
 
 <div style="min-height: 60px">
-  <%= react_component 'MySola', {:approved_images => @approved_images} %>
+  <%= react_component 'MySola' %>
+  <%= react_component 'MySolaGallery', {:images => @approved_images} %>
 </div>
 
 <% content_for(:title) { "#MySola" } %>

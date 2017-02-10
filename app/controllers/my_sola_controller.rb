@@ -6,7 +6,7 @@ class MySolaController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @approved_images = MySolaImage.where(:approved => true)
+    @approved_images = MySolaImage.where(:approved => true).to_a.shuffle
   end
 
   def show
@@ -83,18 +83,21 @@ class MySolaController < PublicWebsiteController
       cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
       cursive_text.gravity = Magick::CenterGravity
       cursive_text.fill = '#ffffff'
-      cursive_text.pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
-      m_image.annotate(cursive_text, 1080, 1080 - 160, 0, 160, statement) 
+      cursive_text_pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
+      cursive_text.pointsize = cursive_text_pointsize
+      m_image.annotate(cursive_text, 1080, (1080 - 160), 0, 160, statement) 
 
       cursive_text_metrics = cursive_text.get_type_metrics(m_image, statement)
       ascent = cursive_text_metrics[:ascent]
+      descent = cursive_text_metrics[:descent]
       height = cursive_text_metrics[:height]
-      calculated_height = height + 160
-      #p "height=#{height}, ascent=#{ascent}, calculated_height=#{calculated_height}"
+      calculated_height = height + descent# + 160
+      y_value = -(ascent - (statement =~ /[A-Z]/ ? 50 : 150)) / 2
+      #p "height=#{height}, ascent=#{ascent}, descent=#{descent} calculated_height=#{calculated_height}, cursive_text_pointsize=#{cursive_text_pointsize}, #{y_value}"
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 0, 1080 - calculated_height - 70, "#MySola is my") do
+      m_image.annotate(text, 1080, 1080, 0, y_value, "#MySola is my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
-        text.gravity = Magick::NorthGravity
+        text.gravity = Magick::CenterGravity
         text.pointsize = 70
         text.kerning = 2
         text.fill = '#ffffff'
