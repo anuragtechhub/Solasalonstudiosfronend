@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.my-sola-image-gallery {
+  .image-wrapper {
+    width: 25%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  } 
+}
