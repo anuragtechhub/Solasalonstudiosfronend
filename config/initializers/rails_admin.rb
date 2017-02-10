@@ -909,6 +909,7 @@ RailsAdmin.config do |config|
       field :approved
     end
     edit do
+      field :approved
       field :name
       field :instagram_handle
       field :statement
@@ -923,7 +924,6 @@ RailsAdmin.config do |config|
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end 
-      field :approved
     end
     show do
       field :name
