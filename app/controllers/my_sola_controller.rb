@@ -6,7 +6,7 @@ class MySolaController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def index
-    
+    @approved_images = MySolaImage.where(:approved => true)
   end
 
   def show
