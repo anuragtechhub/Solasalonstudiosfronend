@@ -78,14 +78,6 @@ class MySolaController < PublicWebsiteController
     # #MySola is [BLANK]
     if statement.present? && statement_variant == 'mysola_is'
       #p "#MySola is BlANK"
-      text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080 - 350, 0, 350, "#MySola is my") do
-        text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
-        text.gravity = Magick::NorthGravity
-        text.pointsize = 70
-        text.kerning = 2
-        text.fill = '#ffffff'
-      end
       
       cursive_text = Magick::Draw.new
       cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
@@ -93,6 +85,20 @@ class MySolaController < PublicWebsiteController
       cursive_text.fill = '#ffffff'
       cursive_text.pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
       m_image.annotate(cursive_text, 1080, 1080 - 160, 0, 160, statement) 
+
+      cursive_text_metrics = cursive_text.get_type_metrics(m_image, statement)
+      ascent = cursive_text_metrics[:ascent]
+      height = cursive_text_metrics[:height]
+      calculated_height = height + 160
+      #p "height=#{height}, ascent=#{ascent}, calculated_height=#{calculated_height}"
+      text = Magick::Draw.new
+      m_image.annotate(text, 1080, 1080, 0, 1080 - calculated_height - 70, "#MySola is my") do
+        text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
+        text.gravity = Magick::NorthGravity
+        text.pointsize = 70
+        text.kerning = 2
+        text.fill = '#ffffff'
+      end      
     end   
 
     # I feel [BLANK] in #MySola
@@ -100,7 +106,7 @@ class MySolaController < PublicWebsiteController
       #p "I feel BlANK"
       top_text = Magick::Draw.new
       m_image.annotate(top_text, 1080, 1080, 0, 300, "I feel") do
-        top_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
+        top_text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
         top_text.gravity = Magick::NorthGravity
         top_text.pointsize = 70
         top_text.kerning = 2
@@ -116,7 +122,7 @@ class MySolaController < PublicWebsiteController
       
       bottom_text = Magick::Draw.new
       m_image.annotate(bottom_text, 1080, 1080, 0, 760, "in #MySola") do
-        bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Regular.ttf"
+        bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
         bottom_text.gravity = Magick::NorthGravity
         bottom_text.pointsize = 70
         bottom_text.kerning = 2
