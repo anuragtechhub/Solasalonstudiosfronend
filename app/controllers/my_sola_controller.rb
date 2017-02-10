@@ -6,7 +6,12 @@ class MySolaController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @approved_images = MySolaImage.where(:approved => true).to_a.shuffle
+    last_approved_my_sola_image = MySolaImage.where(:approved => true).select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/my-sola/approved-images?last_approved_at=#{last_approved_my_sola_image.updated_at}"
+
+    @approved_images = Rails.cache.fetch(cache_key) do   
+      MySolaImage.where(:approved => true).to_a.to_json
+    end
   end
 
   def show
