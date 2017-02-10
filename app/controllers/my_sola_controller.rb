@@ -67,7 +67,7 @@ class MySolaController < PublicWebsiteController
 
   def generate_image(image, statement, statement_variant)
     #p "generate image"
-    m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080)
+    m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080).auto_orient
 
     # blue overlay
     blue_overlay = Magick::Draw.new
