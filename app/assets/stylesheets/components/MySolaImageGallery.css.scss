@@ -1,13 +1,63 @@
 @import 'variables';
-@import 'bootstrap/mixins';
+@import 'mixins';
 
 .my-sola-image-gallery {
   .image-wrapper {
+    position: relative;
+    display: block;
+    float: left;
     width: 25%;
+    line-height: 0;
 
     img {
       width: 100%;
       height: auto;
     }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      @include background-gradient(rgba(73, 156, 211, 0.75), rgba(206, 10, 132, 0.75));
+
+      .handle {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        margin-top: -7px;
+        font-family: 'Lato', sans-serif;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: bold;
+        color: #FFFFFF;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+    }
   } 
+
+  .load-more-wrapper {
+    margin: 40px auto 30px auto;
+  }
+}
+
+@media (max-width: 840px) {
+  .my-sola-image-gallery {
+    .image-wrapper {
+      width: 50%;
+
+      .overlay {
+        .handle {
+          margin-top: -6px;
+          font-size: 12px;
+          line-height: 12px;
+          letter-spacing: 3px;
+        }
+      }
+    }
+  }
 }
