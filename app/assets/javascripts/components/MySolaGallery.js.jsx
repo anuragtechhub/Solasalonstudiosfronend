@@ -17,6 +17,16 @@ var MySolaGallery = React.createClass({
 
   render: function () {
     console.log('images.length', this.state.images.length, 'total_pages', this.state.total_pages);
+
+    return (
+      <div className="my-sola-image-gallery">
+        {this.renderImages()}
+        {this.renderLoadMore()}
+      </div>
+    )
+  },
+
+  renderImages: function () {
     var current_page_of_images = this.state.images.slice(this.state.current_page * this.state.results_per_page, (this.state.current_page * this.state.results_per_page) + this.state.results_per_page);
     var images = current_page_of_images.map(function (image) {
       return (
@@ -27,10 +37,16 @@ var MySolaGallery = React.createClass({
     });
 
     return (
-      <div className="my-sola-image-gallery">
-        {images}
+      <div className="images-wrapper">{images}</div>
+    );
+  },
+
+  renderLoadMore: function () {
+    return (
+      <div className="text-center load-more-wrapper">
+        <button type="button" className="button">LOAD MORE</button>
       </div>
-    )
+    );
   },
 
   shuffle: function (array) {
