@@ -4,7 +4,7 @@ class MySolaImage < ActiveRecord::Base
 
   before_save :set_approved_at, :if => :was_just_approved
 
-  has_attached_file :image, :source_file_options => {:all => '-auto-orient'}
+  has_attached_file :image, :styles => { :original => '1080x>' }, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
