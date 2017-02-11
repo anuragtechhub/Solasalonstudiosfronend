@@ -897,6 +897,7 @@ RailsAdmin.config do |config|
       bindings[:controller]._current_user.franchisee != true
     end
     list do 
+      scopes [:completed]
       field :name
       field :instagram_handle
       #field :statement_text
