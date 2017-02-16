@@ -21,4 +21,8 @@ class HomeController < PublicWebsiteController
     render '/home/google575b4ff16cfb013a.html', :layout => false
   end
 
+  def bing_verification
+    render '/home/BingSiteAuth.xml', :layout => false, :content_type => 'text/xml'
+  end
+
 end
