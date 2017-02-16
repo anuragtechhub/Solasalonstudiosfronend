@@ -13,4 +13,8 @@ class HomeController < PublicWebsiteController
     render :layout => 'fullscreen'
   end
 
+  def robots
+    render '/home/robots.txt', layout: false, content_type: 'text/plain'
+  end
+
 end

@@ -6,6 +6,8 @@ Solasalonstudios::Application.routes.draw do
   get 'new-cms' => 'home#new_cms'
   root 'home#index'
 
+  get 'robots.txt' => 'home#robots'
+
   get '5000' => 'home#sola_5000', :as => :sola_5000
 
   get "about-us" => 'about_us#index', :as => :about_us
