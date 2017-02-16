@@ -17,4 +17,8 @@ class HomeController < PublicWebsiteController
     render '/home/robots.txt', layout: false, content_type: 'text/plain'
   end
 
+  def google_verification
+    render '/home/google575b4ff16cfb013a.html', :layout => false
+  end
+
 end
