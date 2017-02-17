@@ -78,8 +78,8 @@ class Blog < ActiveRecord::Base
     "/blog/#{url_name}"
   end
 
-  def canonical_url
-    "https://www.solasalonstudios.com/blog/#{url_name}"
+  def canonical_url(locale=:en)
+    "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/blog/#{url_name}"
   end
 
   private

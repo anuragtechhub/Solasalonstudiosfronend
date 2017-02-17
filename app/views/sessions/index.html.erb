@@ -134,3 +134,4 @@
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions' } %>
 <% content_for(:og_image) { "http:#{asset_path('sessions/sola-sessions-hero.jpg')}" } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sessions" } %>

@@ -47,4 +47,6 @@ SitemapGenerator::Sitemap.create do
   add '/sessions'
 
   add '/mysola'
+
+  add '/diversity'
 end

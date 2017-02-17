@@ -11,3 +11,4 @@
 
 <% content_for(:scripts) { javascript_include_tag('own_your_salon') } %>
 <% content_for(:title) { raw(t('page.own.title')) } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own-your-salon" } %>

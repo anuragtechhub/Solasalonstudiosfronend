@@ -52,3 +52,4 @@
 </div>
 
 <% content_for(:title) { t('page.find_salon_pro.find_a_salon_professional_near_you').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/salon-professionals" } %>

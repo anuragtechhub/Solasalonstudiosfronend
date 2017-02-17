@@ -145,3 +145,4 @@
 <% if I18n.locale != :en %>
   <% content_for(:scripts) { javascript_include_tag('contact_us_ca') } %>
 <% end %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/contact-us" } %>

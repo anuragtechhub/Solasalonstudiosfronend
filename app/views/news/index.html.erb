@@ -17,3 +17,4 @@
 </div>
 
 <% content_for(:title) { t('page.news.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/news" } %>
