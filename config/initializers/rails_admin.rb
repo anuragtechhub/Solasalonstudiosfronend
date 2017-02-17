@@ -567,7 +567,7 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :description
+        field :description, :ck_editor
         field :msa do
           label "MSA"
           visible do

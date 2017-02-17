@@ -9,6 +9,10 @@ class SessionsController < PublicWebsiteController
 
   end
 
+  def dc
+
+  end
+
   def denver
     #redirect_to :home
   end
