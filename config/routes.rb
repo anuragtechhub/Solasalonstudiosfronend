@@ -9,7 +9,6 @@ Solasalonstudios::Application.routes.draw do
   get 'robots.txt' => 'home#robots'
   get 'google575b4ff16cfb013a.html' => 'home#google_verification'
   get 'BingSiteAuth.xml' => 'home#bing_verification'
-  get 'sitemap.xml.gz' => 'home#sitemap'
 
   get '5000' => 'home#sola_5000', :as => :sola_5000
 
