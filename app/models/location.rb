@@ -327,8 +327,12 @@ class Location < ActiveRecord::Base
     'https://www.solasalonstudios.com' + Rails.application.routes.url_helpers.salon_location_path(self.state, self.city, self.url_name).gsub(/\./, '')
   end  
 
+  def canonical_path
+    "/locations/#{url_name}"
+  end
+
   def canonical_url
-    "https://www.solasalonstudios.com/locations/#{url_name}"
+    "https://www.solasalonstudios.#{country == 'CA' ? 'ca' : 'com'}/locations/#{url_name}"
   end
 
   def services_list

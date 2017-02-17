@@ -14,16 +14,19 @@ SitemapGenerator::Sitemap.create do
   add '/about-us'
 
   add '/locations'
-  Location.find_each do |location|
-
+  Location.where(:status => 'open').find_each do |location|
+    add location.canonical_path, :lastmod => location.updated_at
   end
-  # TODO: dynamic models
 
   add '/salon-professionals'
-  # TODO: dynamic models
+  Stylist.where(:status => 'open').find_each do |stylist|
+    add stylist.canonical_path, :lastmod => stylist.updated_at
+  end
 
   add '/blog'
-  # TODO: dynamic models
+  Blog.where(:status => 'published').find_each do |blog|
+    add blog.canonical_path, :lastmod => blog.updated_at
+  end
 
   add '/contact-us'
 

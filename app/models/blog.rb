@@ -74,6 +74,14 @@ class Blog < ActiveRecord::Base
     end
   end
 
+  def canonical_path
+    "/blog/#{url_name}"
+  end
+
+  def canonical_url
+    "https://www.solasalonstudios.com/blog/#{url_name}"
+  end
+
   private
 
   def generate_url_name

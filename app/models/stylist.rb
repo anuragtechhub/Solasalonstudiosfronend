@@ -199,6 +199,14 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def canonical_path
+    "/salon-professional/#{url_name}"
+  end
+
+  def canonical_url
+    "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
+  end
+
   private
 
   def url_name_uniqueness
