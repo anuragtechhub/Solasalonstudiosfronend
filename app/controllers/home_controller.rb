@@ -25,4 +25,8 @@ class HomeController < PublicWebsiteController
     render '/home/BingSiteAuth.xml', :layout => false, :content_type => 'text/xml'
   end
 
+  def sitemap
+    send_data '/public/sitemap.xml.gz'#, :layout => false, :content_type => 'application/x-gzip'
+  end
+
 end

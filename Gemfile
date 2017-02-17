@@ -97,3 +97,5 @@ gem 'react-rails', '~> 1.6.1'#, '~> 1.6.0'#, '~>1.7.1'#, '~> 1.6.0'#, '~> 1.0.0.
 #gem "therubyracer"
 
 gem 'sitemap_generator'
+#gem 'carrierwave'
+gem 'fog-aws'
