@@ -17,6 +17,14 @@ class Msa < ActiveRecord::Base
     end
   end  
 
+  def canonical_path
+    "/regions/#{url_name}"
+  end
+
+  def canonical_url(locale=:en)
+    "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/regions/#{url_name}"
+  end
+
   private
 
   def update_computed_fields

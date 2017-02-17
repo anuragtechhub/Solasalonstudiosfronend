@@ -24,6 +24,19 @@ SitemapGenerator::Sitemap.create do
     add location.canonical_path, :lastmod => location.updated_at
   end
 
+  # states
+  Location.distinct(:state).pluck(:state).each do |state|
+    url = state.split(/_|\s/)
+    url = url.map{|u| u.downcase}
+    url = url.join('-')
+
+    add "/states/#{url}"
+  end
+
+  Msa.find_each do |msa|
+    add msa.canonical_path
+  end
+
   add '/salon-professionals'
   Stylist.where(:status => 'open').find_each do |stylist|
     add stylist.canonical_path, :lastmod => stylist.updated_at
