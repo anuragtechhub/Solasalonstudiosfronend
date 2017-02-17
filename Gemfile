@@ -95,3 +95,5 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'react-rails', '~> 1.6.1'#, '~> 1.6.0'#, '~>1.7.1'#, '~> 1.6.0'#, '~> 1.0.0.pre', github: 'reactjs/react-rails'
 #gem 'flux-rails', github: 'KurtRMueller/flux-rails'
 #gem "therubyracer"
+
+gem 'sitemap_generator'
