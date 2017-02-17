@@ -8,6 +8,7 @@ SitemapGenerator::Sitemap.default_host = "https://www.solasalonstudios.com"
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.sitemaps_host = "http://solasitemap.s3.amazonaws.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.compress = false
 SitemapGenerator::Sitemap.create do
   # the root path '/' and sitemap index file are added automatically for you.
 

@@ -24,5 +24,10 @@ class HomeController < PublicWebsiteController
   def bing_verification
     render '/home/BingSiteAuth.xml', :layout => false, :content_type => 'text/xml'
   end
+
+  def sitemap
+    data = open("https://s3.amazonaws.com/solasitemap/sitemaps/sitemap.xml")
+    send_data data.read, :type => data.content_type
+  end
   
 end
