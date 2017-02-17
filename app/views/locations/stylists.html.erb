@@ -72,4 +72,4 @@
 
 <% content_for(:scripts) { javascript_include_tag('salon_stylists'); } %>
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
-<% content_for(:title) { "#{t('page.locations.salon_professionals_at').html_safe} #{@location.name}" } %>
+<% content_for(:title) { "#{t('page.locations.salon_professionals_at').html_safe} #{@location.name} #{t(:in)} #{@location.city}, #{@location.state}" } %>
