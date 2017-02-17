@@ -1,2 +1,3 @@
 User-Agent: *
 Disallow: 
+Sitemap: https://www.solasalonstudios.com/sitemap.xml.gz
