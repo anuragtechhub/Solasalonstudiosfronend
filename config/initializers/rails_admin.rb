@@ -368,101 +368,121 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_1_alt_text
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_2_alt_text
         field :image_3 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_3_alt_text
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_4_alt_text
         field :image_5 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_5_alt_text
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_6_alt_text
         field :image_7 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_7_alt_text
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_8_alt_text
         field :image_9 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_9_alt_text
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_10_alt_text
         field :image_11 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_11_alt_text
         field :image_12 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_12_alt_text
         field :image_13 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_13_alt_text
         field :image_14 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_14_alt_text
         field :image_15 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_15_alt_text
         field :image_16 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_16_alt_text
         field :image_17 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_17_alt_text
         field :image_18 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_18_alt_text
         field :image_19 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_19_alt_text
         field :image_20 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_20_alt_text
       end
       group '360 Tours' do
         field :tour_iframe_1 do
@@ -639,11 +659,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_1
         end
+        field :image_1_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
+        end
+        field :image_3_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_3 do 
           pretty_value do 
@@ -651,11 +677,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_3
         end
+        field :image_3_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
+        end
+        field :image_4_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_5 do 
           pretty_value do 
@@ -663,11 +695,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_5
         end
+        field :image_5_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
+        end
+        field :image_6_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_7 do 
           pretty_value do 
@@ -675,11 +713,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_7
         end
+        field :image_7_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
+        end
+        field :image_8_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_9 do 
           pretty_value do 
@@ -687,11 +731,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_9
         end
+        field :image_9_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
+        end
+        field :image_10_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_11 do 
           pretty_value do 
@@ -699,11 +749,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_11
         end
+        field :image_11_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_12 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_12
+        end
+        field :image_12_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_13 do 
           pretty_value do 
@@ -711,11 +767,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_13
         end
+        field :image_13_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_14 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_14
+        end
+        field :image_14_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_15 do 
           pretty_value do 
@@ -723,11 +785,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_15
         end
+        field :image_15_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_16 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_16
+        end
+        field :image_16_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_17 do 
           pretty_value do 
@@ -735,11 +803,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_17
         end
+        field :image_17_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_18 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_18
+        end
+        field :image_18_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_19 do 
           pretty_value do 
@@ -747,12 +821,18 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_19
         end
+        field :image_19_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_20 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_20
-        end      
+        end  
+        field :image_20_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end  
       end
       group '360 Tours' do
         active false
@@ -1081,51 +1161,61 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_1_alt_text
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_2_alt_text
         field :image_3 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_3_alt_text
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_4_alt_text
         field :image_5 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_5_alt_text
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_6_alt_text
         field :image_7 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_7_alt_text
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_8_alt_text
         field :image_9 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_9_alt_text
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
+        field :image_10_alt_text
       end
       group :testimonials do
         field :testimonial_1
@@ -1267,11 +1357,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_1
         end
+        field :image_1_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
+        end
+        field :image_2_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_3 do 
           pretty_value do 
@@ -1279,11 +1375,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_3
         end
+        field :image_3_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
+        end
+        field :image_4_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_5 do 
           pretty_value do 
@@ -1291,11 +1393,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_5
         end
+        field :image_5_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end 
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
+        end
+        field :image_6_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_7 do 
           pretty_value do 
@@ -1303,11 +1411,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_7
         end
+        field :image_7_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
+        end
+        field :image_8_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
         field :image_9 do 
           pretty_value do 
@@ -1315,11 +1429,17 @@ RailsAdmin.config do |config|
           end
           delete_method :delete_image_9
         end
+        field :image_9_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
+        end
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
+        end
+        field :image_10_alt_text do
+          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
       end
       group :testimonials do

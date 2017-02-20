@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208184017) do
+ActiveRecord::Schema.define(version: 20170220152611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -306,6 +306,26 @@ ActiveRecord::Schema.define(version: 20170208184017) do
     t.text     "tour_iframe_2"
     t.text     "tour_iframe_3"
     t.string   "country",                         default: "US"
+    t.text     "image_1_alt_text"
+    t.text     "image_2_alt_text"
+    t.text     "image_3_alt_text"
+    t.text     "image_4_alt_text"
+    t.text     "image_5_alt_text"
+    t.text     "image_6_alt_text"
+    t.text     "image_7_alt_text"
+    t.text     "image_8_alt_text"
+    t.text     "image_9_alt_text"
+    t.text     "image_10_alt_text"
+    t.text     "image_11_alt_text"
+    t.text     "image_12_alt_text"
+    t.text     "image_13_alt_text"
+    t.text     "image_14_alt_text"
+    t.text     "image_15_alt_text"
+    t.text     "image_16_alt_text"
+    t.text     "image_17_alt_text"
+    t.text     "image_18_alt_text"
+    t.text     "image_19_alt_text"
+    t.text     "image_20_alt_text"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
@@ -496,6 +516,16 @@ ActiveRecord::Schema.define(version: 20170208184017) do
     t.boolean  "sola_genius_enabled",     default: false
     t.string   "sola_pro_platform"
     t.string   "sola_pro_version"
+    t.text     "image_1_alt_text"
+    t.text     "image_2_alt_text"
+    t.text     "image_3_alt_text"
+    t.text     "image_4_alt_text"
+    t.text     "image_5_alt_text"
+    t.text     "image_6_alt_text"
+    t.text     "image_7_alt_text"
+    t.text     "image_8_alt_text"
+    t.text     "image_9_alt_text"
+    t.text     "image_10_alt_text"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
