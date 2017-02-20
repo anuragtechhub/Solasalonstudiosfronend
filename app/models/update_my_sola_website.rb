@@ -125,6 +125,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     end 
 
     self.save
+  rescue => error
+    p "ERROR with image orient! #{error.inspect}"
   end
 
   private
