@@ -1,0 +1,6 @@
+<div class="container privacy-policy">
+  <%= t('page.privacy_policy.body').html_safe %>
+</div>
+
+<% content_for(:title) { t('page.privacy_policy.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/privacy-policy" } %>

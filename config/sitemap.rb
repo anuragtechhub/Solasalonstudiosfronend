@@ -63,4 +63,7 @@ SitemapGenerator::Sitemap.create do
   add '/mysola'
 
   add '/diversity'
+
+  add '/privacy-policy'
+  
 end

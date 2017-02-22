@@ -35,6 +35,8 @@ Solasalonstudios::Application.routes.draw do
   get 'own' => 'own_your_salon#index'
   get 'own/:tab' => 'own_your_salon#index'
   get 'amenities' => 'own_your_salon#index'
+
+  get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
