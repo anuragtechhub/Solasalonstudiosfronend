@@ -66,7 +66,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
-  before_update :auto_orient_images
+  #before_update :auto_orient_images
+  before_save :force_orient
   after_update :publish_if_approved
 
   def location
@@ -124,9 +125,16 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       self.image_10 = open(image_10_url)
     end 
 
-    self.save
   rescue => error
     p "ERROR with image orient! #{error.inspect}"
+  end
+
+  def force_orient_and_save
+    force_orient
+
+    self.save
+  rescue => error
+    p "ERROR with force orient and save! #{error.inspect}"
   end
 
   private
