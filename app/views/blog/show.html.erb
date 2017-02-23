@@ -90,7 +90,8 @@
 <% content_for(:scripts) { javascript_include_tag('blog') } %>
 <% content_for(:title) { @post.title.html_safe } %>
 <% content_for(:og_image) { @post.image(:original) } %>
-<% content_for(:og_description) { @post.summary.gsub(/<[^>]*>/, '') } %>
+<% content_for(:og_description) { clean_html @post.summary } %>
+<% content_for(:meta_description) { clean_html @post.summary } %>
 <% content_for(:fb_conversion_pixel) { 
   if @post.fb_conversion_pixel && @post.fb_conversion_pixel.present?
     @post.fb_conversion_pixel.html_safe

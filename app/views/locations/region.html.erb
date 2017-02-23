@@ -60,3 +60,4 @@
 <% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
 <% content_for(:title) { "#{t('page.locations.locations_in').html_safe} #{@msa.name}" } %>
 <% content_for(:canonical_url) { @msa.canonical_url(I18n.locale) } %>
+<% content_for(:meta_description) { t('page.locations.meta_description') } %>
