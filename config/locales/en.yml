@@ -23,6 +23,7 @@ en:
 
     about:
       title: About Us
+      meta_description: "Our innovative salon model empowers beauty professionals to take control of their lives and their careers. Be in business for yourself, not by yourself!"
       learn_more_about_sola: Learn More About Sola
       click_to_watch_video: Click to watch video
       learn_more: Learn More
@@ -53,6 +54,7 @@ en:
 
     blog:
       title: Blog
+      meta_description: "Check out the Sola Blog for marketing and business tips, Sola Spotlights, industry happenings, studio inspiration, and so much more!"
       our_blog: Our Blog
       found: Found
       search: Search...
@@ -67,6 +69,7 @@ en:
     
     contact:
       title: Contact Us
+      meta_description: "Get in touch to learn more about Sola Salon Studios by contacting the studio manager nearest you!"
       get_in_touch: Get in Touch
       contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
       body1: "Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!"
@@ -96,6 +99,7 @@ en:
 
     faqs:
       title: FAQs
+      meta_description: "Why go independent? Why Sola? All your questions about owning your own salon suite at Sola answered."
       frequently_asked_questions: Frequently Asked Questions
       question1: Why Sola?
       answer1: |
@@ -159,6 +163,7 @@ en:
 
     find_salon_pro:
       title: Find a Salon Professional
+      meta_description: "To find a hairdresser, nail tech, esthetician or beauty professional, search by name or location. To schedule an appointment, contact your salon professional directly."
       heading1: Find a Sola Salon<br>Professional Near You
       search: Search
       search_by_name_or_location: Search by name or location
@@ -172,6 +177,7 @@ en:
     
     gallery:
       title: Gallery
+      meta_description: "Your studio, your style! Take a look at our gallery for a peek inside our customizable, beautiful salon studios."
       videos: Videos
       faces_of_sola: "2016 Faces of Sola: Testimonials Video"
       the_sola_story: The Sola Story
@@ -184,6 +190,7 @@ en:
     locations:
       title: Locations
       title_long: Sola Locations
+      meta_description: "To find the Sola Salon Studios location nearest to you, search by city or state, or view our locations map."
       find_a_sola_location: Find a Sola Location
       select_a_state: Select a State
       all_locations: All Locations
@@ -243,6 +250,7 @@ en:
     
     news:
       title: In the News
+      meta_description: "Keep up with the latest news about Sola Salon Studios, featured in Modern Salon, American Salon, Behind the Chair, Beauty Launchpad, Forbes and more!"
       keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link}, %{twitter_link} and %{pinterest_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
       facebook: Facebook
       instagram: Instagram
@@ -258,6 +266,8 @@ en:
 
     own:
       title: Own Your Salon
+      meta_description: "Studios for hairdressers, nail techs, estheticians, and more. Lease a move-in ready salon suite to control your environment, manage your schedule, and be your own boss."
+
       section:
         own_your_salon:
           title: Own Your Salon
@@ -281,6 +291,7 @@ en:
           view_frequently_asked_questions: "View frequently asked questions &raquo;"
         studio_amenities:
           title: Studio Amenities
+          meta_description: "Sola provides high-end, move-in ready salon studios. Customize your private suite with paint, artwork, music and décor. Find a one or two chair salon near you."
           heading1: Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.
           heading2: Studio Amenities
           list2: |
@@ -339,8 +350,12 @@ en:
           wash_basin:
             heading: Shampoo Bowl
             body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
+        sola_genius:
+          title: Sola Genius
+          meta_description: "Run your Sola like a boss with SolaGenius – a cutting edge app designed to streamline and supercharge your salon. Payment processing, online scheduling, and much more!"
         sola_pro:
           title: Sola Pro
+          meta_description: "Inspiration and education at your fingertips. The Sola Pro app provides all the tools and resources to help take your salon studio to the next level!"
           hero_body1: <strong>A website and app exclusive to Sola professionals!</strong>Designed to provide more tools to help you take your salon studio to the next level!
           heading1: Sola Pro
           list1: |
@@ -356,6 +371,7 @@ en:
           view_frequently_asked_questions: "View frequently asked questions &raquo;"
         sola_sessions:
           title: Sola Sessions
+          meta_description: "Inspiration. Education. Community. The Sola Sessions are live educational events exclusive to the Sola community. Learn and collaborate with the industry's best!"
           heading1: The Sola Sessions
           body1: "<strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community."
           bullet1: "Learn from the industry's best!"
@@ -475,6 +491,7 @@ en:
 
     testimonials:
       title: Testimonials
+      meta_description: "Watch videos and read testimonials from beauty professionals who are living they life they love at Sola Salon Studios."
       salon_professional_testimonials: Salon Professional<br>Testimonials
       click_to_watch_video: Click to watch video
       learn_more: Learn More

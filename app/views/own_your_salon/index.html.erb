@@ -11,4 +11,20 @@
 
 <% content_for(:scripts) { javascript_include_tag('own_your_salon') } %>
 <% content_for(:title) { raw(t('page.own.title')) } %>
-<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own-your-salon" } %>
+
+<% if request.fullpath.include? 'own/sola-sessions' %>
+  <% content_for(:meta_description) { t('page.own.section.sola_sessions.meta_description') } %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own/sola-sessions" } %>
+<% elsif request.fullpath.include? 'own/studio-amenities' %>
+  <% content_for(:meta_description) { t('page.own.section.studio_amenities.meta_description') } %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own/studio-amenities" } %>
+<% elsif request.fullpath.include? 'own/sola-pro' %>
+  <% content_for(:meta_description) { t('page.own.section.sola_pro.meta_description') } %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own/sola-pro" } %>
+<% elsif request.fullpath.include? 'own/sola-genius' %>
+  <% content_for(:meta_description) { t('page.own.section.sola_genius.meta_description') } %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own/sola-genius" } %>
+<% else %>
+  <% content_for(:meta_description) { t('page.own.meta_description') } %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/own-your-salon" } %>
+<% end %>
