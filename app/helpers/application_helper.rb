@@ -26,6 +26,18 @@ module ApplicationHelper
     url
   end
 
+  def clean_html(str)
+    return '' unless str
+
+    str = strip_tags(str)
+    str = str.gsub(/&#39;/, "'")
+    str = str.gsub(/&quot;/, "'")
+    str = str.gsub(/&amp;/, '&')
+    str = str.gsub(/&#8217;/, "'")
+    
+    str.html_safe
+  end
+
   def beautify_url_segment(url)
     #url = url.gsub('___', '_')
     #url = url.gsub('_-_', '_')

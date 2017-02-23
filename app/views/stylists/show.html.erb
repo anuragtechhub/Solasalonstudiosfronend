@@ -159,3 +159,6 @@
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
 <% content_for(:title) { @stylist.name.html_safe } %>
 <% content_for(:canonical_url) { @stylist.canonical_url } %>
+<% if @stylist.biography %>
+  <% content_for(:meta_description) { clean_html @stylist.biography } %>
+<% end %>
