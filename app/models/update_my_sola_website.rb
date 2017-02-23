@@ -67,7 +67,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
   #before_update :auto_orient_images
-  before_save :force_orient
+  #before_save :force_orient
   after_update :publish_if_approved
 
   def location
@@ -155,56 +155,6 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     self.save
   rescue => error
     p "ERROR with force orient and save! #{error.inspect}"
-  end
-
-  private
-
-  def auto_orient_images
-    p "auto_orient_images!"
-    if image_1_url_changed?
-      p "image_1 changed yo"
-      self.image_1 = open(image_1_url)
-    end
-  
-    if image_2_url_changed?
-      self.image_2 = open(image_2_url)
-    end
-
-    if image_3_url_changed?
-      self.image_3 = open(image_3_url)
-    end    
-
-    if image_4_url_changed?
-      self.image_4 = open(image_4_url)
-    end       
-
-    if image_5_url_changed?
-      self.image_5 = open(image_5_url)
-    end         
-
-    if image_6_url_changed?
-      self.image_6 = open(image_6_url)
-    end 
-
-    if image_7_url_changed?
-      self.image_7 = open(image_7_url)
-    end               
-
-    if image_8_url_changed?
-      self.image_8 = open(image_8_url)
-    end        
-
-    if image_9_url_changed?
-      self.image_9 = open(image_9_url)
-    end      
-
-    if image_10_url_changed?
-      self.image_10 = open(image_10_url)
-    end          
-  end
-
-  def email_stylist
-    PublicWebsiteMailer.stylist_website_is_updated(self).deliver
   end
 
   def publish
@@ -307,7 +257,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       p "image_1 is present"
       begin
         stylist.image_1 = URI.parse(image_1.url(:carousel))
-        p "done set image_1"
+        p "done set image_1 #{self.image_1.url(:original)}"
       rescue => e
         p "image 1 error = #{e.inspect}"
       end
@@ -318,6 +268,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_2.present?
       begin
         stylist.image_2 = URI.parse(image_2.url(:carousel))
+        p "done set image_2 #{self.image_2.url(:original)}"
       rescue => e
         p "image 2 error = #{e.inspect}"
       end
@@ -328,6 +279,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_3.present?
       begin
         stylist.image_3 = URI.parse(image_3.url(:carousel)) 
+        p "done set image_3 #{self.image_3.url(:original)}"
       rescue => e
         p "image 3 error = #{e.inspect}"
       end
@@ -338,6 +290,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_4.present?
       begin
         stylist.image_4 = URI.parse(image_4.url(:carousel))
+        p "done set image_4 #{self.image_4.url(:original)}"
       rescue => e
         p "image 4 error = #{e.inspect}"
       end
@@ -348,6 +301,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_5.present?
       begin
         stylist.image_5 = URI.parse(image_5.url(:carousel))
+        p "done set image_5 #{self.image_5.url(:original)}"
       rescue => e
         p "image 5 error = #{e.inspect}"
       end
@@ -358,6 +312,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_6.present?
       begin
         stylist.image_6 = URI.parse(image_6.url(:carousel))
+        p "done set image_6 #{self.image_6.url(:original)}"
       rescue => e
         p "image 6 error = #{e.inspect}"
       end
@@ -368,6 +323,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_7.present?
       begin
         stylist.image_7 = URI.parse(image_7.url(:carousel)) 
+        p "done set image_7 #{self.image_7.url(:original)}"
       rescue => e
         p "image 7 error = #{e.inspect}"
       end
@@ -378,6 +334,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_8.present?
       begin
         stylist.image_8 = URI.parse(image_8.url(:carousel)) 
+        p "done set image_8 #{self.image_8.url(:original)}"
       rescue => e
         p "image 8 error = #{e.inspect}"
       end
@@ -388,6 +345,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_9.present?
       begin
         stylist.image_9 = URI.parse(image_9.url(:carousel)) 
+        p "done set image_9 #{self.image_9.url(:original)}"
       rescue => e
         p "image 9 error = #{e.inspect}"
       end
@@ -398,6 +356,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     if image_10.present?
       begin
         stylist.image_10 = URI.parse(image_10.url(:carousel)) 
+        p "done set image_10 #{self.image_10.url(:original)}"
       rescue => e
         p "image 10 error = #{e.inspect}"
       end
@@ -405,13 +364,69 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       stylist.image_10 = nil
     end
 
+    #stylist.save
+    stylist
+  end
+
+  private
+
+  def auto_orient_images
+    p "auto_orient_images!"
+    if image_1_url_changed?
+      p "image_1 changed yo"
+      self.image_1 = open(image_1_url)
+    end
+  
+    if image_2_url_changed?
+      self.image_2 = open(image_2_url)
+    end
+
+    if image_3_url_changed?
+      self.image_3 = open(image_3_url)
+    end    
+
+    if image_4_url_changed?
+      self.image_4 = open(image_4_url)
+    end       
+
+    if image_5_url_changed?
+      self.image_5 = open(image_5_url)
+    end         
+
+    if image_6_url_changed?
+      self.image_6 = open(image_6_url)
+    end 
+
+    if image_7_url_changed?
+      self.image_7 = open(image_7_url)
+    end               
+
+    if image_8_url_changed?
+      self.image_8 = open(image_8_url)
+    end        
+
+    if image_9_url_changed?
+      self.image_9 = open(image_9_url)
+    end      
+
+    if image_10_url_changed?
+      self.image_10 = open(image_10_url)
+    end          
+  end
+
+  def email_stylist
+    PublicWebsiteMailer.stylist_website_is_updated(self).deliver
+  end
+
+  def publish_and_save
+    stylist = publish
     stylist.save
   end
 
   def publish_if_approved
     if approved_was != true && approved == true
       #p "publish! this puppy is approved"
-      publish
+      publish_and_save
       email_stylist
     else
       #p "do not publish - not approved :("
