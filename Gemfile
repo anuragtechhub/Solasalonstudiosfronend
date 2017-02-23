@@ -39,7 +39,7 @@ gem 'puma'
 gem "font-awesome-rails"
 
 group :production do
-  gem 'newrelic_rpm'
+  #gem 'newrelic_rpm'
   #gem 'asset_sync'
   gem 'rails_12factor'
   gem "image_optim"
