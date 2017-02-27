@@ -27,9 +27,12 @@ class StylistsController < PublicWebsiteController
     if request.post?
       captcha_verified = verify_recaptcha
       if (params[:name] && params[:name].present? && params[:email] && params[:email].present?) && captcha_verified
-        msg = StylistMessage.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :message => params[:message], :stylist_id => params[:stylist_id])
-        msg.visit = save_visit
-        msg.save
+        # ensure it's not a banned IP address
+        unless banned_ip_addresses.include? request.remote_ip
+          msg = StylistMessage.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :message => params[:message], :stylist_id => params[:stylist_id])
+          msg.visit = save_visit
+          msg.save
+        end
         render :json => {:success => 'Thank you for your message!'}
       else
         if captcha_verified
@@ -52,6 +55,10 @@ class StylistsController < PublicWebsiteController
   end
 
   private
+
+  def banned_ip_addresses
+    ['75.166.129.62']
+  end
 
   def save_visit
     visit = Visit.new
