@@ -408,6 +408,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist
   end
 
+  def publish_and_save
+    stylist = publish
+    stylist.save
+  end
+
   private
 
   def auto_orient_images
@@ -456,11 +461,6 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   def email_stylist
     PublicWebsiteMailer.stylist_website_is_updated(self).deliver
-  end
-
-  def publish_and_save
-    stylist = publish
-    stylist.save
   end
 
   def publish_if_approved
