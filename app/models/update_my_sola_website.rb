@@ -78,70 +78,110 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     #if image_1_url_changed?
     if image_1_url.present?
       p "there is an image_1=#{image_1_url}"
-      self.image_1 = open(image_1_url)
+      begin
+        self.image_1 = open(image_1_url)
+      rescue => error
+        p "error opening/saving image_1 #{error}"
+      end
       p "done opening image_1 #{self.image_1.url(:original)}"
     end
   
     #if image_2_url_changed?
     if image_2_url.present?
       p "there is an image_2=#{image_2_url}"
-      self.image_2 = open(image_2_url)
+      begin
+        self.image_2 = open(image_2_url)
+      rescue => error
+        p "error opening/saving image_2 #{error}"
+      end
       p "done opening image_2 #{self.image_2.url(:original)}"
     end
 
     #if image_3_url_changed?
     if image_3_url.present?
       p "there is an image_3=#{image_3_url}"
-      self.image_3 = open(image_3_url)
+      begin
+        self.image_3 = open(image_3_url)
+      rescue => error
+        p "error opening/saving image_3 #{error}"
+      end
       p "done opening image_3 #{self.image_3.url(:original)}"
     end    
 
     #if image_4_url_changed?
     if image_4_url.present?
       p "there is an image_4=#{image_4_url}"
-      self.image_4 = open(image_4_url)
+      begin
+        self.image_4 = open(image_4_url)
+      rescue => error
+        p "error opening/saving image_4 #{error}"
+      end
       p "done opening image_4 #{self.image_4.url(:original)}"
     end       
 
     #if image_5_url_changed?
     if image_5_url.present?
       p "there is an image_5=#{image_5_url}"
-      self.image_5 = open(image_5_url)
+      begin
+        self.image_5 = open(image_5_url)
+      rescue => error
+        p "error opening/saving image_5 #{error}"
+      end
       p "done opening image_5 #{self.image_5.url(:original)}"
     end         
 
     #if image_6_url_changed?
     if image_6_url.present?
       p "there is an image_6=#{image_6_url}"
-      self.image_6 = open(image_6_url)
+      begin
+        self.image_6 = open(image_6_url)
+      rescue => error
+        p "error opening/saving image_6 #{error}"
+      end
       p "done opening image_6 #{self.image_6.url(:original)}"
     end 
 
     #if image_7_url_changed?
     if image_7_url.present?
       p "there is an image_7=#{image_7_url}"
-      self.image_7 = open(image_7_url)
+      begin
+        self.image_7 = open(image_7_url)
+      rescue => error
+        p "error opening/saving image_7 #{error}"
+      end
       p "done opening image_7 #{self.image_7.url(:original)}"
     end               
 
     #if image_8_url_changed?
     if image_8_url.present?
       p "there is an image_8=#{image_8_url}"
-      self.image_8 = open(image_8_url)
+      begin
+        self.image_8 = open(image_8_url)
+      rescue => error
+        p "error opening/saving image_8 #{error}"
+      end
       p "done opening image_8 #{self.image_8.url(:original)}"
     end        
 
     #if image_9_url_changed?
     if image_9_url.present?
       p "there is an image_9=#{image_9_url}"
-      self.image_9 = open(image_9_url)
+      begin
+        self.image_9 = open(image_9_url)
+      rescue => error
+        p "error opening/saving image_9 #{error}"
+      end
       p "done opening image_9 #{self.image_9.url(:original)}"
     end      
 
     #if image_10_url_changed?
     if image_10_url.present?
       p "there is an image_10=#{image_10_url}"
-      self.image_10 = open(image_10_url)
+      begin
+        self.image_10 = open(image_10_url)
+      rescue => error
+        p "error opening/saving image_10 #{error}"
+      end
       p "done opening image_10 #{self.image_10.url(:original)}"
     end 
 
