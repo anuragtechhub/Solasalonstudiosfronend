@@ -164,3 +164,17 @@
     color: $brand-secondary;
   }
 }
+
+@media (max-width: 550px) {
+  .image-dropzone {
+    width: 280px;
+    max-width: 280px;
+    height: 280px;
+
+    .image, img.dropzone-image, a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
+      width: 280px;
+      max-width: 280px;
+      height: 280px;
+    }
+  }
+}
