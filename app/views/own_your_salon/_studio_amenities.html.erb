@@ -3,7 +3,7 @@
   <div class="hero-fullscreen">
 
     <div class="hero-carousel" data-autoplayoff="true">
-      <div class="item"><%= image_tag 'own/hero_amenities_desktop.jpg', :id => 'studio_amenities_img', :width => 1480, :height => 993 %></div>
+      <div class="item"><%= image_tag 'own/hero_amenities_desktop.jpg', :id => 'studio_amenities_img', :alt => 'The interior of a salon studio', :width => 1480, :height => 993 %></div>
     </div>
 
     <div class="explore-studio">
@@ -50,11 +50,11 @@
   <div class="owl-carousel owl-theme" data-pagination="true">
     <% if I18n.locale == :en %>
       <% (1..9).each do |number| %>
-        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg" %></div>
+        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg", :alt => 'The interior of a salon studio' %></div>
       <% end %> 
     <% else %>
       <% (1..9).each do |number| %>
-        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/amenity#{number}.jpg" %></div>
+        <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/amenity#{number}.jpg", :alt => 'The interior of a salon studio' %></div>
       <% end %> 
     <% end %> 
   </div>

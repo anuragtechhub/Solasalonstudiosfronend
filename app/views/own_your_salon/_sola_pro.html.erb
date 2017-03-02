@@ -3,7 +3,7 @@
   <div class="hero-fullscreen">
 
     <div class="hero-carousel hero-carousel-fullscreen" data-autoplayoff="true">
-      <div class="item"><%= image_tag 'own/hero_sola_pro_desktop.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080 %></div>
+      <div class="item"><%= image_tag 'own/hero_sola_pro_desktop.jpg', :class => 'fullscreen', :alt => 'A laptop, a tablet and a phone sit on a table, all showing the Sola Pro app', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080 %></div>
     </div>
 
     <div class="hero-content">
@@ -11,7 +11,7 @@
 
         <%= render 'tabs', :active => 'sola-pro' %>
 
-        <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo' %>
+        <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo', :alt => 'A white iPhone showing the Sola Pro app' %>
 
         <div class="sola-pro-copy">
           <%= t('page.own.section.sola_pro.hero_body1').html_safe %>
@@ -45,8 +45,8 @@
     </div>
 
     <div class="download-buttons text-center">
-      <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8" target="_blank"><%= image_tag 'own/ios_appstore.png', :width => 257, :height => 79 %></a>
-      <a href="https://play.google.com/store/apps/details?id=com.solaprofessional" target="_blank"><%= image_tag 'own/android_appstore.png', :width => 266.706611569, :height => 79 %></a>
+      <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8" target="_blank"><%= image_tag 'own/ios_appstore.png', :width => 257, :height => 79, :alt => 'Download Sola Pro on the App Store' %></a>
+      <a href="https://play.google.com/store/apps/details?id=com.solaprofessional" target="_blank"><%= image_tag 'own/android_appstore.png', :width => 266.706611569, :height => 79, :alt => 'Download Sola Pro on Google Play' %></a>
     </div>
 
     <% if I18n.locale == :en %>
@@ -60,9 +60,9 @@
     <div class="session" style="margin-bottom: 60px">
       <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
         <% if I18n.locale == :en %>
-          <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456 %>
+          <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
         <% else %>
-          <%= image_tag 'own/sola_pro_video_poster_ca.jpg', :width => 952, :height => 456 %>
+          <%= image_tag 'own/sola_pro_video_poster_ca.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
         <% end %>
         <div class="play-btn">
           <span class="fa fa-5x fa-play"></span>
@@ -75,7 +75,7 @@
   <div class="callout pure-black callout-testimonial">
     <div class="container">
       <div class="row">
-        <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256 %>
+        <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait', :alt => 'Jessica Zeinstra headshot', :width => 256, :height => 256 %>
         <div class="content">
           <h1>&quot;<%= t('page.own.section.sola_pro.testimonial_text').html_safe %>&quot; <span>Jessica Zeinstra</span></h1>
         </div>

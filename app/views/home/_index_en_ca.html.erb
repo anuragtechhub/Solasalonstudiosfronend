@@ -1,15 +1,15 @@
 <div class="hero-carousel owl-carousel owl-theme home-all">
-  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-1-R1.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Canada-Home-Slider-2-R1.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-3-R1.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4.jpg' %><% end %></div>
+  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-1-R1.jpg', :alt => "Join the best! The industry's leading salon studios are coming to Canada" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Canada-Home-Slider-2-R1.jpg', :alt => "Move-in ready studios" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-3-R1.jpg', :alt => "Join a company that supports you" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4.jpg', :alt => 'Salon professional testimonial' %><% end %></div>
 </div>
 
 <div class="hero-carousel owl-carousel owl-theme home-mobile">
-  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Sola-2016-Slider-Mobile-1-FN.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Slider-Mobile-2-FN.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Sola-2016-Slider-Mobile-3-FN.jpg' %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4_Mobile.jpg' %><% end %></div>
+  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Sola-2016-Slider-Mobile-1-FN.jpg', :alt => "Join the best! The industry's leading salon studios are coming to Canada" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Slider-Mobile-2-FN.jpg', :alt => "Move-in ready studios" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Sola-2016-Slider-Mobile-3-FN.jpg', :alt => "Join a company that supports you" %><% end %></div>
+  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4_Mobile.jpg', :alt => 'Salon professional testimonial' %><% end %></div>
 </div>
 
 <div class="container">
@@ -21,7 +21,7 @@
   <div class="row">
     <div class="one-third column home-tile">
       <%= link_to :own_your_salon do %>
-        <%= image_tag 'Home/OwningCanada.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/OwningCanada.jpg', :class => 'u-full-width', :alt => "A woman stands in her salon suite" %>
         <h3 class="text-center">Owning your own salon<br>has never been so easy</h3>
       <% end %>
       <p class="text-center">Customize your studio, set your hours, create your vision.</p>
@@ -29,7 +29,7 @@
 
     <div class="one-third column home-tile">
       <%= link_to :locations do %>
-        <%= image_tag 'Home/ComingSoonToronto.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/ComingSoonToronto.jpg', :class => 'u-full-width', :alt => "Coming soon to Toronto" %>
         <h3 class="text-center">Find out where we're<br>going first!</h3>
       <% end %>
       <p class="text-center">Get on board with the beauty industry's best in salon studios!</p>
@@ -37,7 +37,7 @@
 
     <div class="one-third column home-tile">
       <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video">
-        <%= image_tag 'watch_our_video.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'watch_our_video.jpg', :class => 'u-full-width', :alt => 'A smiling woman gets her hair styled by a proud salon professional' %>
         <h3 class="text-center">Watch<br>our video</h3>
       </a>
       <p class="text-center">Find out what a few very successful Sola professionals have to say!</p>
@@ -46,11 +46,11 @@
 
   <div class="row home-recently-featured-box" style="border-bottom:0;margin-bottom:5px;">
       <h3>Recently Featured In</h3>
-      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :class => 'beauty_launchpad_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :class => 'forbes_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :class => 'behind_the_chair_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' %>
+      <%= link_to "&nbsp;".html_safe, "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' %>
   </div>
 
 </div>

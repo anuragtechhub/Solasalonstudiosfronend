@@ -30,15 +30,15 @@
     </div>
 
     <div class="two-thirds column">
-      <% if @location.images.size > 0 %>
+      <% if @location.image_tags.size > 0 %>
         <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
-          <% @location.images.each do |image| %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
+          <% @location.image_tags.each do |image| %>
+            <div class="item"><%= image.html_safe %></div>
           <% end %>
         </div>
       <% else %>
         <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
-          <div class="item"><%= image_tag 'crewgoals2016.jpg' %></div>
+          <div class="item"><%= image_tag 'crewgoals2016.jpg', :alt => 'The Faces of Sola' %></div>
         </div>      
       <% end %>
     </div>
@@ -184,7 +184,7 @@
   <div class="container">
     <div class="row">
       <div class="one-third column">
-        <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait' %>
+        <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait', :alt => 'Katina Eisenbeis headshot' %>
       </div>
       <div class="two-thirds column">
         <h1><%= t('page.locations.testimonial_text').html_safe %></h1>

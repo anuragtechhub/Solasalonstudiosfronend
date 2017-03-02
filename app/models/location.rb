@@ -249,6 +249,16 @@ class Location < ActiveRecord::Base
     imgs
   end
 
+  def image_tags
+    imgs = []
+    (1..20).each do |num|
+      img = self.send("image_#{num}")
+      alt = self.send("image_#{num}_alt_text")
+      imgs << "<img src='#{img.url(:carousel)}' alt='#{alt if alt}' />" if img.present?
+    end
+    imgs
+  end
+
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || yelp_url.present?
   end

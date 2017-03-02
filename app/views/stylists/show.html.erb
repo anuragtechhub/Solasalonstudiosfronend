@@ -66,10 +66,10 @@
 
     <div class="two-thirds column">
       
-      <% if @stylist.images.size > 0 %>
+      <% if @stylist.image_tags.size > 0 %>
         <div class="salon-pro-carousel owl-carousel owl-theme salon-professional" data-autoplayoff="true">
-          <% @stylist.images.each do |image| %>
-            <div class="item"><%= image_tag image.url(:carousel) %></div>
+          <% @stylist.image_tags.each do |image| %>
+            <div class="item"><%= image.html_safe %></div>
           <% end %>
         </div>
       <% end %>

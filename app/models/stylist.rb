@@ -141,6 +141,16 @@ class Stylist < ActiveRecord::Base
     images_array
   end
 
+  def image_tags
+    images_array = []
+    (1..10).each do |num|
+      image = self.send("image_#{num}")
+      alt = self.send("image_#{num}_alt_text")
+      images_array << "<img src='#{image.url(:carousel)}' alt='#{alt if alt}' />" if image.present?
+    end
+    images_array
+  end
+
   def services(show_other = true) 
     services = []
 
