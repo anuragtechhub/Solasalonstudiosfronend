@@ -95,17 +95,17 @@
       <div class="container">
         <h2 class="bb">Featured Presenters</h2>
         <h2 class="text-center" style="color:gray">COMING SOON!</h2>
-        <!--
+        
         <div class="row">
+          <div class="four columns" data-rel="philips">
+            <%= image_tag 'sessions/carolphilips.png' %>
+            <span class="name">Carol Philips</span>
+            <span class="company"><a href="#">BEAUTEESMARTS</a></span>
+          </div>
           <div class="four columns" data-rel="horvath">
             <%= image_tag 'sessions/horvath.png' %>
             <span class="name">Kim Bennett Horvath</span>
             <span class="company"><a href="#">Sola Salon Studios</a></span>
-          </div>
-          <div class="four columns" data-rel="kovner">
-            <%= image_tag 'sessions/kovner1.png' %>
-            <span class="name">Nina Kovner</span>
-            <span class="company"><a href="#">PassionSquared</a></span>
           </div>
           <div class="four columns" data-rel="wolff">
             <%= image_tag 'sessions/wolff.png' %>
@@ -114,20 +114,32 @@
           </div>
         </div>
         <div class="row">
-          <div class="four columns" data-rel="freeman">
-            <%= image_tag 'sessions/freeman.png' %>
-            <span class="name">Leah Freeman</span>
-            <span class="company"><a href="#">L'ANZA</a></span>
+          <div class="four columns offset-by-two" data-rel="kobeski">
+            <%= image_tag 'sessions/sarahk.png' %>
+            <span class="name">Sarah Kobeski</span>
+            <span class="company"><a href="#">Paul Mitchell</a></span>
           </div>
-          <div class="four columns" data-rel="lightfoot">
-            <%= image_tag 'sessions/lightfoot.png' %>
-            <span class="name">Steven Lightfoot</span>
-            <span class="company"><a href="#">Hattori Hanzo Shears</a></span>
+          <div class="four columns" data-rel="caruso">
+            <%= image_tag 'sessions/caruso.png' %>
+            <span class="name">Colin Caruso</span>
+            <span class="company"><a href="#">Paul Mitchell</a></span>
           </div>
-          <div class="four columns" data-rel="mosley">
-            <%= image_tag 'sessions/mosley.png' %>
-            <span class="name">John Mosley</span>
-            <span class="company"><a href="#">Hattori Hanzo Shears</a></span>
+        </div>
+        <div class="row">
+          <div class="four columns" data-rel="jenkins">
+            <%= image_tag 'sessions/jenkins.png' %>
+            <span class="name">Jada Jenkins</span>
+            <span class="company"><a href="#">Mizani</a></span>
+          </div>
+          <div class="four columns" data-rel="evie">
+            <%= image_tag 'sessions/evie.png' %>
+            <span class="name">Evie Johnson</span>
+            <span class="company"><a href="#">Mizani</a></span>
+          </div>
+          <div class="four columns" data-rel="edmonds">
+            <%= image_tag 'sessions/edmonds.png' %>
+            <span class="name">Jamal Edmonds</span>
+            <span class="company"><a href="#">Mizani</a></span>
           </div>
         </div>
 
@@ -218,7 +230,7 @@
           </div> 
 
         </div>
-        -->
+     
       </div>
     </div>
 
@@ -228,33 +240,45 @@
         <p><strong>$99 ticket</strong> (valued at $300!)<br/><a href="http://bit.ly/2kxt0T4" target="_blank">Enter to Win 2 Free Tickets</a></p>
         <p>Includes: Education. Swag Bag. Prizes. Vendor Expo. Lunch. Happy Hour.</p>
         <p><strong>Main Event:</strong> 9am – 4:30pm<br/><strong>Happy Hour:</strong> 4:30pm – 6:30pm</p>
-        <!--
+        
         <p style="margin-bottom:0"><strong>Featuring:</strong></p>
         <ul>
-          <li>Nina Kovner (Passion Squared)</li>
           <li>Kim Bennett Horvath (Sola Salon Studios)</li>
-          <li>Hattori Hanzo Shears (Steven Lightfoot and John Mosley)</li>
+          <li>Carol Phillips (BEAUTEESMARTS)</li>
           <li>Jennie Wolff (Sola Salon Studios)</li>
-          <li>L'ANZA (Leah Freeman)</li>
+          <li>Paul Mitchell (Colin Caruso, Sarah Kobeski)</li>
+          <li>Mizani (Jamal Edmonds, Evie Johnson, Jada Jenkins)</li>
         </ul>
-        -->
       </div>
     </div>
 
-    <!--
     <div class="event-partners">
       <div class="container">
         <h2 class="bb">Event Partners</h2>
-        <%= image_tag 'sessions/dallas_event_partners.gif' %>
+        <%= image_tag 'sessions/dc_event_partners.gif' %>
       </div>
     </div>
-    -->
+    
+    <div class="discounted-rooms">
+      <div class="container">
+        
+        <h2>Discounted Rooms Available</h2>
+        <h4>LIMITED AVAILABILITY</h4>
 
+        <%= image_tag 'sessions/dc-hotel.jpg' %>
+
+        <h3>$199 Per Night<br>Complimentary Parking on Weekends</h3>
+
+        <div class="button-wrapper"><a href="http://www.marriott.com/meeting-event-hotels/group-corporate-travel/groupCorp.mi?resLinkData=Sola%20Sessions%20Washington%20DC%5EWASTC%60SOLSOLA%60199.00%60USD%60false%601%605/7/17%605/9/17%604/21/17&app=resvlink&stop_mobi=yes" target="_blank" class="button primary">Book Now</a></div>
+
+      </div>
+    </div>
+    
     <div class="watch-our-video">
       <div class="container">
         <h6>Watch our video to learn more about the Sola Sessions</h6>
         <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
-          <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
+          <%= image_tag 'sessions/video_thumb_2017.jpg', :width => 953, :height => 458 %>
           <div class="play-btn">
             <span class="fa fa-5x fa-play"></span>
             <span class="text">Play Video</span>
@@ -263,31 +287,22 @@
       </div>
     </div>
 
-    <!--
-    <div class="discounted-rooms">
-      <div class="container">
-        
-        <h2 style="font-weight:normal">Omni Mandalay Las Colinas</h2>
-        <h2>Discounted Rooms Available</h2>
-        <h4>LIMITED AVAILABILITY</h4>
-
-        <%= image_tag 'sessions/dallas-hotel.jpg' %>
-
-        <h3>$179 Per Night<br>Complimentary Parking</h3>
-
-        <div class="button-wrapper"><a href="https://www.omnihotels.com/hotels/dallas-mandalay/meetings/sola-salon-event" target="_blank" class="button primary">Book Now</a></div>
-
-      </div>
-    </div>
-    -->
 </div>  
 
 <div class="callout pink">
   <%= link_to 'To learn more about the Sola Sessions, click here!', :sessions, :class => 'heading-link' %>
 </div>
 
-<div class="callout blue" style="margin-bottom:20px;">
-  <h4 style="font-weight:bold;font-size:29px;">Additional 2017 Sola Sessions Dates To Be Announced!</h4>
+<a name="future-sessions"></a>
+<div class="future-sessions">
+  <div class="container">
+    <h1>Mark Your Calendar<br>for Future Sola Sessions!</h1>
+    <div class="row circles">
+      <div class="three columns offset-by-three"><%= image_tag 'sessions/florida-circle.png' %></div>
+      <div class="three columns"><%= image_tag 'sessions/bay-area-circle.png' %></div>
+    </div>
+    <h2>More Info On Future Sessions Coming Soon!</h2>
+  </div>
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>

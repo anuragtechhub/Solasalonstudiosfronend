@@ -537,7 +537,7 @@
   }
 
   img {
-    max-width: 898px;
+    //max-width: 898px;
     width: 100%;
     height: auto;
     margin: 0 auto;
@@ -545,7 +545,7 @@
 }
 
 .future-sessions {
-  background: asset-url('future-sessions.jpg') no-repeat center center;
+  background: asset-url('sessions/future-sessions.jpg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -884,7 +884,7 @@
     background: #000;
 
     h6 {
-      font-size: 14px;
+      font-size: 17px;
       font-weight: bold;
       color: #FFF;
       text-align: center;
