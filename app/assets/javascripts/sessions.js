@@ -97,7 +97,9 @@ $(function () {
 
   // custom scroll
   $('.modal .content').mCustomScrollbar({
-    theme: "minimal-light"
+    theme: "minimal-light",
+    alwaysShowScrollbar: 1,
+    autoHideScrollbar: true,
   });
 
   // add to calendar

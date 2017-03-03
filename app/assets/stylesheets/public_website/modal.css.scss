@@ -62,16 +62,11 @@
   &.sessions {
    max-width: 100%;
    background: #000 !important;
-         zoom: 1;
-      
-      &:hover {
-        zoom: 1;
-      }
+
     .content {
       position: static;
       background: #000;
       color: #FFF;
-
     }
 
     .modal-header {
