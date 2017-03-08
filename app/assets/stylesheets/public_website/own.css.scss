@@ -147,7 +147,7 @@
     a {
       display: block;
       float: left;
-      width: calc(25% - 3px);
+      width: calc(20% - 3px);
       margin-right: 3px;
       text-decoration: none;
       font-size: 18px;
@@ -530,7 +530,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   .own-your-salon {
     .download-buttons {
       margin-top: 20px;
@@ -573,10 +573,15 @@
       top: 15px;
 
       a {
-        font-size: 9px !important;
+        font-size: 13px !important;
+        line-height: 15px !important;
         padding-bottom: 10px !important;
-        white-space: nowrap !important;
+        //white-space: nowrap !important;
         border-bottom-width: 6px !important;
+
+        .mobile-br {
+          display: block;
+        }
       }
     }
 
@@ -705,6 +710,22 @@ ul.own-list {
 .half-boxes.sola-pro {
   height: 740px;
 }
+
+// @media (max-width: 700px) {
+//   .own-your-salon {
+
+//     .hero-tabs {
+//       top: 15px;
+
+//       a {
+//         font-size: 13px !important;
+//         padding-bottom: 10px !important;
+//         white-space: wrap !important;
+//         border-bottom-width: 6px !important;
+//       }
+//     }
+//   }
+// }
 
 @media (max-width: 1125px) {
   .half-boxes.sola-pro {
@@ -854,6 +875,18 @@ ul.own-list {
   }
 
 }
+
+// @media (max-width: 800px) {
+//   .own-your-salon .hero-tabs {
+//     //top: 20px;
+
+//     a {
+//       font-size: 16px;
+//       padding-bottom: 12px;
+//       border-bottom-width: 8px;
+//     }
+//   }
+// }
 
 @media (max-height: 600px) {
   .own-your-salon .hero-tabs {

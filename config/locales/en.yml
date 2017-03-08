@@ -267,7 +267,13 @@ en:
     own:
       title: Own Your Salon
       meta_description: "Studios for hairdressers, nail techs, estheticians, and more. Lease a move-in ready salon suite to control your environment, manage your schedule, and be your own boss."
-
+      tabs:
+        own_your_salon: Own Your<span class="mobile-br"> </span>Salon
+        studio_amenities: Studio<span class="mobile-br"> </span>Amenities
+        sola_pro: Sola<span class="mobile-br"> </span>Pro
+        sola_sessions: Sola<span class="mobile-br"> </span>Sessions
+        sola_genius: Sola<span class="mobile-br"> </span>Genius
+            
       section:
         own_your_salon:
           title: Own Your Salon
