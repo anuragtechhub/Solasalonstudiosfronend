@@ -187,7 +187,7 @@
     a {
       display: block;
       float: left;
-      width: calc(20% - 3px);
+      width: calc(25% - 3px);
       margin-right: 3px;
       text-decoration: none;
       font-size: 18px;
@@ -205,6 +205,12 @@
       &.active, &:hover, &:active {
         border-bottom-color: #FFF;
         color: #FFF;
+      }
+    }
+
+    &.with-sola-genius {
+      a {
+        width: calc(20% - 3px);
       }
     }
   }  

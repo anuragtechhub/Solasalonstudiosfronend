@@ -30,11 +30,19 @@ Solasalonstudios::Application.routes.draw do
 
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
+
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
   get 'own/:tab' => 'own_your_salon#index'
   get 'amenities' => 'own_your_salon#index'
+
+  # BEGIN TEMP OWN ROUTES #
+  get "own-your-salon-genius" => 'own_your_salon_genius#index'
+  get "own-your-salon-genius/:tab" => 'own_your_salon_genius#index'
+  get 'own-genius' => 'own_your_salon_genius#index'
+  get 'own-genius/:tab' => 'own_your_salon_genius#index'
+  # END TEMP OWN ROUTES #
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   

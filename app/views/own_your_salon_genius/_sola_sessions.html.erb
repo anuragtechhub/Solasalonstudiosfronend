@@ -1,0 +1,68 @@
+<div class="hero-tab-content" <%= 'data-hero-active=true' if params[:tab] == 'sola-sessions' %> data-ref="#sola-sessions">
+
+  <div class="hero-fullscreen">
+
+    <div class="hero-carousel owl-carousel owl-theme hero-carousel-fullscreen" data-pagination="true" data-autoplayoff="true">
+      <div class="item">
+        <%= image_tag 'own/hero_sola_sessions_1.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080 %>
+        <%= image_tag 'own/sola_sessions_logo.png', :class => 'sola_sessions_logo', :alt => 'Sola Sessions' %>  
+      </div>
+      <div class="item"><%= image_tag 'own/sessions/1.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1278, :width => 1920, :height => 1278, :alt => 'A group shot from a Sola Session live event' %></div>
+      <div class="item"><%= image_tag 'own/sessions/2.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'A group shot from a Sola Session live event' %></div>
+      <div class="item"><%= image_tag 'own/sessions/3.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor gets the crowd pumped up at a Sola Session live event' %></div>
+      <div class="item"><%= image_tag 'own/sessions/4.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor with headset cuts a woman\'s hair on-stage at a Sola Session live event' %></div>
+      <div class="item"><%= image_tag 'own/sessions/5.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1278, :width => 1920, :height => 1278, :alt => 'The crowd gets involved during a Sola Session live event' %></div>
+      <div class="item"><%= image_tag 'own/sessions/6.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor with headset cuts a woman\'s hair on-stage at a Sola Session live event' %></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-content-wrapper">
+
+        <%= render 'tabs', :active => 'sola-sessions' %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container container-inset">
+    
+    <p class="lead text-center" style="font-size: 25px;margin-bottom: 30px;"><strong><%= t('page.own.section.sola_sessions.heading1').html_safe %></strong></h2>
+
+    <p class="largest text-center"><%= t('page.own.section.sola_sessions.body1').html_safe %></p>
+    <p class="largest text-center">
+      <span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet1').html_safe %> &nbsp;<span class="bullet">&#9679;</span> <%= t('page.own.section.sola_sessions.bullet2').html_safe  %>
+      <br />
+      <span class="bullet">&#9679;</span> <%= link_to t('page.own.section.sola_sessions.bullet3').html_safe, :sessions %> <% if I18n.locale == :en %>– <%= t('page.own.section.sola_sessions.bullet4').html_safe  %><% end %>
+    </p>
+
+    <div class="session" style="margin: 40px auto">
+      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
+        <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458, :alt => 'An instructor with headset on stage at a Sola Session live event' %>
+        <div class="play-btn">
+          <span class="fa fa-5x fa-play"></span>
+        </div>
+      </a>
+    </div>
+
+    <p class="text-center" style="margin-bottom: 40px"><%= link_to t('page.own.section.sola_sessions.learn_more').html_safe, :sessions, :class => 'button primary' %>
+
+  </div>
+
+  <div class="callout pure-black callout-testimonial">
+    <div class="container">
+      <div class="row">
+        <%= image_tag 'own/tammy_headshot.png', :class => 'testimonial-portrait', :width => 256, :height => 256, :alt => 'Tammy Muniz headshot' %>
+        <div class="content">
+          <h1>&quot;<%= t('page.own.section.sola_sessions.testimonial_text').html_safe %>&quot; <span>Tammy Muniz</span></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_sessions.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_sessions.view_frequently_asked_questions').html_safe, :faqs %></h3>
+    </div>
+  </div>
+
+</div>
