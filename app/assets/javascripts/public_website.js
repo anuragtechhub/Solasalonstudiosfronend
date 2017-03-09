@@ -14,6 +14,7 @@
 //= require jquery.mousewheel
 //= require jquery.mCustomScrollbar
 //= require jssocials
+//= require aos
 
 $(function () {
 

@@ -41,4 +41,17 @@ $(function () {
     return false;
   });
 
+  /* solagenius gallery */
+  $('.sola-genius-feature-list-desktop li').on('click', function () {
+    var $this = $(this);
+
+    $('.sola-genius-feature-list-desktop li').removeClass('active');
+    $this.addClass('active');
+
+    return false;
+  });
+
+  /* init "animate-on-scoll" */
+  AOS.init();
+
 });

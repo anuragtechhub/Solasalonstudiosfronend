@@ -1043,7 +1043,7 @@ ul.own-list {
   .sola-genius-phone-gallery {
     position: relative;
     top: -50px;
-    left: -90px;
+    left: -70px;
   }
 
   .sola-genius-phone-gallery-desktop {
@@ -1212,16 +1212,23 @@ ul.own-list {
   }
 
   .sola-genius-descriptions-desktop {
+    padding-top: 90px;
+
     p {
+      display: none;
       color: #000;
       font-size: 19px;
       font-weight: 300;
       line-height: 33px;
+
+      &.active {
+        display: block;
+      }
     }
   }
 
   .sola-genius-get-started {
-    margin-top: 50px;
+    margin-top: 60px;
 
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
       display: inline-block;
@@ -1247,7 +1254,7 @@ ul.own-list {
     }
 
     p {
-      margin: 20px 0 0 0;
+      margin: 30px 0 0 0;
     }
     strong {
       font-size: 15px;
@@ -1279,6 +1286,7 @@ ul.own-list {
 
   .sola-genius-pricing-desktop {
     display: block;
+    margin-top: 120px;
   }
 
   .sola-genius-pricing-mobile {
