@@ -1103,6 +1103,14 @@ ul.own-list {
     position: relative;
   }
 
+  .sola-genius-phone-gallery-desktop {
+    display: block;
+  }
+
+  .sola-genius-phone-gallery-mobile {
+    display: none;
+  }
+
   .sola-genius-phone-carousel {
     position: absolute;
     // top: 127px;
@@ -1203,6 +1211,14 @@ ul.own-list {
 
 @media (max-width: 600px) {
   .sola-genius {
+
+    .sola-genius-phone-gallery-desktop {
+      display: none;
+    }
+
+    .sola-genius-phone-gallery-mobile {
+      display: block;
+    }
 
     .sola-genius-gallery {
       background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
