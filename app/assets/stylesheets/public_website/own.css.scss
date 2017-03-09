@@ -1093,6 +1093,40 @@ ul.own-list {
     background-size: cover;
   }
 
+  .sola-genius-get-started {
+    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+      display: inline-block;
+      background: rgb(135,203,251); /* Old browsers */
+      background: -moz-linear-gradient(left, rgba(135,203,251,1) 0%, rgba(200,123,250,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87cbfb', endColorstr='#c87bfa',GradientType=1 ); /* IE6-9 */
+      color: #FFF;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      line-height: 18px;
+      letter-spacing: 1px;
+      word-spacing: 3px;
+      padding: 12px 22px 13px 22px;
+      border-radius: 44px;
+      text-transform: uppercase;
+      border: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p {
+      margin: 0;
+    }
+    strong {
+      font-size: 15px;
+      line-height: 17px;
+      font-weight: bold;
+      color: #000;
+    }
+  }
+
   .sola-genius-pricing {
     padding: 30px 0;
     background: #1b1d21;
