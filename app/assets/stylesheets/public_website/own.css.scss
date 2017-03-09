@@ -1105,17 +1105,21 @@ ul.own-list {
 
   .sola-genius-phone-carousel {
     position: absolute;
-    top: 127px;
-    left: 114px;
+    // top: 127px;
+    // left: 114px;
+    top: 106px;
+    left: 94px;
     z-index: 3;
-    width: 292px;
-    height: 540px;
-
+    // width: 292px;
+    // height: 540px;
+    width: 241px !important;
+    height: 433px !important;
+    
     .item img {
-      width: 292px !important;
-      height: 523px !important;
-      // width: 241px !important;
-      // height: 433px !important;
+      // width: 292px !important;
+      // height: 523px !important;
+      width: 241px !important;
+      height: 433px !important;
     }
   }
 
@@ -1125,9 +1129,12 @@ ul.own-list {
     left: 0;
     z-index: 2;
     background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
-    background-size: 515px 836px;
-    width: 515px;
-    height: 836px;
+    //background-size: 515px 836px;
+    //width: 515px;
+    //height: 836px;
+    background-size: 425px 694px;
+    width: 425px;
+    height: 694px;
   }
 
   .sola-genius-get-started {
