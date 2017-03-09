@@ -41,17 +41,7 @@ $(function () {
     return false;
   });
 
-  /* solagenius gallery */
-  $('.sola-genius-feature-list-desktop li').on('click', function () {
-    var $this = $(this);
-
-    $('.sola-genius-feature-list-desktop li').removeClass('active');
-    $this.addClass('active');
-
-    return false;
-  });
-
-  /* carousel events */
+  /* solagenius carousel */
   $('.sola-genius-phone-carousel').each(function () {
     var $this = $(this);
     
@@ -67,7 +57,16 @@ $(function () {
       //autoPlay: 5000,
       transitionStyle : "fade",
       afterMove: function (carousel) {
-        console.log('afterMove', this.currentItem);
+        var slide = this.wrapperOuter.find('.item:eq(' + this.currentItem + ')').data('slide');
+        //console.log('afterMove', slide, this.currentItem);
+
+        // update feature list
+        $('.sola-genius-feature-list').find('li').removeClass('active')
+        $('.sola-genius-feature-list').find('[data-slide="' + slide + '"]').addClass('active');
+
+        // update text
+        $('.sola-genius-descriptions').find('p').not('.' + slide + '-text').fadeOut();
+        $('.sola-genius-descriptions').find('p.' + slide + '-text').fadeIn();
       }
     };
 
@@ -105,7 +104,18 @@ $(function () {
     $this.owlCarousel(options);
   });
 
-  /* init "animate-on-scoll" */
+  /* solagenius feature list */
+  $('.sola-genius-feature-list-desktop li').on('click', function () {
+    var $this = $(this);
+
+    $('.sola-genius-feature-list-desktop li').removeClass('active');
+    $this.addClass('active');
+
+    $('.sola-genius-phone-carousel').trigger('owl.goTo', $this.data('index'));
+
+    return false;
+  });
+
   AOS.init();
 
 });
