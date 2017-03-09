@@ -1218,11 +1218,15 @@ ul.own-list {
 
     .sola-genius-pricing-mobile {
       display: block;
-      padding: 30px;
+      padding: 20px;
       background: #1b1d21;
 
       p {
         color: #FFF;
+
+        strong {
+          color: #FFF;
+        }
       }
     }
   }
