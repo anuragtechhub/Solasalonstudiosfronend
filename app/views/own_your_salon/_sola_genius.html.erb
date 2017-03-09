@@ -9,13 +9,33 @@
     <div class="hero-content">
       <div class="hero-content-wrapper">
 
-        <%= render 'tabs', :active => 'own-your-salon' %>
+        <%= render 'tabs', :active => 'sola-genius' %>
 
         <%= image_tag 'own/introducing_sola_genius.png', :class => 'introducing_sola_genius', :alt => 'Introducing Sola Genius' %> 
+
+        <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="sizzle-video-controls play-video" rel="i6AUSUofPUg">
+          <div class="gradient-play-button"></div>
+          <div class="sizzle-video-controls-text">Watch Sizzle Video</div>
+        </a>
+
+        <a href="#" class="down_circle_arrow_icon"></a>
 
       </div>
     </div>
 
   </div>
 
+</div>
+
+<div class="sola-genius-pricing">
+  <div class="container">
+    <p><strong>Pricing:</strong></p>
+    <p>Sola professionals pay just $20 per month for the full suite of SolaGenius business support tools (normally $44/month), along with a 2.6% credit card processing fee (humble brag: that's the lowest in the business).</p>
+  </div>
+</div>
+
+<div class="callout blue">
+  <div class="container">
+    <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_sessions.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_sessions.view_frequently_asked_questions').html_safe, :faqs %></h3>
+  </div>
 </div>
