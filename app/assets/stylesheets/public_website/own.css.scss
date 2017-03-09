@@ -1092,7 +1092,7 @@ ul.own-list {
   .sola-genius-gallery {
     min-height: 100vh;
     padding: 60px 0;
-    background: asset-data-url('own/sola-letters-background.gif') no-repeat center center fixed; 
+    background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1114,7 +1114,7 @@ ul.own-list {
     // height: 540px;
     width: 241px !important;
     height: 433px !important;
-    
+
     .item img {
       // width: 292px !important;
       // height: 523px !important;
@@ -1171,15 +1171,19 @@ ul.own-list {
     }
   }
 
-  .sola-genius-pricing {
-    padding: 30px 0;
-    background: #1b1d21;
+  .sola-genius-pricing-desktop, .sola-genius-pricing-mobile {
+    display: none;
+    padding: 30px 0 0 0;
     text-align: center;
 
     p {
-      font-size: 14px;
-      line-height: 20px;
-      color: #FFFFFF;
+      font-size: 15px;
+      line-height: 25px;
+      color: #505050;
+
+      strong {
+        color: #202020;
+      }
 
       &:last-child {
         margin-bottom: 0;
@@ -1187,14 +1191,39 @@ ul.own-list {
     }
   }
 
+  .sola-genius-pricing-desktop {
+    display: block;
+  }
+
+  .sola-genius-pricing-mobile {
+    display: none;
+  }
 
 }
 
 @media (max-width: 600px) {
   .sola-genius {
 
+    .sola-genius-gallery {
+      background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+    }
+
     .run-your-sola-like-a-boss {
       display: none;
+    }
+
+    .sola-genius-pricing-desktop {
+      display: none;
+    }
+
+    .sola-genius-pricing-mobile {
+      display: block;
+      padding: 30px;
+      background: #1b1d21;
+
+      p {
+        color: #FFF;
+      }
     }
   }
 }

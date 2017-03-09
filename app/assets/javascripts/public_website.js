@@ -61,6 +61,10 @@ $(function () {
       options['pagination'] = true;
     }
 
+    if ($this.data('nonav')) {
+      options['nav'] = false;
+    }
+
     $this.owlCarousel(options);
   });
 
