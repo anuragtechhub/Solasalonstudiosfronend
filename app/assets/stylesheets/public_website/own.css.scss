@@ -1099,6 +1099,37 @@ ul.own-list {
     background-size: cover;
   }
 
+  .sola-genius-phone-gallery {
+    position: relative;
+  }
+
+  .sola-genius-phone-carousel {
+    position: absolute;
+    top: 127px;
+    left: 114px;
+    z-index: 3;
+    width: 292px;
+    height: 540px;
+
+    .item img {
+      width: 292px !important;
+      height: 523px !important;
+      // width: 241px !important;
+      // height: 433px !important;
+    }
+  }
+
+  .sola-genius-phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
+    background-size: 515px 836px;
+    width: 515px;
+    height: 836px;
+  }
+
   .sola-genius-get-started {
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
       display: inline-block;
