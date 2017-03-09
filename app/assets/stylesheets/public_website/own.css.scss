@@ -1027,7 +1027,7 @@ ul.own-list {
 
   .run-your-sola-like-a-boss {
     display: block;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 80px auto;
   }
 
   .sola-genius-gallery {
@@ -1042,6 +1042,8 @@ ul.own-list {
 
   .sola-genius-phone-gallery {
     position: relative;
+    top: -50px;
+    left: -90px;
   }
 
   .sola-genius-phone-gallery-desktop {
@@ -1088,7 +1090,7 @@ ul.own-list {
 
   .sola-genius-feature-list-desktop {
     list-style: none;
-    margin: 0;
+    margin: 70px 0 0 0;
     padding: 0;
     overflow: visible;
 
@@ -1209,7 +1211,18 @@ ul.own-list {
     }
   }
 
+  .sola-genius-descriptions-desktop {
+    p {
+      color: #000;
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 33px;
+    }
+  }
+
   .sola-genius-get-started {
+    margin-top: 50px;
+
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
       display: inline-block;
       background: rgb(135,203,251); /* Old browsers */
@@ -1223,17 +1236,18 @@ ul.own-list {
       line-height: 18px;
       letter-spacing: 1px;
       word-spacing: 3px;
-      padding: 12px 22px 13px 22px;
+      padding: 14px 36px 15px 36px;
       border-radius: 44px;
       text-transform: uppercase;
       border: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      @include box-shadow(0px 7px 40px 1px rgba(73, 156, 211, 0.5));
     }
 
     p {
-      margin: 0;
+      margin: 20px 0 0 0;
     }
     strong {
       font-size: 15px;
