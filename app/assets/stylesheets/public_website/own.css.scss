@@ -1078,6 +1078,21 @@ ul.own-list {
     }
   }
 
+  .run-your-sola-like-a-boss {
+    display: block;
+    margin: 0 auto 60px auto;
+  }
+
+  .sola-genius-gallery {
+    min-height: 100vh;
+    padding: 60px 0;
+    background: asset-data-url('own/sola-letters-background.gif') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
   .sola-genius-pricing {
     padding: 30px 0;
     background: #1b1d21;
@@ -1097,3 +1112,11 @@ ul.own-list {
 
 }
 
+@media (max-width: 600px) {
+  .sola-genius {
+
+    .run-your-sola-like-a-boss {
+      display: none;
+    }
+  }
+}
