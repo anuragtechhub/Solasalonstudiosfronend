@@ -1212,9 +1212,12 @@ ul.own-list {
   }
 
   .sola-genius-descriptions-desktop {
-    padding-top: 90px;
+    padding: relative;
 
     p {
+      position: absolute;
+      top: 90px;
+      left: 0;
       display: none;
       color: #000;
       font-size: 19px;
@@ -1227,8 +1230,11 @@ ul.own-list {
     }
   }
 
+  .sola-genius-get-started-desktop {
+    margin-top: 320px;
+  }
+
   .sola-genius-get-started {
-    margin-top: 60px;
 
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
       display: inline-block;
