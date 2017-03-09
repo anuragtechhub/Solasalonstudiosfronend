@@ -444,6 +444,16 @@
     min-height: auto !important;
   }  
 
+  .introducing_sola_genius {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    margin: -154px 0 0 -408px !important;
+    width: 816px !important;
+    height: 308px !important;
+    min-height: auto !important;
+  }  
+
   .download-buttons {
     margin-top: 40px;
     overflow: visible;
@@ -484,6 +494,16 @@
         }
       }
     }
+
+    .introducing_sola_genius {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: -115.5px 0 0 -306px !important;
+      width: 612px !important;
+      height: 231px !important;
+      min-height: auto !important;
+    }  
 
     #amenity-description {
       position: absolute;
@@ -763,6 +783,16 @@ ul.own-list {
       height: 96px !important;
       min-height: auto !important;
     }   
+
+    .introducing_sola_genius {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: -77px 0 0 -204px !important;
+      width: 408px !important;
+      height: 154px !important;
+      min-height: auto !important;
+    }
   }
 }
 
@@ -782,6 +812,32 @@ ul.own-list {
     }
     .owl-pagination {
       bottom: 10px !important;
+    }
+
+    .hero-tabs {
+      top: 15px;
+
+      a {
+        font-size: 11px !important;
+        line-height: 13px !important;
+        padding-bottom: 9px !important;
+        //white-space: nowrap !important;
+        border-bottom-width: 5px !important;
+
+        .mobile-br {
+          display: block;
+        }
+      }
+    }
+
+    .introducing_sola_genius {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: -38.5px 0 0 -102px !important;
+      width: 204px !important;
+      height: 77px !important;
+      min-height: auto !important;
     }
 
     .sola-pro-copy {

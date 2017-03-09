@@ -3,7 +3,17 @@
   <div class="hero-fullscreen">
 
     <div class="hero-carousel-fullscreen" data-autoplayoff="true">
-      <div class="item"><%= image_tag 'own/hero_1_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
+      <div class="item"><%= image_tag 'own/sola_genius_hero_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-content-wrapper">
+
+        <%= render 'tabs', :active => 'own-your-salon' %>
+
+        <%= image_tag 'own/introducing_sola_genius.png', :class => 'introducing_sola_genius', :alt => 'Introducing Sola Genius' %> 
+
+      </div>
     </div>
 
   </div>
