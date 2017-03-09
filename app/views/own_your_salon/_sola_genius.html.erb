@@ -1,41 +1,96 @@
-<div class="hero-tab-content hero-own" <%= 'data-hero-active=true' if params[:tab] == 'sola-genius' || params[:tab].blank? %> data-ref="#sola-genius">
+<div class="sola-genius">
 
-  <div class="hero-fullscreen">
+  <div class="hero-tab-content hero-own" <%= 'data-hero-active=true' if params[:tab] == 'sola-genius' || params[:tab].blank? %> data-ref="#sola-genius">
+    <div class="hero-fullscreen">
+      <div class="hero-carousel-fullscreen" data-autoplayoff="true">
+        <div class="item"><%= image_tag 'own/sola_genius_hero_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
+      </div>
 
-    <div class="hero-carousel-fullscreen" data-autoplayoff="true">
-      <div class="item"><%= image_tag 'own/sola_genius_hero_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
-    </div>
-
-    <div class="hero-content">
-      <div class="hero-content-wrapper">
-
-        <%= render 'tabs', :active => 'sola-genius' %>
-
-        <%= image_tag 'own/introducing_sola_genius.png', :class => 'introducing_sola_genius', :alt => 'Introducing Sola Genius' %> 
-
-        <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="sizzle-video-controls play-video" rel="i6AUSUofPUg">
-          <div class="gradient-play-button"></div>
-          <div class="sizzle-video-controls-text">Watch Sizzle Video</div>
-        </a>
-
-        <a href="#" class="down_circle_arrow_icon"></a>
-
+      <div class="hero-content">
+        <div class="hero-content-wrapper">
+          <%= render 'tabs', :active => 'sola-genius' %>
+          <%= image_tag 'own/introducing_sola_genius.png', :class => 'introducing_sola_genius', :alt => 'Introducing Sola Genius' %> 
+          <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="sizzle-video-controls play-video" rel="i6AUSUofPUg">
+            <div class="gradient-play-button"></div>
+            <div class="sizzle-video-controls-text">Watch Sizzle Video</div>
+          </a>
+          <a href="#" class="down_circle_arrow_icon"></a>
+        </div>
       </div>
     </div>
+  </div>
+
+
+  <div class="sola-genius-gallery">
+
+    <div data-slide="online-booking">
+      <span class="sola-genius-icon online-booking-icon"></span>
+      <h2>24/7 Online Booking</h2>
+      <p>A simple and beautiful booking experience that allows you to cut down on client calls, texts and voicemails</p>
+    </div>
+
+    <div data-slide="simple-calendar-interface">
+      <span class="sola-genius-icon simple-calendar-interface-icon"></span>
+      <h2>Simple Calendar Interface</h2>
+      <p>Create and manage the perfectly curated schedule</p>
+    </div>
+
+    <div data-slide="appointment-notifications">
+      <span class="sola-genius-icon appointment-notifications-icon"></span>
+      <h2>Appointment Notifications</h2>
+      <p>Keep clients up-to-date on upcoming appointments to cut down on no shows and cancellations with reminders and follow-ups</p>
+    </div>
+
+    <div data-slide="text-message-marketing">
+      <span class="sola-genius-icon text-message-marketing-icon"></span>
+      <h2>Text Message Marketing</h2>
+      <p>Shower your clients with updates and strengthen relationships with marketing outreach via text messaging</p>
+    </div>
+
+    <div data-slide="client-notes">
+      <span class="sola-genius-icon client-notes-icon"></span>
+      <h2>Client Notes</h2>
+      <p>Save client details, from color formulas to upcoming milestones, and receive reminders so you never forget a thing</p>
+    </div>
+
+    <div data-slide="point-of-sale">
+      <span class="sola-genius-icon point-of-sale-icon"></span>
+      <h2>Point-Of-Sale</h2>
+      <p>Prepopulate your SolaGenius with services and products to make checkout fast and easy</p>
+    </div>
+
+    <div data-slide="credit-card-processing">
+      <span class="sola-genius-icon credit-card-processing-icon"></span>
+      <h2>Credit Card Processing</h2>
+      <p>It's fast, PCI compliant and rates are the lowest in the industry -- a simple 2.6% per swipe</p>
+    </div>
+
+    <div data-slide="analytics-and-reports">
+      <span class="sola-genius-icon analytics-and-reports-icon"></span>
+      <h2>Analytics and Reports</h2>
+      <p>We've worked with industry experts to drill down on the numbers you need to know to work smarter, not harder</p>
+    </div>
+
+    <div data-slide="reliable-customer-support">
+      <span class="sola-genius-icon reliable-customer-support-icon"></span>
+      <h2>Reliable Customer Support</h2>
+      <p>Get the help you need via text message, phone or email for everything from help setting up to ongoing questions</p>
+    </div>
 
   </div>
 
-</div>
 
-<div class="sola-genius-pricing">
-  <div class="container">
-    <p><strong>Pricing:</strong></p>
-    <p>Sola professionals pay just $20 per month for the full suite of SolaGenius business support tools (normally $44/month), along with a 2.6% credit card processing fee (humble brag: that's the lowest in the business).</p>
+  <div class="sola-genius-pricing">
+    <div class="container">
+      <p><strong>Pricing:</strong></p>
+      <p>Sola professionals pay just $20 per month for the full suite of SolaGenius business support tools (normally $44/month), along with a 2.6% credit card processing fee (humble brag: that's the lowest in the business).</p>
+    </div>
   </div>
-</div>
 
-<div class="callout blue">
-  <div class="container">
-    <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_sessions.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_sessions.view_frequently_asked_questions').html_safe, :faqs %></h3>
+  <div class="callout blue">
+    <div class="container">
+      <h3 class="large" style="margin-bottom:0;"><span style="font-weight:normal"><%= t('page.own.section.sola_sessions.want_to_learn_more').html_safe %></span> <%= link_to t('page.own.section.sola_sessions.view_frequently_asked_questions').html_safe, :faqs %></h3>
+    </div>
   </div>
+
 </div>

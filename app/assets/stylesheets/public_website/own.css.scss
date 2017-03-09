@@ -1017,20 +1017,83 @@ ul.own-list {
 * Sola Genius *
 ***************/
 
-.sola-genius-pricing {
-  padding: 30px 0;
-  background: #1b1d21;
-  text-align: center;
+.sola-genius {
 
-  p {
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
+  .sola-genius-icon {
+    display: inline-block;
 
-    &:last-child {
-      margin-bottom: 0;
+    &.online-booking-icon {
+      background: asset-data-url('own/sola-genius-icons/online-booking.png');
+      background-size: 51px 52.5px;
+      width: 51px;
+      height: 52.5px;
+    }
+    &.simple-calendar-interface-icon {
+      background: asset-data-url('own/sola-genius-icons/simple-calendar-interface.png');
+      background-size: 53.5px 52.5px;
+      width: 53.5px;
+      height: 52.5px;
+    }
+    &.appointment-notifications-icon {
+      background: asset-data-url('own/sola-genius-icons/appointment-notifications.png');
+      background-size: 48px 41.5px;
+      width: 48px;
+      height: 41.5px;
+    }
+    &.text-message-marketing-icon {
+      background: asset-data-url('own/sola-genius-icons/text-message-marketing.png');
+      background-size: 53px 51px;
+      width: 53px;
+      height: 51px;
+    }
+    &.client-notes-icon {
+      background: asset-data-url('own/sola-genius-icons/client-notes.png');
+      background-size: 50.5px 39.5px;
+      width: 50.5px;
+      height: 39.5px;
+    }
+    &.point-of-sale-icon {
+      background: asset-data-url('own/sola-genius-icons/point-of-sale.png');
+      background-size: 44px 50.5px;
+      width: 44px;
+      height: 50.5px;
+    }
+    &.credit-card-processing-icon {
+      background: asset-data-url('own/sola-genius-icons/credit-card-processing.png');
+      background-size: 57px 36.5px;
+      width: 57px;
+      height: 36.5px;
+    }
+    &.analytics-and-reports-icon {
+      background: asset-data-url('own/sola-genius-icons/analytics-and-reports.png');
+      background-size: 57px 43.5px;
+      width: 57px;
+      height: 43.5px;
+    }
+    &.reliable-customer-support-icon {
+      background: asset-data-url('own/sola-genius-icons/reliable-customer-support.png');
+      background-size: 61.5px 50.5px;
+      width: 61.5px;
+      height: 50.5px;
     }
   }
-}
 
+  .sola-genius-pricing {
+    padding: 30px 0;
+    background: #1b1d21;
+    text-align: center;
+
+    p {
+      font-size: 14px;
+      line-height: 20px;
+      color: #FFFFFF;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+
+}
 
