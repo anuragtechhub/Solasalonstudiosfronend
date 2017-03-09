@@ -19,7 +19,7 @@
 $(function () {
 
   // carousel
-  $('.owl-carousel').each(function () {
+  $('.owl-carousel').not('.no-autobind').each(function () {
     var $this = $(this);
     
     var options = {

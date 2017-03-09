@@ -51,6 +51,60 @@ $(function () {
     return false;
   });
 
+  /* carousel events */
+  $('.sola-genius-phone-carousel').each(function () {
+    var $this = $(this);
+    
+    var options = {
+      navigation: $this.data('nonav') ? false : true,
+      navigationText: [
+        "<i class='arrow-left'></i>",
+        "<i class='arrow-right'></i>"
+      ],
+      lazyEffect: false,
+      slideSpeed: 300,
+      pagination: false,
+      //autoPlay: 5000,
+      transitionStyle : "fade",
+      afterMove: function (carousel) {
+        console.log('afterMove', this.currentItem);
+      }
+    };
+
+    if ($this.data('items')) {
+      options['items'] = $this.data('items');
+    } else {
+      options['singleItem'] = true;
+    }
+
+    if ($this.data('animation')) {
+      delete options['transitionStyle']; 
+      options['animateOut'] = 'fadeOut'
+    }
+
+    if ($this.data('autoheight')) {
+      options['autoHeight'] = true;
+    }
+
+    if ($this.data('autoplay')) {
+      options['autoPlay'] = parseInt($this.data('autoplay'), 10);
+    }
+
+    if ($this.data('autoplayoff')) {
+      options['autoPlay'] = false
+    }
+
+    if ($this.data('pagination')) {
+      options['pagination'] = true;
+    }
+
+    if ($this.data('nonav')) {
+      options['nav'] = false;
+    }
+
+    $this.owlCarousel(options);
+  });
+
   /* init "animate-on-scoll" */
   AOS.init();
 
