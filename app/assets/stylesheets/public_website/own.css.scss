@@ -1295,25 +1295,35 @@ ul.own-list {
     margin-top: 90px;
   }
 
-  .sola-genius-pricing-mobile {
-    display: none;
-  }
+  // .sola-genius-pricing-mobile {
+  //   display: none;
+  // }
 
 }
 
-@media (max-width: 950px) {
+@media (max-width: 975px) {
   .sola-genius {
 
-    .sola-genius-phone-gallery-desktop {
-      display: none;
+    .one-third.column {
+      width: 100%;
+      display: block;
+      float: none;
     }
 
-    .sola-genius-phone-gallery-mobile {
-      display: block;
-    }
+    // .sola-genius-phone-gallery-desktop {
+    //   display: none;
+    // }
+
+    // .sola-genius-phone-gallery-mobile {
+    //   display: block;
+    // }
 
     .sola-genius-gallery {
       background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
     }
 
     .run-your-sola-like-a-boss {
