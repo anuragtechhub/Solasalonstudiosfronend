@@ -12,6 +12,8 @@ class MySolaController < PublicWebsiteController
     @gallery_images = Rails.cache.fetch(cache_key) do   
       MySolaImage.where(:approved => true).to_a.to_json
     end
+
+    render :layout => params[:layout] if params[:layout]
   end
 
   def show

@@ -54,7 +54,7 @@ $(function () {
       lazyEffect: false,
       slideSpeed: 300,
       pagination: false,
-      //autoPlay: 5000,
+      autoPlay: 3000,
       transitionStyle : "fade",
       afterMove: function (carousel) {
         var slide = this.wrapperOuter.find('.item:eq(' + this.currentItem + ')').data('slide');
