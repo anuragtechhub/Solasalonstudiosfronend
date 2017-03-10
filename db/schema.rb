@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220152611) do
+ActiveRecord::Schema.define(version: 20170310213116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -513,7 +513,7 @@ ActiveRecord::Schema.define(version: 20170220152611) do
     t.string   "msa_name"
     t.boolean  "phone_number_display",    default: true
     t.boolean  "has_sola_genius_account", default: false
-    t.boolean  "sola_genius_enabled",     default: false
+    t.boolean  "sola_genius_enabled",     default: true
     t.string   "sola_pro_platform"
     t.string   "sola_pro_version"
     t.text     "image_1_alt_text"
