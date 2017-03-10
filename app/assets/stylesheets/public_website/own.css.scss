@@ -1325,6 +1325,12 @@ ul.own-list {
 
 @media (max-width: 820px) {
   .sola-genius {
+
+    .sola-genius-icon-wrapper {
+      height: 35px;
+      display: block;
+      overflow: hidden;
+    }
     
     .owl-theme .owl-controls .owl-pagination {
       display: block;
