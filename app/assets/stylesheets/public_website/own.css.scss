@@ -1296,6 +1296,10 @@ ul.own-list {
     margin-top: 90px;
   }
 
+  .owl-theme .owl-controls .owl-pagination {
+    display: none;
+  }
+
   // .sola-genius-pricing-mobile {
   //   display: none;
   // }
@@ -1304,10 +1308,47 @@ ul.own-list {
 
 @media (max-width: 975px) {
   .sola-genius {
+    .sola-genius-gallery {
+      padding: 40px 0;
+    }
+    .sola-genius-feature-list-desktop h2 {
+      font-size: 15px;
+    }
+    .sola-genius-phone-gallery {
+      left: -100px;
+    }
+    .sola-genius-descriptions p, .sola-genius-get-started-desktop {
+      padding-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .sola-genius {
     
+    .owl-theme .owl-controls .owl-pagination {
+      display: block;
+      bottom: auto !important;
+      top: -79px;
+      left: -10px;
+      right: -10px;
+      white-space: nowrap;
+
+      .owl-page span {
+        background: rgba(0,0,0,0.3);
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+      }
+      .owl-page.active span {
+        background: rgba(0,0,0,0.7);
+      }
+    }
+
     .sola-genius-feature-list-desktop {
       margin-top: 0;
       margin-bottom: 30px;
+      height: 90px;
 
       li {
         display: none;
@@ -1325,10 +1366,10 @@ ul.own-list {
           top: auto !important;
           left: auto !important;
           position: static;
+          font-size: 19px;
         }
         .sola-genius-icon {
-          margin-bottom: 10px;
-          display: none;
+          margin-bottom: 12px;
         }
       }
     }

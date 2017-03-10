@@ -93,9 +93,9 @@ $(function () {
       options['autoPlay'] = false
     }
 
-    if ($this.data('pagination')) {
+    //if ($this.data('pagination')) {
       options['pagination'] = true;
-    }
+    //}
 
     if ($this.data('nonav')) {
       options['nav'] = false;
