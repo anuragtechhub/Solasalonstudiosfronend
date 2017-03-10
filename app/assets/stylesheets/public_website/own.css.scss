@@ -1303,22 +1303,105 @@ ul.own-list {
 
 @media (max-width: 975px) {
   .sola-genius {
+    
+    .sola-genius-feature-list-desktop {
+      margin-top: 0;
+      margin-bottom: 30px;
+
+      li {
+        display: none;
+        text-align: center;
+
+        &.active {
+          display: block;
+        }
+
+        .sola-genius-icon, h2 {
+          display: block;
+          clear: both;
+          padding: 0;
+          margin: 0 auto;
+          top: auto !important;
+          left: auto !important;
+          position: static;
+        }
+        .sola-genius-icon {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .down_circle_arrow_icon {
+      position: absolute;
+      left: 50%;
+      margin-left: (-39px / 1.5);
+      bottom: (39px / 1.5);
+      background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
+      background-size: (78px / 1.5) (78px / 1.5);
+      width: (78px / 1.5);
+      height: (78px / 1.5);
+      z-index: 3;
+      cursor: pointer;
+    }
 
     .one-third.column {
       width: 100%;
       display: block;
       float: none;
+      margin: 0;
     }
 
-    // .sola-genius-phone-gallery-desktop {
-    //   display: none;
-    // }
+    .sola-genius-phone-gallery {
+      position: static;
+      top: auto;
+      left: auto;
+      margin: 0 auto;
+      display: block;
+      clear: both;
+      overflow: hidden;
 
-    // .sola-genius-phone-gallery-mobile {
-    //   display: block;
-    // }
+      .sola-genius-phone {
+        position: static;
+        top: auto;
+        left: auto;
+        margin: 0 auto;
+        background-size: (425px / 1.5) (694px / 1.5);
+        width: (425px / 1.5);
+        height: (694px / 1.5);
+      }
+    }
+
+    .sola-genius-get-started-desktop {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .sola-genius-descriptions-desktop {
+      padding: 0;
+      margin: 0 auto;
+      max-width: 350px;
+
+      p {
+        position: static;
+        top: auto;
+        left: auto;
+        display: none;
+        color: #000;
+        font-size: 19px;
+        font-weight: 300;
+        line-height: 33px;
+        text-align: center;
+        padding: 15px;
+
+        &.active {
+          display: block;
+        }
+      }
+    }  
 
     .sola-genius-gallery {
+      padding: 30px 0;
+      min-height: auto;
       background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;

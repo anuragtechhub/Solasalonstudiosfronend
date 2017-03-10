@@ -105,7 +105,7 @@ $(function () {
   });
 
   /* solagenius feature list */
-  $('.sola-genius-feature-list-desktop li').on('click', function () {
+  $('.sola-genius-feature-list-desktop li').on('click mouseenter', function () {
     var $this = $(this);
 
     $('.sola-genius-feature-list-desktop li').removeClass('active');
