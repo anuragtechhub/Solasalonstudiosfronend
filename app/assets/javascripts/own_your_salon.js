@@ -65,8 +65,8 @@ $(function () {
         $('.sola-genius-feature-list').find('[data-slide="' + slide + '"]').addClass('active');
 
         // update text
-        $('.sola-genius-descriptions').find('p').not('.' + slide + '-text').fadeOut();
-        $('.sola-genius-descriptions').find('p.' + slide + '-text').fadeIn();
+        $('.sola-genius-descriptions').find('p').not('.' + slide + '-text').hide();
+        $('.sola-genius-descriptions').find('p.' + slide + '-text').show();
       }
     };
 
@@ -111,7 +111,7 @@ $(function () {
     $('.sola-genius-feature-list-desktop li').removeClass('active');
     $this.addClass('active');
 
-    $('.sola-genius-phone-carousel').trigger('owl.goTo', $this.data('index'));
+    $('.sola-genius-phone-carousel').trigger('owl.jumpTo', $this.data('index'));
 
     return false;
   });
