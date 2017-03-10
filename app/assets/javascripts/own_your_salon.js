@@ -22,6 +22,10 @@ $(function () {
     $('.hero-tab-content').removeClass('hero-active').filter('[data-ref=#' + href + ']').addClass('hero-active');
     window.history.pushState(null, null, $this.data('base') + href);
 
+    if (AOS && AOS.refresh) {
+      AOS.refresh();
+    }
+
     return false;
   });
 
