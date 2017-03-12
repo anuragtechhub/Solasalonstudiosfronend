@@ -28,7 +28,7 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def generated_image_url
-    generated_image.url(:original) if generated_image.present?
+    generated_image.url(:original).gsub('http://', 'https://') if generated_image.present?
   end
 
   def original_image_url
