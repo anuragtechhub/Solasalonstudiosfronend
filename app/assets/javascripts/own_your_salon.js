@@ -127,8 +127,19 @@ $(function () {
     var $window = $(window);
     var $inner = $('#sola-genius-gallery-inner');
 
-    $('#sola-genius-gallery').height($window.height());
-    $inner.width($window.width()).css("marginTop", -($inner.height() / 2) + 'px');
+
+
+    
+    if ($inner.height() > $window.height()) {
+      // content taller than window...
+      $('#sola-genius-gallery').height($inner.height() + 40);
+      $inner.width($window.width()).css({top: 0, marginTop: 0});
+    } else {
+      // default
+      $('#sola-genius-gallery').height($window.height());
+      $inner.width($window.width()).css({top: '50%', marginTop: -($inner.height() / 2) + 'px'});
+    }
+
     if (AOS && AOS.refresh) {
       AOS.refresh();
     }

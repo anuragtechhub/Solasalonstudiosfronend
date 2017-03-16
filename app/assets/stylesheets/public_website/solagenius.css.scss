@@ -339,7 +339,7 @@
 
   .sola-genius-pricing-desktop {
     display: block;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .owl-theme .owl-controls .owl-pagination {
@@ -393,9 +393,15 @@
     }
 
     .sola-genius-feature-list-desktop {
-      margin-top: 0;
-      margin-bottom: 30px;
-      height: 80px;
+      // margin-top: 0;
+      // margin-bottom: 30px;
+      // height: 80px;
+      position: static;
+      top: auto;
+      left: auto;
+      display: block;
+      clear: both;
+      margin: 0 auto 20px auto;
 
       li {
         display: none;
@@ -449,7 +455,7 @@
       position: relative;
       top: auto;
       left: auto;
-      margin: -30px auto -60px auto;
+      margin: 0 auto -60px auto;
       display: block;
       clear: both;
       overflow: hidden;
@@ -489,10 +495,18 @@
 
     .sola-genius-descriptions-desktop {
       padding: 0;
-      margin: 0 auto;
+      margin: -10px auto 0 auto;
       max-width: 350px;
-      height: 170px;
+      height: 130px;
       overflow: visible;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+
 
       p {
         position: static;
@@ -504,7 +518,8 @@
         font-weight: 300;
         line-height: 29px;
         text-align: center;
-        padding: 15px;
+        padding: 0px;
+        margin: 0;
 
         &.active {
           display: block;
