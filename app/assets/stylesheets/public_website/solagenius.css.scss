@@ -33,32 +33,12 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
-    // display: -ms-flexbox;
-    // display: -webkit-flex;
-    // display: flex;
-
-    // -ms-flex-align: center;
-    // -webkit-align-items: center;
-    // -webkit-box-align: center;
-
-    // -webkit-flex-direction: column;
-    // -ms-flex-direction: column;
-    // flex-direction: column;
-
-    // -webkit-align-items: center; 
-    // -ms-align-items: center; 
-    // align-items: center; 
   }
 
   .sola-genius-gallery-inner {
-    position: absolute; /* or absolute */
+    position: absolute;
     top: 50%;
     left: 0;
-
-    // -webkit-transform: translate(-50%, -50%);
-    // -ms-transform: translate(-50%, -50%);
-    // transform: translate(-50%, -50%);
   }
 
   .sola-genius-phone-gallery-desktop {
@@ -77,21 +57,17 @@
 
   .sola-genius-phone-carousel {
     position: absolute;
-    // top: 127px;
-    // left: 114px;
-    top: 106px;
-    left: 94px;
     z-index: 3;
-    // width: 292px;
-    // height: 540px;
-    width: 241px !important;
-    height: 433px !important;
+
+    top: 71px;
+    left: 63px;
+    
+    width: (241px / 1.5) !important;
+    height: (433px / 1.5) !important;
 
     .item img {
-      // width: 292px !important;
-      // height: 523px !important;
-      width: 241px !important;
-      height: 433px !important;
+      width: (241px / 1.5) !important;
+      height: (433px / 1.5) !important;
     }
   }
 
@@ -101,12 +77,10 @@
     left: 0;
     z-index: 2;
     background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
-    //background-size: 515px 836px;
-    //width: 515px;
-    //height: 836px;
-    background-size: 425px 694px;
-    width: 425px;
-    height: 694px;
+
+    background-size: (425px / 1.5) (694px / 1.5);
+    width: (425px / 1.5);
+    height: (694px / 1.5);
   }
 
   .sola-genius-feature-list-desktop {
