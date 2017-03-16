@@ -20,7 +20,7 @@
 
   .run-your-sola-like-a-boss {
     display: block;
-    margin: 0 auto 80px auto;
+    margin: 0 auto 40px auto;
   }
 
   .sola-genius-gallery {
@@ -62,7 +62,7 @@
     top: 71px;
     left: 63px;
     
-    width: (241px / 1.5) !important;
+    width: (241px / 1.5) + .33 !important;
     height: (433px / 1.5) !important;
 
     .item img {
@@ -85,13 +85,16 @@
 
   .sola-genius-feature-list-desktop {
     list-style: none;
-    margin: 70px 0 0 0;
+    margin: 0;
     padding: 0;
     overflow: visible;
+    position: relative;
+    top: 90px;
+    left: 45px;
 
     li {
       margin: 0;
-      padding: 0 0 5px 0;
+      padding: 0;
       position: relative;
       cursor: pointer;
       opacity: 0.2;
@@ -108,28 +111,31 @@
       left: 0;
 
       &.online-booking-icon {
-        top: -2px;
+        top: 1px;
         left: 1px;
       }
       &.simple-calendar-interface-icon {
-        top: -2px;
+        top: 2px;
       }
       &.appointment-notifications-icon {
-        top: 4px;
+        top: 5px;
         left: 1px;
       }
       &.client-notes-icon {
-        top: 2px;
+        top: 5px;
       }
       &.point-of-sale-icon {
-        top: -2px;
-        left: 1px;
+        top: 2px;
+        left: 2px;
       }
       &.credit-card-processing-icon {
+        top: 5px;
+      }     
+      &.analytics-and-reports-icon {
         top: 3px;
       }
       &.reliable-customer-support-icon {
-        top: -1px;
+        top: 3px;
         left: -1px;
       }
     }
@@ -137,12 +143,12 @@
     h2 {
       font-family: 'Lato', sans-serif;
       font-weight: bold;
-      font-size: 17px;
-      line-height: 21px;
+      font-size: 15px;
+      line-height: 19px;
       letter-spacing: 0;
       text-transform: none;
       display: inline-block;
-      padding-left: 45px;
+      padding-left: 38px;
     }
   }
 
@@ -152,57 +158,57 @@
 
     &.online-booking-icon {
       background: asset-data-url('own/sola-genius-icons/online-booking.png');
-      background-size: (102px / 4) (105px / 4);
-      width: (102px / 4);
-      height: (105px / 4);
+      background-size: (102px / 5) (105px / 5);
+      width: (102px / 5);
+      height: (105px / 5);
     }
     &.simple-calendar-interface-icon {
       background: asset-data-url('own/sola-genius-icons/simple-calendar-interface.png');
-      background-size: (107px / 4) (105px / 4);
-      width: (107px / 4);
-      height: (105px / 4);
+      background-size: (107px / 5) (105px / 5);
+      width: (107px / 5);
+      height: (105px / 5);
     }
     &.appointment-notifications-icon {
       background: asset-data-url('own/sola-genius-icons/appointment-notifications.png');
-      background-size: (96px / 4) (83px / 4);
-      width: (96px / 4);
-      height: (83px / 4);
+      background-size: (96px / 5) (83px / 5);
+      width: (96px / 5);
+      height: (83px / 5);
     }
     &.text-message-marketing-icon {
       background: asset-data-url('own/sola-genius-icons/text-message-marketing.png');
-      background-size: (106px / 4) (102px / 4);
-      width: (106px / 4);
-      height: (102px / 4);
+      background-size: (106px / 5) (102px / 5);
+      width: (106px / 5);
+      height: (102px / 5);
     }
     &.client-notes-icon {
       background: asset-data-url('own/sola-genius-icons/client-notes.png');
-      background-size: (101px / 4) (79px / 4);
-      width: (101px / 4);
-      height: (79px / 4);
+      background-size: (101px / 5) (79px / 5);
+      width: (101px / 5);
+      height: (79px / 5);
     }
     &.point-of-sale-icon {
       background: asset-data-url('own/sola-genius-icons/point-of-sale.png');
-      background-size: (88px / 4) (101px / 4);
-      width: (88px / 4);
-      height: (101px / 4);
+      background-size: (88px / 5) (101px / 5);
+      width: (88px / 5);
+      height: (101px / 5);
     }
     &.credit-card-processing-icon {
       background: asset-data-url('own/sola-genius-icons/credit-card-processing.png');
-      background-size: (114px / 4) (73px / 4);
-      width: (114px / 4);
-      height: (73px / 4);
+      background-size: (114px / 5) (73px / 5);
+      width: (114px / 5);
+      height: (73px / 5);
     }
     &.analytics-and-reports-icon {
       background: asset-data-url('own/sola-genius-icons/analytics-and-reports.png');
-      background-size: (114px / 4) (87px / 4);
-      width: (114px / 4);
-      height: (87px / 4);
+      background-size: (114px / 5) (87px / 5);
+      width: (114px / 5);
+      height: (87px / 5);
     }
     &.reliable-customer-support-icon {
       background: asset-data-url('own/sola-genius-icons/reliable-customer-support.png');
-      background-size: (119px / 4) (96px / 4);
-      width: (119px / 4);
-      height: (96px / 4);
+      background-size: (119px / 5) (96px / 5);
+      width: (119px / 5);
+      height: (96px / 5);
     }
   }
 
@@ -293,6 +299,7 @@
 
   .sola-genius-pricing-desktop {
     display: block;
+    margin-top: 20px;
   }
 
   .owl-theme .owl-controls .owl-pagination {
@@ -505,11 +512,11 @@
 /* Smartphones (portrait and landscape) ----------- */
 /****************************************************/
 
-@media (max-device-width : 740px) {
+@media (max-width : 740px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-154px / 2.95) 0 0 (-408px / 2.95);
-    width: (816px / 2.95);
-    height: (308px / 2.95);
+    margin: (-154px / 1.95) 0 0 (-408px / 1.95);
+    width: (816px / 1.95);
+    height: (308px / 1.95);
   } 
 
   .sola-genius {
@@ -526,4 +533,21 @@
       padding-left: 10px;
     }
   }
+}
+
+
+@media (max-width : 640px) {
+  .own-your-salon .hero-fullscreen img.introducing_sola_genius {
+    margin: (-154px / 2.25) 0 0 (-408px / 2.25);
+    width: (816px / 2.25);
+    height: (308px / 2.25);
+  }   
+}
+
+@media (max-width : 540px) {
+  .own-your-salon .hero-fullscreen img.introducing_sola_genius {
+    margin: (-154px / 2.55) 0 0 (-408px / 2.55);
+    width: (816px / 2.55);
+    height: (308px / 2.55);
+  }   
 }
