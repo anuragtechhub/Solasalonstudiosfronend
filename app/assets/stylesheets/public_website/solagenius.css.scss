@@ -513,8 +513,7 @@
     }  
 
     .sola-genius-gallery {
-      padding: 30px 0 0 0;
-      min-height: auto;
+      padding: 0;
       background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -559,20 +558,20 @@
     height: (308px / 1.95);
   } 
 
-  .sola-genius {
-    .sola-genius-gallery {
-      padding: 40px 0;
-    }
-    .sola-genius-feature-list-desktop h2 {
-      font-size: 15px;
-    }
-    .sola-genius-phone-gallery {
-      left: -100px;
-    }
-    .sola-genius-descriptions p, .sola-genius-get-started-desktop {
-      padding-left: 10px;
-    }
-  }
+  // .sola-genius {
+  //   .sola-genius-gallery {
+  //     padding: 40px 0;
+  //   }
+  //   .sola-genius-feature-list-desktop h2 {
+  //     font-size: 15px;
+  //   }
+  //   .sola-genius-phone-gallery {
+  //     //left: -100px;
+  //   }
+  //   .sola-genius-descriptions p, .sola-genius-get-started-desktop {
+  //     padding-left: 10px;
+  //   }
+  // }
 }
 
 

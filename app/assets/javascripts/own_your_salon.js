@@ -129,7 +129,9 @@ $(function () {
 
     $('#sola-genius-gallery').height($window.height());
     $inner.width($window.width()).css("marginTop", -($inner.height() / 2) + 'px');
-    AOS.init();
+    if (AOS && AOS.refresh) {
+      AOS.refresh();
+    }
   }).trigger('resize.solagenius');
 
 });
