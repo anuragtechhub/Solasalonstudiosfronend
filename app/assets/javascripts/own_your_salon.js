@@ -58,7 +58,7 @@ $(function () {
       lazyEffect: false,
       slideSpeed: 300,
       pagination: false,
-      autoPlay: 3000,
+      autoPlay: 7000,
       transitionStyle : "fade",
       afterMove: function (carousel) {
         var slide = this.wrapperOuter.find('.item:eq(' + this.currentItem + ')').data('slide');
@@ -121,5 +121,11 @@ $(function () {
   });
 
   AOS.init();
+
+  /* solagenius full screen section height */
+  $(window).on('resize.solagenius', function () {
+    $('#sola-genius-gallery').height($(window).height());
+    $('#sola-genius-gallery-inner').width($(window).width());
+  }).trigger('resize.solagenius');
 
 });

@@ -490,16 +490,6 @@
     min-height: auto !important;
   }  
 
-  .introducing_sola_genius {
-    position: absolute;
-    top: 50% !important;
-    left: 50% !important;
-    margin: -154px 0 0 -408px !important;
-    width: 816px !important;
-    height: 308px !important;
-    min-height: auto !important;
-  }  
-
   .download-buttons {
     margin-top: 40px;
     overflow: visible;
@@ -1026,25 +1016,56 @@ ul.own-list {
 .sola-genius {
   overflow-x: hidden;
 
+  .introducing_sola_genius {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    margin: (-154px / 1.35) 0 0 (-408px / 1.35) !important;
+    width: (816px / 1.35) !important;
+    height: (308px / 1.35) !important;
+    min-height: auto !important;
+  }  
+
   .run-your-sola-like-a-boss {
     display: block;
     margin: 0 auto 80px auto;
   }
 
   .sola-genius-gallery {
-    min-height: 68vh;
+    position: relative;
+    // min-height: 90vh;
+    // height: 90vh;
     padding: 60px 0;
     background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    // display: -ms-flexbox;
+    // display: -webkit-flex;
+    // display: flex;
+
+    // -ms-flex-align: center;
+    // -webkit-align-items: center;
+    // -webkit-box-align: center;
+
+    // -webkit-flex-direction: column;
+    // -ms-flex-direction: column;
+    // flex-direction: column;
+
+    // -webkit-align-items: center; 
+    // -ms-align-items: center; 
+    // align-items: center;    
   }
 
-  .sola-genius-phone-gallery {
-    position: relative;
-    top: -50px;
-    left: -70px;
+  .sola-genius-gallery-inner {
+    position: absolute; /* or absolute */
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .sola-genius-phone-gallery-desktop {
@@ -1053,6 +1074,12 @@ ul.own-list {
 
   .sola-genius-phone-gallery-mobile {
     display: none;
+  }
+
+  .sola-genius-phone-gallery {
+    position: relative;
+    top: -50px;
+    left: -70px;
   }
 
   .sola-genius-phone-carousel {
