@@ -124,8 +124,11 @@ $(function () {
 
   /* solagenius full screen section height */
   $(window).on('resize.solagenius', function () {
-    $('#sola-genius-gallery').height($(window).height());
-    $('#sola-genius-gallery-inner').width($(window).width());
+    var $window = $(window);
+    var $inner = $('#sola-genius-gallery-inner');
+
+    $('#sola-genius-gallery').height($window.height());
+    $inner.width($window.width()).css("marginTop", -($inner.height() / 2) + 'px');
     AOS.init();
   }).trigger('resize.solagenius');
 
