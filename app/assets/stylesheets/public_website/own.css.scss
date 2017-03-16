@@ -1035,7 +1035,7 @@ ul.own-list {
     position: relative;
     // min-height: 90vh;
     // height: 90vh;
-    padding: 60px 0;
+    padding: 0;
     background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1320,7 +1320,7 @@ ul.own-list {
 
   .sola-genius-pricing-desktop {
     display: block;
-    margin-top: 90px;
+    margin-top: 60px;
   }
 
   .owl-theme .owl-controls .owl-pagination {

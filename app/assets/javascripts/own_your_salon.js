@@ -126,6 +126,7 @@ $(function () {
   $(window).on('resize.solagenius', function () {
     $('#sola-genius-gallery').height($(window).height());
     $('#sola-genius-gallery-inner').width($(window).width());
+    AOS.init();
   }).trigger('resize.solagenius');
 
 });
