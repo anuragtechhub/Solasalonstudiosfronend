@@ -308,6 +308,12 @@
       &:last-child {
         margin-bottom: 0;
       }
+
+      a, a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        cursor: pointer;
+        color: #111;
+      }
     }
   }
 
@@ -528,13 +534,9 @@
 
 @media (max-device-width : 740px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: (-154px / 2.75) 0 0 (-408px / 2.75);
-    width: (816px / 2.75);
-    height: (308px / 2.75);
-    min-height: auto;
+    margin: (-154px / 2.95) 0 0 (-408px / 2.95);
+    width: (816px / 2.95);
+    height: (308px / 2.95);
   } 
 
   .sola-genius {
