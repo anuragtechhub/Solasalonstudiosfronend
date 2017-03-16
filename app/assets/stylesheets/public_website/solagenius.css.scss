@@ -13,14 +13,54 @@
   width: (816px / 1.35);
   height: (308px / 1.35);
   min-height: auto;
-}  
+} 
+
+.down_circle_arrow_icon {
+  position: absolute;
+  left: 50%;
+  margin-left: -39px;
+  bottom: 20px;
+  background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
+  background-size: 78px 78px;
+  width: 78px;
+  height: 78px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.sizzle-video-controls {
+  display: block;
+  text-decoration: none;
+  position: absolute;
+  bottom: 220px;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  .gradient-play-button {
+    background: asset-url('own/gradient-play-button.png') no-repeat;
+    background-size: 78px 78px;
+    width: 78px;
+    height: 78px;
+    z-index: 3;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .sizzle-video-controls-text {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FFF !important;
+  }
+} 
 
 .sola-genius {
   overflow-x: hidden;
 
   .run-your-sola-like-a-boss {
     display: block;
-    margin: 0 auto 40px auto;
+    margin: 0 auto -10px auto;
   }
 
   .sola-genius-gallery {
