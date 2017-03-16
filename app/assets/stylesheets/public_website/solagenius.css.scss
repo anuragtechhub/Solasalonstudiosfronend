@@ -401,7 +401,7 @@
       left: auto;
       display: block;
       clear: both;
-      margin: 0 auto 20px auto;
+      margin: 15px auto 20px auto;
 
       li {
         display: none;
@@ -485,7 +485,7 @@
     }
 
     .sola-genius-get-started-desktop {
-      margin-top: 15px;
+      margin: 15px auto 0 auto;
       text-align: center;
 
       p {
@@ -555,6 +555,10 @@
         strong {
           color: #FFF;
         }
+
+        a, a:link, a:visited, a:hover, a:active {
+          color: #FFF !important;
+        }
       }
     }
   }
@@ -572,6 +576,54 @@
     width: (816px / 1.95);
     height: (308px / 1.95);
   } 
+
+  .sola-genius .owl-theme .owl-controls .owl-pagination {
+    top: -50px;
+    left: -43px;
+  }
+
+  .sola-genius {
+
+    .sola-genius-feature-list-desktop li h2 {
+      font-size: 15px;
+    }
+
+    .sola-genius-phone-carousel {
+      position: absolute;
+      z-index: 3;
+
+      top: 43px;
+      left: 38px;
+      
+      width: (241px / 2.5) + .33 !important;
+      height: (433px / 2.5) !important;
+
+      .item img {
+        width: (241px / 2.5) !important;
+        height: (433px / 2.5) !important;
+      }
+    }
+
+    .sola-genius-phone-gallery {
+      .sola-genius-phone {
+        background-size: (425px / 2.5) (694px / 2.5);
+        width: (425px / 2.5);
+        height: (694px / 2.5);
+      }
+    }
+
+    .sola-genius-descriptions-desktop {
+      padding: 0;
+      margin: 10px auto 0 auto;
+      max-width: 350px;
+      height: 90px;
+
+      p {
+        font-size: 15px;
+        line-height: 25px;
+      }
+    }
+  }
 
   // .sola-genius {
   //   .sola-genius-gallery {

@@ -132,7 +132,7 @@ $(function () {
     
     if ($inner.height() > $window.height()) {
       // content taller than window...
-      $('#sola-genius-gallery').height($inner.height() + 40);
+      $('#sola-genius-gallery').height($inner.height());
       $inner.width($window.width()).css({top: 0, marginTop: 0});
     } else {
       // default
