@@ -9,9 +9,9 @@
   position: absolute;
   top: 50%;
   left: 50% ;
-  margin: (-154px / 1.35) 0 0 (-408px / 1.35);
-  width: (816px / 1.35);
-  height: (308px / 1.35);
+  margin: (-153px / 1.35) 0 0 (-395px / 1.35);
+  width: (790px / 1.35);
+  height: (306px / 1.35);
   min-height: auto;
 } 
 
@@ -26,6 +26,10 @@
   height: 78px;
   z-index: 3;
   cursor: pointer;
+
+  &:hover, &:active {
+    opacity: 0.2 !important;
+  }
 }
 
 .sizzle-video-controls {
@@ -334,6 +338,13 @@
         cursor: pointer;
         color: #111;
       }
+      a:hover, a:active {
+        color: #777 !important;
+
+        strong {
+          color: #777 !important;
+        }
+      }
     }
   }
 
@@ -360,9 +371,9 @@
 
 @media (max-width : 1000px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-154px / 1.72) 0 0 (-408px / 1.72);
-    width: (816px / 1.72);
-    height: (308px / 1.72);
+    margin: (-153px / 1.75) 0 0 (-395px / 1.75);
+    width: (790px / 1.75);
+    height: (306px / 1.75);
   }  
 
   .sola-genius {
@@ -383,9 +394,9 @@
 
       .owl-page span {
         background: rgba(0,0,0,0.3);
-        width: 10px;
-        height: 10px;
-        margin: 0 5px;
+        width: 7px;
+        height: 7px;
+        margin: 0 7px;
       }
       .owl-page.active span {
         background: rgba(0,0,0,0.7);
@@ -546,7 +557,7 @@
 
     .sola-genius-pricing-mobile {
       display: block;
-      padding: 20px;
+      padding: 15px;
       background: #1b1d21;
 
       p {
@@ -558,6 +569,9 @@
 
         a, a:link, a:visited, a:hover, a:active {
           color: #FFF !important;
+        }
+        a:hover, a:active {
+          color: #777 !important;
         }
       }
     }
@@ -572,14 +586,14 @@
 
 @media (max-width : 740px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-154px / 1.95) 0 0 (-408px / 1.95);
-    width: (816px / 1.95);
-    height: (308px / 1.95);
+    margin: (-153px / 1.95) 0 0 (-395px / 1.95);
+    width: (790px / 1.95);
+    height: (306px / 1.95);
   } 
 
   .sola-genius .owl-theme .owl-controls .owl-pagination {
-    top: -50px;
-    left: -43px;
+    top: -53px;
+    left: -35px;
   }
 
   .sola-genius {
@@ -624,36 +638,21 @@
       }
     }
   }
-
-  // .sola-genius {
-  //   .sola-genius-gallery {
-  //     padding: 40px 0;
-  //   }
-  //   .sola-genius-feature-list-desktop h2 {
-  //     font-size: 15px;
-  //   }
-  //   .sola-genius-phone-gallery {
-  //     //left: -100px;
-  //   }
-  //   .sola-genius-descriptions p, .sola-genius-get-started-desktop {
-  //     padding-left: 10px;
-  //   }
-  // }
 }
 
 
 @media (max-width : 640px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-154px / 2.25) 0 0 (-408px / 2.25);
-    width: (816px / 2.25);
-    height: (308px / 2.25);
+    margin: (-153px / 2.15) 0 0 (-395px / 2.15);
+    width: (790px / 2.15);
+    height: (306px / 2.15);
   }   
 }
 
 @media (max-width : 540px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-154px / 2.55) 0 0 (-408px / 2.55);
-    width: (816px / 2.55);
-    height: (308px / 2.55);
+    margin: (-153px / 2.85) 0 0 (-395px / 2.85);
+    width: (790px / 2.85);
+    height: (306px / 2.85);
   }   
 }
