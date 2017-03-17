@@ -636,12 +636,14 @@
     }
 
     .sola-genius-descriptions-desktop {
-      padding: 0;
-      margin: 10px auto 0 auto;
+      padding: 0px;
+      margin: -45px auto 0 auto;
       max-width: 350px;
       height: 90px;
+      width: 100%;
 
       p {
+        width: 100%;
         font-size: 15px;
         line-height: 25px;
       }
