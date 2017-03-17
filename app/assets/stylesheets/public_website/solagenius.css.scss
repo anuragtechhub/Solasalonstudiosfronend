@@ -27,7 +27,7 @@
   z-index: 3;
   cursor: pointer;
 
-  &:hover, &:active {
+  &:hover {
     opacity: 0.2 !important;
   }
 }
@@ -311,6 +311,14 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       @include box-shadow(0px 7px 40px 1px rgba(73, 156, 211, 0.5));
+       opacity: 1 !important;
+       transition: opacity .25s ease !important;
+       -moz-transition: opacity .25s ease !important;
+       -webkit-transition: opacity .25s ease !important;
+    }
+
+    a.button:hover, a.button:active {
+      opacity: 0.6 !important;
     }
 
     p {
