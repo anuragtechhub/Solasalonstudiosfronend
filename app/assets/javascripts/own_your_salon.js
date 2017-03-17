@@ -64,11 +64,11 @@ $(function () {
         var slide = this.wrapperOuter.find('.item:eq(' + this.currentItem + ')').data('slide');
         //console.log('afterMove', slide, this.currentItem);
 
-        // update feature list
+        // update solagenius feature list
         $('.sola-genius-feature-list').find('li').removeClass('active')
         $('.sola-genius-feature-list').find('[data-slide="' + slide + '"]').addClass('active');
 
-        // update text
+        // update solagenius text
         $('.sola-genius-descriptions').find('p').not('.' + slide + '-text').hide();
         $('.sola-genius-descriptions').find('p.' + slide + '-text').show();
       }

@@ -60,6 +60,14 @@
   }
 } 
 
+.sola-genius-phone-gallery-wrapper .arrow-left {
+  left: -60px;
+}
+
+.sola-genius-phone-gallery-wrapper .arrow-right {
+  right: -60px;
+}
+
 .sola-genius {
   overflow-x: hidden;
 
@@ -470,7 +478,7 @@
       margin: 0 auto -60px auto;
       display: block;
       clear: both;
-      overflow: hidden;
+      //overflow: hidden;
       display: inline-block;
 
       .sola-genius-phone {
@@ -593,8 +601,8 @@
   } 
 
   .sola-genius .owl-theme .owl-controls .owl-pagination {
-    top: -53px;
-    left: -35px;
+    top: -60px;
+    left: -47px;
   }
 
   .sola-genius {
