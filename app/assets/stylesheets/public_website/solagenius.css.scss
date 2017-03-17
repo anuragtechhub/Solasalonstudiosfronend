@@ -33,13 +33,14 @@
 }
 
 .sizzle-video-controls {
-  display: block;
+  display: none;
   text-decoration: none;
   position: absolute;
-  bottom: 220px;
-  left: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
   text-align: center;
+  margin-left: -(124px / 2);
+  margin-top: -(103px / 2);
 
   .gradient-play-button {
     background: asset-url('own/gradient-play-button.png') no-repeat;

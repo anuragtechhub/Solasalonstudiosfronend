@@ -54,7 +54,7 @@ SitemapGenerator::Sitemap.create do
 
   add '/testimonials'
 
-  add '/faq'
+  #add '/faq'
 
   add '/gallery'
 

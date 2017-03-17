@@ -126,10 +126,12 @@ $(function () {
   $(window).on('resize.solagenius', function () {
     var $window = $(window);
     var $inner = $('#sola-genius-gallery-inner');
+    var $videoControls = $('#solagenius-video-controls');
+    var $downCircleArrow = $('.down_circle_arrow_icon');
+    var $heroTabs = $('.with-sola-genius');
 
+    //console.log('$videoControls', $heroTabs.outerHeight(), $videoControls.offset().top);
 
-
-    
     if ($inner.height() > $window.height()) {
       // content taller than window...
       $('#sola-genius-gallery').height($inner.height());
@@ -139,6 +141,9 @@ $(function () {
       $('#sola-genius-gallery').height($window.height());
       $inner.width($window.width()).css({top: '50%', marginTop: -($inner.height() / 2) + 'px'});
     }
+
+    /* solagenius play button */
+    //$videoControls.css({marginTop: -($videoControls.height() / 2), marginLeft: -($videoControls.width() / 2)});
 
     if (AOS && AOS.refresh) {
       AOS.refresh();
