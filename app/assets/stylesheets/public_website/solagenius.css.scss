@@ -61,11 +61,35 @@
 } 
 
 .sola-genius-phone-gallery-wrapper .arrow-left {
-  left: -60px;
+  left: -80px;
+  background: asset-url('own/left-arrow.png') no-repeat;
+  background-size: 40px 67px;
+  width: 40px;
+  height: 67px;  
+  opacity: 0.4;
+  transition: opacity .25s ease !important;
+  -moz-transition: opacity .25s ease !important;
+  -webkit-transition: opacity .25s ease !important;
+
+  &:hover {
+    opacity: 0.2;
+  }
 }
 
 .sola-genius-phone-gallery-wrapper .arrow-right {
-  right: -60px;
+  right: -80px;
+  background: asset-url('own/right-arrow.png') no-repeat;
+  background-size: 40px 67px;
+  width: 40px;
+  height: 67px;  
+  opacity: 0.4;
+  transition: opacity .25s ease !important;
+  -moz-transition: opacity .25s ease !important;
+  -webkit-transition: opacity .25s ease !important;
+
+  &:hover {
+    opacity: 0.2;
+  }  
 }
 
 .sola-genius {
@@ -336,7 +360,7 @@
     display: block;
     clear: both;
     text-align: center;
-    padding: 120px 0 0 0;
+    margin: 120px 0 0 0;
 
     font-size: 16px;
   }
