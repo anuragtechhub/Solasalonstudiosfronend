@@ -332,8 +332,17 @@
     }
   }
 
+  .for-sola-by-sola {
+    display: block;
+    clear: both;
+    text-align: center;
+    padding: 120px 0 0 0;
+
+    font-size: 16px;
+  }
+
   .sola-genius-pricing {
-    padding: 40px 20px;
+    padding: 40px 0px;
     text-align: center;
     background: #000 asset-url('own/black_diamond.png') no-repeat center center; 
     -webkit-background-size: cover;
@@ -521,6 +530,12 @@
       margin: 15px auto 0 auto;
       text-align: center;
 
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        display: block;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      
       p {
         margin-top: 10px;
       }
@@ -529,7 +544,7 @@
     .sola-genius-descriptions-desktop {
       padding: 0;
       margin: -60px auto 0 auto;
-      max-width: 350px;
+      max-width: 300px;
       height: 130px;
       overflow: visible;
       display: -ms-flexbox;
@@ -571,6 +586,23 @@
 
     .run-your-sola-like-a-boss {
       display: none;
+    }
+
+    .for-sola-by-sola {
+      margin-top: -10px;
+      padding-top: 0px;
+    }
+
+    .sola-genius-pricing {
+      padding: 30px 0;
+
+      a.button {
+        &:link, &:visited, &:hover, &:active {
+          display: block;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
     }
 
   }
@@ -635,14 +667,6 @@
         width: 100%;
         font-size: 15px;
         line-height: 25px;
-      }
-    }
-
-    .sola-genius-pricing {
-      a.button {
-        &:link, &:visited, &:hover, &:active {
-          display: block;
-        }
       }
     }
   }
