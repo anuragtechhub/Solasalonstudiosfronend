@@ -46,6 +46,8 @@ $(function () {
   });
 
   /* solagenius carousel */
+  var currentSlideIndex = 0;
+  var totalSlides = $('.sola-genius-phone-carousel').find('.item').length;
   $('.sola-genius-phone-carousel').each(function () {
     var $this = $(this);
     
@@ -61,6 +63,7 @@ $(function () {
       //autoPlay: 7000,
       transitionStyle : "fade",
       afterMove: function (carousel) {
+        currentSlideIndex = this.currentItem;
         var slide = this.wrapperOuter.find('.item:eq(' + this.currentItem + ')').data('slide');
         //console.log('afterMove', slide, this.currentItem);
 
@@ -106,6 +109,23 @@ $(function () {
     }
 
     $this.owlCarousel(options);
+  });
+
+  /* swipe left/right */
+  var mc = new Hammer(document.getElementById('sola-genius-phone-gallery-wrapper'));
+  mc.on('swipeleft', function(ev) {
+    if (currentSlideIndex == 0) {
+      $('.sola-genius-phone-carousel').trigger('owl.jumpTo', totalSlides - 1);
+    } else {
+      $('.sola-genius-phone-carousel').trigger('owl.jumpTo', currentSlideIndex - 1);
+    }
+  });
+  mc.on('swiperight', function(ev) {
+    if (currentSlideIndex + 1 == totalSlides) {
+      $('.sola-genius-phone-carousel').trigger('owl.jumpTo', 0);
+    } else {
+      $('.sola-genius-phone-carousel').trigger('owl.jumpTo', currentSlideIndex + 1);
+    }
   });
 
   /* solagenius feature list */

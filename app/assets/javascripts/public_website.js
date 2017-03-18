@@ -15,6 +15,7 @@
 //= require jquery.mCustomScrollbar
 //= require jssocials
 //= require aos
+//= require hammer
 
 $(function () {
 

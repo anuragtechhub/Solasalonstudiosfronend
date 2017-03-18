@@ -685,6 +685,10 @@
         width: (425px / 2.5);
         height: (694px / 2.5);
       }
+      
+      .arrow-right, .arrow-left {
+        display: none;
+      }
     }
 
     .sola-genius-descriptions-desktop {
