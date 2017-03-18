@@ -72,8 +72,8 @@ $(function () {
         $('.sola-genius-feature-list').find('[data-slide="' + slide + '"]').addClass('active');
 
         // update solagenius text
-        $('.sola-genius-descriptions').find('p').not('.' + slide + '-text').hide();
-        $('.sola-genius-descriptions').find('p.' + slide + '-text').show();
+        $('.sola-genius-descriptions').find('div').not('.' + slide + '-text').hide();
+        $('.sola-genius-descriptions').find('div.' + slide + '-text').show();
       }
     };
 
