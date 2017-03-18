@@ -9,9 +9,9 @@
   position: absolute;
   top: 50%;
   left: 50% ;
-  margin: (-153px / 1.35) 0 0 (-395px / 1.35);
-  width: (790px / 1.35);
-  height: (306px / 1.35);
+  margin: (-102.5px / 1.35) 0 0 (-353.5px / 1.35);
+  width: (707px / 1.35);
+  height: (205px / 1.35);
   min-height: auto;
 } 
 
@@ -19,8 +19,8 @@
   position: absolute;
   left: 50%;
   margin-left: -39px;
-  bottom: 20px;
-  background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
+  bottom: 15px;
+  background: asset-url('own/down_arrow.png') no-repeat;
   background-size: 78px 78px;
   width: 78px;
   height: 78px;
@@ -402,9 +402,9 @@
 
 @media (max-width : 1000px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-153px / 1.75) 0 0 (-395px / 1.75);
-    width: (790px / 1.75);
-    height: (306px / 1.75);
+    margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
+    width: (707px / 1.75);
+    height: (205px / 1.75);
   }  
 
   .sola-genius {
@@ -469,18 +469,18 @@
       }
     }
 
-    .down_circle_arrow_icon {
-      position: absolute;
-      left: 50%;
-      margin-left: (-39px / 1.5);
-      bottom: (39px / 1.5);
-      background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
-      background-size: (78px / 1.5) (78px / 1.5);
-      width: (78px / 1.5);
-      height: (78px / 1.5);
-      z-index: 3;
-      cursor: pointer;
-    }
+    // .down_circle_arrow_icon {
+    //   position: absolute;
+    //   left: 50%;
+    //   margin-left: (-39px / 1.5);
+    //   bottom: (39px / 1.5);
+    //   background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
+    //   background-size: (78px / 1.5) (78px / 1.5);
+    //   width: (78px / 1.5);
+    //   height: (78px / 1.5);
+    //   z-index: 3;
+    //   cursor: pointer;
+    // }
 
     .one-third.column {
       width: 100%;
@@ -616,14 +616,21 @@
 
 @media (max-width : 740px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-153px / 1.95) 0 0 (-395px / 1.95);
-    width: (790px / 1.95);
-    height: (306px / 1.95);
+    margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
+    width: (707px / 1.75);
+    height: (205px / 1.75);
   } 
 
   .sola-genius .owl-theme .owl-controls .owl-pagination {
     top: -60px;
     left: -46px;
+  }
+
+  .down_circle_arrow_icon {
+    margin-left: (-39px / 1.5);
+    background-size: (78px / 1.5) (78px / 1.5);
+    width: (78px / 1.5);
+    height: (78px / 1.5);
   }
 
   .sola-genius {
@@ -675,16 +682,16 @@
 
 @media (max-width : 640px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-153px / 2.15) 0 0 (-395px / 2.15);
-    width: (790px / 2.15);
-    height: (306px / 2.15);
+    margin: (-102.5px / 1.95) 0 0 (-353.5px / 1.95);
+    width: (707px / 1.95);
+    height: (205px / 1.95);
   }   
 }
 
 @media (max-width : 540px) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
-    margin: (-153px / 2.85) 0 0 (-395px / 2.85);
-    width: (790px / 2.85);
-    height: (306px / 2.85);
+    margin: (-102.5px / 2.55) 0 0 (-353.5px / 2.55);
+    width: (707px / 2.55);
+    height: (205px / 2.55);
   }   
 }
