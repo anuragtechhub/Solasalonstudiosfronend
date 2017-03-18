@@ -8,11 +8,11 @@
 .own-your-salon .hero-fullscreen {
   img.introducing_sola_genius {
     position: absolute;
-    top: 50%;
+    top: 38%;
     left: 50% ;
-    margin: (-102.5px / 1.35) 0 0 (-353.5px / 1.35);
-    width: (707px / 1.35);
-    height: (205px / 1.35);
+    margin: (-102.5px / 1.45) 0 0 (-353.5px / 1.45);
+    width: (707px / 1.45);
+    height: (205px / 1.45);
     min-height: auto;
   }
   .sola-genius-hero-heading, .sola-genius-hero-text {
@@ -30,17 +30,15 @@
     right: 20px;
   } 
   .sola-genius-hero-heading {
-    top: 25%;
-    margin-top: 80px;
+    top: 55%;
 
     font-size: 43px !important;
     line-height: 45px !important;
   }
   .sola-genius-hero-text {
-    top: 75%;
-    margin-top: 40px;
+    top: 70%;
 
-    font-size: 33px !important;
+    font-size: 29px !important;
     line-height: 35px !important;
   } 
 } 
@@ -687,6 +685,38 @@
     margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
     width: (707px / 1.75);
     height: (205px / 1.75);
+  } 
+
+  .own-your-salon .hero-fullscreen .sola-genius-hero-heading {
+    top: 50%;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+
+    font-size: 25px !important;
+    line-height: 27px !important;
+
+    .container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .own-your-salon .hero-fullscreen .sola-genius-hero-text {
+    top: 61%;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+
+    font-size: 20px !important;
+    line-height: 25px !important;
+
+    .container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }    
   } 
 
   .sola-genius .owl-theme .owl-controls .owl-pagination {
