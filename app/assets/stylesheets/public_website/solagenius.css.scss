@@ -43,6 +43,12 @@
   } 
 } 
 
+.desktop-br {
+  display: block;
+  line-height: 1px;
+  height: 1px;
+}
+
 .down_circle_arrow_icon {
   position: absolute;
   left: 50%;
@@ -681,6 +687,9 @@
 /****************************************************/
 
 @media (max-width : 740px) {
+  .desktop-br {
+    display: inline-block;
+  }
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
     margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
     width: (707px / 1.75);
@@ -767,7 +776,7 @@
 
     .sola-genius-descriptions-desktop {
       padding: 0px;
-      margin: -45px auto 0 auto;
+      margin: 0 auto 0 auto;
       max-width: 350px;
       height: 130px;
       width: 100%;
@@ -796,4 +805,16 @@
     width: (707px / 2.55);
     height: (205px / 2.55);
   }   
+}
+
+/* iphone 6 */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+  .own-your-salon .hero-fullscreen .sola-genius-hero-heading {
+    top: 55%;
+  }
+  .own-your-salon .hero-fullscreen .sola-genius-hero-text {
+    top: 68%;
+  }
 }

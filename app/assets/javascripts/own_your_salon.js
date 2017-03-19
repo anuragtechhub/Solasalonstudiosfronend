@@ -39,7 +39,9 @@ $(function () {
   });
 
   /* down arrow scroll animation */
-  $('.down_circle_arrow_icon').on('click', function () {
+  $('.down_circle_arrow_icon').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     var $anchor = $($(this).attr('href'));
     $('html, body').animate({scrollTop: $anchor.offset().top}, 'normal');
     return false;
