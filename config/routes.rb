@@ -37,13 +37,6 @@ Solasalonstudios::Application.routes.draw do
   get 'own/:tab' => 'own_your_salon#index'
   get 'amenities' => 'own_your_salon#index'
 
-  # BEGIN TEMP OWN ROUTES #
-  get "own-your-salon-genius" => 'own_your_salon_genius#index'
-  get "own-your-salon-genius/:tab" => 'own_your_salon_genius#index'
-  get 'own-genius' => 'own_your_salon_genius#index'
-  get 'own-genius/:tab' => 'own_your_salon_genius#index'
-  # END TEMP OWN ROUTES #
-
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info

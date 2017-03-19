@@ -153,12 +153,14 @@ $(function () {
     var $heroTabs = $('.with-sola-genius');
 
     //console.log('$videoControls', $heroTabs.outerHeight(), $videoControls.offset().top);
-
+    //console.log('resize SolaGenius', $inner.height(), $window.height());
     if ($inner.height() > $window.height()) {
+      //console.log('content taller than window...');
       // content taller than window...
       $('#sola-genius-gallery').height($inner.height());
       $inner.width($window.width()).css({top: 0, marginTop: 0});
     } else {
+      //console.log('default...');
       // default
       $('#sola-genius-gallery').height($window.height());
       $inner.width($window.width()).css({top: '50%', marginTop: -($inner.height() / 2) + 'px'});
@@ -171,5 +173,9 @@ $(function () {
       AOS.refresh();
     }
   }).trigger('resize.solagenius');
+  
+  setTimeout(function () {
+    $(window).trigger('resize.solagenius');
+  }, 1);
 
 });

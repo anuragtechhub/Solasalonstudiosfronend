@@ -53,7 +53,7 @@
   position: absolute;
   left: 50%;
   margin-left: -39px;
-  bottom: 15px;
+  bottom: 0px;
   background: asset-url('own/down_arrow.png') no-repeat;
   background-size: 78px 78px;
   width: 78px;
@@ -131,7 +131,7 @@
 
   .run-your-sola-like-a-boss {
     display: block;
-    margin: 0 auto -10px auto;
+    margin: 0 auto -30px auto;
   }
 
   .sola-genius-gallery {
@@ -401,7 +401,7 @@
     display: block;
     clear: both;
     text-align: center;
-    margin: 120px 0 0 0;
+    margin: 90px 0 0 0;
 
     font-size: 16px;
   }
@@ -692,6 +692,12 @@
 @media (max-width : 740px) {
   .desktop-br {
     display: inline-block;
+  }
+  .mobile-br {
+    display: block;
+    clear: both;
+    line-height: 1px;
+    height: 1px;
   }
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
     margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
