@@ -115,14 +115,14 @@ $(function () {
 
   /* swipe left/right */
   var mc = new Hammer(document.getElementById('sola-genius-phone-gallery-wrapper'));
-  mc.on('swipeleft', function(ev) {
+  mc.on('swiperight', function(ev) {
     if (currentSlideIndex == 0) {
       $('.sola-genius-phone-carousel').trigger('owl.jumpTo', totalSlides - 1);
     } else {
       $('.sola-genius-phone-carousel').trigger('owl.jumpTo', currentSlideIndex - 1);
     }
   });
-  mc.on('swiperight', function(ev) {
+  mc.on('swipeleft', function(ev) {
     if (currentSlideIndex + 1 == totalSlides) {
       $('.sola-genius-phone-carousel').trigger('owl.jumpTo', 0);
     } else {
