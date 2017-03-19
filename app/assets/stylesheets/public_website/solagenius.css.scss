@@ -776,7 +776,7 @@
 
     .sola-genius-descriptions-desktop {
       padding: 0px;
-      margin: 0 auto 0 auto;
+      margin: -61px auto 0 auto;
       max-width: 350px;
       height: 130px;
       width: 100%;
@@ -816,5 +816,10 @@ and (max-device-width : 667px) {
   }
   .own-your-salon .hero-fullscreen .sola-genius-hero-text {
     top: 68%;
+  }
+  .sola-genius {
+    .sola-genius-descriptions-desktop {
+      margin-top: -7px !important;
+    }
   }
 }
