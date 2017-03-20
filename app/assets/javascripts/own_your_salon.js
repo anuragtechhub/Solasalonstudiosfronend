@@ -22,9 +22,15 @@ $(function () {
     $('.hero-tab-content').removeClass('hero-active').filter('[data-ref=#' + href + ']').addClass('hero-active');
     window.history.pushState(null, null, $this.data('base') + href);
 
+    $(window).trigger('resize.solagenius');
+
     if (AOS && AOS.refresh) {
       AOS.refresh();
     }
+
+    setTimeout(function () {
+      $(window).trigger('resize.solagenius');
+    }, 1);
 
     return false;
   });
