@@ -832,3 +832,70 @@ and (max-device-width : 667px) {
     }
   }
 }
+
+/* iphone 5s */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) { 
+  .own-your-salon .hero-fullscreen img.introducing_sola_genius {
+    top: 34%;
+  }
+  .own-your-salon .hero-fullscreen .sola-genius-hero-text {
+    top: 64%;
+    font-size: 18px !important;
+  }
+  .sola-genius .sola-genius-descriptions-desktop h2 {
+    font-size: 15px;
+  }
+  .sola-genius .sola-genius-descriptions-desktop div {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .sola-genius .sola-genius-descriptions-desktop {
+    margin-top: 15px;
+    height: 90px;
+  }
+  .sola-genius .sola-genius-get-started-desktop a.button, .sola-genius .sola-genius-get-started-desktop a.button:link, .sola-genius .sola-genius-get-started-desktop a.button:visited, .sola-genius .sola-genius-get-started-desktop a.button:hover, .sola-genius .sola-genius-get-started-desktop a.button:active {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .sola-genius {
+    .sola-genius-phone-carousel {
+      position: absolute;
+      z-index: 3;
+
+      top: 37px;
+      left: 33px;
+      
+      width: (241px / 2.85) + .33 !important;
+      height: (433px / 2.85) !important;
+
+      .item img {
+        width: (241px / 2.85) !important;
+        height: (433px / 2.85) !important;
+      }
+    }
+
+    .sola-genius-phone-gallery {
+      .sola-genius-phone {
+        background-size: (425px / 2.85) (694px / 2.85);
+        width: (425px / 2.85);
+        height: (694px / 2.85);
+      }
+
+      .arrow-right, .arrow-left {
+        display: none;
+      }
+    } 
+  } 
+  .sola-genius .owl-theme .owl-controls .owl-pagination {
+    padding-top: 5px;
+  }
+  div#sola-genius-gallery-inner.sola-genius-gallery-inner {
+    padding-top: 10px;
+  }
+  .hero-own .hero-heading {
+    font-size: 19px;
+    line-height: 31px;
+  }
+}
