@@ -836,7 +836,8 @@ and (max-device-width : 667px) {
 /* iphone 5s */
 @media only screen 
 and (min-device-width : 320px) 
-and (max-device-width : 568px) { 
+and (max-device-width : 568px)
+and (device-aspect-ratio: 40/71) { 
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
     top: 34%;
   }
