@@ -34,7 +34,7 @@ Solasalonstudios::Application.routes.draw do
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
-  get 'own/:tab' => 'own_your_salon#index'
+  get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
   get 'amenities' => 'own_your_salon#index'
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
