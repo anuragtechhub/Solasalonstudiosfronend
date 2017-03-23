@@ -1141,13 +1141,18 @@ RailsAdmin.config do |config|
       end
       group :sola_pro do
         active false
-        label 'Sola Pro'
+        label 'Sola Pro and SolaGenius'
         # field :sola_genius_enabled do
         #   help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
         # end
-        # field :has_sola_genius_account do
-        #   help 'If set to "Yes", the stylist has a Sola Genius account.'
-        # end
+        field :has_sola_pro_login do
+          label 'Has Sola Pro account'
+          help 'If set to "Yes", the stylist has a Sola Pro account.'
+        end
+        field :has_sola_genius_account do
+          label 'Has SolaGenius account'
+          help 'If set to "Yes", the stylist has a SolaGenius account.'
+        end
         field :sola_pro_platform do
           help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
         end
@@ -1332,23 +1337,7 @@ RailsAdmin.config do |config|
            {:maxlength => 18}
           end
         end
-      end
-      group :sola_pro do
-        active false
-        label 'Sola Pro'
-        # field :sola_genius_enabled do
-        #   help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
-        # end
-        # field :has_sola_genius_account do
-        #   help 'If set to "Yes", the stylist has a Sola Genius account.'
-        # end
-        field :sola_pro_platform do
-          help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
-        end
-        field :sola_pro_version do
-          help 'The version of the Sola Pro app the stylist is using.'
-        end
-      end  
+      end 
       group :images do
         active false
         field :image_1 do 
@@ -1476,7 +1465,14 @@ RailsAdmin.config do |config|
       field :phone_number
       field :biography
       field :status
-      field :has_sola_pro_login
+      field :has_sola_pro_login do
+        label 'Has SolaPro account'
+      end
+      field :has_sola_genius_account do
+        label 'Has SolaGenius account'
+      end
+      field :sola_pro_platform
+      field :sola_pro_version
       # field :location_id do
       #   label 'Location'
       #   export_value do 
