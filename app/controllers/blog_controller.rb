@@ -18,7 +18,7 @@ class BlogController < PublicWebsiteController
       @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
     else
       # show all posts
-      @posts = Blog.where('status = ?', 'published').order(:publish_date => :desc)
+      @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).uniq.order(:publish_date => :desc)
     end
 
     @posts = @posts.page(params[:page] || 1)
