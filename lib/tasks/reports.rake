@@ -7,6 +7,11 @@ namespace :reports do
     analytics.show_visits('81802112', '2017-03-01', '2017-04-01')
   end
 
+  task :show_pageviews => :environment do
+    analytics = Analytics.new
+    analytics.show_pageviews('81802112', '2017-03-01', '2017-04-01')
+  end
+
   task :locations => :environment do
     p "begin locations report..."
   end 
@@ -117,6 +122,28 @@ namespace :reports do
                                      end_date,
                                      metrics.join(','),
                                      dimensions: dimensions.join(','),
+                                     sort: sort.join(','))
+
+      data = []
+      data.push(result.column_headers.map { |h| h.name })
+      data.push(*result.rows)
+      print_table(data)
+    end
+
+    def show_pageviews(profile_id, start_date, end_date)
+      analytics = Analytics::AnalyticsService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      dimensions = %w(ga:pagePath)
+      metrics = %w(ga:pageviews ga:avgTimeOnPage)
+      sort = %w(ga:pagePath)
+      filters = %w(ga:pagePath==/about-us)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     start_date,
+                                     end_date,
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','),
+                                     filters: filters.join(','),
                                      sort: sort.join(','))
 
       data = []
