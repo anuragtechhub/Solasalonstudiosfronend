@@ -130,20 +130,21 @@ namespace :reports do
       print_table(data)
     end
 
+    desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
     def show_pageviews(profile_id, start_date, end_date)
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(ga:pagePath)
+      dimensions = %w(ga:pagePath ga:browser)
       metrics = %w(ga:pageviews ga:avgTimeOnPage)
       sort = %w(ga:pagePath)
-      filters = %w(ga:pagePath==/about-us ga:browser==Firefox)
+      filters = "ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
       result = analytics.get_ga_data("ga:#{profile_id}",
                                      start_date,
                                      end_date,
                                      metrics.join(','),
                                      dimensions: dimensions.join(','),
-                                     filters: filters.join(','),
+                                     filters: filters,
                                      sort: sort.join(','))
 
       data = []
