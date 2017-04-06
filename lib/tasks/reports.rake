@@ -135,7 +135,7 @@ namespace :reports do
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(ga:pagePath ga:browser)
+      dimensions = %w(ga:pagePath ga:socialNetwork)
       metrics = %w(ga:pageviews ga:avgTimeOnPage)
       sort = %w(ga:pagePath)
       filters = "ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
