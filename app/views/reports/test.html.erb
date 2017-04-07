@@ -27,49 +27,49 @@
     <td class="label" style="text-align:left">Visits</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>
   <tr class="striped">
     <td class="label" style="text-align:left">Unique Visitors</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>
   <tr>
     <td class="label" style="text-align:left">New Visitors</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>
   <tr class="striped">
     <td class="label" style="text-align:left">Returning Visitors</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>
   <tr>
     <td class="label" style="text-align:left">Mobile Traffic</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>
   <tr class="striped">
     <td class="label" style="text-align:left">Desktop Traffic</td>
     <td class="value">12,449</td>
     <td class="value">11,488</td>
-    <td class="percentage-change">51%</td>
+    <td class="percentage">51%</td>
     <td class="value">8,417</td>
-    <td class="percentage-change">37%</td>
+    <td class="percentage">37%</td>
   </tr>            
 </table>
 
@@ -122,6 +122,7 @@
 </table>
 
 <div class="grid">
+  
   <div class="col-1-2">
     <div class="section">
       <div class="section-heading">Unique Visits</div>
@@ -129,23 +130,81 @@
     </div>
     <table class="tabular" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="value">134,797</td>
+        <td class="value value-large">134,797</td>
         <td class="label">People visited the site</td>
       </tr>
       <tr>
-        <td class="value">122,348</td>
+        <td class="value value-large">122,348</td>
         <td class="label">First time visits to site</td>
       </tr>
       <tr>
-        <td class="value">12,499</td>
+        <td class="value value-large">12,499</td>
         <td class="label">Return visits to site</td>
       </tr>
     </table>
   </div>
+
   <div class="col-1-2">
     <div class="section">
       <div class="section-heading">NEW VS. RETURNING</div>
       <div class="section-subhead">Who Came Back?</div>
+    </div>
+    
+    <div class="grid">
+      <div class="col-2-3">
+        <div class="horizontal-bar-chart">
+          <div class="bar-label">New Visitors</div>
+          <div class="bar bar-green" style="width:91%">
+            <div class="value">91%</div>
+          </div>
+          <div class="bar-label">Returning Visitors</div>
+          <div class="bar bar-pink" style="width:9%">
+            <div class="value">9%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-1-3">
+        <div class="change-vs-previous-month">
+          New Visitor % Change
+          <span class="percentage">18%</span>
+          Vs. <%= (Date.today - 1.month).strftime("%B %Y") %> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Referrals</div>
+      <div class="section-subhead">How Our Visitors Got To The Site</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Source</strong></th>
+        <th><strong>% of Traffic</strong></th>
+      </tr>
+      <tr>
+        <td class="label">Organic Search</td>
+        <td class="label">66%</td>
+      </tr>
+      <tr>
+        <td class="label">Referral</td>
+        <td class="label">3%</td>
+      </tr>
+      <tr>
+        <td class="label">Social</td>
+        <td class="label">12%</td>
+      </tr>
+    </table>    
+  </div>
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Referrers</div>
+      <div class="section-subhead">Who Is Sending Us Traffic</div>
     </div>
   </div>
 </div>
@@ -153,14 +212,29 @@
 <div class="grid">
   <div class="col-1-2">
     <div class="section">
-      <div class="section-heading">Unique Visits</div>
-      <div class="section-subhead">Visits + 1st Time Visitors</div>
+      <div class="section-heading">Device</div>
+      <div class="section-subhead">The Device They Used To View Our Site</div>
     </div>
   </div>
   <div class="col-1-2">
     <div class="section">
-      <div class="section-heading">NEW VS. RETURNING</div>
-      <div class="section-subhead">Who Came Back?</div>
+      <div class="section-heading">Location</div>
+      <div class="section-subhead">Top Regions That Viewed Our Site</div>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Exit Pages</div>
+      <div class="section-subhead">Users Leave From These Pages</div>
+    </div>
+  </div>
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Time On Site</div>
+      <div class="section-subhead">Avg. Time Spent + Pages/Visit</div>
     </div>
   </div>
 </div>
