@@ -45,6 +45,7 @@ group :production do
   gem "image_optim"
   gem 'image_optim_pack'
   gem "paperclip-optimizer"  
+  gem "wkhtmltopdf-heroku"
 end
 
 gem 'rmagick'  
@@ -103,3 +104,6 @@ gem 'fog-aws'
 gem 'google-api-client'
 gem 'thor'
 gem 'hirb'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
