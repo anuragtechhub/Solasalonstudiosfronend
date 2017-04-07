@@ -107,3 +107,4 @@ gem 'hirb'
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'render_anywhere'

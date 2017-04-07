@@ -270,6 +270,8 @@ GEM
     recaptcha (3.3.0)
       json
     remotipart (1.2.1)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     representable (3.0.3)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -361,6 +363,7 @@ DEPENDENCIES
   rails_admin_example_theme!
   react-rails (~> 1.6.1)
   recaptcha
+  render_anywhere
   rmagick
   sass-rails (~> 4.0.2)
   sitemap_generator
