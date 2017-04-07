@@ -1,10 +1,131 @@
-<div class="page-title"><strong><%= Date.today.strftime("%B %Y").upcase %> | solasalonstudios.com</strong></div>
+<div class="page-title"><strong><%= Date.today.strftime("%B %Y").upcase %> &nbsp;|&nbsp; solasalonstudios.com</strong></div>
+
+<div class="section">
+  <div class="section-heading">Who Came To Visit?</div>
+</div>
+
+<div class="section-subhead">VISITOR DETAILS &nbsp;|&nbsp; Overall Website Stats</div>
+
+<table class="annual annual-large" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="sublabel sublabel-top"></td>
+    <td class="sublabel sublabel-top"><strong><%= Date.today.strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"><strong><%= (Date.today - 1.month).strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"></td>
+    <td class="sublabel sublabel-top"><strong><%= (Date.today - 1.year).strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"></td>
+  </tr>
+  <tr>
+    <td class="sublabel sublabel-bottom"></td>
+    <td class="sublabel sublabel-bottom">Current Month</td>
+    <td class="sublabel sublabel-bottom">Previous Month</td>
+    <td class="sublabel sublabel-bottom">% Change</td>
+    <td class="sublabel sublabel-bottom">Previous Year</td>
+    <td class="sublabel sublabel-bottom">% Change</td>
+  </tr>  
+  <tr>
+    <td class="label" style="text-align:left">Visits</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>
+  <tr class="striped">
+    <td class="label" style="text-align:left">Unique Visitors</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>
+  <tr>
+    <td class="label" style="text-align:left">New Visitors</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>
+  <tr class="striped">
+    <td class="label" style="text-align:left">Returning Visitors</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>
+  <tr>
+    <td class="label" style="text-align:left">Mobile Traffic</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>
+  <tr class="striped">
+    <td class="label" style="text-align:left">Desktop Traffic</td>
+    <td class="value">12,449</td>
+    <td class="value">11,488</td>
+    <td class="percentage-change">51%</td>
+    <td class="value">8,417</td>
+    <td class="percentage-change">37%</td>
+  </tr>            
+</table>
+
+<table class="annual">
+  <tr>
+    <td class="label">&nbsp;</td>
+    <td class="label"><strong>January</strong></td>
+    <td class="label"><strong>February</strong></td>
+    <td class="label"><strong>March</strong></td>
+    <td class="label"><strong>April</strong></td>
+    <td class="label"><strong>May</strong></td>
+    <td class="label"><strong>June</strong></td>
+    <td class="label"><strong>July</strong></td>
+    <td class="label"><strong>August</strong></td>
+    <td class="label"><strong>September</strong></td>
+    <td class="label"><strong>October</strong></td>
+    <td class="label"><strong>November</strong></td>
+    <td class="label"><strong>December</strong></td>
+  </tr>
+  <tr>
+    <td class="last-year"><strong><%= (Date.today - 1.year).strftime("%Y") %></strong></td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+  </tr>
+  <tr class="striped">
+    <td class="current-year"><strong><%= Date.today.strftime("%Y") %></strong></td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">111,225</td>
+    <td class="value">11,225</td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+    <td class="value"></td>
+  </tr>    
+</table>
 
 <div class="grid">
   <div class="col-1-2">
     <div class="section">
       <div class="section-heading">Unique Visits</div>
-      <div class="section-subhead">Visits + 1<sup><small>st</small></sup> Time Visitors</div>
+      <div class="section-subhead">Visits + 1st Time Visitors</div>
     </div>
     <table class="tabular" cellpadding="0" cellspacing="0">
       <tr>
