@@ -11,7 +11,7 @@ namespace :reports do
     }
 
     p "pdf! #{html_renderer.build_html(locals)}"
-    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html(locals))
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html(locals), :footer => {:center => '[page]', :font_size => 7})
 
     save_path = Rails.root.join('pdfs','report.pdf')
     File.open(save_path, 'wb') do |file|
