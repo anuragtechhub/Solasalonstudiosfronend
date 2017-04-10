@@ -11,9 +11,28 @@ namespace :reports do
     }
 
     p "pdf! #{html_renderer.build_html(locals)}"
-    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html(locals), :footer => {:center => '[page]', :font_size => 7})
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/test', locals), :footer => {:center => '[page]', :font_size => 7})
 
     save_path = Rails.root.join('pdfs','report.pdf')
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end    
+  end
+
+  task :solasalonstudios => :environment do
+    p "begin solasalonstudios analytics report..."
+
+    analytics = Analytics.new
+    data = analytics.solasalonstudios_data
+    locals = {
+      :@data => data
+    }
+
+    html_renderer = HTMLRenderer.new
+
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solasalonstudios', locals), :footer => {:center => '[page]', :font_size => 7})
+
+    save_path = Rails.root.join('pdfs','solasalonstudios.pdf')
     File.open(save_path, 'wb') do |file|
       file << pdf
     end    
@@ -38,8 +57,8 @@ namespace :reports do
   class HTMLRenderer
     include RenderAnywhere
 
-    def build_html(locals={})
-      html = render :template => 'reports/test',
+    def build_html(template='reports/test', locals={})
+      html = render :template => template,
                     :layout => 'pdf',
                     :locals => locals
       html
@@ -181,6 +200,77 @@ namespace :reports do
       data.push(result.column_headers.map { |h| h.name })
       data.push(*result.rows)
       print_table(data)
+    end
+
+    desc 'solasalonstudios_data', 'Retrieve solasalonstudios.com Google Analytics data'
+    def solasalonstudios_data(profile_id='81802112', start_date=(Date.today - 1.month).beginning_of_month, end_date=(Date.today - 1.month).end_of_month)
+      analytics = Analytics::AnalyticsService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      data = {}
+
+      # dimensions = %w(ga:pagePath ga:socialNetwork)
+      # metrics = %w(ga:pageviews ga:avgTimeOnPage)
+      # sort = %w(ga:pagePath)
+      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      # result = analytics.get_ga_data("ga:#{profile_id}",
+      #                                '2017-03-01',
+      #                                '2017-04-01',
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','),
+      #                                #filters: filters,
+      #                                sort: sort.join(','))
+
+      # data = []
+      # data.push(result.column_headers.map { |h| h.name })
+      # data.push(*result.rows)
+
+      # current year pageviews
+
+      # previous year pageviews
+
+      # referrals
+
+      # top referrers
+
+      # devices
+
+      # locations
+
+      # blogs
+
+      # exit pages
+      dimensions = %w(ga:exitPagePath)
+      metrics = %w(ga:exits)
+      sort = %w(-ga:exits)
+      filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     start_date.strftime('%F'),
+                                     end_date.strftime('%F'),
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','),
+                                     #filters: filters,
+                                     sort: sort.join(','),
+                                     max_results: 10)
+
+      exit_pages = []
+      exit_pages.push(result.column_headers.map { |h| h.name })
+      exit_pages.push(*result.rows)
+      data[:exit_pages] = exit_pages.drop(1)
+
+      # time on site + avg pages per visit
+
+      p "exit_pages=#{exit_pages.inspect}"
+      p "---"
+      p "---"
+      p "---"
+      p "---"
+      p "---"
+      p "---"
+      p "---"
+      print_table(exit_pages)
+
+      data
     end
 
     desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
