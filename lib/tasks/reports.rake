@@ -251,26 +251,47 @@ namespace :reports do
                                      dimensions: dimensions.join(','),
                                      #filters: filters,
                                      sort: sort.join(','),
-                                     max_results: 10)
+                                     max_results: 5)
 
       exit_pages = []
       exit_pages.push(result.column_headers.map { |h| h.name })
       exit_pages.push(*result.rows)
       data[:exit_pages] = exit_pages.drop(1)
+      data[:exit_pages].each_with_index do |exit_page, idx|
+        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        data[:exit_pages][idx] = exit_page
+      end
 
       # time on site + avg pages per visit
+      dimensions = %w(ga:pageTitle ga:sessionDurationBucket)
+      metrics = %w(ga:pageviewsPerSession ga:sessions ga:sessionDuration)
+      sort = %w(-ga:pageTitle)
+      filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     start_date.strftime('%F'),
+                                     end_date.strftime('%F'),
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','),
+                                     #filters: filters,
+                                     sort: sort.join(','))
+      data[:time_on_site] = []
+      data[:time_on_site].push(result.column_headers.map { |h| h.name })
+      data[:time_on_site].push(*result.rows)
 
-      p "exit_pages=#{exit_pages.inspect}"
-      p "---"
-      p "---"
-      p "---"
-      p "---"
-      p "---"
-      p "---"
-      p "---"
-      print_table(exit_pages)
+      print_table data[:time_on_site]
 
       data
+    end
+
+    require 'mechanize'
+
+    desc 'get_page_title, url', 'Retrieves a page title from a URL'
+    def get_page_title(url)
+      page_title = Mechanize.new.get(url).title
+      if page_title.split('-').size > 1
+        page_title = page_title.split('-')[0].strip
+      end
+      page_title
     end
 
     desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
