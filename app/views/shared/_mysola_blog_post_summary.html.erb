@@ -1,0 +1,18 @@
+<div class="blog-post-summary mysola-blog-post-summary">
+  <div class="row">
+    <div class="twelve columns">
+      <%= link_to show_blog_path(post), :class => 'blog-list-picture' do %>
+        <% if post.image.present? %><%= image_tag post.image(:original), :class => 'full-width', :width => 960, :height => 306 %><% end %>
+        <div class="blog-list-picture-overlay">
+          <div class="large-button"><%= t('page.blog.read_article').html_safe %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve column">
+      <h4><%= link_to show_blog_path(post) do %><%= post.title.html_safe %><% end %></h4>
+      <p class="subtle"><%= t('page.blog.posted_on', :date => post.publish_date.strftime('%B %e, %Y')).html_safe %><br><%= post.author.html_safe %></p>
+    </div>
+  </div>
+</div>

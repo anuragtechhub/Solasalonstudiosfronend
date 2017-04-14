@@ -185,6 +185,25 @@
   position: fixed;
 }
 
+.mysola-posts-container {
+  margin-top: 5px;
+}
+
+.mysola-blog-post-summary {
+  .blog-list-picture {
+    margin-bottom: 0px;
+  }
+
+  h4 {
+    margin-bottom: 2px !important;
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-size: 17px;
+      color: #676767;
+    }
+  }
+}
+
 
 @media (max-width: 550px) {
 
