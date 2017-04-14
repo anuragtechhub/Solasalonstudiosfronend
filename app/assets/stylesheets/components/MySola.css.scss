@@ -209,17 +209,20 @@
   margin: 15px auto 0 auto;
   display: block;
   clear: both;
-  border-bottom: 1px solid #E6E6E6;
+  
 
   .mysola-tabs-container {
     margin: 0 auto;
     // max-width: 420px;
     text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    white-space: nowrap;
   }
 
   a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+    position: relative;
     display: inline-block;
-    padding: 12px 33px;
+    padding: 15px 23px 15px 50px;
     text-transform: uppercase;
     color: #111;
     font-weight: bold;
@@ -238,5 +241,47 @@
 .mysola-tabs-content {
   .mysola-tab-content {
     display: none;
+  }
+}
+
+.mysola-cup {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: block;
+  background: asset-data-url('MySola/cup.png') no-repeat center;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+}
+
+.mysola-camera {
+  position: absolute;
+  top: 17px;
+  left: 16px;
+  display: block;
+  background: asset-data-url('MySola/camera.png') no-repeat center;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+}
+
+@media (max-width: 550px) {
+  .mysola-tabs {
+    a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+      padding: 15px 18px 15px 45px;
+      font-size: 13px;
+
+      .mysola-cup {
+        top: 9px;
+        left: 9px;
+      }
+      .mysola-camera {
+        top: 14px;
+        left: 11px;
+      }
+    }
   }
 }
