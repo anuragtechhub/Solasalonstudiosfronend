@@ -33,7 +33,11 @@
     <% if @posts && @posts.size > 0 %>
       <h2><%= t('page.search.blog_results').html_safe %></h2>
       <% @posts.each_with_index do |post| %>
-        <%= render 'shared/blog_post_summary', :post => post %>
+        <% if post.mysola_category %>
+          <%= render 'shared/mysola_blog_post_summary', :post => post %>
+        <% else %>
+          <%= render 'shared/blog_post_summary', :post => post %>
+        <% end %>
       <% end %>
     <% end %>
 

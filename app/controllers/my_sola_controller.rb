@@ -13,6 +13,11 @@ class MySolaController < PublicWebsiteController
       MySolaImage.where(:approved => true).to_a.to_json
     end
 
+    # set MySola blogs
+    @category = BlogCategory.find_by(:id => 11)
+    @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ? AND status = ?', @category.id, 'published').uniq.order(:publish_date => :desc)
+    @posts = @posts.page(params[:page] || 1)#.per(21)
+
     render :layout => params[:layout] if params[:layout]
   end
 

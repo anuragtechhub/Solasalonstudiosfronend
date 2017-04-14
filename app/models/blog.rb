@@ -55,6 +55,13 @@ class Blog < ActiveRecord::Base
     blogs
   end
 
+  def mysola_category
+    blog_categories.each do |cat|
+      return true if cat.id == 11
+    end
+    return false
+  end
+
   def status_enum
     [['Published', 'published'], ['Draft', 'draft']]
   end
