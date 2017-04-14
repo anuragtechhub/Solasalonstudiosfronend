@@ -21,7 +21,11 @@ class BlogController < PublicWebsiteController
       @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).uniq.order(:publish_date => :desc)
     end
 
-    @posts = @posts.page(params[:page] || 1)
+    if @category && @category.id == 11
+      @posts = @posts.page(params[:page] || 1).per(21)
+    else
+      @posts = @posts.page(params[:page] || 1)
+    end
     @categories = BlogCategory.order(:name => :asc)
 
     @last_blog = Blog.order(:publish_date => :desc).first
