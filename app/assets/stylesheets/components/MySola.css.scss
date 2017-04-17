@@ -209,7 +209,7 @@
   margin: 15px auto 0 auto;
   display: block;
   clear: both;
-  
+  position: relative;
 
   .mysola-tabs-container {
     margin: 0 auto;
@@ -224,16 +224,25 @@
     display: inline-block;
     padding: 15px 23px 15px 50px;
     text-transform: uppercase;
-    color: #111;
+    color: #B3B3B3;
     font-weight: bold;
     font-size: 15px;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    //border-bottom: 2px solid transparent;
     max-width: 50%;
     white-space: nowrap;
 
     &.active {
-      border-bottom: 2px solid $brand-primary;
+      color: #111;
+      //border-bottom: 2px solid $brand-primary;
+    }
+  }
+
+  a.mysola-tab:hover, a.mysola-tab:active {
+    color: #111;
+
+    &.active {
+      color: #111;
     }
   }
 }
@@ -242,6 +251,15 @@
   .mysola-tab-content {
     display: none;
   }
+}
+
+#magic-line { 
+  position: absolute; 
+  bottom: 1px; 
+  left: 0; 
+  width: 100px; 
+  height: 2px; 
+  background: $brand-primary; 
 }
 
 .mysola-cup {
