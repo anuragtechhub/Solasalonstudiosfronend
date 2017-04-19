@@ -73,7 +73,7 @@ en:
       get_in_touch: Get in Touch
       contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
       body1: "Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!"
-      body2: "If you have a general question, check out our %{faq_link}"
+      body2: ""
       frequently_asked_questions: Frequently Asked Questions
       select_a_state: Select a State
       select_a_location: Select a Location
