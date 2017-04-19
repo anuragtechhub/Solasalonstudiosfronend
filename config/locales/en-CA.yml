@@ -71,8 +71,12 @@ en-CA:
       title: Contact Us
       get_in_touch: Be the first to know!
       contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
-      body1: "Be the first to know exclusive details about the launch of Sola Salon Studios Canada in Spring 2017! Fill out the form below and join our VIP circle for the latest updates on our first location in the GTA, move-in specials, invitations to VIP events, and other extra perks. You can even be the first to review and reserve salon suites before we break ground! You don't want to miss this opportunity to be a part of the fastest growing community of salon professionals in North America and empower yourself with the Freedom to Live the Life you Love! So contact us today to keep up-to-date on all of the excitement surrounding our very first Sola Salon Studios location in Toronto."
-      body2: "Please also have a look at our %{faq_link}"
+      body1: |
+        Be the first to own!<br /><br />
+        Coming to Canada Summer 2017<br /><br />
+        Be among the first to own a boutique salon at Sola Salon Studios in Canada! Sola provides move-in-ready studios alongside all the support and tools you need to be a successful salon owner. In response to increasing demand for independent salon ownership from Canadian beauty professionals, our first location will open in the Leaside neighborhood of Toronto, shortly followed by a second location in Oakville. Visit each location's page for more details!<br /><br />
+        &quot;Sola Salon Studios has always been committed to supporting every beauty professional to pursue their business dreams and goals in a high-end, fully-equipped salon environment,&quot; said Ben Jones, Sola's Chief Executive Officer. &quot;Over the last few years we've received many inquiries from Canadian hairdressers interested in Sola's concept, and we feel the time could not be better to expand Sola's mission to Canada.&quot;<br /><br />
+      body2: Fill out the form below to keep up-to-date on all of the excitement surrounding our launch in Toronto!
       frequently_asked_questions: Frequently Asked Questions
       select_a_state: Select a Province
       select_a_location: Select a Location
