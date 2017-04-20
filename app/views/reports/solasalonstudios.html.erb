@@ -1,5 +1,8 @@
-<div class="page-title"><strong><%= Date.today.strftime("%B %Y").upcase %> &nbsp;|&nbsp; solasalonstudios.com</strong></div>
-
+<% if @data[:start_date].month == @data[:end_date].month && @data[:start_date].year == @data[:end_date].year %>
+  <div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;|&nbsp; solasalonstudios.com</strong></div>
+<% else %>
+  <div class="page-title"><strong><%= @data[:start_date].strftime("%B %-d, %Y").upcase %> &ndash; <%= @data[:end_date].strftime("%B %-d, %Y").upcase %> &nbsp;|&nbsp; solasalonstudios.com</strong></div>
+<% end %>
 
 
 <!-- ********************* -->

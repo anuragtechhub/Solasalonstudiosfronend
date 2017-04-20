@@ -19,11 +19,21 @@ namespace :reports do
     end    
   end
 
-  task :solasalonstudios => :environment do
+  # rake reports:solasalonstudios
+  # rake reports:solasalonstudios 2017-01-01 2017-04-01
+  task :solasalonstudios, [:start_date, :end_date] => :environment do 
     p "begin solasalonstudios analytics report..."
 
+    puts ARGV.inspect
+    start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
+    end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
+
     analytics = Analytics.new
-    data = analytics.solasalonstudios_data
+    if start_date && end_date
+      data = analytics.solasalonstudios_data('81802112', start_date, end_date)
+    else
+      data = analytics.solasalonstudios_data
+    end
     locals = {
       :@data => data
     }
@@ -59,7 +69,7 @@ namespace :reports do
 
     def build_html(template='reports/test', locals={})
       html = render :template => template,
-                    :layout => 'pdf',
+                    :layout => 'reports',
                     :locals => locals
       html
     end
@@ -207,7 +217,10 @@ namespace :reports do
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      data = {}
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }
 
       # dimensions = %w(ga:pagePath ga:socialNetwork)
       # metrics = %w(ga:pageviews ga:avgTimeOnPage)
