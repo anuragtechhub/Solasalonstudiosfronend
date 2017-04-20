@@ -20,13 +20,16 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios 2017-01-01 2017-04-01
-  task :solasalonstudios, [:start_date, :end_date] => :environment do 
+  # rake reports:solasalonstudios[2017-01-01]
+  task :solasalonstudios, [:start_date] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
-
-    puts ARGV.inspect
-    start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
-    end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
+    # p "args=#{args.inspect}"
+    # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
+    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
+    end_date = start_date.end_of_month if start_date
+    # puts ARGV.inspect
+    # start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
+    # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
 
     analytics = Analytics.new
     if start_date && end_date
@@ -213,7 +216,7 @@ namespace :reports do
     end
 
     desc 'solasalonstudios_data', 'Retrieve solasalonstudios.com Google Analytics data'
-    def solasalonstudios_data(profile_id='81802112', start_date=(Date.today - 1.month).beginning_of_month, end_date=(Date.today - 1.month).end_of_month)
+    def solasalonstudios_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
       analytics = Analytics::AnalyticsService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
@@ -221,6 +224,8 @@ namespace :reports do
         start_date: start_date,
         end_date: end_date
       }
+
+      p "start_date=#{start_date}, end_date=#{end_date}, data=#{data}"
 
       # dimensions = %w(ga:pagePath ga:socialNetwork)
       # metrics = %w(ga:pageviews ga:avgTimeOnPage)
@@ -238,19 +243,47 @@ namespace :reports do
       # data.push(result.column_headers.map { |h| h.name })
       # data.push(*result.rows)
 
-      # current year pageviews
+      # current year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
-      # previous year pageviews
+      # previous year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
-      # referrals
+      # unique visits - visits, new visitors, returning visitors
+      dimensions = %w(ga:userType)
+      metrics = %w(ga:sessions)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     start_date.strftime('%F'),
+                                     end_date.strftime('%F'),
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','))
+      data[:unique_visits] = []
+      data[:unique_visits].push(result.column_headers.map { |h| h.name })
+      data[:unique_visits].push(*result.rows)
 
-      # top referrers
+      # unique visits prev month
+      dimensions = %w(ga:userType)
+      metrics = %w(ga:sessions)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     (start_date.prev_month.beginning_of_month).strftime('%F'),
+                                     (end_date.prev_month.end_of_month).strftime('%F'),
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','))
+      data[:unique_visits_prev_month] = []
+      data[:unique_visits_prev_month].push(result.column_headers.map { |h| h.name })
+      data[:unique_visits_prev_month].push(*result.rows)
 
-      # devices
+      #print_table data[:unique_visits]
 
-      # locations
+      # new vs returning - new visitors, returning visitors, new visitor % change vs same month a year ago
 
-      # blogs
+      # referrals - source, % of traffic
+
+      # top referrers - site, visits
+
+      # devices - mobile, desktop, mobile % change vs same month a year ago
+
+      # locations - city, visits
+
+      # blogs - url, visits
 
       # exit pages
       dimensions = %w(ga:exitPagePath)
@@ -276,22 +309,22 @@ namespace :reports do
       end
 
       # time on site + avg pages per visit
-      dimensions = %w(ga:pageTitle ga:sessionDurationBucket)
-      metrics = %w(ga:pageviewsPerSession ga:sessions ga:sessionDuration)
-      sort = %w(-ga:pageTitle)
-      filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      result = analytics.get_ga_data("ga:#{profile_id}",
-                                     start_date.strftime('%F'),
-                                     end_date.strftime('%F'),
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','),
-                                     #filters: filters,
-                                     sort: sort.join(','))
-      data[:time_on_site] = []
-      data[:time_on_site].push(result.column_headers.map { |h| h.name })
-      data[:time_on_site].push(*result.rows)
+      # dimensions = %w(ga:pageTitle ga:sessionDurationBucket)
+      # metrics = %w(ga:pageviewsPerSession ga:sessions ga:sessionDuration)
+      # sort = %w(-ga:pageTitle)
+      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      # result = analytics.get_ga_data("ga:#{profile_id}",
+      #                                start_date.strftime('%F'),
+      #                                end_date.strftime('%F'),
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','),
+      #                                #filters: filters,
+      #                                sort: sort.join(','))
+      # data[:time_on_site] = []
+      # data[:time_on_site].push(result.column_headers.map { |h| h.name })
+      # data[:time_on_site].push(*result.rows)
 
-      print_table data[:time_on_site]
+      # print_table data[:time_on_site]
 
       data
     end
