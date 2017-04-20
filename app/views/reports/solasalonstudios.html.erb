@@ -237,18 +237,12 @@
         <th><strong>Site</strong></th>
         <th><strong>Visits</strong></th>
       </tr>
-      <tr>
-        <td class="label"><a href="http://devacurl.com" target="_blank">devacurl.com</a></td>
-        <td class="label">143</td>
-      </tr>
-      <tr>
-        <td class="label"><a href="http://modernsalon.com" target="_blank">modernsalon.com</a></td>
-        <td class="label">116</td>
-      </tr>
-      <tr>
-        <td class="label"><a href="http://shoprivergate.com" target="_blank">shoprivergate.com</a></td>
-        <td class="label">89</td>
-      </tr>
+      <% @data[:top_referrers].each do |referrer| %>
+        <tr>
+          <td class="label"><%= referrer[0] %></td>
+          <td class="label"><%= number_with_delimiter referrer[1] %></td>
+        </tr>
+      <% end %>
     </table> 
   </div>
 </div>

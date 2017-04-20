@@ -1,6 +1,6 @@
 namespace :reports do
 
-  require 'google/apis/analytics_v3'
+  require 'google/apis/analyticsreporting_v4'
   require 'render_anywhere'
 
   task :pdf => :environment do
@@ -188,14 +188,14 @@ namespace :reports do
   ####### analytics ########
 
   class Analytics < BaseCli
-    Analytics = Google::Apis::AnalyticsV3
+    Analytics = Google::Apis::AnalyticsreportingV4
 
     desc 'show_visits PROFILE_ID', 'Show visists for the given analytics profile ID'
     method_option :start, type: :string, required: true
     method_option :end, type: :string, required: true
     
     def show_visits(profile_id, start_date, end_date)
-      analytics = Analytics::AnalyticsService.new
+      analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
       dimensions = %w(ga:date)
@@ -217,7 +217,7 @@ namespace :reports do
 
     desc 'solasalonstudios_data', 'Retrieve solasalonstudios.com Google Analytics data'
     def solasalonstudios_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
-      analytics = Analytics::AnalyticsService.new
+      analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
       data = {
@@ -227,6 +227,39 @@ namespace :reports do
 
       p "start_date=#{start_date}, end_date=#{end_date}, data=#{data}"
 
+      # grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
+      # rr = Google::Apis::AnalyticsreportingV4::ReportRequest.new
+      # rr.view_id = profile_id
+
+      #rr.filters_expression ="ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+
+      # dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
+      # dimension.name = "ga:userType"
+      # rr.dimensions = [dimension]      
+      
+      # metric = Google::Apis::AnalyticsreportingV4::Metric.new
+      # metric.expression = "ga:sessions"
+      # rr.metrics = [metric]      
+
+      # range = Google::Apis::AnalyticsreportingV4::DateRange.new
+      # range.start_date = start_date
+      # range.end_date = end_date
+      # rr.date_ranges = [range]
+
+      # grr.report_requests = [rr]
+
+      # response = analytics.batch_get_reports(grr)
+      # puts response.inspect
+      # puts response.reports.inspect
+
+      # puts response.reports[0].data.rows.map{|r|
+      #   json = r.to_h
+      #   p "json[:metrics][0]=#{json[:metrics][0]}"
+      #   p "json[:metrics][0][:values]=#{json[:metrics][0][:values]}"
+      #   return json[:metrics][0][:values]
+      # }
+
+      #return data
       # dimensions = %w(ga:pagePath ga:socialNetwork)
       # metrics = %w(ga:pageviews ga:avgTimeOnPage)
       # sort = %w(ga:pagePath)
@@ -248,9 +281,14 @@ namespace :reports do
       # previous year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
       # unique visits - visits, new visitors, returning visitors
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:sessions')
+      p data[:unique_visits]
+
+      return data
+
       dimensions = %w(ga:userType)
       metrics = %w(ga:sessions)
-      result = analytics.get_ga_data("ga:#{profile_id}",
+      result = analytics.batch_get_reports("ga:#{profile_id}",
                                      start_date.strftime('%F'),
                                      end_date.strftime('%F'),
                                      metrics.join(','),
@@ -262,7 +300,7 @@ namespace :reports do
       # unique visits prev month
       dimensions = %w(ga:userType)
       metrics = %w(ga:sessions)
-      result = analytics.get_ga_data("ga:#{profile_id}",
+      result = analytics.batch_get_reports("ga:#{profile_id}",
                                      (start_date.prev_month.beginning_of_month).strftime('%F'),
                                      (end_date.prev_month.end_of_month).strftime('%F'),
                                      metrics.join(','),
@@ -273,11 +311,44 @@ namespace :reports do
 
       #print_table data[:unique_visits]
 
-      # new vs returning - new visitors, returning visitors, new visitor % change vs same month a year ago
-
       # referrals - source, % of traffic
+      dimensions = %w(ga:acquisitionSource)
+      metrics = %w(ga:pageviews)
+      sort = %w(-ga:pageviews)
+      result = analytics.batch_get_reports("ga:#{profile_id}",
+                                     start_date.strftime('%F'),
+                                     end_date.strftime('%F'),
+                                     metrics.join(','),
+                                     sort: sort.join(','),
+                                     dimensions: dimensions.join(','),
+                                     max_results: 5)
+      data[:referrals] = []
+      data[:referrals].push(result.column_headers.map { |h| h.name })
+      data[:referrals].push(*result.rows)
+
+      print_table data[:referrals]
 
       # top referrers - site, visits
+      dimensions = %w(ga:source)
+      metrics = %w(ga:pageviews)
+      sort = %w(-ga:pageviews)
+      #filters = "ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      result = analytics.get_ga_data("ga:#{profile_id}",
+                                     start_date.strftime('%F'),
+                                     end_date.strftime('%F'),
+                                     metrics.join(','),
+                                     dimensions: dimensions.join(','),
+                                     #filters: filters,
+                                     sort: sort.join(','),
+                                     max_results: 5)
+
+      exit_pages = []
+      exit_pages.push(result.column_headers.map { |h| h.name })
+      exit_pages.push(*result.rows)
+      data[:top_referrers] = []
+      data[:top_referrers].push(*result.rows)
+
+      print_table data[:top_referrers]
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
 
@@ -290,7 +361,7 @@ namespace :reports do
       metrics = %w(ga:exits)
       sort = %w(-ga:exits)
       filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      result = analytics.get_ga_data("ga:#{profile_id}",
+      result = analytics.batch_get_reports("ga:#{profile_id}",
                                      start_date.strftime('%F'),
                                      end_date.strftime('%F'),
                                      metrics.join(','),
@@ -327,6 +398,60 @@ namespace :reports do
       # print_table data[:time_on_site]
 
       data
+    end
+
+    desc 'get_ga_data, profile_id, start_date, end_date, dimensions, metrics, sort, filters', 'Gets GA data'
+    def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, filters=nil)
+      return [] unless analytics && profile_id && start_date && end_date && dimensions && metrics
+
+      grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
+      rr = Google::Apis::AnalyticsreportingV4::ReportRequest.new
+      rr.view_id = profile_id
+
+      #rr.filters_expression ="ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+
+      dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
+      dimension.name = dimensions
+      rr.dimensions = [dimension]      
+      
+      metric = Google::Apis::AnalyticsreportingV4::Metric.new
+      metric.expression = metrics
+      rr.metrics = [metric]      
+
+      range = Google::Apis::AnalyticsreportingV4::DateRange.new
+      range.start_date = start_date
+      range.end_date = end_date
+      rr.date_ranges = [range]
+
+      grr.report_requests = [rr]
+
+      response = analytics.batch_get_reports(grr)
+      # puts response.inspect
+      # puts response.reports.inspect
+
+      data = response.reports.map{|report| 
+        # p "report.data.rows=#{report.data.rows.inspect}"
+        # p "$$$"
+        # p "$$$"
+        # p "$$$"
+        # p "report.data.rows[0]=#{report.data.rows[0].inspect}"
+        # p "$$$"
+        # p "$$$"
+        # p "$$$"
+        # p "report.data.rows[1]=#{report.data.rows[1].inspect}"
+        return report.data.rows.map{|row|
+          row.metrics[0].values[0]
+        }
+      }
+      # data = response.reports[0].data.rows.map{|r|
+      #   data = r.to_h
+      #   p "data=#{data}"
+      #   #p "data[:metrics][0]=#{data[:metrics][0]}"
+      #   p "data[:metrics][0][:values]=#{data[:metrics][0][:values]}"
+      #   return data[:metrics][0][:values]
+      # }
+
+      return data
     end
 
     require 'mechanize'
