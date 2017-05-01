@@ -141,15 +141,15 @@
     </div>
     <table class="tabular" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][1][1].to_i + @data[:unique_visits][2][1].to_i %></td>
+        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][0][1].to_i + @data[:unique_visits][1][1].to_i %></td>
         <td class="label">People visited the site</td>
       </tr>
       <tr>
-        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][1][1] %></td>
+        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][0][1] %></td>
         <td class="label">First-time visits to the site</td>
       </tr>
       <tr>
-        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][2][1] %></td>
+        <td class="value value-large"><%= number_with_delimiter @data[:unique_visits][1][1] %></td>
         <td class="label">Return visits to the site</td>
       </tr>
     </table>
@@ -164,9 +164,9 @@
     <div class="grid">
       <div class="col-2-3">
         <%
-          @data[:unique_visits_total] = @data[:unique_visits][1][1].to_i + @data[:unique_visits][2][1].to_i
-          @data[:new_visitors_percentage] = 100 * @data[:unique_visits][1][1].to_i / @data[:unique_visits_total]
-          @data[:returning_visitors_percentage] = 100 * @data[:unique_visits][2][1].to_i / @data[:unique_visits_total]
+          @data[:unique_visits_total] = @data[:unique_visits][0][1].to_i + @data[:unique_visits][1][1].to_i
+          @data[:new_visitors_percentage] = 100 * @data[:unique_visits][0][1].to_i / @data[:unique_visits_total]
+          @data[:returning_visitors_percentage] = 100 * @data[:unique_visits][1][1].to_i / @data[:unique_visits_total]
         %>
         <div class="horizontal-bar-chart">
           <div class="bar-label">New Visitors</div>
@@ -182,8 +182,8 @@
 
       <div class="col-1-3">
         <%
-          @data[:unique_visits_prev_month_total] = @data[:unique_visits_prev_month][1][1].to_i + @data[:unique_visits_prev_month][2][1].to_i
-          @data[:new_visitors_prev_month_percentage] = 100 * @data[:unique_visits_prev_month][1][1].to_i / @data[:unique_visits_prev_month_total]
+          @data[:unique_visits_prev_month_total] = @data[:unique_visits_prev_month][0][1].to_i + @data[:unique_visits_prev_month][1][1].to_i
+          @data[:new_visitors_prev_month_percentage] = 100 * @data[:unique_visits_prev_month][0][1].to_i / @data[:unique_visits_prev_month_total]
         %>
         <div class="change-vs-previous-month">
           New Visitor % Change

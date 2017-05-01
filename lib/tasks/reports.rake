@@ -41,14 +41,18 @@ namespace :reports do
       :@data => data
     }
 
+    p "got data #{locals.inspect}"
+
     html_renderer = HTMLRenderer.new
 
+    p "let's render PDF"
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solasalonstudios', locals), :footer => {:center => '[page]', :font_size => 7})
-
+    p "pdf rendered..."
     save_path = Rails.root.join('pdfs','solasalonstudios.pdf')
     File.open(save_path, 'wb') do |file|
       file << pdf
-    end    
+    end   
+    p "file saved" 
   end
 
   task :show_visits => :environment do
@@ -281,74 +285,87 @@ namespace :reports do
       # previous year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
       # unique visits - visits, new visitors, returning visitors
+      p "UNIQUE VISITS"
       data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:sessions')
-      p data[:unique_visits]
+      #p data[:unique_visits]
 
-      return data
+      # return data
 
-      dimensions = %w(ga:userType)
-      metrics = %w(ga:sessions)
-      result = analytics.batch_get_reports("ga:#{profile_id}",
-                                     start_date.strftime('%F'),
-                                     end_date.strftime('%F'),
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','))
-      data[:unique_visits] = []
-      data[:unique_visits].push(result.column_headers.map { |h| h.name })
-      data[:unique_visits].push(*result.rows)
+      # dimensions = %w(ga:userType)
+      # metrics = %w(ga:sessions)
+      # result = analytics.batch_get_reports("ga:#{profile_id}",
+      #                                start_date.strftime('%F'),
+      #                                end_date.strftime('%F'),
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','))
+      # data[:unique_visits] = []
+      # data[:unique_visits].push(result.column_headers.map { |h| h.name })
+      # data[:unique_visits].push(*result.rows)
 
       # unique visits prev month
-      dimensions = %w(ga:userType)
-      metrics = %w(ga:sessions)
-      result = analytics.batch_get_reports("ga:#{profile_id}",
-                                     (start_date.prev_month.beginning_of_month).strftime('%F'),
-                                     (end_date.prev_month.end_of_month).strftime('%F'),
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','))
-      data[:unique_visits_prev_month] = []
-      data[:unique_visits_prev_month].push(result.column_headers.map { |h| h.name })
-      data[:unique_visits_prev_month].push(*result.rows)
+      # dimensions = %w(ga:userType)
+      # metrics = %w(ga:sessions)
+      # result = analytics.batch_get_reports("ga:#{profile_id}",
+      #                                (start_date.prev_month.beginning_of_month).strftime('%F'),
+      #                                (end_date.prev_month.end_of_month).strftime('%F'),
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','))
+      # data[:unique_visits_prev_month] = []
+      # data[:unique_visits_prev_month].push(result.column_headers.map { |h| h.name })
+      # data[:unique_visits_prev_month].push(*result.rows)
+
+      p "UNIQUE VISITS PER MONTH"
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:sessions')
+      #p data[:unique_visits_prev_month]
 
       #print_table data[:unique_visits]
 
       # referrals - source, % of traffic
-      dimensions = %w(ga:acquisitionSource)
-      metrics = %w(ga:pageviews)
-      sort = %w(-ga:pageviews)
-      result = analytics.batch_get_reports("ga:#{profile_id}",
-                                     start_date.strftime('%F'),
-                                     end_date.strftime('%F'),
-                                     metrics.join(','),
-                                     sort: sort.join(','),
-                                     dimensions: dimensions.join(','),
-                                     max_results: 5)
-      data[:referrals] = []
-      data[:referrals].push(result.column_headers.map { |h| h.name })
-      data[:referrals].push(*result.rows)
+      # dimensions = %w(ga:acquisitionSource)
+      # metrics = %w(ga:pageviews)
+      # sort = %w(-ga:pageviews)
+      # result = analytics.batch_get_reports("ga:#{profile_id}",
+      #                                start_date.strftime('%F'),
+      #                                end_date.strftime('%F'),
+      #                                metrics.join(','),
+      #                                sort: sort.join(','),
+      #                                dimensions: dimensions.join(','),
+      #                                max_results: 5)
+      # data[:referrals] = []
+      # data[:referrals].push(result.column_headers.map { |h| h.name })
+      # data[:referrals].push(*result.rows)
 
-      print_table data[:referrals]
+      # print_table data[:referrals]
+
+      p "REFERRALS"
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionSource', 'ga:pageviews', '-ga:pageviews')
+      #p data[:referrals]
 
       # top referrers - site, visits
-      dimensions = %w(ga:source)
-      metrics = %w(ga:pageviews)
-      sort = %w(-ga:pageviews)
-      #filters = "ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      result = analytics.get_ga_data("ga:#{profile_id}",
-                                     start_date.strftime('%F'),
-                                     end_date.strftime('%F'),
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','),
-                                     #filters: filters,
-                                     sort: sort.join(','),
-                                     max_results: 5)
+      # dimensions = %w(ga:source)
+      # metrics = %w(ga:pageviews)
+      # sort = %w(-ga:pageviews)
+      # #filters = "ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      # result = analytics.get_ga_data("ga:#{profile_id}",
+      #                                start_date.strftime('%F'),
+      #                                end_date.strftime('%F'),
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','),
+      #                                #filters: filters,
+      #                                sort: sort.join(','),
+      #                                max_results: 5)
 
-      exit_pages = []
-      exit_pages.push(result.column_headers.map { |h| h.name })
-      exit_pages.push(*result.rows)
-      data[:top_referrers] = []
-      data[:top_referrers].push(*result.rows)
+      # exit_pages = []
+      # exit_pages.push(result.column_headers.map { |h| h.name })
+      # exit_pages.push(*result.rows)
+      # data[:top_referrers] = []
+      # data[:top_referrers].push(*result.rows)
 
-      print_table data[:top_referrers]
+      # print_table data[:top_referrers]
+
+      p "TOP REFERRERS"
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..5]
+      #p data[:top_referrers]
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
 
@@ -357,27 +374,37 @@ namespace :reports do
       # blogs - url, visits
 
       # exit pages
-      dimensions = %w(ga:exitPagePath)
-      metrics = %w(ga:exits)
-      sort = %w(-ga:exits)
-      filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      result = analytics.batch_get_reports("ga:#{profile_id}",
-                                     start_date.strftime('%F'),
-                                     end_date.strftime('%F'),
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','),
-                                     #filters: filters,
-                                     sort: sort.join(','),
-                                     max_results: 5)
+      # dimensions = %w(ga:exitPagePath)
+      # metrics = %w(ga:exits)
+      # sort = %w(-ga:exits)
+      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+      # result = analytics.batch_get_reports("ga:#{profile_id}",
+      #                                start_date.strftime('%F'),
+      #                                end_date.strftime('%F'),
+      #                                metrics.join(','),
+      #                                dimensions: dimensions.join(','),
+      #                                #filters: filters,
+      #                                sort: sort.join(','),
+      #                                max_results: 5)
 
-      exit_pages = []
-      exit_pages.push(result.column_headers.map { |h| h.name })
-      exit_pages.push(*result.rows)
-      data[:exit_pages] = exit_pages.drop(1)
+      # exit_pages = []
+      # exit_pages.push(result.column_headers.map { |h| h.name })
+      # exit_pages.push(*result.rows)
+      # data[:exit_pages] = exit_pages.drop(1)
+      # data[:exit_pages].each_with_index do |exit_page, idx|
+      #   exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+      #   data[:exit_pages][idx] = exit_page
+      # end
+
+      p "EXIT PAGES"
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..5]
+      #p data[:exit_pages]
       data[:exit_pages].each_with_index do |exit_page, idx|
-        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
-        data[:exit_pages][idx] = exit_page
+        p "exit_page=#{exit_page[0]}, idx=#{idx}"
+        #exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        #data[:exit_pages][idx] = exit_page
       end
+
 
       # time on site + avg pages per visit
       # dimensions = %w(ga:pageTitle ga:sessionDurationBucket)
@@ -423,6 +450,19 @@ namespace :reports do
       range.end_date = end_date
       rr.date_ranges = [range]
 
+      if sort
+        order_by = Google::Apis::AnalyticsreportingV4::OrderBy.new 
+        if sort.start_with? '-'
+          sort[0] = ''
+          order_by.field_name = sort
+          order_by.sort_order = "DESCENDING"
+        else
+          order_by.field_name = sort
+        end
+        
+        rr.order_bys = [order_by]
+      end
+
       grr.report_requests = [rr]
 
       response = analytics.batch_get_reports(grr)
@@ -430,7 +470,7 @@ namespace :reports do
       # puts response.reports.inspect
 
       data = response.reports.map{|report| 
-        # p "report.data.rows=#{report.data.rows.inspect}"
+        #p "report.data.rows=#{report.data.rows.inspect}"
         # p "$$$"
         # p "$$$"
         # p "$$$"
@@ -440,7 +480,8 @@ namespace :reports do
         # p "$$$"
         # p "report.data.rows[1]=#{report.data.rows[1].inspect}"
         return report.data.rows.map{|row|
-          row.metrics[0].values[0]
+          #p "row=#{row.dimensions[0]}, #{row.metrics[0].values[0]}"
+          [row.dimensions[0], row.metrics[0].values[0]]
         }
       }
       # data = response.reports[0].data.rows.map{|r|
