@@ -8,7 +8,7 @@ class LocationsController < PublicWebsiteController
       @locations = Location.where(:status => 'open').where(:country => 'US')
     else
       @country = 'CA'
-      @locations = Location.where(:status => 'open').where(:country => 'DOESNOTEXIST')
+      @locations = Location.where(:status => 'open').where(:country => 'CA').where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
     end
 
     @states = @locations.select('DISTINCT state').order(:state => :asc)
@@ -28,7 +28,7 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @all_locations = Location.where(:status => 'open').where(:country => 'US')
     else
-      @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+      @all_locations = Location.where(:status => 'open').where(:country => 'CA').where.not(:id => 362)
     end
     
     if @msa
@@ -47,7 +47,7 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @locations = Location.where(:status => 'open').where(:country => 'US')
     else
-      @locations = Location.where(:status => 'open').where(:country => 'CA')
+      @locations = Location.where(:status => 'open').where(:country => 'CA').where.not(:id => 362)
     end
 
     @locations = @locations.where('city LIKE ?', query_param)
@@ -63,7 +63,7 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @all_locations = Location.where(:status => 'open').where(:country => 'US')
     else
-      @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+      @all_locations = Location.where(:status => 'open').where(:country => 'CA').where.not(:id => 362)
     end
 
     query_param = "#{params[:state].downcase.gsub(/-/, ' ')}".strip if params[:state]
@@ -73,7 +73,7 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'US')
     else
-      @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA')
+      @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA').where.not(:id => 362)
     end
     
     redirect_to :locations unless @locations.size > 0 && @lat && @lng
