@@ -41,7 +41,8 @@ namespace :reports do
       :@data => data
     }
 
-    p "got data #{locals.inspect}"
+    #p "got data #{locals.inspect}"
+    p "got data..."
 
     html_renderer = HTMLRenderer.new
 
@@ -239,13 +240,17 @@ namespace :reports do
 
       # referrals - source, % of traffic
       data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionSource', 'ga:pageviews', '-ga:pageviews')
-      #p data[:referrals]
 
       # top referrers - site, visits
       data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
-      #p data[:top_referrers]
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
+      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      tablets = data[:devices].pop
+      data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_month].pop
+      data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
 
       # locations - top regions that visited (city, visits)
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
@@ -283,7 +288,7 @@ namespace :reports do
 
     desc 'get_ga_data, profile_id, start_date, end_date, dimensions, metrics, sort, filters', 'Gets GA data'
     def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, filters=nil)
-      return [] unless analytics && profile_id && start_date && end_date && dimensions && metrics
+      return [] unless analytics && profile_id && start_date && end_date && dimensions
 
       grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
       rr = Google::Apis::AnalyticsreportingV4::ReportRequest.new
@@ -295,9 +300,11 @@ namespace :reports do
       dimension.name = dimensions
       rr.dimensions = [dimension]      
       
-      metric = Google::Apis::AnalyticsreportingV4::Metric.new
-      metric.expression = metrics
-      rr.metrics = [metric]      
+      if metrics
+        metric = Google::Apis::AnalyticsreportingV4::Metric.new
+        metric.expression = metrics
+        rr.metrics = [metric]      
+      end
 
       range = Google::Apis::AnalyticsreportingV4::DateRange.new
       range.start_date = start_date
@@ -320,11 +327,14 @@ namespace :reports do
       grr.report_requests = [rr]
 
       response = analytics.batch_get_reports(grr)
-      # puts response.inspect
-      # puts response.reports.inspect
+      #p "dimensions=#{dimensions}"
+      #puts response.inspect if dimensions == 'ga:deviceCategory'
+      #puts response.reports.inspect if dimensions == 'ga:deviceCategory'
+
+      
 
       data = response.reports.map{|report| 
-        #p "report.data.rows=#{report.data.rows.inspect}"
+        # p "report.data.rows=#{report.data.rows.inspect}" if dimensions == 'ga:deviceCategory'
         # p "$$$"
         # p "$$$"
         # p "$$$"
@@ -334,6 +344,7 @@ namespace :reports do
         # p "$$$"
         # p "report.data.rows[1]=#{report.data.rows[1].inspect}"
         return report.data.rows.map{|row|
+          #p "row=#{row.inspect}" if dimensions == 'ga:deviceCategory'
           #p "row=#{row.dimensions[0]}, #{row.metrics[0].values[0]}"
           [row.dimensions[0], row.metrics[0].values[0]]
         }

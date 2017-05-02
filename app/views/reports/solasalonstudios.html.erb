@@ -265,23 +265,32 @@
     </div>
     <div class="grid">
       <div class="col-2-3">
+        <%
+          @data[:traffic_total] = @data[:devices][0][1].to_i + @data[:devices][1][1].to_i
+          @data[:desktop_traffic_percentage] = 100 * @data[:devices][0][1].to_i / @data[:traffic_total]
+          @data[:mobile_traffic_percentage] = 100 * @data[:devices][1][1].to_i / @data[:traffic_total]
+        %>
         <div class="horizontal-bar-chart">
           <div class="bar-label">Mobile Traffic</div>
-          <div class="bar bar-green" style="width:70%">
-            <div class="value">70%</div>
+          <div class="bar bar-green" style="width:<%= number_to_percentage @data[:mobile_traffic_percentage] %>">
+            <div class="value"><%= number_to_percentage @data[:mobile_traffic_percentage], :precision => 0 %></div>
           </div>
           <div class="bar-label">Desktop Traffic</div>
-          <div class="bar bar-pink" style="width:30%">
-            <div class="value">30%</div>
+          <div class="bar bar-pink" style="width:<%= number_to_percentage @data[:desktop_traffic_percentage] %>">
+            <div class="value"><%= number_to_percentage @data[:desktop_traffic_percentage], :precision => 0 %></div>
           </div>
         </div>
       </div>
 
       <div class="col-1-3">
+        <%
+          @data[:traffic_prev_month_total] = @data[:devices_prev_month][0][1].to_i + @data[:devices_prev_month][1][1].to_i
+          @data[:mobile_traffic_prev_month_percentage] = 100 * @data[:devices_prev_month][1][1].to_i / @data[:traffic_prev_month_total]
+        %>
         <div class="change-vs-previous-month">
           Mobile % Change
-          <span class="percentage">17%</span>
-          Vs. <%= (Date.today - 1.month).strftime("%B %Y") %> 
+          <span class="percentage"><%= number_to_percentage (@data[:mobile_traffic_percentage] - @data[:mobile_traffic_prev_month_percentage]), :precision => 0 %></span>
+          Vs. <%= (@data[:start_date].prev_month).strftime("%B %Y") %> 
         </div>
       </div>
     </div>
