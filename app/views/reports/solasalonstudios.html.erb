@@ -213,18 +213,16 @@
         <th><strong>Source</strong></th>
         <th><strong>% of Traffic</strong></th>
       </tr>
-      <tr>
-        <td class="label">Organic Search</td>
-        <td class="label">66%</td>
-      </tr>
-      <tr>
-        <td class="label">Referral</td>
-        <td class="label">3%</td>
-      </tr>
-      <tr>
-        <td class="label">Social</td>
-        <td class="label">12%</td>
-      </tr>
+      <% @data[:total_referral_traffic] = 0 %>
+      <% @data[:referrals].each do |referral| %>
+        <% @data[:total_referral_traffic] += referral[1].to_i %>
+      <% end %>
+      <% @data[:referrals].each do |referral| %>
+        <tr>
+          <td class="label"><%= referral[0] == 'cpc' ? referral[0].upcase : referral[0].capitalize %></td>
+          <td class="label"><%= 100 * referral[1].to_i / @data[:total_referral_traffic] > 0 ? number_to_percentage(100 * referral[1].to_i / @data[:total_referral_traffic], :precision => 0) : 'N/A' %></td>
+        </tr>
+      <% end %>
     </table>    
   </div>
   <div class="col-1-2">
