@@ -296,18 +296,12 @@
         <th><strong>Region</strong></th>
         <th><strong>Visits</strong></th>
       </tr>
-      <tr>
-        <td class="label">Los Angeles</td>
-        <td class="label">13,143</td>
-      </tr>
-      <tr>
-        <td class="label">Detroit</td>
-        <td class="label">7,116</td>
-      </tr>
-      <tr>
-        <td class="label">Denver</td>
-        <td class="label">789</td>
-      </tr>
+      <% @data[:top_regions].each do |region| %>
+        <tr>
+          <td class="label"><%= region[0] %></td>
+          <td class="label"><%= number_with_delimiter region[1] %></td>
+        </tr>
+      <% end %>
     </table> 
   </div>
 </div>

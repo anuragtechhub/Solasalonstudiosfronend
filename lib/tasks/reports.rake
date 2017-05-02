@@ -229,180 +229,34 @@ namespace :reports do
         end_date: end_date
       }
 
-      p "start_date=#{start_date}, end_date=#{end_date}, data=#{data}"
-
-      # grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
-      # rr = Google::Apis::AnalyticsreportingV4::ReportRequest.new
-      # rr.view_id = profile_id
-
-      #rr.filters_expression ="ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-
-      # dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
-      # dimension.name = "ga:userType"
-      # rr.dimensions = [dimension]      
-      
-      # metric = Google::Apis::AnalyticsreportingV4::Metric.new
-      # metric.expression = "ga:sessions"
-      # rr.metrics = [metric]      
-
-      # range = Google::Apis::AnalyticsreportingV4::DateRange.new
-      # range.start_date = start_date
-      # range.end_date = end_date
-      # rr.date_ranges = [range]
-
-      # grr.report_requests = [rr]
-
-      # response = analytics.batch_get_reports(grr)
-      # puts response.inspect
-      # puts response.reports.inspect
-
-      # puts response.reports[0].data.rows.map{|r|
-      #   json = r.to_h
-      #   p "json[:metrics][0]=#{json[:metrics][0]}"
-      #   p "json[:metrics][0][:values]=#{json[:metrics][0][:values]}"
-      #   return json[:metrics][0][:values]
-      # }
-
-      #return data
-      # dimensions = %w(ga:pagePath ga:socialNetwork)
-      # metrics = %w(ga:pageviews ga:avgTimeOnPage)
-      # sort = %w(ga:pagePath)
-      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      # result = analytics.get_ga_data("ga:#{profile_id}",
-      #                                '2017-03-01',
-      #                                '2017-04-01',
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','),
-      #                                #filters: filters,
-      #                                sort: sort.join(','))
-
-      # data = []
-      # data.push(result.column_headers.map { |h| h.name })
-      # data.push(*result.rows)
-
       # current year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
       # previous year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
 
       # unique visits - visits, new visitors, returning visitors
-      p "UNIQUE VISITS"
       data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:sessions')
-      #p data[:unique_visits]
-
-      # return data
-
-      # dimensions = %w(ga:userType)
-      # metrics = %w(ga:sessions)
-      # result = analytics.batch_get_reports("ga:#{profile_id}",
-      #                                start_date.strftime('%F'),
-      #                                end_date.strftime('%F'),
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','))
-      # data[:unique_visits] = []
-      # data[:unique_visits].push(result.column_headers.map { |h| h.name })
-      # data[:unique_visits].push(*result.rows)
-
-      # unique visits prev month
-      # dimensions = %w(ga:userType)
-      # metrics = %w(ga:sessions)
-      # result = analytics.batch_get_reports("ga:#{profile_id}",
-      #                                (start_date.prev_month.beginning_of_month).strftime('%F'),
-      #                                (end_date.prev_month.end_of_month).strftime('%F'),
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','))
-      # data[:unique_visits_prev_month] = []
-      # data[:unique_visits_prev_month].push(result.column_headers.map { |h| h.name })
-      # data[:unique_visits_prev_month].push(*result.rows)
-
-      p "UNIQUE VISITS PER MONTH"
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:sessions')
-      #p data[:unique_visits_prev_month]
-
-      #print_table data[:unique_visits]
 
       # referrals - source, % of traffic
-      # dimensions = %w(ga:acquisitionSource)
-      # metrics = %w(ga:pageviews)
-      # sort = %w(-ga:pageviews)
-      # result = analytics.batch_get_reports("ga:#{profile_id}",
-      #                                start_date.strftime('%F'),
-      #                                end_date.strftime('%F'),
-      #                                metrics.join(','),
-      #                                sort: sort.join(','),
-      #                                dimensions: dimensions.join(','),
-      #                                max_results: 5)
-      # data[:referrals] = []
-      # data[:referrals].push(result.column_headers.map { |h| h.name })
-      # data[:referrals].push(*result.rows)
-
-      # print_table data[:referrals]
-
-      p "REFERRALS"
       data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionSource', 'ga:pageviews', '-ga:pageviews')
       #p data[:referrals]
 
       # top referrers - site, visits
-      # dimensions = %w(ga:source)
-      # metrics = %w(ga:pageviews)
-      # sort = %w(-ga:pageviews)
-      # #filters = "ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      # result = analytics.get_ga_data("ga:#{profile_id}",
-      #                                start_date.strftime('%F'),
-      #                                end_date.strftime('%F'),
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','),
-      #                                #filters: filters,
-      #                                sort: sort.join(','),
-      #                                max_results: 5)
-
-      # exit_pages = []
-      # exit_pages.push(result.column_headers.map { |h| h.name })
-      # exit_pages.push(*result.rows)
-      # data[:top_referrers] = []
-      # data[:top_referrers].push(*result.rows)
-
-      # print_table data[:top_referrers]
-
-      p "TOP REFERRERS"
-      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..5]
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
       #p data[:top_referrers]
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
 
-      # locations - city, visits
+      # locations - top regions that visited (city, visits)
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # blogs - url, visits
 
       # exit pages
-      # dimensions = %w(ga:exitPagePath)
-      # metrics = %w(ga:exits)
-      # sort = %w(-ga:exits)
-      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      # result = analytics.batch_get_reports("ga:#{profile_id}",
-      #                                start_date.strftime('%F'),
-      #                                end_date.strftime('%F'),
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','),
-      #                                #filters: filters,
-      #                                sort: sort.join(','),
-      #                                max_results: 5)
-
-      # exit_pages = []
-      # exit_pages.push(result.column_headers.map { |h| h.name })
-      # exit_pages.push(*result.rows)
-      # data[:exit_pages] = exit_pages.drop(1)
-      # data[:exit_pages].each_with_index do |exit_page, idx|
-      #   exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
-      #   data[:exit_pages][idx] = exit_page
-      # end
-
-      p "EXIT PAGES"
-      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..5]
-      #p data[:exit_pages]
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
       data[:exit_pages].each_with_index do |exit_page, idx|
-        p "exit_page=#{exit_page[0]}, idx=#{idx}"
-        #exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
-        #data[:exit_pages][idx] = exit_page
+        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        data[:exit_pages][idx] = exit_page
       end
 
 
