@@ -220,7 +220,7 @@
       <% @data[:referrals].each do |referral| %>
         <tr>
           <td class="label"><%= referral[0] == 'cpc' ? referral[0].upcase : referral[0].capitalize %></td>
-          <td class="label"><%= 100 * referral[1].to_i / @data[:total_referral_traffic] > 0 ? number_to_percentage(100 * referral[1].to_i / @data[:total_referral_traffic], :precision => 0) : 'N/A' %></td>
+          <td class="label"><%= (100 * referral[1].to_i / @data[:total_referral_traffic]) > 0 ? number_to_percentage(100 * referral[1].to_i / @data[:total_referral_traffic], :precision => 0) : 'N/A' %></td>
         </tr>
       <% end %>
     </table>    

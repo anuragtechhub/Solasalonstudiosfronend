@@ -239,7 +239,7 @@ namespace :reports do
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:sessions')
 
       # referrals - source, % of traffic
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:medium', 'ga:pageviews', '-ga:pageviews')[0..4]
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:medium', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # top referrers - site, visits
       data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
