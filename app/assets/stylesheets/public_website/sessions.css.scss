@@ -959,6 +959,161 @@
 
 
 
+.session-landing-2017 {
+
+  .about {
+    margin: 30px 0;
+
+    p {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 31px;
+    }
+
+    .play-video {
+
+      img {
+        border: 0;
+      }
+      
+      .play-btn {
+        
+      }
+    }
+  }
+
+  .sessions-nav {
+    list-style-type: none;
+    margin: 30px 0 0 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-family: 'Lato', sans-serif;
+      font-size: 17px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #ccc;
+      padding: 5px 0;
+      display: block;
+    }
+
+    a:hover, a:active {
+      color: #222;
+    }
+  }
+
+  .past-events {
+    background: transparent;
+
+    h2.gradient {
+      text-align: left !important;
+    }
+  }
+
+  .in-the-news {
+    background: transparent;
+
+    h2.gradient {
+      text-align: left !important;
+    }
+
+    .news-article {
+      border-top: 0;
+      padding-top: 0;
+
+      .image, .text {
+        float: none;
+      }
+      .image {
+        width: 25%;
+        margin-bottom: 5px;
+
+        img {
+          border: 1px solid #dedee0;
+        }
+      }
+
+      .social {
+
+        li {
+          margin-right: 30px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        
+        a, a:link, a:visited, a:hover, a:active {
+          border: 0;
+          color: #FFF;
+          background: #CCC;
+          font-size: 22px;
+          line-height: 22px;
+          width: 36px;
+          height: 36px;
+          border-radius: 18px;
+          padding: 8px 0 0 0;
+
+          .ss-twitter {
+            top: 3px;
+          }
+          .fa-facebook {
+            top: 0px;
+          }
+        }
+
+        a:hover, a:active {
+          background: #222;
+        }
+      }
+    }
+  }
+
+  .testimonials {
+    background: transparent;
+
+    h2.gradient {
+      text-align: left !important;
+    }
+  }
+
+  h2.gradient {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    background: $brand-primary; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left top, #79c7fb, #e157f9); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #79c7fb, #e157f9); /* Standard syntax (must be last) */
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: none;
+  }
+
+  .header-gradient {
+    border-bottom: 1px solid #dedee0;
+    padding: 0 0 15px 0;
+    margin: 0 0 20px 0;
+  }
+}
+
+
+
 /***************************
 * Session 2017 Breakpoints *
 ****************************/
