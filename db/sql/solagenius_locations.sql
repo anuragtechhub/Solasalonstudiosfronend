@@ -1,0 +1,1 @@
+SELECT l.name AS location_name, l.city, l.state, s.name AS stylist_name, s.email_address, s.phone_number, s.has_sola_genius_account FROM stylists AS s, locations AS l WHERE s.location_id = l.id ORDER BY l.name ASC, s.name ASC
