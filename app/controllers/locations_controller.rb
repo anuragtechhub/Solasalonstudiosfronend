@@ -81,7 +81,7 @@ class LocationsController < PublicWebsiteController
 
   def salon
     @location = Location.find_by(:url_name => params[:url_name])
-    @articles = Article.where(:location_id => @location.id)
+    @articles = Article.where(:location_id => @location.id).order('created_at DESC')
     
     if @location
       @lat = @location.latitude
