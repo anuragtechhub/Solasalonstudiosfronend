@@ -490,7 +490,7 @@ en:
       blog_results: Blog Results
       location_results: Location Results
       salon_professional_results: Salon Professional Results
-      no_results_found: "There were no results found for your search query &quot;%{query}&quot;"
+      no_results_found: "There were no location or stylist results found for your search query &quot;%{query}&quot;"
       view_directory: View Directory
       view_location: View Location
       view_profile: View Profile

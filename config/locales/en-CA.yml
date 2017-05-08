@@ -26,7 +26,7 @@ en-CA:
       click_to_watch_video: Click to watch video
       learn_more: Learn More
       location_count: 350+
-      coming_soon_to_canada: Coming Soon to Canada!
+      coming_soon_to_canada: Coming to Toronto Fall 2017!
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
       salon_professional_count: 8,000+
@@ -396,7 +396,7 @@ en-CA:
       blog_results: Blog Results
       location_results: Location Results
       salon_professional_results: Salon Professional Results
-      no_results_found: "There were no results found for your search query &quot;%{query}&quot;"
+      no_results_found: "There were no location or stylists results found for your search query &quot;%{query}&quot;"
       view_directory: View Directory
       view_location: View Location
       view_profile: View Profile
