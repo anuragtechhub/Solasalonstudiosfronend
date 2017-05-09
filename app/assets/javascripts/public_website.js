@@ -250,19 +250,6 @@ $(function () {
               $sticky.css({position: 'absolute', top: 'initial'});
           }
 
-          // $sticky.find('a').each(function () {
-          //   var scrollPos = $(document).scrollTop();
-          //   var currLink = $(this);
-          //   var refElement = $(currLink.attr("href"));
-          //   if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-          //     $sticky.find('a').removeClass("active");
-          //     currLink.addClass("active");
-          //   }
-          //   else {
-          //     currLink.removeClass("active");
-          //   }
-          // });
-
         });
       }
     });
