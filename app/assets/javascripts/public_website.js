@@ -236,7 +236,7 @@ $(function () {
 
     $(window).on('resize.sticky', function () {
       var windowWidth = $(window).width();
-      console.log('resize', windowWidth);
+
       if (windowWidth < 550) {
         $(window).off('scroll.sticky');
         $sticky.css({position: 'static'});
@@ -245,10 +245,40 @@ $(function () {
           var windowTop = $(window).scrollTop(); // returns number
 
           if (stickyTop < windowTop + stickOffset) {
-              $sticky.css({position: 'fixed', top: stickOffset});
+            $sticky.css({position: 'fixed', top: stickOffset});
           } else {
-              $sticky.css({position: 'absolute', top: 'initial'});
+            $sticky.css({position: 'absolute', top: 'initial'});
           }
+
+          $sticky.find('a').each(function () {
+            var scrollPos = $(document).scrollTop();
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            
+            if (refElement.offset().top <= scrollPos && refElement.offset().top + refElement.next('div').outerHeight() > scrollPos) {
+              $sticky.find('a').removeClass("active");
+              currLink.addClass("active");
+            }
+            else {
+              currLink.removeClass("active");
+            }
+
+            // handle first and last links
+            var $firstLink = $sticky.find('a').first();//.attr('href');
+            var $lastLink = $sticky.find('a').last();
+
+            // handle first link
+            if ($($firstLink.attr('href')).offset().top >= scrollPos) {
+              $sticky.find('a').removeClass("active");
+              $firstLink.addClass("active");
+            }
+
+            // handle last link
+            if ($($lastLink.attr('href')).offset().top <= scrollPos || $(window).scrollTop() + $(window).height() == $(document).height()) {
+              $sticky.find('a').removeClass("active");
+              $lastLink.addClass("active");
+            }
+          });
 
         });
       }
