@@ -1051,6 +1051,10 @@
       color: #ccc;
       padding: 5px 0;
       display: block;
+
+      &.active {
+        color: #222;
+      }
     }
 
     a:hover, a:active {
@@ -1210,7 +1214,7 @@
 
   .session-landing-2017 {
     .sessions-nav {
-      margin: -20px 0 20px 0;
+      margin: -20px 0 0 0;
 
       a, a:link, a:visited, a:hover, a:active {
         font-size: 21px;

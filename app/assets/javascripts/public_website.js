@@ -213,6 +213,62 @@ $(function () {
     }
   });
 
+  // animated scrolling
+  $(document.body).on('click', '[data-animated-scroll]', function () {
+    var $this = $(this);
+
+    // scroll to anchor
+    $('html, body').animate({scrollTop: $($this.attr('href')).offset().top}, 'slow');
+
+    // update .active class
+    $('[data-nav-group="' + $this.data('nav-group') + '"]').removeClass('active').filter('[href="' + $this.attr('href') + '"]').addClass('active');
+    
+    return false;
+  });
+
+  // stick menu
+  var $sticky = $('.sticky');
+  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+
+    var generalSidebarHeight = $sticky.innerHeight();
+    var stickyTop = $sticky.offset().top;
+    var stickOffset = 0;
+
+    $(window).on('resize.sticky', function () {
+      var windowWidth = $(window).width();
+      console.log('resize', windowWidth);
+      if (windowWidth < 550) {
+        $(window).off('scroll.sticky');
+        $sticky.css({position: 'static'});
+      } else {
+        $(window).on('scroll.sticky', function () { // scroll event
+          var windowTop = $(window).scrollTop(); // returns number
+
+          if (stickyTop < windowTop + stickOffset) {
+              $sticky.css({position: 'fixed', top: stickOffset});
+          } else {
+              $sticky.css({position: 'absolute', top: 'initial'});
+          }
+
+          // $sticky.find('a').each(function () {
+          //   var scrollPos = $(document).scrollTop();
+          //   var currLink = $(this);
+          //   var refElement = $(currLink.attr("href"));
+          //   if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+          //     $sticky.find('a').removeClass("active");
+          //     currLink.addClass("active");
+          //   }
+          //   else {
+          //     currLink.removeClass("active");
+          //   }
+          // });
+
+        });
+      }
+    });
+    $(window).trigger('resize.sticky');
+  }  
+
   // contact-us-request-a-tour
   $('#contact-us-request-a-tour').on('submit', function () {
     var $form = $(this);
