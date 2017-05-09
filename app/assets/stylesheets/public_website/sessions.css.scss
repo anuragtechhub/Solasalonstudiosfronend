@@ -1064,6 +1064,70 @@
 
   .upcoming-events {
     margin: 0 0 50px 0;
+
+    .event-icon {
+      display: inline-block;
+      width: 88px;
+      height: 88px;
+      float: left;
+      margin-right: 15px;
+
+      &.west-palm-beach {
+        background: asset-data-url('sessions/west_palm_beach_off.png') no-repeat center;
+        background-size: 88px 88px;
+      }
+
+      &.bay-area {
+        background: asset-data-url('sessions/bay_area_off.png') no-repeat center;
+        background-size: 88px 88px;
+      }
+
+      
+    }
+
+      // .column {
+      //   &:hover, &:active {
+      //     .west-palm-beach {
+      //       background: asset-data-url('sessions/west_palm_beach_on.png') no-repeat center;
+      //       background-size: 88px 88px;
+      //     }
+
+      //     .bay-area {
+      //       background: asset-data-url('sessions/bay_area_on.png') no-repeat center;
+      //       background-size: 88px 88px;
+      //     }
+      //   }
+      // }
+
+    .date {
+      font-size: 17px;
+      line-height: 21px;
+      font-weight: bold;
+      color: #222;
+      margin-top: 7px;
+      margin-bottom: 3px;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-size: 17px;
+      line-height: 21px;
+      font-weight: bold;
+      text-decoration: none;
+      
+    }
+
+    .location-name {
+      font-size: 22px;
+      line-height: 26px;
+      font-weight: normal;
+      color: #999;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+
   }
 
   .past-events {
@@ -1208,6 +1272,27 @@
       opacity: 0.4;
     } 
   }
+}
+
+@media (max-width: 900px) {
+  
+
+  .session-landing-2017 {
+    .upcoming-events {
+      .event-tile {
+        clear: both;
+        width: 100%;
+        margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
 }
 
 @media (max-width: 550px) {
