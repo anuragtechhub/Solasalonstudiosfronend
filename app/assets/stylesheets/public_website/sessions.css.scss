@@ -1009,6 +1009,15 @@
         width: 88px;
         height: 88px;
         border-radius: 44px;
+        margin: -44px 0 0 -44px;
+
+        background: #7ac6fb;
+        //* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7ac6fb+0,c36efa+100 */
+        background: #7ac6fb; /* Old browsers */
+        background: -moz-linear-gradient(left, #7ac6fb 0%, #c36efa 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #7ac6fb 0%,#c36efa 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #7ac6fb 0%,#c36efa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ac6fb', endColorstr='#c36efa',GradientType=1 ); /* IE6-9 */
 
         .text {
           position: absolute;
@@ -1017,6 +1026,8 @@
           right: 0;
           color: #FFF;
           white-space: nowrap;
+          text-transform: uppercase;
+          font-size: 13px;
         }
       }
     }
