@@ -1155,6 +1155,57 @@
   }
 }
 
+.sessions-landing-2017-carousel {
+  .arrow-left {
+    background: asset-data-url('sessions/left-arrow.png') no-repeat center;
+    background-size: 29px 57px;
+    width: 29px;
+    height: 57px;
+    opacity: 0.4;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    
+    &:hover, &:active {
+      opacity: 1;
+    }
+  }
+  .arrow-right {
+    background: asset-data-url('sessions/right-arrow.png') no-repeat center;
+    background-size: 29px 57px;
+    width: 29px;
+    height: 57px;
+    opacity: 0.4;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    
+    &:hover, &:active {
+      opacity: 1;
+    }    
+  }
+  .down-arrow {
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    margin-left: -26px;
+
+    background: asset-data-url('sessions/down-arrow.png') no-repeat center;
+    background-size: 54px 32px;
+    width: 54px;
+    height: 32px;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    
+    &:hover, &:active {
+      opacity: 0.4;
+    } 
+  }
+}
+
 @media (max-width: 550px) {
 
   .session-landing-2017 {
