@@ -1213,12 +1213,96 @@
     margin: 0 0 50px 0;
     background: transparent;
 
+    .owl-carousel {
+
+      .owl-controls {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        right: 70px;
+      }
+      
+      .owl-buttons {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+
+        .arrow-left, .arrow-right {
+          top: auto;
+          left: auto;
+          right: auto;
+        }
+        .arrow-left {
+          background: asset-data-url('sessions/left-arrow-sm.png') no-repeat center;
+          background-size: 23px 42px;
+          width: 23px;
+          height: 42px;
+          opacity: 0.4;
+          transition: opacity .25s ease-in-out;
+          -moz-transition: opacity .25s ease-in-out;
+          -webkit-transition: opacity .25s ease-in-out;
+          
+          &:hover, &:active {
+            opacity: 1;
+          }
+        }
+        .arrow-right {
+          background: asset-data-url('sessions/right-arrow-sm.png') no-repeat center;
+          background-size: 23px 42px;
+          width: 23px;
+          height: 42px;
+          opacity: 0.4;
+          transition: opacity .25s ease-in-out;
+          -moz-transition: opacity .25s ease-in-out;
+          -webkit-transition: opacity .25s ease-in-out;
+          
+          &:hover, &:active {
+            opacity: 1;
+          }    
+        }
+        .owl-prev {
+          margin-right: 70px;
+        }
+      }
+      
+      .owl-item {
+        //display: none;
+        
+        .item {
+          margin: 0;
+          position: static;
+          top: auto;
+          bottom: auto;
+          left: auto;
+          right: auto;
+          transform: none;
+          padding: 0;
+
+          h1, h3.subtle {
+            font-family: 'Lato', sans-serif;
+            text-align: left;
+          }
+          h1 {
+            font-style: italic;
+            font-size: 25px;
+            margin-bottom: 10px;
+          }
+          h3.subtle {
+            font-size: 23px;
+            font-weight: bold;
+            color: #666;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+
     h2.gradient {
       text-align: left !important;
     }
 
     .header-gradient {
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }    
   }
 }
@@ -1304,6 +1388,9 @@
       a, a:link, a:visited, a:hover, a:active {
         font-size: 21px;
       }
+    }
+    .testimonials .owl-wrapper .owl-item .item {
+      margin: 0 5px !important;
     }
   }
 
