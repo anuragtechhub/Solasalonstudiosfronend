@@ -24,6 +24,10 @@ $(function () {
 
     $(window).trigger('resize.solagenius');
 
+    if (typeof window.initStickyMenu == 'function') {
+      window.initStickyMenu();
+    }
+
     if (AOS && AOS.refresh) {
       AOS.refresh();
     }

@@ -230,64 +230,68 @@ $(function () {
   });
 
   // stick menu
-  var $sticky = $('.sticky');
-  if (!!$sticky.offset()) { // make sure ".sticky" element exists
+  window.initStickyMenu = function () {
+    var $sticky = $('.sticky');
+    if (!!$sticky.offset()) { // make sure ".sticky" element exists
 
-    var generalSidebarHeight = $sticky.innerHeight();
-    var stickyTop = $sticky.offset().top;
-    var stickOffset = 0;
+      var generalSidebarHeight = $sticky.innerHeight();
+      var stickyTop = $sticky.offset().top;
+      var stickOffset = 0;
 
-    $(window).on('resize.sticky', function () {
-      var windowWidth = $(window).width();
+      $(window).on('resize.sticky', function () {
+        var windowWidth = $(window).width();
 
-      if (windowWidth < 550) {
-        $(window).off('scroll.sticky');
-        $sticky.css({position: 'static'});
-      } else {
-        $(window).on('scroll.sticky', function () { // scroll event
-          var windowTop = $(window).scrollTop(); // returns number
+        if (windowWidth < 550) {
+          $(window).off('scroll.sticky');
+          $sticky.css({position: 'static'});
+        } else {
+          $(window).on('scroll.sticky', function () { // scroll event
+            var windowTop = $(window).scrollTop(); // returns number
 
-          if (stickyTop < windowTop + stickOffset) {
-            $sticky.css({position: 'fixed', top: stickOffset});
-          } else {
-            $sticky.css({position: 'absolute', top: 'initial'});
-          }
-
-          $sticky.find('a').each(function () {
-            var scrollPos = $(document).scrollTop();
-            var currLink = $(this);
-            var refElement = $(currLink.attr("href"));
-            
-            if (refElement.offset().top <= scrollPos && refElement.offset().top + refElement.next('div').outerHeight() > scrollPos) {
-              $sticky.find('a').removeClass("active");
-              currLink.addClass("active");
-            }
-            else {
-              currLink.removeClass("active");
+            if (stickyTop < windowTop + stickOffset) {
+              $sticky.css({position: 'fixed', top: stickOffset});
+            } else {
+              $sticky.css({position: 'absolute', top: 'initial'});
             }
 
-            // handle first and last links
-            var $firstLink = $sticky.find('a').first();//.attr('href');
-            var $lastLink = $sticky.find('a').last();
+            $sticky.find('a').each(function () {
+              var scrollPos = $(document).scrollTop();
+              var currLink = $(this);
+              var refElement = $(currLink.attr("href"));
+              
+              if (refElement.offset().top <= scrollPos && refElement.offset().top + refElement.next('div').outerHeight() > scrollPos) {
+                $sticky.find('a').removeClass("active");
+                currLink.addClass("active");
+              }
+              else {
+                currLink.removeClass("active");
+              }
 
-            // handle first link
-            if ($($firstLink.attr('href')).offset().top >= scrollPos) {
-              $sticky.find('a').removeClass("active");
-              $firstLink.addClass("active");
-            }
+              // handle first and last links
+              var $firstLink = $sticky.find('a').first();//.attr('href');
+              var $lastLink = $sticky.find('a').last();
 
-            // handle last link
-            if ($($lastLink.attr('href')).offset().top <= scrollPos || $(window).scrollTop() + $(window).height() == $(document).height()) {
-              $sticky.find('a').removeClass("active");
-              $lastLink.addClass("active");
-            }
+              // handle first link
+              if ($($firstLink.attr('href')).offset().top >= scrollPos) {
+                $sticky.find('a').removeClass("active");
+                $firstLink.addClass("active");
+              }
+
+              // handle last link
+              if ($($lastLink.attr('href')).offset().top <= scrollPos || $(window).scrollTop() + $(window).height() == $(document).height()) {
+                $sticky.find('a').removeClass("active");
+                $lastLink.addClass("active");
+              }
+            });
+
           });
+        }
+      });
 
-        });
-      }
-    });
-    $(window).trigger('resize.sticky');
-  }  
+      $(window).trigger('resize.sticky');
+    }  
+  };
+  window.initStickyMenu();
 
   // contact-us-request-a-tour
   $('#contact-us-request-a-tour').on('submit', function () {
