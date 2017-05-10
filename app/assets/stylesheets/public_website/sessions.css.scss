@@ -972,14 +972,21 @@
     margin: 0;
     padding: 0;
 
-    background: $brand-primary; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left top, #79c7fb, #e157f9); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #79c7fb, #e157f9); /* Standard syntax (must be last) */
+    // background: $brand-primary; /* For browsers that do not support gradients */    
+    // background: -webkit-linear-gradient(left top, #79c7fb, #e157f9); /* For Safari 5.1 to 6.0 */
+    // background: -o-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Opera 11.1 to 12.0 */
+    // background: -moz-linear-gradient(bottom right, #79c7fb, #e157f9); /* For Firefox 3.6 to 15 */
+    // background: linear-gradient(to bottom right, #79c7fb, #e157f9); /* Standard syntax (must be last) */
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // -webkit-background-clip: text;
+    // -moz-background-clip: text;
+    // background-clip: text;
+
+    // -webkit-text-fill-color: transparent;
+    // -moz-text-fill-color: transparent;
+    // text-fill-color: transparent;
+    color: #A796FA !important;
+
     text-transform: none;
   }
 

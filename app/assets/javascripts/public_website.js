@@ -16,6 +16,9 @@
 //= require jssocials
 //= require aos
 //= require hammer
+//= require text-gradient-default
+//= require text-gradient-svg
+//= require text-gradient
 
 $(function () {
 
@@ -388,5 +391,14 @@ $(function () {
   });
 
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+
+  // gradient text
+  $('h2.gradient').each(function () {
+    new TextGradient($(this)[0], {
+      from : '#79c7fb',
+      to : '#e157f9',                                                          
+      direction : 'right'
+    });
+  });  
 
 });
