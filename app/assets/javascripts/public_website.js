@@ -67,8 +67,6 @@ $(function () {
       options['nav'] = false;
     }
 
-    console.log('making a carousel', $this, options);
-
     $this.owlCarousel(options);
   });
 

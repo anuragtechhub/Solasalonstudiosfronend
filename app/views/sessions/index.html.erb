@@ -1,143 +1,30 @@
-  <div class="session">    
+<div class="own-your-salon">
+<div class="hero-tab-content" data-hero-active="true" data-ref="#sola-sessions">
 
-    <div class="hero-image hero-desktop"><%= image_tag 'sessions/Sola-Sessions-Header.jpg' %></div>
+  <div class="hero-fullscreen sessions-landing-2017-carousel">
 
-    <div class="container">
-      <div class="row sessions-buttons">
-        <div class="six columns"><a href="#video-container" onclick="return false;" style="cursor:default" class="button block primary long-text">About the Sola Sessions</a></div>
-        <div class="six columns"><a href="https://www.solasalonstudios.com/sessions/dc" class="button block long-text">Washington D.C.</a></div>
+    <div class="hero-carousel owl-carousel owl-theme hero-carousel-fullscreen" data-pagination="false" data-autoplayoff="true">
+      <div class="item">
+        <%= image_tag 'sessions/sessions-2017-landing-hero.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 1152, :width => 1488, :height => 1152 %>
+        <%= image_tag 'own/sola_sessions_logo.png', :class => 'sola_sessions_logo', :alt => 'Sola Sessions' %>  
       </div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/1.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1278, :width => 1920, :height => 1278, :alt => 'A group shot from a Sola Session live event' %></div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/2.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'A group shot from a Sola Session live event' %></div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/3.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor gets the crowd pumped up at a Sola Session live event' %></div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/4.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor with headset cuts a woman\'s hair on-stage at a Sola Session live event' %></div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/5.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1278, :width => 1920, :height => 1278, :alt => 'The crowd gets involved during a Sola Session live event' %></div>
+      <div class="item" style="display:none"><%= image_tag 'own/sessions/6.jpg', :class => 'fullscreen', :'data-width' => 1920, :'data-height' => 1080, :width => 1920, :height => 1080, :alt => 'An instructor with headset cuts a woman\'s hair on-stage at a Sola Session live event' %></div>
     </div>
 
-
-    <a name="video-container" id="video-container"></a>
-    <div class="container">
-      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video" rel="i6AUSUofPUg">
-        <%= image_tag 'sessions/video_thumb.jpg', :width => 953, :height => 458 %>
-        <div class="play-btn">
-          <span class="fa fa-5x fa-play"></span>
-        </div>
-      </a>
-    </div>
-
-
-    <div class="container">
-      <div class="description">
-        We hope you can join us for one of The Sola Sessions, coming to a city near you! The Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our awesome, dynamic community. We're bringing the industry's best to you for intimate, Sola-exclusive events across the country. Click on the cities below to learn more about each unique Sola Session. We can’t wait to meet you!</div>
-    </div>
-
-    <div class="details" style="padding: 30px 0; margin: 0">
-      <div class="container">
-        <h1>Washington, D.C.</h1>
-        <h2>May 8, 2017</h2>
-        <h4><%= link_to 'Click here to learn more','https://www.solasalonstudios.com/sessions/dc', :class => 'button primary' %></h4>
-      </div>
-    </div>
-
-    <div class="past-events">
-      <div class="container">
-        <h2>Past Events</h2>
-
-        <div class="event">
-          <%= image_tag "sessions/past-event-dallas.jpg" %>
-          <div class="buttons">
-            <a href="https://www.solasalonstudios.com/blog/the-magic-of-the-dallas-sola-sessions" class="button">Read Blog</a>
-            <a href="http://solasessions.smugmug.com/The-Sola-Sessions-Dallas" target="_blank" class="button">View Gallery</a>
-          </div>
-        </div> 
-        
-        <div class="event">
-          <%= image_tag "sessions/past-event-charlotte.jpeg" %>
-          <div class="buttons">
-            <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--charlotte-recap" class="button">Read Blog</a>
-            <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Charlotte/n-NX4x6J/" target="_blank" class="button">View Gallery</a>
-          </div>
-        </div> 
-
-        <div class="event">
-          <%= image_tag "sessions/past-event-orange-county.jpeg" %>
-          <div class="buttons">
-            <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--newport-beach-recap" class="button">Read Blog</a>
-            <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Orange/n-QXL6tM/" target="_blank" class="button">View Gallery</a>
-          </div>
-        </div> 
-
-        <div class="event">
-          <%= image_tag "sessions/past-event-minneapolis.jpg" %>
-          <div class="buttons">
-            <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__minneapolis_recap" class="button">Read Blog</a>
-            <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Minneapolis/n-BjfH8G/" target="_blank" class="button">View Gallery</a>
-          </div>
-        </div> 
-
-        <div class="event">
-          <%= image_tag "sessions/past-event-denver.jpg" %>
-          <div class="buttons">
-            <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__denver_recap" class="button">Read Blog</a>
-            <a href="https://solasessions.smugmug.com/The-Sola-SessionsDenver/n-f8zLwV/" target="_blank" class="button">View Gallery</a>
-          </div>
-        </div> 
-
-      </div>
-    </div>
-
-    <div class="in-the-news">
-      <div class="container">
-        <h2>In The News</h2>
-        <div class="news-articles">
-          <% Article.where(:id => [68, 62, 61, 53, 51, 48, 47]).order(:id => :desc).each do |article| %>
-            <%= render 'shared/news_summary', :article => article %>
-          <% end %>
-        </div>        
-      </div>
-    </div>
-
-    <div class="testimonials">
-      <div class="container">
-        <h2>Testimonials</h2>
-
-        <div class="owl-carousel owl-theme" data-autoplay="10000">
-          <div class="item featured-testimonial">
-            <h1>"My daughter and I attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one time with the educators before and after their show. We loved the smaller, family like setting. And the fact that everyone there was a Sola owner was even more fabulous."</h1>
-            <h3 class="subtle">Tammy Muniz</h3>
-          </div>
-
-          <div class="item featured-testimonial">
-            <h1>"Attending the Sola Sessions was a life changing experience! I felt very empowered by the knowledge and tools presented to me and left the Sessions ready to rule the world!"</h1>
-            <h3 class="subtle">Robin Grabovski</h3>
-          </div>
-
-          <div class="item featured-testimonial">
-            <h1>"The Sola Sessions was well-rounded, informational and inspiring! It was empowering to meet and be surrounded by people like myself, who have not only taken the leap of faith to be independent, but also have other ventures going on, like being an educator."</h1>
-            <h3 class="subtle">Katherine Laundry</h3>
-          </div>
-
-          <div class="item featured-testimonial">
-            <h1>"From the atmosphere of the venue to the educators and goodie bags, the Sola Sessions was beyond what I thought it was going to be! Thank you for an awesome show!"</h1>
-            <h3 class="subtle">Jordan Ferro</h3>
-          </div>
-
-          <div class="item featured-testimonial">
-            <h1>"I gained so much knowledge, confidence, and resources from attending the Sola Sessions. Every aspect of my business was addressed and I was able to take away something to make each area of my business better. It was really neat learning from the amazing presenters. Way to go, Sola!"</h1>
-            <h3 class="subtle">Nancy Hampton</h3>
-          </div>          
-        </div>
-      </div>
-    </div>
-
-</div>
-
-<a name="future-sessions"></a>
-<div class="future-sessions">
-  <div class="container">
-    <h1>Mark Your Calendar<br>for Future Sola Sessions!</h1>
-    <div class="row circles">
-      <!--<div class="three columns offset-by-three"><%= link_to 'https://www.solasalonstudios.com/sessions/dallas' do %><%= image_tag 'sessions/dallas-circle.png' %><% end %></div>-->
-      <div class="three columns" style="float:none;margin-left:auto;margin-right:auto"><%= link_to 'https://www.solasalonstudios.com/sessions/dc' do %><%= image_tag 'sessions/dc-circle.png' %><% end %></div>
-    </div>
-    <h2>More Info On Future Sessions Coming Soon!</h2>
+    <a href="#About" class="down-arrow" data-animated-scroll data-nav-group="sessions-nav"></a>
   </div>
+
+  <%= render '/sessions/index' %>
+  
+</div> <!-- end .hero-tab-content -->
 </div>
+
+<%= javascript_include_tag 'fullscreen_hero' %>
 
 <% content_for(:scripts) { javascript_include_tag('sessions') } %>
 <% content_for(:title) { 'Sola Sessions' } %>
