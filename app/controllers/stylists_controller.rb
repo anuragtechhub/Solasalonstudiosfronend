@@ -57,7 +57,7 @@ class StylistsController < PublicWebsiteController
   private
 
   def banned_ip_addresses
-    ['75.166.129.62']
+    ['75.166.129.62', '172.58.20.97']
   end
 
   def save_visit
