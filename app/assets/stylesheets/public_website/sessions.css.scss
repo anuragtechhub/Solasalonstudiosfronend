@@ -1247,6 +1247,7 @@
     background: transparent;
 
     .owl-carousel {
+      //display: flex !important;
 
       .owl-controls {
         position: absolute;
@@ -1297,9 +1298,16 @@
           margin-right: 70px;
         }
       }
+
+      .owl-wrapper {
+        display: table !important;
+      }
       
       .owl-item {
         //display: none;
+        display: table-cell !important;
+        float: none;
+        vertical-align: middle;
         
         .item {
           margin: 0;

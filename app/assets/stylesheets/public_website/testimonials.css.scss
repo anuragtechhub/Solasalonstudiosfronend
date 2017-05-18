@@ -49,6 +49,17 @@
       background-size: 49px 49px;
     }
   }
+
+  .owl-wrapper {
+    display: table !important;
+  }
+  
+  .owl-item {
+    //display: none;
+    display: table-cell !important;
+    float: none;
+    vertical-align: middle;
+  }  
 }
 
 
