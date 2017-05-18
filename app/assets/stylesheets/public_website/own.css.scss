@@ -775,6 +775,16 @@ ul.own-list {
 @media (max-width: 550px) {
 
   .own-your-salon {
+    .sola_sessions_logo {
+      position: absolute;
+      top: 50% !important;
+      left: 50% !important;
+      margin: (-48px / 1.5) 0 0 (-161.4285px / 1.5) !important;
+      width: (322.857px / 1.5) !important;
+      height: (96px / 1.5) !important;
+      min-height: auto !important;
+    }   
+
     .arrow-left {
       left: 10px;
       zoom: 0.75;
