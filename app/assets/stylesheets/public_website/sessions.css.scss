@@ -1178,6 +1178,14 @@
     .news-article {
       border-top: 0;
       padding-top: 0;
+      margin-top: 35px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #dedee0;
+
+      &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
 
       .image, .text {
         //float: none;
@@ -1188,11 +1196,16 @@
         img {
           max-width: 88%;
           height: auto;
-          border: 1px solid #dedee0;
+          border: 0;
         }
       }
 
       .social {
+
+        &.social-circle {
+          float: right;
+          margin-top: -29px;
+        }
 
         li {
           margin-right: 30px;
