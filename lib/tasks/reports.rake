@@ -261,6 +261,8 @@ namespace :reports do
         blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
         data[:blogs][idx] = blog
       end
+      data[:blog_unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath ga:sessionDurationBucket', 'ga:pageviews ga:bounceRate ga:avgSessionDuration', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      p "data[:blog_unique_visits]=#{data[:blog_unique_visits].inspect}"
 
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
@@ -292,7 +294,7 @@ namespace :reports do
     end
 
     desc 'get_ga_data, profile_id, start_date, end_date, dimensions, metrics, sort, filters', 'Gets GA data'
-    def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, dimension_filter=nil)
+    def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, filters_expression=nil)
       return [] unless analytics && profile_id && start_date && end_date && dimensions
 
       grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
@@ -300,15 +302,24 @@ namespace :reports do
       rr.view_id = profile_id
 
       #rr.filters_expression ="ga:medium==referral"#ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-
-      dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
-      dimension.name = dimensions
-      rr.dimensions = [dimension]      
+      if dimensions
+        dimensions_arr = []
+        dimensions.split(' ').each do |dimension_str|
+          dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
+          dimension.name = dimension_str
+          dimensions_arr << dimension
+        end
+        rr.dimensions = dimensions_arr
+      end     
       
       if metrics
-        metric = Google::Apis::AnalyticsreportingV4::Metric.new
-        metric.expression = metrics
-        rr.metrics = [metric]      
+        metrics_arr = []
+        metrics.split(' ').each do |metric_str|
+          metric = Google::Apis::AnalyticsreportingV4::Metric.new
+          metric.expression = metric_str
+          metrics_arr << metric
+        end
+        rr.metrics = metrics_arr     
       end
 
       range = Google::Apis::AnalyticsreportingV4::DateRange.new
@@ -329,14 +340,8 @@ namespace :reports do
         rr.order_bys = [order_by]
       end
 
-      if dimension_filter
-        p "we have a dimension filter #{dimension_filter.split('=')[0]}, #{dimension_filter.split('=')[1]}"
-        # d_filter = Google::Apis::AnalyticsreportingV4::DimensionFilter.new
-        # d_filter.dimension_name = dimension_filter.split('=')[0]
-        # d_filter.expressions = [dimension_filter.split('=')[1]]
-        # rr.dimension_filter_clauses = [dimension_filter]
-
-        rr.filters_expression = dimension_filter
+      if filters_expression
+        rr.filters_expression = filters_expression
       end
 
       grr.report_requests = [rr]
@@ -345,8 +350,6 @@ namespace :reports do
       #p "dimensions=#{dimensions}"
       #puts response.inspect if dimensions == 'ga:deviceCategory'
       #puts response.reports.inspect if dimensions == 'ga:deviceCategory'
-
-      
 
       data = response.reports.map{|report| 
         # p "report.data.rows=#{report.data.rows.inspect}" if dimensions == 'ga:deviceCategory'
@@ -359,9 +362,21 @@ namespace :reports do
         # p "$$$"
         # p "report.data.rows[1]=#{report.data.rows[1].inspect}"
         return report.data.rows.map{|row|
+          #p "row.dimensions=#{row.dimensions.inspect}" if dimensions && dimensions.split(' ').length > 1
+          #p "row.metrics=#{row.metrics.inspect}" 
+          # if metrics && metrics.split(' ').length > 1
+          #   row.metrics.each_with_index do |metrics, idx|
+          #     p "row.metrics[#{idx}]=#{row.metrics[idx].values.inspect}"
+          #   end
+          # end
           #p "row=#{row.inspect}" if dimensions == 'ga:deviceCategory'
           #p "row=#{row.dimensions[0]}, #{row.metrics[0].values[0]}"
-          [row.dimensions[0], row.metrics[0].values[0]]
+          # arr = [];
+          # row.dimensions.each_with_index do |dimension|
+          #   arr << []
+          # end
+          #p "row.metrics[0].values.length=#{row.metrics[0].values.length}"
+          [row.dimensions[0], *row.metrics[0].values]
         }
       }
       # data = response.reports[0].data.rows.map{|r|
