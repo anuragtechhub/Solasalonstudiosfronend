@@ -293,6 +293,52 @@ $(function () {
   };
   window.initStickyMenu();
 
+  // sessions mobile nav and menu
+  var $sessionsMobileMenu = $('.sessions-mobile-menu');
+  var $sessionsMobileNav  = $('.sessions-mobile-nav');
+
+  if ($sessionsMobileMenu.length && $sessionsMobileNav.length) {
+
+    // hamburger toggle handler
+    $sessionsMobileMenu.find('.fa').on('click', function () {
+      $sessionsMobileNav.show();
+      return false;
+    });
+
+    // close handler
+    $sessionsMobileNav.find('.close .fa').on('click', function () {
+      $sessionsMobileNav.hide();
+      return false;
+    });
+    
+    // window resize handler
+    $(window).on('resize.sessionsMobile', function () {
+      var winWidth = $(window).width();
+
+      if (winWidth <= 550) {
+        $(window).on('scroll.sessionsMobile', function () {
+          var aboutTop = $('#About').offset().top;
+          var windowTop = $(window).scrollTop();
+
+          if (windowTop >= aboutTop) {
+            $sessionsMobileMenu.show();
+          } else {
+            //$sessionsMobileNav.hide();
+            $sessionsMobileMenu.hide();
+          }
+        });
+        
+        $(window).trigger('scroll.sessionsMobile');
+      } else {
+        $(window).off('scroll.sessionsMobile');
+        $sessionsMobileMenu.hide();
+        $sessionsMobileNav.hide();
+      }
+    });
+
+    $(window).trigger('resize.sessionsMobile');
+  }
+
   // contact-us-request-a-tour
   $('#contact-us-request-a-tour').on('submit', function () {
     var $form = $(this);
