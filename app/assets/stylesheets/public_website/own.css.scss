@@ -2,7 +2,18 @@
 @import 'bootstrap/mixins';
 
 /* own your salon nav */
+// #header .own_your_salon {
+//   &:hover, &:active {
+//     .oys-nav {
+//       display: block;
+//     }
+//   }
+// }
 .oys-nav {
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
   display: none;
   padding: 15px;
   background: #FFF;
@@ -46,7 +57,11 @@
     display: block;
     border-bottom: 3px solid $brand-pink;
   }
+  a:hover, a:active {
+    border-bottom: 3px solid $brand-pink-hover;
+  }
 }
+
 .oys-nav-mobile {
 
 }

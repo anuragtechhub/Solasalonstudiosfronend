@@ -131,6 +131,17 @@ $(function () {
     }
   });
 
+  // 'oys' - own your salon nav
+  $('#header .own_your_salon').on('mouseenter', function () {
+    var $headerContainer = $('#header .container');
+    console.log('enter');
+    $('.oys-nav').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+  });
+  $('.oys-nav').on('mouseleave', function () {
+    console.log('leave');
+    $('.oys-nav').hide();
+  });  
+
   // play videos
   $('.play-button, .play-video').swipebox();
 
@@ -138,7 +149,7 @@ $(function () {
   $(document.body).on('click', '.country-switcher:not(.country-switcher-modal)', function () {
     var $this = $(this);
 
-    $('.country-switcher-modal').css({top: $this.offset().top, left: $this.offset().left}).show();
+    $('.country-switcher-modal').css({top: $this.offset().top + 30, left: $this.offset().left}).show();
 
     $(document.body).on('click.country-switcher-open', function () {
       $('.country-switcher-modal').hide();
@@ -234,7 +245,7 @@ $(function () {
     return false;
   });
 
-  // stick menu
+  // sticky menu
   window.initStickyMenu = function () {
     var $sticky = $('.sticky');
     if (!!$sticky.offset()) { // make sure ".sticky" element exists
