@@ -19,6 +19,7 @@
 //= require text-gradient-default
 //= require text-gradient-svg
 //= require text-gradient
+//= require jquery.hoverIntent
 
 $(function () {
 
@@ -132,14 +133,35 @@ $(function () {
   });
 
   // 'oys' - own your salon nav
-  $('#header .own_your_salon').on('mouseenter', function () {
+  var showOysNav = function () {
     var $headerContainer = $('#header .container');
-    console.log('enter');
     $('.oys-nav').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+  };
+
+  $('#header .own_your_salon').on('mouseenter', function () {
+    showOysNav();
+  }).hoverIntent({
+    over: function () {
+      showOysNav();
+    }, 
+    out: function () {
+      var $oysNav = $('.oys-nav');
+
+      if ($oysNav.hasClass('over')) {
+        // shhh...
+      } else {
+        $oysNav.hide();
+      }
+    },
+    timeout: 700
   });
+
+  $('.oys-nav').on('mouseenter', function () {
+    $('.oys-nav').addClass('over').show();
+  });  
+
   $('.oys-nav').on('mouseleave', function () {
-    console.log('leave');
-    $('.oys-nav').hide();
+    $('.oys-nav').removeClass('over').hide();
   });  
 
   // play videos
