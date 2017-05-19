@@ -1,6 +1,56 @@
 @import 'variables';
 @import 'bootstrap/mixins';
 
+/* own your salon nav */
+.oys-nav {
+  display: none;
+  padding: 15px;
+  background: #FFF;
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    width: calc(20% - 16px);
+    margin-right: 20px;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  span {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 6px 0 8px 0;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Dosis', sans-serif;  
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    letter-spacing: 3px;
+    display: block;
+    border-bottom: 3px solid $brand-pink;
+  }
+}
+.oys-nav-mobile {
+
+}
+
 .own-your-salon {
 
   h2.brand, h2.light {
