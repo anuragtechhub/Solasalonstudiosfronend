@@ -221,7 +221,12 @@ $(function () {
     var $this = $(this);
 
     // scroll to anchor
-    $('html, body').animate({scrollTop: $($this.attr('href')).offset().top}, 'slow');
+    if ($this.data('height-offset')) {
+      var heightOffset = $($this.data('height-offset')).outerHeight() + 15;
+      $('html, body').animate({scrollTop: $($this.attr('href')).offset().top - heightOffset}, 'slow');
+    } else {
+      $('html, body').animate({scrollTop: $($this.attr('href')).offset().top}, 'slow');
+    }
 
     // update .active class
     $('[data-nav-group="' + $this.data('nav-group') + '"]').removeClass('active').filter('[href="' + $this.attr('href') + '"]').addClass('active');

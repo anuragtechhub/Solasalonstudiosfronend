@@ -286,7 +286,6 @@
   }
 
   .past-events {
-    padding-top: 30px;
     background: #f8f8f8;
 
     h2 {
@@ -334,13 +333,16 @@
       margin: 0 0 60px 0;
     }
 
+    .news-articles {
+      margin-bottom: 60px;
+    }
+
     .news-article {
       border-top: 1px solid #E8E8E8;
     }
   }
 
   .testimonials {
-    padding: 50px 0;
     background: #F8F8F8;
 
     .arrow-left, .arrow-right {
@@ -1083,7 +1085,7 @@
   }
 
   .upcoming-events {
-    margin: 0 0 50px 0;
+    margin: 0 0 70px 0;
 
     .event-icon {
       display: inline-block;
