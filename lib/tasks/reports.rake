@@ -256,6 +256,8 @@ namespace :reports do
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # blogs - url, visits
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews', '-ga:pageviews', 'ga:pagePath=/blog/*')
+      p "data[:blogs]=#{data[:blogs].inspect}"
 
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
@@ -287,7 +289,7 @@ namespace :reports do
     end
 
     desc 'get_ga_data, profile_id, start_date, end_date, dimensions, metrics, sort, filters', 'Gets GA data'
-    def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, filters=nil)
+    def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, dimension_filter=nil)
       return [] unless analytics && profile_id && start_date && end_date && dimensions
 
       grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
@@ -322,6 +324,13 @@ namespace :reports do
         end
         
         rr.order_bys = [order_by]
+      end
+
+      if dimension_filter
+        d_filter = Google::Apis::AnalyticsreportingV4::DimensionFilter.new
+        d_filter.dimension_name = dimension_filter.split('=')[0]
+        d_filter.expression = dimension_filter.split('=')[1]
+        rr.dimension_filters = [dimension_filter]
       end
 
       grr.report_requests = [rr]
