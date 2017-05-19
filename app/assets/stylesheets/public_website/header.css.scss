@@ -99,7 +99,6 @@
     list-style: none;
     
     li {
-      display: table;
       margin: 0;
       padding: 0;
       float: left;
@@ -110,8 +109,7 @@
       }
 
       a {
-        display: table-cell;
-        height: 100%;
+        display: inline-block;
         padding: 5px 15px;
         text-decoration: none;
         color: #FFF;
