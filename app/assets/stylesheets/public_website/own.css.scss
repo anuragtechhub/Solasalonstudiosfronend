@@ -119,20 +119,20 @@
   #header .nav {
     .caret {
       display: block;
-      width: (48px / 2);
-      height: (27px / 2);
+      width: (48px / 2) + 30px;
+      height: (27px / 2) + 30px;
       position: absolute;
-      top: 32px;
-      right: 30px;
+      top: 17px;
+      right: 20px;
       cursor: pointer;
       opacity: 0.33;
 
       &.up {
-        background: asset-url('own_nav/caret_up.png') no-repeat;
+        background: asset-url('own_nav/caret_up.png') no-repeat center;
         background-size: (48px / 2) (27px / 2);
       }
       &.down {
-        background: asset-url('own_nav/caret_down.png') no-repeat;
+        background: asset-url('own_nav/caret_down.png') no-repeat center;
         background-size: (48px / 2) (27px / 2);
       }
     }

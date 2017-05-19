@@ -329,7 +329,7 @@ namespace :reports do
       if dimension_filter
         d_filter = Google::Apis::AnalyticsreportingV4::DimensionFilter.new
         d_filter.dimension_name = dimension_filter.split('=')[0]
-        d_filter.expression = dimension_filter.split('=')[1]
+        d_filter.expressions = [dimension_filter.split('=')[1]]
         rr.dimension_filters = [dimension_filter]
       end
 
