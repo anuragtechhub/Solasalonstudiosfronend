@@ -156,7 +156,7 @@ $(function () {
   });
 
   $('#header .own_your_salon').on('mouseenter', function () {
-    showOysNav();
+    //showOysNav();
   }).hoverIntent({
     over: function () {
       showOysNav();
@@ -170,7 +170,7 @@ $(function () {
         $oysNav.hide();
       }
     },
-    timeout: 700
+    timeout: 500
   });
 
   $('.oys-nav').on('mouseenter', function () {
