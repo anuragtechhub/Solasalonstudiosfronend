@@ -322,7 +322,7 @@ $(function () {
 
       if (winWidth <= 550) {
         $(window).on('scroll.sessionsMobile', function () {
-          var aboutTop = $('#About').offset().top;
+          var aboutTop = $('#About').offset().top - 60;
           var windowTop = $(window).scrollTop();
 
           if (windowTop >= aboutTop) {
