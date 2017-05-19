@@ -256,8 +256,11 @@ namespace :reports do
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # blogs - url, visits
-      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews', '-ga:pageviews', 'ga:pagePath=/blog/*')
-      p "data[:blogs]=#{data[:blogs].inspect}"
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      data[:blogs][0..9].each_with_index do |blog, idx|
+        blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
+        data[:blogs][idx] = blog
+      end
 
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
@@ -327,10 +330,13 @@ namespace :reports do
       end
 
       if dimension_filter
-        d_filter = Google::Apis::AnalyticsreportingV4::DimensionFilter.new
-        d_filter.dimension_name = dimension_filter.split('=')[0]
-        d_filter.expressions = [dimension_filter.split('=')[1]]
-        rr.dimension_filters = [dimension_filter]
+        p "we have a dimension filter #{dimension_filter.split('=')[0]}, #{dimension_filter.split('=')[1]}"
+        # d_filter = Google::Apis::AnalyticsreportingV4::DimensionFilter.new
+        # d_filter.dimension_name = dimension_filter.split('=')[0]
+        # d_filter.expressions = [dimension_filter.split('=')[1]]
+        # rr.dimension_filter_clauses = [dimension_filter]
+
+        rr.filters_expression = dimension_filter
       end
 
       grr.report_requests = [rr]
@@ -375,7 +381,7 @@ namespace :reports do
     def get_page_title(url)
       page_title = Mechanize.new.get(url).title
       if page_title.split('-').size > 1
-        page_title = page_title.split('-')[0].strip
+        page_title = page_title[0..(page_title.rindex('-') - 2)].strip
       end
       page_title
     end

@@ -331,18 +331,12 @@
         <th><strong>Page</strong></th>
         <th><strong>Views</strong></th>
       </tr>
-      <tr>
-        <td class="label"><a href="http://blog1.com" target="_blank">blog1.com</a></td>
-        <td class="label">143</td>
-      </tr>
-      <tr>
-        <td class="label"><a href="http://blog2.com" target="_blank">blog2.com</a></td>
-        <td class="label">116</td>
-      </tr>
-      <tr>
-        <td class="label"><a href="http://blog3.com" target="_blank">blog3.com</a></td>
-        <td class="label">89</td>
-      </tr>
+      <% @data[:blogs][0..9].each do |blog| %>
+        <tr>
+          <td class="label"><a href="https://www.solasalonstudios.com<%= blog[0] %>" target="_blank"><%= blog[2] %></a></td>
+          <td class="label"><%= number_with_delimiter blog[1] %></td>
+        </tr>
+      <% end %>
     </table> 
   </div>
   <div class="col-1-3">
