@@ -1520,7 +1520,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
 
   .sessions-desktop-nav, .nav-columns {
     display: none;
@@ -1630,7 +1630,12 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
+  .session-landing-2017 .nine.columns {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
   .session-2017 {
     .header {
 

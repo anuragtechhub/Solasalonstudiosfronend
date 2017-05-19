@@ -23,7 +23,44 @@
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
       
       <ul class="nav">
-        <li><h3><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h3></li>
+        <li>
+          <h3><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h3>
+          <span class="oys-nav-caret caret down"></span>
+          <div class="oys-nav-mobile">
+            <ul>
+              <li>
+                <a href="/own/own-your-salon">
+                  <%= image_tag 'own_nav/1_own.jpg' %>
+                  <span>Own Your Salon</span>
+                </a>
+              </li>
+              <li>
+                <a href="/own/studio-amenities">
+                  <%= image_tag 'own_nav/2_amenities.jpg' %>
+                  <span>Studio Amenities</span>
+                </a>
+              </li>
+              <li>
+                <a href="/own/sola-pro">
+                  <%= image_tag 'own_nav/3_solapro.jpg' %>
+                  <span>Sola Pro</span>
+                </a>
+              </li>
+              <li>
+                <a href="/own/sola-sessions">
+                  <%= image_tag 'own_nav/4_sessions.jpg' %>
+                  <span>Sola Sessions</span>
+                </a>
+              </li>
+              <li>
+                <a href="/own/solagenius">
+                  <%= image_tag 'own_nav/5_solagenius.jpg' %>
+                  <span>Sola Genius</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
         <li><h3><%= link_to raw(t('page.about.title')), :about_us %></h3></li>
         <li><h3><%= link_to raw(t('page.locations.title')), :locations %></h3></li>
         <li><h3><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h3></li>

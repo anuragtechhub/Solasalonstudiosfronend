@@ -206,7 +206,7 @@
       right: -30px;
       top: 70px;
       background: #FFF;
-      z-index: 99;
+      z-index: 999999;
       border-bottom: 2px solid #E5E5E5;
       margin: 0;
       box-shadow: 0 3px 7px rgba(0,0,0,0.5);
@@ -217,6 +217,11 @@
         clear: both;
         margin: 0;
         padding: 0;
+        position: relative;
+
+        h3 {
+          font-size: 15px;
+        }
 
         a {
           display: block;

@@ -132,11 +132,28 @@ $(function () {
     }
   });
 
+
+
   // 'oys' - own your salon nav
   var showOysNav = function () {
-    var $headerContainer = $('#header .container');
-    $('.oys-nav').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+    if ($window.width() > 1000) {
+      // desktop
+      var $headerContainer = $('#header .container');
+      $('.oys-nav').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+    }
   };
+
+  $('.oys-nav-caret').on('click', function () {
+    var $this = $(this);
+
+    if ($this.hasClass('down')) {
+      $this.removeClass('down').addClass('up');
+      $('.oys-nav-mobile').slideDown('fast');
+    } else {
+      $this.removeClass('up').addClass('down');
+      $('.oys-nav-mobile').slideUp('fast');
+    }
+  });
 
   $('#header .own_your_salon').on('mouseenter', function () {
     showOysNav();
@@ -162,7 +179,17 @@ $(function () {
 
   $('.oys-nav').on('mouseleave', function () {
     $('.oys-nav').removeClass('over').hide();
-  });  
+  }); 
+
+  $(window).on('resize.oysNav', function () {
+    if ($(window).width() > 1000) {
+      // desktop
+      $('.oys-nav-mobile').hide();
+      $('#header .nav .caret').removeClass('up').addClass('down');
+    }
+  }).trigger('resize.oysNav');
+
+
 
   // play videos
   $('.play-button, .play-video').swipebox();
@@ -279,7 +306,7 @@ $(function () {
       $(window).on('resize.sticky', function () {
         var windowWidth = $(window).width();
 
-        if (windowWidth < 550) {
+        if (windowWidth < 750) {
           $(window).off('scroll.sticky');
           $sticky.css({position: 'static'});
         } else {
@@ -353,7 +380,7 @@ $(function () {
     $(window).on('resize.sessionsMobile', function () {
       var winWidth = $(window).width();
 
-      if (winWidth <= 550) {
+      if (winWidth <= 750) {
         $(window).on('scroll.sessionsMobile', function () {
           var aboutTop = $('#About').offset().top - 60;
           var windowTop = $(window).scrollTop();
