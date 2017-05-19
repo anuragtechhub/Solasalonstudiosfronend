@@ -23,6 +23,7 @@ $(function () {
     window.history.pushState(null, null, $this.data('base') + href);
 
     $(window).trigger('resize.solagenius');
+    $(window).trigger('resize.sessionsMobile')
 
     if (typeof window.initStickyMenu == 'function') {
       window.initStickyMenu();
@@ -34,6 +35,7 @@ $(function () {
 
     setTimeout(function () {
       $(window).trigger('resize.solagenius');
+      $(window).trigger('resize.sessionsMobile')
     }, 1);
 
     return false;
