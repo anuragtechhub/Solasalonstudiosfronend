@@ -332,8 +332,9 @@
         <th><strong>Views</strong></th>
       </tr>
       <% @data[:blogs][0..9].each do |blog| %>
+        <% p blog.inspect %>
         <tr>
-          <td class="label"><a href="https://www.solasalonstudios.com<%= blog[0] %>" target="_blank"><%= blog[2] %></a></td>
+          <td class="label"><a href="https://www.solasalonstudios.com<%= blog[0] %>" target="_blank"><%= blog[4] %></a></td>
           <td class="label"><%= number_with_delimiter blog[1] %></td>
         </tr>
       <% end %>
@@ -343,15 +344,15 @@
     <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
       <tr>
         <td class="label">Overall Page Views</td>
-        <td class="label">15,404</td>
+        <td class="label"><%= number_with_delimiter @data[:blogs_page_views] %></td>
       </tr>
       <tr>
         <td class="label">Avg. Time on Page</td>
-        <td class="label">8:30</td>
+        <td class="label"><%= Time.at(@data[:blogs_avg_session_duration] / @data[:blogs].length).utc.strftime("%M:%S") %></td>
       </tr>
       <tr>
         <td class="label">Bounce Rate</td>
-        <td class="label">82.62%</td>
+        <td class="label"><%= number_to_percentage (@data[:blogs_bounce_rate] / @data[:blogs].length), :precision => 2 %></td>
       </tr>
     </table>
   </div>

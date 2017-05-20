@@ -256,13 +256,25 @@ namespace :reports do
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # blogs - url, visits
-      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
       data[:blogs][0..9].each_with_index do |blog, idx|
         blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
         data[:blogs][idx] = blog
       end
-      data[:blog_unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath ga:sessionDurationBucket', 'ga:pageviews ga:bounceRate ga:avgSessionDuration', '-ga:pageviews', 'ga:pagePath=~/blog/*')
-      p "data[:blog_unique_visits]=#{data[:blog_unique_visits].inspect}"
+      data[:blogs_page_views] = 0
+      data[:blogs_avg_session_duration] = 0.0
+      data[:blogs_bounce_rate] = 0.0
+      data[:blogs].each do |blog|
+        data[:blogs_page_views] = data[:blogs_page_views] + blog[1].to_i
+        data[:blogs_avg_session_duration] = data[:blogs_avg_session_duration] + blog[2].to_f
+        data[:blogs_bounce_rate] = data[:blogs_bounce_rate] + blog[3].to_f
+      end
+      p "data[:blogs_page_views]=#{data[:blogs_page_views]}"
+      p "data[:blogs_avg_session_duration]=#{data[:blogs_avg_session_duration]}"
+      p "data[:blogs_bounce_rate]=#{data[:blogs_bounce_rate]}"
+      # p "data[:blogs]=#{data[:blogs].inspect}"
+      # # data[:blog_unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath ga:sessionDurationBucket', 'ga:pageviews ga:bounceRate ga:avgSessionDuration', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      # # p "data[:blog_unique_visits]=#{data[:blog_unique_visits].inspect}"
 
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
