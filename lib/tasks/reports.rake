@@ -269,12 +269,6 @@ namespace :reports do
         data[:blogs_avg_session_duration] = data[:blogs_avg_session_duration] + blog[2].to_f
         data[:blogs_bounce_rate] = data[:blogs_bounce_rate] + blog[3].to_f
       end
-      p "data[:blogs_page_views]=#{data[:blogs_page_views]}"
-      p "data[:blogs_avg_session_duration]=#{data[:blogs_avg_session_duration]}"
-      p "data[:blogs_bounce_rate]=#{data[:blogs_bounce_rate]}"
-      # p "data[:blogs]=#{data[:blogs].inspect}"
-      # # data[:blog_unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath ga:sessionDurationBucket', 'ga:pageviews ga:bounceRate ga:avgSessionDuration', '-ga:pageviews', 'ga:pagePath=~/blog/*')
-      # # p "data[:blog_unique_visits]=#{data[:blog_unique_visits].inspect}"
 
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
@@ -283,24 +277,14 @@ namespace :reports do
         data[:exit_pages][idx] = exit_page
       end
 
-
-      # time on site + avg pages per visit
-      # dimensions = %w(ga:pageTitle ga:sessionDurationBucket)
-      # metrics = %w(ga:pageviewsPerSession ga:sessions ga:sessionDuration)
-      # sort = %w(-ga:pageTitle)
-      # filters = ''#"ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      # result = analytics.get_ga_data("ga:#{profile_id}",
-      #                                start_date.strftime('%F'),
-      #                                end_date.strftime('%F'),
-      #                                metrics.join(','),
-      #                                dimensions: dimensions.join(','),
-      #                                #filters: filters,
-      #                                sort: sort.join(','))
-      # data[:time_on_site] = []
-      # data[:time_on_site].push(result.column_headers.map { |h| h.name })
-      # data[:time_on_site].push(*result.rows)
-
-      # print_table data[:time_on_site]
+      # time on site, pages/session
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_site] = 0.0
+      data[:pageviews_per_session] = 0.0
+      data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
+        data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+        data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+      end
 
       data
     end

@@ -391,11 +391,11 @@
     <table class="tabular" cellpadding="0" cellspacing="0">
       <tr>
         <td class="label">Time on Site</td>
-        <td class="label">9:25</td>
+        <td class="label"><%= Time.at(@data[:time_on_site] / @data[:time_on_page_and_pageviews_per_session].length).utc.strftime("%M:%S") %></td>
       </tr>
       <tr>
         <td class="label">Pages/Session</td>
-        <td class="label">3:50</td>
+        <td class="label"><%= number_with_delimiter (@data[:pageviews_per_session] / @data[:time_on_page_and_pageviews_per_session].length).round(1) %></td>
       </tr>
     </table> 
   </div>
