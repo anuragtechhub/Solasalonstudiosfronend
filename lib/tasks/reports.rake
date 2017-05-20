@@ -232,22 +232,24 @@ namespace :reports do
 
       # current year pageviews (by month)
       (1..start_date.month).each do |month|
-        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:pagePath', 'ga:pageviews', '-ga:pageviews')
+        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
         key_sym = "pageviews_current_#{month}".to_sym
-        data[key_sym] = 0
-        data_month.each do |data_m|
-          data[key_sym] = data[key_sym] + data_m[1].to_i
-        end
+        data[key_sym] = data_month
+        # data[key_sym] = 0
+        # data_month.each do |data_m|
+        #   data[key_sym] = data[key_sym] + data_m[1].to_i
+        # end
       end
 
       # previous year pageviews (by month)
       (1..12).each do |month|
-        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:pagePath', 'ga:pageviews', '-ga:pageviews')
+        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
         key_sym = "pageviews_last_#{month}".to_sym
-        data[key_sym] = 0
-        data_month.each do |data_m|
-          data[key_sym] = data[key_sym] + data_m[1].to_i
-        end
+        data[key_sym] = data_month
+        # data[key_sym] = 0
+        # data_month.each do |data_m|
+        #   data[key_sym] = data[key_sym] + data_m[1].to_i
+        # end
       end
 
       # unique visits - visits, new visitors, returning visitors

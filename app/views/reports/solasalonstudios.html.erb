@@ -97,24 +97,24 @@
     <td class="label"><strong>December</strong></td>
   </tr>
   <tr>
-    <td class="last-year"><strong><%= (Date.today - 1.year).strftime("%Y") %></strong></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_1] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_2] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_3] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_4] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_5] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_6] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_7] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_8] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_9] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_10] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_11] %></td>
-    <td class="value"><%= number_with_delimiter @data[:pageviews_last_12] %></td>
+    <td class="last-year"><strong><%= (@data[:start_date] - 1.year).strftime("%Y") %></strong></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_1][0][1].to_i + @data[:pageviews_last_1][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_2][0][1].to_i + @data[:pageviews_last_2][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_3][0][1].to_i + @data[:pageviews_last_3][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_4][0][1].to_i + @data[:pageviews_last_4][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_5][0][1].to_i + @data[:pageviews_last_5][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_6][0][1].to_i + @data[:pageviews_last_6][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_7][0][1].to_i + @data[:pageviews_last_7][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_8][0][1].to_i + @data[:pageviews_last_8][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_9][0][1].to_i + @data[:pageviews_last_9][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_10][0][1].to_i + @data[:pageviews_last_10][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_11][0][1].to_i + @data[:pageviews_last_11][1][1].to_i %></td>
+    <td class="value"><%= number_with_delimiter @data[:pageviews_last_12][0][1].to_i + @data[:pageviews_last_12][1][1].to_i %></td>
   </tr>
   <tr class="striped">
-    <td class="current-year"><strong><%= Date.today.strftime("%Y") %></strong></td>
+    <td class="current-year"><strong><%= @data[:start_date].strftime("%Y") %></strong></td>
     <% (1..@data[:start_date].month).each do |month| %>
-      <td class="value"><%= number_with_delimiter @data["pageviews_current_#{month}".to_sym] %></td>
+      <td class="value"><%= number_with_delimiter @data["pageviews_current_#{month}".to_sym][0][1].to_i + @data["pageviews_current_#{month}".to_sym][1][1].to_i %></td>
     <% end %>
     <% ((@data[:start_date].month + 1)..12).each do |month| %>
       <td class="value">&nbsp;</td>
