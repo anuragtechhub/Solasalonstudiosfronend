@@ -230,7 +230,7 @@ namespace :reports do
         end_date: end_date
       }
 
-      # current year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
+      # current year pageviews (by month)
       (1..start_date.month).each do |month|
         data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:pagePath', 'ga:pageviews', '-ga:pageviews')
         key_sym = "pageviews_current_#{month}".to_sym
@@ -240,7 +240,7 @@ namespace :reports do
         end
       end
 
-      # previous year pageviews (by month) - visits, unique visits, new visitors, returning visitors, mobile traffic, desktop traffic
+      # previous year pageviews (by month)
       (1..12).each do |month|
         data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:pagePath', 'ga:pageviews', '-ga:pageviews')
         key_sym = "pageviews_last_#{month}".to_sym
@@ -253,6 +253,7 @@ namespace :reports do
       # unique visits - visits, new visitors, returning visitors
       data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews')
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
 
       # referrals - source, % of traffic
       data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:medium', 'ga:pageviews', '-ga:pageviews')[0..6]
@@ -264,9 +265,14 @@ namespace :reports do
       data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
       tablets = data[:devices].pop
       data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      
       data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
       tablets = data[:devices_prev_month].pop
       data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
+
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_year].pop
+      data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
 
       # locations - top regions that visited (city, visits)
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
