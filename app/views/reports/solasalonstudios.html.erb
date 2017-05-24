@@ -14,10 +14,10 @@
 <table class="annual annual-large" cellpadding="0" cellspacing="0">
   <tr>
     <td class="sublabel sublabel-top"></td>
-    <td class="sublabel sublabel-top"><strong><%= Date.today.strftime("%b-%y") %></strong></td>
-    <td class="sublabel sublabel-top"><strong><%= (Date.today - 1.month).strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"><strong><%= @data[:start_date].strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"><strong><%= (@data[:start_date] - 1.month).strftime("%b-%y") %></strong></td>
     <td class="sublabel sublabel-top"></td>
-    <td class="sublabel sublabel-top"><strong><%= (Date.today - 1.year).strftime("%b-%y") %></strong></td>
+    <td class="sublabel sublabel-top"><strong><%= (@data[:start_date] - 1.year).strftime("%b-%y") %></strong></td>
     <td class="sublabel sublabel-top"></td>
   </tr>
   <tr>

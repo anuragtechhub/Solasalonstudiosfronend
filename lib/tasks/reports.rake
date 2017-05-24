@@ -19,6 +19,28 @@ namespace :reports do
     end    
   end
 
+  # rake reports:locations
+  # rake reports:locations[2017-01-01]
+  task :locations => :environment do |task, args|
+    p "begin locations report..."
+    Location.where(:status => :open).each do |location|
+      p "location=#{location.inspect}"
+    end
+  end 
+
+  # rake reports:location[2,2017-01-01]
+  task :location, [:location_id, :start_date] => :environment do |task, args|
+    p "begin location report..."
+
+    location = Location.find(args.location_id) if args.location_id.present?
+    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
+    end_date = start_date.end_of_month if start_date
+
+    p "location=#{location.inspect}"
+    p "start_date=#{start_date.inspect}"
+    p "end_date=#{end_date.inspect}"
+  end
+
   # rake reports:solasalonstudios
   # rake reports:solasalonstudios[2017-01-01]
   task :solasalonstudios, [:start_date] => :environment do |task, args|
@@ -56,19 +78,17 @@ namespace :reports do
     p "file saved" 
   end
 
-  task :show_visits => :environment do
-    analytics = Analytics.new
-    analytics.show_visits('81802112', '2017-03-01', '2017-04-01')
-  end
+  # task :show_visits => :environment do
+  #   analytics = Analytics.new
+  #   analytics.show_visits('81802112', '2017-03-01', '2017-04-01')
+  # end
 
-  task :show_pageviews => :environment do
-    analytics = Analytics.new
-    analytics.show_pageviews('81802112', '2017-03-01', '2017-04-01')
-  end
+  # task :show_pageviews => :environment do
+  #   analytics = Analytics.new
+  #   analytics.show_pageviews('81802112', '2017-03-01', '2017-04-01')
+  # end
 
-  task :locations => :environment do
-    p "begin locations report..."
-  end 
+
 
   ####### html renderer #######
 
