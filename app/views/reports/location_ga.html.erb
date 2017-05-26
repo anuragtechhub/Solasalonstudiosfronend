@@ -307,50 +307,6 @@
 
 
 
-<!-- ***** -->
-<!-- BLOGS -->
-<!-- ***** -->
-
-<div class="section">
-  <div class="section-heading">BLOG</div>
-  <div class="section-subhead">Top Posts + Page Views</div>
-</div>
-
-<div class="grid">
-  <div class="col-2-3">
-    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
-      <tr>
-        <th><strong>Page</strong></th>
-        <th><strong>Views</strong></th>
-      </tr>
-      <% @data[:blogs][0..9].each do |blog| %>
-        <tr>
-          <td class="label"><a href="https://www.solasalonstudios.com<%= blog[0] %>" target="_blank"><%= blog[4] %></a></td>
-          <td class="label"><%= number_with_delimiter blog[1] %></td>
-        </tr>
-      <% end %>
-    </table> 
-  </div>
-  <div class="col-1-3">
-    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
-      <tr>
-        <td class="label">Overall Page Views</td>
-        <td class="label"><%= number_with_delimiter @data[:blogs_page_views] %></td>
-      </tr>
-      <tr>
-        <td class="label">Avg. Time on Page</td>
-        <td class="label"><%= Time.at(@data[:blogs_avg_session_duration] / @data[:blogs].length).utc.strftime("%M:%S") %></td>
-      </tr>
-      <tr>
-        <td class="label">Bounce Rate</td>
-        <td class="label"><%= number_to_percentage (@data[:blogs_bounce_rate] / @data[:blogs].length), :precision => 2 %></td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-
-
 <!-- *************************** -->
 <!-- EXIT PAGES and TIME ON SITE -->
 <!-- *************************** -->

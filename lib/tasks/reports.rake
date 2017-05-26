@@ -3,21 +3,21 @@ namespace :reports do
   require 'google/apis/analyticsreporting_v4'
   require 'render_anywhere'
 
-  task :pdf => :environment do
-    html_renderer = HTMLRenderer.new
+  # task :pdf => :environment do
+  #   html_renderer = HTMLRenderer.new
 
-    locals = {
-      :@name => 'Jeff'
-    }
+  #   locals = {
+  #     :@name => 'Jeff'
+  #   }
 
-    p "pdf! #{html_renderer.build_html(locals)}"
-    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/test', locals), :footer => {:center => '[page]', :font_size => 7})
+  #   p "pdf! #{html_renderer.build_html(locals)}"
+  #   pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/test', locals), :footer => {:center => '[page]', :font_size => 7})
 
-    save_path = Rails.root.join('pdfs','report.pdf')
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end    
-  end
+  #   save_path = Rails.root.join('pdfs','report.pdf')
+  #   File.open(save_path, 'wb') do |file|
+  #     file << pdf
+  #   end    
+  # end
 
   # rake reports:locations
   # rake reports:locations[2017-01-01]
@@ -33,12 +33,16 @@ namespace :reports do
     p "begin location report..."
 
     location = Location.find(args.location_id) if args.location_id.present?
-    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
-    end_date = start_date.end_of_month if start_date
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.beginning_of_month
+    end_date = start_date.end_of_month
 
-    p "location=#{location.inspect}"
+    p "location=#{location.id}, #{location.name}"
     p "start_date=#{start_date.inspect}"
     p "end_date=#{end_date.inspect}"
+
+    if location && start_date && end_date
+      location_ga_report(location, start_date, end_date)
+    end
   end
 
   # rake reports:solasalonstudios
@@ -78,15 +82,35 @@ namespace :reports do
     p "file saved" 
   end
 
-  # task :show_visits => :environment do
-  #   analytics = Analytics.new
-  #   analytics.show_visits('81802112', '2017-03-01', '2017-04-01')
-  # end
 
-  # task :show_pageviews => :environment do
-  #   analytics = Analytics.new
-  #   analytics.show_pageviews('81802112', '2017-03-01', '2017-04-01')
-  # end
+
+  ##### report functions #######
+
+  def location_ga_report(location, start_date, end_date)
+    analytics = Analytics.new
+    if start_date && end_date
+      data = analytics.location_data('81802112', start_date, end_date)
+    else
+      data = analytics.location_data
+    end
+    locals = {
+      :@data => data
+    }
+
+    #p "got data #{locals.inspect}"
+    p "got data..."
+
+    html_renderer = HTMLRenderer.new
+
+    p "let's render PDF"
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/location_ga', locals), :footer => {:center => '[page]', :font_size => 7})
+    p "pdf rendered..."
+    save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end   
+    p "file saved" 
+  end
 
 
 
@@ -215,29 +239,108 @@ namespace :reports do
   class Analytics < BaseCli
     Analytics = Google::Apis::AnalyticsreportingV4
 
-    desc 'show_visits PROFILE_ID', 'Show visists for the given analytics profile ID'
-    method_option :start, type: :string, required: true
-    method_option :end, type: :string, required: true
+    # desc 'show_visits PROFILE_ID', 'Show visists for the given analytics profile ID'
+    # method_option :start, type: :string, required: true
+    # method_option :end, type: :string, required: true
     
-    def show_visits(profile_id, start_date, end_date)
+    # def show_visits(profile_id, start_date, end_date)
+    #   analytics = Analytics::AnalyticsReportingService.new
+    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+    #   dimensions = %w(ga:date)
+    #   metrics = %w(ga:sessions ga:users ga:newUsers ga:percentNewSessions
+    #                ga:sessionDuration ga:avgSessionDuration)
+    #   sort = %w(ga:date)
+    #   result = analytics.get_ga_data("ga:#{profile_id}",
+    #                                  start_date,
+    #                                  end_date,
+    #                                  metrics.join(','),
+    #                                  dimensions: dimensions.join(','),
+    #                                  sort: sort.join(','))
+
+    #   data = []
+    #   data.push(result.column_headers.map { |h| h.name })
+    #   data.push(*result.rows)
+    #   print_table(data)
+    # end
+
+    desc 'location_data', 'Retrieve solasalonstudios.com location Google Analytics data'
+    def location_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
       analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(ga:date)
-      metrics = %w(ga:sessions ga:users ga:newUsers ga:percentNewSessions
-                   ga:sessionDuration ga:avgSessionDuration)
-      sort = %w(ga:date)
-      result = analytics.get_ga_data("ga:#{profile_id}",
-                                     start_date,
-                                     end_date,
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','),
-                                     sort: sort.join(','))
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }
 
-      data = []
-      data.push(result.column_headers.map { |h| h.name })
-      data.push(*result.rows)
-      print_table(data)
+      # current year pageviews (by month)
+      (1..start_date.month).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_current_#{month}".to_sym
+        data[key_sym] = data_month
+        # data[key_sym] = 0
+        # data_month.each do |data_m|
+        #   data[key_sym] = data[key_sym] + data_m[1].to_i
+        # end
+      end
+
+      # previous year pageviews (by month)
+      (1..12).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_last_#{month}".to_sym
+        data[key_sym] = data_month
+        # data[key_sym] = 0
+        # data_month.each do |data_m|
+        #   data[key_sym] = data[key_sym] + data_m[1].to_i
+        # end
+      end
+
+      # unique visits - visits, new visitors, returning visitors
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
+
+      # referrals - source, % of traffic
+      # ga:medium
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+
+      # top referrers - site, visits
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # devices - mobile, desktop, mobile % change vs same month a year ago
+      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      tablets = data[:devices].pop
+      data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_month].pop
+      data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
+
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_year].pop
+      data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
+
+      # locations - top regions that visited (city, visits)
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # exit pages
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
+      data[:exit_pages].each_with_index do |exit_page, idx|
+        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        data[:exit_pages][idx] = exit_page
+      end
+
+      # time on site, pages/session
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_site] = 0.0
+      data[:pageviews_per_session] = 0.0
+      data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
+        data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+        data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+      end
+
+      data
     end
 
     desc 'solasalonstudios_data', 'Retrieve solasalonstudios.com Google Analytics data'
@@ -278,7 +381,8 @@ namespace :reports do
       data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
 
       # referrals - source, % of traffic
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:medium', 'ga:pageviews', '-ga:pageviews')[0..6]
+      # ga:medium
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
 
       # top referrers - site, visits
       data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
@@ -441,47 +545,47 @@ namespace :reports do
       page_title
     end
 
-    desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
-    def show_pageviews(profile_id, start_date, end_date)
-      analytics = Analytics::AnalyticsService.new
-      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+    # desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
+    # def show_pageviews(profile_id, start_date, end_date)
+    #   analytics = Analytics::AnalyticsService.new
+    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(ga:pagePath ga:socialNetwork)
-      metrics = %w(ga:pageviews ga:avgTimeOnPage)
-      sort = %w(ga:pagePath)
-      filters = "ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-      result = analytics.get_ga_data("ga:#{profile_id}",
-                                     start_date,
-                                     end_date,
-                                     metrics.join(','),
-                                     dimensions: dimensions.join(','),
-                                     filters: filters,
-                                     sort: sort.join(','))
+    #   dimensions = %w(ga:pagePath ga:socialNetwork)
+    #   metrics = %w(ga:pageviews ga:avgTimeOnPage)
+    #   sort = %w(ga:pagePath)
+    #   filters = "ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
+    #   result = analytics.get_ga_data("ga:#{profile_id}",
+    #                                  start_date,
+    #                                  end_date,
+    #                                  metrics.join(','),
+    #                                  dimensions: dimensions.join(','),
+    #                                  filters: filters,
+    #                                  sort: sort.join(','))
 
-      data = []
-      data.push(result.column_headers.map { |h| h.name })
-      data.push(*result.rows)
-      print_table(data)
-    end
+    #   data = []
+    #   data.push(result.column_headers.map { |h| h.name })
+    #   data.push(*result.rows)
+    #   print_table(data)
+    # end
 
-    desc 'show_realtime_visits PROFILE_ID', 'Show realtime visists for the given analytics profile ID'
-    def show_realtime_visits(profile_id)
-      analytics = Analytics::AnalyticsService.new
-      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+    # desc 'show_realtime_visits PROFILE_ID', 'Show realtime visists for the given analytics profile ID'
+    # def show_realtime_visits(profile_id)
+    #   analytics = Analytics::AnalyticsService.new
+    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
-      dimensions = %w(rt:medium rt:pagePath)
-      metrics = %w(rt:activeUsers)
-      sort = %w(rt:medium rt:pagePath)
-      result = analytics.get_realtime_data("ga:#{profile_id}",
-                                           metrics.join(','),
-                                           dimensions: dimensions.join(','),
-                                           sort: sort.join(','))
+    #   dimensions = %w(rt:medium rt:pagePath)
+    #   metrics = %w(rt:activeUsers)
+    #   sort = %w(rt:medium rt:pagePath)
+    #   result = analytics.get_realtime_data("ga:#{profile_id}",
+    #                                        metrics.join(','),
+    #                                        dimensions: dimensions.join(','),
+    #                                        sort: sort.join(','))
 
-      data = []
-      data.push(result.column_headers.map { |h| h.name })
-      data.push(*result.rows)
-      print_table(data)
-    end
+    #   data = []
+    #   data.push(result.column_headers.map { |h| h.name })
+    #   data.push(*result.rows)
+    #   print_table(data)
+    # end
   end 
 
 end
