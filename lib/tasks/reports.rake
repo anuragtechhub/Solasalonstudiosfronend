@@ -90,7 +90,7 @@ namespace :reports do
   def location_ga_report(location, start_date, end_date)
     analytics = Analytics.new
     if start_date && end_date
-      data = analytics.location_data('81802112', "~/locations/#{location.url_name}", start_date, end_date)
+      data = analytics.location_data('81802112', location, start_date, end_date)
     else
       data = analytics.location_data
     end
@@ -265,21 +265,29 @@ namespace :reports do
     #   print_table(data)
     # end
 
+    desc 'get_location_url', 'Constructs a location URL for GA at a certain date'
+    def get_location_url(location, start_date, end_date=nil)
+      location_start = location.version_at(start_date)
+      location_end = location.version_at(end_date || start_date)
+      "ga:pagePath=~/locations/#{location_start.url_name},ga:pagePath=~/locations/#{location_start.state}/#{location_start.city}/#{location_start.url_name},ga:pagePath=~/locations/#{location_end.url_name},ga:pagePath=~/locations/#{location_end.state}/#{location_end.city}/#{location_end.url_name}"
+    end
+
     desc 'location_data', 'Retrieve solasalonstudios.com location Google Analytics data'
-    def location_data(profile_id='81802112', location_url="~/locations", start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
-      p "begin location data, location_url=#{location_url}"
+    def location_data(profile_id='81802112', location=nil, start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
       analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
       data = {
         start_date: start_date,
-        end_date: end_date
+        end_date: end_date,
+        location_name: location.name,
+        location_url: "/locations/#{location.url_name}"
       }
 
       # current year pageviews (by month)
       (1..start_date.month).each do |month|
         p "current year pageviews #{month}"
-        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, "ga:pagePath=#{location_url}")
+        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new(start_date.year, month, 1), DateTime.new(start_date.year, month, 1).end_of_month))
         key_sym = "pageviews_current_#{month}".to_sym
         data[key_sym] = data_month
         # data[key_sym] = 0
@@ -291,7 +299,7 @@ namespace :reports do
       # previous year pageviews (by month)
       (1..12).each do |month|
         p "previous year pageviews #{month}"
-        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, "ga:pagePath=#{location_url}")
+        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new((start_date - 1.year).year, month, 1), DateTime.new((start_date - 1.year).year, month, 1).end_of_month))
         key_sym = "pageviews_last_#{month}".to_sym
         data[key_sym] = data_month
         # data[key_sym] = 0
@@ -303,50 +311,58 @@ namespace :reports do
       p "begin unique visits"
 
       # unique visits - visits, new visitors, returning visitors
-      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews', nil, "ga:pagePath=#{location_url}")
-      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews', nil, "ga:pagePath=#{location_url}")
-      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews', nil, "ga:pagePath=#{location_url}")
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
 
       p "end unique visits"
 
       # referrals - source, % of traffic
       # ga:medium
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+      # ga:acquisitionTrafficChannel
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+
+      p "done with referrals"
 
       # top referrers - site, visits
-      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..6]
+
+      p "done with top referrers"
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
-      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      data[:devices] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:deviceCategory', nil, nil, get_location_url(location, start_date, end_date))
       tablets = data[:devices].pop
       data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
       
-      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      p "done with devices"
+
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:deviceCategory', nil, nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
       tablets = data[:devices_prev_month].pop
       data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
 
-      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      p "done with devices prev month"
+
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:deviceCategory', nil, nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
       tablets = data[:devices_prev_year].pop
       data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
 
-      # locations - top regions that visited (city, visits)
-      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
+      p "done with devices prev year"
 
-      # exit pages
-      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
-      data[:exit_pages].each_with_index do |exit_page, idx|
-        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
-        data[:exit_pages][idx] = exit_page
-      end
+      # locations - top regions that visited (city, visits)
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..6]
+
+      p "done with top regions"
 
       # time on site, pages/session
-      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession', nil, get_location_url(location, start_date, end_date))
       data[:time_on_site] = 0.0
       data[:pageviews_per_session] = 0.0
       data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
         data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
         data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
       end
+
+      p "done with exit pages"
 
       data
     end
@@ -480,7 +496,6 @@ namespace :reports do
       rr.date_ranges = [range]
 
       if sort
-        p "sort?#{sort}"
         order_by = Google::Apis::AnalyticsreportingV4::OrderBy.new 
         if sort.start_with? '-'
           sort[0] = ''
@@ -494,7 +509,7 @@ namespace :reports do
       end
 
       if filters_expression
-        p "filters_expression=#{filters_expression}"
+        #p "filters_expression=#{filters_expression}"
         rr.filters_expression = filters_expression
       end
 
@@ -506,7 +521,7 @@ namespace :reports do
       #puts response.reports.inspect if dimensions == 'ga:deviceCategory'
 
       data = response.reports.map{|report| 
-        p "report.data.rows=#{report.data.rows.inspect}"
+        #p "report.data.rows=#{report.data.rows.inspect}"
         # p "report.data.rows=#{report.data.rows.inspect}" if dimensions == 'ga:deviceCategory'
         # p "$$$"
         # p "$$$"

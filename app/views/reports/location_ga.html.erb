@@ -1,4 +1,4 @@
-<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;|&nbsp; solasalonstudios.com</strong></div>
+<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;|&nbsp; <a href="https://www.solasalonstudios.com<%= @data[:location_url] %>"  target="_blank"><%= @data[:location_name] %></a></strong></div>
 
 
 <!-- ********************* -->
@@ -312,24 +312,6 @@
 <!-- *************************** -->
 
 <div class="grid">
-  <div class="col-1-2">
-    <div class="section">
-      <div class="section-heading">Exit Pages</div>
-      <div class="section-subhead">Users Leave From These Pages</div>
-    </div>
-    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
-      <tr>
-        <th><strong>Page</strong></th>
-        <th><strong>Exits</strong></th>
-      </tr>
-      <% @data[:exit_pages].each do |exit_page| %>
-        <tr>
-          <td class="label"><a href="https://www.solasalonstudios.com<%= exit_page[0] %>" target="_blank"><%= exit_page[2] %></a></td>
-          <td class="label"><%= number_with_delimiter exit_page[1] %></td>
-        </tr>
-      <% end %>
-    </table> 
-  </div>
   <div class="col-1-2">
     <div class="section">
       <div class="section-heading">Time On Site</div>
