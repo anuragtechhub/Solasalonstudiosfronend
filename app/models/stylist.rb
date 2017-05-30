@@ -262,11 +262,11 @@ class Stylist < ActiveRecord::Base
   def generate_url_name
     if self.name && self.url_name.blank?
       url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
-      # count = 1
+      count = 1
       
-      # while Stylist.where(:url_name => "#{url}#{count}").size > 0 do
-      #   count = count + 1
-      # end
+      while Stylist.where(:url_name => "#{url}#{count}").size > 0 do
+        count = count + 1
+      end
 
       self.url_name = "#{url}#{count}"
     end
