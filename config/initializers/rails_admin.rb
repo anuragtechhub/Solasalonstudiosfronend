@@ -329,6 +329,9 @@ RailsAdmin.config do |config|
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'
         end
+        field :email_address_for_reports do
+          label 'Email Address for Reports'
+        end
         field :phone_number
       end
       group :address do
@@ -608,6 +611,9 @@ RailsAdmin.config do |config|
         end
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'
+        end
+        field :email_address_for_reports do
+          label 'Email Address for Reports'
         end
         field :phone_number
       end
