@@ -1421,6 +1421,19 @@
 
 }
 
+@media (max-width: 740px) {
+  .sessions-landing-2017-carousel {
+    .down-arrow {
+      bottom: 25px;
+      margin-left: (-26px / 1.5);
+
+      background-size: (54px / 1.5) (32px / 1.5);
+      width: (54px / 1.5);
+      height: (32px / 1.5);
+    }
+  }
+}
+
 @media (max-width: 650px) {
 
   .session-landing-2017 {
