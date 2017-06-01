@@ -95,6 +95,12 @@ namespace :reports do
     else
       data = analytics.location_data
     end
+
+    # sola pro, sola genius, etc numbers
+    data[:salon_professionals_on_sola_website] = location.stylists.size
+    data[:salon_professionals_on_solagenius] = location.stylists.where(:has_sola_genius_account => true).size
+    data[:salon_professionals_on_sola_pro] = location.stylists.where("encrypted_password IS NOT NULL AND encrypted_password <> ''").size
+
     locals = {
       :@data => data
     }
@@ -312,6 +318,7 @@ namespace :reports do
       p "begin unique visits"
       # unique visits - visits, new visitors, returning visitors
       data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
+      #p "data[:unique_visits]=#{data[:unique_visits].inspect}"
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
       data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
       p "end unique visits"
@@ -323,7 +330,8 @@ namespace :reports do
       p "done with referrals"
 
       # top referrers - site, visits
-      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..6]
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
+      data[:top_referrers] = data[:top_referrers][0..6] if data[:top_referrers]
       p "done with top referrers"
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
@@ -350,7 +358,8 @@ namespace :reports do
       p "done with devices prev year"
 
       # locations - top regions that visited (city, visits)
-      data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..6]
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
+      data[:top_regions] = data[:top_regions][0..6] if data[:top_regions]
       p "done with top regions"
 
       # time on site, pages/session
