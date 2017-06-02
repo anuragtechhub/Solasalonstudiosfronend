@@ -11,7 +11,7 @@
 %>
 
 <div style="text-align:center;margin:0 auto 5px auto;" class="sola-logo"><%= wicked_pdf_image_tag 'logo_blue.png', width: (368 / 5), height: (221 / 5) %></div>
-<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;<span style="font-weight:normal;position:relative;top:-1px">|</span>&nbsp; <a href="https://www.solasalonstudios.com<%= @data[:location_url] %>"  target="_blank"><%= @data[:location_name] %></a></strong></div>
+<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;<span style="font-weight:normal;position:relative;top:-2px">|</span>&nbsp; <a href="https://www.solasalonstudios.com<%= @data[:location_url] %>"  target="_blank"><%= @data[:location_name] %></a></strong></div>
 
 
 <!-- ********************* -->
@@ -112,6 +112,7 @@
       @data[:traffic_prev_year_total] = @data[:devices_prev_year][0][1].to_i + @data[:devices_prev_year][1][1].to_i
     end
   %>  
+  <% if false %>
   <tr>
     <td class="label" style="text-align:left">Mobile Traffic</td>
     <td class="value"><%= @data[:devices] ? number_with_delimiter(@data[:devices][1][1]) : '&nbsp;'.html_safe  %></td>
@@ -131,7 +132,8 @@
       <%= @data[:devices_prev_year] ? number_with_delimiter(@data[:devices_prev_year][0][1]) : '&nbsp;'.html_safe %>    
     </td>
     <td class="value percentage" style="<%= percentage_color(@data[:devices] && @data[:devices_prev_year] ? ((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i)) : nil) %>"><%= @data[:devices] && @data[:devices_prev_year] ? number_to_percentage((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
-  </tr>            
+  </tr>
+  <% end %>           
 </table>
 
 <table class="annual">

@@ -27,7 +27,7 @@ namespace :reports do
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month    
 
-    Location.where(:status => :open).each do |location|
+    Location.where(:status => :open).order(:created_at => :asc).each do |location|
       p "location=#{location.name}"
 
       location_ga_report(location, start_date, end_date, false)
@@ -42,7 +42,7 @@ namespace :reports do
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month    
 
-    Location.where(:status => :open).each do |location|
+    Location.where(:status => :open).order(:created_at => :asc).each do |location|
       p "location=#{location.name}"
 
       location_ga_report(location, start_date, end_date, true)
