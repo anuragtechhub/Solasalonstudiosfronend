@@ -21,10 +21,31 @@ namespace :reports do
 
   # rake reports:locations
   # rake reports:locations[2017-01-01]
-  task :locations => :environment do |task, args|
+  task :locations, [:start_date] => :environment do |task, args|
     p "begin locations report..."
+    
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+    end_date = start_date.end_of_month    
+
     Location.where(:status => :open).each do |location|
-      p "location=#{location.inspect}"
+      p "location=#{location.name}"
+
+      location_ga_report(location, start_date, end_date, false)
+    end
+  end 
+
+  # rake reports:locations_with_email
+  # rake reports:locations_with_email[2017-01-01]
+  task :locations_with_email, [:start_date] => :environment do |task, args|
+    p "begin locations report..."
+    
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+    end_date = start_date.end_of_month    
+
+    Location.where(:status => :open).each do |location|
+      p "location=#{location.name}"
+
+      location_ga_report(location, start_date, end_date, true)
     end
   end 
 
@@ -43,7 +64,26 @@ namespace :reports do
     p "end_date=#{end_date.inspect}"
 
     if location && start_date && end_date
-      location_ga_report(location, start_date, end_date)
+      location_ga_report(location, start_date, end_date, false)
+    end
+  end
+
+  # rake reports:location_with_email[380]
+  # rake reports:location_with_email[2]
+  # rake reports:location_with_email[2,2017-01-01]
+  task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
+    p "begin location with email report..."
+
+    location = Location.find(args.location_id) if args.location_id.present?
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+    end_date = start_date.end_of_month
+
+    p "location=#{location.id}, #{location.name}"
+    p "start_date=#{start_date.inspect}"
+    p "end_date=#{end_date.inspect}"
+
+    if location && start_date && end_date
+      location_ga_report(location, start_date, end_date, true)
     end
   end
 
@@ -88,7 +128,7 @@ namespace :reports do
 
   ##### report functions #######
 
-  def location_ga_report(location, start_date, end_date)
+  def location_ga_report(location, start_date, end_date, send_email=false)
     analytics = Analytics.new
     if start_date && end_date
       data = analytics.location_data('81802112', location, start_date, end_date)
@@ -113,11 +153,19 @@ namespace :reports do
     p "let's render PDF"
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/location_ga', locals), :footer => {:center => '[page]', :font_size => 7})
     p "pdf rendered..."
-    save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end   
-    p "file saved" 
+    
+    if send_email
+      p "send email..."
+      ReportsMailer.location_report(location, pdf).deliver
+      p "email sent"
+    else
+      p "save file..."
+      save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end  
+      p "file saved" 
+    end 
   end
 
 

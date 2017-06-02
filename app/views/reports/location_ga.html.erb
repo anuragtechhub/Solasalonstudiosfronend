@@ -1,5 +1,17 @@
+<%
+  def percentage_color(percentage=nil)
+    if percentage.nil?
+      return ''
+    elsif percentage >= 0
+      return 'color:#32BCAD'
+    else
+      return 'color:#EA008B'
+    end
+  end
+%>
+
 <div style="text-align:center;margin:0 auto 5px auto;" class="sola-logo"><%= wicked_pdf_image_tag 'logo_blue.png', width: (368 / 5), height: (221 / 5) %></div>
-<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;|&nbsp; <a href="https://www.solasalonstudios.com<%= @data[:location_url] %>"  target="_blank"><%= @data[:location_name] %></a></strong></div>
+<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;<span style="font-weight:normal;position:relative;top:-1px">|</span>&nbsp; <a href="https://www.solasalonstudios.com<%= @data[:location_url] %>"  target="_blank"><%= @data[:location_name] %></a></strong></div>
 
 
 <!-- ********************* -->
@@ -53,11 +65,11 @@
     <td class="label" style="text-align:left">Visits</td>
     <td class="value"><%= @unique_visits_this_month ? number_with_delimiter(@unique_visits_this_month) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @unique_visits_prev_month ? number_with_delimiter(@unique_visits_prev_month) : '&nbsp;'.html_safe %></td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@unique_visits_this_month && @unique_visits_prev_month ? (100 * (@unique_visits_this_month - @unique_visits_prev_month) / @unique_visits_prev_month) : nil) %>">
       <%= @unique_visits_this_month && @unique_visits_prev_month ? number_to_percentage(100 * (@unique_visits_this_month - @unique_visits_prev_month) / @unique_visits_prev_month, :precision => 0) : '&nbsp;'.html_safe %>
     </td>
     <td class="value"><%= @unique_visits_prev_year ? number_with_delimiter(@unique_visits_prev_year) : '&nbsp;'.html_safe %></td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@unique_visits_this_month && @unique_visits_prev_year ? (100 * (@unique_visits_this_month - @unique_visits_prev_year) / @unique_visits_prev_year) : nil) %>">
       <%= @unique_visits_this_month && @unique_visits_prev_year ? number_to_percentage(100 * (@unique_visits_this_month - @unique_visits_prev_year) / @unique_visits_prev_year, :precision => 0) : '&nbsp;'.html_safe %>  
     </td>
   </tr>
@@ -65,13 +77,13 @@
     <td class="label" style="text-align:left">New Visitors</td>
     <td class="value"><%= @data[:unique_visits] ? number_with_delimiter(@data[:unique_visits][0][1]) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @data[:unique_visits_prev_month] ? number_with_delimiter(@data[:unique_visits_prev_month][0][1]) : '&nbsp;'.html_safe %></td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@data[:unique_visits] && @data[:unique_visits_prev_month] ? (100 * (@data[:unique_visits][0][1].to_i - @data[:unique_visits_prev_month][0][1].to_i) / @data[:unique_visits_prev_month][0][1].to_i) : nil) %>">
       <%= @data[:unique_visits] && @data[:unique_visits_prev_month] ? number_to_percentage(100 * (@data[:unique_visits][0][1].to_i - @data[:unique_visits_prev_month][0][1].to_i) / @data[:unique_visits_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
     </td>
     <td class="value">
       <%= @data[:unique_visits_prev_year] ? number_with_delimiter(@data[:unique_visits_prev_year][0][1]) : '&nbsp;'.html_safe %>
     </td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@data[:unique_visits] && @data[:unique_visits_prev_year] ? (100 * (@data[:unique_visits][0][1].to_i - @data[:unique_visits_prev_year][0][1].to_i) / @data[:unique_visits_prev_year][0][1].to_i) : nil) %>">
       <%= @data[:unique_visits] && @data[:unique_visits_prev_year] ? number_to_percentage(100 * (@data[:unique_visits][0][1].to_i - @data[:unique_visits_prev_year][0][1].to_i) / @data[:unique_visits_prev_year][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>  
     </td>
   </tr>
@@ -79,13 +91,13 @@
     <td class="label" style="text-align:left">Returning Visitors</td>
     <td class="value"><%= @data[:unique_visits] ? number_with_delimiter(@data[:unique_visits][1][1]) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @data[:unique_visits_prev_month] ? number_with_delimiter(@data[:unique_visits_prev_month][1][1]) : '&nbsp;'.html_safe  %></td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@data[:unique_visits] && @data[:unique_visits_prev_month] ? (100 * (@data[:unique_visits][1][1].to_i - @data[:unique_visits_prev_month][1][1].to_i) / @data[:unique_visits_prev_month][1][1].to_i) : nil) %>">
       <%= @data[:unique_visits] && @data[:unique_visits_prev_month] ? number_to_percentage(100 * (@data[:unique_visits][1][1].to_i - @data[:unique_visits_prev_month][1][1].to_i) / @data[:unique_visits_prev_month][1][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>  
     </td>
     <td class="value">
       <%= @data[:unique_visits_prev_year] ? number_with_delimiter(@data[:unique_visits_prev_year][1][1]) : '&nbsp;'.html_safe %>  
     </td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@data[:unique_visits] && @data[:unique_visits_prev_year] ? (100 * (@data[:unique_visits][1][1].to_i - @data[:unique_visits_prev_year][1][1].to_i) / @data[:unique_visits_prev_year][1][1].to_i) : nil) %>">
       <%= @data[:unique_visits] && @data[:unique_visits_prev_year] ? number_to_percentage(100 * (@data[:unique_visits][1][1].to_i - @data[:unique_visits_prev_year][1][1].to_i) / @data[:unique_visits_prev_year][1][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>    
     </td>
   </tr>
@@ -104,21 +116,21 @@
     <td class="label" style="text-align:left">Mobile Traffic</td>
     <td class="value"><%= @data[:devices] ? number_with_delimiter(@data[:devices][1][1]) : '&nbsp;'.html_safe  %></td>
     <td class="value"><%= @data[:devices_prev_month] ? number_with_delimiter(@data[:devices_prev_month][1][1]) : '&nbsp;'.html_safe  %></td>
-    <td class="value percentage"><%= @data[:devices] && @data[:devices_prev_month] ? number_to_percentage((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_month][1][1].to_i) / @data[:devices_prev_month][1][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
+    <td class="value percentage" style="<%= percentage_color(@data[:devices] && @data[:devices_prev_month] ? ((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_month][1][1].to_i) / @data[:devices_prev_month][1][1].to_i)) : nil) %>"><%= @data[:devices] && @data[:devices_prev_month] ? number_to_percentage((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_month][1][1].to_i) / @data[:devices_prev_month][1][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @data[:devices_prev_year] ? number_with_delimiter(@data[:devices_prev_year][1][1]) : '&nbsp;'.html_safe %></td>
-    <td class="value percentage"><%= @data[:devices] && @data[:devices_prev_year] ? number_to_percentage((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_year][1][1].to_i) / @data[:devices_prev_year][1][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
+    <td class="value percentage" style="<%= percentage_color(@data[:devices] && @data[:devices_prev_year] ? ((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_year][1][1].to_i) / @data[:devices_prev_year][1][1].to_i)) : nil) %>"><%= @data[:devices] && @data[:devices_prev_year] ? number_to_percentage((100 * (@data[:devices][1][1].to_i - @data[:devices_prev_year][1][1].to_i) / @data[:devices_prev_year][1][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
   </tr>
   <tr class="striped">
     <td class="label" style="text-align:left">Desktop Traffic</td>
     <td class="value"><%= @data[:devices] ? number_with_delimiter(@data[:devices][0][1]) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @data[:devices_prev_month] ? number_with_delimiter(@data[:devices_prev_month][0][1]) : '&nbsp;'.html_safe %></td>
-    <td class="value percentage">
+    <td class="value percentage" style="<%= percentage_color(@data[:devices] && @data[:devices_prev_month] ? ((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_month][0][1].to_i) / @data[:devices_prev_month][0][1].to_i)) : nil) %>">
       <%= @data[:devices] && @data[:devices_prev_month] ? number_to_percentage((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_month][0][1].to_i) / @data[:devices_prev_month][0][1].to_i), :precision => 0) : '&nbsp;'.html_safe %>  
     </td>
     <td class="value">
       <%= @data[:devices_prev_year] ? number_with_delimiter(@data[:devices_prev_year][0][1]) : '&nbsp;'.html_safe %>    
     </td>
-    <td class="value percentage"><%= @data[:devices] && @data[:devices_prev_year] ? number_to_percentage((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
+    <td class="value percentage" style="<%= percentage_color(@data[:devices] && @data[:devices_prev_year] ? ((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i)) : nil) %>"><%= @data[:devices] && @data[:devices_prev_year] ? number_to_percentage((100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i), :precision => 0) : '&nbsp;'.html_safe %></td>
   </tr>            
 </table>
 
@@ -240,7 +252,7 @@
           %>
           <div class="change-vs-previous-month">
             New Visitor % Change
-            <span class="percentage"><%= @data[:unique_visits_total] && @data[:unique_visits_prev_month_total] ? number_to_percentage(100 * (@data[:unique_visits_total] - @data[:unique_visits_prev_month_total]) / @data[:unique_visits_prev_month_total], :precision => 0) : '&nbsp;'.html_safe %></span>
+            <span class="percentage" style="<%= percentage_color(@data[:unique_visits_total] && @data[:unique_visits_prev_month_total] ? (100 * (@data[:unique_visits_total] - @data[:unique_visits_prev_month_total]) / @data[:unique_visits_prev_month_total]) : nil) %>"><%= @data[:unique_visits_total] && @data[:unique_visits_prev_month_total] ? number_to_percentage(100 * (@data[:unique_visits_total] - @data[:unique_visits_prev_month_total]) / @data[:unique_visits_prev_month_total], :precision => 0) : '&nbsp;'.html_safe %></span>
             Vs. <%= (@data[:start_date].prev_month).strftime("%B %Y") %> 
           </div>
         </div>

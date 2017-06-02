@@ -46,4 +46,5 @@ module ApplicationHelper
     url = url.map{|u| u.downcase}
     url.join('-')
   end
+  
 end
