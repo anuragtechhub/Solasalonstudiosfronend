@@ -293,6 +293,9 @@ namespace :reports do
   ####### analytics ########
 
   class Analytics < BaseCli
+    
+    require 'uri'
+
     Analytics = Google::Apis::AnalyticsreportingV4
 
     desc 'get_location_url', 'Constructs a location URL for GA at a certain date'
@@ -314,6 +317,10 @@ namespace :reports do
         "ga:pagePath=~/locations/#{location_end.url_name}",
         "ga:pagePath=~/locations/#{location_start.url_name.gsub('-', '_')}",
         "ga:pagePath=~/locations/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name}",
+        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name}",
+        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name.gsub('-', '_')}",
         "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name}",
         "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name}",
         "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name.gsub('-', '_')}",
@@ -379,27 +386,27 @@ namespace :reports do
       data[:top_referrers] = data[:top_referrers][0..6] if data[:top_referrers]
       p "done with top referrers"
 
-      # devices - mobile, desktop, mobile % change vs same month a year ago
-      data[:devices] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
-      if data[:devices] && data[:devices].length == 3
-        tablets = data[:devices].pop
-        data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
-      end
-      p "done with devices"
+      # # devices - mobile, desktop, mobile % change vs same month a year ago
+      # data[:devices] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
+      # if data[:devices] && data[:devices].length == 3
+      #   tablets = data[:devices].pop
+      #   data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      # end
+      # p "done with devices"
 
-      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
-      if data[:devices_prev_month] && data[:devices_prev_month].length == 3
-        tablets = data[:devices_prev_month].pop
-        data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
-      end
-      p "done with devices prev month"
+      # data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
+      # if data[:devices_prev_month] && data[:devices_prev_month].length == 3
+      #   tablets = data[:devices_prev_month].pop
+      #   data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
+      # end
+      # p "done with devices prev month"
 
-      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
-      if data[:devices_prev_year] && data[:devices_prev_year].length == 3
-        tablets = data[:devices_prev_year].pop
-        data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
-      end
-      p "done with devices prev year"
+      # data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
+      # if data[:devices_prev_year] && data[:devices_prev_year].length == 3
+      #   tablets = data[:devices_prev_year].pop
+      #   data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
+      # end
+      # p "done with devices prev year"
 
       # locations - top regions that visited (city, visits)
       data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))

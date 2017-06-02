@@ -44,20 +44,20 @@
   <tr>
     <%
       if @data[:unique_visits]
-        @data[:unique_visits][0] = [nil, 0] if @data[:unique_visits][0].nil?
-        @data[:unique_visits][1] = [nil, 0] if @data[:unique_visits][1].nil?
+        @data[:unique_visits][0] = [nil, 1] if @data[:unique_visits][0].nil?
+        @data[:unique_visits][1] = [nil, 1] if @data[:unique_visits][1].nil?
 
         @unique_visits_this_month = @data[:unique_visits][0][1].to_i + @data[:unique_visits][1][1].to_i
       end
       if @data[:unique_visits_prev_month]
-        @data[:unique_visits_prev_month][0] = [nil, 0] if @data[:unique_visits_prev_month][0].nil?
-        @data[:unique_visits_prev_month][1] = [nil, 0] if @data[:unique_visits_prev_month][1].nil?
+        @data[:unique_visits_prev_month][0] = [nil, 1] if @data[:unique_visits_prev_month][0].nil?
+        @data[:unique_visits_prev_month][1] = [nil, 1] if @data[:unique_visits_prev_month][1].nil?
 
         @unique_visits_prev_month = @data[:unique_visits_prev_month][0][1].to_i + @data[:unique_visits_prev_month][1][1].to_i
       end
       if @data[:unique_visits_prev_year]
-        @data[:unique_visits_prev_year][0] = [nil, 0] if @data[:unique_visits_prev_year][0].nil?
-        @data[:unique_visits_prev_year][1] = [nil, 0] if @data[:unique_visits_prev_year][1].nil?
+        @data[:unique_visits_prev_year][0] = [nil, 1] if @data[:unique_visits_prev_year][0].nil?
+        @data[:unique_visits_prev_year][1] = [nil, 1] if @data[:unique_visits_prev_year][1].nil?
 
         @unique_visits_prev_year = @data[:unique_visits_prev_year][0][1].to_i + @data[:unique_visits_prev_year][1][1].to_i
       end
@@ -101,18 +101,18 @@
       <%= @data[:unique_visits] && @data[:unique_visits_prev_year] ? number_to_percentage(100 * (@data[:unique_visits][1][1].to_i - @data[:unique_visits_prev_year][1][1].to_i) / @data[:unique_visits_prev_year][1][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>    
     </td>
   </tr>
-  <%
-    if @data[:devices]
-      @data[:traffic_total] = @data[:devices][0][1].to_i + @data[:devices][1][1].to_i
-    end
-    if @data[:devices_prev_month]
-      @data[:traffic_prev_month_total] = @data[:devices_prev_month][0][1].to_i + @data[:devices_prev_month][1][1].to_i
-    end
-    if @data[:devices_prev_year]
-      @data[:traffic_prev_year_total] = @data[:devices_prev_year][0][1].to_i + @data[:devices_prev_year][1][1].to_i
-    end
-  %>  
   <% if false %>
+    <%
+      if @data[:devices] && @data[:devices].length = 2
+        @data[:traffic_total] = @data[:devices][0][1].to_i + @data[:devices][1][1].to_i
+      end
+      if @data[:devices_prev_month]
+        @data[:traffic_prev_month_total] = @data[:devices_prev_month][0][1].to_i + @data[:devices_prev_month][1][1].to_i
+      end
+      if @data[:devices_prev_year]
+        @data[:traffic_prev_year_total] = @data[:devices_prev_year][0][1].to_i + @data[:devices_prev_year][1][1].to_i
+      end
+    %>  
   <tr>
     <td class="label" style="text-align:left">Mobile Traffic</td>
     <td class="value"><%= @data[:devices] ? number_with_delimiter(@data[:devices][1][1]) : '&nbsp;'.html_safe  %></td>
@@ -154,18 +154,18 @@
   </tr>
   <tr>
     <td class="last-year"><strong><%= (@data[:start_date] - 1.year).strftime("%Y") %></strong></td>
-    <td class="value"><%= @data[:pageviews_last_1] ? number_with_delimiter(@data[:pageviews_last_1][0][1].to_i + @data[:pageviews_last_1][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_2] ? number_with_delimiter(@data[:pageviews_last_2][0][1].to_i + @data[:pageviews_last_2][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_3] ? number_with_delimiter(@data[:pageviews_last_3][0][1].to_i + @data[:pageviews_last_3][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_4] ? number_with_delimiter(@data[:pageviews_last_4][0][1].to_i + @data[:pageviews_last_4][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_5] ? number_with_delimiter(@data[:pageviews_last_5][0][1].to_i + @data[:pageviews_last_5][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_6] ? number_with_delimiter(@data[:pageviews_last_6][0][1].to_i + @data[:pageviews_last_6][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_7] ? number_with_delimiter(@data[:pageviews_last_7][0][1].to_i + @data[:pageviews_last_7][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_8] ? number_with_delimiter(@data[:pageviews_last_8][0][1].to_i + @data[:pageviews_last_8][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_9] ? number_with_delimiter(@data[:pageviews_last_9][0][1].to_i + @data[:pageviews_last_9][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_10] ? number_with_delimiter(@data[:pageviews_last_10][0][1].to_i + @data[:pageviews_last_10][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_11] ? number_with_delimiter(@data[:pageviews_last_11][0][1].to_i + @data[:pageviews_last_11][1][1].to_i) : '&nbsp;'.html_safe %></td>
-    <td class="value"><%= @data[:pageviews_last_12] ? number_with_delimiter(@data[:pageviews_last_12][0][1].to_i + @data[:pageviews_last_12][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_1] && @data[:pageviews_last_1].length == 2 ? number_with_delimiter(@data[:pageviews_last_1][0][1].to_i + @data[:pageviews_last_1][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_2] && @data[:pageviews_last_2].length == 2 ? number_with_delimiter(@data[:pageviews_last_2][0][1].to_i + @data[:pageviews_last_2][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_3] && @data[:pageviews_last_3].length == 2 ? number_with_delimiter(@data[:pageviews_last_3][0][1].to_i + @data[:pageviews_last_3][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_4] && @data[:pageviews_last_4].length == 2 ? number_with_delimiter(@data[:pageviews_last_4][0][1].to_i + @data[:pageviews_last_4][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_5] && @data[:pageviews_last_5].length == 2 ? number_with_delimiter(@data[:pageviews_last_5][0][1].to_i + @data[:pageviews_last_5][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_6] && @data[:pageviews_last_6].length == 2 ? number_with_delimiter(@data[:pageviews_last_6][0][1].to_i + @data[:pageviews_last_6][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_7] && @data[:pageviews_last_7].length == 2 ? number_with_delimiter(@data[:pageviews_last_7][0][1].to_i + @data[:pageviews_last_7][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_8] && @data[:pageviews_last_8].length == 2 ? number_with_delimiter(@data[:pageviews_last_8][0][1].to_i + @data[:pageviews_last_8][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_9] && @data[:pageviews_last_9].length == 2 ? number_with_delimiter(@data[:pageviews_last_9][0][1].to_i + @data[:pageviews_last_9][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_10] && @data[:pageviews_last_10].length == 2 ? number_with_delimiter(@data[:pageviews_last_10][0][1].to_i + @data[:pageviews_last_10][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_11] && @data[:pageviews_last_11].length == 2 ? number_with_delimiter(@data[:pageviews_last_11][0][1].to_i + @data[:pageviews_last_11][1][1].to_i) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @data[:pageviews_last_12] && @data[:pageviews_last_12].length == 2 ? number_with_delimiter(@data[:pageviews_last_12][0][1].to_i + @data[:pageviews_last_12][1][1].to_i) : '&nbsp;'.html_safe %></td>
   </tr>
   <tr class="striped">
     <td class="current-year"><strong><%= @data[:start_date].strftime("%Y") %></strong></td>
