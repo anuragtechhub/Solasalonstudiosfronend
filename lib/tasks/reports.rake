@@ -35,7 +35,7 @@ namespace :reports do
     p "begin location report..."
 
     location = Location.find(args.location_id) if args.location_id.present?
-    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.beginning_of_month
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month
 
     p "location=#{location.id}, #{location.name}"
@@ -247,36 +247,42 @@ namespace :reports do
   class Analytics < BaseCli
     Analytics = Google::Apis::AnalyticsreportingV4
 
-    # desc 'show_visits PROFILE_ID', 'Show visists for the given analytics profile ID'
-    # method_option :start, type: :string, required: true
-    # method_option :end, type: :string, required: true
-    
-    # def show_visits(profile_id, start_date, end_date)
-    #   analytics = Analytics::AnalyticsReportingService.new
-    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
-
-    #   dimensions = %w(ga:date)
-    #   metrics = %w(ga:sessions ga:users ga:newUsers ga:percentNewSessions
-    #                ga:sessionDuration ga:avgSessionDuration)
-    #   sort = %w(ga:date)
-    #   result = analytics.get_ga_data("ga:#{profile_id}",
-    #                                  start_date,
-    #                                  end_date,
-    #                                  metrics.join(','),
-    #                                  dimensions: dimensions.join(','),
-    #                                  sort: sort.join(','))
-
-    #   data = []
-    #   data.push(result.column_headers.map { |h| h.name })
-    #   data.push(*result.rows)
-    #   print_table(data)
-    # end
-
     desc 'get_location_url', 'Constructs a location URL for GA at a certain date'
-    def get_location_url(location, start_date, end_date=nil)
+    def get_location_url(location, start_date, end_date)
       location_start = location.version_at(start_date) || location
       location_end = location.version_at(end_date || start_date) || location
-      "ga:pagePath=~/locations/#{location_start.url_name},ga:pagePath=~/locations/#{location_start.state}/#{location_start.city}/#{location_start.url_name},ga:pagePath=~/locations/#{location_end.url_name},ga:pagePath=~/locations/#{location_end.state}/#{location_end.city}/#{location_end.url_name}"
+      
+      #p "start_date=#{start_date}"
+      #p "end_date=#{end_date}"
+      
+      #p "location_start=#{location_start.updated_at}, #{location_start.url_name}"
+      #p "location_end=#{location_end.updated_at}, #{location_end.url_name}"
+
+      # p "location_start=#{location_start.inspect}"
+      # p "location_end=#{location_end.inspect}"
+
+      page_paths = [
+        "ga:pagePath=~/locations/#{location_start.url_name}",
+        "ga:pagePath=~/locations/#{location_end.url_name}",
+        "ga:pagePath=~/locations/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/locations/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name}",
+        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name}",
+        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/store/#{location_start.url_name}",
+        "ga:pagePath=~/store/#{location_end.url_name}",
+        "ga:pagePath=~/store/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/store/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/stores/#{location_start.url_name}",
+        "ga:pagePath=~/stores/#{location_end.url_name}",
+        "ga:pagePath=~/stores/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath=~/stores/#{location_end.url_name.gsub('-', '_')}",
+      ]
+
+      #p page_paths.join(',')
+      
+      page_paths.join(',')
     end
 
     desc 'location_data', 'Retrieve solasalonstudios.com location Google Analytics data'
@@ -297,10 +303,6 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new(start_date.year, month, 1), DateTime.new(start_date.year, month, 1).end_of_month))
         key_sym = "pageviews_current_#{month}".to_sym
         data[key_sym] = data_month
-        # data[key_sym] = 0
-        # data_month.each do |data_m|
-        #   data[key_sym] = data[key_sym] + data_m[1].to_i
-        # end
       end
 
       # previous year pageviews (by month)
@@ -309,16 +311,11 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new((start_date - 1.year).year, month, 1), DateTime.new((start_date - 1.year).year, month, 1).end_of_month))
         key_sym = "pageviews_last_#{month}".to_sym
         data[key_sym] = data_month
-        # data[key_sym] = 0
-        # data_month.each do |data_m|
-        #   data[key_sym] = data[key_sym] + data_m[1].to_i
-        # end
       end
 
       p "begin unique visits"
       # unique visits - visits, new visitors, returning visitors
       data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
-      #p "data[:unique_visits]=#{data[:unique_visits].inspect}"
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
       data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
       p "end unique visits"
@@ -342,15 +339,14 @@ namespace :reports do
       end
       p "done with devices"
 
-      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:deviceCategory', nil, nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
-      p "data[:devices_prev_month]=#{data[:devices_prev_month].inspect}"
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
       if data[:devices_prev_month] && data[:devices_prev_month].length == 3
         tablets = data[:devices_prev_month].pop
         data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
       end
       p "done with devices prev month"
 
-      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:deviceCategory', nil, nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:deviceCategory', 'ga:pageviews', '-ga:pageviews', get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
       if data[:devices_prev_year] && data[:devices_prev_year].length == 3
         tablets = data[:devices_prev_year].pop
         data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
@@ -392,10 +388,6 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
         key_sym = "pageviews_current_#{month}".to_sym
         data[key_sym] = data_month
-        # data[key_sym] = 0
-        # data_month.each do |data_m|
-        #   data[key_sym] = data[key_sym] + data_m[1].to_i
-        # end
       end
 
       # previous year pageviews (by month)
@@ -403,10 +395,6 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
         key_sym = "pageviews_last_#{month}".to_sym
         data[key_sym] = data_month
-        # data[key_sym] = 0
-        # data_month.each do |data_m|
-        #   data[key_sym] = data[key_sym] + data_m[1].to_i
-        # end
       end
 
       # unique visits - visits, new visitors, returning visitors
@@ -582,47 +570,6 @@ namespace :reports do
       page_title
     end
 
-    # desc 'show_pageviews, profile_id, start_date, end_date', 'Show pageviews'
-    # def show_pageviews(profile_id, start_date, end_date)
-    #   analytics = Analytics::AnalyticsService.new
-    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
-
-    #   dimensions = %w(ga:pagePath ga:socialNetwork)
-    #   metrics = %w(ga:pageviews ga:avgTimeOnPage)
-    #   sort = %w(ga:pagePath)
-    #   filters = "ga:pagePath==/about-us"#%w(ga:pagePath==/about-us;ga:browser==Firefox)
-    #   result = analytics.get_ga_data("ga:#{profile_id}",
-    #                                  start_date,
-    #                                  end_date,
-    #                                  metrics.join(','),
-    #                                  dimensions: dimensions.join(','),
-    #                                  filters: filters,
-    #                                  sort: sort.join(','))
-
-    #   data = []
-    #   data.push(result.column_headers.map { |h| h.name })
-    #   data.push(*result.rows)
-    #   print_table(data)
-    # end
-
-    # desc 'show_realtime_visits PROFILE_ID', 'Show realtime visists for the given analytics profile ID'
-    # def show_realtime_visits(profile_id)
-    #   analytics = Analytics::AnalyticsService.new
-    #   analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
-
-    #   dimensions = %w(rt:medium rt:pagePath)
-    #   metrics = %w(rt:activeUsers)
-    #   sort = %w(rt:medium rt:pagePath)
-    #   result = analytics.get_realtime_data("ga:#{profile_id}",
-    #                                        metrics.join(','),
-    #                                        dimensions: dimensions.join(','),
-    #                                        sort: sort.join(','))
-
-    #   data = []
-    #   data.push(result.column_headers.map { |h| h.name })
-    #   data.push(*result.rows)
-    #   print_table(data)
-    # end
   end 
 
 end
