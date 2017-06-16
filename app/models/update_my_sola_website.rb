@@ -224,6 +224,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.eyelash_extensions = eyelash_extensions
     stylist.makeup = makeup
     stylist.massage = massage
+    stylist.microblading = microblading
     stylist.nails = nails
     stylist.permanent_makeup = permanent_makeup
     stylist.skin = skin
