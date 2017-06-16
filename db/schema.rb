@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616220612) do
+ActiveRecord::Schema.define(version: 20170616224039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -638,6 +638,7 @@ ActiveRecord::Schema.define(version: 20170616220612) do
     t.string   "image_10_content_type"
     t.integer  "image_10_file_size"
     t.datetime "image_10_updated_at"
+    t.boolean  "microblading"
   end
 
   add_index "update_my_sola_websites", ["stylist_id"], name: "index_update_my_sola_websites_on_stylist_id", using: :btree
