@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601165414) do
+ActiveRecord::Schema.define(version: 20170616220612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -527,6 +527,7 @@ ActiveRecord::Schema.define(version: 20170601165414) do
     t.text     "image_8_alt_text"
     t.text     "image_9_alt_text"
     t.text     "image_10_alt_text"
+    t.boolean  "microblading"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

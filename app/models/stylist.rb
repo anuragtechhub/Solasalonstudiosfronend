@@ -161,6 +161,7 @@ class Stylist < ActiveRecord::Base
     services << 'Lashes' if eyelash_extensions
     services << 'Makeup' if makeup
     services << 'Massage' if massage
+    services << 'Microblading' if microblading
     services << 'Nails' if nails
     services << 'Permanent Makeup' if permanent_makeup
     services << 'Skincare' if skin

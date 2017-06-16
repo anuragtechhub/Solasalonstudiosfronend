@@ -1132,6 +1132,7 @@ RailsAdmin.config do |config|
         end 
         field :makeup
         field :massage
+        field :microblading
         field :nails
         field :permanent_makeup
         field :skin do
@@ -1328,6 +1329,7 @@ RailsAdmin.config do |config|
         end 
         field :makeup
         field :massage
+        field :microblading
         field :nails
         field :permanent_makeup
         field :skin do
@@ -1499,6 +1501,7 @@ RailsAdmin.config do |config|
       field :skin
       field :nails
       field :massage
+      field :microblading
       field :teeth_whitening
       field :hair_extensions
       field :eyelash_extensions
