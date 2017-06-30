@@ -87,6 +87,46 @@ namespace :reports do
     end
   end
 
+  # rake reports:solapro
+  # rake reports:solapro[2017-01-01]
+  task :solapro, [:start_date] => :environment do |task, args|
+    p "begin solapro analytics report..."
+    # p "args=#{args.inspect}"
+    # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
+    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
+    end_date = start_date.end_of_month if start_date
+    # puts ARGV.inspect
+    # start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
+    # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
+
+    analytics = Analytics.new
+    if start_date && end_date
+      web_data = analytics.solapro_web_data('105609602', start_date, end_date)
+      app_data = analytics.solapro_app_data('113771223', start_date, end_date)
+    else
+      web_data = analytics.solapro_web_data
+      app_data = analytics.solapro_app_data
+    end
+    locals = {
+      :@app_data => app_data
+      :@web_data => web_data
+    }
+
+    #p "got data #{locals.inspect}"
+    p "got data..."
+
+    html_renderer = HTMLRenderer.new
+
+    p "let's render PDF"
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solapro_ga', locals), :footer => {:center => '[page]', :font_size => 7})
+    p "pdf rendered..."
+    save_path = Rails.root.join('pdfs','solapro.pdf')
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end   
+    p "file saved" 
+  end
+
   # rake reports:solasalonstudios
   # rake reports:solasalonstudios[2017-01-01]
   task :solasalonstudios, [:start_date] => :environment do |task, args|
@@ -424,6 +464,178 @@ namespace :reports do
         end
       end
       p "done with time on site, pages/session"
+
+      data
+    end
+
+    desc 'solapro_web_data', 'Retrieve Sola Pro web Google Analytics data'
+    def solapro_web_data(profile_id='105609602', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+      analytics = Analytics::AnalyticsReportingService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }
+
+      # current year pageviews (by month)
+      (1..start_date.month).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_current_#{month}".to_sym
+        data[key_sym] = data_month
+      end
+
+      # previous year pageviews (by month)
+      (1..12).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_last_#{month}".to_sym
+        data[key_sym] = data_month
+      end
+
+      # unique visits - visits, new visitors, returning visitors
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
+
+      # referrals - source, % of traffic
+      # ga:medium
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+
+      # top referrers - site, visits
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # devices - mobile, desktop, mobile % change vs same month a year ago
+      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      tablets = data[:devices].pop
+      data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_month].pop
+      data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
+
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_year].pop
+      data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
+
+      # locations - top regions that visited (city, visits)
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # blogs - url, visits
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      data[:blogs][0..9].each_with_index do |blog, idx|
+        blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
+        data[:blogs][idx] = blog
+      end
+      data[:blogs_page_views] = 0
+      data[:blogs_avg_session_duration] = 0.0
+      data[:blogs_bounce_rate] = 0.0
+      data[:blogs].each do |blog|
+        data[:blogs_page_views] = data[:blogs_page_views] + blog[1].to_i
+        data[:blogs_avg_session_duration] = data[:blogs_avg_session_duration] + blog[2].to_f
+        data[:blogs_bounce_rate] = data[:blogs_bounce_rate] + blog[3].to_f
+      end
+
+      # exit pages
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
+      data[:exit_pages].each_with_index do |exit_page, idx|
+        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        data[:exit_pages][idx] = exit_page
+      end
+
+      # time on site, pages/session
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_site] = 0.0
+      data[:pageviews_per_session] = 0.0
+      data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
+        data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+        data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+      end
+
+      data
+    end
+
+    desc 'solapro_app_data', 'Retrieve Sola Pro app Google Analytics data'
+    def solapro_app_data(profile_id='113771223', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+      analytics = Analytics::AnalyticsReportingService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }
+
+      # current year pageviews (by month)
+      (1..start_date.month).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_current_#{month}".to_sym
+        data[key_sym] = data_month
+      end
+
+      # previous year pageviews (by month)
+      (1..12).each do |month|
+        data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+        key_sym = "pageviews_last_#{month}".to_sym
+        data[key_sym] = data_month
+      end
+
+      # unique visits - visits, new visitors, returning visitors
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
+
+      # referrals - source, % of traffic
+      # ga:medium
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+
+      # top referrers - site, visits
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # devices - mobile, desktop, mobile % change vs same month a year ago
+      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      tablets = data[:devices].pop
+      data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
+      
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_month].pop
+      data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
+
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      tablets = data[:devices_prev_year].pop
+      data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
+
+      # locations - top regions that visited (city, visits)
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
+
+      # blogs - url, visits
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      data[:blogs][0..9].each_with_index do |blog, idx|
+        blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
+        data[:blogs][idx] = blog
+      end
+      data[:blogs_page_views] = 0
+      data[:blogs_avg_session_duration] = 0.0
+      data[:blogs_bounce_rate] = 0.0
+      data[:blogs].each do |blog|
+        data[:blogs_page_views] = data[:blogs_page_views] + blog[1].to_i
+        data[:blogs_avg_session_duration] = data[:blogs_avg_session_duration] + blog[2].to_f
+        data[:blogs_bounce_rate] = data[:blogs_bounce_rate] + blog[3].to_f
+      end
+
+      # exit pages
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
+      data[:exit_pages].each_with_index do |exit_page, idx|
+        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        data[:exit_pages][idx] = exit_page
+      end
+
+      # time on site, pages/session
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_site] = 0.0
+      data[:pageviews_per_session] = 0.0
+      data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
+        data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+        data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+      end
 
       data
     end
