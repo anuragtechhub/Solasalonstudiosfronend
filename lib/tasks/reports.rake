@@ -511,13 +511,23 @@ namespace :reports do
       data[:videos_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Video')
 
       # top deals 
-      data[:top_deals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deal')[0..4]
+      top_deals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deal')
+      data[:top_deals] = []
+      top_deals.each do |top_deal|
+        next if top_deal[0].include?('click') || !top_deal[0].include?('|') || data[:top_deals].length >= 5
+        data[:top_deals] << top_deal
+      end
 
       # top tools
       data[:top_tools] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Tools and Resources')[0..4]
 
       # top videos
-      data[:top_videos] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Video')[0..4]
+      top_videos = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Video')
+      data[:top_videos] = []
+      top_videos.each do |top_video|
+        next if top_video[0].include?('click') || !top_video[0].include?('|') || data[:top_videos].length >= 5
+        data[:top_videos] << top_video
+      end
 
       # top brands
       data[:top_brands] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Brand')[0..4]
