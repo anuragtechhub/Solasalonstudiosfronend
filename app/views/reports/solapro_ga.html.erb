@@ -92,6 +92,90 @@
   </tr>
 </table>
 
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Deals</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Deal</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @app_data[:top_deals].each do |top_deal| %>
+        <% next if top_deal[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_deal[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_deal[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Tools/Resources</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Tool/Resource</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @app_data[:top_tools].each do |top_tool| %>
+        <% next if top_tool[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_tool[0].split('|')[1] %></td>
+          <td class="label"><%= number_with_delimiter top_tool[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+</div>
+
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Videos</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Video</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @app_data[:top_videos].each do |top_video| %>
+        <% next if top_video[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_video[0].split('|')[1] %></td>
+          <td class="label"><%= number_with_delimiter top_video[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Brands</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Brand</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @app_data[:top_brands].each do |top_brand| %>
+        <% next if top_brand[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_brand[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_brand[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+</div>
+
+
+
+<div class="page-break"></div>
+
 
 
 <!-- ******* -->
@@ -171,3 +255,83 @@
     </td>
   </tr>
 </table>
+
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Deals</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Deal</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @web_data[:top_deals].each do |top_deal| %>
+        <% next if top_deal[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_deal[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_deal[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Tools/Resources</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Tool/Resource</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @web_data[:top_tools].each do |top_tool| %>
+        <% next if top_tool[0].include?('click') || !top_tool[0].include?('|') %>
+        <tr>
+          <td class="label"><%= top_tool[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_tool[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+</div>
+
+<div class="grid">
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Videos</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Video</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @web_data[:top_videos].each do |top_video| %>
+        <% next if top_video[0].include?('click') || !top_video[0].include?('|') %>
+        <tr>
+          <td class="label"><%= top_video[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_video[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Brands</div>
+    </div>
+    <table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><strong>Brand</strong></th>
+        <th><strong>Visits</strong></th>
+      </tr>
+      <% @web_data[:top_brands].each do |top_brand| %>
+        <% next if top_brand[0].include?('click') %>
+        <tr>
+          <td class="label"><%= top_brand[0].split('|')[1].strip %></td>
+          <td class="label"><%= number_with_delimiter top_brand[1] %></td>
+        </tr>
+      <% end %>
+    </table> 
+  </div>  
+</div>
