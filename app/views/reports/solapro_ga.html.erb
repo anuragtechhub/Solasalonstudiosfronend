@@ -1,3 +1,157 @@
+<%
+  def percentage_color(percentage=nil)
+    if percentage.nil?
+      return ''
+    elsif percentage >= 0
+      return 'color:#32BCAD'
+    else
+      return 'color:#EA008B'
+    end
+  end
+%>
+
 <div class="page-title"><strong>Sola Pro Analytics &nbsp;|&nbsp; <%= @web_data[:start_date].strftime("%B %Y").upcase %></strong></div>
 
 
+
+<!-- ********** -->
+<!-- MOBILE APP -->
+<!-- ********** -->
+
+<div class="section">
+  <div class="section-heading">Mobile App</div>
+</div>
+<table class="dotted" cellpadding="0" cellspacing="0">
+  <%
+    if @app_data[:unique_visits]
+      @app_data[:unique_visits][0] = [nil, 1] if @app_data[:unique_visits][0].nil?
+      @app_data[:unique_visits][1] = [nil, 1] if @app_data[:unique_visits][1].nil?
+
+      @app_unique_visits_this_month = @app_data[:unique_visits][0][1].to_i + @app_data[:unique_visits][1][1].to_i
+    end
+    if @app_data[:unique_visits_prev_month]
+      @app_data[:unique_visits_prev_month][0] = [nil, 1] if @app_data[:unique_visits_prev_month][0].nil?
+      @app_data[:unique_visits_prev_month][1] = [nil, 1] if @app_data[:unique_visits_prev_month][1].nil?
+
+      @app_unique_visits_prev_month = @app_data[:unique_visits_prev_month][0][1].to_i + @app_data[:unique_visits_prev_month][1][1].to_i
+    end
+  %>
+  <tr>
+    <td>
+      <div class="label">New Users</div>
+      <div class="value value-large"><%= number_with_delimiter @app_data[:unique_visits][0][1] %></div>
+      <div class="percentage" style="<%= percentage_color(@app_data[:unique_visits] && @app_data[:unique_visits_prev_month] ? (100 * (@app_data[:unique_visits][0][1].to_i - @app_data[:unique_visits_prev_month][0][1].to_i) / @app_data[:unique_visits_prev_month][0][1].to_i) : nil) %>">
+        <%= @app_data[:unique_visits] && @app_data[:unique_visits_prev_month] ? number_to_percentage(100 * (@app_data[:unique_visits][0][1].to_i - @app_data[:unique_visits_prev_month][0][1].to_i) / @app_data[:unique_visits_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label">Total Users</div>
+      <div class="value value-large"><%= number_with_delimiter @app_unique_visits_this_month %></div>
+      <div class="percentage" style="<%= percentage_color(@app_unique_visits_this_month && @app_unique_visits_prev_month ? (100 * (@app_unique_visits_this_month - @app_unique_visits_prev_month) / @app_unique_visits_prev_month) : nil) %>">
+        <%= @app_unique_visits_this_month && @app_unique_visits_prev_month ? number_to_percentage(100 * (@app_unique_visits_this_month - @app_unique_visits_prev_month) / @app_unique_visits_prev_month, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label"># Deals Viewed</div>
+      <div class="value value-large"></div>
+      <div class="percentage"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="label">Avg. Session Duration</div>
+      <div class="value value-large">
+        <%= @app_data[:time_on_site] && @app_data[:time_on_page_and_pageviews_per_session] ? Time.at(@app_data[:time_on_site] / @app_data[:time_on_page_and_pageviews_per_session].length).utc.strftime("%M:%S") : '&nbsp;'.html_safe %>    
+      </div>
+      <div class="percentage" style="<%= percentage_color(@app_data[:time_on_site] && @app_data[:time_on_site_prev_month] ? (100 * (@app_data[:time_on_site] - @app_data[:time_on_site_prev_month]) / @app_data[:time_on_site_prev_month]) : nil) %>">
+        <%= @app_data[:time_on_site] && @app_data[:time_on_site_prev_month] ? number_to_percentage(100 * (@app_data[:time_on_site] - @app_data[:time_on_site_prev_month]) / @app_data[:time_on_site_prev_month], :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label">Avg. Screens/Session</div>
+      <div class="value value-large">
+        <%= @app_data[:pageviews_per_session] && @app_data[:time_on_page_and_pageviews_per_session] ? number_with_delimiter((@app_data[:pageviews_per_session] / @app_data[:time_on_page_and_pageviews_per_session].length).round(1)) : '&nbsp;'.html_safe %>
+      </div>
+      <div class="percentage" style="<%= percentage_color(@app_data[:pageviews_per_session] && @app_data[:pageviews_per_session_prev_month] ? (100 * (@app_data[:pageviews_per_session] - @app_data[:pageviews_per_session_prev_month]) / @app_data[:pageviews_per_session_prev_month]) : nil) %>">
+        <%= @app_data[:pageviews_per_session] && @app_data[:pageviews_per_session_prev_month] ? number_to_percentage(100 * (@app_data[:pageviews_per_session] - @app_data[:pageviews_per_session_prev_month]) / @app_data[:pageviews_per_session_prev_month], :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label"># Video Views</div>
+      <div class="value value-large"></div>
+      <div class="percentage"></div>
+    </td>
+  </tr>
+</table>
+
+
+
+<!-- ******* -->
+<!-- Website -->
+<!-- ******* -->
+
+<div class="section">
+  <div class="section-heading">Website</div>
+</div>
+<table class="dotted" cellpadding="0" cellspacing="0">
+  <%
+    if @web_data[:unique_visits]
+      @web_data[:unique_visits][0] = [nil, 1] if @web_data[:unique_visits][0].nil?
+      @web_data[:unique_visits][1] = [nil, 1] if @web_data[:unique_visits][1].nil?
+
+      @web_unique_visits_this_month = @web_data[:unique_visits][0][1].to_i + @web_data[:unique_visits][1][1].to_i
+    end
+    if @web_data[:unique_visits_prev_month]
+      @web_data[:unique_visits_prev_month][0] = [nil, 1] if @web_data[:unique_visits_prev_month][0].nil?
+      @web_data[:unique_visits_prev_month][1] = [nil, 1] if @web_data[:unique_visits_prev_month][1].nil?
+
+      @web_unique_visits_prev_month = @web_data[:unique_visits_prev_month][0][1].to_i + @web_data[:unique_visits_prev_month][1][1].to_i
+    end
+  %>
+  <tr>
+    <td>
+      <div class="label">New Users</div>
+      <div class="value value-large"><%= number_with_delimiter @web_data[:unique_visits][0][1] %></div>
+      <div class="percentage" style="<%= percentage_color(@web_data[:unique_visits] && @web_data[:unique_visits_prev_month] ? (100 * (@web_data[:unique_visits][0][1].to_i - @web_data[:unique_visits_prev_month][0][1].to_i) / @web_data[:unique_visits_prev_month][0][1].to_i) : nil) %>">
+        <%= @web_data[:unique_visits] && @web_data[:unique_visits_prev_month] ? number_to_percentage(100 * (@web_data[:unique_visits][0][1].to_i - @web_data[:unique_visits_prev_month][0][1].to_i) / @web_data[:unique_visits_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label">Total Users</div>
+      <div class="value value-large"><%= number_with_delimiter @web_unique_visits_this_month %></div>
+      <div class="percentage" style="<%= percentage_color(@web_unique_visits_this_month && @web_unique_visits_prev_month ? (100 * (@web_unique_visits_this_month - @web_unique_visits_prev_month) / @web_unique_visits_prev_month) : nil) %>">
+        <%= @web_unique_visits_this_month && @web_unique_visits_prev_month ? number_to_percentage(100 * (@web_unique_visits_this_month - @web_unique_visits_prev_month) / @web_unique_visits_prev_month, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label"># Deals Viewed</div>
+      <div class="value value-large"></div>
+      <div class="percentage"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="label">Avg. Session Duration</div>
+      <div class="value value-large">
+        <%= @web_data[:time_on_site] && @web_data[:time_on_page_and_pageviews_per_session] ? Time.at(@web_data[:time_on_site] / @web_data[:time_on_page_and_pageviews_per_session].length).utc.strftime("%M:%S") : '&nbsp;'.html_safe %>    
+      </div>
+      <div class="percentage" style="<%= percentage_color(@web_data[:time_on_site] && @web_data[:time_on_site_prev_month] ? (100 * (@web_data[:time_on_site] - @web_data[:time_on_site_prev_month]) / @web_data[:time_on_site_prev_month]) : nil) %>">
+        <%= @web_data[:time_on_site] && @web_data[:time_on_site_prev_month] ? number_to_percentage(100 * (@web_data[:time_on_site] - @web_data[:time_on_site_prev_month]) / @web_data[:time_on_site_prev_month], :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label">Avg. Screens/Session</div>
+      <div class="value value-large">
+        <%= @web_data[:pageviews_per_session] && @web_data[:time_on_page_and_pageviews_per_session] ? number_with_delimiter((@web_data[:pageviews_per_session] / @web_data[:time_on_page_and_pageviews_per_session].length).round(1)) : '&nbsp;'.html_safe %>
+      </div>
+      <div class="percentage" style="<%= percentage_color(@web_data[:pageviews_per_session] && @web_data[:pageviews_per_session_prev_month] ? (100 * (@web_data[:pageviews_per_session] - @web_data[:pageviews_per_session_prev_month]) / @web_data[:pageviews_per_session_prev_month]) : nil) %>">
+        <%= @web_data[:pageviews_per_session] && @web_data[:pageviews_per_session_prev_month] ? number_to_percentage(100 * (@web_data[:pageviews_per_session] - @web_data[:pageviews_per_session_prev_month]) / @web_data[:pageviews_per_session_prev_month], :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
+    </td>
+    <td>
+      <div class="label"># Video Views</div>
+      <div class="value value-large"></div>
+      <div class="percentage"></div>
+    </td>
+  </tr>
+</table>

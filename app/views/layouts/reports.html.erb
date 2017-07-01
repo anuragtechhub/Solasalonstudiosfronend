@@ -130,6 +130,37 @@
     }
 
     /* tables */
+    table.dotted {
+      border-collapse: collapse;
+      margin: 20px auto 20px auto;
+    }
+    table.dotted td {
+      border-right: 2px dotted #DFDFDF;
+      border-bottom: 2px dotted #DFDFDF;
+      text-align: center;
+      padding: 5px 10px;
+    }
+    table.dotted td:last-child {
+      border-right: 0;
+    }
+    table.dotted tr:last-child td {
+      border-bottom: 0;
+    }
+    table.dotted .label {
+      font-family: 'LatoLight';
+      font-size: 13px;
+      color: #525659;
+      text-transform: uppercase;
+    }
+    table.dotted .value {
+      font-family: 'LatoLight';
+      font-size: 11px;
+      color: #111;
+    }
+    table.dotted .value-large {
+      font-size: 33px;
+    }
+
     table td.value {
       font-family: 'LatoLight';
     }
