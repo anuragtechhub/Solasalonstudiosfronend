@@ -53,8 +53,12 @@
     </td>
     <td>
       <div class="label"># Deals Viewed</div>
-      <div class="value value-large"></div>
-      <div class="percentage"></div>
+      <div class="value value-large">
+        <%= number_with_delimiter @app_data[:deals_viewed][0][1] %>  
+      </div>
+      <div class="percentage" style="<%= percentage_color(@app_data[:deals_viewed] && @app_data[:deals_viewed_prev_month] ? (100 * (@app_data[:deals_viewed][0][1].to_i - @app_data[:deals_viewed_prev_month][0][1].to_i) / @app_data[:deals_viewed_prev_month][0][1].to_i) : nil) %>">
+        <%= @app_data[:deals_viewed] && @app_data[:deals_viewed_prev_month] ? number_to_percentage(100 * (@app_data[:deals_viewed][0][1].to_i - @app_data[:deals_viewed_prev_month][0][1].to_i) / @app_data[:deals_viewed_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
     </td>
   </tr>
   <tr>
@@ -78,8 +82,12 @@
     </td>
     <td>
       <div class="label"># Video Views</div>
-      <div class="value value-large"></div>
-      <div class="percentage"></div>
+      <div class="value value-large">
+        <%= number_with_delimiter @app_data[:videos_viewed][0][1] %>    
+      </div>
+      <div class="percentage" style="<%= percentage_color(@app_data[:videos_viewed] && @app_data[:videos_viewed_prev_month] ? (100 * (@app_data[:videos_viewed][0][1].to_i - @app_data[:videos_viewed_prev_month][0][1].to_i) / @app_data[:videos_viewed_prev_month][0][1].to_i) : nil) %>">
+        <%= @app_data[:videos_viewed] && @app_data[:videos_viewed_prev_month] ? number_to_percentage(100 * (@app_data[:videos_viewed][0][1].to_i - @app_data[:videos_viewed_prev_month][0][1].to_i) / @app_data[:videos_viewed_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
     </td>
   </tr>
 </table>
@@ -125,8 +133,12 @@
     </td>
     <td>
       <div class="label"># Deals Viewed</div>
-      <div class="value value-large"></div>
-      <div class="percentage"></div>
+      <div class="value value-large">
+        <%= number_with_delimiter @web_data[:deals_viewed][0][1] %>  
+      </div>
+      <div class="percentage" style="<%= percentage_color(@web_data[:deals_viewed] && @web_data[:deals_viewed_prev_month] ? (100 * (@web_data[:deals_viewed][0][1].to_i - @web_data[:deals_viewed_prev_month][0][1].to_i) / @web_data[:deals_viewed_prev_month][0][1].to_i) : nil) %>">
+        <%= @web_data[:deals_viewed] && @web_data[:deals_viewed_prev_month] ? number_to_percentage(100 * (@web_data[:deals_viewed][0][1].to_i - @web_data[:deals_viewed_prev_month][0][1].to_i) / @web_data[:deals_viewed_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
     </td>
   </tr>
   <tr>
@@ -150,8 +162,12 @@
     </td>
     <td>
       <div class="label"># Video Views</div>
-      <div class="value value-large"></div>
-      <div class="percentage"></div>
+      <div class="value value-large">
+        <%= number_with_delimiter @web_data[:videos_viewed][0][1] %>    
+      </div>
+      <div class="percentage" style="<%= percentage_color(@web_data[:videos_viewed] && @web_data[:videos_viewed_prev_month] ? (100 * (@web_data[:videos_viewed][0][1].to_i - @web_data[:videos_viewed_prev_month][0][1].to_i) / @web_data[:videos_viewed_prev_month][0][1].to_i) : nil) %>">
+        <%= @web_data[:videos_viewed] && @web_data[:videos_viewed_prev_month] ? number_to_percentage(100 * (@web_data[:videos_viewed][0][1].to_i - @web_data[:videos_viewed_prev_month][0][1].to_i) / @web_data[:videos_viewed_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
+      </div>
     </td>
   </tr>
 </table>
