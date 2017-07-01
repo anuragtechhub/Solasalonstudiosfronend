@@ -483,7 +483,7 @@ namespace :reports do
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
 
       # time on site, pages/session
-      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:hostName', 'ga:avgTimeOnPage ga:pageviewsPerSession')
       if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
         data[:time_on_site] = 0.0
         data[:pageviews_per_session] = 0.0
@@ -492,7 +492,7 @@ namespace :reports do
           data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
         end
       end
-      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:hostName', 'ga:avgTimeOnPage ga:pageviewsPerSession')
       if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
         data[:time_on_site_prev_month] = 0.0
         data[:pageviews_per_session_prev_month] = 0.0
@@ -550,7 +550,7 @@ namespace :reports do
       data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:screenviews')
 
       # time on site, pages/session
-      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:screenName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
       if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
         data[:time_on_site] = 0.0
         data[:pageviews_per_session] = 0.0
@@ -559,7 +559,8 @@ namespace :reports do
           data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
         end
       end
-      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:screenName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
+
+      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
       if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
         data[:time_on_site_prev_month] = 0.0
         data[:pageviews_per_session_prev_month] = 0.0
