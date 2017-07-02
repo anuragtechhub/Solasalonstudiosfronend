@@ -7,4 +7,12 @@ class DigitalDirectoryController < ApplicationController
     render :layout => 'empty'
   end
 
+  def dd
+    render :layout => 'empty'
+  end
+
+  def color
+    render :json => {color: "%06x" % (rand * 0xffffff)}
+  end
+
 end
