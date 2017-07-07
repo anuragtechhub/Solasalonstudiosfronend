@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616224039) do
+ActiveRecord::Schema.define(version: 20170707230827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -342,6 +342,7 @@ ActiveRecord::Schema.define(version: 20170616224039) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "tracking_code"
   end
 
   add_index "msas", ["name"], name: "index_msas_on_name", using: :btree
