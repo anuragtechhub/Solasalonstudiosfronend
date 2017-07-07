@@ -707,19 +707,22 @@
 
   .buy-now {
     text-align: center;
-    margin: 10px auto 75px auto;
+    margin: 65px auto 75px auto;
 
     a, a:link, a:visited, a:hover, a:active {
       display: inline-block;
-      background: #000;
-      color: #FFF;
+      color: $brand-pink;
+      background: #FFF;
       font-family: 'Lato', sans-serif;
-      font-size: 19px;
-      line-height: 21px;
+      font-size: 23px;
+      font-weight: bold;
+      line-height: 23px;
+      word-spacing: 2px;
       letter-spacing: 2px;
-      padding: 12px 22px 13px 22px;
-      border-radius: 44px;
+      padding: 17px 25px 17px 25px;
+      border-radius: 45px;
       text-transform: uppercase;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
       
       overflow: hidden;
       text-overflow: ellipsis;
@@ -742,6 +745,7 @@
     .right {
       position: absolute;
       top: 0;
+      left: 50%;
       right: 0;
     }
 
@@ -774,16 +778,19 @@
     }
 
     .valued-at {
-      p {
-        margin: 0;
-        padding: 0;
-        font-size: 16px !important;
-        font-weight: bold;
-        line-height: 16px !important;
-        color: #FFF !important;
-        text-transform: uppercase;
-        //margin-bottom: -3px;
-      } 
+      position: relative;
+      left: -1px;
+      display: block;
+      clear: both;
+      margin: 10px 0 0 0;
+      padding: 0;
+      font-size: 15px !important;
+      font-weight: bold;
+      line-height: 16px !important;
+      color: $brand-pink !important;
+      text-transform: uppercase;
+      font-style: normal !important;
+      //margin-bottom: -3px;
     }
 
     .ticket-includes {
