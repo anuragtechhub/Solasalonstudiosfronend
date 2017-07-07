@@ -26,8 +26,9 @@ class HomeController < PublicWebsiteController
   end
 
   def sitemap
-    data = open("https://s3.amazonaws.com/solasitemap/sitemaps/sitemap.xml")
-    send_data data.read, :type => data.content_type
+    # data = open("https://s3.amazonaws.com/solasitemap/sitemaps/sitemap.xml")
+    # send_data data.read, :type => data.
+    redirect_to 'https://s3.amazonaws.com/solasitemap/sitemaps/sitemap.xml'
   end
   
 end
