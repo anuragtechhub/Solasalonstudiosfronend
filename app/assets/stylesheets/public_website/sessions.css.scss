@@ -599,6 +599,18 @@
   -moz-background-size: contain;
   -o-background-size: contain;
   background-size: contain;
+
+  h2.highlight {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 21px;
+    margin-bottom: 5px;
+    color: $brand-pink;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+  }
   
   /* bb = bottom border */
   h2.bb {
