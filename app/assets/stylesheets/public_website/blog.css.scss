@@ -6,6 +6,21 @@
   border-bottom: 1px dashed #CECECE;
   margin-bottom: 50px;
 
+  ul, ol {
+    margin: 0px 0px 15px 30px;
+    list-style-position: inside;
+
+    li {
+      font-size: 15px;
+      line-height: 25px;
+      color: #4A4A4A;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
   img.full-width {
     margin-bottom: 0;
   }
