@@ -57,7 +57,7 @@
       
       <div class="one-third column">
         <h4 class="large"><%= @post.title.html_safe %></h4>
-        <p class="subtle"><%= t('page.blog.posted_on', :date => @post.publish_date.strftime('%B %e, %Y')).html_safe %><br><%= @post.author.html_safe %></p>
+        <p class="subtle"><%= t('page.blog.posted_on', :date => @post.publish_date ? @post.publish_date.strftime('%B %e, %Y').html_safe : DateTime.now.strftime('%B %e, %Y').html_safe) %><br><%= @post.author.html_safe %></p>
         <div class="share-socially"><h3><%= t('page.blog.share_socially').html_safe %></h3></div>
         <ul class="social three">
           <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@post.image(:original)}&description=#{@post.safe_title}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
