@@ -102,19 +102,20 @@ $(function () {
     autoHideScrollbar: true,
   });
 
+  $('.add-to-calendar-wrapper').add_to_calendar();
   // add to calendar
-  $('.add-to-calendar-wrapper').each(function () {
-    var $this = $(this);
-    var calendar = createCalendar({
-      data: {
-        title: $this.data('title'), //'Sola Session West Palm Beach, FL',
-        start: new Date($this.data('start')), //new Date('September 18, 2017 09:00'),
-        end: new Date($this.data('end')), //new Date('September 18, 2017 18:30'),  
-        address: $this.data('address'), //'Wyndham Grand Jupiter at Harbourside Place, 122 Soundings Avenue, Jupiter, FL 33477', 
-        description: $this.data('description') //"On Monday, September 18th, we're bringing the industry's best exclusively to the Sola community for a full day of inspiration and education to help take your salon business to a higher level. We can't wait to see you in West Palm Beach!"
-      }
-    });
-    $this.append(calendar);
-  });
+  // $('.add-to-calendar-wrapper').each(function () {
+  //   var $this = $(this);
+  //   var calendar = createCalendar({
+  //     data: {
+  //       title: $this.data('title'), //'Sola Session West Palm Beach, FL',
+  //       start: new Date($this.data('start')), //new Date('September 18, 2017 09:00'),
+  //       end: new Date($this.data('end')), //new Date('September 18, 2017 18:30'),  
+  //       address: $this.data('address'), //'Wyndham Grand Jupiter at Harbourside Place, 122 Soundings Avenue, Jupiter, FL 33477', 
+  //       description: $this.data('description') //"On Monday, September 18th, we're bringing the industry's best exclusively to the Sola community for a full day of inspiration and education to help take your salon business to a higher level. We can't wait to see you in West Palm Beach!"
+  //     }
+  //   });
+  //   $this.append(calendar);
+  // });
 
 });

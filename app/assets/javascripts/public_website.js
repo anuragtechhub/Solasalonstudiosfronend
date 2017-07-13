@@ -10,7 +10,6 @@
 //= require affix
 //= require jquery.swipebox
 //= require modal
-//= require atc
 //= require jquery.mousewheel
 //= require jquery.mCustomScrollbar
 //= require jssocials
@@ -20,6 +19,7 @@
 //= require text-gradient-svg
 //= require text-gradient
 //= require jquery.hoverIntent
+//= require add_to_calendar
 
 $(function () {
 
