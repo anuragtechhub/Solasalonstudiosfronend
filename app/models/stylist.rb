@@ -104,7 +104,7 @@ class Stylist < ActiveRecord::Base
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
   validates :name, :url_name, :presence => true
-  validates :other_service, length: {maximum: 18}, allow_blank: true
+  #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
 
   def social_links_present?
