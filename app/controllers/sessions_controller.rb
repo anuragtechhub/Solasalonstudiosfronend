@@ -30,6 +30,10 @@ class SessionsController < PublicWebsiteController
 
   end
 
+  def san_jose
+
+  end
+
   def west_palm_beach
 
   end

@@ -106,6 +106,7 @@ Solasalonstudios::Application.routes.draw do
   match 'sessions/dallas' => 'sessions#index', :via => [:get, :post], :as => :dallas_session
   match 'sessions/dc' => 'sessions#index', :via => [:get, :post], :as => :dc_session
   match 'sessions/west-palm-beach' => 'sessions#west_palm_beach', :via => [:get, :post], :as => :west_palm_beach_session
+  match 'sessions/san-jose' => 'sessions#san_jose', :via => [:get, :post], :as => :san_jose_session
 
   namespace :api do
     namespace :v1 do
