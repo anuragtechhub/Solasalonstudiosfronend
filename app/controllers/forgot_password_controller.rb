@@ -6,7 +6,7 @@ class ForgotPasswordController < ApplicationController
     end
 
     if request.post?
-      admin = Admin.where(:email => params[:username]).first
+      admin = Admin.where('lower(email) = ?', params[:username].downcase.strip).first#Admin.where(:email => params[:username]).first
       
       if params[:username].blank? and admin.blank?
         @error = 'Please enter a username'

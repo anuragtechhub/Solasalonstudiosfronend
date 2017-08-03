@@ -425,7 +425,7 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new(start_date.year, month, 1), DateTime.new(start_date.year, month, 1).end_of_month))
         key_sym = "pageviews_current_#{month}".to_sym
         data[key_sym] = data_month
-        sleep 1
+        sleep 0.2
       end
 
       # previous year pageviews (by month)
@@ -434,8 +434,10 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new((start_date - 1.year).year, month, 1), DateTime.new((start_date - 1.year).year, month, 1).end_of_month))
         key_sym = "pageviews_last_#{month}".to_sym
         data[key_sym] = data_month
-        sleep 1
+        sleep 0.2
       end
+
+      sleep 1
 
       p "begin unique visits"
       # unique visits - visits, new visitors, returning visitors
