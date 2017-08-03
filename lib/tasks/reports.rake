@@ -28,14 +28,15 @@ namespace :reports do
     end_date = start_date.end_of_month    
 
     Location.where(:status => :open).order(:created_at => :asc).each do |location|
-      p "location=#{location.name}"
+      p "START location=#{location.id}, #{location.name}"
 
       location_ga_report(location, start_date, end_date, false)
+      p "FINISHED WITH location=#{location.id}, #{location.name}"
     end
   end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-01-01]
+  # rake reports:locations_with_email[2017-07-01]
   task :locations_with_email, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -43,9 +44,13 @@ namespace :reports do
     end_date = start_date.end_of_month    
 
     Location.where(:status => :open).order(:created_at => :asc).each do |location|
-      p "location=#{location.name}"
-
-      location_ga_report(location, start_date, end_date, true)
+      p "START location=#{location.id}, #{location.name}"
+      begin
+        location_ga_report(location, start_date, end_date, true)
+        p "FINISHED WITH location=#{location.id}, #{location.name}"
+      rescue Exception => e
+        p "ERROR with location=#{location.id}, #{location.name}, #{e.inspect}"
+      end
     end
   end 
 
