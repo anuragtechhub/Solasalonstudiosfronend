@@ -57,7 +57,7 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-07-01, 48]
+  # rake reports:locations_with_email_starting_at[2017-07-01,48]
   task :locations_with_email_starting_at, [:start_date, :gid] => :environment do |task, args|
     p "begin locations report..."
     
