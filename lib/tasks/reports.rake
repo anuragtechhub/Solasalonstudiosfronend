@@ -44,7 +44,7 @@ namespace :reports do
     end_date = start_date.end_of_month    
 
     Location.where(:status => :open).order(:id => :asc).each do |location|
-      sleep 2
+      sleep 1
       p "START location=#{location.id}, #{location.name}"
       begin
         location_ga_report(location, start_date, end_date, true)
@@ -65,7 +65,7 @@ namespace :reports do
     end_date = start_date.end_of_month    
 
     Location.where(:status => :open).where('id > ?', args.gid).order(:id => :asc).uniq.each do |location|
-      sleep 2
+      sleep 1
       p "START location=#{location.id}, #{location.name}"
       begin
         location_ga_report(location, start_date, end_date, true)
@@ -425,6 +425,7 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new(start_date.year, month, 1), DateTime.new(start_date.year, month, 1).end_of_month))
         key_sym = "pageviews_current_#{month}".to_sym
         data[key_sym] = data_month
+        sleep 1
       end
 
       # previous year pageviews (by month)
@@ -433,6 +434,7 @@ namespace :reports do
         data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new((start_date - 1.year).year, month, 1), DateTime.new((start_date - 1.year).year, month, 1).end_of_month))
         key_sym = "pageviews_last_#{month}".to_sym
         data[key_sym] = data_month
+        sleep 1
       end
 
       p "begin unique visits"
