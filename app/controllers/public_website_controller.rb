@@ -5,7 +5,7 @@ class PublicWebsiteController < ApplicationController
 
   layout 'public_website'
 
-  before_action :set_locale#, :auth_if_canada
+  before_action :set_locale, :auth_if_test#, :auth_if_canada
 
   #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if => 
 
@@ -17,6 +17,14 @@ class PublicWebsiteController < ApplicationController
   #   end
   # end
 
+  def auth_if_test
+    if Rails.env.test?
+      authenticate_or_request_with_http_basic 'test' do |name, password|
+        name == 'phish' && password == 'food'
+      end
+    end
+  end
+
   def set_locale
     if request.domain == 'solasalonstudios.ca'
       I18n.locale = 'en-CA' 
@@ -24,4 +32,5 @@ class PublicWebsiteController < ApplicationController
       I18n.locale = 'en'
     end
   end
+
 end
