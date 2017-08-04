@@ -97,7 +97,7 @@ namespace :reports do
 
   # rake reports:location_with_email[380]
   # rake reports:location_with_email[2]
-  # rake reports:location_with_email[2,2017-01-01]
+  # rake reports:location_with_email[8,2017-07-01]
   task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
     p "begin location with email report..."
 
