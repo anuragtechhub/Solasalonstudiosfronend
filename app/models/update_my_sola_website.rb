@@ -3,6 +3,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   require 'RMagick'
   require 'uri'
 
+  has_paper_trail
+
   belongs_to :stylist
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
