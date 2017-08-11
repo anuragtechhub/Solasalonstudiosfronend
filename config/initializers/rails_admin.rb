@@ -301,6 +301,27 @@ RailsAdmin.config do |config|
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
+    edit do
+      field :stylist
+      field :studio
+      field :start_date
+      field :end_date
+      field :move_in_date
+      field :signed_date
+      field :fee_start_date
+      field :weekly_fee_year_1
+      field :weekly_fee_year_2
+      field :damage_deposit_amount
+      field :product_bonus_amount
+      field :product_bonus_distributor
+      field :sola_provided_insurance
+      field :sola_provided_insurance_frequency
+      field :special_terms
+      field :ach_authorized
+      field :rent_manager_id do
+        label 'Rent Manager ID'
+      end
+    end
   end
 
   config.model 'Location' do    
@@ -964,14 +985,16 @@ RailsAdmin.config do |config|
     show do
       field :name
       field :rent_manager_id do
-        help 'This should be a unit id from Rent Manager'
+        label 'Rent Manager ID'
+        help 'This should be a unit ID from Rent Manager'
       end
       field :stylist
     end
     edit do
       field :name
       field :rent_manager_id do
-        help 'This should be a unit id from Rent Manager'
+        label 'Rent Manager ID'
+        help 'This should be a unit ID from Rent Manager'
       end
       field :stylist
     end
@@ -1041,6 +1064,21 @@ RailsAdmin.config do |config|
         field :emergency_contact_name
         field :emergency_contact_relationship
         field :emergency_contact_phone_number
+      end
+      group :leases do
+        active false
+        field :leases do
+          # associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          # associated_collection_scope do
+          #   # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+          #   admin = bindings[:controller]._current_user
+          #   Proc.new { |scope|
+          #     if (admin.franchisee == true)
+          #       scope = scope.where(:admin_id => admin.id)
+          #     end
+          #   }
+          # end
+        end
       end
       group :business do
         active false
@@ -1247,21 +1285,24 @@ RailsAdmin.config do |config|
         field :emergency_contact_relationship
         field :emergency_contact_phone_number
       end
+      group :leases do
+        active false
+        field :leases do
+          # associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          # associated_collection_scope do
+          #   # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+          #   admin = bindings[:controller]._current_user
+          #   Proc.new { |scope|
+          #     if (admin.franchisee == true)
+          #       scope = scope.where(:admin_id => admin.id)
+          #     end
+          #   }
+          # end
+        end
+      end
       group :business do
         active false
         field :location do
-          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
-          associated_collection_scope do
-            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
-            admin = bindings[:controller]._current_user
-            Proc.new { |scope|
-              if (admin.franchisee == true)
-                scope = scope.where(:admin_id => admin.id)
-              end
-            }
-          end
-        end
-        field :leases do
           associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
           associated_collection_scope do
             # bindings[:object] & bindings[:controller] are available, but not in scope's block!
