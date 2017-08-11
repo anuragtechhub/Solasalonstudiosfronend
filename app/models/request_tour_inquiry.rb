@@ -1,4 +1,7 @@
 class RequestTourInquiry < ActiveRecord::Base
+
+  has_paper_trail
+  
   belongs_to :location
   belongs_to :visit
   after_create :send_notification_email

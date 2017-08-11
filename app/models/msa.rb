@@ -1,5 +1,7 @@
 class Msa < ActiveRecord::Base
 
+  has_paper_trail
+
   before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields

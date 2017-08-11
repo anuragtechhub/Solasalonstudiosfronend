@@ -284,17 +284,23 @@ RailsAdmin.config do |config|
     visible false
   end
 
-  config.model 'FranchisingRequest' do
-    label 'Franchsing Inquiry'
-    label_plural 'Franchising Inquiries'
-  end
-
   config.model 'BlogCountry' do
     visible false
   end
 
   config.model 'Country' do
     visible false  
+  end
+
+  config.model 'FranchisingRequest' do
+    label 'Franchsing Inquiry'
+    label_plural 'Franchising Inquiries'
+  end
+
+  config.model 'Lease' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
   end
 
   config.model 'Location' do    
@@ -344,6 +350,8 @@ RailsAdmin.config do |config|
           end
         end
         field :status
+        field :rent_manager_property_id
+        field :rent_manager_location_id
       end
       group :contact do
         field :general_contact_name do
@@ -556,6 +564,8 @@ RailsAdmin.config do |config|
           end
         end
         field :status
+        field :rent_manager_property_id
+        field :rent_manager_location_id
       end
       group :contact do
         field :general_contact_name do
@@ -927,6 +937,26 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Studio' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    show do
+      field :name
+      field :rent_manager_id do
+        help 'This should be a unit id from Rent Manager'
+      end
+      field :stylist
+    end
+    edit do
+      field :name
+      field :rent_manager_id do
+        help 'This should be a unit id from Rent Manager'
+      end
+      field :stylist
+    end
+  end
+
   config.model 'Stylist' do
     label 'Salon Professional'
     label_plural 'Salon Professionals' 
@@ -956,6 +986,9 @@ RailsAdmin.config do |config|
           end
         end
         field :status
+        field :rent_manager_id do
+          help 'This should be a tenant id from Rent Manager'
+        end
       end
       group :contact do
         field :phone_number
@@ -969,8 +1002,10 @@ RailsAdmin.config do |config|
       end      
       group :business do
         field :location
+        field :leases
         field :business_name
         field :studio_number
+        field :studio
         field :work_hours
         field :accepting_new_clients
       end
@@ -1124,6 +1159,9 @@ RailsAdmin.config do |config|
         end
         field :biography, :ck_editor
         field :status
+        field :rent_manager_id do
+          help 'This should be a tenant id from Rent Manager'
+        end
       end
       group :contact do
         field :phone_number
@@ -1142,8 +1180,18 @@ RailsAdmin.config do |config|
             # bindings[:object] & bindings[:controller] are available, but not in scope's block!
             admin = bindings[:controller]._current_user
             Proc.new { |scope|
-              # scoping all Players currently, let's limit them to the team's league
-              # Be sure to limit if there are a lot of Players and order them by position
+              if (admin.franchisee == true)
+                scope = scope.where(:admin_id => admin.id)
+              end
+            }
+          end
+        end
+        field :leases do
+          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          associated_collection_scope do
+            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+            admin = bindings[:controller]._current_user
+            Proc.new { |scope|
               if (admin.franchisee == true)
                 scope = scope.where(:admin_id => admin.id)
               end
@@ -1152,6 +1200,7 @@ RailsAdmin.config do |config|
         end
         field :business_name
         field :studio_number
+        field :studio
         field :work_hours
         field :accepting_new_clients        
       end

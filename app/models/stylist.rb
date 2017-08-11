@@ -28,6 +28,9 @@ class Stylist < ActiveRecord::Base
   after_save :remove_from_mailchimp_if_closed
   after_destroy :remove_from_mailchimp, :touch_stylist
 
+  has_one :studio
+  has_many :leases
+
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   accepts_nested_attributes_for :testimonial_1, :allow_destroy => true
 

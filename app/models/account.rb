@@ -3,6 +3,8 @@ class Account < ActiveRecord::Base
   validates :api_key, :name, :uniqueness => true
 
   before_create :generate_api_key
+
+  has_paper_trail
   
   private
   

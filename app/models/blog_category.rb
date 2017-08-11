@@ -1,4 +1,6 @@
 class BlogCategory < ActiveRecord::Base
+
+  has_paper_trail
   
   before_save :fix_url_name
   

@@ -1,5 +1,7 @@
 class UpdateMySolaWebsite < ActiveRecord::Base
 
+  has_paper_trail
+
   require 'RMagick'
   require 'uri'
 

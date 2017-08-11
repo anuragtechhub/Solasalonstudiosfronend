@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stylist_id: 
+  studio_id: 
+  rent_manager_id: MyString
+  start_date: 2017-08-10
+  end_date: 2017-08-10
+  move_in_date: 2017-08-10
+  signed_date: 2017-08-10
+  weekly_fee_year_1: 1
+  weekly_fee_year_2: 1
+  fee_start_date: 2017-08-10
+  damage_deposit_amount: 1
+  product_bonus_amount: 1
+  product_bonus_distributor: MyString
+  sola_provided_insurance: false
+  sola_provided_insurance_frequency: MyString
+  special_terms: MyText
+  ach_authorized: false
+
+two:
+  stylist_id: 
+  studio_id: 
+  rent_manager_id: MyString
+  start_date: 2017-08-10
+  end_date: 2017-08-10
+  move_in_date: 2017-08-10
+  signed_date: 2017-08-10
+  weekly_fee_year_1: 1
+  weekly_fee_year_2: 1
+  fee_start_date: 2017-08-10
+  damage_deposit_amount: 1
+  product_bonus_amount: 1
+  product_bonus_distributor: MyString
+  sola_provided_insurance: false
+  sola_provided_insurance_frequency: MyString
+  special_terms: MyText
+  ach_authorized: false

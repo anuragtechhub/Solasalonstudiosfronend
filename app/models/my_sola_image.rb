@@ -1,5 +1,7 @@
 class MySolaImage < ActiveRecord::Base
 
+  has_paper_trail
+
   include Publically
 
   scope :completed, -> { where("statement <> '' AND statement_variant IS NOT NULL AND image_file_name IS NOT NULL AND generated_image_file_name IS NOT NULL AND(name IS NOT NULL OR instagram_handle IS NOT NULL)") }

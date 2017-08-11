@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909024941) do
+ActiveRecord::Schema.define(version: 20170707230827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -320,6 +320,9 @@ ActiveRecord::Schema.define(version: 20170909024941) do
     t.text     "image_19_alt_text"
     t.text     "image_20_alt_text"
     t.string   "email_address_for_reports"
+    t.string   "rent_manager_property_id"
+    t.string   "rent_manager_location_id"
+    t.boolean  "service_request_enabled",         default: false
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
@@ -494,7 +497,7 @@ ActiveRecord::Schema.define(version: 20170909024941) do
     t.integer  "testimonial_id_10"
     t.string   "location_name"
     t.boolean  "hair_extensions"
-    t.boolean  "send_a_message_button",   default: true
+    t.boolean  "send_a_message_button",          default: true
     t.string   "pinterest_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
@@ -506,19 +509,19 @@ ActiveRecord::Schema.define(version: 20170909024941) do
     t.string   "linkedin_url"
     t.string   "other_service"
     t.string   "google_plus_url"
-    t.string   "encrypted_password",      default: ""
+    t.string   "encrypted_password",             default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "msa_name"
-    t.boolean  "phone_number_display",    default: true
-    t.boolean  "has_sola_genius_account", default: false
-    t.boolean  "sola_genius_enabled",     default: true
+    t.boolean  "phone_number_display",           default: true
+    t.boolean  "has_sola_genius_account",        default: false
+    t.boolean  "sola_genius_enabled",            default: true
     t.string   "sola_pro_platform"
     t.string   "sola_pro_version"
     t.text     "image_1_alt_text"
@@ -532,6 +535,21 @@ ActiveRecord::Schema.define(version: 20170909024941) do
     t.text     "image_9_alt_text"
     t.text     "image_10_alt_text"
     t.boolean  "microblading"
+    t.string   "rent_manager_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "cell_phone_number"
+    t.string   "email_address_private"
+    t.string   "emergency_contact_name"
+    t.string   "emergency_contact_relationship"
+    t.string   "emergency_contact_phone_number"
+    t.string   "cosmetology_license_number"
+    t.string   "permitted_use_for_studio"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
