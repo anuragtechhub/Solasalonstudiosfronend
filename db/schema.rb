@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707230827) do
+ActiveRecord::Schema.define(version: 20170811012022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -541,7 +541,7 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.date     "date_of_birth"
     t.string   "street_address"
     t.string   "city"
-    t.string   "state"
+    t.string   "state_province"
     t.string   "postal_code"
     t.string   "cell_phone_number"
     t.string   "email_address_private"
@@ -550,6 +550,7 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.string   "emergency_contact_phone_number"
     t.string   "cosmetology_license_number"
     t.string   "permitted_use_for_studio"
+    t.string   "country"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

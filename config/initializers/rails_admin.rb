@@ -985,12 +985,11 @@ RailsAdmin.config do |config|
             value.html_safe
           end
         end
+        field :cosmetology_license_number
         field :status
-        field :rent_manager_id do
-          help 'This should be a tenant id from Rent Manager'
-        end
       end
-      group :contact do
+      group :public_contact_information do
+        active false
         field :phone_number
         field :phone_number_display do
           help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
@@ -999,15 +998,40 @@ RailsAdmin.config do |config|
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
-      end      
+      end   
+      group :private_contact_information do
+        active false
+        field :first_name
+        field :last_name
+        field :email_address_private do
+          label 'Email Address'
+        end
+        field :cell_phone_number
+        field :date_of_birth
+        field :street_address
+        field :city
+        field :state_province do
+          label 'State/Province'
+        end
+        field :postal_code
+        field :country
+      end 
+      group :emergency_contact_information do
+        active false
+        field :emergency_contact_name
+        field :emergency_contact_relationship
+        field :emergency_contact_phone_number
+      end
       group :business do
+        active false
         field :location
         field :leases
         field :business_name
         field :studio_number
-        field :studio
+        field :permitted_use_for_studio
+        #field :studio
         field :work_hours
-        field :accepting_new_clients
+        field :accepting_new_clients  
       end
       group :website do
         field :website_url do
@@ -1016,9 +1040,9 @@ RailsAdmin.config do |config|
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
-
       end
       group :social do
+        active false
         field :facebook_url
         field :google_plus_url
         field :instagram_url
@@ -1028,6 +1052,7 @@ RailsAdmin.config do |config|
         field :yelp_url
       end
       group :services do
+        active false
         field :brows
         field :hair
         field :hair_extensions
@@ -1146,6 +1171,13 @@ RailsAdmin.config do |config|
         field :testimonial_9
         field :testimonial_10
       end 
+      group :rent_manager do
+        active false
+        field :rent_manager_id do
+          label 'Rent Manager ID'
+          help 'This should be a tenant ID from Rent Manager'
+        end
+      end
     end
     edit do
       group :general do
@@ -1158,12 +1190,11 @@ RailsAdmin.config do |config|
           # end
         end
         field :biography, :ck_editor
+        field :cosmetology_license_number
         field :status
-        field :rent_manager_id do
-          help 'This should be a tenant id from Rent Manager'
-        end
       end
-      group :contact do
+      group :public_contact_information do
+        active false
         field :phone_number
         field :phone_number_display do
           help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
@@ -1172,8 +1203,32 @@ RailsAdmin.config do |config|
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
-      end      
+      end   
+      group :private_contact_information do
+        active false
+        field :first_name
+        field :last_name
+        field :email_address_private do
+          label 'Email Address'
+        end
+        field :cell_phone_number
+        field :date_of_birth
+        field :street_address
+        field :city
+        field :state_province do
+          label 'State/Province'
+        end
+        field :postal_code
+        field :country
+      end   
+      group :emergency_contact_information do
+        active false
+        field :emergency_contact_name
+        field :emergency_contact_relationship
+        field :emergency_contact_phone_number
+      end
       group :business do
+        active false
         field :location do
           associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
           associated_collection_scope do
@@ -1200,9 +1255,10 @@ RailsAdmin.config do |config|
         end
         field :business_name
         field :studio_number
-        field :studio
+        field :permitted_use_for_studio   
+        #field :studio
         field :work_hours
-        field :accepting_new_clients        
+        field :accepting_new_clients  
       end
       group :website do
         active false
@@ -1378,6 +1434,13 @@ RailsAdmin.config do |config|
         end
         field :password
         field :password_confirmation
+      end
+      group :rent_manager do
+        active false
+        field :rent_manager_id do
+          label 'Rent Manager ID'
+          help 'This should be a tenant ID from Rent Manager'
+        end
       end
       # group :credentials do
       #   active false
