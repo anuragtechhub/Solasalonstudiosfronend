@@ -350,8 +350,6 @@ RailsAdmin.config do |config|
           end
         end
         field :status
-        field :rent_manager_property_id
-        field :rent_manager_location_id
       end
       group :contact do
         field :general_contact_name do
@@ -539,6 +537,18 @@ RailsAdmin.config do |config|
           help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
       end
+      group :rent_manager do
+        active false
+        field :rent_manager_property_id do
+          label 'Rent Manager Property ID'
+        end
+        field :rent_manager_location_id do
+          label 'Rent Manager Location ID'
+        end
+        field :service_request_enabled do
+          help 'If set to "Yes", there will be a Service Request button visible in Sola Pro connected to your Rent Manager account.'
+        end
+      end
     end
     edit do
       group :general do
@@ -564,8 +574,6 @@ RailsAdmin.config do |config|
           end
         end
         field :status
-        field :rent_manager_property_id
-        field :rent_manager_location_id
       end
       group :contact do
         field :general_contact_name do
@@ -826,6 +834,18 @@ RailsAdmin.config do |config|
         end
         field :callfire_list_ids do
           help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
+      end
+      group :rent_manager do
+        active false
+        field :rent_manager_property_id do
+          label 'Rent Manager Property ID'
+        end
+        field :rent_manager_location_id do
+          label 'Rent Manager Location ID'
+        end
+        field :service_request_enabled do
+          help 'If set to "Yes", there will be a Service Request button visible in Sola Pro connected to your Rent Manager account.'
         end
       end
     end

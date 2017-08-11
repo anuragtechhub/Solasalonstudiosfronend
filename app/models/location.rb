@@ -152,6 +152,10 @@ class Location < ActiveRecord::Base
     [['Open', 'open'], ['Closed', 'closed']]
   end
 
+  def service_request_enabled_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def html_address
     address = ''
 
