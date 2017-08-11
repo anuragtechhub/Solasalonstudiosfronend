@@ -5,5 +5,4 @@ class Lease < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :studio
 
-
 end
