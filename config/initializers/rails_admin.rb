@@ -311,7 +311,10 @@ RailsAdmin.config do |config|
       field :fee_start_date
       field :weekly_fee_year_1
       field :weekly_fee_year_2
-      field :damage_deposit_amount
+      field :damage_deposit_amount do
+        #partial 'currency_input'
+        bindings[:view].render :partial => 'rails_admin/main/currency_input', :locals => {:field => self, :form => bindings[:form]}
+      end
       field :product_bonus_amount
       field :product_bonus_distributor
       field :sola_provided_insurance
@@ -320,6 +323,7 @@ RailsAdmin.config do |config|
       field :ach_authorized
       field :rent_manager_id do
         label 'Rent Manager ID'
+        help 'This should be a lease ID from Rent Manager'
       end
     end
   end
