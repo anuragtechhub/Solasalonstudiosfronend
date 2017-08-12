@@ -309,13 +309,18 @@ RailsAdmin.config do |config|
       field :move_in_date
       field :signed_date
       field :fee_start_date
-      field :weekly_fee_year_1
-      field :weekly_fee_year_2
+      field :weekly_fee_year_1 do
+        partial 'currency_input'
+      end
+      field :weekly_fee_year_2 do
+        partial 'currency_input'
+      end
       field :damage_deposit_amount do
         partial 'currency_input'
-        #bindings[:view].render :partial => 'rails_admin/main/currency_input', :locals => {:field => self}
       end
-      field :product_bonus_amount
+      field :product_bonus_amount do
+        partial 'currency_input'
+      end
       field :product_bonus_distributor
       field :sola_provided_insurance
       field :sola_provided_insurance_frequency
