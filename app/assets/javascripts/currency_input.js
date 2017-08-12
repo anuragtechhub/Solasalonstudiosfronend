@@ -3,8 +3,6 @@ $.widget('solasalonstudios.currencyinput', {
   _create: function() {
     var self = this;
 
-    console.log('create currency input', self);
-
     // build elements
     var $add_on_label = $('<label class="add-on ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" style="background-color:#DCE4EC"></label>');
     var $dollar_sign = $('<span style="display:inline-block;margin:0 7px;position:relative;top:1px;">$</span>');
