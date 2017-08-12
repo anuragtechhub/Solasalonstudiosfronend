@@ -312,8 +312,8 @@ RailsAdmin.config do |config|
       field :weekly_fee_year_1
       field :weekly_fee_year_2
       field :damage_deposit_amount do
-        #partial 'currency_input'
-        bindings[:view].render :partial => 'rails_admin/main/currency_input', :locals => {:field => self, :form => bindings[:form]}
+        partial 'currency_input'
+        #bindings[:view].render :partial => 'rails_admin/main/currency_input', :locals => {:field => self}
       end
       field :product_bonus_amount
       field :product_bonus_distributor
