@@ -101,6 +101,14 @@ RailsAdmin.config do |config|
         field :callfire_app_login
         field :callfire_app_password
       end
+      group 'Sola Pro' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :sola_pro_country_admin do
+          help "If this field is set, this admin will have access to manage Sola Pro content for their country. The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
+        end
+      end
     end
   end
 

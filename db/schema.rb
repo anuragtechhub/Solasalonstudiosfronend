@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707230827) do
+ActiveRecord::Schema.define(version: 20170813201105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.string   "mailchimp_api_key"
     t.string   "callfire_app_login"
     t.string   "callfire_app_password"
+    t.string   "sola_pro_country_admin"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -137,6 +138,31 @@ ActiveRecord::Schema.define(version: 20170707230827) do
   end
 
   add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree
+
+  create_table "leases", force: true do |t|
+    t.integer  "stylist_id"
+    t.integer  "studio_id"
+    t.string   "rent_manager_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.date     "move_in_date"
+    t.date     "signed_date"
+    t.integer  "weekly_fee_year_1"
+    t.integer  "weekly_fee_year_2"
+    t.date     "fee_start_date"
+    t.integer  "damage_deposit_amount"
+    t.integer  "product_bonus_amount"
+    t.string   "product_bonus_distributor"
+    t.boolean  "sola_provided_insurance",           default: false
+    t.string   "sola_provided_insurance_frequency"
+    t.text     "special_terms"
+    t.boolean  "ach_authorized",                    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
+  add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -327,6 +353,9 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.text     "image_19_alt_text"
     t.text     "image_20_alt_text"
     t.string   "email_address_for_reports"
+    t.string   "rent_manager_property_id"
+    t.string   "rent_manager_location_id"
+    t.boolean  "service_request_enabled",         default: false
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
@@ -397,6 +426,16 @@ ActiveRecord::Schema.define(version: 20170707230827) do
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
   add_index "request_tour_inquiries", ["visit_id"], name: "index_request_tour_inquiries_on_visit_id", using: :btree
+
+  create_table "studios", force: true do |t|
+    t.string   "name"
+    t.string   "rent_manager_id"
+    t.integer  "stylist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "studios", ["stylist_id"], name: "index_studios_on_stylist_id", using: :btree
 
   create_table "stylist_messages", force: true do |t|
     t.string   "name"
@@ -491,7 +530,7 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.integer  "testimonial_id_10"
     t.string   "location_name"
     t.boolean  "hair_extensions"
-    t.boolean  "send_a_message_button",   default: true
+    t.boolean  "send_a_message_button",          default: true
     t.string   "pinterest_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
@@ -503,19 +542,19 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.string   "linkedin_url"
     t.string   "other_service"
     t.string   "google_plus_url"
-    t.string   "encrypted_password",      default: ""
+    t.string   "encrypted_password",             default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "msa_name"
-    t.boolean  "phone_number_display",    default: true
-    t.boolean  "has_sola_genius_account", default: false
-    t.boolean  "sola_genius_enabled",     default: true
+    t.boolean  "phone_number_display",           default: true
+    t.boolean  "has_sola_genius_account",        default: false
+    t.boolean  "sola_genius_enabled",            default: true
     t.string   "sola_pro_platform"
     t.string   "sola_pro_version"
     t.text     "image_1_alt_text"
@@ -529,6 +568,22 @@ ActiveRecord::Schema.define(version: 20170707230827) do
     t.text     "image_9_alt_text"
     t.text     "image_10_alt_text"
     t.boolean  "microblading"
+    t.string   "rent_manager_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state_province"
+    t.string   "postal_code"
+    t.string   "cell_phone_number"
+    t.string   "email_address_private"
+    t.string   "emergency_contact_name"
+    t.string   "emergency_contact_relationship"
+    t.string   "emergency_contact_phone_number"
+    t.string   "cosmetology_license_number"
+    t.string   "permitted_use_for_studio"
+    t.string   "country"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
