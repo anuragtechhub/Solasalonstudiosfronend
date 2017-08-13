@@ -10,6 +10,7 @@ class Blog < ActiveRecord::Base
   has_many :countries, :through => :blog_countries
 
   validates :title, :status, :presence => true
+  validates :countries, :presence => true
   #validates :url_name, :presence => true, :uniqueness => true
 
   has_attached_file :carousel_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#', :carousel => '400x540#' }, :s3_protocol => :https
