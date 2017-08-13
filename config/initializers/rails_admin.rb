@@ -14,7 +14,6 @@ RailsAdmin.config do |config|
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
 
-  # config.excluded_models << 'GetFeatured'
   # config.excluded_models << 'ResetPassword'
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
@@ -260,6 +259,12 @@ RailsAdmin.config do |config|
         active false
         field :fb_conversion_pixel
       end
+      group 'Countries' do
+        active false
+        field :countries do
+          inline_add false
+        end
+      end
     end
   end
 
@@ -280,6 +285,14 @@ RailsAdmin.config do |config|
   config.model 'FranchisingRequest' do
     label 'Franchsing Inquiry'
     label_plural 'Franchising Inquiries'
+  end
+
+  config.model 'BlogCountry' do
+    visible false
+  end
+
+  config.model 'Country' do
+    visible false  
   end
 
   config.model 'Location' do    

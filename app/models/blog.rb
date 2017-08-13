@@ -6,6 +6,8 @@ class Blog < ActiveRecord::Base
 
   has_many :blog_blog_categories
   has_many :blog_categories, :through => :blog_blog_categories
+  has_many :blog_countries
+  has_many :countries, :through => :blog_countries
 
   validates :title, :status, :presence => true
   #validates :url_name, :presence => true, :uniqueness => true

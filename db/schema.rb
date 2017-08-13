@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813201105) do
+ActiveRecord::Schema.define(version: 20170813202516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 20170813201105) do
     t.datetime "updated_at"
   end
 
+  create_table "blog_countries", force: true do |t|
+    t.integer  "blog_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_countries", ["blog_id"], name: "index_blog_countries_on_blog_id", using: :btree
+  add_index "blog_countries", ["country_id"], name: "index_blog_countries_on_country_id", using: :btree
+
   create_table "blogs", force: true do |t|
     t.string   "title"
     t.string   "url_name"
@@ -124,6 +134,14 @@ ActiveRecord::Schema.define(version: 20170813201105) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "domain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "franchising_requests", force: true do |t|
     t.string   "name"
