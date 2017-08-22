@@ -1,4 +1,4 @@
-<div class="hero-tab-content" <%= 'data-hero-active=true' if params[:tab] == 'sola-pro' %> data-ref="#sola-pro">
+<div class="hero-tab-content sola-pro-tab" <%= 'data-hero-active=true' if params[:tab] == 'sola-pro' %> data-ref="#sola-pro">
 
   <div class="hero-fullscreen">
 
@@ -19,9 +19,13 @@
 
       </div>
     </div>
+
+    <a href="#AboutSolaPro" class="down-arrow" data-animated-scroll data-nav-group="sola-pro-nav"></a>
   </div>
 
   <div class="container container-inset">
+
+    <a id="AboutSolaPro" name="AboutSolaPro"></a>
 
     <div class="row">
       <div class="one-third column">
