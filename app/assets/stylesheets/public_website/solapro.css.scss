@@ -1,0 +1,902 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+/**************
+* Sola Pro *
+***************/
+
+.own-your-salon .hero-fullscreen {
+  img.introducing_sola_pro {
+    position: absolute;
+    top: 37%;
+    left: 50% ;
+    margin: (-102.5px / 1.45) 0 0 (-353.5px / 1.45);
+    width: (707px / 1.45);
+    height: (205px / 1.45);
+    min-height: auto;
+  }
+  .sola-pro-hero-heading, .sola-pro-hero-text {
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 300 !important;
+    color: #FFF !important;
+    text-align: center !important;
+    text-transform: none !important;
+    letter-spacing: 0px !important;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 60px;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+  } 
+  .sola-pro-hero-heading {
+    top: 55%;
+
+    font-size: 43px !important;
+    line-height: 45px !important;
+  }
+  .sola-pro-hero-text {
+    top: 70%;
+
+    font-size: 29px !important;
+    line-height: 35px !important;
+  } 
+} 
+
+.desktop-br {
+  display: block;
+  line-height: 1px;
+  height: 1px;
+}
+
+.down_circle_arrow_icon {
+  position: absolute;
+  left: 50%;
+  margin-left: -39px;
+  bottom: 0px;
+  background: asset-url('own/down_arrow.png') no-repeat;
+  background-size: 78px 78px;
+  width: 78px;
+  height: 78px;
+  z-index: 3;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.2 !important;
+  }
+}
+
+.sizzle-video-controls {
+  display: none;
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  margin-left: -(124px / 2);
+  margin-top: -(103px / 2);
+
+  .gradient-play-button {
+    background: asset-url('own/gradient-play-button.png') no-repeat;
+    background-size: 78px 78px;
+    width: 78px;
+    height: 78px;
+    z-index: 3;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .sizzle-video-controls-text {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #FFF !important;
+  }
+} 
+
+.sola-pro-phone-gallery-wrapper .arrow-left {
+  left: -80px;
+  background: asset-url('own/left-arrow.png') no-repeat;
+  background-size: 40px 67px;
+  width: 40px;
+  height: 67px;  
+  opacity: 0.4;
+  transition: opacity .25s ease !important;
+  -moz-transition: opacity .25s ease !important;
+  -webkit-transition: opacity .25s ease !important;
+
+  &:hover {
+    opacity: 0.2;
+  }
+}
+
+.sola-pro-phone-gallery-wrapper .arrow-right {
+  right: -80px;
+  background: asset-url('own/right-arrow.png') no-repeat;
+  background-size: 40px 67px;
+  width: 40px;
+  height: 67px;  
+  opacity: 0.4;
+  transition: opacity .25s ease !important;
+  -moz-transition: opacity .25s ease !important;
+  -webkit-transition: opacity .25s ease !important;
+
+  &:hover {
+    opacity: 0.2;
+  }  
+}
+
+.sola-pro {
+  overflow-x: hidden;
+
+  .run-your-sola-like-a-boss {
+    display: block;
+    margin: 0 auto -30px auto;
+  }
+
+  .sola-pro-gallery {
+    position: relative;
+    // min-height: 90vh;
+    // height: 90vh;
+    padding: 0;
+    background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .sola-pro-gallery-inner {
+    position: absolute;
+    top: 50%;
+    left: 0;
+  }
+
+  .sola-pro-phone-gallery-desktop {
+    display: block;
+  }
+
+  .sola-pro-phone-gallery-mobile {
+    display: none;
+  }
+
+  .sola-pro-phone-gallery {
+    position: relative;
+    top: 48px;
+    left: 5px;
+  }
+
+  .sola-pro-phone-carousel {
+    position: absolute;
+    z-index: 3;
+
+    top: 71px;
+    left: 63px;
+    
+    width: (241px / 1.5) + .33 !important;
+    height: (433px / 1.5) !important;
+
+    .item img {
+      width: (241px / 1.5) !important;
+      height: (433px / 1.5) !important;
+    }
+  }
+
+  .sola-pro-phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
+
+    background-size: (425px / 1.5) (694px / 1.5);
+    width: (425px / 1.5);
+    height: (694px / 1.5);
+  }
+
+  .sola-pro-feature-list-desktop {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    position: relative;
+    top: 88px;
+    left: 70px;
+
+    li {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      cursor: pointer;
+      opacity: 0.2;
+      overflow: visible;
+
+      &:hover, &:active, &.active {
+        opacity: 1;
+      }
+    }
+
+    .sola-pro-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &.online-booking-icon {
+        top: 1px;
+        left: 1px;
+      }
+      &.simple-calendar-interface-icon {
+        top: 2px;
+      }
+      &.appointment-notifications-icon {
+        top: 5px;
+        left: 1px;
+      }
+      &.client-notes-icon {
+        top: 5px;
+      }
+      &.point-of-sale-icon {
+        top: 2px;
+        left: 2px;
+      }
+      &.text-message-marketing-icon {
+        top: 4px;
+      }
+      &.credit-card-processing-icon {
+        top: 5px;
+      }     
+      &.analytics-and-reports-icon {
+        top: 3px;
+      }
+      &.reliable-customer-support-icon {
+        top: 3px;
+        left: -1px;
+      }
+    }
+
+    h2 {
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 19px;
+      letter-spacing: 0;
+      text-transform: none;
+      display: inline-block;
+      padding-left: 38px;
+    }
+  }
+
+  .sola-pro-icon {
+    display: inline-block;
+    overflow: visible;
+
+    &.online-booking-icon {
+      background: asset-data-url('own/sola-genius-icons/online-booking.png');
+      background-size: (102px / 5) (105px / 5);
+      width: (102px / 5);
+      height: (105px / 5);
+    }
+    &.simple-calendar-interface-icon {
+      background: asset-data-url('own/sola-genius-icons/simple-calendar-interface.png');
+      background-size: (107px / 5) (105px / 5);
+      width: (107px / 5);
+      height: (105px / 5);
+    }
+    &.appointment-notifications-icon {
+      background: asset-data-url('own/sola-genius-icons/appointment-notifications.png');
+      background-size: (96px / 5) (83px / 5);
+      width: (96px / 5);
+      height: (83px / 5);
+    }
+    &.text-message-marketing-icon {
+      background: asset-data-url('own/sola-genius-icons/text-message-marketing.png');
+      background-size: (106px / 5) (102px / 5);
+      width: (106px / 5);
+      height: (102px / 5);
+    }
+    &.client-notes-icon {
+      background: asset-data-url('own/sola-genius-icons/client-notes.png');
+      background-size: (101px / 5) (79px / 5);
+      width: (101px / 5);
+      height: (79px / 5);
+    }
+    &.point-of-sale-icon {
+      background: asset-data-url('own/sola-genius-icons/point-of-sale.png');
+      background-size: (88px / 5) (101px / 5);
+      width: (88px / 5);
+      height: (101px / 5);
+    }
+    &.credit-card-processing-icon {
+      background: asset-data-url('own/sola-genius-icons/credit-card-processing.png');
+      background-size: (114px / 5) (73px / 5);
+      width: (114px / 5);
+      height: (73px / 5);
+    }
+    &.analytics-and-reports-icon {
+      background: asset-data-url('own/sola-genius-icons/analytics-and-reports.png');
+      background-size: (114px / 5) (87px / 5);
+      width: (114px / 5);
+      height: (87px / 5);
+    }
+    &.reliable-customer-support-icon {
+      background: asset-data-url('own/sola-genius-icons/reliable-customer-support.png');
+      background-size: (119px / 5) (96px / 5);
+      width: (119px / 5);
+      height: (96px / 5);
+    }
+  }
+
+  .sola-pro-descriptions-desktop {
+    padding: relative;
+
+    h2 {
+      display: none;
+    }
+
+    div {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      display: none;
+      color: #000;
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 33px;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .sola-pro-get-started-desktop {
+    margin-top: 320px;
+  }
+
+  .sola-pro-get-started {
+
+    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+      display: inline-block;
+      background: rgb(135,203,251); /* Old browsers */
+      background: -moz-linear-gradient(left, rgba(135,203,251,1) 0%, rgba(200,123,250,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87cbfb', endColorstr='#c87bfa',GradientType=1 ); /* IE6-9 */
+      color: #FFF;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      line-height: 18px;
+      letter-spacing: 1px;
+      word-spacing: 3px;
+      padding: 14px 36px 15px 36px;
+      border-radius: 44px;
+      text-transform: uppercase;
+      border: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      @include box-shadow(0px 7px 40px 1px rgba(73, 156, 211, 0.5));
+       opacity: 1 !important;
+       transition: opacity .25s ease !important;
+       -moz-transition: opacity .25s ease !important;
+       -webkit-transition: opacity .25s ease !important;
+    }
+
+    a.button:hover, a.button:active {
+      opacity: 0.6 !important;
+    }
+
+    p {
+      margin: 30px 0 0 0;
+    }
+    strong {
+      font-size: 15px;
+      line-height: 17px;
+      font-weight: bold;
+      color: #000;
+    }
+  }
+
+  .for-sola-by-sola {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin: 90px 0 0 0;
+
+    font-size: 16px;
+  }
+
+  .sola-pro-pricing {
+    padding: 40px 0px;
+    text-align: center;
+    background: #000 asset-url('own/black_diamond.png') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    p {
+      font-size: 17px;
+      line-height: 23px;
+      color: #FFF;
+      font-weight: 300;
+      margin-bottom: 20px;
+
+      strong {
+        font-weight: 700;
+        color: #FFF;
+      }
+
+      &:last-child {
+        margin-top: 30px;
+        margin-bottom: 0;
+      }
+
+      a, a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        cursor: pointer;
+        color: #FFF;
+        display: inline-block;
+        opacity: 1 !important;
+       transition: opacity .25s ease !important;
+       -moz-transition: opacity .25s ease !important;
+       -webkit-transition: opacity .25s ease !important;
+
+        &.button {
+          padding-left: 50px;
+          padding-right: 50px;
+        }
+      }
+      a:hover, a:active {
+        opacity: 0.5 !important;
+      }
+    }
+  }
+
+  .owl-theme .owl-controls .owl-pagination {
+    display: none;
+  }
+
+}
+
+
+
+/**********************************************/
+/* iPads (portrait and landscape) ----------- */
+/**********************************************/
+
+@media (max-width : 1000px) {
+  .own-your-salon .hero-fullscreen img.introducing_sola_pro {
+    margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
+    width: (707px / 1.75);
+    height: (205px / 1.75);
+  }  
+
+  .sola-pro {
+
+    .sola-pro-icon-wrapper {
+      height: 35px;
+      display: block;
+      overflow: hidden;
+    }
+    
+    .owl-theme .owl-controls .owl-pagination {
+      display: block;
+      bottom: auto !important;
+      top: -82px;
+      left: -13px;
+      right: -10px;
+      white-space: nowrap;
+
+      .owl-page span {
+        background: rgba(0,0,0,0.3);
+        width: 7px;
+        height: 7px;
+        margin: 0 7px;
+      }
+      .owl-page.active span {
+        background: rgba(0,0,0,0.7);
+      }
+    }
+
+    .sola-pro-feature-list-desktop {
+      // margin-top: 0;
+      // margin-bottom: 30px;
+      // height: 80px;
+      position: static;
+      top: auto;
+      left: auto;
+      display: none;
+      clear: both;
+      margin: 15px auto 20px auto;
+
+      li {
+        display: none;
+        text-align: center;
+
+        &.active {
+          display: block;
+        }
+
+        .sola-pro-icon, h2 {
+          display: block;
+          clear: both;
+          padding: 0;
+          margin: 0 auto;
+          top: auto !important;
+          left: auto !important;
+          position: static;
+          font-size: 19px;
+        }
+        .sola-pro-icon {
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+    // .down_circle_arrow_icon {
+    //   position: absolute;
+    //   left: 50%;
+    //   margin-left: (-39px / 1.5);
+    //   bottom: (39px / 1.5);
+    //   background: asset-url('own/down_circle_arrow_icon.png') no-repeat;
+    //   background-size: (78px / 1.5) (78px / 1.5);
+    //   width: (78px / 1.5);
+    //   height: (78px / 1.5);
+    //   z-index: 3;
+    //   cursor: pointer;
+    // }
+
+    .one-third.column {
+      width: 100%;
+      display: block;
+      float: none;
+      margin: 0;
+    }
+
+    .sola-pro-phone-gallery-wrapper {
+      text-align: center;
+    }
+
+    .sola-pro-phone-gallery {
+      position: relative;
+      top: auto;
+      left: auto;
+      margin: 0 auto -60px auto;
+      display: block;
+      clear: both;
+      //overflow: hidden;
+      display: inline-block;
+
+      .sola-pro-phone {
+        position: static;
+        top: auto;
+        left: auto;
+        background-size: (425px / 1.5) (694px / 1.5);
+        width: (425px / 1.5);
+        height: (694px / 1.5);
+        overflow: hidden;
+      }
+    }
+
+    .sola-pro-phone-carousel {
+      top: 71px;
+      left: 62px;
+      width: (241px / 1.5 + 1px) !important;
+      height: (433px / 1.5 + 1px) !important;
+
+      .item img {
+        width: (241px / 1.5 + 1px) !important;
+        height: (433px / 1.5 + 1px) !important;
+      }
+    }
+
+    .sola-pro-get-started-desktop {
+      margin: 15px auto 0 auto;
+      text-align: center;
+
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        display: block;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+      
+      p {
+        margin-top: 10px;
+      }
+    }
+
+    .sola-pro-descriptions-desktop {
+      padding: 0;
+      margin: -60px auto 0 auto;
+      max-width: 300px;
+      height: 130px;
+      overflow: visible;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+
+      h2 {
+        display: block;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 19px;
+        letter-spacing: 0;
+        text-transform: none;
+        margin: 0 0 10px 0;
+      }
+
+      div {
+        position: static;
+        top: auto;
+        left: auto;
+        display: none;
+        color: #000;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 29px;
+        text-align: center;
+        padding: 0px;
+        margin: 0;
+
+        &.active {
+          display: block;
+        }
+      }
+    }  
+
+    .sola-pro-gallery {
+      padding: 0;
+      background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .run-your-sola-like-a-boss {
+      display: none;
+    }
+
+    .for-sola-by-sola {
+      margin-top: -10px;
+      padding-top: 0px;
+    }
+
+    .sola-pro-pricing {
+      padding: 30px 0;
+
+      a.button {
+        &:link, &:visited, &:hover, &:active {
+          display: block;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+    }
+
+  }
+}
+
+
+
+/****************************************************/
+/* Smartphones (portrait and landscape) ----------- */
+/****************************************************/
+
+@media (max-width : 740px) {
+  .desktop-br {
+    display: inline-block;
+  }
+  .mobile-br {
+    display: block;
+    clear: both;
+    line-height: 1px;
+    height: 1px;
+  }
+  .own-your-salon .hero-fullscreen img.introducing_sola_pro {
+    margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
+    width: (707px / 1.75);
+    height: (205px / 1.75);
+  } 
+
+  .own-your-salon .hero-fullscreen .sola-pro-hero-heading {
+    top: 50%;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+
+    font-size: 25px !important;
+    line-height: 27px !important;
+
+    .container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .own-your-salon .hero-fullscreen .sola-pro-hero-text {
+    top: 61%;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+
+    font-size: 20px !important;
+    line-height: 25px !important;
+
+    .container {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }    
+  } 
+
+  .sola-pro .owl-theme .owl-controls .owl-pagination {
+    top: -60px;
+    left: -46px;
+  }
+
+  .down_circle_arrow_icon {
+    margin-left: (-39px / 1.5);
+    background-size: (78px / 1.5) (78px / 1.5);
+    width: (78px / 1.5);
+    height: (78px / 1.5);
+  }
+
+  .sola-pro {
+
+    .sola-pro-feature-list-desktop li h2 {
+      font-size: 15px;
+    }
+
+    .sola-pro-phone-carousel {
+      position: absolute;
+      z-index: 3;
+
+      top: 43px;
+      left: 38px;
+      
+      width: (241px / 2.5) + .33 !important;
+      height: (433px / 2.5) !important;
+
+      .item img {
+        width: (241px / 2.5) !important;
+        height: (433px / 2.5) !important;
+      }
+    }
+
+    .sola-pro-phone-gallery {
+      .sola-pro-phone {
+        background-size: (425px / 2.5) (694px / 2.5);
+        width: (425px / 2.5);
+        height: (694px / 2.5);
+      }
+
+      .arrow-right, .arrow-left {
+        display: none;
+      }
+    }
+
+    .sola-pro-descriptions-desktop {
+      padding: 0px;
+      margin: -45px auto 0 auto;
+      max-width: 350px;
+      height: 130px;
+      width: 100%;
+
+      div {
+        width: 100%;
+        font-size: 15px;
+        line-height: 25px;
+      }
+    }
+  }
+}
+
+
+@media (max-width : 640px) {
+  .own-your-salon .hero-fullscreen img.introducing_sola_pro {
+    margin: (-102.5px / 1.95) 0 0 (-353.5px / 1.95);
+    width: (707px / 1.95);
+    height: (205px / 1.95);
+  }   
+}
+
+@media (max-width : 540px) {
+  .own-your-salon .hero-fullscreen img.introducing_sola_pro {
+    margin: (-102.5px / 2.55) 0 0 (-353.5px / 2.55);
+    width: (707px / 2.55);
+    height: (205px / 2.55);
+  }   
+}
+
+/* iphone 6 */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+  .own-your-salon .hero-fullscreen .sola-pro-hero-heading {
+    top: 54%;
+  }
+  .own-your-salon .hero-fullscreen .sola-pro-hero-text {
+    top: 67%;
+  }
+  .sola-pro {
+    .sola-pro-descriptions-desktop {
+      margin-top: 7px !important;
+    }
+  }
+}
+
+/* iphone 5s */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+and (device-aspect-ratio: 40/71) { 
+  .own-your-salon .hero-fullscreen img.introducing_sola_pro {
+    top: 34%;
+  }
+  .own-your-salon .hero-fullscreen .sola-pro-hero-text {
+    top: 64%;
+    font-size: 18px !important;
+  }
+  .sola-pro .sola-pro-descriptions-desktop h2 {
+    font-size: 15px;
+  }
+  .sola-pro .sola-pro-descriptions-desktop div {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .sola-pro .sola-pro-descriptions-desktop {
+    margin-top: 15px;
+    height: 90px;
+  }
+  .sola-pro .sola-pro-get-started-desktop a.button, .sola-pro .sola-pro-get-started-desktop a.button:link, .sola-pro .sola-pro-get-started-desktop a.button:visited, .sola-pro .sola-pro-get-started-desktop a.button:hover, .sola-pro .sola-pro-get-started-desktop a.button:active {
+    font-size: 16px;
+    padding: 10px;
+  }
+  .sola-pro {
+    .sola-pro-phone-carousel {
+      position: absolute;
+      z-index: 3;
+
+      top: 37px;
+      left: 33px;
+      
+      width: (241px / 2.85) + .33 !important;
+      height: (433px / 2.85) !important;
+
+      .item img {
+        width: (241px / 2.85) !important;
+        height: (433px / 2.85) !important;
+      }
+    }
+
+    .sola-pro-phone-gallery {
+      .sola-pro-phone {
+        background-size: (425px / 2.85) (694px / 2.85);
+        width: (425px / 2.85);
+        height: (694px / 2.85);
+      }
+
+      .arrow-right, .arrow-left {
+        display: none;
+      }
+    } 
+  } 
+  .sola-pro .owl-theme .owl-controls .owl-pagination {
+    padding-top: 5px;
+  }
+  div#sola-pro-gallery-inner.sola-pro-gallery-inner {
+    padding-top: 10px;
+  }
+  .hero-own .hero-heading {
+    font-size: 19px;
+    line-height: 31px;
+  }
+}

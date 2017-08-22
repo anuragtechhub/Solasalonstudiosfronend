@@ -1,62 +1,30 @@
 <div class="hero-tab-content sola-pro-tab" <%= 'data-hero-active=true' if params[:tab] == 'sola-pro' %> data-ref="#sola-pro">
+<div class="sola-pro">
 
   <div class="hero-fullscreen">
-
     <div class="hero-carousel hero-carousel-fullscreen" data-autoplayoff="true">
       <div class="item"><%= image_tag 'own/hero_sola_pro_desktop.jpg', :class => 'fullscreen', :alt => 'A laptop, a tablet and a phone sit on a table, all showing the Sola Pro app', :'data-width' => 1488, :'data-height' => 995, :width => 1488, :height => 995 %></div>
     </div>
 
     <div class="hero-content">
       <div class="hero-content-wrapper">
-
         <%= render 'tabs', :active => 'sola-pro' %>
-
         <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo', :alt => 'A white iPhone showing the Sola Pro app' %>
-
         <div class="sola-pro-copy">
           <%= t('page.own.section.sola_pro.hero_body1').html_safe %>
         </div>
-
       </div>
+      <a href="#sola-pro-gallery" class="down-arrow" data-animated-scroll data-nav-group="sola-pro-nav"></a>
     </div>
-
-    <a href="#AboutSolaPro" class="down-arrow" data-animated-scroll data-nav-group="sola-pro-nav"></a>
   </div>
 
-  <div class="container container-inset">
-
-    <a id="AboutSolaPro" name="AboutSolaPro"></a>
-
-    <div class="row">
-      <div class="one-third column">
-        <% if I18n.locale == :en %>
-          <%= image_tag 'own/sola_pro_iphone.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
-        <% else %>
-          <%= image_tag 'own/sola_pro_iphone_ca.jpg', :class => 'u-full-width', :width => 283, :height => 570, :style => 'margin-bottom:15px' %>
-        <% end %>
-      </div>
-      <div class="two-thirds column">
-        <div class="left-padding">
-          <h2 class="light"><%= t('page.own.section.sola_pro.heading1').html_safe %></h2>
-
-          <ul class="sola-pro-benefits">
-            <% t('page.own.section.sola_pro.list1').each_line do |li| %>
-              <li><%= li.html_safe %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+  <div class="sola-pro-gallery" id="sola-pro-gallery">
+    <div class="sola-pro-gallery-inner" id="sola-pro-gallery-inner">     
+      <%= render 'sola_pro_gallery_desktop' %>
     </div>
+  </div>
 
-    <div class="download-buttons text-center">
-      <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8" target="_blank"><%= image_tag 'own/ios_appstore.png', :width => 257, :height => 79, :alt => 'Download Sola Pro on the App Store' %></a>
-      <a href="https://play.google.com/store/apps/details?id=com.solaprofessional" target="_blank"><%= image_tag 'own/android_appstore.png', :width => 266.706611569, :height => 79, :alt => 'Download Sola Pro on Google Play' %></a>
-    </div>
-
-    <% if I18n.locale == :en %>
-      <p class="larger text-center"><%= t('page.own.section.sola_pro.download_app_or_view', :sola_pro_link => link_to(t('sola_pro_www_name'), 'https://www.solaprofessional.com')).html_safe %></p>
-    <% end %>
-
+  <div class="container">
     <hr />
 
     <h2 class="brand text-center" style="margin-top: 15px"><%= t('page.own.section.sola_pro.heading2').html_safe %></h2>
@@ -87,4 +55,5 @@
     </div>
   </div>
 
+</div>
 </div>
