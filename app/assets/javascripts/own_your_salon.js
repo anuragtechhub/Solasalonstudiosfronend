@@ -22,8 +22,9 @@ $(function () {
     $('.hero-tab-content').removeClass('hero-active').filter('[data-ref=#' + href + ']').addClass('hero-active');
     window.history.pushState(null, null, $this.data('base') + href);
 
+    $(window).trigger('resize.solapro');
     $(window).trigger('resize.solagenius');
-    $(window).trigger('resize.sessionsMobile')
+    $(window).trigger('resize.sessionsMobile');
 
     if (typeof window.initStickyMenu == 'function') {
       window.initStickyMenu();
@@ -34,8 +35,9 @@ $(function () {
     }
 
     setTimeout(function () {
+      $(window).trigger('resize.solapro');
       $(window).trigger('resize.solagenius');
-      $(window).trigger('resize.sessionsMobile')
+      $(window).trigger('resize.sessionsMobile');
     }, 1);
 
     return false;
@@ -189,23 +191,6 @@ $(function () {
   setTimeout(function () {
     $(window).trigger('resize.solagenius');
   }, 1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /* solapro carousel */
   var currentSlideIndex = 0;
