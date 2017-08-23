@@ -365,12 +365,18 @@
 
       img {
         width: 100%;
+        max-width: 150px;
         height: auto;
         opacity: 0.7;
       }
     }
 
+    .ios-appstore {
+      text-align: right;
+    }
+
     .android-appstore {
+      text-align: left;
       position: relative;
       top: -1px;
       margin-right: 0;
@@ -499,6 +505,10 @@
 
   .sola-pro {
 
+    .gradient {
+      display: none;
+    }
+
     .sola-pro-icon-wrapper {
       height: 35px;
       display: block;
@@ -509,8 +519,8 @@
       display: block;
       bottom: auto !important;
       top: -82px;
-      left: -13px;
-      right: -10px;
+      left: 0;
+      right: 0;
       white-space: nowrap;
 
       .owl-page span {
@@ -617,7 +627,7 @@
     }
 
     .sola-pro-get-started-desktop {
-      margin: 15px auto 0 auto;
+      margin: 35px auto 0 auto;
       text-align: center;
 
       a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
@@ -633,7 +643,7 @@
 
     .sola-pro-descriptions-desktop {
       padding: 0;
-      margin: -60px auto 0 auto;
+      margin: -40px auto 0 auto;
       max-width: 300px;
       height: 130px;
       overflow: visible;
@@ -764,7 +774,7 @@
 
   .sola-pro .owl-theme .owl-controls .owl-pagination {
     top: -60px;
-    left: -46px;
+    left: -5px;
   }
 
   .down_circle_arrow_icon {
@@ -820,6 +830,9 @@
         font-size: 15px;
         line-height: 25px;
       }
+    }
+    .sola-pro-get-started-desktop {
+      margin-top: 15px;
     }
   }
 }
