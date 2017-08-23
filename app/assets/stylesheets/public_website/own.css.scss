@@ -578,7 +578,7 @@
 
   .sola_pro_logo {
     position: absolute;
-    top: 50% !important;
+    top: 40% !important;
     left: 50% !important;
     margin-top: -(245px / 1.2 / 2) !important;
     margin-left: -(686px / 1.2 / 2) !important;
@@ -929,6 +929,17 @@ ul.own-list {
   // }
 }
 
+
+@media (max-width: 740px) {
+  .own-your-salon {
+    .sola-pro-copy {
+      bottom: 90px;
+      font-size: 23px;
+      line-height: 27px;
+    }
+  }
+}
+
 @media (max-width: 700px) {
   .own-studio .button {
     margin-bottom: 25px !important;
@@ -943,6 +954,12 @@ ul.own-list {
       width: (686px / 1.2 / 2.5) !important;
       height: (249px / 1.2 / 2.5) !important;
       min-height: auto !important;
+    }
+
+    .sola-pro-copy {
+      bottom: 80px;
+      font-size: 21px;
+      line-height: 25px;
     }
 
     .sola_sessions_logo {
