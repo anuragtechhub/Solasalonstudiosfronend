@@ -145,6 +145,8 @@
     }
   }
 
+
+
   .run-your-sola-like-a-boss {
     display: block;
     margin: 0 auto -30px auto;
@@ -350,10 +352,33 @@
   }
 
   .sola-pro-get-started-desktop {
-    margin-top: 320px;
+    margin-top: 370px;
   }
 
   .sola-pro-get-started {
+
+    .android-appstore, .ios-appstore {
+      display: inline-block;
+      text-decoration: none;
+      width: calc(48% - 5px);
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+        height: auto;
+        opacity: 0.7;
+      }
+    }
+
+    .android-appstore {
+      position: relative;
+      top: -1px;
+      margin-right: 0;
+
+      img {
+        opacity: 0.65;
+      }
+    }
 
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
       display: inline-block;
@@ -401,7 +426,7 @@
     display: block;
     clear: both;
     text-align: center;
-    margin: 220px 0 0 0;
+    margin: 120px 0 0 0;
 
     font-size: 16px;
   }
