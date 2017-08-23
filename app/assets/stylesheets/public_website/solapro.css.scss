@@ -270,59 +270,43 @@
     display: inline-block;
     overflow: visible;
 
-    &.online-booking-icon {
-      background: asset-data-url('own/sola-genius-icons/online-booking.png');
-      background-size: (102px / 5) (105px / 5);
-      width: (102px / 5);
-      height: (105px / 5);
+    &.education-icon {
+      background: asset-data-url('own/sola-pro-icons/education.png');
+      background-size: (82px / 2.8) (55px / 2.8);
+      width: (82px / 2.8);
+      height: (55px / 2.8);
+      top: 3px;
     }
-    &.simple-calendar-interface-icon {
-      background: asset-data-url('own/sola-genius-icons/simple-calendar-interface.png');
-      background-size: (107px / 5) (105px / 5);
-      width: (107px / 5);
-      height: (105px / 5);
+    &.deals-icon {
+      background: asset-data-url('own/sola-pro-icons/deals.png');
+      background-size: (68px / 2.8) (65px / 2.8);
+      width: (68px / 2.8);
+      height: (65px / 2.8);
+      top: 1px;
     }
-    &.appointment-notifications-icon {
-      background: asset-data-url('own/sola-genius-icons/appointment-notifications.png');
-      background-size: (96px / 5) (83px / 5);
-      width: (96px / 5);
-      height: (83px / 5);
+    &.events-icon {
+      background: asset-data-url('own/sola-pro-icons/events.png');
+      background-size: (58px / 2.8) (58px / 2.8);
+      width: (58px / 2.8);
+      height: (58px / 2.8);
+      top: 2px;
+      left: 1px;
     }
-    &.text-message-marketing-icon {
-      background: asset-data-url('own/sola-genius-icons/text-message-marketing.png');
-      background-size: (106px / 5) (102px / 5);
-      width: (106px / 5);
-      height: (102px / 5);
+    &.blog-icon {
+      background: asset-data-url('own/sola-pro-icons/blog.png');
+      background-size: (51px / 2.8) (50px / 2.8);
+      width: (51px / 2.8);
+      height: (50px / 2.8);
+      top: 4px;
+      left: 1px;
     }
-    &.client-notes-icon {
-      background: asset-data-url('own/sola-genius-icons/client-notes.png');
-      background-size: (101px / 5) (79px / 5);
-      width: (101px / 5);
-      height: (79px / 5);
-    }
-    &.point-of-sale-icon {
-      background: asset-data-url('own/sola-genius-icons/point-of-sale.png');
-      background-size: (88px / 5) (101px / 5);
-      width: (88px / 5);
-      height: (101px / 5);
-    }
-    &.credit-card-processing-icon {
-      background: asset-data-url('own/sola-genius-icons/credit-card-processing.png');
-      background-size: (114px / 5) (73px / 5);
-      width: (114px / 5);
-      height: (73px / 5);
-    }
-    &.analytics-and-reports-icon {
-      background: asset-data-url('own/sola-genius-icons/analytics-and-reports.png');
-      background-size: (114px / 5) (87px / 5);
-      width: (114px / 5);
-      height: (87px / 5);
-    }
-    &.reliable-customer-support-icon {
-      background: asset-data-url('own/sola-genius-icons/reliable-customer-support.png');
-      background-size: (119px / 5) (96px / 5);
-      width: (119px / 5);
-      height: (96px / 5);
+    &.perkspot-icon {
+      background: asset-data-url('own/sola-pro-icons/perkspot.png');
+      background-size: (58px / 2.8) (62px / 2.8);
+      width: (58px / 2.8);
+      height: (62px / 2.8);
+      top: 1px;
+      left: 1px;
     }
   }
 
