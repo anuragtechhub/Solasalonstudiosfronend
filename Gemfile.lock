@@ -201,6 +201,7 @@ GEM
     nested_form (0.3.2)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
+    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     ntlm-http (0.1.1)
@@ -294,6 +295,10 @@ GEM
       uber (< 0.2.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     retriable (3.0.1)
     rmagick (2.15.4)
     safe_yaml (1.0.4)
@@ -385,6 +390,7 @@ DEPENDENCIES
   react-rails (~> 1.6.1)
   recaptcha
   render_anywhere
+  rest-client
   rmagick
   sass-rails (~> 4.0.2)
   sitemap_generator
@@ -399,4 +405,4 @@ RUBY VERSION
    ruby 2.0.0p648
 
 BUNDLED WITH
-   1.13.7
+   1.15.3

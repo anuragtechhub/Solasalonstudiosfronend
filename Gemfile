@@ -109,3 +109,5 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'render_anywhere'
 gem 'mechanize'
+
+gem 'rest-client'
