@@ -64,7 +64,7 @@ namespace :reports do
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month    
 
-    Location.where(:status => :open).where('id > ?', args.gid).order(:id => :asc).uniq.each do |location|
+    Location.where(:status => :open).where('id >= ?', args.gid).order(:id => :asc).uniq.each do |location|
       sleep 1
       p "START location=#{location.id}, #{location.name}"
       begin

@@ -131,6 +131,11 @@ class LocationsController < PublicWebsiteController
     render :layout => 'fullscreen'
   end
 
+  # custom location redirects
+  def sixthaveredirect
+    redirect_to 'https://www.solasalonstudios.com/locations/tacoma-6th-avenue'
+  end
+
   private 
 
   def map_defaults
