@@ -1,5 +1,11 @@
 class Location < ActiveRecord::Base
 
+  # include Fuzzily::Model
+  # fuzzily_searchable :name, :address_1, :address_2, :city, :state, :postal_code
+  def self.searchable_columns
+    [:address_1, :address_2, :city, :state]
+  end
+
   has_paper_trail
 
   scope :open, -> { where(:status => 'open') }

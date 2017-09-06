@@ -1,4 +1,8 @@
 class Stylist < ActiveRecord::Base
+
+  include Fuzzily::Model
+  fuzzily_searchable :name, :email_address
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :authentication_keys => [:email_address]
