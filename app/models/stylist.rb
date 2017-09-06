@@ -1,7 +1,11 @@
 class Stylist < ActiveRecord::Base
 
-  include Fuzzily::Model
-  fuzzily_searchable :name, :email_address
+  # include Fuzzily::Model
+  # fuzzily_searchable :name, :email_address
+  def self.searchable_columns
+    [:name, :email_address]
+  end
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
