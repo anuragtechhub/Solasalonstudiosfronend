@@ -72,7 +72,8 @@ RailsAdmin.config do |config|
           bindings[:controller]._current_user.franchisee != true
         end
       end
-      group 'External Services' do
+      group 'Text and Email Integration' do
+        label 'Text and Email Integration'
         field :mailchimp_api_key
         field :callfire_app_login
         field :callfire_app_password
@@ -95,7 +96,8 @@ RailsAdmin.config do |config|
           bindings[:controller]._current_user.franchisee != true
         end
       end
-      group 'External Services' do
+      group 'Text and Email Integration' do
+        label 'Text and Email Integration'
         field :mailchimp_api_key
         field :callfire_app_login
         field :callfire_app_password
@@ -509,6 +511,7 @@ RailsAdmin.config do |config|
         field :image_20_alt_text
       end
       group '360 Tours' do
+        label '360 Tours'
         field :tour_iframe_1 do
           label 'Tour #1'
         end
@@ -519,80 +522,81 @@ RailsAdmin.config do |config|
           label 'Tour #3'
         end
       end
-      group :digital_directory do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-        field :floorplan_image do
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_1 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_2 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_3 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_4 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_5 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_6 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_7 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_8 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_9 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_10 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_11 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end
-        field :directory_image_12 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-        end                                        
-      end
-      group 'External Services' do
+      # group :digital_directory do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      #   field :floorplan_image do
+      #     visible do
+      #       bindings[:controller]._current_user.franchisee != true
+      #     end
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_1 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_2 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_3 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_4 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_5 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_6 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_7 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_8 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_9 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_10 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_11 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end
+      #   field :directory_image_12 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #   end                                        
+      # end
+      group 'Text and Email Integration' do
+        label 'Text and Email Integration'
         field :mailchimp_list_ids do
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
@@ -862,6 +866,7 @@ RailsAdmin.config do |config|
         end  
       end
       group '360 Tours' do
+        label '360 Tours'
         active false
         field :tour_iframe_1 do
           label 'Tour #1'
@@ -876,91 +881,92 @@ RailsAdmin.config do |config|
           help "If you need help finding your tour iframe code, please <a href='http://www.ambientlight.co.uk/google-maps-business-view-virtual-tours/add-your-tour-to-your-website' target='_blank'>click here</a>".html_safe
         end
       end      
-      group :digital_directory do
-        active false
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-        field :floorplan_image do
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_floorplan_image
-        end
-        field :directory_image_1 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_1
-        end
-        field :directory_image_2 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_2
-        end
-        field :directory_image_3 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_3
-        end
-        field :directory_image_4 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_4
-        end
-        field :directory_image_5 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_5
-        end
-        field :directory_image_6 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_6
-        end
-        field :directory_image_7 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_7
-        end
-        field :directory_image_8 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_8
-        end
-        field :directory_image_9 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_9
-        end
-        field :directory_image_10 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_10
-        end
-        field :directory_image_11 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_11
-        end
-        field :directory_image_12 do 
-          pretty_value do 
-            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end
-          delete_method :delete_directory_image_12
-        end                                        
-      end
-      group 'External Services' do
+      # group :digital_directory do
+      #   active false
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      #   field :floorplan_image do
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:directory)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_floorplan_image
+      #   end
+      #   field :directory_image_1 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_1
+      #   end
+      #   field :directory_image_2 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_2
+      #   end
+      #   field :directory_image_3 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_3
+      #   end
+      #   field :directory_image_4 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_4
+      #   end
+      #   field :directory_image_5 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_5
+      #   end
+      #   field :directory_image_6 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_6
+      #   end
+      #   field :directory_image_7 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_7
+      #   end
+      #   field :directory_image_8 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_8
+      #   end
+      #   field :directory_image_9 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_9
+      #   end
+      #   field :directory_image_10 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_10
+      #   end
+      #   field :directory_image_11 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_11
+      #   end
+      #   field :directory_image_12 do 
+      #     pretty_value do 
+      #       "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+      #     end
+      #     delete_method :delete_directory_image_12
+      #   end                                        
+      # end
+      group 'Text and Email Integration' do
+        label 'Text and Email Integration'
         active false
         field :mailchimp_list_ids do
           help 'To sync to more than one Mailchimp list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'

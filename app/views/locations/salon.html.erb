@@ -256,7 +256,14 @@
 <% content_for(:scripts) {@location.chat_code.html_safe} if @location.chat_code.present? %>
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
 <% content_for(:canonical_url) { @location.canonical_url } %>
-<% content_for(:title) { "#{@location.name.html_safe} #{t(:in)} #{@location.city}, #{@location.state}" } %>
+<% content_for(:title) { 
+  if @location.name.downcase.strip == @location.city.downcase.strip
+    @no_title_brand_name = true
+    "#{t(:brand_name)} #{t(:in)} #{@location.city}, #{@location.state}" 
+  else
+    "#{@location.name.html_safe} #{t(:in)} #{@location.city}, #{@location.state}" 
+  end
+} %>
 <% if @location.description %>
   <% content_for(:meta_description) { clean_html @location.description } %>
 <% end %>

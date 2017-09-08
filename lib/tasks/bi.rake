@@ -14,4 +14,15 @@ namespace :bi do
     p "End stylists_with_non_hair_services"
   end
 
+  task :stylists_in_california => :environment do
+    CSV.open(Rails.root.join('csv','stylists_in_california.csv'), "wb") do |csv|
+      Location.where(:status => 'open').where('lower(state) = ?', 'california').where(:country => 'US').each do |location|
+        p "location=#{location.name}, #{location.city}, #{location.state}"
+        location.stylists.each do |stylist|
+          csv << [location.name, stylist.name, stylist.phone_number, stylist.email_address]
+        end
+      end
+    end
+  end
+
 end

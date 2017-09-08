@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
     <% if content_for?(:title) %>
-      <%= yield :title %> - 
+      <%= yield :title %> 
     <% end %>
-    <%= t :brand_name %>
+    <%= @no_title_brand_name ? nil : " - #{t :brand_name}" %>
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <% if content_for?(:meta_description) %>
