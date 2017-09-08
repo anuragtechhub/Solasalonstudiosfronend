@@ -121,7 +121,7 @@
         <p class="name" style="margin-top:-15px;margin-bottom:50px;text-align:center">Click Images to Read Artist Bios</p>
 
         <div class="row">
-          <div class="four columns" data-rel="cowan">
+          <div class="four columns offset-by-two" data-rel="cowan">
             <%= image_tag 'sessions/cowan.png' %>
             <span class="name">Terri Cowan</span>
             <span class="company"><a href="#">Professional Salon Concepts</a></span>
@@ -131,20 +131,28 @@
             <span class="name">Andrew Carruthers</span>
             <span class="company"><a href="#">Sam Villa Brand &amp; Redken</a></span>
           </div>
+        </div>
+
+        <div class="row">
           <div class="four columns" data-rel="reyes">
             <%= image_tag 'sessions/reyes.png' %>
             <span class="name">Jason Reyes</span>
             <span class="company"><a href="#">Paul Mitchell</a></span>
           </div>
-        </div>
-     
-        <div class="row">
           <div class="four columns" data-rel="lazo">
             <%= image_tag 'sessions/lazo.png' %>
             <span class="name">Claudio Lazo</span>
             <span class="company"><a href="#">Wella Professional</a></span>
           </div>
-          <div class="four columns" data-rel="wolff">
+          <div class="four columns" data-rel="ridge">
+            <%= image_tag 'sessions/ridge.png' %>
+            <span class="name">Veronica Ridge</span>
+            <span class="company"><a href="#">Redken</a></span>
+          </div>
+        </div>
+     
+        <div class="row">
+          <div class="four columns offset-by-two" data-rel="wolff">
             <%= image_tag 'sessions/wolff.png' %>
             <span class="name">Jennie Wolff</span>
             <span class="company"><a href="#">Sola Salon Studios</a></span>
@@ -235,6 +243,29 @@
         </div>
       </div>
 
+      <div class="bio" data-rel="ridge" data-modal-class="sessions" data-width="620" data-animated="1">
+        <div class="modal-header">
+          <%= image_tag 'sessions/ridge.png' %>
+          <span class="name">Veronica Ridge</span>
+          <span class="company"><a href="#">Redken</a></span>
+          <span class="line">&nbsp;</span>
+        </div>
+        <div class="text">
+          A master of color, Veronica Ridge has been a REDKEN artist for the last 8 years. She is known
+          for her strong attention to detail and is a notorious perfectionist. Veronica maintains great success
+          with her unique color formulations and foiling placement techniques. Operating out of a private,
+          three-chair studio, Veronica is keen on giving a luxury experience to each of her clients. Keeping
+          up on trend and education is her philosophy, which makes her perfectly equipped to take on the
+          challenges of everyday salon life. On top of staying busy in the salon, Veronica makes it a priority
+          to travel the world, broadening her world-views. She takes at least 2 classes a year at the
+          REDKEN Exchange, always keeping up on education and trend. Her dedication to her craft has
+          allowed her to work under some of the best artists in the business, including Kris Sorbie, Chris
+          Baran, and Sam Villa--just to name a few. January 2017 she will be on a Redken symposium
+          stage debuting Redken NEW direct dyes City Beats, a very exciting and important piece of our
+          color portfolio.
+        </div>
+      </div> 
+
       <div class="bio" data-rel="wolff" data-modal-class="sessions" data-width="620" data-animated="1">
         <div class="modal-header">
           <%= image_tag 'sessions/wolff.png' %>
@@ -279,6 +310,7 @@
           <li>Terri Cowan (Professional Salon Concepts)</li>
           <li>Jason Reyes (Paul Mitchell)</li>
           <li>Claudio Lazo (Wella Professional)</li>
+          <li>Veronica Ridge (Redken)</li>
           <li>Jennie Wolff (Sola Salon Studios)</li>
           <li>Kim Bennett Horvath (Sola Salon Studios)</li>
       </div>
