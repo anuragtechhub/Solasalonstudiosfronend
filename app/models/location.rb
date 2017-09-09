@@ -28,11 +28,6 @@ class Location < ActiveRecord::Base
     end
   end
 
-  has_attached_file :floorplan_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :directory => '375x375#' }, :s3_protocol => :https   
-  validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_floorplan_image
-  before_validation { self.floorplan_image.destroy if self.delete_floorplan_image == '1' }
-
   has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '630x>' }, :s3_protocol => :https 
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_1
@@ -131,69 +126,7 @@ class Location < ActiveRecord::Base
   has_attached_file :image_20, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '630x>' }, :s3_protocol => :https 
   validates_attachment_content_type :image_20, :content_type => /\Aimage\/.*\Z/                         
   attr_accessor :delete_image_20
-  before_validation { self.image_20.destroy if self.delete_image_20 == '1' }
-
-  # directory images below...
-
-  has_attached_file :directory_image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_1, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_1
-  before_validation { self.directory_image_1.destroy if self.delete_directory_image_1 == '1' }
-
-  has_attached_file :directory_image_2, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_2, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_2
-  before_validation { self.directory_image_2.destroy if self.delete_directory_image_2 == '1' }
-
-  has_attached_file :directory_image_3, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_3, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_3
-  before_validation { self.directory_image_3.destroy if self.delete_directory_image_3 == '1' }
-
-  has_attached_file :directory_image_4, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_4, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_4
-  before_validation { self.directory_image_4.destroy if self.delete_directory_image_4 == '1' }
-
-  has_attached_file :directory_image_5, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_5, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_5
-  before_validation { self.directory_image_5.destroy if self.delete_directory_image_5 == '1' }
-
-  has_attached_file :directory_image_6, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_6, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_6
-  before_validation { self.directory_image_6.destroy if self.delete_directory_image_6 == '1' }
-
-  has_attached_file :directory_image_7, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_7, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_7
-  before_validation { self.directory_image_7.destroy if self.delete_directory_image_7 == '1' }
-
-  has_attached_file :directory_image_8, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_8, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_8
-  before_validation { self.directory_image_8.destroy if self.delete_directory_image_8 == '1' }
-
-  has_attached_file :directory_image_9, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_9, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_9
-  before_validation { self.directory_image_9.destroy if self.delete_directory_image_9 == '1' }
-
-  has_attached_file :directory_image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_10, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_10
-  before_validation { self.directory_image_10.destroy if self.delete_directory_image_10 == '1' }
-
-  has_attached_file :directory_image_11, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_11, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_11
-  before_validation { self.directory_image_11.destroy if self.delete_directory_image_11 == '1' }
-
-  has_attached_file :directory_image_12, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'd3p1kyyvw4qtho.cloudfront.net', :styles => { :carousel => '625x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :directory_image_12, :content_type => /\Aimage\/.*\Z/                         
-  attr_accessor :delete_directory_image_12
-  before_validation { self.directory_image_12.destroy if self.delete_directory_image_12 == '1' }                    
+  before_validation { self.image_20.destroy if self.delete_image_20 == '1' }                   
 
   validates :name, :url_name, :presence => true
   validate :url_name_uniqueness

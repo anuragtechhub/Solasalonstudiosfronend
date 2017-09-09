@@ -7,7 +7,8 @@
     <% if content_for?(:title) %>
       <%= yield :title %> 
     <% end %>
-    <%= @no_title_brand_name ? nil : " - #{t :brand_name}" %>
+    <%= @no_title_dash ? nil : " - " %>
+    <%= @no_title_brand_name ? nil : "#{t :brand_name}" %>
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <% if content_for?(:meta_description) %>

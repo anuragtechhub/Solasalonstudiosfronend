@@ -259,6 +259,7 @@
 <% content_for(:title) { 
   if @location.name.downcase.strip == @location.city.downcase.strip
     @no_title_brand_name = true
+    @no_title_dash = true
     "#{t(:brand_name)} #{t(:in)} #{@location.city}, #{@location.state}" 
   else
     "#{@location.name.html_safe} #{t(:in)} #{@location.city}, #{@location.state}" 
