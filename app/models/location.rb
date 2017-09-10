@@ -206,58 +206,6 @@ class Location < ActiveRecord::Base
     "#{name} (#{city}, #{state})"
   end
 
-  def floorplan_image_url
-    floorplan_image.url(:original) if floorplan_image.present?
-  end
-
-  def directory_image_1_url
-    directory_image_1.url(:original) if directory_image_1.present?
-  end
-
-  def directory_image_2_url
-    directory_image_2.url(:original) if directory_image_2.present?
-  end
-
-  def directory_image_3_url
-    directory_image_3.url(:original) if directory_image_3.present?
-  end
-
-  def directory_image_4_url
-    directory_image_4.url(:original) if directory_image_4.present?
-  end
-
-  def directory_image_5_url
-    directory_image_5.url(:original) if directory_image_5.present?
-  end
-
-  def directory_image_6_url
-    directory_image_6.url(:original) if directory_image_6.present?
-  end
-
-  def directory_image_7_url
-    directory_image_7.url(:original) if directory_image_7.present?
-  end
-
-  def directory_image_8_url
-    directory_image_8.url(:original) if directory_image_8.present?
-  end
-
-  def directory_image_9_url
-    directory_image_9.url(:original) if directory_image_9.present?
-  end
-
-  def directory_image_10_url
-    directory_image_10.url(:original) if directory_image_10.present?
-  end
-
-  def directory_image_11_url
-    directory_image_11.url(:original) if directory_image_11.present?
-  end
-
-  def directory_image_12_url
-    directory_image_12.url(:original) if directory_image_12.present?
-  end  
-
   def salon_professionals
     pros = []
     if stylists && stylists.size > 0
