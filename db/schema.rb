@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909024941) do
+ActiveRecord::Schema.define(version: 20170910184247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -400,8 +400,10 @@ ActiveRecord::Schema.define(version: 20170909024941) do
     t.integer  "stylist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
+  add_index "studios", ["location_id"], name: "index_studios_on_location_id", using: :btree
   add_index "studios", ["stylist_id"], name: "index_studios_on_stylist_id", using: :btree
 
   create_table "stylist_messages", force: true do |t|
