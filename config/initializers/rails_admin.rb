@@ -568,6 +568,7 @@ RailsAdmin.config do |config|
         end
       end
       group :rent_manager do
+        label 'Rent Manager'
         active false
         field :rent_manager_property_id do
           label 'Rent Manager Property ID'
@@ -867,6 +868,7 @@ RailsAdmin.config do |config|
         end
       end
       group :rent_manager do
+        label 'Rent Manager'
         active false
         field :rent_manager_property_id do
           label 'Rent Manager Property ID'
@@ -1239,6 +1241,7 @@ RailsAdmin.config do |config|
         field :testimonial_10
       end 
       group :rent_manager do
+        label 'Rent Manager'
         active false
         field :rent_manager_id do
           label 'Rent Manager ID'
@@ -1506,6 +1509,7 @@ RailsAdmin.config do |config|
         field :password_confirmation
       end
       group :rent_manager do
+        label 'Rent Manager'
         active false
         field :rent_manager_id do
           label 'Rent Manager ID'
