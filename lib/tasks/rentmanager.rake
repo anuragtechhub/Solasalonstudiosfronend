@@ -93,19 +93,23 @@ namespace :rentmanager do
     p "Finished Rent Manager locations task. #{(matched_properties + unmatched_properties).size} total, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched. "
   end
 
-  task :properties => :environment do
-    p "Start Rent Manager properties task..."
-
-    response = RestClient::Request.execute method: :get, url: 'https://solasalon.apiservices.rentmanager.com/api/170/tenants', user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
-    p "response=#{response.inspect}"
-    
-    p "Finish Rent Manager properties task..."
-  end
-
   task :tenants => :environment do
     p "Start Rent Manager tenants task..."
 
+    locations = Location.where('rent_manager_location_id IS NOT NULL')
 
+    p "#{locations.size} to process"
+
+    locations.each do |location|
+      p "Process tenants for location #{location.name}"
+      tenants_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+      #p "tenants_response=#{tenants_response.inspect}"
+      tenants_json = JSON.parse(tenants_response)
+      p "#{tenants_json.length} tenants to process for #{location.name}"
+      tenants_json.each do |tenant|
+        p "tenant=#{tenant.inspect}"
+      end
+    end
 
     p "Finish Rent Manager tenants task..."
   end
