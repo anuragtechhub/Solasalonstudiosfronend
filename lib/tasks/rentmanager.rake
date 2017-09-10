@@ -6,6 +6,9 @@ namespace :rentmanager do
     require 'json'
     p "Start Rent Manager locations task..."
 
+    matched_properties = []
+    unmatched_properties = []
+
     usa = Carmen::Country.all.select{|c| ['US'].include?(c.code)}.first
     CSV.open(Rails.root.join('csv','rent_manager_locations.csv'), "wb") do |csv|
 
@@ -39,24 +42,47 @@ namespace :rentmanager do
               perfect_match_sola_location = Location.find_by(:address_1 => street, :city => city, :state => carmen_state.name)
               if perfect_match_sola_location
                 p "PERFECT MATCH!!! #{perfect_match_sola_location.id}, #{perfect_match_sola_location.name}, #{perfect_match_sola_location.full_address}"
+
+                perfect_match_sola_location.rent_manager_property_id = property['PropertyID']
+                perfect_match_sola_location.rent_manager_location_id = location['locationID']
+                perfect_match_sola_location.save
+
+                matched_properties << perfect_match_sola_location
+
                 csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, perfect_match_sola_location.id, perfect_match_sola_location.name, perfect_match_sola_location.address_1, perfect_match_sola_location.city, carmen_state.code, 'Yes', 'Perfect match']
               else
                 p "not a perfect match...lets fuzzy match..."
                 fuzzy_match_sola_location = Location.fuzzy_search(:address_1 => street, :city => city, :state => carmen_state.name).first
                 if fuzzy_match_sola_location
                   p "Fuzzy Match!  #{fuzzy_match_sola_location.id}, #{fuzzy_match_sola_location.name}, #{fuzzy_match_sola_location.full_address}"
+
+                  fuzzy_match_sola_location.rent_manager_property_id = property['PropertyID']
+                  fuzzy_match_sola_location.rent_manager_location_id = location['locationID']
+                  fuzzy_match_sola_location.save
+
+                  matched_properties << fuzzy_match_sola_location
+
                   csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, fuzzy_match_sola_location.id, fuzzy_match_sola_location.name, fuzzy_match_sola_location.address_1, fuzzy_match_sola_location.city, carmen_state.code, 'Yes', 'Fuzzy match']
                 else
                   p "tried to fuzzy match, but failed"
+
+                  unmatched_properties << property
+
                   csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, nil, nil, nil, nil, nil, 'No', 'Tried to match using both perfect and fuzzy match, but both matching attempts failed.']
                 end
               end
             else
               p "property NO STREET || CITY || STATE --- properyID=#{property['PropertyID']}, name=#{property['Name']}, street=#{street}, city=#{city}, state=#{state}, postalCode=#{postal_code}"
+
+              unmatched_properties << property
+
               csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, nil, nil, nil, nil, nil, 'No', 'Could not be matched because property in Rent Manager was missing street address, city or state.']
             end
           else 
             p "property NO PRIMARY ADDRESS --- properyID=#{property['PropertyID']}, name=#{property['Name']}"
+            
+            unmatched_properties << property
+
             csv << [location['locationID'], property['PropertyID'], property['Name'], nil, nil, nil, nil, nil, nil, nil, nil, 'No', 'Could not be matched because property in Rent Manager did not have a primary address listed.']
           end
         end # properties_json.each
@@ -64,7 +90,7 @@ namespace :rentmanager do
 
     end # csv.open
     
-    p "Finish Rent Manager locations task..."
+    p "Finished Rent Manager locations task. #{(matched_properties + unmatched_properties).size} total, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched. "
   end
 
   task :properties => :environment do

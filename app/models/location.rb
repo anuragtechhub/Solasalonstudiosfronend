@@ -395,9 +395,11 @@ class Location < ActiveRecord::Base
 
   def update_computed_fields
     # update stylist location_name
-    stylists.each do |stylist|
-      stylist.location_name = self.name
-      stylist.save
+    if self.name_changed?
+      stylists.each do |stylist|
+        stylist.location_name = self.name
+        stylist.save
+      end
     end
   end
 
