@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811203346) do
+ActiveRecord::Schema.define(version: 20170909024941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -322,7 +322,7 @@ ActiveRecord::Schema.define(version: 20170811203346) do
     t.string   "email_address_for_reports"
     t.string   "rent_manager_property_id"
     t.string   "rent_manager_location_id"
-    t.boolean  "service_request_enabled",         default: false
+    t.boolean  "service_request_enabled",     default: false
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
