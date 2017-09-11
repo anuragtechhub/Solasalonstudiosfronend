@@ -869,6 +869,14 @@
       font-size: 17px !important;
       line-height: 27px !important;
       text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+
+      &.body-text {
+        font-family: 'Lato', Arial, sans-serif !important; 
+        color: #6e6e6e !important;
+        font-size: 17px !important;
+        line-height: 27px !important;
+        margin-bottom: 20px !important;
+      }
     }
     p {
       margin-bottom: 25px;
