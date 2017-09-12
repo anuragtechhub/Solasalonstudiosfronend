@@ -109,6 +109,7 @@ namespace :rentmanager do
 
       locations.each do |location|
         p "Process tenants for location #{location.name}"
+        p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants"
         tenants_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
         #p "tenants_response=#{tenants_response.inspect}"
         tenants_json = JSON.parse(tenants_response)
@@ -194,7 +195,7 @@ namespace :rentmanager do
       p "Process units for location #{location.name}"
 
       studios_updated = []
-
+      p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units"
       units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
       #p "units_response=#{units_response.inspect}"
       units_json = JSON.parse(units_response)   
