@@ -25,6 +25,9 @@
   <%= csrf_meta_tags %>
   <%= render 'shared/global_fb_conversion_pixel' %>
   <%= yield :fb_conversion_pixel if content_for?(:fb_conversion_pixel) %>
+  <script src="//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8"></script>
+  <%= render 'shared/google_analytics' %>
+  <%= javascript_include_tag "public_website" %>
 </head>
 <body>
 
@@ -32,9 +35,6 @@
   <%= yield %>
   <%= render 'shared/public_website/footer' %>
 
-  <script src="//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8"></script>
-  <%= render 'shared/google_analytics' %>
-  <%= javascript_include_tag "public_website" %>
   <%= yield :scripts %>
 
   <%= render 'shared/country_switcher_modal' %>
