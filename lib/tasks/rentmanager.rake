@@ -99,7 +99,7 @@ namespace :rentmanager do
     matched_tenants = []
     unmatched_tenants = []
 
-    locations = Location.where('rent_manager_location_id IS NOT NULL')
+    locations = Location.where('rent_manager_location_id IS NOT NULL AND rent_manager_property_id IS NOT NULL')
 
     p "#{locations.size} to process"
 
@@ -109,8 +109,8 @@ namespace :rentmanager do
 
       locations.each do |location|
         p "Process tenants for location #{location.name}"
-        p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants"
-        tenants_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+        p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants?propertyid=#{location.rent_manager_property_id}"
+        tenants_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
         #p "tenants_response=#{tenants_response.inspect}"
         tenants_json = JSON.parse(tenants_response)
         p "#{tenants_json.length} tenants to process for #{location.name}"
@@ -187,7 +187,8 @@ namespace :rentmanager do
   task :studios => :environment do
     p "Start Rent Manager studios task..."
 
-    locations = Location.where('rent_manager_location_id IS NOT NULL')
+    locations = Location.where('rent_manager_location_id IS NOT NULL AND rent_manager_property_id IS NOT NULL')
+    studios_created = 0
 
     p "#{locations.size} to process"
 
@@ -195,16 +196,18 @@ namespace :rentmanager do
       p "Process units for location #{location.name}"
 
       studios_updated = []
-      p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units"
-      units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+      p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}"
+      units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
       #p "units_response=#{units_response.inspect}"
       units_json = JSON.parse(units_response)   
       p "#{units_json.length} units to process for #{location.name}"   
       
       units_json.each do |unit|
-        p "unit=#{unit.inspect}"
-        sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :name => unit['Name'], :location_id => location.id)
+        #p "unit=#{unit.inspect}"
+        sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
+        sola_unit.name = unit['Name']
         studios_updated << sola_unit
+        studios_created = studios_created + 1
       end
 
       p "studios_updated=#{studios_updated.size}"
@@ -212,7 +215,7 @@ namespace :rentmanager do
       p "found #{studios_to_delete.size} studios to delete"
     end
 
-    p "Finish Rent Manager studios task..."
+    p "Finish Rent Manager studios task. #{locations.size} locations. #{studios_created} studios imported/created"
   end  
 
 end

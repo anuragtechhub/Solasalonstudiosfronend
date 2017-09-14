@@ -32,7 +32,7 @@ Suite 400",Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy mat
 3,30,McKnight Road,7809 McKnight Rd,Pittsburgh,PA,392,McKnight Road,7811 McKnight Road ,Pittsburgh,PA,Yes,Fuzzy match
 3,31,Harrisburg Pike,600 N Charlotte St,Lancaster,PA,342,Harrisburg Pike,690 N. Charlotte Street,Lancaster,PA,Yes,Fuzzy match
 3,32,Galleria,"1500 Washington Rd, Suite 1402",Pittsburgh,PA,391,Galleria of Mount Lebanon,1500 Washington Road ,Pittsburgh,PA,Yes,Fuzzy match
-3,33,Strip District,2350 Smallman St,Pittsburgh,PA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+3,33,Strip District,2350 Smallman St,Pittsburgh,PA,408,Strip District,2343 Smallman Street ,Pittsburgh,PA,Yes,Fuzzy match
 3,34,Bellevue,7620 Hwy 70,Nashville,TN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,35,"1111 PA, LCC (East)","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 3,36,"1111 PA, LLC (ALL)","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
@@ -47,7 +47,7 @@ Suite 400",Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy mat
 5,11,Sola W Lakeview,6070 N Forest Glen Ave,Chicago,IL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 6,7,"12S, LLC","2647 Gateway Road, Suite 105-140",Carlsbad,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 6,9,#02 Huntington Beach HB,7862 Warner Avenue,Huntington Beach,CA,141,Huntington Beach,"7862 Warner Avenue, Suite A",Huntington Beach,CA,Yes,Fuzzy match
-6,10,#01 Mission Viejo MV,27741 Crown Valley Parkway,Mission Viejo,CA,140,Mission Viejo,27741 Crown Valley Parkway Suite 201,Mission Viejo,CA,Yes,Fuzzy match
+6,10,#01 Mission Viejo MV,27741 Crown Valley Parkway,Mission Viejo,CA,140,Mission Viejo,27741 Crown Valley Parkway # 201,Mission Viejo,CA,Yes,Fuzzy match
 6,11,OC Regional Development LLC,"2647 Gateway Road, Suite 105-140",Carlsbad,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 6,12,OC Management LLC,"2647 Gateway Road, Suite 105-140",Carlsbad,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 6,13,"12S2, LLC","2647 Gateway Road, Suite 105-140",Carlsbad,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -258,6 +258,7 @@ Suite 101",Encinitas,CA,48,Encinitas,285 North El Camino Real #101,Encinitas,CA,
 55,10,"LSMS, Inc",855 Miller Creek Rd.,Batesville,AR,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 55,11,North Little Rock Sola,"4000 McCain Blvd.
 Suite B",Norh Little Rock,AR,272,North Little Rock,4000 McCain Blvd. Space B ,North Little Rock,AR,Yes,Fuzzy match
+55,12,Chenal Test,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 56,7,GaAugVillagePlaza,"270 Bobby Jones Expy
 Suite 158",Augusta,GA,134,Village Plaza - Bobby Jones Expy.,270 Bobby Jones Expressway Suite #158,Augusta,GA,Yes,Fuzzy match
 57,1,Carrollwood-NPP,15241 N Dale Mabry Hwy,Tampa,FL,51,Carrollwood,15241 N Dale Mabry Highway,Tampa,FL,Yes,Fuzzy match
@@ -281,7 +282,7 @@ Suite 130",Tucson,AZ,70,Tucson - 1st Ave,"4262 North 1st Avenue, Suite 130",Tucs
 64,7,Cinco West,23930 Westheimer Parkway,Katy,TX,117,Cinco Ranch West,23930 Westheimer Parkway,Katy,TX,Yes,Perfect match
 64,8,Cinco East,22167 Westheimer Parkway,Katy,TX,219,Cinco Ranch East,22167 Westheimer Parkway,Katy,TX,Yes,Perfect match
 64,9,Sugarland 1,3640 Highway 6 S,Sugarland,TX,214,Sugar Land,3640 Hwy 6 South,Sugar Land,TX,Yes,Fuzzy match
-64,10,Baybrook 1,16921 Bay Area Blvd.,Houston,TX,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+64,10,Baybrook 1,16921 El Camino Real,Houston,TX,284,Clear Lake,16921 El Camino Real ,Houston,TX,Yes,Fuzzy match
 64,11,Pasadena 1,"SOLA - Heritage Center
 4818 Fairmont Parkway",Pasadena,TX,338,Pasadena,4818 Fairmont Parkway,Pasadena,TX,Yes,Fuzzy match
 65,8,Reading,56 General Way,Reading,MA,232,Reading,56 General Way,Reading,MA,Yes,Perfect match
@@ -308,6 +309,7 @@ Suite 130",Tucson,AZ,70,Tucson - 1st Ave,"4262 North 1st Avenue, Suite 130",Tucs
 69,1,1839-B Independence Ave,1839-B Independence Ave.,Springfield,MO,142,James River Towne Center,1839-B East Independence Avenue,Springfield,MO,Yes,Fuzzy match
 69,2,Kickapoo Corners,3634-3636 S. Campbell,Springfield,MO,370,Kickapoo Corners Shopping Center,3636 South Campbell Avenue,Springfield,MO,Yes,Fuzzy match
 70,8,Sola Salons Redwood City,2115 Broadway,Redwood City,CA,191,Redwood City,2115 Broadway Street,Redwood City,CA,Yes,Fuzzy match
+70,9,Sola Salons San Rafael,900 4th Street,San Rafael,CA,386,San Rafael,900 4th St. Suite 300,San Rafael,CA,Yes,Fuzzy match
 71,7,Sola Maple Grove,7908 N. Main St.,Maple Grove,MN,161,Maple Grove,"7908 North Main Street, Arbor Lakes North End",Maple Grove,MN,Yes,Fuzzy match
 72,1,Tysons Sola,"8607 Westwood Center Drive
 Suite 100",Tysons Corner,VA,208,Tysons Corner,8607 Westwood Center Drive,"Tysons Corner, 22182",VA,Yes,Fuzzy match
@@ -525,7 +527,7 @@ Suite 100",White Plains,NY,83,White Plains,"445 Hamilton Avenue, Suite 100",Whit
 139,4,532 - 5th Avenue NW,532 - 5th Avenue NW,Rochester,MN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 139,5,18 - 12th Avenue NW,8 - 12th Avenuye NW,Rochester,MN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 139,6,PRECISE HANDYWORKS,2194 Folwell Ridge Street SW,Rochester,MN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-139,7,Sola Crossroads,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+139,7,Sola Crossroads,1201 S. Broadway Suite 24,Rochester,MN,376,Crossroads,1201 S. Broadway Suite #24,Rochester,MN,Yes,Fuzzy match
 140,7,Sola,501 South Yellowstone,Madison,WI,64,Yellowstone Drive,501 S Yellowstone Drive,Madison,WI,Yes,Fuzzy match
 141,7,Dakotah Sola LLC,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 142,7,Galleria Oaks,"15909 San Pedro Ave.
@@ -551,13 +553,13 @@ Building G, Unit 75",Lyndhurst,OH,111,Legacy Village,24723 Cedar Road,Lyndhurst,
 146,7,Sola Salon Studios Moline,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 147,1,Sola Salons  Taft Corners  Vermont,2141 Essex Rd,Williston,VT,58,Williston,2141 Essex Road,Williston,VT,Yes,Fuzzy match
 148,1,Corporate,"50 South Steele St., Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-148,2,Highlands Ranch,7148 E. County Line Road,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+148,2,Highlands Ranch,7148 E. County Line Road,Highlands Ranch,CO,4,Highlands Ranch,7148 E. County Line Road,Highlands Ranch,CO,Yes,Perfect match
 148,3,Boulder,3280 28th Street,Boulder,CO,2,Boulder,"3280 28th Street, Suite 11",Boulder,CO,Yes,Fuzzy match
 148,4,Cherry Creek,299 Detroit St. Suite 201,Denver,CO,3,Cherry Creek,299 Detroit Street ,Denver,CO,Yes,Fuzzy match
 148,5,Sola Franchise Corporation,"50 South Steele St., Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 148,7,Fairways,8230 S. Colorado Blvd.,Centennial,CO,7,Centennial,8230 South Colorado Blvd.,Centennial,CO,Yes,Fuzzy match
 148,8,Aurora,13923 E. Exposition Ave.,Aurora,CO,9,Aurora,13923 East Exposition Avenue,Aurora,CO,Yes,Fuzzy match
-148,9,Southwest Commons,8601 West Cross Drive Suite 1,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+148,9,Southwest Commons,8601 West Cross Drive #1,Littleton,CO,17,Littleton,8601 West Cross Drive,Littleton,CO,Yes,Fuzzy match
 148,10,Denver Tech Center,6001 South Willow Drive,Greenwood Village,CO,21,Denver Tech Center,6001 S. Willow Drive,Greenwood Village,CO,Yes,Fuzzy match
 148,11,Arvada Connection,5220 Wadsworth,Arvada,CO,35,Arvada,"5220 Wadsworth, Suite J",Arvada,CO,Yes,Fuzzy match
 148,12,Southlands,6155 S. Main St.,Aurora,CO,72,Southlands,6155 S. Main Street,Aurora,CO,Yes,Fuzzy match
@@ -636,3 +638,23 @@ Suite 3251",Coral Springs,FL,118,Coral Springs,3251 North University Dr.,Coral S
 167,30,"Sola Now, LLC",3333 W. Hamilton Road,Fort Wayne,IN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 168,8,Sola Salons Attleboro,287 Washington Street,Attleboro,MA,372,Attleboro,287 Washington Street,Attleboro,MA,Yes,Perfect match
 169,8,Coconut Point,"23106 Fashion Drive, Suite 127",Estero,FL,367,Coconut Point,"23106 Fashion Drive, Suite 127",Estero,FL,Yes,Perfect match
+171,1,Corporate,"50 South Steele St., Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,2,Highlands Ranch,7148 E. County Line Road,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,3,Boulder,3280 28th Street,Boulder,CO,2,Boulder,"3280 28th Street, Suite 11",Boulder,CO,Yes,Fuzzy match
+171,4,Cherry Creek,299 Detroit St. Suite 201,Denver,CO,3,Cherry Creek,299 Detroit Street ,Denver,CO,Yes,Fuzzy match
+171,5,Sola Franchise Corporation,"50 South Steele St., Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,7,Fairways,8230 S. Colorado Blvd.,Centennial,CO,7,Centennial,8230 South Colorado Blvd.,Centennial,CO,Yes,Fuzzy match
+171,8,Aurora,13923 E. Exposition Ave.,Aurora,CO,9,Aurora,13923 East Exposition Avenue,Aurora,CO,Yes,Fuzzy match
+171,9,Southwest Commons,8601 West Cross Drive Suite 1,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,10,Denver Tech Center,6001 South Willow Drive,Greenwood Village,CO,21,Denver Tech Center,6001 S. Willow Drive,Greenwood Village,CO,Yes,Fuzzy match
+171,11,Arvada Connection,5220 Wadsworth,Arvada,CO,35,Arvada,"5220 Wadsworth, Suite J",Arvada,CO,Yes,Fuzzy match
+171,12,Southlands,6155 S. Main St.,Aurora,CO,72,Southlands,6155 S. Main Street,Aurora,CO,Yes,Fuzzy match
+171,14,Orchard Town Center,"14532 Orchard Parkway, Suite 400",Westminster,CO,67,Orchard Town Center,"14532 Orchard Parkway, Suite 400",Westminster,CO,Yes,Perfect match
+171,15,SouthGlenn,6972 South Vine Street Suite 360,Centennial,CO,92,The Streets at SouthGlenn,"6972 S. Vine Street, Suite 360",Centennial,CO,Yes,Fuzzy match
+171,16,Denver West,1370 Denver West Boulevard ,Lakewood,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,17,SFC Marketing Fund,"50 South Steele Street
+Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+171,18,Country Club Village,2731 West 120th Ave.,Westminster,CO,389,Westminster,2731 W. 120th Avenue ,Westminster,CO,Yes,Fuzzy match
+171,20,Sola Genius ,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+171,21,"Sola Salon Studios Canada, Inc.","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+171,22,"Sola International, Inc.","50 S. Steele St, Suite 1050",Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
