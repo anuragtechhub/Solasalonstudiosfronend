@@ -9,15 +9,14 @@ RM Location ID,RM Property ID,RM Name,RM Address,RM City,RM State,Sola ID,Sola N
 3,4,660 Market SF,660 Market Street,San Francisco,CA,55,San Francisco - Market Street,"660 Market Street, 2nd Floor",San Francisco,CA,Yes,Fuzzy match
 3,5,Belle Meade,5133 Harding Pike,Nashville,TN,60,Nashville - Belle Meade,5133 Harding Pike,Nashville,TN,Yes,Perfect match
 3,6,181 3rd,181 3rd,San Rafael,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-3,7,Maryland Farms,"18 Cadillac Drive
-Suite 400",Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+3,7,Maryland Farms,18 Cadillac Drive,Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,8,Burlingame,1209 Howard St,Burlingame,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,11,1111 Holdings LLC,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 3,12,Administration,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 3,15,877 13TH ST,877 13TH ST,BOULDER,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,16,Cool Springs,1731 Mallory Lance,Brentwood,TN,84,Cool Springs,"1731 Mallory Lane, Suite 100",Brentwood,TN,Yes,Fuzzy match
 3,17,San Mateo,4060 S. El Camino Real,San Mateo,CA,85,San Mateo,"4060 S. El Camino Real, Suite 100",San Mateo,CA,Yes,Fuzzy match
-3,18,Hendersonville,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+3,18,Hendersonville,206 Indian Lake Blvd.,Hendersonville,TN,124,Hendersonville,206 Indian Lake Blvd.,Hendersonville,TN,Yes,Perfect match
 3,19,Williamson Sq Franklin,"1113 Murfreesboro Road, Suite 301",Franklin,TN,210,Williamson Square,1113 Murfreesboro Road,Franklin,TN,Yes,Fuzzy match
 3,20,4th Ave Franklin (Landlord),249 4th Ave,Franklin,TN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,21,Nippers Corner,"5714 Edmundson Pike, Unit 1A",Nashville,TN,218,Nipper's Corner,5714 Edmondson Pike,Nashville,TN,Yes,Fuzzy match
@@ -28,11 +27,11 @@ Suite 400",Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy mat
 3,26,"1111 PA, LLC (West)","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 3,27,Monroeville,330 Mall Boulevard,Monroeville,PA,262,Monroeville,330 Mall Boulevard,Monroeville,PA,Yes,Perfect match
 3,28,Wexford,181 Wexford Bayne Rd,Wexford,PA,286,Wexford,181 Wexford Bayne Road,Wexford,PA,Yes,Fuzzy match
-3,29,Oregon Pike,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+3,29,Oregon Pike,"485 Royer Drive, Suite 101A",Lancaster,PA,341,Oregon Pike,"485 Royer Drive, Suite 101A",Lancaster,PA,Yes,Perfect match
 3,30,McKnight Road,7809 McKnight Rd,Pittsburgh,PA,392,McKnight Road,7811 McKnight Road ,Pittsburgh,PA,Yes,Fuzzy match
 3,31,Harrisburg Pike,600 N Charlotte St,Lancaster,PA,342,Harrisburg Pike,690 N. Charlotte Street,Lancaster,PA,Yes,Fuzzy match
 3,32,Galleria,"1500 Washington Rd, Suite 1402",Pittsburgh,PA,391,Galleria of Mount Lebanon,1500 Washington Road ,Pittsburgh,PA,Yes,Fuzzy match
-3,33,Strip District,2350 Smallman St,Pittsburgh,PA,408,Strip District,2343 Smallman Street ,Pittsburgh,PA,Yes,Fuzzy match
+3,33,Strip District,2343 Smallman St.,Pittsburgh,PA,408,Strip District,2343 Smallman Street ,Pittsburgh,PA,Yes,Fuzzy match
 3,34,Bellevue,7620 Hwy 70,Nashville,TN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 3,35,"1111 PA, LCC (East)","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 3,36,"1111 PA, LLC (ALL)","","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
@@ -70,17 +69,14 @@ Suite 400",Brentwood,CA,,,,,,No,"Tried to match using both perfect and fuzzy mat
 7,11,US Home Ownership Rent to Own,"275 Tennant Ave, Suite 102",Morgan Hill,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 8,8,"GATEWAY VI INVESTMENTS, LLC","275 Tennant Ave
 Suite 102",Morgan HIll,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-8,9,Morgan Hill,"275 Tennant Ave
-Suite 102",Morgan Hill,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+8,9,Morgan Hill,18585 Monterey Rd. Suite 140,Morgan Hill,CA,260,Morgan Hill,"18585 Monterey Rd., Suite 140 ",Morgan Hill,CA,Yes,Fuzzy match
 8,12,Sunnyvale,917 E Arques Ave,Sunnyvale,CA,298,Sunnyvale,917 E. Arques Avenue,Sunnyvale,CA,Yes,Fuzzy match
 8,13,Rose Garden,1700 Park Ave,San Jose,CA,328,San Jose - Rose Garden,1700 Park Avenue,San Jose,CA,Yes,Fuzzy match
 8,14,Blossom Hill,866 Blossom Hill Rd,San Jose,CA,327,San Jose - Blossom Hill,866 Blossom Hill,San Jose,CA,Yes,Fuzzy match
 8,15,Paso Robles,2727 Buena Vista Drive Suite 101/102,Paso Robles,CA,361,Paso Robles,2727 Buena Vista Drive,Paso Robles,CA,Yes,Fuzzy match
 9,7,Sola,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-9,8,Polaris,"Studio Group Partners LLC
-PO Box 312",North Boston,NY,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-9,9,Orchard Park,"Studio Group Partners LLC
-PO Box 312",North Boston,NY,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+9,8,Polaris,1158 Polaris Parkway,Columbus,OH,301,Polaris,1158 Polaris Parkway,Columbus,OH,Yes,Perfect match
+9,9,Orchard Park,2220 Southwestern Blvd.,West Seneca,NY,296,Orchard Park,2220 Southwestern Blvd.,West Seneca,NY,Yes,Perfect match
 11,1,Edina Sola Salon Studios,3519 West 70th Street,Edina,MN,32,Minneapolis - Edina,3519 West 70th Street,Edina,MN,Yes,Perfect match
 11,2,Style Properties Inc,3519 West 70th Street,Edina,MN,32,Minneapolis - Edina,3519 West 70th Street,Edina,MN,Yes,Perfect match
 11,3,Burnsville Sola Salon Studios,14358 Burnhaven Drive,Burnsville,MN,75,Minneapolis - Burnsville,14358 Burnhaven Drive,Burnsville,MN,Yes,Perfect match
@@ -89,7 +85,7 @@ PO Box 312",North Boston,NY,,,,,,No,"Tried to match using both perfect and fuzzy
 12,9,"Edwards Street, LLC",4725 Edwards Street,Alexandria,VA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 12,10,Hilltop Village,6487 Old Beulah Street,Alexandria,VA,241,Hilltop Village - Alexandria,6487 Old Beulah Street ,Alexandria,VA,Yes,Fuzzy match
 12,11,Concord Centre,6133D Backlick Road,Springfield,VA,306,Concord Centre - Springfield,6133 Backlick Road,Springfield,VA,Yes,Fuzzy match
-12,13,University Mall,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+12,13,University Mall,10621 Braddock Road Suite K,Fairfax,VA,307,University Mall - Fairfax,10621 Braddock Road,Fairfax,VA,Yes,Fuzzy match
 12,14,Ballston,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 12,15,Central Park,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 13,7,Sola Jonesboro,1843 Highland Ave,Jonesboro,AR,217,Bernard Court,1849 Highland Ave.,Jonesboro,AR,Yes,Fuzzy match
@@ -106,17 +102,13 @@ Suite 125",Wilmington,NC,385,Mayfaire,"817 Town Center Drive, Suite 125 ",Wilmin
 Suite 110",Schaumburg,IL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 16,2,Orland Park,15752-A South La Grange Road,Orland Park,IL,24,Orland Park,15752-A South La Grange Road,Orland Park,IL,Yes,Perfect match
 16,3,Glen Ellyn,930 Roosevelt Road,Glen Ellyn,IL,31,Glen Ellyn,930 Roosevelt Road,Glen Ellyn,IL,Yes,Perfect match
-17,1," Style Partners, LLC","Sola Salon Studios
-3280 St. Vincent Place",Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-17,2,"Style Lake Oswego, LLC","Sola Salon Studios, Lake Oswego
-3280 St. Vincent Place",Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-17,3,"Style Pearl, LLC","Sola Salon Studios, Pearl
-3280 St. Vincent Place",Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+17,1," Style Partners, LLC",3905 SW 117th Ave. Suite M,Beaverton,OR,79,Canyon Place Sola,"3905 SW 117th Avenue, Suite M",Beaverton,OR,Yes,Fuzzy match
+17,2,"Style Lake Oswego, LLC",17942 SW McEwan Road,Tualatin,OR,101,Lake Oswego Sola,17942 SW McEwan Road,Tualatin,OR,Yes,Perfect match
+17,3,"Style Pearl, LLC",510 NW 10th Ave.,Portland,OR,126,Pearl District Sola,510 NW 10th Avenue,Portland,OR,Yes,Fuzzy match
 17,4,Style Holdings LLC,3280 St Vincent Place,Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-17,5,Style Washington Square,"Sola Salon Studios, Washington Square
-3280 St. Vincent Place",Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+17,5,Style Washington Square,11415 SW Scholls Ferry Road,Beaverton,OR,224,Washington Square Sola,11415 SW Scholls Ferry Road,Beaverton,OR,Yes,Perfect match
 18,1,"Sola Grand Rapids, LLC",6455 28th Street SE,Grand Rapids,MI,42,Cascade East,6455 28th St. SE,Grand Rapids,MI,Yes,Fuzzy match
-19,1,"Style Baton Rouge, LLC",3280 St. Vincent Place,Boulder,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+19,1,"Style Baton Rouge, LLC",8342 Perkins Rd.,Baton Rouge,LA,109,Panache Plaza,8342 Perkins Road,Baton Rouge,LA,Yes,Fuzzy match
 20,1,Sola Mishawaka,1938 E University Drive,Granger,IN,138,City Plaza,1238 East University Drive,Granger,IN,Yes,Fuzzy match
 20,2,Sola Evansville,585 N Green River Road,Evansville,IN,164,Towne Centre,585 N. Green River Road,Evansville,IN,Yes,Fuzzy match
 20,3,Spaceman Ventures LLC,9102 N Meridian St Ste 550,Indianapolis,IN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -158,7 +150,7 @@ Suite D-12",Maumee,OH,,,,,,No,"Tried to match using both perfect and fuzzy match
 25,9,Sola Chattanooga,"2115 Gunbarrel rd
 Suite 7",Chattnooga,TN,221,Hamilton Corners on Gunbarrel rd.,2115 Gunbarrel rd.,Chattanooga,TN,Yes,Fuzzy match
 25,10,Heritage Square Huntsville,7696 Highway 72 west,Madison,AL,314,Heritage Square,7696 Highway 72 West,Madison,AL,Yes,Fuzzy match
-26,1,Sola Chandler,5833 W. Seaglass Circle,Playa Vista,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+26,1,Sola Chandler,1940 W. Chandler Blvd. Suite #5,Chandler,AZ,334,Chandler,1940 W Chandler Blvd. Suite #5,Chandler,AZ,Yes,Fuzzy match
 27,1,Sola Salon Studios Gainesville,"490 NW 60th Street 
 Suite 5",Gainesville,FL,356,Oaks Mall,490 NW 60th Street Suite 5,Gainesville,FL,Yes,Fuzzy match
 28,1,L3W Sola SBCo LP,PO Box 461287,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -172,17 +164,17 @@ Suite A, C, D, E",Chino Hills,CA,248,Chino Hills,"3560 Grand Avenue, Suite A ",C
 28,8,Upland Town Center,"829 W. Foothill Boulevard, Unit B",Upland,CA,345,Upland Town Square,"829 W. Foothill Blvd., Suite B",Upland,CA,Yes,Fuzzy match
 29,7,Sola Salon Studios Brentwood,12121 Wilshire Blvd.,Los Angeles,CA,129,Brentwood,"12121 Wilshire Blvd., Suite 102",Los Angeles,CA,Yes,Fuzzy match
 29,8,Sola Pasadena,"455 S. Lake Ave., Suite 103",Pasadena,CA,299,Pasadena ,455 South Lake Ave. Suite 103 ,Pasadena,CA,Yes,Fuzzy match
-32,7,Belle Hall,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-32,8,Columbiana Station,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-32,9,Rosewood Crossing,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+32,7,Belle Hall,648 Long Point Road Suite A,Mt. Pleasant,SC,127,Mt. Pleasant,648 Long Point Road Suite A,Mt. Pleasant,SC,Yes,Perfect match
+32,8,Columbiana Station,1220 Bower Parkway Suite E5,Columbia,SC,150,Columbiana Station,1220 Bower Parkway Suite E5,Columbia,SC,Yes,Perfect match
+32,9,Rosewood Crossing,4400 Ft. Jackson Blvd. Suite 800,Columbia,SC,275,Rosewood Crossing,4400 Ft. Jackson Blvd. Suite 800,Columbia,SC,Yes,Perfect match
 33,8,Sandy,9285 South Village Shop Drive,Sandy,UT,182,Sandy ,9285 South Village Shop Drive,Sandy,UT,Yes,Perfect match
-33,9,Sola Orem,570 South State Street,Orem,UT,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+33,9,Sola Orem,570 East University Parkway,Orem,UT,322,Orem,570 East University Parkway,Orem,UT,Yes,Perfect match
 33,10,Sugar House,1033 E 2100 S.  Suite 200,Salt Lake City,UT,337,Sugar House,1033 E. 2100 S. Suite 200,Salt Lake City,UT,Yes,Fuzzy match
 33,11,Corporate,1244 Pennbrooke Ln,Highland,UT,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 41,7, Sola 6th Avenue,5401 6th Avenue Suite 300,Tacoma,WA,179,Tacoma - 6th Avenue,5401 6th Ave Suite 300,Tacoma,WA,Yes,Fuzzy match
 42,1,Costa Mesa,1815 Newport Blvd.,Costa Mesa,CA,94,Costa Mesa,1815 Newport Blvd,Costa Mesa,CA,Yes,Fuzzy match
-43,7,Glastonbury,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-43,8,Avon,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+43,7,Glastonbury,140 Glastonbury Blvd.,Glastonbury,CT,165,Glastonbury,140 Glastonbury Blvd,Glastonbury,CT,Yes,Fuzzy match
+43,8,Avon,320 West Main Street (RT 44),Avon,CT,239,"Avon, CT",320 West Main Street (RT 44),Avon,CT,Yes,Perfect match
 44,7,Sola Cupertino,20540 Stevens Creek Blvd,Cupertino,CA,15,Cupertino,20540 Stevens Creek Blvd,Cupertino,CA,Yes,Perfect match
 44,8,EshVar Holdings Inc.,3058 Mattique Drive,San Jose,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 44,9,"Haltore Holdings, Inc",3058 Mattique Drive,San Jose,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -204,22 +196,21 @@ A-102",Crofton,MD,160,Sola Salons of Crofton,1629 Crofton Centre,Crofton,MD,Yes,
 47,10,Sola Salon Administration,"528 College Parkway
 Suite I",Arnold,MD,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 48,1,Riverchase Village,"3780 Riverchase Village
-Suite 500",Birmingham,AL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-48,2,Inverness Corners,710 Inverness Corners,Birmingham,AL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+Suite 500",Hoover,AL,122,Riverchase Village,"3780 Riverchase Village, Suite 500",Hoover,AL,Yes,Fuzzy match
+48,2,Inverness Corners,710 Inverness Corners,Hoover,AL,196,Inverness Corners,710 Inverness Corners,Hoover,AL,Yes,Perfect match
 48,3,Centre at Riverchase,"1694 Montgomery Hwy
-Suite 172",Birmingham,AL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-48,4,Homewood,"1694 Montgomery Highway
 Suite 172",Hoover,AL,300,Centre at Riverchase,"1694 Montgomery Highway, ",Hoover,AL,Yes,Fuzzy match
+48,4,Homewood,808 Green Springs Highway Suite 124,Homewood,AL,388,Homewood,808 Green Springs Highway Suite 124 ,Homewood,AL,Yes,Fuzzy match
 49,8,Corporate,1660 hotel Circle N #304,San Diego,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 49,9,The Veridian,1133 East-West Highway,Silver Spring,MD,317,The Veridian,1133 East West Highway,Silver Spring,MD,Yes,Fuzzy match
 49,10,1701 Rockville Pike,1701 Rockville Pike,Rockville,MD,324,Congressional South,1701 Rockville Pike ,Rockville,MD,Yes,Fuzzy match
 49,11,Westview South,4969 Westview Drive,Frederick,MD,344,Westview South ,"4969 Westview Drive, Suite 105",Frederick,MD,Yes,Fuzzy match
-49,12,1620 York Road,1620 York Road #108,Luthervlle,MD,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+49,12,1620 York Road,1620 York Road #108,Timonium,MD,379,1620 York,1620 York Road #108,Timonium,MD,Yes,Perfect match
 49,13,Centre Court,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 50,7,CSP North Academy,7150 North Academy Blvd.,Colorado Springs,CO,168,North Academy Blvd.,7150 North Academy Blvd. ,Colorado Springs,CO,Yes,Fuzzy match
 50,8,"Parker, CO",11177 S Dransfeldt Rd,Parker,CO,167,Sola Parker,"11177 South Dransfeldt Road, Suite 135",Parker,CO,Yes,Fuzzy match
 50,9,Corporate,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-50,10,Powers Blvd,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+50,10,Powers Blvd,6165 Barnes Road,Colorado Springs,CO,336,Powers Blvd.,6165 Barnes Road,Colorado Springs,CO,Yes,Perfect match
 51,8,"AGG Salon 1, LLC ",4727 E Cactus Rd,Phoenix,AZ,154,Paradise Valley Village,"4727 E Cactus Rd, Suite 100",Phoenix,AZ,Yes,Fuzzy match
 51,10,AGG Salons INC,3746 E Ringtail Way,Phoenix,AZ,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 51,11,"AGG Salon 2, LLC","15454 N Frank Lloyd Wright Blvd
@@ -290,10 +281,10 @@ Suite 130",Tucson,AZ,70,Tucson - 1st Ave,"4262 North 1st Avenue, Suite 130",Tucs
 66,1,#01-Sola East,"7724 E 37th St N, Suite 300",Wichita,KS,5,East Wichita,"7724 E 37th St N, Suite 300",Wichita,KS,Yes,Perfect match
 66,2,#01 Sola West LLC,"2243 N Tyler, Suite 115",Wichita,KS,13,West Wichita,"2243 N Tyler, Suite 115",Wichita,KS,Yes,Perfect match
 66,3,#01 Santa Clarita,26615 Bouquet Canyon Road,Santa Clarita,CA,46,Santa Clarita,26615 Bouquet Canyon Road,Santa Clarita,CA,Yes,Perfect match
-66,4,#02 El Segundo,2041 Rosecrans Ave Suite 170,El Segundo,CA,99,Manhattan Beach/El Segundo,2041 Rosecrans Ave. #170,El Segundo,CA,Yes,Fuzzy match
+66,4,#02 El Segundo,2041 Rosecrans Ave #170,El Segundo,CA,99,Manhattan Beach/El Segundo,2041 Rosecrans Ave. #170,El Segundo,CA,Yes,Fuzzy match
 66,5,#20 G&A CA,2420 N Woodlawn Bldg 300,Wichita,KS,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 66,6,#03 Thousand Oaks,43 Thousand Oaks,Thousand Oaks,CA,47,Thousand Oaks,43 A West Thousand Oaks Blvd,Thousand Oaks,CA,Yes,Fuzzy match
-66,7,#02 Sola East - Preston,14114 E Central,Wichita,KS,181,Preston Village,11414 East Central,Wichita,KS,Yes,Fuzzy match
+66,7,#02 Sola East - Preston,11414 East Central,Wichita,KS,181,Preston Village,11414 East Central,Wichita,KS,Yes,Perfect match
 66,8,Solafornia - 01 Ventura,1730 S Victoria Ave Unit B,Ventura,CA,199,Ventura,1730 S Victoria Ave Suite B,Ventura,CA,Yes,Fuzzy match
 66,9,Solafornia - G&A,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 66,10,OLD DO NOT USE Ventura ,prior to creating Solafornia,Ventura,CA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -324,9 +315,8 @@ Suite 100",Wellington,FL,173,Wellington,"2515 S State Road 7, Ste.100",Wellingto
 Suite 385",Boynton Beach,FL,237,Boynton Beach,398 N. Congress Avenue ,Boynton Beach,FL,Yes,Fuzzy match
 75,12,Stuart Square,1982 -1986 SE Federal Highway,Stuart,FL,243,Stuart,1982 SE Federal Highway,Stuart,FL,Yes,Fuzzy match
 75,13,Vero Beach,490 21st Avenue,Vero Beach,FL,333,Vero Beach,490 21st Street,Vero Beach,FL,Yes,Fuzzy match
-75,26,Savannah Market Walk,"318 Mall Boulevard
-7135C",Savannah,GA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-75,27,Jupiter,1132 W. Indiantown Road,"","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+75,26,Savannah Market Walk,7135 Hodgson Memorial Drive Unit C,Savannah,GA,365,Southside,7135 Hodgson Memorial Drive,Savannah,GA,Yes,Fuzzy match
+75,27,Jupiter,1132 W. Indiantown Road,Jupiter,FL,394,Jupiter,1132 W. Indiantown Road ,Jupiter,FL,Yes,Fuzzy match
 76,2,Seattle Sola LLC,7301 E 8th Ave,Denver,CO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 76,3,Elements 1,"909 112th Avenue NE
 Suite 105",Bellevue,WA,59,Downtown Bellevue - Elements Too Building,"909 112th Avenue NE, Suite 105 & 205",Bellevue,WA,Yes,Fuzzy match
@@ -342,11 +332,11 @@ Suite 105",Bellevue,WA,59,Downtown Bellevue - Elements Too Building,"909 112th A
 Suites 80, 84, 88",Tucson,AZ,137,Tucson - Northwest,7090 N. Oracle Suite 80,Tucson,AZ,Yes,Fuzzy match
 77,4,Corporate,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 78,8,Sola San Marcos,2055 Montiel Road Suite 108 & 109,San Marcos,CA,162,San Marcos,"2055 Montiel Road, Suite 109",San Marcos,CA,Yes,Fuzzy match
-79,1,Kings Crossing,2905 W. 90th St.,Sioux Falls,SD,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+79,1,Kings Crossing,610 S. Minn,Sioux Falls,SD,27,Sioux Falls - 69th/Minn.,6010 S. Minn.,Sioux Falls,SD,Yes,Fuzzy match
 79,2,Sola of Fargo,3475 45th St. S. Suite 100,Fargo,ND,175,Southwest Fargo,3475 45th St South Suite 100,Fargo,ND,Yes,Fuzzy match
 82,7,Sola Salons Studios Lexington Green,"200 Lexington Green Circle
 Suite 150",Lexington,Kentucky,,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-83,1,Sola College Station,4227 Thickey Pines Ct.,Katy,TX,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+83,1,Sola College Station,1748 Rock Prairie Road,College Station,TX,281,College Station - Rock Prairie Road,1748 Rock Prairie Road ,College Station,TX,Yes,Fuzzy match
 84,7,Clocktower Village,709 N. 98th Street,Omaha,NE,318,Clocktower Village,709 N 98th Street,Omaha,NE,Yes,Fuzzy match
 84,8,Sioux City,1772 Hamilton Blvd.,Sioux City,IA,371,Perry Creek Shopping Center,1772 Hamilton Blvd.,Sioux City,IA,Yes,Perfect match
 84,9,Corporate ,2105 Pebble Beach Lane,Brandon,SD,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
@@ -354,12 +344,10 @@ Suite 150",Lexington,Kentucky,,,,,,No,"Could not be matched because property in 
 85,10,Sola Uptown Phoenix,6016 N 16 St.,Phoenix,AZ,354,Uptown Phoenix,6016 N 16th St.,Phoenix,AZ,Yes,Fuzzy match
 86,7,Sola Artesia,"18300 Gridley Road, Suite 200",Artesia,CA,313,Artesia,18300 Gridley Road,Artesia,CA,Yes,Fuzzy match
 86,8,Sola Shelby Township,45567 Market Street,Shelby Township,MI,329,Shelby Township,45567 Market Street,Shelby Township,MI,Yes,Perfect match
-86,10,Lakeview Plaza,5550-5578 Cooley Lake Road,Waterford,MI,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-87,9,"495 Post Road East, Westport, CT","Sola Salons
-495 Post Road East",Westport,CT,274,Westport,495 Post Road East,Westport,CT,Yes,Fuzzy match
-87,10,"5 River Road, Wilton, CT 06897","Sola Salons
-5 River Road",Witlon,CT,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-88,7,Sola Hales Corners,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+86,10,Lakeview Plaza,45567 Market Street,Shelby Township,MI,329,Shelby Township,45567 Market Street,Shelby Township,MI,Yes,Perfect match
+87,9,"495 Post Road East, Westport, CT",495 Post Road East,Westport,CT,274,Westport,495 Post Road East,Westport,CT,Yes,Perfect match
+87,10,"5 River Road, Wilton, CT 06897",5 River Road,Witlon,CT,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+88,7,Sola Hales Corners,5319 S. 180th St.,Hales Corners,WI,287,Hales Corners Plaza,5319 S. 108th Street,Hales Corners,WI,Yes,Fuzzy match
 89,1,Fountain Oaks - Sandy Springs,"4920 Roswell Road
 Suite 37",Atlanta,GA,6,Fountain Oaks,4920 Roswell Road,Atlanta,GA,Yes,Fuzzy match
 89,2,Four S Atlanta LLC,"1300 Baxter St
@@ -375,8 +363,7 @@ Suite 500",Duluth,Ga,14,Medlock Corners,5805 State Bridge Road,Duluth,GA,Yes,Fuz
 Suite 100",Marietta,GA,28,East Cobb,1062 Johnson Ferry Rd,Marietta,GA,Yes,Fuzzy match
 89,8,Four S Charlotte LLC,"1300 Baxter St
 Suite 421",Charlotte,NC,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-89,9,The Shoppes at The Fresh Market - Cornelius (SoLak,"20619 Torrence Chapel Rd
-Suite 123",Davidson,NC,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+89,9,The Shoppes at The Fresh Market - Cornelius (SoLak,20619 Torrence Chapel Rd,Cornelius,NC,33,Cornelius,20619 Torrence Chapel Road,Cornelius,NC,Yes,Fuzzy match
 89,12,DuPont Building - SouthPark,6324 Fairview Road,Charlotte,NC,66,SouthPark,6324 Fairview Road,Charlotte,NC,Yes,Perfect match
 89,13,Saltbox - Cary,1269 Kildaire Farm Road ,Cary,NC,69,Cary,1269 Kildaire Farm Road,Cary,NC,Yes,Fuzzy match
 89,14,Atherton Mill - SouthEnd,"2000 South Blvd
@@ -420,15 +407,14 @@ Suite 421",Charlotte,NC,,,,,,No,"Tried to match using both perfect and fuzzy mat
 Suites 153 and 157",Chapel Hill,NC,292,Rams Plaza,1728 Fordham Blvd.,Chapel Hill,NC,Yes,Fuzzy match
 89,39,Park-Abbey Building - Park Road,4600 Park Road,Charlotte,NC,291,Park Road,4600 Park Road,Charlotte,NC,Yes,Perfect match
 89,40,Lake Mary Centre - Lake Mary,3653 Lake Emma Road,Lake Mary,FL,294,Lake Mary,3653 Lake Emma Rd ,Lake Mary,FL,Yes,Fuzzy match
-89,41,Island Walk North - Fleming Island,"1950 East West Parkway
-Fleming Island",Orange Park,FL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-89,42,Shops at Pelham - Greenville,"",Greenville,SC,,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+89,41,Island Walk North - Fleming Island,1950 East West Parkway,Fleming Island,FL,325,Fleming Island,1950 East West Parkway,Fleming Island,FL,Yes,Perfect match
+89,42,Shops at Pelham - Greenville,3620 Pelham Road,Greenvill,SC,404,Pelham@85,3620 Pelham Road ,Greenville,SC,Yes,Fuzzy match
 89,43,RiverGate Shopping Center - Steele Creek,"14136 RiverGate Parkway
 Suite 100",Charlotte,NC,297,Steele Creek,"14136 Rivergate Pkwy, Suite 100",Charlotte,NC,Yes,Fuzzy match
 89,44,Blakeney Shopping Center - Ballantyne,9852-F2 Rea Road,Charlotte,NC,335,Blakeney,9870 Rea Road Suite #9652-F2,Charlotte,NC,Yes,Fuzzy match
 89,45,Battleground Village - Greensboro,2957 A-B B Battleground Ave,Greensboro,NC,377,Battleground Village,2957 Battleground Avenue,Greensboro,NC,Yes,Fuzzy match
 89,46,Tyrone Square Mall - St. Petersburg,6754 22nd Avenue North,St. Petersburg,FL,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-89,47,Matthews Festival - Independence,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+89,47,Matthews Festival - Independence,10418 East Independence Blvd.,Matthews,NC,364,Matthews,10418 East Independence Blvd,Matthews,NC,Yes,Fuzzy match
 89,48,Sarasota Pavilion - Sarasota,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 110,7,Sola Salons San Dimas,655 West Arrow Highway,San Dimas,CA,145,San Dimas - San Dimas Station NORTH Shopping Center,655 West Arrow Highway (Cross street - West Bonita Ave),San Dimas,CA,Yes,Fuzzy match
 111,1,Roseville Sola,"2401 Fairview Avenue North
@@ -445,7 +431,7 @@ Sola Salons, Main Street",Maple Grove,MN,161,Maple Grove,"7908 North Main Street
 111,9,Maplewood Building,2966 White Bear Avenue,Maplewood,MN,310,Maplewood,2966 White Bear Avenue,Maplewood,MN,Yes,Perfect match
 111,10,Little North Fork G&A,"Little North Fork, LLC
 PO Box 270876",St. Paul,MN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-111,11,Eden Prairie Sola,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+111,11,Eden Prairie Sola,10260 Viking Drive,Eden Prairie,MN,400,Eden Prairie,10260 Viking Drive ,Eden Prairie,MN,Yes,Fuzzy match
 112,7,Sola Lubbock Southwest,"7020 Quaker Avenue
 Suite 8",Lubbock,TX,253,Lubbock Southwest,7020 Quaker Avenue Suite 8 ,Lubbock ,TX,Yes,Fuzzy match
 112,8,Sola Waco,"1428 Wooded Acres, Suite 100",Waco,TX,319,Waco - Lake Air Court,1428 Wooded Acres,Waco,TX,Yes,Fuzzy match
@@ -486,13 +472,13 @@ Suite 40",Longview ,TX,249,Triple Creek Shopping Center,110 Triple Creek Drive S
 126,1,Eastern,2986 St Rose Parkway Suite 100,"","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 126,2,Corporate,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 126,3,Rhodes Ranch,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-126,4,Tropicana & 215,9640 W Tropicana,Las Vegas,NV,44,Tropicana & 215,9340 W. Tropicana Avenue,Las Vegas,NV,Yes,Fuzzy match
+126,4,Tropicana & 215,9340 W Tropicana Ave,Las Vegas,NV,44,Tropicana & 215,9340 W. Tropicana Avenue,Las Vegas,NV,Yes,Fuzzy match
 126,5,District,"170 S Green Valley Parkway, #100",Henderson,NV,50,The District,"170 S Green Valley Parkway, Suite 100",Henderson,NV,Yes,Fuzzy match
 126,6,Territory,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-126,7,Summerlin,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+126,7,Summerlin,8975 W. Charleston Blvd. Suite 120,Las Vegas,NV,87,Summerlin,"8975 W Charleston Boulevard, Suite 120",Las Vegas,NV,Yes,Fuzzy match
 126,8,Sun Lounge,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-126,9,Buffalo,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
-128,1,Castro Valley,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+126,9,Buffalo,7355 S. Buffalo Suite D,Las Vegas,NV,43,Buffalo,7355 S Buffalo Suite D,Las Vegas,NV,Yes,Fuzzy match
+128,1,Castro Valley,21060 Redwood Road #200,Castro Valley,CA,343,Castro Valley,21060 Redwood Rd. #200,Castro Valley,CA,Yes,Fuzzy match
 129,8,Mill Plain Vancouver,13875 SE Mill Plain Blvd,Vancouver,WA,61,Cascade Marketplace,13875 SE Mill Plain Blvd.,Vancouver,WA,Yes,Fuzzy match
 130,8,Delafield,3001 Village Square Dr.,Delafield,WI,169,Village Square of Delafield,3001 Village Square Drive,Delafield,WI,Yes,Fuzzy match
 131,7,Sola,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
@@ -529,7 +515,7 @@ Suite 100",White Plains,NY,83,White Plains,"445 Hamilton Avenue, Suite 100",Whit
 139,6,PRECISE HANDYWORKS,2194 Folwell Ridge Street SW,Rochester,MN,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 139,7,Sola Crossroads,1201 S. Broadway Suite 24,Rochester,MN,376,Crossroads,1201 S. Broadway Suite #24,Rochester,MN,Yes,Fuzzy match
 140,7,Sola,501 South Yellowstone,Madison,WI,64,Yellowstone Drive,501 S Yellowstone Drive,Madison,WI,Yes,Fuzzy match
-141,7,Dakotah Sola LLC,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+141,7,Dakotah Sola LLC,501 Main st.,Rapid City,SD,143,Downtown Rapid City,501 Main St.,Rapid City,SD,Yes,Fuzzy match
 142,7,Galleria Oaks,"15909 San Pedro Ave.
 Suite 100",San Antonio,TX,197,San Antonio-Galleria Oaks Shopping Center,15909 San Pedro Ave,San Antonio,TX,Yes,Fuzzy match
 142,8,Creve Coeur,11756 Olive Blvd,Creve Coeur,MO,200,Sola Salons Creve Coeur,11756 Olive Boulevard ,Creve Coeur,MO,Yes,Fuzzy match
@@ -548,7 +534,7 @@ Building G, Unit 75",Lyndhurst,OH,111,Legacy Village,24723 Cedar Road,Lyndhurst,
 144,7,HEISLEY ROAD,6994 Heisley Road,Mentor,OH,151,Mentor,6994 Heisley Road,Mentor,OH,Yes,Perfect match
 144,9,SHOPPES AT THE VILLAGE,2605 South Onieda Street,Green Bay,WI,184,Shoppes at the Village,2605 South Oneida Street ,Green Bay,WI,Yes,Fuzzy match
 144,10,MEDINA,5050 Victor Road,Medina,OH,230,Medina,5050 Victor Drive,Medina,OH,Yes,Fuzzy match
-144,11,MUNROE ROAD,2415 Munroe Road,DePere,WI,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
+144,11,MUNROE ROAD,2442 Costco Way,Bellevue,WI,346,Costco Way,2442 Costco Way,Bellevue,WI,Yes,Perfect match
 145,1,Sola Torrance,2746 Pacific Coast Highway,Torrance,CA,207,Torrance,2746 Pacific Coast Highway,Torrance,CA,Yes,Perfect match
 146,7,Sola Salon Studios Moline,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 147,1,Sola Salons  Taft Corners  Vermont,2141 Essex Rd,Williston,VT,58,Williston,2141 Essex Road,Williston,VT,Yes,Fuzzy match
@@ -598,12 +584,9 @@ Suite 200",Lewisville,TX,331,Lewisville,475 SH 121 Bypass Ste. 200,Lewisville,TX
 152,68,Sola_2705 Little Elm LLC,2705 Little Elm Parkway #180,Little Elm,TX,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 154,1,Samson ,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 156,8,Sola Salons of S.W. Ohio,1611 Dauphine Ln,St. Louis,MO,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-156,9,Grove City,"Park Square Shopping Center
-4026 McDowell Rd",Grove City,OH,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
-156,10,Greene Crossings,"Equity
-4653 Trueman Blvd., Suite 100
-Hilliard, OH  43206
-Attn: Property management","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+156,9,Grove City,"2058 Stringtown Road 
+Park Square Shopping Center",Grove  City,OH,369,Grove City,2058 Stringtown Road,Grove City,OH,Yes,Fuzzy match
+156,10,Greene Crossings,4428 Indian Ripple Road,Beavercreek,OH,363,Greene Crossing,4428 Indian Ripple Road,Beavercreek,OH,Yes,Perfect match
 156,11,Cherry Gove,"Regency Centers Corporation
 One Independent Drive
 Suite 114
@@ -611,11 +594,11 @@ Jacksonville, FL  32202-5019
 Attn: Lease Administration","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
 157,1,Sola Salon Studio Billings,"2545 Central Ave
 Suite M",Billings,MT,244,Rimrock Plaza,2545 Central Ave Suite M ,Billings,MT,Yes,Fuzzy match
-158,8,Sola Mobile,"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+158,8,Sola Mobile,4023 Airport Boulevard,Mobile,AL,311,Airport Boulevard,4023 Airport Boulevard,Mobile,AL,Yes,Perfect match
 159,1,Flatiron Capital LLC (Plsntn),"6010 Johnson Dr.
 Suite D",Pleasanton,CA,20,Pleasanton,6010 Johnson Drive Suite D,"Pleasanton, CA ",CA,Yes,Fuzzy match
 159,2,Flatiron Campbell LLC (Danville) ,760 Camino Ramon,Danville ,CA,74,Danville,"760 Camino Ramon, Suite 150",Danville,CA,Yes,Fuzzy match
-159,3,Flatiron Capital Los Gatos LLC (WC),"","","",,,,,,No,"Could not be matched because property in Rent Manager was missing street address, city or state."
+159,3,Flatiron Capital Los Gatos LLC (WC),1651 Botelho Dr. Suite 190,Walnut Creek,CA,73,Walnut Creek,"1651 Botelho Dr., Suite 190",Walnut Creek,CA,Yes,Fuzzy match
 160,1,"SR CVA, LLC",PO Box 703,Midlothian,VA,,,,,,No,"Tried to match using both perfect and fuzzy match, but both matching attempts failed."
 160,2,"Sola Richmond, LLC",4300 Pouncey Tract,Glen Allen,VA,88,Short Pump,"4300 Pouncey Tract, Suite H",Glen Allen,VA,Yes,Fuzzy match
 160,3,"Sola Swift Creek, LLC",5005 Craig Rath Boulevatd,Midlothian,VA,22,Hull Street,5005 Craig Rath Blvd.,Midlothian,VA,Yes,Fuzzy match
