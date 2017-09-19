@@ -64,7 +64,18 @@ class ContactUsController < PublicWebsiteController
         rti.save
         if params[:email]
           gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-          gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+          if I18n.locale && I18n.locale.to_s == 'en-CA'
+            # Canada
+            if params[:receive_newsletter]
+              # yes, opted to receive
+              gb.lists.subscribe({:id => '82a3e6ea74', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+            else
+              # opted to not receive
+            end
+          else
+            # USA
+            gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+          end
         end
         if params[:message]
           # if there's a message, this is a general contact us submission
@@ -82,6 +93,7 @@ class ContactUsController < PublicWebsiteController
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
+  # don't think this is used anymore (was for Sola 5000 page)
   def partner_inquiry
     if request.post?
       if params[:name].present? && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present?
