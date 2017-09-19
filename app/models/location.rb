@@ -345,6 +345,14 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def stylists_using_sola_pro
+    stylists.where('encrypted_password != ?', '')
+  end
+
+  def stylists_using_sola_genius
+    stylists.where('stylists.has_sola_genius_account = ?', true)
+  end
+
   private
 
   def url_name_uniqueness

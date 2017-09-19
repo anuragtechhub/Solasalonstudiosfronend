@@ -36,4 +36,17 @@ namespace :bi do
     end
   end
 
+  task :sola_pro_sola_genius_penetration => :environment do
+    p "Begin sola_pro_sola_genius_penetration..."
+    CSV.open(Rails.root.join('csv','sola_pro_sola_genius_penetration.csv'), "wb") do |csv|
+      csv << ['Location Name', 'City', 'State', 'Stylists on Website', 'Stylists with Sola Pro Account', 'Stylists with SolaGenius Account']
+      Location.where(:status => 'open').order(:created_at).each do |location|
+        p "location=#{location.name}, #{location.stylists.length}"
+        csv << [location.name, location.city, location.state, location.stylists.length, location.stylists_using_sola_pro.length, location.stylists_using_sola_genius.length]
+        #csv << [location.name, location.city, location.state, location.stylists.size, location.stylists.where("encrypted_password != ''").size, location.stylists.where('stylists.has_sola_genius_account = ?', true).size]
+        p "done with #{location.name}"
+      end
+    end
+  end
+
 end
