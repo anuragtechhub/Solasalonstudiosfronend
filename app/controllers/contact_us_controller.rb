@@ -1,4 +1,7 @@
 class ContactUsController < PublicWebsiteController
+
+  # Newsletter USA - 09d9824082
+  # Newsletter Canada - 82a3e6ea74
   
   skip_before_filter :verify_authenticity_token, :only => [:franchising_request, :request_a_tour]
 
