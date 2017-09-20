@@ -25,6 +25,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
+  after_create :sync_with_rent_manager
   after_save :remove_from_mailchimp_if_closed
   after_destroy :remove_from_mailchimp, :touch_stylist
 
@@ -117,6 +118,14 @@ class Stylist < ActiveRecord::Base
   validates :name, :url_name, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
+
+  def first_name
+    FullNameSplitter.split(name)[0]
+  end
+
+  def last_name
+    FullNameSplitter.split(name)[1]
+  end
 
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present? || google_plus_url.present?
@@ -227,6 +236,27 @@ class Stylist < ActiveRecord::Base
 
   def canonical_url
     "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
+  end
+
+  def sync_with_rent_manager
+    if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
+      require 'rest-client'
+      p "Sync stylist with Rent Manager: rent_manager_property_id=#{location.rent_manager_property_id}, rent_manager_location_id=#{location.rent_manager_location_id}"
+      post_tenant_response = RestClient::Request.execute({
+        :method => :post, 
+        :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants", 
+        :user => 'solapro', 
+        :password => '20FCEF93-AD4D-4C7D-9B78-BA2492098481',
+        :payload => {
+          "FirstName" => self.first_name,
+          "LastName" => self.last_name,
+          "PropertyID" => self.location.rent_manager_property_id,
+        }
+      })
+      p "post_tenant_response=#{post_tenant_response}"
+    else 
+      p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
+    end
   end
 
   private
