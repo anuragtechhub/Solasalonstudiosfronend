@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910184247) do
+ActiveRecord::Schema.define(version: 20170920225139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -538,21 +538,20 @@ ActiveRecord::Schema.define(version: 20170910184247) do
     t.text     "image_10_alt_text"
     t.boolean  "microblading"
     t.string   "rent_manager_id"
-    t.string   "first_name"
-    t.string   "last_name"
     t.date     "date_of_birth"
     t.string   "street_address"
     t.string   "city"
     t.string   "state_province"
     t.string   "postal_code"
-    t.string   "cell_phone_number"
-    t.string   "email_address_private"
     t.string   "emergency_contact_name"
     t.string   "emergency_contact_relationship"
     t.string   "emergency_contact_phone_number"
     t.string   "cosmetology_license_number"
     t.string   "permitted_use_for_studio"
     t.string   "country"
+    t.string   "website_email_address"
+    t.string   "website_phone_number"
+    t.string   "website_name"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
