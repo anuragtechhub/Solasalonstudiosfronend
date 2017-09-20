@@ -1037,7 +1037,7 @@ RailsAdmin.config do |config|
         field :cosmetology_license_number
         field :status
         field :date_of_birth do
-          help 'You can click for a datepicker or type the date in the format: January 1, 1979'
+          help 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979'
         end
         field :street_address
         field :city
@@ -1283,7 +1283,7 @@ RailsAdmin.config do |config|
         field :cosmetology_license_number
         field :status
         field :date_of_birth do
-          help 'You can click for a datepicker or type the date in the format: January 1, 1979'
+          help 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979'
         end
         field :street_address
         field :city
