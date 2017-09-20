@@ -301,7 +301,7 @@ RailsAdmin.config do |config|
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
-    edit do
+    #edit do
       field :stylist
       field :studio
       field :start_date
@@ -330,7 +330,7 @@ RailsAdmin.config do |config|
         label 'Rent Manager ID'
         help 'This should be a lease ID from Rent Manager'
       end
-    end
+    #end
   end
 
   config.model 'Location' do    

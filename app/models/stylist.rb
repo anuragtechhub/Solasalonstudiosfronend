@@ -25,7 +25,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_create :sync_with_rent_manager
+  after_create :create_on_rent_manager
   after_save :remove_from_mailchimp_if_closed
   after_destroy :remove_from_mailchimp, :touch_stylist
 
@@ -238,22 +238,40 @@ class Stylist < ActiveRecord::Base
     "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
   end
 
-  def sync_with_rent_manager
+  def create_on_rent_manager
     if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
       require 'rest-client'
       p "Sync stylist with Rent Manager: rent_manager_property_id=#{location.rent_manager_property_id}, rent_manager_location_id=#{location.rent_manager_location_id}"
+      
+      payload = {
+        "FirstName" => self.first_name,
+        "LastName" => self.last_name,
+        "PropertyID" => self.location.rent_manager_property_id,
+      }
+
+      payload["TenantID"] = self.rent_manager_id if self.rent_manager_id.present?
+
+      p "payload=#{payload}"
+
       post_tenant_response = RestClient::Request.execute({
+        :headers => {"Content-Type": "application/json"},
         :method => :post, 
+        #:content_type => 'application/json',
         :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants", 
         :user => 'solapro', 
         :password => '20FCEF93-AD4D-4C7D-9B78-BA2492098481',
-        :payload => {
-          "FirstName" => self.first_name,
-          "LastName" => self.last_name,
-          "PropertyID" => self.location.rent_manager_property_id,
-        }
+        :payload => [payload].to_json
       })
-      p "post_tenant_response=#{post_tenant_response}"
+
+      post_tenant_response_json = JSON.parse(post_tenant_response)[0]
+      p "post_tenant_response_json=#{post_tenant_response_json}"
+      if post_tenant_response_json["TenantID"] && post_tenant_response_json["TenantID"] != self.rent_manager_id
+        p "let's store the rent_manager_id #{post_tenant_response_json["TenantID"]}"
+        self.rent_manager_id = post_tenant_response_json["TenantID"]
+        self.save
+      else
+        p "no rent_manager_id or same rent_manager_id, so no need to save #{post_tenant_response_json["TenantID"]}, #{self.rent_manager_id}"
+      end
     else 
       p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
     end

@@ -2,6 +2,16 @@ namespace :rentmanager do
 
   require 'rest-client'
 
+  task :locations_for_property do
+    properties_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/171/Properties", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+    p "properties_response=#{properties_response.inspect}"
+    properties_json = JSON.parse(properties_response)
+    #p "properties_json=#{properties_json.inspect}"
+    properties_json.each do |property|
+      p "property=#{property.inspect}"
+    end
+  end
+
   task :locations => :environment do
     require 'json'
     p "Start Rent Manager locations task..."
