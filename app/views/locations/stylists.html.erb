@@ -49,7 +49,7 @@
       <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
           <div class="one-third column search-result stylist">
-            <h3 class="salon-professional-name"><%= link_to show_salon_professional_path(stylist) do %><%= stylist.name.html_safe %><% end %></h3>
+            <h3 class="salon-professional-name"><%= link_to show_salon_professional_path(stylist) do %><%= stylist.website_name.present? ? stylist.website_name.html_safe : stylist.name.html_safe %><% end %></h3>
             <h3 class="subtle business-name"><%= stylist.business_name.present? ? stylist.business_name.html_safe : '&nbsp;'.html_safe %><br>Studio <%= stylist.studio_number %></h3>
             <p class="salon-services">
               <% if stylist.services && stylist.services.size > 0 %>
@@ -60,7 +60,7 @@
                 <span class="service" style="visibility:hidden">&nbsp;</span>
               <% end %>
             </p>
-            <div><%= (stylist.phone_number.present? && stylist.phone_number_display) ? stylist.phone_number : '&nbsp;'.html_safe %></div>
+            <div><%= ((stylist.phone_number.present? || stylist.website_phone_number.present?) && stylist.phone_number_display) ? (stylist.website_phone_number.present? ? stylist.website_phone_number : stylist.phone_number) : '&nbsp;'.html_safe %></div>
             <div class='view-profile'><%= link_to t('page.locations.view_profile').html_safe, show_salon_professional_path(stylist) %></div>
           </div>
         <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>

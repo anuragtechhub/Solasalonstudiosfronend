@@ -3,13 +3,13 @@
     <%= link_to t('page.salon_professional.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, I18n.locale == :en ? locations_by_state_path(beautify_url_segment @location.state) : locations_by_province_path(beautify_url_segment @location.state) %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name) %>
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name) %>
-    <span class="divider">/</span> <%= link_to @stylist.name, show_salon_professional_path(@stylist) %>
+    <span class="divider">/</span> <%= link_to (@stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe), show_salon_professional_path(@stylist) %>
   </div>
 </div> 
 
 <div class="heading">
   <div class="container">
-    <h1 class="salon_professional_name"><%= @stylist.name.html_safe %></h1>
+    <h1 class="salon_professional_name"><%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h1>
     <h3 class="salon_professional_business_name"><%= @stylist.business_name.html_safe %></h3>
     <div class="badge">
       <div class="studio-number-badge">
@@ -24,15 +24,15 @@
   <div class="row">
 
     <div class="one-third column salon-pro-info">
-      <% if (@stylist.send_a_message_button && valid_email?(@stylist.email_address)) || @stylist.booking_url.present? %>
+      <% if (@stylist.send_a_message_button && (valid_email?(@stylist.website_email_address) || valid_email?(@stylist.email_address))) || @stylist.booking_url.present? %>
         <div class="salon-pro-buttons">
           <%= link_to(@stylist.has_sola_genius_account ? t('page.salon_professional.book_appointment').html_safe : t('page.salon_professional.book_now').html_safe, url_helper(@stylist.booking_url), :class => 'button block long-text', :target => '_blank') if @stylist.booking_url.present? %>
-          <%= link_to(t('page.salon_professional.send_a_message').html_safe, '#', :class => 'button block send-a-message-button long-text') if (@stylist.send_a_message_button && valid_email?(@stylist.email_address)) %>
+          <%= link_to(t('page.salon_professional.send_a_message').html_safe, '#', :class => 'button block send-a-message-button long-text') if (@stylist.send_a_message_button && (valid_email?(@stylist.website_email_address) || valid_email?(@stylist.email_address))) %>
         </div>
       <% end %>
       <ul class="contact-info">
-        <% if @stylist.phone_number.present? && @stylist.phone_number_display %>
-          <li><%= @stylist.phone_number %></li>
+        <% if (@stylist.phone_number.present? || @stylist.website_phone_number.present?) && @stylist.phone_number_display %>
+          <li><%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %></li>
         <% end %>
         <% if @stylist.website_url.present? && valid_url?(url_helper(@stylist.website_url)) %>
           <li><%= link_to t('page.salon_professional.visit_my_website').html_safe, url_helper(@stylist.website_url), :target => '_blank' %></li>
@@ -77,7 +77,7 @@
       <% if @stylist.biography.present? %>
 
           <div class="row about-this-location">
-            <h3><%= t('page.salon_professional.about').html_safe %> <%= @stylist.name %></h3>
+            <h3><%= t('page.salon_professional.about').html_safe %> <%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h3>
             <h4><%= @stylist.biography.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></h4>
           </div>
 
@@ -129,7 +129,7 @@
     <div class="row">
       <%= link_to "http://maps.google.com/maps?daddr=#{@location.full_address}", :target => '_blank' do %>
         <h4 class="large"><%= t('page.salon_professional.visit_salon_professional', {
-          :salon_professional_name => @stylist.name.html_safe,
+          :salon_professional_name => @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe,
           :location_name => @location.name.html_safe
           }) %></h4>
         <h3><%= @location.full_address %></h3>
@@ -157,7 +157,7 @@
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('salon_professionals') } %>
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
-<% content_for(:title) { @stylist.name.html_safe } %>
+<% content_for(:title) { @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe } %>
 <% content_for(:canonical_url) { @stylist.canonical_url } %>
 <% if @stylist.biography %>
   <% content_for(:meta_description) { clean_html @stylist.biography } %>

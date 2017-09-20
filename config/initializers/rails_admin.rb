@@ -1088,6 +1088,9 @@ RailsAdmin.config do |config|
       group :website_info do
         label 'Website Info'
         active false
+        field :website_name do
+          help 'If you would like a different name listed on the website (other than the name in Account Info), set it here'
+        end
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
@@ -1103,13 +1106,13 @@ RailsAdmin.config do |config|
         field :accepting_new_clients
 
         field :website_phone_number do
-          help 'If you would like a different phone number listed on the website (as opposed to the phone number in Account Info), set it here'
+          help 'If you would like a different phone number listed on the website (other than to the phone number in Account Info), set it here'
         end
         field :phone_number_display do
           help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
         end      
         field :website_email_address do
-          help 'If you would like stylist "Send a Message" emails to go to a different email address (as opposed to the email address in Account info), set it here'
+          help 'If you would like stylist "Send a Message" emails to go to a different email address (other than the email address in Account info), set it here'
         end        
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
@@ -1334,6 +1337,9 @@ RailsAdmin.config do |config|
       group :website_info do
         label 'Website Info'
         active false
+        field :website_name do
+          help 'If you would like a different name listed on the website (other than the name in Account Info), set it here'
+        end
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
