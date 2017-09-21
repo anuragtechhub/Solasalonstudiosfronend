@@ -472,7 +472,9 @@ body.rails_admin .table .header:after, body.rails_admin .table .headerSortDown:a
 
 // FORMS
 // --------------------------------------------------
-
+.ui-datepicker {
+  z-index: 9999 !important;
+}
 .ui-datepicker-calendar .ui-state-active, .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
   background: $red !important;
   border-color: $red !important;
