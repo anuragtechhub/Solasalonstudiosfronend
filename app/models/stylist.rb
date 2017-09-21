@@ -31,6 +31,7 @@ class Stylist < ActiveRecord::Base
 
   has_one :studio
   has_many :leases
+  accepts_nested_attributes_for :leases, :allow_destroy => true
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   accepts_nested_attributes_for :testimonial_1, :allow_destroy => true

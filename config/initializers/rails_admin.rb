@@ -20,6 +20,8 @@ RailsAdmin.config do |config|
   # config.excluded_models << 'BlogBlogCategory'
   config.label_methods.unshift :display_name
 
+  config.label_methods = [:title, :name]
+
   config.actions do
     # root actions
     dashboard                     # mandatory
@@ -302,7 +304,7 @@ RailsAdmin.config do |config|
       bindings[:controller]._current_user.franchisee != true
     end
     edit do
-      field :stylist
+      #field :stylist
       field :studio
       field :start_date
       field :end_date
@@ -326,10 +328,6 @@ RailsAdmin.config do |config|
       field :sola_provided_insurance_frequency
       field :special_terms
       field :ach_authorized
-      field :rent_manager_id do
-        label 'Rent Manager ID'
-        help 'This should be a lease ID from Rent Manager'
-      end
     end
   end
 
@@ -995,18 +993,20 @@ RailsAdmin.config do |config|
     end
     show do
       field :name
-      field :rent_manager_id do
-        label 'Rent Manager ID'
-        help 'This should be a unit ID from Rent Manager'
-      end
+      field :location
+      # field :rent_manager_id do
+      #   label 'Rent Manager ID'
+      #   help 'This should be a unit ID from Rent Manager'
+      # end
       field :stylist
     end
     edit do
       field :name
-      field :rent_manager_id do
-        label 'Rent Manager ID'
-        help 'This should be a unit ID from Rent Manager'
-      end
+      field :location
+      # field :rent_manager_id do
+      #   label 'Rent Manager ID'
+      #   help 'This should be a unit ID from Rent Manager'
+      # end
       field :stylist
     end
   end
@@ -1049,6 +1049,26 @@ RailsAdmin.config do |config|
         field :emergency_contact_name
         field :emergency_contact_relationship
         field :emergency_contact_phone_number
+        field :password do
+          label 'Sola Pro Password'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
+        field :password_confirmation do
+          label 'Sola Pro Password Confirmation'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
+        field :rent_manager_id do
+          label 'Rent Manager ID'
+          help 'This should be a tenant ID from Rent Manager'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
+        field :permitted_use_for_studio 
         field :location do
           associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
           associated_collection_scope do
@@ -1062,27 +1082,6 @@ RailsAdmin.config do |config|
           end
         end
         field :leases
-        field :permitted_use_for_studio 
-        field :password do
-          label 'Sola Pro Password'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-        field :password_confirmation do
-          label 'Sola Pro Password Confirmation'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-
-        field :rent_manager_id do
-          label 'Rent Manager ID'
-          help 'This should be a tenant ID from Rent Manager'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
       end
 
       group :website_info do
@@ -1167,7 +1166,7 @@ RailsAdmin.config do |config|
         field :threading
         field :waxing
         field :other_service do
-          label 'Other'
+          label 'Other Services'
           html_attributes do
            {:maxlength => 18}
           end

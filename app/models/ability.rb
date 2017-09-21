@@ -18,6 +18,7 @@ class Ability
       can :read, Article, :location => { :admin_id => admin.id }
       can :read, Location, :admin_id => admin.id 
       can :read, Stylist, :location => { :admin_id => admin.id }
+      can :read, Studio, :location => { :admin_id => admin.id }
       can :read, Admin, :id => admin.id
       
       can :update, Article, :location => { :admin_id => admin.id }  
