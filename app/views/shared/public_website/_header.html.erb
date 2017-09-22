@@ -26,7 +26,7 @@
         <li>
           <h3><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h3>
           <span class="oys-nav-caret caret down"></span>
-          <div class="oys-nav-mobile">
+          <div class="oys-nav-mobile <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
             <ul>
               <li>
                 <a href="/own/own-your-salon">
@@ -52,12 +52,14 @@
                   <span>Sola Sessions</span>
                 </a>
               </li>
-              <li>
-                <a href="/own/solagenius">
-                  <%= image_tag 'own_nav/5_solagenius.jpg' %>
-                  <span>Sola Genius</span>
-                </a>
-              </li>
+              <% if I18n.locale.to_s == 'en' %>
+                <li>
+                  <a href="/own/solagenius">
+                    <%= image_tag 'own_nav/5_solagenius.jpg' %>
+                    <span>Sola Genius</span>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div>
         </li>
@@ -78,7 +80,7 @@
 
 
 
-<div class="oys-nav">
+<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
   <ul>
     <li>
       <a href="/own/own-your-salon">
@@ -104,11 +106,13 @@
         <span>Sola<br>Sessions</span>
       </a>
     </li>
-    <li>
-      <a href="/own/solagenius">
-        <%= image_tag 'own_nav/5_solagenius.jpg' %>
-        <span>Sola<br>Genius</span>
-      </a>
-    </li>
+    <% if I18n.locale.to_s == 'en' %>
+      <li>
+        <a href="/own/solagenius">
+          <%= image_tag 'own_nav/5_solagenius.jpg' %>
+          <span>Sola<br>Genius</span>
+        </a>
+      </li>
+    <% end %>
   </ul>
 </div>
