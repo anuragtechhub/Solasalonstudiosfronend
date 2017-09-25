@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921192255) do
+ActiveRecord::Schema.define(version: 20170925172243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,10 +178,11 @@ ActiveRecord::Schema.define(version: 20170921192255) do
     t.boolean  "ach_authorized",                    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "location_name"
     t.string   "agreement_file_url"
+    t.integer  "location_id"
   end
 
+  add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
   add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
   add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
@@ -403,6 +404,7 @@ ActiveRecord::Schema.define(version: 20170921192255) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
+    t.string   "location_name"
   end
 
   add_index "studios", ["location_id"], name: "index_studios_on_location_id", using: :btree

@@ -7,8 +7,8 @@ class Studio < ActiveRecord::Base
   belongs_to :stylist
 
   def title
-    if location_name
-      "#{location_name}: #{name}"
+    if self.location_name.present?
+      "#{self.location_name}: #{self.name}"
     else
       name
     end

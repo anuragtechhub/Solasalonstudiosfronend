@@ -25,7 +25,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_create :create_on_rent_manager
+  #after_create :create_on_rent_manager
   after_save :remove_from_mailchimp_if_closed
   after_destroy :remove_from_mailchimp, :touch_stylist
 
@@ -116,7 +116,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
-  validates :name, :url_name, :presence => true
+  validates :name, :url_name, :location, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
 
@@ -255,7 +255,7 @@ class Stylist < ActiveRecord::Base
       p "payload=#{payload}"
 
       post_tenant_response = RestClient::Request.execute({
-        :headers => {"Content-Type": "application/json"},
+        :headers => {"Content-Type" => "application/json"},
         :method => :post, 
         #:content_type => 'application/json',
         :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants", 
