@@ -114,7 +114,7 @@ class Stylist < ActiveRecord::Base
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true, :on => :create
-  #validates :email_address, :uniqueness => true, if: 'email_address.present?'
+  validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
   validates :name, :url_name, :location, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
