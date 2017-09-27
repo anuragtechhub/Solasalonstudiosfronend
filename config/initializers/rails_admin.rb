@@ -329,6 +329,24 @@ RailsAdmin.config do |config|
       field :sola_provided_insurance_frequency
       field :special_terms
       field :ach_authorized
+      group :permitted_uses do
+        label "Permitted Uses"
+        field :facial_permitted do
+          label 'Facials'
+        end
+        field :hair_styling_permitted do
+          label 'Hair Styling, Cutting, Coloring'
+        end
+        field :manicure_pedicure_permitted do
+          label 'Manicures / Pedicures'
+        end
+        field :massage_pedicure_permitted do
+          label 'Massage'
+        end
+        field :waxing_permitted do
+          label 'Waxing'
+        end
+      end
     end
   end
 

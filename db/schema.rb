@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925172243) do
+ActiveRecord::Schema.define(version: 20170927191743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -180,6 +180,11 @@ ActiveRecord::Schema.define(version: 20170925172243) do
     t.datetime "updated_at"
     t.string   "agreement_file_url"
     t.integer  "location_id"
+    t.boolean  "hair_styling_permitted",            default: false
+    t.boolean  "manicure_pedicure_permitted",       default: false
+    t.boolean  "waxing_permitted",                  default: false
+    t.boolean  "massage_permitted",                 default: false
+    t.boolean  "facial_permitted",                  default: false
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree

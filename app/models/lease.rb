@@ -8,11 +8,31 @@ class Lease < ActiveRecord::Base
 
   validates :stylist, :location, :weekly_fee_year_1, :weekly_fee_year_2, :fee_start_date, :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true
 
+  def ach_authorized_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def facial_permitted_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def hair_styling_permitted_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def manicure_pedicure_permitted_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def massage_permitted_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def sola_provided_insurance_enum
     [['Yes', true], ['No', false]]
   end
 
-  def ach_authorized_enum
+  def waxing_permitted_enum
     [['Yes', true], ['No', false]]
   end
 
