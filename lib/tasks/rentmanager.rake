@@ -216,6 +216,7 @@ namespace :rentmanager do
         #p "unit=#{unit.inspect}"
         sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
         sola_unit.name = unit['Name']
+        sola_unit.save
         studios_updated << sola_unit
         studios_created = studios_created + 1
       end
@@ -245,6 +246,7 @@ namespace :rentmanager do
       p "unit=#{unit.inspect}"
       sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
       sola_unit.name = unit['Name']
+      sola_unit.save
       studios_updated << sola_unit
       studios_created = studios_created + 1
     end
