@@ -228,4 +228,30 @@ namespace :rentmanager do
     p "Finish Rent Manager studios task. #{locations.size} locations. #{studios_created} studios imported/created"
   end  
 
+  task :studios_for_location => :environment do
+    location = Location.find_by(:rent_manager_location_id => '171')
+    p "Start studios for location #{location.inspect}..."
+
+    p "Process units for location #{location.name}"
+
+    studios_updated = []
+    p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}"
+    units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+    p "units_response=#{units_response.inspect}"
+    units_json = JSON.parse(units_response)   
+    p "#{units_json.length} units to process for #{location.name}"   
+    
+    units_json.each do |unit|
+      p "unit=#{unit.inspect}"
+      sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
+      sola_unit.name = unit['Name']
+      studios_updated << sola_unit
+      studios_created = studios_created + 1
+    end
+
+    p "studios_updated=#{studios_updated.size}"
+    studios_to_delete = Studio.where('location_id = ? AND id NOT IN (?)', location.id, studios_updated.map{|s| s.id})
+    p "found #{studios_to_delete.size} studios to delete"    
+  end
+
 end

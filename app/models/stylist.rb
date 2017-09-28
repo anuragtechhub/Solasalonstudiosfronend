@@ -25,8 +25,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  #after_create :create_on_rent_manager
-  after_save :remove_from_mailchimp_if_closed
+  after_save :sync_with_rent_manager, :remove_from_mailchimp_if_closed
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   has_one :studio
@@ -239,7 +238,7 @@ class Stylist < ActiveRecord::Base
     "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
   end
 
-  def create_on_rent_manager
+  def sync_with_rent_manager
     if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
       require 'rest-client'
       p "Sync stylist with Rent Manager: rent_manager_property_id=#{location.rent_manager_property_id}, rent_manager_location_id=#{location.rent_manager_location_id}"
@@ -276,6 +275,9 @@ class Stylist < ActiveRecord::Base
     else 
       p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
     end
+  rescue => e
+    # shh...
+    p "error sync_with_rent_manager #{e}"
   end
 
   private

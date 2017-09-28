@@ -340,7 +340,7 @@ RailsAdmin.config do |config|
         field :manicure_pedicure_permitted do
           label 'Manicures / Pedicures'
         end
-        field :massage_pedicure_permitted do
+        field :massage_permitted do
           label 'Massage'
         end
         field :waxing_permitted do
