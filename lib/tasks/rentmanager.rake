@@ -233,7 +233,7 @@ namespace :rentmanager do
     p "Start studios for location #{location.inspect}..."
 
     p "Process units for location #{location.name}"
-
+    studios_created = 0
     studios_updated = []
     p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}"
     units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
