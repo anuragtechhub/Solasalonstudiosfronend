@@ -7,6 +7,7 @@ var StylistForm = React.createClass({
   },
 
   render: function () {
+    console.log('render StylistForm', this.props.current_admin);
     return (
       <div className="stylist-form">
         <div className="form-horizontal denser">
@@ -25,10 +26,10 @@ var StylistForm = React.createClass({
           {this.renderRow('Emergency Contact Name', <input name="emergency_contact_name" value={this.props.stylist.emergency_contact_name} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Emergency Contact Relationship', <input name="emergency_contact_relationship" value={this.props.stylist.emergency_contact_relationship} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Emergency Contact Phone Number', <input name="emergency_contact_phone_number" value={this.props.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
-          {this.renderRow('Sola Pro Password', <input name="password" value={this.props.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
-          {this.renderRow('Sola Pro Password Confirmation', <input name="password_confirmation" value={this.props.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
-          {this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.props.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')}
-          {this.renderRow('Status', <input name="status" value={this.props.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password', <input name="password" value={this.props.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
+          {this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password Confirmation', <input name="password_confirmation" value={this.props.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
+          {this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.props.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')}
+          {this.renderRow('Status', <EnumSelect name="status" value={this.props.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
           {this.renderRow('Leases', <input name="leases" value={this.props.stylist.leases} onChange={this.onChange} maxLength="255" type="text" />)}
 
           {this.renderRow('Website Name', <input name="website_name" value={this.props.stylist.website_name} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different name listed on the website (other than the name in Account Info), set it here')}
@@ -143,7 +144,7 @@ var StylistForm = React.createClass({
   onChange: function (e) {
     var stylist = this.state.stylist;
     stylist[e.target.name] = e.target.value;
-    //console.log('onChange', e.target.name, e.target.value);
+    console.log('onChange', e.target.name, e.target.value);
     this.setState({stylist: stylist});
   },
 

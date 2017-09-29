@@ -542,8 +542,10 @@ Custom Select2 Styles
   border-top: 0;
 }
 
-.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single {
+.select2-container--classic.select2-container--open.select2-container--below .select2-selection--single, 
+.select2-container--classic.select2-container--open.select2-container--above .select2-selection--single {
   background: #FFF; 
+  border-color: #1abc9c;
 }
 
 .select2-container--classic .select2-results__option--highlighted[aria-selected] {
