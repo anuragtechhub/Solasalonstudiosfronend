@@ -10,7 +10,7 @@ var StylistForm = React.createClass({
     return (
       <div className="stylist-form">
         <div className="form-horizontal denser">
-          {this.renderRow('Location', <LocationSelect />)}
+          {this.renderRow('Location', <LocationSelect location={this.props.stylist.location} />)}
 
           {this.renderButtons()}
         </div>
