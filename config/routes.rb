@@ -121,6 +121,10 @@ Solasalonstudios::Application.routes.draw do
     end
   end
 
+  match '/cms/locations-select' => 'cms#locations_select', :via => [:get, :post], :as => :cms_locations_select
+  match '/cms/studios-select' => 'cms#studios_select', :via => [:get, :post], :as => :cms_studios_select
+  match '/cms/stylists-select' => 'cms#stylists_select', :via => [:get, :post], :as => :cms_stylists_select
+
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 

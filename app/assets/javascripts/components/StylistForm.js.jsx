@@ -1,10 +1,32 @@
 var StylistForm = React.createClass({
 
+  getInitialState: function () {
+    return {
+      stylist: this.props.stylist,
+    };
+  },
+
   render: function () {
     return (
-      <div className="form-horizontal denser">
-        stylist form {this.props.stylist.id} {this.props.stylist.name}
-        {this.renderRow('Location', <LocationSelect />)}
+      <div className="stylist-form">
+        <div className="form-horizontal denser">
+          {this.renderRow('Location', <LocationSelect />)}
+
+          {this.renderButtons()}
+        </div>
+      </div>
+    );
+  },
+
+  renderButtons: function () {
+    return (
+      <div className="form-actions">
+        <button className="btn btn-primary" data-disable-with="Save" name="_save" type="button" onClick={this.onSave}><i className="icon-white icon-ok"></i> Save </button> 
+        <span className="extra_buttons"> 
+          <button className="btn btn-info" data-disable-with="Save and add another" name="_add_another" type="button" onClick={this.onSaveAndAddAnother}> Save and add another </button> 
+          <button className="btn btn-info" data-disable-with="Save and edit" name="_add_edit" type="button" onClick={this.onSaveAndEdit}> Save and edit </button> 
+          <button className="btn" data-disable-with="Cancel" name="_continue" type="button" onClick={this.onCancel}> <i className="icon-remove"></i> Cancel </button> 
+        </span>
       </div>
     );
   },
@@ -20,6 +42,30 @@ var StylistForm = React.createClass({
         </div>
       </div>
     );
+  },
+
+  onCancel: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.history.back();
+  },
+
+  onSaveAndAddAnother: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('onSaveAndAddAnother');
+  },  
+
+  onSaveAndEdit: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('onSaveAndEdit');
+  },
+
+  onSave: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('onSave');
   },
 
 });

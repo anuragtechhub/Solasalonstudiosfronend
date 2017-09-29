@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'mixins';
+
+.stylist-form {
+
+  .form-actions {
+    .btn {
+      margin-right: 4px;
+    }
+
+    .extra_buttons .btn:last-child {
+      margin-right: 0;
+    }
+  }
+}
