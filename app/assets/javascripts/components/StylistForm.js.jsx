@@ -36,7 +36,7 @@ var StylistForm = React.createClass({
           {this.renderRow('Website Name', <input name="website_name" value={this.props.stylist.website_name} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different name listed on the website (other than the name in Account Info), set it here')}
           {this.renderRow('URL Name', <input name="url_name" value={this.props.stylist.url_name} onChange={this.onChange} maxLength="255" type="text" />, 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)')}
           
-          {this.renderRow('Biography', <textarea name="biography" value={this.props.stylist.biography} onChange={this.onChange} />)}
+          {this.renderRow('Biography', <RichTextEditor name="biography" value={this.props.stylist.biography} onChange={this.onChange} />)}
           {this.renderRow('Business Name', <input name="business_name" value={this.props.stylist.business_name} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Studio Number', <input name="studio_number" value={this.props.stylist.studio_number} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Work Hours', <textarea name="work_hours" value={this.props.stylist.work_hours} onChange={this.onChange} />)}

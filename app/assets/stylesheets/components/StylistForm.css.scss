@@ -36,3 +36,57 @@
     }
   }
 }
+
+/* CKEDITOR styles */
+
+.stylist-form {
+  .cke {
+    border: 2px solid #dce4ec !important;
+    border-radius: 6px;
+    box-shadow: none;
+  }
+
+  .cke_inner {
+    background: transparent !important;
+  }
+
+  .cke_top {
+    box-shadow: none !important;
+    background: #f4f7f9 !important;
+    border-bottom: 2px solid #dce4ec !important;
+    border-radius: 6px 6px 0 0 !important;
+  }
+
+  .cke_toolbar_break {
+    display: none;
+  }
+
+  .cke_editable {
+    margin: 0 10px !important;
+  }
+
+  .cke_bottom {
+    border-radius: 0 0 6px 6px !important;
+  }
+
+  .cke_toolgroup {
+    border-color: #dce4ec !important;
+    border: 2px solid #dce4ec;
+  }
+
+  .cke_wysiwyg_frame, .cke_wysiwyg_div {
+    background: transparent !important;
+    height: calc(100% - 2px) !important;
+  }
+
+  .cke_focus {
+    &.cke {
+      border: 2px solid #1abc9c !important;
+    }
+
+    .cke_top {
+      border-bottom: 2px solid #1abc9c !important;
+      background: #edf7f5 !important;
+    }
+  }
+}
