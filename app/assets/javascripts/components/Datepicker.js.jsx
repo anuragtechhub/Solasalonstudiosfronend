@@ -29,8 +29,12 @@ var Datepicker = React.createClass({
   },
 
   parseDate: function (date) {
-    var datePieces = date.split('-');
-    return new Date(datePieces[0], parseInt(datePieces[1]) - 1, datePieces[2]);
+    if (date) {
+      var datePieces = date.split('-');
+      return new Date(datePieces[0], parseInt(datePieces[1]) - 1, datePieces[2]);
+    } else {
+      return null;
+    }
   },
 
 });
