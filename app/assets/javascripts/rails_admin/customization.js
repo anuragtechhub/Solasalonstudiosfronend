@@ -1,3 +1,4 @@
+//= require select2
 //= require react
 //= require react_ujs
 //= require components
