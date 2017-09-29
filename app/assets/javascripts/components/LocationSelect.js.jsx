@@ -1,26 +1,12 @@
 var LocationSelect = React.createClass({
 
-  // componentDidMount: function () {
-  //   $(this.refs.select).select2({
-  //     theme: "classic"
-  //   });
-  // },
-
-  // render: function () {
-  //   return (
-  //     <select ref="select">
-  //       <option value="1">L1</option>
-  //       <option value="2">L2</option>
-  //     </select>
-  //   );
-  // },
-
   componentDidMount: function () {
     var self = this;
 
     if (this.refs.select) {
       $(this.refs.select).select2({
         theme: 'classic',
+        width: '100%',
         ajax: {
           url: '/cms/locations-select',
           dataType: 'json',
@@ -45,23 +31,20 @@ var LocationSelect = React.createClass({
           cache: true
         },
         allowClear: true,
-        // escapeMarkup: function (markup) { 
-        //   return markup; 
-        // },
         placeholder: 'Choose...',
         templateResult: function (location) {
           if (location.loading || location.id == '') {
             return location.text;
           }
 
-          return location.name;
+          return self.renderLocationName(location);
         },
         templateSelection: function (location) {
           if (location && location.id != null && location.id != '') {
             self.props.onChange(location);
 
             if (location.name) {
-              return location.name;
+              return self.renderLocationName(location);
             } else {
               return location.text;
             }
@@ -82,11 +65,17 @@ var LocationSelect = React.createClass({
       );
     } else {
       return (
-        <select ref="select">
-          {this.props.location ? <option value={this.props.location.id}>{this.props.location.name}</option> : null}
-        </select>
+        <div style={{maxWidth: '443px'}}>
+          <select ref="select">
+            {this.props.location ? <option value={this.props.location.id}>{this.renderLocationName(this.props.location)}</option> : null}
+          </select>
+        </div>
       );
     }
+  },
+
+  renderLocationName: function (location) {
+    return location.name + ' (' + location.city + ', ' + location.state + ')';
   },
 
 });

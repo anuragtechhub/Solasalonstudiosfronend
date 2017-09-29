@@ -15,7 +15,7 @@ class CmsController < ApplicationController
 
       if params[:q]
         q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
-        @locations = @locations.where('LOWER(name) LIKE ?', q)
+        @locations = @locations.where('LOWER(name) LIKE ? OR LOWER(city) LIKE ? OR LOWER(state) LIKE ?', q, q, q)
       end
 
       @total_count = @locations.size

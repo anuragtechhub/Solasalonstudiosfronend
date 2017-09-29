@@ -5,5 +5,4 @@ json.items @locations.each do |location|
   json.name location.name
   json.city location.city
   json.state location.state
-  json.country location.country
 end

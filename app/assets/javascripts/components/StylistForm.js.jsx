@@ -10,7 +10,7 @@ var StylistForm = React.createClass({
     return (
       <div className="stylist-form">
         <div className="form-horizontal denser">
-          {this.renderRow('Location', <LocationSelect location={this.props.stylist.location} />)}
+          {this.renderRow('Location', <LocationSelect location={this.props.stylist.location} onChange={this.onChangeLocation} />)}
 
           {this.renderButtons()}
         </div>
@@ -43,6 +43,20 @@ var StylistForm = React.createClass({
       </div>
     );
   },
+
+  /******************
+  * Change Handlers *
+  *******************/
+
+  onChangeLocation: function (location) {
+    var stylist = this.state.stylist;
+    stylist.location = location;
+    this.setState({stylist: stylist});
+  },
+
+  /******************
+  * Button Handlers *
+  *******************/
 
   onCancel: function (e) {
     e.preventDefault();
