@@ -56,6 +56,55 @@ var StylistForm = React.createClass({
           {this.renderRow('Twitter URL', <input name="twitter_url" value={this.props.stylist.twitter_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
           {this.renderRow('Yelp URL', <input name="yelp_url" value={this.props.stylist.yelp_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
 
+          {this.renderRow('Brows', <input name="brows" value={this.props.stylist.brows} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Hair', <input name="hair" value={this.props.stylist.hair} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Hair Extensions', <input name="hair_extensions" value={this.props.stylist.hair_extensions} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Laser Hair Removal', <input name="laser_hair_removal" value={this.props.stylist.laser_hair_removal} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Lashes', <input name="eyelash_extensions" value={this.props.stylist.eyelash_extensions} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Makeup', <input name="makeup" value={this.props.stylist.makeup} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Massage', <input name="massage" value={this.props.stylist.massage} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Microblading', <input name="microblading" value={this.props.stylist.microblading} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Nails', <input name="nails" value={this.props.stylist.nails} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Permanent Makeup', <input name="permanent_makeup" value={this.props.stylist.permanent_makeup} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Skincare', <input name="skin" value={this.props.stylist.skin} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Tanning', <input name="tanning" value={this.props.stylist.tanning} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Teeth Whitening', <input name="teeth_whitening" value={this.props.stylist.teeth_whitening} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Threading', <input name="threading" value={this.props.stylist.threading} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Waxing', <input name="waxing" value={this.props.stylist.waxing} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Other Services', <input name="other_service" value={this.props.stylist.other_service} onChange={this.onChange} maxLength="18" type="text" />)}
+
+          {this.renderRow('Image 1', <input name="image_1" value={this.props.stylist.image_1} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 1 Alt Text', <input name="image_1_alt_text" value={this.props.stylist.image_1_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 2', <input name="image_2" value={this.props.stylist.image_2} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 3 Alt Text', <input name="image_2_alt_text" value={this.props.stylist.image_2_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 3', <input name="image_3" value={this.props.stylist.image_3} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 3 Alt Text', <input name="image_3_alt_text" value={this.props.stylist.image_3_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 4', <input name="image_4" value={this.props.stylist.image_4} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 4 Alt Text', <input name="image_4_alt_text" value={this.props.stylist.image_4_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 5', <input name="image_5" value={this.props.stylist.image_5} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 5 Alt Text', <input name="image_5_alt_text" value={this.props.stylist.image_5_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 6', <input name="image_6" value={this.props.stylist.image_6} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 6 Alt Text', <input name="image_6_alt_text" value={this.props.stylist.image_6_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 7', <input name="image_7" value={this.props.stylist.image_7} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 7 Alt Text', <input name="image_7_alt_text" value={this.props.stylist.image_7_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 8', <input name="image_8" value={this.props.stylist.image_8} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 8 Alt Text', <input name="image_8_alt_text" value={this.props.stylist.image_8_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 9', <input name="image_9" value={this.props.stylist.image_9} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 9 Alt Text', <input name="image_9_alt_text" value={this.props.stylist.image_9_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+          {this.renderRow('Image 10', <input name="image_10" value={this.props.stylist.image_10} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Image 10 Alt Text', <input name="image_10_alt_text" value={this.props.stylist.image_10_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
+
+          {this.renderRow('Testimonial 1', <input name="testimonial_1" value={this.props.stylist.testimonial_1} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 2', <input name="testimonial_2" value={this.props.stylist.testimonial_2} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 3', <input name="testimonial_3" value={this.props.stylist.testimonial_3} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 4', <input name="testimonial_4" value={this.props.stylist.testimonial_4} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 5', <input name="testimonial_5" value={this.props.stylist.testimonial_5} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 6', <input name="testimonial_6" value={this.props.stylist.testimonial_6} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 7', <input name="testimonial_7" value={this.props.stylist.testimonial_7} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 8', <input name="testimonial_8" value={this.props.stylist.testimonial_8} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 9', <input name="testimonial_9" value={this.props.stylist.testimonial_9} onChange={this.onChange} maxLength="255" type="text" />)}
+          {this.renderRow('Testimonial 10', <input name="testimonial_10" value={this.props.stylist.testimonial_10} onChange={this.onChange} maxLength="255" type="text" />)}
+
           {this.renderButtons()}
         </div>
       </div>
