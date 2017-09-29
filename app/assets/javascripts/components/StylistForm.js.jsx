@@ -58,21 +58,21 @@ var StylistForm = React.createClass({
           {this.renderRow('Twitter URL', <input name="twitter_url" value={this.state.stylist.twitter_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
           {this.renderRow('Yelp URL', <input name="yelp_url" value={this.state.stylist.yelp_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
 
-          {this.renderRow('Brows', <input name="brows" value={this.state.stylist.brows} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Hair', <input name="hair" value={this.state.stylist.hair} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Hair Extensions', <input name="hair_extensions" value={this.state.stylist.hair_extensions} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Laser Hair Removal', <input name="laser_hair_removal" value={this.state.stylist.laser_hair_removal} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Lashes', <input name="eyelash_extensions" value={this.state.stylist.eyelash_extensions} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Makeup', <input name="makeup" value={this.state.stylist.makeup} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Massage', <input name="massage" value={this.state.stylist.massage} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Microblading', <input name="microblading" value={this.state.stylist.microblading} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Nails', <input name="nails" value={this.state.stylist.nails} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Permanent Makeup', <input name="permanent_makeup" value={this.state.stylist.permanent_makeup} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Skincare', <input name="skin" value={this.state.stylist.skin} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Tanning', <input name="tanning" value={this.state.stylist.tanning} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Teeth Whitening', <input name="teeth_whitening" value={this.state.stylist.teeth_whitening} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Threading', <input name="threading" value={this.state.stylist.threading} onChange={this.onChange} type="checkbox" />)}
-          {this.renderRow('Waxing', <input name="waxing" value={this.state.stylist.waxing} onChange={this.onChange} type="checkbox" />)}
+          {this.renderRow('Brows', <Checkbox name="brows" value={this.state.stylist.brows} onChange={this.onChange} />)}
+          {this.renderRow('Hair', <Checkbox name="hair" value={this.state.stylist.hair} onChange={this.onChange} />)}
+          {this.renderRow('Hair Extensions', <Checkbox name="hair_extensions" value={this.state.stylist.hair_extensions} onChange={this.onChange} />)}
+          {this.renderRow('Laser Hair Removal', <Checkbox name="laser_hair_removal" value={this.state.stylist.laser_hair_removal} onChange={this.onChange} />)}
+          {this.renderRow('Lashes', <Checkbox name="eyelash_extensions" value={this.state.stylist.eyelash_extensions} onChange={this.onChange} />)}
+          {this.renderRow('Makeup', <Checkbox name="makeup" value={this.state.stylist.makeup} onChange={this.onChange} />)}
+          {this.renderRow('Massage', <Checkbox name="massage" value={this.state.stylist.massage} onChange={this.onChange} />)}
+          {this.renderRow('Microblading', <Checkbox name="microblading" value={this.state.stylist.microblading} onChange={this.onChange} />)}
+          {this.renderRow('Nails', <Checkbox name="nails" value={this.state.stylist.nails} onChange={this.onChange} />)}
+          {this.renderRow('Permanent Makeup', <Checkbox name="permanent_makeup" value={this.state.stylist.permanent_makeup} onChange={this.onChange} />)}
+          {this.renderRow('Skincare', <Checkbox name="skin" value={this.state.stylist.skin} onChange={this.onChange} />)}
+          {this.renderRow('Tanning', <Checkbox name="tanning" value={this.state.stylist.tanning} onChange={this.onChange} />)}
+          {this.renderRow('Teeth Whitening', <Checkbox name="teeth_whitening" value={this.state.stylist.teeth_whitening} onChange={this.onChange} />)}
+          {this.renderRow('Threading', <Checkbox name="threading" value={this.state.stylist.threading} onChange={this.onChange} />)}
+          {this.renderRow('Waxing', <Checkbox name="waxing" value={this.state.stylist.waxing} onChange={this.onChange} />)}
           {this.renderRow('Other Services', <input name="other_service" value={this.state.stylist.other_service} onChange={this.onChange} maxLength="18" type="text" />)}
 
           {this.renderRow('Image 1', <input name="image_1" value={this.state.stylist.image_1} onChange={this.onChange} maxLength="255" type="text" />)}

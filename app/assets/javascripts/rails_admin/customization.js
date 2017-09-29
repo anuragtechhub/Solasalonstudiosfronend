@@ -1,6 +1,7 @@
 //= require select2
 //= require flatpickr
 //= require ckeditor/init
+//= require jquery-labelauty
 
 //= require react
 //= require react_ujs
