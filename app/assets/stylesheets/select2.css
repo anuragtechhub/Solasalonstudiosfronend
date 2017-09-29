@@ -527,8 +527,9 @@ Custom Select2 Styles
 
 .select2-container--classic .select2-selection--single .select2-selection__clear {
   margin-right: 15px;
-  font-size: 31px;
-  top: -1px;
+  font-size: 27px;
+  top: 0px;
+  color: #888 !important;
 }
 
 .select2-container--classic.select2-container--open .select2-selection--single {
