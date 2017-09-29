@@ -1,4 +1,5 @@
 //= require select2
+//= require flatpickr
 //= require react
 //= require react_ujs
 //= require components

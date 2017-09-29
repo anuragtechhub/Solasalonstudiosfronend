@@ -17,7 +17,7 @@ var StylistForm = React.createClass({
           {this.renderRow('Name', <input name="name" value={this.props.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Email Address', <input name="email_address" value={this.props.stylist.email_address} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Phone Number', <input name="phone_number" value={this.props.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
-          {this.renderRow('Date of Birth', <input name="date_of_birth" value={this.props.stylist.date_of_birth} onChange={this.onChange} maxLength="255" type="text" />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
+          {this.renderRow('Date of Birth', <Datepicker name="date_of_birth" value="1981-10-16" onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Cosmetology License Number', <input name="cosmetology_license_number" value={this.props.stylist.cosmetology_license_number} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Street Address', <input name="street_address" value={this.props.stylist.street_address} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('City', <input name="city" value={this.props.stylist.city} onChange={this.onChange} maxLength="255" type="text" />)}
