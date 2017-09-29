@@ -491,7 +491,7 @@ Custom Select2 Styles
 */
 
 .select2-container--classic {
-  top: -4px;
+  top: -1px;
 }
 
 .select2-container--classic .select2-selection--single {

@@ -3,6 +3,28 @@
 
 .stylist-form {
 
+  .form-horizontal {
+    .control-label {
+      width: 245px !important;
+      padding-top: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .controls {
+      margin-left: 265px;
+    }
+
+    input, textarea {
+      width: 427px !important;
+    }
+  }
+
+  .help-block {
+    margin: 3px !important;
+  }
+
   .form-actions {
     .btn {
       margin-right: 4px;
