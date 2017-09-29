@@ -19,6 +19,8 @@ class Stylist < ActiveRecord::Base
   after_initialize do
     if new_record?
       self.status ||= 'open'
+      self.send_a_message_button ||= true
+      self.phone_number_display ||= true
     end
   end
 

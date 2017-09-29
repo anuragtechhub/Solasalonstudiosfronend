@@ -3,6 +3,8 @@ var EnumSelect = React.createClass({
   componentDidMount: function () {
     var self = this;
 
+    //console.log('EnumSelect', this.props.name, this.props.value);
+
     if (this.refs.select) {
       $(this.refs.select).select2({
         minimumResultsForSearch: Infinity,
@@ -16,11 +18,12 @@ var EnumSelect = React.createClass({
             value: $(self.refs.select).val(),
           }
         });
-      }).val(this.props.value).trigger('change');
+      }).val(this.props.value.toString()).trigger('change');
     }
   },
 
   render: function () {
+
     var options = this.props.values.map(function (value) {
       return <option key={value[1]} value={value[1]}>{value[0]}</option>
     });

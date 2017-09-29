@@ -7,7 +7,8 @@ var StylistForm = React.createClass({
   },
 
   render: function () {
-    console.log('render StylistForm', this.props.current_admin);
+    //console.log('render StylistForm', this.props.stylist);
+
     return (
       <div className="stylist-form">
         <div className="form-horizontal denser">
@@ -42,9 +43,9 @@ var StylistForm = React.createClass({
           {this.renderRow('Accepting New Clients', <input name="accepting_new_clients" value={this.props.stylist.accepting_new_clients} onChange={this.onChange} maxLength="255" type="text" />)}
 
           {this.renderRow('Website Phone Number', <input name="website_phone_number" value={this.props.stylist.website_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different phone number listed on the website (other than to the phone number in Account Info), set it here')}
-          {this.renderRow('Phone Number Display', <input name="phone_number_display" value={this.props.stylist.phone_number_display} onChange={this.onChange} maxLength="255" type="text" />, 'If set to hidden, the phone number will not be displayed anywhere on the Sola website')}
+          {this.renderRow('Phone Number Display', <EnumSelect name="phone_number_display" value={this.props.stylist.phone_number_display} values={[['Visible', true], ['Hidden', false]]} onChange={this.onChange} />, 'If set to hidden, the phone number will not be displayed anywhere on the Sola website')}
           {this.renderRow('Website Email Address', <input name="website_email_address" value={this.props.stylist.website_email_address} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like stylist "Send a Message" emails to go to a different email address (other than the email address in Account info), set it here')}
-          {this.renderRow('Send Message Button', <input name="send_a_message_button" value={this.props.stylist.send_a_message_button} onChange={this.onChange} maxLength="255" type="text" />, 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage')}
+          {this.renderRow('Send Message Button', <EnumSelect name="send_a_message_button" value={this.props.stylist.send_a_message_button} values={[['Visible', true], ['Hidden', false]]} onChange={this.onChange} />, 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage')}
 
           {this.renderRow('External Website URL', <input name="website_url" value={this.props.stylist.website_url} onChange={this.onChange} maxLength="255" type="text" />, 'It is critical that you include the "http://" portion of the URL. If you do not have a website, leave this blank')}
           {this.renderRow('Booking URL', <input name="booking_url" value={this.props.stylist.booking_url} onChange={this.onChange} maxLength="255" type="text" />, 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank')}
