@@ -43,7 +43,7 @@ var StylistForm = React.createClass({
             {this.renderRow('Business Name', <input name="business_name" value={this.state.stylist.business_name} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Studio Number', <input name="studio_number" value={this.state.stylist.studio_number} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Work Hours', <textarea name="work_hours" value={this.state.stylist.work_hours} onChange={this.onChange} />)}
-            {this.renderRow('Accepting New Clients', <input name="accepting_new_clients" value={this.state.stylist.accepting_new_clients} onChange={this.onChange} maxLength="255" type="text" />)}
+            {this.renderRow('Accepting New Clients', <EnumSelect name="accepting_new_clients" value={this.state.stylist.accepting_new_clients} values={[['Yes', true], ['No', false]]} onChange={this.onChange} />)}
 
             {this.renderRow('Website Phone Number', <input name="website_phone_number" value={this.state.stylist.website_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different phone number listed on the website (other than to the phone number in Account Info), set it here')}
             {this.renderRow('Phone Number Display', <EnumSelect name="phone_number_display" value={this.state.stylist.phone_number_display} values={[['Visible', true], ['Hidden', false]]} onChange={this.onChange} />, 'If set to hidden, the phone number will not be displayed anywhere on the Sola website')}
