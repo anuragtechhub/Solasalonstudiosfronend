@@ -54,7 +54,11 @@ gem 'rack-cors'
 gem "paperclip"
 # gem 'aws-sdk-v1'
 # gem 'aws-sdk', '~> 2'
-gem 'aws-sdk', '< 2.0'
+###gem 'aws-sdk', '< 2.0'
+
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-core'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'

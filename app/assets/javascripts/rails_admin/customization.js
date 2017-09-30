@@ -2,6 +2,9 @@
 //= require flatpickr
 //= require ckeditor/init
 //= require jquery-labelauty
+//= require classNames
+//= require dropzone
+//= require xml2json
 
 //= require react
 //= require react_ujs

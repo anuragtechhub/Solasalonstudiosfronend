@@ -1,10 +1,13 @@
 //= require select2
 //= require flatpickr
 //= require jquery-labelauty
+//= require ss-standard
+
+//= require components/ExpandCollapseGroup
+//= require components/ImageDropzone
 
 //= require components/TestimonialForm
 //= require components/StylistForm
-//= require components/ExpandCollapseGroup
 
 @import 'bootstrap/variables';
 @import 'rails_admin/themes/custom/variables';

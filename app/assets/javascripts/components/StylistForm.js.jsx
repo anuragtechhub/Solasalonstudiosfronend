@@ -83,25 +83,25 @@ var StylistForm = React.createClass({
             </ExpandCollapseGroup>
 
             <ExpandCollapseGroup name="Images" nested={true} collapsed={true}>
-              {this.renderRow('Image 1', <input name="image_1" value={this.state.stylist.image_1} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 1', <ImageDropzone name="image_1_url" value={this.state.stylist.image_1_url} onChange={this.onChange} />)}
               {this.renderRow('Image 1 Alt Text', <input name="image_1_alt_text" value={this.state.stylist.image_1_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 2', <input name="image_2" value={this.state.stylist.image_2} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 2', <ImageDropzone name="image_2_url" value={this.state.stylist.image_2_url} onChange={this.onChange} />)}
               {this.renderRow('Image 3 Alt Text', <input name="image_2_alt_text" value={this.state.stylist.image_2_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 3', <input name="image_3" value={this.state.stylist.image_3} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 3', <ImageDropzone name="image_3_url" value={this.state.stylist.image_3_url} onChange={this.onChange} />)}
               {this.renderRow('Image 3 Alt Text', <input name="image_3_alt_text" value={this.state.stylist.image_3_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 4', <input name="image_4" value={this.state.stylist.image_4} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 4', <ImageDropzone name="image_4_url" value={this.state.stylist.image_4_url} onChange={this.onChange} />)}
               {this.renderRow('Image 4 Alt Text', <input name="image_4_alt_text" value={this.state.stylist.image_4_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 5', <input name="image_5" value={this.state.stylist.image_5} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 5', <ImageDropzone name="image_5_url" value={this.state.stylist.image_5_url} onChange={this.onChange} />)}
               {this.renderRow('Image 5 Alt Text', <input name="image_5_alt_text" value={this.state.stylist.image_5_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 6', <input name="image_6" value={this.state.stylist.image_6} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 6', <ImageDropzone name="image_6_url" value={this.state.stylist.image_6_url} onChange={this.onChange} />)}
               {this.renderRow('Image 6 Alt Text', <input name="image_6_alt_text" value={this.state.stylist.image_6_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 7', <input name="image_7" value={this.state.stylist.image_7} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 7', <ImageDropzone name="image_7_url" value={this.state.stylist.image_7_url} onChange={this.onChange} />)}
               {this.renderRow('Image 7 Alt Text', <input name="image_7_alt_text" value={this.state.stylist.image_7_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 8', <input name="image_8" value={this.state.stylist.image_8} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 8', <ImageDropzone name="image_8_url" value={this.state.stylist.image_8_url} onChange={this.onChange} />)}
               {this.renderRow('Image 8 Alt Text', <input name="image_8_alt_text" value={this.state.stylist.image_8_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 9', <input name="image_9" value={this.state.stylist.image_9} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 9', <ImageDropzone name="image_9_url" value={this.state.stylist.image_9_url} onChange={this.onChange} />)}
               {this.renderRow('Image 9 Alt Text', <input name="image_9_alt_text" value={this.state.stylist.image_9_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
-              {this.renderRow('Image 10', <input name="image_10" value={this.state.stylist.image_10} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Image 10', <ImageDropzone name="image_10_url" value={this.state.stylist.image_10_url} onChange={this.onChange} />)}
               {this.renderRow('Image 10 Alt Text', <input name="image_10_alt_text" value={this.state.stylist.image_10_alt_text} onChange={this.onChange} maxLength="255" type="text" />, 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)')}
             </ExpandCollapseGroup>
 

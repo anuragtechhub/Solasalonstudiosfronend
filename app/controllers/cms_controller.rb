@@ -34,6 +34,11 @@ class CmsController < ApplicationController
   def stylists_select
 
   end
+
+  def s3_presigned_post
+    presigned_post = S3_MYSOLAIMAGES_BUCKET.presigned_post({key: "cms_#{current_admin.id}/#{SecureRandom.uuid}", success_action_status: '201', acl: 'public-read', content_type: params[:content_type]})
+    render :json => {fields: presigned_post.fields, url: presigned_post.url}
+  end
   
   private
 
