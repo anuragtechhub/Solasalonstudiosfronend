@@ -106,16 +106,16 @@ var StylistForm = React.createClass({
             </ExpandCollapseGroup>
 
             <ExpandCollapseGroup name="Testimonials" nested={true} collapsed={true}>
-              {this.renderRow('Testimonial 1', <input name="testimonial_1" value={this.state.stylist.testimonial_1} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 2', <input name="testimonial_2" value={this.state.stylist.testimonial_2} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 3', <input name="testimonial_3" value={this.state.stylist.testimonial_3} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 4', <input name="testimonial_4" value={this.state.stylist.testimonial_4} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 5', <input name="testimonial_5" value={this.state.stylist.testimonial_5} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 6', <input name="testimonial_6" value={this.state.stylist.testimonial_6} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 7', <input name="testimonial_7" value={this.state.stylist.testimonial_7} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 8', <input name="testimonial_8" value={this.state.stylist.testimonial_8} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 9', <input name="testimonial_9" value={this.state.stylist.testimonial_9} onChange={this.onChange} maxLength="255" type="text" />)}
-              {this.renderRow('Testimonial 10', <input name="testimonial_10" value={this.state.stylist.testimonial_10} onChange={this.onChange} maxLength="255" type="text" />)}
+              {this.renderRow('Testimonial 1', <TestimonialForm name="testimonial_1" value={this.state.stylist.testimonial_1} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 2', <TestimonialForm name="testimonial_2" value={this.state.stylist.testimonial_2} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 3', <TestimonialForm name="testimonial_3" value={this.state.stylist.testimonial_3} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 4', <TestimonialForm name="testimonial_4" value={this.state.stylist.testimonial_4} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 5', <TestimonialForm name="testimonial_5" value={this.state.stylist.testimonial_5} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 6', <TestimonialForm name="testimonial_6" value={this.state.stylist.testimonial_6} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 7', <TestimonialForm name="testimonial_7" value={this.state.stylist.testimonial_7} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 8', <TestimonialForm name="testimonial_8" value={this.state.stylist.testimonial_8} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 9', <TestimonialForm name="testimonial_9" value={this.state.stylist.testimonial_9} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 10', <TestimonialForm name="testimonial_10" value={this.state.stylist.testimonial_10} onChange={this.onChange} />)}
             </ExpandCollapseGroup>
           </ExpandCollapseGroup>
 
