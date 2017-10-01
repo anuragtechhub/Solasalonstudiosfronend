@@ -32,14 +32,21 @@ class CmsController < ApplicationController
     @stylist.assign_attributes(stylist_params)
 
     # images
+    set_stylist_images(@stylist)
 
     # testimonials
 
     # lease
     
     p "stylist=#{@stylist.inspect}"
-    
-    render :json => @stylist
+
+    if @stylist.save
+      p "stylist saved successfully! #{@stylist.image_1_url}"
+      render :json => @stylist
+    else
+      p "stylist NOT saved, #{@stylist.errors.full_messages.inspect}"
+      render :json => @stylist.errors.full_messages
+    end
   end
 
   def studios_select
@@ -73,6 +80,50 @@ class CmsController < ApplicationController
                                     :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
                                     :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
                                     :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name)
+  end
+
+  def set_stylist_images(stylist=nil)
+    return unless stylist
+    
+    if params[:stylist][:image_1_url].present? && params[:stylist][:image_1_url] != stylist.image_1_url 
+      stylist.image_1 = open(params[:stylist][:image_1_url])
+    end
+  
+    if params[:stylist][:image_2_url].present? && params[:stylist][:image_2_url] != stylist.image_2_url 
+      stylist.image_2 = open(params[:stylist][:image_2_url])
+    end
+
+    if params[:stylist][:image_3_url].present? && params[:stylist][:image_3_url] != stylist.image_3_url 
+      stylist.image_3 = open(params[:stylist][:image_3_url])
+    end  
+
+    if params[:stylist][:image_4_url].present? && params[:stylist][:image_4_url] != stylist.image_4_url 
+      stylist.image_4 = open(params[:stylist][:image_4_url])
+    end    
+
+    if params[:stylist][:image_5_url].present? && params[:stylist][:image_5_url] != stylist.image_5_url 
+      stylist.image_5 = open(params[:stylist][:image_5_url])
+    end   
+
+    if params[:stylist][:image_6_url].present? && params[:stylist][:image_6_url] != stylist.image_6_url 
+      stylist.image_6 = open(params[:stylist][:image_6_url])
+    end
+
+    if params[:stylist][:image_7_url].present? && params[:stylist][:image_7_url] != stylist.image_7_url 
+      stylist.image_7 = open(params[:stylist][:image_7_url])
+    end             
+
+    if params[:stylist][:image_8_url].present? && params[:stylist][:image_8_url] != stylist.image_8_url 
+      stylist.image_8 = open(params[:stylist][:image_8_url])
+    end      
+
+    if params[:stylist][:image_9_url].present? && params[:stylist][:image_9_url] != stylist.image_9_url 
+      stylist.image_9 = open(params[:stylist][:image_9_url])
+    end    
+
+    if params[:stylist][:image_10_url].present? && params[:stylist][:image_10_url] != stylist.image_10_url 
+      stylist.image_10 = open(params[:stylist][:image_10_url])
+    end        
   end
 
 end
