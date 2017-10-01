@@ -282,6 +282,51 @@ class Stylist < ActiveRecord::Base
     p "error sync_with_rent_manager #{e}"
   end
 
+  def image_1_url
+    image_1.url(:carousel) if image_1.present?
+  end
+
+  def image_2_url
+    image_2.url(:carousel) if image_2.present?
+  end
+
+  def image_3_url
+    image_3.url(:carousel) if image_3.present?
+  end
+
+  def image_4_url
+    image_4.url(:carousel) if image_4.present?
+  end
+
+  def image_5_url
+    image_5.url(:carousel) if image_5.present?
+  end
+
+  def image_6_url
+    image_6.url(:carousel) if image_6.present?
+  end
+
+  def image_7_url
+    image_7.url(:carousel) if image_7.present?
+  end
+
+  def image_8_url
+    image_8.url(:carousel) if image_8.present?
+  end
+
+  def image_9_url
+    image_9.url(:carousel) if image_9.present?
+  end
+
+  def image_10_url
+    image_10.url(:carousel) if image_10.present?
+  end                
+
+  def as_json(options={})
+    super(:include => [:testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
+                       :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
+  end
+
   private
 
   def url_name_uniqueness

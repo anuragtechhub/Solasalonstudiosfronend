@@ -198,6 +198,30 @@ var StylistForm = React.createClass({
     e.preventDefault();
     e.stopPropagation();
     console.log('onSave');
+    this.save();
+  },
+
+  /************
+  * Utilities *
+  *************/
+
+  save: function () {
+    var self = this;
+    
+    console.log('save stylist', this.state.stylist);
+
+    this.setState({loading: true});
+    
+    $.ajax({
+      type: 'POST',
+      url: '/cms/save-stylist',
+      data: {
+        stylist: this.state.stylist,
+      },
+    }).done(function (data) {
+      console.log('save stylist returned', data);
+      self.setState({loading: false});
+    }); 
   },
 
 });

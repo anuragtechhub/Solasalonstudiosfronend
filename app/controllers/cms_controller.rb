@@ -27,6 +27,13 @@ class CmsController < ApplicationController
     render :json => json
   end
 
+  def save_stylist
+    @stylist = Stylist.find(params[:stylist][:id]) || Stylist.new
+    @stylist.assign_attributes(stylist_params)
+    p "stylist=#{@stylist.inspect}"
+    render :json => @stylist
+  end
+
   def studios_select
 
   end
@@ -48,5 +55,16 @@ class CmsController < ApplicationController
       redirect_to :rails_admin
     end
   end   
+
+  def stylist_params
+    params.require(:stylist).permit(:name, :url_name, :biography, :email_address, :phone_number, :studio_number, :work_hours, :website_url, :business_name, 
+                                    :hair, :skin, :nails, :massage, :teeth_whitening, :eyelash_extensions, :makeup, :tanning, :waxing, :brows, :accepting_new_clients,
+                                    :booking_url, :location_id, :status, :hair_extensions, :send_a_message_button, :pinterest_url, :facebook_url, :twitter_url, :instagram_url, 
+                                    :yelp_url, :laser_hair_removal, :threading, :permanent_makeup, :linkedin_url, :other_service, :google_plus_url, :phone_number_display,
+                                    :image_1_alt_text, :image_2_alt_text, :image_3_alt_text, :image_4_alt_text, :image_5_alt_text, :image_6_alt_text, :image_7_alt_text, 
+                                    :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
+                                    :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
+                                    :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name)
+  end
 
 end
