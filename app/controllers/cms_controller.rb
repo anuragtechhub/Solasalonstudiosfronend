@@ -30,7 +30,15 @@ class CmsController < ApplicationController
   def save_stylist
     @stylist = Stylist.find(params[:stylist][:id]) || Stylist.new
     @stylist.assign_attributes(stylist_params)
+
+    # images
+
+    # testimonials
+
+    # lease
+    
     p "stylist=#{@stylist.inspect}"
+    
     render :json => @stylist
   end
 

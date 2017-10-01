@@ -2,6 +2,7 @@
 @import 'mixins';
 
 .stylist-form {
+  position: relative;
 
   .form-horizontal {
     .control-label {
@@ -34,6 +35,27 @@
     .extra_buttons .btn:last-child {
       margin-right: 0;
     }
+  }
+
+  .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+
+    .spinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -22px 0 0 -22px;
+      background: asset-data-url('spinner.gif') no-repeat center;
+      background-size: 44px 44px;
+      width: 44px;
+      height: 44px;
+    }    
   }
 }
 

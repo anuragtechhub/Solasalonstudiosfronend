@@ -3,6 +3,7 @@ var StylistForm = React.createClass({
   getInitialState: function () {
     return {
       stylist: this.props.stylist,
+      loading: false,
     };
   },
 
@@ -121,6 +122,7 @@ var StylistForm = React.createClass({
 
           {this.renderButtons()}
         </div>
+        {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
       </div>
     );
   },
