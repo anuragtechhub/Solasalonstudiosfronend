@@ -35,6 +35,7 @@ class CmsController < ApplicationController
     set_stylist_images(@stylist)
 
     # testimonials
+    set_stylist_testimonials(@stylist)
 
     # lease
     
@@ -80,6 +81,12 @@ class CmsController < ApplicationController
                                     :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
                                     :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
                                     :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name)
+  end
+
+  def set_stylist_testimonials(stylist=nil)
+    return unless stylist
+
+    
   end
 
   def set_stylist_images(stylist=nil)
