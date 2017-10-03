@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927191743) do
+ActiveRecord::Schema.define(version: 20171003201555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -449,7 +449,7 @@ ActiveRecord::Schema.define(version: 20170927191743) do
     t.boolean  "tanning"
     t.boolean  "waxing"
     t.boolean  "brows"
-    t.boolean  "accepting_new_clients"
+    t.boolean  "accepting_new_clients",          default: true
     t.string   "booking_url"
     t.datetime "created_at"
     t.datetime "updated_at"

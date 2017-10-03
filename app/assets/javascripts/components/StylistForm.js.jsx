@@ -2,8 +2,10 @@ var StylistForm = React.createClass({
 
   getInitialState: function () {
     return {
-      stylist: this.props.stylist,
+      errors: [],
       loading: false,
+      stylist: this.props.stylist,
+      success: [],
     };
   },
 
@@ -13,6 +15,9 @@ var StylistForm = React.createClass({
     return (
       <div className="stylist-form">
         <div className="form-horizontal denser">
+
+          {this.state.errors && this.state.errors.length > 0 ? this.renderErrors() : null}
+          {this.state.success && this.state.success.length > 0 ? this.renderSuccess() : null}
           
           <ExpandCollapseGroup name="Account Info" collapsed={true}>
             {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
@@ -140,6 +145,19 @@ var StylistForm = React.createClass({
     );
   },
 
+  renderErrors: function () {
+    var errors = this.state.errors.map(function (error) {
+      return <li key={error}>{error}</li>
+    });
+
+    return (
+      <div className="errors">
+        The following errors prevented this stylist from being saved:
+        <ul>{errors}</ul>
+      </div>
+    );  
+  },
+
   renderRow: function (name, input, help) {
     return (
       <div className="control-group">
@@ -150,6 +168,10 @@ var StylistForm = React.createClass({
         </div>
       </div>
     );
+  },
+
+  renderSuccess: function () {
+
   },
 
   /******************
@@ -222,7 +244,11 @@ var StylistForm = React.createClass({
       },
     }).done(function (data) {
       console.log('save stylist returned', data);
-      self.setState({loading: false});
+      if (data.errors) {
+        self.setState({loading: false, errors: data.errors});
+      } else {
+        self.setState({loading: false, errors: [], stylist: data.stylist});
+      }
     }); 
   },
 

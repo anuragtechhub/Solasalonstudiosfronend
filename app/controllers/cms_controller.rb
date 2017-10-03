@@ -28,7 +28,7 @@ class CmsController < ApplicationController
   end
 
   def save_stylist
-    @stylist = Stylist.find(params[:stylist][:id]) || Stylist.new
+    @stylist = Stylist.find_by(:id => params[:stylist][:id]) || Stylist.new
     @stylist.assign_attributes(stylist_params)
 
     # images
@@ -43,10 +43,10 @@ class CmsController < ApplicationController
 
     if @stylist.save
       p "stylist saved successfully! #{@stylist.image_1_url}"
-      render :json => @stylist
+      render :json => {:stylist => @stylist}
     else
       p "stylist NOT saved, #{@stylist.errors.full_messages.inspect}"
-      render :json => @stylist.errors.full_messages
+      render :json => {:errors => @stylist.errors.full_messages}
     end
   end
 
@@ -86,7 +86,7 @@ class CmsController < ApplicationController
   def set_stylist_testimonials(stylist=nil)
     return unless stylist
 
-    
+
   end
 
   def set_stylist_images(stylist=nil)

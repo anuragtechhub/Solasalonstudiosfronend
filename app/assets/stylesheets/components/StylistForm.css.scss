@@ -4,6 +4,25 @@
 .stylist-form {
   position: relative;
 
+  .errors {
+    border: 1px solid red;
+    background: lighten(pink, 10%);
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: darken(red, 10%);
+
+    ul {
+      margin-top: 10px;
+      margin-bottom: 0;
+
+      li:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
   .form-horizontal {
     .control-label {
       width: 260px !important;
