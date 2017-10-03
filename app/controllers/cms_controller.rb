@@ -86,7 +86,18 @@ class CmsController < ApplicationController
   def set_stylist_testimonials(stylist=nil)
     return unless stylist
 
+    if params[:stylist][:testimonial_1].present?
+      p "yes, testimonial 1 is present..."
+      stylist.build_testimonial_1 unless stylist.testimonial_1.present?
+      stylist.testimonial_1.name = params[:stylist][:testimonial_1][:name]
+      stylist.testimonial_1.text = params[:stylist][:testimonial_1][:text]
+      stylist.testimonial_1.region = params[:stylist][:testimonial_1][:region]
+      p "boom, set testimonial 1=#{stylist.testimonial_1.inspect}"
+    end
 
+    if params[:stylist][:testimonial_2].present?
+      p "yes, testimonial 2 is present..."
+    end    
   end
 
   def set_stylist_images(stylist=nil)

@@ -23,6 +23,15 @@
     }
   }
 
+  .success {
+    border: 1px solid #2BA8AF;
+    background: lighten(#2BA8AF, 20%);
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: darken(#2BA8AF, 10%);
+  }
+
   .form-horizontal {
     .control-label {
       width: 260px !important;

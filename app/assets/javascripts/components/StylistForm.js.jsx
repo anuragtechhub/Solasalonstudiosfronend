@@ -2,10 +2,10 @@ var StylistForm = React.createClass({
 
   getInitialState: function () {
     return {
-      errors: [],
+      errors: null,
       loading: false,
       stylist: this.props.stylist,
-      success: [],
+      success: null,
     };
   },
 
@@ -16,8 +16,8 @@ var StylistForm = React.createClass({
       <div className="stylist-form">
         <div className="form-horizontal denser">
 
-          {this.state.errors && this.state.errors.length > 0 ? this.renderErrors() : null}
-          {this.state.success && this.state.success.length > 0 ? this.renderSuccess() : null}
+          {this.state.errors ? this.renderErrors() : null}
+          {this.state.success ? this.renderSuccess() : null}
           
           <ExpandCollapseGroup name="Account Info" collapsed={true}>
             {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
@@ -112,16 +112,16 @@ var StylistForm = React.createClass({
             </ExpandCollapseGroup>
 
             <ExpandCollapseGroup name="Testimonials" nested={true} collapsed={true}>
-              {this.renderRow('Testimonial 1', <TestimonialForm name="testimonial_1" value={this.state.stylist.testimonial_1} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 2', <TestimonialForm name="testimonial_2" value={this.state.stylist.testimonial_2} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 3', <TestimonialForm name="testimonial_3" value={this.state.stylist.testimonial_3} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 4', <TestimonialForm name="testimonial_4" value={this.state.stylist.testimonial_4} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 5', <TestimonialForm name="testimonial_5" value={this.state.stylist.testimonial_5} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 6', <TestimonialForm name="testimonial_6" value={this.state.stylist.testimonial_6} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 7', <TestimonialForm name="testimonial_7" value={this.state.stylist.testimonial_7} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 8', <TestimonialForm name="testimonial_8" value={this.state.stylist.testimonial_8} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 9', <TestimonialForm name="testimonial_9" value={this.state.stylist.testimonial_9} onChange={this.onChange} />)}
-              {this.renderRow('Testimonial 10', <TestimonialForm name="testimonial_10" value={this.state.stylist.testimonial_10} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 1', <TestimonialForm name="testimonial_1" testimonial={this.state.stylist.testimonial_1} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 2', <TestimonialForm name="testimonial_2" testimonial={this.state.stylist.testimonial_2} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 3', <TestimonialForm name="testimonial_3" testimonial={this.state.stylist.testimonial_3} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 4', <TestimonialForm name="testimonial_4" testimonial={this.state.stylist.testimonial_4} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 5', <TestimonialForm name="testimonial_5" testimonial={this.state.stylist.testimonial_5} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 6', <TestimonialForm name="testimonial_6" testimonial={this.state.stylist.testimonial_6} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 7', <TestimonialForm name="testimonial_7" testimonial={this.state.stylist.testimonial_7} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 8', <TestimonialForm name="testimonial_8" testimonial={this.state.stylist.testimonial_8} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 9', <TestimonialForm name="testimonial_9" testimonial={this.state.stylist.testimonial_9} onChange={this.onChange} />)}
+              {this.renderRow('Testimonial 10', <TestimonialForm name="testimonial_10" testimonial={this.state.stylist.testimonial_10} onChange={this.onChange} />)}
             </ExpandCollapseGroup>
           </ExpandCollapseGroup>
 
@@ -171,7 +171,9 @@ var StylistForm = React.createClass({
   },
 
   renderSuccess: function () {
-
+    return (
+      <div className="success">{this.state.success}</div>
+    );
   },
 
   /******************
@@ -192,7 +194,7 @@ var StylistForm = React.createClass({
 
   onChangeLocation: function (location) {
     var stylist = this.state.stylist;
-    stylist.location = location;
+    stylist.location_id = location.id;
     this.setState({stylist: stylist});
   },
 
@@ -240,14 +242,14 @@ var StylistForm = React.createClass({
       type: 'POST',
       url: '/cms/save-stylist',
       data: {
-        stylist: this.state.stylist,
+        stylist: self.state.stylist,
       },
     }).done(function (data) {
       console.log('save stylist returned', data);
       if (data.errors) {
-        self.setState({loading: false, errors: data.errors});
+        self.setState({loading: false, errors: data.errors, success: null});
       } else {
-        self.setState({loading: false, errors: [], stylist: data.stylist});
+        self.setState({loading: false, errors: null, stylist: data.stylist, success: 'Stylist saved successfully!'});
       }
     }); 
   },
