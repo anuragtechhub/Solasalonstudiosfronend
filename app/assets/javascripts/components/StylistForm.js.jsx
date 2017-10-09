@@ -4,7 +4,7 @@ var StylistForm = React.createClass({
     return {
       errors: null,
       loading: false,
-      stylist: this.props.stylist,
+      stylist: this.props.stylist || {},
       success: null,
     };
   },
@@ -133,6 +133,10 @@ var StylistForm = React.createClass({
             </ExpandCollapseGroup>
           </ExpandCollapseGroup>
 
+          <ExpandCollapseGroup name="Lease Info" collapsed={true}>
+            <LeaseForm />
+          </ExpandCollapseGroup>
+          
           {this.renderButtons()}
         </div>
         {/*this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null(*/}
