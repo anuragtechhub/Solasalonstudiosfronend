@@ -72,6 +72,10 @@ class CmsController < ApplicationController
     end
   end   
 
+  def back_or_index
+    params[:return_to].presence && params[:return_to].include?(request.host) && (params[:return_to] != request.fullpath) ? params[:return_to] : '/admin'
+  end
+
   def stylist_params
     params.require(:stylist).permit(:name, :url_name, :biography, :email_address, :phone_number, :studio_number, :work_hours, :website_url, :business_name, 
                                     :hair, :skin, :nails, :massage, :teeth_whitening, :eyelash_extensions, :makeup, :tanning, :waxing, :brows, :accepting_new_clients,

@@ -7,7 +7,6 @@ var TestimonialForm = React.createClass({
   },
 
   render: function () {
-    console.log('render TestimonialForm', this.state.testimonial);
     return (
       <div className="testimonial-form">
         <div className="control-group" style={{paddingTop: '0px'}}>

@@ -5,12 +5,13 @@
   position: relative;
 
   .errors {
-    border: 1px solid red;
-    background: lighten(pink, 10%);
+    //border: 1px solid red;
+    background: lighten(pink, 9%);
     padding: 15px;
     margin-bottom: 25px;
     font-size: 16px;
     color: darken(red, 10%);
+    border-radius: 6px;
 
     ul {
       margin-top: 10px;
@@ -24,12 +25,13 @@
   }
 
   .success {
-    border: 1px solid #2BA8AF;
-    background: lighten(#2BA8AF, 20%);
+    //border: 1px solid #2BA8AF;
+    background: #2BA8AF;
     padding: 15px;
     margin-bottom: 25px;
     font-size: 16px;
-    color: darken(#2BA8AF, 10%);
+    color: #FFF;
+    border-radius: 6px;
   }
 
   .form-horizontal {

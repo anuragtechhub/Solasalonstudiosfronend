@@ -217,26 +217,41 @@ var StylistForm = React.createClass({
   onCancel: function (e) {
     e.preventDefault();
     e.stopPropagation();
-    window.history.back();
+
+    window.location.href = '/admin/stylist';
   },
 
   onSaveAndAddAnother: function (e) {
+    var self = this;
+
     e.preventDefault();
     e.stopPropagation();
-    console.log('onSaveAndAddAnother');
+
+    this.save().done(function () {
+      //self.setState({success: self.state.success + '. Redirecting to new stylist form...'});
+      window.location.href = '/admin/stylist/new';
+    });
   },  
 
   onSaveAndEdit: function (e) {
+    var self = this;
+
     e.preventDefault();
     e.stopPropagation();
-    console.log('onSaveAndEdit');
+
+    this.save();
   },
 
   onSave: function (e) {
+    var self = this;
+
     e.preventDefault();
     e.stopPropagation();
-    console.log('onSave');
-    this.save();
+
+    this.save().done(function () {
+      //self.setState({success: self.state.success + '. Redirecting to stylists...'});
+      window.location.href = '/admin/stylist';
+    });
   },
 
   /************
@@ -245,7 +260,8 @@ var StylistForm = React.createClass({
 
   save: function () {
     var self = this;
-    
+    var deferred = $.Deferred();
+
     console.log('save stylist', this.state.stylist);
 
     this.setState({loading: true});
@@ -258,13 +274,19 @@ var StylistForm = React.createClass({
       },
     }).done(function (data) {
       console.log('save stylist returned', data);
+      
       if (data.errors) {
         self.setState({loading: false, errors: data.errors, success: null});
+        deferred.reject();
       } else {
         self.setState({loading: false, errors: null, stylist: data.stylist, success: 'Stylist saved successfully!'});
+        deferred.resolve();
       }
+
       self.scrollToTop();
     }); 
+
+    return deferred; 
   },
 
   scrollToTop: function () {

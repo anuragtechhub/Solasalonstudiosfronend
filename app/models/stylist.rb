@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :sync_with_rent_manager, :remove_from_mailchimp_if_closed
+  after_save :remove_from_mailchimp_if_closed#, :sync_with_rent_manager
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   has_one :studio
@@ -323,7 +323,7 @@ class Stylist < ActiveRecord::Base
   end                
 
   def as_json(options={})
-    super(:methods => [:testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
+    super(:methods => [:location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
                        :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
   end
 
