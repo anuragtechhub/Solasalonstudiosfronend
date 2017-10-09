@@ -9,6 +9,16 @@ var StylistForm = React.createClass({
     };
   },
 
+  componentDidUpdate: function (prevProps, prevState) {
+    if (prevState.loading !== this.state.loading) {
+      if (this.state.loading) {
+        $.LoadingOverlay("show");
+      } else {
+        $.LoadingOverlay("hide");
+      }
+    }
+  },
+
   render: function () {
     //console.log('render StylistForm', this.state.stylist);
 
@@ -20,26 +30,24 @@ var StylistForm = React.createClass({
           {this.state.success ? this.renderSuccess() : null}
           
           <ExpandCollapseGroup name="Account Info" collapsed={true}>
+            {this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
             {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
             {this.renderRow('Name', <input name="name" value={this.state.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Email Address', <input name="email_address" value={this.state.stylist.email_address} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Phone Number', <input name="phone_number" value={this.state.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Date of Birth', <Datepicker name="date_of_birth" value={this.state.stylist.date_of_birth} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-            {this.renderRow('Cosmetology License Number', <input name="cosmetology_license_number" value={this.state.stylist.cosmetology_license_number} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Street Address', <input name="street_address" value={this.state.stylist.street_address} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('City', <input name="city" value={this.state.stylist.city} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('State/Province', <input name="state_province" value={this.state.stylist.state_province} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Postal Code', <input name="postal_code" value={this.state.stylist.postal_code} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Country', <input name="country" value={this.state.stylist.country} onChange={this.onChange} maxLength="255" type="text" />)}
+            {this.renderRow('Cosmetology License Number', <input name="cosmetology_license_number" value={this.state.stylist.cosmetology_license_number} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Emergency Contact Name', <input name="emergency_contact_name" value={this.state.stylist.emergency_contact_name} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Emergency Contact Relationship', <input name="emergency_contact_relationship" value={this.state.stylist.emergency_contact_relationship} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Emergency Contact Phone Number', <input name="emergency_contact_phone_number" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password', <input name="password" value={this.state.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
             {this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password Confirmation', <input name="password_confirmation" value={this.state.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
-            {this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')}
-            {this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
-            {this.renderRow('Leases', <input name="leases" value={this.state.stylist.leases} onChange={this.onChange} maxLength="255" type="text" />)}
-          </ExpandCollapseGroup>
+            {/*this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')*/}          </ExpandCollapseGroup>
 
           <ExpandCollapseGroup name="Website Info" collapsed={true}>
             {this.renderRow('Website Name', <input name="website_name" value={this.state.stylist.website_name} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different name listed on the website (other than the name in Account Info), set it here')}
@@ -127,7 +135,7 @@ var StylistForm = React.createClass({
 
           {this.renderButtons()}
         </div>
-        {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
+        {/*this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null(*/}
       </div>
     );
   },
@@ -251,7 +259,12 @@ var StylistForm = React.createClass({
       } else {
         self.setState({loading: false, errors: null, stylist: data.stylist, success: 'Stylist saved successfully!'});
       }
+      self.scrollToTop();
     }); 
+  },
+
+  scrollToTop: function () {
+    $("html, body").animate({scrollTop: 0}, "normal");
   },
 
 });

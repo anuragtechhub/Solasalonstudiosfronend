@@ -5,6 +5,7 @@
 //= require classNames
 //= require dropzone
 //= require xml2json
+//= require loadingoverlay
 
 //= require react
 //= require react_ujs
