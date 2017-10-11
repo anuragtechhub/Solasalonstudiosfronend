@@ -3,6 +3,9 @@ namespace :reports do
   require 'google/apis/analyticsreporting_v4'
   require 'render_anywhere'
 
+require 'openssl'
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
   # task :pdf => :environment do
   #   html_renderer = HTMLRenderer.new
 
@@ -36,7 +39,7 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-09-01]
+  # rake reports:locations_with_email[2017-07-01]
   task :locations_with_email, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -57,7 +60,7 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-09-01,382]
+  # rake reports:locations_with_email_starting_at[2017-07-01,48]
   task :locations_with_email_starting_at, [:start_date, :gid] => :environment do |task, args|
     p "begin locations report..."
     
@@ -76,9 +79,9 @@ namespace :reports do
     end
   end 
 
-  # rake reports:location[380]
+  # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[2,2017-01-01]
+  # rake reports:location[401,2017-09-01]
   task :location, [:location_id, :start_date] => :environment do |task, args|
     p "begin location report..."
 
@@ -97,7 +100,7 @@ namespace :reports do
 
   # rake reports:location_with_email[380]
   # rake reports:location_with_email[2]
-  # rake reports:location_with_email[2,2017-01-01]
+  # rake reports:location_with_email[8,2017-07-01]
   task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
     p "begin location with email report..."
 
@@ -402,7 +405,7 @@ namespace :reports do
         "ga:pagePath=~/stores/#{location_end.url_name.gsub('-', '_')}",
       ]
 
-      #p page_paths.join(',')
+      #p "page_paths.join=#{page_paths.join(',')}"
       
       page_paths.join(',')
     end
@@ -489,9 +492,13 @@ namespace :reports do
       if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
         data[:time_on_site] = 0.0
         data[:pageviews_per_session] = 0.0
+        data[:pages_with_pageviews] = 0
         data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
-          data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
-          data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+          if top_and_pps[2].to_f > 0
+            data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+            data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+            data[:pages_with_pageviews] = data[:pages_with_pageviews] + 1
+          end
         end
       end
       p "done with time on site, pages/session"
