@@ -22,7 +22,20 @@ var LeaseForm = React.createClass({
 
           {this.renderRow('Weekly Fee Year 1', <CurrencyInput name="weekly_fee_year_1" value={this.state.lease.weekly_fee_year_1} onChange={this.onChange} />)}
           {this.renderRow('Weekly Fee Year 2', <CurrencyInput name="weekly_fee_year_2" value={this.state.lease.weekly_fee_year_2} onChange={this.onChange} />)}
+          {this.renderRow('Damage Deposit Amount', <CurrencyInput name="damage_deposit_amount" value={this.state.lease.damage_deposit_amount} onChange={this.onChange} />)}
 
+          {/*
+          {this.renderRow('Product Bonus Amount', <CurrencyInput name="product_bonus_amount" value={this.state.lease.product_bonus_amount} onChange={this.onChange} />)}
+          {this.renderRow('Product Bonus Distributor', <input name="product_bonus_distributor" value={this.state.lease.product_bonus_distributor} onChange={this.onChange} maxLength="255" type="text" />)}
+
+          
+          {this.renderRow('Sola Provided Insurance', <EnumSelect name="sola_provided_insurance" value={this.state.lease.sola_provided_insurance} values={[['Yes', true], ['No', false]]} onChange={this.onChange} />)}
+          {this.renderRow('Sola Provided Insurance Frequency', <input name="sola_provided_insurance_frequency" value={this.state.lease.sola_provided_insurance_frequency} onChange={this.onChange} maxLength="255" type="text" />)}
+          */}
+
+          {this.renderRow('ACH Authorized', <EnumSelect name="ach_authorized" value={this.state.lease.ach_authorized} values={[['Yes', true], ['No', false]]} onChange={this.onChange} />)}
+          {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={5} />)}
+  
           <ExpandCollapseGroup name="Permitted Uses" nested={true} collapsed={true}>
             {this.renderRow('Facials', <Checkbox name="facial_permitted" value={this.state.lease.facial_permitted} onChange={this.onChange} />)}
             {this.renderRow('Hair Styling, Cutting, Coloring', <Checkbox name="hair_styling_permitted" value={this.state.lease.hair_styling_permitted} onChange={this.onChange} />)}
@@ -30,12 +43,6 @@ var LeaseForm = React.createClass({
             {this.renderRow('Massage', <Checkbox name="massage_permitted" value={this.state.lease.massage_permitted} onChange={this.onChange} />)}
             {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
           </ExpandCollapseGroup>
-
-          {/*}
-          {this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
-          {this.renderRow('Name', <input name="name" value={this.state.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
-          {this.renderRow('Date of Birth', <Datepicker name="date_of_birth" value={this.state.stylist.date_of_birth} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-          */}
         </div>
       </div>
     );

@@ -18,7 +18,7 @@ var EnumSelect = React.createClass({
             value: $(self.refs.select).val(),
           }
         });
-      }).val(this.props.value.toString()).trigger('change');
+      }).val(this.props.value ? this.props.value.toString() : this.props.value).trigger('change');
     }
   },
 
