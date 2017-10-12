@@ -51,11 +51,53 @@ class CmsController < ApplicationController
   end
 
   def studios_select
+    @page = params[:page] || 1
+    @results_per_page = params[:results_per_page] || 40
+    
+    last_updated_location = Location.select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/locations_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_location=#{last_updated_location}&cai=#{current_admin.id}"
 
+    json = Rails.cache.fetch(cache_key) do 
+      @locations = current_admin.franchisee ? current_admin.locations : Location.all
+      @studios = Studio.where(:location_id => @locations.map(&:id))
+
+      if params[:q]
+        q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
+        @studios = @studios.where('LOWER(name) LIKE ?', q)
+      end
+
+      @total_count = @studios.size
+      @locations = @studios.order(:name => :asc).page(@page).per(@results_per_page)
+
+      render_to_string(formats: 'json')
+    end
+
+    render :json => json
   end
 
   def stylists_select
+    @page = params[:page] || 1
+    @results_per_page = params[:results_per_page] || 40
+    
+    last_updated_location = Stylist.select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/locations_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_location=#{last_updated_location}&cai=#{current_admin.id}"
 
+    json = Rails.cache.fetch(cache_key) do 
+      @locations = current_admin.franchisee ? current_admin.locations : Location.all
+      @stylists = Stylist.where(:location_id => @locations.map(&:id))
+
+      if params[:q]
+        q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
+        @stylists = @stylists.where('LOWER(name) LIKE ? OR LOWER(email_address) LIKE ? OR LOWER(website_email_address) LIKE ?', q, q, q)
+      end
+
+      @total_count = @stylists.size
+      @locations = @stylists.order(:name => :asc).page(@page).per(@results_per_page)
+
+      render_to_string(formats: 'json')
+    end
+
+    render :json => json
   end
 
   def s3_presigned_post
