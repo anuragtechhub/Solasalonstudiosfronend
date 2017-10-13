@@ -41,7 +41,10 @@ var LocationSelect = React.createClass({
         },
         templateSelection: function (location) {
           if (location && location.id != null && location.id != '') {
-            self.props.onChange(location);
+            if (!self.props.location || self.props.location.id != location.id) {
+              //console.log('locationselect onchange!', location.id, self.props.location)
+              self.props.onChange(location);
+            }
 
             if (location.name) {
               return self.renderLocationName(location);
@@ -59,19 +62,13 @@ var LocationSelect = React.createClass({
   },
 
   render: function () {
-    if (this.props.read_only) {
-      return (
-        <div>{this.props.location ? this.props.location.name : null}</div>
-      );
-    } else {
-      return (
-        <div style={{maxWidth: '443px'}}>
-          <select ref="select">
-            {this.props.location ? <option value={this.props.location.id}>{this.renderLocationName(this.props.location)}</option> : null}
-          </select>
-        </div>
-      );
-    }
+    return (
+      <div style={{maxWidth: '443px'}}>
+        <select ref="select">
+          {this.props.location ? <option value={this.props.location.id}>{this.renderLocationName(this.props.location)}</option> : null}
+        </select>
+      </div>
+    );
   },
 
   renderLocationName: function (location) {

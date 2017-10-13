@@ -3,18 +3,27 @@ var LeaseForm = React.createClass({
   getInitialState: function () {
     return {
       lease: this.props.lease || {},
+      location: this.props.lease && this.props.lease.location ? this.props.lease.location : {}
     };
+  }, 
+
+  componentWillReceiveProps: function (nextProps) {
+    if (nextProps.location && nextProps.location.id && nextProps.location.id != this.state.location.id) {
+      //console.log('lease location_id changed');
+      this.setState({location: {id: nextProps.location.id}});
+    }
   },
 
   render: function () {
+    //console.log('render lease form', this.state.lease, this.state.location);
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
-
+          {/*
           {this.renderRow('Location', <LocationSelect location={this.state.lease.location} onChange={this.onChangeLocation} />)}
           {this.renderRow('Stylist', <StylistSelect location={this.state.lease.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
           {this.renderRow('Studio', <StudioSelect location={this.state.lease.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />)}
-        
+          */}
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
@@ -70,27 +79,27 @@ var LeaseForm = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    console.log('onChange', name, value);      
+    //console.log('onChange', name, value);      
 
     lease[name] = value;
     this.setState({lease: lease});
   },
 
   onChangeLocation: function (location) {
-    var lease = this.state.lease;
-    lease.location_id = location.id;
-    this.setState({lease: lease});
+    var location = this.state.location;
+    location = location && location.id ? {id: location.id} : {};
+    this.setState({location: location});
   },
 
   onChangeStylist: function (stylist) {
     var lease = this.state.lease;
-    lease.stylist_id = stylist.id;
+    lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
     this.setState({lease: lease});
   },
 
   onChangeStudio: function (studio) {
     var lease = this.state.lease;
-    lease.studio_id = studio.id;
+    lease.studio = studio && studio.id ? {id: studio.id} : null;
     this.setState({lease: lease});
   },
 

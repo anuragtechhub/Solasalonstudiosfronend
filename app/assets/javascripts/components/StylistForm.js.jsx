@@ -29,9 +29,9 @@ var StylistForm = React.createClass({
           {this.state.errors ? this.renderErrors() : null}
           {this.state.success ? this.renderSuccess() : null}
           
-          <ExpandCollapseGroup name="Account Info" collapsed={true}>
-            {this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
+          <ExpandCollapseGroup name="Account Info" collapsed={false}>
             {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
+            {this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
             {this.renderRow('Name', <input name="name" value={this.state.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Email Address', <input name="email_address" value={this.state.stylist.email_address} onChange={this.onChange} maxLength="255" type="text" />)}
             {this.renderRow('Phone Number', <input name="phone_number" value={this.state.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
@@ -134,7 +134,7 @@ var StylistForm = React.createClass({
           </ExpandCollapseGroup>
 
           <ExpandCollapseGroup name="Lease Info" collapsed={true}>
-            <LeaseForm />
+            <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} />
           </ExpandCollapseGroup>
           
           {this.renderButtons()}
@@ -206,7 +206,9 @@ var StylistForm = React.createClass({
 
   onChangeLocation: function (location) {
     var stylist = this.state.stylist;
-    stylist.location_id = location.id;
+    //stylist.location_id = location && location.id ? location.id : null;
+    stylist.location = location && location.id ? {id: location.id} : {};
+    //console.log('onChangeLocation...')
     this.setState({stylist: stylist});
   },
 
