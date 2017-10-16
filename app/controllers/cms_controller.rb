@@ -58,8 +58,12 @@ class CmsController < ApplicationController
     cache_key = "/locations_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_location=#{last_updated_location}&cai=#{current_admin.id}"
 
     json = Rails.cache.fetch(cache_key) do 
-      @locations = current_admin.franchisee ? current_admin.locations : Location.all
-      @studios = Studio.where(:location_id => @locations.map(&:id))
+      if params[:location_id]
+        @studios = Studio.where(:location_id => params[:location_id])
+      else
+        @locations = current_admin.franchisee ? current_admin.locations : Location.all
+        @studios = Studio.where(:location_id => @locations.map(&:id))
+      end
 
       if params[:q]
         q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
@@ -67,7 +71,7 @@ class CmsController < ApplicationController
       end
 
       @total_count = @studios.size
-      @locations = @studios.order(:name => :asc).page(@page).per(@results_per_page)
+      @studios = @studios.order(:name => :asc).page(@page).per(@results_per_page)
 
       render_to_string(formats: 'json')
     end
@@ -92,7 +96,7 @@ class CmsController < ApplicationController
       end
 
       @total_count = @stylists.size
-      @locations = @stylists.order(:name => :asc).page(@page).per(@results_per_page)
+      @stylists = @stylists.order(:name => :asc).page(@page).per(@results_per_page)
 
       render_to_string(formats: 'json')
     end

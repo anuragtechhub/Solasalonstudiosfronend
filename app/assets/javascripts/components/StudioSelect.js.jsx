@@ -15,7 +15,8 @@ var StudioSelect = React.createClass({
             return {
               q: params.term,
               page: params.page,
-              results_per_page: 40
+              results_per_page: 40,
+              location_id: self.props.location ? self.props.location.id : null,
             };
           },
           processResults: function (data, params) {
@@ -59,6 +60,7 @@ var StudioSelect = React.createClass({
   },
 
   render: function () {
+    console.log('StudioSelect', this.props.location);
     return (
       <div style={{maxWidth: '443px'}}>
         <select ref="select">

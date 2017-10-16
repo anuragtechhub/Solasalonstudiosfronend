@@ -9,20 +9,20 @@ var LeaseForm = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
     if (nextProps.location && nextProps.location.id && nextProps.location.id != this.state.location.id) {
-      //console.log('lease location_id changed');
+      console.log('lease location_id changed');
       this.setState({location: {id: nextProps.location.id}});
     }
   },
 
   render: function () {
-    //console.log('render lease form', this.state.lease, this.state.location);
+    console.log('render lease form', this.state.lease, this.state.location);
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
 
-          {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.lease.location} onChange={this.onChangeLocation} />)}
-          {this.props.nested ? null : this.renderRow('Stylist', <StylistSelect location={this.state.lease.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
-          {this.renderRow('Studio', <StudioSelect location={this.state.lease.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />)}
+          {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.location} onChange={this.onChangeLocation} />)}
+          {this.props.nested ? null : this.renderRow('Stylist', <StylistSelect location={this.state.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
+          {this.renderRow('Studio', <StudioSelect location={this.state.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />)}
           
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
