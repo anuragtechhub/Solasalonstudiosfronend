@@ -16,7 +16,7 @@ var LocationSelect = React.createClass({
               q: params.term,
               page: params.page,
               results_per_page: 40
-            };
+            }; 
           },
           processResults: function (data, params) {
             params.page = params.page || 1;

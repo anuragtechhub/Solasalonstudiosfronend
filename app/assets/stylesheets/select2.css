@@ -540,7 +540,12 @@ Custom Select2 Styles
 
 .select2-container--classic.select2-container--open .select2-dropdown {
   border: 2px solid #1abc9c;
-  border-top: 0;
+  /*border-top: 0;*/
+  padding-top: 5px;
+}
+
+.select2-dropdown.select2-dropdown--above {
+  
 }
 
 .select2-container--classic.select2-container--open.select2-container--below .select2-selection--single, 

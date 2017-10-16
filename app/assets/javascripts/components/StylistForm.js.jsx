@@ -134,7 +134,7 @@ var StylistForm = React.createClass({
           </ExpandCollapseGroup>
 
           <ExpandCollapseGroup name="Lease Info" collapsed={true}>
-            <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} />
+            <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} nested={true} />
           </ExpandCollapseGroup>
           
           {this.renderButtons()}

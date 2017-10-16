@@ -19,11 +19,11 @@ var LeaseForm = React.createClass({
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
-          {/*
-          {this.renderRow('Location', <LocationSelect location={this.state.lease.location} onChange={this.onChangeLocation} />)}
-          {this.renderRow('Stylist', <StylistSelect location={this.state.lease.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
+
+          {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.lease.location} onChange={this.onChangeLocation} />)}
+          {this.props.nested ? null : this.renderRow('Stylist', <StylistSelect location={this.state.lease.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
           {this.renderRow('Studio', <StudioSelect location={this.state.lease.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />)}
-          */}
+          
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}

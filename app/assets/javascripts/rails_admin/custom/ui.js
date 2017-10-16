@@ -8,6 +8,6 @@ $(document).on('rails_admin.dom_ready', function() {
   //hide testimonial dropdown
   $('select[name^="stylist[testimonial_"]').next('.filtering-select').hide().next('.btn').css('margin-left', '0');
 
-  $('.currency-input').currencyinput();
+  //$('.currency-input').currencyinput();
 
 });
