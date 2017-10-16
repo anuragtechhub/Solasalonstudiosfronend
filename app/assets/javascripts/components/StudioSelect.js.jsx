@@ -62,7 +62,7 @@ var StudioSelect = React.createClass({
   render: function () {
     console.log('StudioSelect', this.props.location);
     return (
-      <div style={{maxWidth: '443px'}}>
+      <div style={{maxWidth: '343px'}}>
         <select ref="select">
           {this.props.studio ? <option value={this.props.studio.id}>{this.renderStudioName(this.props.studio)}</option> : null}
         </select>

@@ -42,7 +42,7 @@ var LeaseForm = React.createClass({
           {this.renderRow('Sola Provided Insurance Frequency', <input name="sola_provided_insurance_frequency" value={this.state.lease.sola_provided_insurance_frequency} onChange={this.onChange} maxLength="255" type="text" />)}
           */}
 
-          {this.renderRow('ACH Authorized', <EnumSelect name="ach_authorized" value={this.state.lease.ach_authorized} values={[['Yes', true], ['No', false]]} onChange={this.onChange} />)}
+          {this.renderRow('ACH Authorized', <Checkbox name="ach_authorized" value={this.state.lease.ach_authorized} onChange={this.onChange} />)}
           {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={5} />)}
   
           <ExpandCollapseGroup name="Permitted Uses" nested={true} collapsed={true}>

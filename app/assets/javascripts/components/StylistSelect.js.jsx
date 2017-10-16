@@ -60,7 +60,7 @@ var StylistSelect = React.createClass({
 
   render: function () {
     return (
-      <div style={{maxWidth: '443px'}}>
+      <div style={{maxWidth: '333px'}}>
         <select ref="select">
           {this.props.stylist ? <option value={this.props.stylist.id}>{this.renderStylistName(this.props.stylist)}</option> : null}
         </select>

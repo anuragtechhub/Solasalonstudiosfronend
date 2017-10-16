@@ -63,7 +63,7 @@ var LocationSelect = React.createClass({
 
   render: function () {
     return (
-      <div style={{maxWidth: '443px'}}>
+      <div style={{maxWidth: '444px'}}>
         <select ref="select">
           {this.props.location ? <option value={this.props.location.id}>{this.renderLocationName(this.props.location)}</option> : null}
         </select>
