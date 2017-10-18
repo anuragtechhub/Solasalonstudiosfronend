@@ -77,6 +77,19 @@ var LeaseForm = React.createClass({
     );
   },
 
+  renderErrors: function () {
+    var errors = this.state.errors.map(function (error) {
+      return <li key={error}>{error}</li>
+    });
+
+    return (
+      <div className="errors">
+        The following errors prevented this stylist from being saved:
+        <ul>{errors}</ul>
+      </div>
+    );  
+  },
+
   renderRow: function (name, input, help) {
     return (
       <div className="control-group">
@@ -86,6 +99,12 @@ var LeaseForm = React.createClass({
           {help ? <p className="help-block">{help}</p> : null}
         </div>
       </div>
+    );
+  },
+
+  renderSuccess: function () {
+    return (
+      <div className="success">{this.state.success}</div>
     );
   },
 

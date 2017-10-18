@@ -27,6 +27,21 @@ class CmsController < ApplicationController
     render :json => json
   end
 
+  def save_lease
+    @lease = Lease.find_by(:id => params[:lease][:id]) || Lease.new
+    @lease.assign_attributes(lease_params)
+    
+    p "lease=#{@lease.inspect}"
+
+    if @lease.save
+      p "lease saved successfully!"
+      render :json => {:lease => @lease}
+    else
+      p "lease NOT saved, #{@lease.errors.full_messages.inspect}"
+      render :json => {:errors => @lease.errors.full_messages}
+    end
+  end
+
   def save_stylist
     @stylist = Stylist.find_by(:id => params[:stylist][:id]) || Stylist.new
     @stylist.assign_attributes(stylist_params)
@@ -42,7 +57,7 @@ class CmsController < ApplicationController
     p "stylist=#{@stylist.inspect}"
 
     if @stylist.save
-      p "stylist saved successfully! #{@stylist.image_1_url}"
+      p "stylist saved successfully!"
       render :json => {:stylist => @stylist}
     else
       p "stylist NOT saved, #{@stylist.errors.full_messages.inspect}"
@@ -124,6 +139,13 @@ class CmsController < ApplicationController
 
   def back_or_index
     params[:return_to].presence && params[:return_to].include?(request.host) && (params[:return_to] != request.fullpath) ? params[:return_to] : '/admin'
+  end
+
+  def lease_params
+    params.require(:lease).permit(:stylist_id, :studio_id, :location_id, :rent_manager_id, :start_date, :end_date, :move_in_date, :signed_date, :weekly_fee_year_1, :weekly_fee_year_2, 
+                                  :fee_start_date, :damage_deposit_amount, :product_bonus_amount, :product_bonus_distributor, :sola_provided_insurance, 
+                                  :sola_provided_insurance_frequenc, :special_terms, :ach_authorized, :agreement_file_url, :location_id, :hair_styling_permitted, 
+                                  :manicure_pedicure_permitted, :waxing_permitted, :massage_permitted, :facial_permitted)
   end
 
   def stylist_params

@@ -6,7 +6,8 @@ class Lease < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :studio
 
-  validates :stylist, :location, :weekly_fee_year_1, :weekly_fee_year_2, :fee_start_date, :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true
+  validates :stylist, :studio, :location, :weekly_fee_year_1, :weekly_fee_year_2, :fee_start_date, :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true
+  validate :end_date_later_than_start_date, :end_date_at_least_a_year_later_than_start_date
 
   def ach_authorized_enum
     [['Yes', true], ['No', false]]
@@ -34,6 +35,18 @@ class Lease < ActiveRecord::Base
 
   def waxing_permitted_enum
     [['Yes', true], ['No', false]]
+  end
+
+  def end_date_later_than_start_date
+    if start_date && end_date && (end_date <= start_date)
+      errors.add(:end_date, 'must be later than the start date')
+    end
+  end
+
+  def end_date_at_least_a_year_later_than_start_date
+    if start_date && end_date && (end_date > start_date) && (((end_date - start_date) / 365).floor < 1)
+      errors.add(:end_date, 'must be at least one year later than the start date')
+    end
   end
 
 end
