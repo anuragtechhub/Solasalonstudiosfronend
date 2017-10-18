@@ -2,8 +2,10 @@ var LeaseForm = React.createClass({
 
   getInitialState: function () {
     return {
+      errors: null,
       lease: this.props.lease || {},
-      location: this.props.lease && this.props.lease.location ? this.props.lease.location : {}
+      location: this.props.lease && this.props.lease.location ? this.props.lease.location : null,
+      success: null
     };
   }, 
 
@@ -19,6 +21,9 @@ var LeaseForm = React.createClass({
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
+
+          {this.state.errors ? this.renderErrors() : null}
+          {this.state.success ? this.renderSuccess() : null}
 
           {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.location} onChange={this.onChangeLocation} />)}
           {this.props.nested ? null : this.renderRow('Stylist', <StylistSelect location={this.state.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
@@ -52,7 +57,22 @@ var LeaseForm = React.createClass({
             {this.renderRow('Massage', <Checkbox name="massage_permitted" value={this.state.lease.massage_permitted} onChange={this.onChange} />)}
             {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
           </ExpandCollapseGroup>
+
+          {this.props.nested ? null : this.renderButtons()}
         </div>
+      </div>
+    );
+  },
+
+  renderButtons: function () {
+    return (
+      <div className="form-actions">
+        <button className="btn btn-primary" data-disable-with="Save" name="_save" type="button" onClick={this.onSave}><i className="icon-white icon-ok"></i> Save </button> 
+        <span className="extra_buttons"> 
+          <button className="btn btn-info" data-disable-with="Save and add another" name="_add_another" type="button" onClick={this.onSaveAndAddAnother}> Save and add another </button> 
+          <button className="btn btn-info" data-disable-with="Save and edit" name="_add_edit" type="button" onClick={this.onSaveAndEdit}> Save and edit </button> 
+          <button className="btn" data-disable-with="Cancel" name="_continue" type="button" onClick={this.onCancel}> <i className="icon-remove"></i> Cancel </button> 
+        </span>
       </div>
     );
   },
@@ -86,21 +106,101 @@ var LeaseForm = React.createClass({
   },
 
   onChangeLocation: function (location) {
-    var location = this.state.location;
-    location = location && location.id ? {id: location.id} : {};
-    this.setState({location: location});
+    this.state.location = location && location.id ? {id: location.id} : {};
+    this.setState({location: this.state.location});
   },
 
   onChangeStylist: function (stylist) {
-    var lease = this.state.lease;
-    lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
-    this.setState({lease: lease});
+    this.state.lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
+    this.setState({lease: this.state.lease});
   },
 
   onChangeStudio: function (studio) {
-    var lease = this.state.lease;
-    lease.studio = studio && studio.id ? {id: studio.id} : null;
-    this.setState({lease: lease});
+    this.state.lease.studio = studio && studio.id ? {id: studio.id} : null;
+    this.setState({lease: this.state.lease});
+  },
+
+  /******************
+  * Button Handlers *
+  *******************/
+
+  onCancel: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    window.location.href = '/admin/lease';
+  },
+
+  onSaveAndAddAnother: function (e) {
+    var self = this;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.save().done(function () {
+      //self.setState({success: self.state.success + '. Redirecting to new lease form...'});
+      window.location.href = '/admin/lease/new';
+    });
+  },  
+
+  onSaveAndEdit: function (e) {
+    var self = this;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.save();
+  },
+
+  onSave: function (e) {
+    var self = this;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.save().done(function () {
+      //self.setState({success: self.state.success + '. Redirecting to leases...'});
+      window.location.href = '/admin/lease';
+    });
+  },
+
+  /************
+  * Utilities *
+  *************/
+
+  save: function () {
+    var self = this;
+    var deferred = $.Deferred();
+
+    console.log('save lease', this.state.lease);
+
+    this.setState({loading: true});
+    
+    $.ajax({
+      type: 'POST',
+      url: '/cms/save-lease',
+      data: {
+        lease: self.state.lease,
+      },
+    }).done(function (data) {
+      console.log('save lease returned', data);
+      
+      if (data.errors) {
+        self.setState({loading: false, errors: data.errors, success: null});
+        deferred.reject();
+      } else {
+        self.setState({loading: false, errors: null, lease: data.lease, success: 'Lease saved successfully!'});
+        deferred.resolve();
+      }
+
+      self.scrollToTop();
+    }); 
+
+    return deferred; 
+  },
+
+  scrollToTop: function () {
+    $("html, body").animate({scrollTop: 0}, "normal");
   },
 
 });

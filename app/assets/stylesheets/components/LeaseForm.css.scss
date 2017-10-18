@@ -2,5 +2,89 @@
 @import 'bootstrap/mixins';
 
 .lease-form {
-  
+  position: relative;
+
+  .errors {
+    //border: 1px solid red;
+    background: lighten(pink, 9%);
+    padding: 15px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: darken(red, 10%);
+    border-radius: 6px;
+
+    ul {
+      margin-top: 10px;
+      margin-bottom: 0;
+
+      li:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .success {
+    //border: 1px solid #2BA8AF;
+    background: #2BA8AF;
+    padding: 15px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: #FFF;
+    border-radius: 6px;
+  }
+
+  .form-horizontal {
+    .control-label {
+      width: 260px !important;
+      padding-top: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .controls {
+      margin-left: 280px;
+    }
+
+    input, textarea {
+      width: 327px !important;
+    }
+  }
+
+  .help-block {
+    margin: 3px !important;
+    max-width: 337px !important;
+  }
+
+  .form-actions {
+    .btn {
+      margin-right: 4px;
+    }
+
+    .extra_buttons .btn:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+
+    .spinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -22px 0 0 -22px;
+      background: asset-data-url('spinner.gif') no-repeat center;
+      background-size: 44px 44px;
+      width: 44px;
+      height: 44px;
+    }    
+  }
 }

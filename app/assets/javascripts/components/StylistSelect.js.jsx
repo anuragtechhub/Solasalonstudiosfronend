@@ -15,7 +15,8 @@ var StylistSelect = React.createClass({
             return {
               q: params.term,
               page: params.page,
-              results_per_page: 40
+              results_per_page: 40,
+              location_id: self.props.location ? self.props.location.id : null,
             };
           },
           processResults: function (data, params) {
@@ -60,7 +61,7 @@ var StylistSelect = React.createClass({
 
   render: function () {
     return (
-      <div style={{maxWidth: '333px'}}>
+      <div style={{maxWidth: '444px'}}>
         <select ref="select">
           {this.props.stylist ? <option value={this.props.stylist.id}>{this.renderStylistName(this.props.stylist)}</option> : null}
         </select>

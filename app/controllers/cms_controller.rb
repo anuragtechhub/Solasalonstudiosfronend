@@ -54,11 +54,11 @@ class CmsController < ApplicationController
     @page = params[:page] || 1
     @results_per_page = params[:results_per_page] || 40
     
-    last_updated_location = Location.select(:updated_at).order(:updated_at => :desc).first
-    cache_key = "/locations_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_location=#{last_updated_location}&cai=#{current_admin.id}"
+    last_updated_studio = Studio.select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/studios_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_studio=#{last_updated_studio}&cai=#{current_admin.id}"
 
     json = Rails.cache.fetch(cache_key) do 
-      if params[:location_id]
+      if params[:location_id].present?
         @studios = Studio.where(:location_id => params[:location_id])
       else
         @locations = current_admin.franchisee ? current_admin.locations : Location.all
@@ -83,12 +83,16 @@ class CmsController < ApplicationController
     @page = params[:page] || 1
     @results_per_page = params[:results_per_page] || 40
     
-    last_updated_location = Stylist.select(:updated_at).order(:updated_at => :desc).first
-    cache_key = "/locations_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_location=#{last_updated_location}&cai=#{current_admin.id}"
+    last_updated_stylist = Stylist.select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/stylists_select?q=#{params[:q]}&page=#{@page}&results_per_page=#{@results_per_page}&last_updated_stylist=#{last_updated_stylist}&cai=#{current_admin.id}"
 
     json = Rails.cache.fetch(cache_key) do 
-      @locations = current_admin.franchisee ? current_admin.locations : Location.all
-      @stylists = Stylist.where(:location_id => @locations.map(&:id))
+      if params[:location_id].present?
+        @stylists = Stylist.where(:location_id => params[:location_id])
+      else
+        @locations = current_admin.franchisee ? current_admin.locations : Location.all
+        @stylists = Stylist.where(:location_id => @locations.map(&:id))
+      end
 
       if params[:q]
         q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
