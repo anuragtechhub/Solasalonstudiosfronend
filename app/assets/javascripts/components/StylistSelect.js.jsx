@@ -59,6 +59,12 @@ var StylistSelect = React.createClass({
     }
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    if (nextProps.stylist == null && this.refs.select) {
+      $(this.refs.select).val(null).trigger('change');
+    }
+  },  
+
   render: function () {
     return (
       <div style={{maxWidth: '444px'}}>
@@ -71,6 +77,10 @@ var StylistSelect = React.createClass({
 
   renderStylistName: function (stylist) {
     return stylist.name + ((stylist.email_address || stylist.website_email_address) ? (' (' + (stylist.email_address || stylist.website_email_address) + ')') : '');
+  },
+
+  shouldComponentUpdate: function () {
+    return false;
   },
 
 });

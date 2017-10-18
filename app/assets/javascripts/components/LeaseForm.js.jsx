@@ -11,13 +11,13 @@ var LeaseForm = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
     if (nextProps.location && nextProps.location.id && nextProps.location.id != this.state.location.id) {
-      console.log('lease location_id changed');
+      //console.log('lease location_id changed');
       this.setState({location: {id: nextProps.location.id}});
     }
   },
 
   render: function () {
-    console.log('render lease form', this.state.lease, this.state.location);
+    //console.log('render lease form', this.state.lease, this.state.location);
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
@@ -126,7 +126,9 @@ var LeaseForm = React.createClass({
 
   onChangeLocation: function (location) {
     this.state.location = location && location.id ? {id: location.id} : {};
-    this.setState({location: this.state.location});
+    this.state.lease.stylist = null;
+    this.state.lease.studio = null;
+    this.setState({location: this.state.location, lease: this.state.lease});
   },
 
   onChangeStylist: function (stylist) {

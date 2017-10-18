@@ -59,10 +59,16 @@ var StudioSelect = React.createClass({
     }
   },
 
+  componentWillReceiveProps: function (nextProps) {
+    if (nextProps.studio == null && this.refs.select) {
+      $(this.refs.select).val(null).trigger('change');
+    }
+  },  
+
   render: function () {
-    console.log('StudioSelect', this.props.location);
+    //console.log('StudioSelect', this.props.location);
     return (
-      <div style={{maxWidth: '356px'}}>
+      <div style={{maxWidth: '343px'}}>
         <select ref="select">
           {this.props.studio ? <option value={this.props.studio.id}>{this.renderStudioName(this.props.studio)}</option> : null}
         </select>
@@ -72,6 +78,10 @@ var StudioSelect = React.createClass({
 
   renderStudioName: function (studio) {
     return studio.name;
+  },
+
+  shouldComponentUpdate: function () {
+    return false;
   },
 
 });
