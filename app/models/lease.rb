@@ -7,7 +7,7 @@ class Lease < ActiveRecord::Base
   belongs_to :studio
 
   validates :stylist, :studio, :location, :weekly_fee_year_1, :weekly_fee_year_2, :fee_start_date, :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true
-  validate :end_date_later_than_start_date, :end_date_at_least_a_year_later_than_start_date
+  validate :end_date_later_than_start_date, :end_date_at_least_a_year_later_than_start_date, :fee_start_date_not_after_end_date, :fee_start_date_a_year_before_end_date
 
   def ach_authorized_enum
     [['Yes', true], ['No', false]]
@@ -49,4 +49,15 @@ class Lease < ActiveRecord::Base
     end
   end
 
+  def fee_start_date_not_after_end_date
+    if fee_start_date && end_date && fee_start_date > end_date
+      errors.add(:fee_start_date, 'cannot be later than the end date')
+    end
+  end
+
+  def fee_start_date_a_year_before_end_date
+    if fee_start_date && end_date && (((end_date - fee_start_date) / 365).floor < 1)
+      errors.add(:fee_start_date, 'must be at least one year before the end date')
+    end
+  end
 end
