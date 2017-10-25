@@ -4,16 +4,42 @@ var LeaseForm = React.createClass({
     return {
       errors: null,
       lease: this.props.lease || {},
-      location: this.props.lease && this.props.lease.location ? this.props.lease.location : null,
+      location: this.getInitialLocation(),
+      stylist: this.getInitialStylist(),
       success: null
     };
   }, 
 
+  getInitialLocation: function () {
+    if (this.props.lease && this.props.lease.location) {
+      return this.props.lease.location;
+    } else if (this.props.lease && this.props.lease.stylist && this.props.lease.stylist.location) {
+      return this.props.lease.stylist.location;
+    } else if (this.props.location) {
+      return this.props.location;
+    } else {
+      return null;
+    }
+  },
+
+  getInitialStylist: function () {
+    if (this.props.lease && this.props.lease.stylist) {
+      return this.props.lease.stylist;
+    } else if (this.props.stylist) {
+      return this.props.stylist;
+    } else {
+      return null;
+    }
+  },
+
   componentWillReceiveProps: function (nextProps) {
-    if (nextProps.location && nextProps.location.id && nextProps.location.id != this.state.location.id) {
-      //console.log('lease location_id changed');
+    if (nextProps.location && nextProps.location.id && this.state.location && nextProps.location.id != this.state.location.id) {
       this.setState({location: {id: nextProps.location.id}});
     }
+
+    if (nextProps.stylist && nextProps.stylist.id && this.state.stylist && nextProps.stylist.id != this.state.stylist.id) {
+      this.setState({stylist: {id: nextProps.stylist.id}});
+    }    
   },
 
   render: function () {
@@ -27,7 +53,7 @@ var LeaseForm = React.createClass({
 
           {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.location} onChange={this.onChangeLocation} />)}
           {this.props.nested || this.state.location == null ? null : this.renderRow('Stylist', <StylistSelect location={this.state.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
-          {this.state.location && this.state.lease.stylist ? this.renderRow('Studio', <StudioSelect location={this.state.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />) : null}
+          {this.state.location && this.state.stylist ? this.renderRow('Studio', <StudioSelect location={this.state.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />) : null}
           
           {this.renderLeaseFields()}
 
@@ -38,7 +64,7 @@ var LeaseForm = React.createClass({
   },
 
   renderLeaseFields: function () {
-    if (this.state.location && this.state.lease.stylist && this.state.lease.studio) {
+    if (this.state.location && this.state.stylist && this.state.lease.studio) {
       return (
         <div>
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
@@ -212,7 +238,26 @@ var LeaseForm = React.createClass({
       type: 'POST',
       url: '/cms/save-lease',
       data: {
-        lease: self.state.lease,
+        lease: {
+          ach_authorized: this.state.lease.ach_authorized,
+          damage_deposit_amount: this.state.lease.damage_deposit_amount,
+          end_date: this.state.lease.end_date,
+          facial_permitted: this.state.lease.facial_permitted,
+          fee_start_date: this.state.lease.fee_start_date,
+          hair_styling_permitted: this.state.lease.hair_styling_permitted,
+          id: this.state.lease.id,
+          location_id: this.state.location ? this.state.location.id : null,
+          manicure_pedicure_permitted: this.state.lease.manicure_pedicure_permitted,
+          massage_permitted: this.state.lease.massage_permitted,
+          move_in_date: this.state.lease.move_in_date,
+          special_terms: this.state.lease.special_terms,
+          start_date: this.state.lease.start_date,
+          studio_id: this.state.lease.studio ? this.state.lease.studio.id : null,
+          stylist_id: this.state.stylist ? this.state.stylist.id : null,
+          waxing_permitted: this.state.lease.waxing_permitted,
+          weekly_fee_year_1: this.state.lease.weekly_fee_year_1,
+          weekly_fee_year_2: this.state.lease.weekly_fee_year_2,
+        },
       },
     }).done(function (data) {
       console.log('save lease returned', data);
