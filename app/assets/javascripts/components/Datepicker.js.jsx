@@ -30,8 +30,12 @@ var Datepicker = React.createClass({
 
   parseDate: function (date) {
     if (date) {
-      var datePieces = date.split('-');
-      return new Date(datePieces[0], parseInt(datePieces[1]) - 1, datePieces[2]);
+      if (Object.prototype.toString.call(date) === '[object Date]') {
+        return date;
+      } else {
+        var datePieces = date.split('-');
+        return new Date(datePieces[0], parseInt(datePieces[1]) - 1, datePieces[2]);
+      }
     } else {
       return null;
     }

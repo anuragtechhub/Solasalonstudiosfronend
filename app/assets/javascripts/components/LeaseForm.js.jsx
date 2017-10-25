@@ -26,9 +26,21 @@ var LeaseForm = React.createClass({
           {this.state.success ? this.renderSuccess() : null}
 
           {this.props.nested ? null : this.renderRow('Location', <LocationSelect location={this.state.location} onChange={this.onChangeLocation} />)}
-          {this.props.nested ? null : this.renderRow('Stylist', <StylistSelect location={this.state.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
-          {this.renderRow('Studio', <StudioSelect location={this.state.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />)}
+          {this.props.nested || this.state.location == null ? null : this.renderRow('Stylist', <StylistSelect location={this.state.location} stylist={this.state.lease.stylist} onChange={this.onChangeStylist} />)}
+          {this.state.location && this.state.lease.stylist ? this.renderRow('Studio', <StudioSelect location={this.state.location} studio={this.state.lease.studio} onChange={this.onChangeStudio} />) : null}
           
+          {this.renderLeaseFields()}
+
+          {this.props.nested ? null : this.renderButtons()}
+        </div>
+      </div>
+    );
+  },
+
+  renderLeaseFields: function () {
+    if (this.state.location && this.state.lease.stylist && this.state.lease.studio) {
+      return (
+        <div>
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
@@ -57,11 +69,9 @@ var LeaseForm = React.createClass({
             {this.renderRow('Massage', <Checkbox name="massage_permitted" value={this.state.lease.massage_permitted} onChange={this.onChange} />)}
             {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
           </ExpandCollapseGroup>
-
-          {this.props.nested ? null : this.renderButtons()}
         </div>
-      </div>
-    );
+      );
+    }
   },
 
   renderButtons: function () {
@@ -125,7 +135,7 @@ var LeaseForm = React.createClass({
   },
 
   onChangeLocation: function (location) {
-    this.state.location = location && location.id ? {id: location.id} : {};
+    this.state.location = location && location.id ? {id: location.id} : null;
     this.state.lease.stylist = null;
     this.state.lease.studio = null;
     this.setState({location: this.state.location, lease: this.state.lease});
@@ -133,6 +143,7 @@ var LeaseForm = React.createClass({
 
   onChangeStylist: function (stylist) {
     this.state.lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
+    this.state.lease.studio = null;
     this.setState({lease: this.state.lease});
   },
 

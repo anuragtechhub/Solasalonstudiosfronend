@@ -66,7 +66,6 @@ var StudioSelect = React.createClass({
   },  
 
   render: function () {
-    //console.log('StudioSelect', this.props.location);
     return (
       <div style={{maxWidth: '343px'}}>
         <select ref="select">
