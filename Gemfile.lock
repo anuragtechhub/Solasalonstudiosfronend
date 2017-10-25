@@ -418,3 +418,9 @@ DEPENDENCIES
   wicked_pdf
   wkhtmltopdf-binary
   wkhtmltopdf-heroku
+
+RUBY VERSION
+   ruby 2.2.8p477
+
+BUNDLED WITH
+   1.15.4
