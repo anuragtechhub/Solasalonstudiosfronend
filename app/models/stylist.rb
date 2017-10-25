@@ -111,7 +111,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
-  validates :name, :url_name, :presence => true
+  validates :location, :name, :url_name, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
 
