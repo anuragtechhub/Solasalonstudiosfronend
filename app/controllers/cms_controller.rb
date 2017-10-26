@@ -157,7 +157,7 @@ class CmsController < ApplicationController
                                     :image_1_alt_text, :image_2_alt_text, :image_3_alt_text, :image_4_alt_text, :image_5_alt_text, :image_6_alt_text, :image_7_alt_text, 
                                     :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
                                     :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
-                                    :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name)
+                                    :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name, :password, :password_confirmation)
   end
 
   def set_stylist_lease(stylist=nil)
@@ -167,8 +167,11 @@ class CmsController < ApplicationController
     @lease.assign_attributes(lease_params)
     @lease.location = stylist.location
     @lease.stylist = stylist
+    p "set_stylist_lease lease=#{@lease.inspect}"
+    p "set_stylist_lease studio=#{@lease.studio.inspect}"
+    p "set_stylist_lease stylist=#{@lease.stylist.inspect}"
     stylist.leases << @lease
-    p "set_stylist_lease = #{@lease.inspect}, stylist.leases#{stylist.leases.size}"
+    #p "set_stylist_lease stylist.leases=#{stylist.leases.size}"
   end
 
   def set_stylist_testimonials(stylist=nil)

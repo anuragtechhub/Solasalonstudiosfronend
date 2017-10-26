@@ -106,11 +106,35 @@ var StylistForm = React.createClass({
 
   renderLeaseInfo: function () {
     if (this.state.stylist.location) {
-      return (
-        <ExpandCollapseGroup name="Lease Info" collapsed={true}>
-          <LeaseForm lease={this.state.lease} location={this.state.lease ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
-        </ExpandCollapseGroup>
-      );
+      if (this.state.stylist.leases && this.state.stylist.leases.length > 0 && !this.state.lease) {
+        // no state lease
+        var leases = this.state.stylist.leases.map(function (lease) {
+          if (lease.agreement_file_url) {
+            return <Lease key={lease.id} lease={lease} />
+          }
+        });
+
+        return (
+          <ExpandCollapseGroup name="Lease Info" collapsed={true}>
+            <div style={{marginTop: '20px'}}><a href="#" onClick={this.addLease}>+ Add Lease</a></div>
+            {leases}
+          </ExpandCollapseGroup>
+        );
+      } else {
+        // yes, we have a state lease
+        var leases = this.state.stylist.leases.map(function (lease) {
+          if (lease.agreement_file_url) {
+            return <Lease key={lease.id} lease={lease} />
+          }
+        });
+
+        return (
+          <ExpandCollapseGroup name="Lease Info" collapsed={true}>
+            <LeaseForm lease={this.state.lease} location={this.state.lease && this.state.lease.location ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
+            {leases && leases.length > 0 ? <ExpandCollapseGroup name="Existing Leases" collapsed={true} nested={true}>{leases}</ExpandCollapseGroup> : null}
+          </ExpandCollapseGroup>
+        );
+      }
     }
   },
 
@@ -310,6 +334,12 @@ var StylistForm = React.createClass({
   * Utilities *
   *************/
 
+  addLease: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({lease: {}});
+  },
+
   save: function () {
     var self = this;
     var deferred = $.Deferred();
@@ -317,14 +347,24 @@ var StylistForm = React.createClass({
     //console.log('save stylist', this.state.stylist);
 
     this.setState({loading: true});
+
+    if (self.state.lease && self.state.lease.stylist) {
+      self.state.lease.stylist_id = self.state.lease.stylist.id;
+      delete self.state.lease.stylist;
+    }
+
+    var data = {
+      stylist: self.state.stylist
+    };
+
+    if (self.state.lease) {
+      data['lease'] = self.state.lease;
+    }
     
     $.ajax({
       type: 'POST',
       url: '/cms/save-stylist',
-      data: {
-        lease: self.state.lease,
-        stylist: self.state.stylist,
-      },
+      data: data,
     }).done(function (data) {
       //console.log('save stylist returned', data);
       
