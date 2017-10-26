@@ -228,7 +228,14 @@ var StylistForm = React.createClass({
   onChangeLocation: function (location) {
     var stylist = this.state.stylist;
     //stylist.location_id = location && location.id ? location.id : null;
-    stylist.location = location && location.id ? {id: location.id} : {};
+    //stylist.location = location && location.id ? {id: location.id} : null;
+    if (location && location.id) {
+      stylist.location = {id: location.id};
+      stylist.location_id = location.id;
+    } else {
+      stylist.location = null;
+      stylist.location_id = null;
+    }
     //console.log('onChangeLocation...',stylist.location,location);
     this.setState({stylist: stylist});
   },
