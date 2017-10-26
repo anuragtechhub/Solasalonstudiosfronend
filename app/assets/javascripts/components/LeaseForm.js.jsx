@@ -33,17 +33,19 @@ var LeaseForm = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    if (nextProps.location && nextProps.location.id && this.state.location && nextProps.location.id != this.state.location.id) {
+    if ((this.state.location == null && nextProps.location != null) || (nextProps.location && nextProps.location.id && this.state.location && nextProps.location.id != this.state.location.id)) {
+      //console.log('set location in LeaseForm')
       this.setState({location: {id: nextProps.location.id}});
     }
 
-    if (nextProps.stylist && nextProps.stylist.id && this.state.stylist && nextProps.stylist.id != this.state.stylist.id) {
+    if ((this.state.stylist == null && nextProps.stylist != null) || (nextProps.stylist && nextProps.stylist.id && this.state.stylist && nextProps.stylist.id != this.state.stylist.id)) {
+      //console.log('set stylist in LeaseForm');
       this.setState({stylist: {id: nextProps.stylist.id}});
     }    
   },
 
   render: function () {
-    //console.log('render lease form', this.state.lease, this.state.location);
+    //console.log('render lease form', this.state.lease, this.state.location, this.state.lease.studio);
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
