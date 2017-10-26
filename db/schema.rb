@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003201555) do
+ActiveRecord::Schema.define(version: 20171026225958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,9 +185,17 @@ ActiveRecord::Schema.define(version: 20171003201555) do
     t.boolean  "waxing_permitted",                  default: false
     t.boolean  "massage_permitted",                 default: false
     t.boolean  "facial_permitted",                  default: false
+    t.integer  "recurring_charge_1_id"
+    t.integer  "recurring_charge_2_id"
+    t.integer  "recurring_charge_3_id"
+    t.integer  "recurring_charge_4_id"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
+  add_index "leases", ["recurring_charge_1_id"], name: "index_leases_on_recurring_charge_1_id", using: :btree
+  add_index "leases", ["recurring_charge_2_id"], name: "index_leases_on_recurring_charge_2_id", using: :btree
+  add_index "leases", ["recurring_charge_3_id"], name: "index_leases_on_recurring_charge_3_id", using: :btree
+  add_index "leases", ["recurring_charge_4_id"], name: "index_leases_on_recurring_charge_4_id", using: :btree
   add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
   add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
@@ -386,6 +394,14 @@ ActiveRecord::Schema.define(version: 20171003201555) do
   end
 
   add_index "partner_inquiries", ["visit_id"], name: "index_partner_inquiries_on_visit_id", using: :btree
+
+  create_table "recurring_charges", force: true do |t|
+    t.integer  "amount"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "request_tour_inquiries", force: true do |t|
     t.string   "name"

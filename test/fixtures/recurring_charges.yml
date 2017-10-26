@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 1
+  start_date: 2017-10-26
+  end_date: 2017-10-26
+
+two:
+  amount: 1
+  start_date: 2017-10-26
+  end_date: 2017-10-26

@@ -72,7 +72,6 @@ var LeaseForm = React.createClass({
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-          {this.renderRow('Fee Start Date', <Datepicker name="fee_start_date" value={this.state.lease.fee_start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
 
           {this.renderRow('Weekly Fee Year 1', <CurrencyInput name="weekly_fee_year_1" value={this.state.lease.weekly_fee_year_1} onChange={this.onChange} />)}
           {this.renderRow('Weekly Fee Year 2', <CurrencyInput name="weekly_fee_year_2" value={this.state.lease.weekly_fee_year_2} onChange={this.onChange} />)}
