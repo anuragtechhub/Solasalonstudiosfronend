@@ -31,8 +31,8 @@ class Stylist < ActiveRecord::Base
   after_create :sync_with_rent_manager
   after_destroy :remove_from_mailchimp, :touch_stylist
 
-  has_one :studio
-  has_many :leases
+  #has_one :studio
+  has_many :leases, -> { order 'created_at desc' }
   accepts_nested_attributes_for :leases, :allow_destroy => true
 
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
@@ -241,6 +241,15 @@ class Stylist < ActiveRecord::Base
     "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
   end
 
+  # def lease
+  #   if self.leases && self.leases.size > 0
+  #     lease = self.leases.first
+  #     return lease if lease.agreement_file_url.blank?
+  #   end
+
+  #   nil
+  # end
+
   def sync_with_rent_manager
     if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
       require 'rest-client'
@@ -332,7 +341,7 @@ class Stylist < ActiveRecord::Base
   end                
 
   def as_json(options={})
-    super(:methods => [:location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
+    super(:methods => [:leases, :location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
                        :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
   end
 

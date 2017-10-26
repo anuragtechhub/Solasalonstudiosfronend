@@ -61,4 +61,9 @@ class Lease < ActiveRecord::Base
       errors.add(:fee_start_date, 'must be at least one year before the end date')
     end
   end
+
+  def as_json(options={})
+    super(:methods => [:location, :studio])
+  end
+
 end

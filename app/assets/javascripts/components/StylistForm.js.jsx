@@ -3,6 +3,7 @@ var StylistForm = React.createClass({
   getInitialState: function () {
     return {
       errors: null,
+      lease: this.getLease(),
       loading: false,
       stylist: this.props.stylist || {},
       success: null,
@@ -19,8 +20,20 @@ var StylistForm = React.createClass({
     }
   },
 
+  getLease: function () {
+    if (this.props.stylist && this.props.stylist.leases) {
+      for (var i = 0, ilen = this.props.stylist.leases.length; i < ilen; i++) {
+        if (!this.props.stylist.leases[i].agreement_file_url) {
+          return this.props.stylist.leases[i];
+        }
+      }
+    }
+
+    return null;
+  },
+
   render: function () {
-    //console.log('render StylistForm', this.state.stylist);
+    //console.log('render StylistForm', this.state.lease);
 
     return (
       <div className="stylist-form">
@@ -95,7 +108,7 @@ var StylistForm = React.createClass({
     if (this.state.stylist.location) {
       return (
         <ExpandCollapseGroup name="Lease Info" collapsed={true}>
-          <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
+          <LeaseForm lease={this.state.lease} location={this.state.lease ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
         </ExpandCollapseGroup>
       );
     }
