@@ -249,10 +249,18 @@ class Stylist < ActiveRecord::Base
       payload = {
         "FirstName" => self.first_name,
         "LastName" => self.last_name,
-        "PropertyID" => self.location.rent_manager_property_id,
+        "PropertyID" => self.location.rent_manager_property_id
       }
 
       payload["TenantID"] = self.rent_manager_id if self.rent_manager_id.present?
+
+      if self.email_address.present?
+        payload["PrimaryContact"] = {
+          "FirstName" => self.first_name,
+          "LastName" => self.last_name,
+          "Email" => self.email_address,
+        }
+      end
 
       p "payload=#{payload}"
 
