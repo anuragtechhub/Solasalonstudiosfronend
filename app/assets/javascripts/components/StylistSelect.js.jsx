@@ -7,6 +7,11 @@ var StylistSelect = React.createClass({
       $(this.refs.select).select2({
         theme: 'classic',
         width: '100%',
+        language: {
+          noResults: function (params) {
+            return "There are no stylists for this location";
+          }
+        },
         ajax: {
           url: '/cms/stylists-select',
           dataType: 'json',
