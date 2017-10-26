@@ -300,6 +300,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Lease' do
+    visible false
     # visible do
     #   bindings[:controller]._current_user.franchisee != true
     # end
@@ -1007,9 +1008,10 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Studio' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
+    visible false
+    # visible do
+    #   bindings[:controller]._current_user.franchisee != true
+    # end
     show do
       field :name
       field :location

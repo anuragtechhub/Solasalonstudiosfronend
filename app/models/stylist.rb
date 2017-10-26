@@ -28,6 +28,7 @@ class Stylist < ActiveRecord::Base
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
   after_save :remove_from_mailchimp_if_closed#, :sync_with_rent_manager
+  after_create :sync_with_rent_manager
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   has_one :studio
