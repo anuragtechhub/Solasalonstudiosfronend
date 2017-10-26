@@ -95,7 +95,7 @@ var StylistForm = React.createClass({
     if (this.state.stylist.location) {
       return (
         <ExpandCollapseGroup name="Lease Info" collapsed={true}>
-          <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} stylist={this.state.stylist} nested={true} />
+          <LeaseForm lease={this.state.stylist.lease} location={this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
         </ExpandCollapseGroup>
       );
     }
@@ -225,6 +225,11 @@ var StylistForm = React.createClass({
     this.setState({stylist: stylist});
   },
 
+  onChangeLease: function (lease) {
+    //console.log('onChangeLease', lease);
+    this.setState({lease: lease});
+  },
+
   onChangeLocation: function (location) {
     var stylist = this.state.stylist;
     //stylist.location_id = location && location.id ? location.id : null;
@@ -259,7 +264,9 @@ var StylistForm = React.createClass({
 
     this.save().done(function () {
       //self.setState({success: self.state.success + '. Redirecting to new stylist form...'});
-      window.location.href = '/admin/stylist/new';
+      setTimeout(function () {
+        window.location.href = '/admin/stylist/new';
+      }, 1000);
     });
   },  
 
@@ -280,7 +287,9 @@ var StylistForm = React.createClass({
 
     this.save().done(function () {
       //self.setState({success: self.state.success + '. Redirecting to stylists...'});
-      window.location.href = '/admin/stylist';
+      setTimeout(function () {
+        window.location.href = '/admin/stylist';
+      }, 1000);
     });
   },
 
@@ -292,7 +301,7 @@ var StylistForm = React.createClass({
     var self = this;
     var deferred = $.Deferred();
 
-    console.log('save stylist', this.state.stylist);
+    //console.log('save stylist', this.state.stylist);
 
     this.setState({loading: true});
     
@@ -300,10 +309,11 @@ var StylistForm = React.createClass({
       type: 'POST',
       url: '/cms/save-stylist',
       data: {
+        lease: self.state.lease,
         stylist: self.state.stylist,
       },
     }).done(function (data) {
-      console.log('save stylist returned', data);
+      //console.log('save stylist returned', data);
       
       if (data.errors) {
         self.setState({loading: false, errors: data.errors, success: null});

@@ -53,7 +53,8 @@ class CmsController < ApplicationController
     set_stylist_testimonials(@stylist)
 
     # lease
-    
+    set_stylist_lease(@stylist)
+
     p "stylist=#{@stylist.inspect}"
 
     if @stylist.save
@@ -157,6 +158,17 @@ class CmsController < ApplicationController
                                     :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
                                     :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
                                     :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name)
+  end
+
+  def set_stylist_lease(stylist=nil)
+    return unless stylist && params[:lease]
+
+    @lease = Lease.find_by(:id => params[:lease][:id]) || Lease.new
+    @lease.assign_attributes(lease_params)
+    @lease.location = stylist.location
+    @lease.stylist = stylist
+    stylist.leases << @lease
+    p "set_stylist_lease = #{@lease.inspect}, stylist.leases#{stylist.leases.size}"
   end
 
   def set_stylist_testimonials(stylist=nil)

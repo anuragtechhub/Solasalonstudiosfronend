@@ -41,7 +41,7 @@ var LeaseForm = React.createClass({
     if ((this.state.stylist == null && nextProps.stylist != null) || (nextProps.stylist && nextProps.stylist.id && this.state.stylist && nextProps.stylist.id != this.state.stylist.id)) {
       //console.log('set stylist in LeaseForm');
       this.setState({stylist: {id: nextProps.stylist.id}});
-    }    
+    }   
   },
 
   render: function () {
@@ -151,6 +151,7 @@ var LeaseForm = React.createClass({
   *******************/
 
   onChange: function (e) {
+    var self = this;
     var lease = this.state.lease;
     var target = e.target;
     var value = target.type === 'checkbox' ? target.checked : target.value;
@@ -159,25 +160,68 @@ var LeaseForm = React.createClass({
     //console.log('onChange', name, value);      
 
     lease[name] = value;
-    this.setState({lease: lease});
+    this.setState({lease: lease}, function () {
+      self.fireOnChange();
+    });
   },
 
   onChangeLocation: function (location) {
-    this.state.location = location && location.id ? {id: location.id} : null;
+    var self = this;
+    //this.state.location = location && location.id ? {id: location.id} : null;
+    if (location && location.id) {
+      this.state.location = {id: location.id};
+      this.state.location_id = location.id;
+    } else {
+      this.state.location = null;
+      this.state.location_id = null;
+    }
     this.state.lease.stylist = null;
     this.state.lease.studio = null;
-    this.setState({location: this.state.location, lease: this.state.lease});
+    this.setState({location: this.state.location, lease: this.state.lease}, function () {
+      self.fireOnChange();
+    });
   },
 
   onChangeStylist: function (stylist) {
-    this.state.lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
+    var self = this;
+    //this.state.lease.stylist = stylist && stylist.id ? {id: stylist.id} : null;
+    if (stylist && stylist.id) {
+      this.state.lease.stylist = {id: stylist.id};
+      this.state.lease.stylist_id = stylist.id;
+    } else {
+      this.state.lease.stylist = null;
+      this.state.lease.stylist_id = null;
+    }
     this.state.lease.studio = null;
-    this.setState({lease: this.state.lease});
+    this.setState({lease: this.state.lease}, function () {
+      self.fireOnChange();
+    });
   },
 
   onChangeStudio: function (studio) {
+    //console.log('onChangeStudio', studio);
+    var self = this;
     this.state.lease.studio = studio && studio.id ? {id: studio.id} : null;
-    this.setState({lease: this.state.lease});
+    if (studio && studio.id) {
+      this.state.lease.studio = {id: studio.id};
+      this.state.lease.studio_id = studio.id;
+    } else {
+      this.state.lease.studio = null;
+      this.state.lease.studio_id = null;
+    }
+    this.setState({lease: this.state.lease}, function () {
+      self.fireOnChange();
+    });
+  },
+
+  fireOnChange: function () {
+    if (this.props.onChange) {
+      var lease = this.state.lease;
+      lease.location = this.state.location;
+      lease.stylist = this.state.stylist;
+      //console.log('firing Lease onChange', lease);
+      this.props.onChange(lease);
+    }     
   },
 
   /******************
@@ -232,7 +276,7 @@ var LeaseForm = React.createClass({
     var self = this;
     var deferred = $.Deferred();
 
-    console.log('save lease', this.state.lease);
+    //console.log('save lease', this.state.lease);
 
     this.setState({loading: true});
     
@@ -262,7 +306,7 @@ var LeaseForm = React.createClass({
         },
       },
     }).done(function (data) {
-      console.log('save lease returned', data);
+      //console.log('save lease returned', data);
       
       if (data.errors) {
         self.setState({loading: false, errors: data.errors, success: null});
