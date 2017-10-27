@@ -90,7 +90,7 @@ var LeaseForm = React.createClass({
           */}
 
           {this.renderRow('ACH Authorized', <Checkbox name="ach_authorized" value={this.state.lease.ach_authorized} onChange={this.onChange} />)}
-          {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={5} />)}
+          {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={7} style={{width: '100% !important'}} />)}
   
           <ExpandCollapseGroup name="Permitted Uses" nested={true} collapsed={true}>
             {this.renderRow('Facials', <Checkbox name="facial_permitted" value={this.state.lease.facial_permitted} onChange={this.onChange} />)}
