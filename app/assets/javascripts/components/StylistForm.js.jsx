@@ -129,10 +129,12 @@ var StylistForm = React.createClass({
           }
         });
 
+        console.log('yes state lease', leases.length, this.state.stylist.leases.length);
+
         return (
           <ExpandCollapseGroup name="Lease Info" collapsed={true}>
             <LeaseForm lease={this.state.lease} location={this.state.lease && this.state.lease.location ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
-            {leases && leases.length > 0 ? <ExpandCollapseGroup name="Existing Leases" collapsed={true} nested={true}>{leases}</ExpandCollapseGroup> : null}
+            {leases && leases.length > 1 ? <ExpandCollapseGroup name="Existing Leases" collapsed={true} nested={true}>{leases}</ExpandCollapseGroup> : null}
           </ExpandCollapseGroup>
         );
       }
