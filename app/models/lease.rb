@@ -63,7 +63,7 @@ class Lease < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:methods => [:location, :studio])
+    super(:methods => [:location, :studio, :recurring_charge_1, :recurring_charge_2, :recurring_charge_3, :recurring_charge_4])
   end
 
 end

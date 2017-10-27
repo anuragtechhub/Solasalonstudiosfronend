@@ -1,0 +1,16 @@
+.recurring-charge-form {
+  border: 2px solid #dce4ec;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 0;
+  background: #F4F7F9;
+  display: inline-block;
+
+  .nested-form-row {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
