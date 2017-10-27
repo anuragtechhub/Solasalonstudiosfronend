@@ -146,7 +146,8 @@ class CmsController < ApplicationController
     params.require(:lease).permit(:stylist_id, :studio_id, :location_id, :rent_manager_id, :start_date, :end_date, :move_in_date, :signed_date, :weekly_fee_year_1, :weekly_fee_year_2, 
                                   :fee_start_date, :damage_deposit_amount, :product_bonus_amount, :product_bonus_distributor, :sola_provided_insurance, 
                                   :sola_provided_insurance_frequenc, :special_terms, :ach_authorized, :agreement_file_url, :location_id, :hair_styling_permitted, 
-                                  :manicure_pedicure_permitted, :waxing_permitted, :massage_permitted, :facial_permitted)
+                                  :manicure_pedicure_permitted, :waxing_permitted, :massage_permitted, :facial_permitted, :recurring_charge_1, :recurring_charge_2, 
+                                  :recurring_charge_3, :recurring_charge_4)
   end
 
   def stylist_params
@@ -167,6 +168,35 @@ class CmsController < ApplicationController
     @lease.assign_attributes(lease_params)
     @lease.location = stylist.location
     @lease.stylist = stylist
+
+    if params[:lease][:recurring_charge_1]
+      @lease.recurring_charge_1 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_1][:id]) || RecurringCharge.new
+      @lease.recurring_charge_1.amount = params[:lease][:recurring_charge_1][:amount]
+      @lease.recurring_charge_1.start_date = params[:lease][:recurring_charge_1][:start_date]
+      @lease.recurring_charge_1.end_date = params[:lease][:recurring_charge_1][:end_date]
+    end
+
+    if params[:lease][:recurring_charge_2]
+      @lease.recurring_charge_2 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_2][:id]) || RecurringCharge.new
+      @lease.recurring_charge_2.amount = params[:lease][:recurring_charge_2][:amount]
+      @lease.recurring_charge_2.start_date = params[:lease][:recurring_charge_2][:start_date]
+      @lease.recurring_charge_2.end_date = params[:lease][:recurring_charge_2][:end_date]
+    end
+
+    if params[:lease][:recurring_charge_3]
+      @lease.recurring_charge_3 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_3][:id]) || RecurringCharge.new
+      @lease.recurring_charge_3.amount = params[:lease][:recurring_charge_3][:amount]
+      @lease.recurring_charge_3.start_date = params[:lease][:recurring_charge_3][:start_date]
+      @lease.recurring_charge_3.end_date = params[:lease][:recurring_charge_3][:end_date]
+    end
+
+    if params[:lease][:recurring_charge_4]
+      @lease.recurring_charge_4 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_4][:id]) || RecurringCharge.new
+      @lease.recurring_charge_4.amount = params[:lease][:recurring_charge_4][:amount]
+      @lease.recurring_charge_4.start_date = params[:lease][:recurring_charge_4][:start_date]
+      @lease.recurring_charge_4.end_date = params[:lease][:recurring_charge_4][:end_date]
+    end        
+
     p "set_stylist_lease lease=#{@lease.inspect}"
     p "set_stylist_lease studio=#{@lease.studio.inspect}"
     p "set_stylist_lease stylist=#{@lease.stylist.inspect}"

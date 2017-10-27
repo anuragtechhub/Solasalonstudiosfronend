@@ -364,6 +364,8 @@ var StylistForm = React.createClass({
       data['lease'] = self.state.lease;
     }
     
+    console.log('save stylist', data);
+
     $.ajax({
       type: 'POST',
       url: '/cms/save-stylist',

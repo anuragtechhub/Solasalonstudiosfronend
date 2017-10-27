@@ -221,7 +221,7 @@ var LeaseForm = React.createClass({
       var lease = this.state.lease;
       lease.location = this.state.location;
       lease.stylist = this.state.stylist;
-      //console.log('firing Lease onChange', lease);
+      console.log('firing Lease onChange', lease);
       this.props.onChange(lease);
     }     
   },
