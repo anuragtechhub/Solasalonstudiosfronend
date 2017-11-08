@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026231003) do
+ActiveRecord::Schema.define(version: 20171108215203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -189,6 +189,8 @@ ActiveRecord::Schema.define(version: 20171026231003) do
     t.integer  "recurring_charge_2_id"
     t.integer  "recurring_charge_3_id"
     t.integer  "recurring_charge_4_id"
+    t.boolean  "move_in_bonus",                     default: false
+    t.boolean  "insurance",                         default: false
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
@@ -578,6 +580,7 @@ ActiveRecord::Schema.define(version: 20171026231003) do
     t.string   "website_phone_number"
     t.string   "website_name"
     t.date     "cosmetology_license_date"
+    t.boolean  "electronic_license_agreement",   default: false
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
