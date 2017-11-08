@@ -69,16 +69,32 @@ var LeaseForm = React.createClass({
     if (this.state.location && this.state.stylist && this.state.lease.studio) {
       return (
         <div>
+          {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('Start Date', <Datepicker name="start_date" value={this.state.lease.start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
           {this.renderRow('End Date', <Datepicker name="end_date" value={this.state.lease.end_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-          {this.renderRow('Move In Date', <Datepicker name="move_in_date" value={this.state.lease.move_in_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
+        
+          {this.renderRow('License Fee Start Date', <Datepicker name="fee_start_date" value={this.state.lease.fee_start_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
+
+          {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={7} style={{width: '100% !important'}} />)}
+
+          <ExpandCollapseGroup name="Permitted Uses" nested={true} collapsed={true}>
+            {this.renderRow('Facials', <Checkbox name="facial_permitted" value={this.state.lease.facial_permitted} onChange={this.onChange} />)}
+            {this.renderRow('Hair Styling, Cutting, Coloring', <Checkbox name="hair_styling_permitted" value={this.state.lease.hair_styling_permitted} onChange={this.onChange} />)}
+            {this.renderRow('Manicures / Pedicures', <Checkbox name="manicure_pedicure_permitted" value={this.state.lease.manicure_pedicure_permitted} onChange={this.onChange} />)}
+            {this.renderRow('Massage', <Checkbox name="massage_permitted" value={this.state.lease.massage_permitted} onChange={this.onChange} />)}
+            {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
+          </ExpandCollapseGroup>
+
+          {/* Move in Bonus */}
+
+          {/* Insurance */}
 
           {this.renderRow('Recurring Weekly Charge 1', <RecurringChargeForm name="recurring_charge_1" value={this.state.lease.recurring_charge_1} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 2', <RecurringChargeForm name="recurring_charge_2" value={this.state.lease.recurring_charge_2} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 3', <RecurringChargeForm name="recurring_charge_3" value={this.state.lease.recurring_charge_3} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 4', <RecurringChargeForm name="recurring_charge_4" value={this.state.lease.recurring_charge_4} onChange={this.onChange} />)}
 
-          {this.renderRow('Damage Deposit Amount', <CurrencyInput name="damage_deposit_amount" value={this.state.lease.damage_deposit_amount} onChange={this.onChange} />)}
+          {this.renderRow('Security Deposit Amount', <CurrencyInput name="damage_deposit_amount" value={this.state.lease.damage_deposit_amount} onChange={this.onChange} />)}
 
           {/*
           {this.renderRow('Product Bonus Amount', <CurrencyInput name="product_bonus_amount" value={this.state.lease.product_bonus_amount} onChange={this.onChange} />)}
@@ -90,15 +106,6 @@ var LeaseForm = React.createClass({
           */}
 
           {this.renderRow('ACH Authorized', <Checkbox name="ach_authorized" value={this.state.lease.ach_authorized} onChange={this.onChange} />)}
-          {this.renderRow('Special Terms', <textarea name="special_terms" value={this.state.lease.special_terms} onChange={this.onChange} rows={7} style={{width: '100% !important'}} />)}
-  
-          <ExpandCollapseGroup name="Permitted Uses" nested={true} collapsed={true}>
-            {this.renderRow('Facials', <Checkbox name="facial_permitted" value={this.state.lease.facial_permitted} onChange={this.onChange} />)}
-            {this.renderRow('Hair Styling, Cutting, Coloring', <Checkbox name="hair_styling_permitted" value={this.state.lease.hair_styling_permitted} onChange={this.onChange} />)}
-            {this.renderRow('Manicures / Pedicures', <Checkbox name="manicure_pedicure_permitted" value={this.state.lease.manicure_pedicure_permitted} onChange={this.onChange} />)}
-            {this.renderRow('Massage', <Checkbox name="massage_permitted" value={this.state.lease.massage_permitted} onChange={this.onChange} />)}
-            {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
-          </ExpandCollapseGroup>
         </div>
       );
     }
