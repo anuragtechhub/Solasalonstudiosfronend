@@ -29,7 +29,7 @@ input.labelauty + label
 	font-size: 13px;
 	padding: 5px 10px 10px 10px;
 	background-color: #DFDFDF;
-	color: #b3b3b3;
+	color: #7F7F7F;
 	cursor: pointer;
 
 	position: relative;
@@ -88,8 +88,8 @@ input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked
 /* When not Checked */
 input.labelauty:not(:checked):not([disabled]) + label:hover
 {
-	background-color: #DCE4EC;
-	color: #a7a7a7;
+	background-color: #DFDFDF;
+	color: #7F7F7F;
 }
 input.labelauty:not(:checked) + label > span.labelauty-checked-image
 {
@@ -110,7 +110,7 @@ input.labelauty:checked + label
 
 input.labelauty:checked:not([disabled]) + label:hover
 {
-	background-color: #72c5fd;
+	background-color: #5FB0E2;
 }
 input.labelauty:checked + label > span.labelauty-unchecked-image
 {

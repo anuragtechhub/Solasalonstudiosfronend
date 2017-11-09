@@ -6,8 +6,8 @@ var Checkbox = React.createClass({
     if (this.refs.checkbox) {
       $(this.refs.checkbox).labelauty({
         //label: false,
-        checked_label: self.props.checked_label || 'Yes',
-        unchecked_label: self.props.checked_label || 'No',
+        checked_label: self.props.checkedLabel || 'Yes',
+        unchecked_label: self.props.uncheckedLabel || 'No',
         icon: true,
       });
     }

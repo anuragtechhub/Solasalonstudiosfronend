@@ -6,6 +6,7 @@
     border-radius: 0 !important;
   }
 }
+
 .expand-collapse-group {
   legend {
     cursor: default !important;
@@ -15,9 +16,23 @@
       top: 1px;
       cursor: pointer;
       border-right: 5px solid transparent;
+
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      
+      &.chevron-down:before {
+        content: "\f078";
+      }
+
+      &.chevron-right:before {
+        content: "\f054";
+      }
     }
 
-    span {
+    span.name {
       cursor: pointer;
     }
 
@@ -26,5 +41,12 @@
       margin: 3px 4px;
     }
 
+  }
+}
+
+.expand-collapse-group-disabled {
+  i, span.name {
+    opacity: 0.333;
+    cursor: default !important;
   }
 }

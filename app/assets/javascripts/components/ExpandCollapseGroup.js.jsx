@@ -17,11 +17,12 @@ var ExpandCollapseGroup = React.createClass({
   },
 
   render: function () {
+    console.log('RENDER this.state.collapsed', this.state.collapsed)
     return (
-      <div className={"expand-collapse-group " + (this.props.nested ? "expand-collapse-group-nested" : '')} style={{marginTop: '15px'}}>
+      <div className={"expand-collapse-group " + (this.props.nested ? "expand-collapse-group-nested" : '') + (this.isDisabled() ? "expand-collapse-group-disabled" : '')} style={{marginTop: '15px'}}>
         <legend>
-          <i className={this.state.collapsed ? "icon-chevron-right" : "icon-chevron-down"} onClick={this.onToggle}></i> 
-          <span onClick={this.onToggle}>{this.props.name}</span> 
+          <i className={this.state.collapsed ? "chevron-right" : "chevron-down"} onClick={this.onToggle}></i> 
+          <span className="name" onClick={this.onToggle}>{this.props.name}</span> 
           {this.renderSwitch()}
         </legend>
         <div className="expand-collapse-content" ref="content">{this.props.children}</div>
@@ -31,12 +32,14 @@ var ExpandCollapseGroup = React.createClass({
 
   renderSwitch: function () {
     if (this.props.switch) {
-      //console.log('we have a switch!', this.props.switch, this.state.disabled);
       return (
-        <Checkbox name={this.props.switch.name} value={this.props.switch.value} onChange={this.onChangeSwitch} />
+        <Checkbox name={this.props.switch.name} 
+                  value={this.props.switch.value} 
+                  onChange={this.onChangeSwitch} 
+                  checkedLabel="Enabled"
+                  uncheckedLabel="Disabled"
+        />
       );
-    } else {
-      //console.log('no switch :(', this.props.switch);
     }
   },
 
@@ -45,15 +48,9 @@ var ExpandCollapseGroup = React.createClass({
   *******************/
 
   onChangeSwitch: function (e) {
-    // console.log('onChangeSwitch e.currentTarget.name', e.currentTarget.name, e.currentTarget.type);
-    // console.log('onChangeSwitch e.target.name', e.target.name, e.target.type);//, e.target == e.currentTarget);
-    //e.stopPropagation();
-
     var target = e.target;
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
-
-    //console.log('onChangeSwitch name, value', name, value);
 
     if (this.props.onChangeSwitch) {
       this.props.onChangeSwitch(e);  
@@ -61,17 +58,12 @@ var ExpandCollapseGroup = React.createClass({
   },
 
   onToggle: function (e) {
-    //if (this.isDisabled()) {
-    //  console.log('we have a switch and it is disabled! ignore toggle');
-    //} else {
-    //  console.log('no switch or enabled switch')
+    if (this.isDisabled()) {
+      console.log('disabled!!! do nothing', this.state.collapsed);
+    } else {
+      console.log('toggle!', this.state.collapsed);
       this.setState({collapsed: !this.state.collapsed});
-    //}
-    // console.log('TOGGLE e.currentTarget.name', e.currentTarget.name, e.currentTarget.type);
-    // console.log('TOGGLE e.target.name', e.target.name, e.target.type);//, e.target == e.currentTarget);
-    //e.preventDefault();
-    //e.stopPropagation();
-    
+    }
   },
 
   /*******************

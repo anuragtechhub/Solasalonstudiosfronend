@@ -95,6 +95,7 @@ var StylistForm = React.createClass({
 
         return (
           <ExpandCollapseGroup name="Electronic License Agreement" collapsed={true} switch={{name: 'electronic_license_agreement', value: this.state.stylist.electronic_license_agreement}} onChangeSwitch={this.onChange}>
+            {/*this.renderRow('Enabled?', <Checkbox name="electronic_license_agreement" value={this.state.stylist.electronic_license_agreement} onChange={this.onChange} />)*/}
             <LeaseForm lease={this.state.lease} location={this.state.lease && this.state.lease.location ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
             {leases && leases.length > 1 ? <ExpandCollapseGroup name="Existing Leases" collapsed={true} nested={true}>{leases}</ExpandCollapseGroup> : null}
           </ExpandCollapseGroup>
