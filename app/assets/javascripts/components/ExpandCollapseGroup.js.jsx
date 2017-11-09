@@ -19,9 +19,9 @@ var ExpandCollapseGroup = React.createClass({
   render: function () {
     return (
       <div className={"expand-collapse-group " + (this.props.nested ? "expand-collapse-group-nested" : '')} style={{marginTop: '15px'}}>
-        <legend onClick={this.onToggle}>
+        <legend>
           <i className={this.state.collapsed ? "icon-chevron-right" : "icon-chevron-down"} onClick={this.onToggle}></i> 
-          {this.props.name} 
+          <span onClick={this.onToggle}>{this.props.name}</span> 
           {this.renderSwitch()}
         </legend>
         <div className="expand-collapse-content" ref="content">{this.props.children}</div>
@@ -31,12 +31,12 @@ var ExpandCollapseGroup = React.createClass({
 
   renderSwitch: function () {
     if (this.props.switch) {
-      console.log('we have a switch!', this.props.switch, this.state.disabled);
+      //console.log('we have a switch!', this.props.switch, this.state.disabled);
       return (
         <Checkbox name={this.props.switch.name} value={this.props.switch.value} onChange={this.onChangeSwitch} />
       );
     } else {
-      console.log('no switch :(', this.props.switch);
+      //console.log('no switch :(', this.props.switch);
     }
   },
 
@@ -53,7 +53,7 @@ var ExpandCollapseGroup = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    console.log('onChangeSwitch name, value', name, value);
+    //console.log('onChangeSwitch name, value', name, value);
 
     if (this.props.onChangeSwitch) {
       this.props.onChangeSwitch(e);  
@@ -61,12 +61,12 @@ var ExpandCollapseGroup = React.createClass({
   },
 
   onToggle: function (e) {
-    if (this.isDisabled()) {
-      console.log('we have a switch and it is disabled! ignore toggle');
-    } else {
-      console.log('no switch or enabled switch')
+    //if (this.isDisabled()) {
+    //  console.log('we have a switch and it is disabled! ignore toggle');
+    //} else {
+    //  console.log('no switch or enabled switch')
       this.setState({collapsed: !this.state.collapsed});
-    }
+    //}
     // console.log('TOGGLE e.currentTarget.name', e.currentTarget.name, e.currentTarget.type);
     // console.log('TOGGLE e.target.name', e.target.name, e.target.type);//, e.target == e.currentTarget);
     //e.preventDefault();

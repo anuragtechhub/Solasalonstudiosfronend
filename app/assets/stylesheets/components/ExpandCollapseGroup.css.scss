@@ -8,9 +8,17 @@
 }
 .expand-collapse-group {
   legend {
-    
+    cursor: default !important;
+
     i {
-      margin-right: 5px;
+      position: relative;
+      top: 1px;
+      cursor: pointer;
+      border-right: 5px solid transparent;
+    }
+
+    span {
+      cursor: pointer;
     }
 
     label {
