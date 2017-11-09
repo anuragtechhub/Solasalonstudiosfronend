@@ -158,7 +158,8 @@ class CmsController < ApplicationController
                                     :image_1_alt_text, :image_2_alt_text, :image_3_alt_text, :image_4_alt_text, :image_5_alt_text, :image_6_alt_text, :image_7_alt_text, 
                                     :image_8_alt_text, :image_9_alt_text, :image_10_alt_text, :microblading, :rent_manager_id, :date_of_birth, :street_address, :city,
                                     :state_province, :postal_code, :emergency_contact_name, :emergency_contact_relationship, :emergency_contact_phone_number, :cosmetology_license_number,
-                                    :cosmetology_license_date, :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name, :password, :password_confirmation)
+                                    :cosmetology_license_date, :permitted_use_for_studio, :country, :website_email_address, :website_phone_number, :website_name, 
+                                    :password, :password_confirmation, :electronic_license_agreement)
   end
 
   def set_stylist_lease(stylist=nil)
@@ -197,9 +198,9 @@ class CmsController < ApplicationController
       @lease.recurring_charge_4.end_date = params[:lease][:recurring_charge_4][:end_date]
     end        
 
-    p "set_stylist_lease lease=#{@lease.inspect}"
-    p "set_stylist_lease studio=#{@lease.studio.inspect}"
-    p "set_stylist_lease stylist=#{@lease.stylist.inspect}"
+    # p "set_stylist_lease lease=#{@lease.inspect}"
+    # p "set_stylist_lease studio=#{@lease.studio.inspect}"
+    # p "set_stylist_lease stylist=#{@lease.stylist.inspect}"
     stylist.leases << @lease
     #p "set_stylist_lease stylist.leases=#{stylist.leases.size}"
   end
@@ -208,17 +209,94 @@ class CmsController < ApplicationController
     return unless stylist
 
     if params[:stylist][:testimonial_1].present?
-      p "yes, testimonial 1 is present..."
+      #p "yes, testimonial 1 is present..."
       stylist.build_testimonial_1 unless stylist.testimonial_1.present?
       stylist.testimonial_1.name = params[:stylist][:testimonial_1][:name]
       stylist.testimonial_1.text = params[:stylist][:testimonial_1][:text]
       stylist.testimonial_1.region = params[:stylist][:testimonial_1][:region]
-      p "boom, set testimonial 1=#{stylist.testimonial_1.inspect}"
+      #p "boom, set testimonial 1=#{stylist.testimonial_1.inspect}"
     end
 
     if params[:stylist][:testimonial_2].present?
-      p "yes, testimonial 2 is present..."
-    end    
+      #p "yes, testimonial 2 is present..."
+      stylist.build_testimonial_2 unless stylist.testimonial_2.present?
+      stylist.testimonial_2.name = params[:stylist][:testimonial_2][:name]
+      stylist.testimonial_2.text = params[:stylist][:testimonial_2][:text]
+      stylist.testimonial_2.region = params[:stylist][:testimonial_2][:region]
+      #p "boom, set testimonial 2=#{stylist.testimonial_2.inspect}"
+    end
+
+    if params[:stylist][:testimonial_3].present?
+      #p "yes, testimonial 3 is present..."
+      stylist.build_testimonial_3 unless stylist.testimonial_3.present?
+      stylist.testimonial_3.name = params[:stylist][:testimonial_3][:name]
+      stylist.testimonial_3.text = params[:stylist][:testimonial_3][:text]
+      stylist.testimonial_3.region = params[:stylist][:testimonial_3][:region]
+      #p "boom, set testimonial 3=#{stylist.testimonial_3.inspect}"
+    end
+
+    if params[:stylist][:testimonial_4].present?
+      #p "yes, testimonial 1 is present..."
+      stylist.build_testimonial_4 unless stylist.testimonial_4.present?
+      stylist.testimonial_4.name = params[:stylist][:testimonial_4][:name]
+      stylist.testimonial_4.text = params[:stylist][:testimonial_4][:text]
+      stylist.testimonial_4.region = params[:stylist][:testimonial_4][:region]
+      #p "boom, set testimonial 4=#{stylist.testimonial_4.inspect}"
+    end
+
+    if params[:stylist][:testimonial_5].present?
+      #p "yes, testimonial 5 is present..."
+      stylist.build_testimonial_5 unless stylist.testimonial_5.present?
+      stylist.testimonial_5.name = params[:stylist][:testimonial_5][:name]
+      stylist.testimonial_5.text = params[:stylist][:testimonial_5][:text]
+      stylist.testimonial_5.region = params[:stylist][:testimonial_5][:region]
+      #p "boom, set testimonial 5=#{stylist.testimonial_5.inspect}"
+    end
+
+    if params[:stylist][:testimonial_6].present?
+      #p "yes, testimonial 6 is present..."
+      stylist.build_testimonial_6 unless stylist.testimonial_6.present?
+      stylist.testimonial_6.name = params[:stylist][:testimonial_6][:name]
+      stylist.testimonial_6.text = params[:stylist][:testimonial_6][:text]
+      stylist.testimonial_6.region = params[:stylist][:testimonial_6][:region]
+      #p "boom, set testimonial 6=#{stylist.testimonial_6.inspect}"
+    end
+
+    if params[:stylist][:testimonial_7].present?
+      #p "yes, testimonial 7 is present..."
+      stylist.build_testimonial_7 unless stylist.testimonial_7.present?
+      stylist.testimonial_7.name = params[:stylist][:testimonial_7][:name]
+      stylist.testimonial_7.text = params[:stylist][:testimonial_7][:text]
+      stylist.testimonial_7.region = params[:stylist][:testimonial_7][:region]
+      #p "boom, set testimonial 7=#{stylist.testimonial_7.inspect}"
+    end
+
+    if params[:stylist][:testimonial_8].present?
+      #p "yes, testimonial 8 is present..."
+      stylist.build_testimonial_8 unless stylist.testimonial_8.present?
+      stylist.testimonial_8.name = params[:stylist][:testimonial_8][:name]
+      stylist.testimonial_8.text = params[:stylist][:testimonial_8][:text]
+      stylist.testimonial_8.region = params[:stylist][:testimonial_8][:region]
+      #p "boom, set testimonial 8=#{stylist.testimonial_8.inspect}"
+    end
+    
+    if params[:stylist][:testimonial_9].present?
+      #p "yes, testimonial 9 is present..."
+      stylist.build_testimonial_9 unless stylist.testimonial_9.present?
+      stylist.testimonial_9.name = params[:stylist][:testimonial_9][:name]
+      stylist.testimonial_9.text = params[:stylist][:testimonial_9][:text]
+      stylist.testimonial_9.region = params[:stylist][:testimonial_9][:region]
+      #p "boom, set testimonial 9=#{stylist.testimonial_9.inspect}"
+    end
+
+    if params[:stylist][:testimonial_10].present?
+      #p "yes, testimonial 10 is present..."
+      stylist.build_testimonial_10 unless stylist.testimonial_10.present?
+      stylist.testimonial_10.name = params[:stylist][:testimonial_10][:name]
+      stylist.testimonial_10.text = params[:stylist][:testimonial_10][:text]
+      stylist.testimonial_10.region = params[:stylist][:testimonial_10][:region]
+      #p "boom, set testimonial 10=#{stylist.testimonial_10.inspect}"
+    end                                  
   end
 
   def set_stylist_images(stylist=nil)

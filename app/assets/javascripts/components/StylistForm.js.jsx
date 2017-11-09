@@ -33,7 +33,7 @@ var StylistForm = React.createClass({
   },
 
   render: function () {
-    //console.log('render StylistForm', this.state.lease);
+    //console.log('render StylistForm', this.state.stylist.electronic_license_agreement);
 
     return (
       <div className="stylist-form">
@@ -46,9 +46,9 @@ var StylistForm = React.createClass({
           {this.renderStylistInfo()} 
           {this.renderWebsiteInfo()}  
           
-          
           {this.renderButtons()}
         </div>
+        
         {/*this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null(*/}
       </div>
     );
@@ -95,7 +95,6 @@ var StylistForm = React.createClass({
 
         return (
           <ExpandCollapseGroup name="Electronic License Agreement" collapsed={true} switch={{name: 'electronic_license_agreement', value: this.state.stylist.electronic_license_agreement}} onChangeSwitch={this.onChange}>
-            {/*this.renderRow('Enabled?', <Checkbox name="electronic_license_agreement" value={this.state.stylist.electronic_license_agreement} onChange={this.onChange} />)*/}
             <LeaseForm lease={this.state.lease} location={this.state.lease && this.state.lease.location ? this.state.lease.location : this.state.stylist.location} stylist={this.state.stylist} nested={true} onChange={this.onChangeLease} />
             {leases && leases.length > 1 ? <ExpandCollapseGroup name="Existing Leases" collapsed={true} nested={true}>{leases}</ExpandCollapseGroup> : null}
           </ExpandCollapseGroup>
@@ -261,7 +260,7 @@ var StylistForm = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    console.log('onChange', name, value);      
+    //console.log('onChange', name, value);      
 
     stylist[name] = value;
     this.setState({stylist: stylist});
@@ -373,7 +372,7 @@ var StylistForm = React.createClass({
       url: '/cms/save-stylist',
       data: data,
     }).done(function (data) {
-      //console.log('save stylist returned', data);
+      console.log('save stylist returned', data);
       
       if (data.errors) {
         self.setState({loading: false, errors: data.errors, success: null});
