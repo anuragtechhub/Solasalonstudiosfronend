@@ -14,10 +14,13 @@ var ExpandCollapseGroup = React.createClass({
     if (prevState.collapsed !== this.state.collapsed) {
       this.animateCollapsed();
     }
+
+    if (prevProps.switch && prevProps.switch.value && this.props.switch && !this.props.switch.value) {
+      this.setState({collapsed: true});
+    }
   },
 
   render: function () {
-    console.log('RENDER this.state.collapsed', this.state.collapsed)
     return (
       <div className={"expand-collapse-group " + (this.props.nested ? "expand-collapse-group-nested" : '') + (this.isDisabled() ? "expand-collapse-group-disabled" : '')} style={{marginTop: '15px'}}>
         <legend>
@@ -58,10 +61,7 @@ var ExpandCollapseGroup = React.createClass({
   },
 
   onToggle: function (e) {
-    if (this.isDisabled()) {
-      console.log('disabled!!! do nothing', this.state.collapsed);
-    } else {
-      console.log('toggle!', this.state.collapsed);
+    if (!this.isDisabled()) {
       this.setState({collapsed: !this.state.collapsed});
     }
   },
