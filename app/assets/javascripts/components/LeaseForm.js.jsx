@@ -85,18 +85,18 @@ var LeaseForm = React.createClass({
           </ExpandCollapseGroup>
 
           {/* Move In Bonus */}
-          {this.renderRow('Move In Bonus', <Checkbox name="move_in_bonus_enabled" value={this.state.lease.move_in_bonus_enabled} onChange={this.onChange} />)}
-          {!this.state.lease.move_in_bonus_enabled ? null : this.renderRow('Move In Bonus Amount', <CurrencyInput name="move_in_bonus_amount" value={this.state.lease.move_in_bonus_amount} onChange={this.onChange} />)}
-          {!this.state.lease.move_in_bonus_enabled ? null : this.renderRow('Move In Bonus Payee', <input type="text" name="move_in_bonus_payee" value={this.state.lease.move_in_bonus_payee} onChange={this.onChange} />)}
+          {this.renderRow('Move In Bonus', <Checkbox name="move_in_bonus" value={this.state.lease.move_in_bonus} onChange={this.onChange} />)}
+          {!this.state.lease.move_in_bonus ? null : this.renderRow('Move In Bonus Amount', <CurrencyInput name="move_in_bonus_amount" value={this.state.lease.move_in_bonus_amount} onChange={this.onChange} />)}
+          {!this.state.lease.move_in_bonus ? null : this.renderRow('Move In Bonus Payee', <input type="text" name="move_in_bonus_payee" value={this.state.lease.move_in_bonus_payee} onChange={this.onChange} />)}
 
           {/* Insurance */}
-          {this.renderRow('Insurance', <Checkbox name="insurance_enabled" value={this.state.lease.insurance_enabled} onChange={this.onChange} />)}
-          {!this.state.lease.insurance_enabled ? null : this.renderRow('Insurance Frequency', <select name="insurance_frequency" value={this.state.lease.insurance_frequency} onChange={this.onChange} className="form-control">
+          {this.renderRow('Insurance', <Checkbox name="insurance" value={this.state.lease.insurance} onChange={this.onChange} />)}
+          {!this.state.lease.insurance ? null : this.renderRow('Insurance Frequency', <select name="insurance_frequency" value={this.state.lease.insurance_frequency} onChange={this.onChange} className="form-control">
                                                    <option value="weekly">Weekly</option>
                                                    <option value="monthly">Monthly</option>
                                                    <option value="annually">Annually</option>
                                                  </select>)}
-          {!this.state.lease.insurance_enabled ? null : this.renderRow('Insurance Amount', <CurrencyInput name="insurance_amount" value={this.state.lease.insurance_amount} onChange={this.onChange} />)}
+          {!this.state.lease.insurance ? null : this.renderRow('Insurance Amount', <CurrencyInput name="insurance_amount" value={this.state.lease.insurance_amount} onChange={this.onChange} />)}
 
           {/* Recurring Weekly Charges */}
           {this.renderRow('Recurring Weekly Charge 1', <RecurringChargeForm name="recurring_charge_1" value={this.state.lease.recurring_charge_1} onChange={this.onChange} />)}

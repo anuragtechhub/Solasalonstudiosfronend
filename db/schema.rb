@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108215203) do
+ActiveRecord::Schema.define(version: 20171110180925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,25 +172,27 @@ ActiveRecord::Schema.define(version: 20171108215203) do
     t.integer  "damage_deposit_amount"
     t.integer  "product_bonus_amount"
     t.string   "product_bonus_distributor"
-    t.boolean  "sola_provided_insurance",           default: false
-    t.string   "sola_provided_insurance_frequency"
     t.text     "special_terms"
-    t.boolean  "ach_authorized",                    default: false
+    t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "agreement_file_url"
     t.integer  "location_id"
-    t.boolean  "hair_styling_permitted",            default: false
-    t.boolean  "manicure_pedicure_permitted",       default: false
-    t.boolean  "waxing_permitted",                  default: false
-    t.boolean  "massage_permitted",                 default: false
-    t.boolean  "facial_permitted",                  default: false
+    t.boolean  "hair_styling_permitted",      default: false
+    t.boolean  "manicure_pedicure_permitted", default: false
+    t.boolean  "waxing_permitted",            default: false
+    t.boolean  "massage_permitted",           default: false
+    t.boolean  "facial_permitted",            default: false
     t.integer  "recurring_charge_1_id"
     t.integer  "recurring_charge_2_id"
     t.integer  "recurring_charge_3_id"
     t.integer  "recurring_charge_4_id"
-    t.boolean  "move_in_bonus",                     default: false
-    t.boolean  "insurance",                         default: false
+    t.boolean  "move_in_bonus",               default: false
+    t.boolean  "insurance",                   default: false
+    t.integer  "insurance_amount"
+    t.string   "insurance_frequency"
+    t.integer  "move_in_bonus_amount"
+    t.string   "move_in_bonus_payee"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
