@@ -171,28 +171,27 @@ class CmsController < ApplicationController
     @lease.stylist = stylist
 
     if params[:lease][:recurring_charge_1] && (params[:lease][:recurring_charge_1][:start_date] || params[:lease][:recurring_charge_1][:end_date] || (params[:lease][:recurring_charge_1][:amount] && params[:lease][:recurring_charge_1][:amount].to_i > 0))
-      p "ues char1 #{params[:lease][:recurring_charge_1]}"
       @lease.recurring_charge_1 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_1][:id]) || RecurringCharge.new
       @lease.recurring_charge_1.amount = params[:lease][:recurring_charge_1][:amount]
       @lease.recurring_charge_1.start_date = params[:lease][:recurring_charge_1][:start_date]
       @lease.recurring_charge_1.end_date = params[:lease][:recurring_charge_1][:end_date]
     end
 
-    if params[:lease][:recurring_charge_2]
+    if params[:lease][:recurring_charge_2] && (params[:lease][:recurring_charge_2][:start_date] || params[:lease][:recurring_charge_2][:end_date] || (params[:lease][:recurring_charge_2][:amount] && params[:lease][:recurring_charge_2][:amount].to_i > 0))
       @lease.recurring_charge_2 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_2][:id]) || RecurringCharge.new
       @lease.recurring_charge_2.amount = params[:lease][:recurring_charge_2][:amount]
       @lease.recurring_charge_2.start_date = params[:lease][:recurring_charge_2][:start_date]
       @lease.recurring_charge_2.end_date = params[:lease][:recurring_charge_2][:end_date]
     end
 
-    if params[:lease][:recurring_charge_3]
+    if params[:lease][:recurring_charge_3] && (params[:lease][:recurring_charge_3][:start_date] || params[:lease][:recurring_charge_3][:end_date] || (params[:lease][:recurring_charge_3][:amount] && params[:lease][:recurring_charge_3][:amount].to_i > 0))
       @lease.recurring_charge_3 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_3][:id]) || RecurringCharge.new
       @lease.recurring_charge_3.amount = params[:lease][:recurring_charge_3][:amount]
       @lease.recurring_charge_3.start_date = params[:lease][:recurring_charge_3][:start_date]
       @lease.recurring_charge_3.end_date = params[:lease][:recurring_charge_3][:end_date]
     end
 
-    if params[:lease][:recurring_charge_4]
+    if params[:lease][:recurring_charge_4] && (params[:lease][:recurring_charge_4][:start_date] || params[:lease][:recurring_charge_4][:end_date] || (params[:lease][:recurring_charge_4][:amount] && params[:lease][:recurring_charge_4][:amount].to_i > 0))
       @lease.recurring_charge_4 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_4][:id]) || RecurringCharge.new
       @lease.recurring_charge_4.amount = params[:lease][:recurring_charge_4][:amount]
       @lease.recurring_charge_4.start_date = params[:lease][:recurring_charge_4][:start_date]
