@@ -144,10 +144,10 @@ class CmsController < ApplicationController
 
   def lease_params
     params.require(:lease).permit(:stylist_id, :studio_id, :location_id, :rent_manager_id, :start_date, :end_date, :move_in_date, :signed_date, :weekly_fee_year_1, :weekly_fee_year_2, 
-                                  :fee_start_date, :damage_deposit_amount, :product_bonus_amount, :product_bonus_distributor, :sola_provided_insurance, 
-                                  :sola_provided_insurance_frequenc, :special_terms, :ach_authorized, :agreement_file_url, :location_id, :hair_styling_permitted, 
-                                  :manicure_pedicure_permitted, :waxing_permitted, :massage_permitted, :facial_permitted, :recurring_charge_1, :recurring_charge_2, 
-                                  :recurring_charge_3, :recurring_charge_4)
+                                  :fee_start_date, :damage_deposit_amount, :product_bonus_amount, :product_bonus_distributor, :special_terms, :ach_authorized, 
+                                  :agreement_file_url, :location_id, :hair_styling_permitted, :manicure_pedicure_permitted, :waxing_permitted, :massage_permitted, 
+                                  :facial_permitted, :recurring_charge_1, :recurring_charge_2, :recurring_charge_3, :recurring_charge_4, :move_in_bonus, :move_in_bonus_amount, 
+                                  :move_in_bonus_payee, :insurance, :insurance_amount, :insurance_frequency)
   end
 
   def stylist_params
@@ -170,7 +170,8 @@ class CmsController < ApplicationController
     @lease.location = stylist.location
     @lease.stylist = stylist
 
-    if params[:lease][:recurring_charge_1]
+    if params[:lease][:recurring_charge_1] && (params[:lease][:recurring_charge_1][:start_date] || params[:lease][:recurring_charge_1][:end_date] || (params[:lease][:recurring_charge_1][:amount] && params[:lease][:recurring_charge_1][:amount].to_i > 0))
+      p "ues char1 #{params[:lease][:recurring_charge_1]}"
       @lease.recurring_charge_1 = RecurringCharge.find_by(:id => params[:lease][:recurring_charge_1][:id]) || RecurringCharge.new
       @lease.recurring_charge_1.amount = params[:lease][:recurring_charge_1][:amount]
       @lease.recurring_charge_1.start_date = params[:lease][:recurring_charge_1][:start_date]

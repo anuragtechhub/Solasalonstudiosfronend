@@ -1,4 +1,16 @@
+
+
+
 en:
+
+  activerecord:
+    models: 
+      lease: "Electronic license agreement"  
+    attributes:
+      recurring_charge:
+        amount: "weekly fee"
+
+
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
