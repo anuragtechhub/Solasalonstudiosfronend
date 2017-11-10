@@ -84,25 +84,27 @@ var LeaseForm = React.createClass({
             {this.renderRow('Waxing', <Checkbox name="waxing_permitted" value={this.state.lease.waxing_permitted} onChange={this.onChange} />)}
           </ExpandCollapseGroup>
 
-          {/* Move in Bonus */}
+          {/* Move In Bonus */}
+          {this.renderRow('Move In Bonus', <Checkbox name="move_in_bonus_enabled" value={this.state.lease.move_in_bonus_enabled} onChange={this.onChange} />)}
+          {!this.state.lease.move_in_bonus_enabled ? null : this.renderRow('Move In Bonus Amount', <CurrencyInput name="move_in_bonus_amount" value={this.state.lease.move_in_bonus_amount} onChange={this.onChange} />)}
+          {!this.state.lease.move_in_bonus_enabled ? null : this.renderRow('Move In Bonus Payee', <input type="text" name="move_in_bonus_payee" value={this.state.lease.move_in_bonus_payee} onChange={this.onChange} />)}
 
           {/* Insurance */}
+          {this.renderRow('Insurance', <Checkbox name="insurance_enabled" value={this.state.lease.insurance_enabled} onChange={this.onChange} />)}
+          {!this.state.lease.insurance_enabled ? null : this.renderRow('Insurance Frequency', <select name="insurance_frequency" value={this.state.lease.insurance_frequency} onChange={this.onChange} className="form-control">
+                                                   <option value="weekly">Weekly</option>
+                                                   <option value="monthly">Monthly</option>
+                                                   <option value="annually">Annually</option>
+                                                 </select>)}
+          {!this.state.lease.insurance_enabled ? null : this.renderRow('Insurance Amount', <CurrencyInput name="insurance_amount" value={this.state.lease.insurance_amount} onChange={this.onChange} />)}
 
+          {/* Recurring Weekly Charges */}
           {this.renderRow('Recurring Weekly Charge 1', <RecurringChargeForm name="recurring_charge_1" value={this.state.lease.recurring_charge_1} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 2', <RecurringChargeForm name="recurring_charge_2" value={this.state.lease.recurring_charge_2} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 3', <RecurringChargeForm name="recurring_charge_3" value={this.state.lease.recurring_charge_3} onChange={this.onChange} />)}
           {this.renderRow('Recurring Weekly Charge 4', <RecurringChargeForm name="recurring_charge_4" value={this.state.lease.recurring_charge_4} onChange={this.onChange} />)}
 
           {this.renderRow('Security Deposit Amount', <CurrencyInput name="damage_deposit_amount" value={this.state.lease.damage_deposit_amount} onChange={this.onChange} />)}
-
-          {/*
-          {this.renderRow('Product Bonus Amount', <CurrencyInput name="product_bonus_amount" value={this.state.lease.product_bonus_amount} onChange={this.onChange} />)}
-          {this.renderRow('Product Bonus Distributor', <input name="product_bonus_distributor" value={this.state.lease.product_bonus_distributor} onChange={this.onChange} maxLength="255" type="text" />)}
-
-          
-          {this.renderRow('Sola Provided Insurance', <EnumSelect name="sola_provided_insurance" value={this.state.lease.sola_provided_insurance} values={[['Yes', true], ['No', false]]} onChange={this.onChange} />)}
-          {this.renderRow('Sola Provided Insurance Frequency', <input name="sola_provided_insurance_frequency" value={this.state.lease.sola_provided_insurance_frequency} onChange={this.onChange} maxLength="255" type="text" />)}
-          */}
 
           {this.renderRow('ACH Authorized', <Checkbox name="ach_authorized" value={this.state.lease.ach_authorized} onChange={this.onChange} />)}
         </div>

@@ -50,6 +50,10 @@
     input, textarea {
       width: 327px !important;
     }
+
+    select.form-control {
+      margin-top: 3px;
+    }
   }
 
   .help-block {
