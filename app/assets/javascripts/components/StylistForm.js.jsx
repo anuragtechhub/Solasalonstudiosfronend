@@ -105,7 +105,8 @@ var StylistForm = React.createClass({
 
   renderErrors: function () {
     var errors = this.state.errors.map(function (error) {
-      return <li key={error}>{error.replace('Leases', 'Electronic license agreement')}</li>
+      //.replace('Leases', 'Electronic license agreement')
+      return <li key={error}>{error}</li>
     });
 
     return (

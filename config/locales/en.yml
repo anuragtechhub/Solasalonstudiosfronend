@@ -1,15 +1,28 @@
 
-
-
 en:
+
+
 
   activerecord:
     models: 
       lease: "Electronic license agreement"  
     attributes:
-      recurring_charge:
-        amount: "weekly fee"
-
+      leases/recurring_charge_1:
+        amount: "Recurring weekly charge 1 weekly fee"
+        start_date: "Recurring weekly charge 1 start date"
+        end_date: "Recurring weekly charge 1 end date"
+      leases/recurring_charge_2:
+        amount: "Recurring weekly charge 2 weekly fee"
+        start_date: "Recurring weekly charge 2 start date"
+        end_date: "Recurring weekly charge 2 end date"
+      leases/recurring_charge_3:
+        amount: "Recurring weekly charge 3 weekly fee"
+        start_date: "Recurring weekly charge 3 start date"
+        end_date: "Recurring weekly charge 3 end date"
+      leases/recurring_charge_4:
+        amount: "Recurring weekly charge 4 weekly fee" 
+        start_date: "Recurring weekly charge 4 start date"
+        end_date: "Recurring weekly charge 4 end date"              
 
 
   brand_name: Sola Salon Studios

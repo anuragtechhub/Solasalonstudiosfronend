@@ -4,6 +4,14 @@ class RecurringCharge < ActiveRecord::Base
   validates :amount, numericality: { greater_than: 0 }, :if => lambda { self.amount.present? }
   validate :end_date_after_start_date
 
+  HUMANIZED_ATTRIBUTES = {
+    :amount => "weekly fee"
+  }
+
+  def self.human_attribute_name(attr, options = {})
+    HUMANIZED_ATTRIBUTES[attr.to_sym] || super
+  end
+
   private
 
   def end_date_after_start_date
