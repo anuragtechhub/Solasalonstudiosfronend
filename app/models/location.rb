@@ -13,6 +13,7 @@ class Location < ActiveRecord::Base
   belongs_to :admin
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
+  has_many :studios
 
   #after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
