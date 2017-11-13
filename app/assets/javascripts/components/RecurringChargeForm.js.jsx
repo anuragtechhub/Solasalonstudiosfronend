@@ -1,12 +1,16 @@
 var RecurringChargeForm = React.createClass({
 
   getInitialState: function () {
+    //console.log('RecurringChargeForm getInitialState', this.props.value);
+
     return {
-      recurring_charge: this.props.recurring_charge || {}
+      recurring_charge: this.props.value || {}
     };
   },
 
   render: function () {
+    //console.log('RecurringChargeForm render', this.state.recurring_charge);
+
     return (
       <div className="recurring-charge-form">
         <div className="nested-form-row">
@@ -36,7 +40,7 @@ var RecurringChargeForm = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    //console.log('onChange', name, value);      
+    //console.log('RecurringChargeForm onChange', name, value);      
 
     recurring_charge[name] = value;
     this.setState({recurring_charge: recurring_charge}, function () {

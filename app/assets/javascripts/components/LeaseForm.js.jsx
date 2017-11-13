@@ -45,7 +45,7 @@ var LeaseForm = React.createClass({
   },
 
   render: function () {
-    //console.log('render lease form', this.state.lease, this.state.location, this.state.lease.studio);
+    //console.log('render lease form', this.state.lease.recurring_charge_1);
     return (
       <div className="lease-form">
         <div className="form-horizontal denser">
@@ -167,7 +167,7 @@ var LeaseForm = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    console.log('onChange', name, value);      
+    //console.log('onChange', name, value);      
 
     lease[name] = value;
     this.setState({lease: lease}, function () {
@@ -229,7 +229,7 @@ var LeaseForm = React.createClass({
       var lease = this.state.lease;
       lease.location = this.state.location;
       lease.stylist = this.state.stylist;
-      console.log('firing Lease onChange', lease);
+      //console.log('firing Lease onChange', lease);
       this.props.onChange(lease);
     }     
   },

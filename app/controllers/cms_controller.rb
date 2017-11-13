@@ -56,6 +56,7 @@ class CmsController < ApplicationController
     set_stylist_lease(@stylist)
 
     p "stylist=#{@stylist.inspect}"
+    #p "lease=#{@stylist.leases.first.recurring_charge_1}"
 
     if @stylist.save
       p "stylist saved successfully!"
