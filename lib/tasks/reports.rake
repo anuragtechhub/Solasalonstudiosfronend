@@ -81,7 +81,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[401,2017-09-01]
+  # rake reports:location[206,2017-09-01]
   task :location, [:location_id, :start_date] => :environment do |task, args|
     p "begin location report..."
 
@@ -383,30 +383,33 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
       # p "location_end=#{location_end.inspect}"
 
       page_paths = [
-        "ga:pagePath=~/locations/#{location_start.url_name}",
-        "ga:pagePath=~/locations/#{location_end.url_name}",
-        "ga:pagePath=~/locations/#{location_start.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/locations/#{location_end.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name}",
-        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name}",
-        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name}",
-        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name}",
-        "ga:pagePath=~/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/store/#{location_start.url_name}",
-        "ga:pagePath=~/store/#{location_end.url_name}",
-        "ga:pagePath=~/store/#{location_start.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/store/#{location_end.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/stores/#{location_start.url_name}",
-        "ga:pagePath=~/stores/#{location_end.url_name}",
-        "ga:pagePath=~/stores/#{location_start.url_name.gsub('-', '_')}",
-        "ga:pagePath=~/stores/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_start.url_name}",
+        "ga:pagePath==/locations/#{location_end.url_name}",
+        "ga:pagePath==/locations/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name}",
+        "ga:pagePath==/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name}",
+        "ga:pagePath==/locations/#{location_start.state}/#{location_start.city.gsub(',', '\,')}/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_end.state}/#{location_end.city.gsub(',', '\,')}/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name}",
+        "ga:pagePath==/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name}",
+        "ga:pagePath==/locations/#{location_start.state}/#{location_start.city.split(', ')[0]}/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath==/locations/#{location_end.state}/#{location_end.city.split(', ')[0]}/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath==/store/#{location_start.url_name}",
+        "ga:pagePath==/store/#{location_end.url_name}",
+        "ga:pagePath==/store/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath==/store/#{location_end.url_name.gsub('-', '_')}",
+        "ga:pagePath==/stores/#{location_start.url_name}",
+        "ga:pagePath==/stores/#{location_end.url_name}",
+        "ga:pagePath==/stores/#{location_start.url_name.gsub('-', '_')}",
+        "ga:pagePath==/stores/#{location_end.url_name.gsub('-', '_')}",
       ]
 
       #p "page_paths.join=#{page_paths.join(',')}"
       
+
+      #{}"ga:pagePath=~/locations/#{location_start.url_name}"
+
       page_paths.join(',')
     end
 
