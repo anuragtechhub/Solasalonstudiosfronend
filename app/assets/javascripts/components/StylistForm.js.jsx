@@ -131,25 +131,31 @@ var StylistForm = React.createClass({
 
   renderStylistInfo: function () {
     return (
-      <ExpandCollapseGroup name="Stylist Info" collapsed={true}>
+      <ExpandCollapseGroup name="Stylist Info" collapsed={this.state.stylist.location ? true : false}>
         {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
         {this.state.stylist.location == null ? null : this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
+        
         {this.state.stylist.location == null ? null : this.renderRow('Name', <input name="name" value={this.state.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Email Address', <input name="email_address" value={this.state.stylist.email_address} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Phone Number', <input name="phone_number" value={this.state.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Date of Birth', <Datepicker name="date_of_birth" value={this.state.stylist.date_of_birth} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
+        
         {this.state.stylist.location == null ? null : this.renderRow('Street Address', <input name="street_address" value={this.state.stylist.street_address} onChange={this.onChange} maxLength="255" type="text" />)}
-        {this.state.stylist.locationn == null ? null : this.renderRow('City', <input name="city" value={this.state.stylist.city} onChange={this.onChange} maxLength="255" type="text" />)}
+        {this.state.stylist.location == null ? null : this.renderRow('City', <input name="city" value={this.state.stylist.city} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('State/Province', <input name="state_province" value={this.state.stylist.state_province} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Postal Code', <input name="postal_code" value={this.state.stylist.postal_code} onChange={this.onChange} maxLength="255" type="text" />)}
-        {this.state.stylist.location == null ? null : this.renderRow('Country', <input name="country" value={this.state.stylist.country} onChange={this.onChange} maxLength="255" type="text" />)}
+        {/*this.state.stylist.location == null ? null : this.renderRow('Country', <input name="country" value={this.state.stylist.country} onChange={this.onChange} maxLength="255" type="text" />)*/}
+        
         {this.state.stylist.location == null ? null : this.renderRow('Cosmetology License Number', <input name="cosmetology_license_number" value={this.state.stylist.cosmetology_license_number} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Cosmetology License Date', <Datepicker name="cosmetology_license_date" value={this.state.stylist.cosmetology_license_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
+        
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Name', <input name="emergency_contact_name" value={this.state.stylist.emergency_contact_name} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Relationship', <input name="emergency_contact_relationship" value={this.state.stylist.emergency_contact_relationship} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Phone Number', <input name="emergency_contact_phone_number" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
-        {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password', <input name="password" value={this.state.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
-        {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password Confirmation', <input name="password_confirmation" value={this.state.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
+        
+        {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password', <input autoComplete="false" data-lpignore="true" name="password" value={this.state.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
+        {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password Confirmation', <input autoComplete="false" data-lpignore="true" name="password_confirmation" value={this.state.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
+        
         {/*this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')*/}          
       </ExpandCollapseGroup>
     );

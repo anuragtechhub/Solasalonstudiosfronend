@@ -272,6 +272,7 @@ class Stylist < ActiveRecord::Base
       end
 
       p "payload=#{payload}"
+      p "url=https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants"
 
       post_tenant_response = RestClient::Request.execute({
         :headers => {"Content-Type" => "application/json"},
