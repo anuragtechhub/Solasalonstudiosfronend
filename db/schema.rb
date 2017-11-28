@@ -14,9 +14,8 @@
 ActiveRecord::Schema.define(version: 20170909024941) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_trgm"
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
 
   create_table "accounts", force: true do |t|
     t.string   "api_key"
@@ -157,31 +156,6 @@ ActiveRecord::Schema.define(version: 20170909024941) do
   end
 
   add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree
-
-  create_table "leases", force: true do |t|
-    t.integer  "stylist_id"
-    t.integer  "studio_id"
-    t.string   "rent_manager_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.date     "move_in_date"
-    t.date     "signed_date"
-    t.integer  "weekly_fee_year_1"
-    t.integer  "weekly_fee_year_2"
-    t.date     "fee_start_date"
-    t.integer  "damage_deposit_amount"
-    t.integer  "product_bonus_amount"
-    t.string   "product_bonus_distributor"
-    t.boolean  "sola_provided_insurance",           default: false
-    t.string   "sola_provided_insurance_frequency"
-    t.text     "special_terms"
-    t.boolean  "ach_authorized",                    default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
-  add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -390,16 +364,6 @@ ActiveRecord::Schema.define(version: 20170909024941) do
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
   add_index "request_tour_inquiries", ["visit_id"], name: "index_request_tour_inquiries_on_visit_id", using: :btree
-
-  create_table "studios", force: true do |t|
-    t.string   "name"
-    t.string   "rent_manager_id"
-    t.integer  "stylist_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "studios", ["stylist_id"], name: "index_studios_on_stylist_id", using: :btree
 
   create_table "stylist_messages", force: true do |t|
     t.string   "name"
