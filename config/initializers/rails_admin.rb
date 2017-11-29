@@ -176,7 +176,7 @@ RailsAdmin.config do |config|
       field :summary
       field :author do
         pretty_value do
-          value.html_safe
+          value.html_safe if value.present?
         end
       end
       field :created_at
@@ -198,17 +198,17 @@ RailsAdmin.config do |config|
       end
       field :summary do
         pretty_value do
-          value.html_safe
+          value.html_safe if value.present?
         end
       end
       field :body do
         pretty_value do
-          value.html_safe
+          value.html_safe if value.present?
         end
       end
       field :author do
         pretty_value do
-          value.html_safe
+          value.html_safe if value.present?
         end
       end
       field :blog_categories do
