@@ -26,18 +26,18 @@ en-CA:
       click_to_watch_video: Click to watch video
       learn_more: Learn More
       location_count: 350+
-      coming_soon_to_canada: Coming to Toronto Fall 2017!
+      coming_soon_to_canada: Now Open in Toronto!
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
-      salon_professional_count: 8,000+
+      salon_professional_count: nearly 10,000
       salon_professionals: Salon<br>Professionals
       find_a_stylist: Find a Stylist
       heading1: About Sola
       body1: |
         <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO USA. Our salon studios are pre-equipped, move-in-ready rentals that offer a turnkey solution to starting a salon business. We are proud to offer the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon.</h4>
-        <h4 class='paragraph'>Now, with 350 successful locations open in the United States, Sola Salon Studios is the leading the industry in this rental model! We are eager to expand our offerings to Canada to provide the same caliber of studios alongside our unmatched level of customer support to those seeking a simpler approach to salon ownership.</h4>
+        <h4 class='paragraph'>Now, with more than 350 successful locations open in the United States, Sola Salon Studios is the leading the industry in this rental model! We are eager to expand our offerings to Canada to provide the same caliber of studios alongside our unmatched level of customer support to those seeking a simpler approach to salon ownership.</h4>
         <h4 class='paragraph'>Our innovative salon model empowers hairdressers, colourists, aestheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully equipped salon studios alongside the support and tools they need to launch their salon business quickly.</h4>
-        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio company in North-America. At our core, we believe in beauty professionals and have one goal in mind: help set them up for success. Join the Sola Salon Studios %{diversity_link} – now 8,000+ strong! – and experience a level of creative independence and career support you won't find anywhere else.</h4>
+        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio company in North-America. At our core, we believe in beauty professionals and have one goal in mind: help set them up for success. Join the Sola Salon Studios %{diversity_link} – now nearly 10,000 strong! – and experience a level of creative independence and career support you won't find anywhere else.</h4>
       diverse_community: diverse community
       heading2: About the Founders
       body3: "Matt Briger and Stratton Smith are true entrepreneurs. In the early 1990s, Stratton was a successful salon owner in St. Louis, MO. In 1995, he sold his six salons and joined Matt to start and run a real estate company in Colorado. But Stratton's passion for the beauty industry never left him, and, in 2004 Stratton and Matt left the corporate world to start Sola Salon Studios. They had a single idea and a clear vision: to put the salon professional first. Twelve years later, they continue to prove that they do just that."
@@ -91,6 +91,7 @@ en-CA:
       franchising_text: Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4
       full_name: Full Name
       market: Market
+      receive_newsletter: I would like to receive future newsletters and communications from Sola
 
     diversity:
       title: Diversity
@@ -147,7 +148,7 @@ en-CA:
           <li>Sell the retail products you love</li>
           <li>Customize your own salon studio</li>
         </ol>
-        <p>Join our community of more than 8,000 like-minded salon professionals to experience a level of creative independence and career support you won't find anywhere else.</p>
+        <p>Join our community of nearly 10,000 like-minded salon professionals to experience a level of creative independence and career support you won't find anywhere else.</p>
       question8: What are the hours of operation?
       answer8: <p>At Sola you have access to your studio 24 hours a day, seven days a week. Our main doors are open during regular business hours; however, if you have a client at 8 am or on a Sunday when the main doors are locked, you can let your clients in. This allows you to take appointments during the hours that best fit your schedule and the schedules of your clients.</p>
       question9: What are the key advantages to renting a studio at Sola?
@@ -167,7 +168,7 @@ en-CA:
       heading1: Coming Soon!
       search: Search
       search_by_name_or_location: Search by name or location
-      salon_professional_count: 8,000+
+      salon_professional_count: nearly 10,000
       salon_professionals: Salon Professionals
       location_count: 350+
       locations_nationwide: Locations Nationwide
@@ -227,6 +228,7 @@ en-CA:
       phone_number: Phone Number
       leave_a_message: Leave a Message (Optional)
       submit_request: Submit Request
+      submitting_request: Submitting...
       testimonial_text: "I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."
       testimonial_author: "Katina Eisenbeis, Katina's Salon"
       view_more_testimonials: View More Testimonials
@@ -270,7 +272,7 @@ en-CA:
           search: Search
           tagline: Don't Just Dream. DO! Become a Boutique Salon Owner Today.
           heading1: Be In Business For Yourself,<br />Not By Yourself
-          body1: "Salon professionals choose Sola to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money. <strong>It's about freedom and control.</strong> Sola empowers hairstylists by alleviating the risks and hassles associated with traditional salon ownership. <strong>We provide</strong> high-end, move-in ready studios combined with the support and tools you need to launch your salon business quickly and easily. To enjoy all these benefits, join our community of 8,000+ like-minded salon professionals and get one step closer to living the life you love!"
+          body1: "Salon professionals choose Sola to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money. <strong>It's about freedom and control.</strong> Sola empowers hairstylists by alleviating the risks and hassles associated with traditional salon ownership. <strong>We provide</strong> high-end, move-in ready studios combined with the support and tools you need to launch your salon business quickly and easily. To enjoy all these benefits, join our community of nearly 10,000 like-minded salon professionals and get one step closer to living the life you love!"
           heading2: Your Life, Your Style<sup>&reg;</sup>
           body2: "Whether you're a hairdresser, colourist, nail tech, aesthetician or a massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you have complete control of the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance you want. Sell the retail products you love and set your own prices to maximize your income. <strong>Sola studios come furnished with all of the major equipment you'll need to help make your transition easy!</strong>"
           view_gallery_of_studios: View Gallery of Studios
@@ -303,7 +305,7 @@ en-CA:
           heading3: Sola Professional Benefits
           list3: |
             All the equipment you need to start your business with minimum start-up costs
-            Join a community of 8,000+ salon professionals nationwide to be in business for yourself, not by yourself
+            Join a community of nearly 10,000 salon professionals nationwide to be in business for yourself, not by yourself
             Boost your income and keep 100% of your profits
             Access group insurance and Sola programs and discounts for products, scheduling and more
             Escape salon politics and drama in your private, secure studio
@@ -445,7 +447,7 @@ en-CA:
       carousel_author18: Chelsey Winter, Chelsey Danielle Salon
       carousel_testimonial19: "I opened my own studio one year ago and it's been the best decision ever. I love the freedom and stress-free atmosphere and my clients appreciate the exclusive and relaxing setting!"
       carousel_author19: Britta Brownlee, Revive Salon Studio
-      join_more_than: Join more than 8,000 salon professionals!
+      join_more_than: Join nearly 10,000 salon professionals!
 
       testimonial_quote1: "When I first moved my salon Blessed Hands to Sola Salons Studios, I had no idea how much of a blessing it would be. I went in, incorporated a special design with a purpose in mind. My goal is to always cater to the needs and wants of my guests. Sola Salons has allowed me to do just that, without missing a beat!"
       testimonial_author1: Romona

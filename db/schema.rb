@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20171110180925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
   enable_extension "pg_trgm"
 
   create_table "accounts", force: true do |t|
@@ -158,21 +158,6 @@ ActiveRecord::Schema.define(version: 20171110180925) do
 
   add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree
 
-  create_table "leases", force: true do |t|
-    t.integer  "stylist_id"
-    t.integer  "studio_id"
-    t.string   "rent_manager_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.date     "move_in_date"
-    t.date     "signed_date"
-    t.integer  "weekly_fee_year_1"
-    t.integer  "weekly_fee_year_2"
-    t.date     "fee_start_date"
-    t.integer  "damage_deposit_amount"
-    t.integer  "product_bonus_amount"
-    t.string   "product_bonus_distributor"
-    t.text     "special_terms"
     t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"

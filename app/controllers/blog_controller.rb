@@ -4,6 +4,8 @@ class BlogController < PublicWebsiteController
   def index
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
 
+    country = get_country
+
     unless @category
       @category = BlogCategory.find_by(:url_name => params[:category_url_name].split('_').join('-')) if params[:category_url_name]
       redirect_to blog_category_path(:category_url_name => @category.url_name) if @category
@@ -11,14 +13,14 @@ class BlogController < PublicWebsiteController
     
     if @category
       # filter posts by category id
-      @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ? AND status = ?', @category.id, 'published').uniq.order(:publish_date => :desc)
+      @posts = Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ? AND status = ?', @category.id, 'published').joins(:blog_countries, :countries).where('countries.code = ?', country).uniq.order(:publish_date => :desc)
     elsif params[:query].present?
       # filter posts by search query
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
-      @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
+      @posts = Blog.joins(:blog_countries, :countries).where('countries.code = ?', country).where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).uniq.order(:publish_date => :desc)
     else
       # show all posts
-      @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).uniq.order(:publish_date => :desc)
+      @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).joins(:blog_countries, :countries).where('countries.code = ?', country).uniq.order(:publish_date => :desc)
     end
 
     if @category && @category.id == 11
@@ -57,4 +59,15 @@ class BlogController < PublicWebsiteController
       redirect_to :blog 
     end
   end
+
+  private
+
+  def get_country
+    if request.domain == 'solasalonstudios.ca'
+      return 'CA' 
+    else
+      return 'US'
+    end
+  end
+
 end

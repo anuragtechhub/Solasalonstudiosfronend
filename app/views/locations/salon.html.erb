@@ -172,7 +172,14 @@
           <textarea name="message" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
           <input name="location_id" type="hidden" value="<%= @location.id %>">
           <input name="request_url" type="hidden" value="<%= request.original_url %>">
-          <button class="big-btn"><%= t('page.locations.submit_request').html_safe %></button>
+          <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+            <label class="receive-newsletter">
+              <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+              <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+            </label>
+          <% end %>
+          <button class="big-btn" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
+          <button class="big-btn" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
         <% end %>
       </div>
 

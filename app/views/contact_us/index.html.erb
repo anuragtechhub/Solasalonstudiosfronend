@@ -71,6 +71,12 @@
                 <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
                 <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
                 <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked" disabled="disabled" /></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
                 <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
               <% end %>
             </div>
@@ -90,6 +96,12 @@
                 <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
                 <input name="location_id" id="contact_us_location_id" type="hidden" value="">
                 <input name="request_url" type="hidden" value="<%= request.original_url %>">
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
                 <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
                 <div class="loading"><div class="spinner"></div></div>
               <% end %>

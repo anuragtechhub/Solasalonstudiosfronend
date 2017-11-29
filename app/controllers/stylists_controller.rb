@@ -3,6 +3,9 @@ class StylistsController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token, :only => :send_a_message
 
   def index
+    if request.domain == 'solasalonstudios.ca'
+      redirect_to 'https://www.solasalonstudios.ca/locations/leaside/salon-professionals'
+    end
   end
 
   def show

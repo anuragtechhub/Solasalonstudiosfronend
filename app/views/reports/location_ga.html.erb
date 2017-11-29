@@ -357,7 +357,7 @@
         </tr>
         <tr>
           <td class="label">Pages/Session</td>
-          <td class="label"><%= @data[:pageviews_per_session] && @data[:time_on_page_and_pageviews_per_session] ? number_with_delimiter((@data[:pageviews_per_session] / @data[:time_on_page_and_pageviews_per_session].length).round(1)) : '&nbsp;'.html_safe %></td>
+          <td class="label"><%= @data[:pageviews_per_session] && @data[:pages_with_pageviews] ? number_with_delimiter((@data[:pageviews_per_session] / @data[:pages_with_pageviews]).round(1)) : '&nbsp;'.html_safe %></td>
         </tr>
       </table> 
     </div>  

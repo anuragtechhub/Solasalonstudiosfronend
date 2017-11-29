@@ -407,7 +407,10 @@ $(function () {
   // contact-us-request-a-tour
   $('#contact-us-request-a-tour').on('submit', function () {
     var $form = $(this);
-    
+
+    $('#contact-us-request-a-tour-submit').hide();
+    $('#contact-us-request-a-tour-submitting').show();
+
     $.ajax({
       method: 'POST',
       url: $form.attr('action'),
@@ -423,6 +426,8 @@ $(function () {
         window.location.reload();
         //$form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
+        $('#contact-us-request-a-tour-submit').show();
+        $('#contact-us-request-a-tour-submitting').hide();
         $form.tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', data.error).tooltipster('show');
       }
     });
@@ -433,9 +438,6 @@ $(function () {
   // contact-us-request-a-tour tooltip init
   if (window.location.pathname.indexOf('/contact-us-success') != -1) {
     $('#contact-us-request-a-tour').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', 'Thank you! We will get in touch soon').tooltipster('show');
-    // setTimeout(function () {
-    //   window.location.hash = '#rent-a-studio';
-    // }, 3000);
   }
   
 
