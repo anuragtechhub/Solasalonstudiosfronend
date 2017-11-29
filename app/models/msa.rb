@@ -8,6 +8,8 @@ class Msa < ActiveRecord::Base
   after_destroy :touch_msa
   has_many :locations
 
+  validates :url_name, :presence => true, :uniqueness => true
+
   def fix_url_name
     if self.url_name.present?
       self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
@@ -27,6 +29,19 @@ class Msa < ActiveRecord::Base
     "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/regions/#{url_name}"
   end
 
+  def generate_url_name
+    if self.name
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
+      count = 1
+      
+      while Msa.where(:url_name => "#{url}#{count}").size > 0 do
+        count = count + 1
+      end
+
+      self.url_name = "#{url}#{count}"
+    end
+  end  
+
   private
 
   def update_computed_fields
@@ -42,17 +57,4 @@ class Msa < ActiveRecord::Base
   def touch_msa
     Msa.all.first.touch
   end
-
-  def generate_url_name
-    if self.name
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
-      count = 1
-      
-      while Msa.where(:url_name => "#{url}#{count}").size > 0 do
-        count = count + 1
-      end
-
-      self.url_name = "#{url}#{count}"
-    end
-  end  
 end
