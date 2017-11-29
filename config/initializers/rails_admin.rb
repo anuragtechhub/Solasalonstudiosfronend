@@ -1041,7 +1041,6 @@ RailsAdmin.config do |config|
         label 'URL Name'
       end
       field :email_address
-      field :phone_number
       field :location_name do
         label 'Location'
       end
@@ -1049,124 +1048,56 @@ RailsAdmin.config do |config|
       field :studio_number
     end
     show do
-      group :account_info do
-        label 'Account Info'
-        active false
+      group :general do
+        #field :legacy_id
         field :name
-        field :phone_number
-        field :email_address
-        field :cosmetology_license_number
-        field :status
-        field :date_of_birth do
-          help 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979'
-        end
-        field :street_address
-        field :city
-        field :state_province do
-          label 'State/Province'
-        end
-        field :postal_code
-        field :country
-        field :emergency_contact_name
-        field :emergency_contact_relationship
-        field :emergency_contact_phone_number
-        field :password do
-          label 'Sola Pro Password'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-        field :password_confirmation do
-          label 'Sola Pro Password Confirmation'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-        field :rent_manager_id do
-          label 'Rent Manager ID'
-          help 'This should be a tenant ID from Rent Manager'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-        field :permitted_use_for_studio 
-        field :location do
-          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
-          associated_collection_scope do
-            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
-            admin = bindings[:controller]._current_user
-            Proc.new { |scope|
-              if (admin.franchisee == true)
-                scope = scope.where(:admin_id => admin.id)
-              end
-            }
-          end
-        end
-        field :leases
-      end
-
-      group :website_info do
-        label 'Website Info'
-        active false
-        field :website_name do
-          help 'If you would like a different name listed on the website (other than the name in Account Info), set it here'
-        end
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
-          # visible do
-          #   bindings[:controller]._current_user.franchisee != true
-          # end
         end
-
-        field :biography, :ck_editor
+        field :biography do
+          pretty_value do
+            value.html_safe
+          end
+        end
+        field :status
+      end
+      group :contact do
+        field :phone_number
+        field :phone_number_display do
+          help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
+        end
+        field :email_address
+        field :send_a_message_button do
+          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
+        end
+      end      
+      group :business do
+        field :location
         field :business_name
         field :studio_number
         field :work_hours
         field :accepting_new_clients
-
-        field :website_phone_number do
-          help 'If you would like a different phone number listed on the website (other than to the phone number in Account Info), set it here'
-        end
-        field :phone_number_display do
-          help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
-        end      
-        field :website_email_address do
-          help 'If you would like stylist "Send a Message" emails to go to a different email address (other than the email address in Account info), set it here'
-        end        
-        field :send_a_message_button do
-          help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
-        end
-
+      end
+      group :website do
         field :website_url do
-          help 'It is critical that you include the "http://" portion of the URL. If you do not have a website, leave this blank'
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
 
-        field :facebook_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :google_plus_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :instagram_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :linkedin_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :pinterest_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :twitter_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-        field :yelp_url do
-          help 'Please use the full website address, including the "http://" portion of the URL'
-        end
-
+      end
+      group :social do
+        field :facebook_url
+        field :google_plus_url
+        field :instagram_url
+        field :linkedin_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+      end
+      group :services do
         field :brows
         field :hair
         field :hair_extensions
@@ -1187,103 +1118,93 @@ RailsAdmin.config do |config|
         field :threading
         field :waxing
         field :other_service do
-          label 'Other Services'
-          html_attributes do
-           {:maxlength => 18}
-          end
+          label 'Other'
         end
-
+      end
+      group :sola_pro do
+        active false
+        label 'Sola Pro and SolaGenius'
+        # field :sola_genius_enabled do
+        #   help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
+        # end
+        field :has_sola_pro_login do
+          label 'Has Sola Pro account'
+          help 'If set to "Yes", the stylist has a Sola Pro account.'
+        end
+        field :has_sola_genius_account do
+          label 'Has SolaGenius account'
+          help 'If set to "Yes", the stylist has a SolaGenius account.'
+        end
+        field :sola_pro_platform do
+          help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
+        end
+        field :sola_pro_version do
+          help 'The version of the Sola Pro app the stylist is using.'
+        end
+      end
+      group :images do
         field :image_1 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_1
         end
-        field :image_1_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_1_alt_text
         field :image_2 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_2
         end
-        field :image_2_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_2_alt_text
         field :image_3 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_3
         end
-        field :image_3_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_3_alt_text
         field :image_4 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_4
         end
-        field :image_4_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_4_alt_text
         field :image_5 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_5
         end
-        field :image_5_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end 
+        field :image_5_alt_text
         field :image_6 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_6
         end
-        field :image_6_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_6_alt_text
         field :image_7 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_7
         end
-        field :image_7_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_7_alt_text
         field :image_8 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_8
         end
-        field :image_8_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_8_alt_text
         field :image_9 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_9
         end
-        field :image_9_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
+        field :image_9_alt_text
         field :image_10 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
-          delete_method :delete_image_10
         end
-        field :image_10_alt_text do
-          help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end
-
+        field :image_10_alt_text
+      end
+      group :testimonials do
         field :testimonial_1
         field :testimonial_2
         field :testimonial_3
@@ -1294,72 +1215,11 @@ RailsAdmin.config do |config|
         field :testimonial_8
         field :testimonial_9
         field :testimonial_10
-      end
+      end 
     end
     edit do
-      group :account_info do
-        label 'Account Info'
-        active false
+      group :general do
         field :name
-        field :phone_number
-        field :email_address
-        field :cosmetology_license_number
-        field :status
-        field :date_of_birth do
-          help 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979'
-        end
-        field :street_address
-        field :city
-        field :state_province do
-          label 'State/Province'
-        end
-        field :postal_code
-        field :country
-        field :emergency_contact_name
-        field :emergency_contact_relationship
-        field :emergency_contact_phone_number
-        field :location do
-          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
-          associated_collection_scope do
-            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
-            admin = bindings[:controller]._current_user
-            Proc.new { |scope|
-              if (admin.franchisee == true)
-                scope = scope.where(:admin_id => admin.id)
-              end
-            }
-          end
-        end
-        field :leases
-        field :permitted_use_for_studio 
-        field :password do
-          label 'Sola Pro Password'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-        field :password_confirmation do
-          label 'Sola Pro Password Confirmation'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-
-        field :rent_manager_id do
-          label 'Rent Manager ID'
-          help 'This should be a tenant ID from Rent Manager'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
-      end
-
-      group :website_info do
-        label 'Website Info'
-        active false
-        field :website_name do
-          help 'If you would like a different name listed on the website (other than the name in Account Info), set it here'
-        end
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
@@ -1367,33 +1227,50 @@ RailsAdmin.config do |config|
           #   bindings[:controller]._current_user.franchisee != true
           # end
         end
-
         field :biography, :ck_editor
-        field :business_name
-        field :studio_number
-        field :work_hours
-        field :accepting_new_clients
-
-        field :website_phone_number do
-          help 'If you would like a different phone number listed on the website (as opposed to the phone number in Account Info), set it here'
-        end
+        field :status
+      end
+      group :contact do
+        field :phone_number
         field :phone_number_display do
           help 'If set to hidden, the phone number will not be displayed anywhere on the Sola website'
-        end      
-        field :website_email_address do
-          help 'If you would like stylist "Send a Message" emails to go to a different email address (as opposed to the email address in Account info), set it here'
-        end        
+        end
+        field :email_address
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
-
+      end      
+      group :business do
+        field :location do
+          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          associated_collection_scope do
+            # bindings[:object] & bindings[:controller] are available, but not in scope's block!
+            admin = bindings[:controller]._current_user
+            Proc.new { |scope|
+              # scoping all Players currently, let's limit them to the team's league
+              # Be sure to limit if there are a lot of Players and order them by position
+              if (admin.franchisee == true)
+                scope = scope.where(:admin_id => admin.id)
+              end
+            }
+          end
+        end
+        field :business_name
+        field :studio_number
+        field :work_hours
+        field :accepting_new_clients        
+      end
+      group :website do
+        active false
         field :website_url do
-          help 'It is critical that you include the "http://" portion of the URL. If you do not have a website, leave this blank'
+          help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
-
+      end
+      group :social do
+        active false
         field :facebook_url do
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
@@ -1415,7 +1292,9 @@ RailsAdmin.config do |config|
         field :yelp_url do
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
-
+      end
+      group :services do
+        active false
         field :brows
         field :hair
         field :hair_extensions
@@ -1441,7 +1320,9 @@ RailsAdmin.config do |config|
            {:maxlength => 18}
           end
         end
-
+      end 
+      group :images do
+        active false
         field :image_1 do 
           pretty_value do 
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
@@ -1532,7 +1413,9 @@ RailsAdmin.config do |config|
         field :image_10_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-
+      end
+      group :testimonials do
+        active false
         field :testimonial_1
         field :testimonial_2
         field :testimonial_3
@@ -1544,6 +1427,19 @@ RailsAdmin.config do |config|
         field :testimonial_9
         field :testimonial_10
       end
+      group :password do
+        active false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :password
+        field :password_confirmation
+      end
+      # group :credentials do
+      #   active false
+      #   field :password
+      #   field :password_confirmation
+      # end
     end
     export do
       field :name
@@ -1596,7 +1492,7 @@ RailsAdmin.config do |config|
       field :yelp_url
     end
   end
-
+  
   config.model 'StylistMessage' do
     label 'Stylist Message'
     label_plural 'Stylist Messages'

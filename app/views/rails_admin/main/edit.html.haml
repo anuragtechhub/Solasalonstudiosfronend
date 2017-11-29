@@ -1,8 +1,4 @@
-- if @abstract_model.to_s == 'Stylist'
-  = react_component 'StylistForm', {:current_admin => current_admin, :stylist => @object}
-- elsif @abstract_model.to_s == 'Lease'
-  = react_component 'LeaseForm', {:current_admin => current_admin, :lease => @object}  
-- elsif @abstract_model.to_s == 'UpdateMySolaWebsite' && @object.approved
+- if @abstract_model.to_s == 'UpdateMySolaWebsite' && @object.approved
   %div.alert.alert-warning
     %div This request has already been approved. Redirecting to dashboard automatically in 5 seconds...
   :css
