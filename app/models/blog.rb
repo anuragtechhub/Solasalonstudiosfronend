@@ -31,29 +31,38 @@ class Blog < ActiveRecord::Base
 
   def related_blogs
     blogs = []
+
+    #p "start related blogs..."
+
+    #p "bl.size=#{self.blog_categories.size}"
     
-    if self.blog_categories.size > 0
+    if self.blog_categories.length > 0
+      #p "we got categories #{blog_categories.size}"
       self.blog_categories.each do |category|
-        if category.blogs && category.blogs.size > 0
+        if category.blogs && category.blogs.length > 0
           category.blogs.order(:created_at => :desc).each do |blog|
             if blog.id != self.id && !blogs.include?(blog)
               blogs << blog
-              break if blogs.size == 3
+              break if blogs.length == 3
             end
           end
         end
-        break if blogs.size == 3
+        break if blogs.length == 3
       end
     end
 
-    if blogs.size < 3
+    #p "blogs here=#{blogs.size}"
+
+    if blogs.length < 3
       Blog.order(:created_at => :desc).limit(5).each do |blog|
         if blog.id != self.id && !blogs.include?(blog)
           blogs << blog
-          break if blogs.size == 3
+          break if blogs.length == 3
         end
       end
     end
+
+    #p "related_blogs=#{blogs.inspect}"
 
     blogs
   end
