@@ -1492,10 +1492,14 @@ RailsAdmin.config do |config|
       field :yelp_url
     end
   end
-  
+
   config.model 'StylistMessage' do
     label 'Stylist Message'
     label_plural 'Stylist Messages'
+  end
+
+  config.model 'RecurringCharge' do
+    visible false
   end
 
   config.model 'Testimonial' do
