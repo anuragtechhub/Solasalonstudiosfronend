@@ -122,9 +122,11 @@ class Blog < ActiveRecord::Base
   end
 
   def https_images
-    self.body = self.body.gsub(/<img[^>]+\>/) { |img|
-      img.gsub(/src="http:/, 'src="https:')
-    }
+    if self.body
+      self.body = self.body.gsub(/<img[^>]+\>/) { |img|
+        img.gsub(/src="http:/, 'src="https:')
+      }
+    end
   end
 
   def check_publish_date
