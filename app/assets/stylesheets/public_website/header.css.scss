@@ -3,7 +3,8 @@
 
 #top-header {
   position: relative;
-  height: 28px;
+  height: 30px;
+  overflow: hidden;
 
   background: #5DB9E4; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left, #5DB9E4, #3A8DCC); /* For Safari 5.1 to 6.0 */
@@ -19,8 +20,10 @@
     padding: 0;
     list-style: none;
 
+
     li {
       float: left;
+      margin: 0;
 
       &.border-left {
         border-left: 1px solid #3886BA;
@@ -31,8 +34,9 @@
       }
 
       a {
+        @include chalet_new_york;
         display: inline-block;
-        padding: 6px 15px;
+        padding: 8px 15px;
         text-decoration: none;
         font-size: 11px;
         font-weight: bolder;
@@ -55,7 +59,7 @@
     li.social {
 
       a {
-        padding: 6px 7px;
+        padding: 8px 7px;
         font-size: 12px;
       }
 

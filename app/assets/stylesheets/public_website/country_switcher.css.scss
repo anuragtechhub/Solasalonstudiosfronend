@@ -13,7 +13,7 @@
 
     &:hover {
       .name {
-        color: $brand-pink;
+        color: #FFF;
       }
     }
 
@@ -65,10 +65,10 @@
     top: 12px;
     right: 10px;
     display: block;
-    background: asset-data-url('down-arrow.gif') no-repeat center;
-    background-size: 8px 5px;
-    width: 8px;
-    height: 5px;
+    background: asset-data-url('down-arrow-white-nav1.png') no-repeat center;
+    background-size: 7px 4px;
+    width: 7px;
+    height: 4px;
     pointer-events: none;
   }
 
