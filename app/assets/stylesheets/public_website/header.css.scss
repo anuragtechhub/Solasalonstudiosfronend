@@ -5,6 +5,12 @@
   position: relative;
   height: 28px;
 
+  background: #5DB9E4; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #5DB9E4, #3A8DCC); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #5DB9E4, #3A8DCC); /* Standard syntax */
+
   ul.nav {
     position: absolute;
     top: 0;
@@ -17,32 +23,30 @@
       float: left;
 
       &.border-left {
-        border-left: 1px solid #EEE;
+        border-left: 1px solid #3886BA;
       }
 
       &.border-right {
-        border-right: 1px solid #EEE;
+        border-right: 1px solid #3886BA;
       }
 
       a {
         display: inline-block;
         padding: 6px 15px;
-        text-transform: uppercase;
         text-decoration: none;
-        font-size: 10px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        color: $brand-blue;
+        font-size: 11px;
+        font-weight: bolder;
+        color: #FFF;
 
         &:hover, &:active {
-          color: $brand-pink;
+          color: #FFF;
         }
 
         &.sola-pro-sign-in {
-          color: #000;
+          color: #FFF;
 
           &:hover, &:active {
-            color: $brand-pink;
+            color: #FFF;
           }
         }
       }
@@ -68,7 +72,12 @@
 
 #header {
   height: 92px;
-  background: $brand-primary;
+
+  background: #72C4E7; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #72C4E7, #459DD3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #72C4E7, #459DD3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #72C4E7, #459DD3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #72C4E7, #459DD3); /* Standard syntax */
 
   .container .row {
     position: relative;
@@ -106,6 +115,7 @@
       h3 {
         margin: 0;
         padding: 0;
+        text-transform: none;
       }
 
       a {

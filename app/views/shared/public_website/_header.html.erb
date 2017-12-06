@@ -24,7 +24,7 @@
       
       <ul class="nav">
         <li>
-          <h3><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h3>
+          <h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h4>
           <span class="oys-nav-caret caret down"></span>
           <div class="oys-nav-mobile <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
             <ul>
@@ -63,10 +63,10 @@
             </ul>
           </div>
         </li>
-        <li><h3><%= link_to raw(t('page.about.title')), :about_us %></h3></li>
-        <li><h3><%= link_to raw(t('page.locations.title')), :locations %></h3></li>
-        <li><h3><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h3></li>
-        <li><h3><%= link_to raw(t('page.blog.title')), :blog %></h3></li>
+        <li><h4><%= link_to raw(t('page.about.title')), :about_us %></h4></li>
+        <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
+        <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>
+        <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
       </ul>
 
       <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>

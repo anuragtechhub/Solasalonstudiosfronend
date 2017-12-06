@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 h1, .h1 {
   font-family: 'Dosis', Arial, sans-serif;
   font-size: 36px;
@@ -44,13 +47,13 @@ h3, .h3 {
   }
 }
 
+
+
 h4, .h4 {
-  font-family: 'Lato', Arial, sans-serif;
-  font-size: 17px;
-  letter-spacing: 0px;
-  line-height: 35px;
-  font-weight: 300;
-  color: #474747;
+  @include chalet_new_york;
+  color: #000000;  
+  font-size: 18px;  
+  line-height: 24px;
 
   &.subtle {
     color: #A7A7A7;
