@@ -51,3 +51,20 @@ $brand-pink-hover: #f26ab9;
 	font-style: normal;
 	font-weight: 400;
 }
+
+@font-face {
+  font-family: "Northwell";
+  src: asset-url('Northwell.eot');
+  src: asset-url('Northwell.eot?#iefix') format('embedded-opentype'),
+       asset-url('Northwell.woff') format('woff'),
+       asset-url('Northwell.ttf')  format('truetype'),
+       asset-url('Northwell.svg#Northwell') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin northwell() {
+	font-family: "Northwell", script, serif;
+	font-style: normal;
+	font-weight: 400;
+}
