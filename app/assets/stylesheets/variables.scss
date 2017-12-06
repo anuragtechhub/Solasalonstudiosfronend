@@ -20,3 +20,34 @@ $brand-pink-hover: #f26ab9;
   font-style: normal;
   font-weight: 600 !important;
 }
+
+@mixin helvetica() {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+
+@mixin chalet_london() {
+	font-family: "chalet-london-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_new_york() {
+	font-family: "chalet-new-york-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_paris() {
+	font-family: "chalet-paris-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_london_oblique() {
+	font-family: "chalet-london-oblique", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
