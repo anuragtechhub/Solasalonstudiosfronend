@@ -39,7 +39,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-10-01]
+  # rake reports:locations_with_email[2017-11-01]
   task :locations_with_email, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -60,7 +60,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-10-01,373]
+  # rake reports:locations_with_email_starting_at[2017-11-01,360]
   task :locations_with_email_starting_at, [:start_date, :gid] => :environment do |task, args|
     p "begin locations report..."
     
@@ -118,7 +118,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 
   # rake reports:solapro
-  # rake reports:solapro[2017-04-01]
+  # rake reports:solapro[2017-11-01]
   task :solapro, [:start_date] => :environment do |task, args|
     p "begin solapro analytics report..."
     # p "args=#{args.inspect}"
