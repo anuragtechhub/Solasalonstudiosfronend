@@ -70,7 +70,7 @@ h4, .h4 {
 }
 
 p, .p {
-  font-family: 'Lato', Arial, sans-serif;
+  @include helvetica;
   font-size: 13px;
   letter-spacing: 0px;
   line-height: 19px;

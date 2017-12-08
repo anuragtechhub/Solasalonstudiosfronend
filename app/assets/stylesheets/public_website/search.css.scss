@@ -61,12 +61,12 @@
     @include transition(width ease 0.2s);
   }
 
-  .ss-search {
+  .fa-search {
     display: inline-block;
     position: absolute;
     width: 45px;
     height: 45px;
-    top: 26px;
+    top: 29px;
     right: -5px;
     padding: 5px 0 0 0;
     text-align: center;
@@ -78,11 +78,8 @@
     color: #FFF;
     background: transparent;
     z-index: 4;
-    @include transition(all ease 0.2s);
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
+    //@include transition(all ease 0.2s);
+
     &:hover, &:active {
       color: #AFDFFF;
       //border: 2px solid #AFDFFF;
@@ -96,7 +93,7 @@
       background: #FFF;
     }
 
-    .ss-search {
+    .fa-search {
       display: none;
       // color: #FFF !important;
       // border: 2px solid #FFF !important;

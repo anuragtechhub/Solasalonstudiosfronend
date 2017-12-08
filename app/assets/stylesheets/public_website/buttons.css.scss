@@ -54,6 +54,25 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
     }  
   }
 
+  &.outline-large-white, &.outline-large-white:hover, &.outline-large-white:active, &.outline-large-white:focus {
+    padding: 15px 20px 13px 20px;
+    background: #FFF;
+    border: 2px solid #DBDBDB;  
+    border-radius: 4px;
+    text-transform: none;
+    letter-spacing: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include chalet_new_york;
+    color: #000000; 
+    font-size: 18px;  
+    line-height: 18px;  
+    text-align: center;
+  }
+
   &.rounded, &.rounded:link, &.rounded:visited {
     border: 0;
     background: #EDEDED !important;

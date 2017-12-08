@@ -52,7 +52,7 @@
   }
 
   p {
-    margin: 0;
+    margin: 0 0 15px 0;
   }
 
   .row.second {
@@ -60,7 +60,7 @@
   }
 
   .newsletter-sign-up {
-    margin: 10px 0 -5px 0;
+    margin: 20px 0 -5px 0;
     padding-left: 1px;
     overflow: hidden;
 
@@ -68,7 +68,7 @@
       position: relative;
       top: 0;
       font-size: 12px;
-      height: 40px;
+      height: 35px;
       border: 1px solid #DBDBDB;
       background: #FBFBFB;
       margin: 0;
@@ -78,24 +78,35 @@
     }
 
     input {
+      @include helvetica;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 0 0 5px 0;
       margin-right: 0;
       width: 75%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #000;
 
-      &:focus {
-        border: 1px solid $brand-pink;
+      &:focus, &:active, &:hover {
+        border: 0 !important;
+        border-bottom: 1px solid #000 !important;
       }
     }
 
     button {
-      text-align: center;
+      text-align: right;
       width: 25%;
       background: #FFF;
-      font-family: 'Lato', Arial, sans-serif;
-      padding: 5px 15px;
+      @include helvetica;
+      font-weight: bold;
+      padding: 5px 0;
       text-transform: none;
       letter-spacing: 0px;
       font-size: 13px;
-      border-left: 0;
+      line-height: 16px;
+      border: 0;
+      border-bottom: 1px solid #000;
 
       &:hover, &:active {
         @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
@@ -107,30 +118,35 @@
 
   ul.social {
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 40px;
     border: 0;
 
     li {
       margin: 0;
       display: block;
       float: left;
-      width: 25%;
+      width: auto;
+      // width: 25%;
       text-align: center;
       border: 0;
 
       a, a:link, a:visited, a:hover, a:active {
-        padding: 5px 0;
-        margin: 0;
+        padding: 0;
+        margin: 0 20px 0 0;
         background: #FFF;
-        display: block;
-        font-size: 20px;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 16px;
         color: #000;
-        border: 1px solid #DBDBDB;
-        border-right: 0;
+        border: 0 !important;
         -moz-transition-property: none !important;
         -webkit-transition-property: none !important;
         -o-transition-property: none !important;
         transition-property: none !important;
+
+        // &:last-child {
+        //   padding-right: 0;
+        // }
 
         span {
           position: relative;
@@ -138,9 +154,9 @@
         }
 
         &:hover, &:active {
-          @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
-          color: #FFF;
-          border: 1px solid $brand-pink;
+          // @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+          // color: #FFF;
+          border: 0 !important;
         }
       }
 
