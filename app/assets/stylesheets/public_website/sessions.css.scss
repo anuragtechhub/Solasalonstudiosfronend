@@ -1635,6 +1635,10 @@
 
       .buy-now {
         margin: 10px 0 40px 0;
+
+        a {
+          font-size: 18px !important;
+        }
       }
 
       .rangled-wrapper {
@@ -1727,6 +1731,9 @@
 *******************************/
 
 @media (max-width: 550px) {
+  .session-2017 .header .buy-now a {
+    font-size: 15px !important;
+  }
 
   .sessions-buttons {
     margin-top: 20px;
@@ -1736,7 +1743,7 @@
 
     .buy-now {
       a {
-        font-size: 17px !important;
+        font-size: 15px !important;
       }
     }
 
@@ -1846,10 +1853,13 @@
 }
 
 @media (max-width: 450px) {
-
+  .session-2017 .header .buy-now a {
+    font-size: 12px !important;
+    padding: 8px 14px;
+  }
   .session-2017 .header .rangled-wrapper h1 {
-    font-size: 38px;
-    line-height: 38px;
+    font-size: 32px;
+    line-height: 32px;
   }
 
   .session {
@@ -1877,11 +1887,13 @@
 
 @media (max-width: 374px) {
   .session-2017 .header .buy-now a {
-    font-size: 12px !important;
+    font-size: 11px !important;
+    letter-spacing: 1px;
+    padding: 10px 15px;    
   }
   .session-2017 .header .rangled-wrapper h1 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 26px;
+    line-height: 26px;
   }
   .session-2017 .header .rangled h2 {
     font-size: 20px;
@@ -1902,8 +1914,11 @@
     bottom: auto;
     text-align: center;
   }
+
   .session-2017 .header .ticket-details .right {
     display: inline-block;
+    width: 50%;
+    margin-bottom: 30px;
   }
 
   .session-2017 .header .ticket-details .price .amount {
