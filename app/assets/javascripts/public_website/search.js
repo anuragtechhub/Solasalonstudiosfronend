@@ -1,11 +1,16 @@
 $(function () {
 	
-  /**
-  * Expandable top nav search
- 	*/
+ 	var $headerNav = $('#header .nav');
+  var $window = $(window);
   var $searchForm = $('.nav-search');
   var $searchButton = $('.nav-search-button');
   var $searchInput = $('.nav-search-input');
+
+
+
+  /**
+  * Expandable top nav search
+ 	*/
 
   $searchInput.on('focus click', function (e) {
     e.stopPropagation();
@@ -20,6 +25,45 @@ $(function () {
       openSearch();
     }
     return false;
+  });
+
+
+
+  /**
+  * Mobile top nav hamburger menu
+  */
+
+  $('#mobile-top-nav-button').on('click touchstart', function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if ($headerNav.is(':visible')) {
+      $headerNav.slideUp('fast');
+    } else {
+      $headerNav.slideDown('fast');
+    }
+  });
+
+
+
+  /**
+  * Window resize handler
+  */
+
+  var windowWidth = $window.width(), windowHeight = $window.height();
+  $window.on('resize', function () {
+    if ($window.width() != windowWidth && $window.height != windowHeight) {
+      windowWidth = $window.width();
+      windowHeight = $window.height();
+      
+      closeSearch();
+      
+      if ($window.width() > 1000) {
+        $headerNav.show();
+      } else {
+        $headerNav.hide();
+      }
+    }
   });
 
 

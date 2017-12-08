@@ -82,25 +82,7 @@ $(function () {
   // show hero carousel images (to minimize page bounce)
   $('.hero-carousel .item').show();
 
-  // header and nav
-  var $headerNav = $('#header .nav');
   var $window = $(window);
-
-
-
-  // mobile top nav menu
-  $('#mobile-top-nav-button').on('click touchstart', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if ($headerNav.is(':visible')) {
-      $headerNav.slideUp('fast');
-    } else {
-      $headerNav.slideDown('fast');
-    }
-  });
-
-
 
   // 'oys' - own your salon nav
   var showOysNav = function () {
@@ -167,22 +149,7 @@ $(function () {
     return false;
   });
 
-  // window resize handler
-  var windowWidth = $window.width(), windowHeight = $window.height();
-  $window.on('resize', function () {
-    if ($window.width() != windowWidth && $window.height != windowHeight) {
-      windowWidth = $window.width();
-      windowHeight = $window.height();
-      
-      $searchForm.removeClass('open');
-      
-      if ($window.width() > 1000) {
-        $headerNav.show();
-      } else {
-        $headerNav.hide();
-      }
-    }
-  });
+
 
   // animated scrolling
   $(document.body).on('click', '[data-animated-scroll]', function () {
