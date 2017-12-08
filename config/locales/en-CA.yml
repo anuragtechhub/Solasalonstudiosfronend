@@ -393,6 +393,7 @@ en-CA:
       submit: Submit
 
     search:
+      search: Search
       title: 
       search_results_for_query: "Search Results for %{query}"
       blog_results: Blog Results

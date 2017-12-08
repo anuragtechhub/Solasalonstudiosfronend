@@ -152,6 +152,71 @@
   font-weight: bold;
 }
 
+
+/* 
+* Mobile Search Modal
+*/
+.mobile-search-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  width: 100%;
+  height: 100%;
+
+  .mobile-search-form {
+    position: absolute;
+    top: 25%;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+
+    input, input:focus, input:active {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 45px !important;
+      font-size: 36px !important;  
+      line-height: 43px !important;
+      @include chalet_paris;
+      padding: 0 0 7px 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-bottom: 2px solid #FFF !important;
+      color: #FFF !important;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #FFF;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: #FFF;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: #FFF;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: #FFF;
+      }
+    }
+
+    p {
+      margin: 3px 0 0 0;
+      padding: 0;
+      @include helvetica;
+      color: #444444;
+      font-size: 14px;  
+      line-height: 24px;
+    }
+  }
+}
+
+
+
+
+
 @media (max-width: 550px) {
   .nav-search.open .nav-search-input {
     width: calc(100% - 60px);
