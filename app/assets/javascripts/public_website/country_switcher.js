@@ -1,5 +1,3 @@
-/* country-switcher */
-
 $(function () {
 
   /*
@@ -9,12 +7,19 @@ $(function () {
   $(document.body).on('click', '.country-switcher:not(.country-switcher-modal)', function () {
     var $this = $(this);
 
-    $('.country-switcher-modal').css({top: $this.offset().top + 30, left: $this.offset().left}).show();
-
-    $(document.body).on('click.country-switcher-open', function () {
+    if ($('.country-switcher-modal').is(':visible')) {
+      // hide modal
       $('.country-switcher-modal').hide();
       $(document.body).off('click.country-switcher-open');
-    });
+    } else {
+      // show modal
+      $('.country-switcher-modal').css({top: $this.offset().top + 30, left: $this.offset().left}).show();
+
+      $(document.body).on('click.country-switcher-open', function () {
+        $('.country-switcher-modal').hide();
+        $(document.body).off('click.country-switcher-open');
+      });
+    }
 
     return false;
   });
