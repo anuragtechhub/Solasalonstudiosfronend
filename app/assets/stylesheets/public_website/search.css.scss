@@ -66,7 +66,7 @@
     position: absolute;
     width: 45px;
     height: 45px;
-    top: 24px;
+    top: 26px;
     right: 0;
     padding: 5px 0 0 0;
     text-align: center;
@@ -74,12 +74,15 @@
     //border: 2px solid #FFF;
     //border-radius: 50%;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 24px;
     color: #FFF;
     background: transparent;
     z-index: 4;
     @include transition(all ease 0.2s);
-
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
     &:hover, &:active {
       color: #AFDFFF;
       //border: 2px solid #AFDFFF;
@@ -94,8 +97,9 @@
     }
 
     .ss-search {
-      color: #FFF !important;
-      border: 2px solid #FFF !important;
+      display: none;
+      // color: #FFF !important;
+      // border: 2px solid #FFF !important;
     }
   }
   

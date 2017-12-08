@@ -3,7 +3,7 @@
 
 .country-switcher {
   position: relative;
-  width: 170px;
+  width: 140px;
 
   .country {
     overflow: hidden;
@@ -19,7 +19,7 @@
 
     .name {
       position: relative;
-      top: -2px;
+      top: -3px;
       margin: 0 7px 0 10px;
       display: inline-block;
       float: left;
@@ -56,14 +56,27 @@
     .country {
       background: #FFF;
       overflow: hidden;
-      padding: 8px 16px;
+      padding: 10px 15px 5px 15px;
+      //height: 45px;
+
+      // &.first {
+      //   margin-top: 12px;
+      // }
+
+      // &.last {
+      //   margin-top: -12px;
+      // }
+
+      .name {
+        color: #111;
+      }
     }
   }
 
   .dropdown-arrow {
     position: absolute;
-    top: 12px;
-    right: 10px;
+    top: 13px;
+    right: 13px;
     display: block;
     background: asset-data-url('down-arrow-white-nav1.png') no-repeat center;
     background-size: 7px 4px;
