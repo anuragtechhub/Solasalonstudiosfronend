@@ -1,7 +1,4 @@
-
 en:
-
-
 
   activerecord:
     models: 
@@ -28,7 +25,6 @@ en:
         start_date: "Recurring weekly charge 4 start date"
         end_date: "Recurring weekly charge 4 end date"              
 
-
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com
@@ -38,6 +34,18 @@ en:
     rent_studio_button: Rent a Studio
     search_placeholder: Search by city, location or stylist...
     sola_pro_sign_in: Sola Pro Sign In
+
+  nav:
+    own_your_salon: Own Your Salon
+    studio_amenities: Studio Amenities
+    sola_pro: Sola Pro
+    solagenius: SolaGenius
+    sola_sessions: Sola Sessions
+    who_we_are: Who We Are
+    our_story: Our Story
+    leadership: Leadership
+    testimonials: Testimonials
+    in_the_news: In the News
 
   footer:
     rent_studio_button: Rent a Studio
@@ -59,7 +67,7 @@ en:
       location_count: 350+
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
-      salon_professional_count: nearly 10,000
+      salon_professional_count: Nearly 10,000
       salon_professionals: Salon<br>Professionals
       find_a_stylist: Find a Stylist
       heading1: About Sola
@@ -196,7 +204,7 @@ en:
       heading1: Find a Sola Salon<br>Professional Near You
       search: Search
       search_by_name_or_location: Search by name or location
-      salon_professional_count: nearly 10,000
+      salon_professional_count: Nearly 10,000
       salon_professionals: Salon Professionals
       location_count: 350+
       locations_nationwide: Locations Nationwide

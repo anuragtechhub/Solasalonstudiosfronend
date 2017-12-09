@@ -168,6 +168,69 @@
 }
 
 
+
+.mobile-nav-wrapper {
+  display: none;
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.85);
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    li {
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #EEEEEE;
+
+      ul {
+        display: none;
+      }
+    }
+  }
+
+  .mobile-nav {
+    background: #FFF;
+
+    a, a:link, a:visited, a:hover, a:active {
+      @include chalet_new_york;
+      font-size: 18px;
+      line-height: 18px;
+      color: #000;
+      text-decoration: none;
+      display: block;
+      padding: 20px;
+
+      .forward-arrow-pink, .back-arrow-pink {
+        display: none;
+      }
+
+      .forward-arrow-black, .forward-arrow-pink, .back-arrow-black, .back-arrow-pink {
+        float: right;
+        cursor: pointer;
+      }
+
+      &:hover, &:active {
+        color: $brand-pink;
+
+        .forward-arrow-pink, .back-arrow-pink {
+          display: block;
+        }
+        .forward-arrow-black, .back-arrow-black {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
 @media (max-width: 1000px) {
 
   #chatbutton {
@@ -216,47 +279,6 @@
 
     ul.nav {
       display: none;
-      left: -30px;
-      right: -30px;
-      top: 70px;
-      background: #FFF;
-      z-index: 999999;
-      border-bottom: 2px solid #E5E5E5;
-      margin: 0;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.5);
-
-      li {
-        display: block;
-        width: 100%;
-        clear: both;
-        margin: 0;
-        padding: 0;
-        position: relative;
-
-        h3 {
-          font-size: 15px;
-        }
-
-        a {
-          display: block;
-          padding: 30px 15px;
-          margin: 0 30px;
-          border-bottom: 1px solid #E5E5E5;
-          color: #000;
-
-          &:hover, &:active {
-            color: #BABABA;
-          }
-        }
-
-        &:last-child a {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    .nav-search-input {
-      top: 16px;
     }
 
     .nav-search-button {

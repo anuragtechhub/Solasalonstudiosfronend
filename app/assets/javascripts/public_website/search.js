@@ -56,23 +56,6 @@ $(function () {
 
 
   /**
-  * Mobile top nav hamburger menu
-  */
-
-  $('#mobile-top-nav-button').on('click touchstart', function (e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if ($headerNav.is(':visible')) {
-      $headerNav.slideUp('fast');
-    } else {
-      $headerNav.slideDown('fast');
-    }
-  });
-
-
-
-  /**
   * Window resize handler
   */
 
