@@ -17,6 +17,22 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.body-content {
+  background: #FFF asset-data-url('background-stripe.png') repeat-y top left;
+}
+
+@media (max-width: 1000px) {
+  .body-content {
+    background-position: -160px 0px;
+  }
+}
+
+@media (max-width: 800px) {
+  .body-content {
+    background-position: -260px 0px;
+  }
+}
+
 a, a:link, a:visited, a:hover, a:active {
   color: $brand-pink;
   @include transition(color .25s ease);
