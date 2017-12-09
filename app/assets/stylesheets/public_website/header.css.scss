@@ -151,10 +151,10 @@
 
 #mobile-top-nav-button {
   display: none;
-  background: asset-data-url('Hamburger@2x.png');
-  background-size: 21px 26px;
-  height: 26px;
-  width: 21px;
+  background: asset-data-url('hamburger-menu-white.png');
+  background-size: 24px 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .nav-search-input, input[type="search"].nav-search-input {
@@ -179,7 +179,7 @@
     font-size: 27px;
     color: #FFF;
     position: absolute;
-    top: 22px;
+    top: 23px;
     left: 0;
     cursor: pointer;
   }

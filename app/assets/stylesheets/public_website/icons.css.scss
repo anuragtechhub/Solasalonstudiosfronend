@@ -1,0 +1,30 @@
+.close-x-white {
+  background: asset-data-url('close-x-white.png');
+  background-size: (30px / 1.2) (28px / 1.2);
+  height: (28px / 1.2);
+  width: (30px / 1.2);
+
+  &:hover, &:active {
+  	background: asset-data-url('close-x-pink.png');
+  	background-size: (30px / 1.2) (28px / 1.2);
+  }
+}
+
+.close-x-black {
+  background: asset-data-url('close-x-black.png');
+  background-size: (28px / 2) (30px / 2);
+  height: (28px / 2);
+  width: (30px / 2);
+
+  &:hover, &:active {
+  	background: asset-data-url('close-x-pink.png');
+  	background-size: (28px / 2) (30px / 2);
+  }
+}
+
+.close-x-pink {
+  background: asset-data-url('close-x-pink.png');
+  background-size: (28px / 2) (30px / 2);
+  height: (28px / 2);
+  width: (30px / 2);
+}

@@ -27,7 +27,7 @@ $(function () {
 	      openSearch();
 	    }
 	  } else {
-	  	// mobile
+	  	// mobile search
 	  	if ($mobileSearchModal.hasClass('open')) {
 	  		$mobileSearchModal.fadeOut('fast', function () {
 	  			$mobileSearchModal.removeClass('open');
@@ -40,6 +40,18 @@ $(function () {
 	  }
     return false;
   });
+
+
+
+  /**
+  * Close mobile search
+  */
+  $('.mobile-search-modal .close-x-white').on('click', function () {
+    $mobileSearchModal.fadeOut('fast', function () {
+      $mobileSearchModal.removeClass('open');
+    });
+  });
+
 
 
 
