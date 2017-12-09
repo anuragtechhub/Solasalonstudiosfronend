@@ -1,59 +1,64 @@
 <div class="mobile-nav-wrapper">
 
-	<ul class="mobile-nav">
-		<li>
-	  	<a href="#">
-	  		<%= t 'nav.own_your_salon' %> 
-	  		<span class="forward-arrow-black"></span>
-	  		<span class="forward-arrow-pink"></span>
-	  	</a>
-	    <ul>
-	      <li>
-	        <a href="/own/own-your-salon"><%= t 'nav.own_your_salon' %></a>
-	      </li>
-	      <li>
-	        <a href="/own/studio-amenities"><%= t 'nav.studio_amenities' %></a>
-	      </li>
-	      <li>
-	        <a href="/own/sola-pro"><%= t 'nav.sola_pro' %></a>
-	      </li>
-	      <li>
-	        <a href="/own/sola-sessions"><%= t 'nav.sola_sessions' %></a>
-	      </li>
-	      <% if I18n.locale.to_s == 'en' %>
-	        <li>
-	          <a href="/own/solagenius"><%= t 'nav.solagenius' %></a>
-	        </li>
-	      <% end %>
-	    </ul>
-		</li>
-		<li>
-	  	<a href="#">
-	  		<%= t 'nav.about_us' %> 
-	  		<span class="forward-arrow-black"></span>
-	  		<span class="forward-arrow-pink"></span>
-	  	</a>
-	    <ul>
-	      <li>
-	        <a href="/who-we-are"><%= t 'nav.who_we_are' %></a>
-	      </li>
-	      <li>
-	        <a href="/about-us"><%= t 'nav.our_story' %></a>
-	      </li>
-	      <li>
-	        <a href="/leadership"><%= t 'nav.leadership' %></a>
-	      </li>
-	      <li>
-	        <a href="/testimonials"><%= t 'nav.testimonials' %></a>
-	      </li>
-        <li>
-          <a href="/news"><%= t 'nav.in_the_news' %></a>
-        </li>
-	    </ul>
-		</li>
-		<li><%= link_to raw(t('page.locations.title')), :locations %></li>
-		<li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
-		<li><%= link_to raw(t('page.blog.title')), :blog %></li>
-	</ul>
 
+	<div class="mobile-nav">
+		<div class="close-x-black"></div>
+
+		<ul>
+			<li>
+		  	<a href="#">
+		  		<%= t 'nav.own_your_salon' %> 
+		  		<span class="forward-arrow-black"></span>
+		  		<span class="forward-arrow-pink"></span>
+		  	</a>
+		    <ul>
+		      <li>
+		        <a href="/own/own-your-salon"><%= t 'nav.own_your_salon' %></a>
+		      </li>
+		      <li>
+		        <a href="/own/studio-amenities"><%= t 'nav.studio_amenities' %></a>
+		      </li>
+		      <li>
+		        <a href="/own/sola-pro"><%= t 'nav.sola_pro' %></a>
+		      </li>
+		      <li>
+		        <a href="/own/sola-sessions"><%= t 'nav.sola_sessions' %></a>
+		      </li>
+		      <% if I18n.locale.to_s == 'en' %>
+		        <li>
+		          <a href="/own/solagenius"><%= t 'nav.solagenius' %></a>
+		        </li>
+		      <% end %>
+		    </ul>
+			</li>
+			<li>
+		  	<a href="#">
+		  		<%= t 'nav.about_us' %> 
+		  		<span class="forward-arrow-black"></span>
+		  		<span class="forward-arrow-pink"></span>
+		  	</a>
+		    <ul>
+		      <li>
+		        <a href="/who-we-are"><%= t 'nav.who_we_are' %></a>
+		      </li>
+		      <li>
+		        <a href="/about-us"><%= t 'nav.our_story' %></a>
+		      </li>
+		      <li>
+		        <a href="/leadership"><%= t 'nav.leadership' %></a>
+		      </li>
+		      <li>
+		        <a href="/testimonials"><%= t 'nav.testimonials' %></a>
+		      </li>
+	        <li>
+	          <a href="/news"><%= t 'nav.in_the_news' %></a>
+	        </li>
+		    </ul>
+			</li>
+			<li><%= link_to raw(t('page.locations.title')), :locations %></li>
+			<li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
+			<li><%= link_to raw(t('page.blog.title')), :blog %></li>
+		</ul>
+	</div>
+	
 </div>

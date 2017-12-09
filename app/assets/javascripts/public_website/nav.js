@@ -11,12 +11,12 @@ $(function () {
     e.stopPropagation();
     e.preventDefault();
 
-    $
-
     if ($mobileNavWrapper.is(':visible')) {
       $mobileNavWrapper.fadeOut('fast');
+      $mobileNavMenu.removeClass('open');
     } else {
       $mobileNavWrapper.fadeIn('fast');
+      $mobileNavMenu.addClass('open');
     }
   });
 
@@ -24,10 +24,19 @@ $(function () {
 
 
   /**
-  * Sliding mobile nav menus
+  * Close sliding mobile nav menus
   */
 
-  
-
+  $mobileNavMenu.find('.close-x-black').on('click', function () {
+    if ($mobileNavWrapper.is(':visible')) {
+      $mobileNavMenu.removeClass('open');
+      setTimeout(function () {
+      	$mobileNavWrapper.fadeOut('fast');
+      }, 150);
+    } else {
+      $mobileNavWrapper.fadeIn('fast');
+      $mobileNavMenu.addClass('open');
+    }
+  });
 
 });
