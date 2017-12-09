@@ -61,29 +61,17 @@
     @include transition(width ease 0.2s);
   }
 
-  .fa-search {
-    display: inline-block;
+  .search-icon {
     position: absolute;
-    width: 45px;
-    height: 45px;
-    top: 29px;
-    right: -5px;
-    padding: 5px 0 0 0;
-    text-align: center;
-    vertical-align: middle;
-    //border: 2px solid #FFF;
-    //border-radius: 50%;
+    top: 34px;
+    right: 4px;
     cursor: pointer;
-    font-size: 24px;
-    color: #FFF;
-    background: transparent;
-    z-index: 4;
-    //@include transition(all ease 0.2s);
 
-    &:hover, &:active {
-      color: #AFDFFF;
-      //border: 2px solid #AFDFFF;
-    }
+    background: asset-data-url('spyglass.png');
+    background-size: (48px / 2) (48px / 2);
+    width: (48px / 2);
+    height: (48px / 2);
+    z-index: 4;
   }
 
   &.open {
@@ -93,10 +81,8 @@
       background: #FFF;
     }
 
-    .fa-search {
+    .search-icon {
       display: none;
-      // color: #FFF !important;
-      // border: 2px solid #FFF !important;
     }
   }
   
