@@ -17,6 +17,11 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 .body-content {
   background: #FFF asset-data-url('background-stripe.png') repeat-y top left;
 }

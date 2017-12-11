@@ -32,10 +32,15 @@ $(function () {
 	  		$mobileSearchModal.fadeOut('fast', function () {
 	  			$mobileSearchModal.removeClass('open');
 	  		});
+        $('body').off('touchmove.mobileSearch').removeClass('stop-scrolling');
 	  	} else {
 	  		$mobileSearchModal.fadeIn('fast', function () {
 	  			$mobileSearchModal.addClass('open');
 	  		});
+        // prevent page scroll
+        $('body').on('touchmove.mobileSearch', function (e) {
+          e.preventDefault();
+        }).addClass('stop-scrolling');
 	  	}
 	  }
     return false;
@@ -50,6 +55,7 @@ $(function () {
     $mobileSearchModal.fadeOut('fast', function () {
       $mobileSearchModal.removeClass('open');
     });
+    $('body').off('touchmove.mobileSearch').removeClass('stop-scrolling');
   });
 
 
@@ -104,6 +110,7 @@ $(function () {
   			$mobileSearchModal.removeClass('open');
   		});
   	}
+    $('body').off('touchmove.mobileSearch').removeClass('stop-scrolling');
   } 
 
 });

@@ -14,9 +14,15 @@ $(function () {
     if ($mobileNavWrapper.is(':visible')) {
       $mobileNavWrapper.fadeOut('fast');
       $mobileNavMenu.removeClass('open');
+      $('body').off('touchmove.mobileNav').removeClass('stop-scrolling');
     } else {
       $mobileNavWrapper.fadeIn('fast');
       $mobileNavMenu.addClass('open');
+
+      // prevent page scroll
+      $('body').on('touchmove.mobileNav', function (e) {
+      	e.preventDefault();
+      }).addClass('stop-scrolling');
     }
   });
 
@@ -28,15 +34,13 @@ $(function () {
   */
 
   $mobileNavMenu.find('.close-x-black').on('click', function () {
-    if ($mobileNavWrapper.is(':visible')) {
+    //if ($mobileNavWrapper.is(':visible')) {
       $mobileNavMenu.removeClass('open');
       setTimeout(function () {
       	$mobileNavWrapper.fadeOut('fast');
       }, 150);
-    } else {
-      $mobileNavWrapper.fadeIn('fast');
-      $mobileNavMenu.addClass('open');
-    }
+      $('body').off('touchmove.mobileNav').removeClass('stop-scrolling');
+    //}
   });
 
 });
