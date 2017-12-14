@@ -94,12 +94,13 @@
       }
     }
 
-    button {
+    button, button:hover, button:active {
       text-align: right;
       width: 25%;
       background: #FFF;
       @include helvetica;
       font-weight: bold;
+      color: #000;
       padding: 5px 0;
       text-transform: none;
       letter-spacing: 0px;
@@ -108,11 +109,19 @@
       border: 0;
       border-bottom: 1px solid #000;
 
-      &:hover, &:active {
-        @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
-        color: #FFF;
-        border: 1px solid $brand-pink;
-      }
+      // &:hover, &:active {
+      //   //@include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+      //   @include helvetica;
+      //   font-weight: bold;
+      //   padding: 5px 0;
+      //   text-transform: none;
+      //   letter-spacing: 0px;
+      //   font-size: 13px;
+      //   line-height: 16px;
+      //   border: 0;
+      //   border-bottom: 1px solid #000;
+      //   background: #FFF;
+      // }
     }
   }
 
