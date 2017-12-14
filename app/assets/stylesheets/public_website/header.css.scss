@@ -212,7 +212,13 @@
     &.open {
       left: 0;
       right: 0;
-    }    
+    } 
+
+    a, a:link, a:visited, a:hover, a:active {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
+    }   
   }
 
   .mobile-nav {
@@ -253,7 +259,10 @@
       text-decoration: none;
       display: block;
       padding: 20px;
-
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
+      
       .forward-arrow-pink, .back-arrow-pink {
         display: none;
       }
@@ -311,6 +320,9 @@
       font-size: 13px;
       line-height: 16px;
       padding: 20px 20px 18px 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
     }  
     a.sublink:hover, a.sublink:active {
       color: $brand-pink;
