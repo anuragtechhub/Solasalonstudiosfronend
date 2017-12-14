@@ -303,15 +303,15 @@
       li {
         border-bottom: 1px solid #EEEEEE;
       }
+    }  
 
-      a.sublink, a.sublink:link, a.sublink:visited, a.sublink:hover, a.sublink:active {
-        @include helvetica;
-        color: #4A4A4A;
-        font-size: 13px;
-        line-height: 16px;
-        padding: 20px 20px 18px 20px;
-      }
-    }    
+    a.sublink, a.sublink:link, a.sublink:visited, a.sublink:hover, a.sublink:active {
+      @include helvetica;
+      color: #4A4A4A;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 20px 20px 18px 20px;
+    }  
   }
 }
 
