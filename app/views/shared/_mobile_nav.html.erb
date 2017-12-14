@@ -4,54 +4,65 @@
 	<div class="mobile-nav">
 		<div class="close-x-black"></div>
 
-		<ul>
+		<ul class="mobile-nav-top-menu open" data-menu="mobile-nav-top-menu">
 			<li>
-		  	<a href="#">
+		  	<a href="#" data-submenu="own-your-salon">
 		  		<%= t 'nav.own_your_salon' %> 
 		  		<span class="forward-arrow-black"></span>
 		  		<span class="forward-arrow-pink"></span>
 		  	</a>
-		    <ul>
+		    <ul data-submenu="own-your-salon">
+		    	<li>
+		    		<a href="#" data-menu="mobile-nav-top-menu">
+				  		<span class="back-arrow-black"></span>
+				  		<span class="back-arrow-pink"></span>
+				  		<%= t 'nav.own_your_salon' %> 
+		    		</a>
+		    	</li>
 		      <li>
-		        <a href="/own/own-your-salon"><%= t 'nav.own_your_salon' %></a>
+		        <a href="/own/studio-amenities" class="sublink"><%= t 'nav.studio_amenities' %></a>
 		      </li>
 		      <li>
-		        <a href="/own/studio-amenities"><%= t 'nav.studio_amenities' %></a>
+		        <a href="/own/sola-pro" class="sublink"><%= t 'nav.sola_pro' %></a>
 		      </li>
 		      <li>
-		        <a href="/own/sola-pro"><%= t 'nav.sola_pro' %></a>
-		      </li>
-		      <li>
-		        <a href="/own/sola-sessions"><%= t 'nav.sola_sessions' %></a>
+		        <a href="/own/sola-sessions" class="sublink"><%= t 'nav.sola_sessions' %></a>
 		      </li>
 		      <% if I18n.locale.to_s == 'en' %>
 		        <li>
-		          <a href="/own/solagenius"><%= t 'nav.solagenius' %></a>
+		          <a href="/own/solagenius" class="sublink"><%= t 'nav.solagenius' %></a>
 		        </li>
 		      <% end %>
 		    </ul>
 			</li>
 			<li>
-		  	<a href="#">
-		  		<%= t 'nav.about_us' %> 
+		  	<a href="#" data-submenu="about-us">
 		  		<span class="forward-arrow-black"></span>
 		  		<span class="forward-arrow-pink"></span>
+		  		<%= t 'nav.about_us' %> 
 		  	</a>
-		    <ul>
+		    <ul data-submenu="about-us">
+		    	<li>
+		    		<a href="#" data-menu="mobile-nav-top-menu">
+				  		<span class="back-arrow-black"></span>
+				  		<span class="back-arrow-pink"></span>
+				  		<%= t 'nav.about_us' %> 
+		    		</a>
+		    	</li>
 		      <li>
-		        <a href="/who-we-are"><%= t 'nav.who_we_are' %></a>
+		        <a href="/who-we-are" class="sublink"><%= t 'nav.who_we_are' %></a>
 		      </li>
 		      <li>
-		        <a href="/about-us"><%= t 'nav.our_story' %></a>
+		        <a href="/about-us" class="sublink"><%= t 'nav.our_story' %></a>
 		      </li>
 		      <li>
-		        <a href="/leadership"><%= t 'nav.leadership' %></a>
+		        <a href="/leadership" class="sublink"><%= t 'nav.leadership' %></a>
 		      </li>
 		      <li>
-		        <a href="/testimonials"><%= t 'nav.testimonials' %></a>
+		        <a href="/testimonials" class="sublink"><%= t 'nav.testimonials' %></a>
 		      </li>
 	        <li>
-	          <a href="/news"><%= t 'nav.in_the_news' %></a>
+	          <a href="/news" class="sublink"><%= t 'nav.in_the_news' %></a>
 	        </li>
 		    </ul>
 			</li>

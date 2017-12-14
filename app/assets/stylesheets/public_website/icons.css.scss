@@ -101,19 +101,19 @@
 
 .back-arrow-black {
   background: asset-data-url('back-arrow-black.png');
-  background-size: (20px / 1) (32px / 1);
-  height: (32px / 1);
-  width: (20px / 1);
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
 
   &:hover, &:active {
     background: asset-data-url('back-arrow-pink.png');
-    background-size: (20px / 1) (32px / 1);
+    background-size: (20px / 2) (32px / 2);
   }
 }
 
 .back-arrow-pink {
   background: asset-data-url('back-arrow-pink.png');
-  background-size: (20px / 1) (32px / 1);
-  height: (32px / 1);
-  width: (20px / 1);
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
 }
