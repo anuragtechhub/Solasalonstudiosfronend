@@ -1,36 +1,27 @@
 $(function () {
 	
   /**
-  * Own Your Salon subnav
+  * 'oys' (Own Your Salon and About Us) subnav menus
   */
-  var showOysNav = function () {
+  var showOysNav = function (nav) {
     if ($(window).width() > 1000) {
       // desktop
       var $headerContainer = $('#header .container');
-      $('.oys-nav').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
     }
   };
 
-  $('.oys-nav-caret').on('click', function () {
-    var $this = $(this);
-
-    if ($this.hasClass('down')) {
-      $this.removeClass('down').addClass('up');
-      $('.oys-nav-mobile').slideDown('fast');
-    } else {
-      $this.removeClass('up').addClass('down');
-      $('.oys-nav-mobile').slideUp('fast');
-    }
-  });
-
-  $('#header .own_your_salon').on('mouseenter', function () {
+  $('#header .own_your_salon, #header .about_us').on('mouseenter', function () {
     //showOysNav();
   }).hoverIntent({
-    over: function () {
-      showOysNav();
+    over: function (e) {
+      var $this = $(e.target);
+      showOysNav($this.data('nav'));
     }, 
-    out: function () {
-      var $oysNav = $('.oys-nav');
+    out: function (e) {
+      var $this = $(e.target);
+
+      var $oysNav = $('.oys-nav[data-nav="' + $this.data('nav') + '"]');
 
       if ($oysNav.hasClass('over')) {
         // shhh...
@@ -41,25 +32,14 @@ $(function () {
     timeout: 500
   });
 
-  $('.oys-nav').on('mouseenter', function () {
-    $('.oys-nav').addClass('over').show();
+  $('.oys-nav').on('mouseenter', function (e) {
+    var $this = $(e.target);
+    $('.oys-nav[data-nav="' + $this.data('nav') + '"]').addClass('over').show();
   });  
 
-  $('.oys-nav').on('mouseleave', function () {
-    $('.oys-nav').removeClass('over').hide();
+  $('.oys-nav').on('mouseleave', function (e) {
+    var $this = $(e.target);
+    $('.oys-nav[data-nav="' + $this.data('nav') + '"]').removeClass('over').hide();
   }); 
-
-
-
-  /**
-  * Window resize handler
-  */
-  $(window).on('resize.oysNav', function () {
-    if ($(window).width() > 1000) {
-      // desktop
-      $('.oys-nav-mobile').hide();
-      $('#header .nav .caret').removeClass('up').addClass('down');
-    }
-  }).trigger('resize.oysNav');
 
 });

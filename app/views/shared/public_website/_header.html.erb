@@ -23,47 +23,8 @@
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
       
       <ul class="nav">
-        <li>
-          <h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h4>
-          <span class="oys-nav-caret caret down"></span>
-          <div class="oys-nav-mobile <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
-            <ul>
-              <li>
-                <a href="/own/own-your-salon">
-                  <%= image_tag 'own_nav/1_own.jpg' %>
-                  <span>Own Your Salon</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/studio-amenities">
-                  <%= image_tag 'own_nav/2_amenities.jpg' %>
-                  <span>Studio Amenities</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/sola-pro">
-                  <%= image_tag 'own_nav/3_solapro.jpg' %>
-                  <span>Sola Pro</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/sola-sessions">
-                  <%= image_tag 'own_nav/4_sessions.jpg' %>
-                  <span>Sola Sessions</span>
-                </a>
-              </li>
-              <% if I18n.locale.to_s == 'en' %>
-                <li>
-                  <a href="/own/solagenius">
-                    <%= image_tag 'own_nav/5_solagenius.jpg' %>
-                    <span>Sola Genius</span>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </li>
-        <li><h4><%= link_to raw(t('page.about.title')), :about_us %></h4></li>
+        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', 'data-nav' => "own-your-salon" %></h4></li>
+        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
         <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
         <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>
         <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
@@ -80,39 +41,74 @@
 
 
 
-<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
+<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>" data-nav="own-your-salon">
   <ul>
     <li>
       <a href="/own/own-your-salon">
         <%= image_tag 'own_nav/1_own.jpg' %>
-        <h4>Why Sola</h4>
+        <h4><%= t 'nav.own_your_salon' %></h4>
       </a>
     </li>
     <li>
       <a href="/own/studio-amenities">
         <%= image_tag 'own_nav/2_amenities.jpg' %>
-        <h4>Our Studios</h4>
+        <h4><%= t 'nav.our_studios' %></h4>
       </a>
     </li>
     <li>
       <a href="/own/sola-pro">
         <%= image_tag 'own_nav/3_solapro.jpg' %>
-        <h4>Sola Pro</h4>
+        <h4><%= t 'nav.sola_pro' %></h4>
       </a>
     </li>
     <li>
       <a href="/own/sola-sessions">
         <%= image_tag 'own_nav/4_sessions.jpg' %>
-        <h4>Sola Sessions</h4>
+        <h4><%= t 'nav.sola_sessions' %></h4>
       </a>
     </li>
     <% if I18n.locale.to_s == 'en' %>
       <li>
         <a href="/own/solagenius">
           <%= image_tag 'own_nav/5_solagenius.jpg' %>
-          <h4>SolaGenius</h4>
+          <h4><%= t 'nav.solagenius' %></h4>
         </a>
       </li>
     <% end %>
+  </ul>
+</div>
+
+<div class="oys-nav" data-nav="about-us">
+  <ul>
+    <li>
+      <a href="/who-we-are">
+        <%= image_tag 'about_nav/1.jpg' %>
+        <h4><%= t 'nav.who_we_are' %></h4>
+      </a>
+    </li>
+    <li>
+      <a href="/our-story">
+        <%= image_tag 'about_nav/2.jpg' %>
+        <h4><%= t 'nav.our_story' %></h4>
+      </a>
+    </li>
+    <li>
+      <a href="/testimonials">
+        <%= image_tag 'about_nav/3.jpg' %>
+        <h4><%= t 'nav.testimonials' %></h4>
+      </a>
+    </li>
+    <li>
+      <a href="/leadership">
+        <%= image_tag 'about_nav/4.jpg' %>
+        <h4><%= t 'nav.leadership' %></h4>
+      </a>
+    </li>
+    <li>
+      <a href="/news">
+        <%= image_tag 'about_nav/5.jpg' %>
+        <h4><%= t 'nav.in_the_news' %></h4>
+      </a>
+    </li>
   </ul>
 </div>
