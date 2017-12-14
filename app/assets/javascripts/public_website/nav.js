@@ -66,14 +66,10 @@ $(function () {
       var $parent = $this.parents('ul');
       var $submenu = $mobileNavMenu.find('.sliding-submenu[data-submenu="' + $this.data('submenu') + '"]');
 
-      console.log('you clicked????', $parent, $submenu);
-
       if ($parent.hasClass('open')) {
-        console.log('adding open to submenu')
         $parent.removeClass('open');
         $submenu.addClass('open');
       } else {
-        console.log('removing open from submenu')
         $parent.addClass('open');
         $submenu.removeClass('open');
       }
