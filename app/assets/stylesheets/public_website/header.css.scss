@@ -313,6 +313,21 @@
       padding: 20px 20px 18px 20px;
     }  
   }
+
+  .social-links {
+    padding-top: 15px;
+    width: 88%;
+    margin: 0 auto;
+    max-width: 210px;
+
+    .social {
+      display: block;
+      width: 25%;
+      margin-left: -2px;
+      float: left;
+      text-align: center;
+    }
+  }
 }
 
 
