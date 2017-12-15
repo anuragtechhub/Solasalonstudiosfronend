@@ -90,10 +90,14 @@ en:
     who_we_are:
       title: Who We Are
       subhead: We focus on what's best for you, so you can focus on what's best for your business.
+      subhead2: Experience a level of creative independence and career support you won't find anywhere else.
       meta_description: ""
       body1: "We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time."
       body2: "We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind:"
       to_help_set_them_up_for_success: To help set them up for success
+      join_our_diverse_community: "Join the Sola Salon Studios diverse community"
+      join_our_diverse_community_text: "Now nearly 10,000 strong!"
+      join_our_diverse_community_button_text: "Own Your Salon"
       our_mission: Our Mission 
       our_mission_text: "To inspire and support beauty professionals to chase their dreams, elevate their careers, and experience the freedom of salon ownership."
       our_values: Our Values 
@@ -102,8 +106,11 @@ en:
       join_our_community_text: "Are you ready to join the Sola community? Click to become a Sola Salon Owner!"
       join_our_community_button_text: "Own Your Salon"
       experience_more: Experience More!
+      sola_pro: "Sola Pro"
       sola_pro_text: "Our custom built Sola Pro app for special offers and ongoing education at your fingertips."
+      sola_sessions: "Sola Sessions"
       sola_sessions_text: "The Sola Sessions education events—learn from the best and have an opportunity to network with other Sola Pros from around the country!"
+      solagenius: SolaGenius
       solagenius_text: "Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered."
 
     our_story:
