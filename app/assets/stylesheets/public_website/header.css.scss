@@ -2,6 +2,7 @@
 @import 'variables';
 
 #top-header {
+  -webkit-font-smoothing: antialiased;
   position: relative;
   height: 30px;
   overflow: hidden;
@@ -75,6 +76,7 @@
 }
 
 #header {
+  -webkit-font-smoothing: antialiased;
   height: 92px;
 
   background: #72C4E7; /* For browsers that do not support gradients */
@@ -170,6 +172,7 @@
 
 
 .mobile-nav-wrapper {
+  -webkit-font-smoothing: antialiased;
   display: none;
   position: absolute;
   z-index: 99999;

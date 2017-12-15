@@ -8,7 +8,7 @@ $(function () {
       // desktop
       var $headerContainer = $('#header .container');
       $('.oys-nav').not('[data-nav="' + nav + '"]').hide();
-      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 1}).width($headerContainer.outerWidth()).show();
+      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 2}).width($headerContainer.outerWidth()).show();
     }
   };
 
