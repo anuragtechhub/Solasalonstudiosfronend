@@ -2,13 +2,20 @@
 @import 'variables';
 
 .home-slogan {
+  @include northwell;
+  font-size: 72px;
+  letter-spacing: 0px;
+  line-height: 172px;
+  font-weight: 300;
+  color: #000;
+  margin-top: 10px;
   display: block;
   clear: both;
   text-transform: none;
   font-weight: 300;
-  font-size: 33px;
-  line-height: 43px;
-  margin: 30px 30px 30px 30px;
+  font-size: 72px;
+  line-height: 72px;
+  margin: 40px 30px 40px 30px;
   letter-spacing: 0px;
 }
 

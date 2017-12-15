@@ -2,12 +2,14 @@
 @import 'variables';
 
 h1, .h1 {
-  font-family: 'Dosis', Arial, sans-serif;
-  font-size: 36px;
+  @include northwell;
+  font-size: 72px;
   letter-spacing: 0px;
-  line-height: 44px;
+  line-height: 72px;
   font-weight: 300;
   color: #000;
+  margin-top: 10px;
+  margin-bottom: 25px;
 
   &.small {
     font-size: 26px;

@@ -1,0 +1,8 @@
+<div class="container content-container">
+	<h1><%= t 'page.who_we_are.title' %></h1>
+
+</div>
+
+<% content_for(:title) { t('page.who_we_are.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/who-we-are" } %>
+<% content_for(:meta_description) { t('page.who_we_are.meta_description') } %>

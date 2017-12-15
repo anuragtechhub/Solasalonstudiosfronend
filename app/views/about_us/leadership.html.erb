@@ -1,0 +1,8 @@
+<div class="container content-container">
+	<h1><%= t 'page.leadership.title' %></h1>
+
+</div>
+
+<% content_for(:title) { t('page.leadership.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/leadership" } %>
+<% content_for(:meta_description) { t('page.leadership.meta_description') } %>

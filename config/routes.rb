@@ -13,9 +13,16 @@ Solasalonstudios::Application.routes.draw do
  
   get '5000' => 'home#sola_5000', :as => :sola_5000
 
+
+
+  # about URLs
   get "about-us" => 'about_us#index', :as => :about_us
   get "about" => 'about_us#index'
-  
+  get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
+  get "leadership" => 'about_us#leadership', :as => :leadership
+  get "our-story" => 'about_us#our_story', :as => :our_story 
+
+
   get "contact-us" => "contact_us#index", :as => :contact_us
   get "contact-us-thank-you" => 'contact_us#thank_you', :as => :contact_us_thank_you
   get 'contact_us' => "contact_us#index"

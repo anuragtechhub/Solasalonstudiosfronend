@@ -88,6 +88,18 @@ en-CA:
       view_more_testimonials: View More Testimonials
       join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
     
+    who_we_are:
+      title: Who We Are
+      meta_description: ""
+
+    our_story:
+      title: Our Story
+      meta_description: ""
+
+    leadership:
+      title: Leadership
+      meta_description: ""
+    
     article:
       view_post: View Post
       share_socially: Share Socially
