@@ -43,4 +43,40 @@ $(function () {
     $('.oys-nav[data-nav="' + $this.data('nav') + '"]').removeClass('over').hide();
   }); 
 
+
+
+  /**
+  * In-page subnav (scroll to right section if needed)
+  */
+  $('.page-nav').each(function () {
+    var $pagenav = $(this);
+    var pagenav_width = $pagenav.outerWidth();
+    
+    // calculate widths
+    var items_width = 0;
+    var width_before_active = 0;
+    var active_index = -1;
+    
+    $pagenav.find('li').each(function (idx) {
+      var $li = $(this);
+      var li_width = $li.outerWidth(true);
+
+      items_width = items_width + li_width;
+
+      if (active_index == -1) {
+        width_before_active = width_before_active + li_width;
+      }
+
+      if ($li.hasClass('active')) {
+        active_index = idx;
+      };
+    });
+
+    //console.log('pagenav_width', pagenav_width, items_width, active_index, width_before_active);
+
+    if (width_before_active > pagenav_width) {
+      $pagenav.scrollLeft(pagenav_width);
+    }
+  });
+
 });
