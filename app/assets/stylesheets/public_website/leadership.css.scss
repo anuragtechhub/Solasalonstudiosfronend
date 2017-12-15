@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.leader-tile {
+	display: block;
+	text-decoration: none;
+	margin-bottom: 30px;
+
+	h3 {
+		margin-bottom: 0;
+		color: #000;
+	}
+
+	.title {
+		@include helvetica;
+		font-size: 14px;
+		line-height: 24px;
+		color: #000;
+	}
+}

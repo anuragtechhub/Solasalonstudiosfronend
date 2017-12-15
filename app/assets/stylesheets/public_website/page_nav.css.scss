@@ -41,3 +41,39 @@
 
 	}
 }
+
+a.back-to-parent, a.back-to-parent:link, a.back-to-parent:visited, a.back-to-parent:hover, a.back-to-parent:active {
+	display: inline-block;
+	@include chalet_new_york;
+	text-decoration: none;
+	color: #000;
+	margin-bottom: 30px;
+	@include transition(none);
+
+	.name {
+		display: inline-block;
+		position: relative;
+		margin-left: 5px;
+		top: -2px;
+	}
+
+	.back-arrow-black {
+		display: inline-block;
+	}
+
+	.back-arrow-pink {
+		display: none;
+	}
+}
+
+a.back-to-parent:hover, a.back-to-parent:active {
+	color: $brand-pink;
+
+	.back-arrow-black {
+		display: none;
+	}
+
+	.back-arrow-pink {
+		display: inline-block;
+	}
+}

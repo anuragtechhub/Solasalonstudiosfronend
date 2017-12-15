@@ -1,0 +1,18 @@
+<%= render 'shared/public_website/about_us_nav', :page => :leadership %>
+
+<div class="container content-container">
+
+	<%= link_to :leadership, :class => 'back-to-parent' do %>
+		<span class="back-arrow-black"></span>
+		<span class="back-arrow-pink"></span>
+		<span class="name"><%= t 'page.leadership.title' %><span>
+	<% end %>
+	
+	<h2>Myrle McNeil</h2>
+	<p><%= t 'page.leadership.ceo' %></p>
+
+</div>
+
+<% content_for(:title) { "#{t('page.leadership.title').html_safe} - Myrle McNeil" } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/leadership/myrle-mcneil" } %>
+<% content_for(:meta_description) { t('page.leadership.meta_description') } %>

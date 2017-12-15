@@ -21,6 +21,11 @@ Solasalonstudios::Application.routes.draw do
   get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
   get "leadership" => 'about_us#leadership', :as => :leadership
   get "our-story" => 'about_us#our_story', :as => :our_story 
+  get 'leadership/r-randall-clark' => 'about_us#randall_clark', :as => :randall_clark
+  get 'leadership/ben-jones' => 'about_us#ben_jones', :as => :ben_jones
+  get 'leadership/jennie-wolff' => 'about_us#jennie_wolff', :as => :jennie_wolff
+  get 'leadership/myrle-mcneil' => 'about_us#myrle_mcneil', :as => :myrle_mcneil
+  get 'leadership/j-todd-neel' => 'about_us#todd_neel', :as => :todd_neel
 
 
   get "contact-us" => "contact_us#index", :as => :contact_us
