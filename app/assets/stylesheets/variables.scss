@@ -22,7 +22,7 @@ $brand-pink-hover: #f26ab9;
 }
 
 @mixin helvetica() {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue", 
 	font-style: normal;
 	font-weight: 400;
 }
