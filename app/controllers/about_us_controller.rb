@@ -15,7 +15,7 @@ class AboutUsController < PublicWebsiteController
 	def jennie_wolff
 	end
 
-	def myrle_mcneil
+	def myrle_mcneal
 	end
 
 	def todd_neel
