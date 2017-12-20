@@ -25,15 +25,15 @@ class OwnYourSalonController < PublicWebsiteController
   	redirect to :why_sola
   end
 
-  def sola_pro
+  def old_sola_pro
   	redirect_to :sola_pro
   end
 
-  def solagenius
+  def old_solagenius
   	redirect_to :solagenius
   end
 
-  def sola_sessions
+  def old_sola_sessions
   	redirect_to :sola_sessions
   end
 

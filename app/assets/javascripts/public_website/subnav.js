@@ -12,9 +12,7 @@ $(function () {
     }
   };
 
-  $('#header .own_your_salon, #header .about_us').on('mouseenter', function () {
-    //showOysNav();
-  }).hoverIntent({
+  $('#header .own_your_salon, #header .about_us').hoverIntent({
     over: function (e) {
       //console.log('over! show it')
       var $this = $(e.target);

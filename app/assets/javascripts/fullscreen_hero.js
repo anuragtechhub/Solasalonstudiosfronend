@@ -1,5 +1,5 @@
-//= require jquery
-(function () {
+
+$(function () {
   var $window = $(window);
   var $header = $('#header');
   var $top_header = $('#top-header');

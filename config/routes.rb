@@ -54,12 +54,12 @@ Solasalonstudios::Application.routes.draw do
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
-  get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
   get 'own/studio-amenities' => 'own_your_salon#studio_amenities'
   get 'own/own-your-salon' => 'own_your_salon#own_your_salon'
-  get 'own/sola-pro' => 'own_your_salon#sola_pro'
-  get 'own/sola-sessions' => 'own_your_salon#sola_sessions'
-  get 'own/solagenius' => 'own_your_salon#solagenius'
+  get 'own/sola-pro' => 'own_your_salon#old_sola_pro'
+  get 'own/sola-sessions' => 'own_your_salon#old_sola_sessions'
+  get 'own/solagenius' => 'own_your_salon#old_solagenius'
+  get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
 
   # current own paths
   get 'our-studios' => 'own_your_salon#our_studios', :as => :our_studios

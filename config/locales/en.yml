@@ -373,122 +373,69 @@ en:
         sola_pro: Sola<span class="mobile-br"> </span>Pro
         sola_sessions: Sola<span class="mobile-br"> </span>Sessions
         sola_genius: Sola<span class="mobile-br"> </span>Genius
-            
-      section:
-        own_your_salon:
-          title: Own Your Salon
-          hero_heading1: Beautiful Studios. Exclusive Perks.
-          hero_heading2: At Sola, You Simply Get More!
-          search_placeholder_blur: Find a Sola near you
-          search_placeholder_focus: Search by city, state or zip
-          search: Search
-          tagline: Don't Just Dream. DO! Become a Boutique Salon Owner Today.
-          heading1: Be In Business For Yourself,<br />Not By Yourself
-          body1: "Salon professionals choose Sola for many reasons: to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money, for starters. But mainly, it's about freedom and control. Sola empowers stylists by alleviating the risks and hassles associated with traditional salon ownership. We provide high-end, move-in ready studios along with the support and tools you need to launch your salon business in no time. So, join our community of nearly 10,000 like-minded salon professionals and get one step closer to living the life you love!"
-          heading2: Your Life, Your Style<sup>&reg;</sup>
-          body2: "Whether you're a hairdresser, nail tech, esthetician or massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you completely control the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance for you. Sell the retail products you love and set your own prices to maximize your income. Sola studios come furnished with all of the major equipment that you'll need to help make your transition easy!"
-          view_gallery_of_studios: View Gallery of Studios
-          heading3: Find Out Why Salon<br />Professionals Choose Sola!
-          body3: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
-          about_sola: About Sola
-          testimonial_text: "When I moved to Sola, I fell in love with my craft again. The privacy of my own suite allows me to create my own vibes, energy and focus."
-          view_more_testimonials: View More Testimonials
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-        our_studios:
-          title: Our Studios
-          meta_description: "Sola provides high-end, move-in ready salon studios. Customize your private suite with paint, artwork, music and décor. Find a one or two chair salon near you."
-          heading1: Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.
-          heading2: Studio Amenities
-          list2: |
-            <strong>Oversized locking door:</strong> Your studio is private and secure.
-            <strong>High-end cabinets and drawers:</strong> Keep your studio neat and tidy.
-            <strong>Retail shelves:</strong> Showcase your favorite products.
-            <strong>Two oversized mirrors:</strong> Creates a nice and open feel.
-            <strong>Tool cabinet:</strong> Cleanly stores your cords.
-            <strong>Shampoo bowl:</strong> Shampoo, rinse and repeat.
-            <strong>Styling chair:</strong> Comfort for clients in a high-end hydraulic chair.
-            <strong>Sound-insulated walls:</strong> Keep out noisy distractions.
-            <strong>Full spectrum lighting:</strong> Light that emulates natural daylight.
-            <strong>Instant hot water:</strong> Saves you time. Conserves water.
-            <strong>Common areas:</strong> Break room with laundry facilities and refrigerator.
-            <strong>Utilities included:</strong> Water, electricity, Wi-Fi, no added costs.
-          heading3: Sola Professional Benefits
-          list3: |
-            All the equipment you need to start your business with minimum start-up costs.
-            Join a community of nearly 10,000 salon professionals nationwide to be in business for yourself, not by yourself.
-            Boost your income and keep 100% of your profits.
-            Access group insurance and Sola programs and discounts for products, scheduling and more.
-            Escape salon politics and drama in your private, secure studio.
-            Manage your own schedule with 24/7 studio access.
-            Personalize your salon space with artwork, music, furniture and decor.
-            Set pricing for services and products.
-            Sell the retail products you love.
-            Play your own music and enjoy private conversations.
-            Enjoy an intimate setting and give your guests the one-on-one attention they deserve.
-            Utilize %{sola_pro_link} website and app for deals and education.
-            Attend national %{sola_sessions_link} education events.
-            Create your own website page on %{sola_salons_link}
-          view_gallery_of_studios: View Gallery of Studios
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-          storage: 
-            heading: Drawers
-            body: Pull out drawers for additional storage
-          insulated_walls:
-            heading: Insulated Walls
-            body: Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.
-          tool_cabinet:
-            heading: Tool Cabinet
-            body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
-          chair:
-            heading: Hydraulic Chair
-            body: Provide comfort for your clients in a high-end hydraulic chair.
-          cabinetry:
-            heading: Cabinets
-            body: High end custom cabinetry with abundant storage helps keep your studio organized.
-          mirror:
-            heading: Mirrors
-            body: Style clients in front of large, well-lit mirrors.
-          products:
-            heading: Retail Shelving
-            body: Proudly display and sell the products you love
-          wash_basin:
-            heading: Shampoo Bowl
-            body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
-        sola_genius:
-          title: Sola Genius
-          meta_description: "Run your Sola like a boss with SolaGenius – a cutting edge app designed to streamline and supercharge your salon. Payment processing, online scheduling, and much more!"
-        sola_pro:
-          title: Sola Pro
-          meta_description: "Inspiration and education at your fingertips. The Sola Pro app provides all the tools and resources to help take your salon studio to the next level!"
-          hero_body1: <strong>An exclusive app for Sola professionals!</strong>
-          heading1: Sola Pro
-          list1: |
-            <strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.
-            <strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!
-            <strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.
-            <strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!
-            <strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.
-          download_app_or_view: Download app or view %{sola_pro_link}
-          heading2: Check Out a Sneak Peek of Sola Pro!
-          testimonial_text: "There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!"
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-        sola_sessions:
-          title: Sola Sessions
-          meta_description: "Inspiration. Education. Community. The Sola Sessions are live educational events exclusive to the Sola community. Learn and collaborate with the industry's best!"
-          heading1: The Sola Sessions
-          body1: "<strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community."
-          bullet1: "Learn from the industry's best!"
-          bullet2: "Intimate, Sola-exclusive events"
-          bullet3: "4 cities per year"
-          bullet4: "Join us in a city near you!"
-          learn_more: Learn More
-          testimonial_text: "My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous."
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"    
-    
+
+    our_studios:
+      title: Our Studios
+      meta_description: "Sola provides high-end, move-in ready salon studios. Customize your private suite with paint, artwork, music and décor. Find a one or two chair salon near you."
+      heading1: Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.
+      heading2: Studio Amenities
+      list2: |
+        <strong>Oversized locking door:</strong> Your studio is private and secure.
+        <strong>High-end cabinets and drawers:</strong> Keep your studio neat and tidy.
+        <strong>Retail shelves:</strong> Showcase your favorite products.
+        <strong>Two oversized mirrors:</strong> Creates a nice and open feel.
+        <strong>Tool cabinet:</strong> Cleanly stores your cords.
+        <strong>Shampoo bowl:</strong> Shampoo, rinse and repeat.
+        <strong>Styling chair:</strong> Comfort for clients in a high-end hydraulic chair.
+        <strong>Sound-insulated walls:</strong> Keep out noisy distractions.
+        <strong>Full spectrum lighting:</strong> Light that emulates natural daylight.
+        <strong>Instant hot water:</strong> Saves you time. Conserves water.
+        <strong>Common areas:</strong> Break room with laundry facilities and refrigerator.
+        <strong>Utilities included:</strong> Water, electricity, Wi-Fi, no added costs.
+      heading3: Sola Professional Benefits
+      list3: |
+        All the equipment you need to start your business with minimum start-up costs.
+        Join a community of nearly 10,000 salon professionals nationwide to be in business for yourself, not by yourself.
+        Boost your income and keep 100% of your profits.
+        Access group insurance and Sola programs and discounts for products, scheduling and more.
+        Escape salon politics and drama in your private, secure studio.
+        Manage your own schedule with 24/7 studio access.
+        Personalize your salon space with artwork, music, furniture and decor.
+        Set pricing for services and products.
+        Sell the retail products you love.
+        Play your own music and enjoy private conversations.
+        Enjoy an intimate setting and give your guests the one-on-one attention they deserve.
+        Utilize %{sola_pro_link} website and app for deals and education.
+        Attend national %{sola_sessions_link} education events.
+        Create your own website page on %{sola_salons_link}
+      view_gallery_of_studios: View Gallery of Studios
+      want_to_learn_more: Want to learn more?
+      view_frequently_asked_questions: "View frequently asked questions &raquo;"
+      storage: 
+        heading: Drawers
+        body: Pull out drawers for additional storage
+      insulated_walls:
+        heading: Insulated Walls
+        body: Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.
+      tool_cabinet:
+        heading: Tool Cabinet
+        body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
+      chair:
+        heading: Hydraulic Chair
+        body: Provide comfort for your clients in a high-end hydraulic chair.
+      cabinetry:
+        heading: Cabinets
+        body: High end custom cabinetry with abundant storage helps keep your studio organized.
+      mirror:
+        heading: Mirrors
+        body: Style clients in front of large, well-lit mirrors.
+      products:
+        heading: Retail Shelving
+        body: Proudly display and sell the products you love
+      wash_basin:
+        heading: Shampoo Bowl
+        body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
+
     privacy_policy:
       title: Privacy Policy
       body: |
@@ -595,6 +542,41 @@ en:
       view_location: View Location
       view_profile: View Profile
       studio: Studio
+
+    sola_genius:
+      title: Sola Genius
+      meta_description: "Run your Sola like a boss with SolaGenius – a cutting edge app designed to streamline and supercharge your salon. Payment processing, online scheduling, and much more!"
+    
+    sola_pro:
+      title: Sola Pro
+      meta_description: "Inspiration and education at your fingertips. The Sola Pro app provides all the tools and resources to help take your salon studio to the next level!"
+      hero_body1: <strong>An exclusive app for Sola professionals!</strong>
+      heading1: Sola Pro
+      list1: |
+        <strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.
+        <strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!
+        <strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.
+        <strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!
+        <strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.
+      download_app_or_view: Download app or view %{sola_pro_link}
+      heading2: Check Out a Sneak Peek of Sola Pro!
+      testimonial_text: "There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!"
+      want_to_learn_more: Want to learn more?
+      view_frequently_asked_questions: "View frequently asked questions &raquo;"
+    
+    sola_sessions:
+      title: Sola Sessions
+      meta_description: "Inspiration. Education. Community. The Sola Sessions are live educational events exclusive to the Sola community. Learn and collaborate with the industry's best!"
+      heading1: The Sola Sessions
+      body1: "<strong>Inspiration. Education. Community.</strong> The Sola Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our dynamic community."
+      bullet1: "Learn from the industry's best!"
+      bullet2: "Intimate, Sola-exclusive events"
+      bullet3: "4 cities per year"
+      bullet4: "Join us in a city near you!"
+      learn_more: Learn More
+      testimonial_text: "My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous."
+      want_to_learn_more: Want to learn more?
+      view_frequently_asked_questions: "View frequently asked questions &raquo;"   
 
     testimonials:
       title: Testimonials
@@ -703,4 +685,22 @@ en:
     why_sola:
       title: Why Sola
       meta_description: Why Sola
-      
+      title: Own Your Salon
+      hero_heading1: Beautiful Studios. Exclusive Perks.
+      hero_heading2: At Sola, You Simply Get More!
+      search_placeholder_blur: Find a Sola near you
+      search_placeholder_focus: Search by city, state or zip
+      search: Search
+      tagline: Don't Just Dream. DO! Become a Boutique Salon Owner Today.
+      heading1: Be In Business For Yourself,<br />Not By Yourself
+      body1: "Salon professionals choose Sola for many reasons: to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money, for starters. But mainly, it's about freedom and control. Sola empowers stylists by alleviating the risks and hassles associated with traditional salon ownership. We provide high-end, move-in ready studios along with the support and tools you need to launch your salon business in no time. So, join our community of nearly 10,000 like-minded salon professionals and get one step closer to living the life you love!"
+      heading2: Your Life, Your Style<sup>&reg;</sup>
+      body2: "Whether you're a hairdresser, nail tech, esthetician or massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you completely control the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance for you. Sell the retail products you love and set your own prices to maximize your income. Sola studios come furnished with all of the major equipment that you'll need to help make your transition easy!"
+      view_gallery_of_studios: View Gallery of Studios
+      heading3: Find Out Why Salon<br />Professionals Choose Sola!
+      body3: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
+      about_sola: About Sola
+      testimonial_text: "When I moved to Sola, I fell in love with my craft again. The privacy of my own suite allows me to create my own vibes, energy and focus."
+      view_more_testimonials: View More Testimonials
+      want_to_learn_more: Want to learn more?
+      view_frequently_asked_questions: "View frequently asked questions &raquo;"
