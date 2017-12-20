@@ -16,10 +16,12 @@ $(function () {
     //showOysNav();
   }).hoverIntent({
     over: function (e) {
+      //console.log('over! show it')
       var $this = $(e.target);
       showOysNav($this.data('nav'));
     }, 
     out: function (e) {
+      //console.log('out! hide it');
       var $this = $(e.target);
 
       var $oysNav = $('.oys-nav[data-nav="' + $this.data('nav') + '"]');
@@ -34,11 +36,13 @@ $(function () {
   });
 
   $('.oys-nav').on('mouseenter', function (e) {
+    //console.log('mouseenter show!')
     var $this = $(e.target);
     $('.oys-nav[data-nav="' + $this.data('nav') + '"]').addClass('over').show();
   });  
 
   $('.oys-nav').on('mouseleave', function (e) {
+    //console.log('mouseleave hide!');
     var $this = $(e.target);
     $('.oys-nav[data-nav="' + $this.data('nav') + '"]').removeClass('over').hide();
   }); 

@@ -103,6 +103,9 @@ p, .p {
   color: #4A4A4A;
   margin-bottom: 30px;
   letter-spacing: 0px;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto  
 }
 
 p.subtle, .psubtle {
