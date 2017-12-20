@@ -18,3 +18,14 @@
 		color: #000;
 	}
 }
+
+.leadership-bio {
+	h2 {
+		margin-bottom: 0;
+	}
+	p, li {
+		-moz-osx-font-smoothing: antialiased; //auto
+	  -webkit-font-smoothing: antialiased; //auto
+	  font-smoothing: antialiased; //auto
+	}
+}

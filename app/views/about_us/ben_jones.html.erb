@@ -8,10 +8,12 @@
 		<span class="name"><%= t 'page.leadership.title' %><span>
 	<% end %>
 	
-	<h2>Ben Jones</h2>
-	<p><%= t 'page.leadership.chief_development_officer' %></p>
-	<%= t('page.leadership.ben_jones_bio').html_safe %>
-
+	<div class="leadership-bio">	
+		<h2>Ben Jones</h2>
+		<p><%= t 'page.leadership.chief_development_officer' %></p>
+		<%= t('page.leadership.ben_jones_bio').html_safe %>
+	</div>
+	
 </div>
 
 <% content_for(:title) { "#{t('page.leadership.title').html_safe} - Ben Jones" } %>

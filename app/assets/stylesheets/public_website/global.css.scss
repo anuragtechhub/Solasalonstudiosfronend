@@ -2,7 +2,9 @@
 @import 'variables';
 
 html {
+  -moz-osx-font-smoothing: auto; //antialiased
   -webkit-font-smoothing: auto; //antialiased
+  font-smoothing: auto; //antialiased
   box-sizing: border-box;
 }
 

@@ -9,10 +9,12 @@
 		<span class="name"><%= t 'page.leadership.title' %><span>
 	<% end %>
 
-	<h2>J. Todd Neel</h2>
-	<p><%= t 'page.leadership.cfo' %></p>
-	<%= t('page.leadership.j_todd_neel_bio').html_safe %>
-
+	<div class="leadership-bio">
+		<h2>J. Todd Neel</h2>
+		<p><%= t 'page.leadership.cfo' %></p>
+		<%= t('page.leadership.j_todd_neel_bio').html_safe %>
+	</div>
+	
 </div>
 
 <% content_for(:title) { "#{t('page.leadership.title').html_safe} - J. Todd Neel" } %>
