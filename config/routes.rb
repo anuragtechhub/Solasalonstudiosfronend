@@ -15,10 +15,11 @@ Solasalonstudios::Application.routes.draw do
 
 
 
-  # about URLs
+  # About Us URLs
+
   get "about-us" => 'about_us#index', :as => :about_us
   get "about" => 'about_us#index'
-  get 'why-sola' => 'about_us#why_sola', :as => :why_sola
+  
   get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
   get "leadership" => 'about_us#leadership', :as => :leadership
   get "our-story" => 'about_us#our_story', :as => :our_story 
@@ -44,12 +45,33 @@ Solasalonstudios::Application.routes.draw do
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
 
+
+
+  # Own Your Salon URLs
+
+  # old own redirects
+  get 'amenities' => 'own_your_salon#index'
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
   get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
-  get 'amenities' => 'own_your_salon#index'
-  get 'our-studios' => 'own_your_salon#index', :as => :our_studios
+  get 'own/studio-amenities' => 'own_your_salon#studio_amenities'
+  get 'own/own-your-salon' => 'own_your_salon#own_your_salon'
+  get 'own/sola-pro' => 'own_your_salon#sola_pro'
+  get 'own/sola-sessions' => 'own_your_salon#sola_sessions'
+  get 'own/solagenius' => 'own_your_salon#solagenius'
+
+  
+  get 'our-studios' => 'own_your_salon#our_studios', :as => :our_studios
+  get 'sola-pro' => 'own_your_salon#sola_pro', :as => :sola_pro
+  get 'sola-sessions' => 'own_your_salon#sola_sessions', :as => :sola_sessions
+  get 'solagenius' => 'own_your_salon#solagenius', :as => :solagenius
+  get 'why-sola' => 'own_your_salon#why_sola', :as => :why_sola
+
+
+
+
+
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   
