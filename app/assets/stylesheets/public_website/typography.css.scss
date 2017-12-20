@@ -95,6 +95,18 @@ h4, .h4 {
   } 
 }
 
+h5, .h5 {
+  @include chalet_new_york;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 3px;
+  color: #000000;
+  text-transform: uppercase;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto   
+}
+
 p, .p {
   @include helvetica;
   font-size: 18px;

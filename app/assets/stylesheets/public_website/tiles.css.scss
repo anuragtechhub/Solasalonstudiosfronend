@@ -1,10 +1,36 @@
 @import 'variables';
 @import 'bootstrap/mixins';
 
+.tile-mask {
+	position: relative;
+  display: block;
+
+  img {
+  	width: 100%;
+  	height: auto;
+  	border-radius: 4px;
+  }
+
+  .content {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	padding: 45px;
+  }  
+}
+
 .tile-for-professionals-own-your-salon {
 
+	h5 {
+		color: #FFF;
+	}
 }
 
 .tile-for-customers-find-a-stylist {
-	
+
+	h5 {
+		color: #000;
+	}
 }

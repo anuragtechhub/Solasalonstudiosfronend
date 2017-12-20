@@ -304,7 +304,10 @@ en:
     home:
       title: Home
       meta_description: "Beautiful studios, exclusive perks. At Sola, you simply get more! Lease a salon studio to join our community and experience the freedom and benefits of salon ownership."
+      for_professionals:  For Professionals
+      for_customers: For Customers
 
+      
     locations:
       title: Locations
       title_long: Sola Locations
