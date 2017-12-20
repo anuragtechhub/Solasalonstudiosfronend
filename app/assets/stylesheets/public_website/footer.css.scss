@@ -50,6 +50,9 @@
       color: #4A4A4A;
       text-decoration: none;
       padding: 7px 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
 
       &:hover, &:active {
         color: #BABABA;
@@ -76,7 +79,7 @@
       position: relative;
       top: 0;
       font-size: 12px;
-      height: 35px;
+      height: 33px;
       border: 1px solid #DBDBDB;
       background: #FBFBFB;
       margin: 0;
@@ -89,12 +92,25 @@
       @include helvetica;
       font-size: 13px;
       line-height: 16px;
-      padding: 0 0 5px 0;
+      padding: 0 0 3px 0;
       margin-right: 0;
       width: 75%;
       background: transparent;
       border: 0;
       border-bottom: 1px solid #000;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #ABABAB;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: #ABABAB;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: #ABABAB;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: #ABABAB;
+      }
 
       &:focus, &:active, &:hover {
         border: 0 !important;
@@ -192,6 +208,10 @@
 @media (max-width: 925px) {
   
   #footer {
+
+    .one-half.column {
+      width: 50%;
+    }
 
     .row.first {
       display: block;
