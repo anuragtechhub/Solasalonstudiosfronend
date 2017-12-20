@@ -18,6 +18,7 @@ Solasalonstudios::Application.routes.draw do
   # about URLs
   get "about-us" => 'about_us#index', :as => :about_us
   get "about" => 'about_us#index'
+  get 'why-sola' => 'about_us#why_sola', :as => :why_sola
   get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
   get "leadership" => 'about_us#leadership', :as => :leadership
   get "our-story" => 'about_us#our_story', :as => :our_story 
@@ -48,6 +49,7 @@ Solasalonstudios::Application.routes.draw do
   get 'own' => 'own_your_salon#index'
   get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
   get 'amenities' => 'own_your_salon#index'
+  get 'our-studios' => 'own_your_salon#index', :as => :our_studios
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   

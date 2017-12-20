@@ -27,4 +27,7 @@ class AboutUsController < PublicWebsiteController
   def who_we_are
   end
 
+  def why_sola
+  end
+
 end

@@ -27,6 +27,11 @@
       <div class="tile-mask tile-for-professionals-own-your-salon">
         <div class="content">
           <h5><%= t('page.home.for_professionals') %></h5>
+          <ul>
+            <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><% end %></h4></li>
+            <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><% end %></h4></li>
+            <li><h4><%= link_to :gallery do %><%= t('page.home.photo_gallery') %><% end %></h4></li>
+          </ul>
         </div>
         <%= image_tag 'Home/ForProfessionals_BG.jpg', width: '566', height: '407' %>
       </div>

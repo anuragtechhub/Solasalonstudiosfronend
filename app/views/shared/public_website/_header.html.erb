@@ -44,10 +44,10 @@
 <div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %>" data-nav="own-your-salon">
   <ul>
     <li>
-      <a href="/own/own-your-salon">
+      <%= link_to :why_sola do %>
         <%= image_tag 'own_nav/1_own.jpg' %>
-        <h4><%= t 'nav.own_your_salon' %></h4>
-      </a>
+        <h4><%= t 'page.why_sola.title' %></h4>
+      <% end %>
     </li>
     <li>
       <a href="/own/studio-amenities">

@@ -23,6 +23,26 @@
 
 .tile-for-professionals-own-your-salon {
 
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	h4 {
+		margin: 0;
+	}
+
+	a, a:link, a:visited, a:hover, a:active {
+		color: #FFF;
+		text-decoration: none;
+		@include transition(opacity 0.15s ease-in-out);
+	}
+
+	a:hover, a:active {
+		opacity: 0.5;
+	}
+
 	h5 {
 		color: #FFF;
 	}
