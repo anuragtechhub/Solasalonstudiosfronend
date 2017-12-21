@@ -2,9 +2,11 @@
   <div class="item">
     <%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %>
     <div class="item-content left-align">
+      <div class="left-align-container">
       <h1><%= t('page.home.slider1_heading').html_safe %></h1>
       <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
       <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+      </div>
     </div>
   </div>
   <div class="item" style="display:none">
