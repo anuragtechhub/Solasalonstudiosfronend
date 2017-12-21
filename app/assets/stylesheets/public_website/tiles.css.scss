@@ -27,21 +27,51 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+
+		li {
+			margin-bottom: 0;
+
+			span.forward-arrow-white {
+				float: right;
+    		position: relative;
+    		top: 3px;
+    		@include transition(opacity 0.15s ease-in-out);
+    		opacity: 1;
+			}
+
+			a, a:link, a:visited, a:hover, a:active {
+				display: block;
+				color: rgba(255, 255, 255, 1);
+				text-decoration: none;
+				@include transition(color 0.15s ease-in-out);
+				padding: 15px 0 14px 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+			}
+
+			a:hover, a:active {
+				color: rgba(255, 255, 255, 0.5);
+
+				span.forward-arrow-white {
+					opacity: 0.5;
+				}
+			}
+
+
+
+			&:last-child {
+
+				a, a:link, a:visited, a:hover, a:active { 
+					border-bottom: 0;
+				}
+			}
+		}
 	}
 
 	h4 {
 		margin: 0;
 	}
 
-	a, a:link, a:visited, a:hover, a:active {
-		color: #FFF;
-		text-decoration: none;
-		@include transition(opacity 0.15s ease-in-out);
-	}
 
-	a:hover, a:active {
-		opacity: 0.5;
-	}
 
 	h5 {
 		color: #FFF;
