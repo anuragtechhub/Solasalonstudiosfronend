@@ -27,6 +27,7 @@
       <div class="tile-mask tile-for-professionals-own-your-salon">
         <div class="content">
           <h5><%= t('page.home.for_professionals') %></h5>
+          <h2><%= t('page.home.own_your_salon') %></h2>
           <ul>
             <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
             <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
@@ -41,6 +42,8 @@
       <div class="tile-mask tile-for-customers-find-a-stylist">
         <div class="content">
           <h5><%= t('page.home.for_customers') %></h5>
+          <h2><%= t('page.home.find_a_sola_hairstylist') %></h2>
+          <p><%= t('page.home.search_salon_professionals') %></p>
         </div>
         <%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %>
       </div>
@@ -48,14 +51,25 @@
   </div>
 
   <div class="row home-recently-featured-box">
-      <h3>Recently Featured In</h3>
-      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' %>
+    <h5>Recently Featured In</h5>
+    <%= link_to "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' do %>
+      <%= image_tag 'modern_salon_logo.png', width: 140, height: 51 %>
+    <% end %>
+    <%= link_to "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' do %>
+      <%= image_tag 'american_salon_logo.png', width: 160, height: 51 %>
+    <% end %>
+    <%= link_to "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' do %>
+      <%= image_tag 'beauty_launchpad_logo.png', width: 193, height: 51 %>
+      <% end %>
+    <%= link_to "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' do %>
+      <%= image_tag 'forbes_logo.png', width: 122, height: 51 %>
+    <% end %>
+    <%= link_to "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
+      <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
+    <% end %>
   </div>
 
+  <!--
   <div class="row home-find-a-salon-pro">
     <div class="one-half column centered-column">
       <h3 class="home-slogan">Find a Salon Professional.</h3>
@@ -68,7 +82,7 @@
       </div>
     </div>
   </div>
-
+  -->
 </div>
 
 <div class="callout blue">

@@ -111,8 +111,8 @@
 .home-recently-featured-box {
   display: block;
 
-  margin: 15px 0 30px 0;
-  border: 1px solid #E6E6E6;
+  margin: 30px 0;
+  //border: 1px solid #E6E6E6;
   border-right: 0;
   border-left: 0;
   padding: 30px 0;
@@ -135,6 +135,28 @@
   .search-input-with-icon input.large {
     margin-bottom: 0;
   }
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+
+    img {
+      position: relative;
+      opacity: 0.5;
+      margin: 0 5px;
+    }
+
+    &.modern_salon_logo img {
+      top: 3px;
+    }
+
+    &.behind_the_chair_logo img {
+      top: 1px;
+    }
+
+    &.forbes_logo img {
+      top: -2px;
+    }
+  }
 }
 
 img.recently-featured-in {
@@ -145,71 +167,71 @@ img.recently-featured-in {
   max-height: 50px;
 }
 
-.modern_salon_logo {
-  position: relative;
-  top: 3px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('modern_salon_logo.png') no-repeat center center;
-    background-size: 140px 51px;
-    width: 140px;
-    height: 51px;
-  }
-}
+// .modern_salon_logo {
+//   position: relative;
+//   top: 3px;
+//   opacity: 0.5;
+//   // &:link, &:visited, &:hover, &:active {
+//   //   display: inline-block;
+//   //   text-decoration: none;
+//   //   background: asset-url('modern_salon_logo.png') no-repeat center center;
+//   //   background-size: 140px 51px;
+//   //   width: 140px;
+//   //   height: 51px;
+//   // }
+// }
 
-.american_salon_logo {
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('american_salon_logo.png') no-repeat center center;
-    background-size: 160px 51px;
-    width: 160px;
-    height: 51px;
-  }
-}
+// .american_salon_logo {
+//   opacity: 0.5;
+//   // &:link, &:visited, &:hover, &:active {
+//   //   display: inline-block;
+//   //   text-decoration: none;
+//   //   background: asset-url('american_salon_logo.png') no-repeat center center;
+//   //   background-size: 160px 51px;
+//   //   width: 160px;
+//   //   height: 51px;
+//   // }
+// }
 
-.beauty_launchpad_logo {
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('beauty_launchpad_logo.png') no-repeat center center;
-    background-size: 193px 51px;
-    width: 193px;
-    height: 51px;
-  }
-}
+// .beauty_launchpad_logo {
+//   opacity: 0.5;
+//   // &:link, &:visited, &:hover, &:active {
+//   //   display: inline-block;
+//   //   text-decoration: none;
+//   //   background: asset-url('beauty_launchpad_logo.png') no-repeat center center;
+//   //   background-size: 193px 51px;
+//   //   width: 193px;
+//   //   height: 51px;
+//   // }
+// }
 
-.behind_the_chair_logo {
-  position: relative;
-  top: 1px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('behind_the_chair_logo.png') no-repeat center center;
-    background-size: 242px 51px;
-    width: 242px;
-    height: 51px;
-  }
-}
+// .behind_the_chair_logo {
+//   position: relative;
+//   top: 1px;
+//   opacity: 0.5;
+//   // &:link, &:visited, &:hover, &:active {
+//   //   display: inline-block;
+//   //   text-decoration: none;
+//   //   background: asset-url('behind_the_chair_logo.png') no-repeat center center;
+//   //   background-size: 242px 51px;
+//   //   width: 242px;
+//   //   height: 51px;
+//   // }
+// }
 
-.forbes_logo {
-  position: relative;
-  top: -2px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('forbes_logo.png') no-repeat center center;
-    background-size: 122px 51px;
-    width: 122px;
-    height: 51px;
-  }
-}
+// .forbes_logo {
+//   position: relative;
+//   top: -2px;
+//   opacity: 0.5;
+//   // &:link, &:visited, &:hover, &:active {
+//   //   display: inline-block;
+//   //   text-decoration: none;
+//   //   background: asset-url('forbes_logo.png') no-repeat center center;
+//   //   background-size: 122px 51px;
+//   //   width: 122px;
+//   //   height: 51px;
+//   // }
+// }
 
 @media (max-width: 650px) {
   .home-recently-featured-box {

@@ -71,16 +71,23 @@
 		margin: 0;
 	}
 
-
-
-	h5 {
+	h2, h5 {
 		color: #FFF;
 	}
 }
 
 .tile-for-customers-find-a-stylist {
 
+	h2 {
+		margin-bottom: 0;
+	}
+
 	h5 {
 		color: #000;
+	}
+
+	p {
+		font-size: 14px;
+		color: #4A4A4A;
 	}
 }
