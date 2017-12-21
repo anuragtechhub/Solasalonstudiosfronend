@@ -61,7 +61,16 @@
       <div class="tile-mask tile-for-customers-find-a-stylist">
         <div class="content">
           <h5><%= t('page.home.for_customers') %></h5>
-          <h2><%= t('page.home.find_a_sola_hairstylist') %></h2>
+          <h2>
+            <%= t('page.home.find_a_sola') %>
+            <br />
+            <div class="home-services-animation">
+              <span class="active"><%= t('services.hairstylist') %></span>
+              <span><%= t('services.makeup_artist') %></span>
+              <span><%= t('services.nail_technician') %></span>
+              <span><%= t('services.skincare_specialist') %></span>
+            </div>
+          </h2>
           <p><%= t('page.home.search_salon_professionals') %></p>
         </div>
         <%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %>

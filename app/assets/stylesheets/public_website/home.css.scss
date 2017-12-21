@@ -27,6 +27,26 @@
   display: none !important;
 }
 
+.home-services-animation {
+  position: relative;
+  min-height: 56px;
+  
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #9B9B9B;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    @include transition(opacity .25s ease);
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
 .home-tile {
   margin-bottom: 20px;
   position: relative;

@@ -59,6 +59,16 @@ en:
     join_button: Sign Up
     legal: Sola Salon Studios - Your Life, Your Style &copy; Copyright
 
+  services:
+    hairstylist: Hairstylist
+    makeup_artist: Makeup Artist
+    nail_technician: Nail Technician
+    skincare_specialist: Skincare Specialist
+    hair: Hair
+    makeup: Makeup
+    nails: Nails
+    skincare: Skincare
+
   page:
 
     about:
