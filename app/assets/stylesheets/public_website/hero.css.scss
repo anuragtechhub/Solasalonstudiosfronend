@@ -56,6 +56,16 @@
         align-items: flex-end;
       }
 
+      &.bottom-align {
+        justify-content: flex-end;
+        bottom: 80px;
+      }
+
+      &.top-align {
+        justify-content: flex-start;
+        top: 80px;
+      }
+
       a:link, a:visited, a:hover, a:active {
         color: #FFF;
         text-decoration: none;
@@ -74,8 +84,12 @@
         margin: 0 0 5px 0;
 
         &.large {
-          font-size: 88px;
-          line-height: 88px;
+          font-size: 108px;
+          line-height: 108px;
+        }
+        &.xlarge {
+          font-size: 138px;
+          line-height: 138px;
         }
       }
       h3 {
