@@ -13,15 +13,15 @@
     <%= image_tag 'Home/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %>
     <div class="item-content">
       <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider2_subhead').html_safe %></h3>
+      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
       <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
     </div>
   </div>
   <div class="item" style="display:none">
     <%= image_tag 'Home/Home-Slider-3.jpg', :alt => t('page.home.slider3_heading'), :width => 1600, :height => 800 %>
     <div class="item-content">
-      <h1><%= t('page.home.slider3_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider3_subhead').html_safe %></h3>
+      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
       <%= link_to :gallery, :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
     </div>
   </div>
@@ -29,7 +29,7 @@
     <%= image_tag 'Home/Home-Slider-4.jpg', :alt => t('page.home.slider4_heading'), :width => 1600, :height => 800 %>
     <div class="item-content bottom-align">
       <h1 class="xlarge"><%= t('page.home.slider4_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider4_subhead').html_safe %></h3>
+      <h3 class="mobile-hidden"><%= t('page.home.slider4_subhead').html_safe %></h3>
       <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.slider4_button').html_safe %><% end %>
     </div>
   </div>

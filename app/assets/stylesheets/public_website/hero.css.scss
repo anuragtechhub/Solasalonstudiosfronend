@@ -48,6 +48,10 @@
       bottom: 0;
       text-align: center;
 
+      .mobile-br {
+        display: none;
+      }      
+
       &.left-align {
         align-items: flex-start;
       }
@@ -97,7 +101,7 @@
         color: #FFF;
       }
       h1 {
-        margin: -15px 0 5px 0;
+        margin: -5px 0 5px 0;
 
         &.large {
           font-size: 108px;
@@ -165,6 +169,14 @@
 
       .item-content {
 
+        .mobile-br {
+          display: block;
+        }
+
+        .mobile-hidden {
+          display: none;
+        }
+
         a:link, a:visited, a:hover, a:active {
           &.button {
             font-size: 13px;
@@ -182,8 +194,12 @@
             line-height: 48px;
           }
           &.xlarge {
-            font-size: 78px;
-            line-height: 78px;
+            font-size: 58px;
+            line-height: 58px;
+          }
+
+          &.more-bottom-margin-mobile {
+            margin-bottom: 20px;
           }
         }
 
@@ -191,10 +207,22 @@
           font-size: 16px;
           line-height: 24px;
           margin-bottom: 20px;
+
+          &.less-bottom-margin-mobile {
+            margin-bottom: 10px;
+          }
         }
 
         .left-align-container, .right-align-container {
           padding: 0 30px;
+        }
+
+        &.top-align {
+          top: 40px;
+        }
+
+        &.bottom-align {
+          bottom: 40px;
         }
       }
 
