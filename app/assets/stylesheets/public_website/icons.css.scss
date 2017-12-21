@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 /**
 * Close X
 */
@@ -116,4 +119,24 @@
   background-size: (20px / 2) (32px / 2);
   height: (32px / 2);
   width: (20px / 2);
+}
+
+
+
+/**
+* Play Button
+*/
+
+.play-button {
+  background: asset-data-url('Play@2x.png');
+  background-size: (226px / 2) (226px / 2);
+  height: (226px / 2);
+  width: (226px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('Play@2x.png');
+    background-size: (226px / 2) (226px / 2);
+    height: (226px / 2);
+    width: (226px / 2);    
+  }
 }
