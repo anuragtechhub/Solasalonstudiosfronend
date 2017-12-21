@@ -1,3 +1,5 @@
+<%= render 'shared/public_website/own_your_salon_nav', :page => :sola_sessions %>
+
 <div class="hero-fullscreen sessions-landing-2017-carousel">
 
   <div class="hero-carousel owl-carousel owl-theme hero-carousel-fullscreen" data-pagination="false" data-autoplayoff="true">
@@ -15,8 +17,6 @@
 
   <div class="hero-content">
     <div class="hero-content-wrapper">
-
-      <%= render 'tabs', :active => 'sola-sessions' %>
 
     </div>
   </div>
@@ -202,4 +202,4 @@
 
 <% content_for(:title) { t('page.sola_sessions.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola-sessions" } %>
-<% content_for(:meta_description) { t('page.sola-sessions.meta_description') } %>
+<% content_for(:meta_description) { t('page.sola_sessions.meta_description') } %>

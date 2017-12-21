@@ -1,3 +1,5 @@
+<%= render 'shared/public_website/own_your_salon_nav', :page => :sola_pro %>
+
 <div class="sola-pro">
 
   <div class="hero-fullscreen">
@@ -7,7 +9,6 @@
 
     <div class="hero-content">
       <div class="hero-content-wrapper">
-        <%= render 'tabs', :active => 'sola-pro' %>
         <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo', :alt => 'A white iPhone showing the Sola Pro app' %>
         <div class="sola-pro-copy">
           <%= t('page.sola_pro.hero_body1').html_safe %>
