@@ -36,7 +36,7 @@ $(function () {
       ],
       lazyEffect: false,
       slideSpeed: 300,
-      pagination: false,
+      pagination: true,
       //autoPlay: 5000,
       transitionStyle : "fade"
     };

@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 /*
 * 	Owl Carousel Owl Demo Theme 
 *	v1.3.3
@@ -36,7 +39,7 @@
 /* Styling Pagination*/
 .owl-theme .owl-controls .owl-pagination {
 	position: absolute;
-	bottom: 20px;
+	bottom: 40px;
 	left: 0;
 	right: 0;
 	text-align: center;
@@ -49,13 +52,14 @@
 }
 .owl-theme .owl-controls .owl-page span{
 	display: block;
-	width: 14px;
-	height: 14px;
-	margin: 5px 7px;
-	-webkit-border-radius: 14px;
-	-moz-border-radius: 14px;
-	border-radius: 14px;
-	background: rgba(255, 255, 255, 0.4);
+	width: 10px;
+	height: 10px;
+	margin: 0 4px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.5);
+  @include transition(background .25s ease);
 }
 
 .mysola-carousel.owl-theme .owl-controls .owl-page span{
