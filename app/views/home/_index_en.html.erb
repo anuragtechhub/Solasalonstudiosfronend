@@ -1,19 +1,36 @@
-<div class="hero-carousel owl-carousel owl-theme home-all">
-  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Desktop-2.jpg', :alt => "Beautiful studios, exclusive perks" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to own_tab_path('solagenius') do %><%= image_tag 'Home/sliders/Sola-SolaGenius-Slider-Desktop.jpg', :alt => "SolaGenius" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :my_sola do %><%= image_tag 'Home/Sola-MySola-Slider-Desktop-1-FN.jpg', :alt => "#MySola" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :sessions do %><%= image_tag 'Home/sliders/Sessions_Desktop.jpg', :alt => "The Sola Sessions: Inspiration. Education. Community" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Desktop-3.jpg', :alt => "Join a company that supports you" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Desktop-4.jpg', :alt => 'Salon professional testimonial' %><% end %></div>
-</div>
-
-<div class="hero-carousel owl-carousel owl-theme home-mobile">
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Mobile-2.jpg', :alt => "Beautiful studios, exclusive perks" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to own_tab_path('solagenius') do %><%= image_tag 'Home/sliders/Sola-SolaGenius-Slider-Mobile.jpg', :alt => "SolaGenius" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :my_sola do %><%= image_tag 'Home/sliders/Sola-2017-MySola-Slider-Mobile.jpg', :alt => "#MySola" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :sessions do %><%= image_tag 'Home/sliders/Sessions_Mobile.jpg', :alt => "The Sola Sessions: Inspiration. Education. Community" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Mobile-3.jpg', :alt => "Join a company that supports you" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Mobile-4.jpg', :alt => 'Salon professional testimonial' %><% end %></div> 
+<div class="hero-carousel owl-carousel owl-theme owl-desktop">
+  <div class="item">
+    <%= link_to :own_your_salon do %>
+      <%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %>
+      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
+      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+    <% end %>
+  </div>
+  <div class="item" style="display:none">
+    <%= link_to :our_studios do %>
+      <%= image_tag 'Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %>
+      <h1><%= t('page.home.slider2_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider2_subhead').html_safe %></h3>
+      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
+    <% end %>
+  </div>
+  <div class="item" style="display:none">
+    <%= link_to :gallery do %>
+      <%= image_tag 'Home-Slider-3.jpg', :alt => t('page.home.slider3_heading'), :width => 1600, :height => 800 %>
+      <h1><%= t('page.home.slider3_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider3_subhead').html_safe %></h3>
+      <%= link_to :gallery, :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+    <% end %>    
+  </div>
+  <div class="item" style="display:none">
+    <%= link_to :why_sola do %>
+      <%= image_tag 'Home-Slider-4.jpg', :alt => t('page.home.slider4_heading'), :width => 1600, :height => 800 %>
+      <h1><%= t('page.home.slider4_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider4_subhead').html_safe %></h3>
+      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.slider4_button').html_safe %><% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="container">
@@ -67,6 +84,14 @@
     <%= link_to "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
       <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
     <% end %>
+  </div>
+
+  <div class="owl-carousel owl-theme owl-desktop">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
+
+  <div class="owl-carousel owl-theme owl-mobile">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile.png', :alt => "Sola Pro" %><% end %></div>
   </div>
 
   <div class="block-quote-testimonial">
