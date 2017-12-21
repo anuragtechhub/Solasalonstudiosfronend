@@ -91,6 +91,7 @@
 */
 
 .back-arrow-white {
+  display: inline-block;
   background: asset-data-url('back-arrow-white.png');
   background-size: (20px / 2) (32px / 2);
   height: (32px / 2);
@@ -103,6 +104,7 @@
 }
 
 .back-arrow-black {
+  display: inline-block;
   background: asset-data-url('back-arrow-black.png');
   background-size: (20px / 2) (32px / 2);
   height: (32px / 2);
@@ -115,6 +117,7 @@
 }
 
 .back-arrow-pink {
+  display: inline-block;
   background: asset-data-url('back-arrow-pink.png');
   background-size: (20px / 2) (32px / 2);
   height: (32px / 2);
@@ -124,10 +127,51 @@
 
 
 /**
+* Left Arrow Outline
+*/
+.left-arrow-outline {
+  display: inline-block;
+  background: asset-data-url('LeftArrowLightOutline@2x.png');
+  background-size: (64px / 2) (64px / 2);
+  height: (64px / 2);
+  width: (64px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('LeftArrowLightOutline@2x.png');
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }
+}
+
+
+
+/**
+* Right Arrow Outline
+*/
+.right-arrow-outline {
+  display: inline-block;
+  background: asset-data-url('RightArrowLightOutline@2x.png');
+  background-size: (64px / 2) (64px / 2);
+  height: (64px / 2);
+  width: (64px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('RightArrowLightOutline@2x.png');
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }
+}
+
+
+
+/**
 * Play Button
 */
 
-.play-button {
+.play-button-icon {
+  display: inline-block;
   background: asset-data-url('Play@2x.png');
   background-size: (226px / 2) (226px / 2);
   height: (226px / 2);
