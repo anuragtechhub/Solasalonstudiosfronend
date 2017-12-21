@@ -97,7 +97,7 @@
         color: #FFF;
       }
       h1 {
-        margin: 0 0 5px 0;
+        margin: -15px 0 5px 0;
 
         &.large {
           font-size: 108px;
@@ -111,6 +111,93 @@
       h3 {
         margin: 0 0 40px 0;
       }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .owl-controls .owl-buttons {
+    display: none;
+  }
+
+  .owl-carousel {
+
+    .item {
+
+      .item-content {
+
+        h1 {
+          font-size: 48px;
+          line-height: 48px;
+
+          &.large {
+            font-size: 68px;
+            line-height: 68px;
+          }
+          &.xlarge {
+            font-size: 88px;
+            line-height: 88px;
+          }
+        }
+
+        h3 {
+          font-size: 18px;
+          line-height: 26px;
+        }
+
+        .left-align-container, .right-align-container {
+          padding: 0 40px;
+        }
+      }
+
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .owl-theme .owl-controls .owl-pagination {
+    bottom: 20px;
+  }
+
+  .owl-carousel {
+
+    .item {
+
+      .item-content {
+
+        a:link, a:visited, a:hover, a:active {
+          &.button {
+            font-size: 13px;
+            line-height: 13px;
+            padding: 6px 10px;
+          }
+        }
+
+        h1 {
+          font-size: 38px;
+          line-height: 38px;
+
+          &.large {
+            font-size: 48px;
+            line-height: 48px;
+          }
+          &.xlarge {
+            font-size: 78px;
+            line-height: 78px;
+          }
+        }
+
+        h3 {
+          font-size: 16px;
+          line-height: 24px;
+          margin-bottom: 20px;
+        }
+
+        .left-align-container, .right-align-container {
+          padding: 0 30px;
+        }
+      }
+
     }
   }
 }
