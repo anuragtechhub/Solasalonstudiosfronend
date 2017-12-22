@@ -136,7 +136,7 @@
     letter-spacing: 1px;
     text-decoration: none;
     white-space: nowrap;
-    @include transition(color .3s ease);
+    @include transition(color .15s ease);
   }
 
   a:hover, a:active {
@@ -144,17 +144,18 @@
   }
 }
 
-h2.city {
-  margin: 20px 0 35px 0;
+h2.city, h3.city {
+  margin: 40px 20px 15px 20px;
 
   a, a:link, a:visited {
     color: #000;
     text-decoration: none;
-    @include transition(color .25s ease);
+    @include transition(opacity .15s ease);
+    opacity: 1;
   }
 
   a:hover, a:active {
-    color: #7A7A7A;
+    opacity: 0.5;
   }
 }
 

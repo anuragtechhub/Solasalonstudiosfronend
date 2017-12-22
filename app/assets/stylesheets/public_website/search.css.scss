@@ -11,16 +11,25 @@
 }
 
 .search-result {
-  
-  
-
 
   h3 {
+    @include helvetica;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000;
+    text-decoration: underline;
     margin: 0;
   }
 
   p {
-    margin: 15px 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4A4A4A;
+    margin: 0 0 15px 0;
+
+    &.phone {
+      margin-top: -4px;
+    }
   }
 
   div {
@@ -43,6 +52,10 @@
 
   a:hover, a:active {
     background: #F5F9FB;
+
+    h3 {
+      color: $brand-pink;
+    }
   }
 }
 

@@ -54,6 +54,7 @@
     float: left;
     clear: none;
   }
+
   button {
     width: 35%;
     height: 58px;
@@ -222,14 +223,14 @@ h3.business-name {
   .service {
     display: inline-block;
     background: #FFF;
-    border: 1px solid #CDCDCD;
-    font-size: 14px;
+    border: 1px solid #DBDBDB;
+    font-size: 13px;
+    line-height: 13px;
     font-weight: normal;
-    color: $gray;
-    border-radius: 3px;
-    padding: 1px 10px;
-    margin-right: 5px;
-    margin-bottom: 8px;
+    color: #4A4A4A;;
+    @include border-radius(3px);
+    padding: 6px 8px;
+    margin: 2px 5px 8px 0;
 
     &:last-child {
       margin-right: 0;
