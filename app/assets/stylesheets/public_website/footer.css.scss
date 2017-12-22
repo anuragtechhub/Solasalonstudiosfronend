@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'bootstrap/mixins';
+@import 'mixins';
 
 #footer {
   border-top: 1px solid $gray-lighter;
@@ -178,10 +179,8 @@
         line-height: 16px;
         color: #000;
         border: 0 !important;
-        -moz-transition-property: none !important;
-        -webkit-transition-property: none !important;
-        -o-transition-property: none !important;
-        transition-property: none !important;
+        @include transition(opacity 0.15s ease-in-out);
+        opacity: 1;
 
         // &:last-child {
         //   padding-right: 0;
@@ -195,6 +194,7 @@
         &:hover, &:active {
           // @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
           // color: #FFF;
+          opacity: 0.5;
           border: 0 !important;
         }
       }

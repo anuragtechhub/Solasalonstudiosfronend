@@ -83,19 +83,22 @@
             </div>
           </h2>
           <p><%= t('page.home.search_salon_professionals') %></p>
-          <div class="filterable-dropdown-search">
-            <div class="dropdown">
-              <div class="selected-option"><%= t('services.hair') %></div>
-              <div class="options">
-                <div class="option" data-value="hair"><%= t('services.hair') %></div>
-                <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
-                <div class="option" data-value="nails"><%= t('services.nails') %></div>
-                <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+          <%= form_tag [:search, :results], :method => :get do %>
+            <div class="filterable-dropdown-search">
+              <div class="dropdown">
+                <div class="selected-option"><span class="name"><%= t('services.hair') %></span><span class="down-triangle"></span></div>
+
+                <div class="options">
+                  <div class="option" data-value="hair"><%= t('services.hair') %></div>
+                  <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+                  <div class="option" data-value="nails"><%= t('services.nails') %></div>
+                  <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+                </div>
               </div>
+              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
+              <button type="submit"><span class="search-icon"></span></button>
             </div>
-            <input type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
-            <button type="submit"><span class="search-icon"></span></button>
-          </div>
+          <% end %>
         </div>
         <%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %>
       </div>

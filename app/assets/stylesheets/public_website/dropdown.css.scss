@@ -2,27 +2,37 @@
 @import 'variables';
 
 .filterable-dropdown-search {
-	height: 53px;
+	height: 75px;
+	padding: 10px 0;
 	font-size: 0;
 	white-space: nowrap;
 	@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
 	@include border-radius(4px);
+	background: #FFF;
 
 	.dropdown {
+		margin-top: 10px;
 		position: relative;
 		display:inline-block;
 
 		.selected-option {
 			position: relative;
-			top: -1px;
-			height: 54px;
-			padding: 19px 30px 20px 30px;
+			height: 34px;
+			width: 135px;
+			padding: 9px 30px 10px 30px;
 			background: #FFF;
 			@include helvetica;
 			font-size: 18px;	
 			font-weight: 300;	
 			line-height: 18px;
 			color: #4A4A4A;
+			cursor: pointer;
+			border-right: 1px solid #F2F2F2;
+    	text-align: center;
+
+			&:hover, &:active {
+				color: $brand-pink;
+			}
 		}
 
 		.options {
@@ -30,7 +40,7 @@
 			position: absolute;
 			display: none;
 			background: #FFF;
-			padding: 25px;
+			padding: 20px 25px 18px 25px;
 			z-index: 99;
 			top: 60px;
 			@include border-radius(4px);
@@ -59,9 +69,10 @@
 
 	input.searchbox {
 		position: relative;
-		top: -2px;
+		top: 0;
 		display:inline-block;
-		height: 54px;
+		height: 34px;
+		width: calc(100% - 135px - 54px);
 		padding: 20px;
 		background: #FFF;
 		border: 0 !important;
@@ -81,20 +92,44 @@
 
 	button {
 		position: relative;
-    top: -8px;
-		height: 54px;
-		background: $brand-pink;
+    top: -5px;
+    right: 5px;
+		height: 46px;
+		width: 46px;
+	  background: $brand-pink; /* For browsers that do not support gradients */
+	  @include background-gradient(#FF5ABB, #EF008C);
 		margin: 0;
 		border: 0;
-		padding: 16px;
+		padding: 15px;
+		@include border-radius(4px);
+		@include transition(opacity 0.15s ease-in-out);
+		opacity: 1;
+
+		&:focus, &:hover, &:active {
+			opacity: 0.5;
+		}
+	}
+
+	.down-triangle {
+		position: relative;
+    top: -2px;
+    left: 10px;
+		display: inline-block;
+		-webkit-transform:rotate(360deg);
+		border-style: inset;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 5px 0 5px;
+		border-color: #ed0f8d transparent transparent transparent;
 	}
 
 	.search-icon {
 		display: inline-block;
 		background: asset-data-url('spyglass.png');
-    background-size: (48px / 2) (48px / 2);
-    width: (48px / 2);
-    height: (48px / 2);
+    background-size: (48px / 3) (48px / 3);
+    width: (48px / 3);
+    height: (48px / 3);
 	}
 
 }
