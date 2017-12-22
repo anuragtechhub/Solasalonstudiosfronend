@@ -2,8 +2,11 @@
 @import 'variables';
 
 .filterable-dropdown-search {
+	height: 53px;
 	font-size: 0;
 	white-space: nowrap;
+	@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+	@include border-radius(4px);
 
 	.dropdown {
 		position: relative;
