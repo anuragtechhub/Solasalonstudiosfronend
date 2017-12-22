@@ -41,7 +41,9 @@ $.widget('solasalonstudios.solaselect', {
     var self = this;
     var offset = self.$select.offset();
 
-    self.$options.css({top: offset.top + self.$select.outerHeight() + 5, left: offset.left});
+    console.log('width', self.$select.width());
+
+    self.$options.css({top: offset.top + self.$select.outerHeight() + 5, left: offset.left}).width(self.$select.width() - 24);
   },
 
   /**
