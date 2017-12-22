@@ -17,6 +17,6 @@ $(function () {
 		}
 	};
 
-	setInterval(animateToNextService, 3000);
+	setInterval(animateToNextService, 2500);
 
 });
