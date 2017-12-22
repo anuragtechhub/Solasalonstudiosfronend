@@ -87,6 +87,9 @@ $(function () {
   // play videos
   $('.play-button, .play-video').swipebox();
 
+  // filterable dropdown searchboxes
+  $('.filterable-dropdown-search').filterabledropdownsearch();
+
   // optgroup click handler
   $('.optgroup').on('click', function () {
     return false;

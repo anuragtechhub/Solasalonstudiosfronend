@@ -61,9 +61,10 @@ en:
 
   services:
     hairstylist: Hairstylist
+    esthetician: Esthetician
+    nail_tech: Nail Tech
     makeup_artist: Makeup Artist
-    nail_technician: Nail Technician
-    skincare_specialist: Skincare Specialist
+    beauty_professional: Beauty Professional
     hair: Hair
     makeup: Makeup
     nails: Nails

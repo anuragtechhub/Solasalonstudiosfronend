@@ -1,0 +1,34 @@
+@import 'mixins';
+@import 'variables';
+
+.filterable-dropdown-search {
+
+	.dropdown {
+		position: relative;
+
+		.selected-option {
+
+		}
+		.options {
+			position: absolute;
+			display: none;
+
+			&.open {
+				display: block;
+			}
+		}
+	}
+
+	input.searchbox {
+
+	}
+
+	.search-icon {
+		display: inline-block;
+		background: asset-data-url('spyglass.png');
+    background-size: (48px / 2) (48px / 2);
+    width: (48px / 2);
+    height: (48px / 2);
+	}
+
+}

@@ -76,12 +76,26 @@
             <br />
             <div class="home-services-animation">
               <span class="active"><%= t('services.hairstylist') %></span>
+              <span><%= t('services.esthetician') %></span>
+              <span><%= t('services.nail_tech') %></span>
               <span><%= t('services.makeup_artist') %></span>
-              <span><%= t('services.nail_technician') %></span>
-              <span><%= t('services.skincare_specialist') %></span>
+              <span><%= t('services.beauty_professional') %></span>
             </div>
           </h2>
           <p><%= t('page.home.search_salon_professionals') %></p>
+          <div class="filterable-dropdown-search">
+            <div class="dropdown">
+              <div class="selected-option"><%= t('services.hair') %></div>
+              <div class="options">
+                <div class="option" data-value="hair"><%= t('services.hair') %></div>
+                <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+                <div class="option" data-value="nails"><%= t('services.nails') %></div>
+                <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+              </div>
+            </div>
+            <input type="text" class="searchbox" />
+            <button type="submit"><span class="search-icon"></span></button>
+          </div>
         </div>
         <%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %>
       </div>
