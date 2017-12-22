@@ -37,11 +37,7 @@
 
 <div class="container">
 
-  <br />
-  <br />
-  <br />
-
-  <div class="row">
+  <div class="row tile-row home-tile-row">
     <div class="one-half column">
       <div class="tile-mask tile-for-professionals-own-your-salon">
         <div class="content">
@@ -73,14 +69,14 @@
           <h5><%= t('page.home.for_customers') %></h5>
           <h2>
             <%= t('page.home.find_a_sola') %>
-            <br />
-            <div class="home-services-animation">
+            <span class="desktop-br">&nbsp;</span>
+            <span class="home-services-animation">
               <span class="active"><%= t('services.hairstylist') %></span>
               <span><%= t('services.esthetician') %></span>
               <span><%= t('services.nail_tech') %></span>
               <span><%= t('services.makeup_artist') %></span>
               <span><%= t('services.beauty_professional') %></span>
-            </div>
+            </span>
           </h2>
           <p><%= t('page.home.search_salon_professionals') %></p>
           <%= form_tag [:search, :results], :method => :get do %>

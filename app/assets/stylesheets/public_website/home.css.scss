@@ -28,15 +28,17 @@
 }
 
 .home-services-animation {
+  display: inline-block;
   position: relative;
   min-height: 56px;
+  white-space: nowrap;
   
   span {
     position: absolute;
     top: 0;
     left: 0;
     border-bottom: 1px solid #9B9B9B;
-    padding-bottom: 5px;
+    padding-bottom: 1px;
     display: inline-block;
     opacity: 0;
     @include transition(opacity .25s ease);
@@ -44,6 +46,17 @@
     &.active {
       opacity: 1;
     }
+  }
+}
+
+.home-tile-row {
+  margin: 60px auto -15px auto;
+}
+
+@media (max-width: 650px) {
+  .home-tile-row {
+    margin-top: 30px;
+    margin-bottom: 0;
   }
 }
 
