@@ -42,6 +42,72 @@
   }
 }
 
+.search-with-spyglass {
+  position: relative;
+  top: -25px;
+  background: #FFF;
+  @include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+  height: 72px;
+  padding: 10px 0;
+  font-size: 0;
+  white-space: nowrap;
+  @include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+  @include border-radius(4px);
+  background: #FFF;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+
+  .search-input {
+    width: calc(100% - 60px) !important;
+    border: 0 !important;
+    background: transparent;
+    @include helvetica;
+    font-size: 18px;
+    margin: 4px 0 0 8px !important;
+    padding-left: 15px !important;
+
+    &::-moz-placeholder {
+      color: #9B9B9B;
+      opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+    }
+    &:-ms-input-placeholder { color: #9B9B9B; } // Internet Explorer 10+
+    &::-webkit-input-placeholder  { color: #9B9B9B; } // Safari and Chrome
+
+    &:focus, &:hover, &:active {
+      border: 0 !important;
+    }
+  }
+
+  .search-button {
+    position: relative;
+    top: 5px !important;
+    right: 15px !important;
+    height: 46px !important;
+    width: 46px !important;;
+    background: $brand-pink; /* For browsers that do not support gradients */
+    @include background-gradient(#FF5ABB, #EF008C);
+    margin: 0;
+    border: 0;
+    padding: 15px;
+    @include border-radius(4px);
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;
+
+    &:focus, &:hover, &:active {
+      opacity: 0.5;
+    }
+  }
+
+  .spyglass-white {
+    display: inline-block;
+    background: asset-data-url('spyglass.png');
+    background-size: (48px / 3) (48px / 3);
+    width: (48px / 3);
+    height: (48px / 3);
+  }
+}
+
 
 .nav-search {
   float: right;

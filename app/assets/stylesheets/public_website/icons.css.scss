@@ -185,6 +185,20 @@
 
 
 /**
+* Spyglass White
+*/
+
+.spyglass-white {
+  display: inline-block;
+  background: asset-data-url('spyglass.png');
+  background-size: (48px / 2) (48px / 2);
+  height: (48px / 2);
+  width: (48px / 2);
+}
+
+
+
+/**
 * Spyglass Black
 */
 
