@@ -4,7 +4,7 @@
 
   <% if I18n.locale != :en %>
     <div class="row">
-      <h1 style="margin-top:-10px" class="text-center">Now open in Toronto!</h1>
+      <h2 class="text-center">Now open in Toronto!</h2>
       <div class="text-center country-location-buttons canada-country-location-buttons">
         <%= link_to 'Contact Us', :contact_us, :class => 'button primary rounded' %>
         <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "button rounded #{'active' if I18n.locale == :en}" %>
@@ -15,13 +15,31 @@
   <% else %>
     <div class="row">
       <div class="twelve columns locations-hero">
-          <h1><%= t('page.locations.find_a_sola_location').html_safe %></h1>
+          <h2>
+            <span class="text"><%= t('page.locations.find_a_sola_location').html_safe %></span>
+            <div class="country-location-buttons">
+              <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "#{'active' if I18n.locale == :en}" %>
+              <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "#{'active' if I18n.locale != :en}" %>
+            </div>
+            <div class="sola-select">
+              <div class="row">
+                <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
+                <div class="arrow"><span class="ss-dropdown"></span></div>
+              </div>
+              <div class="options">
+                <% @states.each do |location| %>
+                <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
+                <% end %>
+              </div>
+            </div>
+          </h2>
       </div>
     </div>
   <% end %>
 
 </div>
 
+<!--
 <% if I18n.locale == :en %>
   <div class="container location-selection-inputs">
     <div class="row">
@@ -47,6 +65,7 @@
     </div>
   </div>
 <% end %>
+-->
 
 <div class="container">
   <div class="row" id="map"></div>
@@ -62,7 +81,7 @@
       <div class="one-third column">
         <% @states[0,9].each do |state| %>
           <div class="state-wrapper">
-            <h2 class="city"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h2>
+            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
@@ -80,7 +99,7 @@
       <div class="one-third column">
         <% @states[9,18].each do |state| %>
           <div class="state-wrapper">
-            <h2 class="city"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h2>
+            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
@@ -97,7 +116,7 @@
       <div class="one-third column">
         <% @states[27, @states.length].each do |state| %>
           <div class="state-wrapper">
-            <h2 class="city"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h2>
+            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
@@ -117,7 +136,7 @@
       <div class="one-third column">
         <% @states.each do |state| %>
           <div class="state-wrapper">
-            <h2 class="city"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h2>
+            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>

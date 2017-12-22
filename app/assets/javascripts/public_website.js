@@ -24,6 +24,8 @@
 
 $(function () {
 
+  $('.sola-select').solaselect();
+
   // carousel
   $('.owl-carousel').not('.no-autobind').each(function () {
     var $this = $(this);
