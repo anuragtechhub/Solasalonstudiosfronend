@@ -57,7 +57,6 @@
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
-<% content_for(:scripts) { javascript_include_tag('locations_state_select') } %>
 <% content_for(:scripts) {@msa.tracking_code.html_safe} if @msa.tracking_code.present? %>
 <% content_for(:title) { "#{t('page.locations.locations_in').html_safe} #{@msa.name}" } %>
 <% content_for(:canonical_url) { @msa.canonical_url(I18n.locale) } %>
