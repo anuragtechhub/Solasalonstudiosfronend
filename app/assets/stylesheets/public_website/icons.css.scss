@@ -137,7 +137,6 @@
   width: (64px / 2);
 
   &:hover, &:active {
-    background: asset-data-url('LeftArrowLightOutline@2x.png');
     background-size: (64px / 2) (64px / 2);
     height: (64px / 2);
     width: (64px / 2);
@@ -157,7 +156,6 @@
   width: (64px / 2);
 
   &:hover, &:active {
-    background: asset-data-url('RightArrowLightOutline@2x.png');
     background-size: (64px / 2) (64px / 2);
     height: (64px / 2);
     width: (64px / 2);
@@ -178,9 +176,22 @@
   width: (226px / 2);
 
   &:hover, &:active {
-    background: asset-data-url('Play@2x.png');
     background-size: (226px / 2) (226px / 2);
     height: (226px / 2);
     width: (226px / 2);    
   }
+}
+
+
+
+/**
+* Spyglass Black
+*/
+
+.spyglass-black {
+  display: inline-block;
+  background: asset-data-url('spyglass-black.png');
+  background-size: (48px / 2) (48px / 2);
+  height: (48px / 2);
+  width: (48px / 2);
 }

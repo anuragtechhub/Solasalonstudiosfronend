@@ -10,6 +10,10 @@
 	@include border-radius(4px);
 	background: #FFF;
 
+	.spyglass-black {
+		display: none;
+	}
+
 	.dropdown {
 		margin-top: 10px;
 		position: relative;
@@ -132,4 +136,36 @@
     height: (48px / 3);
 	}
 
+}
+
+@media (max-width: 888px) {
+	.filterable-dropdown-search {
+		height: auto;
+		padding: 0;
+		background: transparent;
+		//@include box-shadow(none);
+		@include border-radius(0px);
+
+		.spyglass-black {
+	    position: absolute;
+	    z-index: 2;
+			bottom: 15px;
+	    left: 20px;
+			display: block;
+		  background-size: (48px / 3) (48px / 3);
+		  height: (48px / 3);
+		  width: (48px / 3);
+		}
+
+		.dropdown, button {
+			display: none;
+		}
+
+		input.searchbox {
+			width: 100%;
+			font-size: 14px;
+			height: 48px;
+			padding: 17px 20px 15px 58px;
+		}
+	}
 }
