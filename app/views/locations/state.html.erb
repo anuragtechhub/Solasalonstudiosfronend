@@ -48,11 +48,7 @@
 
       <% locations.sort_by(&:name).each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-          <div class="one-third column search-result">
-            <h3><%= location.name.html_safe %></h3>
-            <p><%= location.html_address.html_safe %></p>
-            <div><%= link_to t('page.locations.view_location').html_safe, salon_location_path(location.url_name).gsub(/\./, '') %></div>
-          </div>
+          <%= render 'shared/public_website/location_result', :location => location %>
         <% if ((index + 1) % 3) == 0 || index + 1 == locations.size %></div><% end %>
       <% end %>
 

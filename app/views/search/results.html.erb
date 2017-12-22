@@ -13,15 +13,7 @@
       <h2><%= t('page.search.location_results').html_safe %></h2>
       <% @locations.sort_by(&:name).each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-          <div class="one-third column search-result">
-            <h3><%= location.name.html_safe %></h3>
-            <p><%= location.html_address.html_safe %></p>
-            <% if params[:first] == 'salon_professionals' %>
-              <div><%= link_to t('page.search.view_directory').html_safe, salon_stylists_path(location.url_name).gsub(/\./, '') %></div>
-            <% else %>
-              <div><%= link_to t('page.search.view_location').html_safe, salon_location_path(location.url_name).gsub(/\./, '') %></div>
-            <% end %>
-          </div>
+          <%= render 'shared/public_website/location_result', :location => location %>
         <% if ((index + 1) % 3) == 0 || index + 1 == @locations.size %></div><% end %>
       <% end %>
     <% end %>

@@ -11,8 +11,9 @@
 }
 
 .search-result {
-  padding: 25px 0;
-  border-top: 1px solid #E6E6E6;
+  
+  
+
 
   h3 {
     margin: 0;
@@ -31,14 +32,17 @@
   }
 
   a, a:link, a:visited, a:hover, a:active {
-    font-weight: bold;
+    border-top: 1px solid #EEEEEE;
+    //font-weight: bold;
     text-decoration: none;
     color: $brand-pink;
-    font-size: 13px;
+    //font-size: 13px;
+    padding: 30px 20px;
+    display: block;
   }
 
   a:hover, a:active {
-    color: $brand-pink-hover;
+    background: #F5F9FB;
   }
 }
 
