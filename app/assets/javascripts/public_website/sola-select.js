@@ -1,7 +1,6 @@
 $.widget('solasalonstudios.solaselect', {
   
   _create: function() {
-    console.log('create solaselect')
     var self = this;
 
     self.$select = this.element;
@@ -13,8 +12,8 @@ $.widget('solasalonstudios.solaselect', {
     /**
     * Bind Events
     */
-    self.$select.on('click', function (e) { console.log('click'); self.onDropdownClick(e); });
-    self.$select.find('.option').on('click', function (e) { self.onOptionClick(e); });
+    self.$select.on('click', function (e) { self.onDropdownClick(e); });
+    self.$options.find('.option').on('click', function (e) { self.onOptionClick(e); });
   },
 
   hide: function () {
