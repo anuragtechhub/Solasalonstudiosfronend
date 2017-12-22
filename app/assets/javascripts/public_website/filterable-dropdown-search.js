@@ -19,6 +19,7 @@ $.widget('solasalonstudios.filterabledropdownsearch', {
     var self = this;
 
     e.preventDefault();
+    e.stopPropagation();
 
     if (self.$options.hasClass('open')) {
       self.$options.removeClass('open');

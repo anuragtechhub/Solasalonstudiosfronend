@@ -2,25 +2,88 @@
 @import 'variables';
 
 .filterable-dropdown-search {
+	font-size: 0;
+	white-space: nowrap;
 
 	.dropdown {
 		position: relative;
+		display:inline-block;
 
 		.selected-option {
-
+			position: relative;
+			top: -1px;
+			height: 54px;
+			padding: 19px 30px 20px 30px;
+			background: #FFF;
+			@include helvetica;
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 18px;
+			color: #4A4A4A;
 		}
+
 		.options {
+			min-width: 150px;
 			position: absolute;
 			display: none;
+			background: #FFF;
+			padding: 25px;
+			z-index: 99;
+			top: 60px;
+			@include border-radius(4px);
+			@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
 
 			&.open {
 				display: block;
+			}
+
+			.option {
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 18px;
+				color: #4A4A4A;
+				padding: 5px 0;
+				display: block;
+				cursor: pointer;
+
+				&:hover, &:active {
+					color: $brand-pink;
+				}
 			}
 		}
 	}
 
 	input.searchbox {
+		position: relative;
+		top: -2px;
+		display:inline-block;
+		height: 54px;
+		padding: 20px;
+		background: #FFF;
+		border: 0 !important;
+		margin: 0;
+		@include helvetica;
+		font-size: 18px;	
+		font-weight: 300;	
+		line-height: 18px;
 
+	  &::-moz-placeholder {
+	    color: #9B9B9B;
+	    opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+	  }
+	  &:-ms-input-placeholder { color: #9B9B9B; } // Internet Explorer 10+
+	  &::-webkit-input-placeholder  { color: #9B9B9B; } // Safari and Chrome
+	}
+
+	button {
+		position: relative;
+    top: -8px;
+		height: 54px;
+		background: $brand-pink;
+		margin: 0;
+		border: 0;
+		padding: 16px;
 	}
 
 	.search-icon {
