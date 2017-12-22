@@ -42,6 +42,7 @@
       justify-content: center;
       align-items: center;
       position: absolute;
+      z-index: 2;
       top: 0;
       left: 0;
       right: 0;
@@ -239,7 +240,23 @@
   img {
     width: 100%;
   }
+
+  .owl-item .img-wrap {
+    position: relative;
+    padding-bottom: 50%;
+  }
+  .owl-item .img-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    z-index: 1;
+  }  
 }
+
+
 
 .hero-text {
   display: block;
