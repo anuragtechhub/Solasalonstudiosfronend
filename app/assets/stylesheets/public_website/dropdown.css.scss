@@ -2,6 +2,7 @@
 @import 'variables';
 
 .filterable-dropdown-search {
+	position: relative;
 	height: 75px;
 	padding: 10px 0;
 	font-size: 0;
@@ -169,6 +170,7 @@
 			font-size: 14px;
 			height: 48px;
 			padding: 17px 20px 15px 58px;
+			@include border-radius(4px);
 		}
 	}
 }

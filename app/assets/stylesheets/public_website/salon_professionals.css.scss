@@ -29,7 +29,7 @@
 }
 
 .find-salon-professional-search {
-  margin: 60px auto 40px auto;
+  margin: 40px auto 40px auto;
 }
 
 .find-a-sola {
@@ -127,6 +127,9 @@
   }
 }
 
+.find-a-salon-professional-hero .item .item-content h1.chalet {
+  margin-top: -60px;
+}
 
 @media (max-width: 1000px) {
   .hero-text.find-a-salon-professional {
@@ -139,28 +142,49 @@
 }
 
 @media (max-width: 850px) {
-  .find-a-salon-professional-stats {
-    width: 100%;
-    margin: 0;
+  .find-a-salon-professional-hero .item .item-content h1.chalet {
+    font-size: 36px;
+    line-height: 36px;
   }
-
-  .under-search {
-    //bottom: 150px !important;
+  .find-a-salon-professional-stats {
+//    width: 100%;
+    margin: 0;
   }      
 }
 
 @media (max-width: 650px) {
-  .find-a-salon-professional-stats {
+  .find-a-salon-professional-hero .item .item-content h1.chalet {
+    margin-top: -40px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .find-a-salon-professional-hero .item .item-content .find-a-salon-professional-stats {
     .stat {
-      position: static;
-      top: auto;
-      left: auto;
-      width: 100%;
 
       &.right {
         border-left: 0;
-        margin-top: 30px;
       }
+
+      h1.chalet {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      h2 {
+        font-size: 14px !important;
+        line-height: 14px !important;
+        font-weight: bold;
+      }
+      // position: static;
+      // top: auto;
+      // left: auto;
+      // width: 100%;
+
+      // &.right {
+      //   border-left: 0;
+      //   margin-top: 30px;
+      // }
     }
   }
 
@@ -168,12 +192,17 @@
     height: 680px;
   }
   .find-salon-professional-search {
-    margin: 30px auto;
+    margin: 15px auto;
   }
 
-  .under-search {
-    //bottom: 220px !important;
-  }    
+  .find-a-salon-professional-disclaimer {
+    padding: 30px;
+
+    h4, p {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
 }
 
 .stylist-services {
