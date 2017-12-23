@@ -95,6 +95,28 @@
   }
 }
 
+@media (max-width: 888px) {
+  .locations-hero {
+    text-align: center;
+
+    .country-location-buttons {
+      display: block;
+      margin: 15px auto 30px auto;
+
+      a, a:link, a:visited, a:hover, a:active {
+        margin: 0 15px;
+      }
+    }
+
+    .sola-select {
+      position: relative;
+      display: block;
+      float: none;
+      margin: 0 auto;
+    }
+  }
+}
+
 @media (max-width: 550px) {
   .container.location-selection-inputs {
     margin-top: 10px;
@@ -104,9 +126,18 @@
     }    
   }
 
+  .locations-hero {
+    h2 {
+      margin-bottom: 20px;
+    }
+    
+    .country-location-buttons {
+      margin: 5px auto 25px auto;
+
+    }
+  }
+
   .country-location-buttons {
-    top: 0px;
-    margin-bottom: 15px;
 
     &.canada-country-location-buttons {
       margin-bottom: 25px !important;

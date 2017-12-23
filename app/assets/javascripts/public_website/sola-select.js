@@ -20,7 +20,7 @@ $.widget('solasalonstudios.solaselect', {
     var self = this;
 
     self.$options.hide();
-    $('body').off('touchmove.solaselect').removeClass('stop-scrolling');
+    $('body').removeClass('stop-scrolling');
     $(window).off('click.solaselect');
   },
 
@@ -29,9 +29,7 @@ $.widget('solasalonstudios.solaselect', {
 
     self.positionOptions();
     self.$options.show(); 
-    $('body').on('touchmove.solaselect', function (e) {
-      e.preventDefault();
-    }).addClass('stop-scrolling');
+    $('body').addClass('stop-scrolling');
     $(window).on('click.solaselect', function () {
       self.hide();
     }); 

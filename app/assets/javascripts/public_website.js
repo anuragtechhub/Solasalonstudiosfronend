@@ -66,8 +66,8 @@ $(function () {
       options['autoPlay'] = false
     }
 
-    if ($this.data('pagination')) {
-      options['pagination'] = true;
+    if ($this.data('paginationoff')) {
+      options['pagination'] = false;
     }
 
     if ($this.data('nonav')) {

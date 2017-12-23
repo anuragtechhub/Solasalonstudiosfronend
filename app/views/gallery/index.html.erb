@@ -3,7 +3,7 @@
   <h1><%= t('page.gallery.title').html_safe %></h1>
 
   <div class="row">
-    <ul class="owl-carousel">
+    <ul class="owl-carousel" data-paginationoff="true">
       <% if I18n.locale == :en %>
         <% (1..47).each do |number| %>
           <li><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/gallery1/sola#{number}.jpg", :alt => 'Interior of a salon studio' %></li>
