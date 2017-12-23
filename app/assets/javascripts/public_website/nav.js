@@ -51,6 +51,7 @@ $(function () {
   /**
   * Sliding mobile submenus
   */
+
   $mobileNavMenu.find('li > ul').each(function () {
     var $child_ul = $(this);
     var $parent_li = $child_ul.parent('li');
@@ -77,10 +78,11 @@ $(function () {
 
     // clicking child to open parent
     $mobileNavMenu.find('.sliding-submenu a[data-menu]').each(function () {
+      
       var $submenu_a = $(this);
 
       $submenu_a.on('click touchstart', function () {
-        $('ul[data-menu="' + $submenu_a.data('menu') + '"').addClass('open');
+        $('ul[data-menu="' + $submenu_a.data('menu') + '"]').addClass('open');
         $submenu_a.parents('[data-submenu]').removeClass('open');
         return false;
       });
