@@ -1,8 +1,9 @@
+<!--
 <div class="hero-text find-a-salon-professional" style="margin-bottom: 0;background-image:url('<%= image_path 'Find_Hero.jpg' %>')">
   
   <div class="text">
     
-    <h1><%= t('page.find_salon_pro.heading1').html_safe %></h1>
+    
     
     <% if I18n.locale != :en %>
       <div class="find-salon-professional-search">
@@ -44,11 +45,58 @@
 
   </div>
 
-  <div class="find-a-salon-professional-disclaimer <%= "under-search" if I18n.locale != :en %>">
-    <p><strong><%= t('page.find_salon_pro.body1').html_safe %></strong></p>
-    <p><strong><%= t('page.find_salon_pro.body2').html_safe %></strong></p>
-  </div>
 
+
+</div>
+-->
+
+<div class="hero-carousel owl-carousel owl-theme" style="margin-bottom:0">
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'Professional_BG.jpg', :alt => t('page.find_salon_pro.heading1'), :width => 1600, :height => 800 %></div>
+    <div class="item-content">
+      
+      <h1 class="chalet"><%= t('page.find_salon_pro.heading1').html_safe %></h1>
+      
+      <div class="find-salon-professional-search">
+        <%= form_tag [:search, :results], :method => :get do %>
+          <div class="filterable-dropdown-search">
+            <div class="dropdown">
+              <div class="selected-option"><span class="name"><%= t('services.hair') %></span><span class="down-triangle"></span></div>
+              <div class="options">
+                <div class="option" data-value="hair"><%= t('services.hair') %></div>
+                <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+                <div class="option" data-value="nails"><%= t('services.nails') %></div>
+                <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+              </div>
+            </div>
+            <span class="spyglass-black"></span>
+            <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
+            <button type="submit"><span class="search-icon"></span></button>
+          </div>
+          <input type="hidden" name="first" value="salon_professionals" />
+        <% end %>
+      </div>
+
+      <div class="find-a-salon-professional-stats">
+        <div class="stat">
+          <h1 class="chalet"><%= t('page.find_salon_pro.salon_professional_count').html_safe %></h1>
+          <h2><%= t('page.find_salon_pro.salon_professionals').html_safe %></h2>
+        </div>
+        <div class="stat right">
+          <h1 class="chalet"><%= t('page.find_salon_pro.location_count').html_safe %></h1>
+          <h2><%= t('page.find_salon_pro.locations_nationwide').html_safe %></h2>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="find-a-salon-professional-disclaimer" style="margin-bottom: -30px">
+  <div class="container">
+    <h4><%= t('page.find_salon_pro.body1').html_safe %></h4>
+    <p><%= t('page.find_salon_pro.body2').html_safe %></p>
+  </div>
 </div>
 
 <% content_for(:title) { t('page.find_salon_pro.find_a_salon_professional_near_you').html_safe } %>

@@ -9,6 +9,7 @@
 	@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
 	@include border-radius(4px);
 	background: #FFF;
+	text-align: left;
 
 	.spyglass-black {
 		display: none;
@@ -40,13 +41,15 @@
 		}
 
 		.options {
-			min-width: 150px;
+			min-width: 137px;
 			position: absolute;
 			display: none;
 			background: #FFF;
 			padding: 20px 25px 18px 25px;
 			z-index: 99;
 			top: 60px;
+			text-align: left;
+			left: 0;
 			@include border-radius(4px);
 			@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
 
