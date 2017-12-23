@@ -32,7 +32,7 @@ $(function () {
   * Close sliding mobile nav menus
   */
 
-  $mobileNavMenu.find('.close-x-black').on('click', function () {
+  $mobileNavMenu.find('.close-x-black').on('click touchstart', function () {
     //if ($mobileNavWrapper.is(':visible')) {
       $mobileNavMenu.removeClass('open');
       setTimeout(function () {
@@ -59,7 +59,7 @@ $(function () {
     $mobileNavMenu.append($child_ul);
 
     // clicking parent to open child
-    $parent_li.find('> a').on('click', function () {
+    $parent_li.find('> a').on('click touchstart', function () {
       var $this = $(this);
       var $parent = $this.parents('ul');
       var $submenu = $mobileNavMenu.find('.sliding-submenu[data-submenu="' + $this.data('submenu') + '"]');
@@ -79,11 +79,11 @@ $(function () {
     $mobileNavMenu.find('.sliding-submenu a[data-menu]').each(function () {
       var $submenu_a = $(this);
 
-      $submenu_a.on('click', function () {
+      $submenu_a.on('click touchstart', function () {
         $('ul[data-menu="' + $submenu_a.data('menu') + '"').addClass('open');
         $submenu_a.parents('[data-submenu]').removeClass('open');
         return false;
-      })
+      });
     })
   });
 
