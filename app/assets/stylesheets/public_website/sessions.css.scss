@@ -552,6 +552,12 @@
       height: (65px / 2);
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
+
+      &.samvilla {
+        height: 24px;
+        position: relative;
+        top: -3px;
+      }
     }
   }
 }
