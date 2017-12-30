@@ -63,7 +63,7 @@
   }
 }
 
-.forward-arrow-black {
+.forward-arrow-black, .sola-spotlights .arrow-right {
   display: inline-block;
   background: asset-data-url('forward-arrow-black.png');
   background-size: (20px / 2) (32px / 2);
@@ -103,7 +103,7 @@
   }
 }
 
-.back-arrow-black {
+.back-arrow-black, .sola-spotlights .arrow-left {
   display: inline-block;
   background: asset-data-url('back-arrow-black.png');
   background-size: (20px / 2) (32px / 2);
