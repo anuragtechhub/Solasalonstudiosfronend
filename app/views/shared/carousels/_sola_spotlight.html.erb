@@ -1,13 +1,14 @@
 <div class="container sola-spotlights">
-  <div class="owl-carousel owl-theme" data-items="3" data-autoplayoff="true">
+  <h2><%= t('page.blog.sola_spotlight').html_safe %></h2>
+  <div class="owl-carousel owl-theme" data-items="3" data-autoplayoff="true" data-paginationoff="true">
     <% Blog.joins(:blog_categories, :blog_blog_categories).where('blog_blog_categories.blog_category_id = ?', 4).order(:created_at => :desc).uniq.each do |blog| %>
       <% if blog.carousel_image.present? %>
         <div class="item sola-spotlight">
           <%= link_to show_blog_path(blog.url_name) do %>
             <%= image_tag blog.carousel_image(:carousel) %>
             <div class="carousel-text-bottom">
-              <h1><%= blog.carousel_text %></h1>
-              <h3><%= t('page.blog.sola_spotlight').html_safe %></h3>
+              <h2><%= blog.carousel_text %></h2>
+              <h5><%= t('page.blog.sola_spotlight').html_safe %></h5>
             </div>
           <% end %>
         </div>

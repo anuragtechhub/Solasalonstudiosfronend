@@ -5,9 +5,12 @@
   h1.title {
     text-align: center;
     margin-top: 70px; 
+    margin-bottom: 70px;
   }
 
   .featured-testimonials {
+    background: asset-url('Quote@2x.jpg') no-repeat center 1px;
+    background-size: (280px / 2) (344px / 2);  
 
     .owl-carousel {
       margin-top: -50px;
@@ -151,6 +154,7 @@
 
 .sola-spotlight {
   position: relative; 
+  margin-bottom: 60px;
 
   .item {
     width: 320px;
@@ -164,35 +168,40 @@
   }
 
   .carousel-text-bottom {
+    vertical-align: bottom;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 2px;
-    height: 33%;
+    height: 43%;
     padding: 15px 0;
     @include background-gradient(transparent, rgba(0,0,0,0.9));
   }
 
-  h1, h3 {
-    left: 0;
-    right: 0;
+  h2, h5 {
     position: absolute;
-    text-align: center;
+    left: 30px;
+    right: 30px;
+    // position: absolute;
+    // text-align: center;
     color: #FFF;
+    margin: 0;
+    //padding: 0 30px 15px 30px;
   }
-
-  h1 {
-    font-size: 32px;
-    line-height: 38px;
-    bottom: 36px;
+  h2 {
+    bottom: 48px;
   }
-
-  h3 {
-    bottom: 15px;
+  h5 {
+    bottom: 30px;
   }
 }
 
+.half-testimonials {
 
+  h2 {
+    margin-bottom: 0;
+  }
+}
 
 .half-testimonial {
   margin: 60px 0 0 0;
@@ -211,7 +220,7 @@
     text-align: center;
 
     img {
-      margin: 10px auto 15px auto;
+      margin: 10px auto 10px auto;
       width: 111px;
       height: 111px;  
       @include border-radius(111px / 2);
