@@ -1,6 +1,43 @@
 @import 'mixins';
 @import 'variables';
 
+.testimonials-page {
+  h1.title {
+    text-align: center;
+    margin-top: 70px; 
+  }
+
+  .featured-testimonials {
+
+    .owl-carousel {
+      margin-top: -50px;
+    }
+
+    .owl-theme .owl-controls {
+      margin-top: 0;
+    }
+
+    .owl-theme .owl-controls .owl-pagination {
+      position: static;
+      bottom: auto;
+      left: auto;
+      right: auto;
+      margin: -10px 0 60px 0;
+    }
+
+    .owl-theme .owl-controls .owl-page span {
+      background: $brand-primary;
+      opacity: 0.2;
+    }
+
+    .owl-theme .owl-controls .owl-page.active span {        
+      background: $brand-primary;
+      opacity: 1;
+    }
+  }
+
+}
+
 .testimonial-portrait {
   width: 200px;
   height: 200px;
@@ -42,8 +79,11 @@
 
     text-align: center;
 
-    h3.subtle {
-      margin-top: 40px;
+    h1.chalet {
+      margin: 0 0 40px 0;
+    }
+    h4 {
+      margin: 0 0 0 0;
     }
   }
 
