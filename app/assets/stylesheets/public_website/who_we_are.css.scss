@@ -3,11 +3,14 @@
 
 	.who-we-are-1 {
 		position: relative;
+		display: flex;
 
 		img {
-			position: absolute;
-			right: 0;
-			left: 50%;
+			//position: absolute;
+			//right: 0;
+			//width: 50%;
+			width: 100%;
+			height: auto;
 		}
 	}
 
