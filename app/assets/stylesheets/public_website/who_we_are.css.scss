@@ -1,0 +1,34 @@
+.who-we-are {
+	position: static;
+
+	.who-we-are-1 {
+		position: relative;
+
+		img {
+			position: absolute;
+			right: 0;
+			left: 50%;
+		}
+	}
+
+	.our-mission, .our-values {
+		margin-bottom: 60px;
+	}
+	
+	.cta-own {
+    margin-top: 20px;
+    margin-bottom: 100px;
+	}
+}
+
+@media (max-width: 850px) {
+
+	.who-we-are {
+
+		.cta-own {
+			margin-top: 0;
+			margin-bottom: 50px;
+		}
+	}
+
+}
