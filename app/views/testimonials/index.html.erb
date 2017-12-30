@@ -154,13 +154,13 @@
 
 </div>
 
-<div class="sola-story gray large">
-  <div class="container">
-    <div class="row">
-        <h2><%= t('page.testimonials.join_our_community').html_safe %></h2>
-    </div>
-    <div class="row">
-      <%= link_to t('page.testimonials.learn_more').html_safe, :own_your_salon, :class => 'button first' %>
+<div class="container">
+  <div class="cta cta-own">
+    <%= image_tag 'cta/OwnSalon.png' %>
+    <div class="cta-contents">
+      <h2><%= t('page.testimonials.join_our_community').html_safe %></h2>
+      <p><%= t('page.testimonials.join_our_community_text').html_safe %></p>
+      <%= link_to :own_your_salon, :class => 'button primary' do %><%= t('page.testimonials.join_our_community_button') %><% end %>
     </div>
   </div>
 </div>
