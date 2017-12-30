@@ -207,21 +207,18 @@
     margin-right: 0;
   }
 
-  .testimoinal-author {
+  .testimonial-author {
+    text-align: center;
+
     img {
-      width: 80px;
-      height: 80px;
-      float: left;
+      margin: 10px auto 15px auto;
+      width: 111px;
+      height: 111px;  
+      @include border-radius(111px / 2);
     }
 
-    .author-info {
-      float: left;
-      margin: 16px 0 0 20px;
-    }
-
-    h3 {
+    h4 {
       margin: 0;
-      line-height: 18px;
     }
   }
 }
