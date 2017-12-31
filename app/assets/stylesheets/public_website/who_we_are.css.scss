@@ -127,8 +127,8 @@
 			position: absolute;
 			top: 0;
 			bottom: 0;
-			left: 30px;
-			right: 50%;
+			left: 60px;
+			right: 35%;
 			z-index: 2;
 
 			.button {
@@ -139,8 +139,8 @@
 		.watch-our-video {
 			position: absolute;
 			top: 50%;
-			right: 30px;
-			margin-top: (-113px / 2);
+			left: 72%;
+			margin-top: (-140px / 2);
 			z-index: 2;
 
 			a.play-circle, a.play-circle:link, a.play-circle:visited, a.play-circle:hover, a.play-circle:active {
@@ -152,17 +152,30 @@
 				@include gradient-directional(#EE1892, #F84CB5, -45deg);
 				text-decoration: none;
 				text-align: center;
+				@include transition(opacity 0.15s ease-in-out);
+				opacity: 1;
+			}
+
+			a.play-circle:hover, a.play-circle:active {
+				opacity: 0.5;
 			}
 
 			.fa-play {
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				margin-top: (-36px / 2);
-				margin-left: -7px;
+				margin-top: (-34px / 2);
+				margin-left: -9px;
 				color: #FFF;
 				font-size: 36px;
 				line-height: 36px;
+			}
+
+			p {
+				position: relative;
+				top: 7px;
+				left: -7px;
+				margin: 0;
 			}
 		}
 	}
