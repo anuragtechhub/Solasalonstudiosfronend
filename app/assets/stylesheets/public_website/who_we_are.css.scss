@@ -287,9 +287,9 @@
 		.join-our-diverse-community {
 			
 			.content {
-				display: block;
+				//display: block;
 				//position: static;
-				top: 30px;
+				top: 0;
 				bottom: 0;
 				left: 0;
 				right: 0;
@@ -297,8 +297,8 @@
 
 				h2 {
 					font-size: 24px;
-					line-height: 32px;
-					margin-bottom: 10px;
+					line-height: 28px;
+					margin-bottom: 5px;
 					padding-left: 20px;
 					padding-right: 20px;
 				}
@@ -306,11 +306,15 @@
 				p {
 					font-size: 14px;
 					line-height: 24px;
-					margin-bottom: 20px;
+					margin-bottom: 10px;
 				}
 
 				.button {
 					margin-bottom: 20px;
+					align-self: center;
+					padding: 12px 20px 7px 20px;
+					height: 45px;
+					font-size: 15px;
 				}
 			}
 
@@ -356,7 +360,7 @@
 				    text-align: center;
 				    position: relative;
 				    top: -3px;
-				    left: 3px;
+				    left: 2px;
     			}
 				}
 			}
