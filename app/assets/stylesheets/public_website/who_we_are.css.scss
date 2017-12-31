@@ -9,22 +9,6 @@
 		margin: 20px auto 30px auto;
 	}
 
-	.img-wrap-3 {
-		margin: 40px auto 40px auto;
-  	position: relative;
-  	padding-bottom: 66%;
-
-	  img {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: auto;
-	    //border-radius: 4px;
-	    z-index: 1;
-	  } 
-	}
-
 	.img-wrap-paint-box {
 	  position: relative;
 	  padding-bottom: 67%;
@@ -183,9 +167,47 @@
 			}
 		}
 	}
+
+	.inset-subhead-container {
+		position: relative;
+		margin-bottom: 60px;
+
+		.img-wrap-3 {
+			margin: 40px auto 40px auto;
+	  	position: relative;
+	  	padding-bottom: 66%;
+
+		  img {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: auto;
+		    //border-radius: 4px;
+		    z-index: 1;
+		  } 
+		}
+
+		.line {
+			position: absolute;
+			bottom: 3px;
+			left: 60px;
+			height: 3px;
+			width: 40px;
+			background: #000;
+		}
+
+		h2 {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 600px;
+			background: #FFF;
+			padding: 70px 60px;
+			margin-bottom: 0;
+		}
+	}
 	
-
-
 	.cta-own {
     margin-top: 20px;
     margin-bottom: 100px;
@@ -194,6 +216,26 @@
 	.experience-more {
 		margin-top: 30px;
 	}
+}
+
+@media (max-width: 950px) {
+
+	.who-we-are {
+
+		.inset-subhead-container {
+
+			h2 {
+				font-size: 24px;
+				line-height: 32px;
+				padding: 35px 30px;
+			}
+
+			.line {
+				left: 30px;
+			}
+		}
+	}
+
 }
 
 @media (max-width: 850px) {
@@ -212,8 +254,16 @@
 
 	.who-we-are {
 		
-		.img-wrap-paint-box-container, .join-our-diverse-community-container {
+		.img-wrap-paint-box-container, .join-our-diverse-community-container, .inset-subhead-container {
 			width: 100%;
+		}
+
+		.inset-subhead-container {
+
+			h2 {
+				background: transparent;
+				position: relative;
+			}
 		}
 
 		.img-wrap-paint-box {
@@ -375,6 +425,28 @@
 
 @media (max-width: 550px) {
 	.who-we-are {
+
+		.our-mission, .our-values {
+			margin-bottom: 30px;
+
+			h2 {
+				@include chalet-new-york;
+				font-size: 18px;
+				line-height: 24px;
+				margin-bottom: 30px;
+			}
+
+			p {
+				font-size: 14px;
+				line-height: 24px;
+				margin-bottom: 0;
+			}
+		}
+
+		.our-values {
+			margin-bottom: 80px;
+		}
+
 		.img-wrap-paint-box {
 
 			.paint-box {
