@@ -28,7 +28,7 @@
 	.img-wrap-paint-box {
 	  position: relative;
 	  padding-bottom: 67%;
-	  margin: 10px auto 120px auto;
+	  margin: 20px auto 100px auto;
 
 	  img {
 	    position: absolute;
@@ -207,8 +207,13 @@
 @media (max-width: 750px) {
 
 	.who-we-are {
+		
+		.img-wrap-paint-box-container {
+			width: 100%;
+		}
+
 		.img-wrap-paint-box {
-			margin-bottom: 40px;
+			margin-bottom: 10px;
 			overflow: hidden;
 
 			.paint-box {
