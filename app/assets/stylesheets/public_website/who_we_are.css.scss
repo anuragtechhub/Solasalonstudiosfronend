@@ -1,6 +1,26 @@
 .who-we-are {
 	position: static;
 
+	h1 {
+		margin: 20px auto 30px auto;
+	}
+
+	.img-wrap {
+	  position: relative;
+	  padding-bottom: 67%;
+	  margin: 10px auto 50px auto;
+
+	  img {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: auto;
+	    //border-radius: 4px;
+	    z-index: 1;
+	  }  
+	}
+
 	.who-we-are-1 {
 		position: relative;
 		display: flex;
