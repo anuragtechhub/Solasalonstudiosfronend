@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
 .who-we-are {
 	position: static;
 
@@ -5,10 +8,10 @@
 		margin: 20px auto 30px auto;
 	}
 
-	.img-wrap {
+	.img-wrap-paint-box {
 	  position: relative;
 	  padding-bottom: 67%;
-	  margin: 10px auto 50px auto;
+	  margin: 10px auto 120px auto;
 
 	  img {
 	    position: absolute;
@@ -18,34 +21,112 @@
 	    height: auto;
 	    //border-radius: 4px;
 	    z-index: 1;
-	  }  
-	}
+	  } 
 
-	.who-we-are-1 {
-		position: relative;
-		display: flex;
+		.paint-box {
+			width: 260px;
+			height: 260px;
+			position: absolute;
+			bottom: -80px;
+			left: 40px;
+			z-index: 2;
 
-		img {
-			//position: absolute;
-			//right: 0;
-			//width: 50%;
-			width: 100%;
-			height: auto;
-			align-self: center;
-		}
+			.colors, .content {
+				position: absolute;
 
-		.box {
-			 //linear-gradient(to bottom right, red, yellow); 
-		}
+			}
+
+			.colors {
+				@include gradient-directional($brand-pink, $brand-primary, -45deg);
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				opacity: 0.9;
+				z-index: 1;
+			}
+
+			.content {
+				z-index: 2;
+				bottom: 25px;
+				left: 30px;
+				right: 30px;
+			}
+
+			h2, h3 {
+				color: #FFF;
+			}
+
+			h2 {
+				font-size: 48px;
+				line-height: 56px;
+				margin-bottom: 0;
+			}
+
+			h3 {
+				font-size: 18px;
+				line-height: 32px;
+				margin-top: -5px;
+				margin-bottom: 0;
+			}
+		} 
 	}
 
 	.our-mission, .our-values {
 		margin-bottom: 60px;
 	}
+
+	.join-our-diverse-community {
+		margin: 30px auto 60px auto;
+		position: relative;
+		overflow: hidden;
+
+		.img-wrap {
+	  	position: relative;
+	  	padding-bottom: 55%;
+
+		  img {
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: auto;
+		    //border-radius: 4px;
+		    z-index: 1;
+		  } 
+		}
+
+		.content {
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+
+		  flex-direction: column;
+		  align-content: center;
+		  justify-content: center;
+
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 30px;
+			right: 50%;
+			z-index: 2;
+
+			.button {
+				align-self: flex-start;
+			}
+		}
+	}
 	
 	.cta-own {
     margin-top: 20px;
     margin-bottom: 100px;
+	}
+
+	.experience-more {
+		margin-top: 30px;
 	}
 }
 

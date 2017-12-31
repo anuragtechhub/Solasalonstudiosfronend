@@ -5,16 +5,31 @@
 	<div class="container content-container">
 		
 		<h1><%= t 'page.who_we_are.title' %></h1>
-		<div class="img-wrap"><%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %></div>
+		
+		<div class="img-wrap-paint-box">
+			<%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %>		
+			<div class="paint-box">
+				<div class="colors">&nbsp;</div>
+				<div class="content">
+					<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
+					<h3><%= t 'page.who_we_are.locations_nationwide' %></h3>
+				</div>
+			</div>
+		</div>
+		
 		<h2><%= t 'page.who_we_are.subhead' %></h2>
 		<p><%= t 'page.who_we_are.body1' %></p>
 		<p><%= t 'page.who_we_are.body2' %></p>
 		<h4 class="emphasis"><%= t 'page.who_we_are.to_help_set_them_up_for_success' %></h4>
-
-
-		<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
-		<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
-		<%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.who_we_are.join_our_diverse_community_button_text' %><% end %>
+	
+		<div class="join-our-diverse-community">
+			<div class="img-wrap"><%= image_tag 'WhoWeAre_2.jpg' %></div>
+			<div class="content">
+				<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
+				<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
+				<%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.who_we_are.join_our_diverse_community_button_text' %><% end %>
+			</div>
+		</div>
 
 		<h2><%= t 'page.who_we_are.subhead2' %></h2>
 
