@@ -1,0 +1,27 @@
+.our-story {
+	
+	img.u-full-width {
+		//margin: 10px auto 0 auto;
+	}
+
+	.img-wrap {
+	  position: relative;
+	  padding-bottom: 56%;
+	  margin: 10px auto 50px auto;
+
+	  img {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: auto;
+	    //border-radius: 4px;
+	    z-index: 1;
+	  }  
+	}
+
+	.cta {
+		margin-top: 70px;
+	}
+
+}
