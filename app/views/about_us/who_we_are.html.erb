@@ -28,7 +28,7 @@
 
 	</div>
 
-	<div class="container">
+	<div class="container join-our-diverse-community-container">
 
 		<div class="join-our-diverse-community">
 			<div class="img-wrap"><%= image_tag 'WhoWeAre_2.jpg' %></div>
@@ -36,6 +36,12 @@
 				<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
 				<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
 				<%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.who_we_are.join_our_diverse_community_button_text' %><% end %>
+				<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="watch-our-video-mobile">
+					<p><%= t 'page.who_we_are.watch_our_video' %></p>
+					<div class="play-circle play-video">
+						<span class="fa fa-play">&nbsp;</span>
+					</div>
+				</a>
 			</div>
 			<div class="watch-our-video">
 				<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-circle play-video">
@@ -45,9 +51,16 @@
 			</div>
 		</div>
 
-		<h2><%= t 'page.who_we_are.subhead2' %></h2>
+	</div>
 
+	<div class="container">
+
+		<h2><%= t 'page.who_we_are.subhead2' %></h2>
 		<div class="img-wrap-3"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
+
+	</div>
+
+	<div class="container">
 
 		<div class="row our-mission">
 			<div class="one-half column"><h2><%= t 'page.who_we_are.our_mission' %></h2></div>
