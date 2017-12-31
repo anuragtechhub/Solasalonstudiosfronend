@@ -10,11 +10,14 @@
 	<p><%= t 'page.our_story.body1' %></p>
 	<p><%= t 'page.our_story.body2' %></p>
 
-	<div class="img-wrap"><%= image_tag 'Story_2.jpg', :class => 'u-full-width' %></div>
+	<div class="img-wrap">
+		<%= image_tag 'Story_2.jpg', :class => 'u-full-width' %>
+		<h5><%= t 'page.our_story.callout1_name' %></h5>
+	</div>
 
 	<div class="block-quote-side">
 		<h4><%= t('page.our_story.callout1').html_safe %></h4>
-		<h5><%= t 'page.our_story.callout1_name' %></h5>
+		<h5>- <%= t 'page.our_story.callout1_name' %></h5>
 	</div>
 
 	<p><%= t 'page.our_story.body3' %></p>
@@ -25,7 +28,7 @@
 
 	<div class="block-quote-side">
 		<h4><%= t('page.our_story.callout2').html_safe %></h4>
-		<h5><%= t 'page.our_story.callout2_name' %></h5>
+		<h5>- <%= t 'page.our_story.callout2_name' %></h5>
 	</div>
 
 	<div class="img-wrap"><%= image_tag 'Story_3.jpg', :class => 'u-full-width' %></div>
