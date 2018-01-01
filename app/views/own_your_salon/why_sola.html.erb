@@ -6,14 +6,154 @@
     <div class="item">
       <div class="img-wrap"><%= image_tag 'WhySola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
       <div class="item-content">
-        <h2><%= t('page.why_sola.hero_heading1').html_safe %></h2>
-        <h2><%= t('page.why_sola.hero_heading2').html_safe %></h2>
+        <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
+        <h1 class="chalet-new-york"><%= t('page.why_sola.hero_heading2').html_safe %></h1>
         <%= link_to :own_your_salon, :class => "button primary play-video rounded-play-button" do %><%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span><% end %>
       </div>
     </div>
   </div>
 
-</div>
+  <div class="container content-container">
+    <div class="row">
+      <div class="six columns">
+        <h2><%= t('page.why_sola.be_in_business_heading') %></h2>
+        <p><%= t('page.why_sola.be_in_business_p1') %></p>
+        <p><%= t('page.why_sola.be_in_business_p2') %></p>
+      </div>
+      <div class="six columns">
+        <%= image_tag 'WhySola/WhySola_2.jpg', :class => 'u-full-width' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="sola-freedom">
+    <h2 class="text-center"><%= t('page.why_sola.freedom_heading') %></h2>
+    <div class="container">
+      <div class="row">
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon lock"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_1') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon price"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_2') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon clock"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_3') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon chat"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_4') %></span>
+          </div>
+        </div>                        
+      </div>
+
+      <div class="row">
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon music"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_5') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon heart"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_6') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon wifi"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_7') %></span>
+          </div>
+        </div>
+        <div class="three columns">
+          <div class="freedom-tile">
+            <span class="icon"></span>
+            <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
+            <a href="#"><%= t('page.why_sola.freedom_tile_8_link') %></a>
+          </div>
+        </div>                        
+      </div>
+      <p class="text-center"><%= t('page.why_sola.freedom_text') %></p>
+    </div>
+  </div>
+
+  <div class="sola-flexibility">
+    <div class="container">
+      <h2><%= t('page.why_sola.flexibility_statement') %></h2>
+      <p><%= t('page.why_sola.flexibility_subhead1') %></p>
+      <p><%= t('page.why_sola.flexibility_subhead2') %></p>
+      <p><%= t('page.why_sola.flexibility_subhead3') %></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2><%= t('page.why_sola.beautiful_studios_exclusive_perks') %></h2>
+    <p><%= t('page.why_sola.at_sola_you_get_more') %></p>
+
+    <div class="benefits-tiles">
+      
+      <div class="row">
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/OurStudios.jpg' %>
+            <span class="title"><%= t('page.why_sola.beautiful_studios') %></span>
+            <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>
+          <% end %>
+        </div>
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/Community_Support.jpg' %>
+            <span class="title"><%= t('page.why_sola.community_support') %></span>
+            <span class="text"><%= t('page.why_sola.community_support_text') %></span>
+          <% end %>
+        </div>
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/Webpage.jpg' %>
+            <span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span>
+            <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
+          <% end %>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/SolaPro.jpg' %>
+            <span class="title"><%= t('page.why_sola.sola_pro') %></span>
+            <span class="text"><%= t('page.why_sola.sola_pro_text') %></span>
+          <% end %>
+        </div>
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/SolaSessions.jpg' %>
+            <span class="title"><%= t('page.why_sola.sola_sessions') %></span>
+            <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
+          <% end %>
+        </div>
+        <div class="columns four">
+          <%= link_to :our_studios do %>
+            <%= image_tag 'WhySola/SolaGenius.jpg' %>
+            <span class="title"><%= t('page.why_sola.solagenius') %></span>
+            <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
+          <% end %>
+        </div>        
+      </div>
+
+    </div> <!-- benefits-tiles -->
+  </div> <!-- container -->
+
+</div> <!-- why-sola -->
 
 <% content_for(:title) { t('page.why_sola.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/why-sola" } %>

@@ -24,6 +24,12 @@ h1, .h1 {
     font-size: 48px;
     line-height: 56px;
   }
+
+  &.chalet-new-york {
+    @include chalet_new_york;
+    font-size: 48px;
+    line-height: 56px;
+  }  
 }
 
 h2, .h2 {

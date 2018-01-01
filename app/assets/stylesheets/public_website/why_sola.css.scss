@@ -3,5 +3,26 @@
 @import 'bootstrap/mixins';
 
 .why-sola {
-	
+
+	.hero-carousel {
+
+		.button {
+			margin: 40px 0 0 0;
+		}
+	}
+
+	.sola-freedom {
+		background-color: #F5F9FB;
+		padding: 60px 0;
+	}
+
+	.sola-flexibility {
+		padding: 180px 0;
+	  background: asset-url('WhySola/WhySola_3.jpg') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+
 }
