@@ -96,31 +96,37 @@
     </div>
   </div>
 
-  <div class="container">
-    <h2><%= t('page.why_sola.beautiful_studios_exclusive_perks') %></h2>
-    <p><%= t('page.why_sola.at_sola_you_get_more') %></p>
-
-    <div class="benefits-tiles">
+  <div class="sola-benefits">
+    <div class="container">
+      
+      <h2 class="text-center"><%= t('page.why_sola.beautiful_studios_exclusive_perks') %></h2>
+      <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
       
       <div class="row">
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/OurStudios.jpg' %>
-            <span class="title"><%= t('page.why_sola.beautiful_studios') %></span>
+          <%= link_to :our_studios, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/OurStudios.jpg' %>
+              <span class="title"><%= t('page.why_sola.beautiful_studios') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>
           <% end %>
         </div>
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/Community_Support.jpg' %>
-            <span class="title"><%= t('page.why_sola.community_support') %></span>
+          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/Community_Support.jpg' %>
+              <span class="title"><%= t('page.why_sola.community_support') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.community_support_text') %></span>
           <% end %>
         </div>
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/Webpage.jpg' %>
-            <span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span>
+          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/Webpage.jpg' %>
+              <span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
           <% end %>
         </div>        
@@ -128,30 +134,36 @@
 
       <div class="row">
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/SolaPro.jpg' %>
-            <span class="title"><%= t('page.why_sola.sola_pro') %></span>
+          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <span class="title"><%= t('page.why_sola.sola_pro') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.sola_pro_text') %></span>
           <% end %>
         </div>
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/SolaSessions.jpg' %>
-            <span class="title"><%= t('page.why_sola.sola_sessions') %></span>
+          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+              <span class="title"><%= t('page.why_sola.sola_sessions') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
           <% end %>
         </div>
         <div class="columns four">
-          <%= link_to :our_studios do %>
-            <%= image_tag 'WhySola/SolaGenius.jpg' %>
-            <span class="title"><%= t('page.why_sola.solagenius') %></span>
+          <%= link_to :solagenius, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/SolaGenius.jpg' %>
+              <span class="title"><%= t('page.why_sola.solagenius') %></span>
+            </div>
             <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
           <% end %>
         </div>        
       </div>
 
-    </div> <!-- benefits-tiles -->
-  </div> <!-- container -->
+    </div> <!-- container -->
+  </div> <!-- sola-benefits -->
 
 </div> <!-- why-sola -->
 

@@ -37,6 +37,9 @@ $brand-pink-hover: #f26ab9;
 	font-family: "chalet-new-york-sixty", sans-serif;
 	font-style: normal;
 	font-weight: 400;
+  -moz-osx-font-smoothing: antialiased; //auto
+	-webkit-font-smoothing: antialiased; //auto
+	font-smoothing: antialiased; //auto				
 }
 
 @mixin chalet_paris() {

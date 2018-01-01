@@ -11,18 +11,85 @@
 		}
 	}
 
-	.sola-freedom {
-		background-color: #F5F9FB;
-		padding: 60px 0;
+}
+
+.sola-freedom {
+	background-color: #F5F9FB;
+	padding: 60px 0;
+}
+
+.sola-flexibility {
+	padding: 180px 0;
+  background: asset-url('WhySola/WhySola_3.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.sola-benefits {
+	padding-top: 80px;
+	margin-bottom: -30px;
+
+	h2 {
+		margin-bottom: 10px;
 	}
 
-	.sola-flexibility {
-		padding: 180px 0;
-	  background: asset-url('WhySola/WhySola_3.jpg') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	p {
+		margin-bottom: 40px;
 	}
 
+	.benefit-tile {
+		display: block;
+		clear: both;
+		text-decoration: none;
+		margin-bottom: 45px;
+		@include transition(opacity 0.15s ease-in-out);
+		opacity: 1;
+
+		&:hover, &:active {
+			opacity: 0.5;
+		}
+
+		.img-wrap {
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+
+		  flex-direction: column;
+		  align-content: center;
+		  justify-content: center;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			@include border-radius(4px);
+			margin-bottom: 15px;
+		}
+
+		.title {
+			position: absolute;
+			z-index: 2;
+			white-space: nowrap;
+			@include chalet-new-york;
+			font-size: 18px;
+			line-height: 18px;
+			color: #FFF;
+			padding: 10px 20px;
+			@include border-radius(20px);
+			background: rgba(0,0,0,0.59);
+			white-space: nowrap;
+			align-self: center;
+		}
+
+		.text {
+			color: #4A4A4A;
+			font-size: 14px;
+			line-height: 24px;
+			font-weight: 300;
+		}
+	}
 }
