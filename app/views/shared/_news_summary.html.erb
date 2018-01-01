@@ -4,8 +4,13 @@
   </div>
   <div class="text">
     <h4><%= link_to article.title.html_safe, article.article_url, :target => '_blank' %></h4>
-    <h4 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h4>
-    <div><%= article.summary.gsub(/<img[^>]+\>/, '').html_safe if article.summary %><br><strong><%= link_to t('page.news.read_more').html_safe, article.article_url, :class => 'pink-link', :target => '_blank' %></strong></div>
+    <h5 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h5>
+    <p>
+      <%= sanitize(article.summary.gsub(/<img[^>]+\>/, '').html_safe, :tags => []) if article.summary %>
+      <br />
+      <br />
+      <strong><%= link_to t('page.news.read_more').html_safe, article.article_url, :class => 'pink-link', :target => '_blank' %></strong>
+    </p>
     <ul class="social <%= defined?(social) && social == 'circle' ? "social-circle" : nil %>">
       <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{article.article_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
       <li><%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.article_url}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
