@@ -105,9 +105,11 @@
       }
 
       a:link, a:visited, a:hover, a:active {
-        color: #FFF;
-        text-decoration: none;
-        background: transparent;
+
+        &.outline-large-white, &.outline-large-white:hover, &.outline-large-white:active, &.outline-large-white:focus {
+          color: #FFF;
+          background: transparent;
+        }
 
         &.button {
           display: inline;
