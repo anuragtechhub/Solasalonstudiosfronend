@@ -29,6 +29,9 @@ en:
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com
   in: in
+  contact_for_leasing_information: Contact %{general_contact_name} for leasing information
+  phone_result: "<strong>p:</strong> %{phone_number}"
+  email_result: "<strong>e:</strong> %{email_address}"  
 
   header:
     rent_studio_button: Rent a Studio
@@ -736,3 +739,7 @@ en:
       solagenius_text: Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered.
       search: Search
       view_all_locations: View All Locations
+
+
+
+

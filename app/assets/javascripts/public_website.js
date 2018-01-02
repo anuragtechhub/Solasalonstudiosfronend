@@ -20,6 +20,8 @@
 //= require text-gradient
 //= require jquery.hoverIntent
 //= require add_to_calendar
+//= require i18n
+//= require i18n/translations
 //= require_tree ./public_website
 
 $(function () {

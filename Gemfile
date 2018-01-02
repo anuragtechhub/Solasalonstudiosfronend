@@ -92,6 +92,9 @@ gem "puma_worker_killer"
 gem "addressable"
 gem 'dotenv-rails', :groups => [:development, :test]
 
+
+gem "i18n-js", ">= 3.0.0.rc11" #">= 3.0.0.rc8" 
+
 gem 'kaminari'
 
 #gem 'execjs'

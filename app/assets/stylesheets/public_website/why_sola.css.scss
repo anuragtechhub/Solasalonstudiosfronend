@@ -229,7 +229,7 @@
 
 	.view-all-locations {
 		margin-top: 30px;
-		
+
 		a, a:link, a:visited, a:hover, a:active {
 			@include chalet_new_york;
 			font-size: 14px;
@@ -237,6 +237,93 @@
 			text-decoration: none;
 		}
 	}
+
+	.salon-search-results {
+		display: none;
+		margin-top: 50px;
+	}
+
+	.salon-search-result, .salon-search-result:link, .salon-search-result:visited {
+	  display: -webkit-box;
+	  display: -moz-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;  
+
+	  flex-direction: row;
+	  align-content: center;
+	  justify-content: center;
+
+		text-decoration: none;
+		position: relative;
+		background: #FFF;
+		@include border-radius(2px);
+		margin: 0 0 10px 0;
+		padding: 30px 25px;
+		cursor: pointer;
+		// @include transition(opacity 0.15s ease-in-out);
+		// opacity: 1;
+
+		// &:hover, &:active {
+		// 	opacity: 0.5;
+		// }
+
+		h4 {
+			margin: 0;
+		}
+
+		p {
+			position: relative;
+			top: 2px;
+			align-self: center;
+			margin: 0;
+			flex: 1;
+			font-size: 14px;
+			line-height: 16px;
+			//margin: 0 0 -2px 0;
+
+			a, a:link, a:visited, a:hover, a:active {
+				text-decoration: none !important;
+				color: #4A4A4A !important;
+			}
+		}
+
+		.names {
+			flex: 1.15;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+
+			p {
+				top: 0;
+			}
+		}
+
+		.chevron-right {
+			position: relative;
+			top: 3px;
+			align-self: center;
+		}
+	}
+
+	.salon-search-spinner {
+		margin-top: 50px;
+		position: relative;
+		display: none;
+		height: 66px;
+		width: 100%;
+	}
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22px 0 0 -22px;
+    background: asset-data-url('spinner.gif') no-repeat center;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 @media (max-width: 1025px) {

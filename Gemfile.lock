@@ -162,6 +162,8 @@ GEM
     hurley (0.2)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
+    i18n-js (3.0.3)
+      i18n (~> 0.6, >= 0.6.6)
     image_optim (0.22.1)
       exifr (~> 1.2, >= 1.2.2)
       fspath (~> 2.1)
@@ -384,6 +386,7 @@ DEPENDENCIES
   google-api-client
   hirb
   htmlcompressor
+  i18n-js (>= 3.0.0.rc11)
   image_optim
   image_optim_pack
   jbuilder (~> 1.2)
