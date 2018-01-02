@@ -202,13 +202,14 @@ select {
 
   .spyglass-black {
     position: absolute;
-    top: 25px;
-    left: 25px;
+    top: 24px;
+    left: 24px;
     z-index: 2;
   }
 
   input {
-    width: 250px;
+    // width: 100%;
+    // max-width: 250px;
     margin-left: 60px;
     margin-bottom: 0;
     font-size: 18px;
@@ -247,6 +248,21 @@ select {
       opacity: 0.5;
     }
   }  
+}
+
+@media (max-width: 700px) {
+  .search-input-with-button {
+    width: 100%;
+    zoom: 0.8;
+
+    button {
+      display: none;
+    }
+
+    input {
+      width: calc(100% - 60px);
+    }
+  }
 }
 
 @media (max-width: 550px) {

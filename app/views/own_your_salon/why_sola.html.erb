@@ -188,7 +188,7 @@
           </form>
         </div>
         <div class="six columns">
-          
+
         </div>
       </div>
 
@@ -197,6 +197,7 @@
 
 </div> <!-- why-sola -->
 
+<% content_for(:scripts) { javascript_include_tag('search_salon') } %>
 <% content_for(:title) { t('page.why_sola.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/why-sola" } %>
 <% content_for(:meta_description) { t('page.why_sola.meta_description') } %>
