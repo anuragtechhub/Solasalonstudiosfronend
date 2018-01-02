@@ -224,6 +224,25 @@
 	}
 
 	.search-form {
-		margin: 50px auto 25px auto;
+		margin: 50px auto 0 auto;
 	}
+}
+
+@media (max-width: 700px) {
+
+	.search-for-a-salon {
+		padding: 40px 0;
+
+		h1 {
+			font-size: 24px;
+			line-height: 32px;
+		}
+
+		p {
+			margin-top: 4px;
+			font-size: 14px;
+			line-height: 14px;
+		}
+	}
+
 }
