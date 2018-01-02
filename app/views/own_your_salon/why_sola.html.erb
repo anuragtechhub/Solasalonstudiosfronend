@@ -170,6 +170,24 @@
     </div> <!-- container -->
   </div> <!-- sola-benefits -->
 
+  <div class="search-for-a-salon">
+    <div class="container">
+
+      <h1 class="chalet"><%= t('page.why_sola.dont_just_dream_do') %></h1>
+      <h1 class="chalet-new-york"><%= t('page.why_sola.become_a_salon_owner') %></h1>
+      <p><%= t('page.why_sola.search_for_a_salon') %></p>
+
+      <form class="search-form">
+        <div class="search-input-with-button">
+          <span class="spyglass-black"></span>
+          <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
+          <button type="submit"><%= t('page.why_sola.search') %></button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
 </div> <!-- why-sola -->
 
 <% content_for(:title) { t('page.why_sola.title').html_safe } %>

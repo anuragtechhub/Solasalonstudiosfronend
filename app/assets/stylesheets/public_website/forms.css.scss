@@ -187,6 +187,68 @@ select {
   margin-left: 0;
 }
 
+.search-input-with-button {
+  position: relative;
+  height: 70px;
+  padding: 15px 0;
+  font-size: 0;
+  white-space: nowrap;
+  @include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+  @include border-radius(4px);
+  background: #FFF;
+  text-align: left;
+  width: 420px;
+  max-width: 100%;
+
+  .spyglass-black {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    z-index: 2;
+  }
+
+  input {
+    width: 250px;
+    margin-left: 60px;
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 32px;
+    height: 42px;
+    border: 0;
+    background: transparent;
+    -moz-osx-font-smoothing: antialiased; //auto
+    -webkit-font-smoothing: antialiased; //auto
+    font-smoothing: antialiased; //auto   
+
+    &:focus, &:active {
+      border: 0 !important;
+    } 
+  }
+
+  button {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    height: 46px;
+    // width: 46px;
+    background: $brand-pink; /* For browsers that do not support gradients */
+    @include background-gradient(#FF5ABB, #EF008C);
+    margin: 0;
+    border: 0;
+    padding: 17px 15px 15px 15px;
+    @include border-radius(4px);
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;
+    color: #FFF;
+    font-size: 14px;
+    line-height: 16px;
+
+    &:focus, &:hover, &:active {
+      opacity: 0.5;
+    }
+  }  
+}
+
 @media (max-width: 550px) {
 
   .search-with-spyglass {

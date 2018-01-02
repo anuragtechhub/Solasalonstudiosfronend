@@ -42,25 +42,25 @@
 			margin-bottom: 30px;
 
 			&.heart {
-				background: asset-url('WhySola/Icons/Heart_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Heart_Icon@2x.png');
 		  	background-size: (48px / 2) (48px / 2);
 			}
 
 			&.music {
-				background: asset-url('WhySola/Icons/Music_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Music_Icon@2x.png');
 		  	background-size: (44px / 2) (48px / 2);
 		  	width: (44px / 2);
 			}
 
 			&.wifi {
-				background: asset-url('WhySola/Icons/Wifi_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Wifi_Icon@2x.png');
 		  	background-size: (48px / 2) (38px / 2);
 		  	height: (38px / 2);
 		  	margin-bottom: 35px;
 			}			
 
 			&.lock {
-				background: asset-url('WhySola/Icons/Lock_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Lock_Icon@2x.png');
 		  	background-size: (36px / 2) (48px / 2);
 		  	width: (36px / 2);
 			}
@@ -71,14 +71,14 @@
 			}
 
 			&.chat {
-				background: asset-url('WhySola/Icons/Chat_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Chat_Icon@2x.png');
 		  	background-size: (48px / 2) (44px / 2);
 		  	height: (44px / 2);
 		  	margin-bottom: 32px;
 			}
 
 			&.clock {
-				background: asset-url('WhySola/Icons/Clock_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Clock_Icon@2x.png');
 		  	background-size: (48px / 2) (48px / 2);
 			}
 		}
@@ -211,5 +211,19 @@
 			line-height: 24px;
 			font-weight: 300;
 		}
+	}
+}
+
+.search-for-a-salon {
+	background-color: #F5F9FB;
+	padding: 60px 0;
+	margin: 40px 0 -30px 0;
+
+	h1, p {
+		margin: 0;
+	}
+
+	.search-form {
+		margin: 50px auto 25px auto;
 	}
 }
