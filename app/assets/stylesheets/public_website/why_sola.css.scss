@@ -42,43 +42,43 @@
 			margin-bottom: 30px;
 
 			&.heart {
-				background: asset-data-url('WhySola/Icons/Heart_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Heart_Icon@2x.png') no-repeat center;
 		  	background-size: (48px / 2) (48px / 2);
 			}
 
 			&.music {
-				background: asset-data-url('WhySola/Icons/Music_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Music_Icon@2x.png') no-repeat center;
 		  	background-size: (44px / 2) (48px / 2);
 		  	width: (44px / 2);
 			}
 
 			&.wifi {
-				background: asset-data-url('WhySola/Icons/Wifi_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Wifi_Icon@2x.png') no-repeat center;
 		  	background-size: (48px / 2) (38px / 2);
 		  	height: (38px / 2);
 		  	margin-bottom: 35px;
 			}			
 
 			&.lock {
-				background: asset-data-url('WhySola/Icons/Lock_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Lock_Icon@2x.png') no-repeat center;
 		  	background-size: (36px / 2) (48px / 2);
 		  	width: (36px / 2);
 			}
 
 			&.price {
-				background: asset-url('WhySola/Icons/Price_Icon@2x.png');
+				background: asset-url('WhySola/Icons/Price_Icon@2x.png') no-repeat center;
 		  	background-size: (48px / 2) (48px / 2);
 			}
 
 			&.chat {
-				background: asset-data-url('WhySola/Icons/Chat_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Chat_Icon@2x.png') no-repeat center;
 		  	background-size: (48px / 2) (44px / 2);
 		  	height: (44px / 2);
 		  	margin-bottom: 32px;
 			}
 
 			&.clock {
-				background: asset-data-url('WhySola/Icons/Clock_Icon@2x.png');
+				background: asset-data-url('WhySola/Icons/Clock_Icon@2x.png') no-repeat center;
 		  	background-size: (48px / 2) (48px / 2);
 			}
 		}
@@ -228,10 +228,61 @@
 	}
 }
 
+@media (max-width: 1025px) {
+	.sola-freedom {
+
+		.columns {
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.freedom-tile {
+			padding: 30px 15px;
+			height: auto;
+			overflow: hidden;
+
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+
+		  flex-direction: row;
+		  align-content: center;
+		  justify-content: center;
+
+			.icon, .text {
+				//float: left;
+				margin: 0 !important;
+			}
+
+			.icon {
+				align-self: center;
+				flex: 1;
+				margin-right: 20px !important;
+			}
+
+			.text {
+				flex: 3;
+				top: 5px;
+				position: relative;
+
+				//position: absolute;
+				//top: 6px; 
+			}
+		}
+	}
+}
+
 @media (max-width: 700px) {
 
 	.search-for-a-salon {
-		padding: 40px 0;
+		margin-top: 15px;
+		padding: 30px 0;
+
+		.search-form {
+			margin: 30px auto 0 auto;
+		}
 
 		h1 {
 			font-size: 24px;
