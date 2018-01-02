@@ -137,6 +137,21 @@
       }
     }
   }
+
+  .learn-more-button {
+    position: absolute;
+    bottom: 30px;
+    
+    h5 {
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 10px;
+    }
+
+    .fa {
+      color: #FFF;
+      font-size: 29px;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
