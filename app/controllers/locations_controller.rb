@@ -2,6 +2,12 @@ class LocationsController < PublicWebsiteController
 
   before_action :map_defaults
 
+  def find_salon
+    @locations = Locations.all
+
+    render :json => @locations
+  end
+
   def index
     if I18n.locale == :en
       @country = 'US'

@@ -226,6 +226,17 @@
 	.search-form {
 		margin: 50px auto 0 auto;
 	}
+
+	.view-all-locations {
+		margin-top: 30px;
+		
+		a, a:link, a:visited, a:hover, a:active {
+			@include chalet_new_york;
+			font-size: 14px;
+			line-height: 16px;
+			text-decoration: none;
+		}
+	}
 }
 
 @media (max-width: 1025px) {
