@@ -4,9 +4,18 @@
 
 .our-studios {
 
+	.content-container {
+		padding-top: 120px;
+
+		h2 {
+			margin-bottom: 15px;
+		}
+	}
+
 	.amenities-grid {
 		box-sizing: border-box;
 		position: relative;
+		margin-bottom: 60px;
 
 		&:after {
 		  content: "";
@@ -62,6 +71,10 @@
 					width: auto;
 					left: -50%;
 				}
+			}
+
+			&.one-hundred {
+				width: 100%;
 			}
 
 			&.two-thirds {
