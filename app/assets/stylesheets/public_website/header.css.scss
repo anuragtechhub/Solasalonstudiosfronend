@@ -274,7 +274,9 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: hidden;
-      
+      //opacity: 1;
+      //@include transition(opacity 0.15s ease-in-out);
+
       .forward-arrow-pink, .back-arrow-pink {
         display: none;
       }
@@ -291,13 +293,14 @@
       }
 
       &:hover, &:active {
-        color: $brand-pink;
+        color: #000;
+        //opacity: 0.5;
 
         .forward-arrow-pink, .back-arrow-pink {
-          display: block;
+          display: none;
         }
         .forward-arrow-black, .back-arrow-black {
-          display: none;
+          display: block;
         }
       }
     }
@@ -337,7 +340,7 @@
       text-overflow: hidden;
     }  
     a.sublink:hover, a.sublink:active {
-      color: $brand-pink;
+      color: #4A4A4A;
     }
   }
 
