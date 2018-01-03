@@ -553,10 +553,21 @@
       // -webkit-filter: grayscale(100%);
       // filter: grayscale(100%);
 
+      &.saloncentric {
+        position: relative;
+        top: -2px;
+      }
+
       &.samvilla {
         height: 24px;
         position: relative;
         top: -3px;
+      }
+
+      &.passion_squared {
+        position: relative;
+        top: -4px;
+        height: (65px / 2.5);
       }
     }
   }
