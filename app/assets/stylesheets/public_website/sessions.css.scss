@@ -553,6 +553,16 @@
       // -webkit-filter: grayscale(100%);
       // filter: grayscale(100%);
 
+      &.babyliss_pro {
+        position: relative;
+        top: 2px;
+      }
+
+      &.cosmoprof {
+        position: relative;
+        top: -4px
+      }
+
       &.saloncentric {
         position: relative;
         top: -2px;
