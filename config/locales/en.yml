@@ -384,10 +384,33 @@ en:
       hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians and more.
       studio_amenities: Studio Amenities 
       meta_description: Our Studios
+      shampoo_bowl: Shampoo Bowl 
+      shampoo_bowl_text: Shampoo, rinse and repeat in a shampoo
       view_gallery: View Gallery of Studios
       join_our_community: Join our Community
       join_our_community_text: Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!
       join_our_community_button_text: Own Your Salon
+      wash_basin:
+        heading: Shampoo Bowl
+        body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
+      products:
+        heading: Retail Shelving
+        body: Proudly display and sell the products you love.
+      mirror:
+        heading: Oversized Mirrors
+        body: Style clients in front of large, well-lit mirrors.
+      tool_cabinet:
+        heading: Tool Cabinet
+        body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
+      chair:
+        heading: Hydraulic Chair
+        body: Provide comfort for your clients in a high-end hydraulic chair.
+      cabinetry:
+        heading: Cabinets &amp; Drawers
+        body: High end custom cabinetry with abundant storage helps keep your studio organized.
+      insulated_walls:
+        heading: Insulated Walls
+        body: Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.
 
     our_story:
       title: Our Story
