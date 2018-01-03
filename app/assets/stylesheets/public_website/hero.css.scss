@@ -434,4 +434,31 @@
     }
   }
 
+  .owl-carousel {
+    .learn-more-button {
+      h5 {
+        display: none;
+      }
+    }
+  }
+
+  .owl-carousel .item .item-content {
+
+    h1 {
+      font-size: 24px;
+      line-height: 26px;
+      margin-left: 60px;
+      margin-right: 60px;
+      margin-bottom: 0;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 24px;
+      margin-left: 60px;
+      margin-right: 60px;
+      margin-bottom: 0;
+    }
+  }
+
 }
