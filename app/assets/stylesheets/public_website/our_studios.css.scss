@@ -1,0 +1,19 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.our-studios {
+
+
+	.view-gallery-of-studios {
+		margin: 30px auto 180px auto;
+
+		.container {
+			text-align: center;
+
+			.button {
+				display: inline;
+			}
+		}
+	}
+}

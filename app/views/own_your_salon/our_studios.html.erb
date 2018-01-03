@@ -1,81 +1,45 @@
 <%= render 'shared/public_website/own_your_salon_nav', :page => :our_studios %>
 
-<div class="hero-fullscreen">
+<div class="our-studios">
 
-  <div class="hero-carousel" data-autoplayoff="true">
-    <div class="item"><%= image_tag 'own/hero_amenities_desktop.jpg', :id => 'our_studios_img', :alt => 'The interior of a salon studio', :width => 1480, :height => 993 %></div>
-  </div>
-
-  <div class="explore-studio">
-    <div class="dot no-tooltip storage" data-html="<h3><%= t('page.our_studios.storage.heading').html_safe %></h3><p><%= t('page.our_studios.storage.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip insulated-walls" data-html="<h3><%= t('page.our_studios.insulated_walls.heading').html_safe %></h3><p><%= t('page.our_studios.insulated_walls.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip tool-cabinet" data-html="<h3><%= t('page.our_studios.tool_cabinet.heading').html_safe %></h3><p><%= t('page.our_studios.tool_cabinet.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip chair" data-html="<h3><%= t('page.our_studios.chair.heading').html_safe %></h3><p><%= t('page.our_studios.chair.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip cabinetry" data-html="<h3><%= t('page.our_studios.cabinetry.heading').html_safe %></h3><p><%= t('page.our_studios.cabinetry.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip mirror" data-html="<h3><%= t('page.our_studios.mirror.heading').html_safe %></h3><p><%= t('page.our_studios.mirror.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip products" data-html="<h3><%= t('page.our_studios.products.heading').html_safe %></h3><p><%= t('page.our_studios.products.body').html_safe %></p>"></div>
-    <div class="dot no-tooltip wash-basin active" data-html="<h3><%= t('page.our_studios.wash_basin.heading').html_safe %></h3><p><%= t('page.our_studios.wash_basin.body').html_safe %></p>"></div>
-  </div>
-
-  <div id="amenity-description">
-    <h3><%= t('page.our_studios.wash_basin.heading').html_safe %></h3><p><%= t('page.our_studios.wash_basin.body').html_safe %></p>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-content-wrapper">
-
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+      <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <div class="item-content">
+        <h1 class="chalet"><%= t('page.our_studios.hero_heading1').html_safe %></h1>
+        <p><%= t('page.our_studios.hero_heading2').html_safe %></p>
+        <div class="learn-more-button">
+          <h5><%= t('page.why_sola.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-  
-<div class="container" style="max-width: 550px;margin-bottom: 20px">
-  <h2 class="brand text-center"><%= t('page.our_studios.heading1').html_safe %></h2>
-</div>
 
-<div class="studio-amenities">
-  <div class="container container-inset">
-    <h2 class="light text-center"><%= t('page.our_studios.heading2').html_safe %></h2>
-
-    <ul>
-      <% t('page.our_studios.list2').each_line do |li| %>
-        <li><%= li.html_safe %></li>
-      <% end %>
-    </ul>
-
+  <div class="container content-container">
+    <h2 class="text-center"><%= t('page.our_studios.studio_amenities') %></h2>
   </div>
-</div>
 
-<div class="owl-carousel owl-theme" data-pagination="true">
-  <% if I18n.locale == :en %>
-    <% (1..9).each do |number| %>
-      <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/sola#{number}.jpg", :alt => 'The interior of a salon studio' %></div>
-    <% end %> 
-  <% else %>
-    <% (1..9).each do |number| %>
-      <div class="item"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/amenities-gallery/amenity#{number}.jpg", :alt => 'The interior of a salon studio' %></div>
-    <% end %> 
-  <% end %> 
-</div>
-
-<div class="sola-professional-benefits">
-  <div class="container container-inset">
-
-    <h2 class="light text-center"><%= t('page.our_studios.heading3').html_safe %></h2>
-
-    <ul>
-      <% t('page.our_studios.list3', { 
-        :sola_pro_link => link_to(t('page.own.section.sola_pro.title').html_safe, 'https://www.solaprofessional.com'),
-        :sola_sessions_link => link_to(t('page.own.section.sola_sessions.title').html_safe, :sessions),
-        :sola_salons_link => link_to(t('short_www_name').html_safe, 'https://www.solasalonstudios.com')
-        }).each_line do |li| %>
-        <li><%= li.html_safe %></li>
-      <% end %>
-    </ul>
-
-    <p class="text-center gallery-button"><%= link_to t('page.our_studios.view_gallery_of_studios').html_safe, :gallery, :class => 'button primary' %></p>
-
+  <div class="view-gallery-of-studios">
+    <div class="container">
+      <%= link_to :gallery, :class => 'button outline-large-white' do %><%= t('page.our_studios.view_gallery') %><% end %>
+    </div>
   </div>
+
+  <div class="container">
+    <div class="cta cta-own">
+      <%= image_tag 'cta/OwnSalon.png' %>
+      <div class="cta-contents">
+        <h2><%= t 'page.our_studios.join_our_community' %></h2>
+        <p><%= t('page.our_studios.join_our_community_text').html_safe %></p>
+        <%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.our_studios.join_our_community_button_text' %><% end %>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
 
 <% content_for(:title) { t('page.our_studios.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/our-studios" } %>

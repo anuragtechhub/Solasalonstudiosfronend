@@ -380,7 +380,14 @@ en:
     
     our_studios:
       title: Our Studios
+      hero_heading1: Sola provides all you need and more in high-end, move-in-ready studios.
+      hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians and more.
+      studio_amenities: Studio Amenities 
       meta_description: Our Studios
+      view_gallery: View Gallery of Studios
+      join_our_community: Join our Community
+      join_our_community_text: Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!
+      join_our_community_button_text: Own Your Salon
 
     our_story:
       title: Our Story
@@ -412,68 +419,6 @@ en:
         sola_pro: Sola<span class="mobile-br"> </span>Pro
         sola_sessions: Sola<span class="mobile-br"> </span>Sessions
         sola_genius: Sola<span class="mobile-br"> </span>Genius
-
-    our_studios:
-      title: Our Studios
-      meta_description: "Sola provides high-end, move-in ready salon studios. Customize your private suite with paint, artwork, music and décor. Find a one or two chair salon near you."
-      heading1: Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.
-      heading2: Studio Amenities
-      list2: |
-        <strong>Oversized locking door:</strong> Your studio is private and secure.
-        <strong>High-end cabinets and drawers:</strong> Keep your studio neat and tidy.
-        <strong>Retail shelves:</strong> Showcase your favorite products.
-        <strong>Two oversized mirrors:</strong> Creates a nice and open feel.
-        <strong>Tool cabinet:</strong> Cleanly stores your cords.
-        <strong>Shampoo bowl:</strong> Shampoo, rinse and repeat.
-        <strong>Styling chair:</strong> Comfort for clients in a high-end hydraulic chair.
-        <strong>Sound-insulated walls:</strong> Keep out noisy distractions.
-        <strong>Full spectrum lighting:</strong> Light that emulates natural daylight.
-        <strong>Instant hot water:</strong> Saves you time. Conserves water.
-        <strong>Common areas:</strong> Break room with laundry facilities and refrigerator.
-        <strong>Utilities included:</strong> Water, electricity, Wi-Fi, no added costs.
-      heading3: Sola Professional Benefits
-      list3: |
-        All the equipment you need to start your business with minimum start-up costs.
-        Join a community of nearly 10,000 salon professionals nationwide to be in business for yourself, not by yourself.
-        Boost your income and keep 100% of your profits.
-        Access group insurance and Sola programs and discounts for products, scheduling and more.
-        Escape salon politics and drama in your private, secure studio.
-        Manage your own schedule with 24/7 studio access.
-        Personalize your salon space with artwork, music, furniture and decor.
-        Set pricing for services and products.
-        Sell the retail products you love.
-        Play your own music and enjoy private conversations.
-        Enjoy an intimate setting and give your guests the one-on-one attention they deserve.
-        Utilize %{sola_pro_link} website and app for deals and education.
-        Attend national %{sola_sessions_link} education events.
-        Create your own website page on %{sola_salons_link}
-      view_gallery_of_studios: View Gallery of Studios
-      want_to_learn_more: Want to learn more?
-      view_frequently_asked_questions: "View frequently asked questions &raquo;"
-      storage: 
-        heading: Drawers
-        body: Pull out drawers for additional storage
-      insulated_walls:
-        heading: Insulated Walls
-        body: Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.
-      tool_cabinet:
-        heading: Tool Cabinet
-        body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
-      chair:
-        heading: Hydraulic Chair
-        body: Provide comfort for your clients in a high-end hydraulic chair.
-      cabinetry:
-        heading: Cabinets
-        body: High end custom cabinetry with abundant storage helps keep your studio organized.
-      mirror:
-        heading: Mirrors
-        body: Style clients in front of large, well-lit mirrors.
-      products:
-        heading: Retail Shelving
-        body: Proudly display and sell the products you love
-      wash_basin:
-        heading: Shampoo Bowl
-        body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
 
     privacy_policy:
       title: Privacy Policy
