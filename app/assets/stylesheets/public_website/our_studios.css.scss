@@ -99,8 +99,27 @@
 				left: 0;
 				right: 0;
 				bottom: 0;
-				@include transition(opacity 0.15s ease-in-out);
+				@include transition(opacity 0.25s ease-in-out);
 				opacity: 1;
+			}
+
+			.back {
+				opacity: 0;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;  
+
+				flex-direction: column;
+				align-content: center;
+				justify-content: center;
+
+				@include gradient-directional($brand-pink, $brand-primary, -45deg);
+
+				&.active {
+					opacity: 1;
+				}
 			}
 
 			.title {
@@ -125,20 +144,12 @@
 
 				h2 {
 					color: #FFF;
+					margin: 0;
+					padding: 0 40px;
 				}
 			}
 
-			.back {
-				display: -webkit-box;
-				display: -moz-box;
-				display: -ms-flexbox;
-				display: -webkit-flex;
-				display: flex;  
 
-				flex-direction: column;
-				align-content: center;
-				justify-content: center;
-			}
 		}
 	}
 
