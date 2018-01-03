@@ -39,7 +39,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-11-01]
+  # rake reports:locations_with_email[2017-12-01]
   task :locations_with_email, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -60,7 +60,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-11-01,360]
+  # rake reports:locations_with_email_starting_at[2017-12-01,343]
   task :locations_with_email_starting_at, [:start_date, :gid] => :environment do |task, args|
     p "begin locations report..."
     
@@ -118,7 +118,7 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
 
   # rake reports:solapro
-  # rake reports:solapro[2017-11-01]
+  # rake reports:solapro[2017-12-01]
   task :solapro, [:start_date] => :environment do |task, args|
     p "begin solapro analytics report..."
     # p "args=#{args.inspect}"
@@ -131,18 +131,18 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
     analytics = Analytics.new
     if start_date && end_date
-      web_data = analytics.solapro_web_data('105609602', start_date, end_date)
+      #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
       app_data = analytics.solapro_app_data('113771223', start_date, end_date)
     else
-      web_data = analytics.solapro_web_data
+      #web_data = analytics.solapro_web_data
       app_data = analytics.solapro_app_data
     end
     locals = {
       :@app_data => app_data,
-      :@web_data => web_data
+      #:@web_data => web_data
     }
 
-    #p "got data #{locals.inspect}"
+    p "got data #{locals.inspect}"
     p "got data..."
 
     html_renderer = HTMLRenderer.new
