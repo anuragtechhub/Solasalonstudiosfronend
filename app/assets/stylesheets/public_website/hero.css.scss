@@ -490,4 +490,25 @@
     }
   }
 
+  .multi-carousel .item .img-wrap {
+    height: auto;
+  }
+
+  .multi-carousel .item .img-wrap img {
+    height: auto;
+    width: 100%;
+    left: auto;
+  }
+
+  .multi-carousel .hero-text {
+    height: auto;
+  }
+
+  .owl-carousel .item .item-content {
+    h1, p {
+      margin: 0;
+    }
+  }
+
+
 }
