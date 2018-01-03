@@ -442,21 +442,31 @@
     }
   }
 
+  .owl-carousel .item .img-wrap {
+    height: 420px;
+  }
+
+  .owl-carousel .item .img-wrap img {
+    height: 420px;
+    width: auto;
+    left: -25%;
+  }
+
   .owl-carousel .item .item-content {
 
     h1 {
       font-size: 24px;
       line-height: 26px;
-      margin-left: 90px;
-      margin-right: 90px;
+      margin-left: 120px;
+      margin-right: 120px;
       margin-bottom: 0;
     }
 
     p {
       font-size: 14px;
-      line-height: 24px;
-      margin-left: 90px;
-      margin-right: 90px;
+      line-height: 16px;
+      margin-left: 120px;
+      margin-right: 120px;
       margin-bottom: 0;
     }
   }
