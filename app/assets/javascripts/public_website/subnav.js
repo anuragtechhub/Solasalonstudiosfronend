@@ -3,6 +3,7 @@ $(function () {
   /**
   * 'oys' (Own Your Salon and About Us) subnav menus
   */
+  var showingNav = null;
   var showOysNav = function (nav) {
     if ($(window).width() > 1000) {
       // desktop
@@ -14,20 +15,34 @@ $(function () {
 
   $('#header .own_your_salon, #header .about_us').hoverIntent({
     over: function (e) {
-      //console.log('over! show it')
       var $this = $(e.target);
-      showOysNav($this.data('nav'));
+
+      if ($this.data('nav')) {
+        showingNav = $this.data('nav');
+      }
+
+      //console.log('over! show it', showingNav)
+      
+      showOysNav(showingNav);
     }, 
     out: function (e) {
-      //console.log('out! hide it');
       var $this = $(e.target);
 
-      var $oysNav = $('.oys-nav[data-nav="' + $this.data('nav') + '"]');
+      //console.log('out! hide it', showingNav, $this.data('nav'));
+      
+      if ($this.data('nav')) {
+        // use element nav
+        var $oysNav = $('.oys-nav[data-nav="' + $this.data('nav') + '"]');
+      } else {
+        var $oysNav = $('.oys-nav[data-nav="' + showingNav + '"]');
+      }
 
       if ($oysNav.hasClass('over')) {
+        //console.log('shhh...')
         // shhh...
       } else {
         $oysNav.hide();
+        showingNav = null;
       }
     },
     timeout: 500
@@ -36,13 +51,20 @@ $(function () {
   $('.oys-nav').on('mouseenter', function (e) {
     //console.log('mouseenter show!')
     var $this = $(e.target);
-    $('.oys-nav[data-nav="' + $this.data('nav') + '"]').addClass('over').show();
+
+    if ($this.data('nav')) {
+      showingNav = $this.data('nav');
+    }
+
+    $('.oys-nav[data-nav="' + showingNav + '"]').addClass('over').show();
   });  
 
   $('.oys-nav').on('mouseleave', function (e) {
-    //console.log('mouseleave hide!');
-    var $this = $(e.target);
-    $('.oys-nav[data-nav="' + $this.data('nav') + '"]').removeClass('over').hide();
+    //console.log('mouseleave hide!', showingNav);
+    //var $this = $(e.target);
+    
+    $('.oys-nav[data-nav="' + showingNav + '"]').removeClass('over').hide();
+    showingNav = null;
   }); 
 
 
