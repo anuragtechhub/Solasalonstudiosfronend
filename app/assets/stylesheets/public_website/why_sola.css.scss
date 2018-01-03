@@ -368,6 +368,22 @@
 				//position: absolute;
 				//top: 6px; 
 			}
+
+			&.active-tile {
+				flex-direction: column;
+
+				.text, a, a:link, a:visited, a:hover, a:active {
+					position: static;
+					top: auto;
+					bottom: auto;
+					left: auto;
+					right: auto;
+				}
+				a, a:link, a:visited, a:hover, a:active {
+					align-self: center;
+					margin-top: 15px;
+				}
+			}
 		}
 	}
 }
@@ -380,6 +396,28 @@
 
 		.search-form {
 			margin: 30px auto 0 auto;
+		}
+
+		.salon-search-result {
+			flex-direction: column;
+
+			.chevron-right {
+				display: none;
+			}
+
+			p {
+				align-self: flex-start;
+				margin-bottom: 5px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			.names {
+				flex: 1;
+				margin-bottom: 30px;
+			}
 		}
 
 		h1 {
