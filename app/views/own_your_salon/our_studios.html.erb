@@ -20,6 +20,24 @@
     <h2 class="text-center"><%= t('page.our_studios.studio_amenities') %></h2>
   </div>
 
+  <div class="amenities-grid">
+
+    <div class="grid-row">
+
+      <div class="grid-item two-thirds-left">
+        <div class="front">
+          <%= image_tag 'OurStudios/123.jpg' %>
+          <div class="title"><%= t('page.our_studios.wash_basin.heading') %></div>
+        </div>
+        <div class="back">
+          <div class="text"><%= t('page.our_studios.wash_basin.body') %></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
   <div class="view-gallery-of-studios">
     <div class="container">
       <%= link_to :gallery, :class => 'button outline-large-white' do %><%= t('page.our_studios.view_gallery') %><% end %>

@@ -4,6 +4,25 @@
 
 .our-studios {
 
+	.amenities-grid {
+
+		.grid-item {
+
+			.front, .back {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				@include transition(opacity 0.15s ease-in-out);
+				opacity: 1;
+			}
+
+			.back {
+				opacity: 0;
+			}
+		}
+	}
 
 	.view-gallery-of-studios {
 		margin: 30px auto 180px auto;
