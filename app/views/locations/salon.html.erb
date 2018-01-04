@@ -31,13 +31,13 @@
 
     <div class="two-thirds column">
       <% if @location.image_tags.size > 0 %>
-        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
+        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
           <% @location.image_tags.each do |image| %>
             <div class="item"><%= image.html_safe %></div>
           <% end %>
         </div>
       <% else %>
-        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
+        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
           <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
         </div>      
       <% end %>

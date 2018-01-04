@@ -90,7 +90,7 @@
     <div class="two-thirds column">
       
       <% if @stylist.image_tags.size > 0 %>
-        <div class="salon-pro-carousel owl-carousel owl-theme salon-professional" data-autoplayoff="true">
+        <div class="salon-pro-carousel owl-carousel owl-theme salon-professional" data-autoplayoff="true" data-paginationoff="true">
           <% @stylist.image_tags.each do |image| %>
             <div class="item"><%= image.html_safe %></div>
           <% end %>
