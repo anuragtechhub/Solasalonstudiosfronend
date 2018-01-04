@@ -46,6 +46,26 @@
 
 .sola-pro {
 
+  .hero-wrapper {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .sola-pro-iphone {
+    position: absolute;
+    left: 50%;
+    margin-left: 200px;
+    top: 150px;
+    z-index: 2;
+    background: asset-url('Pro_Iphone@2x.png') no-repeat;
+    background-size: (774px / 2) (1468px / 2);
+    width: (774px / 2);
+    height: (1468px / 2);
+  }
+
   .desktop-br {
     display: block;
     line-height: 1px;
@@ -186,6 +206,7 @@
   }
 
   .sola-pro-phone-gallery-desktop {
+    margin-top: 60px;
     display: block;
   }
 
@@ -518,7 +539,13 @@
 
 }
 
-
+@media (max-width : 1300px) {
+  .sola-pro {
+    .sola-pro-iphone {
+      display: none;
+    }
+  }
+}
 
 /**********************************************/
 /* iPads (portrait and landscape) ----------- */
@@ -532,6 +559,10 @@
   }  
 
   .sola-pro {
+    
+    .sola-pro-iphone {
+      display: none;
+    }
 
     .explore-sola-pro {
       margin-top: 60px;
