@@ -2,19 +2,16 @@
 
 <div class="sola-pro">
 
-  <div class="hero-fullscreen">
-    <div class="hero-carousel hero-carousel-fullscreen" data-autoplayoff="true">
-      <div class="item"><%= image_tag 'own/hero_sola_pro_desktop.jpg', :class => 'fullscreen', :alt => 'A laptop, a tablet and a phone sit on a table, all showing the Sola Pro app', :'data-width' => 1488, :'data-height' => 995, :width => 1488, :height => 995 %></div>
-    </div>
-
-    <div class="hero-content">
-      <div class="hero-content-wrapper">
-        <%= image_tag 'own/sola_pro_logo.png', :class => 'sola_pro_logo', :alt => 'A white iPhone showing the Sola Pro app' %>
-        <div class="sola-pro-copy">
-          <%= t('page.sola_pro.hero_body1').html_safe %>
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+      
+      <div class="img-wrap"><%= image_tag 'SolaPro_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <div class="item-content overlayed">
+        <div class="learn-more-button">
+          <h5><%= t('page.sola_sessions.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
         </div>
       </div>
-      <a href="#sola-pro-gallery" class="down-arrow" data-animated-scroll data-nav-group="sola-pro-nav"></a>
     </div>
   </div>
 
@@ -24,39 +21,33 @@
     </div>
   </div>
 
-  <div class="container">
-    <!--<hr />-->
-
-    <h2 class="brand text-center" style="margin-top: 30px"><%= t('page.sola_pro.heading2').html_safe %></h2>
-
-    <div class="session" style="margin-bottom: 60px">
-      <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
-        <% if I18n.locale == :en %>
-          <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-        <% else %>
-          <%= image_tag 'own/sola_pro_video_poster_ca.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-        <% end %>
-        <div class="play-btn">
-          <span class="fa fa-5x fa-play"></span>
-        </div>
-      </a>
-    </div> 
-       
+  <div class="sneak-peak">
+    <div class="container">
+      <h2 class="brand text-center" style="margin-top: 30px"><%= t('page.sola_pro.heading2').html_safe %></h2>
+      <div class="session" style="margin-bottom: 60px">
+        <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
+          <% if I18n.locale == :en %>
+            <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+          <% else %>
+            <%= image_tag 'own/sola_pro_video_poster_ca.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+          <% end %>
+          <div class="play-btn">
+            <span class="fa fa-5x fa-play"></span>
+          </div>
+        </a>
+      </div> 
+    </div>
   </div>
 
-  <div class="callout pure-black callout-testimonial">
-    <div class="container">
-      <div class="row">
-        <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait', :alt => 'Jessica Zeinstra headshot', :width => 256, :height => 256 %>
-        <div class="content">
-          <h1>&quot;<%= t('page.sola_pro.testimonial_text').html_safe %>&quot; <span>Jessica Zeinstra</span></h1>
-        </div>
-      </div>
-    </div>
+  <div class="block-quote-testimonial">
+    <h3><%= t('page.sola_pro.testimonial_text') %></h3>
+    <%= image_tag 'own/jessica_headshot.png', :class => 'testimonial-portrait', :alt => 'Jessica Zeinstra headshot', :width => 256, :height => 256 %>
+    <h4><%= t('page.sola_pro.testimonial_author') %></h4>
   </div>
 
 </div>
 
+<% content_for(:scripts) { javascript_include_tag('sola_pro') } %>
 <% content_for(:title) { t('page.sola_pro.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola-pro" } %>
 <% content_for(:meta_description) { t('page.why_sola.meta_description') } %>
