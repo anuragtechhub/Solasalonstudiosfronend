@@ -92,8 +92,9 @@
 			padding: 29px 25px 20px 25px;
 			display: block;
 			text-decoration: none;
-			// @include transition(opacity 0.15s ease-in-out);
-			// opacity: 1;		
+			@include transition(opacity 0.15s ease-in-out);
+			opacity: 1;		
+			cursor: pointer;
 
 		  display: -webkit-box;
 		  display: -moz-box;
@@ -105,9 +106,9 @@
 		  align-content: center;
 		  justify-content: center;
 
-			// &:hover, &:active {
-			// 	opacity: 0.5;
-			// }
+			&:hover, &:active {
+				opacity: 0.5;
+			}
 
 			img {
 				width: 120px;
