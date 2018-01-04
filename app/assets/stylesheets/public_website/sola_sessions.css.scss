@@ -172,3 +172,44 @@
 		}
 	}
 }
+
+@media (max-width: 550px) {
+
+	.sola-sessions {
+		.in-the-news {
+			.in-the-news-article {
+				display: block;
+				padding: 29px 25px 25px 25px;
+
+				.image {
+					text-align: center;
+					margin: 0 auto;
+				}
+
+				.text {
+					margin: 0;
+
+					h4 {
+						font-size: 14px;	
+						line-height: 16px;
+						margin-top: 15px;
+						margin-bottom: 5px;
+					}
+
+					p {
+						font-size: 14px;	
+						line-height: 16px;
+					}
+				}
+
+				.social {
+					margin-top: 15px;
+				}
+
+				.forward-arrow {
+					display: none;
+				}
+			}
+		}
+	}
+}
