@@ -8,7 +8,7 @@
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
         <h1 class="chalet-new-york"><%= t('page.why_sola.hero_heading2').html_safe %></h1>
-        <%= link_to :own_your_salon, :class => "button primary play-video rounded-play-button" do %><%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span><% end %>
+        <%= link_to '//www.youtube.com/watch?v=wlhDeuowaAI', :class => "button primary play-video rounded-play-button" do %><%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span><% end %>
         <div class="learn-more-button">
           <h5><%= t('page.why_sola.learn_more') %></h5>
           <span class="fa fa-angle-down"></span>
@@ -204,7 +204,14 @@
 
 </div> <!-- why-sola -->
 
+<div class="floating-find-a-studio">
+  <a href='#' class="button primary">
+    <%= t('page.why_sola.find_a_studio') %> <span class="spyglass-white">&nbsp;</span>
+  </a>
+</div>
+
 <% content_for(:scripts) { javascript_include_tag('search_salon') } %>
+<% content_for(:scripts) { javascript_include_tag('why_sola') } %>
 <% content_for(:title) { t('page.why_sola.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/why-sola" } %>
 <% content_for(:meta_description) { t('page.why_sola.meta_description') } %>
