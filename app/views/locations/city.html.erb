@@ -28,12 +28,12 @@
   </div>
 </div>
 
-<div class="location-breadcrumb">
+<!-- <div class="location-breadcrumb">
   <div class="container">
     <%= link_to t('page.locations.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to params[:state], I18n.locale == :en ? locations_by_state_path(params[:state]).gsub(/\./, '') : locations_by_province_path(params[:state]).gsub(/\./, '') %> 
     <span class="divider">/</span> <%= link_to params[:city], locations_by_city_path(params[:state], params[:city]).gsub(/\./, '') %>
   </div>
-</div>
+</div> -->
 
 <div class="container">
   <div class="row" id="map"></div>

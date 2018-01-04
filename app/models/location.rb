@@ -168,6 +168,15 @@ class Location < ActiveRecord::Base
     return address
   end
 
+  def street_address
+    address = ''
+
+    address += address_1 if address_1.present?
+    address += '<br>' + address_2 if address_2.present?
+
+    return address
+  end
+
   def franchisee
     admin.email if admin && admin.franchisee
   end

@@ -536,6 +536,8 @@ en:
       phone_number: Phone Number
       leave_a_message: Leave a Message
       submit: Submit
+      location: Location
+      view_map: View Map
 
     search:
       search: Search

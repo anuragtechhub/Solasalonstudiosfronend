@@ -1,20 +1,22 @@
-<div class="location-breadcrumb">
+<!-- <div class="location-breadcrumb">
   <div class="container">
     <%= link_to t('page.salon_professional.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, I18n.locale == :en ? locations_by_state_path(beautify_url_segment @location.state) : locations_by_province_path(beautify_url_segment @location.state) %> 
     <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name) %>
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name) %>
     <span class="divider">/</span> <%= link_to (@stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe), show_salon_professional_path(@stylist) %>
   </div>
-</div> 
+</div>  -->
+
+<div class="stylist-page">
 
 <div class="heading">
   <div class="container">
-    <h1 class="salon_professional_name"><%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h1>
+    <h1 class="salon_professional_name chalet"><%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h1>
     <h3 class="salon_professional_business_name"><%= @stylist.business_name.html_safe %></h3>
     <div class="badge">
       <div class="studio-number-badge">
-        <div class="studio"><h3><%= t('page.salon_professional.studio').html_safe %></h3></div>
-        <div class="number"><h1><%= @stylist.studio_number %></h1></div>
+        <div class="studio"><%= t('page.salon_professional.studio').html_safe %></div>
+        <div class="number"><%= @stylist.studio_number %></div>
       </div>
     </div>
   </div>
@@ -26,8 +28,8 @@
     <div class="one-third column salon-pro-info">
       <% if (@stylist.send_a_message_button && (valid_email?(@stylist.website_email_address) || valid_email?(@stylist.email_address))) || @stylist.booking_url.present? %>
         <div class="salon-pro-buttons">
-          <%= link_to(@stylist.has_sola_genius_account ? t('page.salon_professional.book_appointment').html_safe : t('page.salon_professional.book_now').html_safe, url_helper(@stylist.booking_url), :class => 'button block long-text', :target => '_blank') if @stylist.booking_url.present? %>
-          <%= link_to(t('page.salon_professional.send_a_message').html_safe, '#', :class => 'button block send-a-message-button long-text') if (@stylist.send_a_message_button && (valid_email?(@stylist.website_email_address) || valid_email?(@stylist.email_address))) %>
+          <%= link_to(@stylist.has_sola_genius_account ? t('page.salon_professional.book_appointment').html_safe : t('page.salon_professional.book_now').html_safe, url_helper(@stylist.booking_url), :class => 'button block primary small-text', :target => '_blank') if @stylist.booking_url.present? %>
+          <%= link_to(t('page.salon_professional.send_a_message').html_safe, '#', :class => 'button block send-a-message-button outline-large-white small-text') if (@stylist.send_a_message_button && (valid_email?(@stylist.website_email_address) || valid_email?(@stylist.email_address))) %>
         </div>
       <% end %>
       <ul class="contact-info">
@@ -51,17 +53,38 @@
         </ul>
       <% end %>
 
-      <div class="row salon-map stylist-salon-map" id="map"></div>
-      <div id="map-overlay" class="salon-map"></div>
+      <% if @stylist.services.size > 0 %>
+
+        <div class="row about-this-location">
+          <h5><%= t('page.salon_professional.services').html_safe %></h5>
+          <ul class="stylist-services">
+            <% @stylist.services.each do |service| %>
+              <li><%= service.html_safe %></li>
+            <% end %>
+          </ul>
+        </div>
+
+      <% end %>
 
       <% if @stylist.work_hours.present? %>
 
-          <div class="row">
-            <h3><%= t('page.salon_professional.availability').html_safe %></h3>
-            <h4 class="availability"><%= @stylist.work_hours.gsub(/\n/, '<hr class="br" />').html_safe %></h4>
-          </div>
+        <div class="row">
+          <h5><%= t('page.salon_professional.availability').html_safe %></h5>
+          <div class="availability"><%= @stylist.work_hours.gsub(/\n/, '<hr class="br" />').html_safe %></div>
+        </div>
 
-      <% end %>      
+      <% end %>  
+
+      <div class="row">
+        <h5><%= t('page.salon_professional.location').html_safe %></h5>
+        <div class="location-address">
+          <%= @stylist.location.street_address.html_safe %>
+          <br />
+          <%= "#{@stylist.location.city}, #{@stylist.location.state} #{@stylist.location.postal_code}" %>
+        </div>
+        <div class="view-map"><a href="#"><%= t('page.salon_professional.view_map').html_safe %></a></div>
+      </div>
+
     </div>
 
     <div class="two-thirds column">
@@ -77,21 +100,8 @@
       <% if @stylist.biography.present? %>
 
           <div class="row about-this-location">
-            <h3><%= t('page.salon_professional.about').html_safe %> <%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h3>
-            <h4><%= @stylist.biography.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></h4>
-          </div>
-
-      <% end %>
-
-      <% if @stylist.services.size > 0 %>
-
-          <div class="row about-this-location">
-            <h3><%= t('page.salon_professional.services').html_safe %></h3>
-            <ul class="stylist-services">
-              <% @stylist.services.each do |service| %>
-                <li><%= service.html_safe %></li>
-              <% end %>
-            </ul>
+            <h5><%= t('page.salon_professional.about').html_safe %> <%= @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe %></h5>
+            <div class="biography"><%= @stylist.biography.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></div>
           </div>
 
       <% end %>
@@ -99,18 +109,18 @@
       <% if @stylist.testimonials.size > 0 %>
 
           <div class="row testimonials">
-            <h3><%= t('page.salon_professional.testimonials').html_safe %></h3>
+            <h5><%= t('page.salon_professional.testimonials').html_safe %></h5>
             <% @stylist.testimonials.each do |testimonial| %>
               <% if testimonial.text.present? %>
                 <div class="testimonial">
-                  <div class="text"><%= testimonial.text.html_safe %></div>
+                  <p class="text"><%= testimonial.text.html_safe %></p>
                   <% if testimonial.name.present? %>
-                  <div class="name-region">
+                  <p class="name-region">
                     <%= testimonial.name %>
                     <% if testimonial.region.present? %>
                      , <%= testimonial.region %>
                     <% end %>
-                  </div>
+                  </p>
                   <% end %>
                 </div>
               <% end %>
@@ -124,15 +134,18 @@
   </div>
 </div>
 
+<div class="row salon-map stylist-salon-map" id="map"></div>
+<div id="map-overlay" class="salon-map"></div>
+
 <div class="callout blue">
   <div class="container">
-    <div class="row">
+    <div class="row visit-salon-pro">
       <%= link_to "http://maps.google.com/maps?daddr=#{@location.full_address}", :target => '_blank' do %>
-        <h4 class="large"><%= t('page.salon_professional.visit_salon_professional', {
+        <h3><%= t('page.salon_professional.visit_salon_professional', {
           :salon_professional_name => @stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe,
           :location_name => @location.name.html_safe
-          }) %></h4>
-        <h3><%= @location.full_address %></h3>
+          }) %></h3>
+        <h5><%= @location.full_address %></h5>
       <% end %>
     </div>
   </div>
@@ -153,6 +166,8 @@
 
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
 <input type="hidden" id="is_salon" value="y" />
+
+</div>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) { javascript_include_tag('salon_professionals') } %>

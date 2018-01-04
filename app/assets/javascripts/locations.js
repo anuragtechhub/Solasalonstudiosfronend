@@ -36,12 +36,12 @@ $(function () {
   var getMarkerContent = function (name, saddress, address, url, salon, custom_maps_url) {
     if (salon) {
       if (custom_maps_url) {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
       } else {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
       }
     } else {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
     }
   };
 
@@ -202,6 +202,15 @@ $(function () {
   // scroll to request tour anchor
   $('.rent-a-studio').on('click', function () {
    $('html, body').animate({scrollTop: $('#rent-a-studio').offset().top}, 'slow');
+  });
+
+  // scroll to map
+  $('.view-map a').on('click', function () {
+    $('body, html').animate({
+      scrollTop: $('#map').position().top
+    });
+
+    return false;
   });
 
 });

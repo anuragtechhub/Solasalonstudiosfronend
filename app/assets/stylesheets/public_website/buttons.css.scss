@@ -55,7 +55,7 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
     &:hover, &:active {
       color: #FFF !important;
       @include gradient-horizontal(#FD6DC8, #ED0F8B);
-      opacity: 0.6;
+      opacity: 0.5;
     }  
   }
 
@@ -79,7 +79,16 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
   }
 
   &.outline-large-white:hover, &.outline-large-white:active, &.outline-large-white:focus {
-    opacity: 0.6;
+    opacity: 0.5;
+  }
+
+  &.small-text, &.small-text:hover, &.small-text:active, &.small-text:focus {
+    font-size: 14px;  
+    line-height: 16px;  
+  }
+
+  &.outline-small-white:hover, &.outline-small-white:active, &.outline-small-white:focus {
+    opacity: 0.56;
   }
 
   &.rounded, &.rounded:link, &.rounded:visited {

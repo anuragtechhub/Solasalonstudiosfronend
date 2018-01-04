@@ -18,34 +18,42 @@
     background: #FFF;
 
     .arrow-left {
-      width: 49px;
-      height: 49px;
-      margin-top: -24.5px;
-
-      left: 0px;
-      background: asset-url('Left_Arrow@2x.png') no-repeat center;
-      background-size: 49px 49px;
-
-      &:hover, &:active {
-        background: asset-url('Left_Arrow@2x.png') no-repeat center;
-        background-size: 49px 49px;
-      }
+      left: 15px;
     }
 
     .arrow-right {
-      width:49px;
-      height: 49px;
-      margin-top: -24.5px;
-
-      right: 0px;
-      background: asset-url('Right_Arrow@2x.png') no-repeat center;
-      background-size: 49px 49px;
-
-      &:hover, &:active {
-        background: asset-url('Right_Arrow@2x.png') no-repeat center;
-        background-size: 49px 49px;
-      }
+      right: 15px;
     }
+
+    // .arrow-left {
+    //   width: 49px;
+    //   height: 49px;
+    //   margin-top: -24.5px;
+
+    //   left: 0px;
+    //   background: asset-url('Left_Arrow@2x.png') no-repeat center;
+    //   background-size: 49px 49px;
+
+    //   &:hover, &:active {
+    //     background: asset-url('Left_Arrow@2x.png') no-repeat center;
+    //     background-size: 49px 49px;
+    //   }
+    // }
+
+    // .arrow-right {
+    //   width:49px;
+    //   height: 49px;
+    //   margin-top: -24.5px;
+
+    //   right: 0px;
+    //   background: asset-url('Right_Arrow@2x.png') no-repeat center;
+    //   background-size: 49px 49px;
+
+    //   &:hover, &:active {
+    //     background: asset-url('Right_Arrow@2x.png') no-repeat center;
+    //     background-size: 49px 49px;
+    //   }
+    // }
 
     .item {
       text-align: center;

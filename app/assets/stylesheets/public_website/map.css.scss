@@ -39,21 +39,21 @@
   background: #FFF;
   box-shadow: 0 1px 0px rgba(195,195,195, 0.8);
 
-  h3, p {
+  h4, p {
     max-width: 220px;
     white-space: nowrap;
     overflow: hidden;
-    // text-overflow: ellipsis;
-  }
-
-  h3 {
     margin: 0;
     white-space: nowrap;
   }
 
   p {
-    margin: 12px 0;
-    white-space: nowrap;
+    margin: 4px 0 5px 0;
+    color: #4A4A4A; 
+    @include helvetica; 
+    font-size: 14px;  
+    font-weight: 300; 
+    line-height: 24px;
   }
 
   div {
