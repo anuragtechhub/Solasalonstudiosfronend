@@ -4,6 +4,10 @@
 
 .sola-sessions {
 
+	.content-container {
+		padding-top: 90px;
+	}
+
 	.hero-carousel {
 
 		img.sessions-logo {
@@ -22,6 +26,69 @@
 
 		.button {
 			margin-bottom: 0 !important;
+		}
+	}
+
+	.session-row {
+		margin-bottom: 30px;
+	}
+
+	.upcoming-session {
+		position: relative;
+		@include border-radius(2px);	
+		background-color: #F5F9FB;
+		margin-bottom: 10px;
+		padding: 29px 25px 25px 25px;
+		display: block;
+		text-decoration: none;
+		@include transition(opacity 0.15s ease-in-out);
+		opacity: 1;		
+
+		&:hover, &:active {
+			opacity: 0.5;
+		}
+
+	  // display: -webkit-box;
+	  // display: -moz-box;
+	  // display: -ms-flexbox;
+	  // display: -webkit-flex;
+	  // display: flex;  
+
+	  // flex-direction: row;
+	  // align-content: center;
+	  // justify-content: center;
+
+    .event-icon {
+			position: relative;
+    	top: -9px;    	
+      display: inline-block;
+      width: 68px;
+      height: 68px;
+      float: left;
+      margin-right: 20px;
+
+      &.west-palm-beach {
+        background: asset-data-url('sessions/west_palm_beach_off.png') no-repeat center;
+        background-size: 68px 68px;
+      }
+    }
+
+		h4 {
+			margin: 0 0 5px 0;
+		}
+		
+		p {
+			font-size: 18px;
+			line-height: 24px;
+			font-weight: 300px;
+			margin: 0;
+		}
+
+		.forward-arrow-black {
+			position: absolute;
+			right: 30px;
+			top: 50%;
+			margin-top: -7px;
 		}
 	}
 }

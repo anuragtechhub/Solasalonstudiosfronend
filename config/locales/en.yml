@@ -578,7 +578,15 @@ en:
       inspiration_education_community: Inspiration. Education. Community.
       hero_button_text: Experience Sessions
       learn_more: Learn More
-      body1: "We hope you can join us for one of The Sola Sessions, coming to a city near you! The Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our awesome, dynamic community. We're bringing the industry's best to you for intimate, Sola-exclusive events across the country. Click on the cities below to learn more about each unique Sola Session. We can't wait to meet you!"
+      about_sola_sessions: About Sola Sessions
+      about_sola_sessions_text: "We hope you can join us for one of The Sola Sessions, coming to a city near you! The Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our awesome, dynamic community. We're bringing the industry's best to you for intimate, Sola-exclusive events across the country. Click on the cities below to learn more about each unique Sola Session. We can't wait to meet you!"
+      upcoming_sessions: Upcoming Sessions
+      past_sessions: Past Sessions 
+      in_the_news: In the News
+      testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
+      testimonial_author: Shelia Taylor
+      testimonial_studio_name: Ami Hair Studio
+      find_a_sola: Find a Sola
 
     testimonials:
       title: Testimonials
