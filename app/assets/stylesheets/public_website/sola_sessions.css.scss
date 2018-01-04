@@ -1,0 +1,27 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.sola-sessions {
+
+	.hero-carousel {
+
+		img.sessions-logo {
+			max-width: 420px;
+			width: 50%;
+			height: auto;
+			margin: 0 auto;
+		}
+
+		h1 {
+			@include helvetica;
+			font-size: 18px;
+			line-height: 24px;
+			margin: 25px 0 45px 0 !important;
+		}
+
+		.button {
+			margin-bottom: 0 !important;
+		}
+	}
+}
