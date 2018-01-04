@@ -56,7 +56,11 @@
         <h2><%= t('page.sola_sessions.in_the_news') %></h2>
       </div>
       <div class="two-thirds column">
-        
+        <div class="in-the-news">
+          <% Article.where(:id => [68, 62, 61, 53, 51, 48, 47]).order(:id => :desc).each do |article| %>
+            <%= render 'shared/in_the_news_summary', :article => article, :social => 'circle' %>
+          <% end %>
+        </div>  
       </div>
     </div>
 

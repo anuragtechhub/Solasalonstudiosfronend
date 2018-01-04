@@ -48,16 +48,6 @@
 			opacity: 0.5;
 		}
 
-	  // display: -webkit-box;
-	  // display: -moz-box;
-	  // display: -ms-flexbox;
-	  // display: -webkit-flex;
-	  // display: flex;  
-
-	  // flex-direction: row;
-	  // align-content: center;
-	  // justify-content: center;
-
     .event-icon {
 			position: relative;
     	top: -9px;    	
@@ -89,6 +79,95 @@
 			right: 30px;
 			top: 50%;
 			margin-top: -7px;
+		}
+	}
+
+	.in-the-news {
+
+		.in-the-news-article {
+			position: relative;
+			@include border-radius(2px);	
+			background-color: #F5F9FB;
+			margin-bottom: 10px;
+			padding: 29px 25px 20px 25px;
+			display: block;
+			text-decoration: none;
+			// @include transition(opacity 0.15s ease-in-out);
+			// opacity: 1;		
+
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+
+		  flex-direction: row;
+		  align-content: center;
+		  justify-content: center;
+
+			// &:hover, &:active {
+			// 	opacity: 0.5;
+			// }
+
+			img {
+				width: 120px;
+				height: 120px;
+			}
+
+			h4 {
+				margin: 0 0 0 0;
+				a, a:link, a:visited, a:hover, a:active {
+					color: #000;
+					text-decoration: none;
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+
+			.text {
+				flex: 2;
+				margin: 0 30px;
+			}
+
+			.social {
+				margin: 22px 0 0 0;
+
+				li {
+					width: auto;
+					margin-right: 25px;
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					a, a:link, a:visited, a:hover, a:active {
+						padding: 0;
+						border: 0;
+						background: transparent;
+						color: #000;
+						font-size: 16px;
+						line-height: 16px;
+
+						span {
+							position: static;
+							top: auto;
+
+							&.ss-twitter, &.ss-pinterest {
+								position: relative;
+								top: 2px;
+							}
+						}
+					}
+				}
+			}
+
+			.forward-arrow {
+				position: relative;
+				top: 53px;
+				right: 10px;
+			}
 		}
 	}
 }
