@@ -171,11 +171,138 @@
 			}
 		}
 	}
+
+	.past-sessions {
+  	margin-top: 3px;
+  	//margin-bottom: 0;
+
+  	.carousel-wrapper {
+  		position: relative;
+  	}
+
+		.white-border {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			bottom: 0;
+			width: 10px;
+			margin-left: -5px;
+			background: #FFF;
+			z-index: 2;
+		}
+
+  	.event {
+
+  		.forward-arrow-white {
+  			display: none;
+  		}
+
+  		.buttons {
+  			position: absolute;
+  			bottom: 35px;
+  			left: 0;
+  			right: 0;
+  			text-align: center;
+
+  			.button {
+  				display: inline;
+  				background: transparent;
+  				font-size: 14px;
+  				line-height: 14px;
+  				color: #FFF;
+  				padding: 10px 20px;
+  				margin-right: 5px;
+
+  				&:last-child {
+  					margin-right: 0;
+  				}
+  			}
+  		}
+  	}
+
+	  .owl-theme .owl-controls {
+	    position: absolute;
+	    top: -40px;
+	    right: 62px;
+	    left: auto;
+	  }
+
+	  .arrow-left, .arrow-right {
+	    border: 2px solid #000;
+	    background-repeat: no-repeat !important;
+	    background-position: center !important;
+	    width: 34px;
+	    height: 32px;
+	  }
+
+	  .arrow-left {
+	    right: auto;
+	    left: -4px;
+	    -webkit-border-top-left-radius: 4px;
+	    -webkit-border-bottom-left-radius: 4px;
+	    -moz-border-radius-topleft: 4px;
+	    -moz-border-radius-bottomleft: 4px;
+	    border-top-left-radius: 4px;
+	    border-bottom-left-radius: 4px; 
+      background: asset-data-url('back-arrow-black.png');
+      background-size: (20px / 2) (32px / 2);
+
+	    &:hover, &:active {
+	      background: asset-data-url('back-arrow-black.png');
+	      background-size: (20px / 2) (32px / 2);
+	    }   
+	  }
+
+	  .arrow-right {
+	    left: auto;
+	    right: -62px;
+	    -webkit-border-top-right-radius: 4px;
+	    -webkit-border-bottom-right-radius: 4px;
+	    -moz-border-radius-topright: 4px;
+	    -moz-border-radius-bottomright: 4px;
+	    border-top-right-radius: 4px;
+	    border-bottom-right-radius: 4px;    
+      background: asset-data-url('forward-arrow-black.png');
+      background-size: (20px / 2) (32px / 2);
+
+	    &:hover, &:active {
+	      background: asset-data-url('forward-arrow-black.png');
+	      background-size: (20px / 2) (32px / 2);
+	    } 
+	  }
+
+	}	
+}
+
+@media (max-width: 960px) {
+	.past-sessions {
+		.white-border {
+			display: none;
+		}
+	}
 }
 
 @media (max-width: 550px) {
 
 	.sola-sessions {
+		.past-sessions {
+
+			.forward-arrow-white {
+				position: relative;
+				top: -1px;
+				display: inline-block !important;
+				left: 5px;
+			}
+
+			.buttons {
+				bottom: 25px !important;
+
+				.button {
+					border: 0 !important;
+				}
+			}
+		}
+
 		.in-the-news {
 			.in-the-news-article {
 				display: block;

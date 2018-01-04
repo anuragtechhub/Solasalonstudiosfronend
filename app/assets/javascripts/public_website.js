@@ -47,9 +47,32 @@ $(function () {
 
     if ($this.data('items')) {
       options['items'] = $this.data('items');
+      options['itemsDesktop'] = $this.data('items');
+      options['itemsDesktopSmall'] = $this.data('items');
+      options['itemsTablet'] = $this.data('items');
+      options['itemsTabletSmall'] = $this.data('items');
     } else {
       options['singleItem'] = true;
     }
+
+    if ($this.data('itemsdesktop')) {
+      options['itemsDesktop'] = $this.data('itemsdesktop');
+    }
+    if ($this.data('itemsdesktopsmall')) {
+      options['itemsDesktopSmall'] = $this.data('itemsdesktopsmall');
+    }
+
+    if ($this.data('itemstablet')) {
+      options['itemsTablet'] = $this.data('itemstablet');
+    }
+
+    if ($this.data('itemstabletsmall')) {
+      options['itemsTabletSmall'] = $this.data('itemstabletsmall');
+    }        
+
+    if ($this.data('itemsmobile')) {
+      options['itemsMobile'] = $this.data('itemsmobile');
+    }    
 
     if ($this.data('animation')) {
       delete options['transitionStyle']; 
