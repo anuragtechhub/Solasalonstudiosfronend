@@ -9,6 +9,21 @@ $(function () {
 
 
   /**
+  * Clickable search results
+  */
+  $('.search-result-clickable .bold-link').on('click', function (e) {
+    e.stopPropagation();
+  });
+  
+  $('.search-result-clickable').on('click', function () {
+    if ($(this).data('href')) {
+      window.location.href = $(this).data('href');
+    }
+  });
+
+
+
+  /**
   * Expandable top nav search
  	*/
 

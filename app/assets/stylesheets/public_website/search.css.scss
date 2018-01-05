@@ -1,6 +1,17 @@
 @import 'mixins';
 @import 'variables';
 
+.search-bar {
+  padding: 30px;
+  background: #F5F9FB;
+}
+
+.search-results-details {
+  padding: 40px;
+  p {
+    margin-bottom: 0;
+  }
+}
 
 .search-results {
   margin-bottom: 30px;
@@ -40,7 +51,7 @@
     }
   }
 
-  a, a:link, a:visited, a:hover, a:active {
+  a.search-result-link, a.search-result-link:link, a.search-result-link:visited, a.search-result-link:hover, a.search-result-link:active {
     border-top: 1px solid #EEEEEE;
     //font-weight: bold;
     text-decoration: none;
@@ -50,11 +61,42 @@
     display: block;
   }
 
-  a:hover, a:active {
+  a.search-result-link:hover, a.search-result-link:active {
     background: #F5F9FB;
 
     h3 {
       color: $brand-pink;
+    }
+  }
+
+  &.search-result-clickable {
+    border-top: 1px solid #EEEEEE;
+    //font-weight: bold;
+    text-decoration: none;
+    color: $brand-pink;
+    //font-size: 13px;
+    padding: 30px 20px;
+    display: block;
+    cursor: pointer;
+
+    &:hover, &:active {
+      background: #F5F9FB;
+
+      h3 {
+        color: $brand-pink;
+      }
+    }
+
+    p.address:last-child {
+      margin-bottom: 0;
+    }
+
+    a.bold-link {
+      &:link, &:visited, &:hover, &:active {
+        font-weight: bold;
+        margin-right: 15px;
+        text-decoration: none;
+      }
     }
   }
 }

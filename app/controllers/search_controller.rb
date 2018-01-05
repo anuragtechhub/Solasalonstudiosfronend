@@ -48,6 +48,8 @@ class SearchController < PublicWebsiteController
 
       # blog posts
       @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
+
+      @results = @locations.size + @stylists.size + @posts.size
     end
   end
 end
