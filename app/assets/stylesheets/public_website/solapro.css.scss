@@ -54,17 +54,7 @@
     left: 0;
   }
 
-  .sola-pro-iphone {
-    position: absolute;
-    left: 50%;
-    margin-left: 200px;
-    top: 150px;
-    z-index: 2;
-    background: asset-url('Pro_Iphone@2x.png') no-repeat;
-    background-size: (774px / 2) (1468px / 2);
-    width: (774px / 2);
-    height: (1468px / 2);
-  }
+
 
   .desktop-br {
     display: block;
@@ -539,14 +529,6 @@
 
 }
 
-@media (max-width : 1300px) {
-  .sola-pro {
-    .sola-pro-iphone {
-      display: none;
-    }
-  }
-}
-
 /**********************************************/
 /* iPads (portrait and landscape) ----------- */
 /**********************************************/
@@ -559,10 +541,6 @@
   }  
 
   .sola-pro {
-    
-    .sola-pro-iphone {
-      display: none;
-    }
 
     .explore-sola-pro {
       margin-top: 60px;
@@ -1008,5 +986,79 @@ and (device-aspect-ratio: 40/71) {
   .hero-own .hero-heading {
     font-size: 19px;
     line-height: 31px;
+  }
+}
+
+
+
+
+
+/**
+* Sola Pro Hero
+*/
+
+.sola-pro {
+
+  .sola-pro-iphone {
+    position: absolute;
+    left: 50%;
+    margin-left: 80px;
+    //top: 150px;
+    bottom: -150px;
+    z-index: 2;
+    background: asset-url('Pro_Iphone@2x.png') no-repeat;
+    background-size: (774px / 2) (1468px / 2);
+    width: (774px / 2);
+    height: (1468px / 2);
+  }
+}
+
+@media (max-width : 1300px) {
+  .sola-pro {
+    .sola-pro-iphone {
+      background-size: (774px / 2.45) (1468px / 2.45);
+      width: (774px / 2.45);
+      height: (1468px / 2.45);
+    }
+  }
+}
+
+@media (max-width : 1050px) {
+  .sola-pro {
+    .learn-more-button {
+      display: none;
+    }
+    .sola-pro-iphone {
+      background-size: (774px / 3) (1468px / 3);
+      width: (774px / 3);
+      height: (1468px / 3);
+      margin-left: (-774px / 3 / 2);
+      bottom: -420px;
+    }
+    .sola-pro-phone-gallery-desktop {
+      padding-top: (1468px / 3.5) !important;
+    }
+    .sneak-peak {
+      margin: 60px 0 0 0 !important;
+      //margin: -280px 0 -60px 0 !important;
+    }
+  }
+}
+
+@media (max-width : 550px) {
+  .sola-pro {
+    .owl-carousel .item .img-wrap img {
+      left: -14%;
+    }
+    .sola-pro-iphone {
+      bottom: -350px;
+    }
+    .sola-pro-phone-gallery-desktop {
+      padding-top: (1468px / 5) !important;
+    }
+    .sneak-peak {
+      margin: 30px 0 0 0 !important;
+      //margin: -280px 0 -60px 0 !important;
+    }    
   }
 }

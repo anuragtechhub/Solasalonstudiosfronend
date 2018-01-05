@@ -1,6 +1,7 @@
 class AboutUsController < PublicWebsiteController
   
   def index
+    redirect_to :who_we_are
   end
 
   def leadership
