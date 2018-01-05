@@ -2,8 +2,15 @@
 @import 'bootstrap/mixins';
 
 .location-page {
+  margin-bottom: -30px;
+
+  .content-container {
+    padding-top: 0;
+  }
 
   .request-a-tour-form {
+    margin-top: 15px;
+
     input, textarea {
       border: 2px solid #DBDBDB;  
       background: #FFF;
@@ -145,7 +152,7 @@
   }
 
   .your-life-your-style {
-    margin: 120px 0 40px 0;
+    margin: 120px 0 0 0;
     padding: 120px 40px 20px 40px;
     background-color: #F5F9FB;
 
@@ -170,18 +177,8 @@
 
     .amenities-list {
       list-style: none;
-      // display: -webkit-box;
-      // display: -moz-box;
-      // display: -ms-flexbox;
-      // display: -webkit-flex;
-      // display: flex;  
-
-      // flex-direction: column;
-      // align-content: center;
-      // justify-content: center;
 
       li {
-        //flex: 1;
         margin: 0 0 10px 0;
         color: #4A4A4A; 
         @include helvetica;
@@ -199,6 +196,38 @@
   #map.salon-map {
     //margin-bottom: 40px;
     height: 420px !important;
+  }
+
+  .find-a-salon-pro {
+    position: relative;
+    padding: 230px (230px / 2);
+    background: asset-url('Find_Professional_BG.jpg') no-repeat top left;//center center fixed; 
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    h1 {
+      color: #FFF;
+      margin: 0;
+    }
+
+    p {
+      color: #9B9B9B;
+      margin: 15px 0;
+    }
+
+    .button-wrapper {
+      margin-top: 30px;
+
+      .button {
+        width: auto !important;
+        margin-bottom: 0;
+        background: transparent !important;
+        color: #FFF !important;
+      }
+    }
   }
 
 }

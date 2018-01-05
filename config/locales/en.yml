@@ -310,6 +310,8 @@ en:
       view_location: View Location
       locations_in: Locations in 
       find_a_salon_professional: Find a Salon Professional
+      find_a_salon_professional_at_location: Find a salon professional at %{location}
+      there_are_x_professionals: There are %{number} professionals at this location
       rent_a_studio: Rent a Studio
       about_this_location: About This Location
       move_in_special: Move-In Special
@@ -349,8 +351,9 @@ en:
       submit_request: Submit Request
       submitting_request: Submitting...
       testimonial_text: "I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."
-      testimonial_author: "Katina Eisenbeis, Katina's Salon"
-      view_more_testimonials: View More Testimonials
+      testimonial_author: "Katina Eisenbeis"
+      testimonial_location: "Katina's Salon"
+      view_more_testimonials: View more testimonials
       join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
       the_sola_story: The Sola Story
       see_what_others_are_saying: See What Others Are Saying
