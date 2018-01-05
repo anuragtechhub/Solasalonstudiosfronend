@@ -26,10 +26,10 @@
   h3 {
     @include helvetica;
     font-size: 18px;
-    line-height: 32px;
+    line-height: 24px;
     color: #000;
     text-decoration: underline;
-    margin: 0;
+    margin: 0 0 5px 0;
   }
 
   p {

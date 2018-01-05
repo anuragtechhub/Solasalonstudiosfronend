@@ -35,6 +35,7 @@ $.widget('solasalonstudios.filterabledropdownsearch', {
     e.stopPropagation();
 
     self.$selected_option.find('.name').html($this.html());
+    self.element.find('input[name=' + self.element.data('input') + ']').val($this.data('value'));
     self.close();
   },
 
