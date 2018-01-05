@@ -1,15 +1,19 @@
 $(function () {
 
-  // sticky tour form
+  // sticky form
+
   var $win = $(window);
   $win.on('resize.sticky', function () {
     if ($win.width() <= 1060) {
       $("#contact-us-request-a-tour").trigger("sticky_kit:detach");
+      $('.request-a-tour-form-column').css('height', 'auto');
     } else {
-      $('.request-a-tour-form-column').height($('.location-page .content-container').outerHeight());
+      $('.request-a-tour-form-column').height($('.location-page-container').outerHeight());
       $("#contact-us-request-a-tour").stick_in_parent();
     }
   }).trigger('resize.sticky');
+
+  // map styles
 
   var mapStyles = [{featureType:"administrative",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:20}]},{featureType:"road",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:40}]},{featureType:"water",elementType:"all",stylers:[{visibility:"on"},{color:"#C1E6F3"}]},{featureType:"water",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape.man_made",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:10}]},{featureType:"landscape.natural",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:60}]},
   {featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}];

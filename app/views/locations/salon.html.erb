@@ -1,6 +1,6 @@
 <div class="location-page">
 
-  <div class="container content-container">
+  <div class="container content-container location-page-container">
     <div class="row">
       <div class="one-third column request-a-tour-form-column">
         <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form' do %>
@@ -44,7 +44,7 @@
 
         <div class="location-info">
           <h1 class="chalet"><%= @location.name.html_safe %></h1>
-          <p class="address"><%= @location.city.html_safe %>, <%= @location.state.html_safe %></p>
+          <p class="address"><%= @location.full_address %></p>
         </div>
 
         <!-- about this location -->
@@ -125,9 +125,10 @@
 
         <!-- testimonial -->
         <div class="block-quote-testimonial block-quote-testimonial-side-image">
-          <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait', :alt => 'Katina Eisenbeis headshot' %>
+          
           <div class="content">
             <h3><%= t('page.locations.testimonial_text').html_safe %></h3>
+            <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait', :alt => 'Katina Eisenbeis headshot' %>
             <h4><%= t('page.locations.testimonial_author').html_safe %></h4>
             <h4 class="studio-name"><%= t('page.locations.testimonial_location') %></h4>
             <div class="button-wrapper">
