@@ -7,14 +7,17 @@
       <div class="item">
         
         <div class="img-wrap"><%= image_tag 'Genius_Hero.jpg', :width => 1600, :height => 800 %></div>
-        <div class="item-content overlayed">
-          <h2><%= t('page.sola_genius.hero_heading') %></h2>
-          <p><%= t('page.sola_genius.hero_text') %></p>
-          <%= image_tag 'Gloss@2x.png', :class => 'gloss-logo' %>
-          <div class="learn-more-button">
-            <h5><%= t('page.sola_genius.learn_more') %></h5>
-            <span class="fa fa-angle-down"></span>
+        <div class="item-content overlayed left-align">
+          <div class="left-align-container">
+            <h2><%= t('page.sola_genius.hero_heading').html_safe %></h2>
+            <p><%= t('page.sola_genius.hero_text') %></p>
+            <%= image_tag 'Gloss@2x.png', :class => 'gloss-logo' %>
           </div>
+        </div>
+
+        <div class="learn-more-button">
+          <h5><%= t('page.sola_genius.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
         </div>
       </div>
     </div>

@@ -30,18 +30,6 @@
     margin-left: -55px;
   }
 
-  .sola-genius-iphone {
-    position: absolute;
-    left: 50%;
-    margin-left: 200px;
-    top: 150px;
-    z-index: 2;
-    background: asset-url('Genius_iPhone@2x.png') no-repeat;
-    background-size: (774px / 2) (1468px / 2);
-    width: (774px / 2);
-    height: (1468px / 2);
-  }
-
   .explore-sola-genius {
     text-align: center;
   }
@@ -79,10 +67,6 @@
         color: #FFF;
         max-width: 960px !important;
       }
-    }
-
-    .sola-genius-iphone {
-      display: none;
     }
   }
 }
@@ -262,18 +246,6 @@
       width: (241px / 1.5) !important;
       height: (433px / 1.5) !important;
     }
-  }
-
-  .sola-genius-phone {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
-
-    background-size: (425px / 1.5) (694px / 1.5);
-    width: (425px / 1.5);
-    height: (694px / 1.5);
   }
 
   .sola-genius-feature-list-desktop {
@@ -718,11 +690,11 @@
 
     .sola-genius-gallery {
       padding: 0;
-      background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+      // background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+      // -webkit-background-size: cover;
+      // -moz-background-size: cover;
+      // -o-background-size: cover;
+      // background-size: cover;
     }
 
     .run-your-sola-like-a-boss {
@@ -964,5 +936,132 @@ and (device-aspect-ratio: 40/71) {
   .hero-own .hero-heading {
     font-size: 19px;
     line-height: 31px;
+  }
+}
+
+
+
+
+/**
+* Solagenius hero
+*/
+.sola-genius {
+
+  .owl-carousel .item .item-content .mobile-br {
+    display: inline;
+  }
+
+  .sola-genius-iphone {
+    position: absolute;
+    left: 50%;
+    margin-left: 80px;
+    //top: 150px;
+    bottom: -150px;
+    z-index: 2;
+    background: asset-url('Genius_iPhone@2x.png') no-repeat;
+    background-size: (774px / 2) (1468px / 2);
+    width: (774px / 2);
+    height: (1468px / 2);
+  }
+}
+
+@media (max-width : 1300px) {
+  .sola-genius {
+    .sola-genius-iphone {
+      background-size: (774px / 2.45) (1468px / 2.45);
+      width: (774px / 2.45);
+      height: (1468px / 2.45);
+    }
+    .owl-carousel .item .item-content .left-align-container {
+      padding-right: 40%;
+    }
+  }
+}
+
+@media (max-width : 1050px) {
+  .sola-genius {
+    .learn-more-button {
+      display: none;
+    }
+
+    .sola-genius-iphone {
+      background-size: (774px / 3) (1468px / 3);
+      width: (774px / 3);
+      height: (1468px / 3);
+      margin-left: (-774px / 3 / 2);
+      bottom: -390px;
+    }
+
+    .sola-genius-gallery {
+      margin-top: (1468px / 3.5) !important;
+    }
+
+    .owl-carousel .item .item-content .left-align-container {
+      text-align: center;
+      padding-left: 30px;
+      padding-right: 30px;
+
+      h2 {
+        margin-top: -50px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width : 750px) {
+  .sola-genius {
+
+    .sola-genius-iphone {
+      bottom: -420px;
+    }
+    
+    .owl-carousel .item .item-content .left-align-container {
+
+      h2 {
+        margin-top: -40px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width : 550px) {
+  .sola-genius {
+    .owl-carousel .item .item-content .mobile-br {
+      display: block;
+    }
+
+    .owl-carousel .item .img-wrap img {
+      left: -7%;
+    }
+    .sola-genius-iphone {
+      bottom: -395px;
+    }
+    .sola-genius-gallery {
+      margin-top: (1468px / 4.5) !important;
+    }
+    .sneak-peak {
+      margin: 30px 0 0 0 !important;
+      //margin: -280px 0 -60px 0 !important;
+    }  
+    .owl-carousel .item .item-content .left-align-container {
+
+      h2 {
+        margin-top: -50px;
+      }
+    }      
+  }
+}
+
+@media (max-width : 400px) {
+  .sola-genius {
+    .owl-carousel .item .img-wrap img {
+      left: -25%;
+    }
   }
 }
