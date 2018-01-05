@@ -18,7 +18,7 @@
     margin-top: 15px;
 
     input, textarea {
-      border: 2px solid #DBDBDB;  
+      border: 2px solid #DBDBDB !important;  
       background: #FFF;
       border-radius: 4px; 
       //@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
