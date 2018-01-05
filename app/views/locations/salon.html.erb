@@ -94,6 +94,40 @@
           <% end %>        
         </ul>
 
+        <!-- move-in special -->
+        <div class="move-in-special">
+          <%= image_tag 'MoveInSpecial@2x.jpg' %>
+          <div class="content">
+            <div class="text"><%= @location.move_in_special.html_safe %></div>
+            <div class="link"><a href="#rent-a-studio" class="rent-a-studio-link"><%= t('page.locations.rent_a_studio') %></a></div>
+          </div>
+        </div>
+
+        <!-- your life, your style (amenities) -->
+        <div class="your-life-your-style">
+          <h1><%= t('page.locations.your_life_your_style') %>&reg;</h1>
+          <div class="section">
+            <h5><%= t('page.locations.studio_amenities') %></h5>
+            <ul class="amenities-list">
+              <% t('page.locations.studio_amenities_list').each_line do |li| %>
+                <li><%= li.html_safe %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="section">
+            <h5><%= t('page.locations.salon_professional_benefits') %></h5>
+            <ul class="amenities-list">
+              <% t('page.locations.salon_professional_benefits_list').each_line do |li| %>
+                <li><%= li.html_safe %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <!-- map -->
+
+        <!-- testimonial -->
+
       </div> <!-- .two-thirds -->
     </div> <!-- .row -->
   </div> <!-- .content-container -->

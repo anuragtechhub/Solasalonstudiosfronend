@@ -12,7 +12,7 @@
       width: 100%;
 
       color: #4A4A4A; 
-      font-family: "Helvetica Neue";  
+      @include helvetica; 
       font-size: 14px;  
       font-weight: 300; 
       line-height: 24px;      
@@ -96,6 +96,62 @@
         font-size: 16px;
         line-height: 16px;
       }
+    }
+  }
+
+  .move-in-special {
+    position: relative;
+    margin: 30px auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .content {
+      position: absolute;
+      left: 250px;
+      top: 20px;
+      bottom: 10px;
+      right: 30px;
+      -moz-osx-font-smoothing: antialiased; //auto
+      -webkit-font-smoothing: antialiased; //auto
+      font-smoothing: antialiased; //auto        
+    }
+
+    .text {
+      @include helvetica;
+      color: #FFFFFF; 
+      font-size: 16px;  
+      font-weight: 300; 
+      line-height: 24px;
+      max-height: 50px;
+      overflow-y: scroll;
+    }
+
+    .link {
+      margin-top: 5px;
+
+      a, a:link, a:visited, a:hover, a:active {
+        color: #FFF;
+        text-decoration: none;
+        border-bottom: 2px solid #FFF;
+        padding-bottom: 2px;
+        @include chalet_new_york;
+        font-size: 14px;  
+        line-height: 16px;
+      }
+    }
+  }
+
+  .your-life-your-style {
+    margin: 120px 0 40px 0;
+    padding: 120px 40px;
+    background-color: #F5F9FB;
+
+    h1 {
+      margin-top: -140px;
+      margin-bottom: 70px;
     }
   }
 }
