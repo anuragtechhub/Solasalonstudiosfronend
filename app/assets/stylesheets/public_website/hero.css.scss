@@ -201,7 +201,8 @@
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
+
   .owl-theme .owl-controls .owl-pagination {
     bottom: 20px;
   }
@@ -225,6 +226,15 @@
             font-size: 13px;
             line-height: 13px;
             padding: 6px 10px;
+            //margin: 10px 0 0 0 !important;
+          }
+          &.rounded-play-button {
+            height: 42px;
+            padding: 16px 50px 6px 16px;
+
+            .fa {
+              right: 7px !important;
+            }
           }
         }
 
@@ -432,6 +442,49 @@
 
 }
 
+@media (max-width: 750px) {
+  .owl-carousel .item .item-content {
+
+    h1 {
+      font-size: 24px;
+      line-height: 26px;
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-bottom: 10px;
+
+      &.large, &.xlarge {
+        width: 100%;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 16px;
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-bottom: 0;
+    }
+
+    &.left-align, &.right-align {
+
+      h1, p {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+    }    
+  }
+
+  .owl-carousel {
+    .learn-more-button {
+      bottom: 20px;
+
+      h5 {
+        display: none;
+      }
+    }
+  }  
+}
+
 @media (max-width: 550px) {
 
   .locations-hero {
@@ -463,35 +516,32 @@
 
   .owl-carousel .item .item-content {
 
-    a.rounded-play-button, a.rounded-play-button:link, a.rounded-play-button:visited, a.rounded-play-button:hover, a.rounded-play-button:active {
-      padding: 0 25px;
-      height: 38px;
-      overflow: visible;
-
-      .fa {
-        position: relative;
-        margin: 0;
-        top: 5px;
-        right: -15px;
-      }
-    }
-
     h1 {
       font-size: 24px;
       line-height: 26px;
-      margin-left: 120px;
-      margin-right: 120px;
+      margin-left: 90px !important;
+      margin-right: 90px !important;
       margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
       line-height: 16px;
-      margin-left: 120px;
-      margin-right: 120px;
+      margin-left: 90px !important;
+      margin-right: 90px !important;
       margin-bottom: 0;
     }
+
+    &.left-align, &.right-align {
+
+      h1, p {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+    }
   }
+
+
 
   .multi-carousel .item .img-wrap {
     height: auto;
