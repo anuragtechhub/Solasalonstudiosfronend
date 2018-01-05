@@ -8,14 +8,7 @@
     padding-top: 0;
   }
 
-  // #contact-us-request-a-tour {
-  //   position: fixed;
-  //   width: 294px;
-  //   top: 120px;
-  // }
-
   .request-a-tour-form {
-    margin-top: 15px;
 
     input, textarea {
       border: 2px solid #DBDBDB !important;  
@@ -236,6 +229,10 @@
     }
   }
 
+  .mobile-lease-form {
+    display: none;
+  }
+
 }
 
 @media (max-width: 1060px) {
@@ -247,6 +244,34 @@
       .two-thirds {
         max-width: 960px;
         width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .mobile-lease-form {
+      display: block;
+      padding-top: 40px;
+      margin-top: 0;
+      margin-bottom: 40px;
+      border-top: 1px solid #DBDBDB;
+
+      .desktop-br {
+        display: inline;
+      }
+      
+      h4 {
+        @include chalet_paris;
+        font-size: 24px;  
+        line-height: 32px;  
+        text-align: center;
+
+        br {
+          display: inline;
+        }
+      }
+
+      form {
+        max-width: 550px;
         margin: 0 auto;
       }
     }
@@ -309,6 +334,10 @@
       .buttons {
         text-align: center;
       }
+    }
+
+    .find-a-salon-pro {
+      padding: 120px 30px;
     }
 
   }

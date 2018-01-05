@@ -7,8 +7,9 @@ $(function () {
     if ($win.width() <= 1060) {
       $("#contact-us-request-a-tour").trigger("sticky_kit:detach");
       $('.request-a-tour-form-column').css('height', 'auto');
+      $('.mobile-lease-form').append($("#contact-us-request-a-tour"));
     } else {
-      $('.request-a-tour-form-column').height($('.location-page-container').outerHeight());
+      $('.request-a-tour-form-column').append($("#contact-us-request-a-tour")).height($('.location-page-container').outerHeight());
       $("#contact-us-request-a-tour").stick_in_parent();
     }
   }).trigger('resize.sticky');
