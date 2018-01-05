@@ -1,6 +1,105 @@
 @import 'variables';
 @import 'bootstrap/mixins';
 
+.location-page {
+
+  .request-a-tour-form {
+    input, textarea {
+      border: 2px solid #DBDBDB;  
+      background: #FFF;
+      border-radius: 4px; 
+      //@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+      width: 100%;
+
+      color: #4A4A4A; 
+      font-family: "Helvetica Neue";  
+      font-size: 14px;  
+      font-weight: 300; 
+      line-height: 24px;      
+      padding: 18px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    textarea {
+      height: 111px;
+      padding: 12px 18px;
+    }
+
+    h4 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #4A4A4A;
+      font-size: 14px;  
+      font-weight: 300; 
+      line-height: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .address {
+    color: #4A4A4A;
+    font-size: 14px;  
+    font-weight: 300; 
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .location-info {
+    margin-top: 30px;
+    padding-bottom: 35px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #DBDBDB;
+
+    h1, p.address { 
+      margin-bottom: 0;
+    }
+  }
+
+  .description {
+
+    p, li, th, td, div, span, h1, h2, h3, h4, h5, h6 {
+      color: #4A4A4A; 
+      font-size: 18px;  
+      font-weight: 300; 
+      line-height: 32px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .location-social {
+    margin: -10px 0 0 0;
+    text-align: left;
+
+    li {
+      margin-right: 20px;
+    }
+
+    a {
+      width: auto;
+      height: auto;
+      padding: 0;
+      display: inline-block;
+      border: 0;
+      background: transparent;
+
+      span {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+}
+
 .location-grid {
   padding-bottom: 40px;
   
