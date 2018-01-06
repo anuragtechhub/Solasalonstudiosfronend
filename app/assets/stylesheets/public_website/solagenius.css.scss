@@ -248,6 +248,18 @@
     }
   }
 
+  .sola-genius-phone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: asset-data-url('own/sola-genius-iphone.png') no-repeat center;
+
+    background-size: (425px / 1.5) (694px / 1.5);
+    width: (425px / 1.5);
+    height: (694px / 1.5);
+  }
+
   .sola-genius-feature-list-desktop {
     list-style: none;
     margin: 0;
@@ -947,6 +959,10 @@ and (device-aspect-ratio: 40/71) {
 */
 .sola-genius {
 
+  .sola-genius-gallery {
+    margin-top: 120px;
+  }
+
   .owl-carousel .item .item-content .mobile-br {
     display: inline;
   }
@@ -1032,6 +1048,11 @@ and (device-aspect-ratio: 40/71) {
 
 @media (max-width : 550px) {
   .sola-genius {
+    .explore-sola-genius h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
     .owl-carousel .item .item-content .mobile-br {
       display: block;
     }
@@ -1043,11 +1064,15 @@ and (device-aspect-ratio: 40/71) {
       bottom: -395px;
     }
     .sola-genius-gallery {
-      margin-top: (1468px / 4.5) !important;
+      margin-top: (1468px / 5) !important;
     }
     .sneak-peak {
-      margin: 30px 0 0 0 !important;
+      margin: -190px 0 -60px 0 !important;
       //margin: -280px 0 -60px 0 !important;
+      h2 {
+        font-size: 24px;
+        margin-bottom: -10px;
+      }
     }  
     .owl-carousel .item .item-content .left-align-container {
 
