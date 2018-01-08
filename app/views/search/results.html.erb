@@ -3,7 +3,7 @@
     <%= form_tag [:search, :results], :method => :get do %>
       <div class="filterable-dropdown-search" data-input="service_type">
         <div class="dropdown">
-          <div class="selected-option"><span class="name"><%= params[:service_type] ? t("services.#{params[:service_type]}") : t('services.all_types') %></span><span class="down-triangle"></span></div>
+          <div class="selected-option"><span class="name"><%= params[:service_type].present? ? t("services.#{params[:service_type]}") : t('services.all_types') %></span><span class="down-triangle"></span></div>
           <div class="options">
             <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
             <div class="option" data-value="hair"><%= t('services.hair') %></div>
