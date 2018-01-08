@@ -82,7 +82,7 @@ en:
       learn_more_about_sola: Learn More About Sola
       click_to_watch_video: Click to watch video
       learn_more: Learn More
-      location_count: 350+
+      location_count: 400+
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
       salon_professional_count: 10,000+
@@ -90,7 +90,7 @@ en:
       find_a_stylist: Find a Stylist
       heading1: About Sola
       body1: |
-        <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO. Now with more than 350 locations open nationwide, we are proud to offer salon professionals the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon. Our innovative salon model empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time.</h4>
+        <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO. Now with more than 400 locations open nationwide, we are proud to offer salon professionals the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon. Our innovative salon model empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time.</h4>
         <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind: to help set them up for success. Join the Sola Salon Studios %{diversity_link} &ndash; now nearly 10,000 strong! &ndash; and experience a level of creative independence and career support you won't find anywhere else.</h4>
       diverse_community: diverse community
       heading2: About the Founders
@@ -224,7 +224,7 @@ en:
       search_by_name_or_location: Search by name or location
       salon_professional_count: 10,000+
       salon_professionals: Salon Professionals
-      location_count: 350+
+      location_count: 400+
       locations_nationwide: Locations Nationwide
       body1: "At Sola Salon Studios, each of our studios is independently operated!"
       body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
@@ -421,6 +421,7 @@ en:
     our_story:
       title: Our Story
       meta_description: ""
+      founders: Founders Matt Briger and Stratton Smith
       subhead: "What started out as a simple agreement scrawled on a Starbucks napkin has grown into the largest and fastest growing salon studio business in the country."
       body1: In 2004, Sola Salon Studios cofounders Stratton Smith and Matt Briger wanted to do more than design beautiful, move-in-ready salon studios. They set out to build a thriving community.
       body2: From the beginning, Stratton and Matt made a humble commitment to serve the beauty professional and always to put the beauty professional's best interests first. Their vision was to give the beauty professional control over their environment, schedule, choice of retail, pricing and so much more. When they were in the early stages of developing the innovative concept of turnkey salon studios in a co-working environment, they met with Denver-based stylist Kim Bennett Horvath.
@@ -657,7 +658,7 @@ en:
       title: Who We Are
       subhead: We focus on what's best for you, so you can focus on what's best for your business.
       subhead2: Experience a level of creative independence and career support you won't find anywhere else.
-      number_of_locations: 350+
+      number_of_locations: 400+
       locations_nationwide: Locations Nationwide
       meta_description: ""
       body1: "We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time."
