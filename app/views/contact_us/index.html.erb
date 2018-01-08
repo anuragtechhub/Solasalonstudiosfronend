@@ -3,7 +3,7 @@
 <div class="container content-container">
   
   <div class="row">
-    <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
+    <h1 class="chalet"><%= t('page.contact.get_in_touch').html_safe %></h1>
   </div>
 
   <% if @thank_you && I18n.locale != :en %>
@@ -17,9 +17,9 @@
   <div class="row dashed">
     <div class="one-half column">
       <% if I18n.locale != :en %>
-        <h1 class="small">Opening in Canada Fall 2017!</h1>
+        <h2 class="small">Opening in Canada Fall 2017!</h1>
       <% else %>
-        <h1 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
+        <h2 class="small"><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h1>
       <% end %>
     </div>
     <div class="one-half column">
@@ -64,7 +64,7 @@
           <div class="contact-us-info-disabled">
             <div class="row">
               <h3>&nbsp;</h3>
-              <h1><%= t('page.contact.select_a_sola_location_above').html_safe %></h1>
+              <h2><%= t('page.contact.select_a_sola_location_above').html_safe %></h2>
               <h3>&nbsp;</h3>
               <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
                 <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
@@ -87,7 +87,7 @@
           <div class="contact-us-info">
             <div class="row">
               <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
-              <h1><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h1>
+              <h2><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h2>
               <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
               <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
                 <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
@@ -114,13 +114,13 @@
 
   <div class="row dashed">
     <div class="one-third column">
-      <h1 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h1>
+      <h3 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
     </div>
     <div class="two-thirds column">
       <p><a href="tel:303.337.7652" class="tel"><strong>303.377.7652</strong></a></p>
       <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
       <p><a href="mailto:info@solasalonstudios.com" class="pink-link">info@solasalonstudios.com</a></p>
-      <p><%= link_to t('page.contact.sola_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info' %></p>
+      <p><%= link_to t('page.contact.sola_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto' %></p>
     </div>
   </div>
 
