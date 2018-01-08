@@ -1,4 +1,4 @@
-en-CA:
+en:
 
   activerecord:
     models: 
@@ -23,16 +23,20 @@ en-CA:
       leases/recurring_charge_4:
         amount: "Recurring weekly charge 4 weekly fee" 
         start_date: "Recurring weekly charge 4 start date"
-        end_date: "Recurring weekly charge 4 end date"  
+        end_date: "Recurring weekly charge 4 end date"              
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com
+  in: in
+  contact_for_leasing_information: Contact %{general_contact_name} for leasing information
+  phone_result: "<strong>p:</strong> %{phone_number}"
+  email_result: "<strong>e:</strong> %{email_address}"  
 
   header:
     rent_studio_button: Rent a Studio
     search_placeholder: Search by city, location or stylist...
-    sola_pro_sign_in: Sola Pro Sign In
+    sola_pro_sign_in: Sola Pro
 
   nav:
     about_us: About Us
@@ -58,48 +62,46 @@ en-CA:
     join_button: Sign Up
     legal: Sola Salon Studios - Your Life, Your Style &copy; Copyright
 
+  services:
+    hairstylist: Hairstylist
+    esthetician: Esthetician
+    nail_tech: Nail Tech
+    makeup_artist: Makeup Artist
+    beauty_professional: Beauty Professional
+    hair: Hair
+    makeup: Makeup
+    nails: Nails
+    skincare: Skincare
+    all_types: All Types
+
   page:
 
     about:
       title: About Us
+      meta_description: "Our innovative salon model empowers beauty professionals to take control of their lives and their careers. Be in business for yourself, not by yourself!"
       learn_more_about_sola: Learn More About Sola
       click_to_watch_video: Click to watch video
       learn_more: Learn More
-      location_count: 350+
-      coming_soon_to_canada: Now Open in Toronto!
+      location_count: 400+
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
-      salon_professional_count: Nearly 10,000
+      salon_professional_count: 10,000+
       salon_professionals: Salon<br>Professionals
       find_a_stylist: Find a Stylist
       heading1: About Sola
       body1: |
-        <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO USA. Our salon studios are pre-equipped, move-in-ready rentals that offer a turnkey solution to starting a salon business. We are proud to offer the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon.</h4>
-        <h4 class='paragraph'>Now, with more than 350 successful locations open in the United States, Sola Salon Studios is the leading the industry in this rental model! We are eager to expand our offerings to Canada to provide the same caliber of studios alongside our unmatched level of customer support to those seeking a simpler approach to salon ownership.</h4>
-        <h4 class='paragraph'>Our innovative salon model empowers hairdressers, colourists, aestheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully equipped salon studios alongside the support and tools they need to launch their salon business quickly.</h4>
-        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio company in North-America. At our core, we believe in beauty professionals and have one goal in mind: help set them up for success. Join the Sola Salon Studios %{diversity_link} – now nearly 10,000 strong! – and experience a level of creative independence and career support you won't find anywhere else.</h4>
+        <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO. Now with more than 400 locations open nationwide, we are proud to offer salon professionals the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon. Our innovative salon model empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time.</h4>
+        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind: to help set them up for success. Join the Sola Salon Studios %{diversity_link} &ndash; now nearly 10,000 strong! &ndash; and experience a level of creative independence and career support you won't find anywhere else.</h4>
       diverse_community: diverse community
       heading2: About the Founders
-      body3: "Matt Briger and Stratton Smith are true entrepreneurs. In the early 1990s, Stratton was a successful salon owner in St. Louis, MO. In 1995, he sold his six salons and joined Matt to start and run a real estate company in Colorado. But Stratton's passion for the beauty industry never left him, and, in 2004 Stratton and Matt left the corporate world to start Sola Salon Studios. They had a single idea and a clear vision: to put the salon professional first. Twelve years later, they continue to prove that they do just that."
+      body3: "Matt Briger and Stratton Smith are true entrepreneurs. In the early 1990s, Stratton was a successful salon owner in St. Louis, MO. In 1995, he sold his six salons and joined Matt to start and run a real estate company in Colorado. But Stratton's passion for the beauty industry never left him, and in 2004 Stratton and Matt left the corporate world to start Sola Salon Studios. They had a simple idea and a clear vision: to put the salon professional first. 11 years later, they continue to prove that they do just that."
       quote: "The goal is for every stylist to live their best life, and that's something different for everybody. At the end of the day, the stylists are the ones who win."
       view_gallery: View Gallery
       testimonial_text: "Sola has given me the freedom to create a world that represents me that I can share with my clients. Moving here was the greatest career choice I've made, and I've never looked back!"
       testimonial_author: "Audrey Howerton, Audrey's Hair Studio"
       view_more_testimonials: View More Testimonials
       join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
-    
-    who_we_are:
-      title: Who We Are
-      meta_description: ""
 
-    our_story:
-      title: Our Story
-      meta_description: ""
-
-    leadership:
-      title: Leadership
-      meta_description: ""
-    
     article:
       view_post: View Post
       share_socially: Share Socially
@@ -107,6 +109,7 @@ en-CA:
 
     blog:
       title: Blog
+      meta_description: "Check out the Sola Blog for marketing and business tips, Sola Spotlights, industry happenings, studio inspiration, and so much more!"
       our_blog: Our Blog
       found: Found
       search: Search...
@@ -121,14 +124,13 @@ en-CA:
     
     contact:
       title: Contact Us
-      get_in_touch: Be the First to Own
+      meta_description: "Get in touch to learn more about Sola Salon Studios by contacting the studio manager nearest you!"
+      get_in_touch: Get in Touch
       contact_a_sola_nearest_you: Contact a Sola<br>Nearest You
-      body1: |
-        Be among the first to own a boutique salon at Sola Salon Studios in Canada! Sola provides move-in-ready studios alongside all the support and tools you need to be a successful salon owner. In response to increasing demand for independent salon ownership from Canadian beauty professionals, our first location will open in the Leaside neighborhood of Toronto, shortly followed by a second location in Oakville. Visit each location's page for more details!<br /><br />
-        &quot;Sola Salon Studios has always been committed to supporting every beauty professional to pursue their business dreams and goals in a high-end, fully-equipped salon environment,&quot; said Ben Jones, Sola's Chief Executive Officer. &quot;Over the last few years we've received many inquiries from Canadian hairdressers interested in Sola's concept, and we feel the time could not be better to expand Sola's mission to Canada.&quot;<br /><br />
-      body2: Fill out the form below to keep up-to-date on all of the excitement surrounding our launch in Toronto!
+      body1: "Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!"
+      body2: ""
       frequently_asked_questions: Frequently Asked Questions
-      select_a_state: Select a Province
+      select_a_state: Select a State
       select_a_location: Select a Location
       select_a_sola_location_above: Select a Sola Location Above
       your_name: Your Name
@@ -137,13 +139,12 @@ en-CA:
       leave_a_message: Leave a Message
       submit_message: Submit Message
       call_for_leasing_information: Call for leasing information
-      sola_salon_studios_headquarters: Sola Salon Studios US Headquarters
+      sola_salon_studios_headquarters: Sola Salon Studios Headquarters
       sola_franchising: Sola Franchising
       franchising: Franchising
       franchising_text: Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4
       full_name: Full Name
       market: Market
-      receive_newsletter: I would like to receive future newsletters and communications from Sola
 
     diversity:
       title: Diversity
@@ -153,45 +154,45 @@ en-CA:
 
     faqs:
       title: FAQs
+      meta_description: "Why go independent? Why Sola? All your questions about owning your own salon suite at Sola answered."
       frequently_asked_questions: Frequently Asked Questions
       question1: Why Sola?
       answer1: |
-        <p>Beautiful studios, exclusive perks...at Sola Salon Studios, you simply get more! We rent turnkey, move-in-ready studios in which you can operate your own boutique salon business. We provide all the support and tools you need to get your business up and running quickly.</p>
-        <p>Salon owners at Sola customize their own studio, set their own schedule and prices, and enjoy the freedom and benefits of salon ownership without the risk associated with opening a traditional salon.</p>
-        <p>If you're looking to make the move to a salon studio, you'll be happy to hear that at Sola, we invest to provide the highest-quality fixtures and the ideal amount of cabinets specifically designed to accommodate salon professionals. At Sola, your studio will be equipped with the following:</p>
-        <ul>
-          <li>A custom build-out designed specifically for you that includes pull-out colour drawers, abundant storage, soft-touch closures and retail shelving</li>
+        <p>At Sola Salon Studios<sup>&#174;</sup>, we lease individual studios where you can operate your own boutique salon. Salon owners at Sola customize their own studio, set their own schedule and prices, and enjoy the freedom and benefits of salon ownership without the risk associated with opening a traditional salon.</p>
+        <p>If you&#8217;re looking to make the move to a salon studio, you&#8217;ll be happy to hear that at Sola, you simply get more. We invest thousands of dollars in each studio, providing the highest-quality fixtures and the ideal amount of cabinets specifically designed to accommodate salon professionals. With many other salon studios, you will be provided with only a shampoo bowl and chair. At Sola, your studio will be equipped with the following:</p>
+        <ol>
+          <li>A custom build-out designed specifically for you that includes pull-out color drawers, abundant storage, soft-touch closures and retail shelving</li>
           <li>Oversize sliding glass door with lock and floor-to-ceiling walls to allow you the privacy to play the music of your choice and enjoy one-on-one conversations</li>
           <li>Individual ventilation in each studio</li>
           <li>High-end hydraulic chair and shampoo bowl</li>
           <li>Full-spectrum lighting to emulate natural light</li>
           <li>Instant and abundant hot water supply</li>
           <li>Utilities and Wi-Fi included</li>
-        </ul>
-        <p>In addition to the physical amenities, you'll find that being at Sola will allow you to manage your own schedule, avoid salon politics and drama, and create the ideal atmosphere for you and your clients.</p>
+        </ol>
+        <p>In addition to the physical amenities, you&#8217;ll find that being at Sola will allow you to manage your own schedule, avoid salon politics and drama, and create the ideal atmosphere for you and your clients.</p>
       question2: Aside from the studio and its amenities, will Sola provide any other support to help me get my business up and running?
       answer2: |
-        <p>At Sola Salon Studios<sup>&#174;</sup>, we provide business support. Our detailed start-up manual provides you with all of the necessary forms, tips, and information to help get your business set up and ready to go:</p>
-        <ul>
+        <p>At Sola Salon Studios<sup>&#174;</sup>, we have your back. Our detailed start-up manual provides you with all of the necessary forms, tips, and information to help get your business set up and ready to go:</p>
+        <ol>
           <li>Start-up checklist</li>
           <li>Forms and tips to obtain your salon license and other licenses and permits</li>
           <li>Details on studio setup: insurance, equipment needed, paint and more</li>
           <li>Credit card processing tips</li>
           <li>Retail support and distributor contacts</li>
-        </ul>
-        <p>By joining the largest community of independent salon owners in North-America, you will have access to liability insurance, disability insurance (available in certain areas), discounts on retail, special offers for online scheduling, continuing education programs, industry events and more.</p>
-        <p>Additionally, we host social gatherings and educational events to strengthen our local Sola communities.</p>
+        </ol>
+        <p>By joining the largest community of independent salon owners in the country, you will have access to liability insurance, disability insurance (available in certain states), discounts on retail, special offers for online scheduling, continuing education programs, industry events and more.</p>
+        <p>Additionally, we host cocktail parties, family picnics and gatherings to strengthen our local Sola communities.</p>
       question3: How is working in a salon studio different than working at a traditional salon?
-      answer3: <p>At Sola, you will become the owner of your own boutique salon. You set the prices for your services and retail products, and you keep 100 percent of the profits. You'll have a key to your studio and can work when you want, with sole access to your supplies and equipment. Why rent a chair or booth when you can have your own salon for about the same cost?</p>
+      answer3: <p>At Sola, you will become the business owner of your own boutique salon. You set the prices for your services and choose the retail products you want to sell, and you keep 100 percent of the profits. You&#8217;ll have a key to your studio and can work when you want, with sole access to your supplies and equipment. Why rent a chair or booth when you can have your own salon for about the same cost?</p>
       question4: Who are the studios at Sola designed for?
-      answer4: <p>Our studios can be modified to accommodate hairdressers, colourists, nail techs, aestheticians, massage therapists and more. We design our studios with flexibility so that we can meet all your salon needs.</p>
+      answer4: <p>Our studios can be modified to accommodate hairdressers, skincare professionals, nail stylists, massage therapists, spray tanners and more. We design our studios with flexibility so that we can work with you to fit your salon needs.</p>
       question5: Can more than one salon professional work in a single Sola studio?
       answer5: <p>Yes, we have floor plans to accommodate more than one salon professional and will work with you to provide the best accommodations for your business.</p>
       question6: Can I decorate my studio?
-      answer6: <p>Yes, please do! We want your studio to reflect your personality, so feel free to paint the walls, bring in your own décor, play your own music, and create the atmosphere that is best for you and your clients.</p>
+      answer6: <p>Yes, please do! We want your studio to reflect your personality, so feel free to paint the walls, bring in your own d&#233;cor, play your own music, and create the atmosphere that is best for you and your clients.</p>
       question7: How do I know if I&#8217;m right for Sola?
       answer7: |
-        <p>Are you ready to take control of your professional life? Imagine setting your own hours and prices in a studio that reflects your taste in music, colour and style. This is the right opportunity for you if you have an established clientele and are ready to:</p>
+        <p>Are you ready to take control of your professional life? Imagine setting your own hours and prices in a studio that reflects your taste in music, color and style. This is the right opportunity for you if you have an established clientele and are ready to:</p>
         <ol>
           <li>Be your own boss</li>
           <li>Escape the salon drama</li>
@@ -200,9 +201,9 @@ en-CA:
           <li>Sell the retail products you love</li>
           <li>Customize your own salon studio</li>
         </ol>
-        <p>Join our community of nearly 10,000 like-minded salon professionals to experience a level of creative independence and career support you won't find anywhere else.</p>
+        <p>Join our community of nearly 10,000 like-minded salon professionals to experience a level of creative independence and career support you won&#8217;t find anywhere else.</p>
       question8: What are the hours of operation?
-      answer8: <p>At Sola you have access to your studio 24 hours a day, seven days a week. Our main doors are open during regular business hours; however, if you have a client at 8 am or on a Sunday when the main doors are locked, you can let your clients in. This allows you to take appointments during the hours that best fit your schedule and the schedules of your clients.</p>
+      answer8: <p>At Sola you have access to your studio 24 hours a day, seven days a week. Our main doors are open during regular business hours; however, if you have a client at 8 am or on a Sunday when the main doors are locked, you can buzz your clients in via the call box. This allows you to take appointments during the hours that best fit your schedule and the schedules of your clients.</p>
       question9: What are the key advantages to renting a studio at Sola?
       answer9: |
         <ol>
@@ -213,16 +214,17 @@ en-CA:
           <li>You work in a drama-free environment</li>
         </ol>
       question10: What are the next steps to getting started at Sola?
-      answer10: <p>To reserve your studio, contact us via our Contact Us email form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you are ready to open for business.</p>    
+      answer10: <p>To reserve your studio, contact us via our Contact Us form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you&#8217;re ready to open for business.</p>    
 
     find_salon_pro:
       title: Find a Salon Professional
-      heading1: Coming Soon!
+      meta_description: "To find a hairdresser, nail tech, esthetician or beauty professional, search by name or location. To schedule an appointment, contact your salon professional directly."
+      heading1: Find a Sola Salon<br>Professional Near You
       search: Search
       search_by_name_or_location: Search by name or location
-      salon_professional_count: Nearly 10,000
+      salon_professional_count: 10,000+
       salon_professionals: Salon Professionals
-      location_count: 350+
+      location_count: 400+
       locations_nationwide: Locations Nationwide
       body1: "At Sola Salon Studios, each of our studios is independently operated!"
       body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
@@ -230,21 +232,87 @@ en-CA:
     
     gallery:
       title: Gallery
+      meta_description: "Your studio, your style! Take a look at our gallery for a peek inside our customizable, beautiful salon studios."
       videos: Videos
       faces_of_sola: "2016 Faces of Sola: Testimonials Video"
       the_sola_story: The Sola Story
       sola_testimonials_video: Sola Testimonials Video
-      celebrating_5000_stylists: Celebrating 5,000 Stylists Nationwide
+      view_more_on_youtube: View More on YouTube
     
+    home:
+      title: Home
+      meta_description: "Beautiful studios, exclusive perks. At Sola, you simply get more! Lease a salon studio to join our community and experience the freedom and benefits of salon ownership."
+      slider1_heading: Beautiful Studios,<br />Exclusive Perks.
+      slider1_subhead: At Sola, You Simply Get More
+      slider1_button: Learn More
+      slider2_heading: Own Your Salon
+      slider2_subhead: Move-in-ready studios for hairdressers, nail techs, estheticians and more!
+      slider2_button: You Curious?
+      slider3_heading: Be in business for yourself,<span class="mobile-br">&nbsp;</span> not by yourself.
+      slider3_subhead: '&nbsp;'
+      slider3_button: Meet the 2018 Faces of Sola
+      slider4_heading: Way More Freedom!
+      slider4_subhead: '&nbsp;'
+      slider4_button: Find out more!
+      watch_our_video: Watch our video
+      for_professionals:  For Professionals
+      for_customers: For Customers
+      search_location: Search Location
+      photo_gallery: Photo Gallery
+      own_your_salon: Own Your Salon
+      find_a_sola_hairstylist: Find a Sola Hairstylist
+      search_salon_professionals: Search over 10,000 salon professionals.
+      testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
+      testimonial_author: Shelia Taylor
+      testimonial_studio_name: Ami Hair Studio
+      find_a_sola: Find a Sola
+
+    leadership:
+      title: Leadership
+      meta_description: ""
+      ceo: CEO
+      chief_development_officer: Chief Development Officer & General Counsel 
+      vice_president_marketing: Vice President, Marketing & Education
+      managing_director: Managing Director, Corporate Development & Operations
+      cfo: Chief Operating Officer and Chief Financial Officer
+      r_randall_clark_bio: |
+        <p>Randall Clark is a fire-tested executive with an astute business acumen and unshakeable belief in servant leadership. Those qualities combined with his long history of business development success uniquely qualifies him to lead the Sola community of sophisticated franchise business owners and independent salon owners alike.</p>
+        <p>Randall's strategic, systematic thinking, alongside his unwavering dedication to protecting the Sola brand and our customers' best interests, is a driving force behind Sola's demonstrated success and predicted future growth.</p>
+        <p>With his 27 years as an experienced senior corporate executive and equity investment principal, Randall has led a diverse set of companies and has sponsored strategic investment partnerships and alternative asset operating platforms to sustainable growth and significant enterprise value creation. As a private equity investment sponsor, he has led and completed over $3.7 billion in investment transaction volume, comprising in excess of $850 million of equity capital commitments.</p>
+        <p>After receiving his BA from the University of Arizona, Randall went on to pursue his Juris Doctorate (JD) from the Pepperdine University School of Law. He has also served as the chairman of the Rocky Mountain Chapter of the Young Presidents Association (both YPO and YPO Gold)—an international association dedicated to improving leadership through continuing peer-to-peer education and idea exchange.</p>  
+        <p>Randall reports directly to the Sola Salon Studios' board of directors and cofounders Matt Briger and Stratton Smith. He is responsible for overseeing leadership, strategy and execution for all growth initiatives of the Sola Salon Studios franchise, both domestically and internationally, including operational management of all company-owned and operated Sola locations.</p>
+      ben_jones_bio: |
+        <p>Ben Jones propels Sola Salon Studios forward by developing innovative strategies and assessing risk for all national and international growth opportunities. His deep knowledge and understanding of Sola Salon Studios operations also stems from his experience as a Sola franchisee, owner of three Sola locations in Colorado.</p>
+        <p>Ben earned a bachelor's degree with distinction from Duke University, followed by a Doctor of Law degree from the University of Virginia School of Law. Prior to joining Sola in 2012, Ben was responsible for business development and risk management for tech giant Qwest Communications and real estate investment company Affordable Residential Communities. He is overly active in supporting his alma matter, as past member of Duke University's Trinity School Board of Visitors and past president of Duke's Josiah Charles Trent Memorial Foundation. In addition, he recently joined the board of directors for the Mary Duke Biddle Foundation, which provides grants to those seeking to effect positive change in North Carolina and at Duke University.</p>
+        <p>Ben's passion for supporting and helping the independent salon owner community thrive is a driving force behind the ongoing evolution and innovation of the Sola brand. His ability to develop large-scale strategies for growth combined with a realistic understanding of the associated risks make him uniquely situated to help Sola break new ground globally.</p>
+      jennie_wolff_bio: |
+        <p>With an eclectic mix of talents, skills and experience, Jennie brings a holistic strategy and omni-channel approach to Sola Salon Studios' marketing and education initiatives.</p>
+        <p>Jennie's diverse experience set was first developed when managing Kroenke Sports & Entertainment's Special Events Department after graduating from Emory University with a degree in creative writing. After five years of planning and managing events at various sports and music venues in Denver, Jennie joined Motive, a boutique creative marketing agency, where she worked on experiential campaigns and digital projects for top brands such as Mars Chocolate, Van's Natural Foods and Cartoon Network. In 2013, Matt and Stratton (Sola's cofounders) convinced Jennie to put her talents to work in the salon industry.</p>
+        <p>Jennie's consistent focus on developing foundation tools and strategies to truly support the independent salon owner makes for an authentic and constantly evolving marketing strategy. Jennie oversees all of Sola's traditional and nontraditional marketing efforts, as well as Sola's education program designed to provide support and tools to help our salon owners thrive.</p>
+        <p>Jennie led the creation and launch of Sola's innovative programs, including development of the Sola Pro app and live education events, the Sola Sessions. Her ability to coordinate, plan and execute innovative strategies with a focus on enhancing the independent salon owner experience makes Jennie an integral part of fostering and delivering upon the Sola brand promise for both franchisees and beauty professionals alike.</p>
+      myrle_mcneal_bio: |
+        <p>Myrle McNeal's extensive work history—combining both real estate and communications—gives him a unique perspective and skill set for managing both Sola's overall corporate goals and its day-to-day operations.</p>
+        <p>In addition to helping facilitate Sola's forward progress on the corporate level, Myrle is also a Sola Salon Studios franchisee and owns five Sola locations of his own in Oregon and Louisiana. On the corporate level, he operates an additional 13 company-owned Sola locations in the Denver metro area.</p>
+        <p>Myrle has previously held senior leadership positions with AT&T, Sprint and Level 3 Communications. While serving as the vice president and general manager for Level 3, he ventured out into real estate by managing the company's 75 locations, totaling an incredible 3 million square feet of space across the United States and Europe. Prior to joining Sola Salon Studios in his current position, Myrle honed his skills as a senior vice president of operations for Datavail Corporation in Boulder, Colorado.</p>
+        <p>As the leader of Sola's corporate Sola locations, Myrle and his team develop and pilot new strategies and programs in construction, marketing, design and operations to be used by the Sola franchisee community. Myle's dedication to supporting his franchisee peers and ever-growing salon professional communities makes him an essential member of the Sola leadership team.</p>
+      j_todd_neel_bio: |
+        <p>J. Todd Neel oversees site selection, construction, studio layout and design of every Sola Salon Studios location. He is also responsible for managing the overall financials, operations and franchisee support at the corporate level. Todd knows the Sola Salon Studios business inside and out—not only on the corporate level but also as a 50% franchisee owner in three Sola Locations in Indianapolis.</p> 
+        <p>As the first employee hired by Sola cofounders Stratton and Matt in 2005, Todd was struck by the power of Sola from the very beginning. &quot;Early on, stylists cried tears of joy when they signed up for a studio. They were excited to open their own business, and after several stylists cried out of joy (or exhaustion of where they were at), I knew this was something big.&quot;</p>
+        <p>As a member of the Sola team since the opening of the first Sola location in Denver, Todd has been a part of the development of the company every step along the way. His considerable knowledge of the Sola experience and his meaningful relationships with the franchisee community are invaluable to the continued growth and success of the Sola brand.</p>
+        <p>Before joining Sola, Todd spent six years as the codirector of acquisitions for Affordable Residential Communities, where he managed seven acquisition teams and completed the purchase of $1.5 billion in real estate assets. His extensive experience includes managing acquisitions for Aramark and working as a senior auditor and certified public accountant.</p>
+
     locations:
       title: Locations
       title_long: Sola Locations
+      meta_description: "To find the Sola Salon Studios location nearest to you, search by city or state, or view our locations map."
       find_a_sola_location: Find a Sola Location
-      select_a_state: Select a Province
+      select_a_state: Select a State
       all_locations: All Locations
       view_location: View Location
       locations_in: Locations in 
       find_a_salon_professional: Find a Salon Professional
+      find_a_salon_professional_at_location: Find a salon professional at %{location}
+      there_are_x_professionals: There are %{number} professionals at this location
       rent_a_studio: Rent a Studio
       about_this_location: About This Location
       move_in_special: Move-In Special
@@ -275,15 +343,18 @@ en-CA:
       view_our_directory: View Our Directory
       contact_us_for_leasing_information: "Contact Us for<br>Leasing&nbsp;Information"
       call_for_leasing_information: "Call %{contact_name} for leasing information"
+      lease_at_location: Lease at<span class="desktop-br">&nbsp;</span>%{name}
+      request_leasing_information: To request leasing information, call %{name} at %{number} or fill our the form below and we'll contact you.
       your_name: Your Name
       email_address: Email Address
       phone_number: Phone Number
-      leave_a_message: Leave a Message (Optional)
+      leave_a_message: Message (Optional)
       submit_request: Submit Request
       submitting_request: Submitting...
       testimonial_text: "I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."
-      testimonial_author: "Katina Eisenbeis, Katina's Salon"
-      view_more_testimonials: View More Testimonials
+      testimonial_author: "Katina Eisenbeis"
+      testimonial_location: "Katina's Salon"
+      view_more_testimonials: View more testimonials
       join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
       the_sola_story: The Sola Story
       see_what_others_are_saying: See What Others Are Saying
@@ -299,6 +370,7 @@ en-CA:
     
     news:
       title: In the News
+      meta_description: "Keep up with the latest news about Sola Salon Studios, featured in Modern Salon, American Salon, Behind the Chair, Beauty Launchpad, Forbes and more!"
       keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link}, %{twitter_link} and %{pinterest_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
       facebook: Facebook
       instagram: Instagram
@@ -311,114 +383,142 @@ en-CA:
       stay_informed: Stay informed with newsletters and events.
       your_email_address: Your email address
       join: Join
+    
+    our_studios:
+      title: Our Studios
+      hero_heading1: Sola provides all you need and more in high-end, move-in-ready studios.
+      hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians and more.
+      studio_amenities: Studio Amenities 
+      meta_description: Our Studios
+      shampoo_bowl: Shampoo Bowl 
+      shampoo_bowl_text: Shampoo, rinse and repeat in a shampoo
+      view_gallery: View Gallery of Studios
+      join_our_community: Join our Community
+      join_our_community_text: Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!
+      join_our_community_button_text: Own Your Salon
+      wash_basin:
+        heading: Shampoo Bowl
+        body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
+      products:
+        heading: Retail Shelving
+        body: Proudly display and sell the products you love.
+      mirror:
+        heading: Oversized Mirrors
+        body: Style clients in front of large, well-lit mirrors.
+      tool_cabinet:
+        heading: Tool Cabinet
+        body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
+      chair:
+        heading: Hydraulic Chair
+        body: Provide comfort for your clients in a high-end hydraulic chair.
+      cabinetry:
+        heading: Cabinets &amp; Drawers
+        body: High end custom cabinetry with abundant storage helps keep your studio organized.
+      insulated_walls:
+        heading: Insulated Walls
+        body: Insulated walls keep out noisy distractions and help create a more intimate environment.
+
+    our_story:
+      title: Our Story
+      meta_description: ""
+      founders: Founders Matt Briger and Stratton Smith
+      subhead: "What started out as a simple agreement scrawled on a Starbucks napkin has grown into the largest and fastest growing salon studio business in the country."
+      body1: In 2004, Sola Salon Studios cofounders Stratton Smith and Matt Briger wanted to do more than design beautiful, move-in-ready salon studios. They set out to build a thriving community.
+      body2: From the beginning, Stratton and Matt made a humble commitment to serve the beauty professional and always to put the beauty professional's best interests first. Their vision was to give the beauty professional control over their environment, schedule, choice of retail, pricing and so much more. When they were in the early stages of developing the innovative concept of turnkey salon studios in a co-working environment, they met with Denver-based stylist Kim Bennett Horvath.
+      callout1: "&quot;I was inspired by their vision of Sola. They didn't want to sell me anything or compete with my business. Everything was all my choice! So I signed up right then.&quot;"
+      callout1_name: "Kim Bennett Horvath"
+      body3: Impressed by Stratton and Matt's unwavering commitment to bettering the lives and businesses of independent salon owners, Kim took a leap of faith and became the very first Sola stylist in Denver, Colorado.
+      body4: In 2005, the first franchised Sola location was opened, paving the way for our best-in-class franchisees and onsite operators. And in the blink of an eye, 10 years later, Sola celebrated 5,000 independent beauty professionals across the country. 
+      body5: Throughout the years, Sola has become more than just another salon suites rental business; we are an all-encompassing independent salon business solution. Our leadership team drives constant innovation for the on-site studio experience as well as providing cutting-edge technology and ongoing educational resources to the Sola community. 
+      body6: In 2016, Sola launched Sola Pro, an exclusive app, to host industry deals, special offers and a variety of educational resources to bridge the gap between the professional beauty industry and the Sola community. Shortly after, the first Sola Sessions event kicked off in Denver, providing a unique live education experience to inspire and connect the ever-growing Sola community. With the 2017 addition of our exclusive technology SolaGenius—an all-in-one business platform launched in partnership with GlossGenius, designed to help an independent salon owner manage their schedule, customer relationship management, marketing, analytics and payment processing—we can proudly say that we support our customers along every step of their independent salon journey.
+      body7: "Today, Stratton and Matt's humble commitment has blossomed into a worldwide movement. We are proud to say that Sola Salon Studios is a thriving, diverse and welcoming community of more than 10,000 independent salon professionals across 400+ locations in United States, Canada and, soon, the rest of the world. Our culture has been cultivated around one simple ideal: &quot;freedom to live the life you love.&quot;"
+      callout2: "&quot;The goal is for every stylist to live their best life, and that's something different for everybody. At the end of the day, the stylists are the ones who win.&quot;"
+      callout2_name: "Matt Briger"
+      body8: Sola has blazed the trail for the independent stylist movement, offering new levels of creative freedom to those who are inspired to make the transition. We aim to make your transition to independence as smooth as possible. You are independent and unique at Sola, but you are not alone.
+      body9: Through our business-building tools, educational offerings, encouraged networking and strong support system, Sola empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take full control of their lives and careers. With a bright future ahead, the Sola team continues to identify ways to cultivate growth through innovation, creativity and, most importantly, community. 
+      join_our_community: Join our Community
+      join_our_community_text: "Are you ready to join the Sola community? Click to become a Sola Salon Owner!"
+      join_our_community_button_text: "Own Your Salon"
 
     own:
       title: Own Your Salon
-      section:
-        own_your_salon:
-          title: Own Your Salon
-          hero_heading1: Beautiful Studios. Exclusive Perks.
-          hero_heading2: At Sola, You Simply Get More!
-          search_placeholder_blur: Find a Sola near you
-          search_placeholder_focus: Search by city, state or zip
-          search: Search
-          tagline: Don't Just Dream. DO! Become a Boutique Salon Owner Today.
-          heading1: Be In Business For Yourself,<br />Not By Yourself
-          body1: "Salon professionals choose Sola to create their one-of-a-kind salon culture, experience more privacy with clients, escape salon drama, and make more money. <strong>It's about freedom and control.</strong> Sola empowers hairstylists by alleviating the risks and hassles associated with traditional salon ownership. <strong>We provide</strong> high-end, move-in ready studios combined with the support and tools you need to launch your salon business quickly and easily. To enjoy all these benefits, join our community of nearly 10,000 like-minded salon professionals and get one step closer to living the life you love!"
-          heading2: Your Life, Your Style<sup>&reg;</sup>
-          body2: "Whether you're a hairdresser, colourist, nail tech, aesthetician or a massage therapist, we have a variety of studio options to fit your needs. The best part is that in your studio, you have complete control of the atmosphere. Customize your studio and create an intimate environment that reflects your personal style. Set your own hours with 24/7 access to your studio and enjoy the ideal work/life balance you want. Sell the retail products you love and set your own prices to maximize your income. <strong>Sola studios come furnished with all of the major equipment you'll need to help make your transition easy!</strong>"
-          view_gallery_of_studios: View Gallery of Studios
-          heading3: Find Out Why Salon<br />Professionals Choose Sola!
-          body3: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
-          about_sola: About Sola
-          testimonial_text: "When I moved to Sola, I fell in love with my craft again. The privacy of my own suite allows me to create my own vibes, energy and focus."
-          view_more_testimonials: View More Testimonials
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-        studio_amenities:
-          title: Studio Amenities
-          heading1: Sola provides all you need and more in high-end, move-in-ready studios. Find the perfect one or two-chair salon near you.
-          heading2: Studio Amenities
-          list2: |
-            <strong>Oversized Locking Door:</strong> Your studio is private and secure
-            <strong>Retail Shelves:</strong> Showcase and sell the retail products of your choice
-            <strong>High-end Cabinets &amp; Fixtures:</strong> Get organized with ample, functional storage
-            <strong>Comb Drawer:</strong> Keep your stuff neat and tidy
-            <strong>Oversize Mirrors:</strong> Rotate clients for different views
-            <strong>Tool Cabinet:</strong> Cleanly store your tools and cords
-            <strong>Shampoo Bowl:</strong> Shampoo clients with comfort and support
-            <strong>Styling Chair:</strong> Hydraulic chair provides superior client comfort
-            <strong>Sound Insulated Walls:</strong> Enjoy private conversations and your own music
-            <strong>Full-Spectrum Lighting:</strong> Work under light that emulates natural daylight
-            <strong>Ventilation:</strong> Individual ventilation in each studio to eliminate odors
-            <strong>Instant Hot Water:</strong> Saves time and conserves water
-            <strong>24/7 Security:</strong> Security and video surveillance help keep valuables safe
-            <strong>Utilities Included:</strong> Weekly rental fee includes utilities and Wi-Fi
-          heading3: Sola Professional Benefits
-          list3: |
-            All the equipment you need to start your business with minimum start-up costs
-            Join a community of nearly 10,000 salon professionals nationwide to be in business for yourself, not by yourself
-            Boost your income and keep 100% of your profits
-            Access group insurance and Sola programs and discounts for products, scheduling and more
-            Escape salon politics and drama in your private, secure studio
-            Manage your own schedule with 24/7 studio access
-            Personalize your salon space with artwork, music, furniture and decor
-            Set pricing for services and products
-            Sell the retail products you love
-            Play your own music and enjoy private conversations
-            Enjoy an intimate setting and give your guests the one-on-one attention they deserve
-          view_gallery_of_studios: View Gallery of Studios
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-          storage: 
-            heading: Drawers
-            body: Pull out drawers for additional storage
-          insulated_walls:
-            heading: Insulated Walls
-            body: Insulated walls keep out noisy distractions and help to create a more intimate environment for you and your clients.
-          tool_cabinet:
-            heading: Tool Cabinet
-            body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
-          chair:
-            heading: Hydraulic Chair
-            body: Provide comfort for your clients in a high-end hydraulic chair.
-          cabinetry:
-            heading: Cabinets
-            body: High end custom cabinetry with abundant storage helps keep your studio organized.
-          mirror:
-            heading: Mirrors
-            body: Style clients in front of large, well-lit mirrors.
-          products:
-            heading: Retail Shelving
-            body: Proudly display and sell the products you love
-          wash_basin:
-            heading: Shampoo Bowl
-            body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
-        sola_pro:
-          title: Sola Pro
-          hero_body1: <strong>An exclusive app for Sola professionals!</strong>
-          heading1: Sola Pro
-          list1: |
-            <strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.
-            <strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your area!
-            <strong>Blog:</strong> Marketing and business ideas including Sola success stories to inspire you further.
-          download_app_or_view: Download app or view %{sola_pro_link}
-          heading2: Check Out a Sneak Peek of Sola Pro!
-          testimonial_text: "There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!"
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"
-        sola_sessions:
-          title: Sola Sessions
-          heading1: The Sola Sessions
-          body1: "<strong>Inspiration. Education. Community.</strong> The Sola Sessions are about inspiring, motivating and educating Sola professionals, while permitting them to learn from and collaborate with our dynamic community."
-          bullet1: "Learn from the industry's best!"
-          bullet2: "Intimate, Sola-exclusive events"
-          bullet3: "Currently held in 4 cities in the United States per year"
-          learn_more: Learn More
-          testimonial_text: "My daughter and I (we are a mother/daughter duo salon) attended the very first Sola Session in Denver. We loved getting to meet, greet and have one on one with the educators before or after their show. We loved the smaller, family like setting. And, the fact that everyone there was a Sola owner was even more fabulous."
-          want_to_learn_more: Want to learn more?
-          view_frequently_asked_questions: "View frequently asked questions &raquo;"    
-    
+      meta_description: "Studios for hairdressers, nail techs, estheticians, and more. Lease a move-in ready salon suite to control your environment, manage your schedule, and be your own boss."
+      tabs:
+        own_your_salon: Own Your<span class="mobile-br"> </span>Salon
+        our_studios: Our<span class="mobile-br"> </span>Studios
+        sola_pro: Sola<span class="mobile-br"> </span>Pro
+        sola_sessions: Sola<span class="mobile-br"> </span>Sessions
+        sola_genius: Sola<span class="mobile-br"> </span>Genius
+
+    privacy_policy:
+      title: Privacy Policy
+      body: |
+        <p>Privacy Policy</p>
+        <p>Last revised and Effective February 1, 2017</p>
+        <p>Sola Franchise Corporation and its subsidiaries, including Sola Salon Studios Canada, Inc. (&quot;Sola&quot;), the proud owner of the Sola Salon Studios&reg; brand, knows that your privacy is important. This Privacy Policy sets out our privacy practices that apply when you use any website, mobile application or other online service or platform of Sola or any other Sola company that links or refers to it (collectively, the &quot;Services&quot;), regardless of who owns or operates the Services, as well as our interactions with you on third party platforms (such as social media).</p>
+        
+        <p>1. Information We Collect</p>
+        <p>We collect personal information about our users in various ways. For example, we collect information that you provide to us, information that we collect through your use of the Services, and information that we collect from publicly available sources or third parties.</p>
+        <p>Information You Provide to Us. We collect information you give us when you use the Services. For example, when you visit one of our websites or use one of our Services, create an account with us, participate in a survey or promotion, or take advantage of our in-salon Wi-Fi service, we may ask for information such as your name, e-mail address, year of birth, gender, street address, or mobile phone number so that we can provide Services to you. We may collect payment information, such as your credit card number, security code and expiration date, to process a financial transaction you have requested. We also may collect information about the products you buy, including where and how frequently you buy them or your use of discount codes or coupons so that we can learn more about your interests and better serve you.</p>
+        <p>Information About Your Use of the Services. In addition to the information you provide to us directly, we may collect information about your use of the Services. For example, we may collect:</p>
+        <p>Device information — such as your hardware model, IP address, other unique device identifiers, operating system version, and settings of the device you use to access the Services.</p>
+        <p>Usage information — such as information about the Services you use, the time and duration of your use of the Services and other information about your interaction with content offered through a Service, and any information stored in cookies and similar technologies that we have set on your device.</p>
+        <p>Location information — such as your computer's IP address, your mobile device's GPS signal or information about nearby WiFi access points and cell towers that may be transmitted to us when you use the Services.</p>
+        <p>Information From Third-Party Sources. We may receive information about you from publicly and commercially available sources, as permitted by law, which we may combine with other information we receive from or about you. For example, we may receive information about you from a social media site if you connect to the Services through that site.</p>
+        <p>Other Information We Collect. We also may collect other information about you, your device, or your use of the Services in ways that we describe to you at the point of collection or otherwise with your consent.</p>
+        
+        <p>2. How We Use Information</p>
+        <p>When You Volunteer Information or Register.  If you choose to use certain features (such as messaging your stylist) on the Services, you may need to complete certain personal information register and provide personal information such as name, email address, location, year of birth and a user name and password that you choose. We use this information to identify you and provide the requested feature and Services.</p>
+        <p>To Provide and Manage the Products and Services You Request. We use information that we collect to process any purchases of products or services, enable you to participate in features provided by the Services and provide you with tailored offers, and improve the Services that we provide to you. From time to time, we may offer you the ability to personalize our products and Services, such as by uploading a photo or other information. We may use any of these images uploaded by you on our websites or services or on social media platforms.  We may also use services provided by third parties (such as social media platforms) to serve targeted ads to you and others on such platforms.</p>
+        <p>To Respond to You. When you contact us, we may collect information that identifies you (such as your name, address and a phone number) along with additional information we need to help us promptly answer your question or respond to your comment. We may  this information to assist you in the future and to improve our customer service, products, Services, and promotions.</p>
+        <p>When you Make any Purchase.  If you use a credit or debit card for your purchase, your debit or credit card-related information will be collected to process and administer your payment. When you make purchases through the online Services, we may collect information such as your name, email address, billing address, the email or mailing address for delivery (if applicable), phone number, and payment card information. This information is used to process, fulfill and deliver your order.</p>
+        <p>To Contact You. We may contact you with offers and information about the Services and our affiliates, including to inform you about our products, events, promotions, and special offers that may be tailored to your interests. You may opt out of receiving commercial messages from us by following the instructions contained in our electronic messages or by contacting us as set out below.</p>
+        <p>To Deliver Targeted Advertising. We may use your information, including your location information, to facilitate the delivery of targeted ads, promotions, and offers to you, on behalf of ourselves, select business partners, and advertisers, on and off the Services. (See &quot;Interest-Based Advertisements&quot; section below.).</p>
+        <p>To Better Understand Our Customers and to Improve Our Services. In the course of providing the Services, we may collect information on our users' demographics, interests and behavior and analyze that data. We do this to better understand and serve our users, and to improve our products and Services.</p>
+        <p>Consent. We may otherwise use your information with your consent or at your direction.</p>
+        
+        <p>3. Sharing of Information</p>
+        <p>The following provides information about entities with which we may share information. Our practices vary depending on the type of information and sharing.</p>
+        <p>Affiliates. We may share information within our family of affiliated companies so that we may provide offers from those companies that may be relevant to you, better understand your preferences, and improve our Services.</p>
+        <p>Franchisees. We may share information with franchisees.  We also may provide our franchisees with information so that they may provide you with information, offers and promotions that might interest you.</p>
+        <p>Business Partners. We may also share your information with business partners to provide you with Services that you request. For example, if you sign up for a promotion that runs on our Services but that is offered, sponsored or co-sponsored by another company, your information may be shared with that company. We are not responsible for the privacy practices of these entities and recommend you review their privacy policies carefully.</p>
+        <p>Service Providers. We may share information with companies providing services on our behalf, such as hosting vendors, advertising service providers, data analytics companies, marketing service companies, and list managers. We also may share your information, including your payment information, as appropriate to process your payments for the Services or complete a transaction. </p>
+        <p>Social Media Services. If you connect a social media account with the Services or engage with our services through a social media platform, we may share your information with that social media platform, and it may share information about you with us. We may use this information to personalize your experience on the Services and on the third-party social media platforms, or to provide you with offers or other products or Services you may request. The social media services' use of the shared information will be governed by the social media services' privacy policy and your social media account settings. </p>
+        <p>Companies that Provide Content, Advertising, or Functionality. Some of the content, advertising, and functionality on our Services may be provided by third parties, such as our advertisers. These companies may collect or receive certain information about your use of the Services, including through the use of cookies, beacons, and similar technologies, and this information may be combined with information collected across different websites and online services in order to deliver ads that are more relevant to you, both on and off our Services.</p>
+        <p>Other Parties When Required or Permitted by Law, or As Necessary to Protect Our Users and Services.We and our service providers (including affiliates) may use and share your personal information as we believe is necessary or appropriate to protect, enforce, or defend the legal rights, privacy, safety, or property of the Services, our employees or agents or users, to detect, suppress or prevent fraud or where otherwise required or permitted by applicable law or legal process, including responding to a search warrant or other legally valid requests from public and government authorities (which may include lawful access by U.S., Canadian, or other governmental authorities, courts or law enforcement agencies).</p>
+        <p>Other Parties in Connection With a Corporate Transaction. We reserve the right to transfer any information we have about you in the event that we sell or transfer all or a portion of our business or assets to a third party, such as in the event of a merger, acquisition, or in connection with a bankruptcy reorganization.</p>
+        <p>Otherwise With Your Consent or at Your Direction. In addition to the sharing described in this Privacy Policy, we may share information about you with third parties whenever you consent to or direct such sharing.</p>
+        <p>Aggregated Data. We also may provide aggregated information, and data with personal identifiers removed, to third parties to describe how our customers are using the Services.</p>
+        
+        <p>4. Online Advertising and Cookies</p>
+        <p>We and other companies that provide advertising and other services on our Services may use cookies, web beacons, and similar technologies to facilitate administration and navigation, to better understand and improve our Services, to determine and improve the advertising shown to you here or elsewhere, and to provide you with a customized online experience.</p>
+        <p>Interest-Based Advertisements. We may use third parties to serve advertisements on our Services and on other websites and digital platforms. These companies may use cookies, web beacons or other technologies to report certain information about your visits to our Services and other websites (such as web pages you visit and your response to ads) in order to measure the effectiveness of our marketing campaigns and to deliver ads that are more relevant to you, both on and off our Services. To learn more and to opt-out of having your information used by these companies for online behavioral advertising purposes, please see &quot;Choices with Respect to Interest-Based Advertisements&quot; below. We may also use services provided by third parties (such as social media platforms) to serve targeted ads to you and others on such platforms. We may do this by providing a hashed version of your email address or other information to the platform provider.</p>
+        <p>Cookies. &quot;Cookies&quot; are small files that are placed on your computer when you visit a website. Cookies may be used to store a unique identification number tied to your computer or device so that you can be recognized as the same user across one or more browsing sessions, and across one or more sites. Cookies serve many useful purposes. For example:</p>
+        <p>Cookies can remember your sign-in credentials so you do not have to enter those credentials each time you visit a Service</p>
+        <p>Cookies can help us and third parties understand which parts of our Services are the most popular because they help us see which pages and features visitors access and how much time they spend on the pages. By studying this kind of information, we are better able to adapt our Services and provide you with a better experience.</p>
+        <p>Cookies help us and third parties understand which ads you have seen so that you don't receive the same ad each time you access a Service.</p>
+        <p>Most browsers accept cookies automatically, but can be configured not to do so. If you wish to disable cookies, refer to your browser help menu to learn how to disable cookies. If you disable cookies, it may interfere with the functioning of the Services.</p>
+        <p>Beacons. We, along with third parties, also may use technologies called beacons (or &quot;pixels&quot;) that communicate information from your device to a server. Beacons can be embedded in online content, videos, and emails, and can allow a server to read certain types of information from your device, know when you have viewed particular content or a particular email message, determine the time and date on which you viewed the beacon, and the IP address of your device. We and third parties use beacons for a variety of purposes, including to analyze the use of our Services and (in conjunction with cookies) to provide content and ads that are more relevant to you both on and off the Service.</p>
+        <p>Do-Not-Track Signals and Similar Mechanisms. Some web browsers may transmit &quot;do-not-track&quot; signals to the websites with which the user communicates. Because of differences in how web browsers incorporate and activate this feature, it is not always clear whether users intend for these signals to be transmitted, or whether they even are aware of them. Because there currently is no industry standard concerning what, if anything, websites should do when they receive such signals, the Services currently do not take action in response to these signals. If and when a final standard is established and accepted, we will reassess how to respond to these signals.</p>
+        
+        <p>5. Privacy and Access Choices Available To You</p>
+        <p>Choices With Respect To Cookies and Similar Technologies. You may block cookies and similar technologies in your browser or device settings, as and if permitted by such device.</p>
+        <p>Choices With Respect To Interest-Based Advertising. You may opt out of receiving targeted advertising from participating ad networks, audience segment providers, ad serving vendors, and other service providers by visiting websites operated by the  the National Advertizing Initiative at <a href="http://www.networkadvertising.org" target="_blank">http://www.networkadvertising.org</a>.; The Digital Advertising Alliance at <a href="http://digitaladvertisingalliance.org" target="_blank">http://digitaladvertisingalliance.org</a>; and The Digital Advertising Alliance of Canada at <a href="http://youradchoices.ca" target="_blank">http://youradchoices.ca</a>.</p>
+        <p>Manage Your Account. You may access, modify or delete your account on the settings or profile page, or by contacting us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with such written request.</p>
+        <p>Data Access. Subject to applicable law, you may also have a right to access, update, and correct inaccuracies in other personal information in our custody and control, subject to certain exceptions prescribed by law. You may request access, updating and corrections of inaccuracies in the personal information we have in our custody or control by emailing or writing to us at the contact information set out below. We may request certain personal information for the purposes of verifying the identity of the individual seeking access to their personal information records.</p>
+        <p>Email Promotions. You may opt out of receiving commercial email, text message, and other electronic messages from us by following the instructions contained in those messages.</p>
+        
+        <p>6. Data Security</p>
+        <p>We have in place physical, electronic and managerial procedures to protect personal information in our custody and control against loss, theft and unauthorized access, use, modification and disclosure. However, as effective as these measures are, no security system is impenetrable. We cannot guarantee the security of our Services, nor can we guarantee that the information you provide will not be intercepted while being transmitted to us over the Internet.</p>
+        
+        <p>7. Other Important Information</p>
+        <p>Children's Privacy. We do not knowingly collect any personal information from children under the age of 13 without parental consent, unless permitted by law. If we learn that a child under the age of 13 has provided us with personal information, we will delete it in accordance with applicable law.</p>
+        <p>Links to Third-Party Sites. Our Services may link to third-party websites and services that we do not operate and are outside of our control. We are not responsible for the security or privacy of any information collected by other websites or other services. Please exercise caution and review the privacy statements applicable to the third-party websites and services you use.</p>
+        <p>Your California Privacy Rights. California residents are entitled once a year, free of charge, to request and obtain certain information regarding our disclosure, if any, of certain categories of personal information to third parties for their direct marketing purposes in the preceding calendar year by contacting us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with such written request. We do not share personal information with third parties for their own direct marketing purposes.</p>
+        <p>International Transfers. The Services are headquartered in the United States. Please be aware that information you provide to us or that we obtain as a result of your use of the Services may be collected in your country and subsequently transferred to, maintained and processed in the United States or another country by us or our service providers for the purposes mentioned above in accordance with applicable law. The privacy laws of these countries may not always offer the same level of protection as in your country. By using the Services, you consent to the collection, international transfer, storage, and processing of your information.</p>
+        <p>Changes to Our Privacy Policy. We may modify this Privacy Policy from time to time. We will notify you of changes by posting changes here, or by other appropriate means. Any changes to the Privacy Policy will become effective when the updated policy is posted on the Services. Your use of the Services or your provision of personal information to use the Services following such changes indicates your acceptance of the revised Privacy Policy.</p>
+        <p>Questions. Please contact our us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with any questions or concerns about this Privacy Policy or the manner in which we or our service providers treat your personal information.</p>
+
     request_franchising_info:
       title: Request Franchising Info
 
@@ -443,6 +543,8 @@ en-CA:
       phone_number: Phone Number
       leave_a_message: Leave a Message
       submit: Submit
+      location: Location
+      view_map: View Map
 
     search:
       search: Search
@@ -451,85 +553,181 @@ en-CA:
       blog_results: Blog Results
       location_results: Location Results
       salon_professional_results: Salon Professional Results
-      no_results_found: "There were no location or stylists results found for your search query &quot;%{query}&quot;"
+      no_results_found: "There were no location or stylist results found for your search query &quot;%{query}&quot;"
       view_directory: View Directory
       view_location: View Location
       view_profile: View Profile
       studio: Studio
+      results: results
+
+    sola_genius:
+      title: SolaGenius
+      meta_description: "Run your Sola like a boss with SolaGenius – a cutting edge app designed to streamline and supercharge your salon. Payment processing, online scheduling, and much more!"
+      learn_more: Learn More
+      hero_heading: Run Your Sola<span class="mobile-br">&nbsp;</span>Like a Boss
+      hero_text: "Step up your game with SolaGenius: a cutting edge app designed to supercharge your Sola business."
+      run_your_sola_like_a_boss: Run Your Sola Like a Boss
+      
+    sola_pro:
+      title: Sola Pro
+      meta_description: "Inspiration and education at your fingertips. The Sola Pro app provides all the tools and resources to help take your salon studio to the next level!"
+      hero_body1: <strong>An exclusive app for Sola professionals!</strong>
+      heading1: Sola Pro
+      list1: |
+        <strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.
+        <strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!
+        <strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.
+        <strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!
+        <strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.
+      download_app_or_view: Download app or view %{sola_pro_link}
+      explore_sola_pro: Explore Sola Pro
+      heading2: Get a sneak peek of Sola Pro
+      testimonial_text: "There are so many deals and education resources on Sola Pro! I am opening my books to female clients for the first time so I have been diving into the tutorials on women's haircutting for a refresher. There are also several motivational and business building videos that I could watch a hundred times! They range from quick 1 minute videos which are great for in-between clients and full one hour step-by-step tutorials. There really is something there for everyone!"
+      testimonial_author: Jessica Zeinstra
+
+    sola_sessions:
+      title: Sola Sessions
+      meta_description: "Inspiration. Education. Community. The Sola Sessions are live educational events exclusive to the Sola community. Learn and collaborate with the industry's best!"
+      heading1: The Sola Sessions
+      inspiration_education_community: Inspiration. Education. Community.
+      hero_button_text: Experience Sessions
+      learn_more: Learn More
+      about_sola_sessions: About Sola Sessions
+      about_sola_sessions_text: "We hope you can join us for one of The Sola Sessions, coming to a city near you! The Sessions are all about inspiring, motivating and educating Sola professionals, while also learning from and collaborating with our awesome, dynamic community. We're bringing the industry's best to you for intimate, Sola-exclusive events across the country. Click on the cities below to learn more about each unique Sola Session. We can't wait to meet you!"
+      upcoming_sessions: Upcoming Sessions
+      past_sessions: Past Sessions 
+      in_the_news: In the News
+      testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
+      testimonial_author: Shelia Taylor
+      testimonial_studio_name: Ami Hair Studio
+      find_a_sola: Find a Sola
+      blog: Blog
+      photo_gallery: Photo Gallery
+      
 
     testimonials:
       title: Testimonials
+      meta_description: "Watch videos and read testimonials from beauty professionals who are living they life they love at Sola Salon Studios."
       salon_professional_testimonials: Salon Professional<br>Testimonials
       click_to_watch_video: Click to watch video
       learn_more: Learn More
-      carousel_testimonial1: "Having my own studio at Sola has allowed me to be more creative in what I do! And the privacy has allowed me to have better relationships with my clients."
-      carousel_author1: Carole Arnold, Aqua Organic Hair Studio
-      carousel_testimonial2: "I have never felt so good in my career as I do at Sola. I have been in the industry for 29 years and haven't felt truly at home and peace until now."
-      carousel_author2: Danette Richardson, Styles by Danette
-      carousel_testimonial3: "Sola Salon Studios made the dream of owning my own business a reality."
-      carousel_author3: Dorothy Carr, The Face Place
-      carousel_testimonial4: "I love being at Sola Salon Studios! I'm finally representing my business how I'd like...and my business has increased from all of the networking I've been able to do with other studios!"
-      carousel_author4: Kris Kiss, Couture Nail Studio
-      carousel_testimonial5: "I can't thank Sola enough for making this my easiest and best decision. The transition could not have been any easier and I have never been happier."
-      carousel_author5: Becky Rowles, Head Turning Hair
-      carousel_testimonial6: "My guests have never been so happy! I consistently receive positive feedback about the location and the relaxing atmosphere."
-      carousel_author6: "Josh Carpenter Costner, One: The Salon"
-      carousel_testimonial7: "Sola has provided me with the chance of a lifetime to apply my knowledge and skills as an artist and entrepreneur! I feel incredibly lucky and could not be happier."
-      carousel_author7: Kayla Preboske, YOUnique Hair Studio
-      carousel_testimonial8: "I love my salon. I hope every successful stylist jumps head first into the best days of their career and opens a studio salon for themselves."
-      carousel_author8: Kim Casey, HairCology Salon
-      carousel_testimonial9: "Our business has completely blown up since our decision to open at Sola. It's by far the best career choice we have made!"
-      carousel_author9: Mary Craig, Parlour 17
-      carousel_testimonial10: "Sola creates a drama free environment for me. I have the freedom to run my business the way I want to."
-      carousel_author10: Melody LeBlanc, L'avantage Salon
-      carousel_testimonial11: "Sola goes above and beyond the expectations that hairdressers have about our industry."
-      carousel_author11: Sherri Swan, The Art of Cut &amp; Color
-      carousel_testimonial12: "Like all hairdressers, we all have a vision to own our own salon one day. I've been a hairdresser for almost 30 years. Sola Salons has made my 30-year dream come true!"
-      carousel_author12: Thomas Krolczyk, TK Hair Designs
-      carousel_testimonial13: "Having a studio at Sola Salons has made me a different stylist and business owner. I have been able to expand my services and knowledge in a way I didn't think was possible."  
-      carousel_author13: Karri Lane Gutierrez, Studio 83 Hair
-      carousel_testimonial14: "Since being at Sola Salons, we have had a wonderful response from our clients. Coming to work is exciting and making new friendships is an added bonus."
-      carousel_author14: Terri Cottrell, Deeply Rooted AZ
-      carousel_testimonial15: "Sola has changed my life. Opening my studio is the best decision I've ever made in my career and my personal life."
-      carousel_author15: Daniel Johnson, Revel Hair Studio
-      carousel_testimonial16: "Sola has been so refreshing for me, and my clients as well. I am able to really focus solely on my clients and turn my business into the vision of business I have been striving for." 
-      carousel_author16: Debbie McRoberts, H2O2
-      carousel_testimonial17: "I'm in love with my studio, my neighbors are fantastic &amp; everyone has the same goals: to make themselves as successful as possible. Sola is my 'happy' place."
-      carousel_author17: Melanie Ingram, Shine
-      carousel_testimonial18: "My first year as an independent stylist couldn't have gone any better! Sola makes it so easy to have a successful and professional looking business."
-      carousel_author18: Chelsey Winter, Chelsey Danielle Salon
-      carousel_testimonial19: "I opened my own studio one year ago and it's been the best decision ever. I love the freedom and stress-free atmosphere and my clients appreciate the exclusive and relaxing setting!"
-      carousel_author19: Britta Brownlee, Revive Salon Studio
+      more_testimonials: More Testimonials
+      hear_from_members: Hear from Members
+      carousel_testimonial1: "At Sola, I have been able to achieve any goal I have set for myself in my personal and professional life with no limitations. With the Sola Sessions and Sola Pro, I have access to education created just for Sola owners. And with SolaGenius, I have the best business assistant I ever could have dreamed of!"
+      carousel_author1: Kim Bennett Horvath
+      carousel_testimonial2: "My life has definitely changed professionally and personally being it Sola. I've gotten to choose my hours, perfect my retail rack, work with other local artists featuring products, and become my own master of my branding and marketing."
+      carousel_author2: Kenya Kirk
+      carousel_testimonial3: "Sola has empowered me to run my business with freedom! While I enjoy a quiet space, I love being able to connect with other fabulous salon owners, too. The Sola Sessions are a great way to network, collaborate and get inspired."
+      carousel_author3: Kim Piasecki
+      carousel_testimonial4: "Each day as I walk into my Sola studio, I feel recharged and in-charge of my own destiny. I love that I'm free to focus on giving my clients the best experience while simultaneously building my empire."
+      carousel_author4: Brandie Kekoa
+      carousel_testimonial5: "From the first time I walked in to Sola, I felt I came alive again! From my decor to products sales, I had a vision! I feel so complete. I love the education at the Sola Sessions and the opportunity to network with other Sola professionals. The memories are priceless."
+      carousel_author5: Tammy Muniz
+      carousel_testimonial6: "My studio is private and intimate, and allows me to think outside of the box. At the end of day, it's mine and I make of it what I want alongside my clients. I have freedom to deliver my art as a hairdresser."
+      carousel_author6: Fernie Adame
+      carousel_testimonial7: "At Sola, you can have the freedom of running your own business without the overhead. I have more freedom than I ever before in my life. I get to spend time with my community and I can travel while still owning my salon."
+      carousel_author7: Polly Sanders-Peterson
+      carousel_testimonial8: "Sola has made me a better person by helping me stay dedicated and passionate about my career. I've become a better business owner and hairdresser by attending the Sola Sessions to learn new techniques, styles, and trends."
+      carousel_author8: Sharon Hinkle
       join_more_than: Join nearly 10,000 salon professionals!
+      testimonial_quote1: "The business model that has been created by Sola is true. You're in business for yourself, but you're not by yourself. It's great to have Sola as a resource. They have been consistent since the day I signed my lease and that was 11 years ago."
+      testimonial_author1: LaShonda Banks
+      testimonial_quote2: "Sola made the process of going independent totally seamless. I'm able to control the vibe in my room and I love the personal time I get with every guest. With Sola Pro, I have access to tons of education to keep me inspired. I also recently made the switch to SolaGenius and I love it!"
+      testimonial_author2: Ashley Lantz
+      testimonial_quote3: "I chose Sola because I knew that it would change my life in so many positive ways. I love being surrounded by likeminded salon owners and having the freedom to do what I love. I can take more time off to spend with my family, travel and play."
+      testimonial_author3: Sue Scott
+      testimonial_quote4: "Since starting my esthetic business at Sola, I've been able to accomplish more in the last year and a half than I've ever imagined. It's so easy to build a thriving business when you have the freedom to bring your vision to life!"
+      testimonial_author4: Morgan Cameron
+      testimonial_quote5: "Being at Sola has made me more confident in my business. I get excited to go to work every day because I get to make my own rules. I have the freedom to be flexible, which allows me to focus on my personal life and salon life without being tied down."
+      testimonial_author5: Sade Williams
+      testimonial_quote6: "Sola has allowed me to engineer the lifestyle I want and SolaGenius helps to facilitate it all. When people ask whether I plan on opening a barbershop, I say I already have. I didn't settle for a salon studio; Sola created exactly what I always wanted."
+      testimonial_author6: Chris Matthews
+      testimonial_quote7: "I decided to move to Sola because I wanted to surround myself with a community of people with likeminded ideas and goals. Being here allows me to stay on top of my performance in a career that is so competitive."
+      testimonial_author7: Julie Nguyen
+      testimonial_quote8: "At Sola, you're not only working hard for yourself, you're working with a network of incredible people. And to know that Sola wants to celebrate that, it's like a dream! I always look forward to education to rejuvenate myself and attending the Sola Sessions gave me new wings to fly with."
+      testimonial_author8: Amanda Fagan
+      testimonial_quote9: "Being a former storefront barbershop owner, Sola was the perfect opportunity for me to be an owner again, without all of the stress. Personally, it has brought peace to my life, because I can simply focus on my clients.."
+      testimonial_author9: Antonio Heath
+      testimonial_quote10: "I have gotten more new clients at Sola than I did working for someone else. And I've been able to take advantage of so much education, too! What Sola has given me is full control. There is nothing like being in full control of your business."
+      testimonial_author10: Jennifer LaVinge
+      join_our_community: "Join our Community"
+      join_our_community_text: "Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!"
+      join_our_community_button: Own Your Salon
 
-      testimonial_quote1: "When I first moved my salon Blessed Hands to Sola Salons Studios, I had no idea how much of a blessing it would be. I went in, incorporated a special design with a purpose in mind. My goal is to always cater to the needs and wants of my guests. Sola Salons has allowed me to do just that, without missing a beat!"
-      testimonial_author1: Romona
-      testimonial_salon1: Romona's Salon
-      testimonial_quote2: "For the past 6 years Sola has given me the flexibility to build my business without limits. I'm a mother of two and a wife, and life has its demands. I'm able to adjust my schedule as I see fit. One of my favorite things about Sola is the fact that my studio is my studio – I completely control the atmosphere."
-      testimonial_author2: Joy Love
-      testimonial_salon2: Joy Love's Hair &amp; Image Studio
-      testimonial_quote3: "I love that I have my very own space where I can do business the way I want to, and that I can decorate as I like. I get to focus on my clients without any salon drama to interfere."
-      testimonial_author3: Katina Eisenbeis
-      testimonial_salon3: Katina's Salon
-      testimonial_quote4: "Even though we are all self-employed, everyone works together as a team to help each other be the best we can be. This has been the best decision I have made in my career!"
-      testimonial_author4: Ashlie Parks
-      testimonial_salon4: 5th &amp; Mane
-      testimonial_quote5: "Being a boss means you're in charge of your own income, have creative control, make your own schedule, and are responsible for your own success."
-      testimonial_author5: Eric Keosakdy
-      testimonial_salon5: SaBai Salon LLC
-      testimonial_quote6: "This is the first time my clients have felt comfortable referring their friends to me. Sola has provided me with the professional environment that I needed to grow my business."
-      testimonial_author6: Gina Greco
-      testimonial_salon6: Creative Hair by Gina
-      testimonial_quote7: "My studio provides total relaxation for the client and a wonderful one-on-one experience where it's all about them."
-      testimonial_author7: Jo Martinez
-      testimonial_salon7: Studio London
-      testimonial_quote8: "My studio is an extension of me and the artist within me! The most exiting thing is, the sky is the limit!"
-      testimonial_author8: Autumn Morris
-      testimonial_salon8: GlamLocks Studio 
-      testimonial_quote9: "Having my own salon allows me the freedom of creating my own schedule to work smarter not harder."
-      testimonial_author9: Kim Bennett Horvath
-      testimonial_salon9: Kim Bennett Studios
-      testimonial_quote10: "I've created a 4 wall atmosphere for my clients that they love. Sola made the esthetics modern; I love the cabinetry, privacy and being in a 2 chair studio with my own shampoo bowl. I couldn't ask for more."
-      testimonial_author10: Fernando Adame
-      testimonial_salon10: Final Cut    
-      join_our_community: "Join our community and experience a level of <strong>creative independence</strong> and <strong>career support</strong> you won't find anywhere else."
+    who_we_are:
+      title: Who We Are
+      subhead: We focus on what's best for you, so you can focus on what's best for your business.
+      subhead2: Experience a level of creative independence and career support you won't find anywhere else.
+      number_of_locations: 400+
+      locations_nationwide: Locations Nationwide
+      meta_description: ""
+      body1: "We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time."
+      body2: "We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind:"
+      to_help_set_them_up_for_success: To help set them up for success
+      join_our_diverse_community: "Join the Sola Salon Studios diverse community"
+      join_our_diverse_community_text: "Now nearly 10,000 strong!"
+      join_our_diverse_community_button_text: "Own Your Salon"
+      watch_our_video: Watch our video
+      our_mission: Our Mission 
+      our_mission_text: "To inspire and support beauty professionals to chase their dreams, elevate their careers, and experience the freedom of salon ownership."
+      our_values: Our Values 
+      our_values_text: "Everything we do is designed to take care of our customers and to ensure that they have the best salon studio experience possible. We are passionate about everything that goes into making a beauty professional a successful business owner. We offer turnkey, move-in-ready studios alongside support, educational resources, and cutting-edge technology solutions that are designed exclusively for our community of independents. We empower independent stylists to live their best lives."
+      join_our_community: "Join our Community"
+      join_our_community_text: "Are you ready to join the Sola community? Click to become a Sola Salon Owner!"
+      join_our_community_button_text: "Own Your Salon"
+      experience_more: Experience More!
+      sola_pro: "Sola Pro"
+      sola_pro_text: "Our custom built Sola Pro app for special offers and ongoing education at your fingertips."
+      sola_sessions: "Sola Sessions"
+      sola_sessions_text: "The Sola Sessions education events—learn from the best and have an opportunity to network with other Sola Pros from around the country!"
+      solagenius: SolaGenius
+      solagenius_text: "Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered."
+
+    why_sola:
+      title: Why Sola
+      meta_description: Why Sola
+      hero_heading1: All of the tools and support you need,
+      hero_heading2: to design a salon life that you love. 
+      hero_button_text: Why Choose Sola
+      learn_more: Learn More
+      dont_just_dream_do: Don't just dream. Do! 
+      become_a_salon_owner: Become a Salon owner today
+      search_for_a_salon: Search for a salon studio near you.
+      be_in_business_heading: Be In Business For Yourself, Not By Yourself.
+      be_in_business_p1: "Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about <strong>freedom and control</strong>. We provide high-end, move-in-ready studios combined with the support and tools you need to experience the freedom and benefits of salon ownership."  
+      be_in_business_p2: From beautiful studios to exclusive deals, perks and education, Sola empowers you to live your best life, both personally and professionally. So, join our community to get one step closer to living the life you love!
+      freedom_heading: Sola gives you the freedom to...
+      freedom_tile_1: Escape salon politics and drama in your own private, secure studio.
+      freedom_tile_2: Set your own pricing for services and products.
+      freedom_tile_3: Manage your own schedule with 24/7 studio access.
+      freedom_tile_4: Enjoy an intimate setting & give your guests the one-on-one attention they deserve.
+      freedom_tile_5: Personalize your salon space your way—with artwork, music, furniture and decor.
+      freedom_tile_6: Sell the retail products that you love.
+      freedom_tile_7: Manage overhead costs with amenities, utilities and WiFi included.
+      freedom_tile_8: Build your brand and allow your career to thrive. 
+      freedom_tile_8_link: Find a studio
+      freedom_text: The rewards of being in business for yourself are priceless, but that doesn't mean you have to do it all by yourself. The Sola community is here to help you during every step of your unique beauty journey.
+      flexibility_statement: If you're looking for more flexibility in your schedule and control to explore new adventures, Sola could be the perfect place for you.
+      flexibility_subhead1: Get ready to explore new adventures in and out of the salon!
+      flexibility_subhead2: At Sola, our passion is helping beauty professionals to succeed.
+      flexibility_subhead3: Experience the freedom and benefits of a more flexible, creative and profitable career.
+      beautiful_studios_exclusive_perks: Beautiful studios, exclusive perks.
+      at_sola_you_get_more: At Sola, you simply get more!
+      beautiful_studios: Beautiful Studios
+      beautiful_studios_text: Access to group insurance and Sola-exclusive discounts for products, scheduling and more.
+      community_support: Community Support
+      community_support_text: Join a community of nearly 10,000 salon professionals to be in business for yourself, not by yourself.
+      your_own_sola_webpage: Your Own Sola Webpage
+      your_own_sola_webpage_text: Create and manage your very own webpage on the Sola website to help market and grow your business.
+      sola_pro: Sola Pro 
+      sola_pro_text: Create and manage your very own webpage on the Sola website to help market and grow your business.
+      sola_sessions: Sola Sessions 
+      sola_sessions_text: The Sola Sessions education events—learn from the best and have an opportunity to network with other Sola Pros from around the country!
+      solagenius: SolaGenius 
+      solagenius_text: Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered.
+      search: Search
+      view_all_locations: View All Locations
+      find_a_studio: Find a Studio
+      contact_us: Contact Us
+
+

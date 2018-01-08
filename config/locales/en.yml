@@ -690,12 +690,12 @@ en:
       hero_heading2: to design a salon life that you love. 
       hero_button_text: Why Choose Sola
       learn_more: Learn More
-      dont_just_dream_do: Don’t just dream. Do! 
+      dont_just_dream_do: Don't just dream. Do! 
       become_a_salon_owner: Become a Salon owner today
       search_for_a_salon: Search for a salon studio near you.
       be_in_business_heading: Be In Business For Yourself, Not By Yourself.
-      be_in_business_p1: A beautiful, professionally designed studio space equipped with everything that you need to get started, is just the beginning. Sola Salon Studios provides beautiful, move-in-ready boutique salon studios alongside all the support and tools you need to grow professionally to change your life. 
-      be_in_business_p2: From exclusive access to special deals, education and technology, to a growing network of more than 10,000 independent salon owners, Sola empowers you to design and control the salon business that's right for you.
+      be_in_business_p1: "Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about <strong>freedom and control</strong>. We provide high-end, move-in-ready studios combined with the support and tools you need to experience the freedom and benefits of salon ownership."  
+      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 10,000 independent salon owners to get one step closer to living the life you love!
       freedom_heading: Sola gives you the freedom to...
       freedom_tile_1: Escape salon politics and drama in your own private, secure studio.
       freedom_tile_2: Set your own pricing for services and products.
@@ -709,8 +709,8 @@ en:
       freedom_text: The rewards of being in business for yourself are priceless, but that doesn't mean you have to do it all by yourself. The Sola community is here to help you during every step of your unique beauty journey.
       flexibility_statement: If you're looking for more flexibility in your schedule and control to explore new adventures, Sola could be the perfect place for you.
       flexibility_subhead1: Get ready to explore new adventures in and out of the salon!
-      flexibility_subhead2: We see you, future independents!
-      flexibility_subhead3: Your passion, innovation and creativity deserve to be explored. 
+      flexibility_subhead2: At Sola, our passion is helping beauty professionals to succeed.
+      flexibility_subhead3: Experience the freedom and benefits of a more flexible, creative and profitable career.
       beautiful_studios_exclusive_perks: Beautiful studios, exclusive perks.
       at_sola_you_get_more: At Sola, you simply get more!
       beautiful_studios: Beautiful Studios
@@ -728,5 +728,6 @@ en:
       search: Search
       view_all_locations: View All Locations
       find_a_studio: Find a Studio
+      contact_us: Contact Us
 
 

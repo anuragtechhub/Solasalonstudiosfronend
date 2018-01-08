@@ -21,8 +21,8 @@
     <div class="row">
       <div class="six columns">
         <h2><%= t('page.why_sola.be_in_business_heading') %></h2>
-        <p><%= t('page.why_sola.be_in_business_p1') %></p>
-        <p><%= t('page.why_sola.be_in_business_p2') %></p>
+        <p><%= t('page.why_sola.be_in_business_p1').html_safe %></p>
+        <p><%= t('page.why_sola.be_in_business_p2').html_safe %></p>
       </div>
       <div class="six columns">
         <%= image_tag 'WhySola/WhySola_2.jpg', :class => 'u-full-width' %>
@@ -205,9 +205,9 @@
 </div> <!-- why-sola -->
 
 <div class="floating-find-a-studio">
-  <a href='#' class="button primary">
-    <%= t('page.why_sola.find_a_studio') %> <span class="spyglass-white">&nbsp;</span>
-  </a>
+  <%= link_to :contact_us, :class => "button primary" do %>
+    <%= t('page.why_sola.contact_us') %>
+  <% end %>
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('search_salon') } %>
