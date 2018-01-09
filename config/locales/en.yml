@@ -387,19 +387,19 @@ en:
     
     our_studios:
       title: Our Studios
-      hero_heading1: Sola provides all you need and more in high-end, move-in-ready studios.
-      hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians and more.
+      hero_heading1: Sola provides all you need and more in beautiful, move-in-ready studios.
+      hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians, and more.
       studio_amenities: Studio Amenities 
       meta_description: Our Studios
       shampoo_bowl: Shampoo Bowl 
       shampoo_bowl_text: Shampoo, rinse and repeat in a shampoo
       view_gallery: View Gallery of Studios
       join_our_community: Join our Community
-      join_our_community_text: Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!
-      join_our_community_button_text: Own Your Salon
+      join_our_community_text: Contact us to start your Sola journey!
+      join_our_community_button_text: Find a Studio
       wash_basin:
         heading: Shampoo Bowl
-        body: Shampoo, rinse and repeat in a shampoo bowl. Instant hot water saves time and water.
+        body: Shampoo, rinse and repeat. Instant hot water saves time and water.
       products:
         heading: Retail Shelving
         body: Proudly display and sell the products you love.
@@ -411,13 +411,13 @@ en:
         body: Tool cabinet with dedicated outlets helps to keep cords neat and tidy.
       chair:
         heading: Hydraulic Chair
-        body: Provide comfort for your clients in a high-end hydraulic chair.
+        body: Provide comfort for you and your clients in a hydraulic chair.
       cabinetry:
         heading: Cabinets &amp; Drawers
-        body: High end custom cabinetry with abundant storage helps keep your studio organized.
+        body: Custom cabinetry with abundant storage helps keep your studio organized.
       insulated_walls:
         heading: Insulated Walls
-        body: Insulated walls keep out noisy distractions and help create a more intimate environment.
+        body: Create an intimate environment, our insulated walls keep out noisy distractions.
 
     our_story:
       title: Our Story
