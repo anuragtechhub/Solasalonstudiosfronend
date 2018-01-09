@@ -178,18 +178,27 @@
 
   	.carousel-wrapper {
   		position: relative;
+
+	    .owl-wrapper-outer {
+	      width: 200vh;
+
+	      .owl-item {
+	      	padding-left: 5px;
+	      	padding-right: 5px;
+	      }
+	    }
   	}
 
-		.white-border {
-			position: absolute;
-			top: 0;
-			left: 50%;
-			bottom: 0;
-			width: 10px;
-			margin-left: -5px;
-			background: #FFF;
-			z-index: 2;
-		}
+		// .white-border {
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 50%;
+		// 	bottom: 0;
+		// 	width: 10px;
+		// 	margin-left: -5px;
+		// 	background: #FFF;
+		// 	z-index: 2;
+		// }
 
   	.event {
 
