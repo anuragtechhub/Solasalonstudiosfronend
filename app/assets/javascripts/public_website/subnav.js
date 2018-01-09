@@ -8,8 +8,8 @@ $(function () {
     if ($(window).width() > 1000) {
       // desktop
       var $headerContainer = $('#header .container');
-      $('.oys-nav').not('[data-nav="' + nav + '"]').hide();
-      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 2}).width($headerContainer.outerWidth()).show();
+      $('.oys-nav').not('[data-nav="' + nav + '"]').slideUp('fast');
+      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 2}).width($headerContainer.outerWidth()).slideDown('fast');
     }
   };
 
@@ -41,7 +41,7 @@ $(function () {
         //console.log('shhh...')
         // shhh...
       } else {
-        $oysNav.hide();
+        $oysNav.slideUp('fast');
         showingNav = null;
       }
     },
@@ -56,14 +56,14 @@ $(function () {
       showingNav = $this.data('nav');
     }
 
-    $('.oys-nav[data-nav="' + showingNav + '"]').addClass('over').show();
+    $('.oys-nav[data-nav="' + showingNav + '"]').addClass('over').slideDown('fast');
   });  
 
   $('.oys-nav').on('mouseleave', function (e) {
     //console.log('mouseleave hide!', showingNav);
     //var $this = $(e.target);
     
-    $('.oys-nav[data-nav="' + showingNav + '"]').removeClass('over').hide();
+    $('.oys-nav[data-nav="' + showingNav + '"]').removeClass('over').slideUp('fast');
     showingNav = null;
   }); 
 
