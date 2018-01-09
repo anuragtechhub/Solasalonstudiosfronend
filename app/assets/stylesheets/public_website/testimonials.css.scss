@@ -157,6 +157,12 @@
   margin-top: 3px;
   margin-bottom: 0;
 
+  .carousel-container {
+    .owl-wrapper-outer {
+      width: 200vh;
+    }
+  }
+
   .owl-theme .owl-controls {
     position: absolute;
     top: -40px;
@@ -291,7 +297,16 @@
 }
 
 
+@media (max-width: 960px) {
+  .sola-spotlights {
 
+    .carousel-container {
+      .owl-wrapper-outer {
+        width: 100%;
+      }
+    }
+  }
+}
 
 
 @media (max-width: 550px) {
