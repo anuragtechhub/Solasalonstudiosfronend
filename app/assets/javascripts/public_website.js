@@ -26,7 +26,7 @@
 
 $(function () {
 
-  $('.sola-select').solaselect();
+  $('.sola-select').not('.no-autobind').solaselect();
 
   // carousel
   $('.owl-carousel').not('.no-autobind').each(function () {

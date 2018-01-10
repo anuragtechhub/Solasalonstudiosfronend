@@ -50,8 +50,8 @@ select {
   border: 2px solid #DBDBDB;
   @include border-radius(4px);
   width: 200px;
-  @include transition(opacity 0.15s ease-in-out);
-  opacity: 1;
+  // @include transition(opacity 0.15s ease-in-out);
+  // opacity: 1;
   background: #FFF;
 
   &.form {
@@ -116,6 +116,7 @@ select {
     z-index: 999999999;
     zoom: 1;
 
+    //cursor: pointer;
     background: #FFF;
     border: 2px solid #DBDBDB;
     @include border-radius(4px);
@@ -124,6 +125,26 @@ select {
     -webkit-overflow-scrolling: touch;
     max-height: 200px;
     padding: 12px;
+
+    .option {
+      cursor: pointer;
+      display: block;
+      clear: both;
+      text-decoration: none;
+      padding: 8px;
+      text-align: left;
+      @include chalet_new_york;
+      font-size: 14px;  
+      line-height: 16px;
+      @include transition(opacity 0.15s ease-in-out);
+      opacity: 1;
+
+      &:hover, &:active {
+        color: #000;
+        //background: #efefef;
+        opacity: 0.5;
+      }
+    }      
   }
 
 
@@ -139,9 +160,9 @@ select {
     }
   }
 
-  &:hover, &:active {
-    opacity: 0.5
-  }
+  // &:hover, &:active {
+  //   opacity: 0.5
+  // }
 
 }
 

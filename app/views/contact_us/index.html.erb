@@ -26,7 +26,7 @@
         <p><%= t('page.contact.body1').html_safe %></p>
         <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
         <br>
-        <div class="sola-select select-a-state form">
+        <div class="sola-select no-autobind select-a-state form">
           <div class="row">
             <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
             <div class="arrow"><span class="ss-dropdown"></span></div>
@@ -40,7 +40,7 @@
 
         <div id="contact-us-states">
           <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-            <div class="sola-select form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
+            <div class="sola-select no-autobind form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
               
               <div class="row">
                 <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
