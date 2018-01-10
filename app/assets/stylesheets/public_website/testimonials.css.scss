@@ -12,6 +12,11 @@
     background: asset-url('Quote@2x.jpg') no-repeat center 1px;
     background-size: (280px / 2) (344px / 2);  
 
+    h1.chalet {
+      font-size: 30px;
+      line-height: 48px;
+    }
+
     .owl-carousel {
       margin-top: -50px;
     }
