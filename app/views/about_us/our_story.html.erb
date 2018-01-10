@@ -10,8 +10,8 @@
 
 	<h2><%= t 'page.our_story.subhead' %></h2>
 
-	<p><%= t 'page.our_story.body1' %></p>
-	<p><%= t 'page.our_story.body2' %></p>
+	<p><%= t('page.our_story.body1').html_safe %></p>
+	<p><%= t('page.our_story.body2').html_safe %></p>
 
 	<div class="img-wrap">
 		<%= image_tag 'Story_2.jpg', :class => 'u-full-width' %>
@@ -23,11 +23,11 @@
 		<h5>- <%= t 'page.our_story.callout1_name' %></h5>
 	</div>
 
-	<p><%= t 'page.our_story.body3' %></p>
-	<p><%= t 'page.our_story.body4' %></p>
-	<p><%= t 'page.our_story.body5' %></p>
-	<p><%= t 'page.our_story.body6' %></p>
-	<p><%= t 'page.our_story.body7' %></p>
+	<p><%= t('page.our_story.body3').html_safe %></p>
+	<p><%= t('page.our_story.body4').html_safe %></p>
+	<p><%= t('page.our_story.body5').html_safe %></p>
+	<p><%= t('page.our_story.body6').html_safe %></p>
+	<p><%= t('page.our_story.body7').html_safe %></p>
 
 	<div class="block-quote-side">
 		<h4><%= t('page.our_story.callout2').html_safe %></h4>
@@ -36,8 +36,8 @@
 
 	<div class="img-wrap"><%= image_tag 'Story_3.jpg', :class => 'u-full-width' %></div>
 
-	<p><%= t 'page.our_story.body8' %></p>
-	<p><%= t 'page.our_story.body9' %></p>
+	<p><%= t('page.our_story.body8').html_safe %></p>
+	<p><%= t('page.our_story.body9').html_safe %></p>
 
 </div>
 
@@ -47,7 +47,7 @@
     <div class="cta-contents">
       <h2><%= t 'page.our_story.join_our_community' %></h2>
       <p><%= t 'page.our_story.join_our_community_text' %></p>
-      <%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.our_story.join_our_community_button_text' %><% end %>
+      <%= link_to :contact_us, :class => 'button primary' do %><%= t 'page.our_story.join_our_community_button_text' %><% end %>
     </div>
   </div>
 </div>
