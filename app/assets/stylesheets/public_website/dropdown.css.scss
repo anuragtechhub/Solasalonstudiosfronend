@@ -78,11 +78,11 @@
 
 	input.searchbox {
 		position: relative;
-		top: 3px;
+		top: 4px;
 		display:inline-block;
 		height: 34px;
 		width: calc(100% - 54px); //- 135px
-		padding: 20px;
+		padding: 0 20px;
 		background: #FFF;
 		border: 0 !important;
 		margin: 0;
@@ -101,7 +101,7 @@
 
 	button {
 		position: relative;
-    top: -5px;
+    top: -3px;
     right: 1px;
 		height: 46px;
 		width: 46px;
@@ -144,6 +144,10 @@
 }
 
 @media (max-width: 888px) {
+	.tile-for-customers-find-a-stylist h5 {
+		margin-bottom: 5px;
+	}
+
 	.filterable-dropdown-search {
 		height: auto;
 		padding: 0;
@@ -170,7 +174,7 @@
 			width: 100%;
 			font-size: 14px;
 			height: 48px;
-			padding: 17px 20px 15px 58px;
+			padding: 2px 20px 0 58px;
 			@include border-radius(4px);
 		}
 	}
