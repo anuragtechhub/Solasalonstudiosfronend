@@ -87,7 +87,9 @@ $(function () {
 
   $(document).on('click', '.speakers .columns', function () {
     var id = $(this).data('rel');
-    $('.bio[data-rel=' + id + ']').data('modal').open();
+    if (id) {
+      $('.bio[data-rel=' + id + ']').data('modal').open();
+    }
     return false;
   });
 
