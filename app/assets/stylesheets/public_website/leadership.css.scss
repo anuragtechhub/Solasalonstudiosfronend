@@ -23,7 +23,7 @@ a.leader-tile, a.leader-tile:link, a.leader-tile:visited {
   }
 
 	h3 {
-		margin: 20px 0 -4px 0;
+		margin: 20px 0 -2px 0;
 		color: #000;
 	}
 
@@ -45,7 +45,7 @@ a.leader-tile, a.leader-tile:link, a.leader-tile:visited {
 		position: relative;
 		top: -1px;
 		text-decoration: none;
-		font-weight: bold;
+		font-weight: normal;
 		color: $brand-pink;
 	}
 }
