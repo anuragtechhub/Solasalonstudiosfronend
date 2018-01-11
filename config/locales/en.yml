@@ -35,7 +35,7 @@ en:
 
   header:
     rent_studio_button: Rent a Studio
-    search_placeholder: Search by city, location or stylist...
+    search_placeholder: Search by Name or Location
     sola_pro_sign_in: Sola Pro
 
   nav:
