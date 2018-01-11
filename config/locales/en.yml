@@ -234,10 +234,14 @@ en:
       title: Gallery
       meta_description: "Your studio, your style! Take a look at our gallery for a peek inside our customizable, beautiful salon studios."
       videos: Videos
-      faces_of_sola: "2016 Faces of Sola: Testimonials Video"
+      faces_of_sola_2016: "Meet the 2016 Faces of Sola"
+      faces_of_sola_2017: "Meet the 2017 Faces of Sola"
       the_sola_story: The Sola Story
       sola_testimonials_video: Sola Testimonials Video
       view_more_on_youtube: View More on YouTube
+      the_sola_sessions: The Sola Sessions
+      sola_pro: Sola Pro
+      solagenius: SolaGenius
     
     home:
       title: Home

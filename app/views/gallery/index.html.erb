@@ -27,7 +27,7 @@
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title">Meet the 2017 Faces of Sola</h1>
+      <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2017').html_safe %></h1>
       
     </div>
 
@@ -37,7 +37,7 @@
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title"><%= t('page.gallery.faces_of_sola').html_safe %></h1>
+      <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2016').html_safe %></h1>
       
     </div>
 
@@ -65,6 +65,43 @@
     </div>
 
   </div>
+
+  <div class="row">
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video play-video-gallery" rel="i6AUSUofPUg">
+        <%= image_tag 'sessions_poster.jpg' %>
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title"><%= t('page.gallery.the_sola_sessions').html_safe %></h1>
+      
+    </div>
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=-fWwpXeSbAM" class="play-video play-video-gallery" rel="-fWwpXeSbAM">
+        <%= image_tag 'solagenius_poster.jpg' %>
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title"><%= t('page.gallery.solagenius').html_safe %></h1>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video play-video-gallery" rel="Bpe-puULbws">
+        <%= image_tag 'sola_pro_poster.jpg' %>
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title"><%= t('page.gallery.sola_pro').html_safe %></h1>
+      
+    </div>
+
+  </div>  
 
   <div class="view-more">
     <a href="https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg" class="button outline-large-white" target="_blank"><%= t('page.gallery.view_more_on_youtube') %></a>
