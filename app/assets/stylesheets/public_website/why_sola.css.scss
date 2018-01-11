@@ -163,7 +163,7 @@
 		display: block;
 		clear: both;
 		text-decoration: none;
-		margin-bottom: 45px;
+		margin-bottom: 30px;
 		@include transition(opacity 0.15s ease-in-out);
 		opacity: 1;
 
@@ -172,27 +172,37 @@
 		}
 
 		.img-wrap {
-		  display: -webkit-box;
-		  display: -moz-box;
-		  display: -ms-flexbox;
-		  display: -webkit-flex;
-		  display: flex;  
+			position: relative;
+		  // display: -webkit-box;
+		  // display: -moz-box;
+		  // display: -ms-flexbox;
+		  // display: -webkit-flex;
+		  // display: flex;  
 
-		  flex-direction: column;
-		  align-content: center;
-		  justify-content: center;
+		  // flex-direction: column;
+		  // align-content: center;
+		  // justify-content: center;
 		}
 
 		img {
+			// flex: none;
+			// display: block;
 			width: 100%;
 			height: auto;
 			@include border-radius(4px);
 			margin-bottom: 15px;
 		}
 
-		.title {
-			position: absolute;
+		.title-wrapper {
+			text-align: center;
+			height: 38px;
+  		margin: auto;
+  		top: 0; left: 0; bottom: 0; right: 0;
+  		position: absolute;
 			z-index: 2;
+		}
+
+		.title {
 			white-space: nowrap;
 			@include chalet-new-york;
 			font-size: 18px;
@@ -202,7 +212,10 @@
 			@include border-radius(20px);
 			background: rgba(0,0,0,0.59);
 			white-space: nowrap;
-			align-self: center;
+			//align-self: center;
+			// top: 50%;
+			// left: 50%;
+			// margin-top: (-38px / 2);
 		}
 
 		.text {
