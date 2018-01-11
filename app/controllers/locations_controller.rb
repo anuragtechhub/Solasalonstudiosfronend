@@ -18,7 +18,7 @@ class LocationsController < PublicWebsiteController
       end
     end
 
-    render :json => @locations.to_json(:only => [:name, :url_name, :email_address_for_inquiries, :general_contact_name, :phone_number, :city, :state])
+    render :json => @locations.to_json(:only => [:name, :url_name, :email_address_for_inquiries, :general_contact_name, :phone_number, :city, :state], :methods => [:full_address])
   end
 
   def index

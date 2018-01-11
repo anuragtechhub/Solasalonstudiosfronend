@@ -257,15 +257,15 @@
 	}
 
 	.salon-search-result, .salon-search-result:link, .salon-search-result:visited {
-	  display: -webkit-box;
-	  display: -moz-box;
-	  display: -ms-flexbox;
-	  display: -webkit-flex;
-	  display: flex;  
+	  // display: -webkit-box;
+	  // display: -moz-box;
+	  // display: -ms-flexbox;
+	  // display: -webkit-flex;
+	  // display: flex;  
 
-	  flex-direction: row;
-	  align-content: center;
-	  justify-content: center;
+	  // flex-direction: row;
+	  // align-content: center;
+	  // justify-content: center;
 
 		text-decoration: none;
 		position: relative;
@@ -281,8 +281,13 @@
 		// 	opacity: 0.5;
 		// }
 
+		h4, p {
+			//display: inline-block;
+		}
+
 		h4 {
-			margin: 0;
+			margin: 0 15px 0 0;
+			//width: 40%;
 		}
 
 		p {
@@ -302,19 +307,28 @@
 		}
 
 		.names {
-			flex: 1.15;
+			position: relative;
+			top: 4px;
+			//flex: 1.15;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
 
 			p {
-				top: 0;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+		    width: 70%;
+		    position: relative;
+		    top: 3px;
 			}
 		}
 
 		.chevron-right {
-			position: relative;
-			top: 3px;
+			position: absolute;
+			top: 50%;
+			margin-top: -7px;
+			right: 15px;
 			align-self: center;
 		}
 	}
@@ -445,27 +459,27 @@
 			margin: 30px auto 0 auto;
 		}
 
-		.salon-search-result {
-			flex-direction: column;
+		// .salon-search-result {
+		// 	flex-direction: column;
 
-			.chevron-right {
-				display: none;
-			}
+		// 	.chevron-right {
+		// 		display: none;
+		// 	}
 
-			p {
-				align-self: flex-start;
-				margin-bottom: 5px;
+		// 	p {
+		// 		align-self: flex-start;
+		// 		margin-bottom: 5px;
 
-				&:last-child {
-					margin-bottom: 0;
-				}
-			}
+		// 		&:last-child {
+		// 			margin-bottom: 0;
+		// 		}
+		// 	}
 
-			.names {
-				flex: 1;
-				margin-bottom: 30px;
-			}
-		}
+		// 	.names {
+		// 		flex: 1;
+		// 		margin-bottom: 30px;
+		// 	}
+		// }
 
 		h1 {
 			font-size: 24px;
@@ -473,7 +487,7 @@
 		}
 
 		p {
-			margin-top: 4px;
+			//margin-top: 4px;
 			font-size: 14px;
 			line-height: 14px;
 		}

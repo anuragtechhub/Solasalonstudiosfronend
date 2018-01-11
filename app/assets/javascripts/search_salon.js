@@ -21,16 +21,18 @@ $(function () {
 
       	for (var i = 0, ilen = data.length; i < ilen; i++) {
       		location = data[i];
-
+          console.log('location', location)
       		html = html + "<div data-href='/locations/" + location.url_name + "' class='salon-search-result'>";
 
       		html = html + "<div class='names'>";
       		html = html + "<h4 class='location-name'>" + location.name + "</h4>";
-      		html = html + "<p class='general-contact-name'>" + I18n.t('contact_for_leasing_information', {general_contact_name: location.general_contact_name}) + "</p>";
+          html = html + "<p class='address'>" + location.full_address + "</p>"
+      		//html = html + "<p class='general-contact-name'>" + I18n.t('contact_for_leasing_information', {general_contact_name: location.general_contact_name}) + "</p>";
       		html = html + '</div>';
       		
       		//html = html + "<p class='phone-number'><a href='tel:" + location.phone_number + "'>" + I18n.t('phone_result', {phone_number: location.phone_number}) + "</a></p>";
-      		html = html + "<p class='email-address'><a href='mailto:" + location.email_address_for_inquiries + "'>" + I18n.t('email_result', {email_address: location.email_address_for_inquiries}) + "</a></p>";
+          
+      		//html = html + "<p class='email-address'><a href='mailto:" + location.email_address_for_inquiries + "'>" + I18n.t('email_result', {email_address: location.email_address_for_inquiries}) + "</a></p>";
       		html = html + "<div class='chevron-right'><span class='fa fa-chevron-right'>&nbsp;</span></div>";
 
       		html = html + "</div>";
