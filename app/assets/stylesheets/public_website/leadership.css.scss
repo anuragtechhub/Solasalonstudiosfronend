@@ -23,7 +23,7 @@ a.leader-tile, a.leader-tile:link, a.leader-tile:visited {
   }
 
 	h3 {
-		margin: 20px 0 -5px 0;
+		margin: 20px 0 -4px 0;
 		color: #000;
 	}
 
@@ -39,6 +39,14 @@ a.leader-tile, a.leader-tile:link, a.leader-tile:visited {
 
 	&:hover, &:active {
 		opacity: 0.5;
+	}
+
+	.pink-link {
+		position: relative;
+		top: -1px;
+		text-decoration: none;
+		font-weight: bold;
+		color: $brand-pink;
 	}
 }
 
