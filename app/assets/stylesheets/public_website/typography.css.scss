@@ -141,3 +141,35 @@ hr.br {
   padding: 0;
   visibility: hidden;
 } 
+
+@media (max-width: 888px) {
+  h1, .h1 {
+    font-size: 48px;  
+    line-height: 56px;
+
+    &.chalet {
+      font-size: 36px;  
+      line-height: 40px;
+    }
+
+    &.chalet-new-york {
+      font-size: 36px;  
+      line-height: 40px;
+    }
+  }
+
+  h2, .h2 {
+    font-size: 24px;  
+    line-height: 32px;
+  }
+
+  h3, .h3 {
+    font-size: 18px;  
+    line-height: 24px;
+  }
+
+  p, .p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
