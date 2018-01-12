@@ -998,6 +998,14 @@ and (device-aspect-ratio: 40/71) {
 */
 
 .sola-pro {
+  
+  .sola-pro-logo {
+    max-width: (686px / 2);
+  }
+
+  .owl-carousel .item .item-content .left-align-container {
+    text-align: center;
+  }
 
   .sola-pro-iphone {
     position: absolute;

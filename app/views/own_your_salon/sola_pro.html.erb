@@ -6,8 +6,11 @@
     <div class="hero-carousel owl-carousel owl-theme">
       <div class="item">
         <div class="img-wrap"><%= image_tag 'SolaPro_Hero.jpg', :width => 1600, :height => 800 %></div>
-        <!--<%= image_tag 'sola_pro_logo.png', :class => 'sola-pro-logo' %>-->
+        
         <div class="item-content overlayed">
+          <div class="left-align-container">
+            <%= image_tag 'sola_pro_logo.png', :class => 'sola-pro-logo u-full-width' %>
+          </div>
           <div class="learn-more-button">
             <h5><%= t('page.sola_sessions.learn_more') %></h5>
             <span class="fa fa-angle-down"></span>
