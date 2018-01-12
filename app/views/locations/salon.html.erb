@@ -47,6 +47,12 @@
           <p class="address"><%= @location.full_address %></p>
         </div>
 
+        <!-- buttons -->
+        <div class="location-buttons">
+          <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
+          <%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.rent_a_studio') %><% end %>
+        </div>
+
         <!-- about this location -->
         <h5><%= t('page.locations.about_this_location') %></h5>
         <div class="description"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></div>
@@ -135,6 +141,7 @@
         </div>
 
         <!-- mobile lease form -->
+        <a name="rent-a-studio" id="rent-a-studio"></a>
         <div class="mobile-lease-form"></div>
 
         <!-- find a salon professional -->

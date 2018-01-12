@@ -8,6 +8,10 @@
     padding-top: 0;
   }
 
+  .location-buttons {
+    display: none;
+  }
+
   .request-a-tour-form {
 
     input, textarea {
@@ -258,6 +262,13 @@
 
 @media (max-width: 1060px) {
   .location-page {
+
+    .location-buttons {
+      display: block;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #DBDBDB;
+    }
 
     .owl-controls {
 
