@@ -1,8 +1,42 @@
 @import 'variables';
+@import 'mixins';
 @import 'bootstrap/mixins';
 
 .location-page {
   margin-bottom: -30px;
+
+  .location-gallery {
+    position: relative;
+  }
+
+  .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
+    position: absolute;
+    right: -100px;
+    bottom: (-185px / 2);
+
+    display: block;
+    width: 200px;
+    height: 185px;
+    padding: 30px;
+    text-decoration: none;
+    color: #FFF;
+    @include chalet_new_york;
+    font-size: 18px;
+    line-height: 24px;
+    @include background-gradient(rgba(255, 106, 201, 0.95), rgba(239, 0, 172, 0.95));
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;
+
+    &:hover, &:active {
+      opacity: 0.5;
+    }
+
+    .forward-arrow-white {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+  }
 
   .content-container {
     padding-top: 0;
@@ -262,6 +296,14 @@
 
 @media (max-width: 1060px) {
   .location-page {
+    
+    .location-info {
+      text-align: center;
+    }
+
+    .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
+      display: none;
+    }
 
     .location-buttons {
       display: block;

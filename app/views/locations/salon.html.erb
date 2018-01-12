@@ -28,17 +28,23 @@
         
         <!-- images -->
 
-        <% if @location.image_tags.size > 0 %>
-          <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
-            <% @location.image_tags.each do |image| %>
-              <div class="item"><%= image.html_safe %></div>
-            <% end %>
-          </div>
-        <% else %>
-          <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
-            <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
-          </div>      
-        <% end %>
+        <div class="location-gallery">
+          <% if @location.image_tags.size > 0 %>
+            <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
+              <% @location.image_tags.each do |image| %>
+                <div class="item"><%= image.html_safe %></div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
+              <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
+            </div>      
+          <% end %>
+          <%= link_to salon_stylists_path(@location.url_name), :class => 'find-a-salon-pro-box' do %>
+            <span class="text"><%= t('page.locations.find_a_salon_professional') %></span>
+            <span class="forward-arrow-white">&nbsp;</span>
+          <% end %>
+        </div>
 
         <!-- info -->
 
