@@ -137,6 +137,16 @@
       -webkit-font-smoothing: antialiased; //auto
       font-smoothing: antialiased; //auto     
 
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;  
+
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+
       @include helvetica;
       color: #FFFFFF; 
       font-size: 16px;  
@@ -317,6 +327,10 @@
 
     .move-in-special {
       margin-bottom: 0;
+
+      .inner-text {
+        height: 100%;
+      }
     }
 
     .block-quote-testimonial-side-image {
