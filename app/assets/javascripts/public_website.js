@@ -359,7 +359,7 @@ $(function () {
   // align learn more buttons
   $('.learn-more-button').each(function () {
     var $this = $(this);
-    $this.css('margin-left', '-' + $this.outerHeight() + 'px');
+    $this.css('margin-left', '-' + ($this.outerHeight(true) / 1) + 'px');
   });
 
   // gradient text
