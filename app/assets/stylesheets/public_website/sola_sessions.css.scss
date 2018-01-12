@@ -289,17 +289,13 @@
 			display: none;
 		}
 	}
-}
-
-@media (max-width: 960px) {
 	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer {
 		width: 100%;
 	}
-	// .sola-sessions .container {
-	// 	overflow: hidden;
-	// 	width: 95%;
-	// 	margin-left: 5%;
-	// }
+	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer .owl-item {
+		padding-left: 0;
+		padding-right: 0;
+	}	
 }
 
 @media (max-width: 550px) {

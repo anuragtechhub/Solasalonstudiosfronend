@@ -13,8 +13,8 @@
     background-size: (280px / 2) (344px / 2);  
 
     h1.chalet {
-      font-size: 30px;
-      line-height: 48px;
+      font-size: 24px;  
+      line-height: 32px;
     }
 
     .owl-carousel {
@@ -315,6 +315,10 @@
 
 
 @media (max-width: 550px) {
+  .testimonials-page .featured-testimonials h1.chalet {
+    font-size: 18px;  
+    line-height: 24px;
+  }
 
   .sola-spotlights-testimonials {
     border-bottom: 1px dashed #D7D7D7;
@@ -326,13 +330,14 @@
     margin-bottom: 5px;
 
     .featured-testimonial {
-      margin: 30px 80px;
-
+      margin: 40px 10px 30px 10px;
       text-align: center;
+
       h1 {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 18px;  
+        line-height: 24px;
       }
+
       h3.subtle {
         margin-top: 30px;
       }
