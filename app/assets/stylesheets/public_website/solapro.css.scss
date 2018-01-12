@@ -1003,10 +1003,6 @@ and (device-aspect-ratio: 40/71) {
     max-width: (686px / 2);
   }
 
-  .owl-carousel .item .item-content .left-align-container {
-    text-align: center;
-  }
-
   .sola-pro-iphone {
     position: absolute;
     left: 50%;
@@ -1033,9 +1029,15 @@ and (device-aspect-ratio: 40/71) {
 
 @media (max-width : 1050px) {
   .sola-pro {
+
+    .owl-carousel .item .item-content .left-align-container {
+      text-align: center;
+    }
+
     .learn-more-button {
       display: none;
     }
+
     .sola-pro-iphone {
       display: none;
       background-size: (774px / 3) (1468px / 3);
@@ -1044,9 +1046,11 @@ and (device-aspect-ratio: 40/71) {
       margin-left: (-774px / 3 / 2);
       bottom: -420px;
     }
+
     .sola-pro-phone-gallery-desktop {
       padding-top: (1468px / 3.5) !important;
     }
+    
     .sneak-peak {
       margin: 60px 0 0 0 !important;
       //margin: -280px 0 -60px 0 !important;
