@@ -258,6 +258,22 @@
 
 @media (max-width: 1060px) {
   .location-page {
+
+    .owl-controls {
+
+      .owl-buttons {
+        display: block;
+
+        .arrow-left {
+          left: -4px;
+        }
+
+        .arrow-right {
+          right: -5px;
+        }
+      }
+    }
+
     .location-page-container {
       .one-third {
         display: none;

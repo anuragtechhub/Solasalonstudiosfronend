@@ -227,6 +227,25 @@
   margin-top: -60px;
 }
 
+@media (max-width: 1060px) {
+  .stylist-page {
+    .owl-controls {
+
+      .owl-buttons {
+        display: block;
+
+        .arrow-left {
+          left: -4px;
+        }
+
+        .arrow-right {
+          right: -5px;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 1000px) {
   .hero-text.find-a-salon-professional {
     height: 590px;
@@ -506,12 +525,12 @@ h3.business-name {
 
 
 .availability {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #4A4A4A; 
   @include helvetica;
   font-size: 14px;  
   font-weight: 300; 
-  line-height: 14px; 
+  line-height: 24px; 
   -moz-osx-font-smoothing: antialiased; //auto
   -webkit-font-smoothing: antialiased; //auto
   font-smoothing: antialiased; //auto   
