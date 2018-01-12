@@ -28,7 +28,7 @@
 			width: 260px;
 			height: 260px;
 			position: absolute;
-			bottom: -80px;
+			bottom: -220px;
 			left: 40px;
 			z-index: 2;
 
@@ -77,10 +77,29 @@
 		margin-bottom: 60px;
 	}
 
+	.join-our-diverse-community-container {
+	  background: asset-url('WhoWeAre_2.jpg') no-repeat top center;//center center fixed; 
+	  background-size: cover;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  margin-bottom: 400px;
+
+	  h2 {
+	  	margin-bottom: 0;
+	  }
+
+	  .experience-a-level {
+	  	margin-top: -333px;
+	  	bottom: -300px;
+	  }
+	}
+
 	.join-our-diverse-community {
-		margin: 30px auto 40px auto;
+		padding: 120px 0;
 		position: relative;
-		overflow: hidden;
+		// overflow: hidden;
 
 		.img-wrap {
 	  	position: relative;
@@ -127,7 +146,7 @@
 		.watch-our-video {
 			position: absolute;
 			top: 50%;
-			left: 72%;
+			left: 80%;
 			margin-top: (-140px / 2);
 			z-index: 2;
 
@@ -214,7 +233,7 @@
 	}
 
 	.experience-more {
-		margin-top: 30px;
+		margin-top: 40px;
 	}
 
 	.sola-benefits {
@@ -284,7 +303,7 @@
 			overflow: hidden;
 
 			.paint-box {
-				bottom: 3px;
+				bottom: 0;
 				left: 0;
 				right: auto;
 				width: 100%;

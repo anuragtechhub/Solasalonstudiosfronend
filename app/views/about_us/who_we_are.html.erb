@@ -3,72 +3,80 @@
 <div class="who-we-are">
 
 	<div class="container content-container">
-		
-		<h1><%= t 'page.who_we_are.title' %></h1>
-		
-		<h2><%= t 'page.who_we_are.subhead' %></h2>
-		<p><%= t 'page.who_we_are.body1' %></p>
-		<p><%= t 'page.who_we_are.body2' %></p>
-		<h4 class="emphasis"><%= t 'page.who_we_are.to_help_set_them_up_for_success' %></h4>
+		<div class="row">
+			<div class="six columns">
+				<h1><%= t 'page.who_we_are.title' %></h1>
+				
+				<h2><%= t 'page.who_we_are.subhead' %></h2>
+				<p><%= t 'page.who_we_are.body1' %></p>
+				<p><%= t 'page.who_we_are.body2' %></p>
+				<h4 class="emphasis"><%= t 'page.who_we_are.to_help_set_them_up_for_success' %></h4>
+			</div>
 
-	</div>
-
-	<div class="container img-wrap-paint-box-container">
-
-		<div class="img-wrap-paint-box">
-			<%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %>		
-			<div class="paint-box">
-				<div class="colors">&nbsp;</div>
-				<div class="content">
-					<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
-					<h3><%= t 'page.who_we_are.locations_nationwide' %></h3>
+			<div class="six columns">
+				<div class="img-wrap-paint-box-container">
+					<div class="img-wrap-paint-box">
+						<%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %>		
+						<div class="paint-box">
+							<div class="colors">&nbsp;</div>
+							<div class="content">
+								<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
+								<h3><%= t 'page.who_we_are.locations_nationwide' %></h3>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
-	<div class="container join-our-diverse-community-container">
-
-		<div class="join-our-diverse-community">
-			<div class="img-wrap"><%= image_tag 'WhoWeAre_2.jpg' %></div>
-			<div class="content">
-				<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
-				<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
-				<%= link_to :own_your_salon, :class => 'button primary' do %><%= t 'page.who_we_are.join_our_diverse_community_button_text' %><% end %>
-				<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s" class="watch-our-video-mobile">
-					<p><%= t 'page.who_we_are.watch_our_video' %></p>
-					<div class="play-circle play-video">
-						<span class="fa fa-play">&nbsp;</span>
+	<div class="join-our-diverse-community-container">
+		
+		<div class="container">
+			<div class="join-our-diverse-community">
+				<div class="row">
+					<div class="six columns">
+						<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
+						<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
+						<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s" class="watch-our-video-mobile">
+							<p><%= t 'page.who_we_are.watch_our_video' %></p>
+							<div class="play-circle play-video">
+								<span class="fa fa-play">&nbsp;</span>
+							</div>
+						</a>
 					</div>
-				</a>
+				</div>
+				<div class="six columns">
+					<div class="watch-our-video">
+						<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s" class="play-circle play-video">
+							<span class="fa fa-play">&nbsp;</span>
+						</a>
+						<p><%= t 'page.who_we_are.watch_our_video' %></p>
+					</div>
+				</div>
+
 			</div>
-			<div class="watch-our-video">
-				<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s" class="play-circle play-video">
-					<span class="fa fa-play">&nbsp;</span>
-				</a>
-				<p><%= t 'page.who_we_are.watch_our_video' %></p>
-			</div>
+		</div>
+		
+		<div class="container inset-subhead-container experience-a-level">
+			<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
+			<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>	
 		</div>
 
 	</div>
 
-	<div class="container inset-subhead-container">
-		<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
-		<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>
-		
-	</div>
+
 
 	<div class="container">
 
 		<div class="row our-mission">
-			<div class="one-half column"><h2><%= t 'page.who_we_are.our_mission' %></h2></div>
-			<div class="one-half column"><p><%= t 'page.who_we_are.our_mission_text' %></p></div>
+			<div class="five columns text-center"><h2><%= t 'page.who_we_are.our_mission' %></h2></div>
+			<div class="seven columns"><p><%= t 'page.who_we_are.our_mission_text' %></p></div>
 		</div>
 
 		<div class="row our-values">
-			<div class="one-half column"><h2><%= t 'page.who_we_are.our_values' %></h2></div>
-			<div class="one-half column"><p><%= t 'page.who_we_are.our_values_text' %></p></div>
+			<div class="five columns text-center"><h2><%= t 'page.who_we_are.our_values' %></h2></div>
+			<div class="seven columns"><p><%= t 'page.who_we_are.our_values_text' %></p></div>
 		</div>
 
 	</div>
