@@ -130,7 +130,7 @@ en-CA:
       body1: "Start the conversation today by filling out the Contact Us form, or give us a call. We look forward to hearing from you!"
       body2: ""
       frequently_asked_questions: Frequently Asked Questions
-      select_a_state: Select a State
+      select_a_state: Select a Province
       select_a_location: Select a Location
       select_a_sola_location_above: Select a Sola Location Above
       your_name: Your Name
@@ -304,9 +304,9 @@ en-CA:
     locations:
       title: Locations
       title_long: Sola Locations
-      meta_description: "To find the Sola Salon Studios location nearest to you, search by city or state, or view our locations map."
+      meta_description: "To find the Sola Salon Studios location nearest to you, search by city or province, or view our locations map."
       find_a_sola_location: Find a Sola Location
-      select_a_state: Select a State
+      select_a_state: Select a Province
       all_locations: All Locations
       view_location: View Location
       locations_in: Locations in 
