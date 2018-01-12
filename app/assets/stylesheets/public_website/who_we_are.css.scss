@@ -75,6 +75,10 @@
 
 	.our-mission, .our-values {
 		margin-bottom: 60px;
+
+		h2 {
+			text-align: center;
+		}
 	}
 
 	.join-our-diverse-community-container {
@@ -84,20 +88,20 @@
 	  -moz-background-size: cover;
 	  -o-background-size: cover;
 	  background-size: cover;
-	  margin-bottom: 400px;
+	  //margin-bottom: 400px;
 
 	  h2 {
 	  	margin-bottom: 0;
 	  }
 
-	  .experience-a-level {
-	  	margin-top: -333px;
-	  	bottom: -300px;
-	  }
+	  // .experience-a-level {
+	  // 	margin-top: -333px;
+	  // 	bottom: -300px;
+	  // }
 	}
 
 	.join-our-diverse-community {
-		padding: 120px 0;
+		padding: 120px 0 300px 0;
 		position: relative;
 		// overflow: hidden;
 
@@ -145,7 +149,7 @@
 
 		.watch-our-video {
 			position: absolute;
-			top: 50%;
+			top: 180px;
 			left: 80%;
 			margin-top: (-140px / 2);
 			z-index: 2;
@@ -187,9 +191,13 @@
 		}
 	}
 
+	.experience-a-level {
+		top: -200px;
+		margin-bottom: -90px;
+	}
+
 	.inset-subhead-container {
 		position: relative;
-		margin-bottom: 60px;
 
 		.img-wrap-3 {
 			margin: 40px auto 40px auto;
@@ -283,6 +291,16 @@
 			width: 100%;
 		}
 
+		.img-wrap-paint-box-container {
+			margin-top: -20px !important;
+			margin-bottom: 30px;
+		}
+
+		.experience-a-level {
+			top: auto;
+			margin-bottom: 40px;
+		}
+
 		.inset-subhead-container {
 
 			h2 {
@@ -303,7 +321,7 @@
 			overflow: hidden;
 
 			.paint-box {
-				bottom: 0;
+				bottom: 0 !important;
 				left: 0;
 				right: auto;
 				width: 100%;
@@ -367,7 +385,7 @@
 	.who-we-are {
 
 		.join-our-diverse-community {
-			margin: -11px 0 -2px 0;
+			padding: 40px 0 20px 0;
 			
 			.content {
 				//display: block;
@@ -467,10 +485,20 @@
 			}
 		}
 
+		.join-our-diverse-community-container {
+			// margin-bottom: 250px;
+
+			// .experience-a-level {
+			// 	bottom: -250px;
+			// 	margin-top: -375px;
+			// }
+		}
+
 		.our-mission, .our-values {
 			margin-bottom: 30px;
 
 			h2 {
+				text-align: left;
 				@include chalet-new-york;
 				font-size: 18px;
 				line-height: 24px;
