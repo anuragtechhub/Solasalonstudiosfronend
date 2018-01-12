@@ -169,6 +169,10 @@
 @media (max-width: 960px) {
 	.our-studios {
 
+		.owl-carousel .item .item-content h1, .owl-carousel .item .item-content p {
+			margin-bottom: 20px;
+		}
+
 		.content-container {
 			padding-top: 90px;
 		}
