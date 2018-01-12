@@ -273,13 +273,15 @@ RailsAdmin.config do |config|
   end
 
   config.model 'BlogCategory' do
-    visible false
-    label 'Category'
-    label_plural 'Categories'      
-    edit do 
-      field :name
-      field :url_name
+    visible do
+      bindings[:controller]._current_user.franchisee != true
     end
+    label 'Blog Category'
+    label_plural 'Blog Categories'      
+    # edit do 
+    #   field :name
+    #   field :url_name
+    # end
   end
 
   config.model 'BlogBlogCategory' do
