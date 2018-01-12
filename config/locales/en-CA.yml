@@ -1,4 +1,4 @@
-en:
+en-CA:
 
   activerecord:
     models: 
@@ -261,7 +261,7 @@ en:
       photo_gallery: Photo Gallery
       own_your_salon: Own Your Salon
       find_a_sola_hairstylist: Find a Sola Hairstylist
-      search_salon_professionals: Search over 10,000 salon professionals.
+      search_salon_professionals: ""
       testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
       testimonial_author: Shelia Taylor
       testimonial_studio_name: Ami Hair Studio
@@ -431,7 +431,7 @@ en:
       body4: In 2005, the first franchised Sola location was opened, paving the way for our best-in-class franchisees and onsite operators. And in the blink of an eye, 10 years later, Sola celebrated 5,000 independent beauty professionals across the country. 
       body5: Throughout the years, Sola has become more than just another salon suites rental business; we are an all-encompassing independent salon business solution. Our leadership team drives constant innovation for the on-site studio experience as well as providing cutting-edge technology and ongoing educational resources to the Sola community. 
       body6: In 2016, Sola launched Sola Pro, an exclusive app, to host industry deals, special offers and a variety of educational resources to bridge the gap between the professional beauty industry and the Sola community. Shortly after, the first Sola Sessions event kicked off in Denver, providing a unique live education experience to inspire and connect the ever-growing Sola community. With the 2017 addition of our exclusive technology SolaGenius—an all-in-one business platform launched in partnership with GlossGenius, designed to help an independent salon owner manage their schedule, customer relationship management, marketing, analytics and payment processing—we can proudly say that we support our customers along every step of their independent salon journey.
-      body7: "Today, Stratton and Matt's humble commitment has blossomed into a worldwide movement. We are proud to say that Sola Salon Studios is a thriving, diverse and welcoming community of more than 10,000 independent salon professionals across 400+ locations in United States, Canada and, soon, the rest of the world. Our culture has been cultivated around one simple ideal: &quot;freedom to live the life you love.&quot;"
+      body7: "Now, with more than 400 successful locations open in the United States, we are excited to expand our offerings to Canada to provide the same caliber of studios alongside our unmatched level of customer support to those seeking a simpler approach to salon ownership.<br /><br />Today, Stratton and Matt's humble commitment has blossomed into a worldwide movement. We are proud to say that Sola Salon Studios is a thriving, diverse and welcoming community of more than 10,000 independent salon professionals across 400+ locations in United States, Canada and, soon, the rest of the world. Our culture has been cultivated around one simple ideal: &quot;freedom to live the life you love.&quot;"
       callout2: "&quot;The goal is for every stylist to live their best life, and that's something different for everybody. At the end of the day, the stylists are the ones who win.&quot;"
       callout2_name: "Matt Briger"
       body8: Sola has blazed the trail for the independent stylist movement, offering new levels of creative freedom to those who are inspired to make the transition. We aim to make your transition to independence as smooth as possible. You are independent and unique at Sola, but you are not alone.
@@ -659,7 +659,7 @@ en:
       subhead: We focus on what's best for you, so you can focus on what's best for your business.
       subhead2: Experience a level of creative independence and career support you won't find anywhere else.
       number_of_locations: 400+
-      locations_nationwide: Locations Nationwide
+      locations_nationwide: Locations in the USA<br />Now leasing in Toronto!
       meta_description: ""
       body1: "We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time."
       body2: "We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind:"
