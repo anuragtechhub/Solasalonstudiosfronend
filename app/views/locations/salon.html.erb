@@ -48,7 +48,7 @@
         </div>
 
         <!-- about this location -->
-        <h4><%= t('page.locations.about_this_location') %></h4>
+        <h5><%= t('page.locations.about_this_location') %></h5>
         <div class="description"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></div>
 
         <!-- social -->

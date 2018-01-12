@@ -58,6 +58,7 @@
   }
 
   .location-info {
+    position: relative;
     margin-top: 30px;
     padding-bottom: 35px;
     margin-bottom: 40px;
@@ -66,16 +67,28 @@
     h1, p.address { 
       margin-bottom: 0;
     }
+
+    // h1 {
+    //   max-width: 480px;
+    // }
+
+    // .location-social {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    // }
   }
 
   .description {
 
-    p, li, th, td, div, span, h1, h2, h3, h4, h5, h6 {
+    &, p, li, th, td, div, span, h1, h2, h3, h4, h5, h6 {
       color: #4A4A4A; 
       font-size: 18px;  
       font-weight: 300; 
       line-height: 32px;
-
+      -moz-osx-font-smoothing: antialiased; //auto
+      -webkit-font-smoothing: antialiased; //auto
+      font-smoothing: antialiased; //auto  
       &:last-child {
         margin-bottom: 0;
       }
