@@ -156,15 +156,17 @@
             <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
           <% end %>
         </div>
-        <div class="columns four">
-          <%= link_to :solagenius, :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <%= image_tag 'WhySola/SolaGenius.jpg' %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
-          <% end %>
-        </div>        
+        <% if I18n.locale.to_s == 'en' %>
+          <div class="columns four">
+            <%= link_to :solagenius, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
+              </div>
+              <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
+            <% end %>
+          </div>  
+        <% end %>      
       </div>
 
     </div> <!-- container -->
