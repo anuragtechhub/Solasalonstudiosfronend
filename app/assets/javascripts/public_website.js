@@ -356,6 +356,12 @@ $(function () {
 
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
+  // align learn more buttons
+  $('.learn-more-button').each(function () {
+    var $this = $(this);
+    $this.css('margin-left', '-' + $this.outerHeight() + 'px');
+  });
+
   // gradient text
   // $('h2.gradient').each(function () {
   //   new TextGradient($(this)[0], {

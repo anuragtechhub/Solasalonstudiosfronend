@@ -35,6 +35,7 @@ en:
 
   header:
     rent_studio_button: Rent a Studio
+    contact_us: Contact Us
     search_placeholder: Search by Name or Location
     sola_pro_sign_in: Sola Pro
 
@@ -61,6 +62,7 @@ en:
     email_placeholder: Your email address
     join_button: Sign Up
     legal: Sola Salon Studios - Your Life, Your Style &copy; Copyright
+    find_your_sola: Find Your Sola
 
   services:
     hairstylist: Hairstylist
@@ -392,7 +394,7 @@ en:
     our_studios:
       title: Our Studios
       hero_heading1: Sola provides all you need and more in beautiful, move-in-ready studios.
-      hero_heading2: One and two chair salons for hairdressers, nail techs, estheticians, and more.
+      hero_heading2: A variety of layouts for hairdressers, nail techs, estheticians and more.
       studio_amenities: Studio Amenities 
       meta_description: Our Studios
       shampoo_bowl: Shampoo Bowl 
@@ -400,7 +402,7 @@ en:
       view_gallery: View Gallery of Studios
       join_our_community: Join our Community
       join_our_community_text: Contact us to start your Sola journey!
-      join_our_community_button_text: Find a Studio
+      join_our_community_button_text: Contact Us
       wash_basin:
         heading: Shampoo Bowl
         body: Shampoo, rinse and repeat. Instant hot water saves time and water.
@@ -421,7 +423,7 @@ en:
         body: Custom cabinetry with abundant storage helps keep your studio organized.
       insulated_walls:
         heading: Insulated Walls
-        body: Create an intimate environment, our insulated walls keep out noisy distractions.
+        body: Create an intimate environment and keep out noisy distractions.
 
     our_story:
       title: Our Story
