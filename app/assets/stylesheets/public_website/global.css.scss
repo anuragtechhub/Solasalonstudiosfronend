@@ -17,7 +17,6 @@ body {
   overflow: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
 }
 
 .stop-scrolling {
@@ -31,11 +30,6 @@ body {
   position: relative;
   background: #FFF asset-data-url('background-stripe.png') repeat-y top left;
   padding-bottom: 30px;
-  overflow-x: hidden;
-}
-
-.container {
-  overflow-x: hidden;
 }
 
 @media (max-width: 1000px) {

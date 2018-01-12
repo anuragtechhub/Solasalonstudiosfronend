@@ -33,6 +33,7 @@ $(function () {
     var $this = $(this);
     
     var options = {
+      center: true,
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
         "<i class='arrow-left'></i>",
