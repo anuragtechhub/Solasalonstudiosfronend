@@ -357,10 +357,10 @@ $(function () {
   $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
   // align learn more buttons
-  $('.learn-more-button').each(function () {
-    var $this = $(this);
-    $this.css('margin-left', '-' + ($this.outerHeight(true) / 1) + 'px');
-  });
+  // $('.learn-more-button').each(function () {
+  //   var $this = $(this);
+  //   $this.css('margin-left', '-' + (($this.outerHeight(true) / 1) + 10) + 'px');
+  // });
 
   // gradient text
   // $('h2.gradient').each(function () {
