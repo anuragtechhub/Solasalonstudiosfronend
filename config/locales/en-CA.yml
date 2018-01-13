@@ -35,7 +35,8 @@ en-CA:
 
   header:
     rent_studio_button: Rent a Studio
-    search_placeholder: Search by city, location or stylist...
+    contact_us: Contact Us
+    search_placeholder: Search by Name or Location
     sola_pro_sign_in: Sola Pro
 
   nav:
@@ -421,7 +422,7 @@ en-CA:
     our_story:
       title: Our Story
       meta_description: ""
-      founders: Founders Matt Briger and Stratton Smith
+      founders: Founders Stratton Smith and Matt Briger
       subhead: "What started out as a simple agreement scrawled on a Starbucks napkin has grown into the largest and fastest growing salon studio business in the country."
       body1: In 2004, Sola Salon Studios co-founders Stratton Smith and Matt Briger wanted to do more than design beautiful, move-in-ready salon studios. They set out to build a thriving community.
       body2: From the beginning, Stratton and Matt made a humble commitment to serve the beauty professional and always to put the beauty professional's best interests first. Their vision was to give the beauty professional control over their environment, schedule, choice of retail, pricing and so much more. When they were in the early stages of developing the innovative concept of turnkey salon studios in a co-working environment, they met with Denver, Colorado based stylist Kim Bennett Horvath.
@@ -711,8 +712,8 @@ en-CA:
       flexibility_subhead1: Get ready to explore new adventures in and out of the salon!
       flexibility_subhead2: At Sola, our passion is helping beauty professionals to succeed.
       flexibility_subhead3: Experience the freedom and benefits of a more flexible, creative and profitable career.
-      beautiful_studios_exclusive_perks: Beautiful studios, exclusive perks.
-      at_sola_you_get_more: At Sola, you simply get more!
+      beautiful_studios_exclusive_perks: Beautiful Studios,<span class="mobile-br">&nbsp;</span>Exclusive Perks.
+      at_sola_you_get_more: At Sola, You Simply Get More!
       beautiful_studios: Beautiful Studios
       beautiful_studios_text: Access to group insurance and Sola-exclusive discounts for products, scheduling and more.
       community_support: Community Support
