@@ -22,12 +22,12 @@
   </div>
 
   <div class="sola-pro-gallery" id="sola-pro-gallery">
-    <div class="sola-pro-gallery-inner" id="sola-pro-gallery-inner">     
+    <div class="sola-pro-gallery-inner" id="sola-pro-gallery-inner" data-aos="fade-down" data-aos-offset="200">     
       <%= render 'sola_pro_gallery_desktop' %>
     </div>
   </div>
 
-  <div class="sneak-peak">
+  <div class="sneak-peak" data-aos="fade-up" data-aos-offset="200">
     <div class="container">
       <h2 class="brand text-center" style="margin-top: 30px"><%= t('page.sola_pro.heading2').html_safe %></h2>
       <div class="session" style="margin-bottom: 60px">
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" data-aos="fade-up" data-aos-offset="200">
     <div class="block-quote-testimonial">
       <h3><%= t('page.sola_pro.testimonial_text') %></h3>
       <%= image_tag 'testimonials/MorganCameron.jpg' %>
