@@ -75,6 +75,12 @@
     font-size: 13px;
     color: #9B9B9B;
   }
+
+  img {
+    width: 111px;
+    height: 111px;
+    @include border-radius(50%);
+  }
 }
 
 .block-quote-testimonial-side-image {
