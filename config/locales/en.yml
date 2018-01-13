@@ -401,8 +401,8 @@ en:
       shampoo_bowl_text: Shampoo, rinse and repeat in a shampoo
       view_gallery: View Gallery of Studios
       join_our_community: Join our Community
-      join_our_community_text: Contact us to start your Sola journey!
-      join_our_community_button_text: Contact Us
+      join_our_community_text: Contact us to join the Sola community!
+      join_our_community_button_text: Own Your Salon
       wash_basin:
         heading: Shampoo Bowl
         body: Shampoo, rinse and repeat. Instant hot water saves time and water.
@@ -659,7 +659,7 @@ en:
       testimonial_quote10: "I have gotten more new clients at Sola than I did working for someone else. And I've been able to take advantage of so much education, too! What Sola has given me is full control. There is nothing like being in full control of your business."
       testimonial_author10: Jennifer LaVinge
       join_our_community: "Join our Community"
-      join_our_community_text: "Are you ready to join the Sola community?<br />Click to become a Sola Salon Owner!"
+      join_our_community_text: "Contact us to join the Sola community!"
       join_our_community_button: Own Your Salon
 
     who_we_are:
