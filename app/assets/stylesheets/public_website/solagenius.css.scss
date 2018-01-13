@@ -1068,13 +1068,41 @@ and (device-aspect-ratio: 40/71) {
       //margin-top: (1468px / 5) !important;
     }
     .sneak-peak {
-      margin: -190px 0 -60px 0 !important;
+      margin: 0 !important;
       //margin: -280px 0 -60px 0 !important;
       h2 {
+        margin-top: 0;
         font-size: 24px;
         margin-bottom: -10px;
       }
     }  
+    .sola-genius-pricing {
+      padding: 60px 20px;
+
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        @include chalet_new_york;
+        font-size: 18px;  
+        line-height: 18px;
+        display: inline-block;
+        padding-top: 18px;
+        padding-bottom: 15px;
+      }
+
+      p {
+        font-size: 14px;  
+        line-height: 24px;
+
+        .large {
+          font-size: 24px;  
+          line-height: 26px;
+        }
+
+        strong {
+          font-size: 36px;  
+          line-height: 40px;
+        }
+      }
+    }
     .owl-carousel .item .item-content .left-align-container {
 
       h2 {
