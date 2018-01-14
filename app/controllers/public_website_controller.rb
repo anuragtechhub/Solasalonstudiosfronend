@@ -26,7 +26,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def set_locale
-    if request.domain != 'solasalonstudios.ca'
+    if request.domain == 'solasalonstudios.ca'
       I18n.locale = 'en-CA' 
     else
       I18n.locale = 'en'

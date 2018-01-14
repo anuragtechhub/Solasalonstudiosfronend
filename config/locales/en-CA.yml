@@ -48,7 +48,7 @@ en-CA:
     sola_sessions: Sola Sessions
     who_we_are: Who We Are
     our_story: Our Story
-    leadership: Leadership
+    leadership: Leadership Team
     testimonials: Testimonials
     in_the_news: In the News
     why_sola: Why Sola
@@ -268,7 +268,7 @@ en-CA:
       find_a_sola: Find a Sola
 
     leadership:
-      title: Leadership
+      title: Leadership Team
       meta_description: ""
       ceo: CEO
       chief_development_officer: Chief Development Officer & General Counsel 
@@ -332,7 +332,7 @@ en-CA:
       salon_professional_benefits: Salon Professional Benefits
       salon_professional_benefits_list: |
         Keep 100% of your profits
-        Access group insurance and Sola discounts
+        Access Sola discounts
         Escape salon politics and drama
         Manage your own schedule
         Personalize your salon space
@@ -600,7 +600,7 @@ en-CA:
       past_sessions: Past Sessions 
       in_the_news: In the News
       testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
-      testimonial_author: Shelia Taylor
+      testimonial_author: Sheila Taylor
       testimonial_studio_name: Ami Hair Studio
       find_a_sola: Find a Sola
       blog: Blog
