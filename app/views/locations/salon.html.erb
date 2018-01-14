@@ -94,7 +94,10 @@
         <% if @location.move_in_special && @location.move_in_special.present? %>
           <div class="move-in-special">
             <%= image_tag 'MoveInSpecial@2x.jpg' %>
-            <div class="text"><span class="inner-text"><%= @location.move_in_special.html_safe %></span></div>
+            <div class="text">
+              <h5><%= t('page.locations.move_in_special') %></h5>
+              <span class="inner-text"><%= @location.move_in_special.html_safe %></span>
+            </div>
           </div>
         <% end %>
 

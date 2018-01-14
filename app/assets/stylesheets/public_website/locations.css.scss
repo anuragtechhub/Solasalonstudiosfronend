@@ -117,6 +117,7 @@
 
     h1, p.address { 
       margin-bottom: 0;
+      max-width: 500px;
     }
 
     // h1 {
@@ -171,32 +172,35 @@
 
   .move-in-special {
     position: relative;
-    margin: 30px auto;
+    margin: 30px auto 50px auto;
+    padding: 30px;
+    @include gradient-horizontal($brand-primary, $brand-pink);
 
     img {
+      display: none;
       width: 100%;
       height: auto;
     }
 
     .text {
-      position: absolute;
-      left: 40%;
-      top: 15px;
-      bottom: 20px;
-      right: 15px;
+      // position: absolute;
+      // left: 40%;
+      // top: 15px;
+      // bottom: 20px;
+      // right: 15px;
       -moz-osx-font-smoothing: antialiased; //auto
       -webkit-font-smoothing: antialiased; //auto
       font-smoothing: antialiased; //auto     
 
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;  
+      // display: -webkit-box;
+      // display: -moz-box;
+      // display: -ms-flexbox;
+      // display: -webkit-flex;
+      // display: flex;  
 
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
+      // flex-direction: column;
+      // align-content: center;
+      // justify-content: center;
 
       @include helvetica;
       color: #FFFFFF; 
@@ -205,6 +209,10 @@
       line-height: 24px;
       //max-height: calc(100% - 30px);
       overflow-y: scroll;
+    }
+
+    h4, h5 {
+      color: #FFF;
     }
 
     .link {
