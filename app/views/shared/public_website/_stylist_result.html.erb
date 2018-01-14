@@ -2,7 +2,7 @@
   <h3 class="name">
     <%= link_to show_salon_professional_path(stylist) do %>
       <%= stylist.website_name.present? ? stylist.website_name.html_safe : stylist.name.html_safe %>
-      <%= " - #{stylist.location.name.html_safe}" if stylist.location %>
+      <%= " - #{stylist.business_name.html_safe}" if stylist.business_name.present? %>
     <% end %>
   </h3>
   <p class="address"><%= stylist.location.full_address.html_safe %></p>
