@@ -5,6 +5,19 @@
 .location-page {
   margin-bottom: -30px;
 
+  .experience-more {
+    clear: both;
+    margin-top: 90px;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  .sola-benefits {
+    padding-top: 40px;
+  }
+
   .location-gallery {
     position: relative;
   }
@@ -370,6 +383,13 @@
 
 @media (max-width: 550px) {
   .location-page {
+
+    .experience-more { 
+      margin-top: 50px;
+      h4 {
+        text-align: center;
+      }
+    }
 
     .location-info {
       margin-top: 60px;

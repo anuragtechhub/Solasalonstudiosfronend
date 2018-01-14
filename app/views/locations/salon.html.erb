@@ -56,7 +56,7 @@
         <!-- buttons -->
         <div class="location-buttons">
           <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
-          <%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.rent_a_studio') %><% end %>
+          <%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>
         </div>
 
         <!-- about this location -->
@@ -163,6 +163,75 @@
       </div> <!-- .two-thirds -->
     </div> <!-- .row -->
   </div> <!-- .content-container -->
+
+  <div class="container experience-more">
+      <h4 class="h1"><%= t 'page.who_we_are.experience_more' %></h4>
+    </div>
+
+    <% if I18n.locale.to_s == 'en' %>
+      <div class="sola-benefits">
+        <div class="container">
+          
+          <div class="row">
+            <div class="columns four">
+              <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+                <div class="img-wrap">
+                  <%= image_tag 'WhySola/SolaPro.jpg' %>
+                  <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
+                </div>
+                <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
+              <% end %>
+            </div>
+            <div class="columns four">
+              <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+                <div class="img-wrap">
+                  <%= image_tag 'WhySola/SolaSessions.jpg' %>
+                  <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
+                </div>
+                <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
+              <% end %>
+            </div>
+            <div class="columns four">
+              <%= link_to :solagenius, :class => 'benefit-tile' do %>
+                <div class="img-wrap">
+                  <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                  <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.solagenius') %></span></div>
+                </div>
+                <span class="text"><%= t('page.who_we_are.solagenius_text') %></span>
+              <% end %>
+            </div>        
+          </div>
+
+        </div> <!-- container -->
+      </div> <!-- sola-benefits -->
+    <% else %>
+      <div class="sola-benefits">
+        <div class="container">
+          
+          <div class="row">
+            <div class="columns six">
+              <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+                <div class="img-wrap">
+                  <%= image_tag 'WhySola/SolaPro.jpg' %>
+                  <span class="title"><%= t('page.who_we_are.sola_pro') %></span>
+                </div>
+                <div class="title-wrapper"><span class="text"><%= t('page.who_we_are.sola_pro_text') %></span></div>
+              <% end %>
+            </div>
+            <div class="columns six">
+              <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+                <div class="img-wrap">
+                  <%= image_tag 'WhySola/SolaSessions.jpg' %>
+                  <span class="title"><%= t('page.who_we_are.sola_sessions') %></span>
+                </div>
+                <div class="title-wrapper"><span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span></div>
+              <% end %>
+            </div>        
+          </div>
+
+        </div> <!-- container -->
+      </div> <!-- sola-benefits -->
+    <% end %>
 
   <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
   <input type="hidden" id="is_salon" value="y" />

@@ -315,6 +315,7 @@ en-CA:
       find_a_salon_professional_at_location: Find a salon professional at %{location}
       there_are_x_professionals: There are %{number} professionals at this location
       rent_a_studio: Rent a Studio
+      lease_a_studio: Lease a Studio
       about_this_location: About This Location
       move_in_special: Move-In Special
       your_life_your_style: Your Life, Your Style

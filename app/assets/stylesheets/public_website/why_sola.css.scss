@@ -503,3 +503,11 @@
 	}
 
 }
+
+@media (max-width: 500px) {
+	.why-sola {
+		.owl-carousel .item .item-content h1 {
+			font-size: 22px;
+		}
+	}
+}
