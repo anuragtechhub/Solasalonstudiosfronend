@@ -17,4 +17,5 @@
     <%= link_to(stylist.has_sola_genius_account ? t('page.salon_professional.book_now').html_safe : t('page.salon_professional.book_now').html_safe, url_helper(stylist.booking_url), :class => 'bold-link', :target => '_blank') if stylist.booking_url.present? %>
     <%= ((stylist.phone_number.present? || stylist.website_phone_number.present?) && stylist.phone_number_display) ? (stylist.website_phone_number.present? ? stylist.website_phone_number : stylist.phone_number) : '&nbsp;'.html_safe %>
   </p>
+  <div class="view-profile"><%= link_to t('page.search.view_profile').html_safe, show_salon_professional_path(stylist).gsub(/\./, ''), :class => 'bold-link' %></div>
 </div>

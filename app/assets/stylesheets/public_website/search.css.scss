@@ -93,6 +93,7 @@
 
     a.bold-link {
       &:link, &:visited, &:hover, &:active {
+        color: $brand-pink;
         font-weight: bold;
         margin-right: 15px;
         text-decoration: none;
