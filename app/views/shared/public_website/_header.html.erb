@@ -63,7 +63,11 @@
     </li>
     <li>
       <%= link_to :sola_pro do %>
-        <%= image_tag 'own_nav/3_solapro.jpg' %>
+        <% if I18n.locale.to_s == 'en' %>
+          <%= image_tag 'own_nav/3_solapro.jpg' %>
+        <% else %>
+          <%= image_tag 'own_nav/3_solapro_ca.jpg' %>
+        <% end %>
         <h4><%= t 'nav.sola_pro' %></h4>
       <% end %>
     </li>
