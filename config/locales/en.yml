@@ -352,7 +352,7 @@ en:
       contact_us_for_leasing_information: "Contact Us for<br>Leasing&nbsp;Information"
       call_for_leasing_information: "Call %{contact_name} for leasing information"
       lease_at_location: Lease at<span class="desktop-br">&nbsp;</span>%{name}
-      request_leasing_information: To request leasing information, call %{name} at %{number} or fill our the form below and we'll contact you.
+      request_leasing_information: To request leasing information, call %{name} at %{number} or fill out the form below and we'll contact you.
       your_name: Your Name
       email_address: Email Address
       phone_number: Phone Number
