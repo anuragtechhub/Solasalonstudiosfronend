@@ -159,6 +159,20 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
 
 }
 
+a.book-now-button, a.book-now-button:link, a.book-now-button:visited, a.book-now-button:hover, a.book-now-button:active {
+  @include chalet_new_york;
+  font-size: 16px;
+  height: 44px !important;
+  padding: 12.5px 20px !important;
+  margin-right: 15px;
+  top: 11px;
+  position: relative;  
+
+  &.solagenius-button {
+    @include gradient-horizontal($brand-primary, $brand-pink);
+  }
+}
+
 .request-franchising-info {
   margin-top: 5px;
 }
