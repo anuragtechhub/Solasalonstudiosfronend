@@ -1020,11 +1020,13 @@ and (device-aspect-ratio: 40/71) {
     background-size: (774px / 2) (1468px / 2);
     width: (774px / 2);
     height: (1468px / 2);
+
+    &.sola-pro-iphone-ca {
+      background: asset-url('Pro_Iphone_CA.png') no-repeat;
+      background-size: (774px / 2) (1468px / 2);
+    } 
   }
-  .sola-pro-iphone-ca {
-    background: asset-url('Pro_Iphone_CA.png') no-repeat;
-    background-size: (774px / 2) (1468px / 2);
-  }  
+ 
 }
 
 @media (max-width : 1300px) {
