@@ -11,7 +11,7 @@ $(function () {
   /**
   * Clickable search results
   */
-  $('.search-result-clickable .bold-link').on('click', function (e) {
+  $('.search-result-clickable .bold-link, .search-result-clickable .book-now-button').on('click', function (e) {
     e.stopPropagation();
   });
   
