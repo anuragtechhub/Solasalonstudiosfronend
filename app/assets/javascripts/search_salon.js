@@ -21,7 +21,7 @@ $(function () {
 
       	for (var i = 0, ilen = data.length; i < ilen; i++) {
       		location = data[i];
-          console.log('location', location)
+          //console.log('location', location)
       		html = html + "<div data-href='/locations/" + location.url_name + "' class='salon-search-result'>";
 
       		html = html + "<div class='names'>";
