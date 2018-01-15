@@ -508,6 +508,12 @@
 	.why-sola {
 		.owl-carousel .item .item-content h1 {
 			font-size: 22px;
+			line-height: 26px;
+			margin-bottom: 5px;
+
+			&.chalet-new-york {
+				margin-bottom: 20px;
+			}
 		}
 	}
 }

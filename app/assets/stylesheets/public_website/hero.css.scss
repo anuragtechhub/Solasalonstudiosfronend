@@ -508,30 +508,36 @@
   }
 
   .owl-carousel .item .img-wrap {
-    height: 480px;
+    height: 420px;
   }
 
   .owl-carousel .item .img-wrap img {
-    height: 480px;
+    height: 420px;
     width: auto;
-    left: -39%;
+    left: -35%;
   }
 
   .owl-carousel .item .item-content {
+    left: 0px;
+    right: 0px;
+
+    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+      margin: 10px 0 0 0;
+    }
 
     h1 {
       font-size: 28px;
       line-height: 32px;
-      margin-left: 90px !important;
-      margin-right: 90px !important;
+      margin-left: 80px !important;
+      margin-right: 80px !important;
       margin-bottom: 10px;
     }
 
     p {
       font-size: 18px;
       line-height: 24px;
-      margin-left: 90px !important;
-      margin-right: 90px !important;
+      margin-left: 80px !important;
+      margin-right: 80px !important;
       margin-bottom: 0;
     }
 
@@ -544,7 +550,23 @@
     }
   }
 
+  .owl-carousel.multi-carousel .item .item-content {
+    h1 {
+      font-size: 36px;
+      line-height: 40px;
+      margin-left: 20px !important;
+      margin-right: 20px !important;
 
+      &.xlarge {
+        font-size: 48px;
+        line-height: 52px;
+      }
+    }
+    p, h3 {
+      margin-left: 60px !important;
+      margin-right: 60px !important;
+    }
+  }
 
   .multi-carousel .item .img-wrap {
     height: auto;
@@ -560,11 +582,10 @@
     height: auto;
   }
 
-  .owl-carousel .item .item-content {
-    h1, p {
-      margin: 0;
-    }
-  }
-
+  // .owl-carousel .item .item-content {
+  //   h1, p {
+  //     margin: 0;
+  //   }
+  // }
 
 }
