@@ -222,6 +222,14 @@ img.recently-featured-in {
 
 }
 
+.home-all {
+  display: block !important;
+}
+
+.home-mobile {
+  display: none !important;
+}
+
 @media (max-width: 550px) {
 
 .owl-desktop {
@@ -229,6 +237,18 @@ img.recently-featured-in {
 }
 
 .owl-mobile {
+  display: block !important;
+
+  .arrow-left, .arrow-right {
+    display: none !important;
+  }
+}
+
+.home-all {
+  display: none !important;
+}
+
+.home-mobile {
   display: block !important;
 
   .arrow-left, .arrow-right {
