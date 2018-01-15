@@ -1,4 +1,4 @@
-<div class="hero-carousel owl-carousel multi-carousel owl-theme">
+<div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
   <div class="item">
     <div class="img-wrap"><%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
     <div class="item-content left-align">
@@ -28,6 +28,44 @@
   </div>
   <div class="item" style="display:none">
     <div class="img-wrap"><%= image_tag 'Home/Home-Slider-4.jpg', :alt => t('page.home.slider4_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content bottom-align">
+      <h1 class="xlarge"><%= t('page.home.slider4_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider4_subhead').html_safe %></h3>
+      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.slider4_button').html_safe %><% end %>
+    </div>
+  </div>
+</div>
+
+<div class="hero-carousel owl-carousel owl-theme home-mobile">
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Mobile-Slider-1.jpeg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content left-align">
+      <div class="left-align-container">
+      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
+      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+      </div>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Mobile-Slider-2.jpeg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content">
+      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
+      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
+      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Mobile-Slider-3.jpeg', :alt => t('page.home.slider3_heading'), :width => 1600, :height => 800 %></div>
+    <div class="img-overlay black-25">&nbsp;</div>
+    <div class="item-content">
+      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
+      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Mobile-Slider-4.jpeg', :alt => t('page.home.slider4_heading'), :width => 1600, :height => 800 %></div>
     <div class="item-content bottom-align">
       <h1 class="xlarge"><%= t('page.home.slider4_heading').html_safe %></h1>
       <h3 class="mobile-hidden"><%= t('page.home.slider4_subhead').html_safe %></h3>
