@@ -104,7 +104,11 @@
 	        <div class="columns four">
 	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
-	              <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
 	            </div>
 	            <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
@@ -137,16 +141,20 @@
 	    <div class="container">
 	      
 	      <div class="row">
-	        <div class="columns four">
+	        <div class="columns six">
 	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
-	              <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
 	            </div>
 	            <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
 	          <% end %>
 	        </div>
-	        <div class="columns four">
+	        <div class="columns six">
 	          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
 	              <%= image_tag 'WhySola/SolaSessions.jpg' %>
