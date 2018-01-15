@@ -17,7 +17,11 @@
         </div>
       </div>
     </div>
-    <div class="sola-pro-iphone">&nbsp;</div>
+    <% if I18n.locale == :en %>
+      <div class="sola-pro-iphone">&nbsp;</div>
+    <% else %>
+      <div class="sola-pro-iphone sola-pro-iphone-ca">&nbsp;</div>
+    <% end %>
   </div>
 
   <div class="sola-pro-gallery" id="sola-pro-gallery">
