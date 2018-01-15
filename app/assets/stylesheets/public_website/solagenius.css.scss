@@ -5,6 +5,72 @@
 * Sola Genius *
 ***************/
 
+.sola-genius {
+  margin-bottom: -30px !important;
+
+  .hero-wrapper {
+    position: relative;
+
+    h2, p {
+      color: #FFF;
+      max-width: 50% !important;
+    }
+  }
+
+  .gloss-logo {
+    width: 238px;
+    height: 35px;
+  }
+
+  .learn-more-button {
+    bottom: 30px;
+    z-index: 2;
+    text-align: center;
+    left: 50%;
+    margin-left: -55px;
+  }
+
+  .explore-sola-genius {
+    text-align: center;
+  }
+
+  .for-sola-by-sola {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin: 120px 0 -40px 0;
+
+    strong {
+      @include helvetica;
+      font-size: 18px;
+      line-height: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: #9B9B9B;
+      display: inline-block;
+      //border: 3px solid #F5F9FB;
+      //@include border-radius(32px);
+      padding: 25px 20px;
+    }
+
+  }
+
+}
+
+@media (max-width : 1300px) {
+  .sola-genius {
+    .hero-wrapper {
+      position: relative;
+      text-align: center;
+
+      h2, p {
+        color: #FFF;
+        max-width: 960px !important;
+      }
+    }
+  }
+}
+
 .own-your-salon .hero-fullscreen {
   img.introducing_sola_genius {
     position: absolute;
@@ -66,33 +132,33 @@
   }
 }
 
-.sizzle-video-controls {
-  display: none;
-  text-decoration: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  margin-left: -(124px / 2);
-  margin-top: -(103px / 2);
+// .sizzle-video-controls {
+//   display: none;
+//   text-decoration: none;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   text-align: center;
+//   margin-left: -(124px / 2);
+//   margin-top: -(103px / 2);
 
-  .gradient-play-button {
-    background: asset-url('own/gradient-play-button.png') no-repeat;
-    background-size: 78px 78px;
-    width: 78px;
-    height: 78px;
-    z-index: 3;
-    cursor: pointer;
-    display: inline-block;
-  }
+//   .gradient-play-button {
+//     background: asset-url('own/gradient-play-button.png') no-repeat;
+//     background-size: 78px 78px;
+//     width: 78px;
+//     height: 78px;
+//     z-index: 3;
+//     cursor: pointer;
+//     display: inline-block;
+//   }
 
-  .sizzle-video-controls-text {
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #FFF !important;
-  }
-} 
+//   .sizzle-video-controls-text {
+//     font-size: 12px;
+//     font-weight: bold;
+//     text-transform: uppercase;
+//     color: #FFF !important;
+//   }
+// } 
 
 .sola-genius-phone-gallery-wrapper .arrow-left {
   left: -80px;
@@ -139,11 +205,11 @@
     // min-height: 90vh;
     // height: 90vh;
     padding: 0;
-    background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    // background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
   }
 
   .sola-genius-gallery-inner {
@@ -338,7 +404,8 @@
       top: 90px;
       left: 0;
       display: none;
-      color: #000;
+      color: #4A4A4A;
+      @include helvetica;
       font-size: 19px;
       font-weight: 300;
       line-height: 33px;
@@ -355,40 +422,14 @@
 
   .sola-genius-get-started {
 
-    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
-      display: inline-block;
-      background: rgb(135,203,251); /* Old browsers */
-      background: -moz-linear-gradient(left, rgba(135,203,251,1) 0%, rgba(200,123,250,1) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(left, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to right, rgba(135,203,251,1) 0%,rgba(200,123,250,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87cbfb', endColorstr='#c87bfa',GradientType=1 ); /* IE6-9 */
-      color: #FFF;
-      font-family: 'Lato', sans-serif;
-      font-size: 18px;
-      line-height: 18px;
-      letter-spacing: 1px;
-      word-spacing: 3px;
-      padding: 14px 36px 15px 36px;
-      border-radius: 44px;
-      text-transform: uppercase;
-      border: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      @include box-shadow(0px 7px 40px 1px rgba(73, 156, 211, 0.5));
-       opacity: 1 !important;
-       transition: opacity .25s ease !important;
-       -moz-transition: opacity .25s ease !important;
-       -webkit-transition: opacity .25s ease !important;
-    }
-
-    a.button:hover, a.button:active {
-      opacity: 0.6 !important;
+    a, a:link, a:visited, a:hover, a:active {
+      display: block;
     }
 
     p {
       margin: 30px 0 0 0;
     }
+    
     strong {
       font-size: 15px;
       line-height: 17px;
@@ -407,22 +448,31 @@
   }
 
   .sola-genius-pricing {
-    padding: 40px 0px;
+    margin-top: 30px;
+    padding: 120px 0px;
     text-align: center;
-    background: #000 asset-url('own/black_diamond.png') no-repeat center center; 
+    background: #000 asset-url('Genius_CTA_BG.jpg') no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 
     p {
-      font-size: 17px;
-      line-height: 23px;
+      @include helvetica;
+      font-size: 18px;
+      line-height: 32px;
       color: #FFF;
       font-weight: 300;
       margin-bottom: 20px;
 
+      .large {
+        @include chalet_paris;
+        font-size: 48px;
+        line-height: 53px;
+      }
+
       strong {
+        @include chalet_new_york;
         font-weight: 700;
         color: #FFF;
       }
@@ -438,9 +488,9 @@
         color: #FFF;
         display: inline-block;
         opacity: 1 !important;
-       transition: opacity .25s ease !important;
-       -moz-transition: opacity .25s ease !important;
-       -webkit-transition: opacity .25s ease !important;
+        transition: opacity .25s ease !important;
+        -moz-transition: opacity .25s ease !important;
+        -webkit-transition: opacity .25s ease !important;
 
         &.button {
           padding-left: 50px;
@@ -652,11 +702,11 @@
 
     .sola-genius-gallery {
       padding: 0;
-      background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+      // background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+      // -webkit-background-size: cover;
+      // -moz-background-size: cover;
+      // -o-background-size: cover;
+      // background-size: cover;
     }
 
     .run-your-sola-like-a-boss {
@@ -898,5 +948,175 @@ and (device-aspect-ratio: 40/71) {
   .hero-own .hero-heading {
     font-size: 19px;
     line-height: 31px;
+  }
+}
+
+
+
+
+/**
+* Solagenius hero
+*/
+.sola-genius {
+
+  .sola-genius-gallery {
+    margin-top: 180px;
+  }
+
+  .owl-carousel .item .item-content .mobile-br {
+    display: inline;
+  }
+
+  .sola-genius-iphone {
+    position: absolute;
+    left: 50%;
+    margin-left: 80px;
+    //top: 150px;
+    bottom: -150px;
+    z-index: 2;
+    background: asset-url('Genius_iPhone@2x.png') no-repeat;
+    background-size: (774px / 2) (1468px / 2);
+    width: (774px / 2);
+    height: (1468px / 2);
+  }
+}
+
+@media (max-width : 1300px) {
+  .sola-genius {
+    .sola-genius-iphone {
+      background-size: (774px / 2.45) (1468px / 2.45);
+      width: (774px / 2.45);
+      height: (1468px / 2.45);
+    }
+    .owl-carousel .item .item-content .left-align-container {
+      padding-right: 40%;
+    }
+  }
+}
+
+@media (max-width : 1050px) {
+  .sola-genius {
+    // .learn-more-button {
+    //   display: none;
+    // }
+
+    .sola-genius-iphone {
+      display: none;
+      background-size: (774px / 3) (1468px / 3);
+      width: (774px / 3);
+      height: (1468px / 3);
+      margin-left: (-774px / 3 / 2);
+      bottom: -390px;
+    }
+
+    .sola-genius-gallery {
+      //margin-top: (1468px / 3.5) !important;
+    }
+
+    .owl-carousel .item .item-content .left-align-container {
+      text-align: center;
+      padding-left: 30px;
+      padding-right: 30px;
+
+      h2 {
+        margin-top: -50px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width : 750px) {
+  .sola-genius {
+
+    .sola-genius-iphone {
+      bottom: -420px;
+    }
+    
+    .owl-carousel .item .item-content .left-align-container {
+
+      h2 {
+        margin-top: -40px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width : 550px) {
+  .sola-genius {
+    .explore-sola-genius h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .owl-carousel .item .item-content .mobile-br {
+      display: block;
+    }
+
+    .owl-carousel .item .img-wrap img {
+      left: -7%;
+    }
+    .sola-genius-iphone {
+      bottom: -395px;
+    }
+    .sola-genius-gallery {
+      margin-top: 60px !important;
+      //margin-top: (1468px / 5) !important;
+    }
+    .sneak-peak {
+      margin: 0 !important;
+      //margin: -280px 0 -60px 0 !important;
+      h2 {
+        margin-top: 0;
+        font-size: 24px;
+        margin-bottom: -10px;
+      }
+    }  
+    .sola-genius-pricing {
+      padding: 60px 20px;
+
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        @include chalet_new_york;
+        font-size: 18px;  
+        line-height: 18px;
+        display: inline-block;
+        padding-top: 18px;
+        padding-bottom: 15px;
+      }
+
+      p {
+        font-size: 14px;  
+        line-height: 24px;
+
+        .large {
+          font-size: 24px;  
+          line-height: 26px;
+        }
+
+        strong {
+          font-size: 36px;  
+          line-height: 40px;
+        }
+      }
+    }
+    .owl-carousel .item .item-content .left-align-container {
+
+      h2 {
+        margin-top: -50px;
+      }
+    }      
+  }
+}
+
+@media (max-width : 400px) {
+  .sola-genius {
+    .owl-carousel .item .img-wrap img {
+      left: -25%;
+    }
   }
 }

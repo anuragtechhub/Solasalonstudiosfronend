@@ -1,62 +1,175 @@
-<div class="hero-carousel owl-carousel owl-theme home-all">
-  <div class="item"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Desktop-2.jpg', :alt => "Beautiful studios, exclusive perks" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Canada-Home-Slider-2-R1.jpg', :alt => "Move-in ready studios" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/Sola-2016-Canada-Home-Slider-3-R1.jpg', :alt => "Join a company that supports you" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4.jpg', :alt => 'Salon professional testimonial' %><% end %></div>
+<div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content left-align">
+      <div class="left-align-container">
+      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
+      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+      </div>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content">
+      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
+      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
+      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-3.jpg', :alt => t('page.home.slider3_heading'), :width => 1600, :height => 800 %></div>
+    <div class="img-overlay black-25">&nbsp;</div>
+    <div class="item-content">
+      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
+      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-4.jpg', :alt => t('page.home.slider4_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content">
+      <h1 class="xlarge"><%= t('page.home.slider4_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider4_subhead').html_safe %></h3>
+      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.slider4_button').html_safe %><% end %>
+    </div>
+  </div>
 </div>
 
-<div class="hero-carousel owl-carousel owl-theme home-mobile">
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Home/sliders/Sola-2017-Slider-Mobile-2.jpg', :alt => "Beautiful studios, exclusive perks" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to '/own/studio-amenities' do %><%= image_tag 'Sola-2016-Slider-Mobile-2-FN.jpg', :alt => "Move-in ready studios" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :own_your_salon do %><%= image_tag 'Sola-2016-Slider-Mobile-3-FN.jpg', :alt => "Join a company that supports you" %><% end %></div>
-  <div class="item" style="display:none"><%= link_to :testimonials do %><%= image_tag 'Home/Slider4_Mobile.jpg', :alt => 'Salon professional testimonial' %><% end %></div>
+<div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
+  <div class="item">
+    <%= image_tag 'Home/Home-Mobile-Slider-1.jpeg', :alt => t('page.home.slider1_heading'), :width => 750, :height => 750 %>
+    <div class="item-content">
+      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
+      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
+      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <%= image_tag 'Home/Home-Mobile-Slider-2.jpeg', :alt => t('page.home.slider2_heading'), :width => 750, :height => 750 %>
+    <div class="item-content">
+      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
+      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
+      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <%= image_tag 'Home/Home-Mobile-Slider-3.jpeg', :alt => t('page.home.slider3_heading'), :width => 750, :height => 750 %>
+    <div class="img-overlay black-25">&nbsp;</div>
+    <div class="item-content">
+      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
+      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+    </div>
+  </div>
+  <div class="item" style="display:none">
+    <%= image_tag 'Home/Home-Mobile-Slider-4.jpeg', :alt => t('page.home.slider4_heading'), :width => 750, :height => 750 %>
+    <div class="item-content">
+      <h1 class="xlarge"><%= t('page.home.slider4_heading').html_safe %></h1>
+      <h3 class="mobile-hidden"><%= t('page.home.slider4_subhead').html_safe %></h3>
+      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.slider4_button').html_safe %><% end %>
+    </div>
+  </div>
 </div>
 
 <div class="container">
 
-  <div class="row">
-    <h2 class="text-center home-slogan" style="margin-top:27px;font-family:'Lato', sans-serif;font-size:41px;line-height:51px;font-weight:300;letter-spacing:0px;text-transform:none">Beautiful studios. Exclusive perks and support.<br>At Sola, you simply get more!</h2>
-  </div>
-
-  <div class="row">
-    <div class="one-third column home-tile">
-      <%= link_to :own_your_salon do %>
-        <%= image_tag 'Home/OwningCanada.jpg', :class => 'u-full-width', :alt => "A woman stands in her salon suite" %>
-        <h3 class="text-center">Owning your own salon<br>has never been so easy</h3>
-      <% end %>
-      <p class="text-center">Customize your studio, set your hours, create your vision.</p>
+  <div class="row tile-row home-tile-row">
+    <div class="one-half column">
+      <div class="tile-mask tile-for-professionals-own-your-salon">
+        <div class="content">
+          <div class="left-one-half">
+            <h5><%= t('page.home.for_professionals') %></h5>
+            <h2><%= t('page.home.own_your_salon') %></h2>
+            <ul>
+              <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
+              <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
+              <li><h4><%= link_to :locations do %><%= t('page.home.find_your_sola') %><span class="forward-arrow-white"></span><% end %></h4></li>
+            </ul>
+          </div>
+          <div class="right-one-half">
+            <div class="play-button-wrapper">
+              <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="tfpoys" class="play-video">
+                <span class="play-button-icon"></span>
+                <p><%= t('page.home.watch_our_video') %></p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', width: '566', height: '407' %></div>
+      </div>
     </div>
 
-    <div class="one-third column home-tile">
-      <%= link_to :locations do %>
-        <%= image_tag 'Home/ComingSoonToronto.jpg', :class => 'u-full-width', :alt => "Now open in Toronto" %>
-        <h3 class="text-center">Now open<br>in Toronto</h3>
+    <div class="one-half column">
+      <div class="tile-mask tile-for-customers-find-a-stylist">
+        <div class="content">
+          <h5><%= t('page.home.for_customers') %></h5>
+          <h2>
+            <%= t('page.home.find_a_sola') %>
+            <span class="desktop-br">&nbsp;</span>
+            <span class="home-services-animation">
+              <span class="active"><%= t('services.hairstylist') %></span>
+              <span><%= t('services.esthetician') %></span>
+              <span><%= t('services.nail_tech') %></span>
+              <span><%= t('services.makeup_artist') %></span>
+              <span><%= t('services.beauty_professional') %></span>
+            </span>
+          </h2>
+          <p><%= t('page.home.search_salon_professionals') %></p>
+          <%= form_tag [:search, :results], :method => :get do %>
+            <div class="filterable-dropdown-search" data-input="service_type">
+              <div class="dropdown">
+                <div class="selected-option"><span class="name"><%= t('services.hair') %></span><span class="down-triangle"></span></div>
+                <div class="options">
+                  <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
+                  <div class="option" data-value="hair"><%= t('services.hair') %></div>
+                  <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+                  <div class="option" data-value="nails"><%= t('services.nails') %></div>
+                  <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+                </div>
+              </div>
+              <span class="spyglass-black"></span>
+              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
+              <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
+              <button type="submit"><span class="search-icon"></span></button>
+            </div>
+          <% end %>
+        </div>
+        <div class="img-wrap"><%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %></div>
+      </div>
+    </div>       
+  </div>
+
+  <div class="row home-recently-featured-box">
+    <h5>Recently Featured In</h5>
+    <%= link_to "https://www.modernsalon.com/article/82697/modern-exclusive-an-interview-with-sola-salon-suites-new-ceo-randall-clark", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' do %>
+      <%= image_tag 'modern_salon_logo.png', width: 140, height: 51 %>
+    <% end %>
+    <%= link_to "http://salonmagazine.ca/en/business-career/7036-3-ways-sola-salon-studios-helps-hairstylists-be-more-flexible-2.html", :class => 'salon_magazine_logo', :alt => 'Salon Magazine logo', :target => '_blank' do %>
+      <%= image_tag 'salon_mag_logo.jpg', width: 96, height: 51 %>
+    <% end %>
+    <%= link_to "https://www.beautylaunchpad.com/sola-salon-studios-releases-new-app-solagenius", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' do %>
+      <%= image_tag 'beauty_launchpad_logo.png', width: 193, height: 51 %>
       <% end %>
-      <p class="text-center">Get on board with the beauty industry's best in salon studios!</p>
-    </div>
-
-    <div class="one-third column home-tile">
-      <a href="//www.youtube.com/watch?v=wlhDeuowaAI" class="play-video">
-        <%= image_tag 'watch_our_video.jpg', :class => 'u-full-width', :alt => 'A smiling woman gets her hair styled by a proud salon professional' %>
-        <h3 class="text-center">Watch<br>our video</h3>
-      </a>
-      <p class="text-center">Find out what a few very successful Sola professionals have to say!</p>
-    </div>        
+    <%= link_to "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' do %>
+      <%= image_tag 'forbes_logo.png', width: 122, height: 51 %>
+    <% end %>
+    <%= link_to "https://behindthechair.com/articles/myth-busters-sola-studio-owner-busts-5-salon-ownership-myths/", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
+      <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
+    <% end %>
   </div>
 
-  <div class="row home-recently-featured-box" style="border-bottom:0;margin-bottom:5px;">
-      <h3>Recently Featured In</h3>
-      <%= link_to "&nbsp;".html_safe, "http://www.modernsalon.com/training-and-career/pro-tips/8-steps-to-opening-salon-studio", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.americansalon.com/business/sola-salon-studios-are-changing-paradigm-salon-ownership?mkt_tok=3RkMMJWWfF9wsRonvKTBcO/hmjTEU5z16u0kWaCwgZ941El3fuXBP2XqjvpVQcBgMr7KRw8FHZNpywVWM8TILtkUt9hsLQziDW0%3D ", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.beautylaunchpad.com/suite-or-salon-stylist-brandie-kekoa-shares-her-salon-suite-experience ", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' %>
-      <%= link_to "&nbsp;".html_safe, "http://www.behindthechair.com/displayarticle.aspx?ID=4797&ITID=7", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' %>
+  <div class="owl-carousel owl-theme owl-desktop">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
   </div>
 
-</div>
+  <div class="owl-carousel owl-theme owl-mobile">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
 
-<div class="callout blue">
-  <div class="quote">&ldquo;There are no limits. It's <strong>your</strong> business!&rdquo;</div>
-  <div class="quote-author">Shelia Taylor &ndash; Ami Hair Studio</div>
-  <%= link_to 'View More Testimonials', :testimonials, :class => 'button inverted', :style => 'margin-top:30px' %>
+  <div class="block-quote-testimonial">
+    <h3><%= t('page.home.testimonial_text') %></h3>
+    <h4><%= t('page.home.testimonial_author') %></h4>
+  </div>
+
 </div>

@@ -1,0 +1,88 @@
+<div class="mobile-nav-wrapper">
+
+
+	<div class="mobile-nav">
+		<div class="close-x-black"></div>
+
+		<ul class="mobile-nav-top-menu open" data-menu="mobile-nav-top-menu">
+			<li>
+		  	<a href="#" data-submenu="own-your-salon">
+		  		<%= t 'nav.own_your_salon' %> 
+		  		<span class="forward-arrow-black"></span>
+		  		<span class="forward-arrow-pink"></span>
+		  	</a>
+		    <ul data-submenu="own-your-salon">
+		    	<li>
+		    		<a href="#" data-menu="mobile-nav-top-menu">
+				  		<span class="back-arrow-black"></span>
+				  		<span class="back-arrow-pink"></span>
+				  		<%= t 'nav.own_your_salon' %> 
+		    		</a>
+		    	</li>
+		      <li>
+		        <%= link_to :why_sola, :class => 'sublink' do %><%= t 'page.why_sola.title' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :our_studios, :class => 'sublink' do %><%= t 'page.our_studios.title' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :sola_sessions, :class => 'sublink' do %><%= t 'nav.sola_sessions' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :sola_pro, :class => 'sublink' do %><%= t 'nav.sola_pro' %><% end %>
+		      </li>
+		      <% if I18n.locale.to_s == 'en' %>
+		        <li>
+		          <%= link_to :solagenius, :class => 'sublink' do %><%= t 'nav.solagenius' %><% end %>
+		        </li>
+		      <% end %>
+		    </ul>
+			</li>
+			<li>
+		  	<a href="#" data-submenu="about-us">
+		  		<span class="forward-arrow-black"></span>
+		  		<span class="forward-arrow-pink"></span>
+		  		<%= t 'nav.about_us' %> 
+		  	</a>
+		    <ul data-submenu="about-us">
+		    	<li>
+		    		<a href="#" data-menu="mobile-nav-top-menu">
+				  		<span class="back-arrow-black"></span>
+				  		<span class="back-arrow-pink"></span>
+				  		<%= t 'nav.about_us' %> 
+		    		</a>
+		    	</li>
+		      <li>
+		        <%= link_to :who_we_are, :class => 'sublink' do %><%= t 'nav.who_we_are' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :our_story, :class => 'sublink' do %><%= t 'nav.our_story' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :leadership, :class => 'sublink' do %><%= t 'nav.leadership' %><% end %>
+		      </li>
+		      <li>
+		        <%= link_to :testimonials, :class => 'sublink' do %><%= t 'nav.testimonials' %><% end %>
+		      </li>
+	        <li>
+	          <%= link_to :news, :class => 'sublink' do %><%= t 'nav.in_the_news' %><% end %>
+	        </li>
+		    </ul>
+			</li>
+			<li><%= link_to raw(t('page.locations.title')), :locations %></li>
+			<li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
+			<li><%= link_to raw(t('page.blog.title')), :blog %></li>
+      <li><%= link_to :rent_a_studio, :class => 'sublink' do %><%= raw t 'header.rent_studio_button' %><% end %></li>
+      <li><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in sublink' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+      <li style="overflow:hidden;border-bottom:0">
+      	<div class="social-links">
+        	<div class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></div>
+        	<div class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></div>
+        	<div class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></div>
+        	<div class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></div>
+     		</div>
+     	</li>
+		</ul>
+	</div>
+	
+</div>

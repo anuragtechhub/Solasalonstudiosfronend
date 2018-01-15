@@ -152,8 +152,8 @@ html.swipebox-html.swipebox-touch {
 #swipebox-prev, 
 #swipebox-next, 
 #swipebox-close {
-	background-image: asset-data-url('icons.png');
-	background-repeat: no-repeat;
+	//background-image: asset-data-url('icons.png');
+	//background-repeat: no-repeat;
 	border: none!important;
 	text-decoration: none!important;
 	cursor: pointer;
@@ -175,11 +175,34 @@ html.swipebox-html.swipebox-touch {
 #swipebox-prev{
 	background-position: -32px 13px;
 	float: left;
+  background: asset-url('LeftArrowLightOutline@2x.png') !important;
+  background-size: (64px / 2) (64px / 2) !important;
+  height: (64px / 2) !important;
+  width: (64px / 2) !important;
+
+  &:hover, &:active {
+    background: asset-url('LeftArrowLightOutline@2x.png');
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }	
 }
 
 #swipebox-next{
-	background-position: -78px 13px;
+	background-position: -78px 13px !important;
 	float: right;
+  display: inline-block;
+  background: asset-url('RightArrowLightOutline@2x.png') !important;
+  background-size: (64px / 2) (64px / 2) !important;
+  height: (64px / 2) !important;
+  width: (64px / 2) !important;
+
+  &:hover, &:active {
+    background: asset-url('RightArrowLightOutline@2x.png');
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }	
 }
 
 #swipebox-close{
@@ -188,6 +211,17 @@ html.swipebox-html.swipebox-touch {
 	position: absolute;
 	z-index: 9999;
 	background-position: 15px 12px;
+
+  display: inline-block;
+  background: asset-url('close-x-white.png');
+  background-size: (30px / 1.2) (28px / 1.2);
+  height: (28px / 1.2);
+  width: (30px / 1.2);
+
+  &:hover, &:active {
+  	background: asset-data-url('close-x-pink.png');
+  	background-size: (30px / 1.2) (28px / 1.2);
+  }	
 }
 
 .swipebox-no-close-button #swipebox-close{
@@ -312,6 +346,7 @@ html.swipebox-html.swipebox-touch {
 @media screen and (min-width: 800px) {
 
 	#swipebox-close{
+		top: 10px;
 		right: 10px;
 	}
 

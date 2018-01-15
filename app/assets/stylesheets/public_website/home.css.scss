@@ -2,22 +2,62 @@
 @import 'variables';
 
 .home-slogan {
+  @include northwell;
+  font-size: 72px;
+  letter-spacing: 0px;
+  line-height: 172px;
+  font-weight: 300;
+  color: #000;
+  margin-top: 10px;
   display: block;
   clear: both;
   text-transform: none;
   font-weight: 300;
-  font-size: 33px;
-  line-height: 43px;
-  margin: 30px 30px 30px 30px;
+  font-size: 72px;
+  line-height: 72px;
+  margin: 40px 30px 40px 30px;
   letter-spacing: 0px;
 }
 
-.home-all {
+.owl-desktop {
   display: block !important;
 }
 
-.home-mobile {
+.owl-mobile {
   display: none !important;
+}
+
+.home-services-animation {
+  display: inline-block;
+  position: relative;
+  min-height: 56px;
+  white-space: nowrap;
+  
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #9B9B9B;
+    padding-bottom: 1px;
+    display: inline-block;
+    opacity: 0;
+    @include transition(opacity .25s ease);
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.home-tile-row {
+  margin: 60px auto -15px auto;
+}
+
+@media (max-width: 650px) {
+  .home-tile-row {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
 }
 
 .home-tile {
@@ -104,15 +144,12 @@
 .home-recently-featured-box {
   display: block;
 
-  margin: 15px 0 30px 0;
-  border: 1px solid #E6E6E6;
-  border-right: 0;
-  border-left: 0;
+  margin: 15px 0 10px 0;
   padding: 30px 0;
   text-align: center;
 
-  h3 {
-    margin: 0 0 20px 0;
+  h5 {
+    margin: 0 0 30px 0;
     text-align: center;
   }
 
@@ -128,6 +165,32 @@
   .search-input-with-icon input.large {
     margin-bottom: 0;
   }
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+
+    img {
+      position: relative;
+      opacity: 0.5;
+      margin: 0 5px;
+    }
+
+    &.salon_magazine_logo img {
+      top: -9px;
+    }
+
+    &.modern_salon_logo img {
+      top: 5px;
+    }
+
+    &.behind_the_chair_logo img {
+      top: 1px;
+    }
+
+    &.forbes_logo img {
+      top: -2px;
+    }
+  }
 }
 
 img.recently-featured-in {
@@ -136,72 +199,6 @@ img.recently-featured-in {
   height: auto;
   max-width: 400px;
   max-height: 50px;
-}
-
-.modern_salon_logo {
-  position: relative;
-  top: 3px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('modern_salon_logo.png') no-repeat center center;
-    background-size: 140px 51px;
-    width: 140px;
-    height: 51px;
-  }
-}
-
-.american_salon_logo {
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('american_salon_logo.png') no-repeat center center;
-    background-size: 160px 51px;
-    width: 160px;
-    height: 51px;
-  }
-}
-
-.beauty_launchpad_logo {
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('beauty_launchpad_logo.png') no-repeat center center;
-    background-size: 193px 51px;
-    width: 193px;
-    height: 51px;
-  }
-}
-
-.behind_the_chair_logo {
-  position: relative;
-  top: 1px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('behind_the_chair_logo.png') no-repeat center center;
-    background-size: 242px 51px;
-    width: 242px;
-    height: 51px;
-  }
-}
-
-.forbes_logo {
-  position: relative;
-  top: -2px;
-  opacity: 0.5;
-  &:link, &:visited, &:hover, &:active {
-    display: inline-block;
-    text-decoration: none;
-    background: asset-url('forbes_logo.png') no-repeat center center;
-    background-size: 122px 51px;
-    width: 122px;
-    height: 51px;
-  }
 }
 
 @media (max-width: 650px) {
@@ -225,7 +222,27 @@ img.recently-featured-in {
 
 }
 
+.home-all {
+  display: block !important;
+}
+
+.home-mobile {
+  display: none !important;
+}
+
 @media (max-width: 550px) {
+
+.owl-desktop {
+  display: none !important;
+}
+
+.owl-mobile {
+  display: block !important;
+
+  .arrow-left, .arrow-right {
+    display: none !important;
+  }
+}
 
 .home-all {
   display: none !important;

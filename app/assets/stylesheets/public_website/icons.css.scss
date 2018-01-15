@@ -1,0 +1,211 @@
+@import 'mixins';
+@import 'variables';
+
+/**
+* Close X
+*/
+
+.close-x-white {
+  display: inline-block;
+  background: asset-data-url('close-x-white.png');
+  background-size: (30px / 1.2) (28px / 1.2);
+  height: (28px / 1.2);
+  width: (30px / 1.2);
+
+  &:hover, &:active {
+  	background: asset-data-url('close-x-pink.png');
+  	background-size: (30px / 1.2) (28px / 1.2);
+  }
+}
+
+.close-x-black {
+  display: inline-block;
+  background: asset-data-url('close-x-black.png');
+  background-size: (30px / 1.2) (28px / 1.2);
+  height: (28px / 1.2);
+  width: (30px / 1.2);
+
+  &:hover, &:active {
+    background: asset-data-url('close-x-pink.png');
+    background-size: (30px / 1.2) (28px / 1.2);
+  }
+}
+
+.close-x-pink {
+  display: inline-block;
+  background: asset-data-url('close-x-pink.png');
+  background-size: (30px / 1.2) (28px / 1.2);
+  height: (28px / 1.2);
+  width: (30px / 1.2);
+
+  &:hover, &:active {
+    background: asset-data-url('close-x-pink.png');
+    background-size: (30px / 1.2) (28px / 1.2);
+  }
+}
+
+
+
+/*
+* Forward Arrow
+*/
+
+.forward-arrow-white {
+  display: inline-block;
+  background: asset-data-url('forward-arrow-white.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('forward-arrow-pink.png');
+    background-size: (20px / 2) (32px / 2);
+  }
+}
+
+.forward-arrow-black, .sola-spotlights .arrow-right {
+  display: inline-block;
+  background: asset-data-url('forward-arrow-black.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('forward-arrow-pink.png');
+    background-size: (20px / 2) (32px / 2);
+  }
+}
+
+.forward-arrow-pink {
+  display: inline-block;
+  background: asset-data-url('forward-arrow-pink.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+}
+
+
+
+/*
+* Back Arrow
+*/
+
+.back-arrow-white {
+  display: inline-block;
+  background: asset-data-url('back-arrow-white.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('back-arrow-pink.png');
+    background-size: (20px / 1) (32px / 1);
+  }
+}
+
+.back-arrow-black, .sola-spotlights .arrow-left {
+  display: inline-block;
+  background: asset-data-url('back-arrow-black.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+
+  &:hover, &:active {
+    background: asset-data-url('back-arrow-pink.png');
+    background-size: (20px / 2) (32px / 2);
+  }
+}
+
+.back-arrow-pink {
+  display: inline-block;
+  background: asset-data-url('back-arrow-pink.png');
+  background-size: (20px / 2) (32px / 2);
+  height: (32px / 2);
+  width: (20px / 2);
+}
+
+
+
+/**
+* Left Arrow Outline
+*/
+.left-arrow-outline {
+  display: inline-block;
+  background: asset-data-url('LeftArrowLightOutline@2x.png');
+  background-size: (64px / 2) (64px / 2);
+  height: (64px / 2);
+  width: (64px / 2);
+
+  &:hover, &:active {
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }
+}
+
+
+
+/**
+* Right Arrow Outline
+*/
+.right-arrow-outline {
+  display: inline-block;
+  background: asset-data-url('RightArrowLightOutline@2x.png');
+  background-size: (64px / 2) (64px / 2);
+  height: (64px / 2);
+  width: (64px / 2);
+
+  &:hover, &:active {
+    background-size: (64px / 2) (64px / 2);
+    height: (64px / 2);
+    width: (64px / 2);
+  }
+}
+
+
+
+/**
+* Play Button
+*/
+
+.play-button-icon {
+  display: inline-block;
+  background: asset-data-url('Play@2x.png');
+  background-size: (226px / 2) (226px / 2);
+  height: (226px / 2);
+  width: (226px / 2);
+
+  &:hover, &:active {
+    background-size: (226px / 2) (226px / 2);
+    height: (226px / 2);
+    width: (226px / 2);    
+  }
+}
+
+
+
+/**
+* Spyglass White
+*/
+
+.spyglass-white {
+  display: inline-block;
+  background: asset-data-url('spyglass.png');
+  background-size: (48px / 2) (48px / 2);
+  height: (48px / 2);
+  width: (48px / 2);
+}
+
+
+
+/**
+* Spyglass Black
+*/
+
+.spyglass-black {
+  display: inline-block;
+  background: asset-data-url('spyglass-black.png');
+  background-size: (48px / 2) (48px / 2);
+  height: (48px / 2);
+  width: (48px / 2);
+}

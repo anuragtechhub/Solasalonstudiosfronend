@@ -1,0 +1,181 @@
+@import 'mixins';
+@import 'variables';
+
+.filterable-dropdown-search {
+	position: relative;
+	//height: 75px;
+	padding: 10px 0 4px 0;
+	font-size: 0;
+	white-space: nowrap;
+	@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+	@include border-radius(4px);
+	background: #FFF;
+	text-align: left;
+
+	.spyglass-black {
+		display: none;
+	}
+
+	.dropdown {
+		margin-top: 10px;
+		position: relative;
+		//display:inline-block;
+		display: none;
+
+		.selected-option {
+			position: relative;
+			height: 34px;
+			width: 135px;
+			padding: 9px 30px 10px 30px;
+			background: #FFF;
+			@include helvetica;
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 18px;
+			color: #4A4A4A;
+			cursor: pointer;
+			border-right: 1px solid #F2F2F2;
+    	text-align: center;
+
+			&:hover, &:active {
+				color: $brand-pink;
+			}
+		}
+
+		.options {
+			min-width: 137px;
+			position: absolute;
+			display: none;
+			background: #FFF;
+			padding: 20px 25px 18px 25px;
+			z-index: 99;
+			top: 60px;
+			text-align: left;
+			left: 0;
+			@include border-radius(4px);
+			@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+
+			&.open {
+				display: block;
+			}
+
+			.option {
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 18px;
+				color: #4A4A4A;
+				padding: 5px 0;
+				display: block;
+				cursor: pointer;
+
+				&:hover, &:active {
+					color: $brand-pink;
+				}
+			}
+		}
+	}
+
+	input.searchbox {
+		position: relative;
+		top: 4px;
+		display:inline-block;
+		height: 34px;
+		width: calc(100% - 54px); //- 135px
+		padding: 0 20px;
+		background: #FFF;
+		border: 0 !important;
+		margin: 0;
+		@include helvetica;
+		font-size: 18px;	
+		font-weight: 300;	
+		line-height: 18px;
+
+	  &::-moz-placeholder {
+	    color: #9B9B9B;
+	    opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+	  }
+	  &:-ms-input-placeholder { color: #9B9B9B; } // Internet Explorer 10+
+	  &::-webkit-input-placeholder  { color: #9B9B9B; } // Safari and Chrome
+	}
+
+	button {
+		position: relative;
+    top: -3px;
+    right: 1px;
+		height: 46px;
+		width: 46px;
+	  background: $brand-pink; /* For browsers that do not support gradients */
+	  @include background-gradient(#FF5ABB, #EF008C);
+		margin: 0;
+		border: 0;
+		padding: 15px;
+		@include border-radius(4px);
+		@include transition(opacity 0.15s ease-in-out);
+		opacity: 1;
+
+		&:focus, &:hover, &:active {
+			opacity: 0.5;
+		}
+	}
+
+	.down-triangle {
+		position: relative;
+    top: -2px;
+    left: 10px;
+		display: inline-block;
+		-webkit-transform:rotate(360deg);
+		border-style: inset;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 5px 5px 0 5px;
+		border-color: #ed0f8d transparent transparent transparent;
+	}
+
+	.search-icon {
+		display: inline-block;
+		background: asset-data-url('spyglass.png');
+    background-size: (48px / 3) (48px / 3);
+    width: (48px / 3);
+    height: (48px / 3);
+	}
+
+}
+
+@media (max-width: 888px) {
+	.tile-for-customers-find-a-stylist h5 {
+		margin-bottom: 5px;
+	}
+
+	.filterable-dropdown-search {
+		height: auto;
+		padding: 0;
+		background: transparent;
+		//@include box-shadow(none);
+		@include border-radius(0px);
+
+		.spyglass-black {
+	    position: absolute;
+	    z-index: 2;
+			bottom: 12px;
+	    left: 20px;
+			display: block;
+		  background-size: (48px / 3) (48px / 3);
+		  height: (48px / 3);
+		  width: (48px / 3);
+		}
+
+		.dropdown, button {
+			display: none;
+		}
+
+		input.searchbox {
+			width: 100%;
+			font-size: 14px;
+			height: 48px;
+			padding: 2px 20px 0 58px;
+			@include border-radius(4px);
+		}
+	}
+}

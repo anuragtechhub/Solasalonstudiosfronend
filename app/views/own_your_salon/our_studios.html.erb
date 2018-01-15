@@ -1,0 +1,148 @@
+<%= render 'shared/public_website/own_your_salon_nav', :page => :our_studios %>
+
+<div class="our-studios">
+
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+      <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <div class="item-content overlayed">
+        <h1 class="chalet"><%= t('page.our_studios.hero_heading1').html_safe %></h1>
+        <p><%= t('page.our_studios.hero_heading2').html_safe %></p>
+        <%= link_to :gallery, :class => 'button primary' do %><%= t('page.our_studios.view_gallery') %><% end %>
+        <div class="learn-more-button">
+          <h5><%= t('page.why_sola.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content-container">
+    <h2 class="text-center"><%= t('page.our_studios.studio_amenities') %></h2>
+  </div>
+
+  <div class="amenities-grid">
+
+    <div class="grid-row">
+
+      <div class="grid-item two-thirds left">
+        <div class="front">
+          <%= image_tag 'studios/ShampooBowl.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.wash_basin.body') %></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-item one-third right">
+        <div class="front">
+          <%= image_tag 'studios/Shelving.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.products.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.products.body') %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-row">
+
+      <div class="grid-item one-third left">
+        <div class="front">
+          <%= image_tag 'studios/Mirrors.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.mirror.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.mirror.body') %></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-item two-thirds right">
+        <div class="front">
+          <%= image_tag 'studios/Cabinet.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.tool_cabinet.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.tool_cabinet.body') %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-row">
+
+      <div class="grid-item one-hundred">
+        <div class="front">
+          <%= image_tag 'studios/Chair.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.chair.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.chair.body') %></h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grid-row">
+
+      <div class="grid-item two-thirds left">
+        <div class="front">
+          <%= image_tag 'studios/Cabinet.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.cabinetry.heading').html_safe %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.cabinetry.body') %></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-item one-third right">
+        <div class="front">
+          <%= image_tag 'studios/Walls.jpg' %>
+          <h5 class="title"><%= t('page.our_studios.insulated_walls.heading') %></h5>
+        </div>
+        <div class="back">
+          <div class="text">
+            <h2><%= t('page.our_studios.insulated_walls.body') %></h2>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+  </div>
+
+  <div class="view-gallery-of-studios">
+    <div class="container">
+      <%= link_to :gallery, :class => 'button outline-large-white' do %><%= t('page.our_studios.view_gallery') %><% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cta cta-own">
+      <%= image_tag 'cta/OwnSalon.png' %>
+      <div class="cta-contents">
+        <h2><%= t 'page.our_studios.join_our_community' %></h2>
+        <p><%= t('page.our_studios.join_our_community_text').html_safe %></p>
+        <%= link_to :contact_us, :class => 'button primary' do %><%= t 'page.our_studios.join_our_community_button_text' %><% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<% content_for(:scripts) { javascript_include_tag('our_studios') } %>
+<% content_for(:title) { t('page.our_studios.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/our-studios" } %>
+<% content_for(:meta_description) { t('page.why_sola.meta_description') } %>

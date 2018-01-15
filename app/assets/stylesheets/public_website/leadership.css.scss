@@ -1,0 +1,85 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+a.leader-tile, a.leader-tile:link, a.leader-tile:visited {
+	display: block;
+	text-decoration: none;
+	margin-bottom: 40px;
+	@include transition(opacity 0.15s ease-in-out);
+	opacity: 1;
+
+  .img-wrap {
+  	position: relative;
+  	padding-bottom: 62.5%;
+
+	  img {
+	  	position: absolute;
+			top: 0;
+	  	left: 0;
+	 		width: 100%;
+	  	height: auto;
+	  	z-index: 1;
+	  }
+  }
+
+	h3 {
+		margin: 20px 0 -2px 0;
+		color: #000;
+	}
+
+	.title {
+		@include helvetica;
+		font-size: 14px;
+		line-height: 24px;
+		color: #4A4A4A;
+		-moz-osx-font-smoothing: antialiased; //auto
+	  -webkit-font-smoothing: antialiased; //auto
+	  font-smoothing: antialiased; //auto		
+	}
+
+	&:hover, &:active {
+		opacity: 0.5;
+	}
+
+	.pink-link {
+		text-decoration: none;
+		font-weight: normal;
+		color: $brand-pink;
+	}
+}
+
+.leadership-bio {
+  .img-wrap {
+  	position: relative;
+  	padding-bottom: 62.5%;
+  	margin: 5px 0 40px 0;
+
+	  img {
+	  	position: absolute;
+			top: 0;
+	  	left: 0;
+	 		width: 100%;
+	  	height: auto;
+	  	z-index: 1;
+	  }
+  }
+
+	h2 {
+		margin-bottom: 0;
+	}
+
+	.title {
+		margin-top: 2px;
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	p, li {
+		font-size: 18px;
+		line-height: 32px;
+		color: #4A4A4A;
+		-moz-osx-font-smoothing: antialiased; //auto
+	  -webkit-font-smoothing: antialiased; //auto
+	  font-smoothing: antialiased; //auto
+	}
+}

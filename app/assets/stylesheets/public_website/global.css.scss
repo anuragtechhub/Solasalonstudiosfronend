@@ -2,7 +2,9 @@
 @import 'variables';
 
 html {
-  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto; //antialiased
+  -webkit-font-smoothing: auto; //antialiased
+  font-smoothing: auto; //antialiased
   box-sizing: border-box;
 }
 
@@ -11,10 +13,35 @@ html {
 }
 
 body {
-  font-family: 'Lato', Arial, sans-serif;
+  @include helvetica;
   overflow: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+}
+
+.stop-scrolling {
+  // height: 100%;
+  // overflow: hidden;
+  // position: fixed; 
+  // overflow-y:scroll;
+}
+
+.body-content {
+  position: relative;
+  background: #FFF asset-data-url('background-stripe.png') repeat-y top left;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 1000px) {
+  .body-content {
+    background-position: -160px 0px;
+  }
+}
+
+@media (max-width: 800px) {
+  .body-content {
+    background-position: -260px 0px;
+  }
 }
 
 a, a:link, a:visited, a:hover, a:active {

@@ -3,7 +3,13 @@
 
 .country-switcher {
   position: relative;
-  width: 170px;
+  width: 140px;
+
+  &:hover, &:active {
+    .name, .dropdown-arrow {
+      opacity: 0.5;
+    }
+  }
 
   .country {
     overflow: hidden;
@@ -11,24 +17,24 @@
     cursor: pointer;
     white-space: nowrap;
 
-    &:hover {
-      .name {
-        color: $brand-pink;
+    &:hover, &:active {
+      .name, .dropdown-arrow {
+        color: #FFF !important;
+        opacity: 0.5;
       }
     }
 
     .name {
       position: relative;
       top: -2px;
-      margin: 0 7px 0 10px;
+      margin: 0 7px 0 7px;
       display: inline-block;
       float: left;
-      color: #000;
-      font-size: 10px;
-      letter-spacing: 2px;
+      color: #FFF;
+      font-size: 11px;
       font-weight: bold;   
-      text-transform: uppercase; 
-      @include transition(color .25s ease);  
+      @include transition(opacity 0.15s ease-in-out);
+      opacity: 1;
     }
     
     .flag {
@@ -58,20 +64,44 @@
     .country {
       background: #FFF;
       overflow: hidden;
-      padding: 8px 16px;
+      padding: 10px 15px 5px 15px;
+      //height: 45px;
+
+      // &.first {
+      //   margin-top: 12px;
+      // }
+
+      // &.last {
+      //   margin-top: -12px;
+      // }
+
+      .name {
+        color: #111;
+        @include transition(color 0.15s ease-in-out);
+        opacity: 1;
+      }
+
+      &:hover, &:active {
+        .name {
+          color: $brand-primary !important;
+          opacity: 1 !important;
+        }
+      }
     }
   }
 
   .dropdown-arrow {
     position: absolute;
-    top: 12px;
-    right: 10px;
+    top: 13px;
+    right: 13px;
     display: block;
-    background: asset-data-url('down-arrow.gif') no-repeat center;
-    background-size: 8px 5px;
-    width: 8px;
-    height: 5px;
+    background: asset-data-url('down-arrow-white-nav1.png') no-repeat center;
+    background-size: 7px 4px;
+    width: 7px;
+    height: 4px;
     pointer-events: none;
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;    
   }
 
 }

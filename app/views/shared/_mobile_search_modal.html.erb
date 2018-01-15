@@ -1,0 +1,12 @@
+<div class="mobile-search-modal">
+
+	<div class="close-x-white"></div>
+
+	<div class="mobile-search-form">
+		<%= form_tag [:search, :results], :method => :get do %>
+			<input type="search" name="query" placeholder="<%= raw t 'page.search.search' %>" />
+			<p><%= raw t 'header.search_placeholder' %></p>
+		<% end %>
+	</div>
+
+</div>

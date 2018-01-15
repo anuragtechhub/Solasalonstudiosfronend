@@ -1,0 +1,102 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.cta {
+	//position: relative;
+	background: #F5F9FB;
+	overflow: hidden;
+	display: block;
+	padding: 30px;
+	margin: 90px auto 90px auto;
+
+	img {
+		position: absolute;
+		top: -50px;
+		left: -50px;
+		width: 50%;
+		height: auto;
+	}
+
+	.cta-contents {
+		width: 50%;
+		float: right;
+		padding: 30px;
+
+		h2 {
+			margin-bottom: 20px;
+		}
+
+		.button.primary {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: 950px) {
+	.cta {
+
+		img {
+			top: -25px;
+			left: -25px;
+		}
+	}
+}
+
+@media (max-width: 888px) {
+	.cta {
+
+		img {
+			top: -5px;
+			left: -25px;
+		}
+	}
+}
+
+
+@media (max-width: 850px) {
+	.cta {
+		text-align: center;
+		overflow: visible;
+		margin-bottom: 0;
+		
+		img {
+			text-align: center;
+			position: relative;
+			top: -80px;
+			left: auto;
+			width: 75%;
+			margin: 0 auto;
+			display: inline-block;
+			clear: both;
+		}
+
+		.cta-contents {
+			width: 100%;
+			text-align: center;
+			float: none;
+			display: block;
+			clear: both;
+			padding: 0px;
+			margin-top: -60px;
+
+			h2 {
+				//text-align: left;
+				font-size: 24px;
+				line-height: 36px;
+				margin-bottom: 10px;
+			}
+
+			p {
+				//text-align: left;
+				font-size: 14px;
+				line-height: 24px;
+				margin-bottom: 20px;
+			}
+
+			.button.primary {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

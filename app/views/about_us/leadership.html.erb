@@ -1,0 +1,59 @@
+<%= render 'shared/public_website/about_us_nav', :page => :leadership %>
+
+<div class="container content-container">
+	<h1><%= t 'page.leadership.title' %></h1>
+
+	<div class="row">
+		<div class="six columns">
+			<%= link_to :randall_clark, :class => 'leader-tile' do %>
+				<div class="img-wrap"><%= image_tag 'Leadership/Randall.jpg', :width => 1600, :height => 1000 %></div>
+				<h3 class="name">R. Randall Clark</h3>
+				<span class="title"><%= t 'page.leadership.ceo' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>
+		<div class="six columns">
+			<%= link_to :ben_jones, :class => 'leader-tile' do %>
+				<div class="img-wrap"><%= image_tag 'Leadership/Ben.jpg', :width => 1600, :height => 1000 %></div>
+				<h3 class="name">Ben Jones</h3>
+				<span class="title"><%= t 'page.leadership.chief_development_officer' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="six columns">
+			<%= link_to :todd_neel, :class => 'leader-tile' do %>
+				<div class="img-wrap"><%= image_tag 'Leadership/Todd.jpg', :width => 1600, :height => 1000 %></div>
+				<h3 class="name">J. Todd Neel</h3>
+				<span class="title"><%= t 'page.leadership.cfo' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>
+		<div class="six columns">
+			<%= link_to :jennie_wolff, :class => 'leader-tile' do %>
+				<div class="img-wrap"><%= image_tag 'Leadership/Jennie.jpg', :width => 1600, :height => 1000 %></div>
+				<h3 class="name">Jennie Wolff</h3>
+				<span class="title"><%= t 'page.leadership.vice_president_marketing' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>		
+	</div>
+
+	<div class="row">
+		<div class="six columns">
+			<%= link_to :myrle_mcneal, :class => 'leader-tile' do %>
+				<div class="img-wrap"><%= image_tag 'Leadership/Myrle.jpg', :width => 1600, :height => 1000 %></div>
+				<h3 class="name">Myrle McNeal</h3>
+				<span class="title"><%= t 'page.leadership.managing_director' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>
+	</div>	
+
+</div>
+
+<% content_for(:title) { t('page.leadership.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/leadership" } %>
+<% content_for(:meta_description) { t('page.leadership.meta_description') } %>

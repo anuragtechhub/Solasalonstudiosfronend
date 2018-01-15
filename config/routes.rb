@@ -13,9 +13,23 @@ Solasalonstudios::Application.routes.draw do
  
   get '5000' => 'home#sola_5000', :as => :sola_5000
 
+
+
+  # About Us URLs
+
   get "about-us" => 'about_us#index', :as => :about_us
   get "about" => 'about_us#index'
   
+  get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
+  get "leadership" => 'about_us#leadership', :as => :leadership
+  get "our-story" => 'about_us#our_story', :as => :our_story 
+  get 'leadership/r-randall-clark' => 'about_us#randall_clark', :as => :randall_clark
+  get 'leadership/ben-jones' => 'about_us#ben_jones', :as => :ben_jones
+  get 'leadership/jennie-wolff' => 'about_us#jennie_wolff', :as => :jennie_wolff
+  get 'leadership/myrle-mcneal' => 'about_us#myrle_mcneal', :as => :myrle_mcneal
+  get 'leadership/j-todd-neel' => 'about_us#todd_neel', :as => :todd_neel
+
+
   get "contact-us" => "contact_us#index", :as => :contact_us
   get "contact-us-thank-you" => 'contact_us#thank_you', :as => :contact_us_thank_you
   get 'contact_us' => "contact_us#index"
@@ -31,11 +45,30 @@ Solasalonstudios::Application.routes.draw do
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
 
+
+
+  # Own Your Salon URLs
+
+  # old own paths
+  get 'amenities' => 'own_your_salon#index'
   get "own-your-salon" => 'own_your_salon#index', :as => :own_your_salon
   get "own-your-salon/:tab" => 'own_your_salon#index'
   get 'own' => 'own_your_salon#index'
+  get 'own/studio-amenities' => 'own_your_salon#studio_amenities'
+  get 'own/own-your-salon' => 'own_your_salon#own_your_salon'
+  get 'own/sola-pro' => 'own_your_salon#old_sola_pro'
+  get 'own/sola-sessions' => 'own_your_salon#old_sola_sessions'
+  get 'own/solagenius' => 'own_your_salon#old_solagenius'
   get 'own/:tab' => 'own_your_salon#index', :as => :own_tab
-  get 'amenities' => 'own_your_salon#index'
+
+  # current own paths
+  get 'our-studios' => 'own_your_salon#our_studios', :as => :our_studios
+  get 'sola-pro' => 'own_your_salon#sola_pro', :as => :sola_pro
+  get 'sola-sessions' => 'own_your_salon#sola_sessions', :as => :sola_sessions
+  get 'solagenius' => 'own_your_salon#solagenius', :as => :solagenius
+  get 'why-sola' => 'own_your_salon#why_sola', :as => :why_sola
+
+
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
   
@@ -62,6 +95,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "locations/:url_name" => 'locations#salon', :as => :salon_location
   get "locations/:url_name/contact-us-success" => 'locations#salon'
+  match 'find-salon-location' => 'locations#find_salon', :via => [:get, :post], :as => :find_salon_location
   
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'

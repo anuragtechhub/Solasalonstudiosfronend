@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 .news-articles {
   margin-top: -30px !important;
   margin-bottom: 30px;
@@ -5,7 +8,7 @@
 
 .news-article {
   padding-top: 50px;
-  margin-top: 50px;
+  margin-top: 30px;
   border-top: 1px dashed #DDDDDD;
   display: block;
   clear: both;
@@ -33,11 +36,6 @@
       font-size: 25px;
       line-height: 31px;
 
-      &.date {
-        font-size: 15px;
-        line-height: 21px;
-      }
-
       a, a:link, a:visited, a:hover, a:active {
         color: #474747;
         text-decoration: none;
@@ -49,14 +47,27 @@
       }
     }
 
+    h5 {
+      margin-top: 2.5px;
+      color: #4A4A4A;
+    }
+
     p {
-      margin-top: 15px;
+      margin-top: 30px;
       line-height: 25px;
+
+      // &.date {
+      //   // font-size: 13px;
+      //   // line-height: 17px;
+      //   margin-top: 0;
+      //   margin-bottom: 0;
+      // }
     }
   }
 
   .social {
     display: inline-block;
+    margin-top: 0;
     margin-bottom: 0;
 
     li {
@@ -64,7 +75,19 @@
       display: inline-block;
       
       a, a:link, a:visited, a:hover, a:active {
-        padding: 5px 25px;
+        padding: 0 !important;
+        margin-right: 25px;
+        border: 0 !important;
+        background: transparent;
+        color: #000;
+        opacity: 1;
+        @include transition(opacity 0.15s ease-in-out);
+      }
+
+      a:hover, a:active {
+        color: #000;
+        opacity: 0.5;
+        border: 0;
       }
     }
   }
@@ -107,6 +130,10 @@
     padding-top: 30px;
     margin-top: 30px;
     
+    h5 {
+      margin-top: 5px;
+    }
+
     .image, .text {
       width: 100%;
       display: block;

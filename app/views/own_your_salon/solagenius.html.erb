@@ -1,0 +1,79 @@
+<%= render 'shared/public_website/own_your_salon_nav', :page => :solagenius %>
+
+<div class="sola-genius">
+
+  <div class="hero-wrapper">
+    <div class="hero-carousel owl-carousel owl-theme">
+      <div class="item">
+        
+        <div class="img-wrap"><%= image_tag 'Genius_Hero.jpg', :width => 1600, :height => 800 %></div>
+        <div class="item-content overlayed left-align">
+          <div class="left-align-container">
+            <h2><%= t('page.sola_genius.hero_heading').html_safe %></h2>
+            <p><%= t('page.sola_genius.hero_text') %></p>
+            <%= image_tag 'Gloss@2x.png', :class => 'gloss-logo' %>
+          </div>
+        </div>
+
+        <div class="learn-more-button">
+          <h5><%= t('page.sola_genius.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
+        </div>
+      </div>
+    </div>
+    <div class="sola-genius-iphone">&nbsp;</div>
+  </div>
+<!--   <div class="hero-fullscreen">
+    <div class="hero-carousel-fullscreen" data-autoplayoff="true">
+      <div class="item"><%= image_tag 'own/sola_genius_hero_desktop.jpg', :class => 'fullscreen', :'data-width' => 1488, :'data-height' => 984, :width => 1488, :height => 984 %></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-content-wrapper">
+        <%= image_tag 'own/introducing_sola_genius.png', :class => 'introducing_sola_genius', :alt => 'Introducing Sola Genius' %> 
+        <div class="sola-genius-hero-heading"><div class="container">Run Your Sola Like a Boss</div></div>
+        <div class="sola-genius-hero-text"><div class="container">Step up your game with SolaGenius: a cutting edge app designed to supercharge your Sola business.</div></div>
+        <a href="#sola-genius-gallery" class="down_circle_arrow_icon" data-aos="fade-down" data-aos-offset="-200"></a>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="sola-genius-gallery" id="sola-genius-gallery">
+    <div class="sola-genius-gallery-inner" id="sola-genius-gallery-inner">    
+      <div class="explore-sola-genius"><h2 data-aos="fade-down" data-aos-offset="200"><%= t('page.sola_genius.run_your_sola_like_a_boss') %></h2></div>
+      <%= render 'sola_genius_gallery_desktop' %>
+    </div>
+  </div>
+
+  <div class="sneak-peak" data-aos="fade-up" data-aos-offset="200">
+    <div class="container">
+      <h2 class="brand text-center"><%= t('page.sola_genius.experience_solagenius').html_safe %></h2>
+      <div class="session">
+        <a href="//www.youtube.com/watch?v=-fWwpXeSbAM&feature=youtu.be" class="play-video" rel="sola-pro-video-1">
+          <% if I18n.locale == :en %>
+            <%= image_tag 'Sola-Genius-Video-Thumb.jpg', :width => 952, :height => 456, :alt => "A person using the SolaGenius app on a smartphone" %>
+          <% else %>
+            <%= image_tag 'Sola-Genius-Video-Thumb.jpg', :width => 952, :height => 456, :alt => "A person using the SolaGenius app on a smartphone" %>
+          <% end %>
+          <div class="play-btn">
+            <span class="fa fa-5x fa-play"></span>
+          </div>
+        </a>
+      </div> 
+    </div>
+  </div>
+
+  <div class="sola-genius-pricing">
+    <div class="container" data-aos="fade-right" data-aos-offset="40">
+      <p><a href="https://sola.glossgenius.com/" target="_blank"><span class="large"><strong>$20/month</strong><br />for Sola Professionals</span></a></p>
+      <p><a href="https://sola.glossgenius.com/" target="_blank">2.6% credit card processing fee (lowest in the industry)!<span class="desktop-br">&nbsp;</span>Full suite of SolaGenius business support tools (a $44/month value).</a></p>
+      <p><a href="https://sola.glossgenius.com/" target="_blank" class="button primary">Get Started</a></p>
+    </div>
+  </div>
+
+</div>
+
+<% content_for(:scripts) { javascript_include_tag('solagenius') } %>
+<% content_for(:title) { 'SolaGenius' } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/solagenius" } %>
+<% content_for(:meta_description) { t('page.why_sola.meta_description') } %>

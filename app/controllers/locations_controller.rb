@@ -2,6 +2,25 @@ class LocationsController < PublicWebsiteController
 
   before_action :map_defaults
 
+  def find_salon
+    if params[:query]
+      query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
+
+      # locations
+      locations1 = Location.near(params[:query].downcase).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
+      locations2 = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
+      locations3 = Location.where(:msa_id => Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
+
+      @locations = locations1.open + locations2.open + locations3.open
+      if @locations
+        @locations.uniq!
+        @locations.sort! { |a, b| a.name <=> b.name }
+      end
+    end
+
+    render :json => @locations.to_json(:only => [:name, :url_name, :email_address_for_inquiries, :general_contact_name, :phone_number, :city, :state], :methods => [:full_address])
+  end
+
   def index
     if I18n.locale == :en
       @country = 'US'

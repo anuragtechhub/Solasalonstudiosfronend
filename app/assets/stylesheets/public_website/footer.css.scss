@@ -1,8 +1,13 @@
 @import 'variables';
 @import 'bootstrap/mixins';
+@import 'mixins';
 
 #footer {
   border-top: 1px solid $gray-lighter;
+
+  h4 {
+    margin-bottom: 20px;
+  }
 
   .row.first {
     display: flex;
@@ -36,14 +41,22 @@
     margin: -5px 0 0 0;
 
     li {
+      font-size: 13px;
+      line-height: 17px;
       margin-bottom: 0;
+      -moz-osx-font-smoothing: auto; //antialiased
+      -webkit-font-smoothing: auto; //antialiased
+      font-smoothing: auto; //antialiased
     }
 
     a {
       display: inline-block;
       color: #4A4A4A;
       text-decoration: none;
-      padding: 5px 0;
+      padding: 7px 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
 
       &:hover, &:active {
         color: #BABABA;
@@ -52,7 +65,12 @@
   }
 
   p {
-    margin: 0;
+    -moz-osx-font-smoothing: auto; //antialiased
+    -webkit-font-smoothing: auto; //antialiased
+    font-smoothing: auto; //antialiased
+    font-size: 13px;
+    line-height: 17px;
+    margin: 0 0 15px 0;
   }
 
   .row.second {
@@ -60,7 +78,7 @@
   }
 
   .newsletter-sign-up {
-    margin: 10px 0 -5px 0;
+    margin: 20px 0 -5px 0;
     padding-left: 1px;
     overflow: hidden;
 
@@ -68,7 +86,7 @@
       position: relative;
       top: 0;
       font-size: 12px;
-      height: 40px;
+      height: 33px;
       border: 1px solid #DBDBDB;
       background: #FBFBFB;
       margin: 0;
@@ -78,59 +96,95 @@
     }
 
     input {
+      @include helvetica;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 0 0 3px 0;
       margin-right: 0;
       width: 75%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #000;
 
-      &:focus {
-        border: 1px solid $brand-pink;
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #ABABAB;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: #ABABAB;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: #ABABAB;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: #ABABAB;
+      }
+
+      &:focus, &:active, &:hover {
+        border: 0 !important;
+        border-bottom: 1px solid #000 !important;
       }
     }
 
-    button {
-      text-align: center;
+    button, button:hover, button:active {
+      text-align: right;
       width: 25%;
       background: #FFF;
-      font-family: 'Lato', Arial, sans-serif;
-      padding: 5px 15px;
+      @include helvetica;
+      font-weight: bold;
+      color: #000;
+      padding: 5px 0;
       text-transform: none;
       letter-spacing: 0px;
       font-size: 13px;
-      border-left: 0;
+      line-height: 16px;
+      border: 0;
+      border-bottom: 1px solid #000;
 
-      &:hover, &:active {
-        @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
-        color: #FFF;
-        border: 1px solid $brand-pink;
-      }
+      // &:hover, &:active {
+      //   //@include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+      //   @include helvetica;
+      //   font-weight: bold;
+      //   padding: 5px 0;
+      //   text-transform: none;
+      //   letter-spacing: 0px;
+      //   font-size: 13px;
+      //   line-height: 16px;
+      //   border: 0;
+      //   border-bottom: 1px solid #000;
+      //   background: #FFF;
+      // }
     }
   }
 
   ul.social {
     overflow: hidden;
-    margin-top: 30px;
+    margin-top: 40px;
     border: 0;
 
     li {
       margin: 0;
       display: block;
       float: left;
-      width: 25%;
+      width: auto;
+      // width: 25%;
       text-align: center;
       border: 0;
 
       a, a:link, a:visited, a:hover, a:active {
-        padding: 5px 0;
-        margin: 0;
+        padding: 0;
+        margin: 0 20px 0 0;
         background: #FFF;
-        display: block;
-        font-size: 20px;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 16px;
         color: #000;
-        border: 1px solid #DBDBDB;
-        border-right: 0;
-        -moz-transition-property: none !important;
-        -webkit-transition-property: none !important;
-        -o-transition-property: none !important;
-        transition-property: none !important;
+        border: 0 !important;
+        @include transition(opacity 0.15s ease-in-out);
+        opacity: 1;
+
+        // &:last-child {
+        //   padding-right: 0;
+        // }
 
         span {
           position: relative;
@@ -138,9 +192,10 @@
         }
 
         &:hover, &:active {
-          @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
-          color: #FFF;
-          border: 1px solid $brand-pink;
+          // @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+          // color: #FFF;
+          opacity: 0.5;
+          border: 0 !important;
         }
       }
 
@@ -160,19 +215,23 @@
   
   #footer {
 
+    .one-half.column {
+      width: 48%;
+    }
+
     .row.first {
       display: block;
     }
 
     ul.p {
-      margin-top: -5px;
+      //margin-top: -5px;
 
       &.last {
         margin-top: 0;
       }
       
       a {
-        padding: 5px 0;
+        //padding: 5px 0;
       }
     }
 
@@ -185,7 +244,7 @@
         display: block;
         width: 100% !important;
         border: 0;
-        border-bottom: 1px solid #E6E6E6;
+        border-bottom: 1px solid #DBDBDB;
       }
 
       &.third {

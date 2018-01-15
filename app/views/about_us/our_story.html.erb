@@ -1,0 +1,56 @@
+<%= render 'shared/public_website/about_us_nav', :page => :our_story %>
+
+<div class="container content-container our-story">
+	<h1><%= t 'page.our_story.title' %></h1>
+
+	<div class="img-wrap">
+		<%= image_tag 'Story_1a.jpg', :class => 'u-full-width' %>
+		<h5><%= t 'page.our_story.founders' %></h5>
+	</div>
+
+	<h2><%= t('page.our_story.body1').html_safe %></h2>
+
+	<p><%= t('page.our_story.body2').html_safe %></p>
+
+	<div class="img-wrap">
+		<%= image_tag 'Story_2.jpg', :class => 'u-full-width' %>
+		<h5><%= t 'page.our_story.callout1_name' %></h5>
+	</div>
+
+	<div class="block-quote-side">
+		<h4><%= t('page.our_story.callout1').html_safe %></h4>
+		<h5>- <%= t 'page.our_story.callout1_name' %></h5>
+	</div>
+
+	<p><%= t('page.our_story.body3').html_safe %></p>
+	<p><%= t('page.our_story.body4').html_safe %></p>
+	<p><%= t('page.our_story.body5').html_safe %></p>
+	<p><%= t('page.our_story.body6').html_safe %></p>
+	<p><%= t('page.our_story.body7').html_safe %></p>
+
+	<div class="block-quote-side">
+		<h4><%= t('page.our_story.callout2').html_safe %></h4>
+		<h5>- <%= t 'page.our_story.callout2_name' %></h5>
+	</div>
+
+	<div class="img-wrap"><%= image_tag 'Story_3.jpg', :class => 'u-full-width' %></div>
+
+	<p><%= t('page.our_story.body8').html_safe %></p>
+	<p><%= t('page.our_story.body9').html_safe %></p>
+
+</div>
+
+<div class="container our-story">
+  <div class="cta cta-own">
+    <%= image_tag 'cta/OwnSalon.png' %>
+    <div class="cta-contents">
+      <h2><%= t 'page.our_story.join_our_community' %></h2>
+      <p><%= t 'page.our_story.join_our_community_text' %></p>
+      <%= link_to :contact_us, :class => 'button primary' do %><%= t 'page.our_story.join_our_community_button_text' %><% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for(:title) { t('page.our_story.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/our-story" } %>
+<% content_for(:meta_description) { t('page.our_story.meta_description') } %>

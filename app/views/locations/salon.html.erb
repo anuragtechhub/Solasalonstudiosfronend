@@ -1,58 +1,69 @@
+<div class="location-page">
 
-<div class="location-breadcrumb">
-  <div class="container">
-    <%= link_to t('page.locations.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, I18n.locale == :en ? locations_by_state_path(beautify_url_segment @location.state).gsub(/\./, '') : locations_by_province_path(beautify_url_segment @location.state).gsub(/\./, '') %> 
-    <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name).gsub(/\./, '') %> 
-    <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name).gsub(/\./, '') %>
-  </div>
-</div>
+  <div class="container content-container location-page-container">
+    <div class="row">
+      <div class="one-third column request-a-tour-form-column">
+        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form' do %>
+          <h4><%= t('page.locations.lease_at_location', {name: @location.name}).html_safe %></h4>
+          <p><%= t('page.locations.request_leasing_information', {name: @location.general_contact_name, number: @location.phone_number}) %></p>
+          <input name="name" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
+          <input name="email" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
+          <input name="phone" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
+          <textarea name="message" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
+          <input name="location_id" type="hidden" value="<%= @location.id %>">
+          <input name="request_url" type="hidden" value="<%= request.original_url %>">
+          <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+            <label class="receive-newsletter">
+              <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+              <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+            </label>
+          <% end %>
+          <button class="button outline-large-white small-text" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
+          <button class="button outline-large-white small-text" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
+        <% end %>
+        &nbsp;
+      </div> <!-- .one-third -->
 
-<% if @location.open_house && @location.open_house.present? %>
-<div class="container">
-  <div class="callout coupon pink">
-    <h4><%= @location.open_house %></h4>
-  </div>
-</div>
-<% end %>
+      <div class="two-thirds column">
+        
+        <!-- images -->
 
-<div class="container content-container content-container-mobile-full tablet-portrait" style="margin-bottom:30px">
-  <div class="row">
-
-    <div class="one-third column salon-info content-container-mobile-padded">
-      <h1><%= @location.name.html_safe %></h1>
-      <h3 class="subtle"><%= @location.city.html_safe %>, <%= @location.state.html_safe %></h3>
-      <div class="salon-buttons">
-        <%= link_to t('page.locations.find_a_salon_professional').html_safe, salon_stylists_path(@location.url_name).gsub(/\./, ''), :class => 'button block long-text' %>
-        <%= link_to t('page.locations.rent_a_studio').html_safe, '#rent-a-studio', :class => 'button block rent-a-studio' %>
-      </div>
-      <div class="row salon-map" id="map"></div>
-      <div id="map-overlay" class="salon-map"></div>
-    </div>
-
-    <div class="two-thirds column">
-      <% if @location.image_tags.size > 0 %>
-        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
-          <% @location.image_tags.each do |image| %>
-            <div class="item"><%= image.html_safe %></div>
+        <div class="location-gallery">
+          <% if @location.image_tags.size > 0 %>
+            <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
+              <% @location.image_tags.each do |image| %>
+                <div class="item"><%= image.html_safe %></div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
+              <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
+            </div>      
+          <% end %>
+          <%= link_to salon_stylists_path(@location.url_name), :class => 'find-a-salon-pro-box' do %>
+            <span class="text"><%= t('page.locations.find_a_salon_professional') %></span>
+            <span class="forward-arrow-white">&nbsp;</span>
           <% end %>
         </div>
-      <% else %>
-        <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true">
-          <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
-        </div>      
-      <% end %>
-    </div>
 
-  </div>
-</div>
+        <!-- info -->
 
-<% if @location.description.present? %>
-  <div class="container">
+        <div class="location-info">
+          <h1 class="chalet"><%= @location.name.html_safe %></h1>
+          <p class="address"><%= @location.full_address %></p>
+        </div>
 
-    <div class="row about-this-location" style="margin-top: 40px">
-      <h3 class="text-center"><%= t('page.locations.about_this_location').html_safe %></h3>
-      <h4 class="text-center"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></h4>
-      
+        <!-- buttons -->
+        <div class="location-buttons">
+          <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
+          <%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>
+        </div>
+
+        <!-- about this location -->
+        <h5><%= t('page.locations.about_this_location') %></h5>
+        <div class="description"><%= @location.description.gsub(/<img[^>]+\>/, '').gsub(/\n/, '<hr class="br" />').html_safe %></div>
+
+        <!-- social -->
         <ul class="location-social">
           <% if @location.facebook_url.present? %>
             <li><%= link_to url_helper(@location.facebook_url), :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
@@ -78,186 +89,163 @@
             <li><%= link_to 'https://www.instagram.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
           <% end %>        
         </ul>
-      
-    </div>
 
-  </div>
-<% end %>
-
-<% if @articles && @articles.length > 0 %>
-  <div class="container content-container news-articles">
-    <% @articles.each do |article| %>
-      <%= render 'shared/news_summary', :article => article %>
-    <% end %>
-  </div>
-<% end %>
-
-<%= render 'shared/location_tours' %>
-
-<% if @location.move_in_special && @location.move_in_special.present? %>
-  <div class="callout special">
-    <div class="container">
-      <h2><%= t('page.locations.move_in_special').html_safe %></h2>
-      <p><strong><%= @location.move_in_special.html_safe %></strong></p>
-      <div class="button-wrapper"><%= link_to t('page.locations.rent_a_studio').html_safe, '#rent-a-studio', :class => 'button rent-a-studio' %></div>
-    </div>
-  </div>
-<% end %>
-
-<div class="callout blue image your-life-your-style" style="margin-top:0">
-  <div class="text-center">
-    <h1><%= t('page.locations.your_life_your_style').html_safe %><sup><small>&reg;</small></sup></h1>
-  </div>
-</div>
-
-<div class="container">
-
-  <div class="row salon-amenities-benefits">
-
-    <div class="one-half column">
-      <h3><%= t('page.locations.studio_amenities').html_safe %></h3>
-      <h4>
-      <ul>
-        <% t('page.locations.studio_amenities_list').each_line do |li| %>
-          <li><%= li.html_safe %></li>
+        <!-- move-in special -->
+        <% if @location.move_in_special && @location.move_in_special.present? %>
+          <div class="move-in-special">
+            <%= image_tag 'MoveInSpecial@2x.jpg' %>
+            <div class="text">
+              <h5><%= t('page.locations.move_in_special') %></h5>
+              <span class="inner-text"><%= @location.move_in_special.html_safe %></span>
+            </div>
+          </div>
         <% end %>
-      </ul>
-      </h4>
-    </div>
 
-    <div class="one-half column">
-      <h3><%= t('page.locations.salon_professional_benefits').html_safe %></h3>
-      <h4>
-      <ul>
-        <% t('page.locations.salon_professional_benefits_list').each_line do |li| %>
-          <li><%= li.html_safe %></li>
+        <!-- open house -->
+        <% if @location.open_house && @location.open_house.present? %>
+          <div class="contact-salon-pros-directly" style="margin-top: 15px">
+            <h3><%= @location.open_house %></h3>
+          </div>
         <% end %>
-      </ul>
-      </h4>
-    </div>
 
-  </div>
-</div>
-
-<div class="callout pink image">
-  <div class="container">
-    <h1><%= t('page.locations.looking_for_a_salon_professional').html_safe %></h1>
-    <br>
-    <%= link_to t('page.locations.view_our_directory').html_safe, salon_stylists_path(
-    @location.url_name), :class => 'button inverted' %>
-  </div>
-</div>
-
-<a name="rent-a-studio" id="rent-a-studio"></a>
-<a name="contact-us-success" id="contact-us-success"></a>
-<div class="salon-request-a-tour">
-  <div class="container">
-    <div class="row">
-      
-      <div class='one-half column'>
-        <h2><%= t('page.locations.contact_us_for_leasing_information').html_safe %></h2>
-        <h3 class="subtle"><%= @location.name %></h3>
-        <div class="tour-information">
-          <p><%= t('page.locations.call_for_leasing_information', :contact_name => @location.general_contact_name).html_safe %></p>
-          <h1><a href="tel:<%= @location.phone_number %>" class="tel"><%= @location.phone_number %></a></h1>
-          <p class="contact-link"><a href="mailto:<%= @location.email_address_for_inquiries %>"><%= @location.email_address_for_inquiries %></a></p>
+        <!-- your life, your style (amenities) -->
+        <div class="your-life-your-style">
+          <h1><%= t('page.locations.your_life_your_style') %><sup>&reg;</sup></h1>
+          <div class="section">
+            <h5><%= t('page.locations.studio_amenities') %></h5>
+            <ul class="amenities-list">
+              <% t('page.locations.studio_amenities_list').each_line do |li| %>
+                <li><%= li.html_safe %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="section">
+            <h5><%= t('page.locations.salon_professional_benefits') %></h5>
+            <ul class="amenities-list">
+              <% t('page.locations.salon_professional_benefits_list').each_line do |li| %>
+                <li><%= li.html_safe %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <div class="one-half column">
-        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour' do %>
-          <input name="name" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
-          <input name="email" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
-          <input name="phone" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
-          <textarea name="message" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
-          <input name="location_id" type="hidden" value="<%= @location.id %>">
-          <input name="request_url" type="hidden" value="<%= request.original_url %>">
-          <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-            <label class="receive-newsletter">
-              <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
-              <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-            </label>
-          <% end %>
-          <button class="big-btn" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
-          <button class="big-btn" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
-        <% end %>
-      </div>
+        <!-- map -->
+        <div class="row salon-map" id="map"></div>
+        <div id="map-overlay" class="salon-map"></div>
 
-    </div>
-  </div>
-</div>
-
-<div class="callout callout-testimonial">
-  <div class="container">
-    <div class="row">
-      <div class="one-third column">
-        <%= image_tag 'Katina_Avatar@2x.png', :class => 'testimonial-portrait', :alt => 'Katina Eisenbeis headshot' %>
-      </div>
-      <div class="two-thirds column">
-        <h1><%= t('page.locations.testimonial_text').html_safe %></h1>
-        <h3><%= t('page.locations.testimonial_author').html_safe %></h3>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="callout green">
-  <div class="container">
-    <h3 class="large" style="margin-bottom:0;"><%= link_to t('page.locations.view_more_testimonials').html_safe, :testimonials %></h3>
-  </div>
-</div>
-
-<div class="container">
-  <div class="sola-story">
-    <div class="row">
-      <div class="two-thirds column">
-        <h2><%= t('page.locations.join_our_community').html_safe %></h2>
-      </div>
-      <div class="one-third column">
-        <%= link_to t('page.locations.the_sola_story').html_safe, :about_us, :class => 'button' %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="callout blue no-padding">
-  <div class="container">
-    <div class="row text-left">
-      
-      <div class="one-half column">
-        <%= link_to :testimonials, :class => 'link' do %>
-          <div class="row">
-            <div class="one-third column">
-              <span class="ss-chat"></span>
-            </div>
-            <div class="two-thirds column">
-              <h3 class="large"><%= t('page.locations.see_what_others_are_saying').html_safe %></h3>
-              <h3 class="subtle"><%= t('page.locations.view_sola_testimonials').html_safe %></h3>
+        <!-- testimonial -->
+        <div class="block-quote-testimonial block-quote-testimonial-side-image">
+          
+          <div class="content">
+            <h3><%= t('page.locations.testimonial_text').html_safe %></h3>
+             <%= image_tag 'testimonials/SueScott.png', :class => 'testimonial-portrait', :alt => t('page.locations.testimonial_author') %>
+            <h4><%= t('page.locations.testimonial_author').html_safe %></h4>
+            <h4 class="studio-name"><%= t('page.locations.testimonial_location') %></h4>
+            <div class="button-wrapper">
+              <%= link_to :testimonials, :class => "button outline-large-white small-text" do %><%= t('page.locations.view_more_testimonials') %><% end %>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
 
-      <div class="one-half column">
-        <%= link_to salon_stylists_path(@location.url_name), :class => 'link' do %>
-          <div class="row">
-            <div class="one-third column">
-              <span class="ss-search"></span>
-            </div>  
-             <div class="two-thirds column">    
-              <h3 class="large"><%= t('page.locations.find_a_salon_professional').html_safe %></h3>
-              <h3 class="subtle"><%= t('page.locations.at_location_sola', :location_name => @location.name).html_safe %></h3>
-            </div>
+        <!-- mobile lease form -->
+        <a name="rent-a-studio" id="rent-a-studio"></a>
+        <div class="mobile-lease-form"></div>
+
+        <!-- find a salon professional -->
+        <div class="find-a-salon-pro">
+          <h1 class="chalet"><%= t('page.locations.find_a_salon_professional_at_location', {:location => @location.name}) %></h1>
+          <p><%= t('page.locations.there_are_x_professionals', {:number => @location.stylists.size}) %></p>
+          <div class="button-wrapper">
+            <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
 
+
+      </div> <!-- .two-thirds -->
+    </div> <!-- .row -->
+  </div> <!-- .content-container -->
+
+  <div class="container experience-more">
+      <h4 class="h1"><%= t 'page.who_we_are.experience_more' %></h4>
     </div>
-  </div>
-</div>
 
-<%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
-<input type="hidden" id="is_salon" value="y" />
+  <% if I18n.locale.to_s == 'en' %>
+    <div class="sola-benefits">
+      <div class="container">
+        
+        <div class="row">
+          <div class="columns four">
+            <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
+                <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
+              </div>
+              <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
+            <% end %>
+          </div>
+          <div class="columns four">
+            <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/SolaSessions.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
+              </div>
+              <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
+            <% end %>
+          </div>
+          <div class="columns four">
+            <%= link_to :solagenius, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.solagenius') %></span></div>
+              </div>
+              <span class="text"><%= t('page.who_we_are.solagenius_text') %></span>
+            <% end %>
+          </div>        
+        </div>
+
+      </div> <!-- container -->
+    </div> <!-- sola-benefits -->
+  <% else %>
+    <div class="sola-benefits">
+      <div class="container">
+        
+        <div class="row">
+          <div class="columns six">
+            <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
+                <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
+              </div>
+              <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
+            <% end %>
+          </div>
+          <div class="columns six">
+            <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/SolaSessions.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
+              </div>
+              <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
+            <% end %>
+          </div>       
+        </div>
+
+      </div> <!-- container -->
+    </div> <!-- sola-benefits -->
+  <% end %>
+
+  <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
+  <input type="hidden" id="is_salon" value="y" />
+
+</div>
 
 <% content_for(:scripts) { javascript_include_tag('locations') } %>
 <% content_for(:scripts) {@location.chat_code.html_safe} if @location.chat_code.present? %>

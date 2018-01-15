@@ -1,46 +1,136 @@
 @import 'mixins';
 @import 'variables';
 
+.stylist-page {
+  margin-bottom: -30px;
+
+  h5 {
+    margin-bottom: 15px;
+  }
+
+  .heading {
+    background: #F5F9FB;
+    border-bottom: 0;
+    padding: 40px 0;
+
+    .badge {
+      margin-top: -40px;
+    }
+
+    h1.salon_professional_name {
+      border-bottom: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    h3.salon_professional_business_name {
+      @include helvetica;
+      color: #4A4A4A; 
+      font-size: 18px;  
+      font-weight: 300; 
+      line-height: 32px;
+      margin: 0;
+    }
+  }
+
+  .social {
+    li {
+      a, a:link, a:visited, a:hover, a:active {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+
+  .biography {
+    color: #4A4A4A; 
+    @include helvetica;
+    font-size: 18px;  
+    font-weight: 300; 
+    line-height: 32px;
+  }
+
+  .location-address {
+    color: #4A4A4A; 
+    @include helvetica;
+    font-size: 14px;  
+    font-weight: 300; 
+    line-height: 24px; 
+    -moz-osx-font-smoothing: antialiased; //auto
+    -webkit-font-smoothing: antialiased; //auto
+    font-smoothing: antialiased; //auto   
+  }
+
+  .view-map {
+    margin-bottom: 40px;
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .visit-salon-pro {
+    h3, h5 {
+      color: #FFF;
+      margin: 0;
+    }
+    h3 {
+      margin-bottom: 10px;
+    }
+    h5 {
+      line-height: 20px;
+    }
+  }
+
+  #map.stylist-salon-map {
+    //margin-bottom: 40px;
+    height: 420px !important;
+  }
+
+  .about-this-location {
+    margin: 30px 0;
+  }
+
+  .testimonials {
+    margin-bottom: 30px;
+  }
+
+}
 
 .hero-text.find-a-salon-professional {
   height: 740px;
 }
 
 .find-a-salon-professional-disclaimer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  padding: 30px;
+  padding: 60px 30px;
   text-align: center;
+  background: #000;
 
-  &.under-search {
-    display: none;
-    //bottom: 200px;
-    background: transparent;
+  .container {
+    max-width: 600px;
   }
 
-  &.disclaimer-ca {
-    position: static;
-    background: transparent;
+  h4 {
+    color: #FFF;
+    margin: 0 0 20px 0;
   }
 
   p {
-    color: rgba(255,255,255,0.8);
-    font-size: 15px;
-    line-height: 22px;
-    margin-bottom: 20px;
-    max-width: 650px;
-    margin: 0 auto 20px auto;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    color: #FFF;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 0;
   }
 }
 
-.find-salon-professional-search, .find-a-sola {
+.find-salon-professional-search {
+  margin: 40px auto 40px auto;
+  width: 100%;
+  max-width: 333px;
+}
+
+.find-a-sola {
   display: block;
   clear: both;
   overflow: hidden;
@@ -54,6 +144,7 @@
     float: left;
     clear: none;
   }
+
   button {
     width: 35%;
     height: 58px;
@@ -97,8 +188,8 @@
 
 .find-a-salon-professional-stats {
   position: relative;
-  width: 60%;
-  margin-left: 20%;
+  width: 100%;
+  max-width: 600px;
   
   .find-salon-professional-search {
     text-align: center;
@@ -112,23 +203,50 @@
     width: 50%;
     text-align: center;
 
+    h1 {
+      margin: 5px 0 0 0 !important;
+    }
+
+    h2 {
+      font-size: 18px;
+      line-height: 32px;
+      color: #FFF;
+      -moz-osx-font-smoothing: auto; //antialiased
+      -webkit-font-smoothing: auto; //antialiased
+      font-smoothing: auto; //antialiased
+      opacity: 0.8;
+      margin: 0 !important;
+    }
+
     &.right {
       left: 50%;
-      border-left: 2px solid #FFF;
-    }
-
-    h1 {
-      font-family: 'Lato', Arial, sans-serif;
-      font-size: 60px !important;
-      margin-bottom: 10px !important;
-    }
-
-    h3 {
-      margin-bottom: 0 !important;
+      border-left: 1px solid rgba(255,255,255,0.2);
     }
   }
 }
 
+.find-a-salon-professional-hero .item .item-content h1.chalet {
+  margin-top: -60px;
+}
+
+@media (max-width: 1060px) {
+  .stylist-page {
+    .owl-controls {
+
+      .owl-buttons {
+        display: block;
+
+        .arrow-left {
+          left: -4px;
+        }
+
+        .arrow-right {
+          right: -5px;
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: 1000px) {
   .hero-text.find-a-salon-professional {
@@ -141,28 +259,49 @@
 }
 
 @media (max-width: 850px) {
-  .find-a-salon-professional-stats {
-    width: 100%;
-    margin: 0;
+  .find-a-salon-professional-hero .item .item-content h1.chalet {
+    font-size: 36px;
+    line-height: 36px;
   }
-
-  .under-search {
-    //bottom: 150px !important;
+  .find-a-salon-professional-stats {
+//    width: 100%;
+    margin: 0;
   }      
 }
 
 @media (max-width: 650px) {
-  .find-a-salon-professional-stats {
+  .find-a-salon-professional-hero .item .item-content h1.chalet {
+    margin-top: -40px;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  .find-a-salon-professional-hero .item .item-content .find-a-salon-professional-stats {
     .stat {
-      position: static;
-      top: auto;
-      left: auto;
-      width: 100%;
 
       &.right {
         border-left: 0;
-        margin-top: 30px;
       }
+
+      h1.chalet {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      h2 {
+        font-size: 14px !important;
+        line-height: 14px !important;
+        font-weight: bold;
+      }
+      // position: static;
+      // top: auto;
+      // left: auto;
+      // width: 100%;
+
+      // &.right {
+      //   border-left: 0;
+      //   margin-top: 30px;
+      // }
     }
   }
 
@@ -170,34 +309,50 @@
     height: 680px;
   }
   .find-salon-professional-search {
-    margin: 30px auto;
+    margin: 15px auto;
   }
 
-  .under-search {
-    //bottom: 220px !important;
-  }    
+  .find-a-salon-professional-disclaimer {
+    padding: 30px;
+
+    h4, p {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
 }
 
 .stylist-services {
-  display: flex;
-  display: -webkit-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 0 -30px;
+  // display: flex;
+  // display: -webkit-flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // align-items: center;
+  // margin: 0 -30px;
+  margin: 0;
 
   li {
-    list-style: none;
-    font-family: 'Lato', Arial, sans-serif;
-    font-size: 17px;
-    letter-spacing: 0px;
-    line-height: 35px;
-    font-weight: 300;
-    color: #474747;
-    border-bottom: 1px dashed #D7D7D7;
-    flex: 1;
-    margin: 0 30px 15px 30px;
-    min-width: 120px
+    display: inline-block;
+    background: #FFF;
+    border: 1px solid #DBDBDB;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: normal;
+    color: #4A4A4A;
+    @include border-radius(3px);
+    padding: 6px 8px;
+    margin: 2px 5px 8px 0;
+    // list-style: none;
+    // font-family: 'Lato', Arial, sans-serif;
+    // font-size: 17px;
+    // letter-spacing: 0px;
+    // line-height: 35px;
+    // font-weight: 300;
+    // color: #474747;
+    // border-bottom: 1px dashed #D7D7D7;
+    // flex: 1;
+    // margin: 0 30px 15px 30px;
+    // min-width: 120px
   }
 }
 
@@ -222,14 +377,14 @@ h3.business-name {
   .service {
     display: inline-block;
     background: #FFF;
-    border: 1px solid #CDCDCD;
-    font-size: 14px;
+    border: 1px solid #DBDBDB;
+    font-size: 13px;
+    line-height: 13px;
     font-weight: normal;
-    color: $gray;
-    border-radius: 3px;
-    padding: 1px 10px;
-    margin-right: 5px;
-    margin-bottom: 8px;
+    color: #4A4A4A;;
+    @include border-radius(3px);
+    padding: 6px 8px;
+    margin: 2px 5px 8px 0;
 
     &:last-child {
       margin-right: 0;
@@ -238,6 +393,8 @@ h3.business-name {
 }
 
 .view-profile {
+  font-size: 14px;
+  line-height: 16px;
   margin-top: 5px;
 }
 
@@ -256,43 +413,32 @@ h3.business-name {
 
 .studio-number-badge {
   display: inline-block;
-  border: 1px solid #E7E7E7;
-  background: #FFF;
+  border: 3px solid #499CD3;
+  background: transparent;
   padding: 0;
   margin: 0;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  @include border-radius(50%);
+  width: 80px;
+  height: 80px;
   text-align: center;
 
-  .studio {
+  .studio, .number {
     padding-top: 20px;
-    text-indent: 7px;
+    text-indent: 3px;
 
-    h3 {
-      display: inline !important;
-      font-size: 13px;
-      line-height: 13px;
-      border: 0;
-      padding: 0;
-      margin: 0;
-      color: #A5A5A5;
-      letter-spacing: 4px;
-      width: auto !important;
-    }
+    @include chalet_new_york;
+    color: #499CD3; 
+    font-size: 14px;  
+    font-weight: bold;  
+    line-height: 14px;  
+    text-align: center;
   }
 
   .number {
-    margin-top: -2px;
-    text-indent: 7px;
-
-    h1 {
-      font-size: 57px;
-      line-height: 57px;
-      font-weight: normal;
-      letter-spacing: 3px;
-      width: auto !important;
-    }
+    text-indent: 0;
+    padding-top: 7px;
+    font-size: 18px;
+    line-height: 18px;
   }
 }
 
@@ -301,7 +447,11 @@ h3.business-name {
 }
 
 .salon-pro-buttons {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
+
+  .button {
+    margin-bottom: 15px !important;
+  }
 }
 
 .salon-pro-info {
@@ -317,20 +467,24 @@ h3.business-name {
   .contact-info {
     margin: 0 0 30px 0;
     list-style: none;
-    border-bottom: 1px dashed #D7D7D7;
+    border-bottom: 1px solid #DBDBDB;
 
     li {
-      border-top: 1px dashed #D7D7D7;
+      border-top: 1px solid #DBDBDB;
       padding: 15px 0;
       margin: 0;
       text-align: center;
 
       color: $brand-pink !important;
-      font-size: 17px;
+      @include chalet_new_york;
+      font-size: 14px;
+      line-height: 16px;
 
       a, a:link, a:visited, a:hover, a:active {
+        @include chalet_new_york;
         color: $brand-pink;
-        font-size: 17px;
+        font-size: 14px;
+        line-height: 16px;
         text-decoration: none;
       }
 
@@ -342,39 +496,48 @@ h3.business-name {
 
 }
 
+
 .testimonial {
-  
+  p {
+    font-size: 14px;
+    line-height: 24px; 
+  }
+
   .text {
-    font-family: 'Lato', Arial, sans-serif;
-    font-size: 17px;
-    letter-spacing: 0px;
-    line-height: 35px;
-    font-weight: 300;
-    color: #474747;
+    // font-family: 'Lato', Arial, sans-serif;
+    // font-size: 17px;
+    // letter-spacing: 0px;
+    // line-height: 35px;
+    // font-weight: 300;
+    // color: #474747;
+    margin: 0;
   }
 
   .name-region {
-    font-family: 'Dosis', Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    line-height: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #C7C7C7;
-    margin-top: 30px;
+    // color: #4A4A4A; 
+    // font-size: 14px;  
+    // font-weight: 300; 
+    // line-height: 24px;
+    margin: 30px 0 0 0;
   }
 
-  margin-bottom: 50px;
-  padding-bottom: 50px;
-  border-bottom: 1px dashed #D7D7D7;
+  margin: 0 0 30px 0;
+  padding: 0  0 30px 0;
+  border-bottom: 1px solid #DBDBDB;
 }
 
-.stylist-salon-map {
-  margin-bottom: 40px;
-}
 
-h4.availability {
+
+.availability {
   margin-bottom: 30px;
+  color: #4A4A4A; 
+  @include helvetica;
+  font-size: 14px;  
+  font-weight: 300; 
+  line-height: 24px; 
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto   
 }
 
 
@@ -383,6 +546,21 @@ h4.availability {
 
 
 @media (max-width: 550px) {
+  .stylist-page {
+
+    .heading {
+
+      .badge {
+        margin-top: 20px !important;
+        width: 80px !important;
+      }
+    }
+  }
+
+  .about-this-location {
+    margin-bottom: 0;
+  }
+
   .find-a-salon-professional-disclaimer { 
     text-align: left;
   }

@@ -1,0 +1,109 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.page-nav {
+	background: #F5F9FB;
+	overflow: hidden;
+	text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 69px;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	li {
+		margin: 0 15px;
+		padding: 0;
+		display: inline-block;
+
+		a, a:link, a:visited, a:hover, a:active {
+			@include chalet_new_york;
+			font-size: 14px;
+			line-height: 16px;
+			color: #000;
+			text-decoration: none;
+			display: inline-block;
+			padding: 28px 0 23px 0; 
+			@include transition(opacity 0.15s ease-in-out);
+			opacity: 1;
+		}
+
+		a:hover, a:active {
+			opacity: 0.5;
+		}
+
+		&.active {
+			a, a:link, a:visited, a:hover, a:active {
+				color: $brand-primary;
+				border-bottom: 2px solid $brand-primary;
+			}
+		}
+	}
+
+	&.page-nav-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 2;
+		background: rgba(0,0,0,0.15);
+
+		li {
+
+			a, a:link, a:visited, a:hover, a:active {
+				color: #FFF;
+			}
+
+			&.active {
+				a, a:link, a:visited, a:hover, a:active {
+					color: #FFF;
+					border-bottom: 2px solid #FFF;
+				}
+			}
+		}
+	}
+}
+
+a.back-to-parent, a.back-to-parent:link, a.back-to-parent:visited, a.back-to-parent:hover, a.back-to-parent:active {
+	display: inline-block;
+	@include chalet_new_york;
+	text-decoration: none;
+	color: #000;
+	margin-bottom: 25px;
+	@include transition(none);
+
+	.name {
+		display: inline-block;
+		position: relative;
+		margin-left: 5px;
+		top: -2px;
+	}
+
+	.back-arrow-black {
+		display: inline-block;
+	}
+
+	.back-arrow-pink {
+		display: none;
+	}
+}
+
+a.back-to-parent:hover, a.back-to-parent:active {
+	color: $brand-pink;
+
+	.back-arrow-black {
+		display: none;
+	}
+
+	.back-arrow-pink {
+		display: inline-block;
+	}
+}

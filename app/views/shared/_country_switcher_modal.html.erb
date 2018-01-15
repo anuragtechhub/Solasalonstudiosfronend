@@ -1,19 +1,19 @@
 <div class="country-switcher country-switcher-modal">
   <% if I18n.locale == :en %>
-    <div class="country" data-domain="com">
+    <div class="country first" data-domain="com">
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-    <div class="country" data-domain="ca">
+    <div class="country last" data-domain="ca">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
   <% else %>
-    <div class="country" data-domain="ca">
+    <div class="country first" data-domain="ca">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
-    <div class="country" data-domain="com">
+    <div class="country last" data-domain="com">
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>

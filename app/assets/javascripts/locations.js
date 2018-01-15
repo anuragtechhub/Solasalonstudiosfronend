@@ -1,5 +1,21 @@
 $(function () {
 
+  // sticky form
+
+  var $win = $(window);
+  $win.on('resize.sticky', function () {
+    if ($win.width() <= 1060) {
+      $("#contact-us-request-a-tour").trigger("sticky_kit:detach");
+      $('.request-a-tour-form-column').css('height', 'auto');
+      $('.mobile-lease-form').append($("#contact-us-request-a-tour"));
+    } else {
+      $('.request-a-tour-form-column').append($("#contact-us-request-a-tour")).height($('.location-page-container').outerHeight());
+      $("#contact-us-request-a-tour").stick_in_parent();
+    }
+  }).trigger('resize.sticky');
+
+  // map styles
+
   var mapStyles = [{featureType:"administrative",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:20}]},{featureType:"road",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:40}]},{featureType:"water",elementType:"all",stylers:[{visibility:"on"},{color:"#C1E6F3"}]},{featureType:"water",elementType:"labels",stylers:[{visibility:"off"}]},{featureType:"landscape.man_made",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:10}]},{featureType:"landscape.natural",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:60}]},
   {featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}];
 
@@ -36,12 +52,12 @@ $(function () {
   var getMarkerContent = function (name, saddress, address, url, salon, custom_maps_url) {
     if (salon) {
       if (custom_maps_url) {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
       } else {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
       }
     } else {
-        return '<div class="sola-infobox"><h3>' + name + '</h3><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
     }
   };
 
@@ -202,6 +218,15 @@ $(function () {
   // scroll to request tour anchor
   $('.rent-a-studio').on('click', function () {
    $('html, body').animate({scrollTop: $('#rent-a-studio').offset().top}, 'slow');
+  });
+
+  // scroll to map
+  $('.view-map a').on('click', function () {
+    $('body, html').animate({
+      scrollTop: $('#map').position().top
+    });
+
+    return false;
   });
 
 });

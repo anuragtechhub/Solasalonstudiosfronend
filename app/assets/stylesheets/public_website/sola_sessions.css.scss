@@ -1,0 +1,358 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.sola-sessions {
+
+	.content-container {
+		padding-top: 90px;
+	}
+
+	.hero-carousel {
+
+		img.sessions-logo {
+			max-width: 420px;
+			width: 50%;
+			height: auto;
+			margin: 0 auto;
+		}
+
+		h1 {
+			@include helvetica;
+			font-size: 18px;
+			line-height: 24px;
+			margin: 25px 0 45px 0 !important;
+		}
+
+		.button {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	.session-row {
+		margin-bottom: 60px;
+	}
+
+	.upcoming-session {
+		position: relative;
+		@include border-radius(2px);	
+		background-color: #F5F9FB;
+		margin-bottom: 10px;
+		padding: 29px 25px 25px 25px;
+		display: block;
+		text-decoration: none;
+		@include transition(opacity 0.15s ease-in-out);
+		opacity: 1;		
+
+		&:hover, &:active {
+			opacity: 0.5;
+		}
+
+    .event-icon {
+			position: relative;
+    	top: -9px;    	
+      display: inline-block;
+      width: 68px;
+      height: 68px;
+      float: left;
+      margin-right: 20px;
+
+      &.west-palm-beach {
+        background: asset-data-url('sessions/west_palm_beach_off.png') no-repeat center;
+        background-size: 68px 68px;
+      }
+    }
+
+		h4 {
+			margin: 0 0 5px 0;
+		}
+		
+		p {
+			font-size: 18px;
+			line-height: 24px;
+			font-weight: 300px;
+			margin: 0;
+		}
+
+		.forward-arrow-black {
+			position: absolute;
+			right: 30px;
+			top: 50%;
+			margin-top: -7px;
+		}
+	}
+
+	.in-the-news {
+
+		.in-the-news-article {
+			position: relative;
+			@include border-radius(2px);	
+			background-color: #F5F9FB;
+			margin-bottom: 10px;
+			padding: 29px 25px 20px 25px;
+			display: block;
+			text-decoration: none;
+			@include transition(opacity 0.15s ease-in-out);
+			opacity: 1;		
+			cursor: pointer;
+
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+
+		  flex-direction: row;
+		  align-content: center;
+		  justify-content: center;
+
+			&:hover, &:active {
+				opacity: 0.5;
+			}
+
+			img {
+				width: 120px;
+				height: 120px;
+			}
+
+			h4 {
+				margin: 0 0 0 0;
+				a, a:link, a:visited, a:hover, a:active {
+					color: #000;
+					text-decoration: none;
+				}
+			}
+
+			p {
+				margin: 0;
+			}
+
+			.text {
+				flex: 2;
+				margin: 0 30px;
+			}
+
+			.social {
+				margin: 22px 0 0 0;
+
+				li {
+					width: auto;
+					margin-right: 25px;
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					a, a:link, a:visited, a:hover, a:active {
+						padding: 0;
+						border: 0;
+						background: transparent;
+						color: #000;
+						font-size: 16px;
+						line-height: 16px;
+
+						span {
+							position: static;
+							top: auto;
+
+							&.ss-twitter, &.ss-pinterest {
+								position: relative;
+								top: 2px;
+							}
+						}
+					}
+				}
+			}
+
+			.forward-arrow {
+				position: relative;
+				top: 53px;
+				right: 10px;
+			}
+		}
+	}
+
+	.past-sessions {
+  	margin-top: 3px;
+  	//margin-bottom: 0;
+
+  	.carousel-wrapper {
+  		position: relative;
+
+	    .owl-wrapper-outer {
+	      width: 200%;
+
+	      .owl-item {
+	      	padding-left: 5px;
+	      	padding-right: 5px;
+	      }
+	    }
+  	}
+
+		// .white-border {
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 50%;
+		// 	bottom: 0;
+		// 	width: 10px;
+		// 	margin-left: -5px;
+		// 	background: #FFF;
+		// 	z-index: 2;
+		// }
+
+  	.event {
+
+  		.forward-arrow-white {
+  			display: none;
+  		}
+
+  		.buttons {
+  			position: absolute;
+  			bottom: 35px;
+  			left: 0;
+  			right: 0;
+  			text-align: center;
+
+  			.button {
+  				display: inline;
+  				background: transparent;
+  				font-size: 14px;
+  				line-height: 14px;
+  				color: #FFF;
+  				padding: 10px 20px;
+  				margin-right: 5px;
+
+  				&:last-child {
+  					margin-right: 0;
+  				}
+  			}
+  		}
+  	}
+
+	  .owl-theme .owl-controls {
+	    position: absolute;
+	    top: -40px;
+	    right: 62px;
+	    left: auto;
+	  }
+
+	  .arrow-left, .arrow-right {
+	    border: 2px solid #000;
+	    background-repeat: no-repeat !important;
+	    background-position: center !important;
+	    width: 34px;
+	    height: 32px;
+	  }
+
+	  .arrow-left {
+	    right: auto;
+	    left: -4px;
+	    -webkit-border-top-left-radius: 4px;
+	    -webkit-border-bottom-left-radius: 4px;
+	    -moz-border-radius-topleft: 4px;
+	    -moz-border-radius-bottomleft: 4px;
+	    border-top-left-radius: 4px;
+	    border-bottom-left-radius: 4px; 
+      background: asset-data-url('back-arrow-black.png');
+      background-size: (20px / 2) (32px / 2);
+
+	    &:hover, &:active {
+	      background: asset-data-url('back-arrow-black.png');
+	      background-size: (20px / 2) (32px / 2);
+	    }   
+	  }
+
+	  .arrow-right {
+	    left: auto;
+	    right: -62px;
+	    -webkit-border-top-right-radius: 4px;
+	    -webkit-border-bottom-right-radius: 4px;
+	    -moz-border-radius-topright: 4px;
+	    -moz-border-radius-bottomright: 4px;
+	    border-top-right-radius: 4px;
+	    border-bottom-right-radius: 4px;    
+      background: asset-data-url('forward-arrow-black.png');
+      background-size: (20px / 2) (32px / 2);
+
+	    &:hover, &:active {
+	      background: asset-data-url('forward-arrow-black.png');
+	      background-size: (20px / 2) (32px / 2);
+	    } 
+	  }
+
+	}	
+}
+
+@media (max-width: 960px) {
+	.past-sessions {
+		.white-border {
+			display: none;
+		}
+	}
+	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer {
+		width: 100%;
+	}
+	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer .owl-item {
+		padding-left: 0;
+		padding-right: 0;
+	}	
+}
+
+@media (max-width: 550px) {
+
+	.sola-sessions {
+		.past-sessions {
+
+			.forward-arrow-white {
+				position: relative;
+				top: -1px;
+				display: inline-block !important;
+				left: 5px;
+			}
+
+			.buttons {
+				bottom: 25px !important;
+
+				.button {
+					border: 0 !important;
+				}
+			}
+		}
+
+		.in-the-news {
+			.in-the-news-article {
+				display: block;
+				padding: 29px 25px 25px 25px;
+
+				.image {
+					text-align: center;
+					margin: 0 auto;
+				}
+
+				.text {
+					margin: 0;
+
+					h4 {
+						font-size: 14px;	
+						line-height: 16px;
+						margin-top: 15px;
+						margin-bottom: 5px;
+					}
+
+					p {
+						font-size: 14px;	
+						line-height: 16px;
+					}
+				}
+
+				.social {
+					margin-top: 15px;
+				}
+
+				.forward-arrow {
+					display: none;
+				}
+			}
+		}
+	}
+}

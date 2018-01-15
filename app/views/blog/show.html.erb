@@ -1,4 +1,4 @@
-<div class="location-breadcrumb blog-breadcrumb">
+<!-- <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
     <%= link_to t('page.blog.title').html_safe, :blog %>     
     <% if @category %>
@@ -6,7 +6,7 @@
     <% end %>
      <span class="divider">/</span> <%= link_to @post.title.html_safe, show_blog_path(@post) %>
   </div>
-</div>
+</div> -->
 
 <div class="container content-container">
   
@@ -19,10 +19,12 @@
   <div class="row">
     <div class="search-and-filter-row">
       <div class="one-half column">
-        <form method="get" action="<%= blog_path %>">
-          <input type="text" name="query" value="<%= params[:query] %>" class="search-input" placeholder="<%= t('page.blog.search').html_safe %>" />
-          <button class="search-button button primary"><span class="ss-search"></span></button>
-        </form>
+        <div class="search-with-spyglass">
+          <form method="get" action="<%= blog_path %>">
+            <input type="text" name="query" value="<%= params[:query] %>" class="search-input" placeholder="<%= t('page.blog.search').html_safe %>" />
+            <button class="search-button button primary"><span class="spyglass-white"></span></button>
+          </form>
+        </div>
       </div>
 
       <div class="one-half column text-right">

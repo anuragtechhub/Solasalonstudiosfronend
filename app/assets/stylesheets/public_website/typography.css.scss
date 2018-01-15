@@ -1,36 +1,59 @@
+@import 'mixins';
+@import 'variables';
+
 h1, .h1 {
-  font-family: 'Dosis', Arial, sans-serif;
-  font-size: 36px;
+  @include northwell;
+  font-size: 72px;
   letter-spacing: 0px;
-  line-height: 44px;
+  line-height: 72px;
   font-weight: 300;
   color: #000;
+  margin: 10px 0 50px 0;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
 
   &.small {
     font-size: 26px;
     line-height: 30px;
     margin-top: -4px;
   }
+
+  &.chalet {
+    @include chalet_paris;
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  &.chalet-new-york {
+    @include chalet_new_york;
+    font-size: 48px;
+    line-height: 56px;
+  }  
 }
 
 h2, .h2 {
-  font-family: 'Dosis', Arial, sans-serif;
-  font-size: 24px;
-  letter-spacing: 3px;
-  line-height: 100%;
-  font-weight: 400;
-  text-transform: uppercase;
+  @include chalet_paris;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 300;
   color: #000;
+  margin-bottom: 30px;
+  letter-spacing: 0px;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto  
 }
 
 h3, .h3 {
-  font-family: 'Dosis', Arial, sans-serif;
-  font-size: 13px;
-  letter-spacing: 3px;
-  line-height: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
+  @include chalet_paris;
+  font-size: 24px;
+  line-height: 32px;
   color: #000;
+  letter-spacing: 0px;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
 
   &.subtle {
     color: #A7A7A7;
@@ -44,13 +67,24 @@ h3, .h3 {
   }
 }
 
+
+
 h4, .h4 {
-  font-family: 'Lato', Arial, sans-serif;
-  font-size: 17px;
+  @include chalet_new_york;
+  color: #000000;  
+  font-size: 18px;  
+  line-height: 24px;
+  margin-bottom: 30px;
   letter-spacing: 0px;
-  line-height: 35px;
-  font-weight: 300;
-  color: #474747;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
+
+  &.emphasis {
+    display: inline-block;
+    border-bottom: 2px solid #DBDBDB;
+    padding-bottom: 5px;
+  }
 
   &.subtle {
     color: #A7A7A7;
@@ -66,17 +100,39 @@ h4, .h4 {
   } 
 }
 
+h5, .h5 {
+  @include chalet_new_york;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: 3px;
+  color: #000000;
+  text-transform: uppercase;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto   
+}
+
 p, .p {
-  font-family: 'Lato', Arial, sans-serif;
-  font-size: 13px;
-  letter-spacing: 0px;
-  line-height: 19px;
-  font-weight: 400;
+  @include helvetica;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 300;
   color: #4A4A4A;
+  margin-bottom: 30px;
+  letter-spacing: 0px;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto  
 }
 
 p.subtle, .psubtle {
   color: #A7A7A7;
+}
+
+p.smooth {
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
 }
 
 hr.br {
@@ -85,3 +141,35 @@ hr.br {
   padding: 0;
   visibility: hidden;
 } 
+
+@media (max-width: 888px) {
+  h1, .h1 {
+    font-size: 48px;  
+    line-height: 56px;
+
+    &.chalet {
+      font-size: 36px;  
+      line-height: 40px;
+    }
+
+    &.chalet-new-york {
+      font-size: 36px;  
+      line-height: 40px;
+    }
+  }
+
+  h2, .h2 {
+    font-size: 24px;  
+    line-height: 32px;
+  }
+
+  h3, .h3 {
+    font-size: 18px;  
+    line-height: 24px;
+  }
+
+  p, .p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

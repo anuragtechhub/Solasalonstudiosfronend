@@ -6,9 +6,9 @@
         <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
         <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
         <li class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-        <li class="border-left"><%= link_to :rent_a_studio do %><%= raw t 'header.rent_studio_button' %><% end %></li>
+        <li class="border-left"><%= link_to :contact_us do %><%= raw t 'header.contact_us' %><% end %></li>
         <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
-        <li class="border-left border-right country-switcher-wrapper"><%= render 'shared/country_switcher' %></li>
+        <li class="border-left country-switcher-wrapper"><%= render 'shared/country_switcher' %></li>
       </ul>
     </div>
   </div>
@@ -23,55 +23,16 @@
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
       
       <ul class="nav">
-        <li>
-          <h3><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h3>
-          <span class="oys-nav-caret caret down"></span>
-          <div class="oys-nav-mobile <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
-            <ul>
-              <li>
-                <a href="/own/own-your-salon">
-                  <%= image_tag 'own_nav/1_own.jpg' %>
-                  <span>Own Your Salon</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/studio-amenities">
-                  <%= image_tag 'own_nav/2_amenities.jpg' %>
-                  <span>Studio Amenities</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/sola-pro">
-                  <%= image_tag 'own_nav/3_solapro.jpg' %>
-                  <span>Sola Pro</span>
-                </a>
-              </li>
-              <li>
-                <a href="/own/sola-sessions">
-                  <%= image_tag 'own_nav/4_sessions.jpg' %>
-                  <span>Sola Sessions</span>
-                </a>
-              </li>
-              <% if I18n.locale.to_s == 'en' %>
-                <li>
-                  <a href="/own/solagenius">
-                    <%= image_tag 'own_nav/5_solagenius.jpg' %>
-                    <span>Sola Genius</span>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </li>
-        <li><h3><%= link_to raw(t('page.about.title')), :about_us %></h3></li>
-        <li><h3><%= link_to raw(t('page.locations.title')), :locations %></h3></li>
-        <li><h3><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h3></li>
-        <li><h3><%= link_to raw(t('page.blog.title')), :blog %></h3></li>
+        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', 'data-nav' => "own-your-salon" %></h4></li>
+        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
+        <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
+        <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>
+        <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
       </ul>
 
       <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>
         <input class="nav-search-input" placeholder="<%= raw t 'header.search_placeholder' %>" type="search" name="query">
-        <span class="nav-search-button ss-search"></span>
+        <span class="nav-search-button search-icon"></span>
       <% end %>
 
     </div>
@@ -80,39 +41,78 @@
 
 
 
-<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'with-sola-genius' : nil %>">
+<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %>" data-nav="own-your-salon">
   <ul>
     <li>
-      <a href="/own/own-your-salon">
+      <%= link_to :why_sola do %>
         <%= image_tag 'own_nav/1_own.jpg' %>
-        <span>Own Your<br>Salon</span>
-      </a>
+        <h4><%= t 'page.why_sola.title' %></h4>
+      <% end %>
     </li>
     <li>
-      <a href="/own/studio-amenities">
+      <%= link_to :our_studios do %>
         <%= image_tag 'own_nav/2_amenities.jpg' %>
-        <span>Studio<br>Amenities</span>
-      </a>
+        <h4><%= t 'nav.our_studios' %></h4>
+      <% end %>
     </li>
     <li>
-      <a href="/own/sola-pro">
-        <%= image_tag 'own_nav/3_solapro.jpg' %>
-        <span>Sola<br>Pro</span>
-      </a>
-    </li>
-    <li>
-      <a href="/own/sola-sessions">
+      <%= link_to :sola_sessions do %>
         <%= image_tag 'own_nav/4_sessions.jpg' %>
-        <span>Sola<br>Sessions</span>
-      </a>
+        <h4><%= t 'nav.sola_sessions' %></h4>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to :sola_pro do %>
+        <% if I18n.locale.to_s == 'en' %>
+          <%= image_tag 'own_nav/3_solapro.jpg' %>
+        <% else %>
+          <%= image_tag 'own_nav/3_solapro_ca.jpg' %>
+        <% end %>
+        <h4><%= t 'nav.sola_pro' %></h4>
+      <% end %>
     </li>
     <% if I18n.locale.to_s == 'en' %>
       <li>
-        <a href="/own/solagenius">
+        <%= link_to :solagenius do %>
           <%= image_tag 'own_nav/5_solagenius.jpg' %>
-          <span>Sola<br>Genius</span>
-        </a>
+          <h4><%= t 'nav.solagenius' %></h4>
+        <% end %>
       </li>
     <% end %>
+  </ul>
+</div>
+
+<div class="oys-nav has-5" data-nav="about-us">
+  <ul>
+    <li>
+      <%= link_to :who_we_are do %>
+        <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg' %>
+        <h4><%= t 'nav.who_we_are' %></h4>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to :our_story do %>
+        <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
+        <h4><%= t 'nav.our_story' %></h4>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to :testimonials do %>
+        <%= image_tag 'about_nav/Testimonials@2x.jpg' %>
+        <h4><%= t 'nav.testimonials' %></h4>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to :leadership do %>
+        <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+        <h4><%= t 'nav.leadership' %></h4>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to :news do %>
+        <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
+        <h4><%= t 'nav.in_the_news' %></h4>
+      <% end %>
+    </li>
   </ul>
 </div>

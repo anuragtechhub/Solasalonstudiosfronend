@@ -1,8 +1,503 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.location-page {
+  margin-bottom: -30px;
+
+  .experience-more {
+    clear: both;
+    margin-top: 90px;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
+  .sola-benefits {
+    padding-top: 40px;
+  }
+
+  .location-gallery {
+    position: relative;
+  }
+
+  .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
+    position: absolute;
+    right: -100px;
+    bottom: (-185px / 2);
+
+    display: block;
+    width: 200px;
+    height: 185px;
+    padding: 30px;
+    text-decoration: none;
+    color: #FFF;
+    @include chalet_new_york;
+    font-size: 18px;
+    line-height: 24px;
+    @include background-gradient(rgba(255, 106, 201, 0.95), rgba(239, 0, 172, 0.95));
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;
+
+    &:hover, &:active {
+      opacity: 0.5;
+    }
+
+    .forward-arrow-white {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+  }
+
+  .content-container {
+    padding-top: 0;
+  }
+
+  .location-buttons {
+    display: none;
+  }
+
+  .request-a-tour-form {
+
+    input, textarea {
+      border: 2px solid #DBDBDB !important;  
+      background: #FFF;
+      border-radius: 4px; 
+      //@include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+      width: 100%;
+
+      color: #4A4A4A; 
+      @include helvetica; 
+      font-size: 14px;  
+      font-weight: 300; 
+      line-height: 28px !important;      
+      padding: 2px 18px 0 18px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    textarea {
+      height: 111px;
+      padding: 12px 18px;
+    }
+
+    h4 {
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #4A4A4A;
+      font-size: 14px;  
+      font-weight: 300; 
+      line-height: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .address {
+    color: #4A4A4A;
+    font-size: 14px;  
+    font-weight: 300; 
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .location-info {
+    position: relative;
+    margin-top: 30px;
+    padding-bottom: 35px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #DBDBDB;
+
+    h1, p.address { 
+      margin-bottom: 0;
+      max-width: 500px;
+    }
+
+    // h1 {
+    //   max-width: 480px;
+    // }
+
+    // .location-social {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    // }
+  }
+
+  .description {
+
+    &, p, li, th, td, div, span, h1, h2, h3, h4, h5, h6 {
+      color: #4A4A4A; 
+      font-size: 18px;  
+      font-weight: 300; 
+      line-height: 32px;
+      -moz-osx-font-smoothing: antialiased; //auto
+      -webkit-font-smoothing: antialiased; //auto
+      font-smoothing: antialiased; //auto  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .location-social {
+    margin: 15px 0 0 0;
+    text-align: left;
+
+    li {
+      margin-right: 20px;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      width: auto !important;
+      height: auto !important;
+      padding: 0 !important;
+      display: inline-block !important;
+      border: 0 !important;
+      background: transparent !important;
+
+      span {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+
+  .move-in-special {
+    position: relative;
+    margin: 30px auto 50px auto;
+    padding: 30px;
+    @include gradient-horizontal($brand-primary, $brand-pink);
+
+    img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+
+    .text {
+      // position: absolute;
+      // left: 40%;
+      // top: 15px;
+      // bottom: 20px;
+      // right: 15px;
+      -moz-osx-font-smoothing: antialiased; //auto
+      -webkit-font-smoothing: antialiased; //auto
+      font-smoothing: antialiased; //auto     
+
+      // display: -webkit-box;
+      // display: -moz-box;
+      // display: -ms-flexbox;
+      // display: -webkit-flex;
+      // display: flex;  
+
+      // flex-direction: column;
+      // align-content: center;
+      // justify-content: center;
+
+      @include helvetica;
+      color: #FFFFFF; 
+      font-size: 16px;  
+      font-weight: 300; 
+      line-height: 24px;
+      //max-height: calc(100% - 30px);
+      overflow-y: scroll;
+    }
+
+    h4, h5 {
+      color: #FFF;
+    }
+
+    .link {
+      margin-top: 5px;
+
+      a, a:link, a:visited, a:hover, a:active {
+        color: #FFF;
+        text-decoration: none;
+        border-bottom: 2px solid #FFF;
+        padding-bottom: 2px;
+        @include chalet_new_york;
+        font-size: 14px;  
+        line-height: 16px;
+      }
+    }
+  }
+
+  .your-life-your-style {
+    margin: 80px 0 0 0;
+    padding: 60px 40px 20px 40px;
+    background-color: #F5F9FB;
+
+    h1 {
+      margin-top: -90px;
+      margin-bottom: 40px;
+
+      sup {
+        font-size: 19px;
+        position: relative;
+        top: -22px;
+      }
+    }
+
+    .section {
+      margin-bottom: 60px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .amenities-list {
+      list-style: none;
+
+      li {
+        margin: 0 0 10px 0;
+        color: #4A4A4A; 
+        @include helvetica;
+        font-size: 18px;  
+        font-weight: 300; 
+        line-height: 22px;
+        -moz-osx-font-smoothing: antialiased; //auto
+        -webkit-font-smoothing: antialiased; //auto
+        font-smoothing: antialiased; //auto   
+      }
+    }
+  }
+
+
+  #map.salon-map {
+    //margin-bottom: 40px;
+    height: 420px !important;
+  }
+
+  .find-a-salon-pro {
+    position: relative;
+    padding: 230px (230px / 2);
+    background: asset-url('Find_Professional_BG.jpg') no-repeat top left;//center center fixed; 
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    h1 {
+      color: #FFF;
+      margin: 0;
+    }
+
+    p {
+      color: #9B9B9B;
+      margin: 15px 0;
+    }
+
+    .button-wrapper {
+      margin-top: 30px;
+
+      .button {
+        width: auto !important;
+        margin-bottom: 0;
+        background: transparent !important;
+        color: #FFF !important;
+      }
+    }
+  }
+
+  .mobile-lease-form {
+    display: none;
+  }
+
+}
+
+.contact-salon-pros-directly {
+  padding: 20px;
+  text-align: center;
+  @include gradient-horizontal(#F760BB, #F227A0);
+
+  h3, h4 {
+    position: relative;
+    top: 2px;
+    margin: 0;
+    color: #FFF;
+  }
+}
+
+@media (max-width: 1060px) {
+  .location-page {
+    
+    .location-info {
+      text-align: center;
+    }
+
+    .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
+      display: none;
+    }
+
+    .location-buttons {
+      display: block;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #DBDBDB;
+    }
+
+    .owl-controls {
+
+      .owl-buttons {
+        display: block;
+
+        .arrow-left {
+          left: -4px;
+        }
+
+        .arrow-right {
+          right: -5px;
+        }
+      }
+    }
+
+    .location-page-container {
+      .one-third {
+        display: none;
+      }
+      .two-thirds {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .mobile-lease-form {
+      display: block;
+      padding-top: 40px;
+      margin-top: 0;
+      margin-bottom: 40px;
+      border-top: 1px solid #DBDBDB;
+
+      .desktop-br {
+        display: inline;
+      }
+      
+      h4 {
+        @include chalet_paris;
+        font-size: 24px;  
+        line-height: 32px;  
+        text-align: center;
+
+        br {
+          display: inline;
+        }
+      }
+
+      form {
+        max-width: 550px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .location-page {
+
+    .experience-more { 
+      margin-top: 50px;
+      h4 {
+        text-align: center;
+      }
+    }
+
+    .location-info {
+      margin-top: 60px;
+      padding-bottom: 0;
+      margin-bottom: 40px;
+      border-bottom: 0;
+      text-align: center;
+      
+      h1 {
+        font-size: 36px;  
+        line-height: 40px;  
+      }
+
+      p.address {
+        font-size: 12px;  
+        font-weight: 300; 
+        line-height: 22px;
+      }
+
+      h1, p.address { 
+        margin-bottom: 0;
+      }
+    }
+
+    .move-in-special {
+      margin-bottom: 0;
+
+      .inner-text {
+        height: 100%;
+      }
+    }
+
+    .block-quote-testimonial-side-image {
+      margin: 60px auto 40px auto;
+
+      .content {
+        padding: 20px 0 0 0;
+        text-align: center;
+
+        h3 {
+          font-size: 24px;
+          line-height: 32px;
+          margin-bottom: 13px;
+        }
+      }
+
+      img {
+        position: static;
+        top: auto;
+        left: auto;
+        margin-bottom: 10px;
+        height: 88px;
+        width: 88px;
+      }
+
+      .buttons {
+        text-align: center;
+      }
+    }
+
+    .find-a-salon-pro {
+      padding: 120px 30px;
+    }
+
+  }
+}
+
 .location-grid {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
   
   h2.city {
-    margin: 40px 0 20px 0;
+    margin: 40px 0 15px 0;
+  }
+
+  h3.state {
+    margin: 40px 0 15px 0;
+
+    a:link, a:visited, a:hover, a:active {
+      text-decoration: none;
+      color: #000;
+      opacity: 1;
+      @include transition(opacity .15s ease);
+    }
+
+    a:hover, a:active {
+      opacity: 0.5;
+    }
   }
 
   .link {
@@ -14,18 +509,23 @@
     text-overflow: ellipsis;
 
     a {
-      font-weight: bold;
+      font-weight: normal;
+      text-decoration: none;
       -webkit-font-smoothing: subpixel-antialiased;
+      opacity: 1;
+      @include transition(opacity .15s ease);
 
       &.text {
+        font-size: 14px;
+        line-height: 24px;
         font-weight: normal;
         -webkit-font-smoothing: antialiased;
         color: #333;
         text-decoration: none;
+      }
 
-        &:hover, &:active {
-          color: #A8A8A8;
-        }
+      &:hover, &:active {
+        opacity: 0.5;
       }
     }
   }
@@ -41,20 +541,77 @@
 }
 
 .country-location-buttons {
+  top: -6px;
   position: relative;
-  top: 10px;
+  display: inline-block;
 
-  &.canada-country-location-buttons {
-    margin-bottom: 40px !important;
+  a, a:link, a:visited, a:hover, a:active {
+    @include chalet_new_york;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000;
+    padding: 2px 0 4px 0;
+    margin: 0 0 0 30px;
+    opacity: 1;
+    @include transition(opacity .15s ease);
+
+    &:hover, &:active {
+      opacity: 0.5;
+    }
+
+    &.active {
+      border-bottom: 2px solid $brand-primary;
+    }
   }
-  
-  .button:link, .button:visited, .button:hover, .button:active {
-    margin-right: 15px;
-    margin-bottom: 0 !important;
+}
+
+.locations-hero {
+  .sola-select {
+    float: right;
+  }
+}
+
+@media (max-width: 888px) {
+  .locations-hero {
+    text-align: center;
+
+    .country-location-buttons {
+      display: block;
+      margin: 15px auto 30px auto;
+
+      a, a:link, a:visited, a:hover, a:active {
+        margin: 0 15px;
+      }
+    }
+
+    .sola-select {
+      position: relative;
+      display: block;
+      float: none;
+      margin: 0 auto;
+    }
   }
 
-  .button:last-child {
-    margin-right: 0;
+  .location-page {
+    .description {
+      p {
+        font-size: 14px;
+      }
+    }
+    .your-life-your-style {
+      h1 {
+        margin-top: -84px;
+        white-space: nowrap;
+        font-size: 36px;
+        margin-bottom: 30px;
+      }
+      .amenities-list {
+        li {
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
 
@@ -67,9 +624,18 @@
     }    
   }
 
+  .locations-hero {
+    h2 {
+      margin-bottom: 20px;
+    }
+    
+    .country-location-buttons {
+      margin: 5px auto 25px auto;
+
+    }
+  }
+
   .country-location-buttons {
-    top: 0px;
-    margin-bottom: 15px;
 
     &.canada-country-location-buttons {
       margin-bottom: 25px !important;

@@ -1,0 +1,176 @@
+<%= render 'shared/public_website/about_us_nav', :page => :who_we_are %>
+
+<div class="who-we-are">
+
+	<div class="container content-container">
+		<div class="row">
+			<div class="six columns">
+				<h1><%= t 'page.who_we_are.title' %></h1>
+				
+				<h2><%= t 'page.who_we_are.subhead' %></h2>
+				<p><%= t 'page.who_we_are.body1' %></p>
+				<p><%= t 'page.who_we_are.body2' %></p>
+				<h4 class="emphasis"><%= t 'page.who_we_are.to_help_set_them_up_for_success' %></h4>
+			</div>
+
+			<div class="six columns">
+				<div class="img-wrap-paint-box-container">
+					<div class="img-wrap-paint-box">
+						<%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %>		
+						<div class="paint-box">
+							<div class="colors">&nbsp;</div>
+							<div class="content">
+								<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
+								<h3><%= t('page.who_we_are.locations_nationwide').html_safe %></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="join-our-diverse-community-container">
+		
+		<div class="container">
+			<div class="join-our-diverse-community">
+				<div class="row">
+					<div class="seven columns">
+						<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
+						<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
+						<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-m" class="watch-our-video-mobile play-video">
+							<p><%= t 'page.who_we_are.watch_our_video' %></p>
+							<div class="play-circle play-video">
+								<span class="fa fa-play">&nbsp;</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="watch-our-video">
+					<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-d" class="play-circle play-video">
+						<span class="fa fa-play">&nbsp;</span>
+					</a>
+					<p><%= t 'page.who_we_are.watch_our_video' %></p>
+				</div>
+			</div>
+		</div>
+		
+<!-- 		<div class="container inset-subhead-container experience-a-level experience-a-level-desktop">
+			<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
+			<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>	
+		</div> -->
+
+	</div>
+
+	<div class="container inset-subhead-container experience-a-level">
+		<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
+		<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>	
+	</div>
+
+	<div class="container">
+
+		<div class="row our-mission">
+			<div class="five columns"><h2><%= t 'page.who_we_are.our_mission' %></h2></div>
+			<div class="seven columns"><p><%= t 'page.who_we_are.our_mission_text' %></p></div>
+		</div>
+
+		<div class="row our-values">
+			<div class="five columns"><h2><%= t 'page.who_we_are.our_values' %></h2></div>
+			<div class="seven columns"><p><%= t 'page.who_we_are.our_values_text' %></p></div>
+		</div>
+
+	</div>
+
+	<div class="container">
+	  <div class="cta cta-own">
+	    <%= image_tag 'cta/OwnSalon.png' %>
+	    <div class="cta-contents">
+	      <h2><%= t 'page.who_we_are.join_our_community' %></h2>
+	      <p><%= t 'page.who_we_are.join_our_community_text' %></p>
+	      <%= link_to :contact_us, :class => 'button primary' do %><%= t 'page.who_we_are.join_our_community_button_text' %><% end %>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="container experience-more">
+		<h4 class="h1"><%= t 'page.who_we_are.experience_more' %></h4>
+	</div>
+
+	<% if I18n.locale.to_s == 'en' %>
+	  <div class="sola-benefits">
+	    <div class="container">
+	      
+	      <div class="row">
+	        <div class="columns four">
+	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+	            <div class="img-wrap">
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
+	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
+	            </div>
+	            <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
+	          <% end %>
+	        </div>
+	        <div class="columns four">
+	          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+	            <div class="img-wrap">
+	              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
+	            </div>
+	            <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
+	          <% end %>
+	        </div>
+	        <div class="columns four">
+	          <%= link_to :solagenius, :class => 'benefit-tile' do %>
+	            <div class="img-wrap">
+	              <%= image_tag 'WhySola/SolaGenius.jpg' %>
+	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.solagenius') %></span></div>
+	            </div>
+	            <span class="text"><%= t('page.who_we_are.solagenius_text') %></span>
+	          <% end %>
+	        </div>        
+	      </div>
+
+	    </div> <!-- container -->
+	  </div> <!-- sola-benefits -->
+	<% else %>
+	  <div class="sola-benefits">
+	    <div class="container">
+	      
+	      <div class="row">
+	        <div class="columns six">
+	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+	            <div class="img-wrap">
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
+	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
+	            </div>
+	            <span class="text"><%= t('page.who_we_are.sola_pro_text') %></span>
+	          <% end %>
+	        </div>
+	        <div class="columns six">
+	          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+	            <div class="img-wrap">
+	              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
+	            </div>
+	            <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
+	          <% end %>
+	        </div>       
+	      </div>
+
+	    </div> <!-- container -->
+	  </div> <!-- sola-benefits -->
+	<% end %>
+
+</div>
+
+<% content_for(:title) { t('page.who_we_are.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/who-we-are" } %>
+<% content_for(:meta_description) { t('page.who_we_are.meta_description') } %>

@@ -1,9 +1,10 @@
+<div class="gallery">
 <div class="container content-container">
   
-  <h1><%= t('page.gallery.title').html_safe %></h1>
+  <h1 class="chalet"><%= t('page.gallery.title').html_safe %></h1>
 
   <div class="row">
-    <ul class="owl-carousel">
+    <ul class="owl-carousel" data-paginationoff="true">
       <% if I18n.locale == :en %>
         <% (1..47).each do |number| %>
           <li><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/gallery1/sola#{number}.jpg", :alt => 'Interior of a salon studio' %></li>
@@ -16,7 +17,7 @@
     </ul>    
   </div>
 
-  <h1><%= t('page.gallery.videos').html_safe %></h1>
+  <h1 class="chalet"><%= t('page.gallery.videos').html_safe %></h1>
 
   <div class="row">
 
@@ -26,7 +27,7 @@
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title">Meet the 2017 Faces of Sola</h1>
+      <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2017').html_safe %></h1>
       
     </div>
 
@@ -36,7 +37,7 @@
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title"><%= t('page.gallery.faces_of_sola').html_safe %></h1>
+      <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2016').html_safe %></h1>
       
     </div>
 
@@ -46,7 +47,7 @@
 
     <div class="one-half column">
       <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video play-video-gallery" rel="nbHFs0XjS8s">
-        <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg" alt="A woman gets her hair styled">
+        <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg" alt="A woman gets her hair styled" />
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
@@ -55,30 +56,43 @@
     </div>
 
     <div class="one-half column">
-      <a href="//www.youtube.com/watch?v=77gzVR-50Wo" class="play-video play-video-gallery" rel="77gzVR-50Wo">
-        <img src="//img.youtube.com/vi/77gzVR-50Wo/maxresdefault.jpg" alt="A Sola salon professional speaks about her experience">
+      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video play-video-gallery" rel="i6AUSUofPUg">
+        <%= image_tag 'sessions_poster.jpg' %>
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title"><%= t('page.gallery.sola_testimonials_video').html_safe %></h1>
+      <h1 class="video-title"><%= t('page.gallery.the_sola_sessions').html_safe %></h1>
     </div>
-
   </div>
 
   <div class="row">
 
-    <div class="one-half column centered">
-      <a href="//www.youtube.com/watch?v=b9Ocv4vfvqc" class="play-video play-video-gallery" rel="b9Ocv4vfvqc">
-        <img src="//img.youtube.com/vi/b9Ocv4vfvqc/maxresdefault.jpg" alt="Sola salon professionals celebrate over 5,000 stylists nationwide">
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=-fWwpXeSbAM" class="play-video play-video-gallery" rel="-fWwpXeSbAM">
+        <%= image_tag 'solagenius_poster.jpg' %>
         <span class="fa fa-play-circle"></span>
         <div class="video-overlay"></div>
       </a>
-      <h1 class="video-title"><%= t('page.gallery.celebrating_5000_stylists').html_safe %></h1>
+      <h1 class="video-title"><%= t('page.gallery.solagenius').html_safe %></h1>
     </div>
 
+    <div class="one-half column">
+      <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video play-video-gallery" rel="Bpe-puULbws">
+        <%= image_tag 'sola_pro_poster.jpg' %>
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title"><%= t('page.gallery.sola_pro').html_safe %></h1>
+      
+    </div>
+
+  </div>  
+
+  <div class="view-more">
+    <a href="https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg" class="button outline-large-white" target="_blank"><%= t('page.gallery.view_more_on_youtube') %></a>
   </div>
 
-  
+</div>
 </div>
 
 <% content_for(:title) { t('page.gallery.title').html_safe } %>

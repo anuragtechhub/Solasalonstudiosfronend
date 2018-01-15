@@ -55,6 +55,12 @@
   }
 }
 
+.sola-address {
+  p {
+    margin-bottom: 15px;
+  }
+}
+
 .contact-us-form, .contact-us-form-disabled {
 
   input, textarea {
@@ -97,13 +103,17 @@
   display: block;
 
   .input, .text {
-    display: inline;
+    display: inline-block;
     float: left;
     clear: none;
   }
   .input {
     width: 20px;
     margin-right: 5px;
+
+    input {
+      height: 22px !important;
+    }
   }
   .text {
     position: relative;

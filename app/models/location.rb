@@ -168,6 +168,15 @@ class Location < ActiveRecord::Base
     return address
   end
 
+  def street_address
+    address = ''
+
+    address += address_1 if address_1.present?
+    address += '<br>' + address_2 if address_2.present?
+
+    return address
+  end
+
   def franchisee
     admin.email if admin && admin.franchisee
   end
@@ -354,6 +363,19 @@ class Location < ActiveRecord::Base
     stylists.where('stylists.has_sola_genius_account = ?', true)
   end
 
+  def generate_url_name
+    if self.name && self.url_name.blank?
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
+      count = 1
+      
+      while Location.where(:url_name => "#{url}#{count}").size > 0 do
+        count = count + 1
+      end
+
+      self.url_name = "#{url}#{count}"
+    end
+  end
+
   private
 
   def url_name_uniqueness
@@ -416,17 +438,6 @@ class Location < ActiveRecord::Base
     Location.all.first.touch
   end
 
-  def generate_url_name
-    if self.name && self.url_name.blank?
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
-      count = 1
-      
-      while Location.where(:url_name => "#{url}#{count}").size > 0 do
-        count = count + 1
-      end
 
-      self.url_name = "#{url}#{count}"
-    end
-  end
 
 end

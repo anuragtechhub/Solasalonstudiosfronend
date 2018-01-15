@@ -1,6 +1,17 @@
 @import 'mixins';
 @import 'variables';
 
+.search-bar {
+  padding: 30px;
+  background: #F5F9FB;
+}
+
+.search-results-details {
+  padding: 40px;
+  p {
+    margin-bottom: 0;
+  }
+}
 
 .search-results {
   margin-bottom: 30px;
@@ -11,15 +22,25 @@
 }
 
 .search-result {
-  padding: 25px 0;
-  border-top: 1px solid #E6E6E6;
 
   h3 {
-    margin: 0;
+    @include helvetica;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+    text-decoration: underline;
+    margin: 0 0 5px 0;
   }
 
   p {
-    margin: 15px 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4A4A4A;
+    margin: 0 0 15px 0;
+
+    &.phone {
+      margin-top: -4px;
+    }
   }
 
   div {
@@ -30,15 +51,120 @@
     }
   }
 
-  a, a:link, a:visited, a:hover, a:active {
-    font-weight: bold;
+  a.search-result-link, a.search-result-link:link, a.search-result-link:visited, a.search-result-link:hover, a.search-result-link:active {
+    border-top: 1px solid #EEEEEE;
+    //font-weight: bold;
     text-decoration: none;
     color: $brand-pink;
-    font-size: 13px;
+    //font-size: 13px;
+    padding: 30px 20px;
+    display: block;
   }
 
-  a:hover, a:active {
-    color: $brand-pink-hover;
+  a.search-result-link:hover, a.search-result-link:active {
+    background: #F5F9FB;
+
+    h3 {
+      color: $brand-pink;
+    }
+  }
+
+  &.search-result-clickable {
+    border-top: 1px solid #EEEEEE;
+    //font-weight: bold;
+    text-decoration: none;
+    color: $brand-pink;
+    //font-size: 13px;
+    padding: 30px 20px;
+    display: block;
+    cursor: pointer;
+
+    &:hover, &:active {
+      background: #F5F9FB;
+
+      h3 {
+        color: $brand-pink;
+      }
+    }
+
+    p.address:last-child {
+      margin-bottom: 0;
+    }
+
+    a.bold-link {
+      &:link, &:visited, &:hover, &:active {
+        color: $brand-pink;
+        font-weight: bold;
+        margin-right: 15px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.search-with-spyglass {
+  position: relative;
+  top: -25px;
+  background: #FFF;
+  @include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+  height: 72px;
+  padding: 10px 0;
+  font-size: 0;
+  white-space: nowrap;
+  @include box-shadow(0 4px 10px 0 rgba(0,0,0,0.1));
+  @include border-radius(4px);
+  background: #FFF;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+
+  .search-input {
+    width: calc(100% - 60px) !important;
+    border: 0 !important;
+    background: transparent;
+    @include helvetica;
+    font-size: 18px;
+    margin: 4px 0 0 8px !important;
+    padding-left: 15px !important;
+
+    &::-moz-placeholder {
+      color: #9B9B9B;
+      opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+    }
+    &:-ms-input-placeholder { color: #9B9B9B; } // Internet Explorer 10+
+    &::-webkit-input-placeholder  { color: #9B9B9B; } // Safari and Chrome
+
+    &:focus, &:hover, &:active {
+      border: 0 !important;
+    }
+  }
+
+  .search-button {
+    position: relative;
+    top: 5px !important;
+    right: 15px !important;
+    height: 46px !important;
+    width: 46px !important;;
+    background: $brand-pink; /* For browsers that do not support gradients */
+    @include background-gradient(#FF5ABB, #EF008C);
+    margin: 0;
+    border: 0;
+    padding: 15px;
+    @include border-radius(4px);
+    @include transition(opacity 0.15s ease-in-out);
+    opacity: 1;
+
+    &:focus, &:hover, &:active {
+      opacity: 0.5;
+    }
+  }
+
+  .spyglass-white {
+    display: inline-block;
+    background: asset-data-url('spyglass.png');
+    background-size: (48px / 3) (48px / 3);
+    width: (48px / 3);
+    height: (48px / 3);
   }
 }
 
@@ -48,53 +174,41 @@
   margin: 0;
 
   .nav-search-input {
+    background: transparent;
     margin: 0;
     position: absolute;
     top: 28px;
-    right: 10px;
+    right: 0px;
     width: 0;
-    max-width: 380px;
+    max-width: 410px;
     z-index: 3;
     border-radius: 18px;
     padding: 5px 16px;
     @include transition(width ease 0.2s);
   }
 
-  .ss-search {
-    display: inline-block;
+  .search-icon {
     position: absolute;
-    width: 45px;
-    height: 45px;
-    top: 24px;
-    right: 0;
-    padding: 5px 0 0 0;
-    text-align: center;
-    vertical-align: middle;
-    border: 2px solid #FFF;
-    border-radius: 50%;
+    top: 34px;
+    right: 4px;
     cursor: pointer;
-    font-size: 20px;
-    color: #FFF;
-    background: $brand-blue;
-    z-index: 4;
-    @include transition(all ease 0.2s);
 
-    &:hover, &:active {
-      color: #AFDFFF;
-      border: 2px solid #AFDFFF;
-    }
+    background: asset-data-url('spyglass.png');
+    background-size: (48px / 2) (48px / 2);
+    width: (48px / 2);
+    height: (48px / 2);
+    z-index: 4;
   }
 
   &.open {
 
     .nav-search-input {
       width: 100%;
-      
+      background: #FFF;
     }
 
-    .ss-search {
-      color: #FFF !important;
-      border: 2px solid #FFF !important;
+    .search-icon {
+      display: none;
     }
   }
   
@@ -146,6 +260,78 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+
+/* 
+* Mobile Search Modal
+*/
+.mobile-search-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  width: 100%;
+  height: 100%;
+
+  .close-x-white {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    cursor: pointer;
+  }
+
+  .mobile-search-form {
+    position: absolute;
+    top: 25%;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+
+    input, input:focus, input:active {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 45px !important;
+      font-size: 36px !important;  
+      line-height: 43px !important;
+      @include chalet_paris;
+      padding: 0 0 7px 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-bottom: 2px solid #FFF !important;
+      color: #FFF !important;
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #FFF;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: #FFF;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: #FFF;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: #FFF;
+      }
+    }
+
+    p {
+      margin: 3px 0 0 0;
+      padding: 0;
+      @include helvetica;
+      color: #444444;
+      font-size: 14px;  
+      line-height: 24px;
+    }
+  }
+}
+
+
+
+
 
 @media (max-width: 550px) {
   .nav-search.open .nav-search-input {

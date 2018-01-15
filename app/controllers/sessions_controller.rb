@@ -3,7 +3,7 @@ class SessionsController < PublicWebsiteController
   def index
     #redirect_to :home
     #render 'orange_county'
-    redirect_to '/own/sola-sessions'
+    redirect_to :sola_sessions
   end
 
   def dallas

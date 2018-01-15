@@ -1,0 +1,264 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
+.our-studios {
+
+	.content-container {
+		padding-top: 120px;
+
+		h2 {
+			margin-bottom: 15px;
+		}
+	}
+
+	.amenities-grid {
+		box-sizing: border-box;
+		position: relative;
+		margin-bottom: 60px;
+
+		&:after {
+		  content: "";
+		  display: table;
+		  clear: both; 
+		}
+
+		.grid-row {
+			// position: relative;
+
+			// display: -webkit-box;
+			// display: -moz-box;
+			// display: -ms-flexbox;
+			// display: -webkit-flex;
+			// display: flex;  
+
+			// flex-direction: column;
+			// align-content: center;
+			// justify-content: center;
+			box-sizing: border-box;
+			position: relative;
+
+			margin: 25px auto;
+			max-width: 960px;
+
+			&:after {
+			  content: "";
+			  display: table;
+			  clear: both; 
+			}
+		}
+
+		.grid-item {
+			display: block;
+			height: 440px;
+			float: left;
+			position: relative;
+
+			//flex: 1;
+
+			img {
+				position: relative;
+				height: auto;
+				width: 100%;
+				//left: -25%;
+			}
+
+			&.one-third {
+				width: calc(33% - 12.5px);
+
+				img {
+					height: 100%;
+					width: auto;
+					left: -50%;
+				}
+			}
+
+			&.one-hundred {
+				width: 100%;
+			}
+
+			&.two-thirds {
+				width: calc(67% - 12.5px);
+			}
+
+			&.left {
+				margin-right: 12.5px;
+			}
+
+			&.right {
+				margin-left: 12.5px;
+			}
+
+
+
+			.front, .back {
+				//flex: 1;
+				position: absolute;
+				overflow: hidden;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				@include transition(opacity 0.25s ease-in-out);
+				opacity: 1;
+			}
+
+			.back {
+				opacity: 0;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;  
+
+				flex-direction: column;
+				align-content: center;
+				justify-content: center;
+
+				@include gradient-directional($brand-pink, $brand-primary, -45deg);
+
+				&.active {
+					opacity: 1;
+				}
+			}
+
+			.title {
+				color: #FFF;
+				margin: 0;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				background: rgba(0,0,0,0.55);
+				padding: 15px;
+				z-index: 2;
+			}
+
+			.text {
+				// position: absolute;
+				// top: 0;
+				// bottom: 0;
+				// right: 0;
+				// left: 0;
+				align-self: center;
+				text-align: center;
+				width: 100%;
+
+				h2 {
+					color: #FFF;
+					margin: 0;
+					padding: 0 40px;
+				}
+			}
+
+
+		}
+	}
+
+	.view-gallery-of-studios {
+		margin: 30px auto 180px auto;
+
+		.container {
+			text-align: center;
+
+			.button {
+				display: inline;
+			}
+		}
+	}
+}
+
+@media (max-width: 960px) {
+	.our-studios {
+
+		.owl-carousel .item .item-content h1, .owl-carousel .item .item-content p {
+			margin-bottom: 20px;
+		}
+
+		.owl-carousel .item .item-content h1 {
+			font-size: 24px;
+			line-height: 28px;
+		}
+
+		.content-container {
+			padding-top: 90px;
+		}
+
+		.content-container h2 {
+			font-size: 24px;
+			line-height: 32px;
+		}
+
+		.view-gallery-of-studios {
+			margin: -30px auto 120px auto;
+		}
+
+		.amenities-grid {
+			
+			.grid-row {
+				margin: 0 30px;
+			}
+
+			.grid-item {
+				overflow: hidden !important;
+				width: 100% !important;
+				height: auto !important;
+				margin: 0 0 35px 0 !important;
+				float: none !important;
+				display: block;
+				clear: both;
+
+				&:after {
+				  content: "";
+				  display: table;
+				  clear: both; 
+				}
+
+				img {
+					width: 100% !important;
+					height: auto !important;
+					left: auto !important;
+					@include border-radius(4px);
+				}
+
+				.front, .back, .title {
+					position: static;
+					top: auto;
+					left: auto;
+					bottom: auto;
+					right: auto;
+				}
+
+				.title {
+					padding: 0;
+					background: transparent;
+					@include chalet_new_york;
+					font-size: 18px;
+					line-height: 24px;
+					text-transform: none;
+					letter-spacing: 0;
+					color: #000;
+					margin-top: 10px;
+				}
+
+				.back {
+					opacity: 1;
+					background: transparent;
+					display: block;
+
+					.text {
+						text-align: left;
+
+						h2 {
+							@include helvetica;
+							font-size: 14px;
+							line-height: 20px;
+							color: #4A4A4A;
+							margin: 3px 0 0 0;
+							padding: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}

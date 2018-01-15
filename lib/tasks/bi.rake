@@ -16,10 +16,11 @@ namespace :bi do
 
   task :all_stylists => :environment do
     CSV.open(Rails.root.join('csv','all_stylists.csv'), "wb") do |csv|
+      csv << ['Location Name', 'Location City', 'Location State', 'Stylist Name', 'Stylist Phone Number', 'Stylist Email Address', 'Stylist Created At']
       Location.where(:status => 'open').each do |location|
         p "location=#{location.name}, #{location.city}, #{location.state}"
         location.stylists.each do |stylist|
-          csv << [location.name, stylist.name, stylist.phone_number, stylist.email_address]
+          csv << [location.name, location.city, location.state, stylist.name, stylist.phone_number, stylist.email_address, stylist.created_at]
         end
       end
     end

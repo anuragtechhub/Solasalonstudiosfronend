@@ -1,8 +1,26 @@
 @import 'mixins';
 @import 'variables';
+@import 'bootstrap/mixins';
 
 #image_gallery {
   display: none;
+}
+
+.gallery {
+
+  h1.chalet {
+    margin-bottom: 15px !important;
+  }
+  
+  .view-more {
+    text-align: center;
+    margin: 40px auto 20px auto;
+
+    .button {
+      display: inline-block !important;
+      width: auto !important;
+    }
+  }
 }
 
 .play-video-gallery-item {
@@ -51,12 +69,13 @@
     bottom: 6px;
     left: 0;
     right: 0;
-    background: rgba(255,0,162,0.8);
+    @include gradient-horizontal(#ef94c9, #EF008C);
     z-index: 2;
+    opacity: 0.7;
   } 
 
   .fa-play-circle {
-    display: none;
+    display: block;
     position: absolute;
     font-size: 56px;
     top: 50%;
@@ -76,11 +95,12 @@
 }
 
 h1.video-title {
-  margin-top: 2px;
+  @include chalet_new_york;
+  margin-top: 10px;
   margin-bottom: 30px;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 1px;
+  font-size: 14px;
+  line-height: 26px;
+  letter-spacing: 0px;
   text-transform: none;
   font-weight: 500;
 }

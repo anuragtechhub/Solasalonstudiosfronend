@@ -4,12 +4,11 @@
     <div class="row first">
       
       <div class="one-third column first">
-          <%= link_to raw(t('footer.rent_studio_button')), :contact_us, :class => 'button block long-text' %>          
-        </p>
+        <%= link_to raw(t('footer.find_your_sola')), :locations, :class => 'button outline-large-white', :style => 'margin-bottom:0;' %>
       </div>
       
       <div class="one-third column second">
-        <h3><%= raw t 'footer.second_column_heading' %></h3>
+        <h4><%= raw t 'footer.second_column_heading' %></h4>
         <div class="row">
           <div class="one-half column">
             <ul class="p">
@@ -33,7 +32,7 @@
       </div>
       
       <div class="one-third column third">
-        <h3><%= raw t 'footer.third_column_heading' %></h3>
+        <h4><%= raw t 'footer.third_column_heading' %></h4>
 
         <p><%= raw t 'footer.join_newsletter' %></p>
         
@@ -54,7 +53,7 @@
             <li><%= link_to 'https://www.facebook.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
             <li><%= link_to 'https://twitter.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
             <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-            <li><%= link_to 'https://instagram.com/solacanada/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+            <li><%= link_to 'https://instagram.com/solacanada/', :target => '_blank', :style => 'margin-right:0;' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
           <% end %>
         </ul>
       </div>
@@ -62,7 +61,7 @@
     </div>
 
     <div class="row second">
-      <p class="subtle"><%= raw t 'footer.legal' %> <%= Time.now.year %></p>
+      <p><%= raw t 'footer.legal' %> <%= Time.now.year %></p>
     </div>
 
   </div>

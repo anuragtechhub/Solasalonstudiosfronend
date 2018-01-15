@@ -20,3 +20,53 @@ $brand-pink-hover: #f26ab9;
   font-style: normal;
   font-weight: 600 !important;
 }
+
+@mixin helvetica() {
+	font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue", 
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_london() {
+	font-family: "chalet-london-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_new_york() {
+	font-family: "chalet-new-york-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+  -moz-osx-font-smoothing: antialiased; //auto
+	-webkit-font-smoothing: antialiased; //auto
+	font-smoothing: antialiased; //auto				
+}
+
+@mixin chalet_paris() {
+	font-family: "chalet-paris-sixty", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin chalet_london_oblique() {
+	font-family: "chalet-london-oblique", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+  font-family: "Northwell";
+  src: asset-url('Northwell.eot');
+  src: asset-url('Northwell.eot?#iefix') format('embedded-opentype'),
+       asset-url('Northwell.woff') format('woff'),
+       asset-url('Northwell.ttf')  format('truetype'),
+       asset-url('Northwell.svg#Northwell') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin northwell() {
+	font-family: "Northwell", script, serif;
+	font-style: normal;
+	font-weight: 400;
+}

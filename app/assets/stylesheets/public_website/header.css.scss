@@ -2,8 +2,16 @@
 @import 'variables';
 
 #top-header {
+  -webkit-font-smoothing: antialiased;
   position: relative;
-  height: 28px;
+  height: 30px;
+  overflow: hidden;
+
+  background: #5DB9E4; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #5DB9E4, #3A8DCC); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #5DB9E4, #3A8DCC); /* Standard syntax */
 
   ul.nav {
     position: absolute;
@@ -13,36 +21,40 @@
     padding: 0;
     list-style: none;
 
+
     li {
       float: left;
+      margin: 0;
 
       &.border-left {
-        border-left: 1px solid #EEE;
+        border-left: 1px solid #3886BA;
       }
 
       &.border-right {
-        border-right: 1px solid #EEE;
+        border-right: 1px solid #3886BA;
       }
 
       a {
+        @include chalet_new_york;
         display: inline-block;
-        padding: 6px 15px;
-        text-transform: uppercase;
+        padding: 8px 15px;
         text-decoration: none;
-        font-size: 10px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        color: $brand-blue;
-
+        font-size: 11px;
+        font-weight: bolder;
+        color: #FFF;
+        @include transition(opacity 0.15s ease-in-out);
+        opacity: 1;
+        
         &:hover, &:active {
-          color: $brand-pink;
+          color: #FFF;
+          opacity: 0.5;
         }
 
         &.sola-pro-sign-in {
-          color: #000;
+          color: #FFF;
 
           &:hover, &:active {
-            color: $brand-pink;
+            color: #FFF;
           }
         }
       }
@@ -50,9 +62,15 @@
 
     li.social {
 
-      a {
-        padding: 6px 7px;
+      a, a:link, a:visited, a:hover, a:active {
+        padding: 8px 7px;
         font-size: 12px;
+        @include transition(opacity 0.15s ease-in-out);
+        opacity: 1;
+      }
+
+      a:hover, a:active {
+        opacity: 0.5;
       }
 
       .ss-pinterest {
@@ -67,8 +85,14 @@
 }
 
 #header {
+  -webkit-font-smoothing: antialiased;
   height: 92px;
-  background: $brand-primary;
+
+  background: #72C4E7; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #72C4E7, #459DD3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #72C4E7, #459DD3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #72C4E7, #459DD3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #72C4E7, #459DD3); /* Standard syntax */
 
   .container .row {
     position: relative;
@@ -92,8 +116,8 @@
 
   ul.nav {
     position: absolute;
-    top: 35px;
-    right: 70px;
+    top: 31px;
+    right: 90px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -106,6 +130,7 @@
       h3 {
         margin: 0;
         padding: 0;
+        text-transform: none;
       }
 
       a {
@@ -137,10 +162,10 @@
 
 #mobile-top-nav-button {
   display: none;
-  background: asset-data-url('Hamburger@2x.png');
-  background-size: 21px 26px;
-  height: 26px;
-  width: 21px;
+  background: asset-data-url('hamburger-menu-white.png');
+  background-size: 24px 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .nav-search-input, input[type="search"].nav-search-input {
@@ -150,7 +175,190 @@
 
 
 #chatbutton {
+  zoom: 0.8;
   z-index: 9 !important;
+}
+
+
+
+.mobile-nav-wrapper {
+  -webkit-font-smoothing: antialiased;
+  display: none;
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.85);
+  overflow: hidden;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    li {
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #EEEEEE;
+
+      ul {
+        display: none;
+      }
+    }
+  }
+
+  ul.mobile-nav-top-menu {
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    position: absolute;
+    top: 70px;
+    left: -150%;
+    right: 0; 
+    bottom: 0;
+    z-index: 9;
+
+    &.open {
+      left: 0;
+      right: 0;
+    } 
+
+    a, a:link, a:visited, a:hover, a:active {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
+    }   
+  }
+
+  .mobile-nav {
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 70px;
+    padding-top: 70px;
+    overflow: hidden;
+
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+
+    &.open {
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+    }
+
+    .close-x-black {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      @include chalet_new_york;
+      font-size: 18px;
+      line-height: 18px;
+      color: #000;
+      text-decoration: none;
+      display: block;
+      padding: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
+      //opacity: 1;
+      //@include transition(opacity 0.15s ease-in-out);
+
+      .forward-arrow-pink, .back-arrow-pink {
+        display: none;
+      }
+
+      .forward-arrow-black, .forward-arrow-pink {
+        float: right;
+        cursor: pointer;
+      }
+
+      .back-arrow-black, .back-arrow-pink {
+        float: left;
+        cursor: pointer;
+        margin-right: 15px;
+      }
+
+      &:hover, &:active {
+        color: #000;
+        //opacity: 0.5;
+
+        .forward-arrow-pink, .back-arrow-pink {
+          display: none;
+        }
+        .forward-arrow-black, .back-arrow-black {
+          display: block;
+        }
+      }
+    }
+
+    ul.sliding-submenu {
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      -o-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+
+      position: absolute;
+      top: 70px;
+      bottom: 0;
+      left: 150%;
+      right: 0;
+      z-index: 99;
+      background: #FFF;
+
+      &.open {
+        left: 0;
+        right: 0;
+      }
+
+      li {
+        border-bottom: 1px solid #EEEEEE;
+      }
+    }  
+
+    a.sublink, a.sublink:link, a.sublink:visited, a.sublink:hover, a.sublink:active {
+      @include helvetica;
+      color: #4A4A4A;
+      font-size: 13px;
+      line-height: 16px;
+      padding: 20px 20px 18px 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: hidden;
+    }  
+    a.sublink:hover, a.sublink:active {
+      color: #4A4A4A;
+    }
+  }
+
+  .social-links {
+    padding-top: 15px;
+    width: 88%;
+    margin: 0 auto;
+    max-width: 210px;
+
+    .social {
+      display: block;
+      width: 25%;
+      margin-left: -2px;
+      float: left;
+      text-align: center;
+    }
+  }
 }
 
 
@@ -165,7 +373,7 @@
     font-size: 27px;
     color: #FFF;
     position: absolute;
-    top: 22px;
+    top: 23px;
     left: 0;
     cursor: pointer;
   }
@@ -178,7 +386,7 @@
 
       &.country-switcher-wrapper {
         display: block;
-        margin-right: 0px;
+        margin-right: -3px !important;
         border-left: 0 !important;
         border-right: 0 !important;
       }
@@ -202,51 +410,11 @@
 
     ul.nav {
       display: none;
-      left: -30px;
-      right: -30px;
-      top: 70px;
-      background: #FFF;
-      z-index: 999999;
-      border-bottom: 2px solid #E5E5E5;
-      margin: 0;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.5);
-
-      li {
-        display: block;
-        width: 100%;
-        clear: both;
-        margin: 0;
-        padding: 0;
-        position: relative;
-
-        h3 {
-          font-size: 15px;
-        }
-
-        a {
-          display: block;
-          padding: 30px 15px;
-          margin: 0 30px;
-          border-bottom: 1px solid #E5E5E5;
-          color: #000;
-
-          &:hover, &:active {
-            color: #BABABA;
-          }
-        }
-
-        &:last-child a {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    .nav-search-input {
-      top: 16px;
     }
 
     .nav-search-button {
-      top: 12px;
+      top: 25px;
+      right: 0px;
     }
 
   }
@@ -256,6 +424,6 @@
 @media (max-width: 550px) {
   #chatbutton {
     position: absolute !important;
-    top: 106px !important;
+    top: 151px !important;
   }
 }

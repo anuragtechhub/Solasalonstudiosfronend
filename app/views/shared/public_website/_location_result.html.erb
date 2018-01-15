@@ -1,0 +1,20 @@
+<div class="twelve columns search-result">
+  <% if params[:first] == 'salon_professionals' %>
+    <a href="<%= salon_stylists_path(location.url_name).gsub(/\./, '') %>" class="search-result-link">
+  <% else %>
+    <a href="<%= salon_location_path(location.url_name).gsub(/\./, '') %>" class="search-result-link">
+  <% end %>
+	  <h3 class="name"><%= location.name.html_safe %></h3>
+	  <p class="address"><%= location.full_address.html_safe %></p>
+		<p class="salon-services">
+      <% if location.services && location.services.size > 0 %>
+        <% location.services.each do |service| %>
+          <span class="service"><%= service %></span>
+        <% end %>
+      <% else %>
+        <span class="service" style="visibility:hidden">&nbsp;</span>
+      <% end %>
+    </p>
+	  <!--<p class="phone"><%= location.phone_number %></p>-->
+  </a>
+</div>
