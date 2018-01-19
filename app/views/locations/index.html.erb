@@ -75,8 +75,7 @@
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <% p "msa find_by msa_name=#{msa_name}, location_name=#{location.url_name}" %>
-                    <%= link_to msa_name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -93,7 +92,7 @@
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -110,7 +109,7 @@
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -130,7 +129,7 @@
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to msa_name.html_safe, region_path(Msa.find_by(:name => msa_name).url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
