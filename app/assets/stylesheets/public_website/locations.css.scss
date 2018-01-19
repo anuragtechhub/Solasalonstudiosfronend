@@ -39,6 +39,7 @@
     @include background-gradient(rgba(255, 106, 201, 0.95), rgba(239, 0, 172, 0.95));
     @include transition(opacity 0.15s ease-in-out);
     opacity: 1;
+    z-index: 2;
 
     &:hover, &:active {
       opacity: 0.5;
@@ -48,6 +49,13 @@
       position: absolute;
       bottom: 30px;
       left: 30px;
+
+      &:hover, &:active {
+        background: asset-data-url('forward-arrow-white.png');
+        background-size: (20px / 2) (32px / 2);
+        height: (32px / 2);
+        width: (20px / 2);
+      }
     }
   }
 
