@@ -108,6 +108,15 @@
           </div>
         <% end %>
 
+        <!-- articles -->
+        <% if @articles && @articles.length > 0 %>
+          <div class="container content-container news-articles">
+            <% @articles.each do |article| %>
+              <%= render 'shared/news_summary', :article => article %>
+            <% end %>
+          </div>
+        <% end %>
+
         <!-- your life, your style (amenities) -->
         <div class="your-life-your-style">
           <h1><%= t('page.locations.your_life_your_style') %><sup>&reg;</sup></h1>

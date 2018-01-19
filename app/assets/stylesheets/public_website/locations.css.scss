@@ -5,6 +5,22 @@
 .location-page {
   margin-bottom: -30px;
 
+  .news-article {
+    .image {
+      width: calc(33% - 15px);
+      margin-right: 15px;
+      
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .text {
+      width: calc(67% - 15px);
+      margin-left: 15px;
+    }
+  }
+
   .experience-more {
     clear: both;
     margin-top: 90px;
