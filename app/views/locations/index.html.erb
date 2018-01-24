@@ -56,6 +56,29 @@
 <% end %>
 -->
 
+<div class="search-bar locations-search-bar">
+  <div class="container">
+    <%= form_tag [:search, :results], :method => :get do %>
+      <div class="filterable-dropdown-search" data-input="service_type">
+        <div class="dropdown">
+          <div class="selected-option"><span class="name"><%= params[:service_type].present? ? t("services.#{params[:service_type]}") : t('services.all_types') %></span><span class="down-triangle"></span></div>
+          <div class="options">
+            <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
+            <div class="option" data-value="hair"><%= t('services.hair') %></div>
+            <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+            <div class="option" data-value="nails"><%= t('services.nails') %></div>
+            <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+          </div>
+        </div>
+        <span class="spyglass-black"></span>
+        <input name="query" type="text" class="searchbox" placeholder="<%= t('page.locations.search_placeholder') %>" value="<%= params[:query] %>" />
+        <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
+        <button type="submit"><span class="search-icon"></span></button>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="container">
   <div class="row" id="map"></div>
   <div id="map-overlay"></div>
