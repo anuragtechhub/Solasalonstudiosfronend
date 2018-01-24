@@ -30,6 +30,12 @@
     color: #000;
     text-decoration: underline;
     margin: 0 0 5px 0;
+
+    &.name {
+      a, a:link, a:visited, a:hover, a:active {
+        color: #585858;
+      }
+    }
   }
 
   p {

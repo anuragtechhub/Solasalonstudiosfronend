@@ -169,7 +169,7 @@ a.book-now-button, a.book-now-button:link, a.book-now-button:visited, a.book-now
   position: relative;  
 
   &.solagenius-button {
-    @include gradient-horizontal($brand-primary, $brand-pink);
+    
   }
 }
 
