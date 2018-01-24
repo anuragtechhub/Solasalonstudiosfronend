@@ -55,6 +55,10 @@
       font-size: 15px !important;
       line-height: 25px !important;
       font-weight: 300;
+
+      strong {
+        font-weight: bold;
+      }
     }
 
     p, .p { 
