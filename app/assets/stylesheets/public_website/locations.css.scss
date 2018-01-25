@@ -2,10 +2,6 @@
 @import 'mixins';
 @import 'bootstrap/mixins';
 
-.locations-search-bar {
-  margin-bottom: 0px;
-}
-
 .location-page {
   margin-bottom: -30px;
 
@@ -353,6 +349,93 @@
     top: 2px;
     margin: 0;
     color: #FFF;
+  }
+}
+
+.locations-hero-container { 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;  
+
+  .locations-search-bar.search-bar {
+    flex: 1;
+    padding: 0;
+    margin: 0 0 0 30px;
+    position: relative;
+    top: -15px;
+  }
+}
+
+.locations-search-bar.search-bar {
+  background: transparent;
+  padding: 15px 0;
+}
+
+.locations-filter-bar.search-bar {
+  margin-bottom: 0px;
+  text-align: center;
+  padding: 15px 30px 35px 30px;
+  
+  .sola-select {
+    top: 13px;
+    margin-left: 25px;
+  }  
+}
+
+@media (max-width: 888px) {
+  .locations-hero-container { 
+    display: block; 
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .locations-search-bar.search-bar {
+      padding: 15px 0;
+      margin: 0 15px;
+      //margin: 0 0 0 30px;
+      //position: relative;
+      //top: -15px;
+
+      .filterable-dropdown-search {
+        @include box-shadow(none);
+      }
+
+      input.searchbox {
+        @include box-shadow(none);
+        border: 2px solid #DBDBDB !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .locations-filter-bar.search-bar {
+    padding-top: 35px;
+
+    .country-location-buttons {
+      a, a:link, a:visited, a:hover, a:active {
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .sola-select {
+      top: 20px;
+      margin-left: 0;
+      max-width: 60%;
+    }
+  } 
+
+  .locations-search-bar.search-bar { 
+
+    input.searchbox {
+      border: 2px solid #DBDBDB;
+    }
   }
 }
 

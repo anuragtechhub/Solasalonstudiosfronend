@@ -1,63 +1,9 @@
 <% cache "locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}|#{I18n.locale}" do %>
 
-<div class="container content-container">
+<div class="container content-container locations-hero-container">
+  <h2><span class="text"><%= t('page.locations.find_a_sola_location').html_safe %></span></h2>
 
-
-    <div class="row">
-      <div class="twelve columns locations-hero">
-          <h2>
-            <span class="text"><%= t('page.locations.find_a_sola_location').html_safe %></span>
-            <div class="country-location-buttons">
-              <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "#{'active' if I18n.locale == :en}" %>
-              <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "#{'active' if I18n.locale != :en}" %>
-            </div>
-            <div class="sola-select">
-              <div class="row">
-                <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
-                <div class="arrow"><span class="ss-dropdown"></span></div>
-              </div>
-              <div class="options">
-                <% @states.each do |location| %>
-                <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
-                <% end %>
-              </div>
-            </div>
-          </h2>
-      </div>
-    </div>
-
-</div>
-
-<!--
-<% if I18n.locale == :en %>
-  <div class="container location-selection-inputs">
-    <div class="row">
-      <div class="six columns text-left country-location-buttons">
-        <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "button rounded #{'active' if I18n.locale == :en}" %>
-        <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "button rounded #{'active' if I18n.locale != :en}" %>
-      </div>
-      <div class="six columns text-right">
-        <% if I18n.locale == :en %>
-          <div class="sola-select">
-            <div class="row">
-              <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
-              <div class="arrow"><span class="ss-dropdown"></span></div>
-            </div>
-            <div class="options">
-              <% @states.each do |location| %>
-              <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-<% end %>
--->
-
-<div class="search-bar locations-search-bar">
-  <div class="container">
+  <div class="search-bar locations-search-bar">
     <%= form_tag [:search, :results], :method => :get do %>
       <div class="filterable-dropdown-search" data-input="service_type">
         <div class="dropdown">
@@ -76,6 +22,24 @@
         <button type="submit"><span class="search-icon"></span></button>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class="search-bar locations-filter-bar">
+  <div class="country-location-buttons">
+    <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "#{'active' if I18n.locale == :en}" %>
+    <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "#{'active' if I18n.locale != :en}" %>
+  </div>
+  <div class="sola-select">
+    <div class="row">
+      <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
+      <div class="arrow"><span class="ss-dropdown"></span></div>
+    </div>
+    <div class="options">
+      <% @states.each do |location| %>
+      <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
+      <% end %>
+    </div>
   </div>
 </div>
 
