@@ -145,6 +145,20 @@ ul.owl-carousel {
 }
 
 
+.inline-carousel.owl-theme {
+  .arrow-left {
+    left: 25px;
+  }
+  
+  .arrow-right {
+    right: 25px;
+  }
+
+  .owl-controls .owl-pagination {
+    bottom: 25px;
+  }
+}
+
 @media (max-width: 550px) {
 
   .owl-carousel {
