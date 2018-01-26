@@ -89,6 +89,7 @@ Solasalonstudios::Application.routes.draw do
   
   get "locations/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
   get "locations/:state/:city/:url_name" => 'locations#old_salon', :as => :old_salon_location
+  get "locations/state/:state" => 'locations#state'
 
   # custom location redirects
   get '/locations/6th-avenue' => 'locations#sixthaveredirect', :via => [:get, :post]
