@@ -209,50 +209,83 @@ namespace :reports do
 
 
   ##### helper functions #######
+  def power_of_now(arr=[])
+    arr.each_with_index do |i, idx|
+      arr[idx] = i.present? ? i : " "
+    end
+
+    return arr
+  end
+
   def send_all_locations_report(email_address=nil)
     return unless email_address
     p "send all locations"
     
-    CSV.open(Rails.root.join('csv', 'all_locations.csv'), "wb") do |csv|
+    csv_report = CSV.open(Rails.root.join('csv', 'all_locations.csv'), "wb") do |csv|
+      csv << ['ID', 'Name', 'URL Name', 'Address 1', 'Address 2', 'City', 'State', 'Postal Code', 'Country', 'Email Address', 'Phone Number', 'Contact Name', 'Description', 
+              'Facebook URL', 'Pinterest URL', 'Instagram URL', 'Twitter URL', 'Yelp URL', 'Move In Special', 'Open House']
+      
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
-        p "location=#{location.inspect}"
+        csv << power_of_now([location.id, location.name, location.url_name, location.address_1, location.address_2, location.city, location.state, location.postal_code, location.country,
+                location.email_address_for_inquiries, location.phone_number, location.general_contact_name, location.description, location.facebook_url, location.pinterest_url, 
+                location.instagram_url, location.twitter_url, location.yelp_url, location.move_in_special, location.open_house])
       end
     end
+
+    #p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'All Locations Report', csv_report).deliver
+    #p "mail?=#{mail}"
+    mail.deliver
   end
 
   def send_all_stylists_report(email_address=nil)
     return unless email_address
     p "send all stylists"
     
-    CSV.open(Rails.root.join('csv', 'all_stylists.csv'), "wb") do |csv|
+    csv_report = CSV.open(Rails.root.join('csv', 'all_stylists.csv'), "wb") do |csv|
+      csv << ['ID', 'Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL', 
+              'Pinterest URL', 'Facebook URL', 'Twitter URL', 'Instagram URL', 'Yelp URL', 
+              'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number', 
+              'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
+              'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service', 
+              'Studio Number', 'Location ID', 'Location Name', 'Location City', 'Location State']
+
       Stylist.where('status = ?', 'open').order(:created_at => :desc).each do |stylist|
-        p "stylist=#{stylist.inspect}"
+        next unless stylist && stylist.location
+        #p "stylist=#{stylist.inspect}"
+        csv << power_of_now([stylist.id, stylist.name, stylist.url_name, stylist.email_address, stylist.phone_number, stylist.website_url, stylist.booking_url,
+                stylist.pinterest_url, stylist.facebook_url, stylist.twitter_url, stylist.instagram_url, stylist.yelp_url,
+                stylist.emergency_contact_name, stylist.emergency_contact_relationship, stylist.emergency_contact_phone_number, 
+                stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal, stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading,
+                stylist.nails, stylist.permanent_makeup, stylist.skin, stylist.tanning, stylist.teeth_whitening, stylist.threading, stylist.waxing, stylist.other_service,
+                stylist.studio_number, stylist.location.id, stylist.location.name, stylist.location.city, stylist.location.state])
       end
     end
+
+    #p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'All Stylists Report', csv_report).deliver
+    #p "mail?=#{mail}"
+    mail.deliver
   end
 
   def send_solapro_solagenius_penetration_report(email_address=nil)
     return unless email_address
     p "send solapro solagenius penetration"
     
-    # sql = 'SELECT l.id, l.name AS location_name, l.city, l.state, 
-    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\') AS "Stylists on Website", 
-    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\' AND stylists.encrypted_password != '') AS "Has Sola Pro Account", 
-    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\' AND stylists.has_sola_genius_account = true) AS "Has SolaGenius Account" 
-    #       FROM locations AS l WHERE l.status = \'open\' ORDER BY l.name ASC'
-
-    # rows = ActiveRecord::Base.connection.execute(sql)
-
-    # p "rows=#{rows.size}"
-
-    # rows.each do |row|
-    #   p "row=#{row.inspect}"
-    # end
-    CSV.open(Rails.root.join('csv', 'solapro_solagenius_penetration.csv'), "wb") do |csv|
+    csv_report = CSV.open(Rails.root.join('csv', 'solapro_solagenius_penetration.csv'), "wb") do |csv|
+      csv << ['Location ID', 'Location Name', 'Location City', 'Location State', 'Stylists on Website', 'Has Sola Pro Account', 'Has SolaGenius Account']
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
-        p "location=#{location.inspect}"
+        csv << power_of_now([location.id, location.name, location.city, location.state, location.stylists.size, location.stylists_using_sola_pro, location.stylists_using_sola_genius])
       end
     end
+
+    #p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'Sola Pro / SolaGenius Penetration Report', csv_report)
+    #p "mail?=#{mail}"
+    mail.deliver
   end
 
 

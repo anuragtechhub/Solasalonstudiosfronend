@@ -121,3 +121,5 @@ gem 'mechanize'
 gem 'rest-client'
 gem 'textacular', '~> 4.0'
 gem 'carmen-rails', '~> 1.0.0'
+
+gem 'sendgrid-ruby'

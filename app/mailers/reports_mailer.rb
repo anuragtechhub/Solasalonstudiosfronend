@@ -8,4 +8,9 @@ class ReportsMailer < ActionMailer::Base
     mail(to: report_email_address, bcc: ['nadia@solasalonstudios.com', 'jeff@jeffbail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
   end
 
+  def send_report(email_address, subject, csv_file)
+  	attachments['report.csv'] = csv_file
+  	mail(to: email_address, subject: subject)
+  end
+
 end
