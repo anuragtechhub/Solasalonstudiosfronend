@@ -1504,6 +1504,21 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'Report' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :report_type
+      field :email_address
+      field :processed_at
+    end
+    edit do
+      field :report_type
+      field :email_address
+    end
+  end
+
   config.model 'Testimonial' do
     visible false
   end

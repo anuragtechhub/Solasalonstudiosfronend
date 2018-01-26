@@ -3,8 +3,8 @@ namespace :reports do
   require 'google/apis/analyticsreporting_v4'
   require 'render_anywhere'
 
-require 'openssl'
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   # task :pdf => :environment do
   #   html_renderer = HTMLRenderer.new
@@ -21,6 +21,19 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   #     file << pdf
   #   end    
   # end
+
+  # compiles and sends unprocessed Reports
+  task :process_unprocessed => :environment do 
+    Report.where(:processed_at => nil).each do |report|
+      if report.report_type == 'all_locations'
+        send_all_locations_report(report.email_address)
+      elsif report.report_type == 'all_stylists'
+        send_all_stylists_report(report.email_address)
+      elsif report.report_type == 'solapro_solagenius_penetration'
+        send_solapro_solagenius_penetration_report(report.email_address)
+      end
+    end
+  end
 
   # rake reports:locations
   # rake reports:locations[2017-01-01]
@@ -194,6 +207,53 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     p "file saved" 
   end
 
+
+  ##### helper functions #######
+  def send_all_locations_report(email_address=nil)
+    return unless email_address
+    p "send all locations"
+    
+    CSV.open(Rails.root.join('csv', 'all_locations.csv'), "wb") do |csv|
+      Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
+        p "location=#{location.inspect}"
+      end
+    end
+  end
+
+  def send_all_stylists_report(email_address=nil)
+    return unless email_address
+    p "send all stylists"
+    
+    CSV.open(Rails.root.join('csv', 'all_stylists.csv'), "wb") do |csv|
+      Stylist.where('status = ?', 'open').order(:created_at => :desc).each do |stylist|
+        p "stylist=#{stylist.inspect}"
+      end
+    end
+  end
+
+  def send_solapro_solagenius_penetration_report(email_address=nil)
+    return unless email_address
+    p "send solapro solagenius penetration"
+    
+    # sql = 'SELECT l.id, l.name AS location_name, l.city, l.state, 
+    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\') AS "Stylists on Website", 
+    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\' AND stylists.encrypted_password != '') AS "Has Sola Pro Account", 
+    #       (SELECT COUNT(*) FROM stylists WHERE stylists.location_id = l.id AND stylists.status = \'open\' AND stylists.has_sola_genius_account = true) AS "Has SolaGenius Account" 
+    #       FROM locations AS l WHERE l.status = \'open\' ORDER BY l.name ASC'
+
+    # rows = ActiveRecord::Base.connection.execute(sql)
+
+    # p "rows=#{rows.size}"
+
+    # rows.each do |row|
+    #   p "row=#{row.inspect}"
+    # end
+    CSV.open(Rails.root.join('csv', 'solapro_solagenius_penetration.csv'), "wb") do |csv|
+      Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
+        p "location=#{location.inspect}"
+      end
+    end
+  end
 
 
   ##### report functions #######
