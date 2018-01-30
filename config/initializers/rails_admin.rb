@@ -1271,6 +1271,16 @@ RailsAdmin.config do |config|
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
       end
+      group :solagenius do
+        active false
+        label 'SolaGenius'
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :has_sola_genius_account do
+          label 'Has SolaGenius Account?'
+        end
+      end
       group :social do
         active false
         field :facebook_url do
