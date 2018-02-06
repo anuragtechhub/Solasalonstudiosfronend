@@ -590,6 +590,9 @@ RailsAdmin.config do |config|
       group :rent_manager do
         label 'Rent Manager'
         active false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
         field :rent_manager_property_id do
           label 'Rent Manager Property ID'
         end
