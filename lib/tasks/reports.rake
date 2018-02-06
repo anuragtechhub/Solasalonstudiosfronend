@@ -32,6 +32,8 @@ namespace :reports do
       elsif report.report_type == 'solapro_solagenius_penetration'
         send_solapro_solagenius_penetration_report(report.email_address)
       end
+      report.processed_at = DateTime.now
+      report.save
     end
   end
 
