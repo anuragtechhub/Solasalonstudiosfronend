@@ -279,7 +279,7 @@ namespace :reports do
     csv_report = CSV.generate do |csv|
       csv << ['Location ID', 'Location Name', 'Location City', 'Location State', 'Stylists on Website', 'Has Sola Pro Account', 'Has SolaGenius Account']
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
-        csv << power_of_now([location.id, location.name, location.city, location.state, location.stylists.size, location.stylists_using_sola_pro, location.stylists_using_sola_genius])
+        csv << power_of_now([location.id, location.name, location.city, location.state, location.stylists.size, location.stylists_using_sola_pro.size, location.stylists_using_sola_genius.size])
       end
     end
 
