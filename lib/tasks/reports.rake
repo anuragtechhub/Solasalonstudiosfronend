@@ -223,7 +223,7 @@ namespace :reports do
     return unless email_address
     p "send all locations"
     
-    csv_report = CSV.open(Rails.root.join('csv', 'all_locations.csv'), "wb") do |csv|
+    csv_report = CSV.generate do |csv|
       csv << ['ID', 'Name', 'URL Name', 'Address 1', 'Address 2', 'City', 'State', 'Postal Code', 'Country', 'Email Address', 'Phone Number', 'Contact Name', 'Description', 
               'Facebook URL', 'Pinterest URL', 'Instagram URL', 'Twitter URL', 'Yelp URL', 'Move In Special', 'Open House']
       
@@ -245,7 +245,7 @@ namespace :reports do
     return unless email_address
     p "send all stylists"
     
-    csv_report = CSV.open(Rails.root.join('csv', 'all_stylists.csv'), "wb") do |csv|
+    csv_report = CSV.generate do |csv|
       csv << ['ID', 'Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL', 
               'Pinterest URL', 'Facebook URL', 'Twitter URL', 'Instagram URL', 'Yelp URL', 
               'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number', 
@@ -276,7 +276,7 @@ namespace :reports do
     return unless email_address
     p "send solapro solagenius penetration"
     
-    csv_report = CSV.open(Rails.root.join('csv', 'solapro_solagenius_penetration.csv'), "wb") do |csv|
+    csv_report = CSV.generate do |csv|
       csv << ['Location ID', 'Location Name', 'Location City', 'Location State', 'Stylists on Website', 'Has Sola Pro Account', 'Has SolaGenius Account']
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
         csv << power_of_now([location.id, location.name, location.city, location.state, location.stylists.size, location.stylists_using_sola_pro, location.stylists_using_sola_genius])
