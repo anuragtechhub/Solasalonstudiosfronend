@@ -238,7 +238,7 @@ namespace :reports do
 
     mail = ReportsMailer.send_report(email_address, 'All Locations Report', csv_report).deliver
     #p "mail?=#{mail}"
-    mail.deliver
+    #mail.deliver
   end
 
   def send_all_stylists_report(email_address=nil)
@@ -269,7 +269,7 @@ namespace :reports do
 
     mail = ReportsMailer.send_report(email_address, 'All Stylists Report', csv_report).deliver
     #p "mail?=#{mail}"
-    mail.deliver
+    #mail.deliver
   end
 
   def send_solapro_solagenius_penetration_report(email_address=nil)
@@ -285,9 +285,9 @@ namespace :reports do
 
     #p "csv_report=#{csv_report}"
 
-    mail = ReportsMailer.send_report(email_address, 'Sola Pro / SolaGenius Penetration Report', csv_report)
+    mail = ReportsMailer.send_report(email_address, 'Sola Pro / SolaGenius Penetration Report', csv_report).deliver
     #p "mail?=#{mail}"
-    mail.deliver
+    #mail.deliver
   end
 
 
