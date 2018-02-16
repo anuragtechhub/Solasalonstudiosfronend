@@ -29,6 +29,7 @@ class Stylist < ActiveRecord::Base
   before_save :update_computed_fields, :fix_url_name
   after_save :remove_from_mailchimp_if_closed#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
+  after_create :send_welcome_email
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   #has_one :studio
@@ -340,6 +341,13 @@ class Stylist < ActiveRecord::Base
   def image_10_url
     image_10.url(:carousel) if image_10.present?
   end                
+
+  def send_welcome_email
+    #p "SEND WELCOME EMAIL #{location.country}"
+    if location && location.country && location.country == 'US'
+      PublicWebsiteMailer.welcome_email_us(self).deliver
+    end
+  end
 
   def as_json(options={})
     super(:methods => [:leases, :location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
