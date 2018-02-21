@@ -431,7 +431,9 @@ RailsAdmin.config do |config|
       end
       group :promotions do
         field :move_in_special
-        field :open_house
+        field :open_house do
+          label 'Special Callout'
+        end
       end
       group :social do
         field :facebook_url
@@ -666,7 +668,9 @@ RailsAdmin.config do |config|
       group :promotions do
         active false
         field :move_in_special
-        field :open_house
+        field :open_house do
+          label 'Special Callout'
+        end
       end
       group :social do
         active false
@@ -918,7 +922,9 @@ RailsAdmin.config do |config|
       field :general_contact_name
       field :description
       field :move_in_special
-      field :open_house
+      field :open_house do
+        label 'Special Callout'
+      end
       field :website_url
       field :services_list
       field :facebook_url
