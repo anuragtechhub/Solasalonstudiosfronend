@@ -303,7 +303,7 @@ namespace :reports do
 
     # sola pro, sola genius, etc numbers
     data[:salon_professionals_on_sola_website] = location.stylists.size
-    data[:salon_professionals_on_solagenius] = location.stylists.where(:has_sola_genius_account => true).size
+    data[:salon_professionals_on_solagenius] = location.stylists.select{|s| s.has_sola_genius_account }.size
     data[:salon_professionals_on_sola_pro] = location.stylists.where("encrypted_password IS NOT NULL AND encrypted_password <> ''").size
 
     locals = {

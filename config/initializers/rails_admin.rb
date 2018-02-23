@@ -1142,15 +1142,25 @@ RailsAdmin.config do |config|
           label 'Has Sola Pro account'
           help 'If set to "Yes", the stylist has a Sola Pro account.'
         end
-        field :has_sola_genius_account do
-          label 'Has SolaGenius account'
-          help 'If set to "Yes", the stylist has a SolaGenius account.'
-        end
+        # field :has_sola_genius_account do
+        #   label 'Has SolaGenius account'
+        #   help 'If set to "Yes", the stylist has a SolaGenius account.'
+        # end
         field :sola_pro_platform do
           help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
         end
         field :sola_pro_version do
           help 'The version of the Sola Pro app the stylist is using.'
+        end
+      end
+      group :solagenius do
+        active false
+        label 'SolaGenius'
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :has_sola_genius_account do
+          label 'Has SolaGenius Account?'
         end
       end
       group :images do
@@ -1280,16 +1290,16 @@ RailsAdmin.config do |config|
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
       end
-      group :solagenius do
-        active false
-        label 'SolaGenius'
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-        field :has_sola_genius_account do
-          label 'Has SolaGenius Account?'
-        end
-      end
+      # group :solagenius do
+      #   active false
+      #   label 'SolaGenius'
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      #   field :has_sola_genius_account do
+      #     label 'Has SolaGenius Account?'
+      #   end
+      # end
       group :social do
         active false
         field :facebook_url do

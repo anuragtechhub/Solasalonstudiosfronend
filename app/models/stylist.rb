@@ -150,9 +150,9 @@ class Stylist < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
-  def has_sola_genius_account_enum
-    [['Yes', true], ['No', false]]
-  end
+  # def has_sola_genius_account_enum
+  #   [['Yes', true], ['No', false]]
+  # end
 
   # helper function to return images as array
   def images
@@ -239,6 +239,11 @@ class Stylist < ActiveRecord::Base
 
   def canonical_url
     "https://www.solasalonstudios.#{location && location.country == 'CA' ? 'ca' : 'com'}/salon-professional/#{url_name}"
+  end
+
+  def has_sola_genius_account
+    return true if booking_url.present? && booking_url.include?('glossgenius.com')
+    return false
   end
 
   # def lease
