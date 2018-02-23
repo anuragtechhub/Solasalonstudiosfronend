@@ -28,10 +28,18 @@ class SearchController < PublicWebsiteController
       locations2 = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
       locations3 = Location.where(:msa_id => Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
 
+
       @locations = locations1.open + locations2.open + locations3.open
       if @locations
         @locations.uniq!
         @locations.sort! { |a, b| a.name <=> b.name }
+      end
+
+      exact_match_location = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(name) = ?', params[:query].downcase).first
+      if exact_match_location
+        #p "yes exact match location #{exact_match_location.name}"
+        @locations = @locations.unshift(exact_match_location)
+        @locations.uniq!
       end
 
       # stylists
