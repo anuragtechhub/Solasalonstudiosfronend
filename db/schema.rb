@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126204535) do
+ActiveRecord::Schema.define(version: 20180307015441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20180126204535) do
     t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "agreement_file_url"
+    t.text     "agreement_file_url"
     t.integer  "location_id"
     t.boolean  "hair_styling_permitted",      default: false
     t.boolean  "manicure_pedicure_permitted", default: false
@@ -193,6 +193,8 @@ ActiveRecord::Schema.define(version: 20180126204535) do
     t.string   "insurance_frequency"
     t.integer  "move_in_bonus_amount"
     t.string   "move_in_bonus_payee"
+    t.integer  "nsf_fee_amount"
+    t.string   "other_service"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
@@ -552,14 +554,13 @@ ActiveRecord::Schema.define(version: 20180126204535) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                  default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,            null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "msa_name"
     t.boolean  "phone_number_display",           default: true
-    t.boolean  "has_sola_genius_account",        default: false
     t.boolean  "sola_genius_enabled",            default: true
     t.string   "sola_pro_platform"
     t.string   "sola_pro_version"
@@ -591,6 +592,8 @@ ActiveRecord::Schema.define(version: 20180126204535) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
+    t.string   "rent_manager_contact_id"
+    t.date     "website_go_live_date",           default: '2004-01-01'
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
