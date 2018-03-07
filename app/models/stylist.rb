@@ -219,7 +219,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def has_sola_pro_login
-    self.encrypted_password.present?
+    self.encrypted_password.present? || self.sola_pro_version.present? || self.sola_pro_platform.present?
   end
   
   def fix_url_name
