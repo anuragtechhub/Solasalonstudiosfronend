@@ -1,5 +1,5 @@
 <div class="twelve columns search-result">
-  <% if params[:first] == 'salon_professionals' %>
+  <% if params[:so] == 'salon_professionals' %>
     <a href="<%= salon_stylists_path(location.url_name).gsub(/\./, '') %>" class="search-result-link">
   <% else %>
     <a href="<%= salon_location_path(location.url_name).gsub(/\./, '') %>" class="search-result-link">

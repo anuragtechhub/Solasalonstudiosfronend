@@ -34,17 +34,6 @@
       <p style="margin-top:50px" class="text-center"><%= t('page.search.no_results_found', :query => params[:query]).html_safe %></p>
     <% end %>
 
-    <% if params[:so] == 'salon_professionals' %>
-      <% if @stylists && @stylists.size > 0 %>
-        <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
-        <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
-          <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-            <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
-          <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-
     <% if @locations && @locations.size > 0 %>
       <h3><%= t('page.search.location_results').html_safe %></h3>
       <% @locations.each_with_index do |location, index| %>
@@ -54,14 +43,12 @@
       <% end %>
     <% end %>
 
-    <% if params[:so] != 'salon_professionals' %>
-      <% if @stylists && @stylists.size > 0 %>
-        <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
-        <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
-          <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-            <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
-          <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
-        <% end %>
+    <% if @stylists && @stylists.size > 0 %>
+      <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
+      <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
+          <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
+        <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
       <% end %>
     <% end %>
 
