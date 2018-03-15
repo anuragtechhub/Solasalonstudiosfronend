@@ -56,7 +56,7 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def welcome_email_us(stylist)
-    mail(to: stylist.email_address, from: "Sola Salon Studios <welcome@solasalonstudios.com>", subject: 'Welcome to Sola')
+    mail(to: stylist.email_address, from: "Jennie at Sola <jennie@solasalonstudios.com>", subject: 'Welcome to Sola')
   end
 
 end
