@@ -134,6 +134,8 @@ Solasalonstudios::Application.routes.draw do
   get 'region/:url_name' => 'locations#region'
   get 'regions/:url_name' => 'locations#region', :as => :region
 
+  get 'emails/welcome-to-sola' => 'emails#welcome_to_sola'
+
   match "forgot-password" => 'forgot_password#form', :via => [:get, :post], :as => :forgot_password_form
   match "forgot-password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
 
