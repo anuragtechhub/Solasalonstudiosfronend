@@ -2,21 +2,22 @@ class PublicWebsiteMailer < ActionMailer::Base
   default :from => "Sola Salon Studios <inquiry@solasalonstudios.com>"
 
   def request_a_tour(requestTourInquiry)
-    headers['X-SMTPAPI'] = `{
-      "category": "Request a Tour",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Request a Tour",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+    headers['X-SMTPAPI'] = '{"category": "Request a Tour"}'
 
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
@@ -25,21 +26,22 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def stylist_message(stylistMessage)
-    headers['X-SMTPAPI'] = `{
-      "category": "Stylist Message",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Stylist Message",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+    headers['X-SMTPAPI'] = '{"category": "Stylist Message"}'
 
     if stylistMessage && stylistMessage.stylist && stylistMessage.stylist.email_address && stylistMessage.stylist.email_address.present?
       @message = stylistMessage
@@ -48,21 +50,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def franchising_request(franchisingRequest)
-    headers['X-SMTPAPI'] = `{
-      "category": "Franchising Request",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Franchising Request",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Franchising Request"}'
 
     if franchisingRequest
       @message = franchisingRequest
@@ -71,21 +75,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def partner_inquiry(partnerInquiry)
-    headers['X-SMTPAPI'] = `{
-      "category": "Partner Inquiry",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Partner Inquiry",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Partner Inquiry"}'
 
     if partnerInquiry
       @inquiry = partnerInquiry
@@ -94,21 +100,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def forgot_password(admin)
-    headers['X-SMTPAPI'] = `{
-      "category": "Forgot Password",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Forgot Password",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Forgot Password"}'
 
     if admin
       @key = admin.forgot_password_key
@@ -118,21 +126,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def stylist_website_is_updated(update_my_sola_website)
-    headers['X-SMTPAPI'] = `{
-      "category": "Update My Sola Website",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Update My Sola Website",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Update My Sola Website"}'
 
     if update_my_sola_website
       @update_my_sola_website = update_my_sola_website
@@ -143,21 +153,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def update_my_sola_website_reminder(update_my_sola_website)
-    headers['X-SMTPAPI'] = `{
-      "category": "Update My Sola Website Reminder",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Update My Sola Website Reminder",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Update My Sola Website Reminder"}'
 
     if update_my_sola_website
       @update_my_sola_website = update_my_sola_website
@@ -168,21 +180,23 @@ class PublicWebsiteMailer < ActionMailer::Base
   end
 
   def welcome_email_us(stylist)
-    headers['X-SMTPAPI'] = `{
-      "category": "Welcome Email",
-      "filters" : {
-        "clicktrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        },
-        "opentrack" : {
-          "settings" : {
-            "enable" : 1
-          }
-        }
-      }
-    }`
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Welcome Email",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Welcome Email"}'
 
     mail(to: stylist.email_address, from: "Jennie at Sola <jennie@solasalonstudios.com>", subject: 'Welcome to Sola')
   end
