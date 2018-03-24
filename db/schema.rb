@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308231202) do
+ActiveRecord::Schema.define(version: 20180324004217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -345,6 +345,7 @@ ActiveRecord::Schema.define(version: 20180308231202) do
     t.string   "rent_manager_property_id"
     t.string   "rent_manager_location_id"
     t.boolean  "service_request_enabled",     default: false
+    t.boolean  "rent_manager_enabled",        default: false
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
@@ -595,6 +596,7 @@ ActiveRecord::Schema.define(version: 20180308231202) do
     t.string   "rent_manager_contact_id"
     t.date     "website_go_live_date",           default: '2004-01-01'
     t.boolean  "force_show_book_now_button",     default: false
+    t.string   "sg_booking_url"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

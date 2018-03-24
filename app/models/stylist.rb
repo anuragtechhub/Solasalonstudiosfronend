@@ -243,7 +243,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def has_sola_genius_account
-    return true if booking_url.present? && booking_url.include?('glossgenius.com')
+    return true if sg_booking_url.present? #&& booking_url.include?('glossgenius.com')
     return false
   end
 

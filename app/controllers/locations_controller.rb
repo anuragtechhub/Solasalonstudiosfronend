@@ -30,7 +30,9 @@ class LocationsController < PublicWebsiteController
       @locations = Location.where(:status => 'open').where(:country => 'CA')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
     end
 
-    @states = @locations.select('DISTINCT state').order(:state => :asc)
+    @states = @locations.select('DISTINCT state').order(:state => :asc).to_a.reject{|l| l.state.blank? }
+
+    p "@states=#{@states.to_a.length}"
 
     @last_location = Location.order(:updated_at => :desc).first
     @last_msa = Msa.order(:updated_at => :desc).first
