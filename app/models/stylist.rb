@@ -122,6 +122,7 @@ class Stylist < ActiveRecord::Base
   validates :name, :url_name, :location, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
+  validates :url_name, uniqueness: true
 
   def first_name
     FullNameSplitter.split(name)[0]
