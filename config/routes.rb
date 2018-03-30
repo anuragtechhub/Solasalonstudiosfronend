@@ -151,11 +151,14 @@ Solasalonstudios::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-
       match 'locations' => 'locations#index', :via => [:get, :post]
       match 'locations/:id' => 'locations#show', :via => [:get, :post]
-
     end
+
+    namespace :v2 do
+      match 'locations' => 'locations#index', :via => [:get, :post]
+      match 'locations/:id' => 'locations#show', :via => [:get, :post]
+    end    
   end
 
   match '/cms/save-lease' => 'cms#save_lease', :via => [:get, :post], :as => :cms_save_lease
