@@ -1,7 +1,7 @@
 json.data @locations do |location|
   json.id location.id
   json.name location.name
-  json.description location.description
+  #json.description location.description
   json.url location.canonical_url
   json.address_1 location.address_1
   json.address_2 location.address_2
