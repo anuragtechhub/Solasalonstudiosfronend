@@ -131,6 +131,7 @@ class Location < ActiveRecord::Base
 
   validates :name, :url_name, :presence => true
   validate :url_name_uniqueness
+  validates :url_name, :uniqueness => true, :reduce => true
 
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
@@ -384,7 +385,7 @@ class Location < ActiveRecord::Base
       @location = Location.find_by(:url_name => self.url_name) || Location.find_by(:url_name => self.url_name.split('_').join('-'))
 
       if @stylist || (@location && @location.id != self.id)
-        errors[:base] << 'This URL name is already in use. Please enter a unique name and try again'
+        errors[:url_name] << 'already in use by another location. Please enter a unique URL name and try again'
       end
     end
   end

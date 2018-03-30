@@ -116,13 +116,16 @@ class Stylist < ActiveRecord::Base
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
-  validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }#, :allow_blank => true, :on => :create
+  validates :email_address, :presence => true
+  validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :reduce => true#, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
   
   validates :name, :url_name, :location, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
-  validates :url_name, uniqueness: true
+  validates :url_name, :uniqueness => true, :reduce => true
+  
+  
 
   def first_name
     FullNameSplitter.split(name)[0]
@@ -368,7 +371,7 @@ class Stylist < ActiveRecord::Base
       @location = Location.find_by(:url_name => self.url_name) || Location.find_by(:url_name => self.url_name.split('_').join('-'))
 
       if (@stylist && @stylist.id != self.id) || @location
-        errors[:base] << 'This URL name is already in use. Please enter a unique name and try again'
+        errors[:url_name] << 'already in use by another salon professional. Please enter a unique URL name and try again'
       end
     end
   end
