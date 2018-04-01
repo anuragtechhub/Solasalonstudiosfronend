@@ -13,4 +13,9 @@ class ReportsMailer < ActionMailer::Base
   	mail(to: email_address, subject: subject)
   end
 
+  def welcome_email_report(report_pdf)
+    attachments["welcome_email_report.pdf"] = report_pdf
+    mail(to: ['jennie@solasalonstudios.com', 'nadia@solasalonstudios.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
+  end
+
 end
