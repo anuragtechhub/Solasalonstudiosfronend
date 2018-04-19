@@ -1,0 +1,332 @@
+@import 'mixins';
+@import 'variables';
+
+.session-2018 {
+
+  h2.highlight {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 21px;
+    margin-bottom: 5px;
+    color: $brand-pink;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+  }
+  
+  /* bb = bottom border */
+  h2.bb {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 27px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    color: #000;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: 0px;
+    border-bottom: 1px solid #969696;
+  }
+
+  .header {
+    margin: 0 0 30px 0;
+    height: 1209px;
+  }
+
+  .logo {
+    text-align: center;
+    padding: 80px 0 0 0;
+  }
+
+  .location-and-date {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .tickets-on-sale-now {
+    text-align: center;
+    margin: 30px 0 40px 0;
+
+    h3 {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      color: #FFF;
+      font-size: 25px;
+      line-height: 27px;
+      font-weight: bold;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+  }
+
+  .buy-now {
+    text-align: center;
+    margin: 65px auto 75px auto;
+
+    a, a:link, a:visited, a:hover, a:active {
+      display: inline-block;
+      color: $brand-pink;
+      background: #FFF;
+      font-family: 'Lato', sans-serif;
+      font-size: 23px;
+      font-weight: bold;
+      line-height: 23px;
+      word-spacing: 2px;
+      letter-spacing: 2px;
+      padding: 17px 25px 17px 25px;
+      border-radius: 45px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+      
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .ticket-details {
+    position: absolute;
+    left: 50%;
+    margin-left: -210px;
+    width: 420px;
+
+    .left {
+      position: absolute;
+      top: -15px;
+      left: 0;
+    }
+
+    .right {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 0;
+    }
+
+    .price {
+      position: relative;
+      top: -5px;
+      color: $brand-pink;
+
+      .amount {
+        position: relative;
+        left: -7px;
+        letter-spacing: -7px;
+        vertical-align: top;
+        font-family: Arial, sans-serif;
+        font-weight: normal;
+        font-size: 159px;
+        line-height: 150px;
+      }
+
+      .dollar-sign {
+        position: relative;
+        top: 20px;
+        vertical-align: top;
+        font-family: 'Lato', sans-serif;
+        font-weight: normal;
+        font-size: 43px;
+        line-height: 43px;
+        padding-top: 23px;
+      }
+    }
+
+    .valued-at {
+      position: relative;
+      left: -1px;
+      display: block;
+      clear: both;
+      margin: 10px 0 0 0;
+      padding: 0;
+      font-size: 15px !important;
+      font-weight: bold;
+      line-height: 16px !important;
+      color: $brand-pink !important;
+      text-transform: uppercase;
+      font-style: normal !important;
+      //margin-bottom: -3px;
+    }
+
+    .ticket-includes {
+      position: relative;
+      font-size: 15px !important;
+      font-weight: bold;
+      line-height: 21px !important;
+      font-style: italic;
+
+      .text {
+        position: absolute;
+        top: -3px;
+        left: 16px;
+      }
+
+      .triangle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 11px solid #000;
+      }
+    }
+  }
+
+  .date-and-time {
+    margin: 20px 0 !important;
+  }
+
+  .event-details, .date-and-time, .description, .header {  
+    display: block;
+    clear: both;
+    margin-bottom: 30px !important;
+
+    ul {
+      margin: 0 0 0 20px !important;
+      padding: 0;
+      list-style-type: disc;
+      list-style-position: initial !important;
+    }
+    a, a:link, a:visited {
+      text-decoration: none;
+
+      &.add-to-calendar {
+        color: $brand-primary !important;
+      }
+    }
+    a:hover, a:active {
+      text-decoration: none;
+
+      &.add-to-calendar {
+        color: lighten($brand-primary, 20%) !important;
+      }
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+    p, li {
+      color: #6e6e6e !important;
+      font-size: 17px !important;
+      line-height: 27px !important;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+
+      &.body-text {
+        font-family: 'Lato', Arial, sans-serif !important; 
+        color: #6e6e6e !important;
+        font-size: 17px !important;
+        line-height: 27px !important;
+        margin-bottom: 20px !important;
+      }
+    }
+    p {
+      margin-bottom: 25px;
+    }
+    strong {
+      color: #262626 !important;
+    }
+  }
+
+  .speakers {
+    margin-bottom: 20px !important;
+
+    h2.bb {
+      margin-bottom: 60px !important;
+    }
+
+    .row:first-child {
+      margin-top: 0px;
+    }
+
+    .columns {
+      cursor: pointer;
+    }
+  }
+
+  .event-partners {
+    img {
+      margin: 20px auto 40px auto;
+    }
+  }
+
+  .watch-our-video {
+    padding: 20px 0 40px 0;
+    background: #000;
+
+    h6 {
+      font-size: 17px;
+      font-weight: bold;
+      color: #FFF;
+      text-align: center;
+      margin: 0 0 20px 0;
+    }
+
+    img {
+      border: 0 !important;
+    }
+
+    .play-video {
+      margin-top: 0 !important;
+    }
+
+    .play-btn {
+      background: #FFF !important;
+      width: 50px !important;
+      height: 50px !important;
+      margin: -25px 0 0 -25px !important;
+      text-transform: uppercase;
+      
+      span {
+        line-height: 18px !important;
+        font-size: 18px !important;
+        color: $brand-pink !important;
+        margin: -8px 0 0 -4px !important;
+      }
+
+      .text {
+        position: absolute;
+        bottom: -30px;
+        left: -4px;
+        font-size: 12px !important;
+        font-weight: bold !important;
+        color: #FFF !important;
+        display: block;
+        white-space: nowrap !important;
+        word-spacing: 1px;
+      }
+    }
+  }
+
+  .discounted-rooms {
+    h2 {
+      color: #000;
+      font-size: 31px;
+      line-height: 33px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    h3 {
+      color: #333;
+      font-size: 23px;
+      line-height: 33px;
+      margin-bottom: 30px;
+    }
+    h4 {
+      font-size: 17px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+    .button-wrapper {
+      margin-bottom: 10px;
+    }
+    .button {
+      font-size: 19px !important;
+      padding-left: 60px !important;
+      padding-right: 60px !important;
+    }
+  }
+}
+
