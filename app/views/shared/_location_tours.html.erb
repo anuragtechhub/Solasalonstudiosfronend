@@ -1,7 +1,7 @@
 <% if @location && @location.tours && @location.tours.size > 0 %>
   <% tours = @location.tours %>
   
-    <h5><%= t('page.locations.take_a_tour').html_safe %></h5>
+    <h5 style="margin-top:40px"><%= t('page.locations.take_a_tour').html_safe %></h5>
     <div class="row take-a-tour">
       
       <% if tours.size == 1 %>
