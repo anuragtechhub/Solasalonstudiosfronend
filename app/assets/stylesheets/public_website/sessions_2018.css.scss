@@ -23,29 +23,37 @@
 	}
 
   .header {
-    margin: 60px 0 30px 0;
+    margin: 60px 0 60px 0;
 
     text-align: center;
 
     h1 {
-    	font-size: 59px;
-    	line-height: 69px;
+    	font-size: 69px;
+    	line-height: 79px;
     	margin: 0 0 5px 0;
     	color: $brand-primary;
     }
     h2 {
-    	font-size: 39px;
-    	line-height: 49px;
-    	margin: 0 0 10px 0;
+    	font-size: 41px;
+    	line-height: 51px;
+    	margin: 0 0 15px 0;
     	color: $brand-primary;
     }
     h4 {
-    	font-size: 17px;
-    	line-height: 27px;
+    	font-size: 21px;
+    	line-height: 31px;
     	font-weight: bold;
     	color: $brand-pink;
     	margin: 0;
     }
+  }
+
+  h4.pink {
+  	font-size: 21px;
+  	line-height: 31px;
+  	font-weight: bold;
+  	color: $brand-pink;
+  	margin: 0;
   }
 
   h2.highlight {
@@ -65,7 +73,7 @@
     font-weight: 400;
     font-size: 35px;
     line-height: 45px;
-    margin-bottom: 60px 0 10px 0;
+    margin: 0 0 20px 0;
     padding-bottom: 0;
     color: #000;
     text-align: left;
@@ -213,9 +221,17 @@
     }
   }
 
-  .date-and-time {
-    margin: 20px 0 !important;
-  }
+	.checkmark {
+  	background: asset-url('sessions/checkmark.png') no-repeat center left;
+  	background-size: 24px 26px;
+  	display: inline-block;
+  	width: 24px;
+  	height: 26px;
+	}  
+
+	.group-pic {
+		margin: 0px 0 60px 0;
+	}
 
   .event-details, .date-and-time, .description, .header {  
     display: block;
@@ -264,20 +280,51 @@
         margin-bottom: 20px !important;
       }
     }
+
+    .check-row {
+    	display: block;
+    	padding: 4px 0 4px 0;
+
+    	.checkmark {
+    		margin-right: 4px;
+    	}
+    }
+
     p {
       margin-bottom: 25px;
     }
+
     strong {
       color: #262626 !important;
     }
   }
 
-  .speakers {
-    margin-bottom: 20px !important;
+  .date-and-time {
+    margin: 20px 0 0 0 !important;
+    padding: 40px 0;
+    background: #f4f9fb;
 
-    h2.bb {
-      margin-bottom: 60px !important;
+    p {
+    	line-height: 35px !important;
     }
+  }
+
+  a.blue-link {
+  	&, &:link, &:visited, &:hover, &:active {
+  		color: $brand-primary !important;
+
+  		strong {
+  			color: $brand-primary !important;
+  		}
+  	}
+  }
+
+  .speakers {
+    margin-bottom: 60px !important;
+
+    // h2.bb {
+    //   margin-bottom: 60px !important;
+    // }
 
     .row:first-child {
       margin-top: 0px;
@@ -294,9 +341,14 @@
     }
   }
 
+  .getting-there {
+  	margin: 0 0 40px 0;
+  }
+
   .watch-our-video {
-    padding: 20px 0 40px 0;
-    background: #000;
+    padding: 0;//20px 0 40px 0;
+    margin: 40px 0 60px 0;
+    background: transparent;
 
     h6 {
       font-size: 17px;
@@ -316,58 +368,80 @@
 
     .play-btn {
       background: #FFF !important;
-      width: 50px !important;
-      height: 50px !important;
-      margin: -25px 0 0 -25px !important;
+      width: 60px !important;
+      height: 60px !important;
+      margin: -30px 0 0 -30px !important;
       text-transform: uppercase;
       
       span {
-        line-height: 18px !important;
-        font-size: 18px !important;
+        line-height: 20px !important;
+        font-size: 20px !important;
         color: $brand-pink !important;
-        margin: -8px 0 0 -4px !important;
+        margin: -10px 0 0 -5px !important;
       }
 
       .text {
         position: absolute;
         bottom: -30px;
-        left: -4px;
-        font-size: 12px !important;
-        font-weight: bold !important;
+        left: -11px;
+        font-size: 14px !important;
+        font-weight: 700 !important;
         color: #FFF !important;
         display: block;
         white-space: nowrap !important;
         word-spacing: 1px;
+        letter-spacing: 1px;
       }
     }
   }
 
   .discounted-rooms {
+  	padding: 40px 0;
+  	background: #f4f9fb;
+
     h2 {
+    	@include chalet_paris;
+	    font-size: 45px !important;
+	    line-height: 55px !important;
       color: #000;
-      font-size: 31px;
-      line-height: 33px;
-      font-weight: bold;
-      margin-bottom: 10px;
+      font-weight: normal;
+      margin-bottom: 0px;
     }
     h3 {
-      color: #333;
-      font-size: 23px;
-      line-height: 33px;
-      margin-bottom: 30px;
+    	@include chalet_paris;
+	    font-size: 31px !important;
+	    line-height: 41px !important;
+      color: #000;
+      font-weight: normal;
+      margin-bottom: 10px;
+
+      strong {
+      	font-weight: 700 !important;
+      	color: $brand-pink;
+      }
     }
     h4 {
-      font-size: 17px;
+      font-size: 21px;
       letter-spacing: 2px;
       margin-bottom: 25px;
     }
-    .button-wrapper {
-      margin-bottom: 10px;
+    p {
+    	margin-bottom: 0;
     }
-    .button {
-      font-size: 19px !important;
-      padding-left: 60px !important;
-      padding-right: 60px !important;
+    .button-wrapper {
+      margin: 10px 0;
+    }
+    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+    	@include chalet_new_york;
+      font-size: 21px !important;
+      line-height: 21px !important;
+      padding: 25px 90px 20px 90px !important;
+      background: transparent;
+      border: 2px solid $brand-pink;
+      color: #000 !important;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold !important;
     }
   }
 }
