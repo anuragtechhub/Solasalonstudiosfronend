@@ -446,3 +446,46 @@
   }
 }
 
+
+@media (max-width: 650px) {
+  .session-2018 {
+    .owl-carousel .item .item-content p {
+      margin: 10px 30px 0 30px !important;
+    }
+    .header {
+      h1 {
+        font-size: 39px !important;
+        line-height: 49px !important;
+      }
+      h2 {
+        font-size: 21px !important;
+        line-height: 31px !important;
+      }
+      h4 {
+        font-size: 17px !important;
+        line-height: 21px !important;
+      }
+    }
+    h2.bb {
+      font-size: 27px !important;
+      line-height: 37px !important;
+    }
+    .discounted-rooms {
+      h2 {
+        font-size: 27px !important;
+        line-height: 37px !important;
+      }
+      h3 {
+        font-size: 19px !important;
+        line-height: 29px !important;
+      }
+      a.button {
+        &, &:link, &:visited, &:hover, &:active {
+          font-size: 19px !important;
+          line-height: 19px !important;
+          padding: 20px 75px 17px 75px !important;
+        }
+      }
+    }
+  }
+}
