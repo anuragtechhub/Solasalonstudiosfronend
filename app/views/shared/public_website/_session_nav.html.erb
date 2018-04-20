@@ -1,0 +1,8 @@
+<div class="page-nav page-nav-overlay">
+	<ul>
+		<li <%= (page == :about      ? "class=active" : '') %>><%= link_to '#about'  do %>About<% end %></li>
+		<li <%= (page == :when_and_where   ? "class=active" : '') %>><%= link_to '#when_and_where' do %>When &amp; Where<% end %></li>
+		<li <%= (page == :speakers ? "class=active" : '') %>><%= link_to '#speakers' do %>Speakers<% end %></li>
+		<li <%= (page == :book_a_room      ? "class=active" : '') %>><%= link_to '#book_a_room' do %>Book a Room<% end %></li>
+	</ul>
+</div>

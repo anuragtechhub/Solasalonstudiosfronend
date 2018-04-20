@@ -3,6 +3,25 @@
 
 .session-2018 {
 
+	.hero-carousel {
+
+		.item .item-content.overlayed {
+			top: 0;
+		}
+
+		img.sessions-logo {
+			max-width: 420px;
+			width: 50%;
+			height: auto;
+			margin: 0 auto;
+		}
+
+		p {
+			margin: 15px 0 0 0;
+		}
+
+	}
+
   h2.highlight {
     font-family: 'Lato', sans-serif;
     font-weight: bold;

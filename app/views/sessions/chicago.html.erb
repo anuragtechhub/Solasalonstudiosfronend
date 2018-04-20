@@ -1,4 +1,20 @@
+<%= render 'shared/public_website/session_nav', :page => :about %>
+
 <div class="session session-2018">    
+
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+      <div class="img-wrap"><%= image_tag 'sessions/chicago_hero.jpg', :width => 1386, :height => 712 %></div>
+      <div class="item-content overlayed">
+        <%= image_tag 'Sessions_Logo@2x.png', :class => 'sessions-logo' %>
+        <p>Tickets On Sale Monday, June 4th</p>
+        <div class="learn-more-button">
+          <h5><%= t('page.sessions.learn_more') %></h5>
+          <span class="fa fa-angle-down"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <div class="header">
       <div class="container">
