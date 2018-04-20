@@ -1174,6 +1174,12 @@
         background-size: 88px 88px;
       }
 
+      &.chicago {
+        background: asset-data-url('sessions/chicago-small.jpg') no-repeat center;
+        background-size: 88px 88px;
+        border-radius: 44px;
+      }
+
       &.bay-area {
         background: asset-data-url('sessions/bay_area_off.png') no-repeat center;
         background-size: 88px 88px;
