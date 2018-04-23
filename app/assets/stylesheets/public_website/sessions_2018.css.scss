@@ -405,7 +405,7 @@
 	    line-height: 55px !important;
       color: #000;
       font-weight: normal;
-      margin-bottom: 0px;
+      margin-bottom: 20px;
     }
     h3 {
     	@include chalet_paris;
@@ -413,10 +413,11 @@
 	    line-height: 41px !important;
       color: #000;
       font-weight: normal;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
 
       strong {
-      	font-weight: 700 !important;
+        @include chalet_new_york;
+      	font-weight: bold !important;
       	color: $brand-pink;
       }
     }
