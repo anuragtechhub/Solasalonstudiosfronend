@@ -351,11 +351,11 @@
     background: transparent;
 
     h6 {
-      font-size: 17px;
-      font-weight: bold;
-      color: #FFF;
+      font-size: 15px;
+      font-style: italic;
+      color: #000;
       text-align: center;
-      margin: 0 0 20px 0;
+      margin: 15px 0 0 0;
     }
 
     img {
@@ -448,10 +448,33 @@
 }
 
 
+@media (max-width: 850px) {
+  .session-2018 {
+    .event-details, .date-and-time, .description, .header { 
+      p, li, .check-row {
+        font-size: 16px !important;
+        line-height: 26px !important;
+      }
+      .check-row {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
 @media (max-width: 650px) {
   .session-2018 {
     .owl-carousel .item .item-content p {
       margin: 10px 30px 0 30px !important;
+    }
+    .event-details, .date-and-time, .description, .header { 
+      p, li, .check-row {
+        font-size: 13px !important;
+        line-height: 23px !important;
+      }
+      .check-row {
+        white-space: nowrap;
+      }
     }
     .header {
       h1 {

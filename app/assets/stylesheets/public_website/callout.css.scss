@@ -287,21 +287,20 @@
   }
 
   &.blue-wave {
-    height: 112px;
-    overflow: hidden;
-    font-size: 29px;
-    line-height: 39px;
+    font-size: 23px;
+    line-height: 29px;
     margin-bottom: -30px !important;
-    background: #6cbee4 asset-url('sessions/bluewave.jpg') no-repeat center right; 
+    background: #6cbee4;// asset-url('sessions/bluewave.jpg') no-repeat center right; 
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 40px 20px;
     
     a.heading-link {
       &:link, &:visited, &:hover, &:active {
         @include helvetica;
-        font-size: 31px;
+        font-size: 23px;
+        line-height: 29px;
         // line-height: 112px;
         // height: 112px;
       }
