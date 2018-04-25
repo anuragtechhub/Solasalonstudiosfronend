@@ -513,3 +513,35 @@
     }
   }
 }
+
+@media (max-width: 550px) {
+  .session-2018 {
+    .owl-carousel .item .img-wrap img {
+      left: -25%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .session-2018 {
+    .owl-carousel .item .img-wrap img {
+      left: -35%;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .session-2018 {
+    .owl-carousel .item .img-wrap img {
+      left: -45%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .session-2018 {
+    .owl-carousel .item .img-wrap img {
+      left: -55%;
+    }
+  }
+}
