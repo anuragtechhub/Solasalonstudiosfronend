@@ -355,6 +355,8 @@ class Stylist < ActiveRecord::Base
     #p "SEND WELCOME EMAIL #{location.country}"
     if location && location.country && location.country == 'US'
       PublicWebsiteMailer.welcome_email_us(self).deliver
+    elsif location && location.country && location.country == 'CA'
+      PublicWebsiteMailer.welcome_email_ca(self).deliver
     end
   end
 

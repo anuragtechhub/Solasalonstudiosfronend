@@ -179,6 +179,28 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def welcome_email_ca(stylist)
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Welcome Email",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+
+    headers['X-SMTPAPI'] = '{"category": "Welcome Email"}'
+
+    mail(to: stylist.email_address, from: "Jennie at Sola <jennie@solasalonstudios.com>", subject: 'Welcome to Sola')
+  end
+
   def welcome_email_us(stylist)
     # headers['X-SMTPAPI'] = `{
     #   "category": "Welcome Email",
