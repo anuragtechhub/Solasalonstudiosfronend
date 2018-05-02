@@ -186,11 +186,16 @@
       display: inline-block !important;
       border: 0 !important;
       background: transparent !important;
+      color: #000;
 
       span {
         font-size: 16px;
         line-height: 16px;
       }
+    }
+
+    a:hover, a:active {
+      opacity: 0.4;
     }
   }
 
