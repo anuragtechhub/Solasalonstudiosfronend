@@ -160,7 +160,7 @@
       z-index: 2;
       top: 50%;
       left: 50%;
-      font-family: 'Dosis', Arial, sans-serif;
+      @include chalet_paris;
       letter-spacing: 3px;
       text-transform: uppercase;
       font-size: 30px;
@@ -168,10 +168,10 @@
       padding: 5px 15px;
       border: 1px solid #FFF;
       display: inline-block;
-      width: 240px;
-      height: 60px;
-      margin-top: -30px;
-      margin-left: -120px;
+      width: 260px;
+      height: 55px;
+      margin-top: -27.5px;
+      margin-left: -130px;
       text-align: center;
       white-space: nowrap;
     }
@@ -226,6 +226,19 @@
 
 
 @media (max-width: 550px) {
+  .blog-list-picture {
+
+    .blog-list-picture-overlay {
+
+      .large-button {
+        font-size: 23px;
+        width: 222px;
+        height: 44px;
+        margin-top: -22px;
+        margin-left: -111px;
+      }
+    }
+  }
 
   .blog-post-article {
     margin-top: -10px;
