@@ -38,14 +38,14 @@
   %>
   <tr>
     <td>
-      <div class="label">New User Views</div>
+      <div class="label">Unique Visits</div>
       <div class="value value-large"><%= number_with_delimiter @app_data[:unique_visits][0][1] %></div>
       <div class="percentage" style="<%= percentage_color(@app_data[:unique_visits] && @app_data[:unique_visits_prev_month] ? (100 * (@app_data[:unique_visits][0][1].to_i - @app_data[:unique_visits_prev_month][0][1].to_i) / @app_data[:unique_visits_prev_month][0][1].to_i) : nil) %>">
         <%= @app_data[:unique_visits] && @app_data[:unique_visits_prev_month] ? number_to_percentage(100 * (@app_data[:unique_visits][0][1].to_i - @app_data[:unique_visits_prev_month][0][1].to_i) / @app_data[:unique_visits_prev_month][0][1].to_i, :precision => 0) : '&nbsp;'.html_safe %>
       </div>
     </td>
     <td>
-      <div class="label">Total User Views</div>
+      <div class="label">Total Visits</div>
       <div class="value value-large"><%= number_with_delimiter @app_unique_visits_this_month %></div>
       <div class="percentage" style="<%= percentage_color(@app_unique_visits_this_month && @app_unique_visits_prev_month ? (100 * (@app_unique_visits_this_month - @app_unique_visits_prev_month) / @app_unique_visits_prev_month) : nil) %>">
         <%= @app_unique_visits_this_month && @app_unique_visits_prev_month ? number_to_percentage(100 * (@app_unique_visits_this_month - @app_unique_visits_prev_month) / @app_unique_visits_prev_month, :precision => 0) : '&nbsp;'.html_safe %>
