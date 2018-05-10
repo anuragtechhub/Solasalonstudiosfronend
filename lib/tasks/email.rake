@@ -5,8 +5,8 @@ namespace :email do
   task :welcome_report, [:start_date] => :environment do |task, args|
   	p "Begin Welcome Email Report..."
 
-  	if Time.now.day == 2
-  		p "yes its the second day, proceed"
+  	#if Time.now.day == 2
+  		#p "yes its the second day, proceed"
 	    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
 	    end_date = start_date.end_of_month    
 	    p "start_date=#{start_date.strftime('%F')}, end_date=#{end_date.strftime('%F')}"
@@ -104,9 +104,9 @@ namespace :email do
 	      # end  
 	      # p "file saved" 
 	    # end
-	  else
-	  	p "NOT the 2nd day of the month"
-	  end
+	  # else
+	  # 	p "NOT the 2nd day of the month"
+	  # end
 	end
 
 end
