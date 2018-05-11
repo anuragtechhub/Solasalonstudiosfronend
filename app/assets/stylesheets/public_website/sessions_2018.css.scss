@@ -65,36 +65,60 @@
 
     .early-bird, .general-admission {
       float: left;
-      height: 380px;
+      //height: 380px;
       width: 48%;
       margin-right: 2%;
-      padding: 40px;
+      padding: 30px 30px 40px 30px;
       @include border-radius(11px);
       text-align: left;
       position: relative;
+
+      .price-circle {
+        background: #FFF;
+        width: 70px;
+        height: 70px;
+        padding-top: 22px;
+        text-indent: -3px;
+        @include border-radius(35px);
+        color: $brand-primary;
+        font-size: 29px;
+        line-height: 29px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 30px;
+
+        sup {
+          position: relative;
+          top: -12px;
+          font-size: 12px;
+        }
+      }
 
       h2 {
         @include chalet_new_york;
         color: #FFF !important;
         font-size: 49px !important;
-        line-height: 59px !important;
+        line-height: 49px !important;
         font-weight: bold !important;
+        height: 100px;
+        margin-bottom: 30px !important;
       }
 
       p {
-        position: absolute;
-        bottom: 80px;
-        left: 30px;
+        // position: absolute;
+        // bottom: 80px;
+        // left: 30px;
         color: #FFF !important;
         font-size: 16px !important;
         line-height: 20px !important;
         font-weight: bold;
+        margin-bottom: 30px !important;
       }
 
       .buy-your-ticket-wrapper {
-        position: absolute;
-        bottom: 40px;
-        left: 30px;
+        // position: absolute;
+        // bottom: 40px;
+        // left: 30px;
 
         .buy-your-ticket {
           background: #FFF;
@@ -595,6 +619,20 @@
           line-height: 19px !important;
           padding: 20px 75px 17px 75px !important;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .session-2018 .early-bird-general-admission {
+    .early-bird, .general-admission {
+      width: 100%;
+      margin: 0 0 15px 0;
+
+      h2 {
+        font-size: 43px !important;
+        line-height: 43px !important;
       }
     }
   }
