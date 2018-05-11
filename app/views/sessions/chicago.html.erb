@@ -7,7 +7,7 @@
       <div class="img-wrap"><%= image_tag 'sessions/chicago_hero.jpg', :width => 1386, :height => 711 %></div>
       <div class="item-content overlayed">
         <%= image_tag 'Sessions_Logo@2x.png', :class => 'sessions-logo' %>
-        <p>Tickets On Sale Monday, June 4th</p>
+        <p><strong>Chicago, IL. Monday, September 24th</strong></p>
         <div class="learn-more-button">
           <h5><%= t('page.sessions.learn_more') %></h5>
           <span class="fa fa-angle-down"></span>
@@ -18,9 +18,30 @@
 
   <div class="header">
     <div class="container">
-      <h1 class="chalet">Chicago, IL</h1>
-      <h2 class="chalet">Monday, September 24th</h2>
       <h4>Tickets On Sale Monday, June 4th</h4>
+
+      <div class="early-bird-general-admission">
+        <div class="early-bird">
+          <h2>Early Bird</h2>
+          <p>Valid through June 30th</p>
+          <div class="buy-your-ticket-wrapper">
+            <a href="#" class="buy-your-ticket">Buy Your Ticket</a>
+          </div>
+        </div>
+        <div class="general-admission">
+          <h2>General Admission</h2>
+          <p>July 1st - September 24th</p>
+          <div class="buy-your-ticket-wrapper">
+            <a href="#" class="buy-your-ticket">Buy Your Ticket</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-includes">
+        <p>Ticket includes:</p>
+        <p><strong>Education, Sunday Workshop, Swag Bag, Prizes, Vendor Expo, Lunch, Happy Hour, Additional Non-Hair Classes. More to be Announced!</strong></p>
+        <h4>Ticket Valued at $350</h4>
+      </div>
     </div>
   </div>
 
@@ -135,11 +156,16 @@
         </div>
       </a>
 
-      <h6>Watch our video to learn more about the Sola Sessions</h6>
+      <!--<h6>Watch our video to learn more about the Sola Sessions</h6>-->
     </div>
   </div>
 
 </div>  
+
+<div class="block-quote-testimonial" style="max-width: 900px; margin-bottom: 40px">
+  <h3>I can't even begin to explain how magical of a time I had at the Sola Sessions! I am inspired and uplifted, and most of all, so grateful to be a part of the Sola family!</h3>
+  <h4>Brittany Athey</h4>
+</div>
 
 <div class="callout blue-wave">
   <%= link_to 'To learn more about the Sola Sessions, click here!', :sessions, :class => 'heading-link' %>

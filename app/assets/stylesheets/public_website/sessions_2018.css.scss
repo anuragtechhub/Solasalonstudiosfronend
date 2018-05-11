@@ -17,15 +17,22 @@
 		}
 
 		p {
-			margin: 15px 0 0 0;
+			margin: 25px 0 0 0;
+
+      strong {
+        font-size: 21px;
+      }
 		}
 
 	}
 
   .header {
-    margin: 60px 0 60px 0;
-
+    display: block;
+    clear: both;    
+    margin: 15px 0 50px 0 !important;
     text-align: center;
+    padding: 40px 0;
+    background: #f4f9fb;
 
     h1 {
     	font-size: 69px;
@@ -45,6 +52,56 @@
     	font-weight: bold;
     	color: $brand-pink;
     	margin: 0;
+    }
+  }
+
+  .early-bird-general-admission {
+    margin: 30px auto;
+    max-width: 640px;
+    margin: 30px auto;
+    display: block;
+    clear: both;
+    overflow: hidden;
+
+    .early-bird, .general-admission {
+      float: left;
+      height: 380px;
+      width: 48%;
+      margin-right: 2%;
+      padding: 40px;
+      @include border-radius(11px);
+
+      h2 {
+        @include chalet_new_york;
+        color: #FFF !important;
+        font-size: 51px !important;
+        line-height: 61px !important;
+        font-weight: bold !important;
+      }
+
+      p {
+        color: #FFF !important;
+        font-size: 21px !important;
+        line-height: 31px !important;
+      }
+    }
+
+    .early-bird {
+      @include background-gradient(#4999d4, #fe01ac);
+    }
+
+    .general-admission {
+      @include background-gradient(#6cbee5, #489bd4);
+    }
+  }
+
+  .ticket-includes {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+
+    p, h4 {
+      margin-bottom: 10px !important;
     }
   }
 
@@ -233,7 +290,7 @@
 		margin: 0px 0 60px 0;
 	}
 
-  .event-details, .date-and-time, .description, .header {  
+  .event-details, .date-and-time, .description {  
     display: block;
     clear: both;
     margin-bottom: 30px !important;
@@ -300,9 +357,9 @@
   }
 
   .date-and-time {
-    margin: 20px 0 0 0 !important;
-    padding: 40px 0;
-    background: #f4f9fb;
+    margin: 30px 0 0 0 !important;
+    padding: 30px 0;
+    //background: #f4f9fb;
 
     p {
     	line-height: 35px !important;
