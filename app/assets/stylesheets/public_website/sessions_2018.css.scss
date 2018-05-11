@@ -31,7 +31,7 @@
     clear: both;    
     margin: 15px 0 50px 0 !important;
     text-align: center;
-    padding: 40px 0;
+    padding: 40px 0 20px 0;
     background: #f4f9fb;
 
     h1 {
@@ -56,7 +56,7 @@
   }
 
   .early-bird-general-admission {
-    margin: 30px auto;
+    margin: 30px auto 50px auto;
     max-width: 640px;
     margin: 30px auto;
     display: block;
@@ -70,19 +70,48 @@
       margin-right: 2%;
       padding: 40px;
       @include border-radius(11px);
+      text-align: left;
+      position: relative;
 
       h2 {
         @include chalet_new_york;
         color: #FFF !important;
-        font-size: 51px !important;
-        line-height: 61px !important;
+        font-size: 49px !important;
+        line-height: 59px !important;
         font-weight: bold !important;
       }
 
       p {
+        position: absolute;
+        bottom: 80px;
+        left: 30px;
         color: #FFF !important;
-        font-size: 21px !important;
-        line-height: 31px !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        font-weight: bold;
+      }
+
+      .buy-your-ticket-wrapper {
+        position: absolute;
+        bottom: 40px;
+        left: 30px;
+
+        .buy-your-ticket {
+          background: #FFF;
+          border: 1px solid #FFF;
+          color: $brand-pink;
+          text-decoration: none;
+          padding: 13px 21px;
+          @include border-radius(33px);
+          font-size: 14px;
+          line-height: 14px;
+          font-weight: bold;
+
+          &.disabled {
+            cursor: default;
+            color: #e0e0e0;
+          }
+        }
       }
     }
 
