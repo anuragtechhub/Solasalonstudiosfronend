@@ -3,13 +3,13 @@
   <div class="container content-container location-page-container">
     <div class="row">
       <div class="one-third column request-a-tour-form-column">
-        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form' do %>
+        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form', :autocomplete => 'off' do %>
           <h4><%= t('page.locations.lease_at_location', {name: @location.name}).html_safe %></h4>
           <p><%= t('page.locations.request_leasing_information', {name: @location.general_contact_name, number: @location.phone_number}) %></p>
-          <input name="name" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
-          <input name="email" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
-          <input name="phone" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
-          <textarea name="message" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
+          <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
+          <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
+          <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
+          <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
           <input name="location_id" type="hidden" value="<%= @location.id %>">
           <input name="request_url" type="hidden" value="<%= request.original_url %>">
           <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
@@ -160,7 +160,26 @@
 
         <!-- mobile lease form -->
         <a name="rent-a-studio" id="rent-a-studio"></a>
-        <div class="mobile-lease-form"></div>
+        <div class="mobile-lease-form">
+          <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'request-a-tour-form contact-us-request-a-tour', :autocomplete => 'off' do %>
+            <h4><%= t('page.locations.lease_at_location', {name: @location.name}).html_safe %></h4>
+            <p><%= t('page.locations.request_leasing_information', {name: @location.general_contact_name, number: @location.phone_number}) %></p>
+            <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
+            <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
+            <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
+            <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
+            <input name="location_id" type="hidden" value="<%= @location.id %>">
+            <input name="request_url" type="hidden" value="<%= request.original_url %>">
+            <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+              <label class="receive-newsletter">
+                <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+                <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+              </label>
+            <% end %>
+            <button class="button outline-large-white small-text contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
+            <button class="button outline-large-white small-text contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
+          <% end %>
+        </div>
 
         <!-- find a salon professional -->
         <div class="find-a-salon-pro">

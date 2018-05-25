@@ -252,11 +252,11 @@ $(function () {
   }
 
   // contact-us-request-a-tour
-  $('#contact-us-request-a-tour').on('submit', function () {
+  $('#contact-us-request-a-tour, .contact-us-request-a-tour').on('submit', function () {
     var $form = $(this);
 
-    $('#contact-us-request-a-tour-submit').hide();
-    $('#contact-us-request-a-tour-submitting').show();
+    $form.find('#contact-us-request-a-tour-submit, .contact-us-request-a-tour-submit').hide();
+    $form.find('#contact-us-request-a-tour-submitting, .contact-us-request-a-tour-submitting').show();
 
     $.ajax({
       method: 'POST',
@@ -273,8 +273,8 @@ $(function () {
         window.location.reload();
         //$form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
       } else {
-        $('#contact-us-request-a-tour-submit').show();
-        $('#contact-us-request-a-tour-submitting').hide();
+        $form.find('#contact-us-request-a-tour-submit, .contact-us-request-a-tour-submit').show();
+        $form.find('#contact-us-request-a-tour-submitting, .contact-us-request-a-tour-submitting').hide();
         $form.tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', data.error).tooltipster('show');
       }
     });
@@ -284,7 +284,7 @@ $(function () {
 
   // contact-us-request-a-tour tooltip init
   if (window.location.pathname.indexOf('/contact-us-success') != -1) {
-    $('#contact-us-request-a-tour').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', 'Thank you! We will get in touch soon').tooltipster('show');
+    $('#contact-us-request-a-tour, .contact-us-request-a-tour').filter(":visible").find('#contact-us-request-a-tour-submit, .contact-us-request-a-tour-submit').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'}).tooltipster('content', 'Thank you! We will get in touch soon').tooltipster('show');
   }
   
 
