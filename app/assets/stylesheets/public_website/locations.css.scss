@@ -41,7 +41,7 @@
   .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
     position: absolute;
     right: -100px;
-    bottom: (-185px / 2);
+    bottom: -50px;//(-185px / 2);
 
     display: block;
     width: 200px;
@@ -84,6 +84,56 @@
   }
 
   .request-a-tour-form {
+    background: #F5F9FB;
+    border-radius: 2px;
+    padding: 25px;
+
+    .contact-information {
+      margin: 25px 0;
+    }
+
+    .contact-name, .contact-phone-number, .contact-email-address {
+      color: #000000; 
+      font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+      font-size: 16px;  
+      line-height: 16px;
+      font-weight: 300;
+      text-decoration: none;
+      border-bottom: 1px solid #EBECED;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      -moz-osx-font-smoothing: antialiased; //auto
+      -webkit-font-smoothing: antialiased; //auto
+      font-smoothing: antialiased; //auto 
+
+      span.fa {
+        margin-right: 8px;
+
+        &.fa-user {
+          position: relative;
+          top: 1px;
+          font-size: 19px;
+          line-height: 19px;
+        }
+
+        &.fa-phone {
+          position: relative;
+          top: 2px;
+          font-size: 20px;
+          line-height: 20px;
+        }
+      }
+
+      a, a:link, a:visited, a:hover, a:active {
+        color: #000000; 
+        font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+        font-size: 16px;  
+        line-height: 16px;
+        font-weight: 300;
+        text-decoration: none;
+      }
+    }
+
     input, textarea {
       border: 2px solid #DBDBDB !important;  
       background: #FFF;
@@ -96,13 +146,14 @@
       font-size: 14px;  
       font-weight: 300; 
       line-height: 28px !important;      
-      padding: 2px 18px 0 18px;
+      padding: 2px 14px 0 14px;
       height: 50px;
       margin-bottom: 5px;
     }
 
     button {
-      margin-top: 5px;
+      margin: -5px 0 0 0;
+      padding: 14px 20px 12px 20px
     }
 
     textarea {
@@ -111,7 +162,7 @@
     }
 
     h4 {
-      margin-bottom: 15px;
+      margin-bottom: 5px;
     }
 
     p {
@@ -120,6 +171,15 @@
       font-weight: 300; 
       line-height: 24px;
       margin-bottom: 20px;
+
+      &.contact-this-location {
+        color: #4A4A4A; 
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+        font-size: 14px; 
+        line-height: 15px; 
+        font-weight: 400; 
+        margin: 0;
+      }
     }
   }
 
@@ -133,13 +193,14 @@
 
   .location-info {
     position: relative;
-    margin-top: 30px;
-    padding-bottom: 35px;
+    margin-top: -15px;
+    padding-bottom: 25px;
     margin-bottom: 40px;
     border-bottom: 1px solid #DBDBDB;
 
     h1, p.address { 
-      margin-bottom: 0;
+      margin: 0;
+      //margin: 0 auto !important;
       max-width: 500px;
     }
 
@@ -450,6 +511,19 @@
       text-align: center;
     }
 
+    .location-info {
+      position: relative;
+      margin-top: -15px;
+      padding-bottom: 25px;
+      margin-bottom: 0px;
+      border-bottom: 0;
+
+      h1, p.address { 
+        margin: 0 auto !important;
+        max-width: 500px;
+      }
+    }
+
     .find-a-salon-pro-box, .find-a-salon-pro-box:link, .find-a-salon-pro-box:visited, .find-a-salon-pro-box:hover, .find-a-salon-pro-box:active {
       display: none;
     }
@@ -489,25 +563,25 @@
 
     .mobile-lease-form {
       display: block;
-      padding-top: 40px;
+      //padding-top: 40px;
       margin-top: 0;
       margin-bottom: 40px;
-      border-top: 1px solid #DBDBDB;
+      //border-top: 1px solid #DBDBDB;
 
       .desktop-br {
         display: inline;
       }
       
-      h4 {
-        @include chalet_paris;
-        font-size: 24px;  
-        line-height: 32px;  
-        text-align: center;
+      // h4 {
+      //   @include chalet_paris;
+      //   font-size: 24px;  
+      //   line-height: 32px;  
+      //   text-align: center;
 
-        br {
-          display: inline;
-        }
-      }
+      //   br {
+      //     display: inline;
+      //   }
+      // }
 
       form {
         max-width: 550px;
@@ -528,9 +602,9 @@
     }
 
     .location-info {
-      margin-top: 60px;
+      margin: 30px auto 15px auto;
       padding-bottom: 0;
-      margin-bottom: 40px;
+      //margin-bottom: 40px;
       border-bottom: 0;
       text-align: center;
       

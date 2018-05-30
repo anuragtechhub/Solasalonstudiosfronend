@@ -4,8 +4,23 @@
     <div class="row">
       <div class="one-third column request-a-tour-form-column">
         <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form', :autocomplete => 'off' do %>
-          <h4><%= t('page.locations.lease_at_location', {name: @location.name}).html_safe %></h4>
-          <p><%= t('page.locations.request_leasing_information', {name: @location.general_contact_name, number: @location.phone_number}) %></p>
+          <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
+          <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
+
+          <div class="contact-information">
+            <% if @location.general_contact_name.present? %>
+              <div class="contact-name"><span class="fa fa-user"></span> <%= @location.general_contact_name %></div>
+            <% end %>
+
+            <% if @location.general_contact_name.present? %>
+              <div class="contact-phone-number"><a href="tel:<%= @location.phone_number %>"><span class="fa fa-phone"></span> <%= @location.phone_number %></a></div>
+            <% end %>
+
+            <% if @location.email_address_for_inquiries.present? %>
+              <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
+            <% end %>          
+          </div>
+
           <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
           <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
           <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
@@ -18,8 +33,8 @@
               <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
             </label>
           <% end %>
-          <button class="button outline-large-white small-text" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
-          <button class="button outline-large-white small-text" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
+          <button class="button primary block" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
+          <button class="button primary block" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
         <% end %>
         &nbsp;
       </div> <!-- .one-third -->
@@ -53,10 +68,47 @@
           <p class="address"><%= @location.full_address %></p>
         </div>
 
+        <!-- mobile lease form -->
+        <div class="mobile-lease-form">
+          <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'request-a-tour-form contact-us-request-a-tour', :autocomplete => 'off' do %>
+            <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
+            <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
+
+            <div class="contact-information">
+              <% if @location.general_contact_name.present? %>
+                <div class="contact-name"><span class="fa fa-user"></span> <%= @location.general_contact_name %></div>
+              <% end %>
+
+              <% if @location.general_contact_name.present? %>
+                <div class="contact-phone-number"><a href="tel:<%= @location.phone_number %>"><span class="fa fa-phone"></span> <%= @location.phone_number %></a></div>
+              <% end %>
+
+              <% if @location.email_address_for_inquiries.present? %>
+                <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
+              <% end %>          
+            </div>
+            
+            <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
+            <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
+            <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
+            <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
+            <input name="location_id" type="hidden" value="<%= @location.id %>">
+            <input name="request_url" type="hidden" value="<%= request.original_url %>">
+            <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+              <label class="receive-newsletter">
+                <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+                <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+              </label>
+            <% end %>
+            <button class="button primary block contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
+            <button class="button primary block contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
+          <% end %>
+        </div>
+
         <!-- buttons -->
         <div class="location-buttons">
           <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
-          <%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>
+          <!--<%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>-->
         </div>
 
         <!-- about this location -->
@@ -156,29 +208,6 @@
               <%= link_to :testimonials, :class => "button outline-large-white small-text" do %><%= t('page.locations.view_more_testimonials') %><% end %>
             </div>
           </div>
-        </div>
-
-        <!-- mobile lease form -->
-        <a name="rent-a-studio" id="rent-a-studio"></a>
-        <div class="mobile-lease-form">
-          <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'request-a-tour-form contact-us-request-a-tour', :autocomplete => 'off' do %>
-            <h4><%= t('page.locations.lease_at_location', {name: @location.name}).html_safe %></h4>
-            <p><%= t('page.locations.request_leasing_information', {name: @location.general_contact_name, number: @location.phone_number}) %></p>
-            <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
-            <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
-            <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
-            <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
-            <input name="location_id" type="hidden" value="<%= @location.id %>">
-            <input name="request_url" type="hidden" value="<%= request.original_url %>">
-            <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-              <label class="receive-newsletter">
-                <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
-                <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-              </label>
-            <% end %>
-            <button class="button outline-large-white small-text contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
-            <button class="button outline-large-white small-text contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
-          <% end %>
         </div>
 
         <!-- find a salon professional -->
