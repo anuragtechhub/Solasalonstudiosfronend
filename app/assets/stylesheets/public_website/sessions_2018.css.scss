@@ -488,18 +488,25 @@
 
         &.mizani {
           position: relative;
-          top: -4px;
+          top: -5px;
           height: (65px / 2.7);
         }
 
         &.muse {
           position: relative;
-          top: -1px;
+          top: 4px;
+          height: (65px / 1.5);
+        }
+
+        &.bioelements {
+          position: relative;
+          top: 4px;
+          height: (65px / 1.5);
         }
 
         &.making_it_matter {
           position: relative;
-          top: 8px;
+          top: 7px;
           height: (65px / 1.3);
         }
 
