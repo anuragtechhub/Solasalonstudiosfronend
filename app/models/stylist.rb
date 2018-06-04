@@ -155,9 +155,9 @@ class Stylist < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
-  def walkins_enum
-    [['Yes', true], ['No', false]]
-  end
+  # def walkins_enum
+  #   [['Yes', true], ['No', false]]
+  # end
 
   # def has_sola_genius_account_enum
   #   [['Yes', true], ['No', false]]
