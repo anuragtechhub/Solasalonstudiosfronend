@@ -4,6 +4,7 @@ Gridhook.configure do |config|
 
   config.event_processor = proc do |event|
     # event is a Gridhook::Event object
-    EmailEvent.create! event.attributes
+    p "SENDGRID EVENT PROCESSOR #{event.attributes.inspect}"
+    #EmailEvent.create! event.attributes
   end
 end
