@@ -148,6 +148,9 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
+    gridhook (0.2.0)
+      multi_json (>= 1.3.0)
+      rails (>= 3.1.0)
     haml (4.0.7)
       tilt
     hike (1.2.3)
@@ -394,6 +397,7 @@ DEPENDENCIES
   geocoder
   gibbon (~> 1.2.0)
   google-api-client
+  gridhook
   hirb
   htmlcompressor
   i18n-js (>= 3.0.0.rc11)
