@@ -1093,6 +1093,7 @@ RailsAdmin.config do |config|
         field :studio_number
         field :work_hours
         field :accepting_new_clients
+        field :walkins
       end
       group :website do
         field :website_url do
@@ -1287,7 +1288,8 @@ RailsAdmin.config do |config|
         field :business_name
         field :studio_number
         field :work_hours
-        field :accepting_new_clients        
+        field :accepting_new_clients 
+        field :walkins       
       end
       group :website do
         active false
@@ -1513,7 +1515,8 @@ RailsAdmin.config do |config|
       field :business_name
       field :studio_number
       field :work_hours
-      field :accepting_new_clients     
+      field :accepting_new_clients    
+      field :walkins 
       field :booking_url
       field :sg_booking_url do
         visible do
