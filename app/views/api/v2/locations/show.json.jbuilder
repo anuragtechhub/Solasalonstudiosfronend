@@ -7,6 +7,8 @@ json.data @stylists do |stylist|
   json.studio_number stylist.studio_number
   json.business_name stylist.business_name
   json.work_hours stylist.work_hours
+  json.accepting_new_clients stylist.accepting_new_clients
+  json.walkins stylist.walkins
   json.website_url stylist.website_url
   json.booking_url (stylist.sg_booking_url || stylist.booking_url)
   json.facebook_url stylist.facebook_url
