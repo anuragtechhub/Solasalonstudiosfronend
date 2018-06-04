@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326152704) do
+ActiveRecord::Schema.define(version: 20180604191757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,20 @@ ActiveRecord::Schema.define(version: 20180326152704) do
     t.string   "name"
     t.string   "code"
     t.string   "domain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "email_events", force: true do |t|
+    t.string   "category"
+    t.string   "email"
+    t.string   "event"
+    t.string   "ip"
+    t.string   "response"
+    t.string   "sg_event_id"
+    t.string   "sg_message_id"
+    t.string   "smtp_id"
+    t.datetime "timestamp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -593,10 +607,10 @@ ActiveRecord::Schema.define(version: 20180326152704) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
-    t.string   "rent_manager_contact_id"
-    t.date     "website_go_live_date",           default: '2004-01-01'
     t.boolean  "force_show_book_now_button",     default: false
     t.string   "sg_booking_url"
+    t.string   "rent_manager_contact_id"
+    t.date     "website_go_live_date",           default: '2004-01-01'
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
