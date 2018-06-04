@@ -41,6 +41,10 @@ RailsAdmin.config do |config|
     # show_in_app
   end
 
+  config.model 'EmailEvent' do
+    visible false
+  end
+
   config.model 'Account' do
     visible false
   end
