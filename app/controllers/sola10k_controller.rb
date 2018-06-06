@@ -6,8 +6,8 @@ class Sola10kController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def index
-    last_approved_my_sola_image = Sola10kImage.select(:updated_at).order(:updated_at => :desc).first
-    cache_key = "/sola10k/approved-images?last_approved_at=#{last_approved_my_sola_image.updated_at}"
+    last_approved_sola10k_image = Sola10kImage.select(:updated_at).order(:updated_at => :desc).first
+    cache_key = "/sola10k/approved-images?last_approved_at=#{last_approved_sola10k_image ? last_approved_sola10k_image.updated_at : DateTime.now}"
 
     @gallery_images = Rails.cache.fetch(cache_key) do   
       Sola10kImage.where(:approved => true).to_a.to_json
@@ -22,32 +22,32 @@ class Sola10kController < PublicWebsiteController
   end
 
   def show
-    @my_sola_image = Sola10kImage.find_by(:public_id => params[:id])
+    @sola10k_image = Sola10kImage.find_by(:public_id => params[:id])
   end
 
   def image_preview
     # update and save Sola10kImage with statement, variant, etc
-    @my_sola_image = Sola10kImage.find_by(:public_id => params[:id]) || Sola10kImage.new
-    @my_sola_image.name = params[:name] if params[:name].present?
-    @my_sola_image.instagram_handle = params[:instagram_handle] if params[:instagram_handle].present?
-    @my_sola_image.statement_variant = params[:statement_variant] if params[:statement_variant].present?
-    @my_sola_image.statement = params[:statement] if (params[:statement].present? || @my_sola_image.statement_variant_changed?)
+    @sola10k_image = Sola10kImage.find_by(:public_id => params[:id]) || Sola10kImage.new
+    @sola10k_image.name = params[:name] if params[:name].present?
+    @sola10k_image.instagram_handle = params[:instagram_handle] if params[:instagram_handle].present?
+    @sola10k_image.statement_variant = params[:statement_variant] if params[:statement_variant].present?
+    @sola10k_image.statement = params[:statement] if (params[:statement].present? || @sola10k_image.statement_variant_changed?)
     
-    generated_image = generate_image(@my_sola_image.image, @my_sola_image.statement, @my_sola_image.statement_variant)
+    generated_image = generate_image(@sola10k_image.image, @sola10k_image.statement, @sola10k_image.statement_variant)
 
-    if @my_sola_image.changed?
+    if @sola10k_image.changed?
       #flat_image = Magick::ImageList.new(generated_image).flatten_images
       #p "WE CHANGED!!!"
-      # generated_image_file = File.open("mysola#{@my_sola_image.id}.jpg", 'wb') do |file|
+      # generated_image_file = File.open("mysola#{@sola10k_image.id}.jpg", 'wb') do |file|
       #   file.write generated_image.to_blob
       # end
-      generated_image_file = Tempfile.new("sola10k#{@my_sola_image.id}")
+      generated_image_file = Tempfile.new("sola10k#{@sola10k_image.id}")
       generated_image.write(generated_image_file.path)
       #p "generated_image_file!!!"
-      @my_sola_image.generated_image = generated_image_file#File.open("mysola#{@my_sola_image.id}.jpg")
-      @my_sola_image.save
-      #p "finished saving image to my_sola_image" 
-      #FileUtils.rm("mysola#{@my_sola_image.id}.jpg")
+      @sola10k_image.generated_image = generated_image_file#File.open("mysola#{@sola10k_image.id}.jpg")
+      @sola10k_image.save
+      #p "finished saving image to sola10k_image" 
+      #FileUtils.rm("mysola#{@sola10k_image.id}.jpg")
       #p "finished removing mysolaimage"
     end
     
@@ -55,11 +55,11 @@ class Sola10kController < PublicWebsiteController
   end
 
   def image_upload
-    @my_sola_image = Sola10kImage.create
-    @my_sola_image.image = params[:file]
-    @my_sola_image.save
+    @sola10k_image = Sola10kImage.create
+    @sola10k_image.image = params[:file]
+    @sola10k_image.save
 
-    render :json => @my_sola_image
+    render :json => @sola10k_image
   end
 
   private
