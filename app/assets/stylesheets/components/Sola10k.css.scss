@@ -2,47 +2,50 @@
 @import 'bootstrap/mixins';
 
 .sola10k {
-  padding-top: 20px;
+  padding-top: 60px;
 
   .container {
-    max-width: 320px;
+    max-width: 600px;
+  }
+
+  .image-dropzone {
+    max-width: 600px;
+    height: 600px;
+
+    .image {
+      max-width: 600px;
+      height: 600px;
+    }
   }
   
   .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
-    height: 305px !important;
+    max-width: 600px;
+    height: 600px !important;
   }
 
   .header-copy, .name-and-handle-form, .statement-form {
 
-    h3 {
-      text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
-      font-size: 11px;
-      line-height: 11px;
-      font-weight: normal;
-      letter-spacing: 1px;
-      color: #000;
-      margin: 30px 0 20px 0;
-      text-align: center;
-    }
-
-    h2 {
-      text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
-      font-size: 22px;
-      line-height: 32px;
-      letter-spacing: 0px;
-      margin: 0 0 20px 0;
-      text-align: center;
+    h1 {
+      @include chalet_paris;
+      font-size: 55px;
+      line-height: 65px;      
+      color: #489ad5;
+      white-space: nowrap;
+      margin-bottom: 40px;
     }
 
     p {
-      font-family: 'Lato', sans-serif;
-      font-size: 14px;
-      line-height: 24px;
+      @include helvetica;
+      font-size: 25px;
+      line-height: 45px;
+      font-weight: 300;
       color: #000;
-      margin: 0 0 20px 0;
+      margin: 0 0 40px 0;
       text-align: center;
+
+      &.tighter {
+        line-height: 35px;
+      }
     }
   }
 
@@ -50,17 +53,20 @@
     margin: 40px auto 0 auto;
 
     input[type='text'] {
+
       width: 100%;
       display: block;
-      margin: 0 auto 15px auto;
+      margin: 0 auto 40px auto;
       text-align: center;
       background: transparent !important;
-      border: 2px solid #d7d7d7 !important;
-      font-family: 'Lato', sans-serif;
-      font-size: 14px;
-      line-height: 14px;
-      padding: 12px 20px !important;
-      height: 48px;
+      border: 3px solid #d7d7d7 !important;
+      @include helvetica;
+      font-size: 25px;
+      line-height: 25px;
+      font-weight: 300;
+      padding: 20px !important;
+      height: 88px;
+      border-radius: 3px;
     }
 
     .next {
@@ -153,13 +159,13 @@
 
     .button {
       text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
-      font-size: 12px;
-      line-height: 12px;
-      font-weight: normal;
+      @include helvetica;
+      font-size: 25px !important;
+      line-height: 45px !important;
+      font-weight: bold !important;
       letter-spacing: 1px;
       color: #000;
-      margin: 30px 0 20px 0;
+      margin: 30px auto 20px auto;
       text-align: center;
 
       &.disabled {

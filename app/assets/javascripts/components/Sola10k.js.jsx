@@ -12,7 +12,6 @@ var Sola10k = React.createClass({
       scrollTop: 0,
       sharePopupVisible: false,
       statement: '',
-      statement_variant: 'mysola_is',
       typingTimer: null,
     };
   },
@@ -75,7 +74,7 @@ var Sola10k = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <MySolaImageDropzone ref="image_dropzone" statement={this.state.statement} statement_variant={this.state.statement_variant} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
+          <Sola10kImageDropzone ref="image_dropzone" statement={this.state.statement} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
         </div>
@@ -113,9 +112,13 @@ var Sola10k = React.createClass({
   renderHeaderCopy: function () {
     return (
       <div className="header-copy">
-        <h3>Overview:</h3>
-        <h2>What does your Sola mean to you?</h2>
-        <p>Upload a photo and fill in one of the two statements below to create a custom image. Share your pic and tell the world why you decided to go Sola.</p>
+        <h1 className="text-center">10,000 Individual Stories.<br />One Powerful Community.</h1>
+        <p className="text-center"><strong>The Sola story really is made up of 10,000 individual stories. It's this growing community that continues to inspire us every day.</strong></p>
+        <p className="text-center">Whether it's customizing your studio to fit your style, learning a new technique at the Sola Sessions, reaching a new business milestone, or having coffee with your Sola bestie, you are creating a unique journey every day.</p>
+        <p className="text-center"><strong>Share a piece of the Sola story!</strong></p>
+        <p className="text-center tighter"><strong>Step 1:</strong><br />Create your image below.</p>
+        <p className="text-center tighter"><strong>Step 2:</strong><br />Share on Instagram with the hashtag <strong>#Sola10K</strong></p>
+        <p className="text-center tighter"><strong>Step 3:</strong><br />Win cool prizes!</p>
       </div>
     );
   },
@@ -125,10 +128,6 @@ var Sola10k = React.createClass({
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Please enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
         <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInstagramInput} onKeyDown={this.onKeyDownInstagramInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
-        <div className="next">
-          <h3>Next</h3>
-          <div className="next-icon"></div>
-        </div>
       </div>
     );
   },
@@ -136,10 +135,7 @@ var Sola10k = React.createClass({
   renderStatementForm: function () {
     return (
       <div className="statement-form">
-        <h3>Choose a statement below:</h3>
-        <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
-        <h3>Or:</h3>
-        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> in #MySola</div>
+        <div className="madlibs">My <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'inspired story'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
       </div>
     );
   },
