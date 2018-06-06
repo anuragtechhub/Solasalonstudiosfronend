@@ -6,11 +6,11 @@ class Sola10kController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def index
-    last_approved_my_sola_image = MySolaImage.select(:updated_at).order(:updated_at => :desc).first
+    last_approved_my_sola_image = Sola10kImage.select(:updated_at).order(:updated_at => :desc).first
     cache_key = "/sola10k/approved-images?last_approved_at=#{last_approved_my_sola_image.updated_at}"
 
     @gallery_images = Rails.cache.fetch(cache_key) do   
-      MySolaImage.where(:approved => true).to_a.to_json
+      Sola10kImage.where(:approved => true).to_a.to_json
     end
 
     # set MySola blogs
@@ -22,12 +22,12 @@ class Sola10kController < PublicWebsiteController
   end
 
   def show
-    @my_sola_image = MySolaImage.find_by(:public_id => params[:id])
+    @my_sola_image = Sola10kImage.find_by(:public_id => params[:id])
   end
 
   def image_preview
-    # update and save MySolaImage with statement, variant, etc
-    @my_sola_image = MySolaImage.find_by(:public_id => params[:id]) || MySolaImage.new
+    # update and save Sola10kImage with statement, variant, etc
+    @my_sola_image = Sola10kImage.find_by(:public_id => params[:id]) || Sola10kImage.new
     @my_sola_image.name = params[:name] if params[:name].present?
     @my_sola_image.instagram_handle = params[:instagram_handle] if params[:instagram_handle].present?
     @my_sola_image.statement_variant = params[:statement_variant] if params[:statement_variant].present?
@@ -55,7 +55,7 @@ class Sola10kController < PublicWebsiteController
   end
 
   def image_upload
-    @my_sola_image = MySolaImage.create
+    @my_sola_image = Sola10kImage.create
     @my_sola_image.image = params[:file]
     @my_sola_image.save
 

@@ -999,6 +999,62 @@ RailsAdmin.config do |config|
     end    
   end
 
+  config.model 'Sola10kImage' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do 
+      scopes [:completed]
+      field :name
+      field :instagram_handle
+      #field :statement_text
+      field :generated_image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end
+      field :share_url
+      field :approved
+    end
+    edit do
+      field :approved
+      field :name
+      field :instagram_handle
+      field :statement
+      #field :statement_variant
+      field :image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end
+      field :generated_image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end 
+    end
+    show do
+      field :name
+      field :instagram_handle
+      field :statement
+      #field :statement_variant
+      field :image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end
+      field :generated_image do
+        pretty_value do 
+          "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
+        end
+      end
+      field :share_url
+      field :approved
+      field :approved_at
+      field :created_at
+    end    
+  end
+
   config.model 'PartnerInquiry' do
     label 'Partner Inquiry'
     label_plural 'Partner Inquiries'

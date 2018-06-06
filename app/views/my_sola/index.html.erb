@@ -1,28 +1,5 @@
-<div class="hero-carousel owl-carousel owl-theme home-all mysola-carousel" data-items="4">
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero1.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero2.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero3.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero4.jpg' %></div>
-</div>
-
-
-<div class="hero-carousel owl-carousel owl-theme home-mobile mysola-carousel" data-pagination="true">
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero1.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero2.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero3.jpg' %></div>
-  <div class="item" style="display:none"><%= image_tag 'MySola/Hero4.jpg' %></div>
-</div>
-
-<div class="mysola-tabs">
-  <div class="mysola-tabs-container">
-    <a href="#" class="mysola-tab active" data-tab="upload-a-photo"><span class="mysola-camera">&nbsp;</span> Upload a Photo</a>
-    <a href="#" class="mysola-tab" data-tab="my-sola-mondays"><span class="mysola-cup">&nbsp;</span> #MySola Features</a>
-  </div>
-</div>
-
 <div class="mysola-tabs-content">
   <div class="mysola-tab-content" style="display:block;min-height:60px" data-tab="upload-a-photo">
-    <%= react_component 'MySola' %>
     <%= react_component 'MySolaGallery', {:images => @gallery_images} %>
   </div>
   <div class="mysola-tab-content" data-tab="my-sola-mondays">
@@ -42,6 +19,5 @@
   </div>
 </div>
 
-<% content_for(:scripts) { javascript_include_tag('mysola') } %>
 <% content_for(:title) { "#MySola" } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/mysola" } %>

@@ -41,7 +41,11 @@
   } 
 
   .load-more-wrapper {
-    margin: 40px auto 30px auto;
+    margin: 50px auto 10px auto;
+
+    button, input[type=button], input[type=submit], .button, a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+      padding-top: 19px;
+    }
   }
 }
 
