@@ -5,22 +5,36 @@
   padding-top: 60px;
 
   .container {
-    max-width: 600px;
+    max-width: 540px;
   }
 
   .image-dropzone {
-    max-width: 600px;
-    height: 600px;
+    max-width: 540px;
+    height: 540px;
 
     .image {
-      max-width: 600px;
-      height: 600px;
+      max-width: 540px;
+      height: 545px;
+      border-radius: 0;
+      border: 3px solid $brand-primary;
+      background: #F2F2F2;
+    }
+
+    .action-camera-and-text {
+      @include helvetica;
+      font-size: 23px;
+      font-weight: 300;
+      color: #999999;
+      font-size: 23px;
+      line-height: 23px;
     }
   }
   
   .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
-    max-width: 600px;
-    height: 600px !important;
+    max-width: 525px;
+    height: 525px !important;
+    border: 3px solid #FFF;
+    background: #F2F2F2 !important;
   }
 
   .header-copy, .name-and-handle-form, .statement-form {
@@ -36,15 +50,15 @@
 
     p {
       @include helvetica;
-      font-size: 25px;
-      line-height: 45px;
+      font-size: 23px;
+      line-height: 43px;
       font-weight: 300;
       color: #000;
       margin: 0 0 40px 0;
       text-align: center;
 
       &.tighter {
-        line-height: 35px;
+        line-height: 33px;
       }
     }
   }
@@ -61,8 +75,8 @@
       background: transparent !important;
       border: 3px solid #d7d7d7 !important;
       @include helvetica;
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 23px;
+      line-height: 23px;
       font-weight: 300;
       padding: 20px !important;
       height: 88px;
@@ -96,15 +110,15 @@
     }
 
     .madlibs {
-      font-family: 'Lato', sans-serif;
-      font-size: 18px;
-      line-height: 18px;
+      @include chalet_paris;
+      font-size: 35px;
+      line-height: 45px;
       letter-spacing: 0px;
-      margin: 0 0 20px 0;
+      margin: 40px 0 20px 0;
       text-align: center;
 
       input[type='text'] {
-        width: 170px;
+        width: 250px;
         height: auto !important;
         margin: 0 2px !important;
         text-align: center;
@@ -112,23 +126,34 @@
         background: transparent !important;
         border: 0 !important;
         border-bottom: 2px solid #000 !important;
-        font-family: 'Lato', sans-serif !important;
-        font-size: 18px !important;
-        line-height: 18px !important; 
+        // font-family: 'Lato', sans-serif !important;
+        // font-size: 18px !important;
+        // line-height: 18px !important; 
+
+        @include helvetica;
+        font-size: 23px !important;
+        line-height: 23px !important;
+        font-weight: 300;
 
         &::-moz-placeholder {
-          color: $brand-pink;
-          font-size: 12px;
+          color: $brand-primary;
+        font-size: 23px !important;
+        line-height: 23px !important;
+        font-weight: 300;
           vertical-align: top;
           opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
         }
         &:-ms-input-placeholder { 
-          color: $brand-pink;
-          font-size: 12px;
+          color: $brand-primary;
+        font-size: 23px !important;
+        line-height: 23px !important;
+        font-weight: 300;
         } // Internet Explorer 10+
         &::-webkit-input-placeholder  { 
-          color: $brand-pink;
-          font-size: 12px;
+          color: $brand-primary;
+        font-size: 23px !important;
+        line-height: 23px !important;
+        font-weight: 300;
         } // Safari and Chrome
         &:focus::-moz-placeholder {
           color: transparent;
@@ -160,8 +185,8 @@
     .button {
       text-transform: uppercase;
       @include helvetica;
-      font-size: 25px !important;
-      line-height: 45px !important;
+      font-size: 23px !important;
+      line-height: 43px !important;
       font-weight: bold !important;
       letter-spacing: 1px;
       color: #000;
