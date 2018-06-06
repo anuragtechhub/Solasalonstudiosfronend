@@ -1,5 +1,24 @@
-<%= react_component 'Sola10k' %>
-<%= react_component 'Sola10kGallery', {:images => @gallery_images} %>
+<div class="sola10kwrapper">
+
+  <div class="hero-wrapper">
+    <div class="hero-carousel owl-carousel owl-theme">
+      <div class="item">
+        <div class="img-wrap"><%= image_tag 'sola10khero.jpg', :width => 1386, :height => 720 %></div>
+        <div class="item-content overlayed">
+          <%= image_tag 'sola10klogo.png', :class => 'sola10klogo u-full-width' %>
+          <div class="learn-more-button">
+            <h5><%= t('page.sola_sessions.learn_more') %></h5>
+            <span class="fa fa-angle-down"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= react_component 'Sola10k' %>
+  <%= react_component 'Sola10kGallery', {:images => @gallery_images} %>
+
+</div>
 
 <% content_for(:title) { "#Sola10k" } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola10k" } %>

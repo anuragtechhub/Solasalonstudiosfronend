@@ -209,13 +209,13 @@
   }
 }
 
-.mysola-tabs {
+.sola10k-tabs {
   margin: 15px auto 0 auto;
   display: block;
   clear: both;
   position: relative;
 
-  .mysola-tabs-container {
+  .sola10k-tabs-container {
     margin: 0 auto;
     // max-width: 420px;
     text-align: center;
@@ -223,7 +223,7 @@
     white-space: nowrap;
   }
 
-  a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+  a.sola10k-tab, a.sola10k-tab:link, a.sola10k-tab:visited, a.sola10k-tab:hover, a.sola10k-tab:active {
     position: relative;
     display: inline-block;
     padding: 15px 23px 15px 50px;
@@ -242,7 +242,7 @@
     }
   }
 
-  a.mysola-tab:hover, a.mysola-tab:active {
+  a.sola10k-tab:hover, a.sola10k-tab:active {
     color: #111;
 
     &.active {
@@ -251,8 +251,8 @@
   }
 }
 
-.mysola-tabs-content {
-  .mysola-tab-content {
+.sola10k-tabs-content {
+  .sola10k-tab-content {
     display: none;
   }
 }
@@ -266,7 +266,7 @@
   background: $brand-primary; 
 }
 
-.mysola-cup {
+.sola10k-cup {
   position: absolute;
   top: 12px;
   left: 14px;
@@ -278,7 +278,7 @@
   opacity: 0.4;
 }
 
-.mysola-camera {
+.sola10k-camera {
   position: absolute;
   top: 17px;
   left: 16px;
@@ -290,23 +290,57 @@
   opacity: 0.4;
 }
 
+  
+.sola10klogo {
+  max-width: (498px / 1.2);
+}
+
+.sola10kwrapper .owl-carousel .item .item-content.overlayed {
+  top: 0;
+}
+
+@media (max-width: 1150px) {
+  .sola10klogo {
+    max-width: (498px / 1.5);
+  }
+}
+
+@media (max-width: 1000px) {
+  .sola10klogo {
+    max-width: (498px / 1.7);
+  }
+}
+
+@media (max-width: 900px) {
+  .sola10klogo {
+    max-width: (498px / 1.9);
+  }
+}
+
+@media (max-width: 750px) {
+  .sola10klogo {
+    max-width: (498px / 2);
+  }
+}
+
 @media (max-width: 550px) {
-  .mysola-tabs {
-    a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+  .sola10k-tabs {
+    a.sola10k-tab, a.sola10k-tab:link, a.sola10k-tab:visited, a.sola10k-tab:hover, a.sola10k-tab:active {
       padding: 15px 18px 15px 45px;
       font-size: 13px;
 
-      .mysola-cup {
+      .sola10k-cup {
         top: 9px;
         left: 9px;
       }
-      .mysola-camera {
+      .sola10k-camera {
         top: 14px;
         left: 11px;
       }
     }
   }
-  .my-sola {
+
+  .sola10k {
     .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
       height: 267px !important;
       width: 267px !important;
