@@ -108,6 +108,12 @@ Solasalonstudios::Application.routes.draw do
   match 'mysola-image-preview/:id' => 'my_sola#image_preview', :via => [:get, :post], :as => :my_sola_image_preview
   match 'mysola-image-upload' => 'my_sola#image_upload', :via => [:get, :post], :as => :my_sola_image_upload
 
+  match 'sola10k' => 'sola10k#index', :via => [:get, :post], :as => :sola10k
+  match 'sola10k/:id' => 'sola10k#show', :via => [:get, :post], :as => :show_sola10k_image
+  match 'sola10k-s3-presigned-post' => 'sola10k#s3_presigned_post', :via => [:post], :as => :sola10ks3_presigned_post
+  match 'sola10k-image-preview/:id' => 'sola10k#image_preview', :via => [:get, :post], :as => :sola10k_image_preview
+  match 'sola10k-image-upload' => 'sola10k#image_upload', :via => [:get, :post], :as => :sola10k_image_upload
+
   get 'stylist' => 'stylists#index'
   get 'stylists/:url_name' => 'stylists#redirect'
   get 'stylist/:url_name' => 'stylists#redirect'

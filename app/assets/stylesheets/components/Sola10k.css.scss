@@ -1,0 +1,315 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.sola10k {
+  padding-top: 20px;
+
+  .container {
+    max-width: 320px;
+  }
+  
+  .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
+    height: 305px !important;
+  }
+
+  .header-copy, .name-and-handle-form, .statement-form {
+
+    h3 {
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      line-height: 11px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #000;
+      margin: 30px 0 20px 0;
+      text-align: center;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-size: 22px;
+      line-height: 32px;
+      letter-spacing: 0px;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+
+    p {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      line-height: 24px;
+      color: #000;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+  }
+
+  .name-and-handle-form {
+    margin: 40px auto 0 auto;
+
+    input[type='text'] {
+      width: 100%;
+      display: block;
+      margin: 0 auto 15px auto;
+      text-align: center;
+      background: transparent !important;
+      border: 2px solid #d7d7d7 !important;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      line-height: 14px;
+      padding: 12px 20px !important;
+      height: 48px;
+    }
+
+    .next {
+      text-align: center;
+
+      h3 {
+        margin: 40px 0 0 0;
+        font-size: 12px;
+        line-height: 12px;
+      }
+
+      .next-icon {
+        display: inline-block;
+        background: asset-data-url('down-caret.png') no-repeat center;
+        background-size: 14px 7.5px !important;
+        width: 14px;
+        height: 7.5px;
+      }
+    }
+  }
+
+  .statement-form {
+    margin: 20px auto 40px auto;
+
+    h3 {
+      margin: 30px 0 25px 0;
+    }
+
+    .madlibs {
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
+      line-height: 18px;
+      letter-spacing: 0px;
+      margin: 0 0 20px 0;
+      text-align: center;
+
+      input[type='text'] {
+        width: 170px;
+        height: auto !important;
+        margin: 0 2px !important;
+        text-align: center;
+        padding: 0 0 3px 0 !important;
+        background: transparent !important;
+        border: 0 !important;
+        border-bottom: 2px solid #000 !important;
+        font-family: 'Lato', sans-serif !important;
+        font-size: 18px !important;
+        line-height: 18px !important; 
+
+        &::-moz-placeholder {
+          color: $brand-pink;
+          font-size: 12px;
+          vertical-align: top;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        }
+        &:-ms-input-placeholder { 
+          color: $brand-pink;
+          font-size: 12px;
+        } // Internet Explorer 10+
+        &::-webkit-input-placeholder  { 
+          color: $brand-pink;
+          font-size: 12px;
+        } // Safari and Chrome
+        &:focus::-moz-placeholder {
+          color: transparent;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        }       
+      }
+    }
+  } /* end .statement-form */
+
+  .bottom-buttons {
+    margin: 10px 0 0 0;
+
+    .share-button {
+      position: relative;
+    }
+
+    .social-share-icons {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      margin-left: -60px;
+      text-align: center;
+      padding: 10px 15px;
+      background: #FFF;
+      @include box-shadow(0 0 5px rgba(0,0,0,0.5));
+      border-radius: 5px;
+    }
+
+    .button {
+      text-transform: uppercase;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #000;
+      margin: 30px 0 20px 0;
+      text-align: center;
+
+      &.disabled {
+        opacity: 0.2;
+        //pointer-events: none;
+        cursor: default;
+
+        &:hover, &:active {
+          border: 2px solid #000;
+          background: transparent;
+          color: #000;
+        }
+      }
+    }
+
+    .start-over {
+      margin: 40px 0;
+      text-align: center;
+
+      a, a:link, a:visited, a:hover, a:active {
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase !important;
+        text-decoration: none;
+
+        &.disabled {
+          color: $brand-pink;
+          opacity: 0.2;
+          //pointer-events: none;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  .back-to-top {
+    cursor: pointer;
+    z-index: 999;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: asset-data-url('back-to-top.png') no-repeat center;
+    background-size: 26.5px 26.5px !important;
+    width: 26.5px;
+    height: 26.5px;
+  }
+}
+
+.mysola-tabs {
+  margin: 15px auto 0 auto;
+  display: block;
+  clear: both;
+  position: relative;
+
+  .mysola-tabs-container {
+    margin: 0 auto;
+    // max-width: 420px;
+    text-align: center;
+    border-bottom: 1px solid #E6E6E6;
+    white-space: nowrap;
+  }
+
+  a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+    position: relative;
+    display: inline-block;
+    padding: 15px 23px 15px 50px;
+    text-transform: uppercase;
+    color: #B3B3B3;
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    //border-bottom: 2px solid transparent;
+    max-width: 50%;
+    white-space: nowrap;
+
+    &.active {
+      color: #111;
+      //border-bottom: 2px solid $brand-primary;
+    }
+  }
+
+  a.mysola-tab:hover, a.mysola-tab:active {
+    color: #111;
+
+    &.active {
+      color: #111;
+    }
+  }
+}
+
+.mysola-tabs-content {
+  .mysola-tab-content {
+    display: none;
+  }
+}
+
+#magic-line { 
+  position: absolute; 
+  bottom: 1px; 
+  left: 0; 
+  width: 100px; 
+  height: 2px; 
+  background: $brand-primary; 
+}
+
+.mysola-cup {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  display: block;
+  background: asset-data-url('MySola/cup.png') no-repeat center;
+  background-size: 24px 24px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+}
+
+.mysola-camera {
+  position: absolute;
+  top: 17px;
+  left: 16px;
+  display: block;
+  background: asset-data-url('MySola/camera.png') no-repeat center;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+}
+
+@media (max-width: 550px) {
+  .mysola-tabs {
+    a.mysola-tab, a.mysola-tab:link, a.mysola-tab:visited, a.mysola-tab:hover, a.mysola-tab:active {
+      padding: 15px 18px 15px 45px;
+      font-size: 13px;
+
+      .mysola-cup {
+        top: 9px;
+        left: 9px;
+      }
+      .mysola-camera {
+        top: 14px;
+        left: 11px;
+      }
+    }
+  }
+  .my-sola {
+    .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
+      height: 267px !important;
+      width: 267px !important;
+    }
+  }
+}
