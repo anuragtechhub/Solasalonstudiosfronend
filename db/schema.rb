@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604214840) do
+ActiveRecord::Schema.define(version: 20180606145149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -448,6 +448,25 @@ ActiveRecord::Schema.define(version: 20180604214840) do
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
   add_index "request_tour_inquiries", ["visit_id"], name: "index_request_tour_inquiries_on_visit_id", using: :btree
 
+  create_table "sola10k_images", force: true do |t|
+    t.string   "name"
+    t.string   "instagram_handle"
+    t.text     "statement"
+    t.boolean  "approved"
+    t.datetime "approved_at"
+    t.string   "public_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "generated_image_file_name"
+    t.string   "generated_image_content_type"
+    t.integer  "generated_image_file_size"
+    t.datetime "generated_image_updated_at"
+  end
+
   create_table "studios", force: true do |t|
     t.string   "name"
     t.string   "rent_manager_id"
@@ -608,10 +627,10 @@ ActiveRecord::Schema.define(version: 20180604214840) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
-    t.boolean  "force_show_book_now_button",     default: false
-    t.string   "sg_booking_url"
     t.string   "rent_manager_contact_id"
     t.date     "website_go_live_date",           default: '2004-01-01'
+    t.string   "sg_booking_url"
+    t.boolean  "force_show_book_now_button",     default: false
     t.boolean  "walkins"
   end
 

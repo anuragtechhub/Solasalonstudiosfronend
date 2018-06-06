@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  instagram_handle: MyString
+  statement: MyText
+  approved: false
+  approved_at: 2018-06-06 08:50:54
+  public_id: MyString
+
+two:
+  name: MyString
+  instagram_handle: MyString
+  statement: MyText
+  approved: false
+  approved_at: 2018-06-06 08:50:54
+  public_id: MyString

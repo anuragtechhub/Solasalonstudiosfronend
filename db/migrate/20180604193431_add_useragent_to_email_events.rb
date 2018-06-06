@@ -1,5 +1,7 @@
 class AddUseragentToEmailEvents < ActiveRecord::Migration
   def change
-    add_column :email_events, :useragent, :string
+  	unless ActiveRecord::Base.connection.column_exists?('email_events', 'useragent')
+    	add_column :email_events, :useragent, :string
+  	end
   end
 end
