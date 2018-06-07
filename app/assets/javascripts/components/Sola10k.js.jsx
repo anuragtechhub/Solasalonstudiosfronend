@@ -68,7 +68,7 @@ var Sola10k = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <Sola10kImageDropzone ref="image_dropzone" color={this.state.color} statement={this.state.statement} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
+          <Sola10kImageDropzone ref="image_dropzone" color={this.state.color} statement={this.state.statement} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} onChangeColor={this.onChangeColor} />
           {this.renderColorPicker()}
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
@@ -154,7 +154,6 @@ var Sola10k = React.createClass({
   },
 
   onChangeColor: function (color) {
-    console.log('onChangeCOlor', color);
     this.setState({color: color});
   },
 

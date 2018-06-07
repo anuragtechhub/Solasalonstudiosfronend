@@ -429,9 +429,75 @@
   }
 
   .sola10k {
+    padding-top: 40px;
+
+    .header-copy h1, .name-and-handle-form h1, .statement-form h1 {
+      white-space: normal;
+      font-size: 29px;
+      line-height: 39px;
+      margin-bottom: 20px;
+    }
+
+    .name-and-handle-form input[type='text'] {
+      font-size: 16px;
+      height: 66px;
+    }
+
+    .statement-form .madlibs input[type='text'] {
+      max-width: 250px;
+    }
+
+    .name-and-handle-form {
+      margin-top: 20px;
+    }
+
+    .header-copy p, .name-and-handle-form p, .statement-form p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 20px !important;
+    }
+
+    .bottom-buttons .button {
+      font-size: 16px !important;
+    }
+
+    .bottom-buttons .start-over a, .bottom-buttons .start-over a:link, .bottom-buttons .start-over a:visited, .bottom-buttons .start-over a:hover, .bottom-buttons .start-over a:active {
+      font-size: 16px !important;
+    }
+
+    .image-dropzone {
+      height: 270px;
+      width: 270px;
+
+      .image {
+        height: 270px !important;
+        width: 270px !important;
+      }
+
+      img.dropzone-image {
+        height: 264px !important;
+        width: 264px !important;
+      }
+
+      .action-camera-and-text {
+        background: asset-data-url('sola10kcamera.png') no-repeat center center;
+        background-size: (276px / 2) (225px / 2) !important;
+        //width: 276px;
+        height: (225px / 2);
+        // padding: 55px 0 0 0;
+        // top: 50%;
+        // left: 0;
+        // right: 0;
+        // text-align: center;
+        padding: 55px 0 0 0;
+        margin: -63px 0 0 0;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
     .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
-      height: 267px !important;
-      width: 267px !important;
+      height: 248px !important;
+      width: 247px !important;
     }
   }
 }

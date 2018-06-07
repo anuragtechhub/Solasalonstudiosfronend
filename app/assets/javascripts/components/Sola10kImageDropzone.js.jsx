@@ -59,12 +59,51 @@ var Sola10kImageDropzone = React.createClass({
     }, false);     
   },
 
+  componentDidUpdate: function () {
+    var self = this;
+    var $image = $(this.refs.image);
+
+    if ($image && $image.length) {
+      if ($image.hasClass('hammertime')) {
+        // already initted - don't reinit
+      } else {
+        // color swipe left/right
+        $image.addClass('hammertime');
+        var mc = new Hammer(this.refs.image, {domEvents: true});
+        mc.on('swipeleft', function(ev) {
+          if (self.props.color == 'blue') {
+            self.props.onChangeColor('pink');
+          } else if (self.props.color == 'pink') {
+            self.props.onChangeColor('black');
+          } else if (self.props.color == 'black') {
+            self.props.onChangeColor('blue');
+          }
+        });
+        mc.on('swiperight', function(ev) {
+          if (self.props.color == 'blue') {
+            self.props.onChangeColor('black');
+          } else if (self.props.color == 'pink') {
+            self.props.onChangeColor('blue');
+          } else if (self.props.color == 'black') {
+            self.props.onChangeColor('pink');
+          }
+        });
+      }
+    }
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    if (this.state.image && (nextProps.statement != null && nextProps.statement != this.props.statement) || (nextProps.color != null && nextProps.color != this.props.color)) {
+      this.setState({loading: true});
+    }
+  },
+
   render: function () {
     return (
       <div className="image-dropzone sola10k-dropzone" data-id={this.props.id}>
         <div className={this.imageClasses()}>
           {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
-          {this.state.image ? <img src={this.getImageSource()} className="dropzone-image" onLoad={this.onLoad} style={{display: this.state.loading ? 'none' : 'block'}} /> : null}
+          {this.state.image ? <img ref="image" src={this.getImageSource()} className="dropzone-image" onLoad={this.onLoad} style={{display: this.state.image ? 'block' : 'none'}} /> : null}
           <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload or drag a photo'}</div></a>
         </div>
       </div>
