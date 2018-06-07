@@ -72,7 +72,7 @@ var Sola10kImageDropzone = React.createClass({
   },
 
   getImageSource: function () {
-    return '/sola10k-image-preview/' + this.state.image.public_id + '?statement=' + this.props.statement + '&instagram_handle=' + this.props.instagram_handle + '&name=' + this.props.name;
+    return '/sola10k-image-preview/' + this.state.image.public_id + '?statement=' + this.props.statement + '&instagram_handle=' + this.props.instagram_handle + '&name=' + this.props.name + '&color=' + this.props.color;
   },
 
   classNames: function () {

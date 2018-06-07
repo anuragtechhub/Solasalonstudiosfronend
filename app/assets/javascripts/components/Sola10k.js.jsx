@@ -8,6 +8,7 @@ var Sola10k = React.createClass({
       image: null,
       my_inspired_story: '',
       name: '',
+      color: 'blue',
       scrollTop: 0,
       sharePopupVisible: false,
       statement: '',
@@ -58,14 +59,7 @@ var Sola10k = React.createClass({
   },
 
   shareText: function () {
-    // if (this.state.i_feel) {
-    //   return "I feel " + this.state.i_feel + ' in #MySola';
-    // } else if (this.state.mysola_is) {
-    //   return "#MySola is my " + this.state.mysola_is;
-    // } else {
-    //   return '#MySola'
-    // }
-    return 'My ' + this.state.statement;
+    return 'My ' + this.state.statement + ' #Sola10K';
   },
 
   render: function () {
@@ -74,7 +68,8 @@ var Sola10k = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
-          <Sola10kImageDropzone ref="image_dropzone" statement={this.state.statement} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
+          <Sola10kImageDropzone ref="image_dropzone" color={this.state.color} statement={this.state.statement} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
+          {this.renderColorPicker()}
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
         </div>
@@ -91,7 +86,7 @@ var Sola10k = React.createClass({
             <a href="#" className="button block" onClick={this.toggleSharePopup}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
-          <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download</a>
+          <a href={'/sola10k-image-preview/' + this.state.image.public_id} className="button block">Download</a>
           <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
         </div>
       );
@@ -107,6 +102,16 @@ var Sola10k = React.createClass({
         </div>
       );
     }
+  },
+
+  renderColorPicker: function () {
+    return (
+      <div className="sola10k-colorpicker">
+        <div data-color="blue" className={"blue colorswatch " + (this.state.color == 'blue' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'blue')}></div>
+        <div data-color="pink" className={"pink colorswatch " + (this.state.color == 'pink' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'pink')}></div>
+        <div data-color="black" className={"black colorswatch " + (this.state.color == 'black' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'black')}></div>
+      </div>
+    );
   },
 
   renderHeaderCopy: function () {
@@ -146,6 +151,11 @@ var Sola10k = React.createClass({
     } else {
       this.setState({focusedInputName: null});
     }
+  },
+
+  onChangeColor: function (color) {
+    console.log('onChangeCOlor', color);
+    this.setState({color: color});
   },
 
   onChangeImage: function (image) {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606145149) do
+ActiveRecord::Schema.define(version: 20180607165120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -465,6 +465,7 @@ ActiveRecord::Schema.define(version: 20180606145149) do
     t.string   "generated_image_content_type"
     t.integer  "generated_image_file_size"
     t.datetime "generated_image_updated_at"
+    t.string   "color"
   end
 
   create_table "studios", force: true do |t|

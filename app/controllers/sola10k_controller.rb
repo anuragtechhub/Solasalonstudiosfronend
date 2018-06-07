@@ -31,8 +31,9 @@ class Sola10kController < PublicWebsiteController
     @sola10k_image.name = params[:name] if params[:name].present?
     @sola10k_image.instagram_handle = params[:instagram_handle] if params[:instagram_handle].present?
     @sola10k_image.statement = params[:statement] if params[:statement].present?
+    @sola10k_image.color = params[:color] if params[:color].present?
     
-    generated_image = generate_image(@sola10k_image.image, @sola10k_image.statement)
+    generated_image = generate_image(@sola10k_image.image, @sola10k_image.statement, @sola10k_image.color)
 
     if @sola10k_image.changed?
       #flat_image = Magick::ImageList.new(generated_image).flatten_images
@@ -76,7 +77,7 @@ class Sola10kController < PublicWebsiteController
     pointsize
   end
 
-  def generate_image(image, statement)
+  def generate_image(image, statement, color)
     #p "generate image"
     m_image = Magick::Image.read(image.url(:original)).first.resize_to_fill!(1080, 1080)
 
@@ -147,8 +148,16 @@ class Sola10kController < PublicWebsiteController
     m_combined = m_image.composite(my_logo, 85, 175, Magick::OverCompositeOp)
 
     # gradient color overlay
-    m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblue.png')).first
-    m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    if color == 'black'
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblack.png')).first
+      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    elsif color == 'pink'
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientpink.png')).first
+      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    else
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblue.png')).first
+      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    end
 
     # sola10k logo
     sola10k_logo = Magick::Image.read(Rails.root.join('app/assets/images/hashsola10klogo.png')).first

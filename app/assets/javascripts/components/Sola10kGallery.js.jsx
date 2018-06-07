@@ -20,7 +20,7 @@ var Sola10kGallery = React.createClass({
     //console.log('RENDER --- images.length', this.state.images.length, 'total_pages', this.state.total_pages);
 
     return (
-      <div className="my-sola-image-gallery">
+      <div className="sola10k-image-gallery">
         {this.renderImages()}
         {this.renderLoadMore()}
       </div>

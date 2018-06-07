@@ -4,7 +4,7 @@ class Sola10kImage < ActiveRecord::Base
 
   include Publically
 
-  scope :completed, -> { where("statement <> '' AND statement_variant IS NOT NULL AND image_file_name IS NOT NULL AND generated_image_file_name IS NOT NULL AND(name IS NOT NULL OR instagram_handle IS NOT NULL)") }
+  scope :completed, -> { where("statement <> '' AND image_file_name IS NOT NULL AND generated_image_file_name IS NOT NULL AND(name IS NOT NULL OR instagram_handle IS NOT NULL)") }
 
   before_save :set_approved_at, :if => :was_just_approved
 
