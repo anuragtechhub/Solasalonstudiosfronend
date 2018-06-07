@@ -5,9 +5,7 @@ var Sola10k = React.createClass({
       fileUploadOverlay: false,
       focusedInputName: null,
       instagram_handle: '',
-      i_feel: '',
       image: null,
-      mysola_is: '',
       name: '',
       scrollTop: 0,
       sharePopupVisible: false,
@@ -59,13 +57,7 @@ var Sola10k = React.createClass({
   },
 
   shareText: function () {
-    if (this.state.i_feel) {
-      return "I feel " + this.state.i_feel + ' in #MySola';
-    } else if (this.state.mysola_is) {
-      return "#MySola is my " + this.state.mysola_is;
-    } else {
-      return '#MySola'
-    }
+    return 'My ' + this.state.statement;
   },
 
   render: function () {
@@ -135,7 +127,7 @@ var Sola10k = React.createClass({
   renderStatementForm: function () {
     return (
       <div className="statement-form">
-        <div className="madlibs">My <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'inspired story'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
+        <div className="madlibs">My <input type="text" name="statement" placeholder={this.state.focusedInputName == 'statement' ? null : 'inspired story'} maxLength="21" value={this.state.statement} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} /></div>
       </div>
     );
   },
@@ -154,16 +146,15 @@ var Sola10k = React.createClass({
 
   onChangeTextInput: function (event) {
     var state = this.state;
+    
     state[event.target.name] = event.target.value;
 
     this.setState(state);
   },
 
   onFocusInput: function (event) {
-    if (event.target.name == 'mysola_is') {
-      this.setState({i_feel: '', statement_variant: 'mysola_is', statement: event.target.value});
-    } else if (event.target.name == 'i_feel') {
-      this.setState({mysola_is: '', statement_variant: 'i_feel', statement: event.target.value});
+    if (event.target.name == 'statement') {
+      this.setState({statement: ''});
     }
 
     this.setState({focusedInputName: event.target.name});
@@ -190,22 +181,6 @@ var Sola10k = React.createClass({
     }
   },
 
-  onKeyDownMadLibsInput: function (event) {
-    // if (event.target.name == 'mysola_is') {
-    //   this.setState({i_feel: ''});
-    // } else if (event.target.name == 'i_feel') {
-    //   this.setState({mysola_is: ''});
-    // }
-  },
-
-  doneTyping: function () {
-    if (this.state.mysola_is) {
-      this.setState({statement: this.state.mysola_is});
-    } else if (this.state.i_feel) {
-      this.setState({statement: this.state.i_feel});
-    }
-  },
-
   scrollToTop: function (event) {
     if (event && typeof event.preventDefault == 'function') {
       event.preventDefault();
@@ -229,11 +204,6 @@ var Sola10k = React.createClass({
     this.setState(this.getInitialState(), function () {
       self.scrollToTop();
     });
-  },
-
-  startTypingTimer: function () {
-    clearTimeout(this.state.typingTimer);
-    this.setState({typingTimer: setTimeout(this.doneTyping, 1000)});
   },
 
   toggleSharePopup: function (event) {

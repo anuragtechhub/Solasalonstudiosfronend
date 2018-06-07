@@ -16,9 +16,14 @@
   </div>
 
   <%= react_component 'Sola10k' %>
-  <%= react_component 'Sola10kGallery', {:images => @gallery_images} %>
 
 </div>
+
+<div class="callout blue-wave">
+  <h2 style="margin-bottom: 0; color: #FFF; position: relative; top: 3px; font-size: 31px; line-height: 33px;" class="text-center">10,000 dreams. 10,000 salon owners. 10,000 inspiring stories.</h2>
+</div>
+
+<%= react_component 'Sola10kGallery', {:images => @gallery_images} %>
 
 <% content_for(:title) { "#Sola10K" } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola10k" } %>

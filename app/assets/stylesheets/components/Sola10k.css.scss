@@ -114,15 +114,18 @@
       font-size: 35px;
       line-height: 45px;
       letter-spacing: 0px;
-      margin: 40px 0 20px 0;
+      margin: 60px 0 50px 0;
       text-align: center;
 
       input[type='text'] {
-        width: 250px;
+        position: relative;
+        top: -2px;
+        width: 100%;
+        max-width: 375px;
         height: auto !important;
         margin: 0 2px !important;
         text-align: center;
-        padding: 0 0 3px 0 !important;
+        padding: 0 0 2px 0 !important;
         background: transparent !important;
         border: 0 !important;
         border-bottom: 2px solid #000 !important;
@@ -130,29 +133,30 @@
         // font-size: 18px !important;
         // line-height: 18px !important; 
 
-        @include helvetica;
-        font-size: 23px !important;
-        line-height: 23px !important;
+        //@include helvetica;
+        @include chalet_paris;
+        font-size: 33px !important;
+        line-height: 33px !important;
         font-weight: 300;
 
         &::-moz-placeholder {
           color: $brand-primary;
-        font-size: 23px !important;
-        line-height: 23px !important;
+        font-size: 33px !important;
+        line-height: 33px !important;
         font-weight: 300;
           vertical-align: top;
           opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
         }
         &:-ms-input-placeholder { 
           color: $brand-primary;
-        font-size: 23px !important;
-        line-height: 23px !important;
+        font-size: 33px !important;
+        line-height: 33px !important;
         font-weight: 300;
         } // Internet Explorer 10+
         &::-webkit-input-placeholder  { 
           color: $brand-primary;
-        font-size: 23px !important;
-        line-height: 23px !important;
+        font-size: 33px !important;
+        line-height: 33px !important;
         font-weight: 300;
         } // Safari and Chrome
         &:focus::-moz-placeholder {
@@ -183,10 +187,9 @@
     }
 
     .button {
-      text-transform: uppercase;
       @include helvetica;
-      font-size: 23px !important;
-      line-height: 43px !important;
+      font-size: 21px !important;
+      line-height: 41px !important;
       font-weight: bold !important;
       letter-spacing: 1px;
       color: #000;
@@ -211,15 +214,16 @@
       text-align: center;
 
       a, a:link, a:visited, a:hover, a:active {
-        font-size: 14px;
-        line-height: 14px;
+        font-size: 19px;
+        line-height: 19px;
         letter-spacing: 1px;
         text-transform: uppercase !important;
         text-decoration: none;
+        color: #999;
 
         &.disabled {
-          color: $brand-pink;
-          opacity: 0.2;
+          color: #999;
+          opacity: 0.4;
           //pointer-events: none;
           cursor: default;
         }
