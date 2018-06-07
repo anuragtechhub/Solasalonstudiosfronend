@@ -21,20 +21,32 @@
     }
 
     .action-camera-and-text {
-      @include helvetica;
+            @include helvetica;
       font-size: 23px;
       font-weight: 300;
       color: #999999;
       font-size: 23px;
       line-height: 23px;
+      // position: absolute;
+      background: asset-data-url('sola10kcamera.png') no-repeat center center;
+      background-size: 276px 225px !important;
+      //width: 276px;
+      height: 225px;
+      // padding: 55px 0 0 0;
+      // top: 50%;
+      // left: 0;
+      // right: 0;
+      // text-align: center;
+      padding: 120px 0 0 0;
+      margin: (-276px / 2.5) 0 0 0;
     }
-  }
-  
-  .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
-    max-width: 525px;
-    height: 525px !important;
-    border: 3px solid #FFF;
-    background: #F2F2F2 !important;
+
+    a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
+      max-width: 525px;
+      height: 525px !important;
+      border: 3px solid #FFF;
+      background: #F2F2F2 !important;
+    }
   }
 
   .header-copy, .name-and-handle-form, .statement-form {
