@@ -150,6 +150,22 @@ class Sola10kController < PublicWebsiteController
     m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblue.png')).first
     m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
 
+    # sola10k logo
+    sola10k_logo = Magick::Image.read(Rails.root.join('app/assets/images/hashsola10klogo.png')).first
+    m_combined = m_combined.composite(sola10k_logo, 520 - (188 / 2), 888, Magick::OverCompositeOp)
+
+    # 10,000... copy
+    # sola10k_copy = Magick::Image.read(Rails.root.join('app/assets/images/sola10kcopy.png')).first
+    # m_combined = m_combined.composite(sola10k_copy, 520 - (335 / 2), 948, Magick::OverCompositeOp)
+
+    copy_text = Magick::Draw.new
+    copy_text.font = "#{Rails.root}/lib/fonts/ChaletParisNineteenSixty.ttf"
+    copy_text.font_weight = 600
+    copy_text.gravity = Magick::CenterGravity
+    copy_text.fill = '#ffffff'
+    copy_text.pointsize = 30
+    m_combined.annotate(copy_text, 1080, 1080, 0, 455, '10,000 individual stories. One powerful community.') 
+
     # white stroke
     white_stroke = Magick::Draw.new
     white_stroke.fill_opacity(0)
@@ -157,12 +173,6 @@ class Sola10kController < PublicWebsiteController
     white_stroke.stroke_width(4)
     white_stroke.rectangle(40, 40, 1035, 1035)
     white_stroke.draw(m_combined)
-    # cursive_text.font = "#{Rails.root}/lib/fonts/ChaletParisNineteenSixty.ttf"
-    # cursive_text.gravity = Magick::CenterGravity
-    # cursive_text.fill = '#ffffff'
-    # cursive_text_pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
-    # cursive_text.pointsize = cursive_text_pointsize
-    #m_combined.annotate(white_stroke, 1080, 1080, 0, 0) 
 
     # logo (200 x 119)
     # m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
