@@ -104,6 +104,7 @@ var Sola10kImageDropzone = React.createClass({
         <div className={this.imageClasses()}>
           {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
           {this.state.image ? <img ref="image" src={this.getImageSource()} className="dropzone-image" onLoad={this.onLoad} style={{display: this.state.image ? 'block' : 'none'}} /> : null}
+          {this.state.image && !this.state.loading && (this.props.statement == null || this.props.statement == '') ? <div className="swipe-to-change-color">SWIPE TO CHANGE COLOR</div> : null}
           <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload or drag a photo'}</div></a>
         </div>
       </div>

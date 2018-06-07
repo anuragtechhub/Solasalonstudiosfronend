@@ -4,6 +4,22 @@
 .sola10k {
   padding-top: 60px;
 
+  .swipe-to-change-color {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 23px;
+    line-height: 23px;
+    height: 23px;
+    margin-top: (-23px / 2);
+    z-index: 99;
+    font-weight: 300;
+    white-space: nowrap;
+  }
+
   .container {
     max-width: 540px;
   }
@@ -430,6 +446,12 @@
 
   .sola10k {
     padding-top: 40px;
+
+    .swipe-to-change-color { 
+      font-size: 16px;
+      line-height: 16px;
+      margin-top: (-16px / 2);
+    }
 
     .header-copy h1, .name-and-handle-form h1, .statement-form h1 {
       white-space: normal;
