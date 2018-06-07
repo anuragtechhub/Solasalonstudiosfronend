@@ -21,7 +21,7 @@
     }
 
     .action-camera-and-text {
-            @include helvetica;
+      @include helvetica;
       font-size: 23px;
       font-weight: 300;
       color: #999999;
@@ -38,7 +38,7 @@
       // right: 0;
       // text-align: center;
       padding: 120px 0 0 0;
-      margin: (-276px / 2.5) 0 0 0;
+      margin: (-276px / 2.15) 0 0 0;
     }
 
     a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
@@ -46,6 +46,12 @@
       height: 525px !important;
       border: 3px solid #FFF;
       background: #F2F2F2 !important;
+    }
+
+    img.dropzone-image {
+      max-width: 540px;
+      height: 539px;
+      border: 0;
     }
   }
 
