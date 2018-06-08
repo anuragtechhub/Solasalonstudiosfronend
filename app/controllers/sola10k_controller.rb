@@ -57,7 +57,7 @@ class Sola10kController < PublicWebsiteController
   private
 
   def calculate_cursive_pointsize(image, draw, text)
-    pointsize = 820
+    pointsize = 240
     width = 920
     
     while width >= 920

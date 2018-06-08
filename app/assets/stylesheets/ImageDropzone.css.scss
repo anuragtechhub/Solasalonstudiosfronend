@@ -82,11 +82,11 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      margin: -22px 0 0 -22px;
-      background: asset-data-url('spinner.gif') no-repeat center;
-      background-size: 44px 44px;
-      width: 44px;
-      height: 44px;
+      margin: -44px 0 0 -44px;
+      background: asset-data-url('svg_spinner.svg') no-repeat center;
+      background-size: 88px 88px;
+      width: 88px;
+      height: 88px;
     }
   }  
 }

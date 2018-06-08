@@ -132,7 +132,7 @@ var Sola10k = React.createClass({
     return (
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Please enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
-        <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInstagramInput} onKeyDown={this.onKeyDownInstagramInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
+        <input ref="instagram_input" type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Please enter your Instagram handle"} onFocus={this.onFocusInstagramInput} onKeyDown={this.onKeyDownInstagramInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
       </div>
     );
   },
@@ -176,11 +176,38 @@ var Sola10k = React.createClass({
     this.setState({focusedInputName: event.target.name});
   },
 
-  onFocusInstagramInput: function () {
+  onFocusInstagramInput: function (event) {
+    var self = this;
+    var $input = $(this.refs.instagram_input);
+
     if (this.state.instagram_handle == '') {
-      this.setState({instagram_handle: '@', focusedInputName: event.target.name});
+      this.setState({instagram_handle: '@', focusedInputName: event.target.name}, function () {
+        //console.log('set selection range to ONE');
+        //self.refs.instagram_input.setSelectionRange(1, 1);
+        self.refs.instagram_input.selectionStart = self.refs.instagram_input.selectionEnd = 1;
+        setTimeout(function () {
+          //console.log('moving...')
+          self.refs.instagram_input.selectionStart = self.refs.instagram_input.selectionEnd = 1;
+        }, 1);
+        setTimeout(function () {
+          //console.log('moving...')
+          self.refs.instagram_input.selectionStart = self.refs.instagram_input.selectionEnd = 1;
+        }, 10);
+        setTimeout(function () {
+          //console.log('moving...')
+          self.refs.instagram_input.selectionStart = self.refs.instagram_input.selectionEnd = 1;
+        }, 100);
+      });
+      
     } else {
-      this.setState({focusedInputName: event.target.name});
+      this.setState({focusedInputName: event.target.name}, function () {
+        // var val_length = $input.val().length;
+        // console.log('set selection range to ' + val_length);
+        // //this.refs.instagram_input.setSelectionRange(val_length, val_length);
+        // setTimeout(function () {
+        //   self.refs.instagram_input.selectionStart = self.refs.instagram_input.selectionEnd = val_length;
+        // }, 250);
+      });
     }
   },
 
