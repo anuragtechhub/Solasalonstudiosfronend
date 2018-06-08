@@ -122,7 +122,7 @@ var Sola10k = React.createClass({
         <p className="text-center">Whether it's customizing your studio to fit your style, learning a new technique at the Sola Sessions, reaching a new business milestone, or having coffee with your Sola bestie, you are creating a unique journey every day.</p>
         <p className="text-center"><strong>Share a piece of the Sola story!</strong></p>
         <p className="text-center tighter"><strong>Step 1:</strong><br />Create your image below.</p>
-        <p className="text-center tighter"><strong>Step 2:</strong><br />Share on Instagram with the hashtag <strong>#Sola10K</strong></p>
+        <p className="text-center tighter"><strong>Step 2:</strong><br />Share on social with the hashtag <strong>#Sola10K</strong></p>
         <p className="text-center tighter"><strong>Step 3:</strong><br />Win cool prizes!</p>
       </div>
     );

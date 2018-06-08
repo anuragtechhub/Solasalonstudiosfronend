@@ -176,12 +176,14 @@ class Sola10kController < PublicWebsiteController
     m_combined.annotate(copy_text, 1080, 1080, 0, 455, '10,000 individual stories. One powerful community.') 
 
     # white stroke
-    white_stroke = Magick::Draw.new
-    white_stroke.fill_opacity(0)
-    white_stroke.stroke('#ffffff')
-    white_stroke.stroke_width(4)
-    white_stroke.rectangle(40, 40, 1035, 1035)
-    white_stroke.draw(m_combined)
+    sola10k_frame = Magick::Image.read(Rails.root.join('app/assets/images/sola10kframe.png')).first
+    m_combined = m_combined.composite(sola10k_frame, 0, 0, Magick::OverCompositeOp)
+    # white_stroke = Magick::Draw.new
+    # white_stroke.fill_opacity(0)
+    # white_stroke.stroke('#ffffff')
+    # white_stroke.stroke_width(4)
+    # white_stroke.rectangle(40, 40, 1035, 1035)
+    # white_stroke.draw(m_combined)
 
     # logo (200 x 119)
     # m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
