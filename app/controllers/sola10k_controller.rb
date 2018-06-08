@@ -114,7 +114,7 @@ class Sola10kController < PublicWebsiteController
 
     # sola10k logo
     sola10k_logo = Magick::Image.read(Rails.root.join('app/assets/images/hashsola10klogo.png')).first
-    m_combined = m_combined.composite(sola10k_logo, 520 - (188 / 2), 888, Magick::OverCompositeOp)
+    m_combined = m_combined.composite(sola10k_logo, 520 - (188 / 2), 900, Magick::OverCompositeOp)
 
     # 10,000... copy
     # sola10k_copy = Magick::Image.read(Rails.root.join('app/assets/images/sola10kcopy.png')).first
@@ -125,7 +125,7 @@ class Sola10kController < PublicWebsiteController
     copy_text.gravity = Magick::CenterGravity
     copy_text.fill = '#ffffff'
     copy_text.pointsize = 30
-    m_combined.annotate(copy_text, 1080, 1080, 0, 455, '10,000 individual stories. One powerful community.') 
+    m_combined.annotate(copy_text, 1080, 1080, 0, 470, '10,000 individual stories. One powerful community.') 
 
     # white stroke
     sola10k_frame = Magick::Image.read(Rails.root.join('app/assets/images/sola10kframe.png')).first
