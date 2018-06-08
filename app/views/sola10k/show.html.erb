@@ -6,5 +6,5 @@
 
 <% @hide_og_type = true %>
 <% content_for(:title) { @sola10k_image && @sola10k_image.statement.present? ? @sola10k_image.statement : "#Sola10k" } %>
-<% content_for(:og_image) { @sola10k_image.generated_image.url(:funsize) if @sola10k_image && @sola10k_image.generated_image.present? } %>
+<% content_for(:og_image) { @sola10k_image.generated_image.url(:share) if @sola10k_image && @sola10k_image.generated_image.present? } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola10k/#{@sola10k_image.public_id}" } %>

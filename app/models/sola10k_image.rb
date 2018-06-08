@@ -13,7 +13,7 @@ class Sola10kImage < ActiveRecord::Base
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 
-  has_attached_file :generated_image, :styles => { :funsize => '540x>' }, :source_file_options => {:all => '-auto-orient'}
+  has_attached_file :generated_image, :styles => { :funsize => '540x>', :share => '400x>' }, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :generated_image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_generated_image
   before_validation { self.generated_image.destroy if self.delete_generated_image == '1' }
