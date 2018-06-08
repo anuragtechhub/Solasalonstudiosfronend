@@ -105,15 +105,13 @@ var Sola10k = React.createClass({
   },
 
   renderColorPicker: function () {
-    if (this.state.image) {
-      return (
-        <div className="sola10k-colorpicker">
-          <div data-color="blue" className={"blue colorswatch " + (this.state.color == 'blue' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'blue')}></div>
-          <div data-color="pink" className={"pink colorswatch " + (this.state.color == 'pink' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'pink')}></div>
-          <div data-color="black" className={"black colorswatch " + (this.state.color == 'black' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'black')}></div>
-        </div>
-      );
-    }
+    return (
+      <div className="sola10k-colorpicker" style={{visibility: this.state.image ? 'visible' : 'hidden'}}>
+        <div data-color="blue" className={"blue colorswatch " + (this.state.color == 'blue' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'blue')}></div>
+        <div data-color="pink" className={"pink colorswatch " + (this.state.color == 'pink' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'pink')}></div>
+        <div data-color="black" className={"black colorswatch " + (this.state.color == 'black' ? 'active' : '')} onClick={this.onChangeColor.bind(this, 'black')}></div>
+      </div>
+    );
   },
 
   renderHeaderCopy: function () {
