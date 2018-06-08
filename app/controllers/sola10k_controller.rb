@@ -36,19 +36,11 @@ class Sola10kController < PublicWebsiteController
     generated_image = generate_image(@sola10k_image.image, @sola10k_image.statement, @sola10k_image.color)
 
     if @sola10k_image.changed?
-      #flat_image = Magick::ImageList.new(generated_image).flatten_images
-      #p "WE CHANGED!!!"
-      # generated_image_file = File.open("mysola#{@sola10k_image.id}.jpg", 'wb') do |file|
-      #   file.write generated_image.to_blob
-      # end
       generated_image_file = Tempfile.new("sola10k#{@sola10k_image.id}")
       generated_image.write(generated_image_file.path)
-      #p "generated_image_file!!!"
+
       @sola10k_image.generated_image = generated_image_file#File.open("mysola#{@sola10k_image.id}.jpg")
       @sola10k_image.save
-      #p "finished saving image to sola10k_image" 
-      #FileUtils.rm("mysola#{@sola10k_image.id}.jpg")
-      #p "finished removing mysolaimage"
     end
     
     send_data generated_image.to_blob, filename: "sola10k.jpg", type: :jpg
@@ -101,48 +93,9 @@ class Sola10kController < PublicWebsiteController
       descent = cursive_text_metrics[:descent]
       height = cursive_text_metrics[:height]
       calculated_height = height + descent# + 160
-      y_value = -(ascent - (statement =~ /[A-Z]/ ? 50 : 150)) / 2
-      #p "height=#{height}, ascent=#{ascent}, descent=#{descent} calculated_height=#{calculated_height}, cursive_text_pointsize=#{cursive_text_pointsize}, #{y_value}"
-      # text = Magick::Draw.new
-      # m_image.annotate(text, 1080, 1080, 0, y_value, "#MySola is my") do
-      #   text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
-      #   text.gravity = Magick::CenterGravity
-      #   text.pointsize = 70
-      #   text.kerning = 2
-      #   text.fill = '#ffffff'
-      # end      
+      y_value = -(ascent - (statement =~ /[A-Z]/ ? 50 : 150)) / 2    
     end   
 
-    # # I feel [BLANK] in #MySola
-    # if statement.present? && statement_variant == 'i_feel'
-    #   #p "I feel BlANK"
-    #   top_text = Magick::Draw.new
-    #   m_image.annotate(top_text, 1080, 1080, 0, 300, "I feel") do
-    #     top_text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
-    #     top_text.gravity = Magick::NorthGravity
-    #     top_text.pointsize = 70
-    #     top_text.kerning = 2
-    #     top_text.fill = '#ffffff'
-    #   end
-
-    #   cursive_text = Magick::Draw.new
-    #   cursive_text.font = "#{Rails.root}/lib/fonts/Risthi.ttf"
-    #   cursive_text.gravity = Magick::CenterGravity
-    #   cursive_text.fill = '#ffffff'
-    #   cursive_pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
-    #   m_image.annotate(cursive_text, 1080, 1080 - 45, 0, 45, statement)
-      
-    #   bottom_text = Magick::Draw.new
-    #   m_image.annotate(bottom_text, 1080, 1080, 0, 760, "in #MySola") do
-    #     bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Medium.ttf"
-    #     bottom_text.gravity = Magick::NorthGravity
-    #     bottom_text.pointsize = 70
-    #     bottom_text.kerning = 2
-    #     bottom_text.fill = '#ffffff'
-    #   end
-    # end  
-
-    
     # my logo
     my_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola10kmy.png')).first
     m_combined = m_image.composite(my_logo, 85, 175, Magick::OverCompositeOp)
@@ -166,7 +119,6 @@ class Sola10kController < PublicWebsiteController
     # 10,000... copy
     # sola10k_copy = Magick::Image.read(Rails.root.join('app/assets/images/sola10kcopy.png')).first
     # m_combined = m_combined.composite(sola10k_copy, 520 - (335 / 2), 948, Magick::OverCompositeOp)
-
     copy_text = Magick::Draw.new
     copy_text.font = "#{Rails.root}/lib/fonts/ChaletParisNineteenSixty.ttf"
     copy_text.font_weight = 600
@@ -184,10 +136,6 @@ class Sola10kController < PublicWebsiteController
     # white_stroke.stroke_width(4)
     # white_stroke.rectangle(40, 40, 1035, 1035)
     # white_stroke.draw(m_combined)
-
-    # logo (200 x 119)
-    # m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
-    # m_combined = m_combined.composite(m_logo, 855, 935, Magick::OverCompositeOp)
 
     m_combined
   end
