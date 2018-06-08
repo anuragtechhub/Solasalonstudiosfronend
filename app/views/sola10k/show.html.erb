@@ -1,10 +1,10 @@
 <div class="container">
   <div style="margin: 30px">
-    <img src="<%= @my_sola_image.generated_image.url(:original) if @my_sola_image && @my_sola_image.generated_image.present? %>" style="width: 100%; height: auto;" />
+    <img src="<%= @sola10k_image.generated_image.url(:original) if @sola10k_image && @sola10k_image.generated_image.present? %>" style="width: 100%; height: auto;" />
   </div>
 </div>
 
 <% @hide_og_type = true %>
-<% content_for(:title) { @my_sola_image && @my_sola_image.statement_text.present? ? @my_sola_image.statement_text : "#Sola10k" } %>
-<% content_for(:og_image) { @my_sola_image.generated_image.url(:funsize) if @my_sola_image && @my_sola_image.generated_image.present? } %>
-<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola10k/#{@my_sola_image.public_id}" } %>
+<% content_for(:title) { @sola10k_image && @sola10k_image.statement.present? ? @sola10k_image.statement : "#Sola10k" } %>
+<% content_for(:og_image) { @sola10k_image.generated_image.url(:funsize) if @sola10k_image && @sola10k_image.generated_image.present? } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola10k/#{@sola10k_image.public_id}" } %>
