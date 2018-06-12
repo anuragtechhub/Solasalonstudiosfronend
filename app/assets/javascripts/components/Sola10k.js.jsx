@@ -82,10 +82,10 @@ var Sola10k = React.createClass({
     if (this.state.image && this.state.image.id) {
       return (
         <div className="bottom-buttons">
-          <div className="share-button">
+          {/*<div className="share-button">
             <a href="#" className="button block" onClick={this.toggleSharePopup}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
-          </div>
+          </div>*/}
           <a href={'/sola10k-image-preview/' + this.state.image.public_id} className="button block">Download</a>
           <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
         </div>
@@ -93,10 +93,10 @@ var Sola10k = React.createClass({
     } else {
       return (
         <div className="bottom-buttons">
-          <div className="share-button">
+          {/*<div className="share-button">
             <a href="#" className="button disabled block" onClick={this.shhh}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
-          </div>
+          </div>*/}
           <a href="#" className="button disabled block" onClick={this.shhh}>Download</a>
           <div className="start-over"><a href="#" className="disabled" onClick={this.shhh}>Start Over</a></div>
         </div>
@@ -140,7 +140,7 @@ var Sola10k = React.createClass({
   renderStatementForm: function () {
     return (
       <div className="statement-form">
-        <div className="madlibs">My <input type="text" name="my_inspired_story" placeholder={this.state.focusedInputName == 'my_inspired_story' ? null : 'inspired story'} maxLength="21" value={this.state.my_inspired_story} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
+        <div className="madlibs">My Sola, My <input type="text" name="my_inspired_story" placeholder={this.state.focusedInputName == 'my_inspired_story' ? null : 'inspired story'} maxLength="33" value={this.state.my_inspired_story} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
       </div>
     );
   },

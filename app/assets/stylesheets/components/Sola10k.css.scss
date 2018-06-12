@@ -155,7 +155,7 @@
         position: relative;
         top: -2px;
         width: 100%;
-        max-width: 375px;
+        max-width: 275px;
         height: auto !important;
         margin: 0 2px !important;
         text-align: center;
@@ -427,7 +427,7 @@
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
   .sola10k-tabs {
     a.sola10k-tab, a.sola10k-tab:link, a.sola10k-tab:visited, a.sola10k-tab:hover, a.sola10k-tab:active {
       padding: 15px 18px 15px 45px;
@@ -441,6 +441,17 @@
         top: 14px;
         left: 11px;
       }
+    }
+  }
+
+  .sola10kwrapper {
+    .owl-carousel .item .img-wrap {
+      height: auto;
+    }
+    .owl-carousel .item .img-wrap img {
+      width: 100%;
+      height: auto;
+      left: 0;
     }
   }
 
@@ -463,6 +474,10 @@
     .name-and-handle-form input[type='text'] {
       font-size: 16px;
       height: 66px;
+    }
+
+    .statement-form .madlibs {
+      margin: -25px 0 50px 0;
     }
 
     .statement-form .madlibs input[type='text'] {
