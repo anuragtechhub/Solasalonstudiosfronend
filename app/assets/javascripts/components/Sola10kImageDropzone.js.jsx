@@ -101,7 +101,7 @@ var Sola10kImageDropzone = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    if (this.state.image && (nextProps.statement != '' && nextProps.statement != this.props.statement) || (nextProps.color != 'blue' && nextProps.color != this.props.color)) {
+    if (this.state.image && (nextProps.statement != this.props.statement) || (nextProps.color != 'blue' && nextProps.color != this.props.color)) {
       this.setState({loading: true});
     }
   },

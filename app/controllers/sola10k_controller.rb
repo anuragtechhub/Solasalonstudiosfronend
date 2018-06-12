@@ -57,7 +57,7 @@ class Sola10kController < PublicWebsiteController
   private
 
   def calculate_cursive_pointsize(image, draw, text)
-    pointsize = 240
+    pointsize = 100 #222
     width = 920
     
     while width >= 920
@@ -79,38 +79,44 @@ class Sola10kController < PublicWebsiteController
     blue_overlay.rectangle(0, 0, 1080, 1080)
     blue_overlay.draw(m_image)
 
+    # gradient color overlay
+    if color == 'black'
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblack.png')).first
+      m_combined = m_image.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    elsif color == 'pink'
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientpink.png')).first
+      m_combined = m_image.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    else
+      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblue.png')).first
+      m_combined = m_image.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
+    end
+
+    # my logo
+    if statement.present?
+      my_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola10k_mysola_comma.png')).first
+      m_combined = m_combined.composite(my_logo, 0, 0, Magick::OverCompositeOp)
+    else
+      my_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola10k_mysola_nocomma.png')).first
+      m_combined = m_combined.composite(my_logo, 0, 0, Magick::OverCompositeOp)
+    end
+
     if statement.present?      
       cursive_text = Magick::Draw.new
       cursive_text.font = "#{Rails.root}/lib/fonts/ChaletParisNineteenSixty.ttf"
       cursive_text.gravity = Magick::CenterGravity
       cursive_text.fill = '#ffffff'
-      cursive_text_pointsize = calculate_cursive_pointsize(m_image, cursive_text, statement)
+      cursive_text_pointsize = calculate_cursive_pointsize(m_combined, cursive_text, statement)
       cursive_text.pointsize = cursive_text_pointsize
-      m_image.annotate(cursive_text, 1080, 1080, 0, 0, statement) 
+      p "cursive_text_pointsize=#{cursive_text_pointsize}"
+      m_combined.annotate(cursive_text, 1080, 1080, 0, 120, "my #{statement.strip}") 
 
-      cursive_text_metrics = cursive_text.get_type_metrics(m_image, statement)
+      cursive_text_metrics = cursive_text.get_type_metrics(m_combined, statement)
       ascent = cursive_text_metrics[:ascent]
       descent = cursive_text_metrics[:descent]
       height = cursive_text_metrics[:height]
       calculated_height = height + descent# + 160
       y_value = -(ascent - (statement =~ /[A-Z]/ ? 50 : 150)) / 2    
     end   
-
-    # my logo
-    my_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola10kmy.png')).first
-    m_combined = m_image.composite(my_logo, 85, 175, Magick::OverCompositeOp)
-
-    # gradient color overlay
-    if color == 'black'
-      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblack.png')).first
-      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
-    elsif color == 'pink'
-      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientpink.png')).first
-      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
-    else
-      m_gradient = Magick::Image.read(Rails.root.join('app/assets/images/sola10kgradientblue.png')).first
-      m_combined = m_combined.composite(m_gradient, 0, 0, Magick::OverCompositeOp)
-    end
 
     # sola10k logo
     sola10k_logo = Magick::Image.read(Rails.root.join('app/assets/images/hashsola10klogo.png')).first
