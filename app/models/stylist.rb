@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, #:sync_with_ping_hd#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   after_destroy :remove_from_mailchimp, :touch_stylist
@@ -263,6 +263,40 @@ class Stylist < ActiveRecord::Base
 
   #   nil
   # end
+
+  def sync_with_ping_hd
+    url = "http://dev.pinghd.com/api/Engage/Sola"
+    
+    p "url=#{url}"
+
+    payload = {
+      accessCode: "138-Xfd",
+      location: self.location_id,
+      productNumber: self.id,
+      category: self.services.join(', '),
+      subCategory: self.business_name,
+      name: self.name,
+      description: self.biography,
+      room: self.studio_number,
+      enabled: self.status && self.status == 'closed' ? false : true,
+      walkins: self.walkins 
+    }
+
+    p "payload=#{payload.inspect}"
+
+    sync_with_ping_hd_response = RestClient::Request.execute({
+      #:headers => {"Content-Type" => "application/json"},
+      :method => :get, 
+      #:content_type => 'application/json',
+      :url => url, 
+      :payload => payload
+    })
+
+    p "sync_with_ping_hd_response=#{sync_with_ping_hd_response.inspect}"
+  rescue => e
+    # shh...
+    p "error sync_with_ping_hd #{e}"
+  end
 
   def sync_with_rent_manager
     if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
