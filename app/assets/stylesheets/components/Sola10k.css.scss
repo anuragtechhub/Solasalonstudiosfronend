@@ -1,6 +1,14 @@
 @import 'variables';
 @import 'bootstrap/mixins';
 
+.sola10k-all {
+  display: block !important;
+}
+
+.sola10k-mobile {
+  display: none !important;
+}
+
 .sola10k {
   padding-top: 60px;
 
@@ -428,6 +436,21 @@
 }
 
 @media (max-width: 650px) {
+
+  .sola10kwrapper {
+    .learn-more-button {
+      display: none !important;
+    }
+  }
+  
+  .sola10k-all {
+    display: none !important;
+  }
+
+  .sola10k-mobile {
+    display: block !important;
+  }
+
   .sola10k-tabs {
     a.sola10k-tab, a.sola10k-tab:link, a.sola10k-tab:visited, a.sola10k-tab:hover, a.sola10k-tab:active {
       padding: 15px 18px 15px 45px;

@@ -1,7 +1,7 @@
 <div class="sola10kwrapper">
 
   <div class="hero-wrapper">
-    <div class="hero-carousel owl-carousel owl-theme" data-autoheight="yes">
+    <div class="hero-carousel owl-carousel owl-theme sola10k-all" data-autoheight="yes">
       <div class="item">
         <div class="img-wrap"><%= image_tag 'sola10khero.jpg', :width => 1386, :height => 713 %></div>
         <div class="item-content overlayed">
@@ -13,6 +13,12 @@
         </div>
       </div>
     </div>
+
+    <div class="hero-carousel owl-carousel owl-theme sola10k-mobile" data-autoheight="yes">
+      <div class="item">
+        <%= image_tag 'sola10khero_mobile.jpg', :width => 750, :height => 750 %>
+      </div>
+    </div>    
   </div>
 
   <%= react_component 'Sola10k' %>
