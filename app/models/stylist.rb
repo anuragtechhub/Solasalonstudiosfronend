@@ -398,6 +398,15 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def resend_welcome_email
+    #p "SEND WELCOME EMAIL #{location.country}"
+    if location && location.country && location.country == 'US'
+      PublicWebsiteMailer.resend_welcome_email_us(self).deliver
+    elsif location && location.country && location.country == 'CA'
+      PublicWebsiteMailer.resend_welcome_email_ca(self).deliver
+    end
+  end
+
   def as_json(options={})
     super(:methods => [:leases, :location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
                        :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
