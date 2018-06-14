@@ -37,9 +37,9 @@ namespace :email do
 
 			#######
 			# EmailEvents for link clicks
-			ee = EmailEvents.where(:category => 'Welcome Email', :created_at => start_date..end_date)
-			p "we have #{ee.size} email events to process"
-			
+			ee = EmailEvent.where(:category => 'Welcome Email', :event => 'click', :created_at => start_date..end_date)
+			p "we have #{ee.size} Welcome Email CLICK events to process"
+
 			##################################################
 			# Retrieve all categories #
 			# GET /categories #
@@ -67,7 +67,7 @@ namespace :email do
 			# GET /categories/stats/sums #
 			p "Retrieve sums of email stats for each category"
 			
-			metrics = {
+			welcome_email_metrics = {
 				"blocks" => 0,
 				"bounces" => 0,
 				"clicks" => 0,
@@ -79,38 +79,101 @@ namespace :email do
 			params = {categories: "Welcome Email", end_date: end_date.strftime('%F'), aggregated_by: "day", limit: 1, offset: 1, start_date: start_date.strftime('%F'), sort_by_direction: "asc"}
 			response = sg.client.categories.stats.get(query_params: params)
 
+			welcome_email_data_rows = nil
 			if response.status_code.to_i == 200
-				data_rows = JSON.parse(response.body)
-				p "got data, data_rows.length=#{data_rows.length}, metrics=#{metrics.inspect}"
+				welcome_email_data_rows = JSON.parse(response.body)
+				p "got data, welcome_email_data_rows.length=#{welcome_email_data_rows.length}, welcome_email_metrics=#{welcome_email_metrics.inspect}"
 
 				# calculate totals
-				data_rows.each do |data_row|
+				welcome_email_data_rows.each do |data_row|
 					p "data_row=#{data_row.inspect}"
 					row_metrics = data_row['stats'].first['metrics']
 					p "row_metrics=#{row_metrics.inspect}"
 					#p "metrics['blocks']=#{metrics['blocks']}"
 					p "row_metrics['blocks']=#{row_metrics['blocks']}"
-					metrics['blocks'] += row_metrics['blocks']
-					metrics['bounces'] += row_metrics['bounces']
-					metrics['clicks'] += row_metrics['clicks']
-					metrics['delivered'] += row_metrics['delivered']
-					metrics['unique_opens'] += row_metrics['unique_opens']
-					metrics['spam_reports'] += row_metrics['spam_reports']
+					welcome_email_metrics['blocks'] += row_metrics['blocks']
+					welcome_email_metrics['bounces'] += row_metrics['bounces']
+					welcome_email_metrics['clicks'] += row_metrics['clicks']
+					welcome_email_metrics['delivered'] += row_metrics['delivered']
+					welcome_email_metrics['unique_opens'] += row_metrics['unique_opens']
+					welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
 				end
 
-				p "metrics=#{metrics.inspect}"
+				p "welcome_email_metrics=#{welcome_email_metrics.inspect}"
 
-		    locals = {
-		      :@data => {
-		        start_date: start_date,
-		        end_date: end_date,
-		        rows: data_rows,
-		        metrics: metrics,
-		      }
-		    }
+		    # locals = {
+		    #   :@data => {
+		    #     start_date: start_date,
+		    #     end_date: end_date,
+		    #     rows: data_rows,
+		    #     metrics: metrics,
+		    #   }
+		    # }
 			else
 				p "NOT A 200 response, status_code=#{response.status_code}"
 			end
+
+			##################################################
+			# Retrieve sums of email stats for each category [Needs: Stats object defined, has category ID?] #
+			# GET /categories/stats/sums #
+			p "Retrieve sums of email stats for each category"
+			
+			resend_welcome_email_metrics = {
+				"blocks" => 0,
+				"bounces" => 0,
+				"clicks" => 0,
+				"delivered" => 0,
+				"unique_opens" => 0,
+				"spam_reports" => 0,
+			}
+
+			params = {categories: "Resend Welcome Email", end_date: end_date.strftime('%F'), aggregated_by: "day", limit: 1, offset: 1, start_date: start_date.strftime('%F'), sort_by_direction: "asc"}
+			response = sg.client.categories.stats.get(query_params: params)
+
+			resend_welcome_email_data_rows = nil
+			if response.status_code.to_i == 200
+				resend_welcome_email_data_rows = JSON.parse(response.body)
+				p "got data, resend_welcome_email_data_rows.length=#{resend_welcome_email_data_rows.length}, resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
+
+				# calculate totals
+				resend_welcome_email_data_rows.each do |data_row|
+					p "data_row=#{data_row.inspect}"
+					row_metrics = data_row['stats'].first['metrics']
+					p "row_metrics=#{row_metrics.inspect}"
+					#p "metrics['blocks']=#{metrics['blocks']}"
+					p "row_metrics['blocks']=#{row_metrics['blocks']}"
+					resend_welcome_email_metrics['blocks'] += row_metrics['blocks']
+					resend_welcome_email_metrics['bounces'] += row_metrics['bounces']
+					resend_welcome_email_metrics['clicks'] += row_metrics['clicks']
+					resend_welcome_email_metrics['delivered'] += row_metrics['delivered']
+					resend_welcome_email_metrics['unique_opens'] += row_metrics['unique_opens']
+					resend_welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
+				end
+
+				p "resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
+
+		    # locals = {
+		    #   :@data => {
+		    #     start_date: start_date,
+		    #     end_date: end_date,
+		    #     rows: data_rows,
+		    #     metrics: metrics,
+		    #   }
+		    # }
+			else
+				p "NOT A 200 response, status_code=#{response.status_code}"
+			end
+
+	    locals = {
+	      :@data => {
+	        start_date: start_date,
+	        end_date: end_date,
+	        resend_welcome_email_data_rows: resend_welcome_email_data_rows,
+	        resend_welcome_email_metrics: resend_welcome_email_metrics,
+	        welcome_email_data_rows: welcome_email_data_rows,
+	        welcome_email_metrics: welcome_email_metrics,
+	      }
+	    }			
 
 	    html_renderer = HTMLRenderer.new
 

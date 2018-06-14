@@ -5,29 +5,62 @@
 	<tr>
     <td>
       <div class="label">Delivered</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['delivered'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['delivered'] %></div>
     </td>
     <td>
       <div class="label">Opens</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['unique_opens'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['unique_opens'] %></div>
     </td>    
     <td>
       <div class="label">Clicks</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['clicks'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['clicks'] %></div>
     </td>    
   </tr>
 	<tr>
     <td>
       <div class="label">Bounces</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['bounces'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['bounces'] %></div>
     </td>
     <td>
       <div class="label">Blocks</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['blocks'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['blocks'] %></div>
     </td>    
     <td>
       <div class="label">Spam Reports</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:metrics]['spam_reports'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['spam_reports'] %></div>
+    </td>    
+  </tr>  
+</table>
+
+<div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;<span style="font-weight:normal;position:relative;top:-2px">|</span>&nbsp; Resend Welcome Email Analytics</strong></div>
+
+<table class="dotted" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+      <div class="label">Delivered</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['delivered'] %></div>
+    </td>
+    <td>
+      <div class="label">Opens</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['unique_opens'] %></div>
+    </td>    
+    <td>
+      <div class="label">Clicks</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['clicks'] %></div>
+    </td>    
+  </tr>
+  <tr>
+    <td>
+      <div class="label">Bounces</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['bounces'] %></div>
+    </td>
+    <td>
+      <div class="label">Blocks</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['blocks'] %></div>
+    </td>    
+    <td>
+      <div class="label">Spam Reports</div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['spam_reports'] %></div>
     </td>    
   </tr>  
 </table>
@@ -43,7 +76,7 @@
     <th><strong>Blocks</strong></th>
     <th><strong>Spam Reports</strong></th>
   </tr>
-  <% @data[:rows].each do |row| %>
+  <% @data[:welcome_email_data_rows].each do |row| %>
     <tr>
       <td class="label" style="font-size:9px"><%= row['date'] %></td>
       <td class="label" style="font-size:9px"><%= number_with_delimiter row['stats'].first['metrics']['delivered'] %></td>
