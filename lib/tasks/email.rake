@@ -35,6 +35,11 @@ namespace :email do
 			sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
 			p "sg=#{sg.inspect}"
 
+			#######
+			# EmailEvents for link clicks
+			ee = EmailEvents.where(:category => 'Welcome Email', :created_at => start_date..end_date)
+			p "we have #{ee.size} email events to process"
+			
 			##################################################
 			# Retrieve all categories #
 			# GET /categories #

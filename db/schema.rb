@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607165120) do
+ActiveRecord::Schema.define(version: 20180614224240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,11 @@ ActiveRecord::Schema.define(version: 20180607165120) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "useragent"
+    t.string   "url"
+    t.string   "status"
+    t.string   "reason"
+    t.string   "attempt"
+    t.string   "tls"
   end
 
   create_table "franchising_requests", force: true do |t|
@@ -191,7 +196,7 @@ ActiveRecord::Schema.define(version: 20180607165120) do
     t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "agreement_file_url"
+    t.string   "agreement_file_url"
     t.integer  "location_id"
     t.boolean  "hair_styling_permitted",      default: false
     t.boolean  "manicure_pedicure_permitted", default: false
@@ -208,8 +213,6 @@ ActiveRecord::Schema.define(version: 20180607165120) do
     t.string   "insurance_frequency"
     t.integer  "move_in_bonus_amount"
     t.string   "move_in_bonus_payee"
-    t.integer  "nsf_fee_amount"
-    t.string   "other_service"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
@@ -590,7 +593,7 @@ ActiveRecord::Schema.define(version: 20180607165120) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                  default: 0,            null: false
+    t.integer  "sign_in_count",                  default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -628,10 +631,8 @@ ActiveRecord::Schema.define(version: 20180607165120) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
-    t.string   "rent_manager_contact_id"
-    t.date     "website_go_live_date",           default: '2004-01-01'
-    t.string   "sg_booking_url"
     t.boolean  "force_show_book_now_button",     default: false
+    t.string   "sg_booking_url"
     t.boolean  "walkins"
   end
 
