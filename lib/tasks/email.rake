@@ -36,9 +36,38 @@ namespace :email do
 			p "sg=#{sg.inspect}"
 
 			#######
-			# EmailEvents for link clicks
-			ee = EmailEvent.where(:category => 'Welcome Email', :event => 'click', :created_at => start_date..end_date)
-			p "we have #{ee.size} Welcome Email CLICK events to process"
+			# EmailEvents
+			welcome_email_total_clicks = 0
+			welcome_email_clicks = {}
+			welcome_email_click_events = EmailEvent.where(:category => 'Welcome Email', :event => 'click', :created_at => start_date..end_date)
+			p "we have #{welcome_email_click_events.size} Welcome Email CLICK events to process"
+			welcome_email_click_events.each do |click_event|
+				if welcome_email_clicks.key? click_event[:url]
+					welcome_email_clicks[click_event[:url]] = welcome_email_clicks[click_event[:url]] + 1
+				else
+					welcome_email_clicks[click_event[:url]] = 1
+				end
+				welcome_email_total_clicks++
+			end
+
+			welcome_email_bounce_events = EmailEvent.where(:category => 'Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
+			p "we have #{welcome_email_bounce_events.size} Welcome Email BOUNCE events to process"
+
+			resend_welcome_email_total_clicks = 0
+			resend_welcome_email_clicks = {}
+			resend_welcome_email_click_events = EmailEvent.where(:category => 'Resend Welcome Email', :event => 'click', :created_at => start_date..end_date)
+			p "we have #{welcome_email_click_events.size} Welcome Email CLICK events to process"
+			resend_welcome_email_click_events.each do |click_event|
+				if resend_welcome_email_clicks.key? click_event[:url]
+					resend_welcome_email_clicks[click_event[:url]] = resend_welcome_email_clicks[click_event[:url]] + 1
+				else
+					resend_welcome_email_clicks[click_event[:url]] = 1
+				end
+				resend_welcome_email_total_clicks++
+			end
+
+			resend_welcome_email_bounce_events = EmailEvent.where(:category => 'Resend Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
+			p "we have #{welcome_email_bounce_events.size} Welcome Email BOUNCE events to process"
 
 			##################################################
 			# Retrieve all categories #
@@ -172,6 +201,12 @@ namespace :email do
 	        resend_welcome_email_metrics: resend_welcome_email_metrics,
 	        welcome_email_data_rows: welcome_email_data_rows,
 	        welcome_email_metrics: welcome_email_metrics,
+	        welcome_email_clicks: welcome_email_clicks,
+	        welcome_email_bounce_events: welcome_email_bounce_events,
+	        resend_welcome_email_clicks: resend_welcome_email_clicks,
+	        resend_welcome_email_bounce_events: resend_welcome_email_bounce_events,
+	        welcome_email_total_clicks: welcome_email_total_clicks,
+	        resend_welcome_email_total_clicks: resend_welcome_email_total_clicks, 
 	      }
 	    }			
 

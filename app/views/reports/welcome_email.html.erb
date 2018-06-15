@@ -13,7 +13,7 @@
     </td>    
     <td>
       <div class="label">Clicks</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['clicks'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_total_clicks] %></div>
     </td>    
   </tr>
 	<tr>
@@ -32,6 +32,43 @@
   </tr>  
 </table>
 
+<div class="section">
+  <div class="section-heading">Links Clicked</div>
+</div>
+
+<table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+<tr>
+  <th><strong>URL</strong></th>
+  <th><strong># of clicks</strong></th>
+</tr>
+<% @data[:welcome_email_clicks].each do |url, clicks| %>
+
+  <tr>
+    <td class="label"><%= url %></td>
+    <td class="label"><%= number_with_delimiter clicks.to_i %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="section">
+  <div class="section-heading">Bounced Email Addresses</div>
+</div>
+
+<table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+<% if @data[:welcome_email_bounce_events] && @data[:welcome_email_bounce_events].length > 0 %>
+  <% @data[:welcome_email_bounce_events].each do |bounce_event| %>
+    <tr>
+      <td class="label"><%= bounce_event.email %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td class="label">None</td>
+  </tr>
+<% end %>
+</table>
+
+
 <div class="page-title"><strong><%= @data[:start_date].strftime("%B %Y").upcase %> &nbsp;<span style="font-weight:normal;position:relative;top:-2px">|</span>&nbsp; Resend Welcome Email Analytics</strong></div>
 
 <table class="dotted" cellpadding="0" cellspacing="0">
@@ -46,7 +83,7 @@
     </td>    
     <td>
       <div class="label">Clicks</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['clicks'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_total_clicks] %></div>
     </td>    
   </tr>
   <tr>
@@ -63,6 +100,41 @@
       <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['spam_reports'] %></div>
     </td>    
   </tr>  
+</table>
+
+<div class="section">
+  <div class="section-heading">Links Clicked</div>
+</div>
+
+<table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+<tr>
+  <th><strong>URL</strong></th>
+  <th><strong># of clicks</strong></th>
+</tr>
+<% @data[:resend_welcome_email_clicks].each do |url, clicks| %>
+  <tr>
+    <td class="label"><%= url %></td>
+    <td class="label"><%= number_with_delimiter clicks.to_i %></td>
+  </tr>
+<% end %>
+</table>
+
+<div class="section">
+  <div class="section-heading">Bounced Email Addresses</div>
+</div>
+
+<table class="tabular tabluar-tight" cellpadding="0" cellspacing="0">
+<% if @data[:resend_welcome_email_bounce_events] && @data[:resend_welcome_email_bounce_events].length > 0 %>
+  <% @data[:resend_welcome_email_bounce_events].each do |bounce_event| %>
+    <tr>
+      <td class="label"><%= bounce_event.email %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td class="label">None</td>
+  </tr>
+<% end %>
 </table>
 
 <!--
