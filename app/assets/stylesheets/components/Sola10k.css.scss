@@ -411,6 +411,23 @@
   }
 }
 
+.sola10k.android {
+  .statement-form {
+
+    .madlibs {
+      font-family: 'Cabin', sans-serif;
+      font-weight: 100;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    input[type='text'] {
+      font-family: 'Cabin', sans-serif;
+      font-weight: 100;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+}
+
 @media (max-width: 1150px) {
   .sola10klogo {
     max-width: (498px / 1.5);

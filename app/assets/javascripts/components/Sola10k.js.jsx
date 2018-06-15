@@ -1,11 +1,15 @@
 var Sola10k = React.createClass({
 
   getInitialState: function () {
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+
     return {
       fileUploadOverlay: false,
       focusedInputName: null,
       instagram_handle: '',
       image: null,
+      isAndroid: isAndroid,
       my_inspired_story: '',
       name: '',
       color: 'blue',
@@ -64,7 +68,7 @@ var Sola10k = React.createClass({
 
   render: function () {
     return (
-      <div className="sola10k">
+      <div className={"sola10k " + (this.state.isAndroid ? 'android' : '')}>
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
