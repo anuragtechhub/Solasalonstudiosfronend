@@ -22,7 +22,7 @@ namespace :email do
 	end
 
   # rake email:welcome_report
-  # rake email:welcome_report[2018-03-01]
+  # rake email:welcome_report[2018-06-01]
   task :welcome_report, [:start_date] => :environment do |task, args|
   	p "Begin Welcome Email Report..."
 
@@ -47,7 +47,7 @@ namespace :email do
 				else
 					welcome_email_clicks[click_event[:url]] = 1
 				end
-				welcome_email_total_clicks++
+				welcome_email_total_clicks = welcome_email_total_clicks + 1
 			end
 
 			welcome_email_bounce_events = EmailEvent.where(:category => 'Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
@@ -63,7 +63,7 @@ namespace :email do
 				else
 					resend_welcome_email_clicks[click_event[:url]] = 1
 				end
-				resend_welcome_email_total_clicks++
+				resend_welcome_email_total_clicks = resend_welcome_email_total_clicks + 1
 			end
 
 			resend_welcome_email_bounce_events = EmailEvent.where(:category => 'Resend Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
