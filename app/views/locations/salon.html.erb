@@ -68,6 +68,11 @@
           <p class="address"><%= @location.full_address %></p>
         </div>
 
+        <div class="location-buttons">
+          <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white', :style => 'margin-bottom:0' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
+          <!--<%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>-->
+        </div>
+
         <!-- mobile lease form -->
         <div class="mobile-lease-form">
           <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'request-a-tour-form contact-us-request-a-tour', :autocomplete => 'off' do %>
@@ -103,12 +108,6 @@
             <button class="button primary block contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
             <button class="button primary block contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
           <% end %>
-        </div>
-
-        <!-- buttons -->
-        <div class="location-buttons">
-          <%= link_to salon_stylists_path(@location.url_name), :class => 'button outline-large-white' do %><%= t('page.locations.find_a_salon_professional') %><% end %>
-          <!--<%= link_to '#rent-a-studio', :class => 'button outline-large-white rent-a-studio' do %><%= t('page.locations.lease_a_studio') %><% end %>-->
         </div>
 
         <!-- about this location -->
