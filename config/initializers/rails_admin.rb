@@ -1418,9 +1418,9 @@ RailsAdmin.config do |config|
         field :waxing
         field :other_service do
           label 'Other'
-          html_attributes do
-           {:maxlength => 18}
-          end
+          # html_attributes do
+          #  {:maxlength => 18}
+          # end
         end
       end 
       group :images do
