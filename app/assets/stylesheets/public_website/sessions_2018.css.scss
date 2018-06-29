@@ -486,6 +486,12 @@
         // -webkit-filter: grayscale(100%);
         // filter: grayscale(100%);
 
+        &.ienvy {
+          position: relative;
+          top: 5px;
+          height: (65px / 1.5);
+        }
+
         &.opi {
           position: relative;
           top: -1px;
