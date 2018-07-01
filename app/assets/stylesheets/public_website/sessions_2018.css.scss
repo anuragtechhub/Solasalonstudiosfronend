@@ -65,7 +65,7 @@
   }
 
   .early-bird-general-admission {
-    margin: 30px auto 50px auto;
+    // margin: 30px auto 50px auto;
     max-width: 640px;
     margin: 30px auto;
     display: block;
@@ -73,10 +73,10 @@
     overflow: hidden;
 
     .early-bird, .general-admission {
-      float: left;
+      //float: left;
       //height: 380px;
       width: 48%;
-      margin-right: 2%;
+      margin: 0 auto;
       padding: 30px 30px 40px 30px;
       @include border-radius(11px);
       text-align: left;
