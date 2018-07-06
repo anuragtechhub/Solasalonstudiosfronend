@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614224240) do
+ActiveRecord::Schema.define(version: 20180706161852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,23 +145,23 @@ ActiveRecord::Schema.define(version: 20180614224240) do
   end
 
   create_table "email_events", force: true do |t|
-    t.string   "category"
-    t.string   "email"
-    t.string   "event"
-    t.string   "ip"
-    t.string   "response"
-    t.string   "sg_event_id"
-    t.string   "sg_message_id"
-    t.string   "smtp_id"
-    t.datetime "timestamp"
+    t.text     "category"
+    t.text     "email"
+    t.text     "event"
+    t.text     "ip"
+    t.text     "response"
+    t.text     "sg_event_id"
+    t.text     "sg_message_id"
+    t.text     "smtp_id"
+    t.text     "timestamp"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "useragent"
-    t.string   "url"
-    t.string   "status"
-    t.string   "reason"
-    t.string   "attempt"
-    t.string   "tls"
+    t.text     "useragent"
+    t.text     "url"
+    t.text     "status"
+    t.text     "reason"
+    t.text     "attempt"
+    t.text     "tls"
   end
 
   create_table "franchising_requests", force: true do |t|
@@ -196,30 +196,28 @@ ActiveRecord::Schema.define(version: 20180614224240) do
     t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "agreement_file_url"
+    t.text     "agreement_file_url"
     t.integer  "location_id"
     t.boolean  "hair_styling_permitted",      default: false
     t.boolean  "manicure_pedicure_permitted", default: false
     t.boolean  "waxing_permitted",            default: false
     t.boolean  "massage_permitted",           default: false
     t.boolean  "facial_permitted",            default: false
-    t.integer  "recurring_charge_1_id"
-    t.integer  "recurring_charge_2_id"
-    t.integer  "recurring_charge_3_id"
-    t.integer  "recurring_charge_4_id"
     t.boolean  "move_in_bonus",               default: false
     t.boolean  "insurance",                   default: false
     t.integer  "insurance_amount"
     t.string   "insurance_frequency"
     t.integer  "move_in_bonus_amount"
     t.string   "move_in_bonus_payee"
+    t.integer  "nsf_fee_amount"
+    t.string   "other_service"
+    t.boolean  "taxes",                       default: false
+    t.boolean  "parking",                     default: false
+    t.boolean  "cable",                       default: false
+    t.date     "insurance_start_date"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
-  add_index "leases", ["recurring_charge_1_id"], name: "index_leases_on_recurring_charge_1_id", using: :btree
-  add_index "leases", ["recurring_charge_2_id"], name: "index_leases_on_recurring_charge_2_id", using: :btree
-  add_index "leases", ["recurring_charge_3_id"], name: "index_leases_on_recurring_charge_3_id", using: :btree
-  add_index "leases", ["recurring_charge_4_id"], name: "index_leases_on_recurring_charge_4_id", using: :btree
   add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
   add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
@@ -426,7 +424,12 @@ ActiveRecord::Schema.define(version: 20180614224240) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "charge_type"
+    t.integer  "lease_id"
+    t.integer  "position"
   end
+
+  add_index "recurring_charges", ["lease_id"], name: "index_recurring_charges_on_lease_id", using: :btree
 
   create_table "reports", force: true do |t|
     t.string   "report_type"
@@ -593,7 +596,7 @@ ActiveRecord::Schema.define(version: 20180614224240) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                  default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,            null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -631,8 +634,10 @@ ActiveRecord::Schema.define(version: 20180614224240) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
-    t.boolean  "force_show_book_now_button",     default: false
+    t.string   "rent_manager_contact_id"
+    t.date     "website_go_live_date",           default: '2004-01-01'
     t.string   "sg_booking_url"
+    t.boolean  "force_show_book_now_button",     default: false
     t.boolean  "walkins"
   end
 
