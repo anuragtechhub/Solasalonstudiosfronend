@@ -52,6 +52,7 @@ namespace :email do
 
 			welcome_email_bounce_events = EmailEvent.where(:category => 'Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
 			p "we have #{welcome_email_bounce_events.size} Welcome Email BOUNCE events to process"
+			p "welcome_email_bounce_events=#{welcome_email_bounce_events.inspect}"
 
 			resend_welcome_email_total_clicks = 0
 			resend_welcome_email_clicks = {}
@@ -67,7 +68,8 @@ namespace :email do
 			end
 
 			resend_welcome_email_bounce_events = EmailEvent.where(:category => 'Resend Welcome Email', :event => 'bounce', :created_at => start_date..end_date)
-			p "we have #{welcome_email_bounce_events.size} Welcome Email BOUNCE events to process"
+			p "we have #{resend_welcome_email_bounce_events.size} Welcome Email BOUNCE events to process"
+			p "resend_welcome_email_bounce_events=#{resend_welcome_email_bounce_events.inspect}"
 
 			##################################################
 			# Retrieve all categories #
@@ -111,15 +113,15 @@ namespace :email do
 			welcome_email_data_rows = nil
 			if response.status_code.to_i == 200
 				welcome_email_data_rows = JSON.parse(response.body)
-				p "got data, welcome_email_data_rows.length=#{welcome_email_data_rows.length}, welcome_email_metrics=#{welcome_email_metrics.inspect}"
+				#p "got data, welcome_email_data_rows.length=#{welcome_email_data_rows.length}, welcome_email_metrics=#{welcome_email_metrics.inspect}"
 
 				# calculate totals
 				welcome_email_data_rows.each do |data_row|
-					p "data_row=#{data_row.inspect}"
+					#p "data_row=#{data_row.inspect}"
 					row_metrics = data_row['stats'].first['metrics']
-					p "row_metrics=#{row_metrics.inspect}"
+					#p "row_metrics=#{row_metrics.inspect}"
 					#p "metrics['blocks']=#{metrics['blocks']}"
-					p "row_metrics['blocks']=#{row_metrics['blocks']}"
+					#p "row_metrics['blocks']=#{row_metrics['blocks']}"
 					welcome_email_metrics['blocks'] += row_metrics['blocks']
 					welcome_email_metrics['bounces'] += row_metrics['bounces']
 					welcome_email_metrics['clicks'] += row_metrics['clicks']
@@ -128,7 +130,7 @@ namespace :email do
 					welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
 				end
 
-				p "welcome_email_metrics=#{welcome_email_metrics.inspect}"
+				#p "welcome_email_metrics=#{welcome_email_metrics.inspect}"
 
 		    # locals = {
 		    #   :@data => {
@@ -162,15 +164,15 @@ namespace :email do
 			resend_welcome_email_data_rows = nil
 			if response.status_code.to_i == 200
 				resend_welcome_email_data_rows = JSON.parse(response.body)
-				p "got data, resend_welcome_email_data_rows.length=#{resend_welcome_email_data_rows.length}, resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
+				#p "got data, resend_welcome_email_data_rows.length=#{resend_welcome_email_data_rows.length}, resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
 
 				# calculate totals
 				resend_welcome_email_data_rows.each do |data_row|
-					p "data_row=#{data_row.inspect}"
+					#p "data_row=#{data_row.inspect}"
 					row_metrics = data_row['stats'].first['metrics']
-					p "row_metrics=#{row_metrics.inspect}"
+					#p "row_metrics=#{row_metrics.inspect}"
 					#p "metrics['blocks']=#{metrics['blocks']}"
-					p "row_metrics['blocks']=#{row_metrics['blocks']}"
+					#p "row_metrics['blocks']=#{row_metrics['blocks']}"
 					resend_welcome_email_metrics['blocks'] += row_metrics['blocks']
 					resend_welcome_email_metrics['bounces'] += row_metrics['bounces']
 					resend_welcome_email_metrics['clicks'] += row_metrics['clicks']
@@ -179,7 +181,7 @@ namespace :email do
 					resend_welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
 				end
 
-				p "resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
+				#p "resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
 
 		    # locals = {
 		    #   :@data => {

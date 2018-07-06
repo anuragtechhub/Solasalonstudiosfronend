@@ -19,7 +19,7 @@
 	<tr>
     <td>
       <div class="label">Bounces</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_metrics]['bounces'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:welcome_email_bounce_events].length %></div>
     </td>
     <td>
       <div class="label">Blocks</div>
@@ -89,7 +89,7 @@
   <tr>
     <td>
       <div class="label">Bounces</div>
-      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_metrics]['bounces'] %></div>
+      <div class="value value-large"><%= number_with_delimiter @data[:resend_welcome_email_bounce_events].length %></div>
     </td>
     <td>
       <div class="label">Blocks</div>
