@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180706161852) do
+ActiveRecord::Schema.define(version: 20180712225048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 20180706161852) do
     t.datetime "updated_at"
     t.string   "request_url"
     t.integer  "visit_id"
+    t.string   "request_type"
   end
 
   add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree

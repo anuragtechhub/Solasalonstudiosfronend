@@ -301,6 +301,9 @@ RailsAdmin.config do |config|
   end
 
   config.model 'FranchisingRequest' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
     label 'Franchsing Inquiry'
     label_plural 'Franchising Inquiries'
   end

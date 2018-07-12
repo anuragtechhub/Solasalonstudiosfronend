@@ -65,12 +65,15 @@ class PublicWebsiteMailer < ActionMailer::Base
     #     }
     #   }
     # }`
-
-    headers['X-SMTPAPI'] = '{"category": "Franchising Request"}'
-
+    if franchisingRequest && franchisingRequest.request_type.present?
+        headers['X-SMTPAPI'] = '{"category": "#{franchisingRequest.request_type} Franchising Request"}'
+    else 
+        headers['X-SMTPAPI'] = '{"category": "Franchising Request"}'
+    end
+    
     if franchisingRequest
       @message = franchisingRequest
-      mail(to: 'ben@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: 'Sola Franchising Request')
+      mail(to: 'jeff@jeffbail.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: "#{franchisingRequest.request_type.present? ? franchisingRequest.request_type : ''} Franchising Request")
     end
   end
 

@@ -143,10 +143,14 @@ en:
       call_for_leasing_information: Call for leasing information
       sola_salon_studios_headquarters: Sola Salon Studios Headquarters
       sola_franchising: Sola Franchising
+      united_states_franchising: United States Franchising
+      international_franchising: International Franchise Licensing
       franchising: Franchising
       franchising_text: Interested in opening a Sola Salon Studios franchise? Complete the form below or give us a call at 303.377.7652 ext 4
+      international_franchising_text: Interested in bringing Sola Salon studios to your country? Complete the form below!
       full_name: Full Name
       market: Market
+      country: Country
 
     diversity:
       title: Diversity
