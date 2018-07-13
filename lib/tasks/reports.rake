@@ -96,7 +96,7 @@ namespace :reports do
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[206,2017-09-01]
+  # rake reports:location[206,2018-06-01]
   task :location, [:location_id, :start_date] => :environment do |task, args|
     p "begin location report..."
 
@@ -550,8 +550,8 @@ namespace :reports do
       # referrals - source, % of traffic
       # ga:medium
       # ga:acquisitionTrafficChannel
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
-      p "done with referrals"
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:medium', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..4]
+      p "done with referrals #{data[:referrals].inspect}"
 
       # top referrers - site, visits
       data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
