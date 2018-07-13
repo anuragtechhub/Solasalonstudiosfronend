@@ -322,6 +322,17 @@ $(function () {
 
   // open send a message modal
   $('.request-franchising-info').on('click', function () {
+    var $this = $(this);
+    if ($this.data('type') == 'int-franchising') {
+      $('.us-franchising').hide();
+      $('.int-franchising').show();
+      $('input[name=request_type]').val('International');
+    } else {
+      $('.us-franchising').show();
+      $('.int-franchising').hide();
+      $('input[name=request_type]').val('United States');
+    }
+
     $franchsing_modal.data('modal').open();
     return false;
   });

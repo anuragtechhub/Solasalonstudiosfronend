@@ -73,7 +73,7 @@ class PublicWebsiteMailer < ActionMailer::Base
     
     if franchisingRequest
       @message = franchisingRequest
-      mail(to: 'jeff@jeffbail.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: "#{franchisingRequest.request_type.present? ? franchisingRequest.request_type : ''} Franchising Request")
+      mail(to: 'ben@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: "#{franchisingRequest.request_type.present? ? franchisingRequest.request_type : ''} Franchising Request")
     end
   end
 
