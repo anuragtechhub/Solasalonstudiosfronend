@@ -28,7 +28,7 @@ pt-BR:
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com.br
-  in: in
+  in: em
   contact_for_leasing_information: Entre em contato com %{general_contact_name} para obter informações sobre arrendamento
   phone_result: "<strong>p:</strong> %{phone_number}"
   email_result: "<strong>e:</strong> %{email_address}"  
@@ -451,125 +451,125 @@ pt-BR:
       join_our_community_button_text: "Tenha seu salão de beleza"
 
     own:
-      title: Own Your Salon
-      meta_description: "Studios for hairdressers, nail techs, estheticians, and more. Lease a move-in ready salon suite to control your environment, manage your schedule, and be your own boss."
+      title: Tenha seu salão de beleza
+      meta_description: "Estúdios para cabeleireiros, especialistas em unhas, esteticistas e muito mais. Arrende um conjunto pronto de salão de beleza para controlar seu ambiente, gerenciar sua agenda e ser seu próprio patrão."
       tabs:
-        own_your_salon: Own Your<span class="mobile-br"> </span>Salon
-        our_studios: Our<span class="mobile-br"> </span>Studios
-        sola_pro: Sola<span class="mobile-br"> </span>Pro
-        sola_sessions: Sola<span class="mobile-br"> </span>Sessions
+        own_your_salon: Tenha seu salão de beleza
+        our_studios: Nossos estúdios
+        sola_pro: Sola Pro
+        sola_sessions: Sola Sessions
         sola_genius: Sola<span class="mobile-br"> </span>Genius
 
     privacy_policy:
-      title: Privacy Policy
+      title: Política de Privacidade
       body: |
-        <p>Privacy Policy</p>
-        <p>Last revised and Effective February 1, 2017</p>
-        <p>Sola Franchise Corporation and its subsidiaries, including Sola Salon Studios Canada, Inc. (&quot;Sola&quot;), the proud owner of the Sola Salon Studios&reg; brand, knows that your privacy is important. This Privacy Policy sets out our privacy practices that apply when you use any website, mobile application or other online service or platform of Sola or any other Sola company that links or refers to it (collectively, the &quot;Services&quot;), regardless of who owns or operates the Services, as well as our interactions with you on third party platforms (such as social media).</p>
+        <p>Política de Privacidade</p>
+        <p>Última revisão e em vigor em 1º de fevereiro de 2017</p>
+        <p>O Sola Franchise Corporation e suas subsidiárias, incluindo o Sola Salon Studios Canada, Inc., o orgulhoso proprietário do Sola Salon Studios; a marca, sabe que sua privacidade é importante. Esta Política de Privacidade define nossas práticas de privacidade, que se aplicam quando você usa qualquer site, aplicativo móvel ou outra plataforma ou serviço online do Sola, ou de qualquer outra empresa do Sola, que a vincule ou referencie (coletivamente, os “Serviços”, independentemente de quem seja proprietário ou operador dos Serviços, bem como nossas interações com você em plataformas de terceiros (como redes sociais)).</p>
         
-        <p>1. Information We Collect</p>
-        <p>We collect personal information about our users in various ways. For example, we collect information that you provide to us, information that we collect through your use of the Services, and information that we collect from publicly available sources or third parties.</p>
-        <p>Information You Provide to Us. We collect information you give us when you use the Services. For example, when you visit one of our websites or use one of our Services, create an account with us, participate in a survey or promotion, or take advantage of our in-salon Wi-Fi service, we may ask for information such as your name, e-mail address, year of birth, gender, street address, or mobile phone number so that we can provide Services to you. We may collect payment information, such as your credit card number, security code and expiration date, to process a financial transaction you have requested. We also may collect information about the products you buy, including where and how frequently you buy them or your use of discount codes or coupons so that we can learn more about your interests and better serve you.</p>
-        <p>Information About Your Use of the Services. In addition to the information you provide to us directly, we may collect information about your use of the Services. For example, we may collect:</p>
-        <p>Device information — such as your hardware model, IP address, other unique device identifiers, operating system version, and settings of the device you use to access the Services.</p>
-        <p>Usage information — such as information about the Services you use, the time and duration of your use of the Services and other information about your interaction with content offered through a Service, and any information stored in cookies and similar technologies that we have set on your device.</p>
-        <p>Location information — such as your computer's IP address, your mobile device's GPS signal or information about nearby WiFi access points and cell towers that may be transmitted to us when you use the Services.</p>
-        <p>Information From Third-Party Sources. We may receive information about you from publicly and commercially available sources, as permitted by law, which we may combine with other information we receive from or about you. For example, we may receive information about you from a social media site if you connect to the Services through that site.</p>
-        <p>Other Information We Collect. We also may collect other information about you, your device, or your use of the Services in ways that we describe to you at the point of collection or otherwise with your consent.</p>
+        <p>1. Informações que coletamos</p>
+        <p>Coletamos informações pessoais sobre nossos usuários de diversas maneiras. Por exemplo, coletamos as informações que você nos fornece, as informações que coletamos através de seu uso dos Serviços e as informações que coletamos de fontes disponíveis publicamente ou de terceiros.</p>
+        <p>Informações que você nos fornece. Coletamos as informações que você nos fornece quando usa os Serviços. Por exemplo, quando você visita um de nossos sites ou usa um de nossos Serviços, cria uma conta conosco, participa de uma pesquisa ou promoção, ou tira proveito de nosso serviço Wi-Fi no salão, podemos solicitar informações como seu nome, endereço de e-mail, ano de nascimento, sexo, endereço ou número de telefone celular, para que possamos fornecer Serviços para você. Podemos coletar informações de pagamento, como número de seu cartão de crédito, código de segurança e data de vencimento, para processar uma transação financeira que você solicitou. Também podemos coletar informações sobre os produtos que você compra, incluindo onde e com que frequência você os compra ou o uso de códigos de desconto, ou cupons, para que possamos saber mais sobre seus interesses e atendê-lo melhor.</p>
+        <p>Informações sobre seu uso dos serviços. Além das informações que você nos fornece diretamente, podemos coletar informações sobre seu uso dos Serviços. Por exemplo, podemos coletar:</p>
+        <p>Informações do dispositivo – como o modelo de seu hardware, endereço de IP, outros identificadores exclusivos do dispositivo, versão do sistema operacional e configurações do dispositivo que você usa para acessar os Serviços.</p>
+        <p>Informações de uso – como informações sobre os Serviços que você usa, o tempo e a duração de seu uso dos Serviços e outras informações sobre sua interação com o conteúdo oferecido através de um Serviço, e qualquer informação armazenada em cookies e tecnologias semelhantes que tenhamos, que estejam configuradas em seu dispositivo.</p>
+        <p>Informações de localização – como o endereço de IP de seu computador, o sinal de GPS de seu dispositivo móvel ou informações sobre pontos de acesso por WiFi próximos e torres de celular que podem ser transmitidas para nós quando você usa os Serviços.</p>
+        <p>Informações de fontes de terceiros. Podemos receber informações sobre você de fontes disponíveis publicamente e comercialmente, conforme permitido por lei, que podemos combinar com outras informações que recebemos de você ou sobre você. Por exemplo, podemos receber informações sobre você de redes sociais se você se conectar aos Serviços por meio desse site.</p>
+        <p>Outras informações que coletamos. Também podemos coletar outras informações sobre você, seu dispositivo ou seu uso dos Serviços da maneira que descrevemos a você no momento da coleta ou, de outra forma, com seu consentimento.</p>
         
-        <p>2. How We Use Information</p>
-        <p>When You Volunteer Information or Register.  If you choose to use certain features (such as messaging your stylist) on the Services, you may need to complete certain personal information register and provide personal information such as name, email address, location, year of birth and a user name and password that you choose. We use this information to identify you and provide the requested feature and Services.</p>
-        <p>To Provide and Manage the Products and Services You Request. We use information that we collect to process any purchases of products or services, enable you to participate in features provided by the Services and provide you with tailored offers, and improve the Services that we provide to you. From time to time, we may offer you the ability to personalize our products and Services, such as by uploading a photo or other information. We may use any of these images uploaded by you on our websites or services or on social media platforms.  We may also use services provided by third parties (such as social media platforms) to serve targeted ads to you and others on such platforms.</p>
-        <p>To Respond to You. When you contact us, we may collect information that identifies you (such as your name, address and a phone number) along with additional information we need to help us promptly answer your question or respond to your comment. We may  this information to assist you in the future and to improve our customer service, products, Services, and promotions.</p>
-        <p>When you Make any Purchase.  If you use a credit or debit card for your purchase, your debit or credit card-related information will be collected to process and administer your payment. When you make purchases through the online Services, we may collect information such as your name, email address, billing address, the email or mailing address for delivery (if applicable), phone number, and payment card information. This information is used to process, fulfill and deliver your order.</p>
-        <p>To Contact You. We may contact you with offers and information about the Services and our affiliates, including to inform you about our products, events, promotions, and special offers that may be tailored to your interests. You may opt out of receiving commercial messages from us by following the instructions contained in our electronic messages or by contacting us as set out below.</p>
-        <p>To Deliver Targeted Advertising. We may use your information, including your location information, to facilitate the delivery of targeted ads, promotions, and offers to you, on behalf of ourselves, select business partners, and advertisers, on and off the Services. (See &quot;Interest-Based Advertisements&quot; section below.).</p>
-        <p>To Better Understand Our Customers and to Improve Our Services. In the course of providing the Services, we may collect information on our users' demographics, interests and behavior and analyze that data. We do this to better understand and serve our users, and to improve our products and Services.</p>
-        <p>Consent. We may otherwise use your information with your consent or at your direction.</p>
+        <p>2. Como usamos as informações</p>
+        <p>Quando você fornecer informações voluntariamente ou se cadastrar.  Se você optar por usar determinados recursos (como enviar mensagens a seu stylist) nos Serviços, talvez seja necessário preencher certos cadastros de informações pessoais e fornecer informações pessoais tais como nome, endereço de e-mail, local, ano de nascimento, e nome de usuário e senha que você escolher. Usamos essas informações para identificar você e fornecer o recurso e os serviços solicitados.</p>
+        <p>Para fornecer e gerenciar os produtos e serviços solicitados. Usamos as informações que coletamos para processar qualquer compra de produtos ou serviços, para permitir que você participe dos recursos fornecidos pelos Serviços e oferecer ofertas sob medida, e para aprimorar os Serviços que fornecemos a você. Ocasionalmente, podemos oferecer a você a capacidade de personalizar nossos produtos e serviços, como enviar uma foto ou outras informações. Podemos usar qualquer uma dessas imagens enviadas por você em nossos sites ou serviços ou em plataformas de redes sociais.  Também podemos usar serviços fornecidos por terceiros (tais como plataformas de redes sociais) para veicular anúncios direcionados para você e para outras pessoas em tais plataformas.</p>
+        <p>Para responder a você. Quando você entra em contato conosco, podemos coletar informações que identificam você (como seu nome, seu endereço e um número de telefone), juntamente com informações adicionais de que precisamos para nos ajudar a responder prontamente a sua pergunta ou responder a seu comentário. Podemos fornecer essas informações para ajudá-lo no futuro e melhorar nosso atendimento ao cliente, produtos, serviços e promoções.</p>
+        <p>Quando você faz qualquer compra.  Se você usar um cartão de crédito ou débito para sua compra, suas informações relacionadas ao cartão de débito ou de crédito serão coletadas para processar e administrar seu pagamento. Quando você faz compras através dos Serviços on-line, podemos coletar informações tais como seu nome, seu endereço de e-mail, seu endereço de faturamento, seu endereço de e-mail ou endereço de correspondência para entrega (se aplicável), seu número de telefone e informações do cartão de pagamento. Essas informações são usadas para processar, atender e entregar seu pedido.</p>
+        <p>Para entrar em contato com você. Podemos contatá-lo com ofertas e informações sobre os Serviços e nossas afiliadas, inclusive para informá-lo sobre nossos produtos, eventos, promoções e ofertas especiais que podem ser adaptadas aos seus interesses. Você pode optar por não receber nossas mensagens comerciais seguindo as instruções contidas em nossas mensagens eletrônicas ou entrando em contato conosco conforme estabelecido abaixo.</p>
+        <p>Para entregar anúncios direcionados. Podemos usar suas informações, incluindo suas informações de localização, para facilitar a entrega de anúncios direcionados, promoções e ofertas para você, em nosso nome, parceiros de negócios selecionados, e anunciantes, dentro e fora dos Serviços. (Vide a seção “Anúncios baseados em interesses” abaixo).</p>
+        <p>Para entender melhor nossos clientes e melhorar nossos serviços. No decorrer da prestação dos Serviços, podemos coletar informações sobre dados demográficos, interesses e comportamentos de nossos usuários, e analisar esses dados. Fazemos isso para melhor entender e atender nossos usuários, e para melhorar nossos produtos e serviços.</p>
+        <p>Consentimento. Podemos, de outra forma, usar suas informações com seu consentimento ou sob suas instruções.</p>
         
-        <p>3. Sharing of Information</p>
-        <p>The following provides information about entities with which we may share information. Our practices vary depending on the type of information and sharing.</p>
-        <p>Affiliates. We may share information within our family of affiliated companies so that we may provide offers from those companies that may be relevant to you, better understand your preferences, and improve our Services.</p>
-        <p>Franchisees. We may share information with franchisees.  We also may provide our franchisees with information so that they may provide you with information, offers and promotions that might interest you.</p>
-        <p>Business Partners. We may also share your information with business partners to provide you with Services that you request. For example, if you sign up for a promotion that runs on our Services but that is offered, sponsored or co-sponsored by another company, your information may be shared with that company. We are not responsible for the privacy practices of these entities and recommend you review their privacy policies carefully.</p>
-        <p>Service Providers. We may share information with companies providing services on our behalf, such as hosting vendors, advertising service providers, data analytics companies, marketing service companies, and list managers. We also may share your information, including your payment information, as appropriate to process your payments for the Services or complete a transaction. </p>
-        <p>Social Media Services. If you connect a social media account with the Services or engage with our services through a social media platform, we may share your information with that social media platform, and it may share information about you with us. We may use this information to personalize your experience on the Services and on the third-party social media platforms, or to provide you with offers or other products or Services you may request. The social media services' use of the shared information will be governed by the social media services' privacy policy and your social media account settings. </p>
-        <p>Companies that Provide Content, Advertising, or Functionality. Some of the content, advertising, and functionality on our Services may be provided by third parties, such as our advertisers. These companies may collect or receive certain information about your use of the Services, including through the use of cookies, beacons, and similar technologies, and this information may be combined with information collected across different websites and online services in order to deliver ads that are more relevant to you, both on and off our Services.</p>
-        <p>Other Parties When Required or Permitted by Law, or As Necessary to Protect Our Users and Services.We and our service providers (including affiliates) may use and share your personal information as we believe is necessary or appropriate to protect, enforce, or defend the legal rights, privacy, safety, or property of the Services, our employees or agents or users, to detect, suppress or prevent fraud or where otherwise required or permitted by applicable law or legal process, including responding to a search warrant or other legally valid requests from public and government authorities (which may include lawful access by U.S., Canadian, or other governmental authorities, courts or law enforcement agencies).</p>
-        <p>Other Parties in Connection With a Corporate Transaction. We reserve the right to transfer any information we have about you in the event that we sell or transfer all or a portion of our business or assets to a third party, such as in the event of a merger, acquisition, or in connection with a bankruptcy reorganization.</p>
-        <p>Otherwise With Your Consent or at Your Direction. In addition to the sharing described in this Privacy Policy, we may share information about you with third parties whenever you consent to or direct such sharing.</p>
-        <p>Aggregated Data. We also may provide aggregated information, and data with personal identifiers removed, to third parties to describe how our customers are using the Services.</p>
+        <p>3. Compartilhamento de Informações</p>
+        <p>Nossas práticas variam dependendo do tipo de informação e de compartilhamento.</p>
+        <p>Afiliadas. Podemos compartilhar informações dentro de nossa família de empresas afiliadas para que possamos fornecer ofertas de empresas que possam ser relevantes para você, entender melhor suas preferências e melhorar nossos Serviços.</p>
+        <p>Franqueados. Podemos compartilhar informações com os franqueados.  Também podemos fornecer informações aos nossos franqueados para que eles possam fornecer informações, ofertas e promoções que possam lhe interessar.</p>
+        <p>Parceiros de negócios. Também podemos compartilhar suas informações com parceiros de negócios para fornecer os Serviços solicitados por você. Por exemplo, se você se inscrever em uma promoção que ocorra em nossos Serviços, mas que seja oferecida, patrocinada ou co-patrocinada por outra empresa, suas informações poderão ser compartilhadas com essa empresa. Não somos responsáveis ​​pelas práticas de privacidade dessas entidades e recomendamos que você analise suas políticas de privacidade com cuidado.</p>
+        <p>Prestadores de serviço. Podemos compartilhar informações com empresas que fornecem serviços em nosso nome, como fornecedores de hospedagem, prestadores de serviços de publicidade, empresas de análise de dados, empresas de serviços de marketing e gerenciadores de listas. Também podemos compartilhar suas informações, incluindo suas informações de pagamento, conforme adequado, para processar seus pagamentos pelos Serviços ou para concluir uma transação.</p>
+        <p>Serviços de Redes Sociais. Se você conectar uma conta de mídias sociais aos Serviços ou se engajar com nossos serviços por meio de uma plataforma de uma rede social, poderemos compartilhar suas informações com essa plataforma de rede social e ela poderá compartilhar informações sobre você conosco. Podemos usar essas informações para personalizar sua experiência nos Serviços e nas plataformas de redes sociais de terceiros, ou para fornecer ofertas, outros produtos ou Serviços que você possa solicitar. O uso das informações compartilhadas pelos serviços de redes sociais será regido pela política de privacidade dos serviços de redes sociais e pelas configurações da sua conta de redes sociais.</p>
+        <p>Empresas que fornecem conteúdo, publicidade ou funcionalidade. Alguns dos conteúdos, publicidade e funcionalidade de nossos Serviços podem ser fornecidos por terceiros, como nossos anunciantes. Essas empresas podem coletar ou receber determinadas informações sobre seu uso dos Serviços, incluindo o uso de cookies, beacons e tecnologias semelhantes, e essas informações podem ser combinadas com informações coletadas em diferentes sites e serviços on-line para exibir anúncios que são mais relevante para você, dentro e fora de nossos Serviços.</p>
+        <p>Outras partes, quando exigidas ou permitidas por lei, ou conforme necessário para proteger nossos usuários e serviços. Nós e nossos prestadores de serviços (incluindo afiliadas) podemos usar e compartilhar suas informações pessoais conforme acreditamos ser necessário ou apropriado para proteger, fazer cumprir ou defender direitos legais, a privacidade, a segurança ou a propriedade dos Serviços, nossos funcionários, agentes ou usuários, para detectar, suprimir ou prevenir fraudes, ou quando exigido ou permitido pela lei aplicável ou processo legal, incluindo a resposta a um mandado de busca ou outras exigências legalmente válidas de autoridades públicas e governamentais (que podem incluir acesso legal por autoridades governamentais, tribunais ou agências de aplicação da lei dos EUA, Canadá ou outras).</p>
+        <p>Outras partes em conexão com uma transação corporativa. Reservamo-nos o direito de transferir qualquer informação que tivermos sobre você no caso de vendermos ou transferirmos todo ou parte de nossos negócios ou ativos para terceiros, como no caso de uma fusão, aquisição, ou em conexão com um reorganização de falências.</p>
+        <p>De outra forma, com seu consentimento ou sob suas instruções. Além do compartilhamento descrito nesta Política de Privacidade, podemos compartilhar informações sobre você com terceiros sempre que você consentir ou instruir tal compartilhamento.</p>
+        <p>Dados agregados. Também podemos fornecer informações agregadas e dados com identificadores pessoais removidos a terceiros para descrever como nossos clientes estão usando os Serviços.</p>
         
-        <p>4. Online Advertising and Cookies</p>
-        <p>We and other companies that provide advertising and other services on our Services may use cookies, web beacons, and similar technologies to facilitate administration and navigation, to better understand and improve our Services, to determine and improve the advertising shown to you here or elsewhere, and to provide you with a customized online experience.</p>
-        <p>Interest-Based Advertisements. We may use third parties to serve advertisements on our Services and on other websites and digital platforms. These companies may use cookies, web beacons or other technologies to report certain information about your visits to our Services and other websites (such as web pages you visit and your response to ads) in order to measure the effectiveness of our marketing campaigns and to deliver ads that are more relevant to you, both on and off our Services. To learn more and to opt-out of having your information used by these companies for online behavioral advertising purposes, please see &quot;Choices with Respect to Interest-Based Advertisements&quot; below. We may also use services provided by third parties (such as social media platforms) to serve targeted ads to you and others on such platforms. We may do this by providing a hashed version of your email address or other information to the platform provider.</p>
-        <p>Cookies. &quot;Cookies&quot; are small files that are placed on your computer when you visit a website. Cookies may be used to store a unique identification number tied to your computer or device so that you can be recognized as the same user across one or more browsing sessions, and across one or more sites. Cookies serve many useful purposes. For example:</p>
-        <p>Cookies can remember your sign-in credentials so you do not have to enter those credentials each time you visit a Service</p>
-        <p>Cookies can help us and third parties understand which parts of our Services are the most popular because they help us see which pages and features visitors access and how much time they spend on the pages. By studying this kind of information, we are better able to adapt our Services and provide you with a better experience.</p>
-        <p>Cookies help us and third parties understand which ads you have seen so that you don't receive the same ad each time you access a Service.</p>
-        <p>Most browsers accept cookies automatically, but can be configured not to do so. If you wish to disable cookies, refer to your browser help menu to learn how to disable cookies. If you disable cookies, it may interfere with the functioning of the Services.</p>
-        <p>Beacons. We, along with third parties, also may use technologies called beacons (or &quot;pixels&quot;) that communicate information from your device to a server. Beacons can be embedded in online content, videos, and emails, and can allow a server to read certain types of information from your device, know when you have viewed particular content or a particular email message, determine the time and date on which you viewed the beacon, and the IP address of your device. We and third parties use beacons for a variety of purposes, including to analyze the use of our Services and (in conjunction with cookies) to provide content and ads that are more relevant to you both on and off the Service.</p>
-        <p>Do-Not-Track Signals and Similar Mechanisms. Some web browsers may transmit &quot;do-not-track&quot; signals to the websites with which the user communicates. Because of differences in how web browsers incorporate and activate this feature, it is not always clear whether users intend for these signals to be transmitted, or whether they even are aware of them. Because there currently is no industry standard concerning what, if anything, websites should do when they receive such signals, the Services currently do not take action in response to these signals. If and when a final standard is established and accepted, we will reassess how to respond to these signals.</p>
+        <p>4. Anúncios on-line e cookies</p>
+        <p>Nós e outras empresas que fornecem publicidade e outros serviços em nossos Serviços podem usar cookies, web beacons e tecnologias similares para facilitar a administração e a navegação, para melhor entender e melhorar nossos Serviços, para determinar e melhorar a publicidade mostrada a você aqui ou em outro lugar, e fornecer uma experiência on-line personalizada.</p>
+        <p>Anúncios baseados em interesses. Podemos usar terceiros para veicular anúncios em nossos Serviços e em outros sites e plataformas digitais. Essas empresas podem usar cookies, web beacons ou outras tecnologias para relatar certas informações sobre suas visitas a nossos Serviços e a outros sites (como páginas da web que você visita e sua resposta a anúncios), a fim de medir a eficácia de nossas campanhas de marketing e entregar anúncios que são mais relevantes para você, dentro e fora de nossos Serviços. Para saber mais e optar por não ter suas informações usadas por essas empresas para fins de publicidade comportamental on-line, consulte “Opções com respeito a anúncios baseados em interesses” abaixo. Também podemos usar serviços fornecidos por terceiros (tais como plataformas de redes sociais) para veicular anúncios direcionados para você e para outras pessoas em tais plataformas. Podemos fazer isso fornecendo uma versão criptografada do seu endereço de e-mail ou outras informações para o provedor da plataforma.</p>
+        <p>Cookies. “Cookies” são pequenos arquivos que são colocados em seu computador quando você visita um site. Os cookies podem ser usados para armazenar um número de identificação exclusivo vinculado a seu computador ou dispositivo para que você possa ser reconhecido como o mesmo usuário em uma ou mais sessões de navegação, e em um ou mais sites. Os cookies servem muitos propósitos úteis. Por exemplo:</p>
+        <p>Os cookies podem lembrar suas credenciais de login para que você não precise inserir essas credenciais sempre que visitar um Serviço.</p>
+        <p>Os cookies podem nos ajudar e ajudar terceiros a entender quais partes de nossos Serviços são mais populares, porque nos ajudam a ver quais páginas e recursos os visitantes acessam e quanto tempo eles gastam nas páginas. Ao estudar esse tipo de informação, podemos adaptar melhor nossos serviços e lhe proporcionar uma experiência melhor.</p>
+        <p>Os cookies nos ajudam e ajudam terceiros a entender quais anúncios você viu para que você não receba o mesmo anúncio toda vez que acessar um Serviço.</p>
+        <p>A maioria dos navegadores aceita cookies automaticamente, mas eles podem ser configurados para não fazer isso. Se você deseja desativar os cookies, consulte o menu de ajuda de seu navegador para saber como desativar os cookies. Se você desativar os cookies, isso poderá interferir no funcionamento dos Serviços.</p>
+        <p>Beacons. Nós, juntamente com terceiros, também podemos usar tecnologias chamadas beacons, que transmitem informações do seu dispositivo para um servidor. Os beacons podem ser incorporados em conteúdo on-line, vídeos e e-mails, e podem permitir que um servidor leia determinados tipos de informações a partir de seu dispositivo, saiba quando você visualizou determinado conteúdo ou uma mensagem de e-mail específica, e determine a hora e a data em que você visualizou o beacon e o endereço de IP de seu dispositivo. Nós e terceiros usamos beacons para diversos fins, inclusive para analisar o uso de nossos Serviços e (em conjunto com os cookies) para fornecer conteúdo e anúncios mais relevantes para você, dentro e fora do Serviço.</p>
+        <p>DSinais de não rastreamento e mecanismos similares. Alguns navegadores da web podem transmitir sinais “não rastreamento” aos sites com os quais o usuário se comunica. Devido às diferenças na maneira como os navegadores da Web incorporam e ativam esse recurso, nem sempre é claro se os usuários pretendem que esses sinais sejam transmitidos ou se estão cientes deles. Como atualmente não há um padrão do setor sobre o que, se for o caso, os sites devem fazer quando recebem esses sinais, os Serviços atualmente não agem em resposta a esses sinais. Se e quando um padrão final for estabelecido e aceito, iremos reavaliar como responder a esses sinais.</p>
         
-        <p>5. Privacy and Access Choices Available To You</p>
-        <p>Choices With Respect To Cookies and Similar Technologies. You may block cookies and similar technologies in your browser or device settings, as and if permitted by such device.</p>
-        <p>Choices With Respect To Interest-Based Advertising. You may opt out of receiving targeted advertising from participating ad networks, audience segment providers, ad serving vendors, and other service providers by visiting websites operated by the  the National Advertizing Initiative at <a href="http://www.networkadvertising.org" target="_blank">http://www.networkadvertising.org</a>.; The Digital Advertising Alliance at <a href="http://digitaladvertisingalliance.org" target="_blank">http://digitaladvertisingalliance.org</a>; and The Digital Advertising Alliance of Canada at <a href="http://youradchoices.ca" target="_blank">http://youradchoices.ca</a>.</p>
-        <p>Manage Your Account. You may access, modify or delete your account on the settings or profile page, or by contacting us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with such written request.</p>
-        <p>Data Access. Subject to applicable law, you may also have a right to access, update, and correct inaccuracies in other personal information in our custody and control, subject to certain exceptions prescribed by law. You may request access, updating and corrections of inaccuracies in the personal information we have in our custody or control by emailing or writing to us at the contact information set out below. We may request certain personal information for the purposes of verifying the identity of the individual seeking access to their personal information records.</p>
-        <p>Email Promotions. You may opt out of receiving commercial email, text message, and other electronic messages from us by following the instructions contained in those messages.</p>
+        <p>5. Privacidade e opções de acesso disponíveis para você</p>
+        <p>Opções com respeito a cookies e tecnologias semelhantes. Você pode bloquear cookies e tecnologias semelhantes em seu navegador ou nas configurações do dispositivo, conforme e se permitido por esse dispositivo.</p>
+        <p>Opções com respeito a anúncios baseados em interesses. Você pode cancelar o recebimento de anúncios direcionados de redes de publicidade participantes, provedores de segmento de audiência, fornecedores de veiculação de anúncios e outros prestadores de serviços, visitando sites operados pela National Advertizing Initiative na <a href="http://www.networkadvertising.org" target="_blank">http://www.networkadvertising.org</a>.; The Digital Advertising Alliance at <a href="http://digitaladvertisingalliance.org" target="_blank">http://digitaladvertisingalliance.org</a>; e The Digital Advertising Alliance of Canada at <a href="http://youradchoices.ca" target="_blank">http://youradchoices.ca</a>.</p>
+        <p>Gerencie sua conta. Você pode acessar, modificar ou excluir sua conta nas configurações ou na página de perfil, ou entrando em contato conosco em <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> com tal pedido por escrito.</p>
+        <p>Acesso a dados. Sujeito à lei aplicável, você também pode ter o direito de acessar, atualizar e corrigir imprecisões em outras informações pessoais sob nossa custódia e controle, sujeito a certas exceções prescritas por lei. Você pode solicitar acesso, atualização e correções de imprecisões nas informações pessoais que temos sob nossa custódia ou controle enviando por e-mail ou escrevendo para nós nas informações de contato estabelecidas abaixo. Podemos solicitar determinadas informações pessoais com o objetivo de verificar a identidade do indivíduo que busca acesso a seus registros de informações pessoais.</p>
+        <p>Promoções por e-mail. Você pode optar por não receber e-mails comerciais, mensagens de texto e outras mensagens eletrônicas nossas seguindo as instruções contidas nessas mensagens.</p>
         
-        <p>6. Data Security</p>
-        <p>We have in place physical, electronic and managerial procedures to protect personal information in our custody and control against loss, theft and unauthorized access, use, modification and disclosure. However, as effective as these measures are, no security system is impenetrable. We cannot guarantee the security of our Services, nor can we guarantee that the information you provide will not be intercepted while being transmitted to us over the Internet.</p>
+        <p>6. Proteção de dados</p>
+        <p>Temos procedimentos físicos, eletrônicos e gerenciais para proteger as informações pessoais sob nossa custódia e controle contra perda, roubo e acesso não autorizado, uso, modificação e divulgação. No entanto, por mais eficazes que sejam essas medidas, nenhum sistema de segurança é impenetrável. Não podemos garantir a proteção de nossos Serviços, nem podemos garantir que as informações que você fornecer não serão interceptadas enquanto nos forem transmitidas pela Internet.</p>
         
-        <p>7. Other Important Information</p>
-        <p>Children's Privacy. We do not knowingly collect any personal information from children under the age of 13 without parental consent, unless permitted by law. If we learn that a child under the age of 13 has provided us with personal information, we will delete it in accordance with applicable law.</p>
-        <p>Links to Third-Party Sites. Our Services may link to third-party websites and services that we do not operate and are outside of our control. We are not responsible for the security or privacy of any information collected by other websites or other services. Please exercise caution and review the privacy statements applicable to the third-party websites and services you use.</p>
-        <p>Your California Privacy Rights. California residents are entitled once a year, free of charge, to request and obtain certain information regarding our disclosure, if any, of certain categories of personal information to third parties for their direct marketing purposes in the preceding calendar year by contacting us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with such written request. We do not share personal information with third parties for their own direct marketing purposes.</p>
-        <p>International Transfers. The Services are headquartered in the United States. Please be aware that information you provide to us or that we obtain as a result of your use of the Services may be collected in your country and subsequently transferred to, maintained and processed in the United States or another country by us or our service providers for the purposes mentioned above in accordance with applicable law. The privacy laws of these countries may not always offer the same level of protection as in your country. By using the Services, you consent to the collection, international transfer, storage, and processing of your information.</p>
-        <p>Changes to Our Privacy Policy. We may modify this Privacy Policy from time to time. We will notify you of changes by posting changes here, or by other appropriate means. Any changes to the Privacy Policy will become effective when the updated policy is posted on the Services. Your use of the Services or your provision of personal information to use the Services following such changes indicates your acceptance of the revised Privacy Policy.</p>
-        <p>Questions. Please contact our us at <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> with any questions or concerns about this Privacy Policy or the manner in which we or our service providers treat your personal information.</p>
+        <p>7. Outras informações importantes.</p>
+        <p>Privacidade das crianças. Não coletamos intencionalmente informações pessoais de crianças menores de 13 anos sem o consentimento dos pais, a menos que isso seja permitido por lei. Se soubermos que uma criança com menos de 13 anos nos forneceu informações pessoais, a excluiremos de acordo com a lei aplicável.</p>
+        <p>Links para sites de terceiros. Nossos Serviços podem conter links para sites e serviços de terceiros que não operamos e estão fora de nosso controle. Não somos responsáveis pela proteção ou pela privacidade de qualquer informação coletada por outros sites ou outros serviços. Por favor, tenha cuidado e analise as declarações de privacidade aplicáveis aos sites e aos serviços de terceiros que você usa.</p>
+        <p>Seus Direitos de Privacidade da Califórnia. Os residentes da Califórnia têm o direito, uma vez por ano, de solicitar e obter certas informações relativas a nossa divulgação, se houver, de certas categorias de informações pessoais a terceiros para fins de marketing direto no ano anterior, contatando-nos em <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> om tal pedido escrito. Nós não compartilhamos informações pessoais com terceiros para seus próprios fins de marketing direto.</p>
+        <p>Transferências internacionais. Os Serviços estão sediados nos Estados Unidos. Por favor, esteja ciente de que as informações que você nos fornece ou que obtemos como resultado de seu uso dos Serviços podem ser coletadas em seu país e, subsequentemente, transferidas para, mantidas e processadas nos Estados Unidos ou em outro país por nós ou por nossos prestadores de serviços, para os fins acima mencionados, de acordo com a lei aplicável. As leis de privacidade desses países nem sempre oferecem o mesmo nível de proteção de seu país. Ao usar os Serviços, você concorda com a coleta, transferência, armazenamento e processamento internacional de suas informações.</p>
+        <p>Alterações a nossa política de privacidade. Podemos modificar esta Política de Privacidade de tempos em tempos. Vamos notificá-lo de alterações através da postagem de alterações aqui ou por outros meios apropriados. Quaisquer alterações à Política de Privacidade entrarão em vigor quando a política atualizada for publicada nos Serviços. Seu uso dos Serviços ou o fornecimento de informações pessoais para usar os Serviços após tais alterações indica sua aceitação da Política de Privacidade revisada.</p>
+        <p>Questões. Por favor, entre em contato conosco pelo e-mail info@solasalonstudios.com com quaisquer dúvidas ou preocupações sobre esta Política de Privacidade ou a maneira pela qual nós ou nossos prestadores de serviços tratamos suas informações pessoais.</p>
 
     request_franchising_info:
-      title: Request Franchising Info
+      title: Solicite informações sobre franquias.
 
     request_a_tour:
-      title: Request a Tour
+      title: Solicite uma visita
 
     salon_professional:
-      all_locations: All Locations
-      studio: Studio
-      book_now: Book Now
-      book_appointment: Book Appointment
-      send_a_message: Send a Message
-      visit_my_website: Visit my website
-      availability: Availability
-      about: About 
-      services: Services
-      testimonials: Testimonials
-      visit_salon_professional: "Visit %{salon_professional_name} at Sola %{location_name}"
-      send_a_message: Send a Message
-      full_name: Full Name
-      email_address: Email Address
-      phone_number: Phone Number
-      leave_a_message: Leave a Message
-      submit: Submit
-      location: Location
-      view_map: View Map
+      all_locations: Todos os locais
+      studio: Estúdio
+      book_now: Agende agora
+      book_appointment: Faça um agendamento
+      send_a_message: Envie uma mensagem
+      visit_my_website: Visite meu site
+      availability: Disponibilidade
+      about: Sobre 
+      services: Serviços
+      testimonials: Depoimentos
+      visit_salon_professional: "Visite %{salon_professional_name} no Sola %{location_name}"
+      send_a_message: Envie uma mensagem
+      full_name: Nome completo
+      email_address: Endereço de e-mail
+      phone_number: Número de telefone
+      leave_a_message: Deixe uma mensagem
+      submit: Enviar
+      location: Local
+      view_map: Ver mapa
 
     search:
-      search: Search
-      title: 
-      search_results_for_query: "Search Results for %{query}"
-      blog_results: Blog Results
-      location_results: Location Results
-      salon_professional_results: Salon Professional Results
-      no_results_found: "There were no location or stylist results found for your search query &quot;%{query}&quot;"
-      view_directory: View Directory
-      view_location: View Location
-      view_profile: View Profile
-      studio: Studio
-      results: results
-      view_webpage: View Webpage
+      search: Busca
+      title: Título
+      search_results_for_query: "Buscar resultados para %{query}"
+      blog_results: Resultados do Blog
+      location_results: Resultados de local
+      salon_professional_results: Resultados de profissionais de salão de beleza
+      no_results_found: "Não foram encontrados resultados de local ou stylist para sua busca &quot;%{query}&quot;"
+      view_directory: Ver diretório
+      view_location: Ver local
+      view_profile: Ver perfil
+      studio: Estúdio
+      results: resultados
+      view_webpage: Visualizar página da web
 
     sola_genius:
       title: SolaGenius
@@ -582,19 +582,19 @@ pt-BR:
       
     sola_pro:
       title: Sola Pro
-      meta_description: "Inspiration and education at your fingertips. The Sola Pro app provides all the tools and resources to help take your salon studio to the next level!"
-      hero_body1: <strong>An exclusive app for Sola professionals!</strong>
+      meta_description: "Inspiração e educação a seu alcance. O aplicativo Sola Pro fornece todas as ferramentas e recursos para ajudar a levar seu estúdio ao próximo nível!"
+      hero_body1: <strong>Um aplicativo exclusivo para profissionais do Sola!</strong>
       heading1: Sola Pro
       list1: |
-        <strong>Education:</strong> Watch videos produced and handpicked just for Sola. Take advantage of articles and tools full of ideas and tips.
-        <strong>Sola Events &amp; Classes Calendar:</strong> Find out what's happening in your neck of the woods!
-        <strong>Blog:</strong> Marketing and business ideas alongside Sola success stories to inspire you further.
-        <strong>Deals:</strong> Exclusive offers from Sola partners you won't find anywhere else!
-        <strong>Perkspot:</strong> Get access to deals from movie tickets to rental cars, hotels and so much more.
-      download_app_or_view: Download app or view %{sola_pro_link}
-      explore_sola_pro: Explore Sola Pro
-      heading2: Get a sneak peek of Sola Pro
-      testimonial_text: "Sola Pro is a fantastic resource! There are countless videos about creating your brand, why retail is a must, and how to utilize social media to build your business. The blog posts are full of great information and constantly being updated! No matter how dialed in you may feel to your business, there's always something new to learn."
+        Assista a vídeos produzidos e selecionados apenas para o Sola. Aproveite os artigos e ferramentas cheios de ideias e dicas
+        Descubra o que está acontecendo na sua área!
+        Ideias de marketing e negócios junto com as histórias de sucesso do Sola para inspirá-lo ainda mais.
+        Ofertas exclusivas de parceiros Sola que você não encontrará em nenhum outro lugar!
+        Tenha acesso a ofertas de ingressos de cinema a aluguel de carros, hotéis e muito mais.
+      download_app_or_view: Baixe o aplicativo ou veja %{sola_pro_link}
+      explore_sola_pro: Explore o Sola Pro
+      heading2: Dê uma espiada no Sola Pro
+      testimonial_text: "O Sola Pro é um recurso fantástico! Existem inúmeros vídeos sobre como criar sua marca, por que o varejo é imprescindível e como utilizar as mídias sociais para construir seu negócio. As postagens do blog estão cheias de ótimas informações e são constantemente atualizadas! Não importa o quão antenado você possa se sentir em seus negócios, sempre há algo novo para aprender."
       testimonial_author: Morgan Cameron
 
     sola_sessions:
@@ -618,128 +618,128 @@ pt-BR:
       
 
     testimonials:
-      title: Testimonials
-      meta_description: "Watch videos and read testimonials from beauty professionals who are living they life they love at Sola Salon Studios."
-      salon_professional_testimonials: Salon Professional<br>Testimonials
-      click_to_watch_video: Click to watch video
-      learn_more: Learn More
-      more_testimonials: More Testimonials
-      watch_our_video: Watch Our Video
-      carousel_testimonial1: "At Sola, I have been able to achieve any goal I have set for myself in my personal and professional life with no limitations. With the Sola Sessions and Sola Pro, I have access to education created just for Sola owners. And with SolaGenius, I have the best business assistant I ever could have dreamed of!"
+      title: Depoimentos
+      meta_description: "Assista a vídeos e leia depoimentos de profissionais de beleza que estão vivendo a vida que amam no Sola Salon Studios."
+      salon_professional_testimonials: Depoimentos de profissionais de salão de beleza
+      click_to_watch_video: Clique para assistir ao vídeo
+      learn_more: Saiba mais
+      more_testimonials: Mais depoimentoss
+      watch_our_video: Assista nosso vídeo
+      carousel_testimonial1: "No Sola, consegui atingir todos os objetivos que estabeleci para mim em minha vida pessoal e profissional, sem limitações. Com o Sola Sessions e o Sola Pro, tenho acesso à educação criada apenas para os proprietários do Sola. E com o SolaGenius, eu tenho o melhor assistente de negócios que eu poderia ter sonhado!"
       carousel_author1: Kim Bennett Horvath
-      carousel_testimonial2: "My life has definitely changed professionally and personally being it Sola. I've gotten to choose my hours, perfect my retail rack, work with other local artists featuring products, and become my own master of my branding and marketing."
+      carousel_testimonial2: "Minha vida definitivamente mudou profissionalmente e pessoalmente sendo Sola. Eu posso escolher minhas horas, aperfeiçoar meu rack de varejo, trabalhar com outros produtos de destaque de artistas locais e me tornar mestre de minha própria marca e de meu próprio marketing."
       carousel_author2: Kenya Kirk
-      carousel_testimonial3: "Sola has empowered me to run my business with freedom! While I enjoy a quiet space, I love being able to connect with other fabulous salon owners, too. The Sola Sessions are a great way to network, collaborate and get inspired."
+      carousel_testimonial3: "O Sola me fortaleceu para administrar meus negócios com liberdade! Enquanto desfruto de um espaço tranquilo, adoro poder me conectar com outros proprietários de salões de beleza fabulosos também. Os Sola Sessions são uma ótima maneira de interagir, colaborar e se inspirar."
       carousel_author3: Kim Piasecki
-      carousel_testimonial4: "Each day as I walk into my Sola studio, I feel recharged and in-charge of my own destiny. I love that I'm free to focus on giving my clients the best experience while simultaneously building my empire."
+      carousel_testimonial4: "Todo dia, quando entro em meu estúdio Sola, sinto-me recarregada e encarregada de meu próprio destino. Eu amo o fato de que sou livre para me concentrar em dar aos meus clientes a melhor experiência enquanto construo meu império simultaneamente."
       carousel_author4: Brandie Kekoa
-      carousel_testimonial5: "From the first time I walked in to Sola, I felt I came alive again! From my decor to products sales, I had a vision! I feel so complete. I love the education at the Sola Sessions and the opportunity to network with other Sola professionals. The memories are priceless."
+      carousel_testimonial5: "Desde a primeira vez que entrei no Sola, senti que recuperei a vitalidade! De minha decoração à venda de produtos, eu tive uma visão! Eu me sinto tão completa. Eu adoro a educação no Sola Sessions e a oportunidade de interagir com outros profissionais do Sola. As memórias são inestimáveis."
       carousel_author5: Tammy Muniz
-      carousel_testimonial6: "My studio is private and intimate, and allows me to think outside of the box. At the end of day, it's mine and I make of it what I want alongside my clients. I have freedom to deliver my art as a hairdresser."
+      carousel_testimonial6: "Meu estúdio é privado e íntimo, e me permite pensar fora da caixa. No fim das contas, ele é meu e eu faço o que quero junto dos meus clientes. Eu tenho liberdade para entregar minha arte como cabeleireira."
       carousel_author6: Fernie Adame
-      carousel_testimonial7: "At Sola, you can have the freedom of running your own business without the overhead. I have more freedom than I ever before in my life. I get to spend time with my community and I can travel while still owning my salon."
+      carousel_testimonial7: "No Sola, você pode ter a liberdade de administrar seu próprio negócio sem custos indiretos. Eu tenho mais liberdade do que antes na minha vida. Eu posso passar um tempo com minha comunidade e posso viajar enquanto ainda tenho meu salão."
       carousel_author7: Polly Sanders-Peterson
-      carousel_testimonial8: "Sola has made me a better person by helping me stay dedicated and passionate about my career. I've become a better business owner and hairdresser by attending the Sola Sessions to learn new techniques, styles, and trends."
+      carousel_testimonial8: "O Sola fez de mim uma pessoa melhor, ajudando-me a permanecer dedicada e apaixonada por minha carreira. Tornei-me uma proprietária e cabeleireira melhor, participando dos Sola Sessions para aprender novas técnicas, estilos e tendências."
       carousel_author8: Sharon Hinkle
-      join_more_than: Join nearly 10,000 salon professionals!
-      testimonial_quote1: "The business model that has been created by Sola is true. You're in business for yourself, but you're not by yourself. It's great to have Sola as a resource. They have been consistent since the day I signed my lease and that was 11 years ago."
+      join_more_than: Junte-se a quase 10.000 profissionais de salão de beleza!
+      testimonial_quote1: "O modelo de negócios criado pelo Sola é verdadeiro. Você está no negócio por você mesmo, mas você não está sozinho. É ótimo ter o Sola como recurso. Eles foram consistentes desde o dia em que assinei meu contrato de arrendamento, e isso foi há 11 anos."
       testimonial_author1: LaShonda Banks
-      testimonial_quote2: "Sola made the process of going independent totally seamless. I'm able to control the vibe in my room and I love the personal time I get with every guest. With Sola Pro, I have access to tons of education to keep me inspired. I also recently made the switch to SolaGenius and I love it!"
+      testimonial_quote2: "O Sola tornou o processo de independência completamente harmonioso. Eu sou capaz de controlar o clima no meu recinto e eu amo o tempo pessoal que tenho com cada convidado. Com o Sola Pro, tenho acesso a toneladas de conteúdos de educação para me inspirar. Eu também mudei para a SolaGenius recentemente e adorei!"
       testimonial_author2: Ashley Lantz
-      testimonial_quote3: "I chose Sola because I knew that it would change my life in so many positive ways. I love being surrounded by likeminded salon owners and having the freedom to do what I love. I can take more time off to spend with my family, travel and play."
+      testimonial_quote3: "Eu escolhi o Sola porque sabia que isso mudaria minha vida de muitas maneiras positivas. Eu adoro estar cercada por proprietários de salões de beleza com a mesma opinião e ter a liberdade de fazer o que eu amo. Eu posso tirar mais tempo para passar com minha família, viajar e brincar."
       testimonial_author3: Sue Scott
-      testimonial_quote4: "Since starting my esthetic business at Sola, I've been able to accomplish more in the last year and a half than I've ever imagined. It's so easy to build a thriving business when you have the freedom to bring your vision to life!"
+      testimonial_quote4: "Desde que comecei meu negócio de estética no Sola, consegui realizar mais no último ano e meio do que eu imaginava. É tão fácil construir um negócio próspero quando você tem a liberdade de dar vida a sua visão!"
       testimonial_author4: Morgan Cameron
-      testimonial_quote5: "Being at Sola has made me more confident in my business. I get excited to go to work every day because I get to make my own rules. I have the freedom to be flexible, which allows me to focus on my personal life and salon life without being tied down."
+      testimonial_quote5: "Estar no Sola me deixou mais confiante no meu negócio. Eu me empolgo para ir ao trabalho todos os dias porque posso fazer minhas próprias regras. Eu tenho a liberdade de ser flexível, o que me permite concentrar-me em minha vida pessoal e na vida do salão de beleza sem ficar presa."
       testimonial_author5: Sade Williams
-      testimonial_quote6: "Sola has allowed me to engineer the lifestyle I want and SolaGenius helps to facilitate it all. When people ask whether I plan on opening a barbershop, I say I already have. I didn't settle for a salon studio; Sola created exactly what I always wanted."
+      testimonial_quote6: "O Sola me permitiu projetar o estilo de vida que eu quero e o SolaGenius ajuda a facilitar tudo isso. Quando as pessoas perguntam se eu pretendo abrir uma barbearia, eu digo que já tenho uma. Não me contentei com um estúdio; O Sola criou exatamente o que eu sempre quis."
       testimonial_author6: Chris Matthews
-      testimonial_quote7: "I decided to move to Sola because I wanted to surround myself with a community of people with likeminded ideas and goals. Being here allows me to stay on top of my performance in a career that is so competitive."
+      testimonial_quote7: "Eu decidi mudar para o Sola porque queria me cercar de uma comunidade de pessoas com ideias e objetivos semelhantes. Estar aqui me permite continuar no meu melhor desempenho em uma carreira que é muito competitiva."
       testimonial_author7: Julie Nguyen
-      testimonial_quote8: "At Sola, you're not only working hard for yourself, you're working with a network of incredible people. And to know that Sola wants to celebrate that, it's like a dream! I always look forward to education to rejuvenate myself and attending the Sola Sessions gave me new wings to fly with."
+      testimonial_quote8: "No Sola, você não está apenas trabalhando duro para si mesmo, você está trabalhando com uma rede de pessoas incríveis. E saber que o Sola quer celebrar isso é como um sonho! Eu sempre aguardo ansiosamente que a educação me rejuvenesça, e assistir aos Sola Sessions me deu novas asas para voar."
       testimonial_author8: Amanda Fagan
-      testimonial_quote9: "Being a former storefront barbershop owner, Sola was the perfect opportunity for me to be an owner again, without all of the stress. Personally, it has brought peace to my life, because I can simply focus on my clients.."
+      testimonial_quote9: "Sendo um ex-proprietário de barbearia de loja, o Sola foi a oportunidade perfeita para eu ser um proprietário novamente, sem todo o estresse. Pessoalmente, isso trouxe paz à minha vida, porque eu posso simplesmente me concentrar em meus clientes."
       testimonial_author9: Antonio Heath
-      testimonial_quote10: "I have gotten more new clients at Sola than I did working for someone else. And I've been able to take advantage of so much education, too! What Sola has given me is full control. There is nothing like being in full control of your business."
+      testimonial_quote10: "Eu consegui mais clientes novos no Sola do que quando trabalhei para outra pessoa. E eu pude tirar proveito da enorme quantidade de conteúdo de educação também! O que o Sola me deu foi controle total. Não há nada como estar no controle total de seu negócio."
       testimonial_author10: Jennifer LaVinge
-      join_our_community: "Join our Community"
-      join_our_community_text: "Be in business for yourself, not by yourself."
-      join_our_community_button: Own Your Salon
+      join_our_community: "Junte-se a nossa comunidade"
+      join_our_community_text: "Esteja no negócio por você mesmo, mas não sozinho."
+      join_our_community_button: Tenha seu salão de beleza
 
     who_we_are:
       title: Quem somos nós
-      subhead: We focus on what's best for you, so you can focus on what's best for your business.
-      subhead2: Experience a level of creative independence and career support you won't find anywhere else.
+      subhead: Nos concentramos no que é melhor para você, para que você possa se concentrar no que é melhor para seu negócio.
+      subhead2: Experimente um nível de independência criativa e apoio profissional que você não encontrará em nenhum outro lugar.
       number_of_locations: Mais de 400
-      locations_nationwide: Locais <br> em todo o território nacional
+      locations_nationwide: Locais em todo o país
       meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja no negócio por você mesmo, mas não sozinho!"
-      body1: "We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time."
-      body2: "We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind:"
-      to_help_set_them_up_for_success: To help set them up for success
-      join_our_diverse_community: "Join the Sola Salon Studios diverse community"
-      join_our_diverse_community_text: "Now nearly 10,000 strong!"
-      join_our_diverse_community_button_text: "Own Your Salon"
-      watch_our_video: Watch our video
-      our_mission: Our Mission 
-      our_mission_text: "To inspire and support beauty professionals to chase their dreams, elevate their careers, and experience the freedom of salon ownership."
-      our_values: Our Values 
-      our_values_text: "Everything we do is designed to take care of our customers and to ensure that they have the best salon studio experience possible. We are passionate about everything that goes into making a beauty professional a successful business owner. We offer turnkey, move-in-ready studios alongside support, educational resources, and cutting-edge technology solutions that are designed exclusively for our community of independents. We empower independent stylists to live their best lives."
-      join_our_community: "Join our Community"
-      join_our_community_text: "Be in business for yourself, not by yourself."
-      join_our_community_button_text: "Own Your Salon"
-      experience_more: Experience More!
+      body1: "Fornecemos estúdios de alta qualidade e totalmente equipados aos profissionais de beleza, juntamente com o suporte e as ferramentas de que precisam para iniciar seu negócio no salão de beleza em pouco tempo."
+      body2: "Temos orgulho de ser o negócio de salão de beleza que é o maior e o que cresce mais rápido no país. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente::"
+      to_help_set_them_up_for_success: Ajuda-los a ter sucesso.
+      join_our_diverse_community: "Junte-se à comunidade diversa do Sola Salon Studios"
+      join_our_diverse_community_text: "Agora com a força de quase 10.000 profissionais!"
+      join_our_diverse_community_button_text: "Tenha seu salão de beleza"
+      watch_our_video: Assista nosso vídeo
+      our_mission: Nossa missão 
+      our_mission_text: "Para inspirar e apoiar os profissionais de beleza para perseguirem seus sonhos, elevarem suas carreiras e experimentarem a liberdade da propriedade de um salão de beleza."
+      our_values: Nossos valores 
+      our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios turnkey, prontos para o uso, juntamente com suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder a stylists independentes para viver suas melhores vidas."
+      join_our_community: "Junte-se a nossa comunidade"
+      join_our_community_text: "Esteja no negócio por você mesmo, mas não sozinho."
+      join_our_community_button_text: "Tenha seu salão de beleza"
+      experience_more: Experimente mais!
       sola_pro: "Sola Pro"
-      sola_pro_text: "Our custom built Sola Pro app for special offers and ongoing education at your fingertips."
-      sola_sessions: "The Sola Sessions"
-      sola_sessions_text: "The Sola Sessions education events—learn from the best and have an opportunity to network with other Sola Pros!"
+      sola_pro_text: "Nosso aplicativo personalizado, Sola Pro, para ofertas especiais e educação continuada ao seu alcance."
+      sola_sessions: "O Sola Sessions"
+      sola_sessions_text: "Os eventos educacionais do Sola Sessions – aprenda com os melhores e tenha a oportunidade de interagir com outros profissionais do Sola!"
       solagenius: SolaGenius
       solagenius_text: "Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered."
 
     why_sola:
-      title: Why Sola
-      meta_description: Why Sola
-      hero_heading1: All of the tools and support you need,
-      hero_heading2: to design a salon life that you love. 
-      hero_button_text: Why Choose Sola
-      learn_more: Learn More
-      dont_just_dream_do: Don't just dream, do!
-      become_a_salon_owner: Become a salon owner today.
-      search_for_a_salon: Search for a salon studio near you.
-      be_in_business_heading: Be In Business For Yourself, Not By Yourself.
-      be_in_business_p1: "Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about <strong>freedom and control</strong>. We provide high-end, move-in-ready studios combined with the support and tools you need to experience the freedom and benefits of salon ownership."  
-      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 10,000 independent salon owners to get one step closer to living the life you love!
-      freedom_heading: Sola gives you the freedom to...
-      freedom_tile_1: Escape salon politics and drama in your own private, secure studio.
-      freedom_tile_2: Set your own pricing for services and products.
-      freedom_tile_3: Manage your own schedule with 24/7 studio access.
-      freedom_tile_4: Enjoy an intimate setting & give your guests the one-on-one attention they deserve.
-      freedom_tile_5: Personalize your salon space your way—with artwork, music, furniture and decor.
-      freedom_tile_6: Sell the retail products that you love.
-      freedom_tile_7: Manage costs with a variety of amenities, utilities and WiFi which are all included.
-      freedom_tile_8: Build your brand and allow your career to thrive. 
-      freedom_tile_8_link: Find a Studio
-      freedom_text: The rewards of being in business for yourself are priceless, but that doesn't mean you have to do it all by yourself. The Sola community is here to help you during every step of your unique beauty journey.
-      flexibility_statement: If you're looking for more flexibility in your schedule and control to explore new adventures, Sola could be the perfect place for you.
-      flexibility_subhead1: Get ready to explore new adventures in and out of the salon!
-      flexibility_subhead2: At Sola, our passion is helping beauty professionals to succeed.
-      flexibility_subhead3: Experience the freedom and benefits of a more flexible, creative and profitable career.
-      beautiful_studios_exclusive_perks: Beautiful Studios,<span class="mobile-br">&nbsp;</span>Exclusive Perks.
-      at_sola_you_get_more: At Sola, You Simply Get More!
-      beautiful_studios: Beautiful Studios
-      beautiful_studios_text: A variety of layouts for hairdressers, nail techs, estheticians and more.
-      community_support: Community Support
-      community_support_text: Join a community of nearly 10,000 salon professionals to be in business for yourself, not by yourself.
-      sola_blog: Sola Blog
-      sola_blog_text: Visit the Sola Blog for business and marketing tips, how-tos, Sola success stories and more!
-      your_own_sola_webpage: Your Own Sola Webpage
-      your_own_sola_webpage_text: Create and manage your very own webpage on the Sola website to help market and grow your business.
+      title: Por que o Sola?
+      meta_description: Por que o Sola?
+      hero_heading1: Todas as ferramentas e o suporte de que você precis,
+      hero_heading2: para projetar uma vida que você ama no salão de beleza.
+      hero_button_text: Por que escolher o Sola?
+      learn_more: Saiba mais
+      dont_just_dream_do: Não sonhe apenas. Faça!
+      become_a_salon_owner: Torne-se um dono de salão de beleza hoje.
+      search_for_a_salon: Busque um estúdio perto de você.
+      be_in_business_heading: Esteja no negócio por você mesmo, mas não sozinho.
+      be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os convidados e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."  
+      be_in_business_p2: De belos estúdios a ofertas exclusivas, educação e tecnologia, o Sola permite que você viva sua melhor vida, tanto pessoal quanto profissionalmente. Então, junte-se a nossa comunidade de mais de 10.000 proprietários independentes de salões de beleza para ficar um passo mais perto de viver a vida que você ama!
+      freedom_heading: O Sola te dá a liberdade de...
+      freedom_tile_1: Fuja da política e do drama dos salões de beleza em seu próprio estúdio privado e seguro.
+      freedom_tile_2: Defina seu próprio preço para serviços e produtos.
+      freedom_tile_3: Gerencie sua própria agenda com acesso ao estúdio 24 horas por dia, 7 dias por semana.
+      freedom_tile_4: Desfrute de um ambiente íntimo e dê a atenção individual que seus convidados merecem.
+      freedom_tile_5: Personalize o espaço de seu salão de beleza – com obras de arte, música, móveis e decoração.
+      freedom_tile_6: Venda os produtos de varejo que você ama.
+      freedom_tile_7: Gerencie custos com uma variedade de comodidades, utilitários e WiFi, que estão incluídos.
+      freedom_tile_8: Construa sua marca e permita que sua carreira prospere.
+      freedom_tile_8_link: Encontre um estúdio
+      freedom_text: As recompensas de estar no negócio para si são inestimáveis, mas isso não significa que você tem de fazer tudo sozinho. A comunidade Sola está aqui para ajudá-lo durante cada etapa de sua jornada única de beleza.
+      flexibility_statement: Se você está procurando mais flexibilidade em sua agenda e controle para explorar novas aventuras, o Sola pode ser o lugar perfeito para você.
+      flexibility_subhead1: Prepare-se para explorar novas aventuras dentro e fora do salão de beleza!
+      flexibility_subhead2: No Sola, nossa paixão está ajudando os profissionais de beleza a serem bem-sucedidos.
+      flexibility_subhead3: Experimente a liberdade e os benefícios de uma carreira mais flexível, criativa e lucrativa.
+      beautiful_studios_exclusive_perks: Lindos estúdios, vantagens exclusivas.
+      at_sola_you_get_more: No Sola, você simplesmente ganha mais!
+      beautiful_studios: Lindos estúdios
+      beautiful_studios_text: Uma variedade de layouts para cabeleireiros, especialistas em unhas, esteticistas e muito mais!
+      community_support: Apoio da comunidade
+      community_support_text: Junte-se a uma comunidade de quase 10.000 profissionais de salão de beleza para estar no negócio por si mesmo, mas não sozinho.
+      sola_blog: Blog do Sola
+      sola_blog_text: Visite o Blog do Sola para obter dicas de negócios e marketing, tutoriais, histórias de sucesso do Sola e muito mais!
+      your_own_sola_webpage: Sua própria página do Sola
+      your_own_sola_webpage_text: Crie e gerencie sua própria página no site da Sola para ajudar a vender e a expandir seus negócios.
       sola_pro: Sola Pro 
-      sola_pro_text: Our exclusive Sola Pro app provides special offers from a wide variety of industry partners as well as educational resources for you to access on your time!
+      sola_pro_text: Nosso aplicativo exclusivo, Sola Pro, possui ofertas especiais de uma ampla variedade de parceiros da indústria, bem como recursos educacionais para você acessar no seu tempo!
       sola_sessions: Sola Sessions 
-      sola_sessions_text: The Sola Sessions education events—learn from the best and have an opportunity to network with other Sola Pros!
+      sola_sessions_text: Os eventos educacionais do Sola Sessions – aprenda com os melhores e tenha a oportunidade de interagir com outros profissionais do Sola!
       solagenius: SolaGenius 
       solagenius_text: Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered.
-      search: Search
-      view_all_locations: View All Locations
-      find_a_studio: Find a Studio
-      contact_us: Contact Us
+      search: Busca
+      view_all_locations: Ver todos os locais
+      find_a_studio: Encontre um estúdio
+      contact_us: Fale conosco
