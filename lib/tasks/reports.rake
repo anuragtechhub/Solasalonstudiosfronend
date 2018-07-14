@@ -551,7 +551,7 @@ namespace :reports do
       # ga:medium
       # ga:acquisitionTrafficChannel
       data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:medium', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..4]
-      p "done with referrals #{data[:referrals].inspect}"
+      p "done with referrals"
 
       # top referrers - site, visits
       data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
