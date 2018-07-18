@@ -53,7 +53,7 @@ module Solasalonstudios
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     
     I18n.config.enforce_available_locales = false
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = ENV['DEFAULT_LOCALE']
     config.i18n.fallbacks = true
 
     config.time_zone = 'UTC'
