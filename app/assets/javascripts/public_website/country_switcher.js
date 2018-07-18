@@ -31,9 +31,6 @@ $(function () {
   $(document.body).on('click', '.country-switcher-modal .country', function () {
     var $this = $(this);
 
-    console.log('you clicked', $this.data('domain'));
-
-    return;
     if ($this.data('domain') == 'ca') {
       window.location.href = "https://www.solasalonstudios.ca" + location.pathname + location.search + location.hash;
     }
