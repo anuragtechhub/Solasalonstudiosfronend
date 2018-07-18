@@ -165,7 +165,7 @@ class Location < ActiveRecord::Base
     names = ENV['LOCATION_COUNTRY_NAMES'].split(',')
     
     codes.each_with_index do |code, idx|
-      countries << [names[idx], codes[idx]]
+      countries << [names[idx].gsub('_', ' '), codes[idx]]
     end
 
     countries
