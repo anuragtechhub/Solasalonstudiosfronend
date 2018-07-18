@@ -132,7 +132,7 @@ class Location < ActiveRecord::Base
   validates :name, :url_name, :presence => true
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
-  validates :country, inclusion: { in: JSON.parse(ENV['LOCATION_COUNTRY_INCLUSION']), message: "is not valid" }
+  validates :country, inclusion: { in: ENV['LOCATION_COUNTRY_INCLUSION'].split(','), message: "is not valid" }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
   def msa_name
@@ -159,7 +159,16 @@ class Location < ActiveRecord::Base
   end
 
   def country_enum
-    JSON.parse(ENV['LOCATION_COUNTRY_ENUM'])
+    countries = []
+    
+    codes = ENV['LOCATION_COUNTRY_INCLUSION'].split(',')
+    names = ENV['LOCATION_COUNTRY_NAMES'].split(',')
+    
+    codes.each_with_index do |code, idx|
+      countries << [names[idx], codes[idx]]
+    end
+
+    countries
   end
 
   def html_address
