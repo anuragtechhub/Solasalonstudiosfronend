@@ -659,7 +659,7 @@ RailsAdmin.config do |config|
         end
         field :postal_code
         field :country do
-          help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
+          #help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
         end
         field :latitude do
           help 'The latitude will be automatically set when a valid address is entered. You do not need to set the latitude manually (but you can if you really want to)'
