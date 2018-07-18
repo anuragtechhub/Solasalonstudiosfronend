@@ -30,7 +30,7 @@ Solasalonstudios::Application.configure do
   config.assets.enabled = true
   config.assets.initialize_on_precompile = false
   config.static_cache_control = "public, max-age=31536000"
-  config.action_controller.asset_host = "dobyu981wavlb.cloudfront.net"
+  config.action_controller.asset_host = ENV['ASSET_HOST']
 
   # config.assets.css_compressor = :sass
 
