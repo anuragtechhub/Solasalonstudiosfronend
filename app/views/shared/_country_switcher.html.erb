@@ -4,11 +4,17 @@
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-  <% else %>
+  <% elsif I18n.locale == :ca %>
     <div class="country">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
   <% end %>
+  <% elsif I18n.locale.to_s == 'pt-BR' %>
+    <div class="country">
+      <div class="flag canada">&nbsp;</div>
+      <div class="name">Canada</div>
+    </div>
+  <% end %>  
   <div class="dropdown-arrow">&nbsp;</div>
 </div>
