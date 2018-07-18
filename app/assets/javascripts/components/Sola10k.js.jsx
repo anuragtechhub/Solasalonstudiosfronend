@@ -127,8 +127,8 @@ var Sola10k = React.createClass({
         <h1 className="text-center">10,000 Individual Stories.<br />One Powerful Community.</h1>
         <p className="text-center"><strong>The Sola story really is made up of 10,000 individual stories. It's this growing community that continues to inspire us every day.</strong></p>
         {/*<p className="text-center">Whether it's customizing your studio to fit your style, learning a new technique at the Sola Sessions, reaching a new business milestone, or having coffee with your Sola bestie, you are creating a unique journey every day.</p>*/}
-        <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, marginBottom: 30, overflow: 'hidden', border: '2px solid #000', borderRight: 0, borderTop: '1px solid #000'}}>
-          <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0}} width="560" height="315" src="https://www.youtube-nocookie.com/embed/XqDG5fvIq3o?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div style={{position: 'relative', paddingBottom: '56.25%', height: 0, marginBottom: 30, overflow: 'hidden'}}>
+          <iframe style={{position: 'absolute', top: -1, left: 3, width: '100%', height: '100%', border: 0}} width="560" height="315" src="https://www.youtube-nocookie.com/embed/XqDG5fvIq3o?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         <p className="text-center"><strong>Share a piece of your Sola story!</strong></p>
         <p className="text-center tighter"><strong>Step 1:</strong><br />Create your image below.</p>
