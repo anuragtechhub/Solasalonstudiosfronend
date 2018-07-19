@@ -36,7 +36,7 @@ pt-BR:
   header:
     rent_studio_button: Tenha seu salão de beleza
     contact_us: Fale conosco
-    search_placeholder: Search by Name or Location
+    search_placeholder: Busque por nome ou local
     sola_pro_sign_in: Sola Pro
 
   nav:
@@ -219,7 +219,7 @@ pt-BR:
       answer10: <p>To reserve your studio, contact us via our Contact Us form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you&#8217;re ready to open for business.</p>    
 
     find_salon_pro:
-      title: Find a Salon Professional
+      title: Encontre um profissional de salão de beleza
       meta_description: "To find a hairdresser, nail tech, esthetician or beauty professional, search by name or location. To schedule an appointment, contact your salon professional directly."
       heading1: Find a Sola Salon<br>Professional Near You
       search: Search
@@ -230,7 +230,7 @@ pt-BR:
       locations_nationwide: Locations Nationwide
       body1: "At Sola Salon Studios, each of our studios is independently operated!"
       body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
-      find_a_salon_professional_near_you: Find a Salon Professional Near You
+      find_a_salon_professional_near_you: Encontre um profissional de salão de beleza
     
     gallery:
       title: Galeria
