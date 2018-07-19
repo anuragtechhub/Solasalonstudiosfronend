@@ -3,8 +3,12 @@
   <%= render 'own_your_salon' %>
   <%= render 'our_studios' %>
   <%= render 'sola_pro' %>
-  <%= render 'sola_sessions' %>
-  <%= render 'sola_genius' %>
+  <% if I18n.locale.to_s != 'pt-BR' %>
+    <%= render 'sola_sessions' %>
+  <% end %>
+  <% if I18n.locale.to_s == 'en' %>
+    <%= render 'sola_genius' %>
+  <% end %>
   
   <%= javascript_include_tag 'fullscreen_hero' %>
 

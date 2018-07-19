@@ -4,7 +4,9 @@
       <li><a data-base="/own/" href="#own-your-salon" <%= 'class=active' if active == 'own-your-salon' %>><%= t('page.own.tabs.own_your_salon').html_safe %></a></li>
       <li><a data-base="/own/" href="#our-studios" <%= 'class=active' if active == 'studio-amenities' %>><%= t('page.own.tabs.studio_amenities').html_safe %></a></li>
       <li><a data-base="/own/" href="#sola-pro" <%= 'class=active' if active == 'sola-pro' %>><%= t('page.own.tabs.sola_pro').html_safe %></a></li>
-      <li><a data-base="/own/" href="#sola-sessions" <%= 'class=active' if active == 'sola-sessions' %>><%= t('page.own.tabs.sola_sessions').html_safe %></a></li>
+      <% if I18n.locale.to_s != 'pt-BR' %>
+        <li><a data-base="/own/" href="#sola-sessions" <%= 'class=active' if active == 'sola-sessions' %>><%= t('page.own.tabs.sola_sessions').html_safe %></a></li>
+      <% end %>
       <% if I18n.locale.to_s == 'en' %>
         <li><a data-base="/own/" href="#solagenius" <%= 'class=active' if active == 'solagenius' %>><%= t('page.own.tabs.sola_genius').html_safe %></a></li>
       <% end %>

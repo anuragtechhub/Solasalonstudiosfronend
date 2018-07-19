@@ -2,7 +2,9 @@
 	<ul>
 		<li <%= (page == :why_sola      ? "class=active" : '') %>><%= link_to :why_sola  do %><%= t 'page.why_sola.title' %><% end %></li>
 		<li <%= (page == :our_studios   ? "class=active" : '') %>><%= link_to :our_studios do %><%= t 'page.our_studios.title' %><% end %></li>
-		<li <%= (page == :sola_sessions ? "class=active" : '') %>><%= link_to :sola_sessions do %><%= t 'page.sola_sessions.title' %><% end %></li>
+		<% if I18n.locale.to_s != 'pt-BR' %>
+			<li <%= (page == :sola_sessions ? "class=active" : '') %>><%= link_to :sola_sessions do %><%= t 'page.sola_sessions.title' %><% end %></li>
+		<% end %>
 		<li <%= (page == :sola_pro      ? "class=active" : '') %>><%= link_to :sola_pro do %><%= t 'page.sola_pro.title' %><% end %></li>
 		<% if I18n.locale.to_s == 'en' %>
 			<li <%= (page == :solagenius    ? "class=active" : '') %>><%= link_to :solagenius do %><%= t 'page.sola_genius.title' %><% end %></li>

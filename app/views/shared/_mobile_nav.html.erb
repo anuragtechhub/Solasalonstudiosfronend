@@ -25,9 +25,11 @@
 		      <li>
 		        <%= link_to :our_studios, :class => 'sublink' do %><%= t 'page.our_studios.title' %><% end %>
 		      </li>
-		      <li>
-		        <%= link_to :sola_sessions, :class => 'sublink' do %><%= t 'nav.sola_sessions' %><% end %>
-		      </li>
+		      <% if I18n.locale.to_s != 'pt-BR' %>
+			      <li>
+			        <%= link_to :sola_sessions, :class => 'sublink' do %><%= t 'nav.sola_sessions' %><% end %>
+			      </li>
+		      <% end %>
 		      <li>
 		        <%= link_to :sola_pro, :class => 'sublink' do %><%= t 'nav.sola_pro' %><% end %>
 		      </li>

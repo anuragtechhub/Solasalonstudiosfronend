@@ -80,6 +80,12 @@
   }
 }
 
+.oys-nav.has-3, .oys-nav-mobile.has-3 {
+  li {
+    width: calc(33% - 16px);
+  }
+}
+
 #header .nav {
   .caret {
     display: none;

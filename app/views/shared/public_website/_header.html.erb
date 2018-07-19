@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %>" data-nav="own-your-salon">
+<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %> <%= I18n.locale.to_s == 'pt-BR' ? 'has-3' : nil %>" data-nav="own-your-salon">
   <ul>
     <li>
       <%= link_to :why_sola do %>
@@ -53,12 +53,14 @@
         <h4><%= t 'nav.our_studios' %></h4>
       <% end %>
     </li>
-    <li>
-      <%= link_to :sola_sessions do %>
-        <%= image_tag 'own_nav/4_sessions.jpg' %>
-        <h4><%= t 'nav.sola_sessions' %></h4>
-      <% end %>
-    </li>
+    <% if I18n.locale.to_s != 'pt-BR' %>
+      <li>
+        <%= link_to :sola_sessions do %>
+          <%= image_tag 'own_nav/4_sessions.jpg' %>
+          <h4><%= t 'nav.sola_sessions' %></h4>
+        <% end %>
+      </li>
+    <% end %>
     <li>
       <%= link_to :sola_pro do %>
         <% if I18n.locale.to_s == 'en' %>
