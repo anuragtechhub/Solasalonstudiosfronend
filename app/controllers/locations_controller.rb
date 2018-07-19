@@ -25,9 +25,12 @@ class LocationsController < PublicWebsiteController
     if I18n.locale == :en
       @country = 'US'
       @locations = Location.where(:status => 'open').where(:country => 'US')
-    else
+    elsif I18n.locale.to_s == 'en-CA'
       @country = 'CA'
       @locations = Location.where(:status => 'open').where(:country => 'CA')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
+    elsif I18n.locale.to_s == 'pt-BR'
+      @country = 'BR'
+      @locations = Location.where(:status => 'open').where(:country => 'BR')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
     end
 
     @states = @locations.select('DISTINCT state').order(:state => :asc).to_a.reject{|l| l.state.blank? }

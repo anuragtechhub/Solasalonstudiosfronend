@@ -1,4 +1,4 @@
-<% cache "locationsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}|#{I18n.locale}" do %>
+<% cache "locationsIndex#{@last_location ? @last_location.updated_at : nil}|#{@last_msa ? @last_msa.updated_at : nil}|#{I18n.locale}" do %>
 
 <div class="container content-container locations-hero-container">
   <h2><span class="text"><%= t('page.locations.find_a_sola_location').html_safe %></span></h2>
@@ -28,7 +28,10 @@
 <div class="search-bar locations-filter-bar">
   <div class="country-location-buttons">
     <%= link_to 'United States', 'https://www.solasalonstudios.com/locations', :class => "#{'active' if I18n.locale == :en}" %>
-    <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "#{'active' if I18n.locale != :en}" %>
+    <%= link_to 'Canada', 'https://www.solasalonstudios.ca/locations', :class => "#{'active' if I18n.locale.to_s == 'en-CA'}" %>
+    <% if I18n.locale.to_s == 'pt-BR' %>
+      <%= link_to 'Brazil', 'https://www.solasalonstudios.ca/locations', :class => "active" %>
+    <% end %>
   </div>
   <div class="sola-select">
     <div class="row">
@@ -134,10 +137,12 @@
 
 <% end %>
 
-<% if I18n.locale != :en && @locations.size == 0 %>
-  <% content_for(:scripts) { javascript_include_tag('locations_ca') } %>
-<% else %>
+<% if I18n.locale == :en %>
   <% content_for(:scripts) { javascript_include_tag('locations') } %>
+<% elsif I18n.locale.to_s == 'en-CA' %>
+  <% content_for(:scripts) { javascript_include_tag('locations_ca') } %>
+<% elsif I18n.locale.to_s == 'pt-BR' %>
+  <% content_for(:scripts) { javascript_include_tag('locations_br') } %>  
 <% end %>
 <% content_for(:title) { "#{t('page.locations.all_locations').html_safe}" } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/locations" } %>
