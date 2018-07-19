@@ -1,4 +1,4 @@
-<% cache ["contactUsIndex#{@last_location.updated_at}|#{@last_msa.updated_at}|#{I18n.locale}|#{@thank_you}"] do %>
+<% cache ["contactUsIndex#{@last_location ? @last_location.updated_at : nil}|#{@last_msa ? @last_msa.updated_at : nil}|#{I18n.locale}|#{@thank_you}"] do %>
 
 <div class="container content-container">
   
