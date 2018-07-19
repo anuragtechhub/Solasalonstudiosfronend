@@ -4,14 +4,16 @@
 <input type="hidden" name="marker-icon-url" id="marker-icon-url" value="<%= image_url 'Marker_Normal_Icon@2x.png' %>" />
 <% if @locations && @locations.size > 0 %>
   <% @locations.each do |location| %>
-    <input type="hidden" name="marker" <%= "data-custom-maps-url=#{location.custom_maps_url}" if location.custom_maps_url.present? %> value="<%= "#{location.latitude}, #{location.longitude}" %>" data-name="<%= location.name %>" data-saddress="<%= location.full_address %>"
+    <input type="hidden" name="marker" <%= "data-custom-maps-url=#{location.custom_maps_url}" if location.custom_maps_url.present? %> 
+           value="<%= "#{location.latitude}, #{location.longitude}" %>" data-name="<%= location.name %>" data-saddress="<%= location.full_address %>"
            data-address="<%= location.html_address %>" data-url="<%= salon_location_path(location.url_name).gsub(/\./, '') %>" <%= 'data-salon="true"' if defined?(salon) && salon %> />
   <% end %>
 <% end %>
 
 <% if @all_locations && @all_locations.size > 0 %>
   <% @all_locations.each do |location| %>
-    <input type="hidden" name="all_markers" <%= "data-custom-maps-url=#{location.custom_maps_url}" if location.custom_maps_url.present? %> value="<%= "#{location.latitude}, #{location.longitude}" %>" data-name="<%= location.name %>" data-saddress="<%= location.full_address %>"
+    <input type="hidden" name="all_markers" <%= "data-custom-maps-url=#{location.custom_maps_url}" if location.custom_maps_url.present? %> 
+    			 value="<%= "#{location.latitude}, #{location.longitude}" %>" data-name="<%= location.name %>" data-saddress="<%= location.full_address %>"
            data-address="<%= location.html_address %>" data-url="<%= salon_location_path(location.url_name).gsub(/\./, '') %>" <%= 'data-salon="true"' if defined?(salon) && salon %> />
   <% end %>
 <% end %>

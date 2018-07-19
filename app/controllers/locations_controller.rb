@@ -28,6 +28,7 @@ class LocationsController < PublicWebsiteController
     elsif I18n.locale.to_s == 'en-CA'
       @country = 'CA'
       @locations = Location.where(:status => 'open').where(:country => 'CA')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
+      p "getting all the locations for canada #{@locations.size}"
     elsif I18n.locale.to_s == 'pt-BR'
       @country = 'BR'
       @locations = Location.where(:status => 'open').where(:country => 'BR')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
