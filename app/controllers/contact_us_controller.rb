@@ -8,8 +8,10 @@ class ContactUsController < PublicWebsiteController
   def index
     if I18n.locale == :en
       @all_locations = Location.where(:status => 'open').where(:country => 'US')
-    else
+    elsif I18n.locale.to_s == 'en-CA'
       @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+    elsif I18n.locale.to_s == 'pt-BR'
+      @all_locations = Location.where(:status => 'open').where(:country => 'BR')
     end
 
     @last_location = Location.order(:updated_at => :desc).first
@@ -19,8 +21,10 @@ class ContactUsController < PublicWebsiteController
   def thank_you
     if I18n.locale == :en
       @all_locations = Location.where(:status => 'open').where(:country => 'US')
-    else
+    elsif I18n.locale.to_s == 'en-CA'
       @all_locations = Location.where(:status => 'open').where(:country => 'CA')
+    elsif I18n.locale.to_s == 'pt-BR'
+      @all_locations = Location.where(:status => 'open').where(:country => 'BR')
     end
 
     @last_location = Location.order(:updated_at => :desc).first
