@@ -55,6 +55,7 @@ module Solasalonstudios
     I18n.config.enforce_available_locales = false
     config.i18n.default_locale = ENV['DEFAULT_LOCALE']
     config.i18n.fallbacks = true
+    config.i18n.fallbacks = [:en]
 
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc    
