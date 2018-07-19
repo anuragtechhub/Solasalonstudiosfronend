@@ -4,12 +4,12 @@
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-  <% elsif I18n.locale == :ca %>
+  <% elsif I18n.locale.to_s == "en-CA" %>
     <div class="country">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
-  <% elsif I18n.locale.to_s == 'pt-BR' %>
+  <% elsif I18n.locale.to_s == "pt-BR" %>
     <div class="country">
       <div class="flag brazil">&nbsp;</div>
       <div class="name">Brazil</div>
