@@ -13,8 +13,10 @@ var SearchBar = React.createClass({
 		);
 	},
 
-	onSubmit: function () {
+	onSubmit: function (e) {
 		console.log('submit SearchBar');
+
+		e.preventDefault();
 	},
 
 })
