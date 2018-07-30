@@ -23,7 +23,13 @@ en:
       leases/recurring_charge_4:
         amount: "Recurring weekly charge 4 weekly fee" 
         start_date: "Recurring weekly charge 4 start date"
-        end_date: "Recurring weekly charge 4 end date"              
+        end_date: "Recurring weekly charge 4 end date"     
+
+  sola_search:
+    search_bar:
+      current_location: Current Location
+      haircut: Haircut
+
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
