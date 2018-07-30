@@ -15,20 +15,14 @@
 		}
 	}
 
-	.SearchLocation {
-		
-		input[type=text] {
-			width: calc(100% + 1px);
-			margin-left: -1px;
-		}
+	.SearchLocation input[type=text] {
+		width: calc(100% + 1px);
+		margin-left: -1px;
 	}
 
-	.SearchDatePicker {
-		
-		input[type=text] {
-			width: calc(100% + 2px);
-			margin-left: -2px;
-		}
+	.SearchDatePicker input[type=text] {
+		width: calc(100% + 2px);
+		margin-left: -2px;
 	}
 
 	.SearchName input[type=text] {
@@ -56,9 +50,11 @@
 	  &:-webkit-placeholder {
 	    color: #040404 !important;
 	  }
+	  
 	  &:-moz-placeholder {
 	    color: #040404 !important;
 	  }
+
 	  &:placeholder {
 	    color: #040404 !important;
 	  } 		

@@ -4,7 +4,7 @@ var SearchDatePicker = React.createClass({
 		return (
 			<div className="SearchDatePicker">
 				<span className="fa fa-calendar">&nbsp;</span>
-				<input type="text" placeholder="03/17/18" />
+				<input type="text" placeholder={this.props.date.toString('mm/dd/yy')} />
 			</div>
 		);
 	}
