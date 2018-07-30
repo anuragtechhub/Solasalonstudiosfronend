@@ -7,7 +7,7 @@ var SearchBar = React.createClass({
 					<SearchName />
 					<SearchLocation />
 					<SearchDatePicker />
-					<button type="submit" className="primary" /> 
+					<button type="submit" className="primary">Search</button> 
 				</form>
 			</div>
 		);

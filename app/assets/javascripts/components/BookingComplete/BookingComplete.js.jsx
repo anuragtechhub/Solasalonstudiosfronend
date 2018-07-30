@@ -1,4 +1,4 @@
-var BookingComplete = React.createComponent({
+var BookingComplete = React.createClass({
 
 	render: function () {
 		return (

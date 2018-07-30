@@ -6,6 +6,6 @@ var StylistRating = React.createClass({
 
 	 		</div>
 	 	);
-	 };
+	 }
 
 });

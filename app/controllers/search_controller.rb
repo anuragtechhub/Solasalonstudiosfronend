@@ -1,13 +1,13 @@
 class SearchController < PublicWebsiteController
   
   skip_before_filter :verify_authenticity_token
-
+  layout 'nhnf'
+  
   def stylist_search
-
+    
   end
 
   def stylist_results
-    
   end
 
   def results

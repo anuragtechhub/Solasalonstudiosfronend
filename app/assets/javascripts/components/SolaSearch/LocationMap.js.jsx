@@ -4,7 +4,7 @@ var LocationMap = React.createClass({
 		return (
 			<div className="LocationMap">
 
-			<div>
+			</div>
 		);
 	},
 
