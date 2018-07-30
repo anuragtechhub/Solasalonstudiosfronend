@@ -2,6 +2,14 @@ class SearchController < PublicWebsiteController
   
   skip_before_filter :verify_authenticity_token
 
+  def stylist_search
+
+  end
+
+  def stylist_results
+    
+  end
+
   def results
     # if params[:query]
 
