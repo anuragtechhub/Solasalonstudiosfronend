@@ -22,7 +22,7 @@ namespace :email do
 	end
 
   # rake email:welcome_report
-  # rake email:welcome_report[2018-06-01]
+  # rake email:welcome_report[2018-07-01]
   task :welcome_report, [:start_date] => :environment do |task, args|
   	p "Begin Welcome Email Report..."
 
