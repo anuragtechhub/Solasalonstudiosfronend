@@ -31,6 +31,10 @@
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.row {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 .container {
   position: relative;
   width: 100%;
@@ -49,7 +53,7 @@
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
-    width: 90%;
+    width: 90% !important;
     padding: 0; 
   }
 }
@@ -57,7 +61,7 @@
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 90%; }
+    width: 90% !important; }
   .column,
   .columns {
     margin-left: 4%; 
