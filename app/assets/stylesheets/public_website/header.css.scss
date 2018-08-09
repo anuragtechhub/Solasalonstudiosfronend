@@ -13,7 +13,7 @@
   background: -moz-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, #5DB9E4, #3A8DCC); /* Standard syntax */
 
-  ul.nav {
+  ul.sola-nav {
     position: absolute;
     top: 0;
     right: 0;
@@ -27,11 +27,11 @@
       margin: 0;
 
       &.border-left {
-        border-left: 1px solid #3886BA;
+        border-left: 1px solid #3886BA !important;
       }
 
       &.border-right {
-        border-right: 1px solid #3886BA;
+        border-right: 1px solid #3886BA !important;
       }
 
       a {
@@ -114,10 +114,10 @@
     }
   }
 
-  ul.nav {
+  ul.sola-nav {
     position: absolute;
     top: 31px;
-    right: 31px;
+    right: 91px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -126,6 +126,12 @@
       margin: 0;
       padding: 0;
       float: left;
+
+      h4 {
+        @include chalet_new_york;
+        font-size: 18px;
+        line-height: 24px;
+      }
 
       h3 {
         margin: 0;
@@ -408,7 +414,7 @@
       }
     }
 
-    ul.nav {
+    ul.sola-nav {
       display: none;
     }
 

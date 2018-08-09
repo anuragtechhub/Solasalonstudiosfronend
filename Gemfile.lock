@@ -63,8 +63,6 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.11)
     bcrypt-ruby (3.0.1)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
     builder (3.1.4)
     cancan (1.6.10)
     carmen (1.0.2)
@@ -387,7 +385,6 @@ DEPENDENCIES
   aws-sdk-core
   aws-sdk-v1
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-datepicker-rails
   cancan
   carmen-rails (~> 1.0.0)
   ckeditor!

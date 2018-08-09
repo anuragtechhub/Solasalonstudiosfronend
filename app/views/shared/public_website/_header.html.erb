@@ -1,7 +1,7 @@
 <div id="top-header">
   <div class="container">
     <div class="row">
-      <ul class="nav">        
+      <ul class="sola-nav">        
         <li class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
         <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
@@ -22,7 +22,7 @@
 
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
       
-      <ul class="nav">
+      <ul class="sola-nav">
         <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', 'data-nav' => "own-your-salon" %></h4></li>
         <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
         <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
