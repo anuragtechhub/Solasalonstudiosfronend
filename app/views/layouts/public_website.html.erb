@@ -31,7 +31,7 @@
   <%= yield :scripts %> 
   <%= render 'shared/google_analytics' %>  
 </head>
-<body>
+<body <%= @body_class ? "class=#{@body_class}" : nil %>>
 
   <%= render 'shared/public_website/header' %>
   <div class="body-content"><%= yield %></div>

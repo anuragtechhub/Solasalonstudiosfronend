@@ -17,6 +17,8 @@
 //= require dropzone
 //= require jssocials
 //= require moment
+//= require bootstrap
+//= require bootstrap-datepicker
 
 //= require react
 //= require react_ujs
