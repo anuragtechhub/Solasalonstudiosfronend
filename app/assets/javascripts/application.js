@@ -16,6 +16,7 @@
 //= require xml2json
 //= require dropzone
 //= require jssocials
+//= require moment
 
 //= require react
 //= require react_ujs
