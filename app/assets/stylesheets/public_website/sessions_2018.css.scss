@@ -486,6 +486,11 @@
         // -webkit-filter: grayscale(100%);
         // filter: grayscale(100%);
 
+        &.hairdo {
+          position: relative;
+          top: -3px;
+        }
+
         &.ienvy {
           position: relative;
           top: 5px;
