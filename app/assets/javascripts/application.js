@@ -20,6 +20,8 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 
+//= require fingerprint
+
 //= require react
 //= require react_ujs
 //= require components
