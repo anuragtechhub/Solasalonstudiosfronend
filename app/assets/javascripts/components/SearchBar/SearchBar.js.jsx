@@ -10,9 +10,9 @@ var SearchBar = React.createClass({
 		return (
 			<div className="SearchBar">
 				<form method="post" action={this.props.path} onSubmit={this.onSubmit}>
-					<SearchName />
+					<SearchServices />
 					<SearchLocation />
-					<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />
+					{/*<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />*/}
 					<button type="submit" className="primary">Search</button> 
 				</form>
 			</div>
