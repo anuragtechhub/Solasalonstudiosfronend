@@ -26,6 +26,7 @@ var SearchServices = React.createClass({
 
 	render: function () {
 		if (this.state.text && this.state.text != '') {
+			
 			return (
 				<div className="SearchServices">
 					<span className="fa fa-search">&nbsp;</span>
