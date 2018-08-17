@@ -1,12 +1,15 @@
 var SearchDatePicker = React.createClass({
 
 	componentDidMount: function () {
-		$(this.refs.input).datepicker({
+		var $datepicker = $(this.refs.input).datepicker({
+			startDate: new Date(),
 			templates: {
 		    leftArrow: '<i class="fa fa-caret-left"></i>',
 		    rightArrow: '<i class="fa fa-caret-right"></i>'
 			}
 		});
+
+		$datepicker.datepicker('setDate', this.props.date);
 	},
 
 	render: function () {

@@ -32,6 +32,13 @@
 		background: #000;
 		color: #FFF;
 
+		&.disabled {
+			cursor: default;
+			pointer-events: none;
+			background: #EEE;
+			color: #DBDBDB !important;
+		}
+
 		&:hover, &:active {
 			border: 0;
 			background: $brand-pink;
