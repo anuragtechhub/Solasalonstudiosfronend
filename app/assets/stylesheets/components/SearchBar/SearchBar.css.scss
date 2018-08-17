@@ -66,6 +66,10 @@
 				-o-transition-property: none;
 				transition-property: none;
 
+				strong {
+					color: #333 !important;
+				}
+
 				&.active {
 					color: $brand-pink !important;
 					background: #F5F9FB !important;

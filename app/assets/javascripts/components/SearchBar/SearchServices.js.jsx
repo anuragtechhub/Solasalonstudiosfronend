@@ -8,6 +8,7 @@ var SearchServices = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
+		// open/close dropdown
 		if (prevState.dropdownOpen != this.state.dropdownOpen) {
 			if (this.state.dropdownOpen) {
 				$(this.refs.dropdown).show();//.slideDown('fast');
@@ -16,6 +17,14 @@ var SearchServices = React.createClass({
 				$(this.refs.dropdown).hide();//.slideUp('fast');
 				$(window).off('click.SearchServices');
 			}
+		}
+
+		// bold filter text
+		if (prevProps.query != this.props.query) {
+			$(this.refs.dropdown).find('a').wrapInTag({
+			  tag: 'strong',
+			  words: [this.props.query]
+			});
 		}
 	},
 
@@ -39,10 +48,37 @@ var SearchServices = React.createClass({
 	},
 
 	renderCategoriesAndServicesMatches: function () {
+		var matches = [];
+		var matchString = this.props.query.toLowerCase();
+
+		for (var k in SolaSearchServices) {
+			if (k.toLowerCase().indexOf(matchString) != -1) {
+				// category match
+				matches.push(
+					<a key={k} href="#" data-category={k} className={this.state.activeCategory == k ? 'active' : ''} onClick={this.onChangeActiveCategory}>{k}</a>
+				);
+
+				// if category matches, then all sub-services match
+				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
+					matches.push(
+						<a key={SolaSearchServices[k][j].name} href="#" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
+					);
+				}
+			} else {
+				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
+					if (SolaSearchServices[k][j].name.toLowerCase().indexOf(matchString) != -1) {
+						matches.push(
+							<a key={SolaSearchServices[k][j].name} href="#" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
+						);
+					}
+				}
+			}
+		}
+
 		return (
 			<div className="row">
 				<div className="col-sm-12">
-					Filter by {this.props.query}
+					{matches}
 				</div>
 			</div>
 		);

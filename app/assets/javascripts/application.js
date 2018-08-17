@@ -21,6 +21,7 @@
 //= require bootstrap-datepicker
 
 //= require fingerprint
+//= require wrap-in-tag
 
 //= require react
 //= require react_ujs
