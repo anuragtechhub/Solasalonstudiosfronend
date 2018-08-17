@@ -26,46 +26,29 @@ var SearchServices = React.createClass({
 	*/
 
 	render: function () {
-		if (this.state.text && this.state.text != '') {
+		return (
+			<div className="SearchServices">
+				<span className="fa fa-search">&nbsp;</span>
+				<input ref="input" type="text" placeholder="Haircut, salon name, stylist name" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
-			return (
-				<div className="SearchServices">
-					<span className="fa fa-search">&nbsp;</span>
-					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
-
-					<div className="Dropdown" ref="dropdown">
-						<div className="row">
-							<div className="col-sm-12">
-								Filter by {this.state.text}
-							</div>
-						</div>
-					</div>
+				<div className="Dropdown" ref="dropdown">
+					{this.props.query == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
 				</div>
-			);
-		} else {
-			var categories_and_services = this.renderCategoriesAndServices();
-
-			return (
-				<div className="SearchServices">
-					<span className="fa fa-search">&nbsp;</span>
-					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
-
-					<div className="Dropdown" ref="dropdown">
-						<div className="row">
-							<div className="col-sm-6">
-								{categories_and_services[0]}
-							</div>
-							<div className="col-sm-6 active">
-								{categories_and_services[1]}
-							</div>
-						</div>
-					</div>
-				</div>
-			);
-		}
+			</div>
+		);
 	},
 
-	renderCategoriesAndServices: function () {
+	renderCategoriesAndServicesMatches: function () {
+		return (
+			<div className="row">
+				<div className="col-sm-12">
+					Filter by {this.props.query}
+				</div>
+			</div>
+		);
+	},
+
+	renderAllCategoriesAndServices: function () {
 		//console.log('SearchServices', SolaSearchServices);
 		var categories = [];
 		var services = []
@@ -88,7 +71,16 @@ var SearchServices = React.createClass({
 			);
 		}
 
-		return [categories, services];
+		return (
+			<div className="row">
+				<div className="col-sm-6">
+					{categories}
+				</div>
+				<div className="col-sm-6 active">
+					{services}
+				</div>
+			</div>
+		);
 	},
 
 
