@@ -121,8 +121,7 @@ var SearchServices = React.createClass({
 
 	close: function (e) {
 		var $target = $(e.target);
-		console.log('close!', $target, $target.parents('.SearchServices').length);
-		if (this.state.dropdownOpen && $target.parents('.SearchServices').length > 0) {
+		if (this.state.dropdownOpen && $target.parents('.SearchServices').length == 0) {
 			this.setState({dropdownOpen: false});
 		}
 	},
