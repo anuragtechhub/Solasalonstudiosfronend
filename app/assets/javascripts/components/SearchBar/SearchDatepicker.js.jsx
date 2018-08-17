@@ -3,8 +3,8 @@ var SearchDatePicker = React.createClass({
 	componentDidMount: function () {
 		$(this.refs.input).datepicker({
 			templates: {
-		    leftArrow: '<i class="fa fa-angle-left"></i>',
-		    rightArrow: '<i class="fa fa-angle-right"></i>'
+		    leftArrow: '<i class="fa fa-caret-left"></i>',
+		    rightArrow: '<i class="fa fa-caret-right"></i>'
 			}
 		});
 	},

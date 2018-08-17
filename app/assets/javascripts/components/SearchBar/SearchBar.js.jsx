@@ -3,6 +3,7 @@ var SearchBar = React.createClass({
 	getInitialState: function () {
 		return {
 			date: this.props.date || new Date(),
+			query: this.props.query || '',
 		}
 	},
 	
@@ -10,9 +11,9 @@ var SearchBar = React.createClass({
 		return (
 			<div className="SearchBar">
 				<form method="post" action={this.props.path} onSubmit={this.onSubmit}>
-					<SearchServices />
+					<SearchServices query={this.state.query} onChangeQuery={this.onChangeQuery} />
 					<SearchLocation />
-					{/*<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />*/}
+					<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />
 					<button type="submit" className="primary">Search</button> 
 				</form>
 			</div>
@@ -23,6 +24,11 @@ var SearchBar = React.createClass({
 	/*
 	* Event Handlers
 	*/
+
+	onChangeQuery: function (query) {
+		console.log('onChangeQuery', query);
+		this.setState({query: query});
+	},
 
 	onChangeDate: function (date) {
 		console.log("onChangeDate", date);

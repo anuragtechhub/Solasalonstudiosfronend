@@ -4,16 +4,17 @@ var SearchServices = React.createClass({
 		return {
 			activeCategory: 'Barber',
 			dropdownOpen: false,
-			text: '',
 		};
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
 		if (prevState.dropdownOpen != this.state.dropdownOpen) {
 			if (this.state.dropdownOpen) {
-				$(this.refs.dropdown).slideDown('fast');
+				$(this.refs.dropdown).show();//.slideDown('fast');
+				$(window).on('click.SearchServices', this.close);
 			} else {
-				$(this.refs.dropdown).slideUp('fast');
+				$(this.refs.dropdown).hide();//.slideUp('fast');
+				$(window).off('click.SearchServices');
 			}
 		}
 	},
@@ -26,11 +27,11 @@ var SearchServices = React.createClass({
 
 	render: function () {
 		if (this.state.text && this.state.text != '') {
-			
+
 			return (
 				<div className="SearchServices">
 					<span className="fa fa-search">&nbsp;</span>
-					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.state.text} />
+					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
 					<div className="Dropdown" ref="dropdown">
 						<div className="row">
@@ -47,7 +48,7 @@ var SearchServices = React.createClass({
 			return (
 				<div className="SearchServices">
 					<span className="fa fa-search">&nbsp;</span>
-					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.state.text} />
+					<input ref="input" type="text" placeholder="Haircut" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
 					<div className="Dropdown" ref="dropdown">
 						<div className="row">
@@ -97,8 +98,7 @@ var SearchServices = React.createClass({
 	*/
 
 	onChange: function (e) {
-		console.log('onChange', e.target.value);
-		this.setState({text: e.target.value});
+		this.props.onChangeQuery(e.target.value)
 	},
 
 	onChangeActiveCategory: function (e) {
@@ -112,5 +112,20 @@ var SearchServices = React.createClass({
 			this.setState({dropdownOpen: true});
 		}
 	},
+
+
+
+	/*
+	* Helper functions
+	*/
+
+	close: function (e) {
+		var $target = $(e.target);
+		console.log('close!', $target, $target.parents('.SearchServices').length);
+		if (this.state.dropdownOpen && $target.parents('.SearchServices').length > 0) {
+			this.setState({dropdownOpen: false});
+		}
+	},
+
 
 });
