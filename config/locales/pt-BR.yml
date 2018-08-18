@@ -80,7 +80,7 @@ pt-BR:
 
     about:
       title: Sobre o Sola
-      meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja no negócio por você mesmo, mas não sozinho!"
+      meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja em um negócio por conta própria, mas nunca sozinho!"
       learn_more_about_sola: LSaiba mais sobre o Sola
       click_to_watch_video: Clique para assistir ao vídeo
       learn_more: Saiba mais
@@ -93,7 +93,7 @@ pt-BR:
       heading1: Sobre o Sola
       body1: |
         <h4 class='paragraph'>Em 2004, o Sola Salon Studios foi fundado com a abertura de nosso primeiro local em Denver, no Colorado. Agora, com mais de 400 locais abertos em todo o território nacional, temos orgulho de oferecer aos profissionais de salão de beleza a liberdade e os benefícios da propriedade de um salão de beleza sem os custos iniciais e os riscos associados à abertura de um salão tradicional. Nosso inovador modelo de salão dá poder cabeleireiros, esteticistas, especialistas em unhas, massoterapeutas e outros profissionais afins a assumirem o controle de suas vidas e carreiras. Fornecemos estúdios de alta qualidade e totalmente equipados aos profissionais de beleza, juntamente com o suporte e as ferramentas de que precisam para iniciar seu negócio no salão de beleza em pouco tempo.</h4>
-        <h4 class='paragraph'>Temos orgulho de ser o negócio de salão de beleza que é o maior e o que cresce mais rápido no país. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente: ajudar a estabelece-los para o sucesso. Junte-se ao Sola Salon Studios, agora com a força de quase 10.000 profissionais, e experimente um nível de independência criativa e apoio profissional que você não encontrará em nenhum outro lugar.</h4>
+        <h4 class='paragraph'>Temos orgulho de ser o maior negócio de beleza profissional no mundo, e o que cresce mais rápido no maior mercado do planeta, com 400 lojas e mais de 10.000 profissionais, entre eles muitos Brasileiros. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente: Ajudá-los e crescer em suas carreiras com toda segurança e total independência.</h4>
       diverse_community: comunidade diversificada
       heading2: Sobre os fundadores
       body3: "Matt Briger e Stratton Smith são verdadeiros empreendedores. No início dos anos 1990, Stratton era um proprietário de salão de beleza de sucesso em St. Louis, no Missouri. Em 1995, ele vendeu seus seis salões e se juntou a Matt para iniciar e administrar uma empresa imobiliária no Colorado. Mas a paixão de Stratton pela indústria da beleza nunca o deixou e, em 2004, Stratton e Matt deixaram o mundo corporativo para fundar o Sola Salon Studios. Eles tinham uma ideia simples e uma visão clara: colocar o profissional do salão de beleza em primeiro lugar. Onze anos depois, eles continuam a provar que fazem exatamente isso."
@@ -396,19 +396,19 @@ pt-BR:
     
     our_studios:
       title: Nossos estúdios
-      hero_heading1: O Sola oferece tudo o que você precisa e muito mais em estúdios bonitos e prontos para uso.
-      hero_heading2: Uma variedade de layouts para cabeleireiros, especialistas em unhas, esteticistas e muito mais!
+      hero_heading1: O Sola oferece tudo o que você precisa e muito mais! Em estúdios personalizados e prontos para o uso.
+      hero_heading2: Temos diversos tamanhos, mas todos são entregues totalmente equipados. Você controla o som ambiente, a temperatura, o seu horário! Liberdade total com toda segurança.
       studio_amenities: Comodidades do estúdio 
       meta_description: Nossos estúdios
       shampoo_bowl: Pia de xampu 
       shampoo_bowl_text: Shampoo, enxágue e repetição de shampoo
       view_gallery: Ver galeria de estúdios
       join_our_community: Junte-se a nossa comunidade
-      join_our_community_text: Esteja no negócio por você mesmo, mas não sozinho.
+      join_our_community_text: Esteja em um negócio por conta própria, mas nunca sozinho.
       join_our_community_button_text: Tenha seu salão de beleza
       wash_basin:
         heading: Lavatório
-        body: Shampoo, enxágue e repita. A água quente instantânea economiza tempo e água.
+        body: Use o shampoo e enxague quantas vezes precisar. Com o recurso de água quente instantânea, você economiza tempo e água. 
       products:
         heading: Prateleiras de varejo
         body: Exiba e venda orgulhosamente os produtos que você ama.
@@ -417,16 +417,16 @@ pt-BR:
         body: Trate clientes em frente a espelhos grandes e bem iluminados.
       tool_cabinet:
         heading: Gabinete de Ferramentas
-        body: O gabinete de ferramentas com tomadas dedicadas ajuda a manter os cabos organizados.
+        body: O gabinete de ferramentas com tomadas adaptadas ajudam a manter os cabos organizados.
       chair:
         heading: Cadeira hidráulica
         body: Proporcione conforto para você e seus clientes em uma cadeira hidráulica.
       cabinetry:
         heading: Gabinetes e gavetas
-        body: Gabinetes personalizados com armazenamento abundante ajudam a manter seu estúdio organizado.
+        body: Gabinetes modernos, equipados e personalizados que ajudam a manter o seu estúdio organizado.
       insulated_walls:
         heading: Paredes isoladas
-        body: Crie um ambiente íntimo e mantenha as distrações barulhentas longe.
+        body: Crie um ambiente íntimo e calmo, sem muitos barulhos e distrações.
 
     our_story:
       title: Nossa história
@@ -435,7 +435,7 @@ pt-BR:
       subhead: "O que começou como um simples acordo rabiscado em um guardanapo da Starbucks tornou-se o negócio de salões de beleza que é o maior e o que cresce mais rápido no país."
       body1: Em 2004, os cofundadores do Sola Salon Studios, Stratton Smith e Matt Briger, queriam fazer mais que projetar salões de beleza bonitos e prontos para uso. Eles decidiram construir uma comunidade próspera.
       body2: Desde o início, Stratton e Matt criaram um compromisso humilde de servir o profissional de beleza e de sempre colocar seus interesses em primeiro lugar. Sua visão era dar ao profissional de beleza o controle sobre seu ambiente, agenda, escolha de varejo, preços e muito mais. Quando eles estavam nos estágios iniciais de desenvolvimento do conceito inovador de estúdios de salão de beleza prontos para uso (turnkey) em um ambiente de co-working, eles se reuniram com a stylist baseada em Denver Kim Bennett Horvath.
-      callout1: "&quot;Eu fui inspirada por sua visão do Sola. Eles não queriam me vender nada nem competir com o meu negócio. Tudo foi tudo de minha escolha! Então me inscrevi na hora.&quot;"
+      callout1: "&quot;Eu fui inspirada pela visão do Sola. Eles não queriam me vender nada nem competir com o meu negócio. Foi tudo de minha escolha! Então me inscrevi na hora.&quot;"
       callout1_name: "Kim Bennett Horvath"
       body3: Impressionada pelo compromisso inabalável de Stratton e Matt em melhorar as vidas e os negócios de proprietários independentes de salão de beleza, Kim acreditou no negócio e se tornou a primeira stylist do Sola em Denver, Colorado.
       body4: Em 2005, foi inaugurado o primeiro local franqueado do Sola, abrindo caminho para os nossos melhores franqueados e operadores no local. E num piscar de olhos, 10 anos depois, o Sola celebrou 5.000 profissionais de beleza independentes em todo o país.
@@ -447,7 +447,7 @@ pt-BR:
       body8: O Sola abriu caminho para o movimento de stylists independentes, oferecendo novos níveis de liberdade criativa para aqueles que estão inspirados para fazer a transição. Nosso objetivo é tornar sua transição para a independência o mais suave possível. Você é independente e único no Sola, mas não está sozinho.
       body9: Através de nossas ferramentas de criação de negócios, ofertas educacionais, redes incentivadas e um forte sistema de suporte, o Sola dá poder a cabeleireiros, esteticistas, especialistas em unhas, massoterapeutas e outros profissionais afins a assumir o controle total de suas vidas e de suas carreiras. Com um futuro brilhante à frente, a equipe do Sola continua a identificar maneiras de cultivar o crescimento por meio da inovação, da criatividade e, o mais importante, da comunidade.
       join_our_community: Junte-se a nossa comunidade
-      join_our_community_text: "Esteja no negócio por você mesmo, mas não sozinho."
+      join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
       join_our_community_button_text: "Tenha seu salão de beleza"
 
     own:
@@ -663,7 +663,7 @@ pt-BR:
       testimonial_quote10: "Eu consegui mais clientes novos no Sola do que quando trabalhei para outra pessoa. E eu pude tirar proveito da enorme quantidade de conteúdo de educação também! O que o Sola me deu foi controle total. Não há nada como estar no controle total de seu negócio."
       testimonial_author10: Jennifer LaVinge
       join_our_community: "Junte-se a nossa comunidade"
-      join_our_community_text: "Esteja no negócio por você mesmo, mas não sozinho."
+      join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
       join_our_community_button: Tenha seu salão de beleza
 
     who_we_are:
@@ -672,20 +672,20 @@ pt-BR:
       subhead2: Experimente um nível de independência criativa e apoio profissional que você não encontrará em nenhum outro lugar.
       number_of_locations: Mais de 400
       locations_nationwide: Locais em todo o país
-      meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja no negócio por você mesmo, mas não sozinho!"
+      meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja em um negócio por conta própria, mas nunca sozinho!"
       body1: "Fornecemos estúdios de alta qualidade e totalmente equipados aos profissionais de beleza, juntamente com o suporte e as ferramentas de que precisam para iniciar seu negócio no salão de beleza em pouco tempo."
       body2: "Temos orgulho de ser o negócio de salão de beleza que é o maior e o que cresce mais rápido no país. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente::"
       to_help_set_them_up_for_success: Ajuda-los a ter sucesso.
-      join_our_diverse_community: "Junte-se à comunidade diversa do Sola Salon Studios"
+      join_our_diverse_community: "Junte-se à comunidade do Sola Salon Studios"
       join_our_diverse_community_text: "Agora com a força de quase 10.000 profissionais!"
       join_our_diverse_community_button_text: "Tenha seu salão de beleza"
       watch_our_video: Assista nosso vídeo
       our_mission: Nossa missão 
-      our_mission_text: "Para inspirar e apoiar os profissionais de beleza para perseguirem seus sonhos, elevarem suas carreiras e experimentarem a liberdade da propriedade de um salão de beleza."
+      our_mission_text: "Inspirar e apoiar os profissionais de beleza para sonhar livremente, superar os desafios e vencer, elevarem suas carreiras e experimentarem a liberdade da propriedade de um estúdio próprio de beleza."
       our_values: Nossos valores 
       our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios turnkey, prontos para o uso, juntamente com suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder a stylists independentes para viver suas melhores vidas."
       join_our_community: "Junte-se a nossa comunidade"
-      join_our_community_text: "Esteja no negócio por você mesmo, mas não sozinho."
+      join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
       join_our_community_button_text: "Tenha seu salão de beleza"
       experience_more: Experimente mais!
       sola_pro: "Sola Pro"
@@ -698,17 +698,17 @@ pt-BR:
     why_sola:
       title: Por que o Sola?
       meta_description: Por que o Sola?
-      hero_heading1: Todas as ferramentas e o suporte de que você precis,
-      hero_heading2: para projetar uma vida que você ama no salão de beleza.
+      hero_heading1: Todas as ferramentas e o suporte de que você precisa,
+      hero_heading2: para assumir o controle da vida que você ama, com toda liberdade no seu próprio salão de beleza.
       hero_button_text: Por que escolher o Sola?
       learn_more: Saiba mais
       dont_just_dream_do: Não sonhe apenas. Faça!
       become_a_salon_owner: Torne-se um dono de salão de beleza hoje.
       search_for_a_salon: Busque um estúdio perto de você.
-      be_in_business_heading: Esteja no negócio por você mesmo, mas não sozinho.
+      be_in_business_heading: Esteja em um negócio por conta própria, mas nunca sozinho.
       be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os convidados e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."  
       be_in_business_p2: De belos estúdios a ofertas exclusivas, educação e tecnologia, o Sola permite que você viva sua melhor vida, tanto pessoal quanto profissionalmente. Então, junte-se a nossa comunidade de mais de 10.000 proprietários independentes de salões de beleza para ficar um passo mais perto de viver a vida que você ama!
-      freedom_heading: O Sola te dá a liberdade de...
+      freedom_heading: O Sola te dá a liberdade...
       freedom_tile_1: Fuja da política e do drama dos salões de beleza em seu próprio estúdio privado e seguro.
       freedom_tile_2: Defina seu próprio preço para serviços e produtos.
       freedom_tile_3: Gerencie sua própria agenda com acesso ao estúdio 24 horas por dia, 7 dias por semana.
@@ -718,13 +718,13 @@ pt-BR:
       freedom_tile_7: Gerencie custos com uma variedade de comodidades, utilitários e WiFi, que estão incluídos.
       freedom_tile_8: Construa sua marca e permita que sua carreira prospere.
       freedom_tile_8_link: Encontre um estúdio
-      freedom_text: As recompensas de estar no negócio para si são inestimáveis, mas isso não significa que você tem de fazer tudo sozinho. A comunidade Sola está aqui para ajudá-lo durante cada etapa de sua jornada única de beleza.
+      freedom_text: As recompensas de estar no próprio negócio são inestimáveis, mas isso não significa que você tem de fazer tudo sozinho. A comunidade Sola está aqui para ajudá-lo durante cada etapa de sua jornada de beleza. Nós cuidamos de você!
       flexibility_statement: Se você está procurando mais flexibilidade em sua agenda e controle para explorar novas aventuras, o Sola pode ser o lugar perfeito para você.
       flexibility_subhead1: Prepare-se para explorar novas aventuras dentro e fora do salão de beleza!
       flexibility_subhead2: No Sola, nossa paixão está ajudando os profissionais de beleza a serem bem-sucedidos.
       flexibility_subhead3: Experimente a liberdade e os benefícios de uma carreira mais flexível, criativa e lucrativa.
-      beautiful_studios_exclusive_perks: Lindos estúdios, vantagens exclusivas.
-      at_sola_you_get_more: No Sola, você simplesmente ganha mais!
+      beautiful_studios_exclusive_perks: Estúdios incríveis 100% equipados
+      at_sola_you_get_more: Uma variedade de espaços para cabelereiros, especialistas em unhas, esteticistas e muito mais! E você ainda pode dar o seu toque pessoal!
       beautiful_studios: Lindos estúdios
       beautiful_studios_text: Uma variedade de layouts para cabeleireiros, especialistas em unhas, esteticistas e muito mais!
       community_support: Apoio da comunidade
