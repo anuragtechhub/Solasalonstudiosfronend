@@ -55,20 +55,20 @@ var SearchServices = React.createClass({
 			if (k.toLowerCase().indexOf(matchString) != -1) {
 				// category match
 				matches.push(
-					<a key={k} href="#" data-category={k} className={this.state.activeCategory == k ? 'active' : ''} onClick={this.onChangeActiveCategory}>{k}</a>
+					<a key={k} href="#" data-category={k} className="service-match" onClick={this.onChangeActiveCategory}>{k}</a>
 				);
 
 				// if category matches, then all sub-services match
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
 					matches.push(
-						<a key={SolaSearchServices[k][j].name} href="#" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
+						<a key={k + '_' + SolaSearchServices[k][j].name} href="#" className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
 					);
 				}
 			} else {
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
 					if (SolaSearchServices[k][j].name.toLowerCase().indexOf(matchString) != -1) {
 						matches.push(
-							<a key={SolaSearchServices[k][j].name} href="#" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
+							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
 						);
 					}
 				}
@@ -78,6 +78,7 @@ var SearchServices = React.createClass({
 		return (
 			<div className="row">
 				<div className="col-sm-12">
+					<h4>{I18n.t('sola_search.services')}</h4>
 					{matches}
 				</div>
 			</div>

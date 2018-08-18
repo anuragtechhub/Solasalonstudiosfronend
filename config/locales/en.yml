@@ -26,10 +26,12 @@ en:
         end_date: "Recurring weekly charge 4 end date"     
 
   sola_search:
+    services: Services
+    professionals: Professionals
+    businesses: Businesses
     search_bar:
       current_location: Current Location
       haircut: Haircut
-
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
@@ -629,7 +631,6 @@ en:
       find_a_sola: Find a Sola
       blog: Blog
       photo_gallery: Photo Gallery
-      
 
     testimonials:
       title: Testimonials

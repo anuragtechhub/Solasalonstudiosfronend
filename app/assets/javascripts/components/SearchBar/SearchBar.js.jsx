@@ -26,12 +26,12 @@ var SearchBar = React.createClass({
 	*/
 
 	onChangeQuery: function (query) {
-		console.log('onChangeQuery', query);
+		//console.log('onChangeQuery', query);
 		this.setState({query: query});
 	},
 
 	onChangeDate: function (date) {
-		console.log("onChangeDate", date);
+		//console.log("onChangeDate", date);
 		this.setState({date: date});
 	},
 

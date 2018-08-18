@@ -36,6 +36,11 @@
 			border: 1px solid #EEEEEE;
 			//border-top: 0;
 
+			h4 {
+				margin: 0;
+				padding: 4px 25px;
+			}
+
 			.col-sm-6, .col-sm-12 {
 				padding: 20px 0 15px 0;
 
@@ -79,6 +84,10 @@
 			a:hover, a:active {
 				color: $brand-pink !important;
 				background: #F5F9FB;
+
+				strong {
+					color: $brand-pink !important;
+				}
 			}
 		}
 	}
