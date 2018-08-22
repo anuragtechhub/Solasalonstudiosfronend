@@ -3,7 +3,14 @@ class SearchController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
   
   def stylist_search
-    
+    #p "ip=#{request.remote_ip}"
+    #if request.remote_ip == '127.0.0.1'
+    #  @location_name = "Denver, Colorado"
+    #else
+    #location = Geokit::Geocoders::IpGeocoder.geocode('12.215.42.19')
+    #p "location=#{location.inspect}"
+    #end
+    #p "@location_name=#{@location_name}"
   end
 
   def stylist_results

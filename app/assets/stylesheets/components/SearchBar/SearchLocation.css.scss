@@ -1,7 +1,37 @@
+@import 'mixins';
+@import 'variables';
+
 .SearchLocation {
 	.fa {
 		font-size: 20px;
 		line-height: 20px;
 		top: 18px !important;
+	}
+}
+
+.sola-search {
+	.pac-container {
+		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.1);
+		border: 1px solid #EEE !important;
+	}
+	.pac-item, .pac-item-query {
+		@include helvetica;
+		font-size: 15px;
+		line-height: 19px;
+	}
+	.pac-item-query {
+		margin-right: 2px;
+	}
+	.pac-item {
+		padding: 7px 15px;
+		display: block;
+		color: #737373 !important;
+		height: auto;		
+	}
+	.pac-icon {
+		display: none;
+	}
+	.pac-logo::after {
+		display: none;
 	}
 }
