@@ -21,6 +21,9 @@
     <div class="one-half column">
         <p><%= t('page.contact.body1').html_safe %></p>
         <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
+        
+        <% if I18n.locale.to_s != 'pt-BR' %>
+        
         <br>
         <div class="sola-select no-autobind select-a-state form">
           <div class="row">
@@ -105,24 +108,40 @@
           </div>
         </div>
 
+      <% end %>
+
     </div>
   </div>
 
-  <div class="row dashed">
-    <div class="one-third column">
-      <h3 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
-    </div>
-    <div class="two-thirds column">
-      <div class="sola-address">
-        <p><a href="tel:303.337.7652" class="tel"><strong>303.377.7652</strong></a></p>
-        <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
-        <p><a href="mailto:info@solasalonstudios.com" class="pink-link">info@solasalonstudios.com</a></p>
-        <p><%= link_to t('page.contact.united_states_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'us-franchising' %></p>
-        <p><%= link_to t('page.contact.international_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'int-franchising' %></p>
+  <% if I18n.locale.to_s == 'pt-BR' %>
+    <div class="row dashed">
+      <div class="one-third column">
+        <h3 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
+      </div>
+      <div class="two-thirds column">
+        <div class="sola-address">
+          <p>Av das Américas, 4430. Loja B. CEP: 22640-903.</p>
+          <p><a href="mailto:sejasola@solasalons.com" class="pink-link">sejasola@solasalons.com</a></p>
+          <p><%= link_to t('page.contact.international_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'int-franchising' %></p>
+        </div>
       </div>
     </div>
-  </div>
-
+  <% else %>
+    <div class="row dashed">
+      <div class="one-third column">
+        <h3 class="small"><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
+      </div>
+      <div class="two-thirds column">
+        <div class="sola-address">
+          <p><a href="tel:303.337.7652" class="tel"><strong>303.377.7652</strong></a></p>
+          <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
+          <p><a href="mailto:info@solasalonstudios.com" class="pink-link">info@solasalonstudios.com</a></p>
+          <p><%= link_to t('page.contact.united_states_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'us-franchising' %></p>
+          <p><%= link_to t('page.contact.international_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'int-franchising' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <% end %>

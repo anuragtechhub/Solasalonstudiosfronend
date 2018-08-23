@@ -33,17 +33,19 @@
       <%= link_to 'Brazil', 'https://www.solasalonstudios.ca/locations', :class => "active" %>
     <% end %>
   </div>
-  <div class="sola-select">
-    <div class="row">
-      <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
-      <div class="arrow"><span class="ss-dropdown"></span></div>
+  <% if I18n.locale.to_s != 'pt-BR' %>
+    <div class="sola-select">
+      <div class="row">
+        <div class="option-placeholder"><h3><%= t('page.locations.select_a_state').html_safe %></h3></div>
+        <div class="arrow"><span class="ss-dropdown"></span></div>
+      </div>
+      <div class="options">
+        <% @states.each do |location| %>
+        <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
+        <% end %>
+      </div>
     </div>
-    <div class="options">
-      <% @states.each do |location| %>
-      <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(location.state.downcase) : locations_by_province_path(location.state.downcase) %>"><%= location.state %></div>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="container">

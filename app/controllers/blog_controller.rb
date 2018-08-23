@@ -10,6 +10,8 @@ class BlogController < PublicWebsiteController
       @category = BlogCategory.find_by(:url_name => params[:category_url_name].split('_').join('-')) if params[:category_url_name]
       redirect_to blog_category_path(:category_url_name => @category.url_name) if @category
     end
+
+    p "country=#{country}"
     
     if @category
       # filter posts by category id
@@ -63,11 +65,18 @@ class BlogController < PublicWebsiteController
   private
 
   def get_country
-    if request.domain == 'solasalonstudios.ca'
-      return 'CA' 
+    # if request.domain == 'solasalonstudios.ca'
+    #   return 'CA' 
+    # else
+    #   return 'US'
+    # end
+    if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
+      return 'CA'
+    elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
+      return 'BR'
     else
       return 'US'
-    end
+    end    
   end
 
 end

@@ -6,6 +6,7 @@ class StylistsController < PublicWebsiteController
     # if request.domain == 'solasalonstudios.ca'
     #   redirect_to 'https://www.solasalonstudios.ca/locations/leaside/salon-professionals'
     # end
+    redirect_to :locations if I18n.locale.to_s == 'pt-BR'
   end
 
   def show
