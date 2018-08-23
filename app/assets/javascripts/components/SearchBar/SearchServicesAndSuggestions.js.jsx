@@ -1,4 +1,4 @@
-var SearchServices = React.createClass({
+var SearchServicesAndSuggestions = React.createClass({
 
 	getInitialState: function () {
 		return {
@@ -12,19 +12,26 @@ var SearchServices = React.createClass({
 		if (prevState.dropdownOpen != this.state.dropdownOpen) {
 			if (this.state.dropdownOpen) {
 				$(this.refs.dropdown).show();//.slideDown('fast');
-				$(window).on('click.SearchServices', this.close);
+				$(window).on('click.SearchServicesAndSuggestions', this.close);
 			} else {
 				$(this.refs.dropdown).hide();//.slideUp('fast');
-				$(window).off('click.SearchServices');
+				$(window).off('click.SearchServicesAndSuggestions');
 			}
 		}
 
 		// bold filter text
 		if (prevProps.query != this.props.query) {
+			console.log('the query has changed', this.props.query);
+
 			$(this.refs.dropdown).find('a').wrapInTag({
 			  tag: 'strong',
 			  words: [this.props.query]
 			});
+
+			// only get suggestions when query is at least 2 characters
+			if (this.props.query && this.props.query.length >= 2) {
+				this.getSuggestions(this.props.query);
+			}
 		}
 	},
 
@@ -36,7 +43,7 @@ var SearchServices = React.createClass({
 
 	render: function () {
 		return (
-			<div className="SearchServices">
+			<div className="SearchServicesAndSuggestions">
 				<span className="fa fa-search">&nbsp;</span>
 				<input ref="input" type="text" placeholder="Haircut, salon name, stylist name" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
@@ -150,10 +157,13 @@ var SearchServices = React.createClass({
 
 	close: function (e) {
 		var $target = $(e.target);
-		if (this.state.dropdownOpen && $target.parents('.SearchServices').length == 0) {
+		if (this.state.dropdownOpen && $target.parents('.SearchServicesAndSuggestions').length == 0) {
 			this.setState({dropdownOpen: false});
 		}
 	},
 
+	getSuggestions: function (query) {
+
+	},
 
 });
