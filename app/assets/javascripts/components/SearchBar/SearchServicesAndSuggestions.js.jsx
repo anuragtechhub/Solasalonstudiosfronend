@@ -163,7 +163,19 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	getSuggestions: function (query) {
+		var self = this;
 
+		console.log('getSuggestions', query);
+		
+		$.ajax({
+	    url: this.props.gloss_genius_api_url + 'suggestions?query=' + query,
+	    headers: {
+	    	"api_key": this.props.gloss_genius_api_key,
+	    	"device_id": this.props.fingerprint,
+	    }
+		}).done(function (response) {
+			console.log('getSuggestions done', response);
+		});
 	},
 
 });

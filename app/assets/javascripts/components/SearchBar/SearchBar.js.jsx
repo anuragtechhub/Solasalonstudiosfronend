@@ -4,6 +4,8 @@ var SearchBar = React.createClass({
 		return {
 			date: this.props.date || new Date(),
 			fingerprint: this.props.fingerprint,
+			gloss_genius_api_key: this.props.gloss_genius_api_key,
+			gloss_genius_api_url: this.props.gloss_genius_api_url,
 			location: this.props.location || '',
 			query: this.props.query || '',
 		};
@@ -25,7 +27,13 @@ var SearchBar = React.createClass({
 		return (
 			<div className="SearchBar">
 				<form method="post" action={this.props.path} onSubmit={this.onSubmit}>
-					<SearchServicesAndSuggestions fingerprint={this.state.fingerprint} query={this.state.query} onChangeQuery={this.onChangeQuery} />
+					<SearchServicesAndSuggestions 
+						fingerprint={this.state.fingerprint} 
+						gloss_genius_api_key={this.state.gloss_genius_api_key} 
+						gloss_genius_api_url={this.state.gloss_genius_api_url} 
+						query={this.state.query} 
+						onChangeQuery={this.onChangeQuery} 
+					/>
 					<SearchLocation location={this.state.location} onChangeLocation={this.onChangeLocation} />
 					<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />
 					<button type="submit" className="primary">Search</button> 
