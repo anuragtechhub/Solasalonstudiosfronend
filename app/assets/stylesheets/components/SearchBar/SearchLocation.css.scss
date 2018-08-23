@@ -27,6 +27,10 @@
 		display: block;
 		color: #737373 !important;
 		height: auto;		
+
+		&:hover, &:active {
+			background: #EEE;
+		}
 	}
 	.pac-icon {
 		display: none;
