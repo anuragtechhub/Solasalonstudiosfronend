@@ -13,7 +13,9 @@
           <div class="one-half column">
             <ul class="p">
               <li><%= link_to raw(t('page.contact.title')), :contact_us %></li>
-              <li><%= link_to raw(t('page.news.title')), :news %></li>
+              <% if I18n.locale.to_s != 'pt-BR' %> 
+                <li><%= link_to raw(t('page.news.title')), :news %></li>
+              <% end %>
               <li><%= link_to raw(t('page.testimonials.title')), :testimonials %></li>
               <!--<li><%= link_to raw(t('page.faqs.title')), :faqs %></li>-->
               <li><%= link_to raw(t('page.blog.title')), :blog %></li>
@@ -49,6 +51,9 @@
             <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
             <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
             <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <% elsif I18n.locale.to_s == 'pt-BR' %>
+            <li><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+            <li><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
           <% else %>
             <li><%= link_to 'https://www.facebook.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
             <li><%= link_to 'https://twitter.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>

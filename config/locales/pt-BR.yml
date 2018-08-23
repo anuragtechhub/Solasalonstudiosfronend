@@ -34,14 +34,14 @@ pt-BR:
   email_result: "<strong>e:</strong> %{email_address}"  
 
   header:
-    rent_studio_button: Tenha seu salão de beleza
+    rent_studio_button: Tenha seu salão
     contact_us: Fale conosco
     search_placeholder: Busque por nome ou local
     sola_pro_sign_in: Sola Pro
 
   nav:
     about_us: Sobre nós
-    own_your_salon: Tenha seu salão de beleza
+    own_your_salon: Tenha seu salão
     studio_amenities: Comodidades do estúdio
     sola_pro: Sola Pro
     solagenius: SolaGenius
@@ -55,7 +55,7 @@ pt-BR:
     our_studios: Nossos estúdios
 
   footer:
-    rent_studio_button: Tenha seu salão de beleza
+    rent_studio_button: Tenha seu salão
     second_column_heading: Mais informações
     third_column_heading: Mantenha contato
     join_newsletter: Assine nossa newsletter
@@ -219,7 +219,7 @@ pt-BR:
       answer10: <p>To reserve your studio, contact us via our Contact Us form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you&#8217;re ready to open for business.</p>    
 
     find_salon_pro:
-      title: Encontre um profissional de salão de beleza
+      title: Encontre um profissional
       meta_description: "To find a hairdresser, nail tech, esthetician or beauty professional, search by name or location. To schedule an appointment, contact your salon professional directly."
       heading1: Find a Sola Salon<br>Professional Near You
       search: Search
@@ -252,7 +252,7 @@ pt-BR:
       slider1_heading: Lindos estúdios,<br>vantagens exclusivas.
       slider1_subhead: No Sola, você simplesmente ganha mais
       slider1_button: Saiba mais
-      slider2_heading: Tenha seu salão de beleza
+      slider2_heading: Tenha seu salão
       slider2_subhead: Estúdios prontos para cabeleireiros, especialistas em unhas, esteticistas e muito mais!
       slider2_button: Você está curioso?
       slider3_heading: Esteja no negócio por você mesmo,<span class="mobile-br">&nbsp;</span>mas não sozinho.
@@ -266,7 +266,7 @@ pt-BR:
       for_customers: Para clientes
       search_location: Busque por nome ou local
       photo_gallery: Galeria de fotos
-      own_your_salon: Tenha seu salão de beleza
+      own_your_salon: Tenha seu salão
       find_your_sola: Encontre seu Sola
       find_a_sola_hairstylist: Encontre um Hairstylist do Sola
       search_salon_professionals: Busque mais de 10.000 profissionais de salão de beleza.
@@ -277,7 +277,7 @@ pt-BR:
     leadership:
       title: Equipe de Liderança
       meta_description: ""
-      read_bio: eia a Bio
+      read_bio: Biografia
       ceo: CEO
       chief_development_officer: Diretor de Desenvolvimento e Diretor Jurídico
       vice_president_marketing: Vice-Presidente de Marketing e Educação
@@ -405,7 +405,7 @@ pt-BR:
       view_gallery: Ver galeria de estúdios
       join_our_community: Junte-se a nossa comunidade
       join_our_community_text: Esteja em um negócio por conta própria, mas nunca sozinho.
-      join_our_community_button_text: Tenha seu salão de beleza
+      join_our_community_button_text: Tenha seu salão
       wash_basin:
         heading: Lavatório
         body: Use o shampoo e enxague quantas vezes precisar. Com o recurso de água quente instantânea, você economiza tempo e água. 
@@ -448,13 +448,13 @@ pt-BR:
       body9: Através de nossas ferramentas de criação de negócios, ofertas educacionais, redes incentivadas e um forte sistema de suporte, o Sola dá poder a cabeleireiros, esteticistas, especialistas em unhas, massoterapeutas e outros profissionais afins a assumir o controle total de suas vidas e de suas carreiras. Com um futuro brilhante à frente, a equipe do Sola continua a identificar maneiras de cultivar o crescimento por meio da inovação, da criatividade e, o mais importante, da comunidade.
       join_our_community: Junte-se a nossa comunidade
       join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
-      join_our_community_button_text: "Tenha seu salão de beleza"
+      join_our_community_button_text: "Tenha seu salão"
 
     own:
-      title: Tenha seu salão de beleza
+      title: Tenha seu salão
       meta_description: "Estúdios para cabeleireiros, especialistas em unhas, esteticistas e muito mais. Arrende um conjunto pronto de salão de beleza para controlar seu ambiente, gerenciar sua agenda e ser seu próprio patrão."
       tabs:
-        own_your_salon: Tenha seu salão de beleza
+        own_your_salon: Tenha seu salão
         our_studios: Nossos estúdios
         sola_pro: Sola Pro
         sola_sessions: Sola Sessions
@@ -664,7 +664,7 @@ pt-BR:
       testimonial_author10: Jennifer LaVinge
       join_our_community: "Junte-se a nossa comunidade"
       join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
-      join_our_community_button: Tenha seu salão de beleza
+      join_our_community_button: Tenha seu salão
 
     who_we_are:
       title: Quem somos nós
@@ -678,7 +678,7 @@ pt-BR:
       to_help_set_them_up_for_success: Ajuda-los a ter sucesso.
       join_our_diverse_community: "Junte-se à comunidade do Sola Salon Studios"
       join_our_diverse_community_text: "Agora com a força de quase 10.000 profissionais!"
-      join_our_diverse_community_button_text: "Tenha seu salão de beleza"
+      join_our_diverse_community_button_text: "Tenha seu salão"
       watch_our_video: Assista nosso vídeo
       our_mission: Nossa missão 
       our_mission_text: "Inspirar e apoiar os profissionais de beleza para sonhar livremente, superar os desafios e vencer, elevarem suas carreiras e experimentarem a liberdade da propriedade de um estúdio próprio de beleza."
@@ -686,7 +686,7 @@ pt-BR:
       our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios turnkey, prontos para o uso, juntamente com suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder a stylists independentes para viver suas melhores vidas."
       join_our_community: "Junte-se a nossa comunidade"
       join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
-      join_our_community_button_text: "Tenha seu salão de beleza"
+      join_our_community_button_text: "Tenha seu salão"
       experience_more: Experimente mais!
       sola_pro: "Sola Pro"
       sola_pro_text: "Nosso aplicativo personalizado, Sola Pro, para ofertas especiais e educação continuada ao seu alcance."
@@ -726,7 +726,7 @@ pt-BR:
       beautiful_studios_exclusive_perks: Estúdios incríveis 100% equipados
       at_sola_you_get_more: Uma variedade de espaços para cabelereiros, especialistas em unhas, esteticistas e muito mais! E você ainda pode dar o seu toque pessoal!
       beautiful_studios: Lindos estúdios
-      beautiful_studios_text: Uma variedade de layouts para cabeleireiros, especialistas em unhas, esteticistas e muito mais!
+      beautiful_studios_text: Uma variedade de espaços para cabelereiros, especialistas em unhas, esteticistas e muito mais!
       community_support: Apoio da comunidade
       community_support_text: Junte-se a uma comunidade de quase 10.000 profissionais de salão de beleza para estar no negócio por si mesmo, mas não sozinho.
       sola_blog: Blog do Sola
