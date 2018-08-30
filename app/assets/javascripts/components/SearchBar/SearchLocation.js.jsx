@@ -9,8 +9,8 @@ var SearchLocation = React.createClass({
 
 		autocomplete.addListener('place_changed', function() {
     	var place = autocomplete.getPlace();
-    	console.log('place', place);
-    	self.props.onChangeLocation(place.formatted_address);
+    	//console.log('place.geometry.location', place.geometry.location.lat(), place.geometry.location.lng());
+    	self.props.onChangeLocation(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
     });
 	},
 

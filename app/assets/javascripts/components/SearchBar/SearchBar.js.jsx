@@ -7,6 +7,8 @@ var SearchBar = React.createClass({
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
 			location: this.props.location || '',
+			lat: this.props.lat || '',
+			lng: this.props.lng || '',
 			query: this.props.query || '',
 		};
 	},
@@ -53,9 +55,9 @@ var SearchBar = React.createClass({
 		this.setState({date: date});
 	},
 
-	onChangeLocation: function (location) {
+	onChangeLocation: function (location, lat, lng) {
 		//console.log('onChangeLocation', location);
-		this.setState({location: location});
+		this.setState({location: location, lat: lat, lng: lng});
 	},
 
 	onChangeQuery: function (query) {
