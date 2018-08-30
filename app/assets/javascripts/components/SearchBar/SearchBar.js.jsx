@@ -53,17 +53,14 @@ var SearchBar = React.createClass({
 	*/
 
 	onChangeDate: function (date) {
-		//console.log("onChangeDate", date);
 		this.setState({date: date});
 	},
 
 	onChangeLocation: function (location, lat, lng) {
-		//console.log('onChangeLocation', location);
 		this.setState({location: location, lat: lat, lng: lng});
 	},
 
 	onChangeQuery: function (query) {
-		//console.log('onChangeQuery', query);
 		this.setState({query: query});
 	},
 
@@ -75,8 +72,9 @@ var SearchBar = React.createClass({
 		
 		if (hasQuery && hasLatLng) {
 			// all good - proceed to search results
+			window.location.href = this.props.path + '?' + this.getParams();
 		} else {
-			var error = null;
+			// we have errors
 			if (!hasQuery && !hasLatLng) {
 				this.setState({error: I18n.t('sola_search.please_enter_a_service_and_a_location')});
 			} else if (hasQuery && !hasLatLng) {
@@ -92,6 +90,17 @@ var SearchBar = React.createClass({
 	/**
 	* Helper functions
 	*/
+
+	getParams: function () {
+		return $.param({
+			date: this.state.date,
+			fingerprint: this.state.fingerprint,
+			lat: this.state.lat,
+			lng: this.state.lng,
+			query: this.state.query,
+		});
+	},
+
 	hasQuery: function () {
 		return this.state.query && this.state.query != '';
 	},
