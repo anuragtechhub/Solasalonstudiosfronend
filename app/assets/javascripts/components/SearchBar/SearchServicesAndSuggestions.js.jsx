@@ -58,6 +58,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	renderCategoriesAndServicesMatches: function () {
+		var self = this;
 		var matches = [];
 		var matchString = this.props.query.toLowerCase();
 
@@ -71,14 +72,14 @@ var SearchServicesAndSuggestions = React.createClass({
 				// if category matches, then all sub-services match
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
 					matches.push(
-						<a key={k + '_' + SolaSearchServices[k][j].name} href="#" className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
+						<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
 					);
 				}
 			} else {
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
 					if (SolaSearchServices[k][j].name.toLowerCase().indexOf(matchString) != -1) {
 						matches.push(
-							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
+							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
 						);
 					}
 				}
@@ -97,6 +98,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 	renderAllCategoriesAndServices: function () {
 		//console.log('SearchServices', SolaSearchServices);
+		var self = this;
 		var categories = [];
 		var services = []
 		
@@ -107,7 +109,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 			var category_services = SolaSearchServices[k].map(function (service) {
 				return (
-					<a key={service.name} href="#" data-service={service.name}>{service.name}</a>
+					<a key={service.name} href="#" data-service={service.name} onClick={self.onSelectService.bind(null, service.name)}>{service.name}</a>
 				);
 			});
 
@@ -146,7 +148,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	renderProfessionals: function () {
 		if (this.state.professionals && this.state.professionals.length > 0) {
 			var professionals = this.state.professionals.map(function (professional) {
-				return <a key={professional.booking_page_url} href="#">{professional.full_name}</a>
+				return <a key={professional.booking_page_url} href={professional.booking_page_url}>{professional.full_name}</a>
 			});
 
 			return (
@@ -165,7 +167,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	renderSalons: function () {
 		if (this.state.salons && this.state.salons.length > 0) {
 			var salons = this.state.salons.map(function (salon) {
-				return <a key={salon.booking_page_url} href="#">{salon.business_name}</a>
+				return <a key={salon.booking_page_url} href={salon.booking_page_url}>{salon.business_name}</a>
 			});
 
 			return (
@@ -201,6 +203,12 @@ var SearchServicesAndSuggestions = React.createClass({
 		if (!this.state.dropdownOpen) {
 			this.setState({dropdownOpen: true});
 		}
+	},
+
+	onSelectService: function (service, event) {
+		event.preventDefault();
+		this.setState({dropdownOpen: false});
+		this.props.onChangeQuery(service);
 	},
 
 

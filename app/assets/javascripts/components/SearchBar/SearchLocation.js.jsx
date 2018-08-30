@@ -9,6 +9,7 @@ var SearchLocation = React.createClass({
 
 		autocomplete.addListener('place_changed', function() {
     	var place = autocomplete.getPlace();
+    	console.log('place', place);
     	self.props.onChangeLocation(place.formatted_address);
     });
 	},
