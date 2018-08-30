@@ -29,9 +29,12 @@ en:
     services: Services
     professionals: Professionals
     businesses: Businesses
-    search_bar:
-      current_location: Current Location
-      haircut: Haircut
+    current_location: Current Location
+    haircut: Haircut
+    services_and_suggestions_placeholder: Haircut, salon name, stylist name
+    please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
+    please_enter_a_service: Please enter a service (e.g. haircut)
+    please_enter_a_location: Please enter your location
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

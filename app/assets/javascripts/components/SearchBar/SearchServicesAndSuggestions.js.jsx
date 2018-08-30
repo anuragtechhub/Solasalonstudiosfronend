@@ -47,7 +47,7 @@ var SearchServicesAndSuggestions = React.createClass({
 		return (
 			<div className="SearchServicesAndSuggestions">
 				<span className="fa fa-search">&nbsp;</span>
-				<input ref="input" type="text" placeholder="Haircut, salon name, stylist name" onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
+				<input ref="input" type="text" placeholder={I18n.t('sola_search.services_and_suggestions_placeholder')} onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
 				<div className="Dropdown" ref="dropdown">
 					{this.props.query == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}

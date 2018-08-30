@@ -5,6 +5,19 @@
 	position: relative;
 	margin: 15px 0;//7px;
 
+	form:after {
+		content: "";
+    display: table;
+    clear: both;
+	}
+
+	.error {
+		padding-top: 10px;
+		font-size: 15px;
+		line-height: 17px;
+		color: red;
+	}
+
 	.SearchName, .SearchServicesAndSuggestions, .SearchLocation, .SearchDatePicker {
 		position: relative;
 		width: 33.3333%;
