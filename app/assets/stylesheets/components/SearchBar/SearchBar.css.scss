@@ -47,6 +47,11 @@
 				&.active {
 					background: #F5F9FB !important;
 				}
+
+				&.dropdown-section {
+					padding-top: 15px;
+					border-top: 1px solid #EEE;
+				}
 			}
 
 			.service {

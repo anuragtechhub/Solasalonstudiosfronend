@@ -54,7 +54,7 @@ var SearchBar = React.createClass({
 	},
 
 	onChangeLocation: function (location) {
-		console.log('onChangeLocation', location);
+		//console.log('onChangeLocation', location);
 		this.setState({location: location});
 	},
 
@@ -64,7 +64,7 @@ var SearchBar = React.createClass({
 	},
 
 	onSubmit: function (e) {
-		console.log('submit SearchBar');
+		console.log('submit');
 		//e.preventDefault();
 	},
 

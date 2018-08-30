@@ -4,6 +4,8 @@ var SearchServicesAndSuggestions = React.createClass({
 		return {
 			activeCategory: 'Barber',
 			dropdownOpen: false,
+			salons: null,
+			professionals: null,
 		};
 	},
 
@@ -49,6 +51,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 				<div className="Dropdown" ref="dropdown">
 					{this.props.query == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
+					{this.renderProfessionalsAndSalons()}
 				</div>
 			</div>
 		);
@@ -127,6 +130,57 @@ var SearchServicesAndSuggestions = React.createClass({
 		);
 	},
 
+	renderProfessionalsAndSalons: function () {
+		var professionals = this.renderProfessionals();
+		var salons = this.renderSalons();
+
+		if (professionals || salons) {
+			return (
+				<div className="professional-and-salon-suggestions">{professionals}{salons}</div>
+			);
+		} else {
+			return null;
+		}
+	},
+
+	renderProfessionals: function () {
+		if (this.state.professionals && this.state.professionals.length > 0) {
+			var professionals = this.state.professionals.map(function (professional) {
+				return <a key={professional.booking_page_url} href="#">{professional.full_name}</a>
+			});
+
+			return (
+				<div className="row">
+					<div className="col-sm-12 dropdown-section">
+						<h4>{I18n.t('sola_search.professionals')}</h4>
+						{professionals}
+					</div>
+				</div>
+			);
+		} else {
+			return null;
+		}
+	},
+
+	renderSalons: function () {
+		if (this.state.salons && this.state.salons.length > 0) {
+			var salons = this.state.salons.map(function (salon) {
+				return <a key={salon.booking_page_url} href="#">{salon.business_name}</a>
+			});
+
+			return (
+				<div className="row">
+					<div className="col-sm-12 dropdown-section">
+						<h4>{I18n.t('sola_search.businesses')}</h4>
+						{salons}
+					</div>
+				</div>
+			);
+		} else {
+			return null;
+		}
+	},
+
 
 
 	/*
@@ -174,7 +228,10 @@ var SearchServicesAndSuggestions = React.createClass({
 	    	"device_id": this.props.fingerprint,
 	    }
 		}).done(function (response) {
-			console.log('getSuggestions done', response);
+			var json_response = JSON.parse(response);
+			var professionals = json_response.professionals;
+			var salons = json_response.salons;
+			self.setState({professionals: professionals, salons: salons});
 		});
 	},
 

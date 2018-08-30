@@ -23,11 +23,19 @@ var SearchLocation = React.createClass({
 		return (
 			<div className="SearchLocation">
 				<span className="fa fa-map-marker">&nbsp;</span>
-				<input ref="input" type="text" placeholder="Current Location" value={this.props.location} />
+				<input ref="input" type="text" placeholder="Current Location" value={this.props.location} onChange={this.onChange} />
 			</div>
 		);
 	},
 
 
+
+	/**
+	* Change handler
+	*/
+
+	onChange: function (event) {
+		this.props.onChangeLocation(event.target.value);
+	},
 
 });
