@@ -1,9 +1,13 @@
 <%= react_component 'SolaSearch', {
 	date: @date,
 	fingerprint: params[:fingerprint],
-	professionals: @professionals,
 	gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
-	gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],	
+	gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+	lat: params[:lat],
+	lng: params[:lng],
+	locations: @locations,
+	professionals: @professionals,
+	zoom: 9,
 } %>
 
 <% @body_class = 'sola-search' %>

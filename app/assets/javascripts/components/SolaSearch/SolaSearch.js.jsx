@@ -7,7 +7,11 @@ var SolaSearch = React.createClass({
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
-			professionals: this.props.professionals || []
+			lat: this.props.lat,
+			lng: this.props.lng,
+			locations: this.props.locations || [],
+			professionals: this.props.professionals || [],
+			zoom: this.props.zoom,
 		};
 	},
 
@@ -18,12 +22,12 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		console.log('render SolaSearch', this.state.professionals);
+		console.log('render SolaSearch locations', this.state.locations);
 		
 		return (
 			<div className="SolaSearch">
 				<ProfessionalResults professionals={this.state.professionals} />
-				<LocationMap />
+				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} zoom={this.state.zoom} />
 			</div>
 		);
 	},
