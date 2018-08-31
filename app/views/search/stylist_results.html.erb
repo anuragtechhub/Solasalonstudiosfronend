@@ -1,7 +1,7 @@
 <%= react_component 'SolaSearch', {
-	date: DateTime.now,
+	date: @date,
+	fingerprint: params[:fingerprint],
 	professionals: @professionals,
-	path: stylist_search_results_path,	
 	gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
 	gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],	
 } %>

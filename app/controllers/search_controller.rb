@@ -22,6 +22,9 @@ class SearchController < PublicWebsiteController
     #p "results_response=#{results_response}"
 
     @professionals = JSON.parse(results_response)
+    @date = DateTime.parse(params[:date]) || DateTime.now
+
+    p "@date=#{@date}"
 
     #p "@professionals=#{@professionals}"
   end

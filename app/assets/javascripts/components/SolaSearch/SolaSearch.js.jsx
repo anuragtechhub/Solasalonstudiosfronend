@@ -2,6 +2,11 @@ var SolaSearch = React.createClass({
 
 	getInitialState: function () {
 		return {
+			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
+			error: null,
+			fingerprint: this.props.fingerprint,
+			gloss_genius_api_key: this.props.gloss_genius_api_key,
+			gloss_genius_api_url: this.props.gloss_genius_api_url,
 			professionals: this.props.professionals || []
 		};
 	},
@@ -32,10 +37,10 @@ var SolaSearch = React.createClass({
 	getAvailabilities: function () {
 		var self = this;
 
-		//console.log('getSuggestions', query);
+		console.log('getAvailabilities');
 		
 		$.ajax({
-	    url: this.props.gloss_genius_api_url + 'suggestions?query=' + query,
+	    url: this.props.gloss_genius_api_url + 'availabilities',
 	    headers: {
 	    	"api_key": this.props.gloss_genius_api_key,
 	    	"device_id": this.props.fingerprint,
