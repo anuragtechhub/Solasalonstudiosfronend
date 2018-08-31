@@ -24,6 +24,85 @@
 			left: 180px;
 			right: 25px;
 			bottom: 25px;
+			z-index: 2;
+		}
+
+		.ProfessionalServicesDropdown {
+			position: absolute;
+			top: 25px;
+			right: 25px;
+			z-index: 3;
+
+			.dropdown-toggle {
+				height: 36px;
+				position: relative;
+				border-radius: 4px;
+				background: #F5F9FB !important;
+				border: 0 !important;
+				margin: 0 !important;
+				padding: 10px 21px 10px 15px !important;
+				letter-spacing: 0;
+				color: #000000;	
+				@include helvetica;
+				font-size: 14px;	
+				font-weight: 300;	
+				line-height: 16px;
+
+				&:hover, &:active, &:focus {
+					background: #F5F9FB !important;
+					border: 0 !important;
+					box-shadow: none !important;
+				}
+
+				strong {
+					font-weight: 900;
+				}
+
+				.fa {
+					float: right;
+					position: relative;
+					top: -6px;
+					right: -6px;
+					font-size: 28px;
+					line-height: 28px;
+					color: #D1D3D4;
+				}
+				
+				&:after {
+					display: none;
+				}
+			}
+
+			.dropdown-menu {
+				top: 2px !important;
+				right: 0;
+				border-radius: 4px;
+				background-color: #F5F9FB !important;
+				border: 0 !important;
+				max-height: 130px;
+				overflow: hidden;
+				overflow-y: scroll;
+
+				li {
+					margin: 0;
+					padding: 0;
+				}
+
+				a, a:link, a:visited, a:hover, a:active {
+					display: block;
+					color: #000000;	
+					@include helvetica;
+					font-size: 14px;	
+					font-weight: 300;	
+					line-height: 16px;
+					padding: 5px 10px;
+
+					strong {
+						font-weight: 900;
+					}
+				}
+			}
+
 		}
 
 		.ProfessionalCoverImage {
