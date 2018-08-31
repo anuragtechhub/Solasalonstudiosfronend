@@ -2,7 +2,7 @@ var SearchBar = React.createClass({
 
 	getInitialState: function () {
 		return {
-			date: this.props.date || new Date(),
+			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			error: null,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
@@ -69,7 +69,7 @@ var SearchBar = React.createClass({
 
 		var hasQuery = this.hasQuery();
 		var hasLatLng = this.hasLatLng();
-		
+
 		if (hasQuery && hasLatLng) {
 			// all good - proceed to search results
 			window.location.href = this.props.path + '?' + this.getParams();
@@ -93,7 +93,7 @@ var SearchBar = React.createClass({
 
 	getParams: function () {
 		return $.param({
-			date: this.state.date,
+			date: this.state.date.format('YYYY-MM-DD'),
 			fingerprint: this.state.fingerprint,
 			lat: this.state.lat,
 			lng: this.state.lng,
