@@ -14,6 +14,8 @@ class SearchController < PublicWebsiteController
   end
 
   def stylist_results
+    
+    
   end
 
   def results
