@@ -1,8 +1,53 @@
+@import 'mixins';
+@import 'variables';
+
 .ProfessionalResults {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0%;
 	right: 40%;
-	background: lightgray;	
+	background: #FFF;
+	overflow: hidden;
+  overflow-y: scroll;
+
+	.ProfessionalResult {
+		position: relative;
+		@include helvetica;
+		background: #FFF;
+		padding: 25px;
+		border-top: 1px solid #EEE;
+
+		.ProfessionalResultDetails {
+			position: absolute;
+			top: 25px;
+			left: 180px;
+			right: 25px;
+			bottom: 25px;
+		}
+
+		.ProfessionalCoverImage {
+			img {
+				display: block;
+				height: 130px;	
+				width: 130px;	
+				border-radius: 2px;
+			}
+		}
+
+		.ProfessionalName {
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 24px;
+			color: #000000;	
+			margin-bottom: 3px;
+		}
+
+		.ProfessionalAddress {
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 16px;
+			color: #4A4A4A;
+		}
+	}
 }

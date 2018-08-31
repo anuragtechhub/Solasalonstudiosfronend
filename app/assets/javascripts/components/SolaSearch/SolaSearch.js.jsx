@@ -34,23 +34,22 @@ var SolaSearch = React.createClass({
 	* Helper functions
 	*/
 
-	getAvailabilities: function () {
+	getAvailabilities: function (service_guids) {
 		var self = this;
-
-		console.log('getAvailabilities');
 		
 		$.ajax({
-	    url: this.props.gloss_genius_api_url + 'availabilities',
+			data: {
+				service_guids: service_guids
+			},
 	    headers: {
 	    	"api_key": this.props.gloss_genius_api_key,
 	    	"device_id": this.props.fingerprint,
-	    }
+	    },
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			var json_response = JSON.parse(response);
-			var professionals = json_response.professionals;
-			var salons = json_response.salons;
-			self.setState({professionals: professionals, salons: salons});
-		});
+			console.log('getAvailabilities response', response);
+		}); 
 	},
 
 });
