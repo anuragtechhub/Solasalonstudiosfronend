@@ -29,18 +29,18 @@
 
 		.ProfessionalServicesDropdown {
 			position: absolute;
-			top: 25px;
+			top: 21px;
 			right: 25px;
 			z-index: 3;
 
 			.dropdown-toggle {
-				height: 36px;
+				height: 32px;
 				position: relative;
 				border-radius: 4px;
 				background: #F5F9FB !important;
 				border: 0 !important;
 				margin: 0 !important;
-				padding: 10px 21px 10px 15px !important;
+				padding: 8px 21px 8px 15px !important;
 				letter-spacing: 0;
 				color: #000000;	
 				@include helvetica;
@@ -55,6 +55,7 @@
 				}
 
 				strong {
+					margin-left: 3px;
 					font-weight: 900;
 				}
 
@@ -94,8 +95,8 @@
 					@include helvetica;
 					font-size: 14px;	
 					font-weight: 300;	
-					line-height: 16px;
-					padding: 5px 10px;
+					line-height: 18px;
+					padding: 7px 10px;
 
 					strong {
 						font-weight: 900;
@@ -119,7 +120,7 @@
 			font-weight: 300;	
 			line-height: 24px;
 			color: #000000;	
-			margin-bottom: 3px;
+			margin-bottom: 5px;
 		}
 
 		.ProfessionalAddress {
