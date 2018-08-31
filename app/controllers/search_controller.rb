@@ -14,8 +14,16 @@ class SearchController < PublicWebsiteController
   end
 
   def stylist_results
-    
-    
+    results_response = `curl -X GET \
+    '#{ENV['GLOSS_GENIUS_API_URL']}search?query=#{params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}' \
+    -H 'api_key: #{ENV['GLOSS_GENIUS_API_KEY']}' \
+    -H 'device_id: #{params[:fingerprint]}'`
+
+    #p "results_response=#{results_response}"
+
+    @professionals = JSON.parse(results_response)
+
+    #p "@professionals=#{@professionals}"
   end
 
   def results

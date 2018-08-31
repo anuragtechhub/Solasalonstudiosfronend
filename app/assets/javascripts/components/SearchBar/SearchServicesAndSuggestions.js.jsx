@@ -23,7 +23,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 		// bold filter text
 		if (prevProps.query != this.props.query) {
-			console.log('the query has changed', this.props.query);
+			//console.log('the query has changed', this.props.query);
 
 			$(this.refs.dropdown).find('a').wrapInTag({
 			  tag: 'strong',
@@ -227,7 +227,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	getSuggestions: function (query) {
 		var self = this;
 
-		console.log('getSuggestions', query);
+		//console.log('getSuggestions', query);
 		
 		$.ajax({
 	    url: this.props.gloss_genius_api_url + 'suggestions?query=' + query,

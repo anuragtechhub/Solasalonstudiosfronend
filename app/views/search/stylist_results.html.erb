@@ -1,12 +1,9 @@
 <%= react_component 'SolaSearch', {
 	date: DateTime.now,
-	stylists: [
-		{
-			id: 1,
-			name: 'Sam Gordon',
-			address: '2041 Rosecrans Ave #170 El Segundo, CA 90245',
-		}
-	],
+	professionals: @professionals,
+	path: stylist_search_results_path,	
+	gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+	gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],	
 } %>
 
 <% @body_class = 'sola-search' %>
