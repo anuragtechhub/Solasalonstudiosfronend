@@ -1,5 +1,12 @@
 var LocationsMap = React.createClass({
 
+	getInitialState: function () {
+		return {
+			processedMarkers: false,
+			map: false,
+		}
+	},
+
 	componentDidMount: function () {
 		var self = this;
 
@@ -7,7 +14,7 @@ var LocationsMap = React.createClass({
 	    div: self.refs.map,
 	    lat: self.props.lat,
 	    lng: self.props.lng,
-	    //zoom: self.props.zoom,
+	    zoom: self.props.zoom,
 	    streetViewControl: false,
 	    draggable: true,//$('#is_salon').length > 0 ? false : true,
 	    scrollwheel: false,//$('#is_salon').length > 0 ? false : true,
@@ -17,14 +24,16 @@ var LocationsMap = React.createClass({
 	    },
 	  });
 
-		// google.maps.event.addListener(map, "tilesloaded", function () {
-		// 	console.log('tilesloaded');
-		// 	self.processMarkers();
-		// });	 
+	  this.setState({map: map});
 
-	  this.setState({map: map}, function () {
-	  	self.processMarkers();
-	  });
+		google.maps.event.addListener(map.map, "tilesloaded", function () {
+			//console.log('tilesloaded!!!');
+			if (!self.state.processedMarkers) {
+				//console.log('processMarkers!!!');
+				self.processMarkers();
+				self.setState({processedMarkers: true});
+			}
+		});	 
 	},
 
 	render: function () {
@@ -45,8 +54,8 @@ var LocationsMap = React.createClass({
 	  var MAX_ZOOM = 21;
 	  var MIN_ZOOM = 0;
 
-	  console.log('map', map);
-	  console.log('map.getProjection()', map.getProjection());
+	  // console.log('map', map);
+	  // console.log('map.getProjection()', map.getProjection());
 
 	  var ne = map.getProjection().fromLatLngToPoint(bounds.getNorthEast());
 	  var sw = map.getProjection().fromLatLngToPoint(bounds.getSouthWest()); 
@@ -66,7 +75,12 @@ var LocationsMap = React.createClass({
 	},
 
 	processMarkers: function () {
-		console.log('processMarkers!');
+		if (!this.state.map) {
+			//console.log('no map - returning')
+			return;
+		}
+
+		//console.log('processMarkers!');
 	  var latlngbounds = new google.maps.LatLngBounds();
 	  //var zoomCount = 0;
 
