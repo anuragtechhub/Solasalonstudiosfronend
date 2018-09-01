@@ -34,6 +34,10 @@ var LocationsMap = React.createClass({
 				self.setState({processedMarkers: true});
 			}
 		});	 
+
+		$(self.refs.map).on('click', '.popup-bubble-content', function (event) {
+			console.log('click on marker', $(event.target).html(), event.target.dataset.id);
+		});
 	},
 
 	render: function () {
@@ -88,15 +92,22 @@ var LocationsMap = React.createClass({
 			var location = this.props.locations[i];
 			//console.log('location', location);
 			latlngbounds.extend(new google.maps.LatLng(location.latitude, location.longitude));
-			var marker = this.state.map.addMarker({
-        lat: location.latitude,
-        lng: location.longitude,
-        //icon: markerIcon,
-        title: location.name,
-        click: function (e) {
-          console.log('click marker!');
-        }
-      });
+		  var contentDiv = document.createElement('div');
+		  contentDiv.dataset.id = location.id;
+		  var contentText = document.createTextNode(location.name);
+		  contentDiv.append(contentText);
+		  popup = new Popup(new google.maps.LatLng(location.latitude, location.longitude), contentDiv);
+		  popup.setMap(this.state.map.map);
+
+			// var marker = this.state.map.addMarker({
+   //      lat: location.latitude,
+   //      lng: location.longitude,
+   //      //icon: markerIcon,
+   //      title: location.name,
+   //      click: function (e) {
+   //        console.log('click marker!');
+   //      }
+   //    });
 		}
 
 		this.state.map.map.setCenter(latlngbounds.getCenter());

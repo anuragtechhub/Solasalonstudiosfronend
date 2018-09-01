@@ -23,7 +23,7 @@ class SearchController < PublicWebsiteController
 
     @professionals = JSON.parse(results_response)
     @date = DateTime.parse(params[:date]) || DateTime.now
-    @locations = Location.near([params[:lat].to_f, params[:lng].to_f])
+    @locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
     
     #p "@locations=#{@locations.size}"
     #p "@date=#{@date}"
