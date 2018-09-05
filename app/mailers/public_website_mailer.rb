@@ -1,6 +1,13 @@
 class PublicWebsiteMailer < ActionMailer::Base
   default :from => "Sola Salon Studios <inquiry@solasalonstudios.com>"
 
+  def sejasola(nome, email, telefone)
+    @nome = nome
+    @email = email
+    @telefone = telefone
+    mail(to: 'sejasola@solasalons.com', bcc: 'jeff@jeffbail.com', from: "Sola Salon Studios <sejasola@solasalonstudios.com.br>", subject: 'Seja Sola - Submissão de Formulário')
+  end
+
   def request_a_tour(requestTourInquiry)
     # headers['X-SMTPAPI'] = `{
     #   "category": "Request a Tour",

@@ -11,11 +11,13 @@
       <!-- SET: FAVICON -->
       <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
-      <link href=`https://fonts.googleapis.com…Dosis:400,700|Lato:300,400,700` rel=`stylesheet` type=`text/css`>
+      <link href="https://fonts.googleapis.com…Dosis:400,700|Lato:300,400,700" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css">
       <!-- SET: STYLESHEET -->
-      <link rel="stylesheet" href="css/bootstrap4hack.css">
+      <%= stylesheet_link_tag "bootstrap4hack", media: "all" %>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <%= stylesheet_link_tag "slick", media: "all" %>
+      <%= stylesheet_link_tag "slick-theme", media: "all" %>
       <%= stylesheet_link_tag "sejasola", media: "all" %>
       <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,22 +48,22 @@
                   <div class="quer text-left">
                      <span>Quer Conhecer o Sola?</span>
                      <p>Preencha o formulário abaixoe<br> um de nossos representantes <br>entrará em contato</p>
-                     <form>
+                     <form id="form">
                         <ul>
                            <li>
-                              <label>Seu nome</label>
-                              <input type="text" name="name" placeholder="">
+                              <label style="margin-top:6px">Seu nome</label>
+                              <input type="text" name="nome" id="nome" placeholder="">
                            </li>
                            <li>
-                              <label>Seu email</label>
-                              <input type="text" name="name" placeholder="">
+                              <label style="margin-top:6px">Seu email</label>
+                              <input type="text" name="email" id="email" placeholder="">
                            </li>
                            <li>
-                              <label>Seu telefone</label>
-                              <input type="text" name="name" placeholder="">
+                              <label style="margin-top:6px">Seu telefone</label>
+                              <input type="text" name="telefone" id="telefone" placeholder="">
                            </li>
                            <li>
-                              <button type="button">ENVIAR</button>
+                              <button type="submit" id="submit">ENVIAR</button>
                            </li>
                         </ul>
                         <div class="clear"></div>
@@ -217,7 +219,7 @@
                            </div>
                         </li>
                      </ul>
-                     <a href="#" class="falebtn falebtn2">Fale Com Nossos Especialistas</a>
+                     <a href="#" class="falebtn falebtn2" style="position: relative; z-index: 999999">Fale Com Nossos Especialistas</a>
                   </div>
                </div>
             </div>
@@ -237,8 +239,5 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
       <%= javascript_include_tag "sejasola" %>
-      <script>
-
-       </script>
    </body>
 </html>
