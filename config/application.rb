@@ -66,6 +66,7 @@ module Solasalonstudios
     config.assets.precompile += ['digital_directory.css', 'digital_directory.js', 'fullscreen_hero.js', 'ckeditor/*']
     config.assets.precompile += ['sola_pro.js', 'in_the_news.js', 'our_studios.js', 'why_sola.js', 'search_sola.js', 'solagenius.js', 'search_salon.js']
     config.assets.precompile += ['public_website.css', 'public_website.js', 'mysola.js', 'locations.js', 'locations_ca.js', 'locations_br.js', 'locations_state_select.js', 'salon_stylists.js', 'blog.js', 'contact_us.js', 'contact_us_ca.js', 'own_your_salon.js', 'salon_professionals.js', 'faq.js', 'sola5000.js', 'sessions.js', 'sessions_2018.js']
+    config.assets.precompile += ['sejasola.css', 'sejasola.js']
 
     config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}}
   end

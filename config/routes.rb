@@ -177,6 +177,10 @@ Solasalonstudios::Application.routes.draw do
 
   match '/cms/s3-presigned-post' => 'cms#s3_presigned_post', :via => [:get, :post], :as => :cms_s3_presigned_post
 
+  # Brazil URLs
+  match '/sejasola' => 'brazil#sejasola', :via => [:get, :post], :as => :sejasola
+
+
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
