@@ -1,4 +1,5 @@
 //= require slick
+//= require jquery.magnific-popup
 
 $(document).ready(function(e){
 	
@@ -29,6 +30,21 @@ $(document).ready(function(e){
        
        ]
         });
+
+//   $('.falebtn').magnificPopup({
+//           type: 'inline',
+//           preloader: false,
+// mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+
+//   zoom: {
+//     enabled: true, // By default it's false, so don't forget to enable it
+
+//     duration: 300, // duration of the effect, in milliseconds
+//     easing: 'ease-in-out', // CSS transition easing function
+
+
+//   }
+//   });
 
   $('#form').on('submit', function (e) {
   	e.stopPropagation();
