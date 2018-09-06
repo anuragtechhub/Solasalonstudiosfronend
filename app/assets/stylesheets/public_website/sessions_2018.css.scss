@@ -3,6 +3,22 @@
 
 .session-2018 {
 
+  .leading-ladies-wrapper {
+    padding: 20px;
+    background: #94ffff;
+    background: #e5ffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #e5ffff 1%, #94ffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #e5ffff 1%,#94ffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #e5ffff 1%,#94ffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5ffff', endColorstr='#94ffff',GradientType=0 ); /* IE6-9 */
+    text-align: center;
+
+    img {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+  }
+
   .leading-ladies-panel {
     background: #fde5f3;
     padding: 40px 0;
