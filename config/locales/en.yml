@@ -35,6 +35,7 @@ en:
     please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
     please_enter_a_service: Please enter a service (e.g. haircut)
     please_enter_a_location: Please enter your location
+    check_availability: Check Availability
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

@@ -27,7 +27,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('render SolaSearch availabilities', this.state.availabilities);
+		console.log('render SolaSearch availabilities', this.state.professionals);
 		
 		return (
 			<div className="SolaSearch">
@@ -61,7 +61,7 @@ var SolaSearch = React.createClass({
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
 			//console.log('getAvailabilities response', response);
-			self.setState({availabilities: response});
+			self.setState({availabilities: JSON.parse(response)});
 		}); 
 	},
 
