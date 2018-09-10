@@ -78,7 +78,13 @@ background-image: linear-gradient(-90deg,#48a0d5,#70c2e7);}
 	@include northwell;
 	padding: 0 0 35px  0px;}
 .midtxt{}
-
+.whatsapp {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    top: -4px;
+    margin-right: 2px;  
+}
 
 .quer{background:#ffffff;width: 100%;padding: 38px 48px 45px 39px;margin: 0 0 -52px -8px;}
 .quer span{display: inline-block;color:#ff00ab;font-size: 25px;line-height: 27px;
