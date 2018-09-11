@@ -18,7 +18,9 @@
               <% end %>
               <li><%= link_to raw(t('page.testimonials.title')), :testimonials %></li>
               <!--<li><%= link_to raw(t('page.faqs.title')), :faqs %></li>-->
-              <li><%= link_to raw(t('page.blog.title')), :blog %></li>
+              <% if I18n.locale.to_s != 'pt-BR' %>
+                <li><%= link_to raw(t('page.blog.title')), :blog %></li>
+              <% end %>
             </ul>
           </div>
           <div class="one-half column last">

@@ -77,7 +77,9 @@
 			<% if I18n.locale.to_s != 'pt-BR' %>
 				<li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
 			<% end %>
-			<li><%= link_to raw(t('page.blog.title')), :blog %></li>
+			<% if I18n.locale.to_s != 'pt-BR' %>
+				<li><%= link_to raw(t('page.blog.title')), :blog %></li>
+			<% end %>
       <li><%= link_to :rent_a_studio, :class => 'sublink' do %><%= raw t 'header.rent_studio_button' %><% end %></li>
       <li><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in sublink' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
       <li style="overflow:hidden;border-bottom:0">
