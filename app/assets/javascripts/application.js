@@ -23,7 +23,6 @@
 
 //= require fingerprint
 //= require wrap-in-tag
-//= require slick
 
 //= require react
 //= require react_ujs

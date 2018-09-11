@@ -1,14 +1,7 @@
 var ProfessionalAvailabilities = React.createClass({
 
-	componentDidMount: function () {
-// .slick({
-//   dots: true,
-//   infinite: true,
-//   speed: 300,
-//   slidesToShow: 1,
-//   centerMode: true,
-//   variableWidth: true
-// });
+	componentDidUpdate: function () {
+
 	},
 
 	render: function () {
@@ -24,7 +17,7 @@ var ProfessionalAvailabilities = React.createClass({
 				return (
 					<div className="availability-date" key={availability.date}>
 						<div className="date">{moment(availability.date).format('ddd DD/YY')}</div>
-						<div className="availabilities" ref="availabilities">
+						<div className="availabilities">
 							{times}
 						</div>
 					</div>

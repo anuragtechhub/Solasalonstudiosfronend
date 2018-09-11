@@ -161,12 +161,14 @@
 	    	width: 100%;
 	    	overflow: hidden;
 	    	overflow-x: scroll;
+	    	// white-space: nowrap;
     	}
 
     	.availability-date {
-    		display: block;
-    		float: left;
-    		clear: none;
+    		display: inline-block;
+    		// float: left;
+    		// clear: none;
+    		// white-space: nowrap;
 
     		.date {
     			position: relative;
