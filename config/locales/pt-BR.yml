@@ -46,7 +46,7 @@ pt-BR:
     sola_pro: Sola Pro
     solagenius: SolaGenius
     sola_sessions: Sola Sessions
-    who_we_are: Quem somos nós
+    who_we_are: Quem somos
     our_story: Nossa história
     leadership: Equipe de Liderança
     testimonials: Depoimentos
@@ -465,7 +465,7 @@ pt-BR:
       body: |
         <p>Política de Privacidade</p>
         <p>Última revisão e em vigor em 1º de fevereiro de 2017</p>
-        <p>O Sola Franchise Corporation e suas subsidiárias, incluindo o Sola Salon Studios Canada, Inc., o orgulhoso proprietário do Sola Salon Studios; a marca, sabe que sua privacidade é importante. Esta Política de Privacidade define nossas práticas de privacidade, que se aplicam quando você usa qualquer site, aplicativo móvel ou outra plataforma ou serviço online do Sola, ou de qualquer outra empresa do Sola, que a vincule ou referencie (coletivamente, os “Serviços”, independentemente de quem seja proprietário ou operador dos Serviços, bem como nossas interações com você em plataformas de terceiros (como redes sociais)).</p>
+        <p>O Sola Franchise Corporation e suas subsidiárias, incluindo o Sola Salon Studios Canada, Inc., e o Sola Brasil Franqueadora ltda., como orgulhoso proprietário do Sola Salon Studios®, a marca, sabe que sua privacidade é importante. Esta Política de Privacidade define nossas práticas de privacidade, que se aplicam quando você usa qualquer site, aplicativo móvel ou outra plataforma ou serviço online do Sola, ou de qualquer outra empresa do Sola, que a vincule ou referencie (coletivamente, os “Serviços”, independentemente de quem seja proprietário ou operador dos Serviços, bem como nossas interações com você em plataformas de terceiros (como redes sociais)).</p>
         
         <p>1. Informações que coletamos</p>
         <p>Coletamos informações pessoais sobre nossos usuários de diversas maneiras. Por exemplo, coletamos as informações que você nos fornece, as informações que coletamos através de seu uso dos Serviços e as informações que coletamos de fontes disponíveis publicamente ou de terceiros.</p>
@@ -667,14 +667,14 @@ pt-BR:
       join_our_community_button: Tenha seu salão
 
     who_we_are:
-      title: Quem somos nós
-      subhead: Nos concentramos no que é melhor para você, para que você possa se concentrar no que é melhor para seu negócio.
+      title: Quem somos
+      subhead: Nos concentramos no que é melhor para você, para que você possa se concentrar no que é melhor para o seu negócio.
       subhead2: Experimente um nível de independência criativa e apoio profissional que você não encontrará em nenhum outro lugar.
-      number_of_locations: Mais de 400
-      locations_nationwide: Locais em todo o país
+      number_of_locations: 400+
+      locations_nationwide: Locais no EUA e Canadá
       meta_description: "Nosso inovador modelo de salão dá poder a profissionais de beleza para assumirem o controle de suas vidas e carreiras. Esteja em um negócio por conta própria, mas nunca sozinho!"
-      body1: "Fornecemos estúdios de alta qualidade e totalmente equipados aos profissionais de beleza, juntamente com o suporte e as ferramentas de que precisam para iniciar seu negócio no salão de beleza em pouco tempo."
-      body2: "Temos orgulho de ser o negócio de salão de beleza que é o maior e o que cresce mais rápido no país. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente::"
+      body1: "Fornecemos aos profissionais de beleza estúdios de alta qualidade e totalmente equipados, juntamente com o suporte e as ferramentas de que precisam para iniciar seu próprio salão de beleza IMEDIATAMENTE."
+      body2: "Temos orgulho de ser o negócio de salão de beleza que é o maior e o que cresce mais rápido no maior mercado profissional do planeta: Os EUA. Em nossa essência, acreditamos no profissional de beleza e temos um objetivo em mente:"
       to_help_set_them_up_for_success: Ajuda-los a ter sucesso.
       join_our_diverse_community: "Junte-se à comunidade do Sola Salon Studios"
       join_our_diverse_community_text: "Agora com a força de quase 10.000 profissionais!"
@@ -683,7 +683,7 @@ pt-BR:
       our_mission: Nossa missão 
       our_mission_text: "Inspirar e apoiar os profissionais de beleza para sonhar livremente, superar os desafios e vencer, elevarem suas carreiras e experimentarem a liberdade da propriedade de um estúdio próprio de beleza."
       our_values: Nossos valores 
-      our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios turnkey, prontos para o uso, juntamente com suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder a stylists independentes para viver suas melhores vidas."
+      our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios com sua própria chave, prontos para o uso, juntamente com o suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder ao profissional independente para viver o melhor de sua vida."
       join_our_community: "Junte-se a nossa comunidade"
       join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
       join_our_community_button_text: "Tenha seu salão"
@@ -698,27 +698,27 @@ pt-BR:
     why_sola:
       title: Por que o Sola?
       meta_description: Por que o Sola?
-      hero_heading1: Todas as ferramentas e o suporte de que você precisa,
-      hero_heading2: para assumir o controle da vida que você ama, com toda liberdade no seu próprio salão de beleza.
+      hero_heading1: Todas as ferramentas e o suporte de que você precisa 
+      hero_heading2: para assumir o controle da vida que você ama.
       hero_button_text: Por que escolher o Sola?
       learn_more: Saiba mais
       dont_just_dream_do: Não sonhe apenas. Faça!
-      become_a_salon_owner: Torne-se um dono de salão de beleza hoje.
+      become_a_salon_owner: Seja dono do seu próprio salão, hoje!
       search_for_a_salon: Busque um estúdio perto de você.
       be_in_business_heading: Esteja em um negócio por conta própria, mas nunca sozinho.
-      be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os convidados e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."  
+      be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os clientes e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."  
       be_in_business_p2: De belos estúdios a ofertas exclusivas, educação e tecnologia, o Sola permite que você viva sua melhor vida, tanto pessoal quanto profissionalmente. Então, junte-se a nossa comunidade de mais de 10.000 proprietários independentes de salões de beleza para ficar um passo mais perto de viver a vida que você ama!
-      freedom_heading: O Sola te dá a liberdade...
+      freedom_heading: O Sola te dá a liberdade para que...
       freedom_tile_1: Fuja da política e do drama dos salões de beleza em seu próprio estúdio privado e seguro.
       freedom_tile_2: Defina seu próprio preço para serviços e produtos.
-      freedom_tile_3: Gerencie sua própria agenda com acesso ao estúdio 24 horas por dia, 7 dias por semana.
-      freedom_tile_4: Desfrute de um ambiente íntimo e dê a atenção individual que seus convidados merecem.
+      freedom_tile_3: Gerencie sua própria agenda com acesso independente ao seu estúdio no horário que você escolher.
+      freedom_tile_4: Desfrute de um ambiente íntimo e dê a atenção individual que seus clientes merecem.
       freedom_tile_5: Personalize o espaço de seu salão de beleza – com obras de arte, música, móveis e decoração.
-      freedom_tile_6: Venda os produtos de varejo que você ama.
-      freedom_tile_7: Gerencie custos com uma variedade de comodidades, utilitários e WiFi, que estão incluídos.
+      freedom_tile_6: Tenha a liberdade de usar o produto que você ama.
+      freedom_tile_7: Gerencie custos com uma variedade de comodidades, ferramentas e WiFi, que estão incluídos.
       freedom_tile_8: Construa sua marca e permita que sua carreira prospere.
       freedom_tile_8_link: Encontre um estúdio
-      freedom_text: As recompensas de estar no próprio negócio são inestimáveis, mas isso não significa que você tem de fazer tudo sozinho. A comunidade Sola está aqui para ajudá-lo durante cada etapa de sua jornada de beleza. Nós cuidamos de você!
+      freedom_text: As recompensas de estar no próprio negócio são inestimáveis, mas isso não significa que você tem de fazer tudo sozinho. A comunidade Sola está aqui para ajudá-lo durante cada etapa de sua jornada. Nós cuidamos de você!
       flexibility_statement: Se você está procurando mais flexibilidade em sua agenda e controle para explorar novas aventuras, o Sola pode ser o lugar perfeito para você.
       flexibility_subhead1: Prepare-se para explorar novas aventuras dentro e fora do salão de beleza!
       flexibility_subhead2: No Sola, nossa paixão está ajudando os profissionais de beleza a serem bem-sucedidos.

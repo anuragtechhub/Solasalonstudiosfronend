@@ -108,7 +108,7 @@
       <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
       
       <div class="row">
-        <div class="columns four">
+        <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
             <div class="img-wrap">
               <%= image_tag 'WhySola/OurStudios.jpg' %>
@@ -117,15 +117,17 @@
             <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>
           <% end %>
         </div>
-        <div class="columns four">
-          <%= link_to :blog, :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <%= image_tag 'WhySola/Community_Support.jpg' %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
-          <% end %>
-        </div>
+        <% if I18n.locale.to_s != 'pt-BR' %>
+          <div class="columns four">
+            <%= link_to :blog, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/Community_Support.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
+              </div>
+              <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
+            <% end %>
+          </div>
+        <% end %>
         <div class="columns four">
           <%= link_to 'https://www.solasalonstudios.com/blog/is-it-time-to-update-your-sola-website', :class => 'benefit-tile' do %>
             <div class="img-wrap">
