@@ -86,7 +86,7 @@
   </ul>
 </div>
 
-<div class="oys-nav has-5" data-nav="about-us">
+<div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-5' %>" data-nav="about-us">
   <ul>
     <li>
       <%= link_to :who_we_are do %>
@@ -112,11 +112,13 @@
         <h4><%= t 'nav.leadership' %></h4>
       <% end %>
     </li>
+    <% if I18n.locale.to_s != 'pt-BR' %>
     <li>
       <%= link_to :news do %>
         <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
         <h4><%= t 'nav.in_the_news' %></h4>
       <% end %>
     </li>
+    <% end %>
   </ul>
 </div>
