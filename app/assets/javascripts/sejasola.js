@@ -46,7 +46,7 @@ $(document).ready(function(e){
 //   }
 //   });
 
-  $('#form').on('submit', function (e) {
+  $('#form, #brazil-contact-form').on('submit', function (e) {
   	e.stopPropagation();
   	e.preventDefault();
   	
@@ -62,6 +62,7 @@ $(document).ready(function(e){
 			  	email: email,
 			  	telefone: telefone,
 			  },
+        url: '/sejasola',
 			  method: 'post'
 			}).done(function() {
 			  console.log('done!')

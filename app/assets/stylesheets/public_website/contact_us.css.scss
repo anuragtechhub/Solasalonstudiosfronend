@@ -5,6 +5,12 @@
   }
 }
 
+#brazil-contact-form ul{padding: 0;margin: 0;list-style:none;}
+#brazil-contact-form  ul li{display: block;}
+#brazil-contact-form  label{outline:none;display: block;color:#4c4c4c;font-family: "chalet-london-sixty", sans-serif;font-size:18px;line-height:33px;margin: -1px 0  2px 2px;padding: 0 0  0 0;letter-spacing: 0.6px;}
+#brazil-contact-form  input{border-radius:5px;height: 56px;display: block;border:1px solid #c1c1c1;width: 100%;outline:none;padding:0 15px;}
+#brazil-contact-form  button{border-radius: 8px;width: 100%;border:none;background-image: linear-gradient(-90deg,#ff00ab,#ff6ac9);margin: 15px 0 0 0;color:#ffffff;font-size:24px;line-height: 36px;}
+
 #contact-us-info {
   margin-top: 30px;
 
