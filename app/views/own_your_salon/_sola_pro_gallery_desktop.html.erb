@@ -9,7 +9,9 @@
         <li data-index="2" data-slide="events-slide"><span class="sola-pro-icon-wrapper"><span class="sola-pro-icon events-icon"></span></span><h2 class="events-slide-heading"><%= t('page.sola_pro.events_and_classes_calendar') %></h2></li>
         <li data-index="3" data-slide="mysolapro-slide"><span class="sola-pro-icon-wrapper"><span class="sola-pro-icon client-notes-icon mysolapro-icon"></span></span><h2 class="mysolapro-slide-heading"><%= t('page.sola_pro.my_sola_pro') %></h2></li>
         <li data-index="4" data-slide="blog-slide"><span class="sola-pro-icon-wrapper"><span class="sola-pro-icon blog-icon"></span></span><h2 class="blog-slide-heading"><%= t('page.sola_pro.blog') %></h2></li>
-        <li data-index="5" data-slide="perkspot-slide"><span class="sola-pro-icon-wrapper"><span class="sola-pro-icon perkspot-icon"></span></span><h2 class="perkspot-slide-heading">Perkspot</h2></li>
+        <% if I18n.locale.to_s != 'pt-BR' %>
+          <li data-index="5" data-slide="perkspot-slide"><span class="sola-pro-icon-wrapper"><span class="sola-pro-icon perkspot-icon"></span></span><h2 class="perkspot-slide-heading">Perkspot</h2></li>
+        <% end %>
       </ul>
     </div>
 
@@ -24,7 +26,9 @@
             <div class="item" data-slide="events-slide"><%= image_tag 'own/sola-pro-gallery/events-screen.jpg', :alt => "Events & Classes Calendar" %></div>
             <div class="item" data-slide="mysolapro-slide"><%= image_tag 'own/sola-pro-gallery/mysolapro-screen.jpg', :alt => "My Sola Pro" %></div>
             <div class="item" data-slide="blog-slide"><%= image_tag 'own/sola-pro-gallery/blog-screen.jpg', :alt => "Blog" %></div>
-            <div class="item" data-slide="perkspot-slide"><%= image_tag 'own/sola-pro-gallery/perkspot-screen.jpg', :alt => "Perkspot" %></div>
+            <% if I18n.locale.to_s != 'pt-BR' %>
+              <div class="item" data-slide="perkspot-slide"><%= image_tag 'own/sola-pro-gallery/perkspot-screen.jpg', :alt => "Perkspot" %></div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -38,7 +42,9 @@
         <div class="events-slide-text"><h2><%= t('page.sola_pro.events_and_classes_calendar') %></h2> <%= t('page.sola_pro.events_and_classes_calendar_description') %></div>
         <div class="mysolapro-slide-text"><h2><%= t('page.sola_pro.my_sola_pro') %></h2> <%= t('page.sola_pro.my_sola_pro_description') %></div>
         <div class="blog-slide-text"><h2><%= t('page.sola_pro.blog') %></h2> <%= t('page.sola_pro.blog_description') %></div>
-        <div class="perkspot-slide-text"><h2>Perkspot</h2> <%= t('page.sola_pro.perkspot_description') %></div>
+        <% if I18n.locale.to_s != 'pt-BR' %>
+          <div class="perkspot-slide-text"><h2>Perkspot</h2> <%= t('page.sola_pro.perkspot_description') %></div>
+        <% end %>
       </div>
       <div class="sola-pro-get-started sola-pro-get-started-desktop">
         <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8" target="_blank" class="ios-appstore"><%= image_tag 'own/ios_appstore.png' %></a>
