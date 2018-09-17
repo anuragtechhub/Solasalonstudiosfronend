@@ -27,7 +27,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('render SolaSearch availabilities', this.state.professionals);
+		console.log('render SolaSearch availabilities', this.state.professionals);
 		
 		return (
 			<div className="SolaSearch">

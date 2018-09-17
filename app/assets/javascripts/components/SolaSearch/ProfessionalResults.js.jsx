@@ -15,7 +15,7 @@ var ProfessionalResults = React.createClass({
 	},
 
 	getAvailabilities: function (professional) {
-		console.log('getAvailabilities', professional.guid, this.props.availabilities);
+		//console.log('getAvailabilities', professional.guid, this.props.availabilities);
 		for (var i in this.props.availabilities) {
 			//console.log('i', i);
 			if (i == professional.guid) {
