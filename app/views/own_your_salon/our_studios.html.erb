@@ -24,30 +24,43 @@
   <div class="amenities-grid">
 
     <div class="grid-row">
-
-      <div class="grid-item two-thirds left">
-        <div class="front">
-          <%= image_tag 'studios/ShampooBowl.jpg' %>
-          <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
-        </div>
-        <div class="back">
-          <div class="text">
-            <h2><%= t('page.our_studios.wash_basin.body') %></h2>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <div class="grid-item one-hundred">
+          <div class="front">
+            <%= image_tag 'studios/ShampooBowl.jpg' %>
+            <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
+          </div>
+          <div class="back">
+            <div class="text">
+              <h2><%= t('page.our_studios.wash_basin.body') %></h2>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="grid-item one-third right">
-        <div class="front">
-          <%= image_tag 'studios/Shelving.jpg' %>
-          <h5 class="title"><%= t('page.our_studios.products.heading') %></h5>
-        </div>
-        <div class="back">
-          <div class="text">
-            <h2><%= t('page.our_studios.products.body') %></h2>
+      <% else %>
+        <div class="grid-item two-thirds left">
+          <div class="front">
+            <%= image_tag 'studios/ShampooBowl.jpg' %>
+            <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
+          </div>
+          <div class="back">
+            <div class="text">
+              <h2><%= t('page.our_studios.wash_basin.body') %></h2>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div class="grid-item one-third right">
+          <div class="front">
+            <%= image_tag 'studios/Shelving.jpg' %>
+            <h5 class="title"><%= t('page.our_studios.products.heading') %></h5>
+          </div>
+          <div class="back">
+            <div class="text">
+              <h2><%= t('page.our_studios.products.body') %></h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="grid-row">
