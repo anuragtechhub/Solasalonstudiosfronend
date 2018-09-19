@@ -57,7 +57,7 @@ $(function () {
         return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="http://maps.google.com/maps?daddr=' + saddress + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
       }
     } else {
-        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a href="' + url + '">View Location</a><div class="tail1"></div><div class="tail2"></div></div>';
+        return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a href="' + url + '">' + I18n.t('page.search.view_location') + '</a><div class="tail1"></div><div class="tail2"></div></div>';
     }
   };
 

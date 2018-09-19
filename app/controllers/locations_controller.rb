@@ -22,20 +22,11 @@ class LocationsController < PublicWebsiteController
   end
 
   def index
-    if I18n.locale == :en
-      @country = 'US'
-      @locations = Location.where(:status => 'open').where(:country => 'US')
-    elsif I18n.locale.to_s == 'en-CA'
-      @country = 'CA'
-      @locations = Location.where(:status => 'open').where(:country => 'CA')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
-      p "getting all the locations for canada #{@locations.size}"
-    elsif I18n.locale.to_s == 'pt-BR'
-      @country = 'BR'
-      @locations = Location.where(:status => 'open').where(:country => 'BR')#.where.not(:id => 362)#.where(:country => 'DOESNOTEXIST')
-    end
-
+    @country = country_from_locale
+    @locations = Location.where(:status => 'open').where(:country => @country)
     @states = @locations.select('DISTINCT state').order(:state => :asc).to_a.reject{|l| l.state.blank? }
 
+    p "@locations=#{@locations.inspect}"
     p "@states=#{@states.to_a.length}"
 
     @last_location = Location.order(:updated_at => :desc).first
@@ -162,6 +153,17 @@ class LocationsController < PublicWebsiteController
   end
 
   private 
+
+  def country_from_locale
+    p "country_from_locale=#{I18n.locale.to_s}"
+    if I18n.locale.to_s == 'pt-BR'
+      return 'BR'
+    elsif  I18n.locale.to_s == 'en-CA'
+      return 'CA'
+    else
+      return 'US'
+    end
+  end
 
   def map_defaults
     if params[:action] == 'city'
