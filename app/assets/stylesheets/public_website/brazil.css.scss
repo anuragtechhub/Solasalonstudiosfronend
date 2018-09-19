@@ -11,3 +11,29 @@
 	}
 
 }
+
+@media (max-width: 1000px) {
+	.locale-pt-BR {
+
+		.sola-pro .sola-pro-descriptions-desktop div {
+			font-size: 14px !important;
+			line-height: 24px !important;
+		}
+
+		.owl-carousel .item .item-content h1 {
+			font-size: 22px !important;
+			line-height: 26px !important;
+		}
+
+		.owl-carousel .item .item-content p {
+			font-size: 14px !important;
+			line-height: 20px !important;
+			margin-bottom: 10px !important;
+		}
+
+		.owl-carousel .learn-more-button {
+			bottom: 5px;
+		}
+
+	}
+}
