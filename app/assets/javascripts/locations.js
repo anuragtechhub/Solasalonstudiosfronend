@@ -49,7 +49,7 @@ $(function () {
   var ib;
   var zoomCount = 0;
 
-  var getMarkerContent = function (name, saddress, address, url, salon, custom_maps_url) {
+  var getMarkerContent = function (name, saddress, address, url, salon, custom_maps_url) {    
     if (salon) {
       if (custom_maps_url) {
         return '<div class="sola-infobox"><h4>' + name + '</h4><p>' + address + '</p><a target="_blank" href="' + custom_maps_url + '">Map it!</a><div class="tail1"></div><div class="tail2"></div></div>'
