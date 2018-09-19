@@ -34,16 +34,29 @@
     <div class="container">
       <h2 class="brand text-center" style="margin-top: 30px"><%= t('page.sola_pro.heading2').html_safe %></h2>
       <div class="session" style="margin-bottom: 60px">
-        <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
-          <% if I18n.locale == :en %>
-            <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-          <% else %>
-            <%= image_tag 'Sola-Pro-Video-Thumb-Canada.jpeg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-          <% end %>
-          <div class="play-btn">
-            <span class="fa fa-5x fa-play"></span>
-          </div>
-        </a>
+        <% if I18n.locale.to_s == 'pt-BR' %>
+          <a href="//www.youtube.com/watch?v=kzE5SSBR_5k" class="play-video" rel="sola-pro-video-1">
+            <% if I18n.locale == :en %>
+              <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+            <% else %>
+              <%= image_tag 'Sola-Pro-Video-Thumb-Canada.jpeg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+            <% end %>
+            <div class="play-btn">
+              <span class="fa fa-5x fa-play"></span>
+            </div>
+          </a>
+        <% else %>
+          <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1">
+            <% if I18n.locale == :en %>
+              <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+            <% else %>
+              <%= image_tag 'Sola-Pro-Video-Thumb-Canada.jpeg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
+            <% end %>
+            <div class="play-btn">
+              <span class="fa fa-5x fa-play"></span>
+            </div>
+          </a>
+        <% end %>
       </div> 
     </div>
   </div>

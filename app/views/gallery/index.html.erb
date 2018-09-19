@@ -22,11 +22,19 @@
   <div class="row">
 
     <div class="one-half column">
-      <a href="//www.youtube.com/watch?v=eq_UTfsHnkE" class="play-video play-video-gallery" rel="eq_UTfsHnkE">
-        <%= image_tag 'video_poster_2018.jpg', :alt => 'A proud Sola salon professional leans against the wall' %>
-        <span class="fa fa-play-circle"></span>
-        <div class="video-overlay"></div>
-      </a>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <a href="//www.youtube.com/watch?v=D2vtblujRzo" class="play-video play-video-gallery" rel="D2vtblujRzo">
+          <%= image_tag 'video_poster_2018.jpg', :alt => 'A proud Sola salon professional leans against the wall' %>
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% else %>
+        <a href="//www.youtube.com/watch?v=eq_UTfsHnkE" class="play-video play-video-gallery" rel="eq_UTfsHnkE">
+          <%= image_tag 'video_poster_2018.jpg', :alt => 'A proud Sola salon professional leans against the wall' %>
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% end %>
       <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2018').html_safe %></h1>
       
     </div>
@@ -56,11 +64,19 @@
     </div>
 
     <div class="one-half column">
-      <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video play-video-gallery" rel="nbHFs0XjS8s">
-        <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg" alt="A woman gets her hair styled" />
-        <span class="fa fa-play-circle"></span>
-        <div class="video-overlay"></div>
-      </a>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <a href="//www.youtube.com/watch?v=vh3x3xAcPXw" class="play-video play-video-gallery" rel="vh3x3xAcPXw">
+          <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg" alt="A woman gets her hair styled" />
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% else %>
+        <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-video play-video-gallery" rel="nbHFs0XjS8s">
+          <img src="//img.youtube.com/vi/nbHFs0XjS8s/maxresdefault.jpg" alt="A woman gets her hair styled" />
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% end %>
       <h1 class="video-title"><%= t('page.gallery.the_sola_story').html_safe %></h1>
       
     </div>
@@ -70,11 +86,19 @@
   <div class="row">
 
     <div class="one-half column">
-      <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video play-video-gallery" rel="i6AUSUofPUg">
-        <%= image_tag 'sessions_poster.jpg' %>
-        <span class="fa fa-play-circle"></span>
-        <div class="video-overlay"></div>
-      </a>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <a href="//www.youtube.com/watch?v=4myMw7gN6I4" class="play-video play-video-gallery" rel="4myMw7gN6I4">
+          <%= image_tag 'sessions_poster.jpg' %>
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% else %>
+        <a href="//www.youtube.com/watch?v=i6AUSUofPUg" class="play-video play-video-gallery" rel="i6AUSUofPUg">
+          <%= image_tag 'sessions_poster.jpg' %>
+          <span class="fa fa-play-circle"></span>
+          <div class="video-overlay"></div>
+        </a>
+      <% end %>
       <h1 class="video-title"><%= t('page.gallery.the_sola_sessions').html_safe %></h1>
     </div>
 
@@ -89,7 +113,7 @@
       </div>
     <% else %>
       <div class="one-half column">
-        <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video play-video-gallery" rel="Bpe-puULbws">
+        <a href="//www.youtube.com/watch?v=kzE5SSBR_5k" class="play-video play-video-gallery" rel="kzE5SSBR_5k">
           <%= image_tag 'sola_pro_poster.jpg' %>
           <span class="fa fa-play-circle"></span>
           <div class="video-overlay"></div>
@@ -114,9 +138,15 @@
     </div>
   <% end %>
 
-  <div class="view-more">
-    <a href="https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg" class="button outline-large-white" target="_blank"><%= t('page.gallery.view_more_on_youtube') %></a>
-  </div>
+  <% if I18n.locale.to_s == 'pt-BR' %>
+    <div class="view-more">
+      <a href="https://www.youtube.com/channel/UCFhi1mggKNNwKBokIsRT1lQ" class="button outline-large-white" target="_blank"><%= t('page.gallery.view_more_on_youtube') %></a>
+    </div>
+  <% else %>
+    <div class="view-more">
+      <a href="https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg" class="button outline-large-white" target="_blank"><%= t('page.gallery.view_more_on_youtube') %></a>
+    </div>
+  <% end %>
 
 </div>
 </div>

@@ -2,7 +2,11 @@
   <div class="text">
     <h1><%= t('page.about.learn_more_about_sola').html_safe %></h1>
     <h3><%= t('page.about.click_to_watch_video').html_safe %></h3>
-    <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-button"></a>
+    <% if I18n.locale.to_s == 'pt-BR' %>
+      <a href="//www.youtube.com/watch?v=vh3x3xAcPXw" class="play-button"></a>
+    <% else %>
+      <a href="//www.youtube.com/watch?v=nbHFs0XjS8s" class="play-button"></a>
+    <% end %>
   </div>
   <div class="learn-more">
     <h3><%= t('page.about.learn_more').html_safe %></h3>

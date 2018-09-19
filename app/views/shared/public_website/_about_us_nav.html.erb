@@ -4,6 +4,8 @@
 		<li <%= (page == :our_story    ? "class=active" : '') %>><%= link_to :our_story do %><%= t 'page.our_story.title' %><% end %></li>
 		<li <%= (page == :testimonials ? "class=active" : '') %>><%= link_to :testimonials do %><%= t 'page.testimonials.title' %><% end %></li>
 		<li <%= (page == :leadership   ? "class=active" : '') %>><%= link_to :leadership do %><%= t 'page.leadership.title' %><% end %></li>
-		<li <%= (page == :news         ? "class=active" : '') %>><%= link_to :news do %><%= t 'page.news.title' %><% end %></li>
+		<% if I18n.locale.to_s != 'pt-BR' %>
+			<li <%= (page == :news         ? "class=active" : '') %>><%= link_to :news do %><%= t 'page.news.title' %><% end %></li>
+		<% end %>
 	</ul>
 </div>
