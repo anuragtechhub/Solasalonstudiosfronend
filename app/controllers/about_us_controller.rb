@@ -5,10 +5,16 @@ class AboutUsController < PublicWebsiteController
   end
 
   def leadership
+    if I18n.locale.to_s == 'pt-BR'
+      render 'leadership_br'
+    end
   end
 
   def randall_clark
 	end
+
+  def rodrigo_miranda
+  end
 
 	def ben_jones
 	end

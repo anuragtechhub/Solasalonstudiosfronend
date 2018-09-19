@@ -1,0 +1,26 @@
+<%= render 'shared/public_website/about_us_nav', :page => :leadership %>
+
+<div class="container content-container">
+
+	<%= link_to :leadership, :class => 'back-to-parent' do %>
+		<span class="back-arrow-black"></span>
+		<span class="back-arrow-pink"></span>
+		<span class="name"><%= t 'page.leadership.title' %><span>
+	<% end %>
+	
+	<div class="leadership-bio">
+		<h2>Rodrigo Miranda</h2>
+		<p class="title"><%= t 'page.leadership.ceo' %></p>
+		<div style="margin-bottom:15px"><%= image_tag 'Leadership/Rodrigo.jpeg', :class => 'u-full-width' %></div>
+		<p>Rodrigo Miranda é o sócio proprietário do SOLA BRASIL. Estudou Economia e Administração em grandes Universidades, como PUC e FGV-SP, de onde pode se preparar para uma vasta experiência em empresas como AMBEV, JOHNSON WAX, NABISCO (KRAFT FOODS), e L´Oréal. Foi lá que ele adquiriu essa paixão, durante 16 anos de dedicação à este fantástico mercado.</p> 
+		<p>A convivência de Rodrigo com muitos profissionais, proprietários e agentes da Indústria, como educadores, representantes comerciais, pessoas de todas as áreas, deu a possibilidade de entender por que se tratava de um negócio tão bonito e apaixonante, mas ao mesmo tempo difícil, com tantos entraves burocráticos, falta de acesso ao crédito, dificuldades de se dedicar ao cliente e administrar seu próprio negócio.</p>
+		<p>Ele costumava indagar o fato do porquê ser tão difícil ter seu próprio salão de beleza no país onde vive, se o Brasil possuía tantos potenciais, como ser um dos maiores mercados de beleza do MUNDO e o segundo mercado CAPILAR. Essa indagação o levou a estudar alternativas, que o trouxeram até o SOLA.</p> 
+		<p>Admirado com a proposta de poder proporcionar aos profissionais da área, seu próprio estúdio de beleza, totalmente equipado, com toda liberdade, segurança e ainda podendo fazer parte de uma comunidade de mais de 10.000 profissionais de beleza, decidiu embarcar na aventura, principalmente após a independência no Brasil ter sido regulamentada.</p>
+		<p>O que você está esperando para viver esse sonho com ele?</p>
+	</div>
+	
+</div>
+
+<% content_for(:title) { "#{t('page.leadership.title').html_safe} - Rodrigo Miranda" } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com.br/leadership/rodrigo-miranda" } %>
+<% content_for(:meta_description) { t('page.leadership.meta_description') } %>

@@ -1,0 +1,21 @@
+<%= render 'shared/public_website/about_us_nav', :page => :leadership %>
+
+<div class="container content-container">
+	<h1><%= t 'page.leadership.title' %></h1>
+
+	<div class="row">
+		<div class="six columns">
+			<%= link_to :rodrigo_miranda, :class => 'leader-tile' do %>
+				<div><%= image_tag 'Leadership/Rodrigo.jpeg', :class => 'u-full-width' %></div>
+				<h3 class="name">Rodrigo Miranda</h3>
+				<span class="title"><%= t 'page.leadership.ceo' %></span>
+				<div class="pink-link"><%= t 'page.leadership.read_bio' %></div>
+			<% end %>
+		</div>
+	</div>
+
+</div>
+
+<% content_for(:title) { t('page.leadership.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/leadership" } %>
+<% content_for(:meta_description) { t('page.leadership.meta_description') } %>
