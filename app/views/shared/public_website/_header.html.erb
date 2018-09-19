@@ -113,7 +113,11 @@
     </li>
     <li>
       <%= link_to :leadership do %>
-        <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+        <% if I18n.locale.to_s == 'pt-BR' %>
+          <%= image_tag 'Leadership/Rodrigo-menu.jpeg' %>
+        <% else %>
+          <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+        <% end %>
         <h4><%= t 'nav.leadership' %></h4>
       <% end %>
     </li>
