@@ -19,7 +19,9 @@ class PublicWebsiteController < ApplicationController
 
   def auth_if_test
     #p "request.fullpath=#{request.fullpath}, #{request.fullpath.include?('sejasola')}"
-    if Rails.env.test? && !request.fullpath.include?('sejasola')
+    #p "ENV['PASSWORD_PROTECT']=#{ENV['PASSWORD_PROTECT']}"
+    if ENV['PASSWORD_PROTECT'] == 'YES' && !request.fullpath.include?('sejasola')
+      #p "AUTH IT UP"
       authenticate_or_request_with_http_basic 'test' do |name, password|
         name == 'phish' && password == 'food'
       end

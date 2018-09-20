@@ -41,6 +41,12 @@ RailsAdmin.config do |config|
     # show_in_app
   end
 
+  config.model 'SejaSola' do
+    visible do
+      ENV['LOCATION_COUNTRY_INCLUSION'] == 'BR'
+    end
+  end
+
   config.model 'EmailEvent' do
     visible false
   end

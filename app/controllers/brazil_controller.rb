@@ -9,6 +9,7 @@ class BrazilController < PublicWebsiteController
 
     if request.post?
       p "we gotta post! #{params[:nome]}, #{params[:email]}, #{params[:telefone]}"
+      SejaSola.create(:nome => params[:nome], :email => params[:email], :telefone => params[:telefone])
       PublicWebsiteMailer.sejasola(params[:nome], params[:email], params[:telefone]).deliver
     end
     # elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
