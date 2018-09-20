@@ -1,7 +1,12 @@
 var ProfessionalAvailabilities = React.createClass({
 
 	componentDidUpdate: function () {
+		var glide = new Glide(this.refs.availabilities, {
+		  type: 'carousel',
+		  startAt: 0,
+		});
 
+		console.log('glide', glide);
 	},
 
 	render: function () {
@@ -17,7 +22,7 @@ var ProfessionalAvailabilities = React.createClass({
 				return (
 					<div className="availability-date" key={availability.date}>
 						<div className="date">{moment(availability.date).format('ddd DD/YY')}</div>
-						<div className="availabilities">
+						<div className="availabilities" ref="availabilities">
 							{times}
 						</div>
 					</div>
