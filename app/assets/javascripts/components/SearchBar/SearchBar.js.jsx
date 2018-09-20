@@ -97,6 +97,7 @@ var SearchBar = React.createClass({
 			fingerprint: this.state.fingerprint,
 			lat: this.state.lat,
 			lng: this.state.lng,
+			location: this.state.location,
 			query: this.state.query,
 		});
 	},

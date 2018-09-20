@@ -10,6 +10,7 @@ var SolaSearch = React.createClass({
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
 			lat: this.props.lat,
 			lng: this.props.lng,
+			location: this.props.location,
 			locations: this.props.locations || [],
 			professionals: this.props.professionals || [],
 			query: this.props.query,
@@ -36,6 +37,9 @@ var SolaSearch = React.createClass({
 				<ProfessionalResults 
 					availabilities={this.state.availabilities} 
 					date={this.state.date} 
+					lat={this.state.lat}
+					lng={this.state.lng}
+					location={this.state.location}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
 					stylist_search_results_path={this.state.stylist_search_results_path} 

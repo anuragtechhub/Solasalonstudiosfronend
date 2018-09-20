@@ -22,6 +22,7 @@
 //= require add_to_calendar
 //= require i18n
 //= require i18n/translations
+//= require glide
 //= require_tree ./public_website
 
 $(function () {
