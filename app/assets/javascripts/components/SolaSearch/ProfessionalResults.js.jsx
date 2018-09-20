@@ -10,7 +10,7 @@ var ProfessionalResults = React.createClass({
 		return (
 			<div className="ProfessionalResults">
 				<div className="SolaSearchBar">
-					<SearchBar />
+					<SearchBar date={this.props.date} path={this.props.stylist_search_results_path} />
 					<div className="SearchResultsCount">{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
 				</div>
 				{professionals}

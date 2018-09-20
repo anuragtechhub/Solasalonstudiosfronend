@@ -13,6 +13,7 @@ var SolaSearch = React.createClass({
 			locations: this.props.locations || [],
 			professionals: this.props.professionals || [],
 			query: this.props.query,
+			stylist_search_results_path: this.props.stylist_search_results_path,
 			zoom: this.props.zoom,
 		};
 	},
@@ -32,7 +33,13 @@ var SolaSearch = React.createClass({
 		
 		return (
 			<div className="SolaSearch">
-				<ProfessionalResults availabilities={this.state.availabilities} professionals={this.state.professionals} query={this.state.query} />
+				<ProfessionalResults 
+					availabilities={this.state.availabilities} 
+					date={this.state.date} 
+					professionals={this.state.professionals} 
+					query={this.state.query} 
+					stylist_search_results_path={this.state.stylist_search_results_path} 
+				/>
 				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} zoom={this.state.zoom} />
 			</div>
 		);
