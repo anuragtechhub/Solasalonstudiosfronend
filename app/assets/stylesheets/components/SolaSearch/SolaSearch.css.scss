@@ -1,5 +1,27 @@
+@import 'mixins';
+@import 'variables';
+
 .SolaSearch {
 	position: relative;
 	height: calc(100vh - 123px);
 	margin-bottom: -30px;
+}
+
+.SolaSearchBar {
+	padding: 15px 21px;
+	background-color: #F5F9FB;
+
+	.SearchBar {
+		margin: 0;
+	}
+
+	.SearchResultsCount {
+		padding: 18px 21px 3px 21px;
+		color: #4A4A4A;	
+		@include helvetica;
+		font-size: 14px;	
+		font-weight: 300;	
+		line-height: 16px;	
+		text-align: center;
+	}
 }

@@ -12,6 +12,7 @@ var SolaSearch = React.createClass({
 			lng: this.props.lng,
 			locations: this.props.locations || [],
 			professionals: this.props.professionals || [],
+			query: this.props.query,
 			zoom: this.props.zoom,
 		};
 	},
@@ -31,7 +32,7 @@ var SolaSearch = React.createClass({
 		
 		return (
 			<div className="SolaSearch">
-				<ProfessionalResults availabilities={this.state.availabilities} professionals={this.state.professionals} />
+				<ProfessionalResults availabilities={this.state.availabilities} professionals={this.state.professionals} query={this.state.query} />
 				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} zoom={this.state.zoom} />
 			</div>
 		);
