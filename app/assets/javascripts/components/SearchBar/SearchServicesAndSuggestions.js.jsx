@@ -66,7 +66,7 @@ var SearchServicesAndSuggestions = React.createClass({
 			if (k.toLowerCase().indexOf(matchString) != -1) {
 				// category match
 				matches.push(
-					<a key={k} href="#" data-category={k} className="service-match" onClick={this.onChangeActiveCategory}>{k}</a>
+					<a key={k} href="#" data-category={k} className="service-match" onClick={self.onSelectService.bind(null, k)}>{k}</a>
 				);
 
 				// if category matches, then all sub-services match
@@ -190,10 +190,12 @@ var SearchServicesAndSuggestions = React.createClass({
 	*/
 
 	onChange: function (e) {
+		//console.log('onChange', e.target.value);
 		this.props.onChangeQuery(e.target.value)
 	},
 
 	onChangeActiveCategory: function (e) {
+		//console.log('onChangeActiveCategory', e.target.dataset.category);
 		e.preventDefault();
 		e.stopPropagation();
 		this.setState({activeCategory: e.target.dataset.category});

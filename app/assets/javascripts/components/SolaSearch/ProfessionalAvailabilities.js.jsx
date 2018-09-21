@@ -1,12 +1,12 @@
 var ProfessionalAvailabilities = React.createClass({
 
 	componentDidUpdate: function () {
-		var glide = new Glide(this.refs.availabilities, {
-		  type: 'carousel',
-		  startAt: 0,
-		});
+		// var glide = new Glide(this.refs.availabilities, {
+		//   type: 'carousel',
+		//   startAt: 0,
+		// });
 
-		console.log('glide', glide);
+		// console.log('glide', glide);
 	},
 
 	render: function () {

@@ -23,7 +23,8 @@ class SearchController < PublicWebsiteController
 
     @professionals = JSON.parse(results_response)
     @date = DateTime.parse(params[:date]) || DateTime.now
-    @locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
+    #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
+    @locations = Location.where(:id => get_location_id(@professionals))
     
     #p "@locations=#{@locations.size}"
     #p "@date=#{@date}"
@@ -109,4 +110,17 @@ class SearchController < PublicWebsiteController
       @results = @locations.size + @stylists.size + @posts.size
     end
   end
+
+  private
+
+  def get_location_id(professionals)
+    location_ids = []
+
+    professionals.each do |pro|
+      location_ids << pro["org_location_id"]
+    end
+
+    return location_ids.uniq
+  end
+
 end

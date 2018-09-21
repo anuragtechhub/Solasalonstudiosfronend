@@ -30,7 +30,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		console.log('render SolaSearch availabilities', this.state.professionals);
+		//console.log('render SolaSearch professionals', this.state.professionals);
 		
 		return (
 			<div className="SolaSearch">
@@ -72,7 +72,7 @@ var SolaSearch = React.createClass({
 			method: 'POST',
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			//console.log('getAvailabilities response', response);
+			console.log('getAvailabilities response', response);
 			self.setState({availabilities: JSON.parse(response)});
 		}); 
 	},
