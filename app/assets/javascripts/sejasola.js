@@ -65,8 +65,11 @@ $(document).ready(function(e){
         url: '/sejasola',
 			  method: 'post'
 			}).done(function() {
-			  console.log('done!')
+			  //console.log('done!')
 			});
+
+      fbq('track', 'Lead');
+      gtag_report_conversion();
 
   		$submit.popover();
   		$submit.popover('dispose');
