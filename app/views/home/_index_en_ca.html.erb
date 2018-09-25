@@ -168,13 +168,23 @@
     <% end %>
   </div>
 
-  <div class="owl-carousel owl-theme owl-desktop">
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
-  </div>
+  <% if I18n.locale.to_s == 'pt-BR' %>
+    <div class="owl-carousel owl-theme owl-desktop">
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Desktop.jpg', :alt => "Sola Pro" %><% end %></div>
+    </div>
 
-  <div class="owl-carousel owl-theme owl-mobile">
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
-  </div>
+    <div class="owl-carousel owl-theme owl-mobile">
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Mobile.jpg', :alt => "Sola Pro" %><% end %></div>
+    </div>
+  <% else %>
+    <div class="owl-carousel owl-theme owl-desktop">
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+    </div>
+
+    <div class="owl-carousel owl-theme owl-mobile">
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+    </div>
+  <% end %>
 
   <div class="block-quote-testimonial">
     <h3><%= t('page.home.testimonial_text') %></h3>
