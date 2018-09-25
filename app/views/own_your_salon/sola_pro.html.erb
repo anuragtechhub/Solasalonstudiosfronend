@@ -8,7 +8,11 @@
         <div class="img-wrap"><%= image_tag 'SolaPro_Hero.jpg', :width => 1600, :height => 800 %></div>
         <div class="item-content overlayed">
           <div class="left-align-container">
-            <%= image_tag 'sola_pro_logo.png', :class => 'sola-pro-logo u-full-width' %>
+            <% if I18n.locale.to_s == 'pt-BR' %>
+              <%= image_tag 'brazil/sola_pro_logo.png', :class => 'sola-pro-logo u-full-width' %>
+            <% else %>
+              <%= image_tag 'sola_pro_logo.png', :class => 'sola-pro-logo u-full-width' %>
+            <% end %>
           </div>
           <div class="learn-more-button">
             <h5><%= t('page.sola_pro.learn_more') %></h5>
@@ -36,11 +40,7 @@
       <div class="session" style="margin-bottom: 60px">
         <% if I18n.locale.to_s == 'pt-BR' %>
           <a href="//www.youtube.com/watch?v=kzE5SSBR_5k" class="play-video" rel="sola-pro-video-1">
-            <% if I18n.locale == :en %>
-              <%= image_tag 'own/sola_pro_video_poster.jpg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-            <% else %>
-              <%= image_tag 'Sola-Pro-Video-Thumb-Canada.jpeg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
-            <% end %>
+            <%= image_tag 'Sola-Pro-Video-Thumb-Canada.jpeg', :width => 952, :height => 456, :alt => "A person using the Sola Pro app on a smartphone" %>
             <div class="play-btn">
               <span class="fa fa-5x fa-play"></span>
             </div>
