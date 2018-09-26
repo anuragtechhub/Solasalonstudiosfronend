@@ -5,7 +5,7 @@ class PublicWebsiteMailer < ActionMailer::Base
     @nome = nome
     @email = email
     @telefone = telefone
-    mail(to: 'sejasola@solasalons.com', bcc: 'jeff@jeffbail.com', from: "Sola Salon Studios <sejasola@solasalonstudios.com.br>", subject: 'Seja Sola - Submissão de Formulário')
+    mail(to: 'sejasola@solasalons.com', bcc: 'jeff@jeffbail.com', from: "Sola Salon Studios <sejasola@solasalons.com>", subject: 'Seja Sola - Submissão de Formulário')
   end
 
   def request_a_tour(requestTourInquiry)
