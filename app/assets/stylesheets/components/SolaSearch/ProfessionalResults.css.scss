@@ -129,6 +129,7 @@
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				color: #FFFFFF;	
+				text-shadow: 1px 1px 5px #000;
 				@include helvetica;
 				font-size: 14px;	
 				font-weight: 300;	
@@ -156,6 +157,33 @@
     	bottom: 3px;
     	left: 0;
     	right: 0;
+
+    	.back-button, .forward-button {
+    		display: inline-block;
+    		font-size: 17px;
+    		line-height: 17px;
+    		position: absolute;
+    		top: 50%;
+    		background: #FFF;
+    		padding: 9px 7px;
+    		z-index: 9;
+    		height: 33px;
+    		border-radius: 3px;
+    		cursor: pointer;
+    		color: #000;
+
+    		&:hover, &:active {
+    			color: #AFAFAF;
+    		}
+    	}
+
+    	.back-button {
+    		left: -3px;
+    	}
+
+    	.forward-button {
+    		right: -3px;
+    	}
 
     	.ProfessionalAvailabilitiesWrapper {
 	    	width: 100%;

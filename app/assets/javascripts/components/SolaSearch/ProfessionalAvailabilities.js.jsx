@@ -30,9 +30,11 @@ var ProfessionalAvailabilities = React.createClass({
 			});
 			return (
 				<div className="ProfessionalAvailabilities">
+					<div className="fa fa-chevron-left back-button" onClick={this.goBack}></div>
 					<div className="ProfessionalAvailabilitiesWrapper">
 						{availabilities}
 					</div>
+					<div className="fa fa-chevron-right forward-button" onClick={this.goForward}></div>
 				</div>
 			);
 		} else {
@@ -42,6 +44,14 @@ var ProfessionalAvailabilities = React.createClass({
 				</div>
 			);
 		}
-	}
+	},
+
+	goBack: function () {
+		console.log('go back!');
+	},
+
+	goForward: function () {
+		console.log('go forward!');
+	},
 
 });
