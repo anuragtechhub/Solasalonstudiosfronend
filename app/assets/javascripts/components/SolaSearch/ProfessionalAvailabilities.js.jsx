@@ -38,7 +38,7 @@ var ProfessionalAvailabilities = React.createClass({
 		} else {
 			return (
 				<div className="ProfessionalAvailabilities">
-					<a href={this.props.booking_page_url} className="availability-button check-availability">{I18n.t('sola_search.check_availability')}</a>
+					<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url}>{I18n.t('sola_search.check_availability')}</a>
 				</div>
 			);
 		}
