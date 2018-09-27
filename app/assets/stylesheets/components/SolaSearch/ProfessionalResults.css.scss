@@ -167,7 +167,7 @@
     		background: #FFF;
     		padding: 9px 7px;
     		z-index: 9;
-    		height: 33px;
+    		height: 39px;
     		border-radius: 3px;
     		cursor: pointer;
     		color: #000;
@@ -178,11 +178,11 @@
     	}
 
     	.back-button {
-    		left: -3px;
+    		left: -2px;
     	}
 
     	.forward-button {
-    		right: -3px;
+    		right: -2px;
     	}
 
     	.ProfessionalAvailabilitiesWrapper {
@@ -193,6 +193,7 @@
 	    	white-space: nowrap;
 	    	position: relative;
     		bottom: -8px;
+    		//padding: 0 33px;
     	}
 
     	.availability-date {
@@ -205,7 +206,7 @@
     		.date {
     			//position: relative;
     			//top: -10px;
-    			margin: 0 0 12px 0;
+    			margin: 0 0 3px 0;
     			color: #4A4A4A;	
     			@include helvetica;
     			font-size: 11px;	
@@ -226,6 +227,9 @@
 				border-radius: 3px;
 				padding: 8px 12px;
 				margin-right: 10px;
+				width: 80px;
+				text-align: center;
+				display: inline-block;
 
 				&:hover, &:active {
 					border: 1px solid $brand-pink-hover;
@@ -235,6 +239,7 @@
 				&.check-availability {
 					color: #000000;	
 					border: 1px solid #DBDBDB;
+					width: auto;
 				}
 			}
 		}

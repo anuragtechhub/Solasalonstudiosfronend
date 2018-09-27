@@ -1,5 +1,12 @@
 var ProfessionalAvailabilities = React.createClass({
 
+	getInitialState: function () {
+		return {
+			scrollLeft: 0,
+			scrollWidth: 0,
+		}
+	},	
+
 	componentDidUpdate: function () {
 		// var glide = new Glide(this.refs.availabilities, {
 		//   type: 'carousel',
@@ -7,6 +14,9 @@ var ProfessionalAvailabilities = React.createClass({
 		// });
 
 		// console.log('glide', glide);
+		if (this.refs.availabilities && this.refs.availabilities.scrollWidth != this.state.scrollWidth) {
+			this.setState({scrollWidth: this.refs.availabilities.scrollWidth});
+		}
 	},
 
 	render: function () {
@@ -30,11 +40,11 @@ var ProfessionalAvailabilities = React.createClass({
 			});
 			return (
 				<div className="ProfessionalAvailabilities">
-					<div className="fa fa-chevron-left back-button" onClick={this.goBack}></div>
-					<div className="ProfessionalAvailabilitiesWrapper">
+					<div className="fa fa-chevron-left back-button" onClick={this.goBack} style={{display: this.state.scrollLeft <= 0 ? 'none' : 'block'}}></div>
+					<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
 						{availabilities}
 					</div>
-					<div className="fa fa-chevron-right forward-button" onClick={this.goForward}></div>
+					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: this.state.scrollLeft >= this.state.scrollWidth ? 'none' : 'block'}}></div>
 				</div>
 			);
 		} else {
@@ -46,12 +56,22 @@ var ProfessionalAvailabilities = React.createClass({
 		}
 	},
 
+	onScroll: function () {
+		var $availabilities = $(this.refs.availabilities);
+		console.log('onscroll!', $availabilities.scrollLeft(), this.state.scrollWidth);
+		this.setState({scrollLeft: $availabilities.scrollLeft()});
+	},
+
 	goBack: function () {
-		console.log('go back!');
+		var $availabilities = $(this.refs.availabilities);
+		//console.log('go back!', this.refs.availabilities.scrollWidth, $availabilities.scrollLeft());
+		$availabilities.animate({scrollLeft: $availabilities.scrollLeft() - 90}, 250);
 	},
 
 	goForward: function () {
-		console.log('go forward!');
+		var $availabilities = $(this.refs.availabilities);
+		//console.log('go forward!', this.refs.availabilities.scrollWidth, $availabilities.scrollLeft());
+		$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 90}, 250);
 	},
 
 });
