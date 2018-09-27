@@ -16,6 +16,7 @@ var ProfessionalResult = React.createClass({
 				<div className="ProfessionalCoverImage">
 					<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} />
 					<span className="ProfessionalCoverImageName">{this.props.full_name}</span>
+					<div className="Gradient"></div>
 				</div>
 				<div className="ProfessionalResultDetails">
 					<div className="ProfessionalName">{this.props.full_name}</div>

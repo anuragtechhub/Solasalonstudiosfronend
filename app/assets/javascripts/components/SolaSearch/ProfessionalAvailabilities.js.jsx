@@ -21,6 +21,8 @@ var ProfessionalAvailabilities = React.createClass({
 
 	render: function () {
 		var self = this;
+
+		//console.log('scrollLeft, scrollWidth', this.state.scrollLeft, this.state.scrollWidth);
 		
 		if (this.props.availabilities && this.props.availabilities.length > 0) {
 			var availabilities = this.props.availabilities.map(function (availability) {
@@ -44,12 +46,12 @@ var ProfessionalAvailabilities = React.createClass({
 					<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
 						{availabilities}
 					</div>
-					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: this.state.scrollLeft >= this.state.scrollWidth ? 'none' : 'block'}}></div>
+					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: this.state.scrollLeft + 717 >= this.state.scrollWidth ? 'none' : 'block'}}></div>
 				</div>
 			);
 		} else {
 			return (
-				<div className="ProfessionalAvailabilities">
+				<div className="ProfessionalAvailabilities UnknownAvailability">
 					<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url}>{I18n.t('sola_search.check_availability')}</a>
 				</div>
 			);
@@ -58,7 +60,7 @@ var ProfessionalAvailabilities = React.createClass({
 
 	onScroll: function () {
 		var $availabilities = $(this.refs.availabilities);
-		console.log('onscroll!', $availabilities.scrollLeft(), this.state.scrollWidth);
+		//console.log('onscroll!', $availabilities.scrollLeft(), this.state.scrollWidth);
 		this.setState({scrollLeft: $availabilities.scrollLeft()});
 	},
 
@@ -71,7 +73,11 @@ var ProfessionalAvailabilities = React.createClass({
 	goForward: function () {
 		var $availabilities = $(this.refs.availabilities);
 		//console.log('go forward!', this.refs.availabilities.scrollWidth, $availabilities.scrollLeft());
-		$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 90}, 250);
+		if (this.state.scrollLeft == 0) {
+			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 60}, 250);
+		} else {
+			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 90}, 250);
+		}
 	},
 
 });
