@@ -2,27 +2,30 @@ var ProfessionalAvailabilities = React.createClass({
 
 	getInitialState: function () {
 		return {
+			containerWidth: 0,
 			scrollLeft: 0,
 			scrollWidth: 0,
 		}
 	},	
 
-	componentDidUpdate: function () {
-		// var glide = new Glide(this.refs.availabilities, {
-		//   type: 'carousel',
-		//   startAt: 0,
-		// });
+	componentDidMount: function () {
+		var self = this;
 
-		// console.log('glide', glide);
+		$(window).on('resize.ProfessionalAvailabilities', function () {
+			self.setState({containerWidth: $(self.refs.availabilities).width()});
+		});
+	},
+
+	componentDidUpdate: function () {
 		if (this.refs.availabilities && this.refs.availabilities.scrollWidth != this.state.scrollWidth) {
-			this.setState({scrollWidth: this.refs.availabilities.scrollWidth});
+			this.setState({scrollWidth: this.refs.availabilities.scrollWidth, containerWidth: $(this.refs.availabilities).width()});
 		}
 	},
 
 	render: function () {
 		var self = this;
 
-		//console.log('scrollLeft, scrollWidth', this.state.scrollLeft, this.state.scrollWidth);
+		console.log('render ProfessionalAvailabilities name, containerWidth, scrollWidth', this.props.full_name, this.state.containerWidth, this.state.scrollWidth, this.displayForwardButton());
 		
 		if (this.props.availabilities && this.props.availabilities.length > 0) {
 			var availabilities = this.props.availabilities.map(function (availability) {
@@ -46,7 +49,7 @@ var ProfessionalAvailabilities = React.createClass({
 					<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
 						{availabilities}
 					</div>
-					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: this.state.scrollLeft + 717 >= this.state.scrollWidth ? 'none' : 'block'}}></div>
+					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
 				</div>
 			);
 		} else {
@@ -55,6 +58,18 @@ var ProfessionalAvailabilities = React.createClass({
 					<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url}>{I18n.t('sola_search.check_availability')}</a>
 				</div>
 			);
+		}
+	},
+
+	displayForwardButton: function () {
+		if (this.state.containerWidth == this.state.scrollWidth) {
+			return false;
+		} else if (this.state.scrollLeft + 717 >= this.state.scrollWidth) {
+			return false;
+		} else if (this.state.containerWidth < this.state.scrollWidth) { 
+			return false;
+		} else {
+			return true;
 		}
 	},
 
