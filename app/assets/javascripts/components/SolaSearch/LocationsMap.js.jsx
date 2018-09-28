@@ -37,6 +37,7 @@ var LocationsMap = React.createClass({
 
 		$(self.refs.map).on('click', '.popup-bubble-content', function (event) {
 			console.log('click on marker', $(event.target).html(), event.target.dataset.id);
+			self.props.onChangeLocationId(event.target.dataset.id);
 		});
 	},
 

@@ -15,7 +15,7 @@ class SearchController < PublicWebsiteController
 
   def stylist_results
     results_response = `curl -X GET \
-    '#{ENV['GLOSS_GENIUS_API_URL']}search?query=#{params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}' \
+    '#{ENV['GLOSS_GENIUS_API_URL']}search?#{gloss_genius_search_query_string}' \
     -H 'api_key: #{ENV['GLOSS_GENIUS_API_KEY']}' \
     -H 'device_id: #{params[:fingerprint]}'`
 
@@ -112,6 +112,16 @@ class SearchController < PublicWebsiteController
   end
 
   private
+
+  def gloss_genius_search_query_string
+    query_string = "query=#{params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
+
+    if params[:location_id].present?
+      query_string = query_string + "&org_location_id=#{params[:location_id]}"
+    end
+
+    return query_string
+  end
 
   def get_location_id(professionals)
     location_ids = []

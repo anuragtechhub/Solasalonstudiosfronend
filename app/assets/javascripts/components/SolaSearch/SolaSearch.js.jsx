@@ -11,6 +11,7 @@ var SolaSearch = React.createClass({
 			lat: this.props.lat,
 			lng: this.props.lng,
 			location: this.props.location,
+			location_id: this.props.location_id,
 			locations: this.props.locations || [],
 			professionals: this.props.professionals || [],
 			query: this.props.query,
@@ -40,13 +41,23 @@ var SolaSearch = React.createClass({
 					lat={this.state.lat}
 					lng={this.state.lng}
 					location={this.state.location}
+					location_id={this.state.location_id}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
 					stylist_search_results_path={this.state.stylist_search_results_path} 
 				/>
-				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} zoom={this.state.zoom} />
+				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} onChangeLocationId={this.onChangeLocationId} zoom={this.state.zoom} />
 			</div>
 		);
+	},
+
+
+
+	/**
+	* Change handlers
+	*/
+	onChangeLocationId: function (location_id) {
+		this.setState({location_id: location_id});
 	},
 
 

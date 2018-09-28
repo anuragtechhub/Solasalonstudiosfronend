@@ -8,10 +8,23 @@ var SearchBar = React.createClass({
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
 			location: this.props.location || '',
+			location_id: this.props.location_id,
 			lat: this.props.lat || '',
 			lng: this.props.lng || '',
 			query: this.props.query || '',
 		};
+	},
+
+	componentWillReceiveProps: function (nextProps) {
+		if (nextProps.location_id != this.state.location_id) {
+			this.setState({location_id: nextProps.location_id});
+		}
+	},
+
+	componentDidUpdate: function (prevProps, prevState) {
+		if (prevState.location_id != this.state.location_id) {
+			this.onSubmit();
+		}
 	},
 
 	componentDidMount: function () {
@@ -65,7 +78,10 @@ var SearchBar = React.createClass({
 	},
 
 	onSubmit: function (e) {
-		e.preventDefault();
+		if (e && typeof e.preventDefault == 'function') {
+			e.preventDefault();
+		}
+		
 
 		var hasQuery = this.hasQuery();
 		var hasLatLng = this.hasLatLng();
@@ -97,6 +113,7 @@ var SearchBar = React.createClass({
 			fingerprint: this.state.fingerprint,
 			lat: this.state.lat,
 			lng: this.state.lng,
+			location_id: this.state.location_id,
 			location: this.state.location,
 			query: this.state.query,
 		});
