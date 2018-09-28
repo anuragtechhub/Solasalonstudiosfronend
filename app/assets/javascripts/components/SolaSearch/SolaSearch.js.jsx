@@ -12,6 +12,7 @@ var SolaSearch = React.createClass({
 			lng: this.props.lng,
 			location: this.props.location,
 			location_id: this.props.location_id,
+			location_name: this.props.location_name,
 			locations: this.props.locations || [],
 			professionals: this.props.professionals || [],
 			query: this.props.query,
@@ -42,6 +43,7 @@ var SolaSearch = React.createClass({
 					lng={this.state.lng}
 					location={this.state.location}
 					location_id={this.state.location_id}
+					location_name={this.state.location_name}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
 					stylist_search_results_path={this.state.stylist_search_results_path} 

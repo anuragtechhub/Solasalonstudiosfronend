@@ -7,6 +7,8 @@
 	lng: params[:lng],
 	location: params[:location],
 	locations: @locations,
+	location_id: params[:location_id],
+	location_name: defined?(@location) ? @location.name : nil,
 	professionals: @professionals,
 	query: params[:query],
 	stylist_search_results_path: stylist_search_results_path,	

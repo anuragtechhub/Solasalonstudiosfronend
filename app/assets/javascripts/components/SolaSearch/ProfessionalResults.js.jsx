@@ -10,15 +10,26 @@ var ProfessionalResults = React.createClass({
 		return (
 			<div className="ProfessionalResults">
 				<div className="SolaSearchBar">
-					<SearchBar 
-						date={this.props.date}
-						lat={this.props.lat}
-						lng={this.props.lng}
-						location={this.props.location} 
-						location_id={this.props.location_id}
-						path={this.props.stylist_search_results_path} 
-						query={this.props.query} 
-					/>
+					{
+						this.props.location_id && this.props.location_name 
+						?
+						<div>
+							<div className="BackButton" onClick={this.onGoBack}>
+								<div className="fa fa-chevron-left">&nbsp;</div> <div className="back">{I18n.t('sola_search.back')}</div>
+							</div>
+							<div className="LocationName">{this.props.location_name}</div> 
+						</div>
+						:
+						<SearchBar 
+							date={this.props.date}
+							lat={this.props.lat}
+							lng={this.props.lng}
+							location={this.props.location} 
+							location_id={this.props.location_id}
+							path={this.props.stylist_search_results_path} 
+							query={this.props.query} 
+						/>
+					}
 					<div className="SearchResultsCount">{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
 				</div>
 				{professionals}
@@ -34,6 +45,10 @@ var ProfessionalResults = React.createClass({
 				return this.props.availabilities[i];
 			}
 		}
+	},
+
+	onGoBack: function () {
+		window.history.back();
 	},
 
 });

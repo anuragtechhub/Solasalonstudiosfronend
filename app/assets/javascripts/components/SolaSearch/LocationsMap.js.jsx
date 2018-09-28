@@ -36,7 +36,7 @@ var LocationsMap = React.createClass({
 		});	 
 
 		$(self.refs.map).on('click', '.popup-bubble-content', function (event) {
-			console.log('click on marker', $(event.target).html(), event.target.dataset.id);
+			//console.log('click on marker', $(event.target).html(), event.target.dataset.id);
 			self.props.onChangeLocationId(event.target.dataset.id);
 		});
 	},
@@ -56,8 +56,8 @@ var LocationsMap = React.createClass({
 	*/
 
 	getZoomByBounds: function (map, bounds) {
-	  var MAX_ZOOM = 21;
-	  var MIN_ZOOM = 0;
+	  var MAX_ZOOM = 16;
+	  var MIN_ZOOM = 3;
 
 	  // console.log('map', map);
 	  // console.log('map.getProjection()', map.getProjection());
@@ -76,7 +76,8 @@ var LocationsMap = React.createClass({
 	          worldCoordHeight*(1<<zoom)+2*FIT_PAD < $(map.getDiv()).height() )
 	          return zoom;
 	  }
-	  return 0;
+
+	  return MIN_ZOOM;
 	},
 
 	processMarkers: function () {

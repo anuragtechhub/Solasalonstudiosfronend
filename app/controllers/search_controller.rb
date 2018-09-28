@@ -26,6 +26,10 @@ class SearchController < PublicWebsiteController
     #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
     @locations = Location.where(:id => get_location_id(@professionals))
     
+    if params[:location_id].present?
+      @location = Location.find_by(:id => params[:location_id])
+    end
+    
     #p "@locations=#{@locations.size}"
     #p "@date=#{@date}"
     #p "@professionals=#{@professionals}"
