@@ -220,6 +220,15 @@
     	.availability-date {
     		display: inline-block;
     		vertical-align: bottom;
+    		margin-left: 15px;
+
+    		&:first-child {
+    			margin-left: 0;
+    		}
+
+    		// &:last-child {
+    		// 	margin-right: 15px;
+    		// }
     		// float: left;
     		// clear: none;
     		// white-space: nowrap;

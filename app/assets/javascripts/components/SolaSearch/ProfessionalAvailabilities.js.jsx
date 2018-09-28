@@ -25,7 +25,7 @@ var ProfessionalAvailabilities = React.createClass({
 	render: function () {
 		var self = this;
 
-		console.log('render ProfessionalAvailabilities name, containerWidth, scrollWidth', this.props.full_name, this.state.containerWidth, this.state.scrollWidth, this.displayForwardButton());
+		//console.log('render ProfessionalAvailabilities name, containerWidth, scrollWidth, scrollLeft', this.props.full_name, this.state.containerWidth, this.state.scrollWidth, this.state.scrollLeft);
 		
 		if (this.props.availabilities && this.props.availabilities.length > 0) {
 			var availabilities = this.props.availabilities.map(function (availability) {
@@ -62,9 +62,13 @@ var ProfessionalAvailabilities = React.createClass({
 	},
 
 	displayForwardButton: function () {
-		if (this.state.containerWidth <= this.state.scrollWidth) {
-			return false;
-		} else if (this.state.scrollLeft + 717 >= this.state.scrollWidth) {
+		if (this.state.containerWidth < this.state.scrollWidth) {
+			if (this.state.scrollLeft + this.state.containerWidth >= this.state.scrollWidth) {
+				return false;
+			} else {
+				return true;
+			}
+		} else if (this.state.scrollLeft + this.state.containerWidth >= this.state.scrollWidth) {
 			return false;
 		} else if (this.state.containerWidth < this.state.scrollWidth) { 
 			return false;
