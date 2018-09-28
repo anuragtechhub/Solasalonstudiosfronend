@@ -62,7 +62,7 @@ var ProfessionalAvailabilities = React.createClass({
 	},
 
 	displayForwardButton: function () {
-		if (this.state.containerWidth == this.state.scrollWidth) {
+		if (this.state.containerWidth <= this.state.scrollWidth) {
 			return false;
 		} else if (this.state.scrollLeft + 717 >= this.state.scrollWidth) {
 			return false;
