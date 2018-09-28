@@ -13,5 +13,9 @@
 	zoom: 9,
 } %>
 
+<% if Rails.env.test? %>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<% end %>
+
 <% @body_class = 'sola-search' %>
 <% content_for(:title) { t('page.search.search') } %>
