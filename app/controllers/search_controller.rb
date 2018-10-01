@@ -1,5 +1,6 @@
 class SearchController < PublicWebsiteController
   
+  require 'uri'
   skip_before_filter :verify_authenticity_token
   
   def stylist_search
@@ -118,7 +119,7 @@ class SearchController < PublicWebsiteController
   private
 
   def gloss_genius_search_query_string
-    query_string = "query=#{params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
+    query_string = "query=#{URI.encode(params[:query])}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
 
     if params[:location_id].present?
       query_string = query_string + "&org_location_id=#{params[:location_id]}"
