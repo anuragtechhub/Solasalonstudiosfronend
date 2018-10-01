@@ -1,5 +1,5 @@
 class SearchController < PublicWebsiteController
-  
+    
   require 'uri'
   skip_before_filter :verify_authenticity_token
   
@@ -22,13 +22,17 @@ class SearchController < PublicWebsiteController
 
     #p "results_response=#{results_response}"
 
-    @professionals = JSON.parse(results_response)
-    @date = DateTime.parse(params[:date]) || DateTime.now
-    #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
-    @locations = Location.where(:id => get_location_id(@professionals))
-    
-    if params[:location_id].present?
-      @location = Location.find_by(:id => params[:location_id])
+    begin
+      @professionals = JSON.parse(results_response)
+      @date = DateTime.parse(params[:date]) || DateTime.now
+      #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
+      @locations = Location.where(:id => get_location_id(@professionals))
+      
+      if params[:location_id].present?
+        @location = Location.find_by(:id => params[:location_id])
+      end
+    rescue
+      p "ERROR WITH THIS CALL"
     end
     
     #p "@locations=#{@locations.size}"
@@ -87,7 +91,7 @@ class SearchController < PublicWebsiteController
         stylists_website_name = Stylist.where('website_name IS NOT NULL AND website_name != ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.website_name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         
         # service_type filter?
-        p "params[:service_type]=#{params[:service_type]}"
+        #p "params[:service_type]=#{params[:service_type]}"
         if params[:service_type].present? && params[:service_type] != 'all_types'
 
           if params[:service_type] == 'skincare'
@@ -119,11 +123,13 @@ class SearchController < PublicWebsiteController
   private
 
   def gloss_genius_search_query_string
-    query_string = "query=#{URI.encode(params[:query])}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
+    query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
 
     if params[:location_id].present?
       query_string = query_string + "&org_location_id=#{params[:location_id]}"
     end
+
+    #p "query_string=#{query_string}"
 
     return query_string
   end
