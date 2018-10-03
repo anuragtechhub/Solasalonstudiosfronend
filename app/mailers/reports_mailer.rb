@@ -5,7 +5,7 @@ class ReportsMailer < ActionMailer::Base
     @location = location
     report_email_address = @location.email_address_for_reports.present? ? @location.email_address_for_reports : @location.email_address_for_inquiries
     attachments["#{@location.url_name}.pdf"] = report_pdf
-    mail(to: report_email_address, bcc: ['nadia@solasalonstudios.com', 'jeff@jeffbail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
+    mail(to: report_email_address, bcc: ['jeff@jeffbail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
   end
 
   def send_report(email_address, subject, csv_file)
@@ -16,7 +16,7 @@ class ReportsMailer < ActionMailer::Base
   def welcome_email_report(report_pdf)
     attachments["welcome_email_report.pdf"] = report_pdf
     #mail(to: ['jeff@jeffbail.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
-    mail(to: ['jennie@solasalonstudios.com', 'nadia@solasalonstudios.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
+    mail(to: ['jennie@solasalonstudios.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
   end
 
 end
