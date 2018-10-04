@@ -4,7 +4,7 @@ var ProfessionalResults = React.createClass({
 		var self = this;
 
 		var professionals = this.props.professionals.map(function (professional) {
-			return <ProfessionalResult key={professional.booking_page_url} {...professional} availabilities={self.getAvailabilities(professional)} />
+			return <ProfessionalResult key={professional.booking_page_url} {...professional} availabilities={self.getAvailabilities(professional)} onShowBookingModal={self.props.onShowBookingModal} professional={professional} />
 		});
 
 		return (

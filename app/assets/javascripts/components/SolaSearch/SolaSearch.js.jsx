@@ -3,6 +3,7 @@ var SolaSearch = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities || {},
+			bookingModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			error: null,
 			fingerprint: this.props.fingerprint,
@@ -14,9 +15,11 @@ var SolaSearch = React.createClass({
 			location_id: this.props.location_id,
 			location_name: this.props.location_name,
 			locations: this.props.locations || [],
+			professional: this.props.professional,
 			professionals: this.props.professionals || [],
 			query: this.props.query,
 			stylist_search_results_path: this.props.stylist_search_results_path,
+			time: this.props.time,
 			zoom: this.props.zoom,
 		};
 	},
@@ -44,11 +47,13 @@ var SolaSearch = React.createClass({
 					location={this.state.location}
 					location_id={this.state.location_id}
 					location_name={this.state.location_name}
+					onShowBookingModal={this.onShowBookingModal}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
 					stylist_search_results_path={this.state.stylist_search_results_path} 
 				/>
 				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} onChangeLocationId={this.onChangeLocationId} zoom={this.state.zoom} />
+				<BookingModal professional={this.state.professional} time={this.state.time} visible={this.state.bookingModalVisible} />
 			</div>
 		);
 	},
@@ -58,8 +63,18 @@ var SolaSearch = React.createClass({
 	/**
 	* Change handlers
 	*/
+
 	onChangeLocationId: function (location_id) {
 		this.setState({location_id: location_id});
+	},
+
+	onShowBookingModal: function (professional, time, event) {
+		if (event && typeof event.preventDefault == 'function') {
+			event.preventDefault();
+		}
+
+		//console.log('onShowBookingModal', professional, time);
+		this.setState({bookingModalVisible: true, professional: professional, time: time});
 	},
 
 

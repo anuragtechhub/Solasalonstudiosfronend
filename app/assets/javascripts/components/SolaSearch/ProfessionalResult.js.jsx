@@ -21,7 +21,13 @@ var ProfessionalResult = React.createClass({
 				<div className="ProfessionalResultDetails">
 					<div className="ProfessionalName">{this.props.full_name}</div>
 					<div className="ProfessionalAddress">{this.props.business_address}</div>
-					<ProfessionalAvailabilities availabilities={this.props.availabilities} booking_page_url={this.props.booking_page_url} full_name={this.props.full_name} />
+					<ProfessionalAvailabilities 
+						availabilities={this.props.availabilities} 
+						booking_page_url={this.props.booking_page_url} 
+						full_name={this.props.full_name} 
+						onShowBookingModal={this.props.onShowBookingModal} 
+						professional={this.props.professional} 
+					/>
 				</div>
 			</div>
 		);
