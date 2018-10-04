@@ -53,7 +53,12 @@ var SolaSearch = React.createClass({
 					stylist_search_results_path={this.state.stylist_search_results_path} 
 				/>
 				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} onChangeLocationId={this.onChangeLocationId} zoom={this.state.zoom} />
-				<BookingModal professional={this.state.professional} time={this.state.time} visible={this.state.bookingModalVisible} />
+				<BookingModal 
+					onHideBookingModal={this.onHideBookingModal}
+					professional={this.state.professional} 
+					time={this.state.time} 
+					visible={this.state.bookingModalVisible} 
+				/>
 			</div>
 		);
 	},
@@ -66,6 +71,10 @@ var SolaSearch = React.createClass({
 
 	onChangeLocationId: function (location_id) {
 		this.setState({location_id: location_id});
+	},
+
+	onHideBookingModal: function () {
+		this.setState({bookingModalVisible: false, professional: null, time: null});
 	},
 
 	onShowBookingModal: function (professional, time, event) {

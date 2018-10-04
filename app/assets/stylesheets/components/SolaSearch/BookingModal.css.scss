@@ -21,4 +21,54 @@
 	max-width: 600px;
 	max-height: 600px;
 	background: #FFF;
+
+	.BookingModalHeader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 48px;
+		overflow: hidden;
+		background-color: #121D25;
+		text-align: center;
+		color: #FFFFFF;	
+		font-family: 'Lato', sans-serif;	
+		font-size: 16px;	
+		font-weight: bold;	
+		line-height: 16px;	
+		padding-top: 16px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;	
+
+		.close-x {
+			position: absolute;
+			top: 13px;
+			right: 16px;
+
+			.fa {
+				cursor: pointer;
+				color: #FFF;
+				font-size: 30px;
+				line-height: 30px;
+			}
+		}
+	}
+
+	.BookingModalBody {
+
+	}
+
+	.BookingModalFooter {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: #FFF;
+		border-top: 1px solid #EEE;
+	}
+}
+
+.fa-times-thin:before {
+	content: '\00d7';
 }

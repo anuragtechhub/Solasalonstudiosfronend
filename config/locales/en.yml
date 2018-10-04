@@ -38,6 +38,7 @@ en:
     check_availability: Check Availability
     professionals_for_query: professionals for '%{query}'
     back: Back
+    book_appointment: Book Appointment
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
