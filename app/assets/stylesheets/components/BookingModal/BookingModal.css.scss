@@ -69,7 +69,14 @@
 	}
 
 	.BookingModalBody {
-
+		position: absolute;
+		top: 48px;
+		bottom: 100px;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+		overflow-y: scroll;
+		z-index: 9;
 	}
 
 	.BookingModalFooter {
@@ -85,4 +92,90 @@
 
 .fa-times-thin:before {
 	content: '\00d7';
+}
+
+.BookingModalReview {
+	position: relative;
+
+	.Header {
+		position: relative;
+		height: 150px;
+		width: 100%;
+		background: #77b7e0; /* Old browsers */
+		background: -moz-linear-gradient(left, #77b7e0 0%, #e744a8 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(left, #77b7e0 0%,#e744a8 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, #77b7e0 0%,#e744a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77b7e0', endColorstr='#e744a8',GradientType=1 ); /* IE6-9 */		
+		padding: 20px;
+	}
+
+	.ProfessionalCoverImage {
+		position: relative;
+		height: 110px;	
+		width: 110px;	
+		display: block;
+		overflow: hidden;
+
+		img {
+			display: block;
+			height: 110px;	
+			width: 110px;	
+			border-radius: 2px;
+		}
+
+		.Gradient {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			top: 70%;
+			z-index: 8;
+
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100 */
+			background: #ffffff; /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, #000000 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(0,0,0,0)', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		}
+	}
+
+	.ProfessionalInfo {
+		position: absolute;
+		top: 20px;
+		bottom: 20px;
+		left: 160px;
+		right: 20px;
+		z-index: 9;
+
+		.ProfessionalName {
+			@include chalet_paris;
+			font-size: 24px;	
+			line-height: 26px;
+			color: #FFF;	
+			margin-bottom: 13px;
+		}
+
+		.ProfessionalAddress {
+			color: #FFFFFF;	
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 20px;
+			margin-bottom: 13px;
+		}
+
+		a.Contact, a.Contact:link, a.Contact:visited, a.Contact:hover, a.Contact:active {
+			@include chalet_paris;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;	
+			color: #FFFFFF;	
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: bold;	
+			line-height: 20px;
+			margin-bottom: 15px;
+			text-decoration: none;
+		}
+	}
 }

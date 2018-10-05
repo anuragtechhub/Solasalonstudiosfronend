@@ -4,6 +4,7 @@ var BookingModal = React.createClass({
 		return {
 			fullHeight: false,
 			fullWidth: false,
+			step: 'review',
 		}
 	},
 
@@ -11,6 +12,7 @@ var BookingModal = React.createClass({
 		var self = this;
 		var $window = $(window);
 
+		// handle booking modal sizing
 		$window.on('resize.BookingModal', function () {
 			var width = $window.width();
 			var height = $window.height();
@@ -23,7 +25,24 @@ var BookingModal = React.createClass({
 				self.setState({fullHeight: fullHeight, fullWidth: fullWidth});
 			}
 		});
-	},	
+	},
+
+	componentDidUpdate: function () {
+		// disable / enable scrolling
+		if (this.props.visible) {
+			$('html, body').css({
+			    overflow: 'hidden',
+			    height: '100%'
+			});
+		} else {
+			$('html, body').css({
+			    overflow: 'auto',
+			    height: 'auto'
+			});
+		}
+	},
+
+
 
 	/**
 	* Render functions
@@ -36,40 +55,15 @@ var BookingModal = React.createClass({
 			return (
 				<div className="BookingModalOverlay" onClick={this.props.onHideBookingModal}>
 					<div className={"BookingModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="BookingModal">
-						{this.renderHeader()}
-						{this.renderBody()}
-						{this.renderFooter()}
+						<BookingModalHeader {...this.props} {...this.state} />
+						<BookingModalBody {...this.props} {...this.state} />
+						<BookingModalFooter {...this.props} {...this.state} />
 					</div>
 				</div>
 			);
 		} else {
 			return null;
 		}
-	},
-
-	renderBody: function () {
-		return (
-			<div className="BookingModalBody">
-				BODY
-			</div>
-		);
-	},
-
-	renderFooter: function () {
-		return (
-			<div className="BookingModalFooter">
-				FOOTER
-			</div>
-		);
-	},
-
-	renderHeader: function () {
-		return (
-			<div className="BookingModalHeader">
-				{I18n.t('sola_search.book_appointment')}
-				<div className="close-x"><span className="fa fa-2x fa-times-thin" onClick={this.props.onHideBookingModal}></span></div>
-			</div>
-		);
 	},
 
 });
