@@ -97,7 +97,7 @@ var SolaSearch = React.createClass({
 	getAvailabilities: function (services_guids) {
 		var self = this;
 		
-		console.log('services_guids', JSON.stringify(services_guids));
+		//console.log('services_guids', JSON.stringify(services_guids));
 
 		$.ajax({
 			data: {

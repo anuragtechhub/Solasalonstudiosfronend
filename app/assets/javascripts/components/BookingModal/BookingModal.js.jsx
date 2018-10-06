@@ -49,7 +49,7 @@ var BookingModal = React.createClass({
 	*/
 
 	render: function () {
-		console.log('BookingModal', this.props);
+		//console.log('BookingModal', this.props);
 
 		if (this.props.visible) {
 			return (
