@@ -147,25 +147,36 @@
 		left: 160px;
 		right: 20px;
 		z-index: 9;
+		display: flex;
+    flex-direction: column;
 
 		.ProfessionalName {
+			flex: 1;
 			@include chalet_paris;
 			font-size: 24px;	
 			line-height: 26px;
 			color: #FFF;	
-			margin-bottom: 13px;
+			margin-bottom: 0;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.ProfessionalAddress {
+			flex: 1;
 			color: #FFFFFF;	
 			@include helvetica;
 			font-size: 14px;	
 			font-weight: 300;	
 			line-height: 20px;
-			margin-bottom: 13px;
+			margin-bottom: 0;
 		}
 
 		a.Contact, a.Contact:link, a.Contact:visited, a.Contact:hover, a.Contact:active {
+			display: flex;
+			flex: 1;
+			align-items: flex-end;
+			
 			@include chalet_paris;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;	
@@ -174,8 +185,27 @@
 			font-size: 14px;	
 			font-weight: bold;	
 			line-height: 20px;
-			margin-bottom: 15px;
+			margin-bottom: 0;
 			text-decoration: none;
+		}
+	}
+}
+
+
+
+@media (max-width: 600px) {
+	.BookingModal {
+		.BookingModalReview {
+
+			.ProfessionalName {
+				font-size: 18px;
+				line-height: 24px;
+			}
+
+			.ProfessionalAddress {
+				font-size: 14px;
+				line-height: 16px;
+			}
 		}
 	}
 }
