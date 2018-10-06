@@ -40,6 +40,10 @@ en:
     back: Back
     book_appointment: Book Appointment
     contact: Contact
+    charged_after_appointment: Charged after appointment
+    book_service: Book %{num} Service
+    book_services: Book %{num} Services
+    total: Total
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

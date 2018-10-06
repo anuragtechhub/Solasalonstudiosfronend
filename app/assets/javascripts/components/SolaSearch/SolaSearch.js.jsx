@@ -18,6 +18,7 @@ var SolaSearch = React.createClass({
 			professional: this.props.professional,
 			professionals: this.props.professionals || [],
 			query: this.props.query,
+			services: [],
 			stylist_search_results_path: this.props.stylist_search_results_path,
 			time: this.props.time,
 			zoom: this.props.zoom,
@@ -56,6 +57,7 @@ var SolaSearch = React.createClass({
 				<BookingModal 
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
+					services={this.state.services}
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
 				/>
@@ -74,7 +76,7 @@ var SolaSearch = React.createClass({
 	},
 
 	onHideBookingModal: function () {
-		this.setState({bookingModalVisible: false, professional: null, time: null});
+		this.setState({bookingModalVisible: false, professional: null, time: null, services: []});
 	},
 
 	onShowBookingModal: function (professional, time, event) {
@@ -83,7 +85,7 @@ var SolaSearch = React.createClass({
 		}
 
 		//console.log('onShowBookingModal', professional, time);
-		this.setState({bookingModalVisible: true, professional: professional, time: time});
+		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [professional.matched_services[0]]});
 	},
 
 

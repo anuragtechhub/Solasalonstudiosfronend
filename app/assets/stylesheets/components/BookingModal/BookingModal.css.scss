@@ -87,6 +87,49 @@
 		height: 100px;
 		background: #FFF;
 		border-top: 1px solid #EEE;
+		padding: 15px;
+
+		.ChargedAfterAppointment {
+			color: #9B9B9B;	
+			@include helvetica;
+			font-size: 14px;	
+			font-style: italic;	
+			font-weight: 300;	
+			line-height: 16px;
+			width: 50%;
+			float: left;
+			clear: both;
+			text-align: left;
+			margin-top: 5px;
+		}
+
+		.Total {
+			color: #000000;	
+			@include helvetica;
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 24px;
+			width: 50%;
+			float: left;
+			clear: none;
+			margin-top: 15px;
+
+			strong {
+				font-weight: bold;
+			}
+		}
+
+		.Button {
+			margin-top: 15px;
+			text-align: right;
+		}
+
+		button.primary {
+			font-size: 14px;
+			line-height: 16px;
+			padding: 16px 40px;
+	    height: 44px;
+		}
 	}
 }
 
@@ -176,7 +219,7 @@
 			display: flex;
 			flex: 1;
 			align-items: flex-end;
-			
+
 			@include chalet_paris;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;	
@@ -205,6 +248,25 @@
 			.ProfessionalAddress {
 				font-size: 14px;
 				line-height: 16px;
+			}
+		}
+
+		.BookingModalFooter {
+			.ChargedAfterAppointment {
+				text-align: right;
+				clear: none;
+			}
+			.Total {
+				margin-top: 0;
+			}
+			.Button {
+				padding-top: 5px;
+				margin: 0;
+				clear: both;
+
+				button.primary {
+					width: 100%;
+				}
 			}
 		}
 	}
