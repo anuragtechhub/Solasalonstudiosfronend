@@ -44,6 +44,12 @@ en:
     book_service: Book %{num} Service
     book_services: Book %{num} Services
     total: Total
+    change_date: Change Date
+    change_time: Change Time 
+    add_service: Add Service
+    service: Service
+    services: Services
+    min: min
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

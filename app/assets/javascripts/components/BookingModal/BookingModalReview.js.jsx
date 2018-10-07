@@ -12,6 +12,17 @@ var BookingModalReview = React.createClass({
 		return (
 			<div className="BookingModalReview">
 				{this.renderHeader()}
+				{this.renderBody()}
+			</div>
+		);
+	},
+
+	renderBody: function () {
+		return (
+			<div className="Body">
+				<BookingModalDateRow {...this.props} {...this.state} />
+				<BookingModalTimeRow {...this.props} {...this.state} />
+				<BookingModalServicesRow {...this.props} {...this.state} />
 			</div>
 		);
 	},
