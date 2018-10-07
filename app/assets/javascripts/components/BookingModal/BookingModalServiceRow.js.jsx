@@ -1,7 +1,7 @@
 var BookingModalServiceRow = React.createClass({
 
 	render: function () {
-		//console.log('BookingModalService', this.props.service);
+		console.log('BookingModalService', this.props.service);
 
 		return (
 			<div className="ServiceRow">
@@ -16,7 +16,7 @@ var BookingModalServiceRow = React.createClass({
 	},
 
 	calculateTotalCost: function () {
-		return parseFloat(this.props.service.cost, 10);
+		return parseFloat(this.props.service.price, 10);
 	}
 
 });
