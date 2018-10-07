@@ -54,6 +54,15 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;	
 
+		.BackButton {
+			font-size: 18px;
+			line-height: 18px;
+			position: absolute;
+			top: 17px;
+			left: 16px;
+			cursor: pointer;
+		}
+
 		.close-x {
 			position: absolute;
 			top: 7px;
@@ -261,7 +270,7 @@
 				color: #EF008C;	
 				font-size: 14px;	
 				line-height: 16px;
-				margin-top: 9px;
+				margin-top: 5px;
 			}
 
 			.Services {

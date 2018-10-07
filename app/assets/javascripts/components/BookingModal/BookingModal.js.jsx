@@ -64,7 +64,7 @@ var BookingModal = React.createClass({
 			return (
 				<div className="BookingModalOverlay HideBookingModal" onClick={this.props.onHideBookingModal}>
 					<div className={"BookingModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="BookingModal">
-						<BookingModalHeader {...this.props} {...this.state} />
+						<BookingModalHeader {...this.props} {...this.state} onBack={this.onBack} />
 						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
 						<BookingModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
 					</div>
@@ -80,6 +80,12 @@ var BookingModal = React.createClass({
 	/**
 	* Change handlers
 	*/
+
+	onBack: function () {
+		if (this.state.step == 'info') {
+			this.setState({step: 'review'});
+		}
+	},
 
 	onChange: function (e) {
 		if (e && e.target) {
