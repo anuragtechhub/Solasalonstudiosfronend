@@ -50,6 +50,11 @@ en:
     service: Service
     services: Services
     min: min
+    your_information: Your Information
+    your_name: Your Name
+    email_address: Email Address
+    phone_number: Phone Number
+    continue: Continue
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

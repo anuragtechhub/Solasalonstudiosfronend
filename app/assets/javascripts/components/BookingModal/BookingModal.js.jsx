@@ -2,9 +2,12 @@ var BookingModal = React.createClass({
 
 	getInitialState: function () {
 		return {
+			email_address: '',
 			fullHeight: false,
 			fullWidth: false,
-			step: 'review',
+			phone_number: '',
+			step: this.props.step || 'review',
+			your_name: '',
 		}
 	},
 
@@ -25,6 +28,12 @@ var BookingModal = React.createClass({
 				self.setState({fullHeight: fullHeight, fullWidth: fullWidth});
 			}
 		});
+	},
+
+	componentWillReceiveProps: function (nextProps) {
+		if (nextProps.step != this.state.step) {
+			this.setState({step: nextProps.step});
+		}
 	},
 
 	componentDidUpdate: function () {
@@ -49,20 +58,47 @@ var BookingModal = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('BookingModal', this.props);
+		//console.log('BookingModal', this.props.step);
 
 		if (this.props.visible) {
 			return (
-				<div className="BookingModalOverlay" onClick={this.props.onHideBookingModal}>
+				<div className="BookingModalOverlay HideBookingModal" onClick={this.props.onHideBookingModal}>
 					<div className={"BookingModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="BookingModal">
 						<BookingModalHeader {...this.props} {...this.state} />
-						<BookingModalBody {...this.props} {...this.state} />
-						<BookingModalFooter {...this.props} {...this.state} />
+						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
+						<BookingModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
 					</div>
 				</div>
 			);
 		} else {
 			return null;
+		}
+	},
+
+
+
+	/**
+	* Change handlers
+	*/
+
+	onChange: function (e) {
+		if (e && e.target) {
+			//console.log('onChange', e.target.name, e.target.value);
+			this.state[e.target.name] = e.target.value;
+			this.setState(this.state);
+		}
+	},
+
+	onSubmit: function (e) {
+		//console.log('onSubmit!');
+
+		if (e && e.preventDefault && e.stopPropagation) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+
+		if (this.state.step == 'review') {
+			this.setState({step: 'info'});
 		}
 	},
 
