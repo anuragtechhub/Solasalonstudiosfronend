@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed#, #:sync_with_ping_hd#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   after_destroy :remove_from_mailchimp, :touch_stylist
