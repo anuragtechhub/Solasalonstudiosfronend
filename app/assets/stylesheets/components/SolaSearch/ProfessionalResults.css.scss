@@ -159,6 +159,7 @@
 			font-weight: 300;	
 			line-height: 24px;
 			color: #000000;	
+			margin-top: -5px;
 			margin-bottom: 5px;
 		}
 
@@ -167,6 +168,8 @@
 			font-weight: 300;	
 			line-height: 16px;
 			color: #4A4A4A;
+			max-height: 48px;
+			overflow: hidden;
 		}
 
 		.ProfessionalAvailabilities {
