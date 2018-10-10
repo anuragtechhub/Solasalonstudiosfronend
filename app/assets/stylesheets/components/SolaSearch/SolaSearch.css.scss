@@ -14,6 +14,17 @@
 		min-height: 400px;
 		max-height: 700px;
 
+		.home-services-animation {
+			display: inline;
+
+			span {
+				top: -3px;
+				left: 13px;
+				border-bottom: 0;
+				padding-bottom: 0;
+			}
+		}
+
 		.container {
 			height: 70vh;
 			min-height: 400px;
@@ -141,6 +152,17 @@
 		.sola-search-hero {
 			background: asset-url('booknow/hero-mobile.jpg') no-repeat;
 			background-size: cover;
+
+			.home-services-animation {
+				display: inline;
+
+				span {
+					top: -2px;
+					left: 7px;
+					border-bottom: 0;
+					padding-bottom: 0;
+				}
+			}
 
 			h2 {
 				font-size: 27px;
