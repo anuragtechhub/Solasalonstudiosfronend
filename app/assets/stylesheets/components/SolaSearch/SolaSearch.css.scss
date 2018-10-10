@@ -57,30 +57,6 @@
 	.home-recently-featured-box {
 		margin-top: 30px;
 	}
-
-	// .hero-container {
-	// 	position: relative;
-
-	// 	h2, h3, h5 {
-	// 		color: #FFF;
-	// 		margin: 0;
-	// 	}
-
-	// 	// . {
-	// 	// 	position: relative;
-	// 	// 	min-height: 250px;
-	// 	// }
-
-	// 	.container {
-	// 		position: absolute;
-	// 		top: 0;
-	// 		left: 15px;
-	// 		right: 15px;
-	// 		bottom: 0;
-	// 		outline: 1px solid #BADA55;
-	// 		z-index: 2;
-	// 	}		
-	// }
 }
 
 
@@ -153,8 +129,14 @@
 	}
 }
 
-@media (max-width: 788px) {
+
+
+@media (max-width: 888px) {
 	.sola-search {
+
+		.SolaSearch { 
+			height: auto;
+		}
 
 		.sola-search-hero {
 			background: asset-url('booknow/hero-mobile.jpg') no-repeat;

@@ -74,3 +74,14 @@
 
 	}
 }
+
+@media (max-width: 888px) {
+	.LocationsMap, .LocationsMap .map {
+		position: static;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		height: 70vh;
+	}
+}

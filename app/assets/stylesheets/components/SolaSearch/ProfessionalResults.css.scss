@@ -275,3 +275,13 @@
 		}
 	}
 }
+
+@media (max-width: 888px) {
+	.ProfessionalResults {
+		position: static;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		right: auto;
+	}
+}
