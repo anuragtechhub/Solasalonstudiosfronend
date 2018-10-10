@@ -265,12 +265,12 @@ class Stylist < ActiveRecord::Base
   # end
 
   def sync_with_ping_hd
-    url = "http://dev.pinghd.com/api/Engage/Sola"
+    url = "https://go.engagephd.com" #"http://dev.pinghd.com/api/Engage/Sola"
     
     p "url=#{url}"
 
     payload = {
-      accessCode: "138-Xfd",
+      accessCode: "1315-TFp", #"138-Xfd",
       location: self.location_id,
       productNumber: self.id,
       category: self.services.join(', '),
