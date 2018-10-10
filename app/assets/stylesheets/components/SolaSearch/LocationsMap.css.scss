@@ -75,13 +75,17 @@
 	}
 }
 
-@media (max-width: 888px) {
+@media (max-width: 991px) {
 	.LocationsMap, .LocationsMap .map {
-		position: static;
+		position: relative;
 		top: auto;
 		bottom: auto;
 		left: auto;
 		right: auto;
-		height: 70vh;
+		height: 90vh;
+	}
+
+	.SolaSearch.list .LocationsMap {
+		display: none;
 	}
 }

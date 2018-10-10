@@ -279,12 +279,17 @@
 	}
 }
 
-@media (max-width: 888px) {
+@media (max-width: 991px) {
 	.ProfessionalResults {
 		position: static;
 		top: auto;
 		bottom: auto;
 		left: auto;
 		right: auto;
+		height: 90vh;
 	}
+
+	.SolaSearch.map .ProfessionalResults {
+		display: none;
+	}	
 }

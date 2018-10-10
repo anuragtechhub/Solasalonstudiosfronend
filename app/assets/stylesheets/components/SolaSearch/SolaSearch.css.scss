@@ -54,7 +54,7 @@
 	}
 
 	.body-content {
-		padding-bottom: 0;
+		padding-bottom: 15px;
 	}
 
 	.desktop {
@@ -77,6 +77,16 @@
 	position: relative;
 	height: calc(100vh - 123px);
 	margin-bottom: -30px;
+
+	.FloatingToggle {
+		position: fixed;
+		bottom: 0px;
+		left: 50%;
+		width: 122px;
+		margin-left: -61px;
+		border-radius: 24px;
+		z-index: 99;
+	}
 }
 
 .SolaSearchBar {

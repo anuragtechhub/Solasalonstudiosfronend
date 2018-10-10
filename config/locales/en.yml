@@ -55,6 +55,9 @@ en:
     email_address: Email Address
     phone_number: Phone Number
     continue: Continue
+    map: Map
+    list: List
+
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

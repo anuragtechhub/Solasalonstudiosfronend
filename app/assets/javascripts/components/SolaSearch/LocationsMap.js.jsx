@@ -8,6 +8,16 @@ var LocationsMap = React.createClass({
 	},
 
 	componentDidMount: function () {
+		this.initMap();
+	},
+
+	componentDidUpdate: function (prevProps, prevState) {
+		if (this.state.map && prevProps.display != this.props.display || prevProps.mode != this.props.mode) {
+			$(this.refs.map).css({width: '100%', height: '100%'});
+		}
+	},
+
+	initMap: function () {
 		var self = this;
 
 	  var map = new GMaps({
@@ -40,6 +50,12 @@ var LocationsMap = React.createClass({
 			self.props.onChangeLocationId(event.target.dataset.id);
 		});
 	},
+
+
+
+	/**
+	* Render functions
+	*/
 
 	render: function () {
 		return (

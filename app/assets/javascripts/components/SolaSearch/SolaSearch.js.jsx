@@ -5,6 +5,7 @@ var SolaSearch = React.createClass({
 			availabilities: this.props.availabilities || {},
 			bookingModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
+			display: this.props.displayMode || 'desktop',
 			error: null,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
@@ -15,6 +16,7 @@ var SolaSearch = React.createClass({
 			location_id: this.props.location_id,
 			location_name: this.props.location_name,
 			locations: this.props.locations || [],
+			mode: this.props.mode || 'list',
 			professional: this.props.professional,
 			professionals: this.props.professionals || [],
 			query: this.props.query,
@@ -28,6 +30,21 @@ var SolaSearch = React.createClass({
 
 	componentDidMount: function () {
 		this.getAvailabilities(this.getServicesGuids());
+
+		var self = this;
+		var $window = $(window);
+
+		// handle booking modal sizing
+		$window.on('resize.SolaSearch', function () {
+			var width = $window.width();
+			
+			console.log('resize SolaSearch', width);
+			if (width <= 991 && self.state.display != 'mobile') {
+				self.setState({display: 'mobile'});
+			} else if (width > 991 && self.state.display != 'desktop') {
+				self.setState({display: 'desktop'});
+			}
+		}).trigger('resize.SolaSearch');
 	},
 
 
@@ -40,7 +57,7 @@ var SolaSearch = React.createClass({
 		//console.log('render SolaSearch professionals', this.state.professionals);
 		
 		return (
-			<div className="SolaSearch">
+			<div className={"SolaSearch " + this.state.mode}>
 				<ProfessionalResults 
 					availabilities={this.state.availabilities} 
 					date={this.state.date} 
@@ -54,7 +71,15 @@ var SolaSearch = React.createClass({
 					query={this.state.query} 
 					stylist_search_results_path={this.state.stylist_search_results_path} 
 				/>
-				<LocationsMap lat={this.state.lat} lng={this.state.lng} locations={this.state.locations} onChangeLocationId={this.onChangeLocationId} zoom={this.state.zoom} />
+				<LocationsMap 
+					display={this.state.display}
+					lat={this.state.lat} 
+					lng={this.state.lng} 
+					locations={this.state.locations} 
+					mode={this.state.mode}
+					onChangeLocationId={this.onChangeLocationId} 
+					zoom={this.state.zoom}
+				/>
 				<BookingModal 
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
@@ -63,8 +88,23 @@ var SolaSearch = React.createClass({
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
 				/>
+				{this.renderFloatingToggleButton()}
 			</div>
 		);
+	},
+
+	renderFloatingToggleButton: function () {
+		if (this.state.display == 'mobile') {
+			if (this.state.mode == 'list') {
+				return (
+					<button type="button" className="primary FloatingToggle" onClick={this.onChangeMode.bind(this, 'map')}><span className="fa fa-map">&nbsp;</span> {I18n.t('sola_search.map')}</button>
+				);
+			} else {
+				return (
+					<button type="button" className="primary FloatingToggle" onClick={this.onChangeMode.bind(this, 'list')}><span className="fa fa-list">&nbsp;</span> {I18n.t('sola_search.list')}</button>
+				);
+			}
+		}
 	},
 
 
@@ -75,6 +115,10 @@ var SolaSearch = React.createClass({
 
 	onChangeLocationId: function (location_id) {
 		this.setState({location_id: location_id});
+	},
+
+	onChangeMode: function (mode) {
+		this.setState({mode: mode});
 	},
 
 	onHideBookingModal: function (e) {

@@ -27,7 +27,7 @@ var BookingModal = React.createClass({
 			if (fullWidth != self.state.fullWidth || fullHeight != self.state.fullHeight) {
 				self.setState({fullHeight: fullHeight, fullWidth: fullWidth});
 			}
-		});
+		}).trigger('resize.BookingModal');
 	},
 
 	componentWillReceiveProps: function (nextProps) {
