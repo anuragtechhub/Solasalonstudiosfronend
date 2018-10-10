@@ -10,12 +10,14 @@
 
 		background: asset-url('booknow/hero-desktop.jpg') no-repeat;
 		background-size: cover;
-		height: 75vh;
-		//min-height: 420px;
+		height: 70vh;
+		min-height: 400px;
+		max-height: 700px;
 
 		.container {
-			height: 75vh;
-			//min-height: 420px;
+			height: 70vh;
+			min-height: 400px;
+			max-height: 700px;
 	    display: flex;
 	    flex-direction: column;
 	    justify-content: center;
