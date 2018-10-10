@@ -11,8 +11,8 @@
 		background: asset-url('booknow/hero-desktop.jpg') no-repeat;
 		background-size: cover;
 		height: 70vh;
-		min-height: 400px;
-		max-height: 700px;
+		min-height: 420px;
+		max-height: 720px;
 
 		.home-services-animation {
 			display: inline;
@@ -27,8 +27,8 @@
 
 		.container {
 			height: 70vh;
-			min-height: 400px;
-			max-height: 700px;
+			min-height: 420px;
+			max-height: 720px;
 	    display: flex;
 	    flex-direction: column;
 	    justify-content: center;
@@ -154,11 +154,13 @@
 			background-size: cover;
 
 			.home-services-animation {
-				display: inline;
+				display: block;
+				min-height: 27px;
 
 				span {
-					top: -2px;
-					left: 7px;
+					// position: static;
+					top: auto;
+					left: 0;
 					border-bottom: 0;
 					padding-bottom: 0;
 				}
