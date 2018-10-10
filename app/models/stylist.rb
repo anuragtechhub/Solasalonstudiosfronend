@@ -265,7 +265,7 @@ class Stylist < ActiveRecord::Base
   # end
 
   def sync_with_ping_hd
-    url = "https://go.engagephd.com" #"http://dev.pinghd.com/api/Engage/Sola"
+    url = "https://go.engagephd.com/api/Engage/Sola" #"http://dev.pinghd.com/api/Engage/Sola"
     
     p "url=#{url}"
 
