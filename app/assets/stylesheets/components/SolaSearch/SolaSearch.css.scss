@@ -1,6 +1,89 @@
 @import 'mixins';
 @import 'variables';
 
+/* global body element */
+
+.sola-search {
+
+	.sola-search-hero {
+		text-align: left;
+
+		background: asset-url('booknow/hero-desktop.jpg') no-repeat;
+		background-size: cover;
+		height: 75vh;
+		//min-height: 420px;
+
+		.container {
+			height: 75vh;
+			//min-height: 420px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+		}
+
+		h2 {
+			font-size: 53px;
+			line-height: 53px;
+			margin: 0 0 20px 0 !important;
+		}
+		p {
+			font-size: 18px;
+      line-height: 24px;
+			margin: 0 0 25px 0 !important;
+		}
+		h2, p {
+			color: #FFF;
+			
+			strong {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.body-content {
+		padding-bottom: 0;
+	}
+
+	.desktop {
+		display: block;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	.home-recently-featured-box {
+		margin-top: 30px;
+	}
+
+	// .hero-container {
+	// 	position: relative;
+
+	// 	h2, h3, h5 {
+	// 		color: #FFF;
+	// 		margin: 0;
+	// 	}
+
+	// 	// . {
+	// 	// 	position: relative;
+	// 	// 	min-height: 250px;
+	// 	// }
+
+	// 	.container {
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: 15px;
+	// 		right: 15px;
+	// 		bottom: 0;
+	// 		outline: 1px solid #BADA55;
+	// 		z-index: 2;
+	// 	}		
+	// }
+}
+
+
+
+
 .SolaSearch {
 	position: relative;
 	height: calc(100vh - 123px);
@@ -65,5 +148,46 @@
 		font-weight: 300;	
 		line-height: 16px;	
 		text-align: center;
+	}
+}
+
+@media (max-width: 788px) {
+	.sola-search {
+
+		.sola-search-hero {
+			background: asset-url('booknow/hero-mobile.jpg') no-repeat;
+			background-size: cover;
+
+			h2 {
+				font-size: 27px;
+				line-height: 27px;
+				margin-bottom: 15px !important;
+			}
+
+			p {
+				margin-bottom: 15px !important;
+			}
+		}
+		.home-recently-featured-box {
+			margin-top: 15px;
+		}
+		.mobile {
+			display: block;
+		}
+		.desktop {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 488px) {
+	.sola-search {
+		.sola-search-hero {
+			margin-top: -5px;
+
+			h2, p {
+				//display: none;
+			}
+		}
 	}
 }

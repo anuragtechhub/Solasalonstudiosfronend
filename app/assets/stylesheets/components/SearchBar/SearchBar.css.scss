@@ -3,7 +3,7 @@
 
 .SearchBar {
 	position: relative;
-	margin: 15px 0;//7px;
+	margin: 0;//7px;
 
 	form:after {
 		content: "";
@@ -112,12 +112,14 @@
 
 	.SearchLocation input[type=text] {
 		width: calc(100% + 1px);
+		// min-width: 260px;
 		margin-left: -1px;
 	}
 
 	.SearchDatePicker input[type=text] {
 		width: calc(100% + 2px);
 		margin-left: -2px;
+		// min-width: 260px;
 	}
 
 	.SearchName input[type=text], .SearchServicesAndSuggestions input[type=text] {
@@ -158,6 +160,7 @@
 	input[type=text] {
 		background: #FFF !important;
 		width: 100%;
+		min-width: 260px;
 		height: 55px;
 		border: 1px solid #EEEEEE;
 		color: #040404 !important;
@@ -186,10 +189,24 @@
 		right: 10px;
 		height: 35px;
 		padding: 3px 11px;
+		margin: 0;
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 788px) {
+
+	.sola-search {
+
+		.home-all {
+		  display: none !important;
+		}
+
+		.home-mobile {
+		  display: block !important;
+		}
+
+	}
+
 	.SearchBar {
 		.SearchName, .SearchServicesAndSuggestions, .SearchLocation, .SearchDatePicker {
 			width: 100%;
@@ -208,6 +225,11 @@
 			top: auto;
 			right: auto;
 			position: static;
+			height: auto;
+	    padding-top: 12px;
+	    padding-bottom: 9px;
+	    display: block;
+	    width: 100%;
 		}
 	}
 }
