@@ -286,7 +286,7 @@ class Stylist < ActiveRecord::Base
 
     sync_with_ping_hd_response = RestClient::Request.execute({
       #:headers => {"Content-Type" => "application/json"},
-      :method => :get, 
+      :method => :post, 
       #:content_type => 'application/json',
       :url => url, 
       :payload => payload
