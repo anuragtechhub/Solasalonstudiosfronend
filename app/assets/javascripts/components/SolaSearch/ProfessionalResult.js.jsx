@@ -18,6 +18,7 @@ var ProfessionalResult = React.createClass({
 					<span className="ProfessionalCoverImageName">{this.props.full_name}</span>
 					<div className="Gradient"></div>
 				</div>
+				
 				<div className="ProfessionalResultDetails">
 					<div className="ProfessionalName">{this.props.full_name}</div>
 					<div className="ProfessionalAddress">{this.props.business_address}</div>

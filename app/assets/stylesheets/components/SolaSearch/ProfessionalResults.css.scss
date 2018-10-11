@@ -287,6 +287,40 @@
 		left: auto;
 		right: auto;
 		height: calc(100vh - 70px);
+
+		.ProfessionalResult {
+
+			.ProfessionalResultDetails {
+				position: static;
+				top: auto;
+				left: auto;
+				right: auto;
+				bottom: auto;
+				padding: 20px 0 5px 0;
+			}
+
+			.ProfessionalAvailabilities {
+				position: relative;
+	    	bottom: auto;
+	    	left: auto;
+	    	right: auto;
+
+	    	.availability-date .date {
+	    		margin-bottom: -2px;
+	    	}
+
+	    	a.availability-button, a.availability-button:link, a.availability-button:visited, a.availability-button:hover, a.availability-button:active {
+	    		margin-top: 5px;
+	    	}
+
+	    	.forward-button {
+	    		right: -10px;
+	    	}
+	    	.back-button {
+	    		left: -10px;
+	    	}
+	    }
+		}
 	}
 
 	.SolaSearch.map .ProfessionalResults {
