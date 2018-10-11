@@ -25,7 +25,7 @@ var BookingModalPayment = React.createClass({
 				<div className="Body">
 					<h2>{I18n.t('sola_search.payment_details')}</h2>
 
-					{this.state.ready ? null : <p style={{textAlign: 'center'}}><span className="spinner spinner-sm spinner-static"></span> <em>{I18n.t('sola_search.loading')}</em></p>}
+					{this.state.ready ? null : <p style={{textAlign: 'center'}}><span className="spinner spinner-sm spinner-static" style={{top: 3}}></span> <em>{I18n.t('sola_search.loading')}</em></p>}
 					<div id="card-element" style={{visibility: this.state.ready ? 'visible' : 'hidden'}}></div>
 					<div id="card-errors" role="alert"></div>
 				</div>
