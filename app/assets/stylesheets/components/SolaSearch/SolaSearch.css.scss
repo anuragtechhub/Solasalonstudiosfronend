@@ -238,10 +238,19 @@
 		#header .logo {
 			display: inline;
 			margin: 0;
+			margin-left: 15px;
 		}
 		#header .button {
 			top: 17px;
 			font-size: 12px !important;
+			margin-right: 15px;
+		}
+
+		#header.fullwidth .logo {
+			margin-left: 0 !important;
+		}
+		#header.fullwidth .button {
+			margin-right: 0 !important;
 		}
 	}
 }
