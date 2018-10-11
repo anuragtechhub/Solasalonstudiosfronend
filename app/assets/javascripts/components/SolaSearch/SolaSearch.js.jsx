@@ -94,7 +94,7 @@ var SolaSearch = React.createClass({
 	},
 
 	renderFloatingToggleButton: function () {
-		if (this.state.display == 'mobile') {
+		if (this.state.display == 'mobile' && !this.state.bookingModalVisible) {
 			if (this.state.mode == 'list') {
 				return (
 					<button type="button" className="primary FloatingToggle" onClick={this.onChangeMode.bind(this, 'map')}><span className="fa fa-map">&nbsp;</span> {I18n.t('sola_search.map')}</button>

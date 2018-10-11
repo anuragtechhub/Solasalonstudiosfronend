@@ -7,7 +7,7 @@
 
 	#header .button {
 		position: absolute;
-		top: 25px;
+		top: 27px;
 		right: 0;
 		border-radius: 4px;
 		font-size: 14px !important;
@@ -187,7 +187,7 @@
 	.sola-search {
 
 		.SolaSearch { 
-			height: auto;
+			height: calc(100vh - 70px);
 		}
 
 		.sola-search-hero {

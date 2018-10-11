@@ -286,7 +286,7 @@
 		bottom: auto;
 		left: auto;
 		right: auto;
-		height: 90vh;
+		height: calc(100vh - 70px);
 	}
 
 	.SolaSearch.map .ProfessionalResults {
