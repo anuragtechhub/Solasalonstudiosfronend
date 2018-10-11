@@ -10,6 +10,7 @@ var SolaSearch = React.createClass({
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
+			gloss_genius_stripe_key: this.props.gloss_genius_stripe_key,
 			lat: this.props.lat,
 			lng: this.props.lng,
 			location: this.props.location,
@@ -81,6 +82,7 @@ var SolaSearch = React.createClass({
 					zoom={this.state.zoom}
 				/>
 				<BookingModal 
+					gloss_genius_stripe_key={this.state.gloss_genius_stripe_key}
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
 					services={this.state.services}

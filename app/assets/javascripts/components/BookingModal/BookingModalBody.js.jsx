@@ -13,6 +13,8 @@ var BookingModalBody = React.createClass({
 			return <BookingModalReview {...this.props} />
 		} else if (this.props.step == 'info') {
 			return <BookingModalInfo {...this.props} />
+		} else if (this.props.step == 'payment') {
+			return <BookingModalPayment {...this.props} /> 
 		} else { 
 			return null;
 		}

@@ -6,9 +6,31 @@ var BookingModalFooter = React.createClass({
 			return this.renderReviewFooter();
 		} else if (this.props.step == 'info') {
 			return this.renderInfoFooter();
+		} else if (this.props.step == 'payment') {
+			return this.renderPaymentFooter();
 		} else {
 			return null;
 		}
+	},
+
+	renderInfoFooter: function () {
+		return (
+			<div className="BookingModalFooter">
+				<div className="Button">
+					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.continue')}</button>
+				</div>
+			</div>
+		);
+	},
+
+	renderPaymentFooter: function () {
+		return (
+			<div className="BookingModalFooter">
+				<div className="Button">
+					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.book_appointment')}</button>
+				</div>
+			</div>
+		);
 	},
 
 	renderReviewFooter: function () {
@@ -23,15 +45,7 @@ var BookingModalFooter = React.createClass({
 		);
 	},
 
-	renderInfoFooter: function () {
-		return (
-			<div className="BookingModalFooter">
-				<div className="Button">
-					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.continue')}</button>
-				</div>
-			</div>
-		);
-	},
+
 
 
 

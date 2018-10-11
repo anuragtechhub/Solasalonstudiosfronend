@@ -13,6 +13,8 @@ var BookingModalHeader = React.createClass({
 	renderBackButton: function () {
 		if (this.props.step == 'info') {
 			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>
+		} else if (this.props.step == 'payment') {
+			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>
 		} else {
 			return null;
 		}

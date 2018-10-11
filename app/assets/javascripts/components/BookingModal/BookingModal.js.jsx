@@ -84,6 +84,8 @@ var BookingModal = React.createClass({
 	onBack: function () {
 		if (this.state.step == 'info') {
 			this.setState({step: 'review'});
+		} else if (this.state.step == 'payment') {
+			this.setState({step: 'info'});
 		}
 	},
 
@@ -105,6 +107,10 @@ var BookingModal = React.createClass({
 
 		if (this.state.step == 'review') {
 			this.setState({step: 'info'});
+		} else if (this.state.step == 'info') {
+			this.setState({step: 'payment'});
+		} else if (this.state.step == 'payment') {
+			alert('redirect to payment success screen!');
 		}
 	},
 
