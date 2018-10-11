@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    <% if content_for?(:title) %>
+      <%= yield :title %> 
+    <% end %>
+    <%= @no_title_dash ? nil : " - " %>
+    <%= @no_title_brand_name ? nil : "#{t :brand_name}" %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <% if content_for?(:meta_description) %>
+    <meta name="description" content="<%= yield :meta_description %>">
+  <% end %>
+  <%= render 'shared/og' %>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_url 'favicon.png' %>" />
+  <% if content_for?(:canonical_url) %>
+    <link rel="canonical" href="<%= yield :canonical_url %>">
+  <% end %>
+  <link href='//fonts.googleapis.com/css?family=Dosis:400,700|Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css"> 
+  <%= stylesheet_link_tag "public_website", media: "all" %>
+  <%= yield :stylesheets %>
+  <%= csrf_meta_tags %>
+  <%= render 'shared/global_fb_conversion_pixel' %>
+  <%= yield :fb_conversion_pixel if content_for?(:fb_conversion_pixel) %>
+  <script src="//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8&libraries=places"></script>
+  <%= javascript_include_tag "public_website" %>
+  <%= yield :scripts %> 
+  <%= render 'shared/google_analytics' %>  
+</head>
+<body <%= @body_class ? "class=#{@body_class}" : nil %>>
+
+  <div id="header" <%= @header_class ? "class=#{@header_class}" : nil %>>
+    <div class="container">
+      <div class="row">
+
+        <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %><% end %>
+        
+        <%= link_to :home, :class => 'button inverted' do %>Back to Sola homepage<% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="body-content"><%= yield %></div>
+  <%= render 'shared/public_website/footer' %>
+
+  <%= render 'shared/country_switcher_modal' %>
+  <%= render 'shared/mobile_nav' %>
+  <%= render 'shared/mobile_search_modal' %>
+
+</body>
+</html>

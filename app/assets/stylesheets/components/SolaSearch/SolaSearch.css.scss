@@ -5,6 +5,28 @@
 
 .sola-search {
 
+	#header .button {
+		position: absolute;
+		top: 25px;
+		right: 0;
+		border-radius: 4px;
+		font-size: 14px !important;
+		line-height: 14px !important;
+		padding: 11px 10px 10px 10px;
+		font-weight: bold !important;
+		letter-spacing: 0;
+		@include chalet_new_york;
+	}
+
+	#header.fullwidth {
+		.container {
+			margin: 0;
+			padding: 0 20px 0 20px;
+			width: 100% !important;
+			max-width: 100%;
+		}
+	}
+
 	.sola-search-hero {
 		text-align: left;
 
@@ -75,8 +97,8 @@
 
 .SolaSearch {
 	position: relative;
-	height: calc(100vh - 123px);
-	margin-bottom: -30px;
+	height: calc(100vh - 92px);
+	//margin-bottom: -30px;
 
 	.FloatingToggle {
 		position: fixed;
@@ -198,6 +220,22 @@
 	}
 }
 
+@media (max-width: 1000px) {
+	.sola-search {
+		#header .container {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		#header .logo {
+			display: inline;
+			margin: 0;
+		}
+		#header .button {
+			top: 16px;
+		}
+	}
+}
+
 @media (max-width: 768px) {
 	.sola-search {
 		.sola-search-hero {
@@ -261,13 +299,13 @@
 // }
 
 @media (max-width: 488px) {
-	.sola-search {
-		.sola-search-hero {
-			margin-top: -5px;
+	// .sola-search {
+	// 	.sola-search-hero {
+	// 		//margin-top: -5px;
 
-			h2, p {
-				//display: none;
-			}
-		}
-	}
+	// 		h2, p {
+	// 			//display: none;
+	// 		}
+	// 	}
+	// }
 }

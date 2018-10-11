@@ -12,6 +12,7 @@ class SearchController < PublicWebsiteController
     #p "location=#{location.inspect}"
     #end
     #p "@location_name=#{@location_name}"
+    render :layout => 'booknow'
   end
 
   def stylist_results
@@ -38,6 +39,7 @@ class SearchController < PublicWebsiteController
     #p "@locations=#{@locations.size}"
     #p "@date=#{@date}"
     #p "@professionals=#{@professionals}"
+    render :layout => 'booknow'
   end
 
   def results
@@ -118,6 +120,7 @@ class SearchController < PublicWebsiteController
 
       @results = @locations.size + @stylists.size + @posts.size
     end
+
   end
 
   private
