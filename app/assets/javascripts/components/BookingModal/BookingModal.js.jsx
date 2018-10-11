@@ -5,6 +5,7 @@ var BookingModal = React.createClass({
 			email_address: '',
 			fullHeight: false,
 			fullWidth: false,
+			loading: false,
 			phone_number: '',
 			step: this.props.step || 'review',
 			your_name: '',
@@ -67,6 +68,7 @@ var BookingModal = React.createClass({
 						<BookingModalHeader {...this.props} {...this.state} onBack={this.onBack} />
 						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
 						<BookingModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
+						{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
 					</div>
 				</div>
 			);

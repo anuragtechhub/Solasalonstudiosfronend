@@ -58,6 +58,7 @@ en:
     map: Map
     list: List
     payment_details: Payment Details
+    loading: Loading...
 
 
   brand_name: Sola Salon Studios
