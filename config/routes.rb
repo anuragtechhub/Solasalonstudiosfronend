@@ -79,6 +79,7 @@ Solasalonstudios::Application.routes.draw do
   
   match "search" => 'search#stylist_search', :via => [:get, :post], :as => :stylist_search
   match "search-results" => 'search#stylist_results', :via => [:get, :post], :as => :stylist_search_results
+  match "booking-complete" => 'search#stylist_booking_complete', :via => [:get, :post], :as => :stylist_booking_complete
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
   match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour

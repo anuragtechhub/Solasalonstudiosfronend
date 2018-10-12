@@ -69,12 +69,23 @@ var BookingModal = React.createClass({
 						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
 						<BookingModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
 						{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
+						{this.renderBookingCompleteForm()}
 					</div>
 				</div>
 			);
 		} else {
 			return null;
 		}
+	},
+
+	renderBookingCompleteForm: function () {
+		return (
+			<form ref="BookingCompleteForm" method="post" action={this.props.booking_complete_path} style={{display: 'none'}}>
+				<input name="professional" type="hidden" value={JSON.stringify(this.props.professional)} />
+				<input name="services" type="hidden" value={JSON.stringify(this.props.services)} />
+				<input name="time" type="hidden" value={JSON.stringify(this.props.time)} />
+			</form>
+		);
 	},
 
 
@@ -100,7 +111,7 @@ var BookingModal = React.createClass({
 	},
 
 	onSubmit: function (e) {
-		//console.log('onSubmit!');
+		console.log('onSubmit!', this.props.booking_complete_path);
 
 		if (e && e.preventDefault && e.stopPropagation) {
 			e.preventDefault();
@@ -112,7 +123,8 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'info') {
 			this.setState({step: 'payment'});
 		} else if (this.state.step == 'payment') {
-			alert('redirect to payment success screen!');
+			// submit hidden form with booking info
+			$(this.refs.BookingCompleteForm).submit();
 		}
 	},
 

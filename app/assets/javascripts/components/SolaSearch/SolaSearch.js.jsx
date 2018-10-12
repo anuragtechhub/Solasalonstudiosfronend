@@ -3,6 +3,7 @@ var SolaSearch = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities || {},
+			booking_complete_path: this.props.booking_complete_path,
 			bookingModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			display: this.props.displayMode || 'desktop',
@@ -82,6 +83,7 @@ var SolaSearch = React.createClass({
 					zoom={this.state.zoom}
 				/>
 				<BookingModal 
+					booking_complete_path={this.state.booking_complete_path}
 					gloss_genius_stripe_key={this.state.gloss_genius_stripe_key}
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 

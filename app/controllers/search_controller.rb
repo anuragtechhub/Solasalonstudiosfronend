@@ -42,6 +42,10 @@ class SearchController < PublicWebsiteController
     render :layout => 'booknow'
   end
 
+  def stylist_booking_complete
+    render :layout => 'booknow'
+  end
+
   def results
     # if params[:query]
 

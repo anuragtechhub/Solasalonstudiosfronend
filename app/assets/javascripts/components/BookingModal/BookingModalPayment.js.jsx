@@ -77,7 +77,6 @@ var BookingModalPayment = React.createClass({
 		var card = elements.create('card', {style: style});
 
 		card.addEventListener('ready', function(event) {
-			console.log('we ready')
 			self.setState({ready: true});
 		});
 
