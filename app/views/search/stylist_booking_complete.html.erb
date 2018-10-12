@@ -1,7 +1,7 @@
 <%= react_component 'BookingComplete', {
-	professional: params[:professional],
-	services: params[:services],
-	time: params[:time],
+	professional: JSON.parse(params[:professional]),
+	services: JSON.parse(params[:services]),
+	time: JSON.parse(params[:time]),
 } %>
 
 <% if Rails.env.test? %>

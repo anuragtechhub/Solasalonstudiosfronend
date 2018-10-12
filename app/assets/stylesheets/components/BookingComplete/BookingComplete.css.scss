@@ -49,12 +49,22 @@
 	.BookingCompleteBox {
 		margin: 40px auto;
 		border: 1px solid #EEE;
+
+		.ProfessionalAddress {
+			height: 40px;
+			overflow: hidden;
+		}
 	}
 }
 
 @media (max-width: 600px) {
 	.BookingComplete {
 		margin: 30px auto;
+
+		.container {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
 
 		.BookingCompleteHeader {
 			h2 {
@@ -79,5 +89,19 @@
 				}
 			}
 		} 
+
+		.BookingCompleteBox {
+			.DateRow, .TimeRow, .AddressRow {
+				span, .Date {
+					font-size: 14px !important;
+					line-height: 16px !important;
+				}
+
+				.fa {
+					font-size: 18px !important;
+					line-height: 18px !important;
+				}
+			}
+		}
 	}
 }
