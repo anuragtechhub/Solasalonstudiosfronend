@@ -9,6 +9,9 @@ var BookingComplete = React.createClass({
 
 	render: function () {
 		//console.log('this.props.professional', this.props.professional);
+		var services = this.props.services.map(function (service) {
+			return <BookingModalServiceRow key={service} {...self.props} service={service} />
+		});
 
 		return (
 			<div className="BookingComplete">
@@ -50,6 +53,11 @@ var BookingComplete = React.createClass({
 								<div className="Address">{this.props.professional.business_address}<br /><strong>{this.props.professional.business_name}</strong></div>
 								<a href="#">{I18n.t('sola_search.map_it')}</a>
 							</div>
+
+							<div className="ServicesRow">
+								<div className="ServiceTitle">{I18n.t(this.props.services.length == 1 ? 'sola_search.service' : 'sola_search.services')} ({this.props.services.length})</div>
+								<div className="Services">{services}</div>
+							</div>							
 						</div>
 
 					</div>

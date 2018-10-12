@@ -2,7 +2,7 @@
 @import 'variables';
 
 .BookingComplete {
-	margin: 60px auto;
+	margin: 60px auto 0 auto;
 
 	.container {
 		max-width: 600px;
@@ -67,6 +67,7 @@
 		}
 
 		.BookingCompleteHeader {
+
 			h2 {
 				font-size: 24px;	
 				line-height: 32px;
@@ -76,6 +77,8 @@
 				font-size: 14px;	
 				line-height: 16px;
 			}
+
+			
 
 			.AddToCalendar {
 				position: static;
@@ -91,6 +94,36 @@
 		} 
 
 		.BookingCompleteBox {
+			.ProfessionalInfo {
+				top: 17px;
+				bottom: 15px;
+				right: 17px;
+				left: 150px;
+
+				.ProfessionalCoverImage {
+					width: 90px;
+					height: 90px;
+
+					img {
+						width: 90px;
+						height: 90px;
+					}
+				}
+				.ProfessionalName {
+					font-size: 18px;
+					line-height: 24px;
+				}
+				.ProfessionalAddress {
+					font-size: 14px;
+					line-height: 16px;
+					overflow: visible;
+				}
+				.Contact {
+					display: block;
+		    	white-space: nowrap;
+		    	text-overflow: ellipsis;
+				}
+			}
 			.DateRow, .TimeRow, .AddressRow {
 				span, .Date {
 					font-size: 14px !important;
@@ -100,6 +133,10 @@
 				.fa {
 					font-size: 18px !important;
 					line-height: 18px !important;
+				}
+
+				.fa-map-marker {
+					top: 24px !important;
 				}
 			}
 		}
