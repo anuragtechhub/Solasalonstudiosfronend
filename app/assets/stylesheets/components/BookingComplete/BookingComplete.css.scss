@@ -1,3 +1,83 @@
+@import 'mixins';
+@import 'variables';
+
 .BookingComplete {
-	
+	margin: 60px auto;
+
+	.container {
+		max-width: 600px;
+		padding-left: 0;
+		padding-right: 0;
+	}	
+
+	.BookingCompleteHeader {
+		position: relative;
+
+		h2 {
+			@include chalet_paris;
+			font-size: 36px;	
+			line-height: 40px;
+			color: #000;
+			margin-bottom: 5px;
+		}
+
+		p {
+			color: #4A4A4A;	
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 16px;
+			margin-bottom: 0;
+		}
+
+		.AddToCalendar {
+			position: absolute;
+			top: 5px;
+			right: 0;
+
+			a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+				@include chalet_new_york;
+				font-size: 14px;
+				line-height: 16px;
+				height: 48px;
+				padding: 17px 17px 15px 17px;
+				letter-spacing: 0px;
+			}
+		}
+	} 
+
+	.BookingCompleteBox {
+		margin: 40px auto;
+		border: 1px solid #EEE;
+	}
+}
+
+@media (max-width: 600px) {
+	.BookingComplete {
+		margin: 30px auto;
+
+		.BookingCompleteHeader {
+			h2 {
+				font-size: 24px;	
+				line-height: 32px;
+			}
+
+			p {
+				font-size: 14px;	
+				line-height: 16px;
+			}
+
+			.AddToCalendar {
+				position: static;
+				top: auto;
+				right: auto;
+				margin-top: 15px;
+
+				a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+					display: block;
+					width: 100%;
+				}
+			}
+		} 
+	}
 }
