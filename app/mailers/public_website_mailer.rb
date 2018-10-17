@@ -1,10 +1,11 @@
 class PublicWebsiteMailer < ActionMailer::Base
   default :from => "Sola Salon Studios <inquiry@solasalonstudios.com>"
 
-  def sejasola(nome, email, telefone)
+  def sejasola(nome, email, telefone, area_de_atuacao)
     @nome = nome
     @email = email
     @telefone = telefone
+    @area_de_atuacao = area_de_atuacao
     mail(to: 'sejasola@solasalons.com', bcc: 'jeff@jeffbail.com', from: "Sola Salon Studios <sejasola@solasalons.com>", subject: 'Seja Sola - Submissão de Formulário')
   end
 

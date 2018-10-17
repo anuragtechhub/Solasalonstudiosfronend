@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920182506) do
+ActiveRecord::Schema.define(version: 20181017210824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -461,6 +461,7 @@ ActiveRecord::Schema.define(version: 20180920182506) do
     t.string   "telefone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "area_de_atuacao"
   end
 
   create_table "sola10k_images", force: true do |t|

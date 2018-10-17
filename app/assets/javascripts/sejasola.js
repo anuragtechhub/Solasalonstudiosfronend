@@ -54,6 +54,7 @@ $(document).ready(function(e){
   	var nome = $('#nome').val();
   	var email = $('#email').val();
   	var telefone = $('#telefone').val();
+    var area_de_atuacao = $('#area_de_atuacao').val();
 
   	if (nome && nome != '' && email && email != '' && telefone && telefone != '') {
 			$.ajax({
@@ -61,6 +62,7 @@ $(document).ready(function(e){
 			  	nome: nome,
 			  	email: email,
 			  	telefone: telefone,
+          area_de_atuacao: area_de_atuacao
 			  },
         url: '/sejasola',
 			  method: 'post'
@@ -81,6 +83,7 @@ $(document).ready(function(e){
   		$('#nome').val('');
   		$('#email').val('');
   		$('#telefone').val('');
+      $('#area_de_atuacao').val('');
   	} else {
   		$submit.popover();
   		$submit.popover('dispose')
