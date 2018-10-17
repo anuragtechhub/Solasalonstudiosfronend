@@ -356,6 +356,8 @@ pt-BR:
       call_for_leasing_information: "Ligue par %{contact_name} para informações sobre arrendamento"
       lease_at_location: Arrende em<span class="desktop-br">&nbsp;</span>%{name}
       request_leasing_information: Para solicitar informações sobre arrendamento, ligue para %{name} em %{number} ou preencha o formulário abaixo e entraremos em contato.
+      ask_about_leasing: Alugue seu Estúdio
+      contact_this_location: Entre em contato
       your_name: Seu nome
       email_address: Endereço de e-mail
       phone_number: Número de telefone
