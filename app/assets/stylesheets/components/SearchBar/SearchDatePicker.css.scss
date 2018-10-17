@@ -123,3 +123,44 @@
 		}
 	}
 }
+
+.sola-search .datepicker-inline {
+	width: 100%;
+	box-shadow: none;
+
+	table {
+		width: 100%;
+
+		th.prev {
+			margin-left: 0;
+
+			.fa {
+				left: 9px;
+			}
+		}
+
+		th.next {
+			right: 0;
+
+			.fa {
+				right: 8px;
+			}
+		}
+
+		td.day {
+			border: 2px solid #FFF;
+			background-color: #F5F9FB;
+			height: 48px;
+			width: auto;
+
+			&.disabled {
+				background-color: #F5F9FB;
+			}
+
+			&.old {
+				background-color: #FFF;
+				color: #b2b3b3;
+			}
+		}
+	}
+}

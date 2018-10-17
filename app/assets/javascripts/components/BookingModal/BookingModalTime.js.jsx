@@ -6,7 +6,7 @@ var BookingModalTime = React.createClass({
 			<div className="BookingModalTime">
 				<div className="Body">
 					
-					TIME
+					<div className="text-center">TIME</div>
 
 				</div>
 			</div>

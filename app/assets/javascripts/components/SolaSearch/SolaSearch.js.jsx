@@ -40,7 +40,7 @@ var SolaSearch = React.createClass({
 		$window.on('resize.SolaSearch', function () {
 			var width = $window.width();
 			
-			console.log('resize SolaSearch', width);
+			//console.log('resize SolaSearch', width);
 			if (width <= 991 && self.state.display != 'mobile') {
 				self.setState({display: 'mobile'});
 			} else if (width > 991 && self.state.display != 'desktop') {
@@ -84,6 +84,7 @@ var SolaSearch = React.createClass({
 				/>
 				<BookingModal 
 					booking_complete_path={this.state.booking_complete_path}
+					date={this.state.date}
 					gloss_genius_stripe_key={this.state.gloss_genius_stripe_key}
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
