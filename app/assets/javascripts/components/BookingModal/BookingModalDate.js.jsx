@@ -11,24 +11,24 @@ var BookingModalDate = React.createClass({
 			}
 		});
 
-		console.log('bookingmodaldate', this.props.date.toDate());
-
 		$datepicker.datepicker('setDate', this.props.date.toDate());
 		$datepicker.datepicker().on('changeDate', function () {
-			var newDate = moment($(self.refs.datepicker).val(), "MM/DD/YYYY");
-			console.log('changeDate', newDate);
+			var newDate = moment($(self.refs.datepicker).datepicker('getDate'), "MM/DD/YYYY");
+			//console.log('changeDate', newDate.toDate());
+			self.props.onChange({target: {
+				name: 'date',
+				value: newDate
+			}});
 		});
 	},
 
-	componentWillReceiveProps: function (nextProps) {
-		if (!nextProps.date.isSame(this.props.date)) {
-			$(this.refs.datepicker).datepicker('setDate', nextProps.date.toDate());
-		}
-	},
+	// componentWillReceiveProps: function (nextProps) {
+	// 	if (!nextProps.date.isSame(this.props.date)) {
+	// 		$(this.refs.datepicker).datepicker('setDate', nextProps.date.toDate());
+	// 	}
+	// },
 
-	render: function () {
-		console.log('BookingModalDate this.props.date', this.props.date);
-		
+	render: function () {		
 		return (
 			<div className="BookingModalDate">
 				<div className="Body">

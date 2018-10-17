@@ -2,7 +2,7 @@ var BookingModal = React.createClass({
 
 	getInitialState: function () {
 		return {
-			date: this.props.date || moment(),
+			date: this.props.date ? moment(this.props.date) : moment(),
 			email_address: '',
 			fullHeight: false,
 			fullWidth: false,
@@ -37,7 +37,7 @@ var BookingModal = React.createClass({
 			this.setState({step: nextProps.step});
 		}
 		if (!moment(nextProps.date).isSame(this.state.date)) {
-			this.setState({date: nextProps.date});
+			this.setState({date: moment(nextProps.date)});
 		}
 	},
 

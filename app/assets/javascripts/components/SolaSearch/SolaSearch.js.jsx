@@ -84,7 +84,7 @@ var SolaSearch = React.createClass({
 				/>
 				<BookingModal 
 					booking_complete_path={this.state.booking_complete_path}
-					date={this.state.date}
+					date={this.state.time ? this.state.time.start : new Date()}
 					gloss_genius_stripe_key={this.state.gloss_genius_stripe_key}
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
