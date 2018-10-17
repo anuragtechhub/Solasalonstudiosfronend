@@ -5,9 +5,20 @@ var BookingModalDateRow = React.createClass({
 			<div className="DateRow">
 				<span className="fa fa-calendar">&nbsp;</span>
 				<div className="Date">{moment(this.props.time.start).format('MMMM do YYYY')}</div>
-				<a href="#">{I18n.t('sola_search.change_date')}</a>
+				<a href="#" onClick={this.onChangeDate}>{I18n.t('sola_search.change_date')}</a>
 			</div>
 		);
-	}
+	},
+
+	onChangeDate: function (e) {
+		e.preventDefault();
+
+		this.props.onChange({
+			target: {
+				name: 'step',
+				value: 'date'
+			}
+		});
+	},
 
 });

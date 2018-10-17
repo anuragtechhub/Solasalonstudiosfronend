@@ -97,6 +97,10 @@ var BookingModal = React.createClass({
 	onBack: function () {
 		if (this.state.step == 'info') {
 			this.setState({step: 'review'});
+		} else if (this.state.step == 'date') {
+			this.setState({step: 'review'});
+		} else if (this.state.step == 'time') {
+			this.setState({step: 'review'});			
 		} else if (this.state.step == 'payment') {
 			this.setState({step: 'info'});
 		}
@@ -111,7 +115,7 @@ var BookingModal = React.createClass({
 	},
 
 	onSubmit: function (e) {
-		console.log('onSubmit!', this.props.booking_complete_path);
+		//console.log('onSubmit!', this.props.booking_complete_path);
 
 		if (e && e.preventDefault && e.stopPropagation) {
 			e.preventDefault();
@@ -120,6 +124,10 @@ var BookingModal = React.createClass({
 
 		if (this.state.step == 'review') {
 			this.setState({step: 'info'});
+		} else if (this.state.step == 'date') {
+			this.setState({step: 'review'});
+		} else if (this.state.step == 'time') {
+			this.setState({step: 'review'});			
 		} else if (this.state.step == 'info') {
 			this.setState({step: 'payment'});
 		} else if (this.state.step == 'payment') {
