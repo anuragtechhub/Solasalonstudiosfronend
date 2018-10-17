@@ -374,6 +374,28 @@
 			padding: 10px;
 			margin: 0 -3px 3px -3px;
 
+			.ServiceImage {
+				display: inline-block;
+
+				img {
+					width: 67px;
+					height: 67px;
+					border-radius: 2px;
+				}
+			}
+
+			.ServiceDetails {
+				display: inline-block;
+			}
+
+			&.HasImage {
+				.ServiceDetails {
+					position: relative;
+					top: 13px;
+					left: 23px;
+				}
+			}
+
 			.ServiceName {
 				color: #000000;	
 				@include helvetica;
