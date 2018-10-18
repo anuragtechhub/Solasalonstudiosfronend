@@ -40,7 +40,7 @@ var BookingComplete = React.createClass({
 						<div className="Body">
 							<div className="DateRow">
 								<span className="fa fa-calendar">&nbsp;</span>
-								<div className="Date">{moment(this.props.time.start).format('MMMM do YYYY')}</div>
+								<div className="Date">{moment(this.props.time.start).format('MMMM Do YYYY')}</div>
 							</div>
 
 							<div className="TimeRow">
