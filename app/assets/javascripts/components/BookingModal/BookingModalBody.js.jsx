@@ -14,7 +14,9 @@ var BookingModalBody = React.createClass({
 		} else if (this.props.step == 'date') {
 			return <BookingModalDate {...this.props} />		
 		} else if (this.props.step == 'time') {
-			return <BookingModalTime {...this.props} />					
+			return <BookingModalTime {...this.props} />	
+		} else if (this.props.step == 'services') {
+			return <BookingModalServices {...this.props} />								
 		} else if (this.props.step == 'info') {
 			return <BookingModalInfo {...this.props} />
 		} else if (this.props.step == 'payment') {

@@ -49,6 +49,7 @@ en:
     add_service: Add Service
     service: Service
     services: Services
+    save_services: Save Services
     min: min
     your_information: Your Information
     your_name: Your Name

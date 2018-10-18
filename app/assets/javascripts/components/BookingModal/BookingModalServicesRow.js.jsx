@@ -9,11 +9,22 @@ var BookingModalServicesRow = React.createClass({
 		return (
 			<div className="ServicesRow">
 				<div className="ServiceTitle">{I18n.t(this.props.services.length == 1 ? 'sola_search.service' : 'sola_search.services')} ({this.props.services.length})</div>
-				<a href="#">{I18n.t('sola_search.add_service')}</a>
+				<a href="#" onClick={this.onChangeServices}>{I18n.t('sola_search.add_service')}</a>
 
 				<div className="Services">{services}</div>
 			</div>
 		);
-	}
+	},
+
+	onChangeServices: function (e) {
+		e.preventDefault();
+
+		this.props.onChange({
+			target: {
+				name: 'step',
+				value: 'services'
+			}
+		});
+	},	
 
 });

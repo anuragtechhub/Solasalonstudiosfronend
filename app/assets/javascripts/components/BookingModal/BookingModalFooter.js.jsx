@@ -7,7 +7,9 @@ var BookingModalFooter = React.createClass({
 		} else if (this.props.step == 'date') {
 			return this.renderDateFooter();
 		} else if (this.props.step == 'time') {
-			return this.renderTimeFooter();			
+			return this.renderTimeFooter();	
+		} else if (this.props.step == 'services') {
+			return this.renderServicesFooter();						
 		} else if (this.props.step == 'info') {
 			return this.renderInfoFooter();
 		} else if (this.props.step == 'payment') {
@@ -54,6 +56,16 @@ var BookingModalFooter = React.createClass({
 				<div className="ChargedAfterAppointment">{I18n.t('sola_search.charged_after_appointment')}</div>
 				<div className="Button">
 					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t((this.props.services.length == 1 ? 'sola_search.book_service' : 'sola_search.book_services'), {num: this.props.services.length})}</button>
+				</div>
+			</div>
+		);
+	},
+
+	renderServicesFooter: function () {
+		return (
+			<div className="BookingModalFooter">
+				<div className="Button">
+					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.save_services')}</button>
 				</div>
 			</div>
 		);

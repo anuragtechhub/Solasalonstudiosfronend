@@ -2,13 +2,13 @@ var BookingModalServiceRow = React.createClass({
 
 	getInitialState: function () {
 		return {
-			defaultImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
+			defaultImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/service_placeholder.png',
 			useDefaultImage: false
 		};
 	},
 
 	render: function () {
-		console.log('BookingModalService', this.props.service);
+		//console.log('BookingModalService', this.props.service);
 
 		return (
 			<div className={"ServiceRow " + (this.props.service.image ? 'HasImage' : null)}>

@@ -15,6 +15,8 @@ var BookingModalHeader = React.createClass({
 			return I18n.t('sola_search.select_a_date');
 		} else if (this.props.step == 'time') {
 			return I18n.t('sola_search.select_a_time');
+		} else if (this.props.step == 'services') {
+			return I18n.t('sola_search.services');			
 		} else {
 			return I18n.t('sola_search.book_appointment');
 		}
@@ -27,6 +29,8 @@ var BookingModalHeader = React.createClass({
 			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>	
 		} else if (this.props.step == 'time') {
 			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>
+		} else if (this.props.step == 'services') {
+			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>			
 		} else if (this.props.step == 'payment') {
 			return <span className="fa fa-chevron-left BackButton" onClick={this.props.onBack}>&nbsp;</span>
 		} else {

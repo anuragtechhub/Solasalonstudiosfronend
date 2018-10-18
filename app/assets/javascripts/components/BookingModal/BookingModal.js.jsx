@@ -104,7 +104,9 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			this.setState({step: 'review'});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review'});			
+			this.setState({step: 'review'});	
+		} else if (this.state.step == 'services') {
+			this.setState({step: 'review'});						
 		} else if (this.state.step == 'payment') {
 			this.setState({step: 'info'});
 		}
@@ -131,7 +133,9 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			this.setState({step: 'review'});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review'});			
+			this.setState({step: 'review'});
+		} else if (this.state.step == 'services') {
+			this.setState({step: 'review'});						
 		} else if (this.state.step == 'info') {
 			this.setState({step: 'payment'});
 		} else if (this.state.step == 'payment') {
