@@ -22,6 +22,13 @@ namespace :reports do
   #   end    
   # end
 
+  task :locations_by_state => :environment do
+    p "ID,NAME,EMAIL,PHONE,LOCATION"
+    Stylist.where('status = ? AND location_id IN (?)', 'open', Location.near('San Diego, CA').map(&:id)).each do |stylist|
+      p "#{stylist.id},#{stylist.name},#{stylist.email_address},#{stylist.phone_number},#{stylist.location.name}"
+    end
+  end
+
   # compiles and sends unprocessed Reports
   task :process_unprocessed => :environment do 
     Report.where(:processed_at => nil).each do |report|
