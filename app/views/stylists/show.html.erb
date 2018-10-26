@@ -82,7 +82,7 @@
           <br />
           <%= "#{@stylist.location.city}, #{@stylist.location.state} #{@stylist.location.postal_code}" %>
         </div>
-        <div class="view-map"><a href="#"><%= t('page.salon_professional.view_map').html_safe %></a></div>
+        <div class="view-map" style="margin-top:2px"><a href="http://maps.google.com/maps?daddr=<%= @location.full_address %>" target="_blank" rel="noopener"><%= t('page.salon_professional.map_it').html_safe %></a></div>
       </div>
 
     </div>
@@ -134,8 +134,10 @@
   </div>
 </div>
 
+<!--
 <div class="row salon-map stylist-salon-map" id="map"></div>
 <div id="map-overlay" class="salon-map"></div>
+-->
 
 <div class="callout blue">
   <div class="container">
