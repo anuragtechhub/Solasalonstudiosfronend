@@ -7,9 +7,24 @@ var BookingComplete = React.createClass({
 		};
 	},
 
+	componentDidMount: function () {
+		if (this.refs.add_to_calendar) {
+			$(this.refs.add_to_calendar).add_to_calendar();
+		}
+	},
+
 	render: function () {
-		//console.log('this.props.professional', this.props.professional);
+		//console.log('this.props.time', this.props.time);
+		var self = this;
+		var service_description = '';
+		var idx = 0;
 		var services = this.props.services.map(function (service) {
+			idx++;
+			service_description += '* ' + service.name;
+			if (idx < self.props.services.length) {
+				service_description += '\r\n';
+			}
+			//console.log('service', service);
 			return <BookingModalServiceRow key={service} {...self.props} service={service} />
 		});
 
@@ -20,7 +35,13 @@ var BookingComplete = React.createClass({
 						<h2>{I18n.t('sola_search.booking_complete')}</h2>
 						<p>{I18n.t('sola_search.thanks_for_choosing_sola')}</p>
 						<div className="AddToCalendar">
-							<a href="#" className="button primary">{I18n.t('sola_search.add_to_calendar')}</a>
+							<span className="add-to-calendar-wrapper" ref="add_to_calendar"
+								 data-label={I18n.t('sola_search.add_to_calendar')}
+								 data-title={I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}
+								 data-description={service_description}
+								 data-address={this.props.professional.business_address.replace(/#/g, '')}
+								 data-start={moment(this.props.time.start).format('MMMM D, YYYY HH:mm')}
+								 data-end={moment(this.props.time.end).format('MMMM D, YYYY HH:mm')}></span>
 						</div>
 					</div>
 					<div className="BookingCompleteBox">
@@ -51,7 +72,7 @@ var BookingComplete = React.createClass({
 							<div className="AddressRow">
 								<span className="fa fa-map-marker">&nbsp;</span>
 								<div className="Address">{this.props.professional.business_address}<br /><strong>{this.props.professional.business_name}</strong></div>
-								<a href="#">{I18n.t('sola_search.map_it')}</a>
+								<a href={'http://maps.google.com/maps?daddr=' + this.props.professional.business_address} target="_blank">{I18n.t('sola_search.map_it')}</a>
 							</div>
 
 							<div className="ServicesRow">

@@ -66,7 +66,7 @@ en:
     map_it: Map it!
     select_a_date: Select a Date
     select_a_time: Select a Time
-
+    appointment_with_stylist: Appointment with %{stylist}
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
