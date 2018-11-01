@@ -7,6 +7,7 @@ var SearchBar = React.createClass({
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
+			loading: false,
 			location: this.props.location || '',
 			location_id: this.props.location_id,
 			lat: this.props.lat || '',
@@ -55,6 +56,7 @@ var SearchBar = React.createClass({
 					<button type="submit" className="primary">Search</button> 
 				</form>
 				{this.state.error ? <div className="error">{this.state.error}</div> : null}
+				{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
 			</div>
 		);
 	},
@@ -88,6 +90,7 @@ var SearchBar = React.createClass({
 
 		if (hasQuery && hasLatLng) {
 			// all good - proceed to search results
+			this.setState({error: null, loading: true});
 			window.location.href = this.props.path + '?' + this.getParams();
 		} else {
 			// we have errors

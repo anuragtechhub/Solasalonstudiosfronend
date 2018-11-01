@@ -67,7 +67,7 @@ var BookingModalPayment = React.createClass({
 		var style = {
 		  base: {
 		    // Add your base input styles here. For example:
-		    family: "'Lato', Arial, sans-serif",
+		    fontFamily: "'Lato', Arial, sans-serif",
 		    fontSize: '14px',
 		    color: "#000000",
 		  }
@@ -78,6 +78,10 @@ var BookingModalPayment = React.createClass({
 
 		card.addEventListener('ready', function(event) {
 			self.setState({ready: true});
+			self.props.onChange({target: {
+				name: 'ready',
+				value: true
+			}})
 		});
 
 		card.addEventListener('change', function(event) {

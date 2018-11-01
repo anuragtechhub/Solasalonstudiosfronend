@@ -43,7 +43,7 @@ var BookingModalFooter = React.createClass({
 		return (
 			<div className="BookingModalFooter">
 				<div className="Button">
-					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.book_appointment')}</button>
+					<button type="submit" className={"primary " + (this.props.ready ? '' : 'disabled')} onClick={this.props.onSubmit} disabled={!this.props.ready}>{I18n.t('sola_search.book_appointment')}</button>
 				</div>
 			</div>
 		);

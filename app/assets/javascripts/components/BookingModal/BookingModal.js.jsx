@@ -8,6 +8,7 @@ var BookingModal = React.createClass({
 			fullWidth: false,
 			loading: false,
 			phone_number: '',
+			ready: false,
 			step: this.props.step || 'review',
 			your_name: '',
 		}
@@ -100,15 +101,15 @@ var BookingModal = React.createClass({
 
 	onBack: function () {
 		if (this.state.step == 'info') {
-			this.setState({step: 'review'});
+			this.setState({step: 'review', ready: false});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review'});
+			this.setState({step: 'review', ready: false});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review'});	
+			this.setState({step: 'review', ready: false});	
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review'});						
+			this.setState({step: 'review', ready: false});						
 		} else if (this.state.step == 'payment') {
-			this.setState({step: 'info'});
+			this.setState({step: 'info', ready: false});
 		}
 	},
 
@@ -129,15 +130,15 @@ var BookingModal = React.createClass({
 		}
 
 		if (this.state.step == 'review') {
-			this.setState({step: 'info'});
+			this.setState({step: 'info', ready: false});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review'});
+			this.setState({step: 'review', ready: false});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review'});
+			this.setState({step: 'review', ready: false});
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review'});						
+			this.setState({step: 'review', ready: false});						
 		} else if (this.state.step == 'info') {
-			this.setState({step: 'payment'});
+			this.setState({step: 'payment', ready: false});
 		} else if (this.state.step == 'payment') {
 			// submit hidden form with booking info
 			$(this.refs.BookingCompleteForm).submit();
