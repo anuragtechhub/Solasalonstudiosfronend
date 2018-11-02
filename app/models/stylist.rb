@@ -30,6 +30,7 @@ class Stylist < ActiveRecord::Base
   after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
+  before_destroy :remove_from_ping_hd
   after_destroy :remove_from_mailchimp, :touch_stylist
 
   #has_one :studio
@@ -264,6 +265,11 @@ class Stylist < ActiveRecord::Base
   #   nil
   # end
 
+  def remove_from_ping_hd
+    self.status = 'closed'
+    self.sync_with_ping_hd
+  end
+
   def sync_with_ping_hd
     url = "https://go.engagephd.com/Sola.aspx" #"https://go.engagephd.com/api/Engage/Sola" #"http://dev.pinghd.com/api/Engage/Sola"
     
@@ -276,7 +282,7 @@ class Stylist < ActiveRecord::Base
       category: self.services.join(', '),
       subCategory: self.business_name,
       name: self.name,
-      description: self.biography,
+      #description: self.biography,
       room: self.studio_number,
       enabled: self.status && self.status == 'closed' ? false : true,
       walkins: self.walkins 
