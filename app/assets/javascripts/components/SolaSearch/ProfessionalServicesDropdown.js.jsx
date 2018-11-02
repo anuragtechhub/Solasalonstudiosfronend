@@ -2,8 +2,20 @@ var ProfessionalServicesDropdown = React.createClass({
 
 	getInitialState: function () {
 		return {
+			dropdownWidth: 0,
+			maxWidth: 0,
 			selectedService: this.props.services && this.props.services.length > 0 ? this.props.services[0] : null
 		};
+	},
+
+	componentDidMount: function () {
+		var self = this;
+		this.calculateDropdownSizes();
+
+		$(this.refs.dropdown).on('shown.bs.dropdown', function () {
+			console.log('done showd it', self.calculateOffset());
+			$(self.refs.dropdown).find('.dropdown-menu.show').css(self.calculateOffset());
+		});
 	},
 
 
@@ -23,13 +35,13 @@ var ProfessionalServicesDropdown = React.createClass({
 		});
 
 		return (
-			<div className="ProfessionalServicesDropdown">
+			<div className="ProfessionalServicesDropdown" ref="dropdown">
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
 				    {this.state.selectedService ? this.renderService(this.state.selectedService) : null}
 				    <span className="fa fa-angle-down"></span>
 				  </button>
-				  <ul className="dropdown-menu">
+				  <ul className="dropdown-menu" ref="dropdownMenu" style={{width: this.state.maxWidth}}>
 				    {services}
 				  </ul>
 				</div>
@@ -39,7 +51,7 @@ var ProfessionalServicesDropdown = React.createClass({
 
 	renderService: function (service) {
 		return (
-			<span>
+			<span className="service-item">
 				{service.name} <strong>${this.renderPrice(service.price)}</strong>
 			</span>
 		);
@@ -67,5 +79,44 @@ var ProfessionalServicesDropdown = React.createClass({
 		event.preventDefault();
 		this.setState({selectedService: service});
 	},
+
+
+
+	/**
+	* Helper functions
+	*/
+
+	calculateDropdownSizes: function () {
+		var $dropdown = $(this.refs.dropdown);
+		var $dropdownMenu = $(this.refs.dropdownMenu);
+		var max_width = 0;
+
+		$dropdownMenu.find('.service-item').each(function () {
+			var width = $(this).textWidth();
+			//console.log('width', width);
+			if (max_width < width.outerWidth) {
+				max_width = width.outerWidth + 20;
+			}
+		});
+
+		var dropdownWidth = $dropdown.outerWidth();
+		if (dropdownWidth >= max_width) {
+			max_width = dropdownWidth;
+		}
+
+		//console.log('width', dropdownWidth, max_width)
+		
+		this.setState({dropdownWidth: dropdownWidth, maxWidth: max_width});
+	},
+
+	calculateOffset: function () {
+		if (this.state.dropdownWidth >= this.state.maxWidth) {
+			//console.log('returning 0')
+			return {right: 0};
+		} else {
+			//console.log('returning', this.state.maxWidth - (this.state.dropdownWidth));
+			return {right: -(this.state.maxWidth - this.state.dropdownWidth - 8)};
+		}
+	}
 
 });

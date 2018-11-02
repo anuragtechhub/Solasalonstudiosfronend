@@ -144,7 +144,7 @@ var SolaSearch = React.createClass({
 			event.preventDefault();
 		}
 
-		console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
+		//console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
 		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [professional.matched_services[0]]});
 	},
 
@@ -157,7 +157,7 @@ var SolaSearch = React.createClass({
 	getAvailabilities: function (services_guids) {
 		var self = this;
 		
-		console.log('services_guids', services_guids);
+		//console.log('services_guids', services_guids);
 
 		$.ajax({
 			data: {
@@ -171,7 +171,7 @@ var SolaSearch = React.createClass({
 			method: 'POST',
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			console.log('getAvailabilities response', JSON.parse(response));
+			//console.log('getAvailabilities response', JSON.parse(response));
 			self.setState({availabilities: JSON.parse(response)});
 		}); 
 	},
@@ -182,9 +182,13 @@ var SolaSearch = React.createClass({
 		for (var i = 0, ilen = this.state.professionals.length; i < ilen; i++) {
 			guids[this.state.professionals[i].guid] = [];
 			
-			for (var j = 0, jlen = this.state.professionals[i].matched_services.length; j < jlen; j++) {
-				guids[this.state.professionals[i].guid].push(this.state.professionals[i].matched_services[j].guid);
+			// only one service id per professional to start with
+			if (this.state.professionals[i].matched_services.length >= 1) {
+				guids[this.state.professionals[i].guid].push(this.state.professionals[i].matched_services[0].guid);
 			}
+			// for (var j = 0, jlen = this.state.professionals[i].matched_services.length; j < jlen; j++) {
+			// 	guids[this.state.professionals[i].guid].push(this.state.professionals[i].matched_services[j].guid);
+			// }
 		}
 
 		return guids;
