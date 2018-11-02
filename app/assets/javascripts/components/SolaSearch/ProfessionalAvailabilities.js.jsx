@@ -26,7 +26,7 @@ var ProfessionalAvailabilities = React.createClass({
 		var self = this;
 
 		//console.log('render ProfessionalAvailabilities name, containerWidth, scrollWidth, scrollLeft', this.props.full_name, this.state.containerWidth, this.state.scrollWidth, this.state.scrollLeft);
-		
+		//console.log('this.props.availabilities', this.props.availabilities);
 		if (this.props.availabilities && this.props.availabilities.length > 0) {
 			var availabilities = this.props.availabilities.map(function (availability) {
 				var times = availability.times.map(function (time) {

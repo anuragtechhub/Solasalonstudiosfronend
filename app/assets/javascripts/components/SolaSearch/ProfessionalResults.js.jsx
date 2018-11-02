@@ -42,6 +42,9 @@ var ProfessionalResults = React.createClass({
 		for (var i in this.props.availabilities) {
 			//console.log('i', i);
 			if (i == professional.guid) {
+				// if (i == '15797e93f8') {
+				// 	console.log('kimmie', professional, this.props.availabilities[i]);
+				// }
 				return this.props.availabilities[i];
 			}
 		}

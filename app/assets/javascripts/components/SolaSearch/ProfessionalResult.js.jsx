@@ -20,7 +20,7 @@ var ProfessionalResult = React.createClass({
 				</div>
 				
 				<div className="ProfessionalResultDetails">
-					<div className="ProfessionalName">{this.props.full_name}</div>
+					<div className="ProfessionalName">{this.props.full_name} {this.props.guid}</div>
 					<div className="ProfessionalAddress">{this.props.business_address}</div>
 					<ProfessionalAvailabilities 
 						availabilities={this.props.availabilities} 

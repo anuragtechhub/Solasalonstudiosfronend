@@ -144,7 +144,7 @@ var SolaSearch = React.createClass({
 			event.preventDefault();
 		}
 
-		//console.log('onShowBookingModal', professional, time);
+		console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
 		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [professional.matched_services[0]]});
 	},
 
@@ -157,7 +157,7 @@ var SolaSearch = React.createClass({
 	getAvailabilities: function (services_guids) {
 		var self = this;
 		
-		//console.log('services_guids', JSON.stringify(services_guids));
+		console.log('services_guids', services_guids);
 
 		$.ajax({
 			data: {
@@ -171,7 +171,7 @@ var SolaSearch = React.createClass({
 			method: 'POST',
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			//console.log('getAvailabilities response', response);
+			console.log('getAvailabilities response', JSON.parse(response));
 			self.setState({availabilities: JSON.parse(response)});
 		}); 
 	},
