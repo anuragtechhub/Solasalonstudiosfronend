@@ -150,7 +150,7 @@ var SolaSearch = React.createClass({
 			event.preventDefault();
 		}
 
-		//console.log('onShowBookingModal', professional);
+		console.log('onShowBookingModal', professional, time, selectedService);
 		//console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
 		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [selectedService]});
 	},

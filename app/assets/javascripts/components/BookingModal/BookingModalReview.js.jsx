@@ -8,7 +8,7 @@ var BookingModalReview = React.createClass({
 	},
 
 	render: function () {
-		//console.log('render BookingModalReview', this.state);
+		console.log('render BookingModalReview', this.props);
 		return (
 			<div className="BookingModalReview">
 				{this.renderHeader()}
