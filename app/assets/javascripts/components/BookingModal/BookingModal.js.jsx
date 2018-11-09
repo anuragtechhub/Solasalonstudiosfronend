@@ -3,14 +3,14 @@ var BookingModal = React.createClass({
 	getInitialState: function () {
 		return {
 			date: this.props.date ? moment(this.props.date) : moment(),
-			email_address: '',
+			email_address: Cookies.get('email_address') || '',
 			fullHeight: false,
 			fullWidth: false,
 			loading: false,
-			phone_number: '',
+			phone_number: Cookies.get('phone_number') || '',
 			ready: false,
 			step: this.props.step || 'review',
-			your_name: '',
+			your_name: Cookies.get('your_name') || '',
 		}
 	},
 
@@ -117,7 +117,9 @@ var BookingModal = React.createClass({
 		if (e && e.target) {
 			//console.log('onChange', e.target.name, e.target.value);
 			this.state[e.target.name] = e.target.value;
-			this.setState(this.state);
+			this.setState(this.state, function () {
+				Cookies.set(e.target.name, e.target.value);
+			});
 		}
 	},
 
