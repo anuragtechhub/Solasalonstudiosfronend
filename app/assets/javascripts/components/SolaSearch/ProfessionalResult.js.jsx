@@ -19,6 +19,12 @@ var ProfessionalResult = React.createClass({
 		}
 	},
 
+	componentDidUpdate: function () {
+		if (this.props.professional) {
+			this.props.professional.availabilities = this.state.availabilities;
+		}
+	},
+
 
 
 	/**

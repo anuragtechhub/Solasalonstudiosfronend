@@ -238,6 +238,74 @@
 	}
 }
 
+.BookingModalTime {
+
+	.times {
+		text-align: center;
+	}
+
+	.time-button {
+		display: inline-block;
+		width: 100%;
+		max-width: 275px;
+
+		@include helvetica;
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 300;
+		text-align: center;
+		color: $brand-pink;
+		height: 40px;
+		padding: 6px;
+
+		margin-bottom: 15px;
+		border-radius: 3px;
+		border: 1px solid $brand-pink;
+
+		&:hover, &:active, &:focus {
+			background: $brand-pink;
+			color: #FFF;
+		}
+	}
+
+	.owl-theme .owl-controls, .owl-theme .owl-buttons {
+		position: absolute;
+		top: -5px;
+    left: 0;
+    right: 0;
+
+    .owl-prev, .owl-next {
+    	position: absolute;
+    	height: 32px;	
+    	width: 32px;	
+    	border: 2px solid #000000;	
+    	border-radius: 4px;
+    	font-size: 20px;
+    	line-height: 20px;
+    	text-align: center;
+    	padding-top: 5px;
+    }
+
+    .owl-prev {
+    	left: 0;
+
+    	span {
+    		position: relative;
+    		left: -1px;
+    	}
+    }
+
+    .owl-next {
+    	right: 0;
+
+    	span {
+    		position: relative;
+    		right: -1px;
+    	}
+    }
+	}
+}
+
 .BookingModalReview, .BookingCompleteBox {
 	position: relative;
 
