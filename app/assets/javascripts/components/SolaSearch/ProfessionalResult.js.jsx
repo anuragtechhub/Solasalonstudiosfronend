@@ -51,6 +51,7 @@ var ProfessionalResult = React.createClass({
 						full_name={this.props.full_name} 
 						onShowBookingModal={this.props.onShowBookingModal} 
 						professional={this.props.professional} 
+						selectedService={this.state.selectedService}
 					/>
 				</div>
 				{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}

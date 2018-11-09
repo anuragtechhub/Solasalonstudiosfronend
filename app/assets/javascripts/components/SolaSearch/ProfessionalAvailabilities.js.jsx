@@ -31,7 +31,7 @@ var ProfessionalAvailabilities = React.createClass({
 			var availabilities = this.props.availabilities.map(function (availability) {
 				var times = availability.times.map(function (time) {
 					return (
-						<a href='#' key={time.start} className="availability-button" onClick={self.props.onShowBookingModal.bind(null, self.props.professional, time)}>{moment(time.start).format('h:mma')}</a>
+						<a href='#' key={time.start} className="availability-button" onClick={self.props.onShowBookingModal.bind(null, self.props.professional, time, self.props.selectedService)}>{moment(time.start).format('h:mma')}</a>
 					);
 				});
 				return (
