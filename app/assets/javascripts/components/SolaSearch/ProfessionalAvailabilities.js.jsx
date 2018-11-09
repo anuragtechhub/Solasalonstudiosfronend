@@ -86,16 +86,16 @@ var ProfessionalAvailabilities = React.createClass({
 	goBack: function () {
 		var $availabilities = $(this.refs.availabilities);
 		//console.log('go back!', this.refs.availabilities.scrollWidth, $availabilities.scrollLeft());
-		$availabilities.animate({scrollLeft: $availabilities.scrollLeft() - 90}, 250);
+		$availabilities.animate({scrollLeft: $availabilities.scrollLeft() - 190}, 250);
 	},
 
 	goForward: function () {
 		var $availabilities = $(this.refs.availabilities);
 		//console.log('go forward!', this.refs.availabilities.scrollWidth, $availabilities.scrollLeft());
 		if (this.state.scrollLeft == 0) {
-			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 60}, 250);
+			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 160}, 250);
 		} else {
-			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 90}, 250);
+			$availabilities.animate({scrollLeft: $availabilities.scrollLeft() + 190}, 250);
 		}
 	},
 

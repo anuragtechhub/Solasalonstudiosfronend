@@ -2,30 +2,37 @@ var BookingModalTime = React.createClass({
 
 	componentDidMount: function () {
 		if (this.refs.carousel) {
-			$(this.refs.carousel).owlCarousel({
+			var $carousel = $(this.refs.carousel);
+			
+			$carousel.owlCarousel({
 				navigation: true,
 				navigationText: ['<span class="fa fa-chevron-left"></span>', '<span class="fa fa-chevron-right"></span>'],
 				pagination: false,
 				singleItem: true,
 			});
 
-			var owl = $(this.refs.carousel).data('owlCarousel');
-			owl.jumpTo(2); // TODO
+			var owl = $carousel.data('owlCarousel');
+			//console.log('this.props.date', this.props.date, this.props.date.format('YYYY-MM-DD'), $carousel.find('[data-date="' + this.props.date.format('YYYY-MM-DD') + '"]').data('idx'));
+			owl.jumpTo($carousel.find('[data-date="' + this.props.date.format('YYYY-MM-DD') + '"]').data('idx'));
 		}
 	},
 
 	render: function () {
+		var self = this;
+		var idx = 0;
 		var days = this.props.professional.availabilities.map(function (availability) {
 			var times = availability.times.map(function (time) {
 				return (
 					<div key={time.start + '_' + time.end}>
-						<button type="button" className="time-button">{moment(time.start).format('h:mm A')} - {moment(time.end).format('h:mm A')}</button>
+						<button type="button" className={"time-button " + (self.isActive(time) ? 'active' : '')}>{moment(time.start).format('h:mm A')} - {moment(time.end).format('h:mm A')}</button>
 					</div>
 				);
 			});
 
+			//console.log('availability.date',  availability.date, moment(availability.date).format('YYYY-MM-DD'));
+
 			return (
-				<div key={availability.date}>
+				<div key={availability.date} data-date={moment(availability.date).format('YYYY-MM-DD')} data-idx={idx++}>
 					<h2 className="text-center">{moment(availability.date).format('MMMM Do')}</h2>
 					<div className="times">{times}</div>
 				</div>
@@ -41,6 +48,19 @@ var BookingModalTime = React.createClass({
 				</div>
 			</div>
 		);
+	},
+
+
+
+	/**
+	* Helper functions
+	*/
+	isActive: function (time) {
+		if (time.start == this.props.time.start && time.end == this.props.time.end) {
+			return true;
+		} else {
+			return false;
+		}
 	},
 
 });
