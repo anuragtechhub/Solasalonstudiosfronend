@@ -4,16 +4,15 @@ var ProfessionalServicesDropdown = React.createClass({
 		return {
 			dropdownWidth: 0,
 			maxWidth: 0,
-			selectedService: this.props.services && this.props.services.length > 0 ? this.props.services[0] : null
+			//selectedService: this.props.services && this.props.services.length > 0 ? this.props.services[0] : null
 		};
 	},
 
-	componentDidMount: function () {
+	componentDidUpdate: function () {
 		var self = this;
 		this.calculateDropdownSizes();
 
 		$(this.refs.dropdown).on('shown.bs.dropdown', function () {
-			console.log('done showd it', self.calculateOffset());
 			$(self.refs.dropdown).find('.dropdown-menu.show').css(self.calculateOffset());
 		});
 	},
@@ -38,7 +37,7 @@ var ProfessionalServicesDropdown = React.createClass({
 			<div className="ProfessionalServicesDropdown" ref="dropdown">
 				<div className="dropdown">
 				  <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-				    {this.state.selectedService ? this.renderService(this.state.selectedService) : null}
+				    {this.props.selectedService ? this.renderService(this.props.selectedService) : null}
 				    <span className="fa fa-angle-down"></span>
 				  </button>
 				  <ul className="dropdown-menu" ref="dropdownMenu" style={{width: this.state.maxWidth}}>
@@ -77,7 +76,7 @@ var ProfessionalServicesDropdown = React.createClass({
 
 	onSelect: function (service, event) {
 		event.preventDefault();
-		this.setState({selectedService: service});
+		this.props.onChange(service);
 	},
 
 
