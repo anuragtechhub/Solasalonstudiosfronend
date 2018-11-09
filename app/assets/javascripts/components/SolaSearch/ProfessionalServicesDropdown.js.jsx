@@ -8,13 +8,19 @@ var ProfessionalServicesDropdown = React.createClass({
 		};
 	},
 
-	componentDidUpdate: function () {
+	componentDidMount: function () {
 		var self = this;
 		this.calculateDropdownSizes();
 
 		$(this.refs.dropdown).on('shown.bs.dropdown', function () {
 			$(self.refs.dropdown).find('.dropdown-menu.show').css(self.calculateOffset());
 		});
+	},
+
+	componentDidUpdate: function (prevProps, prevState) {
+		if (prevProps.selectedService.guid != this.props.selectedService.guid) {
+			this.calculateDropdownSizes();
+		}
 	},
 
 

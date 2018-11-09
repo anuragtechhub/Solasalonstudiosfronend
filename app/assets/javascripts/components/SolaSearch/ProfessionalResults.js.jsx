@@ -4,7 +4,16 @@ var ProfessionalResults = React.createClass({
 		var self = this;
 
 		var professionals = this.props.professionals.map(function (professional) {
-			return <ProfessionalResult key={professional.booking_page_url} {...professional} availabilities={self.getAvailabilities(professional)} onShowBookingModal={self.props.onShowBookingModal} professional={professional} />
+			return <ProfessionalResult 
+								key={professional.booking_page_url} 
+								{...professional} 
+								availabilities={self.getAvailabilities(professional)} 
+								date={self.props.date}
+								fingerprint={self.props.fingerprint}
+								gloss_genius_api_key={self.props.gloss_genius_api_key}
+								gloss_genius_api_url={self.props.gloss_genius_api_url}
+								onShowBookingModal={self.props.onShowBookingModal} 
+								professional={professional} />
 		});
 
 		return (
