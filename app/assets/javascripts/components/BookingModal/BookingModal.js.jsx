@@ -140,11 +140,42 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'services') {
 			this.setState({step: 'review', ready: false});						
 		} else if (this.state.step == 'info') {
-			this.setState({step: 'payment', ready: false});
+			this.clientCheck();
+			//this.setState({step: 'payment', ready: false});
 		} else if (this.state.step == 'payment') {
 			// submit hidden form with booking info
 			$(this.refs.BookingCompleteForm).submit();
 		}
+	},
+
+
+
+	/**
+	* Helper functions
+	*/
+
+	clientCheck: function () {
+		var self = this;
+
+		this.setState({loading: true});
+		
+		$.ajax({
+			data: {
+				name: this.state.your_name,
+				phone: this.state.phone_number,
+				email: this.state.email_address,
+				user_guid: this.props.professional.guid,
+			},
+	    headers: {
+	    	"api_key": this.props.gloss_genius_api_key,
+	    	"device_id": this.props.fingerprint,
+	    },
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'client-check',
+		}).done(function (response) {
+			console.log('clientCheck response', JSON.parse(response));
+			self.setState({loading: false});
+		}); 
 	},
 
 });

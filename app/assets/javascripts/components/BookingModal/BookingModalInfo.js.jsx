@@ -22,4 +22,12 @@ var BookingModalInfo = React.createClass({
 		);
 	},
 
+
+
+	/**
+	* Helper functions 
+	*/
+
+
+
 });
