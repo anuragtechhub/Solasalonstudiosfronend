@@ -170,7 +170,7 @@ var BookingModal = React.createClass({
 	    	"api_key": this.props.gloss_genius_api_key,
 	    	"device_id": this.props.fingerprint,
 	    },
-			method: 'POST',
+			method: 'GET',
 	    url: this.props.gloss_genius_api_url + 'client-check',
 		}).done(function (response) {
 			console.log('clientCheck response', JSON.parse(response));

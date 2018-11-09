@@ -8,6 +8,9 @@ var BookingModalTime = React.createClass({
 				pagination: false,
 				singleItem: true,
 			});
+
+			var owl = $(this.refs.carousel).data('owlCarousel');
+			owl.jumpTo(2); // TODO
 		}
 	},
 
