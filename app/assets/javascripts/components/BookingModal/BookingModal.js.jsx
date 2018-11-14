@@ -1,8 +1,17 @@
 var BookingModal = React.createClass({
 
 	getInitialState: function () {
+		console.log('this.props.services', this.props.services)
 		return {
 			date: this.props.date ? moment(this.props.date) : moment(),
+			temp_date: this.props.date ? moment(this.props.date) : moment(),
+
+			time: this.props.time,
+			temp_time: this.props.time,
+
+			services: this.props.services,
+			temp_services: this.props.services,
+
 			email_address: Cookies.get('email_address') || '',
 			fullHeight: false,
 			fullWidth: false,
@@ -10,7 +19,6 @@ var BookingModal = React.createClass({
 			phone_number: Cookies.get('phone_number') || '',
 			ready: false,
 			step: this.props.step || 'review',
-			time: this.props.time,
 			your_name: Cookies.get('your_name') || '',
 		}
 	},
@@ -39,10 +47,13 @@ var BookingModal = React.createClass({
 			this.setState({step: nextProps.step});
 		}
 		if (!this.state.time && nextProps.time) {//} && nextProps.time.start != this.state.time.start && nextProps.time.end != this.state.time.end) {
-			this.setState({time: nextProps.time});
+			this.setState({time: nextProps.time, temp_time: nextProps.time});
 		}
+		//if (this.state.services.length == 0 && nextProps.services.length) {
+			this.setState({services: nextProps.services});
+		//}
 		if (!moment(nextProps.date).isSame(this.state.date)) {
-			this.setState({date: moment(nextProps.date)});
+			this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});
 		}
 	},
 
@@ -50,13 +61,13 @@ var BookingModal = React.createClass({
 		// disable / enable scrolling
 		if (this.props.visible) {
 			$('html, body').css({
-			    overflow: 'hidden',
-			    height: '100%'
+		    overflow: 'hidden',
+		    height: '100%'
 			});
 		} else {
 			$('html, body').css({
-			    overflow: 'auto',
-			    height: 'auto'
+		    overflow: 'auto',
+		    height: 'auto'
 			});
 		}
 	},
@@ -107,11 +118,11 @@ var BookingModal = React.createClass({
 		if (this.state.step == 'info') {
 			this.setState({step: 'review', ready: false});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review', ready: false});
+			this.setState({step: 'review', ready: false, temp_date: this.state.date});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false});	
+			this.setState({step: 'review', ready: false, temp_time: this.state.time});	
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review', ready: false});						
+			this.setState({step: 'review', ready: false, temp_services: this.state.services});						
 		} else if (this.state.step == 'payment') {
 			this.setState({step: 'info', ready: false});
 		}
@@ -138,11 +149,11 @@ var BookingModal = React.createClass({
 		if (this.state.step == 'review') {
 			this.setState({step: 'info', ready: false});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review', ready: false});
+			this.setState({step: 'review', ready: false, date: this.state.temp_date});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false});
+			this.setState({step: 'review', ready: false, time: this.state.temp_time});
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review', ready: false});						
+			this.setState({step: 'review', ready: false, services: this.state.temp_services});						
 		} else if (this.state.step == 'info') {
 			this.clientCheck();
 			//this.setState({step: 'payment', ready: false});

@@ -23,7 +23,7 @@ var BookingModalFooter = React.createClass({
 		return (
 			<div className="BookingModalFooter">
 				<div className="Button">
-					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.continue')}</button>
+					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.save')}</button>
 				</div>
 			</div>
 		);
@@ -75,7 +75,7 @@ var BookingModalFooter = React.createClass({
 		return (
 			<div className="BookingModalFooter">
 				<div className="Button">
-					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.continue')}</button>
+					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t('sola_search.save')}</button>
 				</div>
 			</div>
 		);

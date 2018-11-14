@@ -24,7 +24,7 @@ var BookingModalTime = React.createClass({
 			var times = availability.times.map(function (time) {
 				return (
 					<div key={time.start + '_' + time.end}>
-						<button type="button" className={"time-button " + (self.isActive(time) ? 'active' : '')}>{moment(time.start).format('h:mm A')} - {moment(time.end).format('h:mm A')}</button>
+						<button type="button" className={"time-button " + (self.isActive(time) ? 'active' : '')} onClick={self.onChangeTime.bind(self, time)}>{moment(time.start).format('h:mm A')} - {moment(time.end).format('h:mm A')}</button>
 					</div>
 				);
 			});
@@ -53,10 +53,27 @@ var BookingModalTime = React.createClass({
 
 
 	/**
+	* Change handlers
+	*/
+
+	onChangeTime: function (time, e) {
+		e.stopPropagation();
+		e.preventDefault();
+		console.log('onChangeTime', time);
+		this.props.onChange({target: {
+			name: 'temp_time',
+			value: time
+		}});		
+	},
+
+
+
+	/**
 	* Helper functions
 	*/
+
 	isActive: function (time) {
-		if (time.start == this.props.time.start && time.end == this.props.time.end) {
+		if (time.start == this.props.temp_time.start && time.end == this.props.temp_time.end) {
 			return true;
 		} else {
 			return false;

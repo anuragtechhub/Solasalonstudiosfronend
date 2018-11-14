@@ -16,7 +16,7 @@ var BookingModalDate = React.createClass({
 			var newDate = moment($(self.refs.datepicker).datepicker('getDate'), "MM/DD/YYYY");
 			//console.log('changeDate', newDate.toDate());
 			self.props.onChange({target: {
-				name: 'date',
+				name: 'temp_date',
 				value: newDate
 			}});
 		});
