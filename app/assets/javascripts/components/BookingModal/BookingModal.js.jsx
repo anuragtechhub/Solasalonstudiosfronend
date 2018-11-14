@@ -148,10 +148,20 @@ var BookingModal = React.createClass({
 		if (this.state.step == 'review') {
 			this.setState({step: 'info', ready: false, error: null});
 		} else if (this.state.step == 'date') {
+			if (moment(this.state.date).isSame(this.state.temp_date)) {
+				console.log('dates SAME')
+			} else {
+				console.log('dates NOT SAME');
+			}
 			this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 		} else if (this.state.step == 'time') {
 			this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
 		} else if (this.state.step == 'services') {
+			if (this.arraysEqual(this.state.services, this.state.temp_services)) {
+				console.log('services SAME')
+			} else {
+				console.log('services NOT SAME')
+			}
 			this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});						
 		} else if (this.state.step == 'info') {
 			this.clientCheck();
@@ -167,6 +177,17 @@ var BookingModal = React.createClass({
 	/**
 	* Helper functions
 	*/
+
+	arraysEqual: function (arr1, arr2) {
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+
+    return true;
+	},
 
 	book: function () {
 		var self = this;
