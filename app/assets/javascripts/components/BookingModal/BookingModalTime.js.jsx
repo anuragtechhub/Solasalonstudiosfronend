@@ -73,7 +73,7 @@ var BookingModalTime = React.createClass({
 	*/
 
 	isActive: function (time) {
-		if (time.start == this.props.temp_time.start && time.end == this.props.temp_time.end) {
+		if (this.props.temp_time && time.start == this.props.temp_time.start && time.end == this.props.temp_time.end) {
 			return true;
 		} else {
 			return false;

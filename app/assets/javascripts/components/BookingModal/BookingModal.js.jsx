@@ -119,7 +119,11 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			this.setState({step: 'review', ready: false, temp_date: this.state.date, error: null});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false, temp_time: this.state.time, error: null});	
+			if (this.state.temp_time == null) {
+				this.setState({error: I18n.t('sola_search.please_select_a_time')});
+			} else {
+				this.setState({step: 'review', ready: false, temp_time: this.state.time, error: null});	
+			}
 		} else if (this.state.step == 'services') {
 			this.setState({step: 'review', ready: false, temp_services: this.state.services, error: null});						
 		} else if (this.state.step == 'payment') {
@@ -157,9 +161,12 @@ var BookingModal = React.createClass({
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
 			}
-			
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
+			if (this.state.temp_time == null) {
+				this.setState({error: I18n.t('sola_search.please_select_a_time')});
+			} else {
+				this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
+			}
 		} else if (this.state.step == 'services') {
 			// SERVICES
 			if (this.arraysEqual(this.state.services, this.state.temp_services)) {
@@ -295,7 +302,7 @@ var BookingModal = React.createClass({
 			console.log('getAvailabilities response', json_response, json_response[self.props.professional.guid]);
 			if (json_response && json_response[self.props.professional.guid] && json_response[self.props.professional.guid].length) {
 				self.props.professional.availabilities = json_response[self.props.professional.guid];
-				self.setState({loading: false, step: 'time', ready: false, error: null, services: self.state.temp_services, date: self.state.temp_date});
+				self.setState({loading: false, step: 'time', ready: false, error: null, services: self.state.temp_services, date: self.state.temp_date, temp_time: null});
 			} else {
 				self.setState({loading: false, ready: false, error: I18n.t('sola_search.no_availability')});
 			}
