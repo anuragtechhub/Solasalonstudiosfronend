@@ -25,7 +25,7 @@ var BookingComplete = React.createClass({
 				service_description += '\r\n';
 			}
 			//console.log('service', service);
-			return <BookingModalServiceRow key={service} {...self.props} service={service} />
+			return <BookingModalServiceRow key={service.guid} {...self.props} service={service} />
 		});
 
 		return (

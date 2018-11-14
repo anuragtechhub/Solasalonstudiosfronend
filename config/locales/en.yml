@@ -68,6 +68,7 @@ en:
     select_a_time: Select a Time
     appointment_with_stylist: Appointment with %{stylist}
     save: Save
+    no_availability: There is no availability for these services on this date. Please change the date or remove some services and try again.
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

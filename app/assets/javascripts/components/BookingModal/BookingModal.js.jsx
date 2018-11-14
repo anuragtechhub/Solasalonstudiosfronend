@@ -101,8 +101,8 @@ var BookingModal = React.createClass({
 		return (
 			<form ref="BookingCompleteForm" method="post" action={this.props.booking_complete_path} style={{display: 'none'}}>
 				<input name="professional" type="hidden" value={JSON.stringify(this.props.professional)} />
-				<input name="services" type="hidden" value={JSON.stringify(this.props.services)} />
-				<input name="time" type="hidden" value={JSON.stringify(this.props.time)} />
+				<input name="services" type="hidden" value={JSON.stringify(this.state.services)} />
+				<input name="time" type="hidden" value={JSON.stringify(this.state.time)} />
 			</form>
 		);
 	},
@@ -155,7 +155,7 @@ var BookingModal = React.createClass({
 				this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 			} else {
 				console.log('dates NOT SAME');
-				this.setState({ready: false, date: this.state.temp_date, error: null, loading: true}, function () {
+				this.setState({ready: false, error: null, loading: true}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
 			}
@@ -169,7 +169,7 @@ var BookingModal = React.createClass({
 				this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});	
 			} else {
 				console.log('services NOT SAME');
-				this.setState({ready: false, services: this.state.temp_services, error: null, loading: true}, function () {
+				this.setState({ready: false, error: null, loading: true}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
 			}			
@@ -204,7 +204,7 @@ var BookingModal = React.createClass({
 		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
 			service_guids.push(this.state.services[i].guid);
 		}
-		console.log('book it', service_guids, this.state.services);
+		console.log('book it', service_guids, this.state.time);
 		this.setState({loading: true});
 
 		$.ajax({
@@ -275,9 +275,9 @@ var BookingModal = React.createClass({
 		
 		var services_guids = {};
 		var services = [];
-		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
+		for (var i = 0, ilen = this.state.temp_services.length; i < ilen; i++) {
 			//services_guids[this.props.professional.guid] = this.state.services[i].guid;
-			services.push(this.state.services[i].guid);
+			services.push(this.state.temp_services[i].guid);
 		}
 		services_guids[this.props.professional.guid] = services;
 		
@@ -296,10 +296,12 @@ var BookingModal = React.createClass({
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
 			var json_response = JSON.parse(response);
-			console.log('getAvailabilities response', json_response);
-			if (json_response && json_response[self.props.professional.guid]) {
+			console.log('getAvailabilities response', json_response, json_response[self.props.professional.guid]);
+			if (json_response && json_response[self.props.professional.guid] && json_response[self.props.professional.guid].length) {
 				self.props.professional.availabilities = json_response[self.props.professional.guid];
-				self.setState({loading: false, step: 'time', ready: false, error: null});
+				self.setState({loading: false, step: 'time', ready: false, error: null, services: self.state.temp_services, date: self.state.temp_date});
+			} else {
+				self.setState({loading: false, ready: false, error: I18n.t('sola_search.no_availability')});
 			}
 		}); 
 	},
