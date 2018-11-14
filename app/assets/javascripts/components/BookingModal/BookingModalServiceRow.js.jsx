@@ -7,6 +7,12 @@ var BookingModalServiceRow = React.createClass({
 		};
 	},
 
+
+
+	/**
+	* Render functions
+	*/
+ 
 	render: function () {
 		//console.log('BookingModalService', this.props.service);
 
@@ -29,7 +35,9 @@ var BookingModalServiceRow = React.createClass({
 	renderToggleSwitch: function () {
 		if (this.props.toggleSwitch) {
 			return (
-				<div className={"toggle-switch-button " + (this.props.serviceSelected ? "active" : "")}><span className={"fa " + (this.props.serviceSelected ? "fa-check" : "fa-plus")}></span></div>
+				<div className={"toggle-switch-button " + (this.props.serviceSelected ? "active" : "")} onClick={this.onToggleService.bind(this, this.props.service)}>
+					<span className={"fa " + (this.props.serviceSelected ? "fa-check" : "fa-plus")}></span>
+				</div>
 			);
 		}
 	},
@@ -44,12 +52,64 @@ var BookingModalServiceRow = React.createClass({
 		}
 	},
 
-	calculateTotalCost: function () {
-		return parseFloat(this.props.service.price, 10);
-	},
+
+
+	/**
+	* Change handlers
+	*/
 
 	onImageError: function () {
 		this.setState({useDefaultImage: true});
+	},
+
+	onToggleService: function (service, e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if (this.props.serviceSelected) {
+			this.removeService(service);
+		} else {
+			this.addService(service);
+		}
+	},
+
+
+
+	/**
+	* Helper functions
+	*/
+
+	addService: function (service) {
+		var services = this.props.services.slice(0);
+		services.push(service);
+		//console.log('addService', service, services);
+		this.props.onChange({target: {
+			name: 'temp_services',
+			value: services
+		}});	
+	},
+
+	removeService: function (service) {
+		var services = this.props.services.slice(0);
+		var idx = -1;
+		for (var i = 0, ilen = services.length; i < ilen; i++) {
+			if (services[i].guid == service.guid) {
+				idx = i;
+				break;
+			}
+		}
+		if (idx >= 0) {
+			services.splice(idx, 1);
+		}
+		//console.log('removeService', service, services);
+		this.props.onChange({target: {
+			name: 'temp_services',
+			value: services
+		}});	
+	},
+
+	calculateTotalCost: function () {
+		return parseFloat(this.props.service.price, 10);
 	},
 
 });

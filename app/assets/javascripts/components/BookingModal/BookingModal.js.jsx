@@ -1,7 +1,6 @@
 var BookingModal = React.createClass({
 
 	getInitialState: function () {
-		console.log('this.props.services', this.props.services)
 		return {
 			date: this.props.date ? moment(this.props.date) : moment(),
 			temp_date: this.props.date ? moment(this.props.date) : moment(),
@@ -50,7 +49,7 @@ var BookingModal = React.createClass({
 			this.setState({time: nextProps.time, temp_time: nextProps.time});
 		}
 		//if (this.state.services.length == 0 && nextProps.services.length) {
-			this.setState({services: nextProps.services});
+			this.setState({services: nextProps.services, temp_services: nextProps.services});
 		//}
 		if (!moment(nextProps.date).isSame(this.state.date)) {
 			this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});

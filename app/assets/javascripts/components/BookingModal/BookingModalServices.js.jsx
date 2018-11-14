@@ -2,10 +2,10 @@ var BookingModalServices = React.createClass({
 
 	render: function () {
 		var self = this;
-		console.log('BookingModalServices', this.props);
+		//console.log('BookingModalServices', this.props.services);
 		var services = this.props.professional.all_services.map(function (service) {
 			return (
-				<BookingModalServiceRow key={service.guid} service={service} serviceSelected={self.isServiceSelected(service)} toggleSwitch={true} />
+				<BookingModalServiceRow key={service.guid} onChange={self.props.onChange} services={self.props.temp_services} service={service} serviceSelected={self.isServiceSelected(service)} toggleSwitch={true} />
 			);
 		});
 
@@ -21,8 +21,8 @@ var BookingModalServices = React.createClass({
 	},
 
 	isServiceSelected: function (service) {
-		for (var i = 0, ilen = this.props.services.length; i < ilen; i++) {
-			if (service.guid == this.props.services[i].guid) {
+		for (var i = 0, ilen = this.props.temp_services.length; i < ilen; i++) {
+			if (service.guid == this.props.temp_services[i].guid) {
 				return true;
 			}
 		}

@@ -59,7 +59,7 @@ var BookingModalTime = React.createClass({
 	onChangeTime: function (time, e) {
 		e.stopPropagation();
 		e.preventDefault();
-		console.log('onChangeTime', time);
+		//console.log('onChangeTime', time);
 		this.props.onChange({target: {
 			name: 'temp_time',
 			value: time
