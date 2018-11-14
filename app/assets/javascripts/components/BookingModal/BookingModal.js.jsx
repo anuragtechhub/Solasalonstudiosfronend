@@ -155,7 +155,6 @@ var BookingModal = React.createClass({
 			this.setState({step: 'review', ready: false, services: this.state.temp_services});						
 		} else if (this.state.step == 'info') {
 			this.clientCheck();
-			//this.setState({step: 'payment', ready: false});
 		} else if (this.state.step == 'payment') {
 			this.book();
 			// submit hidden form with booking info
@@ -172,7 +171,11 @@ var BookingModal = React.createClass({
 	book: function () {
 		var self = this;
 
-		console.log('book it', this.state.services);
+		var service_guids = [];
+		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
+			service_guids.push(this.state.services[i].guid);
+		}
+		console.log('book it', service_guids, this.state.services);
 
 		this.setState({loading: true});
 
@@ -183,23 +186,26 @@ var BookingModal = React.createClass({
 				email: this.state.email_address,
 				stripe_token: this.state.stripe_token,
 				start_time: this.state.time.start,
-				service_guids: this.state.services,
+				service_guids: service_guids,
 				user_guid: this.props.professional.guid,
 			},
 	    headers: {
 	    	"api_key": this.props.gloss_genius_api_key,
 	    	"device_id": this.props.fingerprint,
 	    },
-			method: 'GET',
-	    url: this.props.gloss_genius_api_url + 'client-check',
-		}).done(function (response) {
-			console.log('book response', JSON.parse(response));
-			// if (JSON.parse(response).require_card !== true) {
-			// 	self.book();
-			// } else {
-			// 	self.setState({loading: false, step: 'payment', ready: false});
-			// }
-			$(self.refs.BookingCompleteForm).submit();
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'book',
+		}).complete(function (response) {
+			//console.log('book is done', response.responseText);
+			var json_response = JSON.parse(response.responseText);
+			//console.log('book response', json_response);
+			if (json_response && json_response.error) {
+				console.log('booking ERROR');
+				self.setState({loading: false, error: json_response.error});
+			} else {
+				console.log('booking SUCCESS!!!');
+				$(self.refs.BookingCompleteForm).submit();
+			}
 		}); 
 	},
 
@@ -222,7 +228,7 @@ var BookingModal = React.createClass({
 			method: 'GET',
 	    url: this.props.gloss_genius_api_url + 'client-check',
 		}).done(function (response) {
-			//console.log('clientCheck response', JSON.parse(response));
+			console.log('clientCheck response', JSON.parse(response));
 			if (JSON.parse(response).require_card !== true) {
 				self.book();
 			} else {
