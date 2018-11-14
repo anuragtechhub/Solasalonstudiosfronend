@@ -176,7 +176,6 @@ var BookingModal = React.createClass({
 			service_guids.push(this.state.services[i].guid);
 		}
 		console.log('book it', service_guids, this.state.services);
-
 		this.setState({loading: true});
 
 		$.ajax({
