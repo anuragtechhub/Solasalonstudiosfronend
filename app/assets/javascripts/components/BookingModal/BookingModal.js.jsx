@@ -115,15 +115,15 @@ var BookingModal = React.createClass({
 
 	onBack: function () {
 		if (this.state.step == 'info') {
-			this.setState({step: 'review', ready: false});
+			this.setState({step: 'review', ready: false, error: null});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review', ready: false, temp_date: this.state.date});
+			this.setState({step: 'review', ready: false, temp_date: this.state.date, error: null});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false, temp_time: this.state.time});	
+			this.setState({step: 'review', ready: false, temp_time: this.state.time, error: null});	
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review', ready: false, temp_services: this.state.services});						
+			this.setState({step: 'review', ready: false, temp_services: this.state.services, error: null});						
 		} else if (this.state.step == 'payment') {
-			this.setState({step: 'info', ready: false});
+			this.setState({step: 'info', ready: false, error: null});
 		}
 	},
 
@@ -146,13 +146,13 @@ var BookingModal = React.createClass({
 		}
 
 		if (this.state.step == 'review') {
-			this.setState({step: 'info', ready: false});
+			this.setState({step: 'info', ready: false, error: null});
 		} else if (this.state.step == 'date') {
-			this.setState({step: 'review', ready: false, date: this.state.temp_date});
+			this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 		} else if (this.state.step == 'time') {
-			this.setState({step: 'review', ready: false, time: this.state.temp_time});
+			this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review', ready: false, services: this.state.temp_services});						
+			this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});						
 		} else if (this.state.step == 'info') {
 			this.clientCheck();
 		} else if (this.state.step == 'payment') {
@@ -227,8 +227,11 @@ var BookingModal = React.createClass({
 			method: 'GET',
 	    url: this.props.gloss_genius_api_url + 'client-check',
 		}).done(function (response) {
-			console.log('clientCheck response', JSON.parse(response));
-			if (JSON.parse(response).require_card !== true) {
+			var json_response = JSON.parse(response);
+			console.log('clientCheck response', json_response);
+			if (json_response && json_response.error) {
+				self.setState({loading: false, error: json_response.error});
+			} else if (json_response.require_card !== true) {
 				self.book();
 			} else {
 				self.setState({loading: false, step: 'payment', ready: false});

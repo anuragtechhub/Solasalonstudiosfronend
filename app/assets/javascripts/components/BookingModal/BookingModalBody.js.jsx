@@ -3,6 +3,7 @@ var BookingModalBody = React.createClass({
 	render: function () {
 		return (
 			<div className="BookingModalBody">
+				{this.props.error ? <div className="error">{this.props.error}</div> : null}
 				{this.renderStep()}
 			</div>
 		);

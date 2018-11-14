@@ -72,6 +72,19 @@
 		margin-top: 0;
 	}
 
+	.error {
+		text-align: center;
+    font-size: 17px;
+    line-height: 21px;
+    margin: 25px 0 -20px 0;
+    /* background: #ff00000f; */
+    padding: 15px;
+    border: 1px solid red;
+    border-left: 0;
+    border-right: 0;
+    color: red;
+	}
+
 	.BookingModalHeader {
 		position: absolute;
 		top: 0;
