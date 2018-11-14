@@ -3,7 +3,7 @@ var BookingModalServicesRow = React.createClass({
 	render: function () {
 		var self = this;
 		var services = this.props.services.map(function (service) {
-			return <BookingModalServiceRow key={service} {...self.props} service={service} />
+			return <BookingModalServiceRow key={service.guid} {...self.props} service={service} />
 		});
 
 		return (
