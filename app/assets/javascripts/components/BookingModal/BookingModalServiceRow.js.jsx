@@ -21,8 +21,17 @@ var BookingModalServiceRow = React.createClass({
 						<span className="ServiceDuration">{this.props.service.duration} {I18n.t('sola_search.min')}</span>
 					</div>
 				</div>
+				{this.renderToggleSwitch()}
 			</div>
 		);
+	},
+
+	renderToggleSwitch: function () {
+		if (this.props.toggleSwitch) {
+			return (
+				<div className="toggle-switch-button"><span className="fa fa-plus"></span></div>
+			);
+		}
 	},
 
 	renderServiceImage: function () {

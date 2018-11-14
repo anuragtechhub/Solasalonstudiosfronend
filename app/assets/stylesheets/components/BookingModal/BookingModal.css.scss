@@ -306,7 +306,7 @@
 	}
 }
 
-.BookingModalReview, .BookingCompleteBox {
+.BookingModalReview, .BookingCompleteBox, .BookingModalServices {
 	position: relative;
 
 	.Body {
@@ -592,6 +592,51 @@
 			line-height: 20px;
 			margin-bottom: 0;
 			text-decoration: none;
+		}
+	}
+}
+
+.BookingModalServices {
+	.Body {
+		.ServicesRow {
+			padding: 0;
+
+			.ServiceRow {
+				position: relative;
+				margin-bottom: 10px;
+
+				.toggle-switch-button {
+					position: absolute;
+					top: 22px;
+					right: 22px;
+
+					display: block;
+					height: 48px;	
+					width: 48px;	
+					border-radius: 4px;	
+					border: 2px solid $brand-pink;
+
+					text-align: center;
+					padding-top: 11px;
+					cursor: pointer;
+
+					span {
+						color: $brand-pink;
+						font-size: 24px;
+						line-height: 24px;
+					}
+
+					&:hover, &:active, &:focus, &.active {
+						border: 0;
+						background: linear-gradient(144.64deg, #FF6AC9 0%, #EF008C 100%);
+						padding-top: 13px;
+
+						span {
+							color: #FFF;
+						}
+					}
+				}
+			}
 		}
 	}
 }
