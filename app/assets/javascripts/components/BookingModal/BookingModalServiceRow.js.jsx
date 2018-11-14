@@ -29,7 +29,7 @@ var BookingModalServiceRow = React.createClass({
 	renderToggleSwitch: function () {
 		if (this.props.toggleSwitch) {
 			return (
-				<div className="toggle-switch-button"><span className="fa fa-plus"></span></div>
+				<div className={"toggle-switch-button " + (this.props.serviceSelected ? "active" : "")}><span className={"fa " + (this.props.serviceSelected ? "fa-check" : "fa-plus")}></span></div>
 			);
 		}
 	},

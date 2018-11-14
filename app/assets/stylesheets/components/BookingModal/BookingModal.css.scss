@@ -460,6 +460,7 @@
 
 			.ServiceDetails {
 				display: inline-block;
+				width: calc(100% - 160px);
 			}
 
 			&.HasImage {
@@ -669,6 +670,22 @@
 
 
 @media (max-width: 600px) {
+	.BookingModalServices .Body .ServicesRow .ServiceRow .toggle-switch-button {
+		width: 36px;
+		height: 36px;
+		padding-top: 8px;
+		top: 28px;
+
+		&.active, &:hover, &:active, &:focus {
+			padding-top: 9px;
+		}
+
+		span {
+			font-size: 20px;
+			line-height: 20px;
+		}
+	}
+
 	.BookingModal {
 		.BookingModalReview {
 
@@ -742,18 +759,9 @@
 				.ServiceName {
 					font-size: 14px;	
 					line-height: 16px;
-				}
-
-				.ServiceCostAndDuration {
-
-				}
-
-				.ServiceCost, .ServiceDuration {
-
-				}
-
-				.Separator {
-
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}				
 		}
