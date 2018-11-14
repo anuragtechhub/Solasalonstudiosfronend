@@ -271,14 +271,17 @@ var BookingModal = React.createClass({
 	refreshAvailabilityThenGotoTimeStep: function () {
 		var self = this;
 
-		console.log("refresh availability, then goto 'time' step");
+		//console.log("refresh availability, then goto 'time' step");
 		
 		var services_guids = {};
+		var services = [];
 		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
-			services_guids[this.props.professional.guid] = this.state.services[i].guid;
+			//services_guids[this.props.professional.guid] = this.state.services[i].guid;
+			services.push(this.state.services[i].guid);
 		}
+		services_guids[this.props.professional.guid] = services;
 		
-		console.log('services_guids', services_guids);
+		//console.log('services_guids', services_guids);
 
 		$.ajax({
 			data: {
