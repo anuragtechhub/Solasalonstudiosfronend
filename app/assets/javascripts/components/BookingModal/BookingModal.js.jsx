@@ -138,6 +138,7 @@ var BookingModal = React.createClass({
 	},
 
 	onSubmit: function (e) {
+		var self = this;
 		//console.log('onSubmit!', this.props.booking_complete_path);
 
 		if (e && e.preventDefault && e.stopPropagation) {
@@ -148,27 +149,34 @@ var BookingModal = React.createClass({
 		if (this.state.step == 'review') {
 			this.setState({step: 'info', ready: false, error: null});
 		} else if (this.state.step == 'date') {
+			// DATE
 			if (moment(this.state.date).isSame(this.state.temp_date)) {
 				console.log('dates SAME')
+				this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 			} else {
 				console.log('dates NOT SAME');
+				this.setState({ready: false, date: this.state.temp_date, error: null, loading: true}, function () {
+					self.refreshAvailabilityThenGotoTimeStep();
+				});
 			}
-			this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
+			
 		} else if (this.state.step == 'time') {
 			this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
 		} else if (this.state.step == 'services') {
+			// SERVICES
 			if (this.arraysEqual(this.state.services, this.state.temp_services)) {
 				console.log('services SAME')
+				this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});	
 			} else {
-				console.log('services NOT SAME')
-			}
-			this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});						
+				console.log('services NOT SAME');
+				this.setState({ready: false, services: this.state.temp_services, error: null, loading: true}, function () {
+					self.refreshAvailabilityThenGotoTimeStep();
+				});
+			}			
 		} else if (this.state.step == 'info') {
 			this.clientCheck();
 		} else if (this.state.step == 'payment') {
 			this.book();
-			// submit hidden form with booking info
-			//$(this.refs.BookingCompleteForm).submit();
 		}
 	},
 
@@ -255,7 +263,40 @@ var BookingModal = React.createClass({
 			} else if (json_response.require_card !== true) {
 				self.book();
 			} else {
-				self.setState({loading: false, step: 'payment', ready: false});
+				self.setState({loading: false, step: 'payment', ready: false, error: null});
+			}
+		}); 
+	},
+
+	refreshAvailabilityThenGotoTimeStep: function () {
+		var self = this;
+
+		console.log("refresh availability, then goto 'time' step");
+		
+		var services_guids = {};
+		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
+			services_guids[this.props.professional.guid] = this.state.services[i].guid;
+		}
+		
+		console.log('services_guids', services_guids);
+
+		$.ajax({
+			data: {
+				date: moment(this.state.date).format("YYYY-MM-DD"),
+				services_guids: services_guids
+			},
+	    headers: {
+	    	"api_key": this.props.gloss_genius_api_key,
+	    	"device_id": this.props.fingerprint,
+	    },
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'availabilities',
+		}).done(function (response) {
+			var json_response = JSON.parse(response);
+			console.log('getAvailabilities response', json_response);
+			if (json_response && json_response[self.props.professional.guid]) {
+				self.props.professional.availabilities = json_response[self.props.professional.guid];
+				self.setState({loading: false, step: 'time', ready: false, error: null});
 			}
 		}); 
 	},
