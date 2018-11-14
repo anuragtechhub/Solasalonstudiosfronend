@@ -45,15 +45,15 @@ var BookingModal = React.createClass({
 		if (nextProps.step != this.state.step) {
 			this.setState({step: nextProps.step});
 		}
-		if (!this.state.time && nextProps.time) {//} && nextProps.time.start != this.state.time.start && nextProps.time.end != this.state.time.end) {
+		//if (!this.state.time && nextProps.time) {//} && nextProps.time.start != this.state.time.start && nextProps.time.end != this.state.time.end) {
 			this.setState({time: nextProps.time, temp_time: nextProps.time});
-		}
+		//}
 		//if (this.state.services.length == 0 && nextProps.services.length) {
 			this.setState({services: nextProps.services, temp_services: nextProps.services});
 		//}
-		if (!moment(nextProps.date).isSame(this.state.date)) {
+		//if (!moment(nextProps.date).isSame(this.state.date)) {
 			this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});
-		}
+		//}
 	},
 
 	componentDidUpdate: function () {
@@ -151,10 +151,8 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			// DATE
 			if (moment(this.state.date).isSame(this.state.temp_date)) {
-				console.log('dates SAME')
 				this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 			} else {
-				console.log('dates NOT SAME');
 				this.setState({ready: false, error: null, loading: true}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
@@ -165,10 +163,8 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'services') {
 			// SERVICES
 			if (this.arraysEqual(this.state.services, this.state.temp_services)) {
-				console.log('services SAME')
 				this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});	
 			} else {
-				console.log('services NOT SAME');
 				this.setState({ready: false, error: null, loading: true}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
