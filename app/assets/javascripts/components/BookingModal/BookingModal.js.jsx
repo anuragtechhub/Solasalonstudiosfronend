@@ -165,7 +165,9 @@ var BookingModal = React.createClass({
 			if (this.state.temp_time == null) {
 				this.setState({error: I18n.t('sola_search.please_select_a_time')});
 			} else {
-				this.setState({step: 'review', ready: false, time: this.state.temp_time, error: null});
+				var moment_date = moment(this.state.temp_time.start);
+				//console.log('setting moment_date', moment_date);
+				this.setState({step: 'review', ready: false, date: moment_date, temp_date: moment_date, time: this.state.temp_time, error: null});
 			}
 		} else if (this.state.step == 'services') {
 			// SERVICES
