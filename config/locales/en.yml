@@ -26,6 +26,7 @@ en:
         end_date: "Recurring weekly charge 4 end date"     
 
   sola_search:
+    booknow: BookNow
     services: Services
     professionals: Professionals
     businesses: Businesses

@@ -35,7 +35,7 @@ var ProfessionalResults = React.createClass({
 							lng={this.props.lng}
 							location={this.props.location} 
 							location_id={this.props.location_id}
-							path={this.props.stylist_search_results_path} 
+							path={this.props.results_path} 
 							query={this.props.query} 
 						/>
 					}

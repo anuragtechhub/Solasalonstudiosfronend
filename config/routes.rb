@@ -76,11 +76,13 @@ Solasalonstudios::Application.routes.draw do
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
   get "rent-a-studio" => 'contact_us#index', :as => :rent_a_studio
   match "franchising-request" => 'contact_us#franchising_request', :via => [:get, :post], :as => :franchising_request
-  
-  match "search" => 'search#stylist_search', :via => [:get, :post], :as => :stylist_search
-  match "search-results" => 'search#stylist_results', :via => [:get, :post], :as => :stylist_search_results
-  match "booking-complete" => 'search#stylist_booking_complete', :via => [:get, :post], :as => :stylist_booking_complete
+
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
+
+  match 'booknow' => 'booknow#landing_page', :via => [:get, :post], :as => :booknow_landing_page
+  match 'solagenius/booknow' => 'booknow#search', :via => [:get, :post], :as => :booknow_search
+  match 'solagenius/booknow/results' => 'booknow#results', :via => [:get, :post], :as => :booknow_results
+  match 'solagenius/booknow/booking-complete' => 'booknow#booking_complete', :via => [:get, :post], :as => :booknow_booking_complete
 
   match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour
   match 'partner-inquiry' => 'contact_us#partner_inquiry', :via => [:get, :post], :as => :partner_inquiry

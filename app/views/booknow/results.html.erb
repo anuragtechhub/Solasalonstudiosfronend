@@ -1,5 +1,5 @@
 <%= react_component 'SolaSearch', {
-	booking_complete_path: stylist_booking_complete_path,
+	booking_complete_path: booknow_booking_complete_path,
 	date: @date,
 	fingerprint: params[:fingerprint],
 	gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
@@ -13,7 +13,7 @@
 	location_name: defined?(@location) ? @location.name : nil,
 	professionals: @professionals,
 	query: params[:query],
-	stylist_search_results_path: stylist_search_results_path,	
+	results_path: booknow_results_path,	
 	zoom: 9,
 } %>
 
@@ -23,4 +23,4 @@
 
 <% @body_class = 'sola-search' %>
 <% @header_class = 'fullwidth' %>
-<% content_for(:title) { t('page.search.search') } %>
+<% content_for(:title) { t('sola_search.booknow') } %>

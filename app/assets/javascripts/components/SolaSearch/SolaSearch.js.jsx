@@ -24,7 +24,7 @@ var SolaSearch = React.createClass({
 			query: this.props.query,
 			services: [],
 			step: this.props.step || 'review',
-			stylist_search_results_path: this.props.stylist_search_results_path,
+			results_path: this.props.results_path,
 			time: this.props.time,
 			zoom: this.props.zoom,
 		};
@@ -74,7 +74,7 @@ var SolaSearch = React.createClass({
 					onShowBookingModal={this.onShowBookingModal}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
-					stylist_search_results_path={this.state.stylist_search_results_path} 
+					results_path={this.state.results_path} 
 				/>
 				<LocationsMap 
 					display={this.state.display}
