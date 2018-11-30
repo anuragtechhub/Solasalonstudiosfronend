@@ -478,7 +478,43 @@ body.booknow {
   .business-in {
     a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
       color: #FFF;
+      text-transform: none;
+      font-weight: normal;
+      font-family: 'FuturaStd-Light';
+      font-weight: normal;
+      letter-spacing: 1.7px;
+      padding-top: 13px;
+
+      i {
+        position: relative;
+        top: 2px;
+      }
     }
+  }
+
+  .refer-blk, .feature-blk {
+    a.btn1, a.btn1:link, a.btn1:visited, a.btn1:hover, a.btn1:active {
+      color: #FFF;
+      text-transform: none;
+      font-weight: normal;
+      font-family: 'FuturaStd-Light';
+      font-weight: normal;
+      letter-spacing: 1.7px;
+      //padding-top: 13px;
+    }
+  }
+
+  .get-started-with-solagenius {
+    a.btn1, a.btn1:link, a.btn1:visited, a.btn1:hover, a.btn1:active {
+      display: inline-block !important;
+    }
+  }
+
+  p, .p {
+    font-size: 17px;
+    -moz-osx-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-smoothing: subpixel-antialiased;
   }
 }
 
@@ -626,9 +662,9 @@ body.booknow {
     .video-block a{padding: 18px 30px 18px 30px;font-size:20px;line-height: 22px;}
     .video-block a i{font-size: 26px;line-height: 26px; position: relative; top: 2px;}
      .winner-in{display:block !important; text-align:center;}
-	.winner-left p br{display:none;}
-	.winner-right{display:table; margin:0 auto; width:100%;}
-	.winner-right ul{margin:0 auto; display:block !important;}
+  .winner-left p br{display:none;}
+  .winner-right{display:table; margin:0 auto; width:100%;}
+  .winner-right ul{margin:0 auto; display:block !important;}
     .slider-wrap{width:100%;}
     .mob-slider{width:25.8%;padding: 40px 0 0 0;}
     .functionality{width:40%;padding: 150px 0 0 20px;}
@@ -650,18 +686,18 @@ body.booknow {
     .genius{right:40px;}
     .sign-up{padding:0 15px;}
     .sola-blk{display:block !important;}
-	.sola-in{display:block !important; padding:53px 15px 0;}
-	.mock-block{padding:50px 0; display:block;}
-	.mock-block figure img{margin:0 auto;}
-	.refer-blk{padding:50px 15px;}
-	.refer-blk a{display:block; text-align:center;}
-	.sola-left a{display:block; text-align:center;}
-	.sola-left{padding:0;}
-	.feature-in{padding:40px 0 40px 0;}
-	.feature-in{display:block !important;}
-	.feature-in a{display:block; text-align:center;margin: 0 0 20px 0px ;}
-	.feature-right{display:table; margin:0 auto;}
-	.business-blk figure img{height:520px;object-fit: cover;}
+  .sola-in{display:block !important; padding:53px 15px 0;}
+  .mock-block{padding:50px 0; display:block;}
+  .mock-block figure img{margin:0 auto;}
+  .refer-blk{padding:50px 15px;}
+  .refer-blk a{display:block; text-align:center;}
+  .sola-left a{display:block; text-align:center;}
+  .sola-left{padding:0;}
+  .feature-in{padding:40px 0 40px 0;}
+  .feature-in{display:block !important;}
+  .feature-in a{display:block; text-align:center;margin: 0 0 20px 0px ;}
+  .feature-right{display:table; margin:0 auto;}
+  .business-blk figure img{height:520px;object-fit: cover;}
     .business-in{padding:0 15px;}
     .found{display: block;width:100%;text-align: center;display: block;float:none;padding: 30px 0 0 0;}
     .mob-slider{width:100%;text-align: center;display: block;padding: 20px 0 0 0;}
@@ -701,13 +737,13 @@ body.booknow {
     .booknow-block h2{font-size: 40px;line-height: 45px;}  
     .genius  {top: auto;bottom:90px;left:0;right:0;text-align: center;-webkit-transform: none;-o-transform: none;-ms-transform: none;transform: none;}
     .winner-in{text-align:left;}
-	.winner-right{padding:0;}
-	.winner-right ul{display:block !important; width:100%; margin:0;}
+  .winner-right{padding:0;}
+  .winner-right ul{display:block !important; width:100%; margin:0;}
     .winner-right ul li{width:100%; display:block; margin:10px 0; padding:0;}
-	.business-in{text-align:left;}
-	.business-in h2{font-size:40px;}
+  .business-in{text-align:left;}
+  .business-in h2{font-size:40px;}
     .business-in a{display:block; text-align:center;}
-	.business-in p br{display:none;}
+  .business-in p br{display:none;}
     .hero-block{width:100%;}
     .functionality ul{max-width:100%;text-align: left;}
     .found h3{font-size: 25px;line-height: 30px;}
