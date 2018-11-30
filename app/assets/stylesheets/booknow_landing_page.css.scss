@@ -329,7 +329,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .cloud{position: absolute;right: 13.2%;margin:0 auto;top:0px;}
 .cloud img{}
 .mobile{position: absolute;left: 42px;top: 12.6%;z-index: 1;}
-.cloud-block{position: absolute;right: -119.8px;top: -4px;z-index: 2;}
+.cloud-block{position: absolute;right: -119.8px;top: 0px;z-index: 2;}
 .video-block{position: absolute;bottom: 134px;left: 0px;right: 5px;margin: 0 auto;text-align: center;}
 .video-block a{padding: 25px 43px 25px 40px;color:#ffffff;background: #ec038c;font-size: 23.4px;line-height: 21px;display: inline-block;border-radius:5px;font-family: 'FuturaStd-Bold';font-weight: normal;letter-spacing: 0.6px;text-align: center;text-transform: uppercase;}
 .show-mob{display: none !important;}
@@ -468,6 +468,20 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
         appearance: none;
         -webkit-border-radius: 0; 
     }
+
+
+body.booknow {
+  .body-content {
+    padding-bottom: 0;
+  }
+
+  .business-in {
+    a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
+      color: #FFF;
+    }
+  }
+}
+
 
 @media only screen and (max-width:1900px){
    
@@ -610,7 +624,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
     .genius span{font-size: 42px;}
     .video-block{bottom:50px;}
     .video-block a{padding: 18px 30px 18px 30px;font-size:20px;line-height: 22px;}
-    .video-block a i{font-size: 26px;line-height: 26px;}
+    .video-block a i{font-size: 26px;line-height: 26px; position: relative; top: 2px;}
      .winner-in{display:block !important; text-align:center;}
 	.winner-left p br{display:none;}
 	.winner-right{display:table; margin:0 auto; width:100%;}

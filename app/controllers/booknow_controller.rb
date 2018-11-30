@@ -6,7 +6,7 @@ class BooknowController < PublicWebsiteController
 	
 
 	def landing_page
-    render :layout => 'empty'
+    render :layout => 'public_website'
 	end
 
 	def search
@@ -18,7 +18,7 @@ class BooknowController < PublicWebsiteController
     -H 'api_key: #{ENV['GLOSS_GENIUS_API_KEY']}' \
     -H 'device_id: #{params[:fingerprint]}'`
 
-    p "#{results_response}"
+    #p "#{results_response}"
 
     begin
       @professionals = JSON.parse(results_response)
@@ -54,7 +54,7 @@ class BooknowController < PublicWebsiteController
   end
 
   def gloss_genius_search_query_string
-    query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}"
+    query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}&radius=50"
 
     if params[:location_id].present?
       query_string = query_string + "&org_location_id=#{params[:location_id]}"
