@@ -29,6 +29,53 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
     figure {margin: 0; display: block;}
     a{text-decoration: none;}
 
+
+/* font face */
+
+@font-face {
+  font-family: 'FuturaStd-Heavy';
+  src: asset-url('FuturaStd-Heavy.eot') format('embedded-opentype'), 
+      asset-url('FuturaStd-Heavy.otf')  format('opentype'),
+       asset-url('FuturaStd-Heavy.woff') format('woff'), url('FuturaStd-Heavy.ttf')  format('truetype'),
+      asset-url('FuturaStd-Heavy.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'FuturaStd-Bold';
+  src: asset-url('FuturaStd-Bold.eot') format('embedded-opentype'),
+      asset-url('FuturaStd-Bold.otf')  format('opentype'),
+       asset-url('FuturaStd-Bold.woff') format('woff'),
+      asset-url('FuturaStd-Bold.ttf')  format('truetype'), 
+      asset-url('FuturaStd-Bold.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaStd-Light';
+  src: asset-url('FuturaStd-Light.eot') format('embedded-opentype'),
+      asset-url('FuturaStd-Light.woff') format('woff'),
+      asset-url('FuturaStd-Light.ttf')  format('truetype'),
+      asset-url('FuturaStd-Light.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuturaStd-Medium';
+  src: asset-url('FuturaStd-Medium.eot') format('embedded-opentype'),
+      asset-url('FuturaStd-Medium.otf')  format('opentype'),
+       asset-url('FuturaStd-Medium.woff') format('woff'), 
+      asset-url('FuturaStd-Medium.ttf')  format('truetype'),
+      asset-url('FuturaStd-Medium.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 /* hacks */
 
 .flex-row-reverse {-webkit-flex-direction: row-reverse !important; }
