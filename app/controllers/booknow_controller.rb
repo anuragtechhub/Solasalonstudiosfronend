@@ -6,6 +6,7 @@ class BooknowController < PublicWebsiteController
 	
 
 	def landing_page
+    render :layout => 'empty'
 	end
 
 	def search
