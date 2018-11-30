@@ -322,7 +322,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .head-bottom ul li a:hover{text-decoration:none;}
 .hero-block{width: 1200px;margin:0 auto;height:1091px;}
 .hero-block-in{}
-.square-box{position: absolute;left: -11px;right: 0;top: 19.3%;z-index: 1;}
+.square-box{position: absolute;left: 0;right: 0;top: 19.3%;z-index: 1;}
 .square-box figure img{width:100%;height:auto;}
 .genius{position: absolute;right: -94.4px;top: 43.3%;-webkit-transform:translateY(-50%);-o-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);z-index: 999;}
 .genius span{display: block;font-size: 64.2px;line-height: 59px;letter-spacing: 13.7px;}
@@ -689,7 +689,7 @@ body.booknow {
   .sola-in{display:block !important; padding:53px 15px 0;}
   .mock-block{padding:50px 0; display:block;}
   .mock-block figure img{margin:0 auto;}
-  .refer-blk{padding:50px 15px;}
+  .refer-blk{padding:40px 20px;}
   .refer-blk a{display:block; text-align:center;}
   .sola-left a{display:block; text-align:center;}
   .sola-left{padding:0;}
@@ -697,8 +697,14 @@ body.booknow {
   .feature-in{display:block !important;}
   .feature-in a{display:block; text-align:center;margin: 0 0 20px 0px ;}
   .feature-right{display:table; margin:0 auto;}
-  .business-blk figure img{height:520px;object-fit: cover;}
-    .business-in{padding:0 15px;}
+  .business-blk figure img{ height:420px; object-fit: cover;}
+    .business-in{
+      padding:0;
+
+      h2, h2 strong {
+        letter-spacing: 2px;
+      }
+    }
     .found{display: block;width:100%;text-align: center;display: block;float:none;padding: 30px 0 0 0;}
     .mob-slider{width:100%;text-align: center;display: block;padding: 20px 0 0 0;}
     .functionality{width:90%;text-align: center;display: block;padding: 15px 0 0 0;}
@@ -719,6 +725,20 @@ body.booknow {
     .feature-in p{padding:0 0 20px 0;}
     .sign-up h3{font-size: 26px;line-height: 28px;}
     .feature-right figure img{width:100%;height:auto;}
+    .registre-blk {
+      .register-in {
+        padding: 40px 0 40px 0;
+      }
+      .container {
+        margin: 0;
+        padding: 0;
+        width: 100% !important;
+      }
+      .sign-up, .sola-in {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
     .slider .slick-dots{bottom: 15px;}
     .slide {
       padding: 0 0 30px 0;

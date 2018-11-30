@@ -236,39 +236,39 @@
  </div>
 
 <% @body_class = 'booknow' %>
+<% content_for(:title) { t('sola_search.booknow') } %>
+
+<% content_for(:stylesheets) do %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "booknow_landing_page", media: "all" %>
+  <link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet">
+  <link type="text/css" href="https://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://mynameismatthieu.com/WOW/css/libs/animate.css">
+<% end %>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://kenwheeler.github.io/slick/slick/slick.js"></script>
 <script src="https://mynameismatthieu.com/WOW/dist/wow.min.js"></script>
 <script>
-   $(document).ready(function(e){
-       $('.slider').slick({
-     autoplay:false,
-     autoplaySpeed: 3000,
-     infinite: true,
-      slidesToShow: 1,
-   slidesToScroll: 1,
-     speed: 500,
-     fade: false,
-     arrows:false,
-     dots:true,
-     cssEase: 'linear',
-           centerPadding:false,
-   
-             
-   })
-                    new WOW().init();
-   
-   
-      });
-       
+$(document).ready(function(e){
+  $('.slider').slick({
+    autoplay:false,
+    autoplaySpeed: 3000,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 500,
+    fade: false,
+    arrows:false,
+    dots:true,
+    cssEase: 'linear',
+    centerPadding:false,        
+  });
+
+  new WOW().init();
+});
 </script>
-<% content_for(:title) { t('sola_search.booknow') } %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<%= stylesheet_link_tag "booknow_landing_page", media: "all" %>
-<link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link type="text/css" href="https://kenwheeler.github.io/slick/slick/slick-theme.css" rel="stylesheet">
-<link type="text/css" href="https://kenwheeler.github.io/slick/slick/slick.css" rel="stylesheet">
-<link rel="stylesheet" href="https://mynameismatthieu.com/WOW/css/libs/animate.css">
