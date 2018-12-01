@@ -745,7 +745,9 @@ body.booknow {
     }
     .slidein-blk{background-size: auto 44%;}
     .slidein-blk:before{width:100px;}
-    
+
+    .slidein-blk:before{content:'';left:0;background: transparent;}
+    .slidein-blk:after{content:'';right:0;background: transparent;}
 }
 @media only screen and (max-width:599px){
     .show-mob{display: block !important;}
@@ -813,7 +815,7 @@ body.booknow {
     .sign-up h3{font-size: 25px;line-height: 28px;}
     .slider .slick-dots{bottom: 0px;}
     .functionality ul li{padding:0 0 15px 0;}
-    .slidein-blk{background-size: auto 30%;}
+    .slidein-blk{background-size: auto 50%;}
     .slider-block{padding: 0 0 20px 0;}
     .slidein-blk:after{width:50px;}  
 }
