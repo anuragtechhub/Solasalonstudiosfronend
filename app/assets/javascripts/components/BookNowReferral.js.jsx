@@ -41,7 +41,7 @@ var BookNowReferral = React.createClass({
     if (this.refs.socialShareIcons) {
       $(this.refs.socialShareIcons).jsSocials({
         url: 'https://glossgenius.com/invite/' + this.state.subdomain,
-        text: 'Run your buiness like a boss! Check out SolaGenius.',
+        text: 'Run your business like a boss! Check out SolaGenius',
         showLabel: false,
         showCount: false,
         shares: ["facebook", "twitter", "email"]
