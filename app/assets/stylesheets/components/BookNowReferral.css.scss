@@ -1,0 +1,82 @@
+.BookNowReferral {
+
+	.BookNowOverlay {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(255, 255, 255, 0.87);
+		z-index: 999;
+	}
+
+	.BookNowModal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin: -300px 0 0 -600px;
+		background: #000;
+		width: 1200px;
+		height: 600px;
+		z-index: 9999;
+
+		.found {
+			display: block;
+	    float: none;
+	    width: 100%;
+	    padding: 0 80px;
+
+	    .btn, .btn:hover, .btn:focus {
+	    	color: #FFF;
+		    text-transform: none;
+		    font-weight: normal;
+		    font-family: 'FuturaStd-Light';
+		    font-weight: normal;
+		    font-size: 19px;
+		    line-height: 19px;
+		    letter-spacing: 1.7px;
+		    width: 100%;
+		    background: #ec038c;
+		    border: 0;
+	    }
+
+	    &::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+			}
+
+			.col-input {
+				width: 67%;
+				float: left;
+
+				input {
+					height: 60px;
+					border-radius: 9px;
+			    font-family: 'FuturaStd-Light';
+			    font-weight: normal;
+			    font-size: 19px;
+			    line-height: 19px;
+			    letter-spacing: 1.7px;
+			    padding: 0 20px;
+			    color: #000;
+				}
+			}
+
+			.col-button {
+				width: 33%;
+				float: left;
+
+				button {
+					padding: 0;
+					height: 60px;
+					border-radius: 9px;
+				}
+			}
+
+			h3 {
+
+			}
+		}
+	}
+}
