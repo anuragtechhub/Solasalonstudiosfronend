@@ -25,12 +25,28 @@ var BookNowReferral = React.createClass({
 
       if (window_width <= 1200) {
         self.setState({width: window_width});
+      } else {
+        self.setState({width: 1200});
       }
 
       if (window_height <= 600) {
         self.setState({height: window_height});
+      } else {
+        self.setState({height: 600});
       }
     }).trigger('resize');
+  },
+
+  componentDidUpdate: function () {
+    if (this.refs.socialShareIcons) {
+      $(this.refs.socialShareIcons).jsSocials({
+        url: 'https://glossgenius.com/invite/' + this.state.subdomain,
+        text: 'Run your buiness like a boss! Check out SolaGenius.',
+        showLabel: false,
+        showCount: false,
+        shares: ["facebook", "twitter", "email"]
+      });
+    }
   },
 
   render: function () {
@@ -75,6 +91,11 @@ var BookNowReferral = React.createClass({
               <button type="submit" className="btn" id="copy-link" data-clipboard-target="#referral-invite">Copy Link</button>
             </div>
           </form>
+        </div>
+        <div className="clearfix" style={{height: 1, lineHeight: 1}}>&nbsp;</div>
+        <div className="social">
+          <h3>Or invite a friend here:</h3>
+          <div ref="socialShareIcons"></div>
         </div>
       </div>
     );

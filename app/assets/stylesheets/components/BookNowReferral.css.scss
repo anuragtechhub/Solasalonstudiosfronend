@@ -22,6 +22,30 @@
   	display: flex;
   	align-items: center;
 
+  	.jssocials-shares {
+  		margin-left: -5px !important;
+  	}
+
+  	.jssocials-share-link {
+  		margin: -10px 0 0 0;
+  		background: transparent !important;
+			font-size: 33px;
+	    padding: 0;
+
+	    .fa-twitter {
+	    	margin-right: 2px;
+	    }
+  	}
+
+  	.social {
+  		margin-top: 30px;
+
+  		h3 {
+  			font-size: 25px;
+  			line-height: 25px;
+  		}
+  	}
+
   	.fa-times {
   		cursor: pointer;
   		position: absolute;
@@ -158,6 +182,15 @@
 	.BookNowReferral {
 		.BookNowModal {
 
+	  	.social {
+	  		margin-top: 20px;
+
+	  		h3 {
+	  			font-size: 19px;
+	  			line-height: 19px;
+	  		}
+	  	}
+
 	  	.ink-cloud-left {
 	  		background-size: (406px / 2) (167px / 2);
 	  		width: (406px / 2);
@@ -171,6 +204,8 @@
 	  	}
 
 			.found {
+				text-align: left;
+
 				p {
 					margin-bottom: 30px;
 				}
