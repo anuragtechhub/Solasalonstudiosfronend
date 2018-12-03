@@ -198,7 +198,7 @@
                   <div class="refer-blk col-md-4 col-12">
                      <h4>Already a user?<br> Refer a friend!</h4>
                      <p>Share the SolaGenius love, and be automatically<br> entered to win our <a href="https://www.solasalonstudios.com/blog-preview/meet-booknow">fantastic prizes.</a> </p>
-                     <a href="#" class="btn1">Get referral code</a>
+                     <a href="#refer-a-friend" class="btn1">Get referral code</a>
                   </div>
                </div>
             </div>
@@ -235,6 +235,10 @@
     
  </div>
 
+<%= react_component 'BookNowReferral', {
+
+} %>
+
 <% @body_class = 'booknow' %>
 <% content_for(:title) { t('sola_search.booknow') } %>
 <% content_for(:stylesheets) do %>
@@ -269,5 +273,12 @@ $(document).ready(function(e){
   });
 
   new WOW().init();
+
+  $('a[href=#refer-a-friend]').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    window.onShowBookNowReferralModal();
+  });
 });
 </script>
