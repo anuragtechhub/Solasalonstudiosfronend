@@ -686,7 +686,7 @@ body.booknow {
     .genius{right:40px;}
     .sign-up{padding:0 15px;}
     .sola-blk{display:block !important;}
-  .sola-in{display:block !important; padding:53px 15px 0;}
+  .sola-in{display:block !important; padding:30px 15px 0;}
   .mock-block{padding:50px 0; display:block;}
   .mock-block figure img{margin:0 auto;}
   .refer-blk{padding:40px 20px;}
@@ -748,6 +748,19 @@ body.booknow {
 
     .slidein-blk:before{content:'';left:0;background: transparent;}
     .slidein-blk:after{content:'';right:0;background: transparent;}
+    .get-started-with-solagenius body.booknow .get-started-with-solagenius a.btn1, body.booknow .get-started-with-solagenius a.btn1:link, body.booknow .get-started-with-solagenius a.btn1:visited, body.booknow .get-started-with-solagenius a.btn1:hover, body.booknow .get-started-with-solagenius a.btn1:active {
+      display: none !important;
+    }
+    .mock-block {
+      padding-top: 10px;
+
+      .btn1 {
+        margin-top: 30px;
+      }
+    }
+    .register-in p {
+      margin-bottom: -15px;
+    }
 }
 @media only screen and (max-width:599px){
     .show-mob{display: block !important;}
