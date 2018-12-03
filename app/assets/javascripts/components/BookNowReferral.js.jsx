@@ -2,7 +2,7 @@ var BookNowReferral = React.createClass({
 
   getInitialState: function () {
     return {
-      url: 'mystudio.glossgenius.com',
+      url: '',
       modalVisible: false,
     };
   },
@@ -33,7 +33,7 @@ var BookNowReferral = React.createClass({
         <div className="inputs">
           <form>
             <div className="col-input">
-              <input type="text" className="form-control input-block" value={this.state.url} onChange={this.onChangeUrl} onFocus={this.onFocusUrl} onBlur={this.onBlurUrl} />
+              <input type="text" className="form-control input-block" value={this.state.url} onChange={this.onChangeUrl} onFocus={this.onFocusUrl} onBlur={this.onBlurUrl} placeholder="website.glossgenius.com" />
             </div>
             <div className="col-button">
               <button type="submit" className="btn">Get custom referral link</button>
@@ -56,6 +56,8 @@ var BookNowReferral = React.createClass({
   renderModal: function () {
     return (
       <div className="BookNowModal">
+        <div className="ink-cloud-left"></div>
+        <div className="ink-cloud-right"></div>
         {this.validSolaGeniusURL() ? this.renderFrame2() : this.renderFrame1()}
       </div>
     );
@@ -71,8 +73,8 @@ var BookNowReferral = React.createClass({
 
   },
 
-  onChangeUrl: function () {
-
+  onChangeUrl: function (e) {
+    this.setState({url: e.target.value});
   },
 
   onFocusUrl: function () {
