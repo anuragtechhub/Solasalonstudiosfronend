@@ -121,6 +121,28 @@
 	}
 }
 
+.booknow .tooltip {
+	z-index: 9999;
+	top: -5px !important;
+	
+	&.bs-tooltip-top .arrow::before {
+		border-top-color: #FFF !important;
+	}	
+
+	&.bs-tooltip-bottom .arrow::before {
+		border-bottom-color: #FFF !important;
+	}		
+}
+
+.booknow .tooltip-inner {
+	background: #FFF;
+	color: #000;
+	border-radius: 3px;
+	padding: 5px;
+	font-size: 13px;
+	line-height: 17px;
+}
+
 
 @media only screen and (max-width:991px){
 	.BookNowReferral {

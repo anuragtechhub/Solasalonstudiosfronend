@@ -50,7 +50,7 @@ var BookNowReferral = React.createClass({
         <div className="inputs">
           <form onSubmit={this.onSubmit}>
             <div className="col-input">
-              <input type="text" className="form-control input-block" value={this.state.url} onChange={this.onChangeUrl} onFocus={this.onFocusUrl} onBlur={this.onBlurUrl} />
+              <input type="text" className="form-control input-block" ref="input" value={this.state.url} onChange={this.onChangeUrl} onFocus={this.onFocusUrl} onBlur={this.onBlurUrl} />
             </div>
             <div className="col-button">
               <button type="submit" className="btn">Get custom referral link</button>
@@ -69,10 +69,10 @@ var BookNowReferral = React.createClass({
         <div className="inputs">
           <form onSubmit={this.onCopy}>
             <div className="col-input">
-              <input type="text" className="form-control input-block" value={'https://glossgenius.com/invite/' + this.state.subdomain} />
+              <input type="text" className="form-control input-block" ref="invite" id="referral-invite" value={'https://glossgenius.com/invite/' + this.state.subdomain} />
             </div>
             <div className="col-button">
-              <button type="submit" className="btn">Copy Link</button>
+              <button type="submit" className="btn" id="copy-link" data-clipboard-target="#referral-invite">Copy Link</button>
             </div>
           </form>
         </div>
@@ -101,6 +101,11 @@ var BookNowReferral = React.createClass({
 
   },
 
+  onCopy: function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
   onChangeUrl: function (e) {
     this.setState({url: e.target.value});
   },
@@ -115,16 +120,43 @@ var BookNowReferral = React.createClass({
   },
 
   onSubmit: function (e) {
+    var self = this;
+
     e.preventDefault();
     e.stopPropagation();
 
     var url_regex = /^(?:https*:\/\/)*([a-zA-Z0-9][a-zA-Z0-9-_]*)\.*[a-zA-Z0-9]*[a-zA-Z0-9-_]*glossgenius.com\/*$/igm
     var matches = url_regex.exec(this.state.url);
-    console.log('onSubmit!', this.state.url, this.state.url.match(url_regex), matches);
+    //console.log('onSubmit!', this.state.url, this.state.url.match(url_regex), matches);
     if (this.state.url.match(url_regex)) {
-      this.setState({subdomain: matches[1]})
+      this.setState({subdomain: matches[1]}, function () {
+        new ClipboardJS('#copy-link');
+        if (this.refs.invite) {
+          $(this.refs.invite).tooltip({
+            title: 'Woo hoo! Your link is ready!',
+            trigger: 'manual',
+            placement: 'top'
+          });
+          $(this.refs.invite).tooltip('show');
+          setTimeout(function () {
+            $(self.refs.invite).tooltip('hide');
+            $(self.refs.invite).tooltip('dispose');
+          }, 3000);
+        }
+      });
     } else {
-      alert('This does not seem to be a valid SolaGenius website URL.');
+      if (this.refs.input) {
+        $(this.refs.input).tooltip({
+          title: 'This does not seem to be a valid SolaGenius website URL.',
+          trigger: 'manual',
+          placement: 'top'
+        });
+        $(this.refs.input).tooltip('show');
+        setTimeout(function () {
+          $(self.refs.input).tooltip('hide');
+          $(self.refs.input).tooltip('dispose');
+        }, 3000);
+      }
     }
   },
 
