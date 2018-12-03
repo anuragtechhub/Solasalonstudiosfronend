@@ -2,6 +2,8 @@ var BookNowReferral = React.createClass({
 
   getInitialState: function () {
     return {
+      height: 600,
+      width: 1200,
       url: '',
       modalVisible: false,
     };
@@ -9,11 +11,25 @@ var BookNowReferral = React.createClass({
 
   componentDidMount: function () {
     var self = this;
+    var $window = $(window);
 
     window.onShowBookNowReferralModal = function () {
       self.setState({modalVisible: true});
       $('body').css('overflow', 'hidden');
     };
+
+    $window.on('resize.BookNowReferral', function () {
+      var window_height = $window.height();
+      var window_width = $window.width();
+
+      if (window_width <= 1200) {
+        self.setState({width: window_width});
+      }
+
+      if (window_height <= 600) {
+        self.setState({height: window_height});
+      }
+    }).trigger('resize');
   },
 
   render: function () {
@@ -55,9 +71,10 @@ var BookNowReferral = React.createClass({
 
   renderModal: function () {
     return (
-      <div className="BookNowModal">
+      <div className="BookNowModal" style={{width: this.state.width, height: this.state.height, marginLeft: -(this.state.width / 2), marginTop: -(this.state.height / 2)}}>
         <div className="ink-cloud-left"></div>
         <div className="ink-cloud-right"></div>
+        <div className="fa fa-times" onClick={this.onHideModal}></div>
         {this.validSolaGeniusURL() ? this.renderFrame2() : this.renderFrame1()}
       </div>
     );

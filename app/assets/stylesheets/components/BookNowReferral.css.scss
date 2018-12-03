@@ -22,6 +22,16 @@
   	display: flex;
   	align-items: center;
 
+  	.fa-times {
+  		cursor: pointer;
+  		position: absolute;
+  		top: 15px;
+  		right: 15px;
+  		font-size: 25px;
+  		z-index: 9;
+  		color: #FFF;
+  	}
+
   	.ink-cloud-left {
   		position: absolute;
   		top: 0;
@@ -43,6 +53,7 @@
   	}
 
 		.found {
+			z-index: 9;
 			display: block;
 	    float: none;
 	    width: 100%;
@@ -69,7 +80,8 @@
 			}
 
 			.col-input {
-				width: 67%;
+				width: calc(67% - 15px);
+				margin-right: 15px;
 				float: left;
 
 				input {
@@ -97,7 +109,66 @@
 			}
 
 			h3 {
+				margin-bottom: 20px;
+			}
 
+			p {
+				margin-bottom: 60px;
+				font-size: 17px;
+				line-height: 23px;
+			}
+		}
+	}
+}
+
+
+@media only screen and (max-width:991px){
+	.BookNowReferral {
+		.BookNowModal {
+			.found {
+				padding: 0 30px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width:767px){
+	.BookNowReferral {
+		.BookNowModal {
+
+	  	.ink-cloud-left {
+	  		background-size: (406px / 2) (167px / 2);
+	  		width: (406px / 2);
+	  		height: (167px / 2);
+	  	}
+
+	  	.ink-cloud-right {
+	  		background-size: (393px / 2) (253px / 2);
+	  		width: (393px / 2);
+	  		height: (253px / 2);
+	  	}
+
+			.found {
+				p {
+					margin-bottom: 30px;
+				}
+				.col-input, .col-button {
+					width: 100%;
+					float: none;
+					clear: both;
+
+					input {
+						font-size: 17px;
+			    	line-height: 17px;
+					}
+					button {
+						font-size: 17px;
+			    	line-height: 17px;
+					}
+				}
+				.col-button {
+					margin-top: 15px;
+				}
 			}
 		}
 	}
