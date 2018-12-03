@@ -2,6 +2,7 @@ var BookNowReferral = React.createClass({
 
   getInitialState: function () {
     return {
+      url: 'mystudio.glossgenius.com',
       modalVisible: false,
     };
   },
@@ -32,7 +33,7 @@ var BookNowReferral = React.createClass({
         <div className="inputs">
           <form>
             <div className="col-input">
-              <input type="text" className="form-control input-block" />
+              <input type="text" className="form-control input-block" value={this.state.url} onChange={this.onChangeUrl} onFocus={this.onFocusUrl} onBlur={this.onBlurUrl} />
             </div>
             <div className="col-button">
               <button type="submit" className="btn">Get custom referral link</button>
@@ -65,6 +66,18 @@ var BookNowReferral = React.createClass({
   /**
   * Change handlers
   */
+
+  onBlurUrl: function () {
+
+  },
+
+  onChangeUrl: function () {
+
+  },
+
+  onFocusUrl: function () {
+
+  },
 
   onHideModal: function () {
     $('body').css('overflow', 'auto');
