@@ -14,7 +14,7 @@ h4{font-size: 26px;line-height: 28px;color:#ffffff;}
 p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light';font-weight: normal;}
 .btn{padding: 25px 43px 25px 40px;color: #ffffff;background: #ec038c;font-size: 23.4px;line-height: 21px;display: inline-block;border-radius: 5px;font-family: 'FuturaStd-Bold';font-weight: normal;letter-spacing: 0.6px;}
 .btn:hover{text-decoration: none;}
-.btn1{font-size: 18px;line-height: 20px;color: #ec038c;background: #ffffff;padding: 20px 51px 20px 50px;border-radius: 5px;font-family: 'FuturaStd-Medium';font-weight: normal;letter-spacing: 1.7px;}
+.btn1{font-size: 18px;line-height: 20px;color: #ec038c;background: #ffffff;padding: 22px 51px 20px 50px;border-radius: 5px;font-family: 'FuturaStd-Medium';font-weight: normal;letter-spacing: 1.7px;}
 .btn1:hover{text-decoration: none;}
     q:before,q:after {content:'';}
     abbr,acronym { border:0;}
@@ -364,7 +364,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .winner-right{padding: 10px 0px 0 0;}
 .winner-right ul{margin: 0 -20px;}
 .winner-right ul li{padding: 0 20px;display:inline-block;}
-.winner-right ul li a{font-size:18px;line-height:20px;color:#ec038c;background:#ffffff;padding: 20px 45px 20px 45px;border-radius:5px;display:block;text-align:center;}
+.winner-right ul li a{font-size:18px;line-height:20px;color:#ec038c;background:#ffffff;padding: 22px 45px 20px 45px;border-radius:5px;display:block;text-align:center;font-weight:bold;}
 /* winner-block ends  here */
 /* slider-block starts  here */
 .slidein-blk{background: #000000;position: relative;z-index:999;}
@@ -488,7 +488,7 @@ body.booknow {
       color: #FFF;
       text-transform: none;
       font-weight: normal;
-      font-family: 'FuturaStd-Light';
+      font-family: 'FuturaStd-Medium';
       font-weight: normal;
       letter-spacing: 1.7px;
       padding-top: 13px;
@@ -505,7 +505,7 @@ body.booknow {
       color: #FFF;
       text-transform: none;
       font-weight: normal;
-      font-family: 'FuturaStd-Light';
+      font-family: 'FuturaStd-Medium';
       font-weight: normal;
       letter-spacing: 1.7px;
       //padding-top: 13px;
@@ -515,6 +515,7 @@ body.booknow {
   .get-started-with-solagenius {
     a.btn1, a.btn1:link, a.btn1:visited, a.btn1:hover, a.btn1:active {
       display: inline-block !important;
+      font-weight: bold;
     }
   }
 
