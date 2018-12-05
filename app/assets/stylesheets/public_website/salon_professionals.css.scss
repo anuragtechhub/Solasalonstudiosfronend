@@ -72,13 +72,18 @@
   }
 
   .visit-salon-pro {
+    justify-content: center;
+    
     h3, h5 {
+      text-align: center;
       color: #FFF;
       margin: 0;
     }
+    
     h3 {
       margin-bottom: 10px;
     }
+    
     h5 {
       line-height: 20px;
     }
