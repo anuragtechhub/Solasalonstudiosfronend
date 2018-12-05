@@ -50,7 +50,6 @@ var BookNowReferral = React.createClass({
 
     // legal tooltip
     if (this.refs.terms_and_conditions) {
-      console.log('we done making the tooltip')
       $(this.refs.terms_and_conditions).tooltip({
         title: 'To qualify to win by referral, your referral must (i) be a Sola professional and (ii) sign up for a free trial of SolaGenius on or before the launch of BookNow.',
         trigger: 'click',
@@ -61,9 +60,7 @@ var BookNowReferral = React.createClass({
           $('[data-toggle="tooltip"]').tooltip('hide');
         }, 4000);
       });
-    } else {
-      console.log('no terms');
-    }    
+    }
   },
 
   render: function () {
