@@ -13,7 +13,16 @@
   background: -moz-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, #5DB9E4, #3A8DCC); /* Standard syntax */
 
-  ul.sola-nav {
+  // ul.nav {
+  //     position: absolute;
+  //     top: 0;
+  //     right: 0;
+  //     margin: 0;
+  //     padding: 0;
+  //     list-style: none;
+  // }
+
+  ul.sola-nav, ul.nav {
     position: absolute;
     top: 0;
     right: 0;
