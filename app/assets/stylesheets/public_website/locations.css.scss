@@ -736,7 +736,7 @@
 }
 
 .country-location-buttons {
-  top: -6px;
+  top: 15px;
   position: relative;
   display: inline-block;
 
@@ -768,6 +768,7 @@
 }
 
 @media (max-width: 888px) {
+
   .locations-hero {
     text-align: center;
 
@@ -811,6 +812,11 @@
 }
 
 @media (max-width: 550px) {
+
+  .country-location-buttons {
+    top: -5px;
+  }
+  
   .container.location-selection-inputs {
     margin-top: 10px;
 

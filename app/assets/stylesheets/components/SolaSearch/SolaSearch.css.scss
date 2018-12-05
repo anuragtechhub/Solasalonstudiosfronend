@@ -1,0 +1,330 @@
+@import 'mixins';
+@import 'variables';
+
+/* global body element */
+
+.sola-search {
+
+	#header .button {
+		position: absolute;
+		top: 27px;
+		right: 0;
+		border-radius: 4px;
+		font-size: 14px !important;
+		line-height: 14px !important;
+		padding: 11px 10px 10px 10px;
+		font-weight: bold !important;
+		letter-spacing: 0;
+		@include chalet_new_york;
+	}
+
+	#header.fullwidth {
+		.container {
+			margin: 0;
+			padding: 0 20px 0 20px;
+			width: 100% !important;
+			max-width: 100%;
+		}
+	}
+
+	.sola-search-hero {
+		text-align: left;
+
+		background: asset-url('booknow/hero-desktop.jpg') no-repeat;
+		background-size: cover;
+		height: 71vh;
+		min-height: 420px;
+		max-height: 820px;
+
+		.home-services-animation {
+			display: inline;
+
+			span {
+				top: -3px;
+				left: 13px;
+				border-bottom: 0;
+				padding-bottom: 0;
+			}
+		}
+
+		.container {
+			height: 71vh;
+			min-height: 420px;
+			max-height: 820px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+		}
+
+		h2 {
+			font-size: 53px;
+			line-height: 53px;
+			margin: 0 0 20px 0 !important;
+		}
+		p {
+			font-size: 18px;
+      line-height: 24px;
+			margin: 0 0 25px 0 !important;
+		}
+		h2, p {
+			color: #FFF;
+			
+			strong {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.body-content {
+		padding-bottom: 15px;
+	}
+
+	.desktop {
+		display: block;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	.home-recently-featured-box {
+		margin-top: 30px;
+	}
+}
+
+
+
+
+.SolaSearch {
+	position: relative;
+	height: calc(100vh - 92px);
+	//margin-bottom: -30px;
+
+	.FloatingToggle {
+		position: fixed;
+		bottom: -8px;
+		left: 50%;
+		width: 111px;
+		margin-left: -55.5px;
+		border-radius: 24px;
+		z-index: 99;
+		padding: 16px 15px 15px 15px;
+		font-size: 14px;
+		line-height: 14px;
+		font-weight: normal;
+
+		&:hover, &:focus, &:active {
+			opacity: 1;
+			outline: 0;
+		}
+	}
+}
+
+.SolaSearchBar {
+	position: relative;
+	padding: 15px 21px;
+	background-color: #F5F9FB;
+
+	.LocationName {
+		text-align: center;
+		color: #000000;	
+		font-family: 'Lato', sans-serif;
+		font-size: 14px;	
+		font-weight: normal;	
+		line-height: 14px;
+		margin-top: 5px;
+		margin-bottom: -10px;
+	}
+
+	.BackButton {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 21px;
+		z-index: 9;
+		cursor: pointer;
+		display: flex;
+  	align-items: center;
+  	justify-content: center;
+		
+		.back {
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 16px;
+			margin-left: 5px;
+			position: relative;
+			top: 1px;
+		}
+
+		.fa {
+		  display: inline-block;
+  		font-size: 17px;
+  		line-height: 17px;
+  		
+  		color: #000;
+		}
+	}
+
+	.SearchBar {
+		margin: 0;
+	}
+
+	.SearchResultsCount {
+		padding: 18px 21px 3px 21px;
+		color: #4A4A4A;	
+		@include helvetica;
+		font-size: 14px;	
+		font-weight: 300;	
+		line-height: 16px;	
+		text-align: center;
+	}
+}
+
+
+
+@media (max-width: 991px) {
+	.sola-search {
+
+		.SolaSearch { 
+			height: calc(100vh - 70px);
+		}
+
+		.sola-search-hero {
+			background: asset-url('booknow/hero-mobile.jpg') no-repeat;
+			background-size: cover;
+
+			.home-services-animation {
+				display: block;
+				min-height: 27px;
+
+				span {
+					// position: static;
+					top: auto;
+					left: 0;
+					border-bottom: 0;
+					padding-bottom: 0;
+				}
+			}
+
+			h2 {
+				font-size: 27px;
+				line-height: 27px;
+				margin-bottom: 15px !important;
+			}
+
+			p {
+				margin-bottom: 15px !important;
+			}
+		}
+		.home-recently-featured-box {
+			margin-top: 15px;
+		}
+		.mobile {
+			display: block;
+		}
+		.desktop {
+			display: none;
+		}
+	}
+}
+
+@media (max-width: 1000px) {
+	.sola-search {
+		#header .container {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		#header .logo {
+			display: inline;
+			margin: 0;
+			margin-left: 15px;
+		}
+		#header .button {
+			top: 17px;
+			font-size: 12px !important;
+			margin-right: 15px;
+		}
+
+		#header.fullwidth .logo {
+			margin-left: 0 !important;
+		}
+		#header.fullwidth .button {
+			margin-right: 0 !important;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.sola-search {
+		.sola-search-hero {
+			height: 70vh;
+			min-height: 420px;
+			max-height: 720px;
+
+			.container {
+				height: 70vh;
+				min-height: 420px;
+				max-height: 720px;
+			}
+		}
+	}
+}
+
+// @media (max-width: 888px) {
+// 	.sola-search {
+
+// 		.SolaSearch { 
+// 			height: auto;
+// 		}
+
+// 		.sola-search-hero {
+// 			background: asset-url('booknow/hero-mobile.jpg') no-repeat;
+// 			background-size: cover;
+
+// 			.home-services-animation {
+// 				display: block;
+// 				min-height: 27px;
+
+// 				span {
+// 					// position: static;
+// 					top: auto;
+// 					left: 0;
+// 					border-bottom: 0;
+// 					padding-bottom: 0;
+// 				}
+// 			}
+
+// 			h2 {
+// 				font-size: 27px;
+// 				line-height: 27px;
+// 				margin-bottom: 15px !important;
+// 			}
+
+// 			p {
+// 				margin-bottom: 15px !important;
+// 			}
+// 		}
+// 		.home-recently-featured-box {
+// 			margin-top: 15px;
+// 		}
+// 		.mobile {
+// 			display: block;
+// 		}
+// 		.desktop {
+// 			display: none;
+// 		}
+// 	}
+// }
+
+@media (max-width: 488px) {
+	// .sola-search {
+	// 	.sola-search-hero {
+	// 		//margin-top: -5px;
+
+	// 		h2, p {
+	// 			//display: none;
+	// 		}
+	// 	}
+	// }
+}

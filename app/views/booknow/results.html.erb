@@ -1,0 +1,26 @@
+<%= react_component 'SolaSearch', {
+	booking_complete_path: booknow_booking_complete_path,
+	date: @date,
+	fingerprint: params[:fingerprint],
+	gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+	gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+	gloss_genius_stripe_key: ENV['GLOSS_GENIUS_STRIPE_KEY'],
+	lat: params[:lat],
+	lng: params[:lng],
+	location: params[:location],
+	locations: @locations,
+	location_id: params[:location_id],
+	location_name: defined?(@location) ? @location.name : nil,
+	professionals: @professionals,
+	query: params[:query],
+	results_path: booknow_results_path,	
+	zoom: 9,
+} %>
+
+<% if Rails.env.test? %>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<% end %>
+
+<% @body_class = 'sola-search' %>
+<% @header_class = 'fullwidth' %>
+<% content_for(:title) { t('sola_search.booknow') } %>

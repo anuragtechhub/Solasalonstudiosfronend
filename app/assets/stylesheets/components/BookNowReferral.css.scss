@@ -1,0 +1,233 @@
+.BookNowReferral {
+
+	.BookNowOverlay {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(255, 255, 255, 0.87);
+		z-index: 999;
+	}
+
+	.BookNowModal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin: -300px 0 0 -600px;
+		background: #000;
+		width: 1200px;
+		height: 600px;
+		z-index: 9999;
+  	display: flex;
+  	align-items: center;
+
+  	.jssocials-shares {
+  		margin-left: -5px !important;
+  	}
+
+  	.jssocials-share-link {
+  		margin: -10px 0 0 0;
+  		background: transparent !important;
+			font-size: 33px;
+	    padding: 0;
+
+	    .fa-twitter {
+	    	margin-right: 2px;
+	    }
+  	}
+
+  	.social {
+  		margin-top: 30px;
+
+  		h3 {
+  			font-size: 25px;
+  			line-height: 25px;
+  		}
+  	}
+
+  	.fa-times {
+  		cursor: pointer;
+  		position: absolute;
+  		top: 15px;
+  		right: 15px;
+  		font-size: 25px;
+  		z-index: 9;
+  		color: #FFF;
+  	}
+
+  	.ink-cloud-left {
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		background: asset-url('booknow/modal-ink-cloud-left.png') no-repeat center;
+  		background-size: 406px 167px;
+  		width: 406px;
+  		height: 167px;
+  	}
+
+  	.ink-cloud-right {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		background: asset-url('booknow/modal-ink-cloud-right.png') no-repeat center;
+  		background-size: 393px 253px;
+  		width: 393px;
+  		height: 253px;
+  	}
+
+		.found {
+			z-index: 9;
+			display: block;
+	    float: none;
+	    width: 100%;
+	    padding: 0 80px;
+
+	    .btn, .btn:hover, .btn:focus {
+	    	color: #FFF;
+		    text-transform: none;
+		    font-weight: normal;
+		    font-family: 'FuturaStd-Light';
+		    font-weight: normal;
+		    font-size: 19px;
+		    line-height: 19px;
+		    letter-spacing: 1.7px;
+		    width: 100%;
+		    background: #ec038c;
+		    border: 0;
+	    }
+
+	    &::after {
+		    content: "";
+		    clear: both;
+		    display: table;
+			}
+
+			.col-input {
+				width: calc(67% - 15px);
+				margin-right: 15px;
+				float: left;
+
+				input {
+					height: 60px;
+					border-radius: 9px;
+			    font-family: 'FuturaStd-Light';
+			    font-weight: normal;
+			    font-size: 19px;
+			    line-height: 19px;
+			    letter-spacing: 1.7px;
+			    padding: 0 20px;
+			    color: #000;
+				}
+			}
+
+			.col-button {
+				width: 33%;
+				float: left;
+
+				button {
+					padding: 0;
+					height: 60px;
+					border-radius: 9px;
+					font-size: 17px !important;
+				}
+			}
+
+			h3 {
+				margin-bottom: 20px;
+			}
+
+			p {
+				margin-bottom: 60px;
+				font-size: 17px;
+				line-height: 23px;
+			}
+		}
+	}
+}
+
+.booknow .tooltip {
+	z-index: 9999;
+	top: -5px !important;
+	
+	&.bs-tooltip-top .arrow::before {
+		border-top-color: #FFF !important;
+	}	
+
+	&.bs-tooltip-bottom .arrow::before {
+		border-bottom-color: #FFF !important;
+	}		
+}
+
+.booknow .tooltip-inner {
+	background: #FFF;
+	color: #000;
+	border-radius: 3px;
+	padding: 5px;
+	font-size: 13px;
+	line-height: 17px;
+}
+
+
+@media only screen and (max-width:991px){
+	.BookNowReferral {
+		.BookNowModal {
+			.found {
+				padding: 0 30px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width:767px){
+	.BookNowReferral {
+		.BookNowModal {
+
+	  	.social {
+	  		margin-top: 20px;
+
+	  		h3 {
+	  			font-size: 19px;
+	  			line-height: 19px;
+	  		}
+	  	}
+
+	  	.ink-cloud-left {
+	  		background-size: (406px / 2) (167px / 2);
+	  		width: (406px / 2);
+	  		height: (167px / 2);
+	  	}
+
+	  	.ink-cloud-right {
+	  		background-size: (393px / 2) (253px / 2);
+	  		width: (393px / 2);
+	  		height: (253px / 2);
+	  	}
+
+			.found {
+				text-align: left;
+
+				p {
+					margin-bottom: 30px;
+				}
+				.col-input, .col-button {
+					width: 100%;
+					float: none;
+					clear: both;
+
+					input {
+						font-size: 17px;
+			    	line-height: 17px;
+					}
+					button {
+						font-size: 17px;
+			    	line-height: 17px;
+					}
+				}
+				.col-button {
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+}

@@ -9,7 +9,7 @@ $(function () {
       // desktop
       var $headerContainer = $('#header .container');
       $('.oys-nav').not('[data-nav="' + nav + '"]').slideUp('fast');
-      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() - 2}).width($headerContainer.outerWidth()).slideDown('fast');
+      $('.oys-nav[data-nav="' + nav + '"]').css({left: $headerContainer.offset().left, top: $headerContainer.outerHeight() + $('#top-header').outerHeight() + 5}).width($headerContainer.outerWidth()).slideDown('fast');
     }
   };
 

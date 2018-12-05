@@ -1,0 +1,166 @@
+@import 'mixins';
+@import 'variables';
+
+.SearchDatePicker {
+	.fa {
+		font-size: 15px;
+		line-height: 15px;
+	}
+}
+
+.sola-search .datepicker {
+	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.1);
+
+	&.dropdown-menu {
+		border-radius: 0;
+		border: 1px solid #EEE;
+
+		&:before, &:after {
+			display: none !important;
+		}
+	}
+
+	th.prev, th.next {
+		top: 12px;
+		left: 6px;
+		position: relative;
+		border: 0;
+		border-radius: 3px;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		background: #000;
+		color: #FFF;
+
+		&.disabled {
+			cursor: default;
+			pointer-events: none;
+			background: #EEE;
+			color: #DBDBDB !important;
+		}
+
+		&:hover, &:active {
+			border: 0;
+			background: $brand-pink;
+
+			.fa {
+				color: #FFF;
+			}
+		}
+
+		.fa {
+			position: absolute;
+			top: 5px;
+			left: 8px;
+			font-size: 14px;
+			line-height: 14px;
+		}
+	}
+	
+	th.prev {
+		float: left;
+		margin-left: 2px;
+	}
+
+	th.next {
+		float: right;
+		margin-right: 2px;
+		left: auto;
+		right: 6px;
+
+		.fa {
+			left: auto;
+			right: 9px;
+		}
+	}
+
+	th.dow {
+		font-size: 9px;
+		line-height: 9px;
+		font-weight: normal;
+		color: #9B9B9B;
+		padding: 9px 0;
+	}
+
+	.datepicker-switch {
+		@include chalet_new_york;
+		font-size: 18px;
+		line-height: 24px;
+		color: #000;
+		cursor: default;
+
+		&:hover, &:active {
+			background: transparent;
+		}
+	}
+
+	table tr td {
+		background: transparent;
+		width: 40px;
+		height: 40px;
+		border-radius: 0;
+		padding: 0;
+		font-size: 14px;
+		line-height: 14px;
+		font-weight: normal;
+		color: #4A4A4A;
+		border: 0;//2px solid #FFF !important;
+		border-radius: 3px;
+
+		&:hover {
+			background: #d3e3eb;
+		}
+
+		&.old, &.new {
+			background: transparent;
+			color: #b2b3b3;
+		}
+
+		&.active {
+			background: $brand-pink !important;
+			color: #FFF;
+			border-radius: 3px;
+		}
+	}
+}
+
+.sola-search .datepicker-inline {
+	width: 100%;
+	box-shadow: none;
+
+	table {
+		width: 100%;
+
+		th.prev {
+			margin-left: 0;
+
+			.fa {
+				left: 9px;
+			}
+		}
+
+		th.next {
+			right: 0;
+
+			.fa {
+				right: 8px;
+			}
+		}
+
+		td.day {
+			border: 2px solid #FFF;
+			background-color: #F5F9FB;
+			height: 48px;
+			width: auto;
+
+			&.disabled {
+				background-color: #F5F9FB;
+			}
+
+			&.old {
+				background-color: #FFF;
+				color: #b2b3b3;
+			}
+		}
+	}
+}

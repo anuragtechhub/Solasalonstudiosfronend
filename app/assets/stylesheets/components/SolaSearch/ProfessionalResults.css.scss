@@ -1,0 +1,369 @@
+@import 'mixins';
+@import 'variables';
+
+.ProfessionalResults {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0%;
+	right: 40%;
+	background: #FFF;
+	overflow: hidden;
+  overflow-y: scroll;
+
+	.ProfessionalResult {
+		position: relative;
+		@include helvetica;
+		background: #FFF;
+		padding: 21px;
+		border-top: 1px solid #EEE;
+
+	  .loading {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    right: 0;
+	    left: 0;
+	    background: rgba(255, 255, 255, 0.5);
+	    z-index: 99;   
+	  }
+
+	  .spinner {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin: -22px 0 0 -22px;
+	    background: asset-data-url('spinner.gif') no-repeat center;
+	    background-size: 44px 44px;
+	    width: 44px;
+	    height: 44px;
+
+	    &.spinner-sm {
+	    	background-size: 22px 22px;
+	    	width: 22px;
+	    	height: 22px;
+	    	margin: -11px 0 0 -22px;
+	    }
+
+	    &.spinner-static {
+	    	display: inline-block;
+	    	position: relative;
+	    	top: auto;
+	    	left: auto;
+	    	margin: 0;
+	    }
+	  } 
+
+		.ProfessionalResultDetails {
+			position: absolute;
+			top: 25px;
+			left: 180px;
+			right: 25px;
+			bottom: 25px;
+			z-index: 2;
+		}
+
+		.ProfessionalServicesDropdown {
+			position: absolute;
+			// top: 21px;
+			// right: 25px;
+			top: -10px;
+			right: -10px;
+			z-index: 99;
+
+			.dropdown-toggle {
+				height: 32px;
+				position: relative;
+				border-radius: 4px;
+				background: #F5F9FB !important;
+				border: 0 !important;
+				margin: 0 !important;
+				padding: 8px 21px 8px 15px !important;
+				letter-spacing: 0;
+				color: #000000;	
+				@include helvetica;
+				font-size: 14px;	
+				font-weight: 300;	
+				line-height: 16px;
+
+				&:hover, &:active, &:focus {
+					background: #F5F9FB !important;
+					border: 0 !important;
+					box-shadow: none !important;
+				}
+
+				strong {
+					margin-left: 3px;
+					font-weight: 900;
+				}
+
+				.fa {
+					float: right;
+					position: relative;
+					top: -6px;
+					right: -6px;
+					font-size: 28px;
+					line-height: 28px;
+					color: #D1D3D4;
+				}
+				
+				&:after {
+					display: none;
+				}
+			}
+
+			.dropdown-menu {
+				top: 2px !important;
+				right: 0;
+				left: auto !important;
+				border-radius: 4px;
+				background-color: #F5F9FB !important;
+				border: 0 !important;
+				max-height: 111px;
+				overflow: hidden;
+				overflow-y: scroll;
+
+				li {
+					margin: 0;
+					padding: 0;
+					white-space: nowrap;
+				}
+
+				a, a:link, a:visited, a:hover, a:active {
+					display: block;
+					color: #000000;	
+					@include helvetica;
+					font-size: 14px;	
+					font-weight: 300;	
+					line-height: 18px;
+					padding: 7px 10px;
+
+					strong {
+						font-weight: 900;
+					}
+				}
+			}
+
+		}
+
+		.ProfessionalCoverImage {
+			position: relative;
+			height: 130px;	
+			width: 130px;	
+			display: block;
+			overflow: hidden;
+
+			img {
+				display: block;
+				height: 130px;	
+				width: 130px;	
+				border-radius: 2px;
+			}
+
+			.Gradient {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				top: 70%;
+				z-index: 8;
+
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100 */
+				background: #ffffff; /* Old browsers */
+				background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, #000000 100%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(0,0,0,0)', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+			}
+
+			.ProfessionalCoverImageName {
+				position: absolute;
+				bottom: 6px;
+				left: 7px;
+				right: 7px;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				color: #FFFFFF;	
+				//text-shadow: 1px 1px 5px #000;
+				@include helvetica;
+				font-size: 12px;	
+				font-weight: 300;	
+				line-height: 16px;
+				z-index: 9;
+			}
+		}
+
+		.ProfessionalName {
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 24px;
+			color: #000000;	
+			margin-top: -5px;
+			margin-bottom: 5px;
+		}
+
+		.ProfessionalAddress {
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 16px;
+			color: #4A4A4A;
+			max-height: 48px;
+			overflow: hidden;
+		}
+
+		.ProfessionalAvailabilities {
+			position: absolute;
+    	bottom: 3px;
+    	left: 0;
+    	right: 0;
+
+    	&.UnknownAvailability {
+    		bottom: -5px;
+    	}
+
+    	.back-button, .forward-button {
+    		display: inline-block;
+    		font-size: 17px;
+    		line-height: 17px;
+    		position: absolute;
+    		top: 50%;
+    		background: #FFF;
+    		padding: 9px 7px;
+    		z-index: 9;
+    		height: 39px;
+    		border-radius: 3px;
+    		cursor: pointer;
+    		color: #000;
+
+    		// &:hover, &:active {
+    		// 	color: #AFAFAF;
+    		// }
+    	}
+
+    	.back-button {
+    		left: -8px;
+    	}
+
+    	.forward-button {
+    		right: -8px;
+    	}
+
+    	.ProfessionalAvailabilitiesWrapper {
+	    	width: 100%;
+	    	height: 53px;
+	    	overflow: hidden;
+	    	overflow-x: scroll;
+	    	white-space: nowrap;
+	    	position: relative;
+    		bottom: -8px;
+    		//padding: 0 33px;
+    	}
+
+    	.availability-date {
+    		display: inline-block;
+    		vertical-align: bottom;
+    		margin-left: 15px;
+
+    		&:first-child {
+    			margin-left: 0;
+    		}
+
+    		// &:last-child {
+    		// 	margin-right: 15px;
+    		// }
+    		// float: left;
+    		// clear: none;
+    		// white-space: nowrap;
+
+    		.date {
+    			//position: relative;
+    			//top: -10px;
+    			margin: 0 0 3px 0;
+    			color: #4A4A4A;	
+    			@include helvetica;
+    			font-size: 11px;	
+    			font-style: italic;	
+    			font-weight: 300;	
+    			line-height: 16px;
+    		}
+    	}
+
+			a.availability-button, a.availability-button:link, a.availability-button:visited, a.availability-button:hover, a.availability-button:active {
+				text-decoration: none;
+				color: $brand-pink;	
+				@include helvetica;
+				font-size: 13px;	
+				font-weight: 300;	
+				line-height: 16px;
+				border: 1px solid $brand-pink;
+				border-radius: 3px;
+				padding: 8px 12px;
+				margin-right: 10px;
+				width: 80px;
+				text-align: center;
+				display: inline-block;
+
+				&:hover, &:active {
+					border: 1px solid $brand-pink-hover;
+					color: $brand-pink-hover;
+				}
+
+				&.check-availability {
+					color: #000000;	
+					border: 1px solid #DBDBDB;
+					width: auto;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.ProfessionalResults {
+		position: static;
+		top: auto;
+		bottom: auto;
+		left: auto;
+		right: auto;
+		height: calc(100vh - 70px);
+
+		.ProfessionalResult {
+
+			.ProfessionalResultDetails {
+				position: static;
+				top: auto;
+				left: auto;
+				right: auto;
+				bottom: auto;
+				padding: 20px 0 5px 0;
+			}
+
+			.ProfessionalAvailabilities {
+				position: relative;
+	    	bottom: auto;
+	    	left: auto;
+	    	right: auto;
+
+	    	.availability-date .date {
+	    		margin-bottom: -2px;
+	    	}
+
+	    	a.availability-button, a.availability-button:link, a.availability-button:visited, a.availability-button:hover, a.availability-button:active {
+	    		margin-top: 5px;
+	    	}
+
+	    	.forward-button {
+	    		right: -10px;
+	    	}
+	    	.back-button {
+	    		left: -10px;
+	    	}
+	    }
+		}
+	}
+
+	.SolaSearch.map .ProfessionalResults {
+		display: none;
+	}	
+}

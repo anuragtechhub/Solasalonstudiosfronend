@@ -10,6 +10,7 @@
  *
  *= require normalize
  *= require skeleton
+ *= require bootstrap
  *= require ss-social-regular
  *= require owl.carousel
  *= require owl.transitions
@@ -22,10 +23,13 @@
  *= require atc
  *= require modal
  *= require jquery.mCustomScrollbar
+ *= require glide.core
+ *= require glide.theme
  *= require_tree ./public_website
  *= require_tree ./components
  *= require ImageDropzone
  *= require jssocials
  *= require jssocials-theme-flat
+ *= require bootstrap-datepicker
  *= require aos
  */

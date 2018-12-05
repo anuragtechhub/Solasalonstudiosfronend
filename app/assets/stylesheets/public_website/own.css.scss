@@ -50,7 +50,10 @@
     h4 {
       font-size: 15px;
       margin: 0;
-      padding: 10px 0;
+      padding: 20px 0 15px 0;
+      color: #000;
+      text-align: center;
+      //display: inline-block;
     }
     // text-transform: uppercase;
     // text-decoration: none;
@@ -86,7 +89,7 @@
   }
 }
 
-#header .nav {
+#header .sola-nav {
   .caret {
     display: none;
   }
@@ -97,7 +100,7 @@
 }
 
 @media (max-width: 1000px) {
-  #header ul.nav {
+  #header ul.sola-nav {
     .oys-nav-mobile {
       box-shadow: none;
       position: static;
@@ -139,7 +142,7 @@
       }
     }
   }
-  #header .nav {
+  #header .sola-nav {
     .caret {
       display: block;
       width: (48px / 2) + 30px;

@@ -1,0 +1,49 @@
+<div class="sola-search-hero">
+	<div class="container">
+		<h2>Find your next 
+      <strong class="home-services-animation">
+        <span class="active"><%= t('services.hairstylist') %></span>
+        <span><%= t('services.esthetician') %></span>
+        <span><%= t('services.nail_tech') %></span>
+        <span><%= t('services.makeup_artist') %></span>
+        <span><%= t('services.beauty_professional') %></span>
+      </strong>
+    </h2>
+		<p>Search over 10,000 salon professionals.</p>
+		<%= react_component 'SearchBar', {
+			date: DateTime.now,
+			path: booknow_results_path,	
+			gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+			gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+		} %>
+	</div>
+</div>
+
+<div class="container">
+  <div class="row home-recently-featured-box">
+    <h5>Recently Featured In</h5>
+    <%= link_to "https://www.modernsalon.com/article/82697/modern-exclusive-an-interview-with-sola-salon-suites-new-ceo-randall-clark", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' do %>
+      <%= image_tag 'modern_salon_logo.png', width: 140, height: 51 %>
+    <% end %>
+    <%= link_to "https://www.americansalon.com/retailing-tips-from-pros", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' do %>
+      <%= image_tag 'american_salon_logo.png', width: 160, height: 51 %>
+    <% end %>
+    <%= link_to "https://www.beautylaunchpad.com/sola-salon-studios-releases-new-app-solagenius", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' do %>
+      <%= image_tag 'beauty_launchpad_logo.png', width: 193, height: 51 %>
+      <% end %>
+    <%= link_to "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' do %>
+      <%= image_tag 'forbes_logo.png', width: 122, height: 51 %>
+    <% end %>
+    <%= link_to "https://behindthechair.com/articles/myth-busters-sola-studio-owner-busts-5-salon-ownership-myths/", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
+      <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
+    <% end %>
+  </div>
+</div>
+
+<% if Rails.env.test? %>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<% end %>
+
+<% @body_class = 'sola-search' %>
+<% content_for(:title) { t('sola_search.booknow') } %>
+<% content_for(:scripts) { javascript_include_tag('home') } %>

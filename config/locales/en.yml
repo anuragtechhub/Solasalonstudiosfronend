@@ -23,7 +23,54 @@ en:
       leases/recurring_charge_4:
         amount: "Recurring weekly charge 4 weekly fee" 
         start_date: "Recurring weekly charge 4 start date"
-        end_date: "Recurring weekly charge 4 end date"              
+        end_date: "Recurring weekly charge 4 end date"     
+
+  sola_search:
+    booknow: BookNow
+    services: Services
+    professionals: Professionals
+    businesses: Businesses
+    current_location: Current Location
+    haircut: Haircut
+    services_and_suggestions_placeholder: Haircut, salon name, stylist name
+    please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
+    please_enter_a_service: Please enter a service (e.g. haircut)
+    please_enter_a_location: Please enter your location
+    check_availability: Check Availability
+    professionals_for_query: professionals for '%{query}'
+    back: Back
+    book_appointment: Book Appointment
+    contact: Contact
+    charged_after_appointment: Charged after appointment
+    book_service: Book %{num} Service
+    book_services: Book %{num} Services
+    total: Total
+    change_date: Change Date
+    change_time: Change Time 
+    add_service: Add Service
+    service: Service
+    services: Services
+    save_services: Save Services
+    min: min
+    your_information: Your Information
+    your_name: Your Name
+    email_address: Email Address
+    phone_number: Phone Number
+    continue: Continue
+    map: Map
+    list: List
+    payment_details: Payment Details
+    loading: Loading...
+    booking_complete: Booking Complete
+    thanks_for_choosing_sola: Thanks for choosing Sola Salon Studios!
+    add_to_calendar: Add to Calendar
+    map_it: Map it!
+    select_a_date: Select a Date
+    select_a_time: Select a Time
+    appointment_with_stylist: Appointment with %{stylist}
+    save: Save
+    no_availability: There is no availability for these services on this date. Please change the date or remove some services and try again.
+    please_select_a_time: Please select a time, then press the Save button.
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
@@ -639,7 +686,6 @@ en:
       blog: Blog
       photo_gallery: Photo Gallery
       coming_soon: Coming Soon!
-      
 
     testimonials:
       title: Testimonials

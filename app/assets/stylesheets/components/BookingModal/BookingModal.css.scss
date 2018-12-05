@@ -1,0 +1,802 @@
+@import 'mixins';
+@import 'variables';
+
+.BookingModalOverlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99;
+}
+
+.BookingModal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -300px 0 0 -300px;
+	width: 600px;
+	height: 600px;
+	// max-width: 600px;
+	// max-height: 600px;
+	background: #FFF;
+
+  .loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 99;   
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22px 0 0 -22px;
+    background: asset-data-url('spinner.gif') no-repeat center;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+
+    &.spinner-sm {
+    	background-size: 22px 22px;
+    	width: 22px;
+    	height: 22px;
+    	margin: -11px 0 0 -22px;
+    }
+
+    &.spinner-static {
+    	display: inline-block;
+    	position: relative;
+    	top: auto;
+    	left: auto;
+    	margin: 0;
+    }
+  } 
+
+	&.FullWidth {
+		left: 0;
+		right: 0;
+		width: 100%;
+		margin-left: 0;
+	}
+
+	&.FullHeight {
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		margin-top: 0;
+	}
+
+	.error {
+		text-align: center;
+    font-size: 17px;
+    line-height: 21px;
+    margin: 20px 0 0px 0;
+    /* background: #ff00000f; */
+    padding: 15px;
+    // border: 1px solid red;
+    // border-left: 0;
+    // border-right: 0;
+    color: white;
+    background: red;
+	}
+
+	.BookingModalHeader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 48px;
+		overflow: hidden;
+		background-color: #121D25;
+		text-align: center;
+		color: #FFFFFF;	
+		font-family: 'Lato', sans-serif;	
+		font-size: 16px;	
+		font-weight: bold;	
+		line-height: 16px;	
+		padding-top: 16px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;	
+
+		.BackButton {
+			font-size: 18px;
+			line-height: 18px;
+			position: absolute;
+			top: 17px;
+			left: 16px;
+			cursor: pointer;
+		}
+
+		.close-x {
+			position: absolute;
+			top: 7px;
+			right: 16px;
+
+			.fa {
+				cursor: pointer;
+				color: #FFF;
+				font-size: 30px;
+				line-height: 30px;
+			}
+		}
+	}
+
+	.BookingModalBody {
+		position: absolute;
+		top: 48px;
+		bottom: 100px;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+		overflow-y: scroll;
+		z-index: 9;
+	}
+
+	.BookingModalFooter {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 100px;
+		background: #FFF;
+		border-top: 1px solid #EEE;
+		padding: 15px 25px;
+
+		.ChargedAfterAppointment {
+			color: #9B9B9B;	
+			@include helvetica;
+			font-size: 14px;	
+			font-style: italic;	
+			font-weight: 300;	
+			line-height: 16px;
+			width: 50%;
+			float: left;
+			clear: both;
+			text-align: left;
+			margin-top: 5px;
+		}
+
+		.Total {
+			color: #000000;	
+			@include helvetica;
+			font-size: 18px;	
+			font-weight: 300;	
+			line-height: 24px;
+			width: 50%;
+			float: left;
+			clear: none;
+			margin-top: 15px;
+
+			strong {
+				font-weight: bold;
+			}
+		}
+
+		.Button {
+			margin-top: 15px;
+			text-align: right;
+		}
+
+		button.primary {
+			font-size: 14px;
+			line-height: 16px;
+			padding: 16px 40px;
+	    height: 44px;
+
+	    &:hover, &:active, &:focus {
+	    	opacity: 1;
+	    	outline: 0;
+	    }
+
+	    &.disabled {
+	    	opacity: 0.4;
+	    	cursor: default;
+	    	pointer-events: none;
+	    }
+		}
+	}
+}
+
+.fa-times-thin:before {
+	content: '\00d7';
+}
+
+.BookingModalInfo {
+
+	.Body {
+		padding: 20px 25px;
+
+		h2 {
+			@include chalet_paris;
+			font-size: 24px;	
+			line-height: 32px;	
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 30px;
+		}		
+
+		.InputRow {
+			margin-bottom: 10px;
+
+			input {
+				display: block;
+				background: #FFF;
+				width: 100%;
+				max-width: 360px;
+				border-radius: 4px;
+				border: 1px solid #DBDBDB;
+				margin: 0 auto;
+				@include helvetica;
+				font-size: 14px;	
+				font-weight: 300;	
+				line-height: 16px;
+			}
+
+			::placeholder {
+			  color: #9B9B9B;
+			}
+		}
+	}
+}
+
+.BookingModalDate, .BookingModalTime, .BookingModalServices {
+
+	.Body {
+		padding: 20px 25px;
+	}
+}
+
+.BookingModalTime {
+
+	.times {
+		text-align: center;
+	}
+
+	.time-button {
+		display: inline-block;
+		width: 100%;
+		max-width: 275px;
+
+		@include helvetica;
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 300;
+		text-align: center;
+		color: $brand-pink;
+		height: 40px;
+		padding: 6px;
+
+		margin-bottom: 15px;
+		border-radius: 3px;
+		border: 1px solid $brand-pink;
+
+		&:hover, &:active, &:focus, &.active {
+			background: $brand-pink;
+			color: #FFF;
+		}
+	}
+
+	.owl-theme .owl-controls, .owl-theme .owl-buttons {
+		position: absolute;
+		top: -5px;
+    left: 0;
+    right: 0;
+
+    .owl-prev, .owl-next {
+    	position: absolute;
+    	height: 32px;	
+    	width: 32px;	
+    	border: 2px solid #000000;	
+    	border-radius: 4px;
+    	font-size: 20px;
+    	line-height: 20px;
+    	text-align: center;
+    	padding-top: 5px;
+    }
+
+    .owl-prev {
+    	left: 0;
+
+    	span {
+    		position: relative;
+    		left: -1px;
+    	}
+    }
+
+    .owl-next {
+    	right: 0;
+
+    	span {
+    		position: relative;
+    		right: -1px;
+    	}
+    }
+	}
+}
+
+.BookingModalReview, .BookingCompleteBox, .BookingModalServices {
+	position: relative;
+
+	.Body {
+
+		.DateRow {
+			padding: 20px 25px;
+			border-bottom: 1px solid #EEE;
+
+			.fa {
+				position: relative;
+				left: -1px;
+				font-size: 24px;
+				line-height: 24px;
+			}
+
+			.Date {
+				display: inline-block;
+				margin-left: 7px;
+				color: #000000;	
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 24px;
+			}
+
+			a, a:link, a:visited, a:hover, a:active {
+				float: right;
+				@include chalet_new_york;
+				color: #EF008C;	
+				font-size: 14px;	
+				line-height: 16px;
+				margin-top: 9px;
+			}
+		}
+
+		.TimeRow {
+			padding: 20px 25px;
+			border-bottom: 1px solid #EEE;
+
+			.fa {
+				position: relative;
+				top: 1px;
+				font-size: 24px;
+				line-height: 24px;
+			}
+
+			.Date {
+				display: inline-block;
+				margin-left: 7px;
+				color: #000000;	
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 24px;
+			}
+
+			a, a:link, a:visited, a:hover, a:active {
+				float: right;
+				@include chalet_new_york;
+				color: #EF008C;	
+				font-size: 14px;	
+				line-height: 16px;
+				margin-top: 9px;
+			}
+		}		
+
+		.AddressRow {
+			position: relative;
+			padding: 20px 25px;
+			border-bottom: 1px solid #EEE;
+
+			.fa {
+				position: absolute;
+				top: 20px;
+				left: 28px;
+				font-size: 24px;
+				line-height: 24px;
+			}
+
+			.Address {
+				display: block;
+				margin-left: 35px;
+				margin-right: 90px;
+				color: #000000;	
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 24px;
+
+				strong {
+					font-weight: bold;
+					font-size: 14px;
+					line-height: 16px;
+				}
+			}
+
+			a, a:link, a:visited, a:hover, a:active {
+				position: absolute;
+				top: 15px;
+				right: 25px;
+				@include chalet_new_york;
+				color: #EF008C;	
+				font-size: 14px;	
+				line-height: 16px;
+				margin-top: 9px;
+			}
+		}	
+
+		.ServicesRow {
+			padding: 20px 25px;
+
+			.ServiceTitle {
+				display: inline-block;
+				margin-left: 0;
+				color: #000000;	
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 24px;
+			}
+
+			a, a:link, a:visited, a:hover, a:active {
+				float: right;
+				@include chalet_new_york;
+				color: #EF008C;	
+				font-size: 14px;	
+				line-height: 16px;
+				margin-top: 5px;
+			}
+
+			.Services {
+				margin-top: 20px;
+			}
+		}	
+
+		.ServiceRow {
+			border-radius: 2px;	
+			background-color: #F5F9FB;
+			padding: 10px;
+			margin: 0 -3px 3px -3px;
+
+			.ServiceImage {
+				display: inline-block;
+
+				img {
+					width: 67px;
+					height: 67px;
+					border-radius: 2px;
+				}
+			}
+
+			.ServiceDetails {
+				display: inline-block;
+				width: calc(100% - 160px);
+			}
+
+			&.HasImage {
+				.ServiceDetails {
+					position: relative;
+					top: 13px;
+					left: 23px;
+				}
+			}
+
+			.ServiceName {
+				color: #000000;	
+				@include helvetica;
+				font-size: 18px;	
+				font-weight: 300;	
+				line-height: 24px;
+			}
+
+			.ServiceCostAndDuration {
+				margin-top: 3px;
+			}
+
+			.ServiceCost, .ServiceDuration {
+				color: #4A4A4A;	
+				@include helvetica;
+				font-size: 14px;	
+				font-weight: 300;	
+				line-height: 16px;
+			}
+
+			.Separator {
+				position: relative;
+				top: -1px;
+				display: inline-block;
+				margin: 0 10px;
+				width: 1px;
+				height: 14px;
+				background-color: #D6E1E6;
+			}
+		}		
+	}
+
+	.Header {
+		position: relative;
+		height: 150px;
+		width: 100%;
+		background: #77b7e0; /* Old browsers */
+		background: -moz-linear-gradient(left, #77b7e0 0%, #e744a8 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(left, #77b7e0 0%,#e744a8 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, #77b7e0 0%,#e744a8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77b7e0', endColorstr='#e744a8',GradientType=1 ); /* IE6-9 */		
+		padding: 20px;
+	}
+
+	.ProfessionalCoverImage {
+		position: relative;
+		height: 110px;	
+		width: 110px;	
+		display: block;
+		overflow: hidden;
+
+		img {
+			display: block;
+			height: 110px;	
+			width: 110px;	
+			border-radius: 2px;
+		}
+
+		.Gradient {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			top: 70%;
+			z-index: 8;
+
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,000000+100 */
+			background: #ffffff; /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, #000000 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(0,0,0,0)', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		}
+	}
+
+	.ProfessionalInfo {
+		position: absolute;
+		top: 20px;
+		bottom: 20px;
+		left: 160px;
+		right: 20px;
+		z-index: 9;
+		display: flex;
+    flex-direction: column;
+
+		.ProfessionalName {
+			flex: 1;
+			@include chalet_paris;
+			font-size: 24px;	
+			line-height: 26px;
+			color: #FFF;	
+			margin-bottom: 0;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.ProfessionalAddress {
+			flex: 1;
+			color: #FFFFFF;	
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: 300;	
+			line-height: 20px;
+			margin-bottom: 0;
+		}
+
+		a.Contact, a.Contact:link, a.Contact:visited, a.Contact:hover, a.Contact:active {
+			display: flex;
+			flex: 1;
+			align-items: flex-end;
+
+			@include chalet_paris;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;	
+			color: #FFFFFF;	
+			@include helvetica;
+			font-size: 14px;	
+			font-weight: bold;	
+			line-height: 20px;
+			margin-bottom: 0;
+			text-decoration: none;
+		}
+	}
+}
+
+.BookingModalServices {
+	.Body {
+		.ServicesRow {
+			padding: 0;
+
+			.ServiceRow {
+				position: relative;
+				margin-bottom: 10px;
+
+				.toggle-switch-button {
+					position: absolute;
+					top: 22px;
+					right: 22px;
+
+					display: block;
+					height: 48px;	
+					width: 48px;	
+					border-radius: 4px;	
+					border: 2px solid $brand-pink;
+
+					text-align: center;
+					padding-top: 11px;
+					cursor: pointer;
+
+					span {
+						color: $brand-pink;
+						font-size: 24px;
+						line-height: 24px;
+					}
+
+					&:hover, &:active, &:focus, &.active {
+						border: 0;
+						background: linear-gradient(144.64deg, #FF6AC9 0%, #EF008C 100%);
+						padding-top: 13px;
+
+						span {
+							color: #FFF;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.BookingModalPayment {
+
+	.Body {
+		padding: 20px 25px;
+
+
+		h2 {
+			@include chalet_paris;
+			font-size: 24px;	
+			line-height: 32px;	
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 30px;
+		}		
+
+		.StripeElement {
+		  border: 1px solid #DBDBDB;
+		  padding: 10px;
+		}
+
+		.StripeElement--invalid {
+		  border: 1px solid red;
+		}			
+	}
+}
+
+
+@media (max-width: 600px) {
+	.BookingModalServices .Body .ServicesRow .ServiceRow .toggle-switch-button {
+		width: 36px;
+		height: 36px;
+		padding-top: 8px;
+		top: 28px;
+
+		&.active, &:hover, &:active, &:focus {
+			padding-top: 9px;
+		}
+
+		span {
+			font-size: 20px;
+			line-height: 20px;
+		}
+	}
+
+	.BookingModal {
+		.BookingModalReview {
+
+			.ProfessionalName {
+				font-size: 18px;
+				line-height: 24px;
+			}
+
+			.ProfessionalAddress {
+				font-size: 14px;
+				line-height: 16px;
+			}
+		}
+
+		.Body {
+
+			.DateRow {
+
+				.fa {
+					font-size: 20px;
+					line-height: 20px;
+				}
+
+				.Date {
+					font-size: 14px;	
+					line-height: 16px;
+				}
+
+				a, a:link, a:visited, a:hover, a:active {
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.Body {
+
+			.TimeRow {
+
+				.fa {
+					font-size: 20px;
+					line-height: 20px;
+				}
+
+				.Date {
+					font-size: 14px;	
+					line-height: 16px;
+				}
+
+				a, a:link, a:visited, a:hover, a:active {
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.Body {
+
+			.ServicesRow {
+
+				.ServiceTitle {
+					font-size: 14px;	
+					line-height: 16px;
+				}
+
+				a, a:link, a:visited, a:hover, a:active {
+					margin-top: 5px;
+				}
+			}
+
+			.ServiceRow {
+
+				.ServiceName {
+					font-size: 14px;	
+					line-height: 16px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+			}				
+		}
+
+		.BookingModalFooter {
+			.ChargedAfterAppointment {
+				text-align: right;
+				clear: none;
+			}
+			.Total {
+				margin-top: 0;
+			}
+			.Button {
+				padding-top: 5px;
+				margin: 0;
+				clear: both;
+
+				button.primary {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

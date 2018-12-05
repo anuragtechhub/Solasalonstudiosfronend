@@ -180,7 +180,7 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2017-01-01]
+  # rake reports:solasalonstudios[2018-07-01]
   task :solasalonstudios, [:start_date] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"

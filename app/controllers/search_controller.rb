@@ -1,5 +1,6 @@
 class SearchController < PublicWebsiteController
-  
+    
+  require 'uri'
   skip_before_filter :verify_authenticity_token
 
   def results
@@ -53,7 +54,7 @@ class SearchController < PublicWebsiteController
         stylists_website_name = Stylist.where('website_name IS NOT NULL AND website_name != ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.website_name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         
         # service_type filter?
-        p "params[:service_type]=#{params[:service_type]}"
+        #p "params[:service_type]=#{params[:service_type]}"
         if params[:service_type].present? && params[:service_type] != 'all_types'
 
           if params[:service_type] == 'skincare'
@@ -80,5 +81,7 @@ class SearchController < PublicWebsiteController
 
       @results = @locations.size + @stylists.size + @posts.size
     end
+
   end
+
 end

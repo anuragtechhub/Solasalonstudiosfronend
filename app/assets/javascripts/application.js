@@ -16,6 +16,13 @@
 //= require xml2json
 //= require dropzone
 //= require jssocials
+//= require moment
+//= require popper
+//= require bootstrap
+//= require bootstrap-datepicker
+
+//= require fingerprint
+//= require wrap-in-tag
 
 //= require react
 //= require react_ujs

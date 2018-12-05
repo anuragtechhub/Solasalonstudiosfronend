@@ -11,6 +11,13 @@ $.widget('solasalonstudios.add_to_calendar', {
         address: self.element.data('address'), //'Wyndham Grand Jupiter at Harbourside Place, 122 Soundings Avenue, Jupiter, FL 33477', 
         description: self.element.data('description') //"On Monday, September 18th, we're bringing the industry's best exclusively to the Sola...""
     }};
+
+    if (self.element.data('label')) {
+      self.label = self.element.data('label');
+    }
+    if (!self.label) {
+      self.label = 'Add to Calendar'
+    }
     //console.log('create add_to_calendar', params);
 
     if (!self.validParams(params)) {
@@ -213,7 +220,7 @@ $.widget('solasalonstudios.add_to_calendar', {
   generateMarkup: function (calendars, clazz, calendarId) {
     var result = document.createElement('div');
 
-    result.innerHTML = '<label for="checkbox-for-' + calendarId + '" class="add-to-calendar-checkbox">Add to Calendar</label>';
+    result.innerHTML = '<label for="checkbox-for-' + calendarId + '" class="add-to-calendar-checkbox">' + this.label + '</label>';
     result.innerHTML += '<input name="add-to-calendar-checkbox" class="add-to-calendar-checkbox" id="checkbox-for-' + calendarId + '" type="checkbox">';
 
     //result.innerHTML += '<span class="calendar-links-wrapper">';
