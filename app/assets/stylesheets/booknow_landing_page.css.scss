@@ -716,6 +716,19 @@ body.booknow {
    
   
 }
+
+@media only screen and (max-width:815px){
+    .cloud-block{z-index: 1;}
+    .mobile{z-index: 3;left:0;right:0;margin: 0 auto;top:80px;text-align: center;display: block;}
+    .mobile figure img{margin: 0 auto;width:260px;}
+    .genius h1{font-size: 40px;line-height: 44px;letter-spacing: 1px;}
+    .genius span{font-size: 28px;line-height: 30px;}
+    .hero-block{height:605px;}
+    .video-block{bottom:0;}
+    .genius  {top: auto;bottom:90px;left:0;right:0;text-align: center;-webkit-transform: none;-o-transform: none;-ms-transform: none;transform: none;}
+    .hero-block{width:100%;}
+}
+
 @media only screen and (max-width:767px){
     .booknow-block h2{font-size:52px;line-height: 52px;}
     .booknow-block{padding:70px 15px 40px 15px;}
