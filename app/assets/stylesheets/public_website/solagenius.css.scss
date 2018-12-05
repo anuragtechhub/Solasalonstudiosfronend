@@ -266,7 +266,7 @@
     padding: 0;
     overflow: visible;
     position: relative;
-    top: 88px;
+    top: 30px;
     left: 70px;
 
     li {
@@ -336,6 +336,24 @@
     display: inline-block;
     overflow: visible;
 
+    &.booknow-icon {
+      background: asset-data-url('own/sola-genius-icons/booknow.png');
+      background-size: (102px / 5) (105px / 5);
+      width: (102px / 5);
+      height: (105px / 5);
+
+      &::before {
+        content: '';
+        background: asset-data-url('own/new.png');
+        background-size: 46px 19px;
+        width: 46px;
+        height: 19px;
+        position: absolute;
+        left: -56px;
+        top: 0;
+        z-index: 2;
+      }
+    }
     &.online-booking-icon {
       background: asset-data-url('own/sola-genius-icons/online-booking.png');
       background-size: (102px / 5) (105px / 5);
