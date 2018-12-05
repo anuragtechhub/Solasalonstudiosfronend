@@ -73,6 +73,10 @@ var BookNowReferral = React.createClass({
             </div>
           </form>
         </div>
+        <div className="clearfix" style={{height: 1, lineHeight: 1}}>&nbsp;</div>
+        <div className="official-terms">
+          See official <a href="#">Terms and Conditions</a>
+        </div>
       </div>
     );
   },

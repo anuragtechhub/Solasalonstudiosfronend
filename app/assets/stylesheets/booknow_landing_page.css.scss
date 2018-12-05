@@ -479,9 +479,37 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 
 
 body.booknow {
+
+  #swipebox-close {
+    top: 15px;
+    right: 15px;
+  }
+
   .body-content {
     padding-bottom: 0;
   }
+
+  .official-terms, 
+  .official-terms a,
+  .official-terms a:link,
+  .official-terms a:visited,
+  .official-terms a:hover
+  .official-terms a:active {
+    text-transform: none;
+    font-weight: normal;
+    font-family: 'FuturaStd-Light';
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-size: 15px;
+    line-height: 15px;
+    color: rgba(255, 255, 255, 0.48);
+    text-decoration: underline;
+  }
+
+  .official-terms {
+    margin-top: 20px;
+    text-decoration: none;
+  }  
 
   .business-in {
     a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
