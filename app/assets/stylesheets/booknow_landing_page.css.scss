@@ -360,7 +360,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .winner-block{background: #ec038c;position: relative;z-index: 2;}
 .winner-in{padding: 92px 0px 81px 67px;margin: 0 auto;}
 .winner-left{padding: 0 0 0 0;}
-.winner-left p{font-family: 'FuturaStd-Medium';font-weight: normal;font-size: 30px;line-height: 37px;}
+.winner-left p{margin-bottom: 0 !important; font-family: 'FuturaStd-Light';font-weight: normal;font-size: 27px !important;line-height: 47px;letter-spacing: 2px;}
 .winner-right{padding: 10px 0px 0 0;}
 .winner-right ul{margin: 0 -20px;}
 .winner-right ul li{padding: 0 20px;display:inline-block;}
@@ -800,7 +800,7 @@ body.booknow {
     .video-block a{padding:18px 20px 18px 20px;font-size: 18px;}
     .head-bottom{padding:26px 15px 26px 15px;}
     .functionality{width:100%;}
-    .winner-left p{font-size: 25px;line-height: 30px;}
+    .winner-left p{font-size: 25px !important;line-height: 35px !important;}
     .slidein-blk:before{width:80px;}
     .slidein-blk:after{width:80px;}
     .slider-cnt figure img{width:200px;height: auto;}
