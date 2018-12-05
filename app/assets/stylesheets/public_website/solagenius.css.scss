@@ -55,6 +55,58 @@
 
   }
 
+  .meet-booknow {
+    background: #ef008c asset-url('own/ink-cloud.png') no-repeat 0 -160px;
+    padding: 60px 0;
+    text-align: left;
+
+    .container {
+      display: flex;
+      align-items: center;
+    }
+
+    .text {
+      text-align: left;
+    }
+
+    h1 {
+      color: #FFF;
+      font-size: 40px;
+      line-height: 40px;
+      margin-bottom: 0;
+      @include chalet_paris;
+
+      strong {
+        @include chalet_new_york;
+      }
+    }
+
+    h2 {
+      margin-top: 5px;
+      color: #FFF;
+      font-size: 28px;
+      line-height: 28px;
+      letter-spacing: 3px;
+      @include chalet_paris;
+      text-transform: uppercase;
+
+      img {
+        position: relative;
+        top: -3px;
+      }
+
+    }
+
+    a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+      background: #FFF;
+      border: 0;
+      color: $brand-pink;
+      border-radius: 5px;
+      padding-top: 20px;
+      margin-bottom: 0;
+    }
+  }
+
 }
 
 @media (max-width : 1300px) {
