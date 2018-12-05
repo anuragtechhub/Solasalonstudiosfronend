@@ -331,11 +331,14 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .mobile{position: absolute;left: 42px;top: 12.6%;z-index: 1;}
 .cloud-block{position: absolute;right: -119.8px;top: 0px;z-index: 2;}
 .video-block{position: absolute;bottom: 134px;left: 0px;right: 5px;margin: 0 auto;text-align: center;z-index:2;}
-.video-block a{padding: 25px 43px 25px 40px;color:#ffffff;background: #ec038c;font-size: 23.4px;line-height: 21px;display: inline-block;border-radius:5px;font-family: 'FuturaStd-Bold';font-weight: normal;letter-spacing: 0.6px;text-align: center;text-transform: uppercase;}
+.video-block a{padding:18px 45px 20px 45px;color:#ffffff;background: #ec038c;font-size: 18px;line-height: 20px;letter-spacing: 1.7px;display: inline-block;border-radius:5px;font-family: 'FuturaStd-Medium';font-weight: normal;text-align: center;}
 .show-mob{display: none !important;}
 .hide-mob{display: block !important;}
 .video-block a:hover{text-decoration:none;}
-.video-block a i{color:#ffffff;font-size: 30px;line-height: 32px;
+.video-block a i{color:#ffffff;font-size: 27px;line-height: 27px;
+  position: relative;
+  top: 2px;
+  left: -2px;
  transition: all 0.14s ease-in-out;
  -moz-transition: all 0.14s ease-in-out;
  -web-transition: all 0.14s ease-in-out;
@@ -419,7 +422,7 @@ p{font-size: 16px;line-height: 18px;color:#ffffff;font-family: 'FuturaStd-Light'
 .business-in h2{padding: 0 0 20px 0;font-family: 'FuturaStd-Light';font-weight: normal;/* text-align: left; */letter-spacing: 3.7px;}
 .business-in h2 strong{font-family: 'FuturaStd-Bold';font-weight: normal;letter-spacing: 3.8px;}
 .business-in p{padding: 0 0 54px 0;line-height: 27px;font-family: 'FuturaStd-Light';font-weight: normal;margin: 0;}
-.business-in a{ padding: 16px 20px 16px 20px;text-transform: uppercase;font-size: 18px;}
+.business-in a{ padding:18px 45px 20px 45px;font-size: 18px;}
 .business-in a:hover{color:#ffffff;}
 .registre-blk{background: asset-url("booknow/register-img.jpg") no-repeat center center;background-size: cover;}
 .business-in a i{font-size:24px;line-height: 32px;padding:0 10px 0 0;text-align: center;}
@@ -523,7 +526,7 @@ body.booknow {
       font-family: 'FuturaStd-Medium';
       font-weight: normal;
       letter-spacing: 1.7px;
-      padding-top: 13px;
+      //padding-top: 13px;
 
       i {
         position: relative;
