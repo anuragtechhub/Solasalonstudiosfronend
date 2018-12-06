@@ -138,9 +138,9 @@ Solasalonstudios::Application.routes.draw do
   get "blog-readmore/:url_name" => 'blog#show'
   get "blog/category/:category_url_name" => 'blog#index', :as => :blog_category
 
-  get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
-  get 'dd' => 'digital_directory#dd', :via => [:get, :post]
-  get 'dd/color' => 'digital_directory#color', :via => [:get, :post]
+  # get 'digital-directory/:location_url_name' => 'digital_directory#show', :via => [:get, :post], :as => :digital_directory
+  # get 'dd' => 'digital_directory#dd', :via => [:get, :post]
+  # get 'dd/color' => 'digital_directory#color', :via => [:get, :post]
 
   get 'regions' => 'locations#index'
   get 'region/:url_name' => 'locations#region'
