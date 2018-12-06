@@ -72,7 +72,7 @@ gem 'area'
 
 gem 'htmlcompressor'
 
-gem 'gibbon',  '~>1.2.0'
+#gem 'gibbon',  '~>1.2.0'
 
 gem 'cancan'
 
