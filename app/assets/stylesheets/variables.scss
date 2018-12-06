@@ -9,18 +9,6 @@ $brand-green: #32BCAD;
 $brand-pink: #EC008C;
 $brand-pink-hover: #f26ab9;
 
-@mixin kult() {
-  font-family: "kulturista-web", serif;
-  font-style: normal;
-  font-weight: 400 !important;
-}
-
-@mixin kultsemibold() {
-  font-family: "kulturista-web", serif;
-  font-style: normal;
-  font-weight: 600 !important;
-}
-
 @mixin helvetica() {
 	font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue", 
 	font-style: normal;
