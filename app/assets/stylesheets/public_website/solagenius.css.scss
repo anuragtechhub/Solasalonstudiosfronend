@@ -122,6 +122,83 @@
 
 }
 
+@media (max-width : 1100px) {
+  .sola-genius {
+    .meet-booknow {
+      h1 {
+        font-size: 41px;
+        line-height: 41px;
+      }
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width : 1000px) {
+  .sola-genius {
+    .meet-booknow {
+      .container {
+        display: block;
+      }
+
+      .text, .buttons {
+        display: block;
+        text-align: center;
+      }
+
+      .text {
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        font-size: 41px;
+        line-height: 41px;
+      }
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width : 700px) {
+  .sola-genius {
+    .meet-booknow {
+      background: #ef008c asset-url('own/ink-cloud.png') no-repeat -175px -175px;
+
+      .container {
+        margin: 0 auto;
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media (max-width : 500px) {
+  .sola-genius {
+    .meet-booknow {
+      .buttons {
+        text-align: center;
+
+        a.button {
+          display: block;
+          clear: both;
+          margin: 0 auto !important;
+          width: 208px;
+
+          &:first-child {
+            margin-bottom: 30px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width : 1300px) {
   .sola-genius {
     .hero-wrapper {
