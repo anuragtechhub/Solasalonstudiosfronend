@@ -11,7 +11,7 @@ Solasalonstudios::Application.routes.draw do
   get 'BingSiteAuth.xml' => 'home#bing_verification'
   get 'sitemap.xml' => 'home#sitemap'
  
-  get '5000' => 'home#sola_5000', :as => :sola_5000
+  #get '5000' => 'home#sola_5000', :as => :sola_5000
 
 
 
