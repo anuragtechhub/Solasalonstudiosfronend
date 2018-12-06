@@ -7,7 +7,6 @@
 //= require gmaps
 //= require owl.carousel
 //= require jquery.tooltipster
-//= require affix
 //= require jquery.swipebox
 //= require modal
 //= require jquery.mousewheel
@@ -15,14 +14,10 @@
 //= require jssocials
 //= require aos
 //= require hammer
-// require text-gradient-default
-// require text-gradient-svg
-// require text-gradient
 //= require jquery.hoverIntent
 //= require add_to_calendar
 //= require i18n
 //= require i18n/translations
-//= require glide
 //= require_tree ./public_website
 
 $(function () {
