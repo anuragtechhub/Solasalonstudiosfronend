@@ -6,7 +6,11 @@
   border-top: 1px solid $gray-lighter;
 
   h4 {
+    @include chalet_new_york;
     margin-bottom: 20px;
+    color: #000;
+    font-size: 18px;
+    line-height: 24px;
   }
 
   .row.first {
@@ -65,12 +69,14 @@
   }
 
   p {
+    font-family: Helvetica, Arial, sans-serif;
     -moz-osx-font-smoothing: auto; //antialiased
     -webkit-font-smoothing: auto; //antialiased
     font-smoothing: auto; //antialiased
     font-size: 13px;
     line-height: 17px;
     margin: 0 0 15px 0;
+    color: #000;
   }
 
   .row.second {
