@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  blog_id: 
-  country_id: 
-
-two:
-  blog_id: 
-  country_id: 
