@@ -22,6 +22,18 @@ namespace :reports do
   #   end    
   # end
 
+  # rake reports:locations_contact_form_submissions[2018-01-01,2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:locations_contact_form_submissions[2017-11-01,2017-12-01,"jeff@jeffbail.com jeff+1@jeffbail.com jeff+2@jeffbail.com"]
+  task :locations_contact_form_submissions, [:start_date, :end_date, :email_addresses] => :environment do |task, args|
+    p "Begin location_contact_form_submission task...#{args.email_addresses}"
+    
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+    end_date = args.end_date.present? ? Date.parse(args.end_date).beginning_of_month : start_date.prev_month.beginning_of_month
+    email_addresses = args.email_addresses.split(' ')
+
+    p "start_date=#{start_date}, end_date=#{end_date}, email_addresses=#{email_addresses}"
+  end
+
   task :locations_by_state => :environment do
     p "ID,NAME,EMAIL,PHONE,LOCATION"
     Stylist.where('status = ? AND location_id IN (?)', 'open', Location.near('San Diego, CA').map(&:id)).each do |stylist|

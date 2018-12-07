@@ -16,7 +16,12 @@ class ReportsMailer < ActionMailer::Base
   def welcome_email_report(report_pdf)
     attachments["welcome_email_report.pdf"] = report_pdf
     #mail(to: ['jeff@jeffbail.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
-    mail(to: ['jennie@solasalonstudios.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
+    mail(to: ['jennie@solasalonstudios.com', 'megan@solasalonstudios.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
+  end
+
+  def location_contact_form_submission_report(email_addresses, csv_file)
+    attachments['report.csv'] = csv_file
+    mail(to: email_addresses, bcc: ['jeff@jeffbail.com'], subject: "Location Contact Form Submission Report")
   end
 
 end
