@@ -325,7 +325,7 @@
   }
 
   .your-life-your-style {
-    margin: 80px 0 0 0;
+    margin: 80px 0 20px 0;
     padding: 60px 40px 20px 40px;
     background-color: #F5F9FB;
 
@@ -362,6 +362,22 @@
         -webkit-font-smoothing: antialiased; //auto
         font-smoothing: antialiased; //auto   
       }
+    }
+  }
+
+  .salon-map {
+    position: relative;
+    display: flex;
+
+    .popover {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+
+    img.static-map {
+      width: 100%;
+      align-self: center;
     }
   }
 
@@ -407,6 +423,37 @@
     display: none;
   }
 
+}
+
+.map-popover-infobox {
+  padding: 10px 10px;
+
+  h4 {
+    max-width: 333px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+    font-size: 18px;
+    line-height: 24px;
+  }      
+
+  p {
+    margin: 4px 0 5px 0;
+    color: #4A4A4A;
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+
+  a, a:link, a:visited, a:hover, a:active {
+    font-weight: bold;
+    text-decoration: none;
+    color: #ec008c;
+    font-size: 13px;
+  }
 }
 
 .contact-salon-pros-directly {

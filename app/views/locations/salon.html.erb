@@ -192,8 +192,35 @@
         </div>
 
         <!-- map -->
-        <div class="row salon-map" id="map"></div>
-        <div id="map-overlay" class="salon-map"></div>
+        <div class="row">
+          <div class="salon-map">
+            <%
+              map_styles = [
+                'feature|saturation:-100|lightness:20',
+                'feature:water|color:0xC1E6F3',
+                'feature:poi|visibility:off',
+              ]
+
+              if @location.custom_maps_url.present?
+                custom_marker = "<div class='map-popover-infobox'><h4>#{@location.name}</h4><p>#{@location.html_address}</p><a target='_blank' href='#{@location.custom_maps_url}'>Map it!</a></div>"
+              else
+                custom_marker = "<div class='map-popover-infobox'><h4>#{@location.name}</h4><p>#{@location.html_address}</p><a target='_blank' href='http://maps.google.com/maps?daddr=#{@location.full_address}'>Map it!</a></div>"
+              end
+            %>
+            
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.full_address %>&zoom=14&size=625x420<%= map_styles.map{|s| "&style=#{s}"}.join('') %>&maptype=roadmap&markers=icon:https://s3.amazonaws.com/solasalonstudios/MarkerSmall.png|<%= @location.full_address %>&key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8" class="static-map" data-content="<%= custom_marker %>" />
+
+            <div class="popover fade show bs-popover-top" role="tooltip" x-placement="top">
+              <div class="arrow" style="left: 72px;"></div>
+              <h3 class="popover-header"></h3>
+              <div class="popover-body">
+                <%= custom_marker.html_safe %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
 
         <!-- testimonial -->
         <div class="block-quote-testimonial block-quote-testimonial-side-image">

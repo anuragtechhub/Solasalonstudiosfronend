@@ -20,7 +20,7 @@ $(function () {
   {featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}];
 
   // map
-  if ($('#map').length) {
+  if ($('#map').length) {    
     var map = new GMaps({
       div: '#map',
       lat: parseFloat($('#lat').val(), 10),
@@ -223,6 +223,30 @@ $(function () {
 
       return false;
     });  
+  }
+
+  // static map popover
+  var $static_map = $('.salon-map .static-map');
+  if ($static_map.length) {
+    $(window).on('resize.staticpopover', function () {
+      var $popover = $('.salon-map .popover');
+      var height = $static_map.height();
+
+      if (height >= 420) {
+        var extraHeight = 30;
+      } else if (height >= 300 && height < 420) {
+        var extraHeight = 25;
+      } else {
+        var extraHeight = 20;
+      }
+
+      $popover.css({'marginTop': -(($popover.height() / 2) + ($popover.height() / 2) + extraHeight) + 'px', 'marginLeft': -(($popover.width() / 2) + 1) + 'px'});
+      $popover.find('.arrow').css({left: ($popover.width() / 2) - 8 + 'px'});
+    }).trigger('resize.staticpopover');
+
+    $static_map.on('load', function() {
+      $(window).trigger('resize.staticpopover');
+    });
   }
 
   // scroll to request tour anchor
