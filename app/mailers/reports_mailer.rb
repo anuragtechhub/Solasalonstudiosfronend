@@ -21,7 +21,7 @@ class ReportsMailer < ActionMailer::Base
 
   def location_contact_form_submission_report(email_addresses, csv_file, start_date, end_date)
     attachments['report.csv'] = csv_file
-    mail(to: email_addresses, bcc: ['jeff@jeffbail.com'], subject: "Location Contact Form Submission Report from #{start_date.strftime('%B %Y')} to #{end_date.strftime('%B %Y')}")
+    mail(to: email_addresses, bcc: ['jeff@jeffbail.com'], subject: "Location Contact Form Submissions from #{start_date.strftime('%B %Y')} to #{end_date.strftime('%B %Y')}")
   end
 
 end
