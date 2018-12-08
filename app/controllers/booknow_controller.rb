@@ -54,7 +54,7 @@ class BooknowController < PublicWebsiteController
   end
 
   def gloss_genius_search_query_string
-    query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}&radius=50"
+    query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}&radius=25"
 
     if params[:location_id].present?
       query_string = query_string + "&org_location_id=#{params[:location_id]}"

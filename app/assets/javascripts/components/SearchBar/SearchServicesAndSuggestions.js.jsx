@@ -203,7 +203,10 @@ var SearchServicesAndSuggestions = React.createClass({
 
 	onFocus: function () {
 		if (!this.state.dropdownOpen) {
-			this.setState({dropdownOpen: true});
+			var $input = $(this.refs.input);
+			var $window = $(window);
+			console.log('open!', $input.width(), $window.width(), $window.height());
+			this.setState({dropdownOpen: true, inputWidth: $input.width(), windowHeight: $window.height(), windowWidth: $window.width()});
 		}
 	},
 

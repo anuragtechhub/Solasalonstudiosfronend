@@ -1,6 +1,7 @@
 var SolaSearch = React.createClass({
 
 	getInitialState: function () {
+		//console.log('SolaSearch getInitialState', this.props.gloss_genius_api_key, this.props.gloss_genius_api_url);
 		return {
 			availabilities: this.props.availabilities || {},
 			booking_complete_path: this.props.booking_complete_path,
@@ -56,7 +57,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		console.log('render SolaSearch professionals', this.state.professionals);
+		//console.log('render SolaSearch professionals', this.state.professionals, this.state.gloss_genius_api_url);
 		
 		return (
 			<div className={"SolaSearch " + this.state.mode}>

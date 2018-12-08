@@ -31,6 +31,8 @@ var ProfessionalResults = React.createClass({
 						:
 						<SearchBar 
 							date={this.props.date}
+							gloss_genius_api_key={this.props.gloss_genius_api_key}
+							gloss_genius_api_url={this.props.gloss_genius_api_url}
 							lat={this.props.lat}
 							lng={this.props.lng}
 							location={this.props.location} 
@@ -54,6 +56,7 @@ var ProfessionalResults = React.createClass({
 				// if (i == '15797e93f8') {
 				// 	console.log('kimmie', professional, this.props.availabilities[i]);
 				// }
+				//console.log('availabilities', this.props.availabilities[i]);
 				return this.props.availabilities[i];
 			}
 		}

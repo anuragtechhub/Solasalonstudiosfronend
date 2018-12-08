@@ -48,6 +48,7 @@ en:
     change_date: Change Date
     change_time: Change Time 
     add_service: Add Service
+    add_remove_services: Add/Remove Services
     service: Service
     services: Services
     save_services: Save Services
