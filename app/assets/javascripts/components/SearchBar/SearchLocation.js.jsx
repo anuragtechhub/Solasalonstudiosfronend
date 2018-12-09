@@ -4,7 +4,7 @@ var SearchLocation = React.createClass({
 		var self = this;
 
 		var autocomplete = new google.maps.places.Autocomplete(this.refs.input, {
-			types: ['(cities)'],
+			//types: ['(cities)'],
 		});
 
 		autocomplete.addListener('place_changed', function() {
