@@ -150,7 +150,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	renderProfessionals: function () {
 		if (this.state.professionals && this.state.professionals.length > 0) {
 			var professionals = this.state.professionals.map(function (professional) {
-				return <a key={professional.booking_page_url} href={professional.booking_page_url}>{professional.full_name}</a>
+				return <a key={professional.booking_page_url} href={'//' + professional.booking_page_url}>{professional.full_name}</a>
 			});
 
 			return (
@@ -169,7 +169,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	renderSalons: function () {
 		if (this.state.salons && this.state.salons.length > 0) {
 			var salons = this.state.salons.map(function (salon) {
-				return <a key={salon.booking_page_url} href={salon.booking_page_url}>{salon.business_name}</a>
+				return <a key={salon.booking_page_url} href={'//' + salon.booking_page_url}>{salon.business_name}</a>
 			});
 
 			return (
