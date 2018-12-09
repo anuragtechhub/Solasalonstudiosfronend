@@ -18,6 +18,7 @@ var BookingModalTime = React.createClass({
 	},
 
 	render: function () {
+		//console.log('render BookingModalTime', this.props.professional.availabilities);
 		var self = this;
 		var idx = 0;
 		var days = this.props.professional.availabilities.map(function (availability) {
@@ -29,7 +30,7 @@ var BookingModalTime = React.createClass({
 				);
 			});
 
-			//console.log('availability.date',  availability.date, moment(availability.date).format('YYYY-MM-DD'));
+			//console.log('BookingModalTime', moment(availability.date).format('YYYY-MM-DD'));
 
 			return (
 				<div key={availability.date} data-date={moment(availability.date).format('YYYY-MM-DD')} data-idx={idx++}>

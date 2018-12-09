@@ -133,7 +133,7 @@ var BookingModal = React.createClass({
 
 	onChange: function (e) {
 		if (e && e.target) {
-			//console.log('onChange', e.target.name, e.target.value);
+			console.log('onChange', e.target.name, e.target.value);
 			this.state[e.target.name] = e.target.value;
 			this.setState(this.state, function () {
 				Cookies.set(e.target.name, e.target.value);
@@ -155,9 +155,11 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			// DATE
 			if (moment(this.state.date).isSame(this.state.temp_date)) {
+				console.log('same date...', this.state.temp_date)
 				this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 			} else {
-				this.setState({ready: false, error: null, loading: true}, function () {
+				console.log('not the same date!', this.state.temp_date)
+				this.setState({ready: false, error: null, loading: true, date: this.state.temp_date}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
 			}
@@ -270,7 +272,7 @@ var BookingModal = React.createClass({
 	    url: this.props.gloss_genius_api_url + 'client-check',
 		}).done(function (response) {
 			var json_response = JSON.parse(response);
-			console.log('clientCheck response', json_response);
+			//console.log('clientCheck response', json_response);
 			if (json_response && json_response.error) {
 				self.setState({loading: false, error: json_response.error});
 			} else if (json_response.require_card !== true) {
@@ -295,7 +297,7 @@ var BookingModal = React.createClass({
 		services_guids[this.props.professional.guid] = services;
 		
 		//console.log('services_guids', services_guids);
-
+		//console.log('refreshAvailabilityThenGotoTimeStep this.state.date', moment(this.state.date).format("YYYY-MM-DD"));
 		$.ajax({
 			data: {
 				date: moment(this.state.date).format("YYYY-MM-DD"),
@@ -309,7 +311,7 @@ var BookingModal = React.createClass({
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
 			var json_response = JSON.parse(response);
-			console.log('getAvailabilities response', json_response, json_response[self.props.professional.guid]);
+			//console.log('getAvailabilities response', json_response, json_response[self.props.professional.guid]);
 			if (json_response && json_response[self.props.professional.guid] && json_response[self.props.professional.guid].length) {
 				self.props.professional.availabilities = json_response[self.props.professional.guid];
 				self.setState({loading: false, step: 'time', ready: false, error: null, services: self.state.temp_services, date: self.state.temp_date, temp_time: null});
