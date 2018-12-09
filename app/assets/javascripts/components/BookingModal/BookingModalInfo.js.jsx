@@ -1,5 +1,11 @@
 var BookingModalInfo = React.createClass({
 
+	componentDidMount: function () {
+		new Nebo15Mask.MaskedInput(this.refs.phone_number, "(111) 111-1111", {
+			eventsToHandle: [],
+		});
+	},
+
 	render: function () {
 
 		return (
@@ -14,7 +20,7 @@ var BookingModalInfo = React.createClass({
 						<input type="text" name="email_address" placeholder={I18n.t('sola_search.email_address')} onChange={this.props.onChange} value={this.props.email_address} />
 					</div>
 					<div className="InputRow">
-						<input type="text" name="phone_number" placeholder={I18n.t('sola_search.phone_number')} onChange={this.props.onChange} value={this.props.phone_number} />
+						<input type="text" ref="phone_number" mask="1111 1111 1111 1111" name="phone_number" placeholder={I18n.t('sola_search.phone_number')} onBlur={this.onBlur} onChange={this.props.onChange} value={this.props.phone_number} />
 					</div>
 
 				</div>
@@ -24,10 +30,9 @@ var BookingModalInfo = React.createClass({
 
 
 
-	/**
-	* Helper functions 
-	*/
-
+	onBlur: function (e) {
+		this.props.onChange(e);
+	}
 
 
 });
