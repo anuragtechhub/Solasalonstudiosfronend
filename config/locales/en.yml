@@ -36,6 +36,7 @@ en:
     please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
     please_enter_a_service: Please enter a service (e.g. haircut)
     please_enter_a_location: Please enter your location
+    enter_city_state_or_zipcode: Enter city, state or zip code
     check_availability: Check Availability
     professionals_for_query: professionals for '%{query}'
     back: Back
