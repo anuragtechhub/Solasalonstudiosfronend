@@ -32,7 +32,7 @@ var ProfessionalResult = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('ProfessionalResult availabilities', this.props.availabilities);
+		console.log('ProfessionalResult availabilities', this.props.availabilities, this.state.loading);
 
 		return (
 			<div className="ProfessionalResult">

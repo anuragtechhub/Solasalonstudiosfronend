@@ -52,6 +52,13 @@ var ProfessionalAvailabilities = React.createClass({
 					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
 				</div>
 			);
+		} else if (typeof this.props.availabilities == 'undefined') {
+			// loading
+			return (
+				<div className="ProfessionalAvailabilities UnknownAvailability">
+					<div className="loading"><div className="spinner spinner-sm"></div></div>
+				</div>
+			);
 		} else {
 			return (
 				<div className="ProfessionalAvailabilities UnknownAvailability">
