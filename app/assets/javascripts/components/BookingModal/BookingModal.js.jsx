@@ -179,7 +179,15 @@ var BookingModal = React.createClass({
 				});
 			}			
 		} else if (this.state.step == 'info') {
-			this.clientCheck();
+			if (!this.validateEmail(this.state.email_address)) {
+				this.setState({error: I18n.t('sola_search.please_enter_a_valid_email_address')});
+			} else if (this.state.your_name == '') {
+				this.setState({error: I18n.t('sola_search.please_enter_your_name')});
+			} else if (this.state.phone_number == '') {
+				this.setState({error: I18n.t('sola_search.please_enter_your_phone_number')});
+			} else {
+				this.clientCheck();
+			}
 		} else if (this.state.step == 'payment') {
 			this.book();
 		}
@@ -309,6 +317,11 @@ var BookingModal = React.createClass({
 				self.setState({loading: false, ready: false, error: I18n.t('sola_search.no_availability')});
 			}
 		}); 
+	},
+
+	validateEmail: function (email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 	},
 
 });
