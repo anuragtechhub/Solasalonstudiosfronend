@@ -182,7 +182,7 @@ var BookingModal = React.createClass({
 			}			
 		} else if (this.state.step == 'info') {
 			if (!this.validateEmail(this.state.email_address)) {
-				this.setState({error: I18n.t('sola_search.please_enter_a_valid_email_address')});
+				this.setState({error: I18n.t('sola_search.please_enter_your_email_address')});
 			} else if (this.state.your_name == '') {
 				this.setState({error: I18n.t('sola_search.please_enter_your_name')});
 			} else if (this.state.phone_number == '') {
