@@ -5,6 +5,7 @@ var SearchServicesAndSuggestions = React.createClass({
 			activeCategory: 'Barber',
 			dropdownOpen: false,
 			salons: null,
+			tempQuery: this.props.query,
 			professionals: null,
 		};
 	},
@@ -16,6 +17,7 @@ var SearchServicesAndSuggestions = React.createClass({
 				$(this.refs.dropdown).show();//.slideDown('fast');
 				$(window).on('click.SearchServicesAndSuggestions', this.close);
 			} else {
+				this.setState({tempQuery: ''});
 				$(this.refs.dropdown).hide();//.slideUp('fast');
 				$(window).off('click.SearchServicesAndSuggestions');
 			}
@@ -50,7 +52,7 @@ var SearchServicesAndSuggestions = React.createClass({
 				<input ref="input" type="text" placeholder={I18n.t('sola_search.services_and_suggestions_placeholder')} onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
 
 				<div className="Dropdown" ref="dropdown">
-					{this.props.query == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
+					{this.state.tempQuery == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
 					{this.renderProfessionalsAndSalons()}
 				</div>
 			</div>
@@ -191,6 +193,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 	onChange: function (e) {
 		//console.log('onChange', e.target.value);
+		this.setState({tempQuery: e.target.value});
 		this.props.onChangeQuery(e.target.value)
 	},
 
@@ -203,9 +206,13 @@ var SearchServicesAndSuggestions = React.createClass({
 
 	onFocus: function () {
 		if (!this.state.dropdownOpen) {
-			var $input = $(this.refs.input);
+			// select text
+			this.refs.input.select();
+
+			// get sizes for responsiveness
+			var $input = $();
 			var $window = $(window);
-			console.log('open!', $input.width(), $window.width(), $window.height());
+			//console.log('open!', $input.width(), $window.width(), $window.height());
 			this.setState({dropdownOpen: true, inputWidth: $input.width(), windowHeight: $window.height(), windowWidth: $window.width()});
 		}
 	},
