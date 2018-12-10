@@ -36,31 +36,33 @@
 
     <% if @locations && @locations.size > 0 %>
       <h3><%= t('page.search.location_results').html_safe %></h3>
-      <% @locations.each_with_index do |location, index| %>
-        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
+      <div class="row">
+        <% @locations.each_with_index do |location, index| %>
           <%= render 'shared/public_website/location_result', :location => location %>
-        <% if ((index + 1) % 3) == 0 || index + 1 == @locations.size %></div><% end %>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
 
     <% if @stylists && @stylists.size > 0 %>
       <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
-      <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
-        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
+      <div class="row">
+        <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
           <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
-        <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
 
     <% if @posts && @posts.size > 0 %>
       <h3><%= t('page.search.blog_results').html_safe %></h3>
-      <% @posts.each_with_index do |post| %>
-        <% if post.mysola_category %>
-          <%= render 'shared/mysola_blog_post_summary', :post => post %>
-        <% else %>
-          <%= render 'shared/blog_post_summary', :post => post %>
+      <div class="row">
+        <% @posts.each_with_index do |post| %>
+          <% if post.mysola_category %>
+            <%= render 'shared/mysola_blog_post_summary', :post => post %>
+          <% else %>
+            <%= render 'shared/blog_post_summary', :post => post %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
 
   </div>
