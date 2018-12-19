@@ -48,19 +48,38 @@
 			opacity: 0.5;
 		}
 
+		&.disabled {
+			pointer-events: none;
+
+			&:hover, &:active {
+				opacity: 1;
+			}
+		}
+
+		h6 {
+			@include chalet_new_york;
+			color: $brand-pink;
+			margin: 5px 0 0 0;
+			padding: 0;
+			font-size: 18px;
+			line-height: 24px;
+		}
+
     .event-icon {
 			position: relative;
-    	top: -9px;    	
+    	top: -5px;    	
       display: inline-block;
-      width: 68px;
-      height: 68px;
+      width: 88px;
+      height: 88px;
       float: left;
       margin-right: 20px;
-      // &.chicago {
-      //   background: asset-data-url('sessions/chicago-small.jpg') no-repeat center;
-      //   background-size: 88px 88px;
-      //   border-radius: 44px;
-      // }
+
+      &.san-diego {
+        background: asset-data-url('sessions/san-diego-circle.png') no-repeat center;
+        background-size: 88px 88px;
+        border-radius: 44px;
+      }
+
       // &.west-palm-beach {
       //   background: asset-data-url('sessions/west_palm_beach_off.png') no-repeat center;
       //   background-size: 68px 68px;
