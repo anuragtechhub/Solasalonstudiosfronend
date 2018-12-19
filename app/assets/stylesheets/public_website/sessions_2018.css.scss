@@ -3,6 +3,12 @@
 
 .session-2018 {
 
+  .owl-carousel {
+    .learn-more-button {
+      margin-left: -65px;
+    }
+  }
+
   .leading-ladies-wrapper {
     padding: 20px;
     background: #94ffff;
@@ -54,7 +60,7 @@
   .header {
     display: block;
     clear: both;    
-    margin: 0 0 50px 0 !important;
+    margin: 0 0 0 0 !important;
     text-align: center;
     padding: 30px 0 20px 0;
     background: #f4f9fb;
@@ -89,9 +95,9 @@
     overflow: hidden;
 
     .early-bird, .general-admission {
-      //float: left;
+      float: left;
       //height: 380px;
-      width: 48%;
+      width: calc(48% - 15px);
       margin: 0 auto;
       padding: 30px 30px 40px 30px;
       @include border-radius(11px);
@@ -166,10 +172,12 @@
 
     .early-bird {
       @include background-gradient(#4999d4, #fe01ac);
+      margin-right: 15px;
     }
 
     .general-admission {
       @include background-gradient(#6cbee5, #489bd4);
+      margin-left: 15px;
     }
   }
 
@@ -179,7 +187,13 @@
     margin: 0 auto;
 
     p, h4 {
-      margin-bottom: 10px !important;
+      margin-bottom: 15px !important;
+      font-size: 19px;
+      line-height: 25px;
+    }
+
+    strong {
+      @include chalet_new_york;
     }
   }
 
@@ -598,7 +612,7 @@
   	margin: 0 0 40px 0;
   }
 
-  .watch-our-video {
+  .watch-our-video, .giant-video {
     padding: 0;//20px 0 40px 0;
     margin: 40px 0 60px 0;
     background: transparent;
@@ -645,6 +659,15 @@
         word-spacing: 1px;
         letter-spacing: 1px;
       }
+    }
+  }
+
+  .giant-video {
+    margin-top: 0px;
+
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 
