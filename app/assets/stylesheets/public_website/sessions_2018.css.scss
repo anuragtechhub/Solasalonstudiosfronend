@@ -444,6 +444,7 @@
     }
 
     strong {
+      @include chalet_new_york;
       color: #262626 !important;
     }
   }
@@ -612,7 +613,7 @@
   	margin: 0 0 40px 0;
   }
 
-  .watch-our-video, .giant-video {
+  .watch-our-video {
     padding: 0;//20px 0 40px 0;
     margin: 40px 0 60px 0;
     background: transparent;
@@ -663,11 +664,37 @@
   }
 
   .giant-video {
+    position: relative;
     margin-top: 0px;
 
-    img {
-      width: 100%;
-      height: auto;
+    .giant-video-btn {
+      background: #FFF !important;
+      width: 90px !important;
+      height: 90px !important;
+      text-transform: uppercase;
+      border-radius: 45px;
+      
+      .fa-play {
+        font-size: 31px;
+        line-height: 20px !important;
+        font-size: 20px !important;
+        color: $brand-pink !important;
+        position: relative;
+        top: 35px;
+      }
+
+      .text {
+        // position: absolute;
+        // bottom: -30px;
+        // left: -11px;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #FFF !important;
+        display: block;
+        white-space: nowrap !important;
+        word-spacing: 1px;
+        letter-spacing: 1px;
+      }
     }
   }
 
