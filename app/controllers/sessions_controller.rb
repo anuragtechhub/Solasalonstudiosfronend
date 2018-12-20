@@ -27,6 +27,9 @@ class SessionsController < PublicWebsiteController
   def charlotte
   end
 
+  def san_diego
+  end
+
   def san_jose
   end
 

@@ -3,6 +3,12 @@
 
 .session-2018 {
 
+  .owl-carousel {
+    .learn-more-button {
+      margin-left: -65px;
+    }
+  }
+
   .leading-ladies-wrapper {
     padding: 20px;
     background: #94ffff;
@@ -54,7 +60,7 @@
   .header {
     display: block;
     clear: both;    
-    margin: 0 0 50px 0 !important;
+    margin: 0 0 0 0 !important;
     text-align: center;
     padding: 30px 0 20px 0;
     background: #f4f9fb;
@@ -89,9 +95,9 @@
     overflow: hidden;
 
     .early-bird, .general-admission {
-      //float: left;
+      float: left;
       //height: 380px;
-      width: 48%;
+      width: calc(48% - 15px);
       margin: 0 auto;
       padding: 30px 30px 40px 30px;
       @include border-radius(11px);
@@ -166,10 +172,12 @@
 
     .early-bird {
       @include background-gradient(#4999d4, #fe01ac);
+      margin-right: 15px;
     }
 
     .general-admission {
       @include background-gradient(#6cbee5, #489bd4);
+      margin-left: 15px;
     }
   }
 
@@ -179,7 +187,13 @@
     margin: 0 auto;
 
     p, h4 {
-      margin-bottom: 10px !important;
+      margin-bottom: 15px !important;
+      font-size: 19px;
+      line-height: 25px;
+    }
+
+    strong {
+      @include chalet_new_york;
     }
   }
 
@@ -430,6 +444,7 @@
     }
 
     strong {
+      @include chalet_new_york;
       color: #262626 !important;
     }
   }
@@ -637,6 +652,41 @@
         position: absolute;
         bottom: -30px;
         left: -11px;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #FFF !important;
+        display: block;
+        white-space: nowrap !important;
+        word-spacing: 1px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .giant-video {
+    position: relative;
+    margin-top: 0px;
+
+    .giant-video-btn {
+      background: #FFF !important;
+      width: 90px !important;
+      height: 90px !important;
+      text-transform: uppercase;
+      border-radius: 45px;
+      
+      .fa-play {
+        font-size: 31px;
+        line-height: 20px !important;
+        font-size: 20px !important;
+        color: $brand-pink !important;
+        position: relative;
+        top: 35px;
+      }
+
+      .text {
+        // position: absolute;
+        // bottom: -30px;
+        // left: -11px;
         font-size: 14px !important;
         font-weight: 700 !important;
         color: #FFF !important;
