@@ -72,7 +72,7 @@ var SearchBar = React.createClass({
 	},
 
 	onChangeLocation: function (location, lat, lng) {
-		console.log('onChangeLocation', location, lat, lng);
+		//console.log('onChangeLocation', location, lat, lng);
 		this.setState({location: location, lat: lat, lng: lng});
 	},
 
@@ -89,19 +89,19 @@ var SearchBar = React.createClass({
 		var hasQuery = this.hasQuery();
 		var hasLatLng = this.hasLatLng();
 
-		if (hasQuery && hasLatLng) {
+		if (hasQuery) {// && hasLatLng) {
 			// all good - proceed to search results
 			this.setState({error: null, loading: true});
 			window.location.href = this.props.path + '?' + this.getParams();
 		} else {
 			// we have errors
-			if (!hasQuery && !hasLatLng) {
-				this.setState({error: I18n.t('sola_search.please_enter_a_service_and_a_location')});
-			} else if (hasQuery && !hasLatLng) {
-				this.setState({error: I18n.t('sola_search.please_enter_a_location')});
-			} else if (!hasQuery && hasLatLng) {
+			//if (!hasQuery && !hasLatLng) {
+			//	this.setState({error: I18n.t('sola_search.please_enter_a_service_and_a_location')});
+			//} else if (hasQuery && !hasLatLng) {
+			//	this.setState({error: I18n.t('sola_search.please_enter_a_location')});
+			//} else if (!hasQuery && hasLatLng) {
 				this.setState({error: I18n.t('sola_search.please_enter_a_service')});
-			}
+			//}
 		}
 	},
 
