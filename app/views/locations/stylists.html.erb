@@ -39,9 +39,7 @@
 
     <% if @stylists && @stylists.size > 0 %>
       <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
-        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-          <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
-        <% if ((index + 1) % 3) == 0 || index + 1 == @stylists.size %></div><% end %>
+        <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
       <% end %>
     <% end %>
 
