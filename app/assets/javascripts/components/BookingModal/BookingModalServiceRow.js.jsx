@@ -22,7 +22,7 @@ var BookingModalServiceRow = React.createClass({
 				<div className="ServiceDetails">
 					<div className="ServiceName">{this.props.service.name}</div>
 					<div className="ServiceCostAndDuration">
-						<span className="ServiceCost">${numeral(this.calculateTotalCost()).format('0,0.00')}</span> 
+						<span className="ServiceCost">{this.calculateTotalCost()}</span> 
 						<span className="Separator">&nbsp;</span> 
 						<span className="ServiceDuration">{this.props.service.duration} {I18n.t('sola_search.min')}</span>
 					</div>
@@ -109,7 +109,13 @@ var BookingModalServiceRow = React.createClass({
 	},
 
 	calculateTotalCost: function () {
-		return parseFloat(this.props.service.price, 10);
+		if (this.props.service.price == null) {
+			return I18n.t('sola_search.price_varies');
+		} else if (this.props.service.price.indexOf('+') != -1) {
+			return '$' + numeral(parseFloat(this.props.service.price, 10)).format('0,0.00') + '+';
+		} else {
+			return '$' + numeral(parseFloat(this.props.service.price, 10)).format('0,0.00');
+		}
 	},
 
 });

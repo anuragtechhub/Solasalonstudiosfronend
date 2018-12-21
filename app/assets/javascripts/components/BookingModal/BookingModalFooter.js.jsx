@@ -52,7 +52,7 @@ var BookingModalFooter = React.createClass({
 	renderReviewFooter: function () {
 		return (
 			<div className="BookingModalFooter">
-				<div className="Total">{I18n.t('sola_search.total')}: <strong>${numeral(this.calculateServicesTotal()).format('0,0.00')}</strong></div>
+				<div className="Total">{I18n.t('sola_search.total')}: <strong>{this.calculateServicesTotal()}</strong></div>
 				<div className="ChargedAfterAppointment">{I18n.t('sola_search.charged_after_appointment')}</div>
 				<div className="Button">
 					<button type="submit" className="primary" onClick={this.props.onSubmit}>{I18n.t((this.props.services.length == 1 ? 'sola_search.book_service' : 'sola_search.book_services'), {num: this.props.services.length})}</button>
@@ -91,12 +91,35 @@ var BookingModalFooter = React.createClass({
 
 	calculateServicesTotal: function () {
 		var total = 0;
+		var nullPrice = false;
+		var hasPlus = false;
 
 		for (var i = 0, ilen = this.props.services.length; i < ilen; i++) {
+			console.log('this.props.services[i]', this.props.services[i]);
+
+			if (this.props.services[i].price == null) {
+				nullPrice = true;
+				break;
+			} else if (this.props.services[i].price.indexOf('+') != -1) {
+				hasPlus = true;
+			}
+
 			total = total + parseFloat(this.props.services[i].price, 10);
 		}
 
-		return total;
+		if (nullPrice) {
+			total = I18n.t('sola_search.price_varies');
+		}
+
+		if (isNaN(total)) {
+			return total;
+		} else {
+			if (hasPlus) {
+				return '$' + numeral(total).format('0,0.00') + '+';
+			} else {
+				return '$' + numeral(total).format('0,0.00');
+			}
+		}
 	},
 
 });
