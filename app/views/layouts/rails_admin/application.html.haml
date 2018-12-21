@@ -5,8 +5,11 @@
     %meta{content: "NONE,NOARCHIVE", name: "robots"}
     = csrf_meta_tag
     = stylesheet_link_tag "rails_admin/rails_admin.css", media: :all
+    = javascript_include_tag "//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8&libraries=places"
     = javascript_include_tag "rails_admin/rails_admin.js"
     = javascript_include_tag "rails_admin/customization.js"
+
+
     -# Initialize JS simple i18n
     :javascript
       RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))

@@ -308,7 +308,7 @@ RailsAdmin.config do |config|
 
   config.model 'FranchisingRequest' do
     visible do
-      bindings[:controller]._current_user.franchisee != true
+      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     label 'Franchsing Inquiry'
     label_plural 'Franchising Inquiries'
@@ -954,7 +954,7 @@ RailsAdmin.config do |config|
 
   config.model 'MySolaImage' do
     visible do
-      bindings[:controller]._current_user.franchisee != true
+      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     list do 
       scopes [:completed]
@@ -1010,7 +1010,7 @@ RailsAdmin.config do |config|
 
   config.model 'Sola10kImage' do
     visible do
-      bindings[:controller]._current_user.franchisee != true
+      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     list do 
       scopes [:completed]
