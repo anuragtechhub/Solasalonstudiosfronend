@@ -306,10 +306,82 @@
 	}
 }
 
+@media (max-width: 1199px) {
+	.sola-search {
+		.book-now-search-block {
+			.kelsey-container {
+				background-size: (986px / 2.1) (1479px / 2.1);
+
+				h2 {
+					max-width: 540px;
+				}
+
+				p {
+					max-width: 360px;
+				}
+
+				.callout-pink {
+					bottom: 180px;
+				}
+			}
+		}
+	}
+}
 
 
 @media (max-width: 991px) {
 	.sola-search {
+
+		.book-now-search-block {
+			.kelsey-container {
+				background: #FFF;
+				padding: 40px 0 20px 0;
+
+				.booknow-by-solagenius {
+					margin-bottom: 30px;
+				}
+
+				h2 {
+					font-size: 34px;
+					line-height: 44px;
+					max-width: 100%;
+					margin-bottom: 20px;
+				}
+
+				p {
+					max-width: 100%;
+				}
+
+				.callout-pink {
+					margin-top: 30px;
+					position: static;
+					bottom: auto;
+					right: auto;
+
+					.mobile-device {
+						float: left;
+						position: relative;
+						top: 6px;
+						left: 7px;
+
+						width: (86px / 2.25);
+						height: (150px / 2.25);
+					}
+
+					.text {
+						font-size: 14px;
+						line-height: 26px;
+					}
+				}
+			}
+		
+			.callout-gradient {
+				position: static;
+				bottom: auto;
+				left: auto;
+				right: auto;
+			}
+		}
 
 		.SolaSearch { 
 			height: calc(100vh - 70px);
