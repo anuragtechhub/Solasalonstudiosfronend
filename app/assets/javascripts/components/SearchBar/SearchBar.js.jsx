@@ -72,6 +72,7 @@ var SearchBar = React.createClass({
 	},
 
 	onChangeLocation: function (location, lat, lng) {
+		console.log('onChangeLocation', location, lat, lng);
 		this.setState({location: location, lat: lat, lng: lng});
 	},
 
