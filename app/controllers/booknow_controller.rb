@@ -18,6 +18,8 @@ class BooknowController < PublicWebsiteController
     -H 'api_key: #{ENV['GLOSS_GENIUS_API_KEY']}' \
     -H 'device_id: #{params[:fingerprint]}'`
 
+    # results_response = `curl -X GET http://httpstat.us/500`
+
     #p "#{results_response}"
 
     begin
@@ -30,15 +32,16 @@ class BooknowController < PublicWebsiteController
         @location = Location.find_by(:id => params[:location_id])
       end
     rescue
-      p "ERROR WITH THIS CALL - FALLBACK!"
-      @professionals = JSON.parse(fallback_results_response)
-      @date = DateTime.parse(params[:date]) || DateTime.now
-      #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
-      @locations = Location.where(:id => get_location_id(@professionals))
+      #p "ERROR WITH THIS CALL - FALLBACK!"
+      redirect_to booknow_search_path(:date => params[:date], :location => params[:location], :lat => params[:lat], :lng => params[:lng], :query => params[:query]), :flash => { :error => "There was a problem with your search. Please try again." }
+      # @professionals = JSON.parse(fallback_results_response)
+      # @date = DateTime.parse(params[:date]) || DateTime.now
+      # #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
+      # @locations = Location.where(:id => get_location_id(@professionals))
       
-      if params[:location_id].present?
-        @location = Location.find_by(:id => params[:location_id])
-      end
+      # if params[:location_id].present?
+      #   @location = Location.find_by(:id => params[:location_id])
+      # end
     end
 	end
 

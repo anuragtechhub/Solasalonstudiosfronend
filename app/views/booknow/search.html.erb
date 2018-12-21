@@ -11,10 +11,15 @@
     </h2>
 		<p>Search thousands of salon professionals.</p>
 		<%= react_component 'SearchBar', {
-			date: DateTime.now,
+			date: params[:date] || DateTime.now,
+      error: flash[:error],
+      gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+      gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+      location: params[:location],
+      lat: params[:lat],
+      lng: params[:lng],
 			path: booknow_results_path,	
-			gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
-			gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+			query: params[:query],
 		} %>
 	</div>
 </div>

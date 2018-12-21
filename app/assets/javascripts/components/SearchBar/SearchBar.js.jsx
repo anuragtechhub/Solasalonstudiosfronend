@@ -3,7 +3,7 @@ var SearchBar = React.createClass({
 	getInitialState: function () {
 		return {
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
-			error: null,
+			error: this.props.error,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
