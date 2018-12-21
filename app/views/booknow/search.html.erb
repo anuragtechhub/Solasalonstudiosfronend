@@ -9,7 +9,7 @@
         <span><%= t('services.beauty_professional') %></span>
       </strong>
     </h2>
-		<p>Search over 10,000 salon professionals.</p>
+		<p>Search thousands of salon professionals.</p>
 		<%= react_component 'SearchBar', {
 			date: DateTime.now,
 			path: booknow_results_path,	
@@ -19,24 +19,25 @@
 	</div>
 </div>
 
-<div class="container">
-  <div class="row home-recently-featured-box">
-    <h5>Recently Featured In</h5>
-    <%= link_to "https://www.modernsalon.com/article/82697/modern-exclusive-an-interview-with-sola-salon-suites-new-ceo-randall-clark", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' do %>
-      <%= image_tag 'modern_salon_logo.png', width: 140, height: 51 %>
-    <% end %>
-    <%= link_to "https://www.americansalon.com/retailing-tips-from-pros", :class => 'american_salon_logo', :alt => 'American Salon logo', :target => '_blank' do %>
-      <%= image_tag 'american_salon_logo.png', width: 160, height: 51 %>
-    <% end %>
-    <%= link_to "https://www.beautylaunchpad.com/sola-salon-studios-releases-new-app-solagenius", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' do %>
-      <%= image_tag 'beauty_launchpad_logo.png', width: 193, height: 51 %>
-      <% end %>
-    <%= link_to "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' do %>
-      <%= image_tag 'forbes_logo.png', width: 122, height: 51 %>
-    <% end %>
-    <%= link_to "https://behindthechair.com/articles/myth-busters-sola-studio-owner-busts-5-salon-ownership-myths/", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
-      <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
-    <% end %>
+<div class="book-now-search-block">
+  <div class="container kelsey-container">
+    <%= image_tag 'booknow/booknow_by_solagenius.gif', :class => 'booknow-by-solagenius' %>
+    
+    <h2>Sola Salon Studios is home to thousands of independently owned and operated boutique salons!</h2>
+    
+    <p>Customize your search to make an appointment with one of our independent hair dressers, nail techs, estheticians, massage therapists or other beauty service professionals. To learn more about each salon owner, click on their name in the search results.</p>
+
+    <div class="callout-pink">
+      <%= image_tag 'booknow/mobile-device.png', :class => 'mobile-device' %>
+      <div class="text">The BookNow search results only feature Sola professionals who use SolaGenius <span>(GlossGenius for Sola)</span>.</div>
+      <div class="clearfix">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="callout-gradient">
+    <div class="container">
+      If you do not see your Sola professional in the search results, please contact them directly for booking inquiries at <%= link_to :find_a_professional do %><%= root_sola_domain %>/findaprofessional<% end %>.
+    </div>
   </div>
 </div>
 

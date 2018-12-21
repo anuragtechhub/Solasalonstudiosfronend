@@ -47,4 +47,14 @@ module ApplicationHelper
     url.join('-')
   end
   
+  def root_sola_domain
+    if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
+      'solasalonstudios.ca'
+    elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
+      'solasalonstudios.com.br'
+    else
+      'solasalonstudios.com'
+    end
+  end
+
 end

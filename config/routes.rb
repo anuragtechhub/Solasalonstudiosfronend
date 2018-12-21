@@ -125,6 +125,7 @@ Solasalonstudios::Application.routes.draw do
   get 'stylist/:url_name' => 'stylists#redirect'
   get 'stylist/:url_name/:url' => 'stylists#redirect'
   get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
+  get 'findaprofessional' => 'stylists#index', :as => :find_a_professional
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message
