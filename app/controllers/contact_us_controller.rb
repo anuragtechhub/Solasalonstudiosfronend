@@ -16,6 +16,10 @@ class ContactUsController < PublicWebsiteController
 
     @last_location = Location.order(:updated_at => :desc).first
     @last_msa = Msa.order(:updated_at => :desc).first    
+
+    if I18n.locale.to_s == 'pt-BR'
+      render 'index_br'
+    end
   end
 
   def thank_you

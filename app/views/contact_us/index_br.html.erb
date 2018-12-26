@@ -1,0 +1,226 @@
+<% cache ["contactUsIndex#{@last_location ? @last_location.updated_at : nil}|#{@last_msa ? @last_msa.updated_at : nil}|#{I18n.locale}|#{@thank_you}"] do %>
+
+<div class="container content-container">
+  
+  <div class="row">
+    <h1 class="chalet"><%= t('page.contact.get_in_touch').html_safe %></h1>
+  </div>
+
+<!--   <% if @thank_you && I18n.locale != :en %>
+    <div class="contact-us-success">
+      Thank you! Your submission has been received. 
+      <br /><br />
+      We will be contacting you soon with details about the launch of Sola Salon Studios Canada in Toronto this Fall.
+    </div>
+  <% end %> -->
+
+  <div class="row dashed">
+    <div class="one-half column">
+      <h3><%= t('page.contact.contact_a_sola_nearest_you').html_safe %></h3>
+    </div>
+    <div class="one-half column">
+        <p><%= t('page.contact.body1').html_safe %></p>
+        <p><%= t('page.contact.body2', :faq_link => link_to(t('page.contact.frequently_asked_questions').html_safe, :faqs, :class => 'pink-link')).html_safe %></p>
+        
+        <% if I18n.locale.to_s != 'pt-BR' %>
+        
+        <br>
+        
+        <div class="sola-select no-autobind select-a-state form">
+          <div class="row">
+            <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
+            <div class="arrow"><span class="ss-dropdown"></span></div>
+          </div>
+          <div class="options">
+            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="contact-us-states">
+          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="sola-select no-autobind form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
+              
+              <div class="row">
+                <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
+                <div class="arrow"><span class="ss-dropdown"></span></div>
+              </div>
+              <div class="options">
+                <% Location.where(:state => location.state, :status => 'open').order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+                  <% if msa_name %>
+                    <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
+                    <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
+                      <div class="option" data-value="<%= loc.id %>" data-phone="<%= loc.phone_number %>"><%= loc.name.html_safe %></div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+
+        <div id="contact-us-info-disabled">
+          <div class="contact-us-info-disabled">
+            <div class="row">
+              <h3>&nbsp;</h3>
+              <h2><%= t('page.contact.select_a_sola_location_above').html_safe %></h2>
+              <h3>&nbsp;</h3>
+              <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked" disabled="disabled" /></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
+                <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact-us-info">
+          <div class="contact-us-info">
+            <div class="row">
+              <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
+              <h2><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h2>
+              <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
+              <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
+                <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+                <input name="request_url" type="hidden" value="<%= request.original_url %>">
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
+                <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
+                <div class="loading"><div class="spinner"></div></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      <% else %>
+        <form id="brazil-contact-form">
+          <ul>
+             <li>
+                <label style="margin-top:6px">Seu nome</label>
+                <input type="text" name="nome" id="nome" placeholder="">
+             </li>
+             <li>
+                <label style="margin-top:6px">Seu email</label>
+                <input type="text" name="email" id="email" placeholder="">
+             </li>
+             <li>
+                <label style="margin-top:6px">Seu telefone</label>
+                <input type="text" name="telefone" id="telefone" placeholder="">
+             </li>
+             <li>
+                <button type="submit" id="submit">ENVIAR</button>
+             </li>
+          </ul>
+          <div class="clear"></div>
+       </form>
+      <% end %>
+    </div>
+  </div>
+
+  <% if I18n.locale.to_s == 'pt-BR' %>
+    <div class="row dashed">
+      <div class="one-third column">
+        <h3><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
+      </div>
+      <div class="two-thirds column">
+        <div class="sola-address">
+          <p>Av das Américas, 4430. Loja B. CEP: 22640-903.</p>
+          <p><a href="mailto:sejasola@solasalons.com" class="pink-link">sejasola@solasalons.com</a></p>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row dashed">
+      <div class="one-third column">
+        <h3><%= t('page.contact.sola_salon_studios_headquarters').html_safe %></h3>
+      </div>
+      <div class="two-thirds column">
+        <div class="sola-address">
+          <p><a href="tel:303.337.7652" class="tel"><strong>303.377.7652</strong></a></p>
+          <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
+          <p><a href="mailto:info@solasalonstudios.com" class="pink-link">info@solasalonstudios.com</a></p>
+          <p><%= link_to t('page.contact.united_states_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'us-franchising' %></p>
+          <p><%= link_to t('page.contact.international_franchising').html_safe, :request_franchising_info, :class => 'button request-franchising-info outline-large-white', :style => 'width:auto', "data-type" => 'int-franchising' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% end %>
+
+<div class="request-franchising-modal modal-content clearfix" data-width="700" data-modal-class="franchising-modal">
+  <div class="half-column left">
+    <span class="forbes-image" />
+  </div>
+
+  <div class="half-column">
+    <h4 style="margin-bottom:15px;"><%= t('page.contact.franchising').html_safe %></h4>
+    <p style="margin-bottom:30px" class="us-franchising"><%= t('page.contact.franchising_text').html_safe %></p>
+    <p style="margin-bottom:30px;" class="int-franchising"><%= t('page.contact.international_franchising_text').html_safe %></p>
+    <%= form_tag :franchising_request, :id => 'franchising_request' do %>
+      <input type="text" name="name" placeholder="<%= t('page.contact.full_name').html_safe %>" />
+      <input type="text" name="email" placeholder="<%= t('page.contact.email_address').html_safe %>" />
+      <input type="text" name="phone" placeholder="<%= t('page.contact.phone_number').html_safe %>" />
+      <input type="text" name="market" class="us-franchising" placeholder="<%= t('page.contact.market').html_safe %>" />
+      <input type="text" name="market" class="int-franchising" placeholder="<%= t('page.contact.country').html_safe %>" />
+      <textarea name="message" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
+      <div class="recaptchaContainer"><%= recaptcha_tags %></div>
+      <button class="primary block"><%= t('page.contact.submit_message').html_safe %></button>
+      <input name="request_url" type="hidden" value="<%= request.original_url %>">
+      <input name="request_type" type="hidden" value="">
+    <% end %>
+  </div>
+</div>
+
+<% content_for(:scripts) { javascript_include_tag('contact_us') } %>
+<% content_for(:title) { t('page.contact.title').html_safe } %>
+<% if I18n.locale != :en %>
+  <% content_for(:scripts) { javascript_include_tag('contact_us_ca') } %>
+<% end %>
+<% if I18n.locale.to_s == 'pt-BR' %>
+<style>
+.popover{position:absolute;top:0;left:0;z-index:1060;display:block;max-width:276px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-style:normal;font-weight:400;line-height:1.5;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;white-space:normal;line-break:auto;font-size:.875rem;word-wrap:break-word;background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.2);border-radius:.3rem}.popover .arrow{position:absolute;display:block;width:1rem;height:.5rem;margin:0 .3rem}.popover .arrow::after,.popover .arrow::before{position:absolute;display:block;content:"";border-color:transparent;border-style:solid}.bs-popover-auto[x-placement^=top],.bs-popover-top{margin-bottom:.5rem}.bs-popover-auto[x-placement^=top] .arrow,.bs-popover-top .arrow{bottom:calc((.5rem + 1px) * -1)}.bs-popover-auto[x-placement^=top] .arrow::after,.bs-popover-auto[x-placement^=top] .arrow::before,.bs-popover-top .arrow::after,.bs-popover-top .arrow::before{border-width:.5rem .5rem 0}.bs-popover-auto[x-placement^=top] .arrow::before,.bs-popover-top .arrow::before{bottom:0;border-top-color:rgba(0,0,0,.25)}.bs-popover-auto[x-placement^=top] .arrow::after,.bs-popover-top .arrow::after{bottom:1px;border-top-color:#fff}.bs-popover-auto[x-placement^=right],.bs-popover-right{margin-left:.5rem}.bs-popover-auto[x-placement^=right] .arrow,.bs-popover-right .arrow{left:calc((.5rem + 1px) * -1);width:.5rem;height:1rem;margin:.3rem 0}.bs-popover-auto[x-placement^=right] .arrow::after,.bs-popover-auto[x-placement^=right] .arrow::before,.bs-popover-right .arrow::after,.bs-popover-right .arrow::before{border-width:.5rem .5rem .5rem 0}.bs-popover-auto[x-placement^=right] .arrow::before,.bs-popover-right .arrow::before{left:0;border-right-color:rgba(0,0,0,.25)}.bs-popover-auto[x-placement^=right] .arrow::after,.bs-popover-right .arrow::after{left:1px;border-right-color:#fff}.bs-popover-auto[x-placement^=bottom],.bs-popover-bottom{margin-top:.5rem}.bs-popover-auto[x-placement^=bottom] .arrow,.bs-popover-bottom .arrow{top:calc((.5rem + 1px) * -1)}.bs-popover-auto[x-placement^=bottom] .arrow::after,.bs-popover-auto[x-placement^=bottom] .arrow::before,.bs-popover-bottom .arrow::after,.bs-popover-bottom .arrow::before{border-width:0 .5rem .5rem .5rem}.bs-popover-auto[x-placement^=bottom] .arrow::before,.bs-popover-bottom .arrow::before{top:0;border-bottom-color:rgba(0,0,0,.25)}.bs-popover-auto[x-placement^=bottom] .arrow::after,.bs-popover-bottom .arrow::after{top:1px;border-bottom-color:#fff}.bs-popover-auto[x-placement^=bottom] .popover-header::before,.bs-popover-bottom .popover-header::before{position:absolute;top:0;left:50%;display:block;width:1rem;margin-left:-.5rem;content:"";border-bottom:1px solid #f7f7f7}.bs-popover-auto[x-placement^=left],.bs-popover-left{margin-right:.5rem}.bs-popover-auto[x-placement^=left] .arrow,.bs-popover-left .arrow{right:calc((.5rem + 1px) * -1);width:.5rem;height:1rem;margin:.3rem 0}.bs-popover-auto[x-placement^=left] .arrow::after,.bs-popover-auto[x-placement^=left] .arrow::before,.bs-popover-left .arrow::after,.bs-popover-left .arrow::before{border-width:.5rem 0 .5rem .5rem}.bs-popover-auto[x-placement^=left] .arrow::before,.bs-popover-left .arrow::before{right:0;border-left-color:rgba(0,0,0,.25)}.bs-popover-auto[x-placement^=left] .arrow::after,.bs-popover-left .arrow::after{right:1px;border-left-color:#fff}.popover-header{padding:.5rem .75rem;margin-bottom:0;font-size:1rem;color:inherit;background-color:#f7f7f7;border-bottom:1px solid #ebebeb;border-top-left-radius:calc(.3rem - 1px);border-top-right-radius:calc(.3rem - 1px)}.popover-header:empty{display:none}.popover-body{padding:.5rem .75rem;color:#212529}
+.popover {
+  font-size: 15px;
+}
+.request-franchising-modal {
+  display: none !important;
+}
+</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-787115096/JjLqCLukzIkBENjYqfcC',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>  
+  <% content_for(:scripts) { javascript_include_tag('sejasola') } %>
+<% end %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/contact-us" } %>
+<% content_for(:meta_description) { t('page.contact.meta_description') } %>
