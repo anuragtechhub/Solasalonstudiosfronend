@@ -208,7 +208,7 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2018-07-01]
+  # rake reports:solasalonstudios[2018-11-01]
   task :solasalonstudios, [:start_date] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"
@@ -229,7 +229,7 @@ namespace :reports do
       :@data => data
     }
 
-    #p "got data #{locals.inspect}"
+    p "got data #{locals.inspect}"
     p "got data..."
 
     html_renderer = HTMLRenderer.new
@@ -846,6 +846,11 @@ namespace :reports do
         data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
         data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
       end
+
+      # contact form submissions
+      data[:contact_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', start_date, end_date).count
+      data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month).count
+      data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month).count
 
       data
     end
