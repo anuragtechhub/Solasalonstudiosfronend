@@ -154,8 +154,68 @@ body.contact-us {
 
 .contact-2019 {
 
+  .content-container {
+    padding: 60px 0;
+
+    h1 {
+      margin-bottom: 35px;
+    }
+
+    h2.start-the-convo {
+      margin-bottom: 50px;
+      max-width: 90%;
+    }
+  }
+
   h2 {
     line-height: 1.3em;
+  }
+
+  .contact-us-form-wrapper {
+    background: #F8F8F8;
+    padding: 20px 15px;
+
+    h2 {
+      @include chalet_london;
+      font-size: 21px;
+      line-height: 29px;
+    }
+
+    form {
+      margin-top: 5px;
+
+      button {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  #contact-us-info {
+    margin-top: 0;
+
+    .contact-us-info {
+      padding-top: 20px;
+      border-top: 1px solid #CCC;
+
+      h2, h3, h4 {
+        @include chalet_london;
+        font-size: 21px;
+        line-height: 29px;
+        margin: 0;
+      }
+      h2 {
+        @include chalet_new_york;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .contact-us-form {
+    textarea, input {
+      background: #FFF;
+      border-color: #d3cfcf;
+    }
   }
 
   .follow-us-on-social {
@@ -269,6 +329,41 @@ body.contact-us {
       &:last-child {
         margin-bottom: 0;
       }
+    }
+  }
+}
+
+
+@media (max-width : 767px) {
+  .contact-2019 {
+    
+    button.primary.pill, input[type=button].primary.pill, input[type=submit].primary.pill, .button.primary.pill, a.button.primary.pill, a.button:link.primary.pill, a.button:visited.primary.pill, a.button:hover.primary.pill, a.button:active.primary.pill {
+      font-size: 14px;
+    }
+
+    .content-container {
+      padding: 40px 0;
+
+      h1 {
+        margin-bottom: 20px
+      }
+      h2.start-the-convo {
+        margin-bottom: 30px;
+      }
+    }
+
+    .ready-to-be-your-own-boss {
+      padding: 60px 0;
+
+      h1 {
+        font-size: 43px;
+        line-height: 43px;
+        text-align: center;
+      }
+    }
+
+    .sola-home-office {
+      padding: 40px 0 15px 0;
     }
   }
 }

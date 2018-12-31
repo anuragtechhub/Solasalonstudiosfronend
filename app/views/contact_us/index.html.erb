@@ -17,94 +17,99 @@
 <div class="container content-container">
   <a name="get-in-touch" id="get-in-touch"></a>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-6">
       <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
-      <h2><%= t('page.contact.body1').html_safe %></h2>
+      <h2 class="start-the-convo"><%= t('page.contact.body1').html_safe %></h2>
+      <%= link_to :salon_professionals, :class => 'button primary pill square' do %><%= image_tag 'contact_salon_pro.png', :width => (68 / 2), :height => (76 / 2), :style => 'position: relative; left: -4px; margin-right: 10px; top: -1px' %> <%= t 'page.contact.contact_a_beauty_professional' %><% end %>
     </div>
 
-    <div class="col-sm-6">
-      <div class="sola-select no-autobind select-a-state form">
-        <div class="row">
-          <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
-          <div class="arrow"><span class="ss-dropdown"></span></div>
-        </div>
-        <div class="options">
-          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-          <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-md-6">
 
-      <div id="contact-us-states">
-        <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-          <div class="sola-select no-autobind form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
-            
-            <div class="row">
-              <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
-              <div class="arrow"><span class="ss-dropdown"></span></div>
-            </div>
-            <div class="options">
-              <% Location.where(:state => location.state, :status => 'open').order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
-                <% if msa_name %>
-                  <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
-                  <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
-                    <div class="option" data-value="<%= loc.id %>" data-phone="<%= loc.phone_number %>"><%= loc.name.html_safe %></div>
+      <div class="contact-us-form-wrapper">
+        <h2><%= t 'page.contact.contact_a_sola_nearest_you' %></h2>
+
+        <div class="sola-select no-autobind select-a-state form">
+          <div class="row">
+            <div class="option-placeholder"><h3><%= params[:state] || t('page.contact.select_a_state').html_safe %></h3></div>
+            <div class="arrow"><span class="ss-dropdown"></span></div>
+          </div>
+          <div class="options">
+            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="option" data-value="<%= location.state %>"><%= location.state %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div id="contact-us-states">
+          <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="sola-select no-autobind form select-a-location" id="state_select_<%= location.state.gsub(/ /, '_') %>">
+              
+              <div class="row">
+                <div class="option-placeholder"><h3><%= params[:location] || t('page.contact.select_a_location').html_safe %></h3></div>
+                <div class="arrow"><span class="ss-dropdown"></span></div>
+              </div>
+              <div class="options">
+                <% Location.where(:state => location.state, :status => 'open').order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations| %>
+                  <% if msa_name %>
+                    <div class="optgroup"><h3><%= msa_name.html_safe %></h3></div>
+                    <% locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |loc| %>
+                      <div class="option" data-value="<%= loc.id %>" data-phone="<%= loc.phone_number %>"><%= loc.name.html_safe %></div>
+                    <% end %>
                   <% end %>
                 <% end %>
+              </div>
+            </div>
+          <% end %>  
+        </div>
+
+        <div id="contact-us-info-disabled">
+          <div class="contact-us-info-disabled">
+            <div class="row">
+<!--               <h3>&nbsp;</h3>
+              <h2><%= t('page.contact.select_a_sola_location_above').html_safe %></h2>
+              <h3>&nbsp;</h3> -->
+              <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked" disabled="disabled" /></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
+                <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
               <% end %>
             </div>
           </div>
-        <% end %>  
-      </div>
+        </div>
 
-      <div id="contact-us-info-disabled">
-        <div class="contact-us-info-disabled">
-          <div class="row">
-            <h3>&nbsp;</h3>
-            <h2><%= t('page.contact.select_a_sola_location_above').html_safe %></h2>
-            <h3>&nbsp;</h3>
-            <%= form_tag '#', :method => :post, :class => 'contact-us-form-disabled' do %>
-              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>" disabled="disabled">
-              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>" disabled="disabled">
-              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>" disabled="disabled">
-              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>" disabled="disabled"></textarea>
-              <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-                <label class="receive-newsletter">
-                  <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked" disabled="disabled" /></span>
-                  <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-                </label>
+        <div id="contact-us-info">
+          <div class="contact-us-info">
+              <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
+              <h2><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h2>
+              <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
+              <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
+                <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
+                <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
+                <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
+                <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
+                <input name="location_id" id="contact_us_location_id" type="hidden" value="">
+                <input name="request_url" type="hidden" value="<%= request.original_url %>">
+                <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
+                  <label class="receive-newsletter">
+                    <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
+                    <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
+                  </label>
+                <% end %>
+                <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
+                <div class="loading"><div class="spinner"></div></div>
               <% end %>
-              <button class="button block primary" disabled="disabled"><%= t('page.contact.submit_message').html_safe %></button>
-            <% end %>
           </div>
         </div>
       </div>
 
-      <div id="contact-us-info">
-        <div class="contact-us-info">
-          <div class="row">
-            <h3><%= t('page.contact.call_for_leasing_information').html_safe %></h3>
-            <h2><a href="tel:(303) 377-7652" id="contact-us-number" class="tel">(303) 377-7652</a></h2>
-            <h3><%= t('page.contact.leave_a_message').html_safe %></h3>
-            <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'contact-us-form' do %>
-              <input name="name" type="text" placeholder="<%= t('page.contact.your_name').html_safe %>">
-              <input name="email" type="text" placeholder="<%= t('page.contact.email_address').html_safe %>">
-              <input name="phone" type="text" placeholder="<%= t('page.contact.phone_number').html_safe %>">
-              <textarea name="message" type="text" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
-              <input name="location_id" id="contact_us_location_id" type="hidden" value="">
-              <input name="request_url" type="hidden" value="<%= request.original_url %>">
-              <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-                <label class="receive-newsletter">
-                  <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
-                  <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-                </label>
-              <% end %>
-              <button class="button block primary"><%= t('page.contact.submit_message').html_safe %></button>
-              <div class="loading"><div class="spinner"></div></div>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>  
@@ -137,11 +142,11 @@
 
 <div class="container">
   <div class="row sola-home-office">
-    <div class="col-sm-6">
+    <div class="col-md-6">
       <h2><%= t('page.contact.sola_salon_studios_home_office').html_safe %></h2>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-md-6">
       <div class="sola-address">
         <p><a href="tel:303.337.7652" class="tel"><strong>303.377.7652</strong></a></p>
         <p>50 South Steele Street, Suite 1050<br>Denver, CO 80209</p>
