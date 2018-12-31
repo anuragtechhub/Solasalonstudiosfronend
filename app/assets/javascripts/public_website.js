@@ -337,12 +337,15 @@ $(function () {
   $('#franchising_request').on('submit', function () {
     var $form = $(this);
 
+    $form.find('.loading').show();
+
     if ($('#g-recaptcha-response').val() !== '') {
       $.ajax({
         method: 'POST',
         url: $form.attr('action'),
         data: $form.serialize()
       }).done(function(data) {
+        $form.find('.loading').hide();
         refreshCaptcha();
         if (data && data.success) {
           $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');

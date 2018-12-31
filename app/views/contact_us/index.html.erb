@@ -179,6 +179,7 @@
       <textarea name="message" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
       <div class="recaptchaContainer"><%= recaptcha_tags %></div>
       <button class="primary block"><%= t('page.contact.submit_message').html_safe %></button>
+      <div class="loading"><div class="spinner"></div></div>
       <input name="request_url" type="hidden" value="<%= request.original_url %>">
       <input name="request_type" type="hidden" value="">
     <% end %>
