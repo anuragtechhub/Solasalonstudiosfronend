@@ -1,3 +1,6 @@
+@import 'mixins';
+@import 'variables';
+
 #contact-us-states {
 
   .select-a-location {
@@ -139,6 +142,133 @@
       width: auto;
       padding: 0;
       margin: 0;
+    }
+  }
+}
+
+body.contact-us {
+  .body-content {
+    padding-bottom: 0;
+  }
+}
+
+.contact-2019 {
+
+  h2 {
+    line-height: 1.3em;
+  }
+
+  .follow-us-on-social {
+    padding: 40px 0;
+    background: $brand-primary;
+    background: rgb(157,213,255); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(157,213,255,1) 0%, rgba(95,154,208,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(157,213,255,1) 0%,rgba(95,154,208,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(157,213,255,1) 0%,rgba(95,154,208,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd5ff', endColorstr='#5f9ad0',GradientType=1 ); /* IE6-9 */    
+    text-align: center;
+
+    h2 {
+      color: #FFF;
+      margin-bottom: 10px;
+    }
+
+    ul.social {
+      overflow: hidden;
+      border: 0;
+      margin: 0;
+      display: inline-block;
+
+      li {
+        margin: 0;
+        display: block;
+        float: left;
+        width: auto;
+        // width: 25%;
+        text-align: center;
+        border: 0;
+
+        a, a:link, a:visited, a:hover, a:active {
+          padding: 9px 0 0 0;
+          margin: 0 20px 0 0;
+          display: inline-block;
+          font-size: 16px;
+          line-height: 16px;
+          background: transparent;
+          color: #FFF;
+          border: 1px solid #FFF !important;
+          height: 36px;
+          width: 36px;
+          border-radius: (36px / 2);
+          @include transition(opacity 0.15s ease-in-out);
+          opacity: 1;
+
+          // &:last-child {
+          //   padding-right: 0;
+          // }
+
+          span {
+            position: relative;
+            top: 2px;
+          }
+
+          &:hover, &:active {
+            // @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+            // color: #FFF;
+            opacity: 0.5;
+            border: 1px solid #FFF !important;
+          }
+        }
+
+        &:last-child {
+          a, a:link, a:visited, a:hover, a:active {
+            margin-right: 0
+          }
+        }
+      }
+    }    
+  }
+  
+  .ready-to-be-your-own-boss {
+    padding: 160px 0;
+    background: asset-url('contact_bg_2.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    h1, h2 {
+      color: #FFF;
+    }
+
+    h1 {
+      @include chalet_new_york;
+    }
+
+    h2 {
+      @include chalet_paris;
+      margin: 0;
+    }
+  }
+
+  .sola-home-office {
+    padding: 70px 0 35px 0;
+  }
+
+  .sola-address {
+    strong {
+      font-weight: bold;
+    }
+
+    p {
+      color: #999999;
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

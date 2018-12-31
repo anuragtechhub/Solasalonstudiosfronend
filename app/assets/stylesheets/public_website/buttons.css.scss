@@ -57,6 +57,13 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
       @include gradient-horizontal(#FD6DC8, #ED0F8B);
       opacity: 0.5;
     }  
+
+    &.pill {
+      padding: 13px 25px 10px 25px;
+      font-size: 16px;
+      letter-spacing: 0;
+      border-radius: 40px;
+    }
   }
 
   &.outline-large-white, &.outline-large-white:hover, &.outline-large-white:active, &.outline-large-white:focus {

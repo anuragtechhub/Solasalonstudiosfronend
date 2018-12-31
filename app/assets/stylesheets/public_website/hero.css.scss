@@ -151,6 +151,13 @@
     margin-left: -55px;
     width: 110px;
 
+    &.learn-more-button-circle {
+      img {
+        width: (83px / 2);
+        height: (83px / 2);
+      }
+    }
+
     h5 {
       color: rgba(255, 255, 255, 1);
       margin-bottom: 5px;
