@@ -11,7 +11,7 @@ class Admin < ActiveRecord::Base
   #validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
   #validates :email, :uniqueness => true, if: 'email.present?'
   validates :password, :presence => true, :on => :create, :reduce => true
-  validates :password, :length => { :minimum => 8 }
+  #validates :password, :length => { :minimum => 7 }
 
   def title 
     email
