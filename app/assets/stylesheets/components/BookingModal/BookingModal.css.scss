@@ -74,16 +74,16 @@
 
 	.error {
 		text-align: center;
-    font-size: 17px;
-    line-height: 21px;
-    margin: 20px 0 0px 0;
-    /* background: #ff00000f; */
-    padding: 15px;
-    // border: 1px solid red;
-    // border-left: 0;
-    // border-right: 0;
-    color: white;
-    background: red;
+    margin: 10px 25px 0 25px 0;
+
+		@include helvetica;
+		padding: 14px 20px 12px 20px;
+		font-size: 15px;
+		line-height: 18px;
+		font-weight: 300;
+		color: #FFF;
+		background: #EF0000;
+		border-radius: 4px;
 	}
 
 	.BookingModalHeader {
