@@ -48,10 +48,16 @@
 	}
 
 	.error {
-		padding-top: 10px;
+		@include helvetica;
+		margin-top: 10px;
+		padding: 14px 20px 12px 20px;
 		font-size: 15px;
-		line-height: 17px;
-		color: red;
+		line-height: 18px;
+		font-weight: 300;
+		color: #FFF;
+		background: #EF0000;
+		border-radius: 4px;
+		display: inline-block;
 	}
 
 	.SearchName, .SearchServicesAndSuggestions, .SearchLocation, .SearchDatePicker {
