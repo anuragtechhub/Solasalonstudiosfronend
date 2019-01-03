@@ -373,6 +373,17 @@ body.contact-us {
 
 
 @media (max-width : 767px) {
+  body.contact-us {
+    .owl-carousel .item .item-content h1 {
+      font-size: 46px !important;
+      line-height: 52px !important;
+      margin-left: 0px !important;
+      margin-right: 0px !important;
+    }
+    .owl-carousel .learn-more-button {
+      bottom: 15px;
+    }
+  }
   .contact-2019 {
     
     button.primary.pill, input[type=button].primary.pill, input[type=submit].primary.pill, .button.primary.pill, a.button.primary.pill, a.button:link.primary.pill, a.button:visited.primary.pill, a.button:hover.primary.pill, a.button:active.primary.pill {
