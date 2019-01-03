@@ -12,6 +12,7 @@ var BookingModal = React.createClass({
 			temp_services: this.props.services,
 
 			email_address: Cookies.get('email_address') || '',
+			error: null,
 			fullHeight: false,
 			fullWidth: false,
 			loading: false,
@@ -43,7 +44,7 @@ var BookingModal = React.createClass({
 
 	componentWillReceiveProps: function (nextProps) {
 		if (nextProps.step != this.state.step) {
-			this.setState({step: nextProps.step});
+			this.setState({step: nextProps.step, error: null});
 		}
 		//if (!this.state.time && nextProps.time) {//} && nextProps.time.start != this.state.time.start && nextProps.time.end != this.state.time.end) {
 			this.setState({time: nextProps.time, temp_time: nextProps.time});
@@ -54,6 +55,10 @@ var BookingModal = React.createClass({
 		//if (!moment(nextProps.date).isSame(this.state.date)) {
 			this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});
 		//}
+
+		// if (nextProps.visible && !this.props.visible) {
+		// 	this.setState({error: null});
+		// }
 	},
 
 	componentDidUpdate: function () {
@@ -133,7 +138,7 @@ var BookingModal = React.createClass({
 
 	onChange: function (e) {
 		if (e && e.target) {
-			console.log('onChange', e.target.name, e.target.value);
+			//console.log('onChange', e.target.name, e.target.value);
 			this.state[e.target.name] = e.target.value;
 			this.setState(this.state, function () {
 				Cookies.set(e.target.name, e.target.value);
