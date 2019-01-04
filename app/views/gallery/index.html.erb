@@ -22,6 +22,16 @@
   <div class="row">
 
     <div class="one-half column">
+      <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" class="play-video play-video-gallery" rel="afOBB5jAjUU">
+        <%= image_tag 'endless_possibilities_2019.jpg', :alt => t('page.home.slider5_heading').html_safe %>
+        <span class="fa fa-play-circle"></span>
+        <div class="video-overlay"></div>
+      </a>
+      <h1 class="video-title"><%= t('page.home.slider5_heading').html_safe %></h1>
+      
+    </div>
+
+    <div class="one-half column">
       <% if I18n.locale.to_s == 'pt-BR' %>
         <a href="//www.youtube.com/watch?v=D2vtblujRzo" class="play-video play-video-gallery" rel="D2vtblujRzo">
           <%= image_tag 'video_poster_2018.jpg', :alt => 'A proud Sola salon professional leans against the wall' %>
@@ -39,6 +49,10 @@
       
     </div>
 
+  </div>
+
+  <div class="row">
+
     <div class="one-half column">
       <a href="//www.youtube.com/watch?v=wlhDeuowaAI" class="play-video play-video-gallery" rel="wlhDeuowaAI">
         <%= image_tag 'video_poster_2017.jpg', :alt => 'A proud Sola salon professional leans against the wall' %>
@@ -49,10 +63,6 @@
       
     </div>
 
-  </div>
-
-  <div class="row">
-
     <div class="one-half column">
       <a href="//www.youtube.com/watch?v=St-c9SRjbhE" class="play-video play-video-gallery" rel="St-c9SRjbhE">
         <%= image_tag 'video_poster_2016.jpg', :alt => 'A smiling woman gets her hair styled by a proud salon professional' %>
@@ -62,6 +72,10 @@
       <h1 class="video-title"><%= t('page.gallery.faces_of_sola_2016').html_safe %></h1>
       
     </div>
+
+  </div>
+
+  <div class="row">
 
     <div class="one-half column">
       <% if I18n.locale.to_s == 'pt-BR' %>
@@ -81,10 +95,6 @@
       
     </div>
 
-  </div>
-
-  <div class="row">
-
     <div class="one-half column">
       <% if I18n.locale.to_s == 'pt-BR' %>
         <a href="//www.youtube.com/watch?v=4myMw7gN6I4" class="play-video play-video-gallery" rel="4myMw7gN6I4">
@@ -101,7 +111,9 @@
       <% end %>
       <h1 class="video-title"><%= t('page.gallery.the_sola_sessions').html_safe %></h1>
     </div>
+  </div>  
 
+  <div class="row">
     <% if I18n.locale.to_s != 'pt-BR' %>
       <div class="one-half column">
         <a href="//www.youtube.com/watch?v=-fWwpXeSbAM" class="play-video play-video-gallery" rel="-fWwpXeSbAM">
@@ -122,10 +134,7 @@
         
       </div>
     <% end %>
-  </div>  
-
-  <% if I18n.locale.to_s != 'pt-BR' %>
-    <div class="row">
+    <% if I18n.locale.to_s != 'pt-BR' %>
       <div class="one-half column">
         <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video play-video-gallery" rel="Bpe-puULbws">
           <%= image_tag 'sola_pro_poster.jpg' %>
@@ -135,8 +144,10 @@
         <h1 class="video-title"><%= t('page.gallery.sola_pro').html_safe %></h1>
         
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  
 
   <% if I18n.locale.to_s == 'pt-BR' %>
     <div class="view-more">
