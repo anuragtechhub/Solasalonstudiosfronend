@@ -1,6 +1,41 @@
 @import 'mixins';
 @import 'variables';
 
+.play-video-white-button {
+
+  &:hover, &:active {
+    text-decoration: none;
+
+    // span.text {
+    //   color: $brand-pink;
+    // }
+  }
+
+  .watch-video-button {
+    background: #FFF;
+    width: 88px;
+    height: 88px;
+    border-radius: 44px;
+    text-align: center;
+    padding-top: 22px;
+    margin-bottom: 15px;
+
+    span.fa{
+      position: relative;
+      top: 10px;
+      left: 4px;
+      font-size: 28px !important;
+      line-height: 28px !important;
+    }
+  }
+
+  span.text {
+    color: #FFF;
+    font-size: 17px;
+    line-height: 17px;
+  }  
+}
+
 .home-slogan {
   @include northwell;
   font-size: 72px;
