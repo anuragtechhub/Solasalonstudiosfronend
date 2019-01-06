@@ -19,10 +19,12 @@ var SolaSearch = React.createClass({
 			location_id: this.props.location_id,
 			location_name: this.props.location_name,
 			locations: this.props.locations || [],
+			loading: false,
 			mode: this.props.mode || 'list',
 			professional: this.props.professional,
 			professionals: this.props.professionals || [],
 			query: this.props.query,
+			radius: 25,
 			services: [],
 			step: this.props.step || 'review',
 			results_path: this.props.results_path,
@@ -57,7 +59,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('render SolaSearch professionals', this.state.professionals, this.state.gloss_genius_api_url);
+		console.log('render SolaSearch professionals', this.state.professionals);
 		
 		return (
 			<div className={"SolaSearch " + this.state.mode}>
@@ -66,12 +68,14 @@ var SolaSearch = React.createClass({
 					date={this.state.date} 
 					lat={this.state.lat}
 					lng={this.state.lng}
+					loading={this.state.loading}
 					location={this.state.location}
 					location_id={this.state.location_id}
 					location_name={this.state.location_name}
 					fingerprint={this.state.fingerprint}
 					gloss_genius_api_key={this.state.gloss_genius_api_key}
 					gloss_genius_api_url={this.state.gloss_genius_api_url}
+					onLoadMoreProfessionals={this.onLoadMoreProfessionals}
 					onShowBookingModal={this.onShowBookingModal}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
@@ -154,6 +158,33 @@ var SolaSearch = React.createClass({
 		//console.log('onShowBookingModal', professional, time, selectedService);
 		//console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
 		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [selectedService]});
+	},
+
+	onLoadMoreProfessionals: function () {
+		var self = this;
+
+		console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
+		
+		self.setState({loading: true});
+
+		$.ajax({
+			data: {
+				date: self.state.date.format('YYYY-MM-DD'),
+				fingerprint: self.state.fingerprint,
+				lat: self.state.lat,
+				lng: self.state.lng,
+				location_id: self.state.location_id,
+				location: self.state.location,
+				query: self.state.query,
+				search_after: self.state.professionals[self.state.professionals.length - 1].cursor,
+				fingerprint: self.props.fingerprint,
+			},
+			method: 'POST',
+	    url: self.props.results_path + '.json',
+		}).done(function (response) {
+			console.log('onLoadMoreProfessionals response', response);
+			self.setState({loading: false});
+		}); 
 	},
 
 
