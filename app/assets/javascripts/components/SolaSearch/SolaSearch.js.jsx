@@ -21,6 +21,7 @@ var SolaSearch = React.createClass({
 			locations: this.props.locations || [],
 			loading: false,
 			mode: this.props.mode || 'list',
+			pagination: true,
 			professional: this.props.professional,
 			professionals: this.props.professionals || [],
 			query: this.props.query,
@@ -59,7 +60,7 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		console.log('render SolaSearch professionals', this.state.professionals);
+		//console.log('render SolaSearch professionals', this.state.professionals);
 		
 		return (
 			<div className={"SolaSearch " + this.state.mode}>
@@ -77,6 +78,7 @@ var SolaSearch = React.createClass({
 					gloss_genius_api_url={this.state.gloss_genius_api_url}
 					onLoadMoreProfessionals={this.onLoadMoreProfessionals}
 					onShowBookingModal={this.onShowBookingModal}
+					pagination={this.state.pagination}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
 					results_path={this.state.results_path} 
@@ -163,7 +165,7 @@ var SolaSearch = React.createClass({
 	onLoadMoreProfessionals: function () {
 		var self = this;
 
-		console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
+		//console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
 		
 		self.setState({loading: true});
 
@@ -182,8 +184,16 @@ var SolaSearch = React.createClass({
 			method: 'POST',
 	    url: self.props.results_path + '.json',
 		}).done(function (response) {
-			console.log('onLoadMoreProfessionals response', response);
-			self.setState({loading: false});
+			//console.log('onLoadMoreProfessionals response', response);
+			if (response && response.length) {
+				var professionals = self.state.professionals.slice(0);
+				professionals.push.apply(professionals, response);
+				self.setState({loading: false, professionals: professionals}, function () {
+					self.getAvailabilities(self.getServicesGuids(response));
+				});
+			} else {
+				self.setState({loading: false, pagination: false});
+			}	
 		}); 
 	},
 
@@ -210,20 +220,33 @@ var SolaSearch = React.createClass({
 			method: 'POST',
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			//console.log('getAvailabilities response', JSON.parse(response));
-			self.setState({availabilities: JSON.parse(response)});
+			var new_availabilities = JSON.parse(response);
+			//console.log('getAvailabilities response', new_availabilities);
+			if (self.state.availabilities) {
+				//console.log('availabilities already defined!');
+				for (var i in new_availabilities) {
+					self.state.availabilities[i] = new_availabilities[i];
+				}
+				self.setState({availabilities: self.state.availabilities});
+			} else {
+				self.setState({availabilities: new_availabilities});
+			}
 		}); 
 	},
 
-	getServicesGuids: function () {
+	getServicesGuids: function (professionals) {
 		var guids = {};
 
-		for (var i = 0, ilen = this.state.professionals.length; i < ilen; i++) {
-			guids[this.state.professionals[i].guid] = [];
+		if (!professionals) {
+			professionals = this.state.professionals;
+		}
+
+		for (var i = 0, ilen = professionals.length; i < ilen; i++) {
+			guids[professionals[i].guid] = [];
 			
 			// only one service id per professional to start with
-			if (this.state.professionals[i].matched_services.length >= 1) {
-				guids[this.state.professionals[i].guid].push(this.state.professionals[i].matched_services[0].guid);
+			if (professionals[i].matched_services.length >= 1) {
+				guids[professionals[i].guid].push(professionals[i].matched_services[0].guid);
 			}
 			// for (var j = 0, jlen = this.state.professionals[i].matched_services.length; j < jlen; j++) {
 			// 	guids[this.state.professionals[i].guid].push(this.state.professionals[i].matched_services[j].guid);

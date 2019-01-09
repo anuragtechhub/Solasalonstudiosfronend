@@ -41,13 +41,19 @@ var ProfessionalResults = React.createClass({
 							query={this.props.query} 
 						/>
 					}
-					<div className="SearchResultsCount">{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
+					<div className="SearchResultsCount" style={{display: 'none'}}>{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
 				</div>
 				{professionals}
-				<div className="SearchPagination">
-					<button type="button" className="button primary" onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
-					{this.props.loading ? <div className="loading"><div className="spinner spinner-sm"></div></div> : null}
-				</div>
+				{
+					this.props.pagination 
+					? 
+					<div className="SearchPagination">
+						<button type="button" className="button primary" onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
+						{this.props.loading ? <div className="loading"><div className="spinner spinner-sm"></div></div> : null}
+					</div>
+					:
+					null
+				}
 			</div>
 		);
 	},
