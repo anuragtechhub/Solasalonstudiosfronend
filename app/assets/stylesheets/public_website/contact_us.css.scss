@@ -371,9 +371,30 @@ body.contact-us {
   }
 }
 
+body.contact-us {
+  .carousel-desktop {
+    display: block !important;
+  }
+
+  .carousel-mobile {
+    display: none !important;
+  }
+}
 
 @media (max-width : 767px) {
   body.contact-us {
+    .owl-carousel .item .img-wrap img {
+      width: 100%;
+    }
+    
+    .carousel-desktop {
+      display: none !important;
+    }
+
+    .carousel-mobile {
+      display: block !important;
+    }
+
     .owl-carousel .item .item-content h1 {
       font-size: 46px !important;
       line-height: 52px !important;
@@ -407,7 +428,7 @@ body.contact-us {
       h1 {
         font-size: 43px;
         line-height: 43px;
-        text-align: center;
+        text-align: left;
       }
     }
 
