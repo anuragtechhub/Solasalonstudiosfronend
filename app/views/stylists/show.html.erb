@@ -34,7 +34,11 @@
       <% end %>
       <ul class="contact-info">
         <% if (@stylist.phone_number.present? || @stylist.website_phone_number.present?) && @stylist.phone_number_display %>
-          <li><%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %></li>
+          <li>
+            <a href="tel:<%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %>">
+              <%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %>
+            </a>
+          </li>
         <% end %>
         <% if @stylist.website_url.present? && valid_url?(url_helper(@stylist.website_url)) %>
           <li><%= link_to t('page.salon_professional.visit_my_website').html_safe, url_helper(@stylist.website_url), :target => '_blank' %></li>
@@ -168,6 +172,7 @@
 
 <%= render 'shared/public_website/hidden_map_inputs', :salon => true %>
 <input type="hidden" id="is_salon" value="y" />
+<input type="hidden" id="i_s" value="<%= @stylist.id %>" />
 
 </div>
 

@@ -24,6 +24,21 @@ $(function () {
 
   $('.sola-select').not('.no-autobind').solaselect();
 
+  // phone number click tracking
+  $(document.body).on('click', 'a[href^="tel:"]', function (e) {
+    // e.preventDefault();
+    // e.stopPropagation();
+
+    var location_id = $('#i_l').val();
+    var stylist_id = $('#i_s').val();
+
+    if (location_id) {
+      ga('solasalonstudios.send', 'event', 'Location Phone Number', 'click', location_id);
+    } else if (stylist_id) {
+      ga('solasalonstudios.send', 'event', 'Professional Phone Number', 'click', stylist_id);
+    }
+  });
+
   // carousel
   $('.owl-carousel').not('.no-autobind').each(function () {
     var $this = $(this);
