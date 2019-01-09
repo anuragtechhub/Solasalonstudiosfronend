@@ -372,6 +372,9 @@ body.contact-us {
 }
 
 body.contact-us {
+  .mobile-br {
+    display: inline-block !important;
+  }
   .carousel-desktop {
     display: block !important;
   }
@@ -386,7 +389,9 @@ body.contact-us {
     .owl-carousel .item .img-wrap img {
       width: 100%;
     }
-    
+    .mobile-br {
+      display: block !important;
+    }
     .carousel-desktop {
       display: none !important;
     }

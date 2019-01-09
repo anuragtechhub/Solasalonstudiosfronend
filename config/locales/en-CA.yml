@@ -151,7 +151,7 @@ en-CA:
       full_name: Full Name
       market: Market
       country: Country
-      endless_possibilities: Endless Possibilities<span class="mobile-br"> </span>in 2019
+      endless_possibilities: Endless Possibilities<span class="mobile-br">&nbsp;</span>in 2019
       sola_salon_studios_home_office: Sola Salon Studios<br />Home Office
       ready_to_be_your_own_boss: Ready to be your own boss?
       sola_makes_it_easy: Sola makes it easy with move-in-ready studios alongside all the technology, support and education you need. Experience a level of creative independence and career support you won't find anywhere else.
