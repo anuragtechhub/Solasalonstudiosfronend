@@ -3,6 +3,18 @@
 
 .session-2018 {
 
+  .speakers-container {
+    max-width: 888px !important;
+  }
+
+  .inline-break {
+    display: block;
+    font-size: 4px;
+    line-height: 4px;
+    height: 4px;
+    max-height: 4px;
+  }
+
   .buy-now-button-wrapper {
     margin: 60px auto 80px auto;
   }
@@ -217,7 +229,7 @@
 
     p, h4 {
       margin-bottom: 15px !important;
-      font-size: 19px;
+      font-size: 20px;
       line-height: 25px;
     }
 
@@ -236,6 +248,7 @@
   	font-weight: bold;
   	color: $brand-pink;
   	margin: 0;
+    margin-bottom: 4px;
   }
 
   h4.blue {
@@ -246,6 +259,7 @@
     margin: 0;
     font-family: 'Lato', sans-serif;
     font-weight: normal;
+    margin-bottom: 7px;
   }
 
   h2.highlight {
@@ -429,7 +443,7 @@
     display: block;
     clear: both;
     margin-bottom: 20px !important;
-    margin-top: 30px !important;
+    margin-top: 40px !important;
 
     ul {
       margin: 0 0 0 20px !important;
@@ -525,7 +539,7 @@
     }
 
     .columns {
-      cursor: pointer;
+      //cursor: pointer;
     }
 
     .name {
@@ -720,7 +734,7 @@
 
       .text {
         position: absolute;
-        bottom: -70px;
+        bottom: -90px;
         left: 50%;
         margin-left: -140px;
       }
@@ -734,11 +748,12 @@
       border-radius: 45px;
       
       .fa-play {
-        line-height: 25px !important;
-        font-size: 25px !important;
+        line-height: 31px !important;
+        font-size: 31px !important;
         color: $brand-pink !important;
         position: relative;
-        top: 35px;
+        top: 31px;
+        left: 5px;
       }
     }
 
@@ -902,6 +917,10 @@
 
 @media (max-width: 550px) {
   .session-2018 {
+    .owl-carousel .item .img-wrap {
+      left: -35%;
+      position: relative;
+    }
     .owl-carousel .item .img-wrap img {
       left: -25%;
     }
