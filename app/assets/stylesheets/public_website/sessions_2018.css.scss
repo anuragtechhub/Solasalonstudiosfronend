@@ -562,6 +562,8 @@
   }
 
   .event-partners {
+    margin-bottom: 20px;
+
     img {
       margin: 20px auto 40px auto;
     }
@@ -569,99 +571,19 @@
     .logos {
 
       img {
-        margin: 20px 25px 20px 0 !important;
-        width: auto;
-        height: (65px / 2.1);
-        // -webkit-filter: grayscale(100%);
-        // filter: grayscale(100%);
+        position: relative;
+        margin: 30px;
 
-        &.hairdo {
-          position: relative;
-          top: -3px;
-        }
-
-        &.ienvy {
-          position: relative;
-          top: 5px;
-          height: (65px / 1.5);
-        }
-
-        &.opi {
-          position: relative;
-          top: -1px;
-        }
-
-        &.hairbrained {
-          position: relative;
-          top: 8px;
-          height: (65px / 1.5);
-        }
-
-        &.mizani {
-          position: relative;
-          top: -5px;
-          height: (65px / 2.7);
-        }
-
-        &.muse {
-          position: relative;
+        &.hattori {
           top: 4px;
-          height: (65px / 1.5);
-        }
-
-        &.bioelements {
-          position: relative;
-          top: 4px;
-          height: (65px / 1.5);
-        }
-
-        &.making_it_matter {
-          position: relative;
-          top: 7px;
-          height: (65px / 1.3);
-        }
-
-        &.solagenius {
-          position: relative;
-          top: -3px;
-        }
-
-        &.barberology {
-          position: relative;
-          top: 3px;
-        }
-
-        &.babyliss_pro {
-          position: relative;
-          top: 3px;
         }
 
         &.cosmoprof {
-          position: relative;
-          top: -5px
+          top: -4px;
         }
 
-        &.saloncentric {
-          position: relative;
-          top: -2px;
-        }
-
-        &.samvilla {
-          height: 24px;
-          position: relative;
-          top: -3px;
-        }
-
-        &.sola {
-          height: (65px / 1.5);
-          position: relative;
-          top: 4px;
-        }
-
-        &.passion_squared {
-          position: relative;
-          top: -2px;
-          height: (65px / 2.5);
+        &.inspiringchampions {
+          top: -15px;
         }
       }
     }
@@ -855,10 +777,10 @@
       margin: 10px 30px 0 30px !important;
     }
     .event-details, .date-and-time, .description, .header { 
-      p, li, .check-row {
-        font-size: 13px !important;
-        line-height: 23px !important;
-      }
+      // p, li, .check-row {
+      //   font-size: 13px !important;
+      //   line-height: 23px !important;
+      // }
       .check-row {
         white-space: nowrap;
       }
@@ -917,36 +839,64 @@
 
 @media (max-width: 550px) {
   .session-2018 {
+    .owl-carousel .learn-more-button {
+      bottom: 5px;
+    }
+
     .owl-carousel .item .img-wrap {
-      left: -35%;
+      left: 0;
       position: relative;
+      height: auto;
     }
     .owl-carousel .item .img-wrap img {
-      left: -25%;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
   }
 }
 
 @media (max-width: 500px) {
   .session-2018 {
+    .owl-carousel .item .img-wrap {
+      left: 0;
+      position: relative;
+      height: auto;
+    }
     .owl-carousel .item .img-wrap img {
-      left: -35%;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
   }
 }
 
 @media (max-width: 450px) {
   .session-2018 {
+    .owl-carousel .item .img-wrap {
+      left: 0;
+      position: relative;
+      height: auto;
+    }
     .owl-carousel .item .img-wrap img {
-      left: -45%;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
   }
 }
 
 @media (max-width: 400px) {
   .session-2018 {
+    .owl-carousel .item .img-wrap {
+      left: 0;
+      position: relative;
+      height: auto;
+    }
     .owl-carousel .item .img-wrap img {
-      left: -55%;
+      left: 0;
+      width: 100%;
+      height: auto;
     }
   }
 }
