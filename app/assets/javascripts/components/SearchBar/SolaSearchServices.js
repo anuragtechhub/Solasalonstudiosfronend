@@ -55,7 +55,7 @@ var SolaSearchServices = {
         "name": "Women's Cut",
  
     }, {
-        "name": "Women’s Dry Cut",
+        "name": "Women's Dry Cut",
  
     }, {
         "name": "Women's Trim",
@@ -64,7 +64,7 @@ var SolaSearchServices = {
         "name": "Bang Trim",
  
     }, {
-        "name": "Kid’s Cut",
+        "name": "Kid's Cut",
  
     }],
     "Weaves": [{
@@ -312,7 +312,7 @@ var SolaSearchServices = {
         "name": "Brazilian Sugaring",
  
     }, {
-        "name": "Men’s Chest Sugaring",
+        "name": "Men's Chest Sugaring",
  
     }, {
         "name": "Men's Back Sugaring",

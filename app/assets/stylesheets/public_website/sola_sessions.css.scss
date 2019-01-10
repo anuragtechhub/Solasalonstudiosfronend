@@ -69,15 +69,15 @@
 			position: relative;
     	top: -5px;    	
       display: inline-block;
-      width: 88px;
-      height: 88px;
+      width: 66px;
+      height: 66px;
       float: left;
       margin-right: 20px;
 
       &.san-diego {
         background: asset-data-url('sessions/san-diego-circle.png') no-repeat center;
-        background-size: 88px 88px;
-        border-radius: 44px;
+        background-size: 66px 66px;
+        border-radius: 33px;
       }
 
       // &.west-palm-beach {

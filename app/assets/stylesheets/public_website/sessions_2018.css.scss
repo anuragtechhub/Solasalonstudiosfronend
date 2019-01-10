@@ -3,6 +3,35 @@
 
 .session-2018 {
 
+  .buy-now-button-wrapper {
+    margin: 60px auto 80px auto;
+  }
+
+  a.buy-now-button, a.buy-now-button:link, a.buy-now-button:visited, a.buy-now-button:hover, a.buy-now-button:active {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFF;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+    padding: 20px 90px;
+    border-radius: 11px;
+    box-shadow: 0 3px 11px rgba(0,0,0,0.3);
+    background: rgb(255,106,201); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255,106,201,1) 0%, rgba(255,2,171,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,106,201,1) 0%,rgba(255,2,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,106,201,1) 0%,rgba(255,2,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6ac9', endColorstr='#ff02ab',GradientType=0 ); /* IE6-9 */   
+
+    &.disabled {
+      cursor: default;
+      pointer-events: none;
+      background: gray;
+      opacity: 0.42;
+    } 
+  }
+
   .owl-carousel {
     .learn-more-button {
       margin-left: -65px;
@@ -89,7 +118,7 @@
   .early-bird-general-admission {
     // margin: 30px auto 50px auto;
     max-width: 640px;
-    margin: 30px auto;
+    margin: 30px auto 40px auto;
     display: block;
     clear: both;
     overflow: hidden;
@@ -184,12 +213,16 @@
   .ticket-includes {
     text-align: center;
     max-width: 640px;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
 
     p, h4 {
       margin-bottom: 15px !important;
       font-size: 19px;
       line-height: 25px;
+    }
+
+    h4 {
+      font-size: 23px;
     }
 
     strong {
@@ -203,6 +236,16 @@
   	font-weight: bold;
   	color: $brand-pink;
   	margin: 0;
+  }
+
+  h4.blue {
+    font-size: 21px;
+    line-height: 31px;
+    font-weight: bold;
+    color: $brand-primary;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: normal;
   }
 
   h2.highlight {
@@ -385,7 +428,8 @@
   .event-details, .date-and-time, .description {  
     display: block;
     clear: both;
-    margin-bottom: 30px !important;
+    margin-bottom: 20px !important;
+    margin-top: 30px !important;
 
     ul {
       margin: 0 0 0 20px !important;
@@ -667,6 +711,21 @@
     position: relative;
     margin-top: 0px;
 
+    &.owl-carousel .owl-item .item a {
+      overflow: visible;
+    }
+
+    .giant-video-button-wrapper {
+      position: relative;
+
+      .text {
+        position: absolute;
+        bottom: -70px;
+        left: 50%;
+        margin-left: -140px;
+      }
+    }
+
     .giant-video-btn {
       background: #FFF !important;
       width: 90px !important;
@@ -675,27 +734,29 @@
       border-radius: 45px;
       
       .fa-play {
-        font-size: 31px;
-        line-height: 20px !important;
-        font-size: 20px !important;
+        line-height: 25px !important;
+        font-size: 25px !important;
         color: $brand-pink !important;
         position: relative;
         top: 35px;
       }
+    }
+
 
       .text {
         // position: absolute;
         // bottom: -30px;
         // left: -11px;
-        font-size: 14px !important;
-        font-weight: 700 !important;
+        @include helvetica;
+        font-size: 20px !important;
+        line-height: 30px !important;
+        font-weight: normal !important;
         color: #FFF !important;
         display: block;
         white-space: nowrap !important;
         word-spacing: 1px;
         letter-spacing: 1px;
       }
-    }
   }
 
   .discounted-rooms {
@@ -708,7 +769,7 @@
 	    line-height: 55px !important;
       color: #000;
       font-weight: normal;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     h3 {
     	@include chalet_paris;
@@ -716,7 +777,7 @@
 	    line-height: 41px !important;
       color: #000;
       font-weight: normal;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
 
       strong {
         @include chalet_new_york;
@@ -727,13 +788,13 @@
     h4 {
       font-size: 21px;
       letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
     p {
     	margin-bottom: 0;
     }
     .button-wrapper {
-      margin: 10px 0;
+      margin: 30px 0;
     }
     a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
     	@include chalet_new_york;
@@ -746,6 +807,14 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: bold !important;
+      margin-bottom: 0;
+
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        //background: gray;
+        opacity: 0.42;
+      }
     }
   }
 }
