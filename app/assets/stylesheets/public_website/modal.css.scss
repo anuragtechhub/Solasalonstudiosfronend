@@ -69,11 +69,17 @@
       color: #FFF;
     }
 
+    .text {
+      font-size: 15px;
+    }
+
     .modal-header {
+      display: block;
       text-align: center;
+      border-bottom: 0;
 
       .name {
-        margin: 3px 0;
+        margin: 13px 0 3px 0;
       }
 
       .name, .company {

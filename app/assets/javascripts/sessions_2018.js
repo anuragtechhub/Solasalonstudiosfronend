@@ -38,13 +38,13 @@ $(function () {
   }
   initModals();
 
-  // $(document).on('click', '.speakers .columns', function () {
-  //   var id = $(this).data('rel');
-  //   if (id) {
-  //     $('.bio[data-rel=' + id + ']').data('modal').open();
-  //   }
-  //   return false;
-  // });
+  $(document).on('click', '.speakers .columns', function () {
+    var id = $(this).data('rel');
+    if (id) {
+      $('.bio[data-rel=' + id + ']').data('modal').open();
+    }
+    return false;
+  });
 
   $(document).on('click', '.modal-header .company a', function () {
     return false;
