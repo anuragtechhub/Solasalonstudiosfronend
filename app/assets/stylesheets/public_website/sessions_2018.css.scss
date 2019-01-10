@@ -528,7 +528,7 @@
   }
 
   .speakers {
-    margin-bottom: 30px !important;
+    margin: 50px 0 0 0 !important;
 
     h2.bb {
       margin-bottom: 40px !important;
@@ -562,7 +562,7 @@
   }
 
   .event-partners {
-    margin-bottom: 20px;
+    margin: 0px;
 
     img {
       margin: 20px auto 40px auto;
@@ -578,11 +578,35 @@
           top: 4px;
         }
 
-        &.cosmoprof {
-          top: -4px;
+        &.paulmitchell {
+          max-width: 130px;
+          height: auto;
+        }        
+
+        &.salongenius {
+          max-width: 160px;
+          height: auto;
+        }
+
+        &.pulpriot {
+          max-width: 105px;
+          height: auto;
+        }
+
+        &.salontech {
+          top: 5px;
+          max-width: 120px;
+          height: auto;
+        }
+
+        &.sola {
+          //top: -20px;
+          left: -4px;
         }
 
         &.inspiringchampions {
+          max-width: 142px;
+          height: auto;
           top: -15px;
         }
       }
