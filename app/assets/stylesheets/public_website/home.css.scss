@@ -53,6 +53,56 @@
   margin: 60px auto -15px auto;
 }
 
+.home-trilogy {
+  a, a:link, a:visited, a:hover, a:active {
+    position: relative;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+
+    span.text {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    h2 {
+      color: #FFF !important;
+    }
+
+    span.button {
+      @include chalet_new_york;
+      border: 2px solid #FFF !important;
+      color: #FFF !important;
+      font-size: 13px !important;
+      line-height: 13px !important;
+      padding: 15px 30px 14px 30px !important;
+      letter-spacing: 0 !important;
+      border-radius: 4px !important;
+
+      &:hover, &:active {
+        background: #FFF !important;
+        color: $brand-primary !important;
+      }
+    }
+  }
+
+  a:hover, a:active {
+    span.button {
+      background: #FFF !important;
+      color: $brand-primary !important;
+    }
+  }
+}
+
 @media (max-width: 650px) {
   .home-tile-row {
     margin-top: 30px;
