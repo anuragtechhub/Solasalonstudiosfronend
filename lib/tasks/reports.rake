@@ -73,7 +73,7 @@ namespace :reports do
   end
 
   # rake reports:locations
-  # rake reports:locations[2017-01-01]
+  # rake reports:locations[2018-12-01]
   task :locations, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -131,7 +131,7 @@ namespace :reports do
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[206,2018-06-01]
+  # rake reports:location[2,2018-12-01]
   task :location, [:location_id, :start_date] => :environment do |task, args|
     p "begin location report..."
 
@@ -341,11 +341,19 @@ namespace :reports do
     data[:salon_professionals_on_solagenius] = location.stylists.select{|s| s.has_sola_genius_account }.size
     data[:salon_professionals_on_sola_pro] = location.stylists.where("encrypted_password IS NOT NULL AND encrypted_password <> ''").size
 
+    # contact form submissions
+    data[:contact_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', start_date, end_date, location.id).count
+    data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, location.id).count
+    data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, location.id).count
+
+    #data[:contact_form_submissions_prev_month] = 1 if data[:contact_form_submissions_prev_month] == 0
+    #data[:contact_form_submissions_prev_year] = 1 if data[:contact_form_submissions_prev_year] == 0
+
     locals = {
       :@data => data
     }
 
-    #p "got data #{locals.inspect}"
+    p "got data #{locals.inspect}"
     p "got data..."
 
     html_renderer = HTMLRenderer.new
