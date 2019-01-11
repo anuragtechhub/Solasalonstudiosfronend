@@ -4,6 +4,11 @@ class HomeController < PublicWebsiteController
     # if Thread.current[:current_admin] 
     #   redirect_to :rails_admin
     # end
+    if I18n.locale.to_s == 'en'
+      render 'index_en'
+    else 
+      render 'index_en_ca'
+    end
   end
 
   def five_thousand
