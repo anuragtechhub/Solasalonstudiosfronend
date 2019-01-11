@@ -33,7 +33,7 @@ class BooknowController < PublicWebsiteController
       end
 
       respond_to do |format|
-        p "format=#{format}"
+        #p "format=#{format}"
         format.html
         format.json
       end
