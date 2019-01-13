@@ -76,7 +76,7 @@
 
   .for-customers.tile-for-customers-find-a-stylist {
     width: 63%;
-    min-height: 200px;
+    //min-height: 200px;
     background: $brand-primary;
 
     .booknow-by-solagenius {
@@ -104,7 +104,7 @@
 
   .for-professionals.tile-for-professionals-own-your-salon {
     width: 37%;
-    min-height: 200px;
+    //min-height: 200px;
     background: $brand-pink;
     margin-bottom: 0;
 
@@ -130,6 +130,7 @@
     p {
       font-size: 18px;
       line-height: 26px;
+      margin-bottom: 0;
     }
 
     .button-wrapper {
