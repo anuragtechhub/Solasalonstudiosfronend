@@ -71,22 +71,32 @@
     display: block;
     float: left;
     box-sizing: border-box; 
-    padding: 30px;
+    padding: 160px 30px 90px 30px;
+    //height: 666px;
+    position: relative;
   }
 
   .for-customers.tile-for-customers-find-a-stylist {
     width: 63%;
 
     //min-height: 200px;
-    background: $brand-primary;
+    background: #AFAFAF asset-url('home/hero-for-customers.jpg') no-repeat center top; 
+    background-size: 100%;
 
     .tile-content {
-      max-width: 777px;
+      // position: absolute;
+      // top: 25%;
+      // left: 20%;
+      // right: 5%;
+      max-width: 1080px;
+      padding-left: 25%;
+      //padding: 25% 5% 0 20%;
     }
 
     h2 {
       margin: 15px 0 10px 0;
       font-size: 40px;
+      line-height: 40px;
     }
 
     p {
@@ -129,11 +139,23 @@
   .for-professionals.tile-for-professionals-own-your-salon {
     width: 37%;
     //min-height: 200px;
-    background: $brand-pink;
+    background: #AFAFAF asset-url('home/hero-for-professionals.jpg') no-repeat center top; 
+    background-size: 100%;
+
     margin-bottom: 0;
+
+    .tile-content {
+      // position: absolute;
+      // top: 25%;
+      // right: 30px;
+      // left: 25%;
+      //padding: 25% 30px 0 25%;
+      padding-left: 25%;
+    }
 
     h2 {
       font-size: 40px;
+      line-height: 40px;
       margin: 20px 0;
     }
 
@@ -177,7 +199,7 @@
       &:hover, &:active {
         background: #FFF !important;
         color: $brand-primary !important;
-        opacity: 0.6;
+        opacity: 0.55;
       }
     }
   }
@@ -235,6 +257,139 @@
     }
   }
 }
+
+@media (max-width: 1620px) {
+  .home-container-full-width {
+
+    .for-customers.tile-for-customers-find-a-stylist {
+      padding: 120px 30px 60px 30px;
+    }
+
+    .for-professionals.tile-for-professionals-own-your-salon {
+      padding: 120px 30px 60px 30px;
+    }
+  }
+}
+
+@media (max-width: 1450px) {
+  .home-container-full-width {
+
+    .for-customers.tile-for-customers-find-a-stylist {
+      padding: 90px 30px 60px 30px;
+
+      .tile-content {
+        padding-left: 19%;
+      }
+    }
+
+    .for-professionals.tile-for-professionals-own-your-salon {
+      padding: 90px 30px 60px 30px;
+
+      .tile-content {
+        padding-left: 19%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1350px) {
+  .home-container-full-width {
+
+    .for-customers.tile-for-customers-find-a-stylist {
+      padding: 60px 30px 50px 30px;
+      .tile-content {
+        padding-left: 14%;
+      }     
+    }
+
+    .for-professionals.tile-for-professionals-own-your-salon {
+      padding: 60px 30px 50px 30px;
+      .tile-content {
+        padding-left: 14%;
+      }    
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .home-container-full-width {
+
+    .for-customers.tile-for-customers-find-a-stylist {
+      padding: 50px 30px 40px 30px;
+      .tile-content {
+        padding-left: 7%;
+      }     
+    }
+
+    .for-professionals.tile-for-professionals-own-your-salon {
+      padding: 50px 30px 40px 30px;
+      .tile-content {
+        padding-left: 11%;
+      }    
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  .home-container-full-width {
+    display: block;
+    margin-bottom: -30px;
+
+    .for-customers.tile-for-customers-find-a-stylist {
+      background: #AFAFAF asset-url('home/hero-for-customers.jpg') no-repeat center top; 
+      background-size: cover;
+      padding: 0;
+      width: 100%;
+      clear: both;
+      float: none;
+
+
+      .tile-content {
+        padding: 30px;
+        max-width: 100%;
+
+        .booknow-by-solagenius {
+          text-align: center;
+        }
+      }
+    }
+
+    .for-professionals.tile-for-professionals-own-your-salon {
+      background: #AFAFAF asset-url('home/hero-for-professionals.jpg') no-repeat center top; 
+      background-size: cover;      
+      padding: 15px 0 0 0;
+      width: 100%;
+      clear: both;
+      float: none;
+
+      .tile-content {
+        padding: 30px;
+
+        .button {
+          max-width: 100%;
+          margin-bottom: 0;
+        }
+
+        .button-wrapper {
+          margin-bottom: 0;
+        }
+      }
+
+      ul li a, ul li a:link, ul li a:visited, ul li a:hover, ul li a:active {
+        font-size: 17px;
+        line-height: 17px;
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
 
 @media (max-width: 767px) {
   .home-container-full-width .for-professionals, .home-container-full-width .for-customers, .home-trilogy .columns {

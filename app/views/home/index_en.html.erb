@@ -4,8 +4,8 @@
       <h5><%= t('page.home.for_customers') %></h5>
       <h2>
         <%= t('page.home.find_a_sola') %>
-  <!--       <span class="desktop-br">&nbsp;</span>
-   -->      <span class="home-services-animation">
+        <span class="mobile-br">&nbsp;</span>
+        <span class="home-services-animation">
           <span class="active"><%= t('services.hairstylist') %></span>
           <span><%= t('services.esthetician') %></span>
           <span><%= t('services.nail_tech') %></span>
@@ -29,19 +29,21 @@
     </div>  
   </div>
   <div class="for-professionals tile-for-professionals-own-your-salon">
-    <h5><%= t('page.home.for_professionals') %></h5>
-    <h2><%= t('page.home.own_your_salon') %></h2>
-    <ul>
-      <li>
-        <h4><%= link_to "//www.youtube.com/watch?v=nbHFs0XjS8s", :rel => 'nbHFs0XjS8s', :class => 'play-video' do %><span class="forward-arrow-white"></span><%= t('page.home.watch_our_video') %><% end %></h4>
-      </li>
-      <li><h4><%= link_to :why_sola do %><span class="forward-arrow-white"></span><%= t('page.why_sola.title') %><% end %></h4></li>
-      <li><h4><%= link_to :our_studios do %><span class="forward-arrow-white"></span><%= t('page.our_studios.title') %><% end %></h4></li>
-    </ul>
-    <div class="button-wrapper">
-      <%= link_to :why_sola, :class => 'button' do %><%= t('page.home.learn_more') %><% end %>  
+    <div class="tile-content">
+      <h5><%= t('page.home.for_professionals') %></h5>
+      <h2><%= t('page.home.own_your_salon') %></h2>
+      <ul>
+        <li>
+          <h4><%= link_to "//www.youtube.com/watch?v=nbHFs0XjS8s", :rel => 'nbHFs0XjS8s', :class => 'play-video' do %><span class="forward-arrow-white"></span><%= t('page.home.watch_our_video') %><% end %></h4>
+        </li>
+        <li><h4><%= link_to :why_sola do %><span class="forward-arrow-white"></span><%= t('page.why_sola.title') %><% end %></h4></li>
+        <li><h4><%= link_to :our_studios do %><span class="forward-arrow-white"></span><%= t('page.our_studios.title') %><% end %></h4></li>
+      </ul>
+      <div class="button-wrapper">
+        <%= link_to :why_sola, :class => 'button' do %><%= t('page.home.learn_more') %><% end %>  
+      </div>
+      <p><%= t('page.home.tagline').html_safe %></p>
     </div>
-    <p><%= t('page.home.tagline').html_safe %></p>
   </div>
 </div>
 
