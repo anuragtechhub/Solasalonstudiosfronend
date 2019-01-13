@@ -56,6 +56,10 @@
 .home-container-full-width {
   position: relative;
   max-width: 100% !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 
   &:after {
     content: "";
@@ -71,7 +75,7 @@
   }
 
   .for-customers.tile-for-customers-find-a-stylist {
-    width: 67%;
+    width: 63%;
     min-height: 200px;
     background: $brand-primary;
 
@@ -98,21 +102,52 @@
     }
   }
 
-  .for-professionals {
-    width: 33%;
+  .for-professionals.tile-for-professionals-own-your-salon {
+    width: 37%;
     min-height: 200px;
     background: $brand-pink;
+    margin-bottom: 0;
+
+    h2 {
+      font-size: 40px;
+      margin: 20px 0;
+    }
+
+    ul {
+      margin: -10px 0 0 0;
+    }
+
+    ul li span.forward-arrow-white {
+      float: none;
+      top: 2px;
+      margin-right: 15px;
+    }
+
+    ul li a, ul li a:link, ul li a:visited, ul li a:hover, ul li a:active {
+      border-bottom: 0;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    .button-wrapper {
+      margin: 20px 0 15px 0;
+    }
 
     .button {
       @include chalet_new_york;
       border: 2px solid #FFF !important;
       background: #FFF !important;
       color: $brand-primary !important;
-      font-size: 13px !important;
-      line-height: 13px !important;
+      font-size: 14px !important;
+      line-height: 14px !important;
       padding: 15px 30px 14px 30px !important;
       letter-spacing: 0 !important;
       border-radius: 4px !important;
+      width: 100%;
+      max-width: 288px;
 
       &:hover, &:active {
         background: #FFF !important;
