@@ -76,20 +76,44 @@
 
   .for-customers.tile-for-customers-find-a-stylist {
     width: 63%;
+
     //min-height: 200px;
     background: $brand-primary;
+
+    .tile-content {
+      max-width: 777px;
+    }
+
+    h2 {
+      margin: 15px 0 10px 0;
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+
+    .SearchBar {
+      margin-top: 88px;
+    }
 
     .booknow-by-solagenius {
       font-size: 19px;
       line-height: 19px;
       letter-spacing: 1px;
       word-spacing: 1px;
-      margin: 30px 0 0 0;
+      margin: 15px 0 0 0;
       @include chalet_paris;
 
       strong {
         @include chalet_london;
       }
+    }
+
+    .home-services-animation {
+      max-height: 40px;
+      min-height: 40px;
+      top: 9px;
     }
 
     .home-services-animation span {
@@ -153,6 +177,7 @@
       &:hover, &:active {
         background: #FFF !important;
         color: $brand-primary !important;
+        opacity: 0.6;
       }
     }
   }
