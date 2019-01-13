@@ -67,24 +67,64 @@
     display: block;
     float: left;
     box-sizing: border-box; 
+    padding: 30px;
   }
 
-  .for-customers {
+  .for-customers.tile-for-customers-find-a-stylist {
     width: 67%;
     min-height: 200px;
     background: $brand-primary;
+
+    .booknow-by-solagenius {
+      font-size: 19px;
+      line-height: 19px;
+      letter-spacing: 1px;
+      word-spacing: 1px;
+      margin: 30px 0 0 0;
+      @include chalet_paris;
+
+      strong {
+        @include chalet_london;
+      }
+    }
+
+    .home-services-animation span {
+      @include chalet_london;
+      border-bottom: 0;
+    }
+
+    h2, h5, p {
+      color: #FFF;
+    }
   }
 
   .for-professionals {
     width: 33%;
     min-height: 200px;
     background: $brand-pink;
+
+    .button {
+      @include chalet_new_york;
+      border: 2px solid #FFF !important;
+      background: #FFF !important;
+      color: $brand-primary !important;
+      font-size: 13px !important;
+      line-height: 13px !important;
+      padding: 15px 30px 14px 30px !important;
+      letter-spacing: 0 !important;
+      border-radius: 4px !important;
+
+      &:hover, &:active {
+        background: #FFF !important;
+        color: $brand-primary !important;
+      }
+    }
   }
 }
 
 .home-trilogy {
   margin-top: 20px;
-  
+
   a, a:link, a:visited, a:hover, a:active {
     position: relative;
     text-align: center;
