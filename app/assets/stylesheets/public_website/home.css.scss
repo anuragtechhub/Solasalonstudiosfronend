@@ -83,6 +83,12 @@
     background: #AFAFAF asset-url('home/hero-for-customers.jpg') no-repeat center top; 
     background-size: 100%;
 
+    .mobile-br {
+      width: 1px;
+      font-size: 1px;
+      margin: 0 -5px;
+    }
+
     .tile-content {
       // position: absolute;
       // top: 25%;
@@ -123,7 +129,7 @@
     .home-services-animation {
       max-height: 40px;
       min-height: 40px;
-      top: 9px;
+      top: 10px;
     }
 
     .home-services-animation span {
