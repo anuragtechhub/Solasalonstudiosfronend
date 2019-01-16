@@ -1,1 +1,0 @@
-$(function(){function t(){$(".blog-post-article .summary iframe").each(function(){var t=$(this),o=t.data("proportion"),i=t.attr("width"),r=t.width();o||(o=t.attr("height")/i,t.data("proportion",o)),r!=i&&t.css("height",Math.round(r*o)+"px")})}$(window).on("load resize refresh",t),t()});
