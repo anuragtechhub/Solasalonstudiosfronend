@@ -69,6 +69,6 @@ module Solasalonstudios
     config.assets.precompile += ['public_website.css', 'public_website.js', 'mysola.js', 'locations.js', 'locations_ca.js', 'locations_br.js', 'locations_state_select.js', 'salon_stylists.js', 'blog.js', 'contact_us.js', 'contact_us_ca.js', 'own_your_salon.js', 'salon_professionals.js', 'faq.js', 'sessions.js', 'sessions_2018.js']
     config.assets.precompile += ['bootstrap4hack.css', 'slick.js', 'slick.css', 'slick-theme.css', 'sejasola.css', 'sejasola.js']
 
-    config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => 'solasalonstudios', :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}}
+    config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => ENV['FOG_DIRECTORY'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}}
   end
 end

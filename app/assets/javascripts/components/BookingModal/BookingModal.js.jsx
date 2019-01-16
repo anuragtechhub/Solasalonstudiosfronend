@@ -87,7 +87,7 @@ var BookingModal = React.createClass({
 
 		if (this.props.visible) {
 			return (
-				<div className="BookingModalOverlay HideBookingModal" onClick={this.props.onHideBookingModal}>
+				<div className="BookingModalOverlay HideBookingModal">
 					<div className={"BookingModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="BookingModal">
 						<BookingModalHeader {...this.props} {...this.state} onBack={this.onBack} />
 						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
