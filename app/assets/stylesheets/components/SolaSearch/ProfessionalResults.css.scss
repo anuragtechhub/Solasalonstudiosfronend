@@ -226,12 +226,12 @@
 
 		.ProfessionalAvailabilities {
 			position: absolute;
-    	bottom: 3px;
+    	bottom: -2px;
     	left: 0;
     	right: 0;
 
     	&.UnknownAvailability {
-    		bottom: -5px;
+    		bottom: 10px;
     	}
 
     	.back-button, .forward-button {
@@ -247,6 +247,7 @@
     		border-radius: 3px;
     		cursor: pointer;
     		color: #000;
+    		margin-top: 1px;
 
     		// &:hover, &:active {
     		// 	color: #AFAFAF;
@@ -263,16 +264,16 @@
 
     	.ProfessionalAvailabilitiesWrapper {
 	    	width: 100%;
-	    	height: 53px;
+	    	height: 69px;
 	    	overflow: hidden;
 	    	overflow-x: scroll;
 	    	white-space: nowrap;
 	    	position: relative;
-    		bottom: -8px;
+    		bottom: -18px;
     		//padding: 0 33px;
     		
-    		.availabilities::-webkit-scrollbar {
-					width: 0px;  /* remove scrollbar space */
+    		&::-webkit-scrollbar {
+					//width: 0px;  /* remove scrollbar space */
 					background: transparent;  /* optional: just make scrollbar invisible */
 				}
     	}

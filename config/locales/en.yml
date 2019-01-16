@@ -35,8 +35,9 @@ en:
     services_and_suggestions_placeholder: Haircut, salon name, stylist name
     please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
     please_enter_a_service: Please enter a service (e.g. haircut)
-    please_enter_a_location: Please enter your location
+    please_enter_your_location: Please enter your location
     enter_city_state_or_zipcode: Enter city, state or zip code
+    enter_your_location: Enter your location
     check_availability: Check Availability
     professionals_for_query: professionals for '%{query}'
     back: Back
