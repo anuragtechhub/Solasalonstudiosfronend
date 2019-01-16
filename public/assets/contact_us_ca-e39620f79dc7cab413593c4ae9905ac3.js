@@ -1,0 +1,1 @@
+$(function(){$(".select-a-state .option").click(),window.contactUsFormSuccessHandler=function(){window.location.href="/contact-us-thank-you"}});

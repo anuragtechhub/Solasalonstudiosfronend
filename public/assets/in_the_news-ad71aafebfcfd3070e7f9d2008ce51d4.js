@@ -1,0 +1,1 @@
+$(function(){$(".in-the-news-article").on("click",function(){return window.location.href=$(this).data("href"),!1}),$(".in-the-news-article .social a").on("click",function(n){n.stopPropagation()})});

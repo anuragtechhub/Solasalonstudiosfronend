@@ -1,0 +1,1 @@
+$(function(){$(".grid-item").on("mouseenter",function(){var i=$(this);i.find(".back").addClass("active")}),$(".grid-item").on("mouseleave",function(){var i=$(this);i.find(".back").removeClass("active")})});
