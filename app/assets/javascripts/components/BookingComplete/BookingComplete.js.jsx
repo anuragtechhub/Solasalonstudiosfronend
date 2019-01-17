@@ -40,8 +40,8 @@ var BookingComplete = React.createClass({
 								 data-title={I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}
 								 data-description={service_description}
 								 data-address={this.props.professional.business_address.replace(/#/g, '')}
-								 data-start={moment(this.props.time.start).format('MMMM D, YYYY HH:mm')}
-								 data-end={moment(this.props.time.end).format('MMMM D, YYYY HH:mm')}></span>
+								 data-start={this.props.time.start}
+								 data-end={this.props.time.end}></span>
 						</div>
 					</div>
 					<div className="BookingCompleteBox">

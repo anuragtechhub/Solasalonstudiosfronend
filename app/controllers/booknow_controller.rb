@@ -20,7 +20,7 @@ class BooknowController < PublicWebsiteController
 
     # results_response = `curl -X GET http://httpstat.us/500`
 
-    p "#{results_response}"
+    #p "#{results_response}"
 
     begin
       @professionals = JSON.parse(results_response)
@@ -52,6 +52,16 @@ class BooknowController < PublicWebsiteController
 	end
 
 	def booking_complete
+    #p "params[:time]=#{params[:time]}"
+    time_json = JSON.parse(params[:time])
+    #p "time_json=#{time_json}"
+    start_time = time_json['start'].to_datetime.utc.to_s
+    end_time = time_json['end'].to_datetime.utc.to_s
+    #p "start_time=#{start_time}, end_time=#{end_time}"
+    @time_json = {
+      start: start_time,
+      end: end_time
+    }
 	end
 
   private

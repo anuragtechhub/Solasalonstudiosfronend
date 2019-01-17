@@ -83,7 +83,7 @@ var BookingModal = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('BookingModal', this.props.services);
+		console.log('BookingModal', this.props.time);
 
 		if (this.props.visible) {
 			return (
@@ -103,6 +103,7 @@ var BookingModal = React.createClass({
 	},
 
 	renderBookingCompleteForm: function () {
+		console.log('booking complete form', JSON.stringify(this.state.time));
 		return (
 			<form ref="BookingCompleteForm" method="post" action={this.props.booking_complete_path} style={{display: 'none'}}>
 				<input name="professional" type="hidden" value={JSON.stringify(this.props.professional)} />
