@@ -63,29 +63,29 @@ class BooknowController < PublicWebsiteController
   end
 
   def gloss_genius_search_query_string
-    if params[:lat].blank? || params[:lng].blank?
-      #p "WE GOTTA REVERSE GEOCODE THIS MUTHA"
-      result = nil
-      results = Geocoder.search(request.remote_ip)
-      #p "results=#{results.inspect}"
-      if results && results.length > 0
-        result = results.first
-      end
+    # if params[:lat].blank? || params[:lng].blank?
+    #   #p "WE GOTTA REVERSE GEOCODE THIS MUTHA"
+    #   result = nil
+    #   results = Geocoder.search(request.remote_ip)
+    #   #p "results=#{results.inspect}"
+    #   if results && results.length > 0
+    #     result = results.first
+    #   end
 
-      #p "result=#{result.city}, #{result.state}, #{result.latitude}, #{result.longitude}"
+    #   #p "result=#{result.city}, #{result.state}, #{result.latitude}, #{result.longitude}"
 
-      if result && result.city.present? && result.state.present?
-        #p "SETTING BASED ON RESULT"
-        params[:lat] = result.latitude
-        params[:lng] = results.longitude
-        params[:location] = "#{results.city}, #{results.region_code}"
-      else
-        #p "SETTING BASED ON DENVER DEFAULT"
-        params[:lat] = 39.7392
-        params[:lng] = -104.9903
-        params[:location] = 'Denver, CO'
-      end
-    end
+    #   if result && result.city.present? && result.state.present?
+    #     #p "SETTING BASED ON RESULT"
+    #     params[:lat] = result.latitude
+    #     params[:lng] = results.longitude
+    #     params[:location] = "#{results.city}, #{results.region_code}"
+    #   else
+    #     #p "SETTING BASED ON DENVER DEFAULT"
+    #     params[:lat] = 39.7392
+    #     params[:lng] = -104.9903
+    #     params[:location] = 'Denver, CO'
+    #   end
+    # end
 
     query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}&radius=25"
 
