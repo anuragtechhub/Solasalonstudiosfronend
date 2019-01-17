@@ -62,10 +62,11 @@ var SearchServicesAndSuggestions = React.createClass({
 	renderCategoriesAndServicesMatches: function () {
 		var self = this;
 		var matches = [];
+		var matched_services = [];
 		var matchString = this.props.query.toLowerCase();
 
 		for (var k in SolaSearchServices) {
-			if (k.toLowerCase().indexOf(matchString) != -1) {
+			if (k.toLowerCase().indexOf(matchString) != -1 || k.toLowerCase().replace(/[^a-zA-Z ]/, '').indexOf(matchString) != -1) {
 				// category match
 				matches.push(
 					<a key={k} href="#" data-category={k} className="service-match" onClick={self.onSelectService.bind(null, k)}>{k}</a>
@@ -73,16 +74,22 @@ var SearchServicesAndSuggestions = React.createClass({
 
 				// if category matches, then all sub-services match
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
-					matches.push(
-						<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
-					);
+					if (matched_services.indexOf(SolaSearchServices[k][j].name) == -1) {
+						matched_services.push(SolaSearchServices[k][j].name);
+						matches.push(
+							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
+						);
+					}
 				}
 			} else {
 				for (var j = 0, jlen = SolaSearchServices[k].length; j < jlen; j++) {
-					if (SolaSearchServices[k][j].name.toLowerCase().indexOf(matchString) != -1) {
-						matches.push(
-							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
-						);
+					if (SolaSearchServices[k][j].name.toLowerCase().indexOf(matchString) != -1 || SolaSearchServices[k][j].name.toLowerCase().replace(/[^a-zA-Z ]/, '').indexOf(matchString) != -1) {
+						if (matched_services.indexOf(SolaSearchServices[k][j].name) == -1) {
+							matched_services.push(SolaSearchServices[k][j].name);
+							matches.push(
+								<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
+							);
+						}
 					}
 				}
 			}
