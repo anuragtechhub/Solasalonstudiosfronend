@@ -90,7 +90,7 @@ var BookingModal = React.createClass({
 				<div className="BookingModalOverlay HideBookingModal">
 					<div className={"BookingModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="BookingModal">
 						<BookingModalHeader {...this.props} {...this.state} onBack={this.onBack} />
-						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} />
+						<BookingModalBody {...this.props} {...this.state} onChange={this.onChange} onSubmit={this.onSubmit} />
 						<BookingModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
 						{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
 						{this.renderBookingCompleteForm()}
@@ -148,7 +148,8 @@ var BookingModal = React.createClass({
 
 	onSubmit: function (e) {
 		var self = this;
-		//console.log('onSubmit!', this.props.booking_complete_path);
+
+		//console.log('onSubmit!', this.state.step, this.props.booking_complete_path);
 
 		if (e && e.preventDefault && e.stopPropagation) {
 			e.preventDefault();
@@ -160,10 +161,10 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'date') {
 			// DATE
 			if (moment(this.state.date).isSame(this.state.temp_date)) {
-				console.log('same date...', this.state.temp_date)
+				//console.log('same date...', this.state.temp_date)
 				this.setState({step: 'review', ready: false, date: this.state.temp_date, error: null});
 			} else {
-				console.log('not the same date!', this.state.temp_date)
+				//console.log('not the same date!', this.state.temp_date)
 				this.setState({ready: false, error: null, loading: true, date: this.state.temp_date}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
@@ -224,7 +225,7 @@ var BookingModal = React.createClass({
 		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
 			service_guids.push(this.state.services[i].guid);
 		}
-		console.log('book it', service_guids, this.state.time);
+		//console.log('book it', service_guids, this.state.time);
 		this.setState({loading: true});
 
 		$.ajax({
@@ -248,10 +249,10 @@ var BookingModal = React.createClass({
 			var json_response = JSON.parse(response.responseText);
 			//console.log('book response', json_response);
 			if (json_response && json_response.error) {
-				console.log('booking ERROR');
+				//console.log('booking ERROR');
 				self.setState({loading: false, error: json_response.error});
 			} else {
-				console.log('booking SUCCESS!!!');
+				//console.log('booking SUCCESS!!!');
 				$(self.refs.BookingCompleteForm).submit();
 			}
 		}); 
