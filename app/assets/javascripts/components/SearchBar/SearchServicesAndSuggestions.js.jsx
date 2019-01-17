@@ -98,8 +98,18 @@ var SearchServicesAndSuggestions = React.createClass({
 		return (
 			<div className="row">
 				<div className="col-sm-12">
-					<h4>{I18n.t('sola_search.services')}</h4>
-					{matches}
+					{	
+						matches.length > 0
+						?
+						<div>
+							<h4>{I18n.t('sola_search.services')}</h4>
+							{matches}
+						</div>
+						:
+						<div className="text-center">
+							<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.no_results')}</em>
+						</div>
+					}
 				</div>
 			</div>
 		);

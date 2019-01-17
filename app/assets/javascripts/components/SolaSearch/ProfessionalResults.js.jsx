@@ -44,18 +44,26 @@ var ProfessionalResults = React.createClass({
 					<div className="SearchResultsCount" style={{display: 'none'}}>{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
 				</div>
 				{professionals}
-				{
-					this.props.pagination 
-					? 
-					<div className="SearchPagination">
-						<button type="button" className="button primary" onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
-						{this.props.loading ? <div className="loading"><div className="spinner spinner-sm"></div></div> : null}
-					</div>
-					:
-					null
-				}
+				{this.renderPagination()}
 			</div>
 		);
+	},
+
+	renderPagination: function () {
+		if (this.props.end_of_results) {
+			return (
+				<div className="SearchPagination text-center">
+					<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.end_of_results')}</em>
+				</div>
+			);
+		} else {
+			return (
+				<div className="SearchPagination">
+					<button type="button" className="button primary" onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
+					{this.props.loading ? <div className="loading"><div className="spinner spinner-sm"></div></div> : null}
+				</div>
+			);
+		}
 	},
 
 	getAvailabilities: function (professional) {

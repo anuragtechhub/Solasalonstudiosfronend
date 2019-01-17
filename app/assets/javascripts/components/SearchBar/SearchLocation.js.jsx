@@ -52,7 +52,7 @@ var SearchLocation = React.createClass({
 		return (
 			<div className="SearchLocation">
 				<span className="fa fa-map-marker">&nbsp;</span>
-				<input ref="input" type="text" placeholder={I18n.t('sola_search.enter_your_location')} value={this.props.location} onChange={this.onChange} />
+				<input ref="input" type="text" placeholder={I18n.t('sola_search.location')} value={this.props.location} onChange={this.onChange} />
 			</div>
 		);
 	},

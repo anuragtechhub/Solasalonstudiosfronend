@@ -8,6 +8,7 @@ var SolaSearch = React.createClass({
 			bookingModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			display: this.props.displayMode || 'desktop',
+			end_of_results: this.props.professionals && this.props.professionals.length >= 10 ? false : true,
 			error: null,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
@@ -60,13 +61,14 @@ var SolaSearch = React.createClass({
 	*/
 
 	render: function () {
-		console.log('render SolaSearch professionals', this.state.professionals);
+		//console.log('render SolaSearch professionals', this.state.professionals);
 		
 		return (
 			<div className={"SolaSearch " + this.state.mode}>
 				<ProfessionalResults 
 					availabilities={this.state.availabilities} 
 					date={this.state.date} 
+					end_of_results={this.state.end_of_results}
 					lat={this.state.lat}
 					lng={this.state.lng}
 					loading={this.state.loading}
@@ -188,11 +190,11 @@ var SolaSearch = React.createClass({
 			if (response && response.length) {
 				var professionals = self.state.professionals.slice(0);
 				professionals.push.apply(professionals, response);
-				self.setState({loading: false, professionals: professionals}, function () {
+				self.setState({loading: false, professionals: professionals, end_of_results: response.length < 10}, function () {
 					self.getAvailabilities(self.getServicesGuids(response));
 				});
 			} else {
-				self.setState({loading: false, pagination: false});
+				self.setState({loading: false, pagination: false, end_of_results: true});
 			}	
 		}); 
 	},

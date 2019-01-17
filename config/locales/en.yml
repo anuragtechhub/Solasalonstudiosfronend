@@ -32,10 +32,13 @@ en:
     businesses: Businesses
     current_location: Current Location
     haircut: Haircut
-    services_and_suggestions_placeholder: Haircut, salon name, stylist name
+    services_and_suggestions_placeholder: Service, salon, stylist
     please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
     please_enter_a_service: Please enter a service (e.g. haircut)
     please_enter_your_location: Please enter your location
+    your_location: Your location
+    location: Location
+    no_results: No results
     enter_city_state_or_zipcode: Enter city, state or zip code
     enter_your_location: Enter your location
     check_availability: Check Availability
@@ -80,6 +83,7 @@ en:
     please_enter_your_phone_number: Please enter your phone number.
     price_varies: Price Varies
     load_more_professionals: Load More Professionals
+    end_of_results: End of results
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
