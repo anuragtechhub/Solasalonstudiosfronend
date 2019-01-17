@@ -70,7 +70,6 @@ $.widget('solasalonstudios.add_to_calendar', {
   calendarGenerators: {
 
     google: function(event) {
-      console.log('event', event);
       var MS_IN_MINUTES = 60 * 1000;
 
       var formatTime = function(date) {
