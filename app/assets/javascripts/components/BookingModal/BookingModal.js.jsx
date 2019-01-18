@@ -56,9 +56,17 @@ var BookingModal = React.createClass({
 			this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});
 		//}
 
-		// if (nextProps.visible && !this.props.visible) {
-		// 	this.setState({error: null});
-		// }
+		if (nextProps.visible && !this.props.visible) {
+			ga('solasalonstudios.send', 'event', 'BookNow', 'Open Booking Modal', JSON.stringify({
+				date: this.state.date.format('YYYY-MM-DD'),
+				fingerprint: this.props.fingerprint,
+				lat: this.props.lat,
+				lng: this.props.lng,
+				location_id: this.props.location_id,
+				location: this.props.location,
+				query: this.props.query,
+			}));
+		}
 	},
 
 	componentDidUpdate: function () {
@@ -254,6 +262,15 @@ var BookingModal = React.createClass({
 				self.setState({loading: false, error: json_response.error});
 			} else {
 				//console.log('booking SUCCESS!!!');
+				ga('solasalonstudios.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
+					date: self.state.date.format('YYYY-MM-DD'),
+					fingerprint: self.props.fingerprint,
+					lat: self.props.lat,
+					lng: self.props.lng,
+					location_id: self.props.location_id,
+					location: self.props.location,
+					query: self.props.query,
+				}));
 				$(self.refs.BookingCompleteForm).submit();
 			}
 		}); 

@@ -59,7 +59,16 @@ var ProfessionalResults = React.createClass({
 		} else {
 			return (
 				<div className="SearchPagination">
-					<button type="button" className="button primary" onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
+					<button type="button" className="button primary ga-et" data-gcategory="BookNow" data-gaction="Load More" data-glabel={JSON.stringify({
+						date: this.props.date.format('YYYY-MM-DD'),
+						lat: this.props.lat,
+						lng: this.props.lng,
+						location_id: this.props.location_id,
+						location: this.props.location,
+						query: this.props.query,
+						search_after: this.props.professionals[this.props.professionals.length - 1].cursor,
+						fingerprint: this.props.fingerprint,
+					})} onClick={this.props.onLoadMoreProfessionals}>{I18n.t('sola_search.load_more_professionals')}</button>
 					{this.props.loading ? <div className="loading"><div className="spinner spinner-sm"></div></div> : null}
 				</div>
 			);

@@ -52,6 +52,18 @@ var SolaSearch = React.createClass({
 				self.setState({display: 'desktop'});
 			}
 		}).trigger('resize.SolaSearch');
+
+		// track search results
+		ga('solasalonstudios.send', 'event', 'BookNow', 'Results', JSON.stringify({
+			number_of_results: this.state.professionals.length >= 10 ? '10+' : this.state.professionals.length,
+			date: this.state.date.format('YYYY-MM-DD'),
+			fingerprint: this.state.fingerprint,
+			lat: this.state.lat,
+			lng: this.state.lng,
+			location_id: this.state.location_id,
+			location: this.state.location,
+			query: this.state.query,
+		}));
 	},
 
 
@@ -69,6 +81,7 @@ var SolaSearch = React.createClass({
 					availabilities={this.state.availabilities} 
 					date={this.state.date} 
 					end_of_results={this.state.end_of_results}
+					fingerprint={this.state.fingerprint}
 					lat={this.state.lat}
 					lng={this.state.lng}
 					loading={this.state.loading}
@@ -101,8 +114,14 @@ var SolaSearch = React.createClass({
 					gloss_genius_api_key={this.state.gloss_genius_api_key}
 					gloss_genius_api_url={this.state.gloss_genius_api_url}
 					gloss_genius_stripe_key={this.state.gloss_genius_stripe_key}
+					lat={this.state.lat}
+					lng={this.state.lng}
+					location={this.state.location}
+					location_id={this.state.location_id}
+					location_name={this.state.location_name}
 					onHideBookingModal={this.onHideBookingModal}
 					professional={this.state.professional} 
+					query={this.state.query} 
 					services={this.state.services}
 					step={this.state.step}
 					time={this.state.time} 
