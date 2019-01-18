@@ -537,9 +537,12 @@
 		overflow: hidden;
 
 		img {
+			position: absolute;
 			display: block;
-			height: 110px;	
+			height: auto;	
 			width: 110px;	
+			top: 0;
+			left: 0;
 			border-radius: 2px;
 		}
 
