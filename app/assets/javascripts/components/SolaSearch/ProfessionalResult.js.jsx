@@ -3,7 +3,7 @@ var ProfessionalResult = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities,
-			defaultCoverImageUrl: 'https://s3.amazonaws.com/haubby-production-v1/users/avatars/000/002/017/original/image.jpg?1545092803',//https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
+			defaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			loading: false,
 			selectedService: this.props.selectedService || this.props.professional.matched_services[0],
 			useDefaultCoverImage: false,
