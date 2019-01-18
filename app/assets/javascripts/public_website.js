@@ -122,7 +122,7 @@ $(function () {
   // ga event tracking
   $(document.body).on('click', '.ga-et', function (e) {
     var $target = $(e.target);
-    if (!$target.hasClass('.ga-et')) {
+    if (!$target.hasClass('.ga-et') && typeof $target.data('gcategory') == 'undefined') {
       $target = $target.parent('.ga-et');
     }
     //console.log("ga event tracking", $target.data('gcategory'), $target.data('gaction'), $target.data('glabel'))

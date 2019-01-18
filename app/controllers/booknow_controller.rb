@@ -23,10 +23,23 @@ class BooknowController < PublicWebsiteController
     #p "#{results_response}"
 
     begin
-      @professionals = JSON.parse(results_response)
+      @professionals = []
+      @professional_results = JSON.parse(results_response)
       @date = params[:date] ? DateTime.parse(params[:date]) : DateTime.now
       #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
       @locations = Location.where(:id => get_location_id(@professionals))
+
+      @professional_results.each do |professional|
+        location = Location.find_by(:id => professional['org_location_id'])
+        if location
+          #p "professional['business_address']=#{professional['business_address']}, #{location.full_address}"
+          professional['business_address'] = location.full_address
+          
+          @professionals << professional
+        else
+          # do not add them - missing ids
+        end
+      end
       
       if params[:location_id].present?
         @location = Location.find_by(:id => params[:location_id])
