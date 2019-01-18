@@ -49,6 +49,12 @@ var BookingModalServiceRow = React.createClass({
 					<img src={this.state.useDefaultImage ? this.state.defaultImageUrl : this.props.service.image} onError={this.onImageError} />
 				</div>
 			);
+		} else {
+			return (
+				<div className="ServiceImage">
+					<img src={this.state.defaultImageUrl} onError={this.onImageError} />
+				</div>
+			);
 		}
 	},
 

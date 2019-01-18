@@ -336,6 +336,8 @@
 				}
 
 				&.check-availability {
+					position: relative;
+    			bottom: -15px;
 					color: #000000;	
 					border: 1px solid #DBDBDB;
 					width: auto;
