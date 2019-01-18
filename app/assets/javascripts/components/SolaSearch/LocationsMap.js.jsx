@@ -12,6 +12,7 @@ var LocationsMap = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
+		//console.log('LocationsMap didUpdate', this.props.locations.length);
 		if (this.state.map && prevProps.display != this.props.display || prevProps.mode != this.props.mode) {
 			$(this.refs.map).css({width: '100%', height: '100%'});
 		}
@@ -42,9 +43,9 @@ var LocationsMap = React.createClass({
 
 	  if (self.props.locations.length) {
 			google.maps.event.addListener(map.map, "tilesloaded", function () {
-				//console.log('tilesloaded!!!');
+				console.log('tilesloaded!!!');
 				if (!self.state.processedMarkers) {
-					//console.log('processMarkers!!!');
+					console.log('processMarkers!!!');
 					self.processMarkers();
 					self.setState({processedMarkers: true});
 				}
