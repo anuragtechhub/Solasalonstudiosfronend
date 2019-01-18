@@ -43,9 +43,9 @@ var LocationsMap = React.createClass({
 
 	  if (self.props.locations.length) {
 			google.maps.event.addListener(map.map, "tilesloaded", function () {
-				console.log('tilesloaded!!!');
+				//console.log('tilesloaded!!!');
 				if (!self.state.processedMarkers) {
-					console.log('processMarkers!!!');
+					//console.log('processMarkers!!!');
 					self.processMarkers();
 					self.setState({processedMarkers: true});
 				}

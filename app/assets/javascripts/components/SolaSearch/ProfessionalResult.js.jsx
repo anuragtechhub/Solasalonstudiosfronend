@@ -3,10 +3,14 @@ var ProfessionalResult = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities,
-			defaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
+			defaultCoverImageUrl: 'https://s3.amazonaws.com/haubby-production-v1/users/avatars/000/002/017/original/image.jpg?1545092803',//https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			loading: false,
 			selectedService: this.props.selectedService || this.props.professional.matched_services[0],
-			useDefaultCoverImage: false
+			useDefaultCoverImage: false,
+			height: 'auto',
+			width: '130px',
+			top: '0',
+			left: '0',
 		};
 	},
 
@@ -39,7 +43,7 @@ var ProfessionalResult = React.createClass({
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
 				<div className="ProfessionalCoverImage">
 					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url}>
-						<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url} />
+						<img style={{height: this.state.height, width: this.state.width, top: this.state.top, left: this.state.left}} src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} onLoad={this.onCoverImageLoad} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
 					<span className="ProfessionalCoverImageName">{this.props.full_name}</span>
 					<div className="Gradient"></div>
@@ -85,6 +89,22 @@ var ProfessionalResult = React.createClass({
 		this.setState({useDefaultCoverImage: true});
 	},
 
+	onCoverImageLoad: function (e) {
+		var self = this;
+		//console.log('onCoverImageLoad', $(e.target).attr('src'));
+		//(function () {
+		var img = new Image;
+		img.src = $(e.target).attr('src');
+    img.onload = function() {
+    	var image_scale = self.scaleImage(img.width, img.height, 130, 130);
+    	//console.log("onCoverImageLoad intrinsic size: " + img.width + "x" + img.height, image_scale);
+    	self.setState({top: image_scale.targettop, left: image_scale.targetleft, width: image_scale.width, height: image_scale.height});
+    };
+		//})();
+
+		// console.log('cover image load!', this.width, this.height, $(e.currentTarget).width(), $(e.currentTarget).width());
+	},
+
 
 
 	/**
@@ -114,5 +134,45 @@ var ProfessionalResult = React.createClass({
 			self.setState({availabilities: JSON.parse(response)[self.props.professional.guid], loading: false});
 		}); 
 	},
+
+	scaleImage: function (srcwidth, srcheight, targetwidth, targetheight, fLetterBox) {
+    var result = { width: 0, height: 0, fScaleToTargetWidth: true };
+
+    if ((srcwidth <= 0) || (srcheight <= 0) || (targetwidth <= 0) || (targetheight <= 0)) {
+        return result;
+    }
+
+    // scale to the target width
+    var scaleX1 = targetwidth;
+    var scaleY1 = (srcheight * targetwidth) / srcwidth;
+
+    // scale to the target height
+    var scaleX2 = (srcwidth * targetheight) / srcheight;
+    var scaleY2 = targetheight;
+
+    // now figure out which one we should use
+    var fScaleOnWidth = (scaleX2 > targetwidth);
+    if (fScaleOnWidth) {
+        fScaleOnWidth = fLetterBox;
+    }
+    else {
+       fScaleOnWidth = !fLetterBox;
+    }
+
+    if (fScaleOnWidth) {
+        result.width = Math.floor(scaleX1);
+        result.height = Math.floor(scaleY1);
+        result.fScaleToTargetWidth = true;
+    }
+    else {
+        result.width = Math.floor(scaleX2);
+        result.height = Math.floor(scaleY2);
+        result.fScaleToTargetWidth = false;
+    }
+    result.targetleft = Math.floor((targetwidth - result.width) / 2);
+    result.targettop = Math.floor((targetheight - result.height) / 2);
+
+    return result;
+	}
 
 });
