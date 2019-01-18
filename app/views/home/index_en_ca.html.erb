@@ -157,25 +157,6 @@
     </div>       
   </div>
 
-  <div class="row home-recently-featured-box">
-    <h5><%= t 'page.home.recently_featured_in' %></h5>
-    <%= link_to "https://www.modernsalon.com/article/82697/modern-exclusive-an-interview-with-sola-salon-suites-new-ceo-randall-clark", :class => 'modern_salon_logo', :alt => "Modern Salon logo", :target => '_blank' do %>
-      <%= image_tag 'modern_salon_logo.png', width: 140, height: 51 %>
-    <% end %>
-    <%= link_to "http://salonmagazine.ca/en/business-career/7036-3-ways-sola-salon-studios-helps-hairstylists-be-more-flexible-2.html", :class => 'salon_magazine_logo', :alt => 'Salon Magazine logo', :target => '_blank' do %>
-      <%= image_tag 'salon_mag_logo.jpg', width: 96, height: 51 %>
-    <% end %>
-    <%= link_to "https://www.beautylaunchpad.com/sola-salon-studios-releases-new-app-solagenius", :alt => 'Beauty Launchpad logo', :class => 'beauty_launchpad_logo', :target => '_blank' do %>
-      <%= image_tag 'beauty_launchpad_logo.png', width: 193, height: 51 %>
-      <% end %>
-    <%= link_to "http://www.forbes.com/sites/forbestreptalks/2015/06/17/meet-the-hair-salon-franchise-that-turns-stylists-into-entrepreneurs/ ", :alt => 'Forbes logo', :class => 'forbes_logo', :target => '_blank' do %>
-      <%= image_tag 'forbes_logo.png', width: 122, height: 51 %>
-    <% end %>
-    <%= link_to "https://behindthechair.com/articles/myth-busters-sola-studio-owner-busts-5-salon-ownership-myths/", :alt => 'Behind the Chair logo', :class => 'behind_the_chair_logo', :target => '_blank' do %>
-      <%= image_tag 'behind_the_chair_logo.png', width: 242, height: 51 %>
-    <% end %>
-  </div>
-
   <% if I18n.locale.to_s == 'pt-BR' %>
     <div class="owl-carousel owl-theme owl-desktop">
       <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Desktop.jpg', :alt => "Sola Pro" %><% end %></div>
