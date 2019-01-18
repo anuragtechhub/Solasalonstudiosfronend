@@ -17,7 +17,7 @@ var BookingModalServiceRow = React.createClass({
 		//console.log('BookingModalService', this.props.service);
 
 		return (
-			<div className={"ServiceRow " + (this.props.service.image ? 'HasImage' : null)}>
+			<div className="ServiceRow HasImage">
 				{this.renderServiceImage()}
 				<div className="ServiceDetails">
 					<div className="ServiceName">{this.props.service.name}</div>
