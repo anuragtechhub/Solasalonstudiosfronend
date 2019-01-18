@@ -31,15 +31,15 @@ var BookingModalReview = React.createClass({
 		return (
 			<div className="Header">
 				<div className="ProfessionalCoverImage">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url}>
-						<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.professional.cover_image} alt={this.props.professional.full_name} onError={this.onCoverImageError} />
+					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url}>
+						<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.professional.cover_image} alt={this.props.professional.full_name} onError={this.onCoverImageError} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
 					<div className="Gradient"></div>
 				</div>
 				<div className="ProfessionalInfo">
 					<div className="ProfessionalName">{this.props.professional.full_name}</div>
 					<div className="ProfessionalAddress">{this.props.professional.business_address}</div>
-					<a href={'//' + this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact'} target={this.props.professional.booking_page_url + 'contact'} className="Contact">{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
+					<a href={'//' + this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact'} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}>{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
 				</div>
 			</div>
 		);

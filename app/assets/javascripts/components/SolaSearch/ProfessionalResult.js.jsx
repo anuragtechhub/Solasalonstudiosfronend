@@ -38,8 +38,8 @@ var ProfessionalResult = React.createClass({
 			<div className="ProfessionalResult">
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
 				<div className="ProfessionalCoverImage">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url}>
-						<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} />
+					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url}>
+						<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
 					<span className="ProfessionalCoverImageName">{this.props.full_name}</span>
 					<div className="Gradient"></div>
