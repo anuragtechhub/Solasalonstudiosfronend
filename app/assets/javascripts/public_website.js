@@ -134,6 +134,16 @@ $(function () {
     return false;
   });
 
+  // ga event tracking
+  $(document.body).on('click', '.ga-et', function (e) {
+    var $target = $(e.target);
+    if (!$target.hasClass('.ga-et') && typeof $target.data('gcategory') == 'undefined') {
+      $target = $target.parent('.ga-et');
+    }
+    //console.log("ga event tracking", $target.data('gcategory'), $target.data('gaction'), $target.data('glabel'))
+    ga('solasalonstudios.send', 'event', $target.data('gcategory'), $target.data('gaction'), JSON.stringify($target.data('glabel')));
+  });
+
   // animated scrolling
   $(document.body).on('click', '[data-animated-scroll]', function () {
     var $this = $(this);

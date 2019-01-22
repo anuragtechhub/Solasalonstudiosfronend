@@ -12,6 +12,7 @@ var ProfessionalAvailabilities = React.createClass({
 		var self = this;
 
 		$(window).on('resize.ProfessionalAvailabilities', function () {
+			console.log('/reize')
 			self.setState({containerWidth: $(self.refs.availabilities).width()});
 		});
 	},
@@ -50,6 +51,13 @@ var ProfessionalAvailabilities = React.createClass({
 						{availabilities}
 					</div>
 					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
+				</div>
+			);
+		} else if (typeof this.props.availabilities == 'undefined') {
+			// loading
+			return (
+				<div className="ProfessionalAvailabilities UnknownAvailability">
+					<div className="loading"><div className="spinner spinner-sm"></div></div>
 				</div>
 			);
 		} else {

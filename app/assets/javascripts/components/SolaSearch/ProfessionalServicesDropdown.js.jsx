@@ -31,6 +31,7 @@ var ProfessionalServicesDropdown = React.createClass({
 
 	render: function () {
 		var self = this;
+
 		var services = this.props.services.map(function (service) {
 			return (
 				<li key={service.guid}>
@@ -55,11 +56,19 @@ var ProfessionalServicesDropdown = React.createClass({
 	},
 
 	renderService: function (service) {
-		return (
-			<span className="service-item">
-				{service.name} <strong>${this.renderPrice(service.price)}</strong>
-			</span>
-		);
+		if (service.price) {
+			return (
+				<span className="service-item">
+					{service.name} <strong>${this.renderPrice(service.price)}</strong>
+				</span>
+			);
+		} else {
+			return (
+				<span className="service-item">
+					{service.name}
+				</span>
+			);
+		}
 	},
 
 	renderPrice: function (price) {

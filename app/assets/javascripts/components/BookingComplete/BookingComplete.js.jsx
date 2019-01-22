@@ -40,21 +40,23 @@ var BookingComplete = React.createClass({
 								 data-title={I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}
 								 data-description={service_description}
 								 data-address={this.props.professional.business_address.replace(/#/g, '')}
-								 data-start={moment(this.props.time.start).format('MMMM D, YYYY HH:mm')}
-								 data-end={moment(this.props.time.end).format('MMMM D, YYYY HH:mm')}></span>
+								 data-start={this.props.time.start}
+								 data-end={this.props.time.end}></span>
 						</div>
 					</div>
 					<div className="BookingCompleteBox">
 
 						<div className="Header">
 							<div className="ProfessionalCoverImage">
-								<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.professional.cover_image} alt={this.props.professional.full_name} onError={this.onCoverImageError} />
+								<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Landing Page" data-glabel={this.props.professional.booking_page_url}>
+									<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.professional.cover_image} alt={this.props.professional.full_name} onError={this.onCoverImageError} />
+								</a>
 								<div className="Gradient"></div>
 							</div>
 							<div className="ProfessionalInfo">
 								<div className="ProfessionalName">{this.props.professional.full_name}</div>
 								<div className="ProfessionalAddress">{this.props.professional.business_address}</div>
-								<a href={this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="Contact">{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
+								<a href={'//' + this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact'} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}>{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
 							</div>
 						</div>
 

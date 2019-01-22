@@ -191,3 +191,7 @@
   </div>
 
 </div>
+
+<% @no_title_dash = true %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale.to_s == 'en-CA' ? 'ca' : 'com.br'}/home" } %>
+<% content_for(:meta_description) { t('page.home.meta_description') } %>

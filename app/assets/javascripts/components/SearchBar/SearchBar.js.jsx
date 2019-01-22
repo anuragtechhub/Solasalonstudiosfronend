@@ -3,7 +3,7 @@ var SearchBar = React.createClass({
 	getInitialState: function () {
 		return {
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
-			error: null,
+			error: this.props.error,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
 			gloss_genius_api_url: this.props.gloss_genius_api_url,
@@ -72,6 +72,7 @@ var SearchBar = React.createClass({
 	},
 
 	onChangeLocation: function (location, lat, lng) {
+		//console.log('onChangeLocation', location, lat, lng);
 		this.setState({location: location, lat: lat, lng: lng});
 	},
 
@@ -97,7 +98,7 @@ var SearchBar = React.createClass({
 			if (!hasQuery && !hasLatLng) {
 				this.setState({error: I18n.t('sola_search.please_enter_a_service_and_a_location')});
 			} else if (hasQuery && !hasLatLng) {
-				this.setState({error: I18n.t('sola_search.please_enter_a_location')});
+				this.setState({error: I18n.t('sola_search.please_enter_your_location')});
 			} else if (!hasQuery && hasLatLng) {
 				this.setState({error: I18n.t('sola_search.please_enter_a_service')});
 			}

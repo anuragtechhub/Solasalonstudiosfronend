@@ -11,48 +11,60 @@
 	overflow: hidden;
   overflow-y: scroll;
 
+	.loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 99;   
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22px 0 0 -22px;
+    background: asset-data-url('spinner.gif') no-repeat center;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+
+    &.spinner-sm {
+    	background-size: 22px 22px;
+    	width: 22px;
+    	height: 22px;
+    	margin: -11px 0 0 -22px;
+    }
+
+    &.spinner-static {
+    	display: inline-block;
+    	position: relative;
+    	top: auto;
+    	left: auto;
+    	margin: 0;
+    }
+  } 
+
+ 	.SearchPagination {
+ 		position: relative;
+ 		border-top: 1px solid #EEE;
+ 		text-align: center;
+ 		padding: 20px 0;
+
+ 		.button {
+ 			margin-bottom: 0;
+ 			padding: 13px 20px 10px 20px;
+ 		}
+ 	}
+
 	.ProfessionalResult {
 		position: relative;
 		@include helvetica;
 		background: #FFF;
 		padding: 21px;
 		border-top: 1px solid #EEE;
-
-	  .loading {
-	    position: absolute;
-	    top: 0;
-	    bottom: 0;
-	    right: 0;
-	    left: 0;
-	    background: rgba(255, 255, 255, 0.5);
-	    z-index: 99;   
-	  }
-
-	  .spinner {
-	    position: absolute;
-	    top: 50%;
-	    left: 50%;
-	    margin: -22px 0 0 -22px;
-	    background: asset-data-url('spinner.gif') no-repeat center;
-	    background-size: 44px 44px;
-	    width: 44px;
-	    height: 44px;
-
-	    &.spinner-sm {
-	    	background-size: 22px 22px;
-	    	width: 22px;
-	    	height: 22px;
-	    	margin: -11px 0 0 -22px;
-	    }
-
-	    &.spinner-static {
-	    	display: inline-block;
-	    	position: relative;
-	    	top: auto;
-	    	left: auto;
-	    	margin: 0;
-	    }
-	  } 
 
 		.ProfessionalResultDetails {
 			position: absolute;
@@ -155,8 +167,16 @@
 
 			img {
 				display: block;
-				height: 130px;	
-				width: 130px;	
+				// height: 130px;	
+				// width: 130px;	
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			  height: auto;
+			  width: 130px;
+			  // -webkit-transform: translate(-50%,-50%);
+			  //     -ms-transform: translate(-50%,-50%);
+			  //         transform: translate(-50%,-50%);
 				border-radius: 2px;
 			}
 
@@ -214,12 +234,12 @@
 
 		.ProfessionalAvailabilities {
 			position: absolute;
-    	bottom: 3px;
+    	bottom: -2px;
     	left: 0;
     	right: 0;
 
     	&.UnknownAvailability {
-    		bottom: -5px;
+    		bottom: 10px;
     	}
 
     	.back-button, .forward-button {
@@ -235,6 +255,7 @@
     		border-radius: 3px;
     		cursor: pointer;
     		color: #000;
+    		margin-top: 1px;
 
     		// &:hover, &:active {
     		// 	color: #AFAFAF;
@@ -251,13 +272,18 @@
 
     	.ProfessionalAvailabilitiesWrapper {
 	    	width: 100%;
-	    	height: 53px;
+	    	height: 69px;
 	    	overflow: hidden;
 	    	overflow-x: scroll;
 	    	white-space: nowrap;
 	    	position: relative;
-    		bottom: -8px;
+    		bottom: -18px;
     		//padding: 0 33px;
+    		
+    		&::-webkit-scrollbar {
+					//width: 0px;  /* remove scrollbar space */
+					background: transparent;  /* optional: just make scrollbar invisible */
+				}
     	}
 
     	.availability-date {
@@ -310,6 +336,8 @@
 				}
 
 				&.check-availability {
+					position: relative;
+    			bottom: -15px;
 					color: #000000;	
 					border: 1px solid #DBDBDB;
 					width: auto;

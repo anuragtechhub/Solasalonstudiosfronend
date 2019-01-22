@@ -12,6 +12,7 @@ var LocationsMap = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
+		//console.log('LocationsMap didUpdate', this.props.locations.length);
 		if (this.state.map && prevProps.display != this.props.display || prevProps.mode != this.props.mode) {
 			$(this.refs.map).css({width: '100%', height: '100%'});
 		}
@@ -20,11 +21,15 @@ var LocationsMap = React.createClass({
 	initMap: function () {
 		var self = this;
 
+		var lat = self.props.locations.length == 0 ? 39.8097343 : self.props.lat;
+		var lng = self.props.locations.length == 0 ? -98.5556199 : self.props.lng;
+		var zoom = self.props.locations.length == 0 ? 4 : self.props.zoom;
+
 	  var map = new GMaps({
 	    div: self.refs.map,
-	    lat: self.props.lat,
-	    lng: self.props.lng,
-	    zoom: self.props.zoom,
+	    lat: lat,
+	    lng: lng,
+	    zoom: zoom,
 	    streetViewControl: false,
 	    draggable: true,//$('#is_salon').length > 0 ? false : true,
 	    scrollwheel: false,//$('#is_salon').length > 0 ? false : true,
@@ -36,19 +41,21 @@ var LocationsMap = React.createClass({
 
 	  this.setState({map: map});
 
-		google.maps.event.addListener(map.map, "tilesloaded", function () {
-			//console.log('tilesloaded!!!');
-			if (!self.state.processedMarkers) {
-				//console.log('processMarkers!!!');
-				self.processMarkers();
-				self.setState({processedMarkers: true});
-			}
-		});	 
+	  if (self.props.locations.length) {
+			google.maps.event.addListener(map.map, "tilesloaded", function () {
+				//console.log('tilesloaded!!!');
+				if (!self.state.processedMarkers) {
+					//console.log('processMarkers!!!');
+					self.processMarkers();
+					self.setState({processedMarkers: true});
+				}
+			});	 
 
-		$(self.refs.map).on('click', '.popup-bubble-content', function (event) {
-			//console.log('click on marker', $(event.target).html(), event.target.dataset.id);
-			self.props.onChangeLocationId(event.target.dataset.id);
-		});
+			$(self.refs.map).on('click', '.popup-bubble-content', function (event) {
+				//console.log('click on marker', $(event.target).html(), event.target.dataset.id);
+				self.props.onChangeLocationId(event.target.dataset.id);
+			});
+	  }
 	},
 
 

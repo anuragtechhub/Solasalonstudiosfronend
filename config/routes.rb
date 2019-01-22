@@ -81,9 +81,9 @@ Solasalonstudios::Application.routes.draw do
   match "search/results" => 'search#results', :via => [:get, :post], :as => :search_results
 
   match 'solagenius/booknow' => 'booknow#landing_page', :via => [:get, :post], :as => :booknow_landing_page
-  #match 'booknow' => 'booknow#search', :via => [:get, :post], :as => :booknow_search
-  #match 'booknow/results' => 'booknow#results', :via => [:get, :post], :as => :booknow_results
-  #match 'booknow/booking-complete' => 'booknow#booking_complete', :via => [:get, :post], :as => :booknow_booking_complete
+  match 'booknow' => 'booknow#search', :via => [:get, :post], :as => :booknow_search
+  match 'booknow/results(.:format)' => 'booknow#results', :via => [:get, :post], :as => :booknow_results
+  match 'booknow/booking-complete' => 'booknow#booking_complete', :via => [:get, :post], :as => :booknow_booking_complete
 
   match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour
   match 'partner-inquiry' => 'contact_us#partner_inquiry', :via => [:get, :post], :as => :partner_inquiry
@@ -125,6 +125,7 @@ Solasalonstudios::Application.routes.draw do
   get 'stylist/:url_name' => 'stylists#redirect'
   get 'stylist/:url_name/:url' => 'stylists#redirect'
   get 'salon-professionals' => 'stylists#index', :as => :salon_professionals
+  get 'findaprofessional' => 'stylists#index', :as => :find_a_professional
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message

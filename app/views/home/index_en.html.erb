@@ -1,0 +1,104 @@
+<div class="home-container-full-width">
+  <div class="for-customers tile-for-customers-find-a-stylist">
+    <div class="tile-content">
+      <h5><%= t('page.home.for_customers') %></h5>
+      <h2>
+        <%= t('page.home.find_a_sola') %>
+        <span class="mobile-br">&nbsp;</span>
+        <span class="home-services-animation">
+          <span class="active"><%= t('services.hairstylist') %></span>
+          <span><%= t('services.esthetician') %></span>
+          <span><%= t('services.nail_tech') %></span>
+          <span><%= t('services.makeup_artist') %></span>
+          <span><%= t('services.beauty_professional') %></span>
+        </span>
+      </h2>
+      <p><%= t('page.home.search_salon_professionals') %></p>
+      <%= react_component 'SearchBar', {
+        date: params[:date] || DateTime.now,
+        error: flash[:error],
+        gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+        gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+        location: params[:location],
+        lat: params[:lat],
+        lng: params[:lng],
+        path: booknow_results_path, 
+        query: params[:query],
+      } %>
+      <h2 class="booknow-by-solagenius">BOOK<strong>NOW</strong> by SOLAGENIUS</h2>  
+    </div>  
+  </div>
+  <div class="for-professionals tile-for-professionals-own-your-salon">
+    <div class="tile-content">
+      <h5><%= t('page.home.for_professionals') %></h5>
+      <h2><%= t('page.home.own_your_salon') %></h2>
+      <ul>
+        <li>
+          <h4><%= link_to "//www.youtube.com/watch?v=afOBB5jAjUU", :rel => 'afOBB5jAjUU', :class => 'play-video' do %><span class="forward-arrow-white"></span><%= t('page.home.watch_our_video') %><% end %></h4>
+        </li>
+        <li><h4><%= link_to :why_sola do %><span class="forward-arrow-white"></span><%= t('page.why_sola.title') %><% end %></h4></li>
+        <li><h4><%= link_to :our_studios do %><span class="forward-arrow-white"></span><%= t('page.our_studios.title') %><% end %></h4></li>
+      </ul>
+      <div class="button-wrapper">
+        <%= link_to :why_sola, :class => 'button' do %><%= t('page.home.learn_more') %><% end %>  
+      </div>
+      <p><%= t('page.home.tagline').html_safe %></p>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix">&nbsp;</div>
+
+<div class="container">
+
+  <div class="row home-trilogy">
+    <div class="four columns">
+      <%= link_to :about_us do %>
+        <%= image_tag 'Home/trilogy-about-us.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.about.title' %></h2>
+          <span class="button"><%= t 'page.home.learn_more' %></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="four columns">
+      <%= link_to :our_studios do %>
+        <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.our_studios.title' %></h2>
+          <span class="button"><%= t 'page.home.take_a_tour' %></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="four columns">
+      <%= link_to :contact_us do %>
+        <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.contact.title' %></h2>
+          <span class="button"><%= t 'page.home.get_in_touch' %></span>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="owl-carousel owl-theme owl-desktop inline-carousel" data-autoplay="5000">
+    <div class="item"><%= link_to :solagenius do %><%= image_tag 'Home/Featured_SolaGenius_Desktop-1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
+
+  <div class="owl-carousel owl-theme owl-mobile inline-carousel" data-autoplay="5000">
+    <div class="item"><%= link_to :solagenius do %><%= image_tag 'Home/Featured_SolaGenius_Mobile-1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
+
+  <div class="block-quote-testimonial">
+    <h3><%= t('page.home.testimonial_text') %></h3>
+    <h4><%= t('page.home.testimonial_author') %></h4>
+  </div>
+
+</div>
+
+<% @no_title_dash = true %>
+<% @body_class = 'sola-search' %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com/home" } %>
+<% content_for(:meta_description) { t('page.home.meta_description') } %>
