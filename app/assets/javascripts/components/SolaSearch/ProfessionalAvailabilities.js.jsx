@@ -24,7 +24,7 @@ var ProfessionalAvailabilities = React.createClass({
 
 	render: function () {
 		var self = this;
-
+		console.log('ProfessionalAvailabilities', this.props.professional);
 		//console.log('render ProfessionalAvailabilities name, containerWidth, scrollWidth, scrollLeft', this.props.full_name, this.state.containerWidth, this.state.scrollWidth, this.state.scrollLeft);
 		//console.log('this.props.availabilities', this.props.availabilities);
 		if (this.props.availabilities && this.props.availabilities.length > 0) {
