@@ -11,6 +11,10 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
+		var matches = $(this.refs.dropdown).find('.service-match').length;
+
+		//console.log('matches', matches);
+
 		// open/close dropdown
 		if (prevState.dropdownOpen != this.state.dropdownOpen) {
 			if (this.state.dropdownOpen) {
@@ -20,6 +24,12 @@ var SearchServicesAndSuggestions = React.createClass({
 				this.setState({tempQuery: ''});
 				$(this.refs.dropdown).hide();//.slideUp('fast');
 				$(window).off('click.SearchServicesAndSuggestions');
+			}
+		} else {
+			if (matches == 0) {
+				$(this.refs.dropdown).hide();
+			} else if (matches > 0 && this.state.dropdownOpen) {
+				$(this.refs.dropdown).show();
 			}
 		}
 
@@ -95,14 +105,8 @@ var SearchServicesAndSuggestions = React.createClass({
 			}
 		}
 
-		if (matches.length == 0) {
-			$(this.refs.dropdown).hide();
-		} else {
-			$(this.refs.dropdown).show();
-		}
-
 		return (
-			<div className="row">
+			<div className="row" ref="matches" data-matches={matches.length}>
 				<div className="col-sm-12">
 					{	
 						matches.length > 0
@@ -113,7 +117,7 @@ var SearchServicesAndSuggestions = React.createClass({
 						</div>
 						:
 						<div className="text-center">
-							<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.no_results')}</em>
+							{/*<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.no_results')}</em>*/}
 						</div>
 					}
 				</div>
