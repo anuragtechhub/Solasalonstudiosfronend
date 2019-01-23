@@ -95,6 +95,12 @@ var SearchServicesAndSuggestions = React.createClass({
 			}
 		}
 
+		if (matches.length == 0) {
+			$(this.refs.dropdown).hide();
+		} else {
+			$(this.refs.dropdown).show();
+		}
+
 		return (
 			<div className="row">
 				<div className="col-sm-12">

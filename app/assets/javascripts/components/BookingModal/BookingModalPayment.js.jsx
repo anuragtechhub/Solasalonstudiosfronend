@@ -44,14 +44,14 @@ var BookingModalPayment = React.createClass({
 		var self = this;
 		if (this.state.stripe && this.state.card) {
 			this.state.stripe.createToken(this.state.card).then(function(result) {
-				console.log('createToken?', result);
+				//console.log('createToken?', result);
 		    if (result.error) {
 		      // Inform the customer that there was an error.
 		      var errorElement = document.getElementById('card-errors');
 		      errorElement.textContent = result.error.message;
 		    } else {
 		      // Send the token to your server.
-		      console.log('set stripe_token', result.token);
+		      //console.log('set stripe_token', result.token);
 					self.props.onChange({target: {
 						name: 'stripe_token',
 						value: result.token.id
@@ -59,7 +59,7 @@ var BookingModalPayment = React.createClass({
 		    }
 		  });
 		} else {
-			console.log('cannot create token', this.state.stripe, this.state.card);
+			//console.log('cannot create token', this.state.stripe, this.state.card);
 		}
 	},
 
@@ -91,7 +91,7 @@ var BookingModalPayment = React.createClass({
 		});
 
 		card.addEventListener('change', function(event) {
-			console.log('card changed???', event);
+			//console.log('card changed???', event);
 
 		  var displayError = document.getElementById('card-errors');
 		  if (event.error) {
@@ -101,7 +101,7 @@ var BookingModalPayment = React.createClass({
 		  }
 
 		  if (event.complete) {
-		  	console.log('card is complete!, lets get a token');
+		  	//console.log('card is complete!, lets get a token');
 		  	self.createToken();
 		  }
 		});

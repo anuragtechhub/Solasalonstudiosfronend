@@ -434,8 +434,7 @@
 		}
 		#header .logo {
 			display: inline;
-			margin: 0;
-			margin-left: 15px;
+			margin: 0 auto;
 		}
 		#header .button {
 			top: 17px;
@@ -448,6 +447,13 @@
 		}
 		#header.fullwidth .button {
 			margin-right: 0 !important;
+		}
+	}
+
+	.booknow-layout {
+		#header .logo {
+			margin: 0;
+			margin-left: 15px;
 		}
 	}
 }
