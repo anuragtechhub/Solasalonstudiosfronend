@@ -32,7 +32,7 @@ var BookingModal = React.createClass({
 			var width = $window.width();
 			var height = $window.height();
 			var fullWidth = width <= 600;
-			var fullHeight = height <= 600;
+			var fullHeight = height <= 612;
 
 			//console.log('window', width, height, 'BookingModal', b_width, b_height);
 
