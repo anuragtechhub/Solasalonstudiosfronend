@@ -12,7 +12,6 @@ var ProfessionalAvailabilities = React.createClass({
 		var self = this;
 
 		$(window).on('resize.ProfessionalAvailabilities', function () {
-			console.log('/reize')
 			self.setState({containerWidth: $(self.refs.availabilities).width()});
 		});
 	},
