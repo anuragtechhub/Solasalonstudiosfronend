@@ -121,7 +121,7 @@
     .mobile-br {
       width: 1px;
       font-size: 1px;
-      margin: 0 -5px;
+      margin:-5px 0;
     }
 
     .tile-content {
@@ -149,8 +149,8 @@
     }
 
     .booknow-by-solagenius {
-      font-size: 19px;
-      line-height: 19px;
+      font-size: 19px !important;
+      line-height: 19px !important;
       letter-spacing: 1px;
       word-spacing: 1px;
       margin: 15px 0 0 0;
@@ -165,6 +165,7 @@
       max-height: 40px;
       min-height: 40px;
       top: 9px;
+      left: -9px;
     }
 
     .home-services-animation span {
@@ -437,6 +438,17 @@
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+  }
+
+  .home-container-full-width {
+    h2 {
+      font-size: 33px !important;
+      line-height: 37px !important;
+    }
+  }
+  
+  .home-container-full-width .for-customers.tile-for-customers-find-a-stylist .home-services-animation {
+    left: 0;
   }
 }
 

@@ -406,7 +406,7 @@
 
 			h2 {
 				font-size: 27px;
-				line-height: 27px;
+				line-height: 31px;
 				margin-bottom: 15px !important;
 			}
 
@@ -429,8 +429,8 @@
 @media (max-width: 1000px) {
 	.sola-search {
 		#header .container {
-			padding-left: 0;
-			padding-right: 0;
+			// padding-left: 0;
+			// padding-right: 0;
 		}
 		#header .logo {
 			display: inline;
@@ -451,6 +451,10 @@
 	}
 
 	.booknow-layout {
+		#header .container {
+			padding-left: 0;
+			padding-right: 0;
+		}		
 		#header .logo {
 			margin: 0;
 			margin-left: 15px;
