@@ -36,7 +36,7 @@ var ProfessionalAvailabilities = React.createClass({
 				});
 				return (
 					<div className="availability-date" key={availability.date}>
-						<div className="date">{moment(availability.date).format('ddd DD/YY')}</div>
+						<div className="date">{moment(availability.date).tz(self.props.professional.timezone).format('ddd MMM DD')}</div>
 						<div className="availabilities" ref="availabilities">
 							{times}
 						</div>

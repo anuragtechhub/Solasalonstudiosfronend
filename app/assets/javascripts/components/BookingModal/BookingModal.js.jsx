@@ -324,7 +324,7 @@ var BookingModal = React.createClass({
 		//console.log('refreshAvailabilityThenGotoTimeStep this.state.date', moment(this.state.date).format("YYYY-MM-DD"));
 		$.ajax({
 			data: {
-				date: moment(this.state.date).format("YYYY-MM-DD"),
+				date: moment(this.state.date).tz(self.props.professional.timezone).format("YYYY-MM-DD"),
 				services_guids: services_guids
 			},
 	    headers: {

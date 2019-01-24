@@ -120,7 +120,7 @@ var ProfessionalResult = React.createClass({
 
 		$.ajax({
 			data: {
-				date: this.props.date.format("YYYY-MM-DD"),
+				date: this.props.date.tz(self.props.professional.timezone).format("YYYY-MM-DD"),
 				services_guids: services_guids
 			},
 	    headers: {
