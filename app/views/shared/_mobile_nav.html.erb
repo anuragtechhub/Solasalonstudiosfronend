@@ -60,9 +60,11 @@
 		      <li>
 		        <%= link_to :our_story, :class => 'sublink' do %><%= t 'nav.our_story' %><% end %>
 		      </li>
+		      <% if I18n.locale.to_s == 'pt-BR' %>
 		      <li>
 		        <%= link_to :leadership, :class => 'sublink' do %><%= t 'nav.leadership' %><% end %>
 		      </li>
+		      <% end %>
 		      <li>
 		        <%= link_to :testimonials, :class => 'sublink' do %><%= t 'nav.testimonials' %><% end %>
 		      </li>

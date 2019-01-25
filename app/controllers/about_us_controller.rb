@@ -7,6 +7,8 @@ class AboutUsController < PublicWebsiteController
   def leadership
     if I18n.locale.to_s == 'pt-BR'
       render 'leadership_br'
+    else
+      redirect_to :who_we_are
     end
   end
 

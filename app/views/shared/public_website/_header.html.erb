@@ -91,7 +91,7 @@
   </ul>
 </div>
 
-<div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-5' %>" data-nav="about-us">
+<div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-4' %>" data-nav="about-us">
   <ul>
     <li>
       <%= link_to :who_we_are do %>
@@ -111,6 +111,7 @@
         <h4><%= t 'nav.testimonials' %></h4>
       <% end %>
     </li>
+    <% if I18n.locale.to_s == 'pt-BR' %>
     <li>
       <%= link_to :leadership do %>
         <% if I18n.locale.to_s == 'pt-BR' %>
@@ -121,6 +122,7 @@
         <h4><%= t 'nav.leadership' %></h4>
       <% end %>
     </li>
+    <% end %>
     <% if I18n.locale.to_s != 'pt-BR' %>
     <li>
       <%= link_to :news do %>
