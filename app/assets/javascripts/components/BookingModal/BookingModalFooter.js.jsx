@@ -95,7 +95,7 @@ var BookingModalFooter = React.createClass({
 		var hasPlus = false;
 
 		for (var i = 0, ilen = this.props.services.length; i < ilen; i++) {
-			console.log('this.props.services[i]', this.props.services[i]);
+			//console.log('this.props.services[i]', this.props.services[i]);
 
 			if (this.props.services[i].price == null) {
 				nullPrice = true;

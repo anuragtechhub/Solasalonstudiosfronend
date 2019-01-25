@@ -134,7 +134,7 @@ var SolaSearch = React.createClass({
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
 				{
-					this.state.sideTabVisible && !this.sideTabPopUpVisible
+					!this.state.sideTabPopUpVisible && this.state.sideTabVisible 
 					?
 					<div className="side-tab">
 						<span className="text" onClick={this.onShowSideTabPopUp}>{I18n.t('sola_search.dont_see_your_sola_professional')}</span>
