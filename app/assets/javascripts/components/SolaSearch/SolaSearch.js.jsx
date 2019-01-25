@@ -27,6 +27,7 @@ var SolaSearch = React.createClass({
 			professionals: this.props.professionals || [],
 			query: this.props.query,
 			radius: 25,
+			sideTabVisible: true,
 			sideTabPopUpVisible: false,
 			services: [],
 			step: this.props.step || 'review',
@@ -132,6 +133,16 @@ var SolaSearch = React.createClass({
 				/>
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
+				{
+					this.state.sideTabVisible && !this.sideTabPopUpVisible
+					?
+					<div className="side-tab">
+						<span className="text" onClick={this.onShowSideTabPopUp}>{I18n.t('sola_search.dont_see_your_sola_professional')}</span>
+						<span className="close-x" onClick={this.onHideSideTab}></span>
+					</div>
+					: 
+					null
+				}
 			</div>
 		);
 	},
@@ -155,6 +166,10 @@ var SolaSearch = React.createClass({
 	/**
 	* Change handlers
 	*/
+
+  onHideSideTab: function () {
+  	this.setState({sideTabVisible: false});
+  },
 
 	onChangeLocationId: function (location_id) {
 		this.setState({location_id: location_id});

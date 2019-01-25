@@ -3,7 +3,7 @@ var ProfessionalResult = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities,
-			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.gif',
+			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.png',
 			glossDefaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			loading: false,
 			selectedService: this.props.selectedService || this.props.professional.matched_services[0],

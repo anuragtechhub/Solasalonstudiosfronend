@@ -16,6 +16,7 @@
 	}
 
 	.SideTabPopUpModal {
+		z-index: 999;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -98,6 +99,7 @@
 	}
 
 	.side-tab {
+		z-index: 99;
 		position: absolute;
 		top: 50%;
 		right: -131px;

@@ -2,7 +2,8 @@ var BookingComplete = React.createClass({
 	
 	getInitialState: function () {
 		return {
-			defaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
+			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.png',
+			glossDefaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			useDefaultCoverImage: false,
 		};
 	},
@@ -49,9 +50,8 @@ var BookingComplete = React.createClass({
 						<div className="Header">
 							<div className="ProfessionalCoverImage">
 								<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Landing Page" data-glabel={this.props.professional.booking_page_url}>
-									<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.professional.cover_image} alt={this.props.professional.full_name} onError={this.onCoverImageError} />
+									<img src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : (this.props.professional.cover_image != this.state.glossDefaultCoverImageUrl ? this.props.professional.cover_image : this.state.defaultCoverImageUrl)} alt={this.props.professional.full_name} onError={this.onCoverImageError} />
 								</a>
-								<div className="Gradient"></div>
 							</div>
 							<div className="ProfessionalInfo">
 								<div className="ProfessionalName">{this.props.professional.full_name}</div>

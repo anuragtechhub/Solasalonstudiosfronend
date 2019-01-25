@@ -2,7 +2,7 @@ var BookingModalReview = React.createClass({
 
 	getInitialState: function () {
 		return {
-			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.gif',
+			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.png',
 			glossDefaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			useDefaultCoverImage: false,
 			height: 'auto',
