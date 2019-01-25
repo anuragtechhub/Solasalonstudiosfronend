@@ -27,6 +27,7 @@ var SolaSearch = React.createClass({
 			professionals: this.props.professionals || [],
 			query: this.props.query,
 			radius: 25,
+			sideTabPopUpVisible: false,
 			services: [],
 			step: this.props.step || 'review',
 			results_path: this.props.results_path,
@@ -105,7 +106,8 @@ var SolaSearch = React.createClass({
 					lng={this.state.lng} 
 					locations={this.state.locations} 
 					mode={this.state.mode}
-					onChangeLocationId={this.onChangeLocationId} 
+					onChangeLocationId={this.onChangeLocationId}
+					onShowSideTabPopUp={this.onShowSideTabPopUp}
 					zoom={this.state.zoom}
 				/>
 				<BookingModal 
@@ -128,6 +130,7 @@ var SolaSearch = React.createClass({
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
 				/>
+				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
 			</div>
 		);
@@ -173,6 +176,14 @@ var SolaSearch = React.createClass({
 			this.setState({bookingModalVisible: false, professional: null, time: null, services: [], step: 'review'});
 		}
 	},
+
+  onShowSideTabPopUp: function () {
+  	this.setState({sideTabPopUpVisible: true});
+  },
+
+  onHideSideTabPopUpModal: function () {
+  	this.setState({sideTabPopUpVisible: false});
+  },
 
 	onShowBookingModal: function (professional, time, selectedService, event) {
 		if (event && typeof event.preventDefault == 'function') {

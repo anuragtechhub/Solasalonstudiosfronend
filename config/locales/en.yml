@@ -84,6 +84,10 @@ en:
     price_varies: Price Varies
     load_more_professionals: Load More Professionals
     end_of_results: End of results
+    dont_see_your_sola_professional: Don't see your Sola Professional?
+    contact_your_sola_pro_directly: Contact Your Sola Pro directly
+    if_you_do_not_see: <strong>If you do not see your Sola professional in the search results below, please contact them directly for booking.</strong>
+    booknow_search_results: The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).
 
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com

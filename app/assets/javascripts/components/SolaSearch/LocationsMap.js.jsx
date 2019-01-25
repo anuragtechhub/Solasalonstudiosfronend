@@ -2,6 +2,7 @@ var LocationsMap = React.createClass({
 
 	getInitialState: function () {
 		return {
+			sideTabVisible: true,
 			processedMarkers: false,
 			map: false,
 		}
@@ -68,9 +69,29 @@ var LocationsMap = React.createClass({
 		return (
 			<div className="LocationsMap">
 				<div ref="map" className="map"></div>
+				{
+					this.state.sideTabVisible 
+					?
+					<div className="side-tab">
+						<span className="text" onClick={this.props.onShowSideTabPopUp}>{I18n.t('sola_search.dont_see_your_sola_professional')}</span>
+						<span className="close-x" onClick={this.hideSideTab}></span>
+					</div>
+					: 
+					null
+				}
 			</div>
 		);
 	},
+
+
+
+	/**
+	* Event handlers
+	*/
+  
+  hideSideTab: function () {
+  	this.setState({sideTabVisible: false});
+  },
 
 
 
