@@ -8,14 +8,14 @@
 	left: 0;
 	right: 0;
 	background: rgba(0,0,0,0.8);
-	z-index: 99;
+	z-index: 9999;
 }
 
 .BookingModal {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -300px 0 0 -300px;
+	margin: -306px 0 0 -300px;
 	width: 600px;
 	height: 612px;
 	// max-width: 600px;
@@ -543,7 +543,7 @@
 			width: 110px;	
 			top: 0;
 			left: 0;
-			border-radius: 2px;
+			border-radius: 55px;
 		}
 
 		.Gradient {

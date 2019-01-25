@@ -234,7 +234,8 @@ var BookingModal = React.createClass({
 		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
 			service_guids.push(this.state.services[i].guid);
 		}
-		//console.log('book it', service_guids, this.state.time);
+		//console.log('book it', service_guids, this.state.time, this.state.services, self.calculateServicesTotal());
+
 		this.setState({loading: true});
 
 		$.ajax({
@@ -270,10 +271,50 @@ var BookingModal = React.createClass({
 					location_id: self.props.location_id,
 					location: self.props.location,
 					query: self.props.query,
+					services: self.state.services,
+					total: self.calculateServicesTotal()
+
 				}));
 				$(self.refs.BookingCompleteForm).submit();
 			}
 		}); 
+	},
+
+	/**
+	* Helper functions
+	*/
+
+	calculateServicesTotal: function () {
+		var total = 0;
+		var nullPrice = false;
+		var hasPlus = false;
+
+		for (var i = 0, ilen = this.state.services.length; i < ilen; i++) {
+			//console.log('this.props.services[i]', this.props.services[i]);
+
+			if (this.state.services[i].price == null) {
+				nullPrice = true;
+				break;
+			} else if (this.state.services[i].price.indexOf('+') != -1) {
+				hasPlus = true;
+			}
+
+			total = total + parseFloat(this.state.services[i].price, 10);
+		}
+
+		if (nullPrice) {
+			total = I18n.t('sola_search.price_varies');
+		}
+
+		if (isNaN(total)) {
+			return total;
+		} else {
+			if (hasPlus) {
+				return '$' + numeral(total).format('0,0.00') + '+';
+			} else {
+				return '$' + numeral(total).format('0,0.00');
+			}
+		}
 	},
 
 	clientCheck: function () {

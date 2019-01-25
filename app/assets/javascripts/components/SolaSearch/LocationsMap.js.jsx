@@ -2,6 +2,7 @@ var LocationsMap = React.createClass({
 
 	getInitialState: function () {
 		return {
+			sideTabVisible: true,
 			processedMarkers: false,
 			map: false,
 		}
@@ -71,6 +72,7 @@ var LocationsMap = React.createClass({
 			</div>
 		);
 	},
+
 
 
 

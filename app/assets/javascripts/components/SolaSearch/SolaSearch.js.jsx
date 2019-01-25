@@ -27,6 +27,8 @@ var SolaSearch = React.createClass({
 			professionals: this.props.professionals || [],
 			query: this.props.query,
 			radius: 25,
+			sideTabVisible: true,
+			sideTabPopUpVisible: false,
 			services: [],
 			step: this.props.step || 'review',
 			results_path: this.props.results_path,
@@ -105,7 +107,8 @@ var SolaSearch = React.createClass({
 					lng={this.state.lng} 
 					locations={this.state.locations} 
 					mode={this.state.mode}
-					onChangeLocationId={this.onChangeLocationId} 
+					onChangeLocationId={this.onChangeLocationId}
+					onShowSideTabPopUp={this.onShowSideTabPopUp}
 					zoom={this.state.zoom}
 				/>
 				<BookingModal 
@@ -128,7 +131,18 @@ var SolaSearch = React.createClass({
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
 				/>
+				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
+				{
+					!this.state.sideTabPopUpVisible && this.state.sideTabVisible 
+					?
+					<div className="side-tab">
+						<span className="text" onClick={this.onShowSideTabPopUp}>{I18n.t('sola_search.dont_see_your_sola_professional')}</span>
+						<span className="close-x" onClick={this.onHideSideTab}></span>
+					</div>
+					: 
+					null
+				}
 			</div>
 		);
 	},
@@ -153,6 +167,10 @@ var SolaSearch = React.createClass({
 	* Change handlers
 	*/
 
+  onHideSideTab: function () {
+  	this.setState({sideTabVisible: false});
+  },
+
 	onChangeLocationId: function (location_id) {
 		this.setState({location_id: location_id});
 	},
@@ -173,6 +191,14 @@ var SolaSearch = React.createClass({
 			this.setState({bookingModalVisible: false, professional: null, time: null, services: [], step: 'review'});
 		}
 	},
+
+  onShowSideTabPopUp: function () {
+  	this.setState({sideTabPopUpVisible: true});
+  },
+
+  onHideSideTabPopUpModal: function () {
+  	this.setState({sideTabPopUpVisible: false});
+  },
 
 	onShowBookingModal: function (professional, time, selectedService, event) {
 		if (event && typeof event.preventDefault == 'function') {
