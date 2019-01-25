@@ -3,7 +3,8 @@ var ProfessionalResult = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities,
-			defaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
+			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.gif',
+			glossDefaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			loading: false,
 			selectedService: this.props.selectedService || this.props.professional.matched_services[0],
 			useDefaultCoverImage: false,
@@ -43,10 +44,8 @@ var ProfessionalResult = React.createClass({
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
 				<div className="ProfessionalCoverImage">
 					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url}>
-						<img style={{height: this.state.height, width: this.state.width, top: this.state.top, left: this.state.left}} src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : this.props.cover_image} alt={this.props.full_name} onError={this.onCoverImageError} onLoad={this.onCoverImageLoad} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url} />
+						<img style={{height: this.state.height, width: this.state.width, top: this.state.top, left: this.state.left}} src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : (this.props.cover_image != this.state.glossDefaultCoverImageUrl ? this.props.cover_image : this.state.defaultCoverImageUrl)} alt={this.props.full_name} onError={this.onCoverImageError} onLoad={this.onCoverImageLoad} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
-					<span className="ProfessionalCoverImageName">{this.props.full_name}</span>
-					<div className="Gradient"></div>
 				</div>
 				
 				<div className="ProfessionalResultDetails">
