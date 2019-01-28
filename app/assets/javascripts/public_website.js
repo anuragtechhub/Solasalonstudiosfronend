@@ -285,6 +285,8 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
+        ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
+        
         var path = window.location.pathname;
         if (path.indexOf('contact-us-success') == -1) {
           path = path + '/contact-us-success';
