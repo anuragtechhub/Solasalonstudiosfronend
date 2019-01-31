@@ -461,6 +461,8 @@
 			background-color: #F5F9FB;
 			padding: 10px;
 			margin: 0 -3px 3px -3px;
+			display: flex;
+			align-items: center;
 
 			.ServiceImage {
 				display: inline-block;
@@ -479,9 +481,10 @@
 
 			&.HasImage {
 				.ServiceDetails {
-					position: relative;
-					top: 13px;
-					left: 23px;
+					// position: relative;
+					// top: 13px;
+					// left: 23px;
+					margin-left: 15px;
 				}
 			}
 
@@ -626,7 +629,7 @@
 				.toggle-switch-button {
 					position: absolute;
 					top: 22px;
-					right: 22px;
+					right: 15px;
 
 					display: block;
 					height: 48px;	
@@ -776,9 +779,9 @@
 				.ServiceName {
 					font-size: 14px;	
 					line-height: 16px;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+					// overflow: hidden;
+					// text-overflow: ellipsis;
+					// white-space: nowrap;
 				}
 			}				
 		}
