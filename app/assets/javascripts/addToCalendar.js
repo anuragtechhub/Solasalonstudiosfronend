@@ -180,6 +180,7 @@
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
           'BEGIN:VEVENT',
+          'TZID:' + (event.timezone || ''),
           'URL:' + document.URL,
           'DTSTART:' + (startTime || ''),
           'DTEND:' + (endTime || ''),

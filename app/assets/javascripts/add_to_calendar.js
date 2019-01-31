@@ -8,6 +8,7 @@ $.widget('solasalonstudios.add_to_calendar', {
         title: self.element.data('title'), //'Sola Session West Palm Beach, FL',
         start: new Date(self.element.data('start')), //new Date('September 18, 2017 09:00'),
         end: new Date(self.element.data('end')), //new Date('September 18, 2017 18:30'),  
+        timezone: self.element.data('timezone'),
         address: self.element.data('address'), //'Wyndham Grand Jupiter at Harbourside Place, 122 Soundings Avenue, Jupiter, FL 33477', 
         description: self.element.data('description') //"On Monday, September 18th, we're bringing the industry's best exclusively to the Sola...""
     }};
@@ -84,12 +85,15 @@ $.widget('solasalonstudios.add_to_calendar', {
       var startTime = formatTime(event.start);
       var endTime = calculateEndTime(event);
 
+      //console.log('add to cal yo', event.timezone);
+
       var href = encodeURI([
         'https://www.google.com/calendar/render',
         '?action=TEMPLATE',
         '&text=' + (event.title || ''),
         '&dates=' + (startTime || ''),
         '/' + (endTime || ''),
+        (event.timezone) ? '&ctz=' + event.timezone : '',
         '&details=' + (event.description || ''),
         '&location=' + (event.address || ''),
         '&sprop=&sprop=name:'
@@ -189,7 +193,7 @@ $.widget('solasalonstudios.add_to_calendar', {
 
     return {
       google: self.calendarGenerators.google(event),
-      yahoo: self.calendarGenerators.yahoo(event),
+      //yahoo: self.calendarGenerators.yahoo(event),
       ical: self.calendarGenerators.ical(event),
       outlook: self.calendarGenerators.outlook(event)
     };

@@ -16,7 +16,7 @@
 //= require hammer
 //= require jquery.hoverIntent
 //= require add_to_calendar
-//= require addToCalendar
+// require addToCalendar
 //= require i18n
 //= require i18n/translations
 //= require_tree ./public_website
