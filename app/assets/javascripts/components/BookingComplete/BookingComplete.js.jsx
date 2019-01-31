@@ -9,9 +9,9 @@ var BookingComplete = React.createClass({
 	},
 
 	componentDidMount: function () {
-		if (this.refs.add_to_calendar) {
-			$(this.refs.add_to_calendar).add_to_calendar();
-		}
+		// if (this.refs.add_to_calendar) {
+		// 	$(this.refs.add_to_calendar).add_to_calendar();
+		// }
 	},
 
 	render: function () {
@@ -44,6 +44,14 @@ var BookingComplete = React.createClass({
 								 data-start={this.props.time.start}
 								 data-end={this.props.time.end}></span>
 						</div>*/}
+							<span className="add-to-calendar-wrapper add-to-calendar" ref="add_to_calendar">
+								<span className="title">{I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}</span>
+								<span className="description">{service_description}</span>
+								<span className="address">{this.props.professional.business_address.replace(/#/g, '')}</span>
+								<span className="start">{moment(this.props.time.start).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}</span>
+								<span className="end">{moment(this.props.time.end).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}</span>
+								<span className="timezone">{this.props.professional.timezone}</span>
+							</span>
 					</div>
 					<div className="BookingCompleteBox">
 
