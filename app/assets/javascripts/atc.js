@@ -15,7 +15,7 @@
     google: function(event) {
       var startTime = formatTime(event.start);
       var endTime = calculateEndTime(event);
-
+      console.log('event', event);
       var href = encodeURI([
         'https://www.google.com/calendar/render',
         '?action=TEMPLATE',
@@ -24,6 +24,7 @@
         '/' + (endTime || ''),
         '&details=' + (event.description || ''),
         '&location=' + (event.address || ''),
+        '&ctz=' + (event.timezone || ''),
         '&sprop=&sprop=name:'
       ].join(''));
       return '<a class="icon-google" target="_blank" href="' +
@@ -56,6 +57,7 @@
         '&st=' + st,
         '&dur=' + (yahooEventDuration || ''),
         '&desc=' + (event.description || ''),
+        '&ctz=' + (event.timezone || ''),
         '&in_loc=' + (event.address || '')
       ].join(''));
 

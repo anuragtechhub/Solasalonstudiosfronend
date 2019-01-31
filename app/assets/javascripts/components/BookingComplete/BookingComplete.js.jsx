@@ -35,15 +35,24 @@ var BookingComplete = React.createClass({
 					<div className="BookingCompleteHeader">
 						<h2>{I18n.t('sola_search.booking_complete')}</h2>
 						<p>{I18n.t('sola_search.thanks_for_choosing_sola')}</p>
-						{/*<div className="AddToCalendar">
+						<div className="AddToCalendar">
 							<span className="add-to-calendar-wrapper" ref="add_to_calendar"
 								 data-label={I18n.t('sola_search.add_to_calendar')}
 								 data-title={I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}
 								 data-description={service_description}
 								 data-address={this.props.professional.business_address.replace(/#/g, '')}
-								 data-start={this.props.time.start}
-								 data-end={this.props.time.end}></span>
-						</div>*/}
+								 data-timezone={this.props.professional.timezone} 
+								 data-start={moment(this.props.time.start).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}
+								 data-end={moment(this.props.time.end).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}></span>
+						</div>
+						{/*<span className="add-to-calendar-wrapper add-to-calendar" ref="add_to_calendar">
+								<span className="title">{I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}</span>
+								<span className="description">{service_description}</span>
+								<span className="address">{this.props.professional.business_address.replace(/#/g, '')}</span>
+								<span className="start">{moment(this.props.time.start).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}</span>
+								<span className="end">{moment(this.props.time.end).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}</span>
+								<span className="timezone">{this.props.professional.timezone}</span>
+							</span>*/}
 					</div>
 					<div className="BookingCompleteBox">
 
