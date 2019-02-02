@@ -307,7 +307,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 1 error = #{e.inspect}"
       end
     else
-      stylist.image_1 = nil
+      #stylist.image_1 = nil
     end
 
     if image_2.present?
@@ -318,7 +318,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 2 error = #{e.inspect}"
       end
     else
-      stylist.image_2 = nil
+      #stylist.image_2 = nil
     end
 
     if image_3.present?
@@ -329,7 +329,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 3 error = #{e.inspect}"
       end
     else
-      stylist.image_3 = nil
+      #stylist.image_3 = nil
     end
 
     if image_4.present?
@@ -340,7 +340,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 4 error = #{e.inspect}"
       end
     else
-      stylist.image_4 = nil
+      #stylist.image_4 = nil
     end
 
     if image_5.present?
@@ -351,7 +351,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 5 error = #{e.inspect}"
       end
     else
-      stylist.image_5 = nil
+      #stylist.image_5 = nil
     end
 
     if image_6.present?
@@ -362,7 +362,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 6 error = #{e.inspect}"
       end
     else
-      stylist.image_6 = nil
+      #stylist.image_6 = nil
     end
 
     if image_7.present?
@@ -373,7 +373,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 7 error = #{e.inspect}"
       end
     else
-      stylist.image_7 = nil
+      #stylist.image_7 = nil
     end
 
     if image_8.present?
@@ -384,7 +384,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 8 error = #{e.inspect}"
       end
     else
-      stylist.image_8 = nil
+      #stylist.image_8 = nil
     end
 
     if image_9.present?
@@ -395,7 +395,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 9 error = #{e.inspect}"
       end
     else
-      stylist.image_9 = nil
+      #stylist.image_9 = nil
     end
 
     if image_10.present?
@@ -406,7 +406,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "image 10 error = #{e.inspect}"
       end
     else
-      stylist.image_10 = nil
+      #stylist.image_10 = nil
     end
 
     #stylist.save
