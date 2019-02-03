@@ -1,19 +1,6 @@
 <div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
-  <% if I18n.locale.to_s != 'pt-BR' %>
-    <div class="item">
-      <div class="img-wrap"><%= image_tag 'Home/Home-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 1600, :height => 800 %></div>
-      <div class="item-content">
-        <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-1" class="play-video play-video-white-button">
-          <div class="watch-video-button">
-            <span class="fa fa-5x fa-play"></span>
-          </div>
-          <span class="text"><%= t('page.home.watch_video') %></span>
-        </a>
-      </div>
-    </div> 
-  <% end %> 
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/homepage/Slider/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
     <div class="item-content left-align">
       <div class="left-align-container">
       <h1><%= t('page.home.slider1_heading').html_safe %></h1>
@@ -23,7 +10,7 @@
     </div>
   </div>
   <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
+    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/homepage/Slider/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
     <div class="item-content">
       <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
       <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
@@ -42,21 +29,8 @@
 </div>
 
 <div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
-  <% if I18n.locale.to_s != 'pt-BR' %>  
-    <div class="item">
-      <%= image_tag 'Home/Home-Mobile-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 750, :height => 750 %>
-      <div class="item-content">
-        <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-2" class="play-video play-video-white-button">
-          <div class="watch-video-button">
-            <span class="fa fa-5x fa-play"></span>
-          </div>
-          <span class="text"><%= t('page.home.watch_video') %></span>
-        </a>
-      </div>
-    </div>  
-  <% end %>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-1.jpeg', :alt => t('page.home.slider1_heading'), :width => 750, :height => 750 %>
+  <div class="item">
+    <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/homepage/Slider/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 750, :height => 750 %>
     <div class="item-content">
       <h1><%= t('page.home.slider1_heading').html_safe %></h1>
       <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
@@ -64,7 +38,7 @@
     </div>
   </div>
   <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-2.jpeg', :alt => t('page.home.slider2_heading'), :width => 750, :height => 750 %>
+    <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/homepage/Slider/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 750, :height => 750 %>
     <div class="item-content">
       <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
       <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
@@ -193,5 +167,5 @@
 </div>
 
 <% @no_title_dash = true %>
-<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale.to_s == 'en-CA' ? 'ca' : 'com.br'}/home" } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com.br'}/home" } %>
 <% content_for(:meta_description) { t('page.home.meta_description') } %>

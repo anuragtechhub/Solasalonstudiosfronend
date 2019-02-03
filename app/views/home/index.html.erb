@@ -1,5 +1,7 @@
 <% if I18n.locale == :en %>
   <%= render 'index_en' %>
+<% elsif I18n.locale.to_s == 'pt-BR' %>
+  <%= render 'index_pt_br' %>
 <% else %>
   <%= render 'index_en_ca' %>
 <% end %>

@@ -4,7 +4,11 @@
 
   <div class="hero-carousel owl-carousel owl-theme">
     <div class="item">
-      <div class="img-wrap"><%= image_tag 'WhySola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% else %>
+        <div class="img-wrap"><%= image_tag 'WhySola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% end %>
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
         <h1 class="chalet-new-york"><%= t('page.why_sola.hero_heading2').html_safe %></h1>
@@ -33,7 +37,11 @@
         <p><%= t('page.why_sola.be_in_business_p2').html_safe %></p>
       </div>
       <div class="six columns">
-        <%= image_tag 'WhySola/WhySola_2.png', :class => 'u-full-width' %>
+        <% if I18n.locale.to_s == 'pt-BR' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', :class => 'u-full-width' %>
+        <% else %>
+          <%= image_tag 'WhySola/WhySola_2.png', :class => 'u-full-width' %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -119,7 +127,11 @@
         <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
             <div class="img-wrap">
-              <%= image_tag 'WhySola/OurStudios.jpg' %>
+              <% if I18n.locale.to_s == 'pt-BR' %>
+                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/OurStudios.jpg' %>
+              <% end %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.beautiful_studios') %></span></div>
             </div>
             <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>

@@ -4,7 +4,11 @@
 
   <div class="hero-carousel owl-carousel owl-theme">
     <div class="item">
-      <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/our_studios/Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% else %>
+        <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <% end %>
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.our_studios.hero_heading1').html_safe %></h1>
         <p><%= t('page.our_studios.hero_heading2').html_safe %></p>

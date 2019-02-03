@@ -1,171 +1,84 @@
-<div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
-  <div class="item">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 1600, :height => 800 %></div>
-    <div class="item-content">
-      <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-1" class="play-video play-video-white-button">
-        <div class="watch-video-button">
-          <span class="fa fa-5x fa-play"></span>
-        </div>
-        <span class="text"><%= t('page.home.watch_video') %></span>
-      </a>
-    </div>
-  </div>  
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'sola10khero.jpg', :width => 1386, :height => 713 %></div>
-    <div class="item-content bottom-align">
-      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.join_our_community').html_safe %><% end %>
-    </div>
+<div class="home-container-full-width">
+  <div class="for-customers tile-for-customers-find-a-stylist">
+    <div class="tile-content">
+      <h5><%= t('page.home.for_customers') %></h5>
+      <h2>
+        <%= t('page.home.find_a_sola') %>
+        <span class="mobile-br">&nbsp;</span>
+        <span class="home-services-animation">
+          <span class="active"><%= t('services.hairstylist') %></span>
+          <span><%= t('services.esthetician') %></span>
+          <span><%= t('services.nail_tech') %></span>
+          <span><%= t('services.makeup_artist') %></span>
+          <span><%= t('services.beauty_professional') %></span>
+        </span>
+      </h2>
+      <p><%= t('page.home.search_salon_professionals') %></p>
+      <%= react_component 'SearchBar', {
+        date: params[:date] || DateTime.now,
+        error: flash[:error],
+        gloss_genius_api_key: ENV['GLOSS_GENIUS_API_KEY'],
+        gloss_genius_api_url: ENV['GLOSS_GENIUS_API_URL'],
+        location: params[:location],
+        lat: params[:lat],
+        lng: params[:lng],
+        path: booknow_results_path, 
+        query: params[:query],
+      } %>
+      <h2 class="booknow-by-solagenius">BOOK<strong>NOW</strong> by SOLAGENIUS</h2>  
+    </div>  
   </div>
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-1.jpg', :alt => t('page.home.slider1_heading'), :width => 1600, :height => 800 %></div>
-    <div class="item-content left-align">
-      <div class="left-align-container">
-      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
-      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
+  <div class="for-professionals tile-for-professionals-own-your-salon">
+    <div class="tile-content">
+      <h5><%= t('page.home.for_professionals') %></h5>
+      <h2><%= t('page.home.own_your_salon') %></h2>
+      <ul>
+        <li>
+          <h4><%= link_to "//www.youtube.com/watch?v=afOBB5jAjUU", :rel => 'afOBB5jAjUU', :class => 'play-video' do %><span class="forward-arrow-white"></span><%= t('page.home.watch_our_video') %><% end %></h4>
+        </li>
+        <li><h4><%= link_to :why_sola do %><span class="forward-arrow-white"></span><%= t('page.why_sola.title') %><% end %></h4></li>
+        <li><h4><%= link_to :our_studios do %><span class="forward-arrow-white"></span><%= t('page.our_studios.title') %><% end %></h4></li>
+      </ul>
+      <div class="button-wrapper">
+        <%= link_to :why_sola, :class => 'button' do %><%= t('page.home.learn_more') %><% end %>  
       </div>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
-    <div class="item-content">
-      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
-      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
-      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-3.jpg', :alt => t('page.home.slider3_heading'), :width => 1600, :height => 800 %></div>
-    <div class="img-overlay black-25">&nbsp;</div>
-    <div class="item-content">
-      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
-      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
-      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
-    </div>
-  </div>
-
-</div>
-
-<div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
-  <div class="item">
-    <%= image_tag 'Home/Home-Mobile-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 750, :height => 750 %>
-    <div class="item-content">
-      <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-2" class="play-video play-video-white-button">
-        <div class="watch-video-button">
-          <span class="fa fa-5x fa-play"></span>
-        </div>
-        <span class="text"><%= t('page.home.watch_video') %></span>
-      </a>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-   <%= image_tag 'sola10khero_mobile.jpg', :width => 750, :height => 750 %>
-    <div class="item-content bottom-align">
-      <%= link_to :why_sola, :class => 'button outline-large-white' do %><%= t('page.home.join_our_community').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-1.jpeg', :alt => t('page.home.slider1_heading'), :width => 750, :height => 750 %>
-    <div class="item-content">
-      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
-      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-2.jpeg', :alt => t('page.home.slider2_heading'), :width => 750, :height => 750 %>
-    <div class="item-content">
-      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
-      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
-      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-3.jpeg', :alt => t('page.home.slider3_heading'), :width => 750, :height => 750 %>
-    <div class="img-overlay black-25">&nbsp;</div>
-    <div class="item-content">
-      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
-      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
-      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+      <p><%= t('page.home.tagline').html_safe %></p>
     </div>
   </div>
 </div>
+
+<div class="clearfix">&nbsp;</div>
 
 <div class="container">
 
-  <div class="row tile-row home-tile-row">
-    <div class="one-half column">
-      <div class="tile-mask tile-for-professionals-own-your-salon">
-        <div class="content">
-          <h5><%= t('page.home.for_professionals') %></h5>
-          <h2><%= t('page.home.own_your_salon') %></h2>
-          <ul>
-            <li><h4><%= link_to "//www.youtube.com/watch?v=nbHFs0XjS8s", :rel => 'nbHFs0XjS8s', :class => 'play-video' do %><%= t('page.home.watch_our_video') %><span class="forward-arrow-white"></span><% end %></h4></li>
-            <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
-            <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
-          </ul>
-          <%= form_tag [:search, :results], :method => :get do %>
-            <div class="filterable-dropdown-search" data-input="service_type">
-              <div class="dropdown">
-                <div class="selected-option"><span class="name"><%= t('services.hair') %></span><span class="down-triangle"></span></div>
-                <div class="options">
-                  <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
-                  <div class="option" data-value="hair"><%= t('services.hair') %></div>
-                  <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
-                  <div class="option" data-value="nails"><%= t('services.nails') %></div>
-                  <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
-                </div>
-              </div>
-              <span class="spyglass-black"></span>
-              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
-              <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
-              <button type="submit"><span class="search-icon"></span></button>
-            </div>
-          <% end %>
-        </div>
-        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', width: '566', height: '407' %></div>
-      </div>
+  <div class="row home-trilogy">
+    <div class="four columns">
+      <%= link_to :about_us do %>
+        <%= image_tag 'Home/trilogy-about-us.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.about.title' %></h2>
+          <span class="button"><%= t 'page.home.learn_more' %></span>
+        </span>
+      <% end %>
     </div>
-
-    <div class="one-half column">
-      <div class="tile-mask tile-for-customers-find-a-stylist">
-        <div class="content">
-          <h5><%= t('page.home.for_customers') %></h5>
-          <h2>
-            <%= t('page.home.find_a_sola') %>
-            <span class="desktop-br">&nbsp;</span>
-            <span class="home-services-animation">
-              <span class="active"><%= t('services.hairstylist') %></span>
-              <span><%= t('services.esthetician') %></span>
-              <span><%= t('services.nail_tech') %></span>
-              <span><%= t('services.makeup_artist') %></span>
-              <span><%= t('services.beauty_professional') %></span>
-            </span>
-          </h2>
-          <p><%= t('page.home.search_salon_professionals') %></p>
-          <%= form_tag [:search, :results], :method => :get do %>
-            <div class="filterable-dropdown-search" data-input="service_type">
-              <div class="dropdown">
-                <div class="selected-option"><span class="name"><%= t('services.hair') %></span><span class="down-triangle"></span></div>
-                <div class="options">
-                  <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
-                  <div class="option" data-value="hair"><%= t('services.hair') %></div>
-                  <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
-                  <div class="option" data-value="nails"><%= t('services.nails') %></div>
-                  <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
-                </div>
-              </div>
-              <span class="spyglass-black"></span>
-              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
-              <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
-              <input type="hidden" name="so" value="salon_professionals" />
-              <button type="submit"><span class="search-icon"></span></button>
-            </div>
-          <% end %>
-        </div>
-        <div class="img-wrap"><%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %></div>
-      </div>
-    </div>       
+    <div class="four columns">
+      <%= link_to :our_studios do %>
+        <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.our_studios.title' %></h2>
+          <span class="button"><%= t 'page.home.take_a_tour' %></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="four columns">
+      <%= link_to :contact_us do %>
+        <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.contact.title' %></h2>
+          <span class="button"><%= t 'page.home.get_in_touch' %></span>
+        </span>
+      <% end %>
+    </div>
   </div>
 
   <div class="owl-carousel owl-theme owl-desktop inline-carousel" data-autoplay="5000">
@@ -184,3 +97,8 @@
   </div>
 
 </div>
+
+<% @no_title_dash = true %>
+<% @body_class = 'sola-search' %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com/home" } %>
+<% content_for(:meta_description) { t('page.home.meta_description') } %>
