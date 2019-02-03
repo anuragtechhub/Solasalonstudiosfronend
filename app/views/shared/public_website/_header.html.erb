@@ -48,88 +48,151 @@
   </div>
 </div>
 
-<div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %> <%= I18n.locale.to_s == 'pt-BR' ? 'has-3' : nil %>" data-nav="own-your-salon">
-  <ul>
-    <li>
-      <%= link_to :why_sola do %>
-        <%= image_tag 'own_nav/1_own.jpg' %>
-        <h4><%= t 'page.why_sola.title' %></h4>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to :our_studios do %>
-        <%= image_tag 'own_nav/2_amenities.jpg' %>
-        <h4><%= t 'nav.our_studios' %></h4>
-      <% end %>
-    </li>
-    <% if I18n.locale.to_s != 'pt-BR' %>
-      <li>
-        <%= link_to :sola_sessions do %>
-          <%= image_tag 'own_nav/4_sessions.jpg' %>
-          <h4><%= t 'nav.sola_sessions' %></h4>
-        <% end %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to :sola_pro do %>
-        <% if I18n.locale.to_s == 'en' %>
-          <%= image_tag 'own_nav/3_solapro.jpg' %>
-        <% else %>
-          <%= image_tag 'own_nav/3_solapro_ca.jpg' %>
-        <% end %>
-        <h4><%= t 'nav.sola_pro' %></h4>
-      <% end %>
-    </li>
-    <% if I18n.locale.to_s == 'en' %>
-      <li>
-        <%= link_to :solagenius do %>
-          <%= image_tag 'own_nav/5_solagenius.jpg' %>
-          <h4><%= t 'nav.solagenius' %></h4>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
 
-<div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-4' %>" data-nav="about-us">
-  <ul>
-    <li>
-      <%= link_to :who_we_are do %>
-        <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg' %>
-        <h4><%= t 'nav.who_we_are' %></h4>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to :our_story do %>
-        <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
-        <h4><%= t 'nav.our_story' %></h4>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to :testimonials do %>
-        <%= image_tag 'about_nav/Testimonials@2x.jpg' %>
-        <h4><%= t 'nav.testimonials' %></h4>
-      <% end %>
-    </li>
-    <% if I18n.locale.to_s == 'pt-BR' %>
-    <li>
-      <%= link_to :leadership do %>
-        <% if I18n.locale.to_s == 'pt-BR' %>
-          <%= image_tag 'Leadership/Rodrigo-menu.jpeg' %>
-        <% else %>
-          <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+
+<% if I18n.locale.to_s == 'pt-BR' %>
+  <div class="oys-nav has-3" data-nav="own-your-salon">
+    <ul>
+      <li>
+        <%= link_to :why_sola do %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/why-sola/1_own.jpg' %>
+          <h4><%= t 'page.why_sola.title' %></h4>
         <% end %>
-        <h4><%= t 'nav.leadership' %></h4>
+      </li>
+      <li>
+        <%= link_to :our_studios do %>
+          <%= image_tag 'own_nav/2_amenities.jpg' %>
+          <h4><%= t 'nav.our_studios' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :sola_pro do %>
+          <% if I18n.locale.to_s == 'en' %>
+            <%= image_tag 'own_nav/3_solapro.jpg' %>
+          <% else %>
+            <%= image_tag 'own_nav/3_solapro_ca.jpg' %>
+          <% end %>
+          <h4><%= t 'nav.sola_pro' %></h4>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% else %>
+  <div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %> <%= I18n.locale.to_s == 'pt-BR' ? 'has-3' : nil %>" data-nav="own-your-salon">
+    <ul>
+      <li>
+        <%= link_to :why_sola do %>
+          <%= image_tag 'own_nav/1_own.jpg' %>
+          <h4><%= t 'page.why_sola.title' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :our_studios do %>
+          <%= image_tag 'own_nav/2_amenities.jpg' %>
+          <h4><%= t 'nav.our_studios' %></h4>
+        <% end %>
+      </li>
+      <% if I18n.locale.to_s != 'pt-BR' %>
+        <li>
+          <%= link_to :sola_sessions do %>
+            <%= image_tag 'own_nav/4_sessions.jpg' %>
+            <h4><%= t 'nav.sola_sessions' %></h4>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-    <% end %>
-    <% if I18n.locale.to_s != 'pt-BR' %>
-    <li>
-      <%= link_to :news do %>
-        <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
-        <h4><%= t 'nav.in_the_news' %></h4>
+      <li>
+        <%= link_to :sola_pro do %>
+          <% if I18n.locale.to_s == 'en' %>
+            <%= image_tag 'own_nav/3_solapro.jpg' %>
+          <% else %>
+            <%= image_tag 'own_nav/3_solapro_ca.jpg' %>
+          <% end %>
+          <h4><%= t 'nav.sola_pro' %></h4>
+        <% end %>
+      </li>
+      <% if I18n.locale.to_s == 'en' %>
+        <li>
+          <%= link_to :solagenius do %>
+            <%= image_tag 'own_nav/5_solagenius.jpg' %>
+            <h4><%= t 'nav.solagenius' %></h4>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-    <% end %>
-  </ul>
-</div>
+    </ul>
+  </div>
+<% end %>
+
+
+<% if I18n.locale.to_s == 'pt-BR' %>
+  <div class="oys-nav has-4" data-nav="about-us">
+    <ul>
+      <li>
+        <%= link_to :who_we_are do %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/about-us/WhoWeAre_Thumb%402x.jpg' %>
+          <h4><%= t 'nav.who_we_are' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :our_story do %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/our-history/Story_Thumb%402x.jpg' %>
+          <h4><%= t 'nav.our_story' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :testimonials do %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/testemonials/Testimonials%402x.jpg' %>
+          <h4><%= t 'nav.testimonials' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :leadership do %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/leadership-team/Rodrigo-menu.jpeg' %>
+          <h4><%= t 'nav.leadership' %></h4>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+<% else %>
+  <div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-4' %>" data-nav="about-us">
+    <ul>
+      <li>
+        <%= link_to :who_we_are do %>
+          <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg' %>
+          <h4><%= t 'nav.who_we_are' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :our_story do %>
+          <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
+          <h4><%= t 'nav.our_story' %></h4>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to :testimonials do %>
+          <%= image_tag 'about_nav/Testimonials@2x.jpg' %>
+          <h4><%= t 'nav.testimonials' %></h4>
+        <% end %>
+      </li>
+      <% if I18n.locale.to_s == 'pt-BR' %>
+      <li>
+        <%= link_to :leadership do %>
+          <% if I18n.locale.to_s == 'pt-BR' %>
+            <%= image_tag 'Leadership/Rodrigo-menu.jpeg' %>
+          <% else %>
+            <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+          <% end %>
+          <h4><%= t 'nav.leadership' %></h4>
+        <% end %>
+      </li>
+      <% end %>
+      <% if I18n.locale.to_s != 'pt-BR' %>
+      <li>
+        <%= link_to :news do %>
+          <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
+          <h4><%= t 'nav.in_the_news' %></h4>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
