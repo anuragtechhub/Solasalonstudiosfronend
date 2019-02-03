@@ -28,7 +28,6 @@
 </div>
 
 <div class="container search-results">
-  <div class="row">
 
     <% if params[:query].present? && (@locations && @locations.size == 0) && (@stylists && @stylists.size == 0) %>
       <p style="margin-top:50px" class="text-center"><%= t('page.search.no_results_found', :query => params[:query]).html_safe %></p>
@@ -65,7 +64,6 @@
       </div>
     <% end %>
 
-  </div>
 </div>
 
 <% content_for(:title) { t('page.search.search_results_for_query', :query => params[:query]).html_safe } %>
