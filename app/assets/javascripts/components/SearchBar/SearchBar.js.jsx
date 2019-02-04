@@ -81,6 +81,8 @@ var SearchBar = React.createClass({
 	},
 
 	onSubmit: function (e) {
+		//console.log('submit', $('.pac-container').is(':visible'));
+
 		if (e && typeof e.preventDefault == 'function') {
 			e.preventDefault();
 		}
