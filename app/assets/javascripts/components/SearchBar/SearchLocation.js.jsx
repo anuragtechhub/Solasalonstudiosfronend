@@ -13,6 +13,12 @@ var SearchLocation = React.createClass({
     	self.props.onChangeLocation(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
     });
 
+		google.maps.event.addDomListener(this.refs.input, 'keydown', function (event) { 
+	    if (event.keyCode === 13 && $('.pac-container:visible').length) { 
+	    	event.preventDefault(); 
+	    }
+	  });
+
     // geolocation functionality
     if ("geolocation" in navigator) {
 		  //console.log('geolocation is available');

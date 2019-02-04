@@ -32,7 +32,7 @@
   <%= yield :scripts %> 
   <%= render 'shared/google_analytics' %>  
 </head>
-<body class="<%= @body_class || nil %>">
+<body class="booknow-layout <%= @body_class || nil %>">
 
   <div id="header" <%= @header_class ? "class=#{@header_class}" : nil %>>
     <div class="container">
