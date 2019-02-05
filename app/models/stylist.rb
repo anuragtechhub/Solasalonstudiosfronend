@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, :sync_with_hubspot, :sync_with_ping_hd#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   before_destroy :remove_from_ping_hd
@@ -268,6 +268,28 @@ class Stylist < ActiveRecord::Base
   def remove_from_ping_hd
     self.status = 'closed'
     self.sync_with_ping_hd
+  end
+
+  def sync_with_hubspot
+    p "sync_with_hubspot!"
+
+    if ENV['HUBSPOT_API_KEY'].present?
+      p "HUBSPOT API KEY IS PRESENT, lets sync.."
+
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+      Hubspot::Contact.create_or_update!([{
+        email: self.email_address, 
+        firstname: self.first_name, 
+        lastname: self.last_name,
+        phone: self.phone_number,
+      }])
+    else
+      p "No HUBSPOT API KEY, no sync"
+    end
+  rescue => e
+    # shh...
+    p "error sync_with_hubspot #{e}"
   end
 
   def sync_with_ping_hd
