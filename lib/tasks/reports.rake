@@ -281,7 +281,7 @@ namespace :reports do
     p "send all stylists"
     
     csv_report = CSV.generate do |csv|
-      csv << ['ID', 'Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL', 'SolaGenius Booking URL',
+      csv << ['ID', 'First Name', 'Last Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL', 'SolaGenius Booking URL',
               'Pinterest URL', 'Facebook URL', 'Twitter URL', 'Instagram URL', 'Yelp URL', 
               'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number', 
               'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
@@ -291,7 +291,7 @@ namespace :reports do
       Stylist.where('status = ?', 'open').order(:created_at => :desc).each do |stylist|
         next unless stylist && stylist.location
         #p "stylist=#{stylist.inspect}"
-        csv << power_of_now([stylist.id, stylist.name, stylist.url_name, stylist.email_address, stylist.phone_number, stylist.website_url, stylist.booking_url, stylist.sg_booking_url,
+        csv << power_of_now([stylist.id, stylist.first_name, stylist.last_name, stylist.url_name, stylist.email_address, stylist.phone_number, stylist.website_url, stylist.booking_url, stylist.sg_booking_url,
                 stylist.pinterest_url, stylist.facebook_url, stylist.twitter_url, stylist.instagram_url, stylist.yelp_url,
                 stylist.emergency_contact_name, stylist.emergency_contact_relationship, stylist.emergency_contact_phone_number, 
                 stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal, stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading,
