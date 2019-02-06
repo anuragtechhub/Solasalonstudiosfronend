@@ -855,7 +855,7 @@ body.booknow {
     
 }
 @media only screen and (max-width:479px){
-      .mobile figure img{margin: 20px auto 0 auto;width:200px;}
+      .mobile figure img{margin: 20px auto 0 auto;width:200px; position: relative; left: 10px;}
     .hero-block{height:520px;}
     .genius h1{font-size:32px;line-height: 35px;}
     .genius span{font-size:20px;line-height: 25px;letter-spacing: 2px;}
