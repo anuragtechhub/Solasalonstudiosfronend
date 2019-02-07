@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, :sync_with_hubspot, :sync_with_ping_hd#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   before_destroy :remove_from_ping_hd
@@ -268,6 +268,62 @@ class Stylist < ActiveRecord::Base
   def remove_from_ping_hd
     self.status = 'closed'
     self.sync_with_ping_hd
+  end
+
+  def sync_with_hubspot
+    p "sync_with_hubspot!"
+
+    if ENV['HUBSPOT_API_KEY'].present?
+      p "HUBSPOT API KEY IS PRESENT, lets sync.."
+
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+      Hubspot::Contact.create_or_update!([{
+        email: self.email_address, 
+        firstname: self.first_name, 
+        lastname: self.last_name,
+        phone: self.phone_number,
+        cms_status: self.status,
+        sola_id: self.id,
+        website_url: self.website_url,
+        booking_url: self.booking_url,
+        solagenius_booking_url: self.sg_booking_url,
+        pinterest_url: self.pinterest_url,
+        facebook_url: self.facebook_url,
+        twitter_url: self.twitter_url,
+        yelp_url: self.yelp_url,
+        emergency_contact_relationship: self.emergency_contact_relationship,
+        emergency_contact_name: self.emergency_contact_name,
+        emergency_contact_number: self.emergency_contact_phone_number,
+        brows: self.brows,
+        hair: self.hair,
+        hair_extensions: self.hair_extensions,
+        laser_hair_removal: self.laser_hair_removal,
+        lashes: self.eyelash_extensions,
+        makeup: self.makeup,
+        massage: self.massage,
+        microblading: self.microblading,
+        nails: self.nails,
+        permanent_makeup: self.permanent_makeup,
+        skincare: self.skin,
+        tanning: self.tanning,
+        teeth_whitening: self.teeth_whitening,
+        threading: self.threading,
+        waxing: self.waxing,
+        other_service: self.other_service,
+        studio_number: self.studio_number,
+        location_id: self.location_id || '',
+        location_name: self.location ? self.location.name : '',
+        location_city: self.location ? self.location.city : '',
+        location_state: self.location ? self.location.state : '',
+        hs_persona: 'persona_1',
+      }])
+    else
+      p "No HUBSPOT API KEY, no sync"
+    end
+  rescue => e
+    # shh...
+    p "error sync_with_hubspot #{e}"
   end
 
   def sync_with_ping_hd
