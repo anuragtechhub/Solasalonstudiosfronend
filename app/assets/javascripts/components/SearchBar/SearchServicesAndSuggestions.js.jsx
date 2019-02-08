@@ -18,17 +18,21 @@ var SearchServicesAndSuggestions = React.createClass({
 		// open/close dropdown
 		if (prevState.dropdownOpen != this.state.dropdownOpen) {
 			if (this.state.dropdownOpen) {
+				//console.log('1show dropdown')
 				$(this.refs.dropdown).show();//.slideDown('fast');
 				$(window).on('click.SearchServicesAndSuggestions', this.close);
 			} else {
+				//console.log('1hide dropdown')
 				this.setState({tempQuery: ''});
 				$(this.refs.dropdown).hide();//.slideUp('fast');
 				$(window).off('click.SearchServicesAndSuggestions');
 			}
 		} else {
-			if (matches == 0) {
+			if (matches == 0 && this.state.tempQuery != '') {
+				//console.log('2hide dropdown')
 				$(this.refs.dropdown).hide();
 			} else if (matches > 0 && this.state.dropdownOpen) {
+				//console.log('2show dropdown')
 				$(this.refs.dropdown).show();
 			}
 		}
@@ -225,7 +229,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	onChangeActiveCategory: function (e) {
-		//console.log('onChangeActiveCategory', e.target.dataset.category);
+		console.log('onChangeActiveCategory', e.target.dataset.category);
 		e.preventDefault();
 		e.stopPropagation();
 		this.setState({activeCategory: e.target.dataset.category});
