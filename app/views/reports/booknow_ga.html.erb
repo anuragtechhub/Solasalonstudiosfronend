@@ -1,0 +1,87 @@
+<div class="page-title"><strong>BookNow Analytics &nbsp;|&nbsp; <%= @app_data[:start_date].strftime("%B %Y").upcase %></strong></div>
+
+<!-- **************** -->
+<!-- GENERAL OVERVIEW -->
+<!-- **************** -->
+
+<div class="section">
+  <div class="section-heading">Overview</div>
+</div>
+<table class="dotted" cellpadding="0" cellspacing="0">
+	<% @app_data[:overview].each do |data| %>
+	  <tr>
+	    <td>
+	      <div class="label"><%= data[0] %></div>
+	      <div class="value value-large"><%= number_with_delimiter data[1] %></div>
+	    </td>
+	  </tr>
+  <% end %>
+</table>
+
+<div class="grid">
+  
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Results</div>
+      <div class="section-subhead">By Location</div>
+    </div>
+    <table class="tabular" cellpadding="0" cellspacing="0">
+	    <% @app_data[:results_locations].each do |k, v| %>
+	      <tr>
+	      	<td class="label"><%= k %></td>
+	        <td class="value value-large"><%= number_with_delimiter v %></td>
+	      </tr>
+	    <% end %>
+    </table>
+  </div>
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Booking Complete</div>
+      <div class="section-subhead">By Location</div>
+    </div>
+    <table class="tabular" cellpadding="0" cellspacing="0">
+	    <% @app_data[:booking_complete_locations].each do |k, v| %>
+	      <tr>
+	      	<td class="label"><%= k %></td>
+	        <td class="value value-large"><%= number_with_delimiter v %></td>
+	      </tr>
+	    <% end %>
+    </table>
+  </div>
+
+</div>
+
+<div class="grid">
+  
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Open Booking Modal</div>
+      <div class="section-subhead">By Location</div>
+    </div>
+    <table class="tabular" cellpadding="0" cellspacing="0">
+	    <% @app_data[:open_booking_modal_locations].each do |k, v| %>
+	      <tr>
+	      	<td class="label"><%= k %></td>
+	        <td class="value value-large"><%= number_with_delimiter v %></td>
+	      </tr>
+	    <% end %>
+    </table>
+  </div>
+
+  <div class="col-1-2">
+    <div class="section">
+      <div class="section-heading">Top Searches</div>
+      <div class="section-subhead">By Query</div>
+    </div>
+    <table class="tabular" cellpadding="0" cellspacing="0">
+	    <% @app_data[:results_queries].each do |k, v| %>
+	      <tr>
+	      	<td class="label"><%= k %></td>
+	        <td class="value value-large"><%= number_with_delimiter v %></td>
+	      </tr>
+	    <% end %>
+    </table>
+  </div>
+
+</div>

@@ -167,6 +167,43 @@ namespace :reports do
     end
   end
 
+  # rake reports:booknow
+  # rake reports:booknow[2017-12-01]
+  task :booknow, [:start_date] => :environment do |task, args|
+    p "begin booknow analytics report..."
+    # p "args=#{args.inspect}"
+    # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
+    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
+    end_date = start_date.end_of_month if start_date
+
+    analytics = Analytics.new
+    if start_date && end_date
+      #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
+      app_data = analytics.booknow_data('81802112', start_date, end_date)
+    else
+      #web_data = analytics.solapro_web_data
+      app_data = analytics.booknow_data
+    end
+    locals = {
+      :@app_data => app_data,
+      #:@web_data => web_data
+    }
+
+    p "got data #{locals.inspect}"
+    p "got data..."
+
+    html_renderer = HTMLRenderer.new
+
+    p "let's render PDF"
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/booknow_ga', locals), :footer => {:center => '[page]', :font_size => 7})
+    p "pdf rendered..."
+    save_path = Rails.root.join('pdfs','booknow.pdf')
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end   
+    p "file saved" 
+  end
+
   # rake reports:solapro
   # rake reports:solapro[2017-12-01]
   task :solapro, [:start_date] => :environment do |task, args|
@@ -549,6 +586,117 @@ namespace :reports do
       #{}"ga:pagePath=~/locations/#{location_start.url_name}"
 
       page_paths.join(',')
+    end
+
+    desc 'booknow_data', 'Retrieve BookNow Google Analytics data'
+    def booknow_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+      analytics = Analytics::AnalyticsReportingService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }
+
+      # # unique visits - visits, new visitors, returning visitors
+      # data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:screenviews')
+      # data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:screenviews')
+
+      # # time on site, pages/session
+      # data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
+      # if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
+      #   data[:time_on_site] = 0.0
+      #   data[:pageviews_per_session] = 0.0
+      #   data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
+      #     data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+      #     data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+      #   end
+      # end
+
+      # data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
+      # if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
+      #   data[:time_on_site_prev_month] = 0.0
+      #   data[:pageviews_per_session_prev_month] = 0.0
+      #   data[:time_on_page_and_pageviews_per_session_prev_month].each do |top_and_pps|
+      #     data[:time_on_site_prev_month] = data[:time_on_site_prev_month] + top_and_pps[1].to_f
+      #     data[:pageviews_per_session_prev_month] = data[:pageviews_per_session_prev_month] + top_and_pps[2].to_f
+      #   end
+      # end
+
+
+      data[:overview] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow')
+
+      results = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Results')
+      top_results_locations = {}
+      top_results_queries = {}
+      results.each do |result|
+        begin
+          result = eval(result[0])
+          if result[:location]
+            if top_results_locations.key?(result[:location])
+              top_results_locations[result[:location]] = top_results_locations[result[:location]] + 1
+            else
+              top_results_locations[result[:location]] = 1
+            end
+          end
+
+          if result[:query]
+            if top_results_queries.key?(result[:query])
+              top_results_queries[result[:query]] = top_results_queries[result[:query]] + 1
+            else
+              top_results_queries[result[:query]] = 1
+            end
+          end
+        rescue => e
+          p "couldnt eval yo"
+        end
+      end
+      #p "top_results_locations=#{top_results_locations.sort_by{|k, v| !v}}"
+      data[:results_locations] = top_results_locations.sort_by{ |k,v| v }.reverse[0..9]
+      data[:results_queries] = top_results_queries.sort_by{ |k,v| v }.reverse[0..9]
+
+      booking_completes = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
+      top_booking_complete_locations = {}
+      booking_completes.each do |result|
+        begin
+          result = eval(result[0])
+
+          if result[:location]
+            if top_booking_complete_locations.key?(result[:location])
+              top_booking_complete_locations[result[:location]] = top_booking_complete_locations[result[:location]] + 1
+            else
+              top_booking_complete_locations[result[:location]] = 1
+            end
+          end
+          #p "result=#{result}"
+        rescue => e
+          p "couldnt eval yo"
+        end
+      end
+      p "top_booking_complete_locations=#{top_booking_complete_locations}"
+      data[:booking_complete_locations] = top_booking_complete_locations.sort_by{ |k,v| v }.reverse[0..9]
+      
+      open_booking_modals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Open Booking Modal')
+      top_open_booking_modal_locations = {}
+      open_booking_modals.each do |result|
+        begin
+          result = eval(result[0])
+          if result[:location]
+            if top_open_booking_modal_locations.key?(result[:location])
+              top_open_booking_modal_locations[result[:location]] = top_open_booking_modal_locations[result[:location]] + 1
+            else
+              top_open_booking_modal_locations[result[:location]] = 1
+            end
+          end
+          #p "result=#{result}"
+        rescue => e
+          p "couldnt eval yo"
+        end
+      end
+      p "top_open_booking_modal_locations=#{top_open_booking_modal_locations}"
+      data[:open_booking_modal_locations] = top_open_booking_modal_locations.sort_by{ |k,v| v }.reverse[0..9]
+
+      data
     end
 
     desc 'location_data', 'Retrieve solasalonstudios.com location Google Analytics data'
