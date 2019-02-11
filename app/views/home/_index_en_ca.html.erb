@@ -1,13 +1,10 @@
 <div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
   <% if I18n.locale.to_s != 'pt-BR' %>
     <div class="item">
-      <div class="img-wrap"><%= image_tag 'Home/Home-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 1600, :height => 800 %></div>
-      <div class="item-content">
-        <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-1" class="play-video play-video-white-button">
-          <div class="watch-video-button">
-            <span class="fa fa-5x fa-play"></span>
-          </div>
-          <span class="text"><%= t('page.home.watch_video') %></span>
+      <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/home_hero_images/home-faces-of-sola-hero-desktop.jpg', :alt => t('page.home.slider5_heading'), :width => 1600, :height => 800 %></div>
+      <div class="item-content bottom-middle-align">
+        <a href="//www.youtube.com/watch?v=PefdR9zZqWw" rel="//www.youtube.com/watch?v=PefdR9zZqWw-1" class="button primary play-video rounded-play-button">
+          <%= t('page.home.watch_video') %> <span class="fa fa-play-circle">&nbsp;</span>
         </a>
       </div>
     </div> 
@@ -44,13 +41,10 @@
 <div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
   <% if I18n.locale.to_s != 'pt-BR' %>  
     <div class="item">
-      <%= image_tag 'Home/Home-Mobile-Slider-5.jpg', :alt => t('page.home.slider5_heading'), :width => 750, :height => 750 %>
-      <div class="item-content">
-        <a href="https://www.youtube.com/watch?v=afOBB5jAjUU" rel="https://www.youtube.com/watch?v=afOBB5jAjUU-2" class="play-video play-video-white-button">
-          <div class="watch-video-button">
-            <span class="fa fa-5x fa-play"></span>
-          </div>
-          <span class="text"><%= t('page.home.watch_video') %></span>
+      <%= image_tag 'https://s3.amazonaws.com/solasalonstudios/home_hero_images/home-faces-of-sola-hero-mobile.jpg', :alt => t('page.home.slider5_heading'), :width => 750, :height => 750 %>
+      <div class="item-content bottom-middle-align">
+        <a href="//www.youtube.com/watch?v=PefdR9zZqWw" rel="//www.youtube.com/watch?v=PefdR9zZqWw-2" class="button primary play-video rounded-play-button">
+          <%= t('page.home.watch_video') %> <span class="fa fa-play-circle">&nbsp;</span>
         </a>
       </div>
     </div>  

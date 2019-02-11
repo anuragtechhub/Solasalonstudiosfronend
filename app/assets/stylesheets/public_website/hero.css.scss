@@ -82,6 +82,11 @@
         align-items: flex-end;
       }
 
+      &.bottom-middle-align {
+        justify-content: flex-end;
+        bottom: 15%;
+      }      
+
       &.bottom-align {
         justify-content: flex-end;
         bottom: 80px;
@@ -283,6 +288,10 @@
 
         &.top-align {
           top: 40px;
+        }
+
+        &.bottom-middle-align {
+          bottom: 15%;
         }
 
         &.bottom-align {
