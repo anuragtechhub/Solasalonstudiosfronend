@@ -11,17 +11,19 @@
 	.hero-carousel {
 
 		img.sessions-logo {
-			max-width: 420px;
+			max-width: 761px;
 			width: 50%;
 			height: auto;
 			margin: 0 auto;
 		}
 
 		h1 {
-			@include helvetica;
-			font-size: 18px;
-			line-height: 24px;
-			margin: 25px 0 45px 0 !important;
+			//@include helvetica;
+			// font-size: 18px;
+			// line-height: 24px;
+			margin: 35px 0 !important;
+			font-size: 36px;
+			line-height: 36px;
 		}
 
 		.button {
@@ -306,6 +308,16 @@
 	}	
 }
 
+@media (max-width: 1000px) {
+	.sola-sessions {
+		.owl-carousel .item .item-content h1 {
+			margin: 20px 0 !important;
+			font-size: 26px;
+			line-height: 26px;
+		}		
+	}
+}
+
 @media (max-width: 960px) {
 	.past-sessions {
 		.white-border {
@@ -322,6 +334,14 @@
 }
 
 @media (max-width: 550px) {
+
+	.sola-sessions {
+		.owl-carousel .item .item-content h1 {
+			margin: 35px 0 !important;
+			font-size: 18px;
+			line-height: 18px;
+		}		
+	}
 
 	.sola-sessions {
 		.past-sessions {
