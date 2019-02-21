@@ -390,7 +390,7 @@ en-CA:
     news:
       title: In the News
       meta_description: "Keep up with the latest news about Sola Salon Studios, featured in Modern Salon, American Salon, Behind the Chair, Beauty Launchpad, Forbes and more!"
-      keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link}, %{twitter_link} and %{pinterest_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
+      keep_up_with_the_latest: "Keep up with the latest news about Sola Salon Studios. Follow us on %{facebook_link}, %{instagram_link} and %{twitter_link} for regular Sola updates, beauty tips &amp; tricks, industry news and more!"
       facebook: Facebook
       instagram: Instagram
       pinterest: Pinterest
