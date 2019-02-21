@@ -316,6 +316,8 @@ class Stylist < ActiveRecord::Base
         location_name: self.location ? self.location.name : '',
         location_city: self.location ? self.location.city : '',
         location_state: self.location ? self.location.state : '',
+        has_sola_pro: self.has_sola_pro_login,
+        has_solagenius: self.has_sola_genius_account,
         hs_persona: 'persona_1',
       }])
     else
