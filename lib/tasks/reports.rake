@@ -73,7 +73,7 @@ namespace :reports do
   end
 
   # rake reports:locations
-  # rake reports:locations[2018-12-01]
+  # rake reports:locations[2019-01-01]
   task :locations, [:start_date] => :environment do |task, args|
     p "begin locations report..."
     
@@ -848,6 +848,18 @@ namespace :reports do
       end
       p "done with time on site, pages/session"
 
+      # data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
+      # p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
+      # data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] ? data[:location_phone_number_clicks_current_month][0][1] : 1
+      
+      # data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
+      # p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
+      # data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] ? data[:location_phone_number_clicks_prev_month][0][1] : 1
+
+      # data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
+      # p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
+      # data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 1
+
       data
     end
 
@@ -1070,13 +1082,10 @@ namespace :reports do
       data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')
       data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 1
 
-      p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
-
       data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 1
       data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 1
       data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')
       data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : 1
-
 
       data
     end
