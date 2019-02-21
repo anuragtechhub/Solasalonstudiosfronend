@@ -167,9 +167,50 @@ namespace :reports do
     end
   end
 
+  # rake reports:booknow_biweekly["jeff@jeffbail.com"]
+  task :booknow_biweekly, [:email_address] => :environment do |task, args|
+    if Time.now.day == 14 || Time.now.day == 28
+      start_date = DateTime.now
+      end_date = start_date - 14.days
+
+      analytics = Analytics.new
+      if start_date && end_date
+        #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
+        app_data = analytics.booknow_data('81802112', start_date, end_date)
+      else
+        #web_data = analytics.solapro_web_data
+        app_data = analytics.booknow_data
+      end
+      locals = {
+        :@app_data => app_data,
+        #:@web_data => web_data
+      }
+
+      p "got data #{locals.inspect}"
+      p "got data..."
+
+      html_renderer = HTMLRenderer.new
+
+      p "let's render PDF"
+      pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/booknow_ga', locals), :footer => {:center => '[page]', :font_size => 7})
+      p "pdf rendered..."
+
+      if args[:email_address].present?
+        p "send email..."
+        ReportsMailer.booknow_report(args[:email_address], pdf).deliver
+      else
+        save_path = Rails.root.join('pdfs','booknow.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf
+        end   
+        p "file saved" 
+      end
+    end
+  end
+
   # rake reports:booknow
-  # rake reports:booknow[2017-12-01]
-  task :booknow, [:start_date] => :environment do |task, args|
+  # rake reports:booknow[2019-01-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
+  task :booknow, [:start_date, :email_address] => :environment do |task, args|
     p "begin booknow analytics report..."
     # p "args=#{args.inspect}"
     # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
@@ -197,11 +238,17 @@ namespace :reports do
     p "let's render PDF"
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/booknow_ga', locals), :footer => {:center => '[page]', :font_size => 7})
     p "pdf rendered..."
-    save_path = Rails.root.join('pdfs','booknow.pdf')
-    File.open(save_path, 'wb') do |file|
-      file << pdf
-    end   
-    p "file saved" 
+
+    if args[:email_address].present?
+      p "send email..."
+      ReportsMailer.booknow_report(args[:email_address], pdf).deliver
+    else
+      save_path = Rails.root.join('pdfs','booknow.pdf')
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end   
+      p "file saved" 
+    end
   end
 
   # rake reports:solapro
@@ -629,72 +676,81 @@ namespace :reports do
       results = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Results')
       top_results_locations = {}
       top_results_queries = {}
-      results.each do |result|
-        begin
-          result = eval(result[0])
-          if result[:location]
-            if top_results_locations.key?(result[:location])
-              top_results_locations[result[:location]] = top_results_locations[result[:location]] + 1
-            else
-              top_results_locations[result[:location]] = 1
+      p "results=#{results}"
+      if results && results.length > 0
+        results.each do |result|
+          begin
+            result = eval(result[0])
+            if result[:location]
+              if top_results_locations.key?(result[:location])
+                top_results_locations[result[:location]] = top_results_locations[result[:location]] + 1
+              else
+                top_results_locations[result[:location]] = 1
+              end
             end
-          end
 
-          if result[:query]
-            if top_results_queries.key?(result[:query])
-              top_results_queries[result[:query]] = top_results_queries[result[:query]] + 1
-            else
-              top_results_queries[result[:query]] = 1
+            if result[:query]
+              if top_results_queries.key?(result[:query])
+                top_results_queries[result[:query]] = top_results_queries[result[:query]] + 1
+              else
+                top_results_queries[result[:query]] = 1
+              end
             end
+          rescue => e
+            p "couldnt eval yo"
           end
-        rescue => e
-          p "couldnt eval yo"
         end
+        #p "top_results_locations=#{top_results_locations.sort_by{|k, v| !v}}"
+        data[:results_locations] = top_results_locations.sort_by{ |k,v| v }.reverse[0..9]
+        data[:results_queries] = top_results_queries.sort_by{ |k,v| v }.reverse[0..9]
       end
-      #p "top_results_locations=#{top_results_locations.sort_by{|k, v| !v}}"
-      data[:results_locations] = top_results_locations.sort_by{ |k,v| v }.reverse[0..9]
-      data[:results_queries] = top_results_queries.sort_by{ |k,v| v }.reverse[0..9]
 
       booking_completes = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
       top_booking_complete_locations = {}
-      booking_completes.each do |result|
-        begin
-          result = eval(result[0])
+      p "booking_completes=#{booking_completes}"
+      if booking_completes && booking_completes.length > 0
+        booking_completes.each do |result|
+          begin
+            result = eval(result[0])
 
-          if result[:location]
-            if top_booking_complete_locations.key?(result[:location])
-              top_booking_complete_locations[result[:location]] = top_booking_complete_locations[result[:location]] + 1
-            else
-              top_booking_complete_locations[result[:location]] = 1
+            if result[:location]
+              if top_booking_complete_locations.key?(result[:location])
+                top_booking_complete_locations[result[:location]] = top_booking_complete_locations[result[:location]] + 1
+              else
+                top_booking_complete_locations[result[:location]] = 1
+              end
             end
+            #p "result=#{result}"
+          rescue => e
+            p "couldnt eval yo"
           end
-          #p "result=#{result}"
-        rescue => e
-          p "couldnt eval yo"
         end
+        p "top_booking_complete_locations=#{top_booking_complete_locations}"
+        data[:booking_complete_locations] = top_booking_complete_locations.sort_by{ |k,v| v }.reverse[0..9]
       end
-      p "top_booking_complete_locations=#{top_booking_complete_locations}"
-      data[:booking_complete_locations] = top_booking_complete_locations.sort_by{ |k,v| v }.reverse[0..9]
-      
+
       open_booking_modals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Open Booking Modal')
       top_open_booking_modal_locations = {}
-      open_booking_modals.each do |result|
-        begin
-          result = eval(result[0])
-          if result[:location]
-            if top_open_booking_modal_locations.key?(result[:location])
-              top_open_booking_modal_locations[result[:location]] = top_open_booking_modal_locations[result[:location]] + 1
-            else
-              top_open_booking_modal_locations[result[:location]] = 1
+      p "open_booking_modals=#{open_booking_modals}"
+      if open_booking_modals && open_booking_modals.length > 0
+        open_booking_modals.each do |result|
+          begin
+            result = eval(result[0])
+            if result[:location]
+              if top_open_booking_modal_locations.key?(result[:location])
+                top_open_booking_modal_locations[result[:location]] = top_open_booking_modal_locations[result[:location]] + 1
+              else
+                top_open_booking_modal_locations[result[:location]] = 1
+              end
             end
+            #p "result=#{result}"
+          rescue => e
+            p "couldnt eval yo"
           end
-          #p "result=#{result}"
-        rescue => e
-          p "couldnt eval yo"
         end
+        p "top_open_booking_modal_locations=#{top_open_booking_modal_locations}"
+        data[:open_booking_modal_locations] = top_open_booking_modal_locations.sort_by{ |k,v| v }.reverse[0..9]
       end
-      p "top_open_booking_modal_locations=#{top_open_booking_modal_locations}"
-      data[:open_booking_modal_locations] = top_open_booking_modal_locations.sort_by{ |k,v| v }.reverse[0..9]
 
       data
     end
