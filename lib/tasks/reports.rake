@@ -167,7 +167,7 @@ namespace :reports do
     end
   end
 
-  # rake reports:booknow_biweekly["jeff@jeffbail.com"]
+  # rake reports:booknow_biweekly["olivia@solasalonstudios.com"]
   task :booknow_biweekly, [:email_address] => :environment do |task, args|
     if Time.now.day == 14 || Time.now.day == 28
       start_date = DateTime.now
