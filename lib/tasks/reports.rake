@@ -1064,6 +1064,20 @@ namespace :reports do
       data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month).count
       data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month).count
 
+      # phone number clicks
+      data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 1
+      data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 1
+      data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')
+      data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 1
+
+      p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
+
+      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 1
+      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 1
+      data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')
+      data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : 1
+
+
       data
     end
 
