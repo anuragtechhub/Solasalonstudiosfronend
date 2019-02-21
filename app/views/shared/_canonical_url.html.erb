@@ -1,0 +1,7 @@
+<% if I18n.locale.to_s == 'en-CA' %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.ca/#{url}" } %>
+<% elsif I18n.locale.to_s == 'pt-BR' %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.com.br/#{url}" } %>
+<% else %>
+  <% content_for(:canonical_url) { "https://www.solasalonstudios.com/#{url}" } %>
+<% end %>

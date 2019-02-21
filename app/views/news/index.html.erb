@@ -19,5 +19,5 @@
 </div>
 
 <% content_for(:title) { t('page.news.title').html_safe } %>
-<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/news" } %>
+<%= render 'shared/canonical_url', :url => 'news' %>
 <% content_for(:meta_description) { t('page.news.meta_description') } %>
