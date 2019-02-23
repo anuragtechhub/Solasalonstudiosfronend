@@ -34,9 +34,7 @@
         <% if I18n.locale.to_s != 'pt-BR' %>
           <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>
         <% end %>
-        <% if I18n.locale.to_s != 'pt-BR' %>
-          <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
-        <% end %>
+        <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
       </ul>
 
       <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>
