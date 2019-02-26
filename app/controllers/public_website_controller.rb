@@ -32,7 +32,7 @@ class PublicWebsiteController < ApplicationController
     #p "set_locale #{request.domain}"
     if request.domain == 'solasalonstudios.ca'#|| request.domain == 'localhost'
       I18n.locale = 'en-CA' 
-    elsif request.domain == 'com.br' || request.domain == 'com.br/' || request.domain == 'localhost'
+    elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
       I18n.locale = 'pt-BR'
     else
       I18n.locale = 'en'
