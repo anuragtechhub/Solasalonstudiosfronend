@@ -13,6 +13,7 @@ class AboutUsController < PublicWebsiteController
   end
 
   def randall_clark
+    redirect_to :leadership
 	end
 
   def rodrigo_miranda

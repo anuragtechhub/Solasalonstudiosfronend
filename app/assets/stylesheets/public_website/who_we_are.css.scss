@@ -241,12 +241,20 @@
 	}
 
 	.experience-more {
-		margin-top: 40px;
+		margin-top: 120px;
 	}
 
 	.sola-benefits {
 		margin: -15px 0 0 0;
 		padding-top: 0;
+	}
+}
+
+@media (max-width: 1200px) {
+	.who-we-are {
+		.experience-more {
+			margin-top: 40px;
+		}
 	}
 }
 
@@ -274,7 +282,9 @@
 @media (max-width: 850px) {
 
 	.who-we-are {
-
+		.experience-more {
+			margin-top: 0px;
+		}
 		.cta-own {
 			margin-top: 0;
 			margin-bottom: 50px;
