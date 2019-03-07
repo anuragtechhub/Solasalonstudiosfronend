@@ -49,7 +49,7 @@ var ProfessionalResult = React.createClass({
 				</div>
 				
 				<div className="ProfessionalResultDetails">
-					<div className="ProfessionalName">{this.props.full_name}</div>
+					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.full_name}</a>
 					<div className="ProfessionalAddress">{this.props.business_address}</div>
 					<ProfessionalServicesDropdown
 						services={this.props.professional.matched_services}

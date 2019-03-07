@@ -586,6 +586,8 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			text-decoration: none !important;
+			display: inline-block;
 		}
 
 		.ProfessionalAddress {
