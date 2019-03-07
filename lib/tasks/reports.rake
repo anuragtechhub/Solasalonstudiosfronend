@@ -370,7 +370,7 @@ namespace :reports do
               'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number', 
               'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
               'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service', 
-              'Studio Number', 'Location ID', 'Location Name', 'Location City', 'Location State', 'Has Sola Pro', 'Has SolaGenius']
+              'Studio Number', 'Location ID', 'Location Name', 'Location City', 'Location State', 'Country', 'Has Sola Pro', 'Has SolaGenius']
 
       Stylist.where('status = ?', 'open').order(:created_at => :desc).each do |stylist|
         next unless stylist && stylist.location
@@ -380,7 +380,7 @@ namespace :reports do
                 stylist.emergency_contact_name, stylist.emergency_contact_relationship, stylist.emergency_contact_phone_number, 
                 stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal, stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading,
                 stylist.nails, stylist.permanent_makeup, stylist.skin, stylist.tanning, stylist.teeth_whitening, stylist.threading, stylist.waxing, stylist.other_service,
-                stylist.studio_number, stylist.location.id, stylist.location.name, stylist.location.city, stylist.location.state, stylist.has_sola_pro_login, stylist.has_sola_genius_account])
+                stylist.studio_number, stylist.location.id, stylist.location.name, stylist.location.city, stylist.location.state, stylist.country, stylist.has_sola_pro_login, stylist.has_sola_genius_account])
       end
     end
 

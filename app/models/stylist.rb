@@ -136,6 +136,12 @@ class Stylist < ActiveRecord::Base
     FullNameSplitter.split(name)[1]
   end
 
+  def country
+    c = self.location ? Country.find_by(:code => self.location.country) : nil    
+    return c.name if c
+    return nil
+  end
+
   def social_links_present?
     facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present? || google_plus_url.present?
   end
@@ -316,7 +322,7 @@ class Stylist < ActiveRecord::Base
         location_name: self.location ? self.location.name : '',
         location_city: self.location ? self.location.city : '',
         location_state: self.location ? self.location.state : '',
-        country: self.location ? (Country.find_by(:code => self.location.country) ? Country.find_by(:code => self.location.country).name : '') : '',
+        country: self.country,
         has_sola_pro: self.has_sola_pro_login,
         has_solagenius: self.has_sola_genius_account,
         hs_persona: 'persona_1',
