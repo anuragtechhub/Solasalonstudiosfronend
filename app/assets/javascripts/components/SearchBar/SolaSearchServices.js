@@ -293,6 +293,15 @@ var SolaSearchServices = {
         "name": "Eyelash Curl / Perm", 
         
     }],
+    "Skincare": [
+        {"name": "Facial"},
+        {"name": "Peel"},
+        {"name": "Dermaplaning"},
+        {"name": "Microdermabraision"},
+        {"name": "Back Facial"},
+        {"name": "Microneedling"},
+        {"name": "Thermoclear"},
+    ],
     "Sugaring": [{
         "name": "Brow Sugaring",
  
@@ -331,28 +340,17 @@ var SolaSearchServices = {
         "name": "Airbrush Application",
 
     }],
-    "Massage & Spa": [{
-        "name": "Massage & Spa",
- 
-    }, {
-        "name": "Swedish Massage",
- 
-    }, {
-        "name": "Hot Stone Massage",
- 
-    }, {
-        "name": "Deep Tissue Massage",
- 
-    }, {
-        "name": "Body Scrub",
- 
-    }, {
-        "name": "Facial",
- 
-    }, {
-        "name": "Dermaplaning",
- 
-    }],
+    "Massages & Spa": [
+        {"name": "Hot Stone"},
+        {"name": "Swedish"},
+        {"name": "Deep Tissue"},
+        {"name": "Sports"},
+        {"name": "Cupping"},
+        {"name": "Thai"},
+        {"name": "Trigger Point"},
+        {"name": "Reflex"},
+        {"name": "Prenatal"},
+    ],
     "Tanning": [{
         "name": "Tanning",
  
