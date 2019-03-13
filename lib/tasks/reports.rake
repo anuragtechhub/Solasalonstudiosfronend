@@ -50,6 +50,22 @@ namespace :reports do
     mail = ReportsMailer.location_contact_form_submission_report(email_addresses, csv_report, start_date, end_date).deliver
   end
 
+  task :request_tour_inquiries => :environment do
+    jan_1 = Date.new(2019, 1, 1)
+    today = Date.today
+    rtis = RequestTourInquiry.where(:created_at => (jan_1..today))
+    
+    save_path = Rails.root.join('csvs','request_tour_inquiries.csv')
+    CSV.open(save_path, "wb") do |csv|
+      csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name"]
+      rtis.each do |rti|
+        if rti.location
+          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name]
+        end
+      end
+    end
+  end
+
   task :locations_by_state => :environment do
     p "ID,NAME,EMAIL,PHONE,LOCATION"
     Stylist.where('status = ? AND location_id IN (?)', 'open', Location.near('San Diego, CA').map(&:id)).each do |stylist|
