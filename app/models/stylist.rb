@@ -27,7 +27,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed, :sync_with_hubspot, :sync_with_ping_hd#, :sync_with_tru_digital#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, :sync_with_hubspot, :sync_with_ping_hd, :sync_with_tru_digital#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   before_destroy :remove_from_ping_hd
@@ -340,36 +340,35 @@ class Stylist < ActiveRecord::Base
     
     # p "url=#{url}"
 
-    # payload = {
-    #   location: self.location_id,
-    #   data: [{
-    #     id: self.id,
-    #     name: self.name,
-    #     room: self.studio_number,
-    #     enabled: self.status && self.status == 'closed' ? false : true,
-    #     walkins: self.walkins
-    #   }]
-    # }
+    payload = {
+      location: self.location_id,
+      data: [{
+        id: self.id,
+        name: self.name,
+        #room: self.studio_number,
+        #enabled: self.status && self.status == 'closed' ? false : true,
+        walkins: self.walkins
+      }]
+    }
 
     # p "payload=#{payload.inspect}"
 
-    # sync_with_tru_digital_response = RestClient::Request.execute({
-    #   #:headers => {"Content-Type" => "application/json"},
-    #   :method => :post, 
-    #   #:content_type => 'application/json',
-    #   :url => url, 
-    #   :payload => payload,
-    #   :log => Logger.new(STDERR)
-    # })
-    data = [{
-      id: self.id,
-      name: self.name,
-      room: self.studio_number,
-      enabled: self.status && self.status == 'closed' ? false : true,
-      walkins: self.walkins
-    }]
+    sync_with_tru_digital_response = RestClient::Request.execute({
+      #:headers => {"Content-Type" => "application/json"},
+      :method => :post, 
+      :content_type => 'application/json',
+      :url => url, 
+      :payload => payload.to_json,
+    })
+    # data = [{
+    #   id: self.id,
+    #   name: self.name,
+    #   room: self.studio_number,
+    #   enabled: self.status && self.status == 'closed' ? false : true,
+    #   walkins: self.walkins
+    # }]
 
-    sync_with_tru_digital_response = `curl -d "data=#{data.to_json}" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
+    #sync_with_tru_digital_response = `curl -d "data=[{\"id\": #{self.id}, \"name\": '#{self.name}', \"walkins\": self.walkins}]" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e
