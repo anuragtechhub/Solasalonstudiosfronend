@@ -1,7 +1,26 @@
 .SearchServicesAndSuggestions {
+	input {
+		padding-right: 40px;
+	}
+
 	.fa {
 		font-size: 16px;
 		line-height: 16px;
 		top: 19px !important;
+	}
+
+	.fa-times {
+		position: absolute;
+		color: #999;
+		font-size: 16px;
+		line-height: 16px;
+		top: 19px !important;
+		right: 10px !important;
+		left: auto !important;
+		cursor: pointer;
+
+		&:hover, &:active {
+			color: #333;
+		}
 	}
 }

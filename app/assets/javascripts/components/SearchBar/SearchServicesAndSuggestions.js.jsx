@@ -64,7 +64,7 @@ var SearchServicesAndSuggestions = React.createClass({
 			<div className="SearchServicesAndSuggestions">
 				<span className="fa fa-search">&nbsp;</span>
 				<input ref="input" type="text" placeholder={I18n.t('sola_search.services_and_suggestions_placeholder')} onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
-
+				{this.state.tempQuery != '' ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
 				<div className="Dropdown" ref="dropdown">
 					{this.state.tempQuery == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
 					{this.renderProfessionalsAndSalons()}
@@ -222,6 +222,11 @@ var SearchServicesAndSuggestions = React.createClass({
 	* Event handlers
 	*/
 
+	clearInput: function () {
+		this.setState({tempQuery: ''});
+		this.props.onChangeQuery('');
+	},
+
 	onChange: function (e) {
 		//console.log('onChange', e.target.value);
 		this.setState({tempQuery: e.target.value});
@@ -229,7 +234,7 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	onChangeActiveCategory: function (e) {
-		console.log('onChangeActiveCategory', e.target.dataset.category);
+		//console.log('onChangeActiveCategory', e.target.dataset.category);
 		e.preventDefault();
 		e.stopPropagation();
 		this.setState({activeCategory: e.target.dataset.category});
