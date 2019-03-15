@@ -272,8 +272,13 @@ var BookingModal = React.createClass({
 					location: self.props.location,
 					query: self.props.query,
 					services: self.state.services,
-					total: self.calculateServicesTotal()
-
+					total: self.calculateServicesTotal(),
+					time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
+					booking_user: {
+						name: self.state.your_name,
+						phone: self.state.phone_number,
+						email: self.state.email_address,
+					}
 				}));
 				$(self.refs.BookingCompleteForm).submit();
 			}
