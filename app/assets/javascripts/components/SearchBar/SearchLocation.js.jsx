@@ -59,6 +59,7 @@ var SearchLocation = React.createClass({
 			<div className="SearchLocation">
 				<span className="fa fa-map-marker">&nbsp;</span>
 				<input ref="input" type="text" placeholder={I18n.t('sola_search.location')} value={this.props.location} onChange={this.onChange} />
+				{this.props.location != '' ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
 			</div>
 		);
 	},
@@ -68,6 +69,10 @@ var SearchLocation = React.createClass({
 	/**
 	* Change handler
 	*/
+
+	clearInput: function (event) {
+		this.props.onChangeLocation('');
+	},
 
 	onChange: function (event) {
 		this.props.onChangeLocation(event.target.value);
