@@ -51,7 +51,7 @@ namespace :reports do
   end
 
   task :request_tour_inquiries => :environment do
-    jan_1 = Date.new(2019, 1, 1)
+    jan_1 = Date.new(2019, 3, 1)
     today = Date.today
     rtis = RequestTourInquiry.where(:created_at => (jan_1..today))
     
