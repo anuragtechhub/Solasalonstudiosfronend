@@ -353,13 +353,13 @@ class Stylist < ActiveRecord::Base
 
     # p "payload=#{payload.inspect}"
 
-    sync_with_tru_digital_response = RestClient::Request.execute({
-      #:headers => {"Content-Type" => "application/json"},
-      :method => :post, 
-      :content_type => 'application/json',
-      :url => url, 
-      :payload => payload.to_json,
-    })
+    # sync_with_tru_digital_response = RestClient::Request.execute({
+    #   #:headers => {"Content-Type" => "application/json"},
+    #   :method => :post, 
+    #   :content_type => 'application/json',
+    #   :url => url, 
+    #   :payload => payload.to_json,
+    # })
     # data = [{
     #   id: self.id,
     #   name: self.name,
@@ -368,7 +368,7 @@ class Stylist < ActiveRecord::Base
     #   walkins: self.walkins
     # }]
 
-    #sync_with_tru_digital_response = `curl -d "data=[{\"id\": #{self.id}, \"name\": '#{self.name}', \"walkins\": self.walkins}]" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
+  sync_with_tru_digital_response = `curl -d "data=[{\"id\": #{self.id}, \"name\": '#{self.name}', \"studio_number\": '#{self.studio_number}', \"walkins\": self.walkins}]" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e
