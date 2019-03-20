@@ -8,7 +8,7 @@ var SolaSearch = React.createClass({
 			bookingModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			display: this.props.displayMode || 'desktop',
-			end_of_results: this.props.professionals && this.props.professionals.length >= 10 ? false : true,
+			//end_of_results: this.props.professionals && this.props.professionals.length >= 9 ? false : true,
 			error: null,
 			fingerprint: this.props.fingerprint,
 			gloss_genius_api_key: this.props.gloss_genius_api_key,
@@ -233,12 +233,24 @@ var SolaSearch = React.createClass({
 	    url: self.props.results_path + '.json',
 		}).done(function (response) {
 			//console.log('onLoadMoreProfessionals response', response);
+			//end_of_results
 			if (response && response.length) {
 				var professionals = self.state.professionals.slice(0);
-				professionals.push.apply(professionals, response);
-				self.setState({loading: false, professionals: professionals, end_of_results: response.length < 10}, function () {
-					self.getAvailabilities(self.getServicesGuids(response));
-				});
+
+				if (self.allUniqueProfessionals(professionals, response)) {
+					//console.log("yes, all unique");
+					professionals.push.apply(professionals, response);
+					self.setState({loading: false, professionals: professionals, }, function () {
+						self.getAvailabilities(self.getServicesGuids(response));
+					});
+				} else {
+					//console.log("no, not all unique -- only set uniques");
+					professionals.push.apply(professionals, response);
+					professionals = self.getUniqueProfessionals(professionals, response);
+					self.setState({loading: false, pagination: false, professionals: professionals, end_of_results: true}, function () {
+						self.getAvailabilities(self.getServicesGuids(response));
+					});
+				}
 			} else {
 				self.setState({loading: false, pagination: false, end_of_results: true});
 			}	
@@ -250,6 +262,25 @@ var SolaSearch = React.createClass({
 	/**
 	* Helper functions
 	*/
+
+	allUniqueProfessionals: function (professionals, response) {
+		for (var p = 0, plen = professionals.length; p < plen; p++) {
+			for (var r =0, rlen = response.length; r < rlen; r++) {
+				if (professionals[p].org_user_id == response[r].org_user_id) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	},
+
+	getUniqueProfessionals: function (professionals) {
+		var prop = 'org_user_id';
+    return professionals.filter((obj, pos, arr) => {
+    	return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+	},
 
 	getAvailabilities: function (services_guids) {
 		var self = this;

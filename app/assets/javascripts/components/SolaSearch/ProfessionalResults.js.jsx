@@ -51,12 +51,14 @@ var ProfessionalResults = React.createClass({
 
 	renderPagination: function () {
 		if (this.props.end_of_results) {
+			//console.log('renderPagination END OF RESULTS');
 			return (
 				<div className="SearchPagination text-center">
 					<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.end_of_results')}</em>
 				</div>
 			);
 		} else {
+			//console.log('renderPagination RENDER SEARCH PAGINATION');
 			return (
 				<div className="SearchPagination">
 					<button type="button" className="button primary ga-et" data-gcategory="BookNow" data-gaction="Load More" data-glabel={JSON.stringify({
