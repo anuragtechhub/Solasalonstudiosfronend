@@ -336,20 +336,20 @@ class Stylist < ActiveRecord::Base
   end
 
   def sync_with_tru_digital
-    url = "https://ccottle-dev-app.trudigital.net/core/sola"
+    #url = "https://ccottle-dev-app.trudigital.net/core/sola"
     
     # p "url=#{url}"
 
-    payload = {
-      location: self.location_id,
-      data: [{
-        id: self.id,
-        name: self.name,
-        studio_number: self.studio_number,
-        #enabled: self.status && self.status == 'closed' ? false : true,
-        walkins: self.walkins
-      }]
-    }
+    # payload = {
+    #   location: self.location_id,
+    #   data: [{
+    #     id: self.id,
+    #     name: self.name,
+    #     studio_number: self.studio_number,
+    #     #enabled: self.status && self.status == 'closed' ? false : true,
+    #     walkins: self.walkins
+    #   }]
+    # }
 
     # p "payload=#{payload.inspect}"
 
@@ -412,7 +412,6 @@ class Stylist < ActiveRecord::Base
 
     p "curl -d 'location=#{self.location_id}' -d 'data=#{data.to_json}' 'https://ccottle-dev-app.trudigital.net/core/sola'"
     sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=#{data.to_json}' 'https://ccottle-dev-app.trudigital.net/core/sola'`
-
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e
