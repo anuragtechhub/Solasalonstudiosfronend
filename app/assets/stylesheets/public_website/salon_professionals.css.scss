@@ -251,7 +251,18 @@
     @include chalet_new_york;
     font-size: 22px !important;
     line-height: 28px !important;
+    margin-top: 0 !important;
     margin-bottom: 40px !important;
+
+    &.large-number {
+      font-size: 68px !important;
+      line-height: 68px !important;
+      margin-bottom: 0px !important;
+    }
+  }
+
+  h1.chalet-london {
+    @include chalet_london;
   }
 
   h2.chalet {
