@@ -1,0 +1,52 @@
+<div class="hero-carousel owl-carousel owl-theme find-a-salon-professional-hero find-a-salon-professional-hero-next" data-nonav="true" style="margin-bottom:-44px;">
+  
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/find_salon_pro_hero_1.jpg', :alt => t('page.home.slider3_heading'), :width => 1323, :height => 659 %></div>
+    <div class="item-content">
+      <%= form_tag [:search, :results], :method => :get do %>
+        <h1 class="chalet"><%= t('page.find_salon_pro.body1').html_safe %></h1>
+        <div class="filterable-dropdown-search">
+          <input name="query" type="text" class="searchbox" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
+          <button type="submit"><span class="search-icon"></span></button>
+        </div>
+        <input type="hidden" name="so" value="salon_professionals" />
+        <h2 class="chalet"><%= t('page.find_salon_pro.body3').html_safe %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/find_salon_pro_hero_2.jpg', :alt => t('page.home.slider3_heading'), :width => 1323, :height => 659 %></div>
+    <div class="item-content">
+      <%= form_tag [:search, :results], :method => :get do %>
+        <h1 class="chalet"><%= t('page.find_salon_pro.body1').html_safe %></h1>
+        <div class="filterable-dropdown-search">
+          <input name="query" type="text" class="searchbox" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
+          <button type="submit"><span class="search-icon"></span></button>
+        </div>
+        <input type="hidden" name="so" value="salon_professionals" />
+        <h2 class="chalet"><%= t('page.find_salon_pro.body3').html_safe %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/find_salon_pro_hero_3.jpg', :alt => t('page.home.slider3_heading'), :width => 1323, :height => 659 %></div>
+    <div class="item-content">
+      <%= form_tag [:search, :results], :method => :get do %>
+        <h1 class="chalet"><%= t('page.find_salon_pro.body1').html_safe %></h1>
+        <div class="filterable-dropdown-search">
+          <input name="query" type="text" class="searchbox" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
+          <button type="submit"><span class="search-icon"></span></button>
+        </div>
+        <input type="hidden" name="so" value="salon_professionals" />
+        <h2 class="chalet"><%= t('page.find_salon_pro.body3').html_safe %>
+      <% end %>
+    </div>
+  </div>  
+
+</div>
+
+<% content_for(:title) { t('page.find_salon_pro.find_a_salon_professional_near_you').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com/salon-professionals" } %>
+<% content_for(:meta_description) { t('page.find_salon_pro.meta_description') } %>

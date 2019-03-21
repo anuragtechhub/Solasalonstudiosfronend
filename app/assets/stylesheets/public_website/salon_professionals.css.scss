@@ -239,6 +239,67 @@
   margin-top: -60px;
 }
 
+.find-a-salon-professional-hero-next {
+  h1.chalet, h2.chalet {
+    max-width: 480px;
+    color: #FFF;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1.chalet {
+    @include chalet_new_york;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    margin-bottom: 40px !important;
+  }
+
+  h2.chalet {
+    @include helvetica;
+    font-size: 13px !important;
+    line-height: 17px !important;
+    font-weight: bold !important;
+    margin-top: 30px !important;
+  }
+
+  .dropdown-search {
+    text-align: center;
+
+    input.searchbox {
+      max-width: 480px;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .find-a-salon-professional-hero-next.owl-carousel .item .item-content h1,
+  .find-a-salon-professional-hero-next.owl-carousel .item .item-content h2 {
+    margin: 0 auto !important;
+    max-width: 90% !important;
+  }
+
+  .find-a-salon-professional-hero-next.owl-carousel .item .item-content h1.chalet {
+    font-size: 18px !important;
+    line-height: 26px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .find-a-salon-professional-hero-next.owl-carousel .item .item-content h2.chalet {
+    margin-top: 20px !important;
+  }
+
+  .find-a-salon-professional-hero-next.owl-carousel .item .img-wrap img {
+    left: 0;
+  }
+  .find-a-salon-professional-hero-next .filterable-dropdown-search {
+    text-align: center;
+  }
+  .find-a-salon-professional-hero-next .filterable-dropdown-search input.searchbox {
+    max-width: 88%;
+    padding: 2px 20px;
+  }
+}
+
 @media (max-width: 1060px) {
   .stylist-page {
     .owl-controls {

@@ -303,8 +303,9 @@ en:
       salon_professionals: Salon Professionals
       location_count: 400+
       locations_nationwide: Locations Nationwide
-      body1: "At Sola Salon Studios, each of our studios is independently operated!"
+      body1: At Sola Salon Studios, each of our studios are<span class="desktop-br">&nbsp;</span>independently operated.
       body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
+      body3:  To find a specific salon professional, search by name or location above.
       find_a_salon_professional_near_you: Find a Salon Professional Near You
     
     gallery:
