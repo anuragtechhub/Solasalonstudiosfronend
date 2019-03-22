@@ -335,7 +335,128 @@
   }
 }
 
+.find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow {
+  .item-content {
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow {
+    h1.chalet.large-number {
+      font-size: 28px !important;
+      line-height: 28px !important;
+      margin-bottom: 2px !important;
+    }
+    h1.chalet.chalet-london {
+      margin-bottom: 12px !important;
+    }
+    h1.helvetica {
+      font-size: 18px !important;
+      line-height: 18px !important;
+      margin-bottom: 10px !important;
+    }
+
+    &.owl-carousel .item .item-content h1 {
+      margin-bottom: -5px !important;
+    }
+
+    .filterable-dropdown-search {
+      margin: 10px auto 20px auto !important;
+    }
+
+    .filterable-dropdown-search input.searchbox {
+      padding: 2px 20px !important;
+    }
+
+    // br {
+    //   line-height: 15px;
+    // }
+
+    // .numbers {
+    //   display: none;
+    // }
+
+    // form h1 {
+    //   display: none;
+    // }
+
+    h2.helvetica {
+      text-align: center;
+    }
+
+    .bn-button-wrapper {
+      text-align: center;
+      margin: 15px 0 0 0;
+    }
+  }
+  .find-a-salon-professional-hero-next.owl-carousel .item .item-content h1.chalet.chalet-london {
+    margin-bottom: 12px !important;
+  }
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow.owl-carousel .item .item-content h1.helvetica, 
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow.owl-carousel .item .item-content h2.helvetica {
+    max-width: 88%;
+    margin: 0 auto !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow {
+    .bn-button, .bn-button:link, .bn-button:visited, .bn-button:hover, .bn-button:active {
+      padding: 10px 30px;
+    } 
+    &.owl-carousel .item .item-content h1.chalet {
+      font-size: 14px !important;
+      line-height: 14px !important;
+    }
+    &.owl-carousel .item .item-content h1.chalet.large-number {
+      font-size: 22px !important;
+      line-height: 22px !important;
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow {
+    br {
+      margin: -5px 0;
+    }
+    .filterable-dropdown-search {
+      margin: 5px auto 10px auto !important
+    }
+    .filterable-dropdown-search input.searchbox {
+      height: 36px;
+    }
+    .bn-button {
+      font-size: 13px;
+      padding: 7px 17px;
+      top: -7px;
+      position: relative;
+    }
+  }
+}
+
 @media (max-width: 550px) {
+  .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow {
+    br {
+      margin: 0;
+    }
+    .filterable-dropdown-search {
+      margin: 10px auto 20px auto !important
+    }
+    .filterable-dropdown-search input.searchbox {
+      height: 48px;
+    }
+    .bn-button {
+      font-size: 15px;
+      padding: 11px 33px;
+      top: -0;
+      position: relative;
+    }
+  }
+
   .find-a-salon-professional-hero-next.owl-carousel .item .item-content h1,
   .find-a-salon-professional-hero-next.owl-carousel .item .item-content h2 {
     margin: 0 auto !important;
