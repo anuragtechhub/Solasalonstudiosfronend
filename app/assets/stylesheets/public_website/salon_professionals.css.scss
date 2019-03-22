@@ -252,12 +252,16 @@
     font-size: 22px !important;
     line-height: 28px !important;
     margin-top: 0 !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 25px !important;
 
     &.large-number {
       font-size: 68px !important;
       line-height: 68px !important;
       margin-bottom: 0px !important;
+    }
+
+    &:last-child {
+      margin-bottom: 0 !important;
     }
   }
 
@@ -275,7 +279,7 @@
 
   &.owl-carousel .item .item-content {
     h1.helvetica, h2.helvetica {
-      max-width: 350px;
+      max-width: 360px;
       margin: 0 auto;
       @include helvetica;
       font-size: 13px !important;
@@ -283,16 +287,43 @@
       font-weight: bold !important;
       margin: 0px 0px 20px 0px !important;
       color: #FFF !important;
+      text-align: left;
     }
   }
 
-  .book-now-button {
+  .bn-button-wrapper {
+    margin-top: 0px;
+    text-align: left;
+  }
 
+  .bn-button, .bn-button:link, .bn-button:visited, .bn-button:hover, .bn-button:active {
+    text-decoration: none;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.25);
+    border-radius: 7px;
+    padding: 15px 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    color: #FFF;
+    font-size: 15px;
+    line-height: 15px;
+    display: inline-block !important;
+    margin: 0;
+    background-color: #ef008c;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff5abb), to(#ef008c));
+    background: -webkit-linear-gradient(top, #ff5abb, #ef008c);
+    background: -moz-linear-gradient(top, #ff5abb, #ef008c);
+    background: -ms-linear-gradient(top, #ff5abb, #ef008c);
+    background: -o-linear-gradient(top, #ff5abb, #ef008c);
+  }
+
+  .bn-button:hover, .bn-button:active {
+    opacity: 0.7;
   }
 
   .filterable-dropdown-search {
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 360px;
+    margin: 0 auto 30px auto;
   }
 
   .dropdown-search {

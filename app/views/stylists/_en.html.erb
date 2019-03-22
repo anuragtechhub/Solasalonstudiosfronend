@@ -20,7 +20,7 @@
             </div>
             <input type="hidden" name="so" value="salon_professionals" />
             <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
-            <%= link_to :booknow_search, :class => 'button primary round-narrow' do %>Book Now<% end %>
+            <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
           <% end %>
         </div>
       </div>
