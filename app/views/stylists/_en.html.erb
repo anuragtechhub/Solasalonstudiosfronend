@@ -13,13 +13,13 @@
         </div>
         <div class="col-md-6">
           <%= form_tag [:search, :results], :method => :get do %>
-            <h1 class="chalet"><%= t('page.find_salon_pro.body1').html_safe %></h1>
+            <h1 class="helvetica"><%= t('page.find_salon_pro.body1').html_safe %></h1>
             <div class="filterable-dropdown-search">
-              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
+              <input name="query" type="text" class="searchbox searchbox-small" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
               <button type="submit"><span class="search-icon"></span></button>
             </div>
             <input type="hidden" name="so" value="salon_professionals" />
-            <h2 class="chalet"><%= t('page.find_salon_pro.body2').html_safe %></h2>
+            <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
             <%= link_to :booknow_search, :class => 'button primary round-narrow' do %>Book Now<% end %>
           <% end %>
         </div>

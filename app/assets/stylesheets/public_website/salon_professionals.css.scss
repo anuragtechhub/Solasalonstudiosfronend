@@ -273,6 +273,28 @@
     margin-top: 30px !important;
   }
 
+  &.owl-carousel .item .item-content {
+    h1.helvetica, h2.helvetica {
+      max-width: 350px;
+      margin: 0 auto;
+      @include helvetica;
+      font-size: 13px !important;
+      line-height: 17px !important;
+      font-weight: bold !important;
+      margin: 0px 0px 20px 0px !important;
+      color: #FFF !important;
+    }
+  }
+
+  .book-now-button {
+
+  }
+
+  .filterable-dropdown-search {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
   .dropdown-search {
     text-align: center;
 
