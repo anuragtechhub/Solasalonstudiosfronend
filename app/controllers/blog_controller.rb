@@ -22,10 +22,14 @@ class BlogController < PublicWebsiteController
       @posts = Blog.joins(:blog_countries, :countries).where('countries.code = ?', country).where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).uniq.order(:publish_date => :desc)
     else
       # show all posts
-      @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).joins(:blog_countries, :countries).where('countries.code = ?', country).uniq.order(:publish_date => :desc)
+      if I18n.locale.to_s == 'en'
+        @posts = Blog.joins('INNER JOIN blog_blog_categories ON blog_blog_categories.blog_id = blogs.id').where('blogs.status = ? AND blog_blog_categories.blog_category_id != ?', 'published', 11).joins(:blog_countries, :countries).where('countries.code = ?', country).uniq.order(:publish_date => :desc)
+      else
+        @posts = Blog.where('status = ?', 'published').joins(:blog_countries, :countries).where('countries.code = ?', country).uniq.order(:publish_date => :desc)
+      end
     end
 
-    if @category && @category.id == 11
+    if @category && @category.id == 11 && I18n.locale.to_s == 'en'
       @posts = @posts.page(params[:page] || 1).per(21)
     else
       @posts = @posts.page(params[:page] || 1)
