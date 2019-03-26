@@ -50,6 +50,8 @@ class BlogController < PublicWebsiteController
       redirect_to show_blog_path(:url_name => @post.url_name) if @post
     end
 
+    p "@post=#{@post.inspect}"
+
     @category = @post.blog_categories.first if @post && @post.blog_categories
     @categories = BlogCategory.order(:name => :asc)
     redirect_to :blog unless @post

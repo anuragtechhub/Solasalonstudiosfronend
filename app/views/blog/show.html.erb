@@ -78,14 +78,16 @@
 
     </div>
 
-    <div class="related-articles">
-      <h3><%= t('page.blog.related_articles').html_safe %></h3>
-      <div class="row">
-        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[0] %></div>
-        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[1] %></div>
-        <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[2] %></div>
+    <% if Blog.all.size >= 3 %>
+      <div class="related-articles">
+        <h3><%= t('page.blog.related_articles').html_safe %></h3>
+        <div class="row">
+          <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[0] %></div>
+          <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[1] %></div>
+          <div class="one-third column"><%= render 'shared/related_blog', :blog => @post.related_blogs[2] %></div>
+        </div>
       </div>
-    </div>
+    <% end %>
 
   </div>
 
