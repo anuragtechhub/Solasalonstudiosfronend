@@ -153,7 +153,23 @@
         <%= number_to_percentage (100 * (@data[:contact_form_submissions_current_month].to_i - @data[:contact_form_submissions_prev_year].to_i) / @data[:contact_form_submissions_prev_year].to_i), :precision => 0 %>
       <% end %>
     </td>
-  </tr>                
+  </tr>  
+  <tr>
+    <td class="label" style="text-align:left">Location Phone Number Clicks</td>
+    <td class="value"><%= number_with_delimiter @data[:location_phone_number_clicks_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:location_phone_number_clicks_prev_month] %></td>
+    <td class="value percentage"><%= number_to_percentage (100 * (@data[:location_phone_number_clicks_current_month].to_i - @data[:location_phone_number_clicks_prev_month].to_i) / @data[:location_phone_number_clicks_prev_month].to_i), :precision => 0 %></td>
+    <td class="value"><%= number_with_delimiter @data[:location_phone_number_clicks_prev_year] %></td>
+    <td class="value percentage"><%= number_to_percentage (100 * (@data[:location_phone_number_clicks_current_month].to_i - @data[:location_phone_number_clicks_prev_year].to_i) / @data[:location_phone_number_clicks_prev_year].to_i), :precision => 0 %></td>
+  </tr>
+  <tr>
+    <td class="label" style="text-align:left">Professional Phone Number Clicks</td>
+    <td class="value"><%= number_with_delimiter @data[:professional_phone_number_clicks_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:professional_phone_number_clicks_prev_month] %></td>
+    <td class="value percentage"><%= number_to_percentage (100 * (@data[:professional_phone_number_clicks_current_month].to_i - @data[:professional_phone_number_clicks_prev_month].to_i) / @data[:professional_phone_number_clicks_prev_month].to_i), :precision => 0 %></td>
+    <td class="value"><%= number_with_delimiter @data[:professional_phone_number_clicks_prev_year] %></td>
+    <td class="value percentage"><%= number_to_percentage (100 * (@data[:professional_phone_number_clicks_current_month].to_i - @data[:professional_phone_number_clicks_prev_year].to_i) / @data[:professional_phone_number_clicks_prev_year].to_i), :precision => 0 %></td>
+  </tr>          
 </table>
 
 <table class="annual">
