@@ -881,7 +881,7 @@ namespace :reports do
       data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 1
 
       stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
-      p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
+      #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
       data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
       data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] ? data[:professional_phone_number_clicks_current_month][0][1] : 1
       
