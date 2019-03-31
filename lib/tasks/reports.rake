@@ -267,6 +267,49 @@ namespace :reports do
     end
   end
 
+  # rake reports:booking_complete
+  # rake reports:booking_complete[2019-01-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
+  task :booking_complete, [:start_date, :email_address] => :environment do |task, args|
+    p "begin booking_complete report..."
+    # p "args=#{args.inspect}"
+    # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
+    start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
+    end_date = start_date.end_of_month if start_date
+
+    analytics = Analytics.new
+    if start_date && end_date
+      #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
+      app_data = analytics.booking_complete_data('81802112', start_date, end_date)
+    else
+      #web_data = analytics.solapro_web_data
+      app_data = analytics.booking_complete_data
+    end
+    locals = {
+      :@app_data => app_data,
+      #:@web_data => web_data
+    }
+
+    p "got data #{locals.inspect}"
+    p "got data..."
+
+    html_renderer = HTMLRenderer.new
+
+    p "let's render PDF"
+    pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/booking_complete', locals), :footer => {:center => '[page]', :font_size => 7})
+    p "pdf rendered..."
+
+    if args[:email_address].present?
+      p "send email..."
+      ReportsMailer.booking_complete_report(args[:email_address], pdf).deliver
+    else
+      save_path = Rails.root.join('pdfs','booking_complete.pdf')
+      File.open(save_path, 'wb') do |file|
+        file << pdf
+      end   
+      p "file saved" 
+    end
+  end
+
   # rake reports:solapro
   # rake reports:solapro[2017-12-01]
   task :solapro, [:start_date] => :environment do |task, args|
@@ -651,6 +694,37 @@ namespace :reports do
       #{}"ga:pagePath=~/locations/#{location_start.url_name}"
 
       page_paths.join(',')
+    end
+
+    desc 'booking_complete_data', 'Retrieve Booking Complete Google Analytics data'
+    def booking_complete_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+      analytics = Analytics::AnalyticsReportingService.new
+      analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
+
+      data = {
+        start_date: start_date,
+        end_date: end_date
+      }    
+
+      require 'json'
+      
+      booking_data = []
+
+      (start_date..end_date).each do |date|
+        booking_completes = get_ga_data(analytics, profile_id, date, date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
+        p "booking_completes! #{date}, data=#{booking_completes.inspect}"
+        booking_completes.each do |booking_complete|
+          booking_complete_data = JSON.parse(booking_complete[0])
+          booking_complete_data["booking_date"] = date
+          booking_data << booking_complete_data
+          #p "booking_complete=#{booking_complete_data}"
+        end
+      end
+
+
+      data[:booking_completes] = booking_data.sort_by {|k| k["booking_date"] }
+
+      return data
     end
 
     desc 'booknow_data', 'Retrieve BookNow Google Analytics data'

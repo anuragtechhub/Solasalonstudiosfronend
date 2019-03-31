@@ -1,0 +1,25 @@
+<div class="page-title"><strong>Booking Complete Report &nbsp;|&nbsp; <%= @app_data[:start_date].strftime("%B %Y").upcase %></strong></div>
+
+<% @app_data[:booking_completes].each do |booking_complete| %>
+<div style="padding: 30px 0;border-bottom: 1px solid #AFAFAF;">
+  <h4><%= booking_complete["booking_date"].strftime("%A %B %e, %Y") %></h4>
+  
+  <h4>Search</h4>
+  <ul>
+    <li>Query: <%= booking_complete["query"] %></li>
+    <li>Location: <%= booking_complete["location"] %></li>
+    <li>Date: <%= Date.parse(booking_complete["date"]).strftime("%A %B %e, %Y") %></li>
+  </ul>
+
+  <h4>Services</h4>
+  <% if booking_complete["services"] %>
+  <ul>
+    <% booking_complete["services"].each do |service| %>
+      <li><%= service["name"] %>: <%= number_to_currency service["price"] %></li>
+    <% end %>
+  </ul>
+  <% end %>
+  
+  <h4>Total: <strong style="font-weight:900"><%= booking_complete["total"] %></strong></h4>
+</div>
+<% end %>
