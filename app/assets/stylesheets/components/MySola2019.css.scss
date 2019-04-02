@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
+.mysola-2019 {
+	
+	.owl-carousel {
+		.learn-more-button {
+			text-align: center;
+			z-index: 9;
+		}
+	}
+
+	.my-sola {
+		.container {
+			max-width: 650px;
+		}
+
+		.header-copy {
+			margin: 60px 0;
+			text-align: center;
+
+			p {
+				@include chalet_paris;
+				font-size: 26px;
+				line-height: 46px;
+				margin-bottom: 40px;
+			}
+
+			h1 {
+				margin: 40px 0;
+			}
+
+			h2 {
+				@include chalet_new_york;
+				font-size: 26px;
+				line-height: 26px;
+				color: #489ad5;
+				text-transform: none;
+				margin: 0;
+			}
+		}
+
+		.name-and-handle-form {
+			margin-top: -30px !important;
+
+			input[type='text'] {
+				@include chalet_new_york;
+				font-size: 36px;
+				line-height: 36px;
+				color: #4c4c4c;
+				max-width: 610px;
+				border: 3px solid #9dd5ff !important;
+				border-radius: 7px;
+				padding: 20px 30px 15px 30px !important;
+				margin: 30px auto 40px auto;
+				height: 90px;
+			}
+		}
+	}
+
+}

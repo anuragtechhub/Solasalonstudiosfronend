@@ -1,3 +1,17 @@
+<div class="mysola-2019">
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+      <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/sola2019hero.jpg', :width => 1386, :height => 713 %></div>
+      <div class="learn-more-button">
+        <h5><%= t('page.why_sola.learn_more') %></h5>
+        <span class="fa fa-angle-down"></span>
+      </div>
+    </div>
+  </div>
+
+  <%= react_component 'MySola2019' %>
+</div>
+
 <div class="mysola-tabs-content">
   <div class="mysola-tab-content" style="display:block;min-height:60px" data-tab="upload-a-photo">
     <%= react_component 'MySolaGallery', {:images => @gallery_images} %>
