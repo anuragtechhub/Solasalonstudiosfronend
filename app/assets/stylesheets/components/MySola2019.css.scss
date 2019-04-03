@@ -89,8 +89,8 @@
 	}
 
 	.bottom-callout {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;		
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;		
 		@include chalet_paris;
 		font-size: 30px;
 		line-height: 30px;
@@ -98,6 +98,20 @@
 		text-align: center;
 		color: #FFF;
 		background: #489ad5;
+	}
+
+	.my-sola-image-gallery .load-more-wrapper {
+		button, button:hover, button:active {
+			@include chalet_new_york;
+			font-size: 24px;
+			line-height: 24px;
+			color: #4c4c4c;
+			border: 0;
+			text-transform: none !important;
+			letter-spacing: 0;
+			opacity: 0.5;
+			background: transparent;
+		}
 	}
 
 }

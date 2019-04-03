@@ -58,7 +58,7 @@ var MySolaGallery = React.createClass({
     if (this.state.total_pages > this.state.current_page + 1) {
       return (
         <div className="text-center load-more-wrapper">
-          <button type="button" className="button" onClick={this.nextPage}>LOAD MORE</button>
+          <button type="button" className="button" onClick={this.nextPage}>Load More</button>
         </div>
       );
     }
