@@ -146,9 +146,16 @@ var MySola2019 = React.createClass({
   renderStatementForm: function () {
     return (
       <div className="statement-form">
-        <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
-        <h3>Or:</h3>
-        <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> in #MySola</div>
+        <div className="madlibs">
+          <div className="static-text">#MySola is my</div>
+          <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Write your message here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} />
+        </div>
+        <h3>OR</h3>
+        <div className="madlibs">
+          <div className="static-text">I feel</div>
+          <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Write your message here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> 
+          <div className="static-text">in #MySola</div>
+        </div>
       </div>
     );
   },

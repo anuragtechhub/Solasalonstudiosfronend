@@ -73,6 +73,66 @@
 			}
 		}
 
+		.statement-form {
+			margin: 40px auto 60px auto;
+			display: block;
+			clear: both;
+
+			.madlibs {
+				background: #f7f8fa;
+				border-radius: 30px;
+				padding: 60px 30px;
+			}
+
+			.static-text {
+				@include chalet_paris;
+				font-size: 42px;
+				line-height: 42px;
+				color: #000;
+			}
+
+			h3 {
+				@include chalet_new_york;
+				color: #b7b7b7;
+				font-size: 27px;
+				line-height: 27px;
+				margin: 30px auto;
+				text-align: center;
+			}
+
+			input[type='text'] {
+				font-family: "chalet-new-york-sixty", sans-serif !important;
+				border-bottom: 0 !important;
+				font-size: 27px !important;
+				line-height: 27px !important;
+				color: #6cbee5 !important;
+				height: 90px !important;
+				width: 100%;
+
+        &::-moz-placeholder {
+          color: #b7b7b7 !important;
+					font-size: 27px !important;
+					line-height: 27px !important;
+          vertical-align: top;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        }
+        &:-ms-input-placeholder { 
+          color: #b7b7b7 !important;
+					font-size: 27px !important;
+					line-height: 27px !important;
+        } // Internet Explorer 10+
+        &::-webkit-input-placeholder  { 
+          color: #b7b7b7 !important;
+					font-size: 27px !important;
+					line-height: 27px !important;
+        } // Safari and Chrome
+        &:focus::-moz-placeholder {
+          color: transparent;
+          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+        } 
+			}
+		}
+
 		.bottom-buttons {
 			.button, .button:hover, .button:active {
 				@include chalet_new_york;
