@@ -74,14 +74,31 @@
 		}
 
 		.statement-form {
-			margin: 40px auto 60px auto;
+			margin: 50px auto 60px auto;
 			display: block;
 			clear: both;
 
 			.madlibs {
+				position: relative;
 				background: #f7f8fa;
 				border-radius: 30px;
 				padding: 60px 30px;
+
+				.circle-b {
+					position: absolute;
+					top: -30px;
+					left: 50%;
+					margin-left: -30px;
+					width: 60px;
+					height: 60px;
+					border-radius: 30px;
+					text-align: center;
+					font-size: 30px;
+					line-height: 30px;
+					padding: 14px 0 14px 1px;
+					color: #FFF;
+					background: #9dd5ff;
+				}
 			}
 
 			.static-text {
@@ -96,7 +113,7 @@
 				color: #b7b7b7;
 				font-size: 27px;
 				line-height: 27px;
-				margin: 30px auto;
+				margin: 35px auto 55px auto;
 				text-align: center;
 			}
 
