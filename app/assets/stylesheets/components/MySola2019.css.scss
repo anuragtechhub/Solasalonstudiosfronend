@@ -57,6 +57,22 @@
 			}
 		}
 
+		.image-dropzone {
+			max-width: 620px;
+			height: 620px;
+			
+			.image {
+				max-width: 610px;
+				height: 610px;
+			}
+
+			a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
+				border: 3px solid #9dd5ff !important;
+				height: 595px !important;
+				max-width: 595px;
+			}
+		}
+
 		.bottom-buttons {
 			.button, .button:hover, .button:active {
 				@include chalet_new_york;

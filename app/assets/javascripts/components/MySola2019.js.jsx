@@ -135,10 +135,10 @@ var MySola2019 = React.createClass({
       <div className="name-and-handle-form">
         <input type="text" name="name" placeholder={this.state.focusedInputName == 'name' ? null : "Enter your name"} value={this.state.name} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} />
         <input type="text" name="instagram_handle" placeholder={this.state.focusedInputName == 'instagram_handle' ? null : "Enter your Instagram handle"} onFocus={this.onFocusInstagramInput} onKeyDown={this.onKeyDownInstagramInput} onBlur={this.onBlurInput} value={this.state.instagram_handle} onChange={this.onChangeTextInput} />
-        <div className="next">
+        {/*<div className="next">
           <h3>Next</h3>
           <div className="next-icon"></div>
-        </div>
+        </div>*/}
       </div>
     );
   },
@@ -146,7 +146,6 @@ var MySola2019 = React.createClass({
   renderStatementForm: function () {
     return (
       <div className="statement-form">
-        <h3>Choose a statement below:</h3>
         <div className="madlibs">#MySola is my <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /></div>
         <h3>Or:</h3>
         <div className="madlibs">I feel <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Type your "expression" here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> in #MySola</div>
