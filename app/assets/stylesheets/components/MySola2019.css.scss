@@ -62,16 +62,40 @@
 		.image-dropzone {
 			max-width: 620px;
 			height: 620px;
-			
+			background: #f7f8fa;
+			border: 0;
+			margin: 20px auto 60px auto;
+
+			.action-camera-and-text {
+				@include chalet_london;
+				font-size: 36px;
+				line-height: 36px;
+				color: #999999;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				background: asset-url("camera.png") no-repeat center;
+				background-size: auto !important;
+				padding: 116px 0 0 0;
+				height: 225px;
+				margin-top: -130px;
+			}
+
 			.image {
 				max-width: 610px;
 				height: 610px;
+				background: transparent !important;
 			}
 
 			a.action, a.action:link, a.action:visited, a.action:hover, a.action:active {
-				border: 3px solid #9dd5ff !important;
+				border: 0 !important;
 				height: 595px !important;
 				max-width: 595px;
+				background: transparent !important;
+
+				// display: flex !important;
+		  //   flex-direction: column;
+		  //   align-items: center;
+		  //   justify-content: center;
 			}
 
 			img.dropzone-image {
@@ -285,6 +309,17 @@
 				width: 280px;
     		max-width: 280px;
     		height: 280px;
+    		margin-bottom: 40px;
+
+    		.action-camera-and-text {
+					background-size: (276px / 1.5) (225px / 1.5) !important;
+					padding: 116px 0 0 0;
+					height: 225px;
+					margin-top: -120px;
+					font-size: 15px;
+					line-height: 15px;
+					@include chalet_new_york;
+    		}
 
     		img.dropzone-image {
     			height: 280px;
