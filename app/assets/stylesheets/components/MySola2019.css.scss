@@ -208,3 +208,143 @@
 	}
 
 }
+
+@media (max-width: 550px) {
+	.mysola-2019 {
+
+		.bottom-callout {
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;		
+			@include chalet_paris;
+			font-size: 26px;
+			line-height: 36px;
+			padding: 25px 0 20px 0;
+			text-align: center;
+			color: #FFF;
+			background: #489ad5;
+		}
+
+		.my-sola {
+			.header-copy {
+				margin: 30px 0 50px 0;
+				text-align: center;
+
+				p {
+					@include chalet_paris;
+					font-size: 17px;
+					line-height: 27px;
+					margin-bottom: 20px;
+				}
+
+				h1 {
+					margin: 25px 0 30px 0;
+				}
+
+				h2 {
+					@include chalet_new_york;
+					font-size: 16px;
+					line-height: 16px;
+					color: #489ad5;
+					text-transform: none;
+					margin: 0;
+				}
+			}
+
+			.name-and-handle-form {
+				input[type='text'] {
+					font-size: 15px;
+					line-height: 17px;
+					height: 55px;
+					padding: 13px 10px 10px 10px !important;
+					margin: 30px auto 15px auto;
+					max-width: 280px;
+				}
+			}
+
+			.image-dropzone {
+				width: 280px;
+    		max-width: 280px;
+    		height: 280px;
+			}
+
+			.image-dropzone .image {
+				height: 280px;
+				max-width: 280px;
+			}
+
+	    .image-dropzone a.action, .image-dropzone a.action:link, .image-dropzone a.action:visited, .image-dropzone a.action:hover, .image-dropzone a.action:active {
+	      height: 267px !important;
+	      width: 267px !important;
+	    }
+
+	    .statement-form {
+    		h3 {
+    			font-size: 16px;
+    			line-height: 16px;
+    		}
+	    	.madlibs {
+	    		padding: 50px 20px;
+
+	    		.circle-b {
+	    			font-size: 20px;
+	    			line-height: 22px;
+	    			width: 50px;
+	    			height: 50px;
+	    			margin-left: -25px;
+	    			top: -25px;
+	    		}
+	    		.static-text {
+	    			font-size: 28px;
+	    			line-height: 28px;
+	    		}
+					input[type='text'] {
+						font-size: 20px !important;
+						line-height: 20px !important;
+						height: 60px !important;
+
+		        &::-moz-placeholder {
+							font-size: 20px !important;
+							line-height: 20px !important;
+		          vertical-align: top;
+		          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+		        }
+		        &:-ms-input-placeholder { 
+							font-size: 20px !important;
+							line-height: 20px !important;
+		        } // Internet Explorer 10+
+		        &::-webkit-input-placeholder  { 
+							font-size: 20px !important;
+							line-height: 20px !important;
+		        } // Safari and Chrome
+		        &:focus::-moz-placeholder {
+		          color: transparent;
+		          opacity: 1; // See https://github.com/twbs/bootstrap/pull/11526
+		        } 
+					}
+	    	}
+	    }
+
+			.bottom-buttons {
+				margin: -20px 0 0 0;
+
+				.button, .button:hover, .button:active {
+					@include chalet_new_york;
+					font-size: 16px;
+					line-height: 16px;
+					padding: 20px 0 15px 0;
+				}
+
+				.start-over {
+					a, a:link, a:visited, a:hover, a:active {
+						@include chalet_london;
+						font-size: 16px;
+						line-height: 16px;
+						letter-spacing: 0;
+						color: #4c4c4c;
+					}
+				}
+			}
+
+		}
+	}
+}
