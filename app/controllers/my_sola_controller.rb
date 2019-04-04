@@ -110,7 +110,7 @@ class MySolaController < PublicWebsiteController
       #p "statement_rows=#{statement_rows}"
       cursive_text_y = 540 + 60
       statement_rows.each_with_index do |statement_row_text, idx|
-        m_image.annotate(cursive_text, 1080, 1080, 540 + 5, cursive_text_y + (idx * 69), statement_row_text) 
+        m_image.annotate(cursive_text, 1080, 1080, 540 + 5, cursive_text_y + (idx * 71), statement_row_text) 
       end
 
       #statement.chars.each_slice(2).map(&:join)
@@ -138,7 +138,7 @@ class MySolaController < PublicWebsiteController
     if statement.present? && statement_variant == 'i_feel'
       #p "I feel BlANK"
       top_text = Magick::Draw.new
-      m_image.annotate(top_text, 1080, 1080, 120, 540 - 80, "I feel") do
+      m_image.annotate(top_text, 1080, 1080, 60, 540 - 140, "I feel") do
         top_text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
         top_text.gravity = Magick::NorthWestGravity
         top_text.pointsize = 75
@@ -148,16 +148,17 @@ class MySolaController < PublicWebsiteController
 
       cursive_text = Magick::Draw.new
       cursive_text.font = "#{Rails.root}/lib/fonts/Lato-Bold.ttf"
-      cursive_text.gravity = Magick::CenterGravity
+      cursive_text.gravity = Magick::NorthWestGravity
       cursive_text.fill = '#ffffff'
       cursive_text.kerning = -2
       cursive_text.pointsize = 75#calculate_cursive_pointsize(m_image, cursive_text, statement)
-      m_image.annotate(cursive_text, 1080, 1080 - 45, 0, 45, statement)
-      
+      m_image.annotate(cursive_text, 1080, 1080, 215, 540 - 140, statement)
+      cursive_text_width = cursive_text.get_type_metrics(statement)[:width]
+      #p "cursive_text_width=#{cursive_text_width}"
       bottom_text = Magick::Draw.new
-      m_image.annotate(bottom_text, 1080, 1080, 0, 760, "in") do
+      m_image.annotate(bottom_text, 1080, 1080, cursive_text_width + 225, 540 - 140, "in") do
         bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
-        bottom_text.gravity = Magick::NorthGravity
+        bottom_text.gravity = Magick::NorthWestGravity
         bottom_text.pointsize = 75
         bottom_text.kerning = -4
         bottom_text.fill = '#ffffff'
@@ -167,15 +168,19 @@ class MySolaController < PublicWebsiteController
     # big cursive #MySola text
     if statement.present? && statement_variant == 'mysola_is'
       my_sola_is_image = Magick::Image.read(Rails.root.join('app/assets/images/my_sola_is.png')).first
-      m_combined = m_image.composite(my_sola_is_image, 80, 540 - (262 / 2) - 100, Magick::OverCompositeOp)
-    else
+      m_combined = m_image.composite(my_sola_is_image, 80, 540 - (262 / 2) - 80, Magick::OverCompositeOp)
+    elsif statement.present? && statement_variant == 'i_feel'
       my_sola_image = Magick::Image.read(Rails.root.join('app/assets/images/my_sola.png')).first
-      m_combined = m_image.composite(my_sola_image, 1080 - 744 - 60, 540 - (262 / 2) + 100, Magick::OverCompositeOp)
+      m_combined = m_image.composite(my_sola_image, 1080 - 744 - 55, 540 - (262 / 2) + 75, Magick::OverCompositeOp)
     end
 
     # logo (200 x 119)
     m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
-    m_combined = m_combined.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+    if m_combined
+      m_combined = m_combined.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+    else
+      m_combined = m_image.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+    end
 
     m_combined
   end

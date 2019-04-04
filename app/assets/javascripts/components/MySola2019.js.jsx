@@ -149,13 +149,13 @@ var MySola2019 = React.createClass({
         <div className="madlibs">
           <div className="circle-b">{this.state.focusedInputName == 'mysola_is' || this.state.mysola_is != '' ? <i className="fa fa-check"></i> : <span>A</span>}</div>
           <div className="static-text">#MySola is my</div>
-          <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Write your message here'} maxLength="21" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} />
+          <input type="text" name="mysola_is" placeholder={this.state.focusedInputName == 'mysola_is' ? null : 'Write your message here'} maxLength="33" value={this.state.mysola_is} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} />
         </div>
         <h3>OR</h3>
         <div className="madlibs">
           <div className="circle-b">{this.state.focusedInputName == 'i_feel' || this.state.i_feel != '' ? <i className="fa fa-check"></i> : <span>B</span>}</div>
           <div className="static-text">I feel</div>
-          <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Write your message here'} maxLength="21" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> 
+          <input type="text" name="i_feel" placeholder={this.state.focusedInputName == 'i_feel' ? null : 'Write your message here'} maxLength="23" value={this.state.i_feel} onFocus={this.onFocusInput} onBlur={this.onBlurInput} onChange={this.onChangeTextInput} onKeyDown={this.onKeyDownMadLibsInput} onKeyUp={this.startTypingTimer} /> 
           <div className="static-text">in #MySola</div>
         </div>
       </div>
