@@ -211,6 +211,16 @@
 
 @media (max-width: 550px) {
 	.mysola-2019 {
+		
+		.owl-carousel .item .img-wrap {
+			height: auto;
+		}
+
+		.owl-carousel .item .img-wrap img {
+			height: auto;
+	    width: 100%;
+	    left: 0%;
+    }
 
 		.bottom-callout {
 		  -webkit-font-smoothing: antialiased;
@@ -225,6 +235,8 @@
 		}
 
 		.my-sola {
+			padding-top: 10px;
+			
 			.header-copy {
 				margin: 30px 0 50px 0;
 				text-align: center;
