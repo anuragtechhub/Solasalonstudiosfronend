@@ -721,8 +721,14 @@ namespace :reports do
         end
       end
 
-
       data[:booking_completes] = booking_data.sort_by {|k| k["booking_date"] }
+      data[:bookings_total] = data[:booking_completes].length
+      total_revenue = 0.0
+      data[:booking_completes].each do |booking_complete|
+        p "total=#{booking_complete["total"][1..-1].to_f}"
+        total_revenue += booking_complete["total"][1..-1].to_f
+      end
+      data[:bookings_revenue] = total_revenue
 
       return data
     end

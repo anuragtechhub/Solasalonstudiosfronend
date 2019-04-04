@@ -1,7 +1,13 @@
 <div class="page-title"><strong>Booking Complete Report &nbsp;|&nbsp; <%= @app_data[:start_date].strftime("%B %Y").upcase %></strong></div>
 
+<hr />
+
+<h3 style="margin:0;font-size:21px;line-height:21px"><%= @app_data[:bookings_total] %> bookings, <%= number_to_currency @app_data[:bookings_revenue] %>+ revenue</h2>
+
+<hr />
+
 <% @app_data[:booking_completes].each do |booking_complete| %>
-<div style="padding: 30px 0;border-bottom: 1px solid #AFAFAF;">
+<div style="padding: 0 0 30px 0;border-bottom: 1px solid #AFAFAF;">
   <h4><%= booking_complete["booking_date"].strftime("%A %B %e, %Y") %></h4>
   
   <h4>Search</h4>
@@ -19,7 +25,17 @@
     <% end %>
   </ul>
   <% end %>
+
+  <% if booking_complete["booking_user"] %>
+    <h4>Appointment Booked By</h4>
+    <ul>
+      <li>Name: <%= booking_complete["booking_user"]["name"] %></li>
+      <li>Email: <%= booking_complete["booking_user"]["email"] %></li>
+      <li>Phone Number: <%= booking_complete["booking_user"]["phone"] %></span></li>
+    </ul>
+  <% end %>
   
-  <h4>Total: <strong style="font-weight:900"><%= booking_complete["total"] %></strong></h4>
+  <h4>Total: <strong style="font-weight:900"><%= number_to_currency(booking_complete["total"])[1..-1] %></strong></h4>
+
 </div>
 <% end %>
