@@ -12,7 +12,7 @@
 
 	.my-sola {
 		padding-top: 10px;
-		
+
 		.container {
 			max-width: 650px;
 		}
@@ -72,6 +72,12 @@
 				border: 3px solid #9dd5ff !important;
 				height: 595px !important;
 				max-width: 595px;
+			}
+
+			img.dropzone-image {
+				max-width: 610px;
+				height: 610px;
+				border: 0;
 			}
 		}
 
@@ -211,7 +217,7 @@
 
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
 	.mysola-2019 {
 		
 		.owl-carousel .item .img-wrap {
@@ -279,6 +285,10 @@
 				width: 280px;
     		max-width: 280px;
     		height: 280px;
+
+    		img.dropzone-image {
+    			height: 280px;
+    		}
 			}
 
 			.image-dropzone .image {
