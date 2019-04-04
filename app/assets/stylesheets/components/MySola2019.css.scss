@@ -17,6 +17,13 @@
 			max-width: 650px;
 		}
 
+		.back-to-top {
+			background: asset-url('back_to_top.png') no-repeat center;
+			background-size: auto !important;
+			width: 56px;
+			height: 56px;
+		}
+
 		.header-copy {
 			margin: 60px 0;
 			text-align: center;
@@ -268,6 +275,15 @@
 
 		.my-sola {
 			padding-top: 10px;
+
+			.back-to-top {
+				background: asset-url('back_to_top.png') no-repeat center;
+				background-size: (56px / 1.5) (56px / 1.5) !important;
+				width: (56px / 1.5);
+				height: (56px / 1.5);
+				bottom: 10px;
+				right: 10px;
+			}
 
 			.header-copy {
 				margin: 30px 0 50px 0;
