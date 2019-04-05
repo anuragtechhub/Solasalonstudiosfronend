@@ -177,13 +177,21 @@ class MySolaController < PublicWebsiteController
       m_combined = m_image.composite(my_sola_image, 1080 - 744 - 55, 540 - (262 / 2) + 75, Magick::OverCompositeOp)
     end
 
-    # logo (200 x 119)
-    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
+    # s mark logo (187 x 186)
+    m_logo = Magick::Image.read(Rails.root.join('app/assets/images/s_logo.png')).first
     if m_combined
-      m_combined = m_combined.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+      m_combined = m_combined.composite(m_logo, 935, 945, Magick::OverCompositeOp)
     else
-      m_combined = m_image.composite(m_logo, 855, 935, Magick::OverCompositeOp)
-    end
+      m_combined = m_image.composite(m_logo, 935, 945, Magick::OverCompositeOp)
+    end    
+
+    # logo (200 x 119)
+    # m_logo = Magick::Image.read(Rails.root.join('app/assets/images/sola-logo.png')).first
+    # if m_combined
+    #   m_combined = m_combined.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+    # else
+    #   m_combined = m_image.composite(m_logo, 855, 935, Magick::OverCompositeOp)
+    # end
 
     m_combined
   end
