@@ -51,7 +51,17 @@ var MySola2019 = React.createClass({
   },
 
   componentDidUpdate: function () {
-    $(this.refs.social_share_wrapper).jsSocials('refresh');
+    //$(this.refs.social_share_wrapper).jsSocials('refresh');
+    $(this.refs.social_share_wrapper).jsSocials('destroy');
+    $(this.refs.social_share_wrapper).jsSocials({
+      shares: ["twitter", "facebook"],
+      text: this.shareText(),
+      showCount: false,
+      showLabel: false,
+      shareIn: 'popup',
+      shareText: this.shareText(),
+      shareUrl: false,
+    });
   },
 
   shareUrl: function () {
@@ -65,7 +75,7 @@ var MySola2019 = React.createClass({
     } else if (this.state.mysola_is) {
       return "#MySola is my " + this.state.mysola_is;
     } else {
-      return '#MySola'
+      return '#MySola';
     }
   },
 
@@ -197,6 +207,7 @@ var MySola2019 = React.createClass({
     } else {
       this.setState({focusedInputName: event.target.name});
     }
+    this.moveCursorToEnd(event.target);
   },
 
   onHideSocialSharePopup: function () {
@@ -226,6 +237,17 @@ var MySola2019 = React.createClass({
     } else if (this.state.i_feel) {
       this.setState({statement: this.state.i_feel});
     }
+  },
+
+  moveCursorToEnd: function (el) {
+    // if (typeof el.selectionStart == "number") {
+    //     el.selectionStart = el.selectionEnd = el.value.length;
+    // } else if (typeof el.createTextRange != "undefined") {
+    //     el.focus();
+    //     var range = el.createTextRange();
+    //     range.collapse(false);
+    //     range.select();
+    // }
   },
 
   scrollToTop: function (event) {

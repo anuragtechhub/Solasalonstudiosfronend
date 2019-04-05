@@ -82,6 +82,9 @@
         },
 
         _initShares: function() {
+            if (window.getShareUrl) {
+                this.url = window.getShareUrl();
+            }
             this.shares = $.map(this.shares, $.proxy(function(shareConfig) {
                 if(typeof shareConfig === "string") {
                     shareConfig = { share: shareConfig };
