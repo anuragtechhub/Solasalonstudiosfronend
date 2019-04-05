@@ -109,6 +109,8 @@ var MySolaImageDropzone = React.createClass({
   },
 
   onLoad: function () {
+    //console.log('onLoad!');
+
     if (this.state.image && typeof this.props.onChangeImage == 'function') {
       this.props.onChangeImage(this.state.image);
     }

@@ -113,7 +113,7 @@ class MySolaController < PublicWebsiteController
       #p "statement_rows=#{statement_rows}"
       cursive_text_y = 540 + 60
       statement_rows.each_with_index do |statement_row_text, idx|
-        m_image.annotate(cursive_text, 1080, 1080, 540 + 5, cursive_text_y + (idx * 71), statement_row_text) 
+        m_image.annotate(cursive_text, 1080, 1080, 525, cursive_text_y + (idx * 71), statement_row_text) 
       end
 
       #statement.chars.each_slice(2).map(&:join)
@@ -128,7 +128,7 @@ class MySolaController < PublicWebsiteController
       #p "height=#{height}, ascent=#{ascent}, descent=#{descent} calculated_height=#{calculated_height}, cursive_text_pointsize=#{cursive_text_pointsize}, #{y_value}"
 
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 435, 540 + 60, "my") do
+      m_image.annotate(text, 1080, 1080, 415, 540 + 60, "my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
         text.gravity = Magick::NorthWestGravity
         text.pointsize = 75
@@ -180,9 +180,9 @@ class MySolaController < PublicWebsiteController
     # s mark logo (187 x 186)
     m_logo = Magick::Image.read(Rails.root.join('app/assets/images/s_logo.png')).first
     if m_combined
-      m_combined = m_combined.composite(m_logo, 935, 945, Magick::OverCompositeOp)
+      m_combined = m_combined.composite(m_logo, 939, 945, Magick::OverCompositeOp)
     else
-      m_combined = m_image.composite(m_logo, 935, 945, Magick::OverCompositeOp)
+      m_combined = m_image.composite(m_logo, 939, 945, Magick::OverCompositeOp)
     end    
 
     # logo (200 x 119)

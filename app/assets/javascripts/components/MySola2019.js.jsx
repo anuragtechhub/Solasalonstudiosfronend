@@ -5,6 +5,7 @@ var MySola2019 = React.createClass({
       fileUploadOverlay: false,
       focusedInputName: null,
       instagram_handle: '',
+      loading: false,
       i_feel: '',
       image: null,
       mysola_is: '',
@@ -50,7 +51,7 @@ var MySola2019 = React.createClass({
     };
   },
 
-  componentDidUpdate: function () {
+  componentDidUpdate: function (prevProps, prevState) {
     //$(this.refs.social_share_wrapper).jsSocials('refresh');
     $(this.refs.social_share_wrapper).jsSocials('destroy');
     $(this.refs.social_share_wrapper).jsSocials({
@@ -62,6 +63,11 @@ var MySola2019 = React.createClass({
       shareText: this.shareText(),
       shareUrl: false,
     });
+
+    //console.log('componentDidUpdate', this.state.statement, prevState.statement, this.state.loading)
+    if (this.state.statement != prevState.statement && this.state.image && this.state.image.id) {
+      this.setState({loading: true});
+    }
   },
 
   shareUrl: function () {
@@ -102,7 +108,10 @@ var MySola2019 = React.createClass({
             <a href="#" className="button block" onClick={this.toggleSharePopup}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
-          <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download</a>
+          <div className="download-button-wrapper">
+            <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download</a>
+            {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
+          </div>
           <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
         </div>
       );
@@ -113,7 +122,9 @@ var MySola2019 = React.createClass({
             <a href="#" className="button disabled block" onClick={this.shhh}>Share</a>
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
-          <a href="#" className="button disabled block" onClick={this.shhh}>Download</a>
+          <div className="download-button-wrapper">
+            <a href="#" className="button disabled block" onClick={this.shhh}>Download</a>
+          </div>
           <div className="start-over"><a href="#" className="disabled" onClick={this.shhh}>Start Over</a></div>
         </div>
       );
@@ -181,7 +192,8 @@ var MySola2019 = React.createClass({
   },
 
   onChangeImage: function (image) {
-    this.setState({image: image});
+    //console.log('onChangeImage!');
+    this.setState({image: image, loading: false});
   },
 
   onChangeTextInput: function (event) {
