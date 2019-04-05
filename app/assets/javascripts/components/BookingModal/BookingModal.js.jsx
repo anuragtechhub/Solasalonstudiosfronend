@@ -262,13 +262,13 @@ var BookingModal = React.createClass({
 				//console.log('booking ERROR');
 				self.setState({loading: false, error: json_response.error});
 			} else {
-				//console.log('booking SUCCESS!!!');
+				//console.log('booking SUCCESS!!!', self.props.professional, self.props.location_id);
 				ga('solasalonstudios.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
 					date: self.state.date.format('YYYY-MM-DD'),
 					fingerprint: self.props.fingerprint,
 					lat: self.props.lat,
 					lng: self.props.lng,
-					location_id: self.props.location_id,
+					location_id: self.props.location_id || self.props.professional.org_location_id,
 					location: self.props.location,
 					query: self.props.query,
 					services: self.state.services,
@@ -278,7 +278,8 @@ var BookingModal = React.createClass({
 						name: self.state.your_name,
 						phone: self.state.phone_number,
 						email: self.state.email_address,
-					}
+					},
+					org_user_id: self.props.professional.org_user_id,
 				}));
 				$(self.refs.BookingCompleteForm).submit();
 			}
