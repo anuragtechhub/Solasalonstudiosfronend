@@ -10,7 +10,10 @@ class MySolaController < PublicWebsiteController
     cache_key = "/my-sola/approved-images?last_approved_at=#{last_approved_my_sola_image.updated_at}"
 
     @gallery_images = Rails.cache.fetch(cache_key) do   
-      MySolaImage.where(:approved => true).to_a.to_json
+      pre_2019 = MySolaImage.where("approved = ? AND created_at < ?", true, Date.new(2019, 1, 1))
+      post_2019 = MySolaImage.where("approved = ? AND created_at >= ?", true, Date.new(2019, 1, 1))
+
+      (post_2019.to_a + pre_2019.to_a).to_json
     end
 
     # set MySola blogs
