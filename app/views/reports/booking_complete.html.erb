@@ -35,6 +35,18 @@
     </ul>
   <% end %>
   
+  <% stylist = Stylist.find_by(:id => booking_complete["org_user_id"]) %>
+  <% if stylist %>
+    <% if booking_complete["booking_user"] %>
+      <h4>Salon Professional Who Received Booking</h4>
+      <ul>
+        <li>Name: <%= stylist.name %></li>
+        <li>Email: <%= stylist.email_address %></li>
+        <li>Phone Number: <%= stylist.phone_number %></span></li>
+      </ul>
+    <% end %>
+  <% end %>
+
   <h4>Total: <strong style="font-weight:900"><%= number_to_currency(booking_complete["total"])[1..-1] %></strong></h4>
 
 </div>
