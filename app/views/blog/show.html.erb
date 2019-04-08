@@ -78,7 +78,7 @@
 
     </div>
 
-    <% if Blog.all.size >= 3 %>
+    <% if @post.related_blogs[0] && @post.related_blogs[1] && @post.related_blogs[2] %>
       <div class="related-articles">
         <h3><%= t('page.blog.related_articles').html_safe %></h3>
         <div class="row">

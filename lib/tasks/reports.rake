@@ -268,7 +268,7 @@ namespace :reports do
   end
 
   # rake reports:booking_complete
-  # rake reports:booking_complete[2019-01-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booking_complete[2019-04-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
   task :booking_complete, [:start_date, :email_address] => :environment do |task, args|
     p "begin booking_complete report..."
     # p "args=#{args.inspect}"
@@ -713,11 +713,13 @@ namespace :reports do
       (start_date..end_date).each do |date|
         booking_completes = get_ga_data(analytics, profile_id, date, date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
         p "booking_completes! #{date}, data=#{booking_completes.inspect}"
-        booking_completes.each do |booking_complete|
-          booking_complete_data = JSON.parse(booking_complete[0])
-          booking_complete_data["booking_date"] = date
-          booking_data << booking_complete_data
-          #p "booking_complete=#{booking_complete_data}"
+        if booking_completes && booking_completes.length > 0
+          booking_completes.each do |booking_complete|
+            booking_complete_data = JSON.parse(booking_complete[0])
+            booking_complete_data["booking_date"] = date
+            booking_data << booking_complete_data
+            #p "booking_complete=#{booking_complete_data}"
+          end
         end
       end
 
