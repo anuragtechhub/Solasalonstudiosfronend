@@ -60,12 +60,15 @@ var MySolaImageDropzone = React.createClass({
   },
 
   render: function () {
+    //style={{display: this.state.image ? 'none' : 'block'}}
     return (
       <div className="image-dropzone" data-id={this.props.id}>
         <div className={this.imageClasses()}>
           {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
+          <a ref="dropzone" href="#" className="action" onClick={this.shhh}>
+            {this.state.image && !this.state.loading ? null : <div className="action-camera-and-text">{this.props.addNewText || 'Upload or drag a photo'}</div>}
+          </a>
           {this.state.image ? <img src={this.getImageSource()} className="dropzone-image" onLoad={this.onLoad} style={{display: this.state.loading ? 'none' : 'block'}} /> : null}
-          <a ref="dropzone" href="#" className="action" onClick={this.shhh} style={{display: this.state.image ? 'none' : 'block'}}><div className="action-camera-and-text">{this.props.addNewText || 'Upload or drag a photo'}</div></a>
         </div>
       </div>
     );

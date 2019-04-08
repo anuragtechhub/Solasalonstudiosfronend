@@ -91,6 +91,7 @@ var MySola2019 = React.createClass({
         <div className="container">
           {this.renderHeaderCopy()}
           {this.renderNameAndHandleForm()}
+          <div style={{textAlign: 'center', marginTop: '30px', marginBottom: '-11px', fontSize: '12px', lineHeight: '12px', color: "#888888"}}>For best results, please upload a square image.</div>
           <MySolaImageDropzone ref="image_dropzone" statement={this.state.statement} statement_variant={this.state.statement_variant} instagram_handle={this.state.instagram_handle} name={this.state.name} onChangeImage={this.onChangeImage} />
           {this.renderStatementForm()}
           {this.renderBottomButtons()}
@@ -109,7 +110,7 @@ var MySola2019 = React.createClass({
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
           <div className="download-button-wrapper">
-            <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download</a>
+            <a href={'/mysola-image-preview/' + this.state.image.public_id} className="button block">Download for Instagram</a>
             {this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
           </div>
           <div className="start-over"><a href="#" onClick={this.startOver}>Start Over</a></div>
@@ -123,7 +124,7 @@ var MySola2019 = React.createClass({
             <div className="social-share-icons" ref="social_share_wrapper" style={{display: this.state.sharePopupVisible ? 'block' : 'none'}}></div>
           </div>
           <div className="download-button-wrapper">
-            <a href="#" className="button disabled block" onClick={this.shhh}>Download</a>
+            <a href="#" className="button disabled block" onClick={this.shhh}>Download for Instagram</a>
           </div>
           <div className="start-over"><a href="#" className="disabled" onClick={this.shhh}>Start Over</a></div>
         </div>

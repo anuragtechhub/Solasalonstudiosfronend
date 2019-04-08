@@ -2,7 +2,7 @@ var MySolaGallery = React.createClass({
 
   getInitialState: function () {
     var results_per_page = 16;
-    var images = this.props.images ? this.shuffle(JSON.parse(this.props.images)) : [];
+    var images = this.props.images ? JSON.parse(this.props.images) : []; //? this.shuffle(JSON.parse(this.props.images)) :
     var images_length = images.length;
     var total_pages = images_length / results_per_page + (images_length % results_per_page > 0 ? 1 : 0) - 1;
     total_pages = total_pages < 1 ? 1 : total_pages;

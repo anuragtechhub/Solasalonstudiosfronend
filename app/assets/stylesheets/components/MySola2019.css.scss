@@ -72,6 +72,16 @@
 			background: #f7f8fa;
 			border: 0;
 			margin: 20px auto 60px auto;
+			position: relative;
+
+			.action {
+				position: absolute;
+				top: 10px;
+				bottom: 10px;
+				left: 10px;
+				right: 10px;
+				z-index: 99;
+			}
 
 			.action-camera-and-text {
 				@include chalet_london;
