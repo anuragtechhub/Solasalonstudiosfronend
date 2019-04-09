@@ -87,7 +87,7 @@ class MySolaController < PublicWebsiteController
       #p "#MySola is BlANK"
       
       cursive_text = Magick::Draw.new
-      cursive_text.font = "#{Rails.root}/lib/fonts/Lato-Bold.ttf"
+      cursive_text.font = "#{Rails.root}/lib/fonts/ChaletNewYorkSixty.ttf"
       cursive_text.gravity = Magick::NorthWestGravity
       cursive_text.fill = '#ffffff'
       cursive_text_pointsize = 75#calculate_cursive_pointsize(m_image, cursive_text, statement)
@@ -129,10 +129,10 @@ class MySolaController < PublicWebsiteController
 
       text = Magick::Draw.new
       m_image.annotate(text, 1080, 1080, 405, 540 + 60, "my") do
-        text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
+        text.font = "#{Rails.root}/lib/fonts/ChaletParisSixty.ttf"
         text.gravity = Magick::NorthWestGravity
         text.pointsize = 75
-        text.kerning = -4
+        text.kerning = -2
         text.fill = '#ffffff'
       end      
     end   
@@ -142,28 +142,28 @@ class MySolaController < PublicWebsiteController
       #p "I feel BlANK"
       top_text = Magick::Draw.new
       m_image.annotate(top_text, 1080, 1080, 60, 540 - 140, "I feel") do
-        top_text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
+        top_text.font = "#{Rails.root}/lib/fonts/ChaletParisSixty.ttf"
         top_text.gravity = Magick::NorthWestGravity
         top_text.pointsize = 75
-        top_text.kerning = -4
+        top_text.kerning = -2
         top_text.fill = '#ffffff'
       end
 
       cursive_text = Magick::Draw.new
-      cursive_text.font = "#{Rails.root}/lib/fonts/Lato-Bold.ttf"
+      cursive_text.font = "#{Rails.root}/lib/fonts/ChaletNewYorkSixty.ttf"
       cursive_text.gravity = Magick::NorthWestGravity
       cursive_text.fill = '#ffffff'
       cursive_text.kerning = -2
       cursive_text.pointsize = 75#calculate_cursive_pointsize(m_image, cursive_text, statement)
-      m_image.annotate(cursive_text, 1080, 1080, 215, 540 - 140, statement)
+      m_image.annotate(cursive_text, 1080, 1080, 223, 540 - 140, statement)
       cursive_text_width = cursive_text.get_type_metrics(statement)[:width]
       #p "cursive_text_width=#{cursive_text_width}"
       bottom_text = Magick::Draw.new
-      m_image.annotate(bottom_text, 1080, 1080, cursive_text_width + 225, 540 - 140, "in") do
-        bottom_text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
+      m_image.annotate(bottom_text, 1080, 1080, cursive_text_width + 237, 540 - 140, "in") do
+        bottom_text.font = "#{Rails.root}/lib/fonts/ChaletParisSixty.ttf"
         bottom_text.gravity = Magick::NorthWestGravity
         bottom_text.pointsize = 75
-        bottom_text.kerning = -4
+        bottom_text.kerning = -2
         bottom_text.fill = '#ffffff'
       end
     end  
