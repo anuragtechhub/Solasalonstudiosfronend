@@ -99,7 +99,7 @@ class MySolaController < PublicWebsiteController
       statement.split(" ").each do |word|
         #p "word=#{word}"
         last_statement_row = statement_rows[statement_rows.length - 1]
-        if word.length >= 15 || (last_statement_row && (last_statement_row.length >= 15 || (last_statement_row + ' ' + word).length >= 15))
+        if word.length >= 14 || (last_statement_row && (last_statement_row.length >= 14 || (last_statement_row + ' ' + word).length >= 14))
           statement_rows << word
         else
           if last_statement_row
