@@ -78,7 +78,7 @@ class MySolaController < PublicWebsiteController
 
     # blue overlay
     blue_overlay = Magick::Draw.new
-    blue_overlay.fill = 'rgba(73, 156, 211, 0.1)'
+    blue_overlay.fill = 'rgba(0, 0, 0, 0.15)'
     blue_overlay.rectangle(0, 0, 1080, 1080)
     blue_overlay.draw(m_image)
 
@@ -113,7 +113,7 @@ class MySolaController < PublicWebsiteController
       #p "statement_rows=#{statement_rows}"
       cursive_text_y = 540 + 60
       statement_rows.each_with_index do |statement_row_text, idx|
-        m_image.annotate(cursive_text, 1080, 1080, 525, cursive_text_y + (idx * 71), statement_row_text) 
+        m_image.annotate(cursive_text, 1080, 1080, 515, cursive_text_y + (idx * 71), statement_row_text) 
       end
 
       #statement.chars.each_slice(2).map(&:join)
@@ -128,7 +128,7 @@ class MySolaController < PublicWebsiteController
       #p "height=#{height}, ascent=#{ascent}, descent=#{descent} calculated_height=#{calculated_height}, cursive_text_pointsize=#{cursive_text_pointsize}, #{y_value}"
 
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 415, 540 + 60, "my") do
+      m_image.annotate(text, 1080, 1080, 405, 540 + 60, "my") do
         text.font = "#{Rails.root}/lib/fonts/Lato-Light.ttf"
         text.gravity = Magick::NorthWestGravity
         text.pointsize = 75
