@@ -21,6 +21,9 @@ class SessionsController < PublicWebsiteController
   def minneapolis
   end
 
+  def nashville
+  end
+
   def orange_county
   end
 

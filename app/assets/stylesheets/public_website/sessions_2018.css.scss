@@ -826,6 +826,11 @@
 
 @media (max-width: 850px) {
   .session-2018 {
+    a.buy-now-button, a.buy-now-button:link, a.buy-now-button:visited, a.buy-now-button:hover, a.buy-now-button:active {
+      padding: 20px 60px;
+      font-size: 20px;
+      line-height: 20px;
+    }
     .event-details, .date-and-time, .description, .header { 
       p, li, .check-row {
         font-size: 14px !important;
@@ -841,6 +846,11 @@
 
 @media (max-width: 650px) {
   .session-2018 {
+    a.buy-now-button, a.buy-now-button:link, a.buy-now-button:visited, a.buy-now-button:hover, a.buy-now-button:active {
+      padding: 15px 30px;
+      font-size: 12px;
+      line-height: 12px;
+    }
     .owl-carousel .item .item-content p {
       margin: 10px 30px 0 30px !important;
     }
