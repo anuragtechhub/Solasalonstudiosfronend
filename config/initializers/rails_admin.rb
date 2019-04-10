@@ -1130,6 +1130,9 @@ RailsAdmin.config do |config|
     show do
       group :general do
         #field :legacy_id
+        field :id
+        field :created_at
+        field :updated_at
         field :name
         field :url_name do
           label 'URL Name'
