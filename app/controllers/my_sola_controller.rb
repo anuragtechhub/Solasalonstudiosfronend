@@ -82,9 +82,9 @@ class MySolaController < PublicWebsiteController
     blue_overlay.rectangle(0, 0, 1080, 1080)
     blue_overlay.draw(m_image)
 
-    # #MySola is [BLANK]
+    # #MySola is my [BLANK]
     if statement.present? && statement_variant == 'mysola_is'
-      #p "#MySola is BlANK"
+      #p "#MySola is my BlANK"
       
       cursive_text = Magick::Draw.new
       cursive_text.font = "#{Rails.root}/lib/fonts/ChaletNewYorkSixty.ttf"
@@ -111,9 +111,9 @@ class MySolaController < PublicWebsiteController
       end
 
       #p "statement_rows=#{statement_rows}"
-      cursive_text_y = 540 + 60
+      cursive_text_y = 540 + 80
       statement_rows.each_with_index do |statement_row_text, idx|
-        m_image.annotate(cursive_text, 1080, 1080, 515, cursive_text_y + (idx * 71), statement_row_text) 
+        m_image.annotate(cursive_text, 1080, 1080, 515, cursive_text_y + (idx * 73), statement_row_text) 
       end
 
       #statement.chars.each_slice(2).map(&:join)
@@ -128,7 +128,7 @@ class MySolaController < PublicWebsiteController
       #p "height=#{height}, ascent=#{ascent}, descent=#{descent} calculated_height=#{calculated_height}, cursive_text_pointsize=#{cursive_text_pointsize}, #{y_value}"
 
       text = Magick::Draw.new
-      m_image.annotate(text, 1080, 1080, 405, 540 + 60, "my") do
+      m_image.annotate(text, 1080, 1080, 400, 540 + 80, "my") do
         text.font = "#{Rails.root}/lib/fonts/ChaletParisSixty.ttf"
         text.gravity = Magick::NorthWestGravity
         text.pointsize = 75
@@ -159,7 +159,7 @@ class MySolaController < PublicWebsiteController
       cursive_text_width = cursive_text.get_type_metrics(statement)[:width]
       #p "cursive_text_width=#{cursive_text_width}"
       bottom_text = Magick::Draw.new
-      m_image.annotate(bottom_text, 1080, 1080, cursive_text_width + 237, 540 - 140, "in") do
+      m_image.annotate(bottom_text, 1080, 1080, cursive_text_width + 237, 540 - 138, "in") do
         bottom_text.font = "#{Rails.root}/lib/fonts/ChaletParisSixty.ttf"
         bottom_text.gravity = Magick::NorthWestGravity
         bottom_text.pointsize = 75
