@@ -582,8 +582,8 @@ class Stylist < ActiveRecord::Base
 
   def remove_from_mailchimp
     if self.email_address && self.email_address.present?
-      gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-      gb.lists.unsubscribe(:id => 'e5443d78c6', :email => {:email => self.email_address}, :delete_member => true, :send_goodbye => false, :send_notify => false)
+      #gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+      #gb.lists.unsubscribe(:id => 'e5443d78c6', :email => {:email => self.email_address}, :delete_member => true, :send_goodbye => false, :send_notify => false)
      
       if self.location.mailchimp_list_ids && self.location.mailchimp_list_ids.present?
         admin = self.location.admin
