@@ -1072,6 +1072,9 @@ RailsAdmin.config do |config|
   config.model 'RequestTourInquiry' do
     label 'Contact Inquiry'
     label_plural 'Contact Inquiries'
+    list do
+      filters [:created_at]
+    end
     export do
       field :location_name do
         label 'Location'
@@ -1556,6 +1559,9 @@ RailsAdmin.config do |config|
       # end
     end
     export do
+      field :id
+      field :created_at
+      field :updated_at
       field :name
       field :url_name
       field :email_address
