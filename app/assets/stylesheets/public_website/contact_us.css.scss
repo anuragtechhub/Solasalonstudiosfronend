@@ -190,7 +190,55 @@ body.contact-us {
 }
 
 .contact-2019 {
-  
+  .owl-carousel .owl-item .item a.play-video {
+    overflow: visible;
+  }
+
+  .giant-video-button-wrapper {
+      position: relative;
+
+      .text {
+        position: absolute;
+        bottom: -55px;
+        width: 300px;
+        margin-left: -150px;
+        left: 50%;
+        text-align: center;
+      }
+
+
+    .giant-video-btn {
+      background: #FFF !important;
+      width: 71px !important;
+      height: 71px !important;
+      text-transform: uppercase;
+      border-radius: 40px;
+      
+      .fa-play {
+        line-height: 23px !important;
+        font-size: 23px !important;
+        color: $brand-pink !important;
+        position: relative;
+        top: 24px;
+        left: 4px;
+      }
+    }
+
+       .text {
+        // position: absolute;
+        // bottom: -30px;
+        // left: -11px;
+        @include helvetica;
+        font-size: 15px !important;
+        line-height: 21px !important;
+        font-weight: 300 !important;
+        color: #FFF !important;
+        display: block;
+        white-space: nowrap !important;
+        word-spacing: 1px;
+        letter-spacing: 1px;
+      }   
+  }
 
   .content-container {
     padding: 60px 0;
@@ -384,7 +432,37 @@ body.contact-us {
   }
 }
 
+@media (max-width : 1150px) {
+  .contact-2019 {
+    .owl-carousel .owl-item .item .item-content {
+      top: 0;
+    }
+  }
+}
+
+@media (max-width : 1050px) {
+  .contact-2019 {
+    .owl-carousel .owl-item .item .item-content {
+      top: -49px;
+    }
+  }
+}
+
+@media (max-width : 865px) {
+  .contact-2019 {
+    .owl-carousel .owl-item .item .item-content {
+      top: -69px;
+    }
+  }
+}
+
 @media (max-width : 767px) {
+  .contact-2019 {
+    .owl-carousel .owl-item .item .item-content {
+      top: -99px;
+    }
+  }
+
   body.contact-us {
     .owl-carousel .item .img-wrap img {
       width: 100%;
@@ -439,6 +517,21 @@ body.contact-us {
 
     .sola-home-office {
       padding: 40px 0 15px 0;
+    }
+  }
+}
+
+@media (max-width : 600px) {
+  .contact-2019 {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: auto;
+      width: 100%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: 0px;
     }
   }
 }
