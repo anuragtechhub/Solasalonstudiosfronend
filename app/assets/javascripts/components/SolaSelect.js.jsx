@@ -34,9 +34,9 @@ var SolaSelect = React.createClass({
 			if (option.option_type == 'msa') {
 				return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
 			} else if (option.option_type == 'location') {
-				return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id)}>{option.value.name}</div>
+				return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id, option.value.name)}>{option.value.name}</div>
 			} else {
-				return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option)}>{option}</div>
+				return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option, null)}>{option}</div>
 			}
 		});
 
@@ -44,7 +44,7 @@ var SolaSelect = React.createClass({
 			<div className={"sola-select-wrapper " + this.props.className}>
 				<div className="sola-select no-autobind">
 		      <div className="row" onClick={this.onToggle}>
-		        <div className="option-placeholder"><h3>{this.props.value || this.props.placeholder}</h3></div>
+		        <div className="option-placeholder"><h3>{this.props.displayName && this.props.name ? this.props.name : (this.props.value || this.props.placeholder)}</h3></div>
 		        <div className="arrow"><span className="ss-dropdown"></span></div>
 		      </div>
 		      <div className="options" style={{display: this.state.visible ? 'block' : 'none'}}>
@@ -61,14 +61,14 @@ var SolaSelect = React.createClass({
 	* Change handlers
 	*/
 
-	onSelectOption: function (option, e) {
+	onSelectOption: function (value, name, e) {
 		e.preventDefault();
 		e.stopPropagation();
 
-		console.log('onSelectOption', option);
+		console.log('onSelectOption', value, name);
 		
 		if (typeof this.props.onChange == 'function') {
-			this.props.onChange(option);
+			this.props.onChange(value, name);
 			this.setState({visible: false});
 		}
 	},

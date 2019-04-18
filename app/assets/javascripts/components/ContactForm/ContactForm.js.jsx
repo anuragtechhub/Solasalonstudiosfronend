@@ -3,6 +3,7 @@ var ContactForm = React.createClass({
 	getInitialState: function () {
 		return {
 			selected_location: this.props.selected_location,
+			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
 		};
 	},
@@ -26,7 +27,7 @@ var ContactForm = React.createClass({
 					{
 						this.state.selected_state 
 						? 
-						<SolaSelect className="location-select" placeholder={I18n.t('contact_form.select_a_location')} options={this.props.all_locations} value={this.state.selected_location} onChange={this.onChangeSelectedLocation} /> 
+						<SolaSelect className="location-select" displayName={true} placeholder={I18n.t('contact_form.select_a_location')} options={this.props.all_locations} name={this.state.selected_location_name} value={this.state.selected_location} onChange={this.onChangeSelectedLocation} /> 
 						: 
 						null
 					}
@@ -55,9 +56,9 @@ var ContactForm = React.createClass({
 	* Change handlers
 	*/
 
-	onChangeSelectedLocation: function (value) {
-		console.log('onChangeSelectedLocation', value);
-		this.setState({selected_location: value});
+	onChangeSelectedLocation: function (value, name) {
+		console.log('onChangeSelectedLocation', value, name);
+		this.setState({selected_location: value, selected_location_name: name});
 	}, 
 
 	onChangeSelectedState: function (value) {
