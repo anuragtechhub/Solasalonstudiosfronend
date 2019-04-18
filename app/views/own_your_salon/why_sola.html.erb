@@ -231,6 +231,8 @@
         <%= react_component 'ContactForm', {
           all_states: all_states,
           all_locations: all_locations_msas,
+          request_a_tour_path: request_a_tour_path,
+          request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
         } %>
       <% end %>
 

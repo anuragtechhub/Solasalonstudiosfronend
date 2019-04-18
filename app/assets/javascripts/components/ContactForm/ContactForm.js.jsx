@@ -16,7 +16,7 @@ var ContactForm = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('render ContactForm', this.props);
+		console.log('render ContactForm', this.props);
 		
 		return (
 			<div className="contact-form">
@@ -36,15 +36,12 @@ var ContactForm = React.createClass({
 					<div className="form-group">
 						<input className="form-control" name="name" type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
-					
 					<div className="form-group">
 						<input className="form-control" name="email" type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || !this.state.selected_location} />
 					</div>
-
 					<div className="form-group"> 
 						<input className="form-control" name="phone" type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
-
 					<div className="form-group">
 						<textarea className="form-control" name="message" placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
 					</div>
@@ -52,7 +49,6 @@ var ContactForm = React.createClass({
 					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{I18n.t("contact_form.submit_message")}</button>
 					
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
-
 				</form>
 			</div>
 		);
@@ -83,11 +79,16 @@ var ContactForm = React.createClass({
 		console.log('onSubmit yo');
 
 		$.ajax({
-			data: {
-
-			},
 			method: 'POST',
-	    url: 'asdf',
+	    url: this.props.request_a_tour_path,
+	    data: {
+	    	location_id: this.state.selected_location,
+	    	name: this.state.name,
+	    	email: this.state.email,
+	    	phone: this.state.phone,
+	    	message: this.state.message,
+	    	request_url: this.props.request_url,
+			},
 		}).complete(function (response) {
 			console.log('onSubmit contact form is done', response);
 			
