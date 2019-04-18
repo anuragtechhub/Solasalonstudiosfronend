@@ -12,7 +12,17 @@
     font-weight: 400;
     font-size: 21px;
     line-height: 29px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+	}
+
+	.sola-select-wrapper {
+		margin-bottom: 10px;
+
+		&.location-select {
+			.sola-select {
+				display: block;
+			}
+		}
 	}
 
 	input, textarea {

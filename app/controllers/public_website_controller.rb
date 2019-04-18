@@ -7,7 +7,7 @@ class PublicWebsiteController < ApplicationController
 
   before_action :set_locale, :auth_if_test#, :auth_if_canada
 
-  helper_method :all_locations, :all_states, :states_msas_locations
+  helper_method :all_locations, :all_states, :all_locations_msas
 
   #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if => 
 
@@ -44,22 +44,19 @@ class PublicWebsiteController < ApplicationController
     all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state)
   end
 
-  def states_msas_locations
+  def all_locations_msas
     sml = []
 
-    all_locations.select("DISTINCT(state)").order(:state => :asc).each do |state|
-      sml << {list_type: 'state', value: state}
-      Location.where(:state => state, :status => 'open').order(:name => :asc).group_by(&:msa_name).sort.each do |msa_name, locations|
-        if msa_name
-          sml << {list_type: 'msa', value: msa_name}
-          locations.sort{ |a, b| a.name.downcase <=> b.name.downcase }.each do |location|
-            sml << {list_type: 'location', value: location}
-          end
+    all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
+      if msa_name
+        sml << {option_type: 'msa', value: msa_name}
+        locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
+          sml << {option_type: 'location', value: {id: location.id, name: location.name}}
         end
       end
     end
 
-    p "states_msas_locations #{sml}"
+    #p "all_locations_msas #{sml}"
 
     sml
   end

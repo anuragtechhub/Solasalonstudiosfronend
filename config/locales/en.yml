@@ -92,6 +92,7 @@ en:
   contact_form:
     contact_a_sola_near_you: Contact A Sola Near You
     select_a_state: Select a State
+    select_a_location: Select a Location
     your_name: Your Name
     email_address: Email Address
     phone_number: Phone Number

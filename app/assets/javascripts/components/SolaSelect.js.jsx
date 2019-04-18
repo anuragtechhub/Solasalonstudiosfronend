@@ -31,18 +31,26 @@ var SolaSelect = React.createClass({
 	render: function () {
 		var self = this;
 		var options = this.props.options.map(function (option) {
-			return <div key={option} className="option" data-value={option} onClick={self.onSelectOption.bind(null, option)}>{option}</div>
+			if (option.option_type == 'msa') {
+				return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
+			} else if (option.option_type == 'location') {
+				return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id)}>{option.value.name}</div>
+			} else {
+				return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option)}>{option}</div>
+			}
 		});
 
 		return (
-			<div className="sola-select no-autobind select-a-state form">
-	      <div className="row" onClick={this.onToggle}>
-	        <div className="option-placeholder"><h3>{this.props.value || this.props.placeholder}</h3></div>
-	        <div className="arrow"><span className="ss-dropdown"></span></div>
-	      </div>
-	      <div className="options" style={{display: this.state.visible ? 'block' : 'none'}}>
-	      	{options}
-	      </div>
+			<div className={"sola-select-wrapper " + this.props.className}>
+				<div className="sola-select no-autobind">
+		      <div className="row" onClick={this.onToggle}>
+		        <div className="option-placeholder"><h3>{this.props.value || this.props.placeholder}</h3></div>
+		        <div className="arrow"><span className="ss-dropdown"></span></div>
+		      </div>
+		      <div className="options" style={{display: this.state.visible ? 'block' : 'none'}}>
+		      	{options}
+		      </div>
+		    </div>
 	    </div>
 		);
 	},
