@@ -3,7 +3,7 @@
 @import 'bootstrap/mixins';
 
 .contact-form {
-	background: #F8F8F8;
+	//background: #F8F8F8;
 	padding: 20px 15px;
 
 	h2 {
@@ -29,7 +29,7 @@
 		font-family: 'Lato', Arial, sans-serif;
     height: 38px;
     padding: 6px 10px;
-    background-color: #FBFBFB;
+    background-color: #FFFFFF;
     border: 1px solid #DBDBDB;
     border-radius: 0px;
     box-shadow: none;
@@ -58,5 +58,41 @@
 		cursor: default;
 		pointer-events: none;
 	}
+
+	.loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 99;   
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22px 0 0 -22px;
+    background: asset-data-url('spinner.gif') no-repeat center;
+    background-size: 44px 44px;
+    width: 44px;
+    height: 44px;
+
+    &.spinner-sm {
+    	background-size: 22px 22px;
+    	width: 22px;
+    	height: 22px;
+    	margin: -11px 0 0 -22px;
+    }
+
+    &.spinner-static {
+    	display: inline-block;
+    	position: relative;
+    	top: auto;
+    	left: auto;
+    	margin: 0;
+    }
+  } 
 
 }
