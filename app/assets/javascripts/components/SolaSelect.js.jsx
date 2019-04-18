@@ -65,7 +65,7 @@ var SolaSelect = React.createClass({
 		e.preventDefault();
 		e.stopPropagation();
 
-		console.log('onSelectOption', value, name);
+		//console.log('onSelectOption', value, name);
 		
 		if (typeof this.props.onChange == 'function') {
 			this.props.onChange(value, name);
