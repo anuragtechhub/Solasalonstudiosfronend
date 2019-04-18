@@ -2,7 +2,7 @@ $(function () {
 	
 	var $searchForSalon = $('.search-for-a-salon');
 	
-	$searchForSalon.find('form').on('submit', function () {
+	$searchForSalon.find('form.search-salon').on('submit', function () {
 		var $form = $(this);
 		var query = $form.find('input[name=query]').val();
 		

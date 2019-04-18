@@ -231,6 +231,7 @@
 	background-color: #F5F9FB;
 	padding: 60px 0;
 	margin: 40px 0 -30px 0;
+	position: relative;
 
 	h1, p {
 		margin: 0;
@@ -238,6 +239,14 @@
 
 	.search-form {
 		margin: 50px auto 0 auto;
+	}
+
+	.contact-form {
+		position: absolute;
+		top: -20px;
+		right: 0;
+		width: 100%;
+		max-width: 380px;
 	}
 
 	.view-all-locations {

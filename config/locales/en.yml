@@ -89,6 +89,13 @@ en:
     if_you_do_not_see: <strong>If you do not see your Sola professional in the search results below, please contact them directly for booking.</strong>
     booknow_search_results: The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).
 
+  contact_form:
+    your_name: Your Name
+    email_address: Email Address
+    phone_number: Phone Number
+    leave_a_message: Leave a Message
+    submit_message: Submit Message
+    
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com
