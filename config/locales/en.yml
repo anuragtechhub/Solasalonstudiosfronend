@@ -90,12 +90,14 @@ en:
     booknow_search_results: The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).
 
   contact_form:
+    contact_a_sola_near_you: Contact A Sola Near You
+    select_a_state: Select a State
     your_name: Your Name
     email_address: Email Address
     phone_number: Phone Number
     leave_a_message: Leave a Message
     submit_message: Submit Message
-    
+
   brand_name: Sola Salon Studios
   short_www_name: www.solasalons.com
   sola_pro_www_name: www.solaprofessional.com

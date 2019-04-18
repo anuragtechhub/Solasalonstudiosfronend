@@ -1,9 +1,41 @@
+@import 'variables';
+@import 'mixins';
+@import 'bootstrap/mixins';
+
 .contact-form {
-	background: #EFEFEF;
-	padding: 15px;
-	border: 1px solid #BADA55;
+	background: #F8F8F8;
+	padding: 20px 15px;
+
+	h2 {
+		@include chalet_london;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 29px;
+    margin-bottom: 15px;
+	}
+
+	input, textarea {
+		font-family: 'Lato', Arial, sans-serif;
+    height: 38px;
+    padding: 6px 10px;
+    background-color: #FBFBFB;
+    border: 1px solid #DBDBDB;
+    border-radius: 0px;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-size: 14px;
+	}
+
+	textarea {
+		height: 120px;
+	}
 
 	.button {
 		margin-bottom: 0;
+		padding: 17px 15px 15px 15px;
+		height: 47px;
+		font-size: 16px;
+		line-height: 16px;
 	}
 }
