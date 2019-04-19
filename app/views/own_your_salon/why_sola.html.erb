@@ -95,13 +95,27 @@
             <span class="text"><%= t('page.why_sola.freedom_tile_7') %></span>
           </div>
         </div>
-        <div class="three columns">
+        <div class="three columns desktop-only">
           <div class="freedom-tile active-tile">
             <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
             <%= link_to :locations do %><%= t('page.why_sola.freedom_tile_8_link') %><% end %>
           </div>
         </div>                        
       </div>
+
+      <% if I18n.locale.to_s == 'en' %>
+        <%= render 'shared/contact_form_component' %>
+      <% end %>
+
+      <div class="row mobile-only">
+        <div class="three columns">
+          <div class="freedom-tile active-tile">
+            <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
+            <%= link_to :locations do %><%= t('page.why_sola.freedom_tile_8_link') %><% end %>
+          </div>
+        </div>
+      </div>
+
       <p class="text-center"><%= t('page.why_sola.freedom_text') %></p>
     </div>
   </div>

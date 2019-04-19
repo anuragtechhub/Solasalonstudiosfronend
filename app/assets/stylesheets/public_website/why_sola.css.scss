@@ -22,6 +22,17 @@
 	background-color: #F5F9FB;
 	padding: 60px 0 40px 0;
 
+	.desktop-only {
+		display: block;
+	}
+	.mobile-only {
+		display: none;
+	}
+
+	.contact-form {
+		display: none;
+	}
+
 	p {
 		margin-top: 30px;
 	}
@@ -469,6 +480,20 @@
 		}
 		.search-for-a-salon .salon-search-result .names p, .search-for-a-salon .salon-search-result:link .names p, .search-for-a-salon .salon-search-result:visited .names p {
 			width: 90%;
+		}
+	}
+
+	.sola-freedom {
+		.desktop-only {
+			display: none;
+		}
+		.mobile-only {
+			display: block;
+		}
+		.contact-form {
+			display: block;
+			margin: 10px auto 40px auto;
+    	max-width: 500px;
 		}
 	}
 }
