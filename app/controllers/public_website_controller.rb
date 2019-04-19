@@ -7,7 +7,7 @@ class PublicWebsiteController < ApplicationController
 
   before_action :set_locale, :auth_if_test#, :auth_if_canada
 
-  helper_method :all_locations, :all_states, :all_locations_msas
+  helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_locations_msas_json,
 
   #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if => 
 
@@ -41,24 +41,48 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_states
-    all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state)
+    cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
+    all_states = Rails.cache.fetch(cache_key) do
+      return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state)
+    end
+    return all_states
+  end
+
+  def all_states_json
+    cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
+    json = Rails.cache.fetch(cache_key) do
+      return all_states.to_json
+    end
+    return json
   end
 
   def all_locations_msas
-    sml = []
+    cache_key = "all_locations_msas/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    all_locations_msas = Rails.cache.fetch(cache_key) do
+      sml = []
 
-    all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
-      if msa_name
-        sml << {option_type: 'msa', value: msa_name}
-        locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
-          sml << {option_type: 'location', value: {id: location.id, name: location.name}}
+      all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
+        if msa_name
+          sml << {option_type: 'msa', value: msa_name}
+          locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
+            sml << {option_type: 'location', value: {id: location.id, name: location.name}}
+          end
         end
       end
+
+      #p "all_locations_msas #{sml}"
+
+      return sml
     end
+    return all_locations_msas
+  end
 
-    #p "all_locations_msas #{sml}"
-
-    sml
+  def all_locations_msas_json
+    cache_key = "all_locations_msas_json/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    json = Rails.cache.fetch(cache_key) do
+      return all_locations_msas.to_json
+    end
+    return json
   end
 
   def set_locale

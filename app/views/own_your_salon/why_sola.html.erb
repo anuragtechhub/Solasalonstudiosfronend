@@ -229,9 +229,9 @@
 
       <% if I18n.locale.to_s == 'en' %>
         <%= react_component 'ContactForm', {
-          all_states: all_states,
-          all_locations: all_locations_msas,
-          request_a_tour_path: request_a_tour_path,
+          all_states: JSON.parse(all_states_json),
+          all_locations: JSON.parse(all_locations_msas_json),
+          contact_us_path: contact_us_request_a_tour_path,
           request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
         } %>
       <% end %>

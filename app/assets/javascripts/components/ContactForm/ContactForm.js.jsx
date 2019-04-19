@@ -80,7 +80,7 @@ var ContactForm = React.createClass({
 
 		$.ajax({
 			method: 'POST',
-	    url: this.props.request_a_tour_path,
+	    url: this.props.contact_us_path,
 	    data: {
 	    	location_id: this.state.selected_location,
 	    	name: this.state.name,
