@@ -63,9 +63,9 @@ class PublicWebsiteController < ApplicationController
 
       all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
         if msa_name
-          sml << {option_type: 'msa', value: msa_name}
+          sml << {option_type: 'msa', value: msa_name, filtered_by: locations.first.state}
           locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
-            sml << {option_type: 'location', value: {id: location.id, name: location.name}}
+            sml << {option_type: 'location', value: {id: location.id, name: location.name}, filtered_by: location.state}
           end
         end
       end

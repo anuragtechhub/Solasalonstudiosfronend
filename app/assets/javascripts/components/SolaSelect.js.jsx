@@ -31,12 +31,14 @@ var SolaSelect = React.createClass({
 	render: function () {
 		var self = this;
 		var options = this.props.options.map(function (option) {
-			if (option.option_type == 'msa') {
-				return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
-			} else if (option.option_type == 'location') {
-				return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id, option.value.name)}>{option.value.name}</div>
-			} else {
-				return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option, null)}>{option}</div>
+			if (!self.props.filteredBy || (self.props.filteredBy && option.filtered_by && self.props.filteredBy.toLowerCase() == option.filtered_by.toLowerCase())) {
+				if (option.option_type == 'msa') {
+					return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
+				} else if (option.option_type == 'location') {
+					return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id, option.value.name)}>{option.value.name}</div>
+				} else {
+					return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option, null)}>{option}</div>
+				}
 			}
 		});
 
@@ -64,8 +66,6 @@ var SolaSelect = React.createClass({
 	onSelectOption: function (value, name, e) {
 		e.preventDefault();
 		e.stopPropagation();
-
-		//console.log('onSelectOption', value, name);
 		
 		if (typeof this.props.onChange == 'function') {
 			this.props.onChange(value, name);
