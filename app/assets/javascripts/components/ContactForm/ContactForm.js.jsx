@@ -2,6 +2,10 @@ var ContactForm = React.createClass({
 
 	getInitialState: function () {
 		return {
+			name: '',
+			email: '',
+			phone: '',
+			message: '',
 			error: null,
 			success: null,
 			loading: false,
@@ -16,9 +20,9 @@ var ContactForm = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
-		if (this.state.success) {
+		if (this.state.success && prevState.success != this.state.success) {
 			$(this.refs.first_input).tooltipster('content', this.state.success).tooltipster('show');
-		} else if (this.state.error) {
+		} else if (this.state.error && prevState.error != this.state.error) {
 			$(this.refs.first_input).tooltipster('content', this.state.error).tooltipster('show');
 		}
 	},
@@ -55,16 +59,16 @@ var ContactForm = React.createClass({
 					}
 
 					<div className="form-group" ref="first_input">
-						<input className="form-control" name="name" type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
+						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
 					<div className="form-group">
-						<input className="form-control" name="email" type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || !this.state.selected_location} />
+						<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || !this.state.selected_location} />
 					</div>
 					<div className="form-group"> 
-						<input className="form-control" name="phone" type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
+						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
 					<div className="form-group">
-						<textarea className="form-control" name="message" placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
 					</div>
 					
 					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{I18n.t("contact_form.submit_message")}</button>
@@ -80,6 +84,12 @@ var ContactForm = React.createClass({
 	/**
 	* Change handlers
 	*/
+
+	onChangeInput: function (e) {
+		//console.log('onChangeInput', e.target.name, e.target.value);
+		this.state[e.target.name] = e.target.value;
+		this.setState(this.state);
+	},
 
 	onChangeSelectedLocation: function (value, name) {
 		//console.log('onChangeSelectedLocation', value, name);
@@ -99,23 +109,28 @@ var ContactForm = React.createClass({
 
 		this.setState({loading: true});
 
+		var form_data = {
+    	location_id: this.state.selected_location,
+    	name: this.state.name,
+    	email: this.state.email,
+    	phone: this.state.phone,
+    	message: this.state.message,
+    	request_url: this.props.request_url,
+		};
+
+		//console.log('form_data', form_data);
+
 		$.ajax({
 			method: 'POST',
 	    url: this.props.contact_us_path,
-	    data: {
-	    	location_id: this.state.selected_location,
-	    	name: this.state.name,
-	    	email: this.state.email,
-	    	phone: this.state.phone,
-	    	message: this.state.message,
-	    	request_url: this.props.request_url,
-			},
+	    data: form_data,
 		}).complete(function (response) {
-			console.log('onSubmit contact form is done', response.responseJSON);
+			//console.log('onSubmit contact form is done', response.responseJSON);
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success})
+				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, name: '', email: '', phone: '', message: ''});
+				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
 			}
