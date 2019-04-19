@@ -71,6 +71,10 @@
       <div class="two-thirds column">
         <div class="summary"><%= @post.body.html_safe %></div>
 
+        <% if @post.contact_form_visible %>
+          <%= render 'shared/contact_form_component' %>
+        <% end %>
+
         <div class="disqus-comments">
           <%= render 'shared/disqus' %>
         </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181017210824) do
+ActiveRecord::Schema.define(version: 20190419164310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20181017210824) do
     t.text     "fb_conversion_pixel"
     t.string   "status",                      default: "published"
     t.datetime "publish_date"
+    t.boolean  "contact_form_visible",        default: false
   end
 
   create_table "ckeditor_assets", force: true do |t|

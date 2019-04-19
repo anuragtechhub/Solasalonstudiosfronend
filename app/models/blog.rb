@@ -74,6 +74,10 @@ class Blog < ActiveRecord::Base
     return false
   end
 
+  def contact_form_visible_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def status_enum
     [['Published', 'published'], ['Draft', 'draft']]
   end

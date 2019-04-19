@@ -4,8 +4,9 @@
 
 .contact-form {
 	//background: #F8F8F8;
-	padding: 20px 15px;
-
+	//padding: 20px 15px;
+	position: relative;
+	
 	h2 {
 		@include chalet_london;
     font-style: normal;

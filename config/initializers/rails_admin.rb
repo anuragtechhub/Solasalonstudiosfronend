@@ -221,6 +221,7 @@ RailsAdmin.config do |config|
           value.html_safe if value.present?
         end
       end
+      field :contact_form_visible
       field :blog_categories do
         label 'Categories'
       end
@@ -250,6 +251,7 @@ RailsAdmin.config do |config|
       field :summary
       field :body, :ck_editor
       field :author
+      field :contact_form_visible
       field :blog_categories do
         label 'Categories'
       end
