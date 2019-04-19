@@ -2,11 +2,25 @@ var ContactForm = React.createClass({
 
 	getInitialState: function () {
 		return {
+			error: null,
+			success: null,
 			loading: false,
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
 		};
+	},
+
+	componentDidMount: function () {
+		$(this.refs.first_input).tooltipster({theme: 'tooltipster-noir', timer: 4000, trigger: 'foo'});
+	},
+
+	componentDidUpdate: function (prevProps, prevState) {
+		if (this.state.success) {
+			$(this.refs.first_input).tooltipster('content', this.state.success).tooltipster('show');
+		} else if (this.state.error) {
+			$(this.refs.first_input).tooltipster('content', this.state.error).tooltipster('show');
+		}
 	},
 
 
@@ -22,7 +36,7 @@ var ContactForm = React.createClass({
 			<div className="contact-form">
 				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
 
-				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location}>
+				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
 					<SolaSelect placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 					
 					{
@@ -40,7 +54,7 @@ var ContactForm = React.createClass({
 						null
 					}
 
-					<div className="form-group">
+					<div className="form-group" ref="first_input">
 						<input className="form-control" name="name" type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
 					<div className="form-group">
@@ -83,7 +97,7 @@ var ContactForm = React.createClass({
 		e.preventDefault();
 		e.stopPropagation();
 
-		console.log('onSubmit yo');
+		this.setState({loading: true});
 
 		$.ajax({
 			method: 'POST',
@@ -97,8 +111,14 @@ var ContactForm = React.createClass({
 	    	request_url: this.props.request_url,
 			},
 		}).complete(function (response) {
-			console.log('onSubmit contact form is done', response);
-			
+			console.log('onSubmit contact form is done', response.responseJSON);
+			if (response.responseJSON && response.responseJSON.error) {
+				self.setState({loading: false, error: response.responseJSON.error});
+			} else if (response.responseJSON && response.responseJSON.success) {
+				self.setState({loading: false, success: response.responseJSON.success})
+			} else {
+				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
+			}
 		}); 
 	},
 
