@@ -229,7 +229,7 @@
 
 .search-for-a-salon {
 	background-color: #F5F9FB;
-	padding: 60px 0;
+	padding: 80px 0 90px 0;
 	margin: 40px 0 -30px 0;
 	position: relative;
 
@@ -244,11 +244,52 @@
 	.contact-form {
 		z-index: 2;
 		position: absolute;
-		top: -50px;
-		right: 0;
+		top: -30px;
+		right: 10px;
 		width: 100%;
 		max-width: 380px;
 		background: #f5f9fb;
+		//transform: scale(0.80);
+
+		&.full-height {
+			top: -55px;
+		}
+
+		.sola-select .arrow {
+			top: -3px;
+		}
+
+		.sola-select .option-placeholder {
+			height: 39px;
+		}
+
+		.sola-select .option-placeholder h3 {
+			font-size: 12px;
+			line-height: 12px;
+			letter-spacing: 0px;
+			text-transform: none;
+		}
+		
+		h2 {
+			font-size: 17px;
+			line-height: 17px;
+			margin-bottom: 20px;
+		}
+
+		textarea {
+			height: 100px;
+		}
+
+		.form-group.tooltipstered {
+			margin-top: -10px;
+		}
+
+		.button {
+			font-size: 15px;
+	    line-height: 15px;
+	    padding: 15px;
+	    height: 42px;
+		}
 
 		.loading {
 			background: rgba(245,249,251, 0.65);
@@ -269,6 +310,7 @@
 	.salon-search-results {
 		display: none;
 		margin-top: 50px;
+		max-width: 555px;
 	}
 
 	.salon-search-result, .salon-search-result:link, .salon-search-result:visited {
@@ -291,6 +333,7 @@
 		cursor: pointer;
 		@include transition(opacity 0.15s ease-in-out);
 		opacity: 1;
+		width: 90%;
 
 		&:hover, &:active {
 			opacity: 0.5;
@@ -386,6 +429,46 @@
 		  background-size: (48px / 3) (48px / 3);
 		  height: (48px / 3);
 		  width: (48px / 3);
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.search-for-a-salon {
+		h1 {
+			font-size: 38px;
+			line-height: 48px;
+		}
+		.contact-form {
+			right: 0;
+			max-width: 300px;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.search-for-a-salon {
+		.contact-form {
+			display: none;
+			right: auto;
+			top: auto;
+			position: static;
+			max-width: 500px;
+			margin: 60px auto 30px auto;
+			background: #FFF;
+			padding: 20px 15px;
+		}
+		
+		.salon-search-results {
+			margin-top: 25px;
+		}
+
+		.salon-search-result {
+			max-width: 100%;
+			width: 100%;
+		}
+		.search-for-a-salon .salon-search-result .names p, .search-for-a-salon .salon-search-result:link .names p, .search-for-a-salon .salon-search-result:visited .names p {
+			width: 90%;
 		}
 	}
 }
