@@ -60,6 +60,42 @@
 		pointer-events: none;
 	}
 
+  .contact-preference {
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    &.disabled {
+      opacity: 0.65;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    label {
+      font-size: 13px;
+      margin: 0 0 5px 0;
+    }
+
+    .form-inline {
+      label {
+        font-size: 12px;
+        line-height: 12px;
+        margin: 0 10px 0 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      input {
+        position: relative;
+        top: -1px;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+      }
+    }
+  }
+
 	.loading {
     position: absolute;
     top: 0;

@@ -66,28 +66,28 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present?
-        p "BOUT TO CHECK"
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? && params[:contact_preference].present?
+        #p "BOUT TO CHECK"
         unless banned_ip_addresses.include? request.remote_ip
-          rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url])
+          rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url], :contact_preference => params[:contact_preference])
           rti.visit = save_visit
           rti.save
 
-          if params[:email]
-            gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-            if I18n.locale && I18n.locale.to_s == 'en-CA'
-              # Canada
-              if params[:receive_newsletter]
-                # yes, opted to receive
-                gb.lists.subscribe({:id => '82a3e6ea74', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
-              else
-                # opted to not receive
-              end
-            else
-              # USA
-              gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
-            end
-          end
+          # if params[:email]
+          #   gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+          #   if I18n.locale && I18n.locale.to_s == 'en-CA'
+          #     # Canada
+          #     if params[:receive_newsletter]
+          #       # yes, opted to receive
+          #       gb.lists.subscribe({:id => '82a3e6ea74', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+          #     else
+          #       # opted to not receive
+          #     end
+          #   else
+          #     # USA
+          #     gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+          #   end
+          # end
         end
         if params[:message]
           # if there's a message, this is a general contact us submission
