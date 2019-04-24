@@ -68,6 +68,9 @@ var ContactForm = React.createClass({
 					<div className="form-group"> 
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
+					<div className="form-group">
+						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+					</div>
 					<div className={"form-group contact-preference " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
 						<div className="form-inline">
@@ -76,10 +79,7 @@ var ContactForm = React.createClass({
 							<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> Text</label>
 						</div>
 					</div>
-					<div className="form-group">
-						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
-					</div>
-					
+										
 					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{I18n.t("contact_form.submit_message")}</button>
 					
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
