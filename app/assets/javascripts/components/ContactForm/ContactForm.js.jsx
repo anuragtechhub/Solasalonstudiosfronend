@@ -9,6 +9,7 @@ var ContactForm = React.createClass({
 			message: '',
 			error: null,
 			success: null,
+			newsletter: true,
 			loading: false,
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
@@ -79,9 +80,15 @@ var ContactForm = React.createClass({
 							<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> Text</label>
 						</div>
 					</div>
-										
+
 					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{I18n.t("contact_form.submit_message")}</button>
 					
+					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+						<label>
+							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.would_you_like_to_subscribe_to_newsletter')}
+						</label>
+					</div>
+
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
 				</form>
 			</div>
@@ -96,7 +103,8 @@ var ContactForm = React.createClass({
 
 	onChangeInput: function (e) {
 		//console.log('onChangeInput', e.target.name, e.target.value);
-		this.state[e.target.name] = e.target.value;
+		var value = e.target.type == 'checkbox' ? e.target.checked : e.target.value;
+		this.state[e.target.name] = value;
 		this.setState(this.state);
 	},
 

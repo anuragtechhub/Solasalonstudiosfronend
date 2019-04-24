@@ -96,6 +96,24 @@
     }
   }
 
+  .newsletter {
+    margin-top: 10px;
+    
+    &.disabled {
+      opacity: 0.65;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    input {
+      position: relative;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
+    }    
+  }
+
 	.loading {
     position: absolute;
     top: 0;
