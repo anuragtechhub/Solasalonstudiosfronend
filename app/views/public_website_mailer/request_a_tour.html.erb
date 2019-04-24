@@ -5,13 +5,18 @@
 <% end %>
 
 <hr>
+
 <p><strong>Request URL:</strong> <%= @inquiry.request_url %></p>
+
 <% if @inquiry.location && @inquiry.location.name.present? %>
   <p><strong>Location:</strong> <%= @inquiry.location.name.html_safe %></p>
 <% end %>
+
 <p><strong>Name:</strong> <%= @inquiry.name %></p>
 <p><strong>Email:</strong> <%= @inquiry.email %></p>
 <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
+<p><strong>Contact Preference:</strong> <%= @inquiry.contact_preference %></p>
+
 <% if @inquiry.message.present? %>
   <p><strong>Leave a Message:</strong> <%= @inquiry.message %></p>
 <% end %>

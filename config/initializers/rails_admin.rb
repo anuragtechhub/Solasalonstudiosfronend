@@ -1085,9 +1085,11 @@ RailsAdmin.config do |config|
       field :email
       field :phone
       field :message
+      field :contact_preference
       field :request_url do
         label 'Request URL'
       end
+      field :newsletter
       field :created_at
     end
   end
