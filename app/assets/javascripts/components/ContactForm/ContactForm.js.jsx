@@ -73,7 +73,7 @@ var ContactForm = React.createClass({
 
 					<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>{I18n.t('contact_form.how_can_we_help_you')}</label>
-						<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput}>
+						<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location}>
 							{/*<option value="" disabled={true}>{I18n.t('contact_form.how_can_we_help_you')}</option>*/}
 							<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
 							<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
