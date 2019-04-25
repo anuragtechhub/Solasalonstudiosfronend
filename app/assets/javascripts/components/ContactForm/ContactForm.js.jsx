@@ -11,6 +11,7 @@ var ContactForm = React.createClass({
 			success: null,
 			newsletter: true,
 			loading: false,
+			how_can_we_help_you: '',
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -69,9 +70,27 @@ var ContactForm = React.createClass({
 					<div className="form-group"> 
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
 					</div>
-					<div className="form-group">
-						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+
+					<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+						<label>{I18n.t('contact_form.how_can_we_help_you')}</label>
+						<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput}>
+							{/*<option value="" disabled={true}>{I18n.t('contact_form.how_can_we_help_you')}</option>*/}
+							<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
+							<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
+							<option value="other">{I18n.t('contact_form.other')}</option>
+						</select>
 					</div>
+
+					{
+						this.state.how_can_we_help_you == 'other'
+						?
+						<div className="form-group">
+							<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+						</div>
+						:
+						null
+					}
+
 					<div className={"form-group contact-preference " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
 						<div className="form-inline">
@@ -125,6 +144,18 @@ var ContactForm = React.createClass({
 		e.stopPropagation();
 
 		this.setState({loading: true});
+
+		// handle message
+		var message;
+		if (this.state.how_can_we_help_you == 'request_leasing_information') {
+			message = I18n.t('contact_form.request_leasing_information');
+		} else if (this.state.how_can_we_help_you == 'book_an_appointment') {
+			message = I18n.t('contact_form.book_an_appointment');
+		} else if (this.state.how_can_we_help_you == 'other') {
+			message = this.state.message;
+		} else {
+			message = '';
+		}
 
 		var form_data = {
     	location_id: this.state.selected_location,

@@ -96,9 +96,28 @@
     }
   }
 
+  .how-can-we-help-you {
+    &.disabled {
+      opacity: 0.65;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    label {
+      font-size: 13px;
+      margin: 0 0 5px 0;
+    }
+
+    select {
+      width: 100%;
+      background-color: #FFFFFF !important;
+      border: 1px solid #DBDBDB !important;
+    }
+  }
+
   .newsletter {
     margin-top: 10px;
-    
+
     &.disabled {
       opacity: 0.65;
       cursor: default;
