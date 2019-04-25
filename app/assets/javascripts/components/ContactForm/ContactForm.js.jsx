@@ -4,14 +4,14 @@ var ContactForm = React.createClass({
 		return {
 			name: '',
 			email: '',
-			contact_preference: '',
+			contact_preference: 'phone',
 			phone: '',
 			message: '',
 			error: null,
 			success: null,
 			newsletter: true,
 			loading: false,
-			how_can_we_help_you: '',
+			how_can_we_help_you: 'request_leasing_information',
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -27,6 +27,16 @@ var ContactForm = React.createClass({
 			$(this.refs.first_input).tooltipster('content', this.state.success).tooltipster('show');
 		} else if (this.state.error && prevState.error != this.state.error) {
 			$(this.refs.first_input).tooltipster('content', this.state.error).tooltipster('show');
+		}
+
+		// Why Sola page
+		var $why_sola = $('.why-sola .search-for-a-salon');
+		if ($why_sola && $why_sola.length) {
+			if (this.state.how_can_we_help_you == 'other') {
+				$why_sola.addClass('max-height')
+			} else {
+				$why_sola.removeClass('max-height')
+			}
 		}
 	},
 
@@ -146,24 +156,24 @@ var ContactForm = React.createClass({
 		this.setState({loading: true});
 
 		// handle message
-		var message;
+		//console.log('handle message', this.state.how_can_we_help_you);
+		var message = this.capitalize(I18n.t('contact_form.request_leasing_information')); //default
 		if (this.state.how_can_we_help_you == 'request_leasing_information') {
-			message = I18n.t('contact_form.request_leasing_information');
+			message = this.capitalize(I18n.t('contact_form.request_leasing_information'));
 		} else if (this.state.how_can_we_help_you == 'book_an_appointment') {
-			message = I18n.t('contact_form.book_an_appointment');
+			message = this.capitalize(I18n.t('contact_form.book_an_appointment'));
 		} else if (this.state.how_can_we_help_you == 'other') {
-			message = this.state.message;
-		} else {
-			message = '';
+			message = this.state.message && this.state.message != '' ? this.state.message : this.capitalize(I18n.t('contact_form.other'));
 		}
+		//console.log('message', message);
 
 		var form_data = {
     	location_id: this.state.selected_location,
     	name: this.state.name,
     	email: this.state.email,
-    	contact_preference: this.state.contact_preference,
+    	contact_preference: this.capitalize(this.state.contact_preference),
     	phone: this.state.phone,
-    	message: this.state.message,
+    	message: message,
     	request_url: this.props.request_url,
 		};
 
@@ -178,12 +188,26 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, contact_preference: 'phone', how_can_we_help_you: 'request_leasing_information', name: '', email: '', phone: '', message: ''});
 				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
 			}
 		}); 
 	},
+
+
+
+
+	/**
+	* Helper functions
+	*/
+	capitalize: function (s) {
+  	if (typeof s !== 'string') {
+  		return '';
+  	}
+  	return s.charAt(0).toUpperCase() + s.slice(1);
+	},
+
 
 });

@@ -96,7 +96,7 @@ class ContactUsController < PublicWebsiteController
           render :json => {:success => 'Thank you! We will get in touch soon'}
         end
       else
-        render :json => {:error => 'Please enter your name, a valid email address and phone number'}
+        render :json => {:error => 'Please enter your name, email address, phone number and how you prefer to be contacted.'}
       end
     else
       redirect_to :contact_us
