@@ -40,7 +40,7 @@ var ContactForm = React.createClass({
 		//console.log('render ContactForm', this.props);
 		
 		return (
-			<div className={"contact-form " + (this.state.selected_state ? 'full-height' : '')}>
+			<div className={"contact-form " + (this.state.selected_state ? 'full-height ' : '') + (this.state.how_can_we_help_you == 'other' ? 'max-height ' : '')}>
 				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
 
 				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
