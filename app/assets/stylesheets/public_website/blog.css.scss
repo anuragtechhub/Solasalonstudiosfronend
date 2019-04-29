@@ -6,6 +6,19 @@
   border-bottom: 1px dashed #CECECE;
   margin-bottom: 50px;
 
+  h4.large, .h4.large {
+    margin-bottom: 8px !important;
+    line-height: 31px;
+  }
+
+  .blog-contact-button {
+    button.primary, input[type=button].primary, input[type=submit].primary, .button.primary, a.button.primary, a.button:link.primary, a.button:visited.primary, a.button:hover.primary, a.button:active.primary {
+      padding: 15px 20px 13px 20px;
+      float: right;
+      margin-top: -58px;
+    }
+  }
+
   .contact-form {
     padding: 20px 15px;
     background: #F8F8F8;
