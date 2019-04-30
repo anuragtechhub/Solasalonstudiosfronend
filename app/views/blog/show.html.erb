@@ -60,7 +60,7 @@
       <div class="one-third column">
         <h4 class="large"><%= @post.title.html_safe %></h4>
         <p class="subtle"><%= t('page.blog.posted_on', :date => @post.publish_date ? @post.publish_date.strftime('%B %e, %Y').html_safe : DateTime.now.strftime('%B %e, %Y').html_safe) %><br><%= @post.author.html_safe %></p>
-        <% if I18n.locale.to_s == 'en' %>
+        <% if @post.contact_form_visible %>
           <div class="blog-contact-button"><a href="#" class="button primary"><%= I18n.t('header.contact_us') %></a></div>
         <% end %>
         <div class="share-socially"><h3><%= t('page.blog.share_socially').html_safe %></h3></div>
