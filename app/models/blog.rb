@@ -40,7 +40,7 @@ class Blog < ActiveRecord::Base
       #p "we got categories #{blog_categories.size}"
       self.blog_categories.each do |category|
         if category.blogs && category.blogs.length > 0
-          category.blogs.order(:created_at => :desc).each do |blog|
+          category.blogs.where(:status => 'published').order(:created_at => :desc).each do |blog|
             if blog.id != self.id && !blogs.include?(blog)
               blogs << blog
               break if blogs.length == 3
