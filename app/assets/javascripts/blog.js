@@ -25,4 +25,14 @@ $(function () {
 
   adjustiframes();
 
+  $('.blog-contact-button .button').on('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    //$('.contact-form')[0].scrollIntoView(true);
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $('.contact-form').offset().top
+    }, 1000);
+  });
+
 });

@@ -8,7 +8,7 @@
 
   h4.large, .h4.large {
     margin-bottom: 8px !important;
-    line-height: 31px;
+    line-height: 29px;
   }
 
   .blog-contact-button {
@@ -256,8 +256,35 @@
   }
 }
 
+@media (max-width: 991px) {
+  .blog-post-summary, .blog-post-article {
+
+    .blog-contact-button {
+      button.primary, input[type=button].primary, input[type=submit].primary, .button.primary, a.button.primary, a.button:link.primary, a.button:visited.primary, a.button:hover.primary, a.button:active.primary {
+        float: none;
+        margin-top: -10px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
 
 @media (max-width: 550px) {
+  .blog-post-summary, .blog-post-article {
+
+    .blog-contact-button {
+      button.primary, input[type=button].primary, input[type=submit].primary, .button.primary, a.button.primary, a.button:link.primary, a.button:visited.primary, a.button:hover.primary, a.button:active.primary {
+        float: right;
+        margin-top: -58px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .blog-post-summary ul.social, .blog-post-article ul.social {
+    margin-bottom: 20px;
+  }
+
   .blog-list-picture {
 
     .blog-list-picture-overlay {
