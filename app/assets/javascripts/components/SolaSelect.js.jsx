@@ -16,8 +16,20 @@ var SolaSelect = React.createClass({
 				$(window).on('click.SolaSelect', function () {
 					self.setState({visible: false});
 				});
+				// $(window).on('keydown.SolaSelect', function (e) {
+				// 	if (e.keyCode == 40) {
+				// 		e.preventDefault();
+				// 		e.stopPropagation();
+				// 		console.log('down');
+				// 	} else if (e.keyCode == 38) {
+				// 		e.preventDefault();
+				// 		e.stopPropagation();
+				// 		console.log('up');
+				// 	}
+				// });
 			} else {
 				$(window).off('click.SolaSelect');
+				//$(window).off('keydown.SolaSelect');
 			}
 		}
 	},
@@ -45,7 +57,7 @@ var SolaSelect = React.createClass({
 		return (
 			<div className={"sola-select-wrapper " + this.props.className || ''}>
 				<div className="sola-select no-autobind">
-		      <div className="row" onClick={this.onToggle}>
+		      <div className="row" onClick={this.onToggle} tabIndex={typeof this.props.tabIndex != 'undefined' ? this.props.tabIndex : ''}>
 		        <div className="option-placeholder"><h3>{this.props.displayName && this.props.name ? this.props.name : (this.props.value || this.props.placeholder)}</h3></div>
 		        <div className="arrow"><span className="ss-dropdown"></span></div>
 		      </div>
@@ -76,6 +88,8 @@ var SolaSelect = React.createClass({
 	onToggle: function (e) {
 		e.preventDefault();
 		e.stopPropagation();
+
+		//console.log('ontoggle');
 
 		this.setState({visible: this.state.visible ? false : true});
 	},

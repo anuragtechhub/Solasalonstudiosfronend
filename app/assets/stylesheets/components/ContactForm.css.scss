@@ -16,6 +16,18 @@
     margin-bottom: 30px;
 	}
 
+  .sola-select {
+    .option-placeholder {
+      width: 100%;
+
+      h3 {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
 	.sola-select-wrapper {
     &.state-select {
       margin-bottom: 10px;

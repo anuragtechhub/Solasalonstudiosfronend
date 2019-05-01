@@ -240,12 +240,12 @@
 
 .search-for-a-salon {
 	background-color: #F5F9FB;
-	padding: 100px 0 110px 0;
+	padding: 110px 0 120px 0;
 	margin: 40px 0 -30px 0;
 	position: relative;
 
 	&.max-height {
-		padding: 160px 0 170px 0;
+		padding: 140px 0 150px 0;
 	}
 
 	h1, p {
@@ -259,7 +259,7 @@
 	.contact-form {
 		z-index: 2;
 		position: absolute;
-		top: -60px;
+		top: -94px;
 		right: 10px;
 		width: 100%;
 		max-width: 380px;
@@ -268,11 +268,14 @@
 		//transform: scale(0.80);
 
 		&.full-height {
-			top: -75px;
+			top: -120px;
 		}
 
-		&.max-height {
-			top: -131px;
+		// &.max-height {
+		// 	top: -131px;
+		// }
+		.location-select {
+			margin-bottom: 10px;
 		}
 
 		.sola-select .arrow {
@@ -459,10 +462,17 @@
 			font-size: 38px;
 			line-height: 48px;
 		}
+
 		.contact-form {
+			top: -103px;
 			right: 0;
 			max-width: 300px;
 		}
+
+		.contact-form.full-height {
+			top: -128px;
+		}
+
 	}
 }
 
