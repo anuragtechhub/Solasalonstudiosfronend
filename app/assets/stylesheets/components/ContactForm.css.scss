@@ -17,14 +17,24 @@
 	}
 
 	.sola-select-wrapper {
-		margin-bottom: 10px;
+    &.state-select {
+      margin-bottom: 10px;
+    }
 
-		&.location-select {
+		&.location-select {  
+
 			.sola-select {
 				display: block;
 			}
 		}
 	}
+
+  .how_can_we_help_you-select {
+    .sola-select {
+      top: 0;
+      display: block;
+    }
+  }
 
 	input, textarea {
 		font-family: 'Lato', Arial, sans-serif;
@@ -118,6 +128,7 @@
   .newsletter {
     margin-top: 10px;
     margin-bottom: 0;
+    font-size: 11px;
     
     &.disabled {
       opacity: 0.65;

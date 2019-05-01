@@ -1,8 +1,4 @@
-<% if @inquiry.message.present? %>
 <h3>Sola Contact Us Inquiry</h3>
-<% else %>
-<h3>Sola Rent a Studio Inquiry</h3>
-<% end %>
 
 <hr>
 
@@ -15,6 +11,9 @@
 <p><strong>Name:</strong> <%= @inquiry.name %></p>
 <p><strong>Email:</strong> <%= @inquiry.email %></p>
 <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
+<% if @inquiry.how_can_we_help_you.present? %>
+  <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
+<% end %>
 <% if @inquiry.message.present? %>
   <p><strong>Reason For Inquiry:</strong> <%= @inquiry.message %></p>
 <% end %>

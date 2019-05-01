@@ -11,7 +11,7 @@ var ContactForm = React.createClass({
 			success: null,
 			newsletter: true,
 			loading: false,
-			how_can_we_help_you: 'request_leasing_information',
+			how_can_we_help_you: '',
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -30,14 +30,14 @@ var ContactForm = React.createClass({
 		}
 
 		// Why Sola page
-		var $why_sola = $('.why-sola .search-for-a-salon');
-		if ($why_sola && $why_sola.length) {
-			if (this.state.how_can_we_help_you == 'other') {
-				$why_sola.addClass('max-height')
-			} else {
-				$why_sola.removeClass('max-height')
-			}
-		}
+		// var $why_sola = $('.why-sola .search-for-a-salon');
+		// if ($why_sola && $why_sola.length) {
+		// 	if (this.state.how_can_we_help_you == 'other') {
+		// 		$why_sola.addClass('max-height')
+		// 	} else {
+		// 		$why_sola.removeClass('max-height')
+		// 	}
+		// }
 	},
 
 
@@ -50,11 +50,11 @@ var ContactForm = React.createClass({
 		//console.log('render ContactForm', this.props);
 		
 		return (
-			<div className={"contact-form " + (this.state.selected_state ? 'full-height ' : '') + (this.state.how_can_we_help_you == 'other' ? 'max-height ' : '')}>
+			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
 
 				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
-					<SolaSelect placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+					<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 					
 					{
 						this.state.selected_state 
@@ -82,24 +82,41 @@ var ContactForm = React.createClass({
 					</div>
 
 					<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
-						<label>{I18n.t('contact_form.how_can_we_help_you')}</label>
-						<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location}>
-							{/*<option value="" disabled={true}>{I18n.t('contact_form.how_can_we_help_you')}</option>*/}
+						{/*<label>{I18n.t('contact_form.how_can_we_help_you')}</label>*/}
+	
+						<SolaSelect className="how_can_we_help_you-select" 
+												placeholder={I18n.t('contact_form.how_can_we_help_you')} 
+												options={[
+													{	option_type: 'option',
+														value: {
+														id: I18n.t('contact_form.request_leasing_information'),
+														name: I18n.t('contact_form.request_leasing_information')
+													}},
+													{ option_type: 'option',
+														value: {
+														id: I18n.t('contact_form.book_an_appointment'),
+														name: I18n.t('contact_form.book_an_appointment')
+													}},
+													{ option_type: 'option',
+														value: {
+														id: I18n.t('contact_form.other'),
+														name: I18n.t('contact_form.other')
+													}},
+												]} 
+												name="how_can_we_help_you" 
+												value={this.state.how_can_we_help_you}
+												onChange={this.onChangeHowCanWeHelpYou} /> 
+		
+						{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location}>
 							<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
 							<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
 							<option value="other">{I18n.t('contact_form.other')}</option>
-						</select>
+						</select>*/}
 					</div>
 
-					{
-						this.state.how_can_we_help_you == 'other'
-						?
-						<div className="form-group">
-							<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
-						</div>
-						:
-						null
-					}
+					<div className={"form-group " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+					</div>
 
 					<div className={"form-group contact-preference " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
@@ -114,7 +131,7 @@ var ContactForm = React.createClass({
 					
 					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>
-							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.would_you_like_to_subscribe_to_newsletter')}
+							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.subscribe_to_newsletter')}
 						</label>
 					</div>
 
@@ -137,6 +154,11 @@ var ContactForm = React.createClass({
 		this.setState(this.state);
 	},
 
+	onChangeHowCanWeHelpYou: function (value, name) {
+		console.log('onChangeHowCanWeHelpYou', value, name);
+		this.setState({how_can_we_help_you: name});
+	},
+
 	onChangeSelectedLocation: function (value, name) {
 		//console.log('onChangeSelectedLocation', value, name);
 		this.setState({selected_location: value, selected_location_name: name});
@@ -157,14 +179,14 @@ var ContactForm = React.createClass({
 
 		// handle message
 		//console.log('handle message', this.state.how_can_we_help_you);
-		var message = this.capitalize(I18n.t('contact_form.request_leasing_information')); //default
-		if (this.state.how_can_we_help_you == 'request_leasing_information') {
-			message = this.capitalize(I18n.t('contact_form.request_leasing_information'));
-		} else if (this.state.how_can_we_help_you == 'book_an_appointment') {
-			message = this.capitalize(I18n.t('contact_form.book_an_appointment'));
-		} else if (this.state.how_can_we_help_you == 'other') {
-			message = this.state.message && this.state.message != '' ? this.state.message : this.capitalize(I18n.t('contact_form.other'));
-		}
+		// var message = this.capitalize(I18n.t('contact_form.request_leasing_information')); //default
+		// if (this.state.how_can_we_help_you == 'request_leasing_information') {
+		// 	message = this.capitalize(I18n.t('contact_form.request_leasing_information'));
+		// } else if (this.state.how_can_we_help_you == 'book_an_appointment') {
+		// 	message = this.capitalize(I18n.t('contact_form.book_an_appointment'));
+		// } else if (this.state.how_can_we_help_you == 'other') {
+		// 	message = this.state.message && this.state.message != '' ? this.state.message : this.capitalize(I18n.t('contact_form.other'));
+		// }
 		//console.log('message', message);
 
 		var form_data = {
@@ -172,8 +194,9 @@ var ContactForm = React.createClass({
     	name: this.state.name,
     	email: this.state.email,
     	contact_preference: this.capitalize(this.state.contact_preference),
+    	how_can_we_help_you: this.state.how_can_we_help_you,
     	phone: this.state.phone,
-    	message: message,
+    	message: this.state.message,
     	request_url: this.props.request_url,
 		};
 

@@ -34,7 +34,7 @@ var SolaSelect = React.createClass({
 			if (!self.props.filteredBy || (self.props.filteredBy && option.filtered_by && self.props.filteredBy.toLowerCase() == option.filtered_by.toLowerCase())) {
 				if (option.option_type == 'msa') {
 					return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
-				} else if (option.option_type == 'location') {
+				} else if (option.option_type == 'location' || option.option_type == 'option') {
 					return <div key={option.value.id} className="option" onClick={self.onSelectOption.bind(null, option.value.id, option.value.name)}>{option.value.name}</div>
 				} else {
 					return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option, null)}>{option}</div>
@@ -43,7 +43,7 @@ var SolaSelect = React.createClass({
 		});
 
 		return (
-			<div className={"sola-select-wrapper " + this.props.className}>
+			<div className={"sola-select-wrapper " + this.props.className || ''}>
 				<div className="sola-select no-autobind">
 		      <div className="row" onClick={this.onToggle}>
 		        <div className="option-placeholder"><h3>{this.props.displayName && this.props.name ? this.props.name : (this.props.value || this.props.placeholder)}</h3></div>

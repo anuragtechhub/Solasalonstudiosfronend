@@ -1084,6 +1084,7 @@ RailsAdmin.config do |config|
       field :name
       field :email
       field :phone
+      field :how_can_we_help_you
       field :message
       field :contact_preference
       field :request_url do
