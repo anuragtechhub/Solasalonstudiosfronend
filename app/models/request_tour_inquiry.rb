@@ -34,6 +34,7 @@ class RequestTourInquiry < ActiveRecord::Base
         request_url: self.request_url,
         location_id: self.location_id || '',
         hs_persona: 'persona_2',
+        how_can_we_help_you: self.how_can_we_help_you,
         would_you_like_to_subscribe_to_our_newsletter_: self.newsletter
       })
     else
