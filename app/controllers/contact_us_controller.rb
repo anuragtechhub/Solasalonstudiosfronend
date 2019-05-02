@@ -14,8 +14,8 @@ class ContactUsController < PublicWebsiteController
       @all_locations = Location.where(:status => 'open').where(:country => 'BR')
     end
 
-    @last_location = Location.order(:updated_at => :desc).first
-    @last_msa = Msa.order(:updated_at => :desc).first    
+    #@last_location = Location.order(:updated_at => :desc).first
+    #@last_msa = Msa.order(:updated_at => :desc).first    
 
     if I18n.locale.to_s == 'pt-BR'
       render 'index_br'
