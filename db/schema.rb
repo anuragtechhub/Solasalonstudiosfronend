@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190502160528) do
+ActiveRecord::Schema.define(version: 20190502162054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -439,16 +439,16 @@ ActiveRecord::Schema.define(version: 20190502160528) do
   end
 
   create_table "request_tour_inquiries", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
+    t.text     "name"
+    t.text     "email"
+    t.text     "phone"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "message"
-    t.string   "request_url"
+    t.text     "request_url"
     t.integer  "visit_id"
-    t.string   "contact_preference"
+    t.text     "contact_preference"
     t.boolean  "newsletter",          default: true
     t.text     "how_can_we_help_you"
   end

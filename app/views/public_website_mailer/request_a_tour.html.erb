@@ -15,7 +15,6 @@
   <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
 <% end %>
 <% if @inquiry.message.present? %>
-  <p><strong>Reason For Inquiry:</strong> <%= @inquiry.message %></p>
+  <p><strong>Message:</strong> <%= @inquiry.message %></p>
 <% end %>
 <p><strong>Contact Preference:</strong> <%= @inquiry.contact_preference %></p>
-<p>In addition to you responding to their inquiry <strong>within 24 hours</strong>, this person will also be receiving a series of emails regarding Sola over the next couple of weeks.</p>

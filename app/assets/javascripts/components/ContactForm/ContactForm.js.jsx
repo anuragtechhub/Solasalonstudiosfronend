@@ -53,7 +53,8 @@ var ContactForm = React.createClass({
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
 
-				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
+				<form autoComplete="off" onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
+					<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />
 					<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 					
 					{
