@@ -217,26 +217,29 @@
 
       <h1 class="chalet"><%= t('page.why_sola.dont_just_dream_do') %></h1>
       <h1 class="chalet-new-york"><%= t('page.why_sola.become_a_salon_owner') %></h1>
-      <p><%= t('page.why_sola.search_for_a_salon') %></p>
+      
+      <% if I18n.locale.to_s != 'pt-BR' %>
+        <p><%= t('page.why_sola.search_for_a_salon') %></p>
 
-      <div class="row">
-        <div class="twelve columns">
-          <form class="search-form search-salon" action="<%= find_salon_location_path %>">
-            <div class="search-input-with-button">
-              <span class="spyglass-black"></span>
-              <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
-              <button type="submit"><%= t('page.why_sola.search') %></button>
-            </div>
-          </form>
+        <div class="row">
+          <div class="twelve columns">
+            <form class="search-form search-salon" action="<%= find_salon_location_path %>">
+              <div class="search-input-with-button">
+                <span class="spyglass-black"></span>
+                <input name="query" type="text" class="searchbox" placeholder="<%= t('page.home.search_location') %>" />
+                <button type="submit"><%= t('page.why_sola.search') %></button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
 
-      <div class="salon-search-results"></div>
-      <div class="salon-search-spinner">
-        <div class="spinner">&nbsp;</div>
-      </div>
+        <div class="salon-search-results"></div>
+        <div class="salon-search-spinner">
+          <div class="spinner">&nbsp;</div>
+        </div>
 
-      <div class="view-all-locations"><%= link_to :locations do %><%= t('page.why_sola.view_all_locations') %><% end %></div>
+        <div class="view-all-locations"><%= link_to :locations do %><%= t('page.why_sola.view_all_locations') %><% end %></div>
+      <% end %>
 
       <% if I18n.locale.to_s == 'en' %>
         <%= render 'shared/contact_form_component' %>

@@ -3,26 +3,28 @@
 <div class="container content-container locations-hero-container">
   <h2><span class="text"><%= t('page.locations.find_a_sola_location').html_safe %></span></h2>
 
-  <div class="search-bar locations-search-bar">
-    <%= form_tag [:search, :results], :method => :get do %>
-      <div class="filterable-dropdown-search" data-input="service_type">
-        <div class="dropdown">
-          <div class="selected-option"><span class="name"><%= params[:service_type].present? ? t("services.#{params[:service_type]}") : t('services.all_types') %></span><span class="down-triangle"></span></div>
-          <div class="options">
-            <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
-            <div class="option" data-value="hair"><%= t('services.hair') %></div>
-            <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
-            <div class="option" data-value="nails"><%= t('services.nails') %></div>
-            <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+  <% if I18n.locale.to_s != 'pt-BR' %>
+    <div class="search-bar locations-search-bar">
+      <%= form_tag [:search, :results], :method => :get do %>
+        <div class="filterable-dropdown-search" data-input="service_type">
+          <div class="dropdown">
+            <div class="selected-option"><span class="name"><%= params[:service_type].present? ? t("services.#{params[:service_type]}") : t('services.all_types') %></span><span class="down-triangle"></span></div>
+            <div class="options">
+              <div class="option" data-value="all_types"><%= t('services.all_types') %></div>
+              <div class="option" data-value="hair"><%= t('services.hair') %></div>
+              <div class="option" data-value="makeup"><%= t('services.makeup') %></div>
+              <div class="option" data-value="nails"><%= t('services.nails') %></div>
+              <div class="option" data-value="skincare"><%= t('services.skincare') %></div>
+            </div>
           </div>
+          <span class="spyglass-black"></span>
+          <input name="query" type="text" class="searchbox" placeholder="<%= t('page.locations.search_placeholder') %>" value="<%= params[:query] %>" />
+          <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
+          <button type="submit"><span class="search-icon"></span></button>
         </div>
-        <span class="spyglass-black"></span>
-        <input name="query" type="text" class="searchbox" placeholder="<%= t('page.locations.search_placeholder') %>" value="<%= params[:query] %>" />
-        <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
-        <button type="submit"><span class="search-icon"></span></button>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="search-bar locations-filter-bar">
@@ -137,6 +139,35 @@
 
 </div>
 
+<% end %>
+
+<% if I18n.locale.to_s == 'pt-BR' %>
+<div class="container">
+  <div class="row">
+    <div style="font-size:15px;">
+      <strong>Sola Salon Studios</strong>
+      <br />
+      Prédio anexo ao Barra Shopping<br />
+      Avenida das Americas, 4430, Loja B<br />
+      CEP: 22640-903
+    </div>
+  </div>
+
+  <hr style="margin-top: 30px;margin-bottom:30px;" />
+
+  <div class="row">
+    <div class="text-center">
+      <h3>Veja aqui como chegar no Sola</h3>
+      <div class="one-half column" style="margin:0 auto;float:none;">
+          <a href="//www.youtube.com/watch?v=eBVstPmC4K4" class="play-video play-video-gallery" rel="eBVstPmC4K4">
+            <img src="https://s3.amazonaws.com/solasalonstudiosbr/location_video_poster.jpg" alt="Veja aqui como chegar no Sola" />
+            <span class="fa fa-play-circle"></span>
+            <div class="video-overlay"></div>
+          </a>        
+      </div>  
+    </div>
+  </div>
+</div>
 <% end %>
 
 
