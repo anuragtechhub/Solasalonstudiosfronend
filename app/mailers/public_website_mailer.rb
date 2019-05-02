@@ -29,7 +29,7 @@ class PublicWebsiteMailer < ActionMailer::Base
 
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
-      mail(to: requestTourInquiry.location.email_address_for_inquiries, from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Contact Form Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: 'jeff@jeffbail.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Contact Form Inquiry') #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 

@@ -45,6 +45,42 @@ class RequestTourInquiry < ActiveRecord::Base
     p "error sync_with_hubspot #{e}"
   end
 
+  def utm_source
+    uri = URI::parse(request_url)
+    params = CGI::parse(uri.query)
+    return params["utm_source"][0]
+  rescue => e
+    p "Error getting utm_source #{e}"
+    return ''
+  end
+
+  def utm_medium
+    uri = URI::parse(request_url)
+    params = CGI::parse(uri.query)
+    return params["utm_medium"][0]
+  rescue => e
+    p "Error getting utm_medium #{e}"
+    return ''
+  end
+
+  def utm_campaign
+    uri = URI::parse(request_url)
+    params = CGI::parse(uri.query)
+    return params["utm_campaign"][0]
+  rescue => e
+    p "Error getting utm_campaign #{e}"
+    return ''
+  end
+
+  def utm_content
+    uri = URI::parse(request_url)
+    params = CGI::parse(uri.query)
+    return params["utm_content"][0]
+  rescue => e
+    p "Error getting utm_content #{e}"
+    return ''
+  end
+
   private
 
   def send_notification_email
