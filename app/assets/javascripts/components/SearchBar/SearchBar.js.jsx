@@ -91,7 +91,7 @@ var SearchBar = React.createClass({
 		var hasQuery = this.hasQuery();
 		var hasLatLng = this.hasLatLng();
 
-		if (hasQuery && hasLatLng) {
+		if (hasQuery && hasLatLng && this.state.date) {
 			// all good - proceed to search results
 			this.setState({error: null, loading: true});
 			window.location.href = this.props.path + '?' + this.getParams();
@@ -103,6 +103,8 @@ var SearchBar = React.createClass({
 				this.setState({error: I18n.t('sola_search.please_enter_your_location')});
 			} else if (!hasQuery && hasLatLng) {
 				this.setState({error: I18n.t('sola_search.please_enter_a_service')});
+			} else if (!this.state.date || this.state.date == '') {
+				this.setState({error: I18n.t('sola_search.please_enter_a_date')});
 			}
 		}
 	},

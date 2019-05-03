@@ -6,6 +6,27 @@
 		font-size: 15px;
 		line-height: 15px;
 	}
+
+	// .fa {
+	// 	font-size: 20px;
+	// 	line-height: 20px;
+	// 	top: 18px !important;
+	// }
+
+	.fa-times {
+		position: absolute;
+		color: #999;
+		font-size: 16px;
+		line-height: 16px;
+		top: 19px !important;
+		left: 127px !important;
+		right: auto !important;
+		cursor: pointer;
+
+		&:hover, &:active {
+			color: #333;
+		}
+	}	
 }
 
 .sola-search .datepicker {

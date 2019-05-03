@@ -13,17 +13,36 @@ var SearchDatePicker = React.createClass({
 
 		$datepicker.datepicker('setDate', this.props.date.toDate());
 		$datepicker.datepicker().on('changeDate', function () {
-			self.props.onChangeDate(moment($(self.refs.input).val(), "MM/DD/YYYY"));
+			var inputValue = $(self.refs.input).val()
+			//console.log('date changing yo', inputValue, moment(inputValue, "MM/DD/YYYY"))
+			if (inputValue && inputValue != '') {
+				self.props.onChangeDate(moment(inputValue, "MM/DD/YYYY"));
+			} else {
+				self.props.onChangeDate('');
+			}
 		});
 	},
 
 	render: function () {
+		//console.log('SearchDatePicker', this.props.date);
+
 		return (
 			<div className="SearchDatePicker">
 				<span className="fa fa-calendar">&nbsp;</span>
-				<input ref="input" type="text" placeholder={this.props.date.format('MM/DD/YY')} />
+				<input ref="input" type="text" placeholder="mm/dd/yyyy" />{/*placeholder={this.props.date.format('MM/DD/YY')}*/}
+				{this.props.date ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
 			</div>
 		);
-	}
+	},
+
+	/**
+	* Change handler
+	*/
+
+	clearInput: function (event) {
+		//console.log('clear input datepicker');
+		$(this.refs.input).datepicker('setDate', '');//.datepicker('update', '');
+		//$(this.refs.input).trigger('change');
+	},
 
 });
