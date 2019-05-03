@@ -29,9 +29,18 @@ var SearchBar = React.createClass({
 	},
 
 	componentDidMount: function () {
+		var self = this;
 		// fingerprint browser
 		var fingerprint = new Fingerprint().get();
 		this.setState({fingerprint: fingerprint});
+
+		window.addEventListener("pageshow", function (event) {
+		  var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+		  
+		  if (historyTraversal) {
+		    self.setState({loading: false});
+		  }
+		});		
 	},
 
 
