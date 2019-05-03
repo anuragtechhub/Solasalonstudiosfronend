@@ -185,3 +185,13 @@
 		}
 	}
 }
+
+
+@media (max-width: 788px) {
+	.SearchDatePicker {
+		.fa-times {
+			left: auto !important;
+			right: 10px !important;
+		}
+	}
+}
