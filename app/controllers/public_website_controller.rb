@@ -43,7 +43,7 @@ class PublicWebsiteController < ApplicationController
   def all_states
     cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
     all_states = Rails.cache.fetch(cache_key) do
-      return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state)
+      return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     end
     return all_states
   end
@@ -63,9 +63,9 @@ class PublicWebsiteController < ApplicationController
 
       all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
         if msa_name
-          sml << {option_type: 'msa', value: msa_name, filtered_by: locations.first.state}
+          sml << {option_type: 'msa', value: msa_name, filtered_by: locations.first.state.strip}
           locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
-            sml << {option_type: 'location', value: {id: location.id, name: location.name}, filtered_by: location.state}
+            sml << {option_type: 'location', value: {id: location.id, name: location.name}, filtered_by: location.state.strip}
           end
         end
       end

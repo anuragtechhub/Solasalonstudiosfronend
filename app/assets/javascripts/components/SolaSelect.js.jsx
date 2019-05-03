@@ -43,7 +43,9 @@ var SolaSelect = React.createClass({
 	render: function () {
 		var self = this;
 		var options = this.props.options.map(function (option) {
-			if (!self.props.filteredBy || (self.props.filteredBy && option.filtered_by && self.props.filteredBy.toLowerCase() == option.filtered_by.toLowerCase())) {
+			//console.log('filteredBy', self.props.filteredBy, option);
+			if (!self.props.filteredBy || (self.props.filteredBy && option.filtered_by && self.props.filteredBy.trim().toLowerCase() == option.filtered_by.trim().toLowerCase())) {
+				//console.log('match')
 				if (option.option_type == 'msa') {
 					return <div key={option.value} className="optgroup"><h3>{option.value}</h3></div>
 				} else if (option.option_type == 'location' || option.option_type == 'option') {
@@ -51,6 +53,8 @@ var SolaSelect = React.createClass({
 				} else {
 					return <div key={option} className="option" onClick={self.onSelectOption.bind(null, option, null)}>{option}</div>
 				}
+			} else {
+				//console.log('no match', self.props.filteredBy.trim().toLowerCase(), option.filtered_by.trim().toLowerCase(), self.props.filteredBy.trim().toLowerCase() == option.filtered_by.trim().toLowerCase())
 			}
 		});
 
@@ -86,12 +90,18 @@ var SolaSelect = React.createClass({
 	},
 
 	onToggle: function (e) {
+		var self = this;
+
 		e.preventDefault();
 		e.stopPropagation();
 
 		//console.log('ontoggle');
+		if (!this.state.visible) {
+			$(window).trigger('click.SolaSelect');
+		}
 
-		this.setState({visible: this.state.visible ? false : true});
+		this.setState({visible: this.state.visible ? false : true}, function () {
+		});
 	},
 
 });
