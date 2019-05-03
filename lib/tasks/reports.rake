@@ -225,7 +225,7 @@ namespace :reports do
   end
 
   # rake reports:booknow
-  # rake reports:booknow[2019-01-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booknow[2019-04-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
   task :booknow, [:start_date, :email_address] => :environment do |task, args|
     p "begin booknow analytics report..."
     # p "args=#{args.inspect}"
@@ -311,7 +311,7 @@ namespace :reports do
   end
 
   # rake reports:solapro
-  # rake reports:solapro[2017-12-01]
+  # rake reports:solapro[2019-04-01]
   task :solapro, [:start_date] => :environment do |task, args|
     p "begin solapro analytics report..."
     # p "args=#{args.inspect}"
