@@ -137,6 +137,27 @@
     }
   }
 
+  .form-inline-rows {
+    .form-inline {
+      label {
+        display: block;
+        margin: 2px;
+      }
+
+      input {
+        height: auto;
+        position: relative;
+        top: -1px;
+        width: 16px;
+        height: 16px;
+        margin-right: 1px;        
+      }
+      // input {
+      //   margin-right: 8px;
+      // }
+    }
+  }
+
   .newsletter {
     margin-top: 10px;
     margin-bottom: 0;

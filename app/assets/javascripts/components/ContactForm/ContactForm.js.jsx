@@ -93,9 +93,19 @@ var ContactForm = React.createClass({
 					</div>
 
 					<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
-						<label>{I18n.t('contact_form.how_can_we_help_you')}</label>
-	
-						<SolaSelect className="how_can_we_help_you-select" 
+						<label>{I18n.t('contact_form.i_would_like_to')}</label>
+						<div className="form-inline-rows">
+							<div className="form-inline">
+								<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.request_leasing_information')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.request_leasing_information')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.request_leasing_information')}</label>
+							</div>
+							<div className="form-inline">
+								<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.book_an_appointment')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.book_an_appointment')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.book_an_appointment')}</label>
+							</div>
+							<div className="form-inline">
+								<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.other')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.other')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.other')}</label>
+							</div>
+						</div>
+						{/*<SolaSelect className="how_can_we_help_you-select" 
 												placeholder={I18n.t('contact_form.how_can_we_help_you')} 
 												options={[
 													{	option_type: 'option',
@@ -117,7 +127,7 @@ var ContactForm = React.createClass({
 												name="how_can_we_help_you" 
 												value={this.state.how_can_we_help_you}
 												onChange={this.onChangeHowCanWeHelpYou}
-												tabIndex={0} /> 
+												tabIndex={0} />*/}
 		
 						{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location}>
 							<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
