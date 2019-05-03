@@ -66,7 +66,7 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? && params[:message].present? && params[:contact_preference].present?
+      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
         unless banned_ip_addresses.include? request.remote_ip
           rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url], :contact_preference => params[:contact_preference], :how_can_we_help_you => params[:how_can_we_help_you])
@@ -96,7 +96,7 @@ class ContactUsController < PublicWebsiteController
           render :json => {:success => 'Thank you! We will get in touch soon'}
         end
       else
-        render :json => {:error => 'Please enter your name, email address, phone number and how you prefer to be contacted.'}
+        render :json => {:error => 'Please enter your name, a valid email address and phone number'}
       end
     else
       redirect_to :contact_us

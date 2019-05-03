@@ -11,7 +11,7 @@ var ContactForm = React.createClass({
 			success: null,
 			newsletter: true,
 			loading: false,
-			how_can_we_help_you: '',
+			how_can_we_help_you: I18n.t('contact_form.request_leasing_information'),
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -23,10 +23,20 @@ var ContactForm = React.createClass({
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
+		var self = this;
+
 		if (this.state.success && prevState.success != this.state.success) {
+			//console.log('success!')
 			$(this.refs.first_input).tooltipster('content', this.state.success).tooltipster('show');
+			setTimeout(function () {
+				self.setState({success: null});
+			}, 1000);
 		} else if (this.state.error && prevState.error != this.state.error) {
+			//console.log('error!')
 			$(this.refs.first_input).tooltipster('content', this.state.error).tooltipster('show');
+			setTimeout(function () {
+				self.setState({error: null});
+			}, 1000);
 		}
 
 		// Why Sola page
@@ -53,8 +63,8 @@ var ContactForm = React.createClass({
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
 
-				<form autoComplete="off" onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
-					<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />
+				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
+					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
 					<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 					
 					{
@@ -83,7 +93,7 @@ var ContactForm = React.createClass({
 					</div>
 
 					<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
-						{/*<label>{I18n.t('contact_form.how_can_we_help_you')}</label>*/}
+						<label>{I18n.t('contact_form.how_can_we_help_you')}</label>
 	
 						<SolaSelect className="how_can_we_help_you-select" 
 												placeholder={I18n.t('contact_form.how_can_we_help_you')} 
@@ -213,7 +223,7 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
 				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
