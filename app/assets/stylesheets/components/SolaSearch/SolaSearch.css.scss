@@ -601,6 +601,14 @@
 	}
 }
 
+@media (max-width: 991px) {
+	.sola-search {
+		.SolaSearch {
+			height: auto;
+		}
+	}
+}
+
 @media (max-width: 768px) {
 	.sola-search {
 		.sola-search-hero {
