@@ -619,6 +619,11 @@
           height: auto;
         }
 
+        &.solagenius {
+          max-width: 260px;
+          height: auto;
+        }
+
         &.pulpriot {
           max-width: 105px;
           height: auto;
@@ -633,6 +638,11 @@
         &.sola {
           //top: -20px;
           left: -4px;
+          max-width: 110px;
+        }
+
+        &.saloncentric {
+          max-width: 210px;
         }
 
         &.amika {
