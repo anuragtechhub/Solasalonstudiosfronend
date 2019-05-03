@@ -51,6 +51,18 @@ var SearchServicesAndSuggestions = React.createClass({
 				this.getSuggestions(this.props.query);
 			}
 		}
+
+		// position services-list
+		if (this.refs['categories-list']) {
+			// var $dropdown = $(this.refs.dropdown);
+			// var $activeCategory = $(this.refs['categories-list']).find('.active');
+			// var activeCategoryOffset = $activeCategory.offset();
+			// var activeCategoryPosition = $activeCategory.position();
+			// console.log('activeCategory offset/position', activeCategoryOffset, activeCategoryPosition);
+			// console.log('scrollHeight', this.refs['categories-list'].scrollHeight);
+			// console.log('dropdown scrolltop', $(this.refs.dropdown).scrollTop());
+			$(this.refs['services-list']).find('.services-list').css({top: $(this.refs.dropdown).scrollTop() + 'px'});
+		}
 	},
 
 
@@ -155,11 +167,13 @@ var SearchServicesAndSuggestions = React.createClass({
 
 		return (
 			<div className="row">
-				<div className="col-sm-6">
+				<div className="col-sm-6" ref="categories-list">
 					{categories}
 				</div>
-				<div className="col-sm-6 active">
-					{services}
+				<div className="col-sm-6 services-list-wrapper active" ref="services-list">
+					<div className="services-list">
+						{services}
+					</div>
 				</div>
 			</div>
 		);

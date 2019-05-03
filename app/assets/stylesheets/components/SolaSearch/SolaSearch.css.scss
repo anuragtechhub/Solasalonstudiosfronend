@@ -100,7 +100,7 @@
 
 	.side-tab {
 		z-index: 99;
-		position: absolute;
+		position: fixed;
 		top: 50%;
 		right: -131px;
 		margin-top: -50px;
@@ -604,6 +604,9 @@
 @media (max-width: 991px) {
 	.sola-search {
 		.SolaSearch {
+			height: auto;
+		}
+		.ProfessionalResults {
 			height: auto;
 		}
 	}
