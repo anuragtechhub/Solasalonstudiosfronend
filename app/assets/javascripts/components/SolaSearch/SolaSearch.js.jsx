@@ -38,8 +38,10 @@ var SolaSearch = React.createClass({
 	},
 
 	componentDidMount: function () {
-		this.getAvailabilities(this.getServicesGuids());
-
+		if (this.state.professionals.length) {
+			this.getAvailabilities(this.getServicesGuids());
+		}
+		
 		var self = this;
 		var $window = $(window);
 
@@ -213,48 +215,50 @@ var SolaSearch = React.createClass({
 	onLoadMoreProfessionals: function () {
 		var self = this;
 
-		//console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
-		
-		self.setState({loading: true});
+		if (self.state.professionals && self.state.professionals.length) {
+			//console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
+			
+			self.setState({loading: true});
 
-		$.ajax({
-			data: {
-				date: self.state.date.format('YYYY-MM-DD'),
-				fingerprint: self.state.fingerprint,
-				lat: self.state.lat,
-				lng: self.state.lng,
-				location_id: self.state.location_id,
-				location: self.state.location,
-				query: self.state.query,
-				search_after: self.state.professionals[self.state.professionals.length - 1].cursor,
-				fingerprint: self.props.fingerprint,
-			},
-			method: 'POST',
-	    url: self.props.results_path + '.json',
-		}).done(function (response) {
-			//console.log('onLoadMoreProfessionals response', response);
-			//end_of_results
-			if (response && response.length) {
-				var professionals = self.state.professionals.slice(0);
+			$.ajax({
+				data: {
+					date: self.state.date.format('YYYY-MM-DD'),
+					fingerprint: self.state.fingerprint,
+					lat: self.state.lat,
+					lng: self.state.lng,
+					location_id: self.state.location_id,
+					location: self.state.location,
+					query: self.state.query,
+					search_after: self.state.professionals[self.state.professionals.length - 1].cursor,
+					fingerprint: self.props.fingerprint,
+				},
+				method: 'POST',
+		    url: self.props.results_path + '.json',
+			}).done(function (response) {
+				//console.log('onLoadMoreProfessionals response', response);
+				//end_of_results
+				if (response && response.length) {
+					var professionals = self.state.professionals.slice(0);
 
-				if (self.allUniqueProfessionals(professionals, response)) {
-					//console.log("yes, all unique");
-					professionals.push.apply(professionals, response);
-					self.setState({loading: false, professionals: professionals, }, function () {
-						self.getAvailabilities(self.getServicesGuids(response));
-					});
+					if (self.allUniqueProfessionals(professionals, response)) {
+						//console.log("yes, all unique");
+						professionals.push.apply(professionals, response);
+						self.setState({loading: false, professionals: professionals, }, function () {
+							self.getAvailabilities(self.getServicesGuids(response));
+						});
+					} else {
+						//console.log("no, not all unique -- only set uniques");
+						professionals.push.apply(professionals, response);
+						professionals = self.getUniqueProfessionals(professionals, response);
+						self.setState({loading: false, pagination: false, professionals: professionals, end_of_results: true}, function () {
+							self.getAvailabilities(self.getServicesGuids(response));
+						});
+					}
 				} else {
-					//console.log("no, not all unique -- only set uniques");
-					professionals.push.apply(professionals, response);
-					professionals = self.getUniqueProfessionals(professionals, response);
-					self.setState({loading: false, pagination: false, professionals: professionals, end_of_results: true}, function () {
-						self.getAvailabilities(self.getServicesGuids(response));
-					});
-				}
-			} else {
-				self.setState({loading: false, pagination: false, end_of_results: true});
-			}	
-		}); 
+					self.setState({loading: false, pagination: false, end_of_results: true});
+				}	
+			});
+		} 
 	},
 
 

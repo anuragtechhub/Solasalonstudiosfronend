@@ -50,7 +50,7 @@ var ProfessionalResults = React.createClass({
 	},
 
 	renderPagination: function () {
-		if (this.props.end_of_results) {
+		if (this.props.end_of_results || this.props.professionals.length == 0) {
 			//console.log('renderPagination END OF RESULTS');
 			return (
 				<div className="SearchPagination text-center">
