@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190502162054) do
+ActiveRecord::Schema.define(version: 20190509163739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -648,6 +648,7 @@ ActiveRecord::Schema.define(version: 20190502162054) do
     t.boolean  "force_show_book_now_button",     default: false
     t.string   "sg_booking_url"
     t.boolean  "walkins"
+    t.boolean  "reserved",                       default: false
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

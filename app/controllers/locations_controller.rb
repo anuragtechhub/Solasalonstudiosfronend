@@ -127,10 +127,11 @@ class LocationsController < PublicWebsiteController
     @location = Location.find_by(:url_name => params[:url_name])
 
     if @location && @location.stylists
-      @stylists = @location.stylists
+      @stylists = @location.stylists.where(:reserved => false)
+      @reserved_stylists = @location.stylists.where(:reserved => true).order(:studio_number => :asc)
 
       if (params[:service]) 
-        @stylists = @location.stylists.select { |s| true if (s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service)) }
+        @stylists = @location.stylists.where(:reserved => false).select { |s| true if (s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service)) }
       end
 
       @lat = @location.latitude
