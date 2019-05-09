@@ -7,6 +7,20 @@ var BookingModalServiceRow = React.createClass({
 		};
 	},
 
+	componentDidMount: function () {
+		if (this.refs.description) {
+			$(this.refs.description).tooltip({
+				trigger: 'click'
+			});
+		}
+	},
+
+	componentWillUnmount: function () {
+		if (this.refs.description) {
+			$(this.refs.description).tooltip('dispose');
+		}
+	},
+
 
 
 	/**
@@ -20,7 +34,10 @@ var BookingModalServiceRow = React.createClass({
 			<div className="ServiceRow HasImage">
 				{this.renderServiceImage()}
 				<div className="ServiceDetails">
-					<div className="ServiceName">{this.props.service.name}</div>
+					<div className="ServiceName">
+						<div className="Name">{this.props.service.name}</div>
+						{this.props.service.description ? <span ref="description" className="fa fa-question-circle Help" title={this.props.service.description}></span> : null}
+					</div>
 					<div className="ServiceCostAndDuration">
 						<span className="ServiceCost">{this.calculateTotalCost()}</span> 
 						<span className="Separator">&nbsp;</span> 
