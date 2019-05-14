@@ -2,7 +2,7 @@ Solasalonstudios::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
-  get "home" => 'home#index', :as => :home
+  get "/" => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
   root 'home#index'
 
