@@ -33,7 +33,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 /*--banner ends here--*/
 /*-- main starts here--*/
 .main-cont{position: relative;}
-.main-cont:before{content: "";width: 300px;height: 192px;background:url(../images/border.png) no-repeat;position: absolute;top: -23px;left: 0px;background-size: cover;z-index: -1;width: 239px;height: 1609px;}
+.main-cont:before{content: "";width: 300px;height: 192px;background:asset_url('goingindependent/border.png') no-repeat;position: absolute;top: -23px;left: 0px;background-size: cover;z-index: -1;width: 239px;height: 1609px;}
 /*-- Curious starts here--*/
 .Curious{}
 .Curious-in{padding: 43px 24px 65px 41px;}
@@ -56,7 +56,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 /*-- guide ends here--*/
 /*--perks starts here--*/
 .perks{position: relative;}
-.perks:after{content: "";position: absolute;top: -137px;left: 0px;background: url('../images/color-border.png');width: 95px;height:267px;}
+.perks:after{content: "";position: absolute;top: -137px;left: 0px;background: asset_url('goingindependent/color-border.png');width: 95px;height:267px;}
 .perks-in{padding: 81px 0 21px 0;text-align: center;}
 .perks-in h3{font-size: 30px;line-height: 39px;color: #000;font-weight: 500;  font-family: 'Chalet-ParisNineteenSixty';padding: 0 0 13px 0;letter-spacing: -0.2px;}
 .perks-in p{font-size: 18px;line-height: 20px;color:#7b7b7b;font-weight: 600;font-family: 'Chalet-NewYorkNineteenSixty'; font-family: 'Chalet-ParisNineteenSixty';letter-spacing: 0px;;}
@@ -95,3 +95,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba6e1', end
 /*-- main ends here--*/
 /*--footer starts here--*/
 /*--footer ends here--*/
+
+
+.goingindependent {
+	.body-content {
+		background: transparent;
+	}
+
+}

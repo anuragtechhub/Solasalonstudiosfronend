@@ -49,6 +49,7 @@ class StylistsController < PublicWebsiteController
   end
 
   def going_independent
+    @body_class = 'goingindependent'
     @no_header = true
   end
 
