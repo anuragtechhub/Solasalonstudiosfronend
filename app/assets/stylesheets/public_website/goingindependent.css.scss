@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'bootstrap/mixins';
+
 /*--header starts here--*/
 .header{background: rgba(152,208,251,1);
 background: -moz-linear-gradient(left, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
@@ -21,7 +24,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 .Salon-in-lft figure{}
 .Salon-in-lft figure img{}
 .Salon-cont{max-width: 344px;margin: 0 auto;}
-.Salon-cont h1{font-size: 43px;line-height: 51px;color: #fff;font-weight: 400;font-family: 'Chalet-NewYorkNineteenSixty';letter-spacing: 0.6px;}
+.Salon-cont h1{font-size: 43px;line-height: 51px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;}
 .Salon-in-rgt{}
 .Salon-in-rgt-blk{}
 .Salon-in-rgt-blk figure{}
@@ -38,8 +41,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 .Curious{}
 .Curious-in{padding: 43px 24px 65px 41px;}
 .Curious-in ul{list-style: disc;}
-.Curious-in ul li{}
-.Curious-in ul li a{font-size: 20px;line-height: 32px;color: #555555;font-weight: 400;font-family: 'Chalet-NewYorkNineteenSixty';letter-spacing: 0px;vertical-align: middle;}
+.Curious-in ul li {font-size: 20px;line-height: 32px;color: #555555;letter-spacing: 0px;vertical-align: middle; @include chalet_new_york;}
 /*-- Curious ends here--*/
 /*-- guide starts here--*/
 .guide{}
