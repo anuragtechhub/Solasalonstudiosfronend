@@ -4,7 +4,7 @@ class BrazilController < PublicWebsiteController
 
   def sejasola
     if request.domain == 'solasalonstudios.ca' || request.domain == 'solasalonstudios.com' #|| request.domain == 'localhost'
-      redirect_to :home
+      redirect_to :home, :status => 301
     end
 
     if request.post?

@@ -8,7 +8,7 @@ class BlogController < PublicWebsiteController
 
     unless @category
       @category = BlogCategory.find_by(:url_name => params[:category_url_name].split('_').join('-')) if params[:category_url_name]
-      redirect_to blog_category_path(:category_url_name => @category.url_name) if @category
+      redirect_to(blog_category_path(:category_url_name => @category.url_name), :status => 301) if @category
     end
 
     p "country=#{country}"
@@ -43,18 +43,18 @@ class BlogController < PublicWebsiteController
 
   def show
     @post = Blog.find_by(:url_name => params[:url_name])
-    redirect_to show_blog_preview_path(@post) if @post && @post.status == 'draft'
+    redirect_to(show_blog_preview_path(@post), :status => 301) if @post && @post.status == 'draft'
     
     unless @post
       @post = Blog.find_by(:url_name => params[:url_name].split('_').join('-'))
-      redirect_to show_blog_path(:url_name => @post.url_name) if @post
+      redirect_to(show_blog_path(:url_name => @post.url_name), :status => 301) if @post
     end
 
     p "@post=#{@post.inspect}"
 
     @category = @post.blog_categories.first if @post && @post.blog_categories
     @categories = BlogCategory.order(:name => :asc)
-    redirect_to :blog unless @post
+    redirect_to(:blog, :status => 301) unless @post
   end
 
   def show_preview
@@ -64,7 +64,7 @@ class BlogController < PublicWebsiteController
     if @post
       render 'show'
     else
-      redirect_to :blog 
+      redirect_to :blog, :status => 301
     end
   end
 
