@@ -128,6 +128,7 @@ Solasalonstudios::Application.routes.draw do
   get 'findaprofessional' => 'stylists#index', :as => :find_a_professional
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
+  get 'goingindependent' => 'stylists#going_independent', :as => :going_independent
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message
 
   get "article/:url_name" => 'article#show', :as => :show_article

@@ -48,6 +48,10 @@ class StylistsController < PublicWebsiteController
     end
   end
 
+  def going_independent
+
+  end
+
   def redirect
     @stylist = Stylist.find_by(:url_name => params[:url_name])
     @location = @stylist.location if (@stylist && @stylist.location)
