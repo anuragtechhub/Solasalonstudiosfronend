@@ -71,7 +71,7 @@
                   <small>Complete this form to get your free guide.</small>
                       </div>
                   <div class="guide-in-rgt col-md-6">
-                  
+                    <%= render 'shared/contact_form_component' %>
                   </div>
               </div>
               </div>
@@ -163,7 +163,7 @@
              <div class="hashtag">
              <div class="container">
                  <div class="hashtag-in">
-                 <button><a href="#"><%= image_tag "goingindependent/icon.png", :alt => "img", :width => "13", :height => "13" %></a>#MySola</button>
+                    <a href="https://www.instagram.com/explore/tags/mysola/?hl=en"><%= image_tag "goingindependent/icon.png", :alt => "img", :width => "13", :height => "13" %> #MySola</a>
                      <p>Check out the hashtag <span>#MySola</span> on Instagram to see what Sola pros have to say!</p>
                  </div>
                  </div>
@@ -175,10 +175,9 @@
                  <%= image_tag "https://s3.amazonaws.com/solasalonstudios/mysola_contact_bg.jpg", :alt => "img", :class => 'u-full-width' %>
                  </figure>
                  <div class="watch-in">
-                 <a href="#"><%= image_tag "goingindependent/vedio-icon.png", :alt => "img", :width => "48", :height => "49" %></a>
+                 <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video" rel="72pips9fvwQ"><%= image_tag "goingindependent/vedio-icon.png", :alt => "img", :width => "48", :height => "49" %></a>
                      <p>Watch our video to see what 
                         people are saying about #MySola</p>
-                     <span>PLAY VIDEO</span>
                  </div>
              </div>
                 <!-- watch ends here -->

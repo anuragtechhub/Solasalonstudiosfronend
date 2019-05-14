@@ -47,14 +47,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 .guide{}
 .guide-in{}
 .guide-in-lft{}
-.guide-in-lft h3{font-size: 37.99px;line-height: 39px;color: #555555;font-weight: 400;font-family: 'Chalet-NewYorkNineteenSixty';padding: 0 0 27px 0;letter-spacing: 0.1px;}
-.guide-in-lft p{font-size: 18px;line-height: 34px;color: #7b7b7b;font-weight: 400;  font-family: 'Chalet-ParisNineteenSixty';letter-spacing: -0.1px;}
-.guide-in-lft span{font-size: 22px;line-height: 29px;color: #555555;font-weight: 400;font-family: 'Chalet-NewYorkNineteenSixty';padding: 0 0 0 0;letter-spacing: -0.2px;}
-.guide-in-lft ul{padding: 29px 0px 38px 15px;list-style: disc;}
-.guide-in-lft ul li{}
-.guide-in-lft ul li a{vertical-align: middle;font-size: 18px;line-height: 34px;color:#7b7b7b;font-weight: 400;  font-family: 'Chalet-ParisNineteenSixty';letter-spacing: -0.4px;display: block;}
-.guide-in-lft small{font-size: 20px;line-height: 20px;color: #5f99d0;font-weight: 400;font-family: 'Chalet-NewYorkNineteenSixty';letter-spacing: -0.2px;}
-.guide-in-rgt{min-height: 571px;border: 2px solid #7b7b7b;}
+.guide-in-lft h3{font-size: 37.99px;line-height: 39px;color: #555555;@include chalet_new_york;padding: 0 0 27px 0;letter-spacing: 0.1px;}
+.guide-in-lft p{font-size: 18px;line-height: 34px;color: #7b7b7b;@include chalet_paris;font-weight: 400;letter-spacing: -0.1px;-webkit-font-smoothing: subpixel-antialiased;-moz-osx-font-smoothing: subpixel-antialiased;}
+.guide-in-lft span{font-size: 22px;line-height: 29px;color: #555555;@include chalet_new_york;padding: 0 0 0 0;letter-spacing: -0.2px;display:block;margin-top: 29px;}
+.guide-in-lft ul{padding: 8px 0px 28px 15px;list-style: disc;}
+.guide-in-lft ul li{@include chalet_paris;font-size: 18px;line-height: 35px;color:#7B7B7B;font-weight:400;letter-spacing: -0.4px;}
+.guide-in-lft small{font-size: 20px;line-height: 20px;color: #5f99d0;@include chalet_london;}
+// .guide-in-rgt{min-height: 571px;border: 2px solid #7b7b7b;}
 /*-- guide ends here--*/
 /*--perks starts here--*/
 .perks{position: relative;}
@@ -71,27 +70,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', end
 .perks-blk p{font-size: 12px;line-height: 22px;color:#7b7b7b;font-weight: 400;padding: 13px 0 0 0;letter-spacing: 0.1px;}
 /*-- perks ends here--*/
 /*--hashtag starts here--*/
-.hashtag{background: #f8f8f8;}
+.hashtag{background: #f8f8f8;margin-top:29px;}
 .hashtag-in{padding: 50px 0 42px 0;}
-.hashtag-in button{box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);background: rgba(251,166,225,1);
+.hashtag-in a, .hashtag-in a:link, .hashtag-in a:visited, .hashtag-in a:hover, .hashtag-in a:active {box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);background: rgba(251,166,225,1);
 background: -moz-linear-gradient(top, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(251,166,225,1)), color-stop(0%, rgba(236,113,195,1)), color-stop(0%, rgba(253,137,214,1)), color-stop(66%, rgba(233,63,171,1)), color-stop(100%, rgba(233,63,171,1)));
 background: -webkit-linear-gradient(top, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
 background: -o-linear-gradient(top, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
 background: -ms-linear-gradient(top, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
 background: linear-gradient(to bottom, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba6e1', endColorstr='#e93fab', GradientType=0 );width: 165px;height: 36px;border: none;border-radius: 5px;text-align: center;margin: 0 auto;display: block;font-size: 14px;line-height: 16px;color:#fff;font-weight: 600;padding: 5px 0 0 0;letter-spacing: 0.1px;font-family: 'Lato', sans-serif;}
-.hashtag-in button a{margin: 0 13px 0 0;}
-.hashtag-in button a img{}
-.hashtag-in p{font-size: 21.02px;line-height: 32px;color:#7b7b7b;font-weight: 400;padding: 13px 0 0 0;letter-spacing: -0.1px;margin: 0 auto;max-width: 469px;text-align: center;}
-.hashtag-in p span{font-family: 'Chalet-NewYorkNineteenSixty';font-weight: 600;}
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba6e1', endColorstr='#e93fab', GradientType=0 );width: 165px;height: 36px;border: none;border-radius: 5px;text-align: center;margin: 0 auto;display: block;font-size: 14px;line-height: 16px;color:#fff;font-weight: 600;padding: 1px 0 0 0;letter-spacing: 0.1px;font-family: 'Lato', Arial, sans-serif;
+padding: 10px 0 0 0;
+text-decoration: none;
+}
+.hashtag-in  a{margin: 0 13px 0 0;}
+.hashtag-in  a img{ position: relative; top: -2px; left: -6px;}
+.hashtag-in p{font-size: 21.02px;line-height: 32px;color:#7b7b7b;font-weight: 400;padding: 18px 0 0 0;letter-spacing: -0.1px;margin: 0 auto;max-width: 440px;text-align: center;}
+.hashtag-in p span{@include chalet_london;font-weight: 600;}
 /*-- hashtag ends here--*/
 /*--watch starts here--*/
 .watch{position: relative; margin-bottom: -41px;}
 .watch-in{position: absolute;top: 53%;left: 0px;text-align: center;right: 0px;margin: 0 auto;z-index: 9;transform: translateY(-50%);-o-transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-webkit-transform: translateY(-50%);}
 .watch-in a{}
 .watch-in a img{}
-.watch-in p{font-size: 12.02px;line-height: 15px;color: #fff;font-weight: 400;padding: 13px 0 0 0;letter-spacing: -0.4px;margin: 0 auto;max-width: 177px;font-family: 'Helvetica';}
+.watch-in p{font-size: 13.02px;line-height: 19px;color: #fff;font-weight: 400;padding: 13px 0 0 0;letter-spacing: -0.4px;margin: 0 auto;max-width: 190px;font-family: Helvetica, Arial, sans-serif;}
 .watch-in span{font-size: 12.02px;line-height: 15px;color: #fff;font-weight: 400;padding: 13px 0 0 0;letter-spacing: -0.4px;margin: 0 auto;max-width: 177px;font-family: 'Lato', sans-serif;display: none;}
 /*-- watch ends here--*/
 /*-- main ends here--*/
@@ -103,5 +105,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba6e1', end
 	.body-content {
 		background: transparent;
 	}
-
+	.contact-form {
+		background: #f8f8f8;
+		padding: 30px 20px;
+	}
+	.sola-benefits {
+		h2 {
+			@include chalet_paris;
+			font-size: 36px;
+    	line-height: 40px;
+    	font-weight: 300;
+		}
+		p {
+			font-family: Helvetica, Arial, sans-serif;
+	    font-style: normal;
+	    font-weight: 400;
+	    font-size: 17px;
+	    line-height: 31px;
+	    font-weight: 300;
+	    color: #4A4A4A;
+		}
+	}
 }
