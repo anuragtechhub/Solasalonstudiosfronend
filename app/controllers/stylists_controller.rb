@@ -49,7 +49,7 @@ class StylistsController < PublicWebsiteController
   end
 
   def going_independent
-
+    @no_header = true
   end
 
   def redirect

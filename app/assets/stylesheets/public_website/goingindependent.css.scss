@@ -85,7 +85,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fba6e1', end
 .hashtag-in p span{font-family: 'Chalet-NewYorkNineteenSixty';font-weight: 600;}
 /*-- hashtag ends here--*/
 /*--watch starts here--*/
-.watch{position: relative;}
+.watch{position: relative; margin-bottom: -41px;}
 .watch-in{position: absolute;top: 53%;left: 0px;text-align: center;right: 0px;margin: 0 auto;z-index: 9;transform: translateY(-50%);-o-transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-webkit-transform: translateY(-50%);}
 .watch-in a{}
 .watch-in a img{}
