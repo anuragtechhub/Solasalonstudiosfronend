@@ -171,6 +171,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def usa
+    p "request.remote_ip=#{request.remote_ip}"
     results = Geocoder.search(request.remote_ip)
     p "results=#{results.inspect}"
     if results && results.length > 0
