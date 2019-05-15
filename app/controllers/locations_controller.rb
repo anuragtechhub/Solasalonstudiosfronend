@@ -2,6 +2,67 @@ class LocationsController < PublicWebsiteController
 
   before_action :map_defaults
 
+  STATE_ABBR_TO_NAME = {
+    'AL' => 'Alabama',
+    'AK' => 'Alaska',
+    'AS' => 'America Samoa',
+    'AZ' => 'Arizona',
+    'AR' => 'Arkansas',
+    'CA' => 'California',
+    'CO' => 'Colorado',
+    'CT' => 'Connecticut',
+    'DE' => 'Delaware',
+    'DC' => 'District of Columbia',
+    'FM' => 'Federated States Of Micronesia',
+    'FL' => 'Florida',
+    'GA' => 'Georgia',
+    'GU' => 'Guam',
+    'HI' => 'Hawaii',
+    'ID' => 'Idaho',
+    'IL' => 'Illinois',
+    'IN' => 'Indiana',
+    'IA' => 'Iowa',
+    'KS' => 'Kansas',
+    'KY' => 'Kentucky',
+    'LA' => 'Louisiana',
+    'ME' => 'Maine',
+    'MH' => 'Marshall Islands',
+    'MD' => 'Maryland',
+    'MA' => 'Massachusetts',
+    'MI' => 'Michigan',
+    'MN' => 'Minnesota',
+    'MS' => 'Mississippi',
+    'MO' => 'Missouri',
+    'MT' => 'Montana',
+    'NE' => 'Nebraska',
+    'NV' => 'Nevada',
+    'NH' => 'New Hampshire',
+    'NJ' => 'New Jersey',
+    'NM' => 'New Mexico',
+    'NY' => 'New York',
+    'NC' => 'North Carolina',
+    'ND' => 'North Dakota',
+    'OH' => 'Ohio',
+    'OK' => 'Oklahoma',
+    'OR' => 'Oregon',
+    'PW' => 'Palau',
+    'PA' => 'Pennsylvania',
+    'PR' => 'Puerto Rico',
+    'RI' => 'Rhode Island',
+    'SC' => 'South Carolina',
+    'SD' => 'South Dakota',
+    'TN' => 'Tennessee',
+    'TX' => 'Texas',
+    'UT' => 'Utah',
+    'VT' => 'Vermont',
+    'VI' => 'Virgin Island',
+    'VA' => 'Virginia',
+    'WA' => 'Washington',
+    'WV' => 'West Virginia',
+    'WI' => 'Wisconsin',
+    'WY' => 'Wyoming'
+  }
+
   def find_salon
     if params[:query]
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
@@ -107,6 +168,33 @@ class LocationsController < PublicWebsiteController
     else
       redirect_to :locations
     end
+  end
+
+  def usa
+    results = Geocoder.search(request.remote_ip)
+    p "results=#{results.inspect}"
+    if results && results.length > 0
+      result = results.first
+      p "result=#{result.city}, #{result.state}, #{result.latitude}, #{result.longitude}"
+      if result && result.state.present?
+        p "redirect1"
+        p "STATE_ABBR_TO_NAME=#{STATE_ABBR_TO_NAME[result.state]}"
+        redirect_to locations_by_state_path(params.merge({:state => STATE_ABBR_TO_NAME[result.state]})), :status => 301
+      else
+        p "redirect2"
+        redirect_to locations_path(params), :status => 301
+      end
+    else
+      p "redirect3"
+      redirect_to locations_path(params), :status => 301
+    end
+  rescue => e
+    p "redirect4"
+    redirect_to locations_path(params), :status => 301
+  end
+
+  def state_abbr_to_name(abbr)
+
   end
 
   def old_salon

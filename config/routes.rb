@@ -103,6 +103,7 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:url_name" => 'locations#salon', :as => :salon_location
   get "locations/:url_name/contact-us-success" => 'locations#salon'
   match 'find-salon-location' => 'locations#find_salon', :via => [:get, :post], :as => :find_salon_location
+  match 'locations-usa' => 'locations#usa', :via => [:get, :post], :as => :locations_usa
   
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'
