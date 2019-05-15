@@ -43,7 +43,7 @@ class ForgotPasswordController < ApplicationController
         end
       end
     else
-      redirect_to :forgot_password_form, :flash => { :error => "The time alloted to reset your password has expired. Please make a new forgot password request" }
+      redirect_to :forgot_password_form, :flash => { :error => "The time alloted to reset your password has expired. Please make a new forgot password request" }, :status => 301
     end
   end
 end

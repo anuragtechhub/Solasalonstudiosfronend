@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def update_my_sola_catch
     if request.fullpath.end_with?('update_my_sola_website') || request.fullpath.end_with?('update_my_sola_website/')
-      redirect_to 'https://www.solasalonstudios.com/admin', :flash => {:alert => "Update My Sola Website request approved successfully!"} 
+      redirect_to 'https://www.solasalonstudios.com/admin', :flash => {:alert => "Update My Sola Website request approved successfully!"}, :status => 301
     end
   end
 

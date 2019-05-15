@@ -58,7 +58,7 @@ class ContactUsController < PublicWebsiteController
         #end
       end
     else
-      redirect_to :contact_us
+      redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
     render :json => {:success => 'Thank you! We will get in touch soon'}
@@ -99,7 +99,7 @@ class ContactUsController < PublicWebsiteController
         render :json => {:error => 'Please enter your name, a valid email address and phone number'}
       end
     else
-      redirect_to :contact_us
+      redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
     render :json => {:success => 'Thank you! We will get in touch soon'}
@@ -121,7 +121,7 @@ class ContactUsController < PublicWebsiteController
         render :json => {:error => 'Please enter your name, a valid email address and phone number'}
       end
     else
-      redirect_to :contact_us
+      redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
     render :json => {:success => 'Thank you! We will get in touch soon'}

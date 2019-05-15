@@ -53,7 +53,7 @@ class BooknowController < PublicWebsiteController
       end
     rescue StandardError => e
       p "ERROR WITH THIS CALL - FALLBACK! #{e.inspect}"
-      redirect_to booknow_search_path(:date => params[:date], :location => params[:location], :lat => params[:lat], :lng => params[:lng], :query => params[:query]), :flash => { :error => "There was a problem with your search. Please try again." }
+      redirect_to booknow_search_path(:date => params[:date], :location => params[:location], :lat => params[:lat], :lng => params[:lng], :query => params[:query]), :flash => { :error => "There was a problem with your search. Please try again." }, :status => 301
       # @professionals = JSON.parse(fallback_results_response)
       @date = DateTime.parse(params[:date]) || DateTime.now
       # #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)

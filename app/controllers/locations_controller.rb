@@ -38,7 +38,7 @@ class LocationsController < PublicWebsiteController
 
     unless @msa
       @msa = Msa.find_by(:url_name => params[:url_name].split('_').join('-'))
-      redirect_to region_path(:url_name => @msa.url_name) if @msa
+      redirect_to(region_path(:url_name => @msa.url_name), :status => 301) if @msa
     end
 
     if I18n.locale == :en
@@ -51,7 +51,7 @@ class LocationsController < PublicWebsiteController
       @locations = @all_locations.where('msa_id = ?', @msa.id)
       params[:state] = @locations.first.state
     else
-      redirect_to :locations
+      redirect_to :locations, :status => 301
     end
   end
 
@@ -72,7 +72,7 @@ class LocationsController < PublicWebsiteController
       @locations.uniq!
       @locations.sort! { |a, b| a.name <=> b.name }
     end
-    redirect_to :locations unless @locations.size > 0 && @lat && @lng
+    redirect_to(:locations, :status => 301) unless @locations.size > 0 && @lat && @lng
   end
 
   def state
@@ -92,7 +92,7 @@ class LocationsController < PublicWebsiteController
       @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA')#.where.not(:id => 362)
     end
     
-    redirect_to :locations unless @locations.size > 0 && @lat && @lng
+    redirect_to(:locations, :status => 301) unless @locations.size > 0 && @lat && @lng
   end
 
   def salon
@@ -105,7 +105,7 @@ class LocationsController < PublicWebsiteController
       @zoom = 14
       @locations = [@location]
     else
-      redirect_to :locations
+      redirect_to :locations, :status => 301
     end
   end
 
@@ -131,16 +131,16 @@ class LocationsController < PublicWebsiteController
   end
 
   def old_salon
-    redirect_to salon_location_path(:url_name => params[:url_name].split('_').join('-'))
+    redirect_to salon_location_path(:url_name => params[:url_name].split('_').join('-')), :status => 301
   end
 
   def salon_redirect
     @location = Location.find_by(:url_name => params[:url_name])
     
     if @location && @location.state && @location.city
-      redirect_to salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, '')
+      redirect_to salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, ''), :status => 301
     else
-      redirect_to :locations
+      redirect_to :locations, :status => 301
     end
   end
 
@@ -159,7 +159,7 @@ class LocationsController < PublicWebsiteController
       @zoom = 14
       @locations = [@location]
     else
-      redirect_to :locations
+      redirect_to :locations, :status => 301
     end
   end
 
@@ -170,7 +170,7 @@ class LocationsController < PublicWebsiteController
 
   # custom location redirects
   def sixthaveredirect
-    redirect_to 'https://www.solasalonstudios.com/locations/tacoma-6th-avenue'
+    redirect_to 'https://www.solasalonstudios.com/locations/tacoma-6th-avenue', :status => 301
   end
 
   private 

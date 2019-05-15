@@ -18,27 +18,27 @@ class OwnYourSalonController < PublicWebsiteController
 	# redirects for old urls
 
   def index
-  	redirect_to :why_sola
+  	redirect_to :why_sola, :status => 301
   end
 
   def own_your_salon
-  	redirect to :why_sola
+  	redirect to :why_sola, :status => 301
   end
 
   def old_sola_pro
-  	redirect_to :sola_pro
+  	redirect_to :sola_pro, :status => 301
   end
 
   def old_solagenius
-  	redirect_to :solagenius
+  	redirect_to :solagenius, :status => 301
   end
 
   def old_sola_sessions
-  	redirect_to :sola_sessions
+  	redirect_to :sola_sessions, :status => 301
   end
 
   def studio_amenities
-  	redirect_to :our_studios
+  	redirect_to :our_studios, :status => 301
   end
 
 end
