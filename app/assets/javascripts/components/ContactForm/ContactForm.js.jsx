@@ -61,7 +61,7 @@ var ContactForm = React.createClass({
 		
 		return (
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
-				<h2>{I18n.t('contact_form.contact_a_sola_near_you')}</h2>
+				<h2>{this.props.title}</h2>
 
 				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
@@ -149,8 +149,14 @@ var ContactForm = React.createClass({
 						</div>
 					</div>
 
-					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{I18n.t("contact_form.submit_message")}</button>
+					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{this.props.submit_button_text}</button>
 					
+					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')} style={{marginBottom: '-5px', marginTop: '5px'}}>
+						<label>
+							<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.i_would_like_to_be_contacted')}
+						</label>
+					</div>
+
 					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
 						<label>
 							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.subscribe_to_newsletter')}
