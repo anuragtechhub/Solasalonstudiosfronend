@@ -68,6 +68,7 @@ gem 'rails_admin_example_theme', :git => 'git://github.com/bbenezech/rails_admin
 gem 'paper_trail', '~> 3.0.6'
 
 gem 'geocoder'
+gem 'geokit-rails'
 gem 'area'
 
 gem 'htmlcompressor'

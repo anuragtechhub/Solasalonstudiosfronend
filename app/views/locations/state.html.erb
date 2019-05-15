@@ -8,28 +8,26 @@
 <div class="container content-container">
   <div class="row">
 
-    <div class="row">
-      <div class="six columns locations-hero">
-          <h2><%= t('page.locations.find_a_sola_location').html_safe %></h2>
-          <h3 class="subtle">&nbsp;</h3>
-      </div>
+    <div class="six columns locations-hero">
+        <h2><%= t('page.locations.find_a_sola_location').html_safe %></h2>
+        <h3 class="subtle">&nbsp;</h3>
+    </div>
 
-      <div class="six columns text-right">
-        <% if I18n.locale.to_s != 'pt-BR' %>
-          <div class="sola-select">
-            <div class="row">
-              <div class="option-placeholder"><h3><%= params[:state] || t('page.locations.select_a_state').html_safe %></h3></div>
-              <div class="arrow"><span class="ss-dropdown"></span></div>
-            </div>
-            <div class="options">
-              <div class="option" data-value="<%= locations_path() %>"><%= t('page.locations.all_locations').html_safe %></div>
-              <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
-              <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(beautify_url_segment(location.state.downcase)) :  locations_by_province_path(beautify_url_segment(location.state.downcase)) %>"><%= location.state %></div>
-              <% end %>
-            </div>
+    <div class="six columns text-right">
+      <% if I18n.locale.to_s != 'pt-BR' %>
+        <div class="sola-select">
+          <div class="row">
+            <div class="option-placeholder"><h3><%= params[:state] || t('page.locations.select_a_state').html_safe %></h3></div>
+            <div class="arrow"><span class="ss-dropdown"></span></div>
           </div>
-        <% end %>
-      </div>
+          <div class="options">
+            <div class="option" data-value="<%= locations_path() %>"><%= t('page.locations.all_locations').html_safe %></div>
+            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(beautify_url_segment(location.state.downcase)) :  locations_by_province_path(beautify_url_segment(location.state.downcase)) %>"><%= location.state %></div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
     
   </div>
