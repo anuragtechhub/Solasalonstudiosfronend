@@ -12,6 +12,7 @@ var ContactForm = React.createClass({
 			newsletter: true,
 			loading: false,
 			how_can_we_help_you: I18n.t('contact_form.request_leasing_information'),
+			i_would_like_to_be_contacted: true,
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -151,7 +152,7 @@ var ContactForm = React.createClass({
 
 					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{this.props.submit_button_text}</button>
 					
-					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')} style={{marginBottom: '-5px', marginTop: '5px'}}>
+					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
 						<label>
 							<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.i_would_like_to_be_contacted')}
 						</label>
@@ -223,6 +224,7 @@ var ContactForm = React.createClass({
     	email: this.state.email,
     	contact_preference: this.capitalize(this.state.contact_preference),
     	how_can_we_help_you: this.state.how_can_we_help_you,
+    	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
     	phone: this.state.phone,
     	message: this.state.message,
     	request_url: this.props.request_url,
