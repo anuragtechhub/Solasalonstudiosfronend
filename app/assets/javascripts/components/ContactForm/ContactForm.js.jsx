@@ -159,7 +159,7 @@ var ContactForm = React.createClass({
 						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
 					</div>
 
-					{this.renderContactPreference()}
+					{this.props.display_i_would_like_to_be_contacted ? null : this.renderContactPreference()}
 
 					<button className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
@@ -176,6 +176,8 @@ var ContactForm = React.createClass({
 						:
 						null
 					}
+
+					{this.props.display_i_would_like_to_be_contacted && this.state.i_would_like_to_be_contacted ? <div className="contact-preference-bottom">{this.renderContactPreference()}</div> : null}
 
 					<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<label>

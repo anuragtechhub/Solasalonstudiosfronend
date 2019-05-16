@@ -233,6 +233,20 @@
     }
   }
 
+  .contact-preference-bottom {
+    margin-top: 15px;
+    border-top: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+
+    .contact-preference {
+      margin-bottom: 10px;
+    }
+
+    label.label, .form-inline label {
+      font-size: 11px;
+    }
+  }
+
 	.loading {
     position: absolute;
     top: 0;
