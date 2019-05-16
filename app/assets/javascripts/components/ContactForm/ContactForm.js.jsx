@@ -208,8 +208,6 @@ var ContactForm = React.createClass({
 		if (e.target.name == 'dont_see_your_location' && value == true) {
 			this.state.selected_location = null;
 			this.state.selected_location_name = null;
-		} else if (e.target.name == 'selected_location' && value) {
-			this.state.dont_see_your_location = false;
 		}
 
 		this.setState(this.state);
@@ -222,12 +220,12 @@ var ContactForm = React.createClass({
 
 	onChangeSelectedLocation: function (value, name) {
 		//console.log('onChangeSelectedLocation', value, name);
-		this.setState({selected_location: value, selected_location_name: name});
+		this.setState({selected_location: value, selected_location_name: name, dont_see_your_location: false});
 	}, 
 
 	onChangeSelectedState: function (value) {
 		//console.log('onChangeSelectedState', value);
-		this.setState({selected_state: value, selected_location: null, selected_location_name: null});
+		this.setState({selected_state: value, selected_location: null, selected_location_name: null, dont_see_your_location: false});
 	}, 
 
 	onSubmit: function (e) {
