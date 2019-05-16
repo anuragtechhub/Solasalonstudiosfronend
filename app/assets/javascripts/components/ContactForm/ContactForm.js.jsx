@@ -159,14 +159,7 @@ var ContactForm = React.createClass({
 						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
 					</div>
 
-					<div className={"form-group contact-preference " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
-						<label>{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
-						<div className="form-inline">
-							<label><input type="radio" className="form-control" name="contact_preference" value="phone" checked={this.state.contact_preference == 'phone'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Phone</label>
-							<label><input type="radio" className="form-control" name="contact_preference" value="email" checked={this.state.contact_preference == 'email'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Email</label>
-							<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Text</label>
-						</div>
-					</div>
+					{this.renderContactPreference()}
 
 					<button className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
@@ -175,7 +168,9 @@ var ContactForm = React.createClass({
 						?
 						<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
 							<label>
-								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.i_would_like_to_be_contacted')}
+								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
+								<span className="text">{I18n.t('contact_form.i_would_like_to_be_contacted')}</span>
+								<div className="clearfix">&nbsp;</div>
 							</label>
 						</div>
 						:
@@ -184,12 +179,27 @@ var ContactForm = React.createClass({
 
 					<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<label>
-							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.subscribe_to_newsletter')}
+							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
+							<span className="text">{I18n.t('contact_form.subscribe_to_newsletter')}</span>
+							<div className="clearfix">&nbsp;</div>
 						</label>
 					</div>
 
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
 				</form>
+			</div>
+		);
+	},
+
+	renderContactPreference: function () {
+		return (
+			<div className={"form-group contact-preference " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
+				<label className="label">{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
+				<div className="form-inline">
+					<label><input type="radio" className="form-control" name="contact_preference" value="phone" checked={this.state.contact_preference == 'phone'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Phone</label>
+					<label><input type="radio" className="form-control" name="contact_preference" value="email" checked={this.state.contact_preference == 'email'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Email</label>
+					<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Text</label>
+				</div>
 			</div>
 		);
 	},

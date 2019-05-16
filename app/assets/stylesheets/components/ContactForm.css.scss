@@ -119,42 +119,6 @@
 		pointer-events: none;
 	}
 
-  .contact-preference {
-    margin-top: 10px;
-    margin-bottom: 15px;
-
-    &.disabled {
-      opacity: 0.65;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    label {
-      font-size: 13px;
-      margin: 0 0 5px 0;
-    }
-
-    .form-inline {
-      label {
-        font-size: 12px;
-        line-height: 12px;
-        margin: 0 10px 0 0;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-
-      input {
-        position: relative;
-        top: -1px;
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-      }
-    }
-  }
-
   .how-can-we-help-you {
     &.disabled {
       opacity: 0.65;
@@ -198,7 +162,7 @@
     }
   }
 
-  .newsletter {
+  .newsletter, .contact-preference {
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 11px;
@@ -209,13 +173,64 @@
       pointer-events: none;
     }
 
+    label {
+      display: block;
+    }
+
     input {
+      float: left;
       position: relative;
       top: 2px;
       width: 16px;
       height: 16px;
       margin-right: 2px;
     }    
+
+    .clearfix {
+      height: 1px;
+      line-height: 1px;
+    }
+
+    .text {
+      display: block;
+      float: left;
+      clear: none;
+      width: calc(100% - 40px);
+      margin-left: 5px;
+      line-height: 13px;
+      margin-top: 3px;
+    }
+  }
+
+  .contact-preference {
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    label.label {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .form-inline {
+
+      label {
+        font-size: 12px;
+        line-height: 12px;
+        margin: 0 10px 0 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      input {
+        position: relative;
+        top: -3px;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+      }
+    }
   }
 
 	.loading {
