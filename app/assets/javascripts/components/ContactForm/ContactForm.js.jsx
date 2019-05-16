@@ -312,6 +312,7 @@ var ContactForm = React.createClass({
     	phone: this.state.phone,
     	message: this.state.message,
     	request_url: this.props.request_url,
+    	services: this.state.selected_services.join(', ')
 		};
 
 		//console.log('form_data', form_data);

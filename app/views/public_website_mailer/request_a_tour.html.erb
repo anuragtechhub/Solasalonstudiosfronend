@@ -14,6 +14,9 @@
 <% if @inquiry.how_can_we_help_you.present? %>
   <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
 <% end %>
+<% if @inquiry.services.present? %>
+	<p><strong>Services:</strong> <%= @inquiry.services %></p>
+<% end %>
 <% if @inquiry.message.present? %>
   <p><strong>Message:</strong> <%= @inquiry.message %></p>
 <% end %>

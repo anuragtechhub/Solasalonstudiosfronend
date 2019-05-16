@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190516223318) do
+ActiveRecord::Schema.define(version: 20190516235349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -453,6 +453,7 @@ ActiveRecord::Schema.define(version: 20190516223318) do
     t.text     "how_can_we_help_you"
     t.boolean  "i_would_like_to_be_contacted", default: true
     t.boolean  "dont_see_your_location",       default: false
+    t.text     "services"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
