@@ -17,6 +17,7 @@ var ContactForm = React.createClass({
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
+			selected_services: [],
 		};
 	},
 
@@ -104,6 +105,17 @@ var ContactForm = React.createClass({
 					<div className="form-group"> 
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
+
+					{
+						this.props.display_service_checkboxes
+						?
+						<div className="service-checkboxes">
+							{this.renderServiceCheckboxes()}
+							<div className="clearfix">&nbsp;</div>
+						</div>
+						: 
+						null
+					}
 
 					{
 						this.props.display_i_would_like_to
@@ -206,6 +218,24 @@ var ContactForm = React.createClass({
 		);
 	},
 
+	renderServiceCheckboxes: function () {
+		var self = this;
+		var services = ['Hair', 'Skincare', 'Makeup', 'Massage', 'Nails', 'Other (please specify with open form field)'];
+
+		var servicesRendered = services.map(function (service) {
+			return (
+				<label key={service}>
+					<input type="checkbox" name="selected_services" value={service} checked={self.state.selected_services.indexOf(service) != -1} onChange={self.onChangeInput} disabled={!self.state.selected_state || (!self.state.selected_location && !self.state.dont_see_your_location)} /> 
+					<span className="text">{service}</span>
+				</label>
+			);
+		});
+
+		return (
+			<div className="services">{servicesRendered}></div>
+		);
+	},
+
 
 
 	/**
@@ -213,7 +243,7 @@ var ContactForm = React.createClass({
 	*/
 
 	onChangeInput: function (e) {
-		//console.log('onChangeInput', e.target.name, e.target.value);
+		console.log('onChangeInput', e.target.name, e.target.value);
 		var value = e.target.type == 'checkbox' ? e.target.checked : e.target.value;
 		this.state[e.target.name] = value;
 
@@ -284,7 +314,7 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
 				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
