@@ -109,7 +109,7 @@ var ContactForm = React.createClass({
 					{
 						this.props.display_service_checkboxes
 						?
-						<div className="service-checkboxes">
+						<div className={"service-checkboxes " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 							{this.renderServiceCheckboxes()}
 							<div className="clearfix">&nbsp;</div>
 						</div>
@@ -232,7 +232,7 @@ var ContactForm = React.createClass({
 		});
 
 		return (
-			<div className="services">{servicesRendered}></div>
+			<div className="services">{servicesRendered}</div>
 		);
 	},
 
@@ -243,14 +243,25 @@ var ContactForm = React.createClass({
 	*/
 
 	onChangeInput: function (e) {
-		console.log('onChangeInput', e.target.name, e.target.value);
+		//console.log('onChangeInput', e.target.name, e.target.value);
 		var value = e.target.type == 'checkbox' ? e.target.checked : e.target.value;
-		this.state[e.target.name] = value;
+		
 
 		if (e.target.name == 'dont_see_your_location' && value == true) {
 			this.state.selected_location = null;
 			this.state.selected_location_name = null;
+			this.state[e.target.name] = value;
+		} else if (e.target.name == 'selected_services') {
+			if (value == true && this.state.selected_services.indexOf(e.target.value) == -1) {
+				this.state.selected_services.push(e.target.value);
+			} else if (value == false) {
+				this.state.selected_services.splice(this.state.selected_services.indexOf(e.target.value), 1);
+			}
+		} else {
+			this.state[e.target.name] = value;
 		}
+
+		//console.log('this.state.selected_services', this.state.selected_services);
 
 		this.setState(this.state);
 	},

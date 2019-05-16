@@ -247,6 +247,42 @@
     }
   }
 
+  .service-checkboxes {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 11px;
+    
+    &.disabled {
+      opacity: 0.65;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    label {
+      margin-right: 20px;
+      font-size: 12px;
+    }
+
+    input {
+      position: relative;
+      top: 1px;
+      width: 16px;
+      height: 16px;
+      margin-right: 0;
+    }    
+
+    .clearfix {
+      height: 1px;
+      line-height: 1px;
+    }
+
+    .text {
+      margin-left: 5px;
+      line-height: 13px;
+      margin-top: 3px;
+    }
+  }
+
 	.loading {
     position: absolute;
     top: 0;
