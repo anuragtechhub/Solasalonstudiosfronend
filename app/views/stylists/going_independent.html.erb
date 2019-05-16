@@ -71,7 +71,12 @@
                   <small>Complete this form to get your free guide.</small>
                       </div>
                   <div class="guide-in-rgt col-md-6">
-                    <%= render 'shared/contact_form_component', :title => 'Get My Copy', :submit_button_text => 'Send Me The Special Report' %>
+                    <%= render 'shared/contact_form_component', {
+                      :title => 'Get My Copy', 
+                      :submit_button_text => 'Send Me The Special Report', 
+                      :display_i_would_like_to => false, 
+                      :display_i_would_like_to_be_contacted => true }
+                    %>
                   </div>
               </div>
               </div>

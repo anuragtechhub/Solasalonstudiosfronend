@@ -98,7 +98,7 @@ en:
     your_name: Your Name
     email_address: Email Address
     phone_number: Phone Number
-    leave_a_message: Leave a Message
+    leave_a_message: Leave a Message (Optional)
     submit_message: Submit Message
     how_can_we_help_you: How can we help you?
     request_leasing_information: Request leasing information
