@@ -69,7 +69,7 @@ class ContactUsController < PublicWebsiteController
       if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
         unless banned_ip_addresses.include? request.remote_ip
-          rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url], :contact_preference => params[:contact_preference], :how_can_we_help_you => params[:how_can_we_help_you], :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted])
+          rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url], :contact_preference => params[:contact_preference], :how_can_we_help_you => params[:how_can_we_help_you], :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted], :dont_see_your_location => params[:dont_see_your_location])
           rti.visit = save_visit
           rti.save
 

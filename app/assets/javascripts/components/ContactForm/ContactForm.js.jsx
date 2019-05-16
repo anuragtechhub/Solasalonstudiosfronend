@@ -11,6 +11,7 @@ var ContactForm = React.createClass({
 			success: null,
 			newsletter: true,
 			loading: false,
+			dont_see_your_location: false,
 			how_can_we_help_you: I18n.t('contact_form.request_leasing_information'),
 			i_would_like_to_be_contacted: true,
 			selected_location: this.props.selected_location,
@@ -64,14 +65,16 @@ var ContactForm = React.createClass({
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				<h2>{this.props.title}</h2>
 
-				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || !this.state.selected_location} ref="form">
+				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
 					<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 					
 					{
 						this.state.selected_state 
-						? 
-						<SolaSelect className="location-select" 
+						?
+						<div className="row">
+							<div className="six columns"> 
+								<SolaSelect className="location-select" 
 												displayName={true} 
 												filteredBy={this.state.selected_state}
 												placeholder={I18n.t('contact_form.select_a_location')} 
@@ -79,34 +82,43 @@ var ContactForm = React.createClass({
 												name={this.state.selected_location_name} 
 												value={this.state.selected_location} 
 												onChange={this.onChangeSelectedLocation} /> 
+							</div>
+							<div className="six columns">
+								<div className="dont-see-your-location">
+									<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
+								</div>
+							</div>
+						</div>
 						: 
 						null
 					}
 
+
+
 					<div className="form-group" ref="first_input">
-						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
+						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
 					<div className="form-group">
-						<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || !this.state.selected_location} />
+						<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} />
 					</div>
 					<div className="form-group"> 
-						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || !this.state.selected_location} /> 
+						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
 
 					{
 						this.props.display_i_would_like_to
 						?
-						<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+						<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 							<label>{I18n.t('contact_form.i_would_like_to')}</label>
 							<div className="form-inline-rows">
 								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.request_leasing_information')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.request_leasing_information')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.request_leasing_information')}</label>
+									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.request_leasing_information')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.request_leasing_information')} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.request_leasing_information')}</label>
 								</div>
 								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.book_an_appointment')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.book_an_appointment')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.book_an_appointment')}</label>
+									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.book_an_appointment')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.book_an_appointment')} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.book_an_appointment')}</label>
 								</div>
 								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.other')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.other')} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.other')}</label>
+									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.other')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.other')} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.other')}</label>
 								</div>
 							</div>
 							{/*<SolaSelect className="how_can_we_help_you-select" 
@@ -133,7 +145,7 @@ var ContactForm = React.createClass({
 													onChange={this.onChangeHowCanWeHelpYou}
 													tabIndex={0} />*/}
 			
-							{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location}>
+							{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>
 								<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
 								<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
 								<option value="other">{I18n.t('contact_form.other')}</option>
@@ -143,36 +155,36 @@ var ContactForm = React.createClass({
 						null
 					}
 
-					<div className={"form-group " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
-						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || !this.state.selected_location}></textarea> 
+					<div className={"form-group " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
+						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
 					</div>
 
-					<div className={"form-group contact-preference " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+					<div className={"form-group contact-preference " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<label>{I18n.t('contact_form.how_would_you_prefer_to_be_counted')}</label>
 						<div className="form-inline">
-							<label><input type="radio" className="form-control" name="contact_preference" value="phone" checked={this.state.contact_preference == 'phone'} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> Phone</label>
-							<label><input type="radio" className="form-control" name="contact_preference" value="email" checked={this.state.contact_preference == 'email'} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> Email</label>
-							<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> Text</label>
+							<label><input type="radio" className="form-control" name="contact_preference" value="phone" checked={this.state.contact_preference == 'phone'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Phone</label>
+							<label><input type="radio" className="form-control" name="contact_preference" value="email" checked={this.state.contact_preference == 'email'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Email</label>
+							<label><input type="radio" className="form-control" name="contact_preference" value="text"  checked={this.state.contact_preference == 'text'} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> Text</label>
 						</div>
 					</div>
 
-					<button className="button block primary" disabled={!this.state.selected_state || !this.state.selected_location}>{this.props.submit_button_text}</button>
+					<button className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
 					{
 						this.props.display_i_would_like_to_be_contacted 
 						?
-						<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
+						<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
 							<label>
-								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.i_would_like_to_be_contacted')}
+								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.i_would_like_to_be_contacted')}
 							</label>
 						</div>
 						:
 						null
 					}
 
-					<div className={"form-group newsletter " + (!this.state.selected_state || !this.state.selected_location ? 'disabled' : '')}>
+					<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<label>
-							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || !this.state.selected_location} /> {I18n.t('contact_form.subscribe_to_newsletter')}
+							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> {I18n.t('contact_form.subscribe_to_newsletter')}
 						</label>
 					</div>
 
@@ -192,6 +204,14 @@ var ContactForm = React.createClass({
 		//console.log('onChangeInput', e.target.name, e.target.value);
 		var value = e.target.type == 'checkbox' ? e.target.checked : e.target.value;
 		this.state[e.target.name] = value;
+
+		if (e.target.name == 'dont_see_your_location' && value == true) {
+			this.state.selected_location = null;
+			this.state.selected_location_name = null;
+		} else if (e.target.name == 'selected_location' && value) {
+			this.state.dont_see_your_location = false;
+		}
+
 		this.setState(this.state);
 	},
 
@@ -235,6 +255,7 @@ var ContactForm = React.createClass({
     	name: this.state.name,
     	email: this.state.email,
     	contact_preference: this.capitalize(this.state.contact_preference),
+    	dont_see_your_location: this.state.dont_see_your_location,
     	how_can_we_help_you: this.state.how_can_we_help_you,
     	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
     	phone: this.state.phone,
@@ -253,7 +274,7 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
 				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
