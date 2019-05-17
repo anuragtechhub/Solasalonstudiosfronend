@@ -2,7 +2,7 @@
   all_states: JSON.parse(all_states_json),
   all_locations: JSON.parse(all_locations_msas_json),
   contact_us_path: contact_us_request_a_tour_path,
-  display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : false,
+  display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : true,
   display_i_would_like_to: defined?(display_i_would_like_to) ? display_i_would_like_to : true,
   display_i_would_like_to_be_contacted: defined?(display_i_would_like_to_be_contacted) ? display_i_would_like_to_be_contacted : false,
   request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
