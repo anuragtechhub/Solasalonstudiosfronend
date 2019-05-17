@@ -35,7 +35,10 @@ class RequestTourInquiry < ActiveRecord::Base
         location_id: self.location_id || '',
         hs_persona: 'persona_2',
         how_can_we_help_you: self.how_can_we_help_you,
-        would_you_like_to_subscribe_to_our_newsletter_: self.newsletter
+        would_you_like_to_subscribe_to_our_newsletter_: self.newsletter,
+        i_would_like_to_be_contacted: self.i_would_like_to_be_contacted,
+        dont_see_your_location: self.dont_see_your_location,
+        services: self.services,
       })
     else
       p "No HUBSPOT API KEY, no sync"
