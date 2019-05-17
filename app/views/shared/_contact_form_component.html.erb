@@ -6,6 +6,7 @@
   display_i_would_like_to: defined?(display_i_would_like_to) ? display_i_would_like_to : true,
   display_i_would_like_to_be_contacted: defined?(display_i_would_like_to_be_contacted) ? display_i_would_like_to_be_contacted : false,
   request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
+  send_email_to_prospect: defined?(send_email_to_prospect) ? send_email_to_prospect : '',
   submit_button_text: defined?(submit_button_text) ? submit_button_text : I18n.t("contact_form.submit_message"),
   title: defined?(title) ? title : I18n.t('contact_form.contact_a_sola_near_you'),
 } %>
