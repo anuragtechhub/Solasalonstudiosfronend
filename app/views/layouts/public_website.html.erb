@@ -36,7 +36,7 @@
 
   <%= render 'shared/public_website/google_tag_manager_body' %>
 
-  <%= render 'shared/public_website/header' %>
+  <%= render 'shared/public_website/header' unless @no_header %>
   <div class="body-content"><%= yield %></div>
   <%= render 'shared/public_website/footer' %>
 

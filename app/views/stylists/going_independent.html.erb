@@ -1,0 +1,207 @@
+
+      <!-- wrapper starts here-->
+      <div class="sidebar"></div>
+      <div class="wrapper">
+         <!-- header starts here-->
+         <header >
+           <div class="header">
+             <div class="container">
+               <div class="header-in">
+                 <div class="logo">
+                   <a href="https://www.solasalonstudios.com"><%= image_tag "goingindependent/logo.png", :alt => "img", :width => "88", :height => "52" %></a>
+                   </div>
+                 </div>
+               </div>
+             </div>
+         </header>
+         <!-- header ends here-->
+         <!-- banner starts here-->
+          <!-- Salon starts here -->
+         <div class="Salon">
+          <div class="Salon-in d-flex flex-wrap">
+            <div class="Salon-in-lft  p-0 col-md-6">
+                <div class="Salon-in-lft-in">
+              <div class="Salon-cont">
+                <h1>Everything You Need to Know About Becoming an Independent Salon Owner </h1>
+                </div>
+              </div>
+                </div>
+              <div class="Salon-in-rgt col-md-6">
+                  <div class="Salon-in-rgt-blk">
+              <figure>
+                  <%= image_tag "goingindependent/img3.png", :alt => "img", :width => "301", :height => "363" %>
+                  </figure>
+                      </div>
+              </div>
+            </div>
+          </div>
+           <!-- Salon ends here -->
+         <!-- banner ends  here-->
+         <!-- main starts here -->
+         <div class="main-cont">
+           <!-- Curious starts here -->
+          <div class="Curious">
+          <div class="container">
+              <div class="Curious-in">
+                  <ul>
+                    <li>Intrigued by the idea of being your own boss?</li>
+                    <li>Curious about what it takes to run your business in a salon studio?</li>
+                    <li>Wondering if the solo artist life is right for you?</li>
+                  </ul>
+              </div>
+              </div>
+          </div>
+           <!-- Curious ends here -->
+             <!-- guide starts here -->
+          <div class="guide">
+          <div class="container">
+              <div class="guide-in d-flex flex-wrap">
+                  <div class="guide-in-lft col-md-6">
+              <h3>Be your own boss:</h3>
+                  <p>Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about freedom and control.
+                  </p>
+                  <span>In this guide to going independent, we will walk you through:</span>
+                  <ul>
+                    <li>The rise of the independent movement</li>
+                    <li>How to know if a salon studio is right for you</li>
+                    <li>Things to look for when considering a salon studio</li>
+                    <li>Steps to getting started as an independent salon owner</li>
+                    <li>Tips for building your culture and salon marketing</li>
+                  </ul>
+                  <small>Complete this form to get your free guide.</small>
+                      </div>
+                  <div class="guide-in-rgt col-md-6">
+                    <%= render 'shared/contact_form_component', {
+                      :title => 'Get My Copy', 
+                      :submit_button_text => 'Send Me The Special Report', 
+                      :display_i_would_like_to => false, 
+                      :display_i_would_like_to_be_contacted => true,
+                      :display_service_checkboxes => true,
+                      :send_email_to_prospect => 'modern_salon_2019_05' }
+                    %>
+                  </div>
+              </div>
+              </div>
+           </div>
+           <!-- guide ends here -->
+           <!-- perks starts here -->
+      <div class="sola-benefits">
+        <div class="container">
+      
+        <h2 class="text-center"><%= t('page.why_sola.beautiful_studios_exclusive_perks').html_safe %></h2>
+        <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
+      
+      <div class="row">
+        <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
+          <%= link_to :our_studios, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <% if I18n.locale.to_s == 'pt-BR' %>
+                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/OurStudios.jpg' %>
+              <% end %>
+              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.beautiful_studios') %></span></div>
+            </div>
+            <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>
+          <% end %>
+        </div>
+        <% if I18n.locale.to_s != 'pt-BR' %>
+          <div class="columns four">
+            <%= link_to :blog, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/Community_Support.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
+              </div>
+              <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="columns four">
+          <%= link_to 'https://www.solasalonstudios.com/blog/is-it-time-to-update-your-sola-website', :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/Webpage.jpg' %>
+              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span></div>
+            </div>
+            <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
+          <% end %>
+        </div>        
+      </div>
+
+      <div class="row">
+        <div class="<% if I18n.locale.to_s != 'en' %>offset-by-two<% end %> columns four">
+          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <% if I18n.locale.to_s == 'en' %>
+                <%= image_tag 'WhySola/SolaPro.jpg' %>
+              <% else %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+              <% end %>
+              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_pro') %></span></div>
+            </div>
+            <span class="text"><%= t('page.why_sola.sola_pro_text') %></span>
+          <% end %>
+        </div>
+        <div class="columns four">
+          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
+            <div class="img-wrap">
+              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_sessions') %></span></div>
+            </div>
+            <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
+          <% end %>
+        </div>
+        <% if I18n.locale.to_s == 'en' %>
+          <div class="columns four">
+            <%= link_to :solagenius, :class => 'benefit-tile' do %>
+              <div class="img-wrap">
+                <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
+              </div>
+              <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
+            <% end %>
+          </div>  
+        <% end %>      
+      </div>
+
+    </div> <!-- container -->
+  </div> <!-- sola-benefits -->
+              <!-- perks ends here -->
+               <!-- hashtag  starts here -->
+             <div class="hashtag">
+             <div class="container">
+                 <div class="hashtag-in">
+                    <a href="https://www.instagram.com/explore/tags/mysola/?hl=en"><%= image_tag "goingindependent/icon.png", :alt => "img", :width => "13", :height => "13" %> #MySola</a>
+                     <p>Check out the hashtag <span>#MySola</span> on Instagram to see what Sola pros have to say!</p>
+                 </div>
+                 </div>
+             </div>
+                <!-- hashtag  ends here -->
+              <!-- watch starts here -->
+             <div class="watch">
+              <figure>
+                 <%= image_tag "https://s3.amazonaws.com/solasalonstudios/mysola_contact_bg.jpg", :alt => "img", :class => 'u-full-width' %>
+                 </figure>
+                 <div class="watch-in">
+                 <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video" rel="72pips9fvwQ"><%= image_tag "goingindependent/vedio-icon.png", :alt => "img", :width => "48", :height => "49" %></a>
+                     <p>Watch our video to see what 
+                        people are saying about #MySola</p>
+                 </div>
+             </div>
+                <!-- watch ends here -->
+             </div>
+         <!-- main ends here-->
+         <!--footer starts here-->
+         <footer>
+         </footer>
+         <!--footer ends here-->
+        </div>
+      <!-- wrapper ends here-->
+
+
+<% content_for(:scripts) { javascript_include_tag('goingindependent') } %>
+<% content_for(:stylesheets) do %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "public_website/goingindependent", media: "all" %>
+<% end %>
+<% content_for(:title) { "Everything You Need to Know About Becoming an Independent Salon Owner" } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.com/goingindependent" } %>

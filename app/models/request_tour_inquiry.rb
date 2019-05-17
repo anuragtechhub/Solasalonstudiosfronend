@@ -4,7 +4,7 @@ class RequestTourInquiry < ActiveRecord::Base
   
   belongs_to :location
   belongs_to :visit
-  after_create :send_notification_email, :sync_with_hubspot
+  after_create :send_notification_email, :send_prospect_email, :sync_with_hubspot
 
   def location_name
     location.display_name if location
@@ -84,7 +84,20 @@ class RequestTourInquiry < ActiveRecord::Base
   private
 
   def send_notification_email
-    email = PublicWebsiteMailer.request_a_tour(self)
-    email.deliver if email
+    if i_would_like_to_be_contacted
+      p "contact me!"
+      email = PublicWebsiteMailer.request_a_tour(self)
+      email.deliver if email
+    else
+      p "do not contact me!"
+    end
+  end
+
+  def send_prospect_email
+    if send_email_to_prospect == 'modern_salon_2019_05'
+      p "send prospect the modern salon 2019_05 email!"
+      email = PublicWebsiteMailer.modern_salon_2019_05(self)
+      email.deliver if email
+    end
   end
 end

@@ -2,6 +2,9 @@ var BookingModalServicesRow = React.createClass({
 
 	render: function () {
 		var self = this;
+		
+		//console.log("this.props.services", this.props.services);
+
 		var services = this.props.services.map(function (service) {
 			return <BookingModalServiceRow key={service.guid} {...self.props} service={service} />
 		});

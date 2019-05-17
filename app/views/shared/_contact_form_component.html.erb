@@ -2,5 +2,11 @@
   all_states: JSON.parse(all_states_json),
   all_locations: JSON.parse(all_locations_msas_json),
   contact_us_path: contact_us_request_a_tour_path,
-  request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+  display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : false,
+  display_i_would_like_to: defined?(display_i_would_like_to) ? display_i_would_like_to : true,
+  display_i_would_like_to_be_contacted: defined?(display_i_would_like_to_be_contacted) ? display_i_would_like_to_be_contacted : false,
+  request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
+  send_email_to_prospect: defined?(send_email_to_prospect) ? send_email_to_prospect : '',
+  submit_button_text: defined?(submit_button_text) ? submit_button_text : I18n.t("contact_form.submit_message"),
+  title: defined?(title) ? title : I18n.t('contact_form.contact_a_sola_near_you'),
 } %>

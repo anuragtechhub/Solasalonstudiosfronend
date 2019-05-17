@@ -29,7 +29,34 @@ class PublicWebsiteMailer < ActionMailer::Base
 
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
-      mail(to: requestTourInquiry.location.email_address_for_inquiries, from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Contact Form Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+      #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: 'jennie@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Contact Form Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+    end
+  end
+
+  def modern_salon_2019_05(requestTourInquiry)
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Request a Tour",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+    headers['X-SMTPAPI'] = '{"category": "modern_salon_2019_05"}'
+
+    if requestTourInquiry && requestTourInquiry.email && requestTourInquiry.email.present?
+      @inquiry = requestTourInquiry
+      #requestTourInquiry.location.email_address_for_inquiries
+      attachments["your_guide_to_going_independent.pdf"] = File.read("#{Rails.root}/lib/your_guide_to_going_independent.pdf")
+      mail(to: requestTourInquiry.email, from: ("Sola Salon Studios <hello@solasalonstudios.com>"), subject: 'Your Guide to Going Independent') #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 

@@ -476,7 +476,7 @@
 
 			.ServiceDetails {
 				display: inline-block;
-				width: calc(100% - 160px);
+				width: calc(100% - 140px);
 			}
 
 			&.HasImage {
@@ -494,6 +494,30 @@
 				font-size: 18px;	
 				font-weight: 300;	
 				line-height: 24px;
+				clear: both;
+
+				.Name {
+					white-space: nowrap;
+					max-width: calc(100% - 30px);
+					text-overflow: ellipsis;
+					overflow: hidden;
+					display: inline-block;
+				}
+
+				.Help {
+					font-size: 16px;
+					line-height: 16px;
+					color: #7F7F7F;
+					display: inline-block;
+					position: relative;
+			    top: -7px;
+			    left: 6px;
+			    cursor: pointer;
+
+			    &:hover, &:active {
+			    	color: #3F3F3F;
+			    }
+				}
 			}
 
 			.ServiceCostAndDuration {
@@ -687,6 +711,17 @@
 		.StripeElement--invalid {
 		  border: 1px solid red;
 		}			
+	}
+}
+
+.booknow-layout {
+	.tooltip {
+		z-index: 9999;
+	}
+	.tooltip-inner {
+		font-size: 11px;
+    line-height: 14px;
+    padding: 8px 12px;
 	}
 }
 
