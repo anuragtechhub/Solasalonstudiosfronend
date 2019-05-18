@@ -64,14 +64,14 @@ var ContactForm = React.createClass({
 		
 		return (
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
-				<h2>{this.props.title}</h2>
+				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
 
 				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
-					<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+					{this.props.location_view ? null : <SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />}
 					
 					{
-						this.state.selected_state 
+						this.state.selected_state && !this.props.location_view
 						?
 						<div className="row">
 							<div className="six columns"> 
@@ -94,8 +94,6 @@ var ContactForm = React.createClass({
 						null
 					}
 
-
-
 					<div className="form-group" ref="first_input">
 						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
@@ -106,16 +104,7 @@ var ContactForm = React.createClass({
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
 
-					{
-						this.props.display_service_checkboxes
-						?
-						<div className={"service-checkboxes " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
-							{this.renderServiceCheckboxes()}
-							<div className="clearfix">&nbsp;</div>
-						</div>
-						: 
-						null
-					}
+					{this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>}
 
 					{
 						this.props.display_i_would_like_to
@@ -167,11 +156,20 @@ var ContactForm = React.createClass({
 						null
 					}
 
+					{
+						this.props.display_service_checkboxes
+						?
+						<div className={"service-checkboxes " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
+							{this.renderServiceCheckboxes()}
+							<div className="clearfix">&nbsp;</div>
+						</div>
+						: 
+						null
+					}
+
 					<div className={"form-group " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
 					</div>
-
-					{this.props.display_i_would_like_to_be_contacted ? null : this.renderContactPreference()}
 
 					<button className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
