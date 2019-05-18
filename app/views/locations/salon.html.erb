@@ -3,7 +3,8 @@
   <div class="container content-container location-page-container">
     <div class="row">
       <div class="one-third column request-a-tour-form-column">
-        <%= form_tag :contact_us_request_a_tour, :method => :post, :id => 'contact-us-request-a-tour', :class => 'request-a-tour-form', :autocomplete => 'off' do %>
+        <div class="request-a-tour-form">
+          
           <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
           <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
 
@@ -21,22 +22,9 @@
             <% end %>          
           </div>
 
-          <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
-          <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
-          <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
-          <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
-          <input name="location_id" type="hidden" value="<%= @location.id %>">
-          <input name="request_url" type="hidden" value="<%= request.original_url %>">
-          <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-            <label class="receive-newsletter">
-              <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
-              <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-            </label>
-          <% end %>
-          <button class="button primary block" id="contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
-          <button class="button primary block" id="contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
-        <% end %>
-        &nbsp;
+          <%= render 'shared/contact_form_component', :display_i_would_like_to => false, :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
+
+        </div>
       </div> <!-- .one-third -->
 
       <div class="two-thirds column">
