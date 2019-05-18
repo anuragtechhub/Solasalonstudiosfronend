@@ -79,7 +79,7 @@
         <% end %>
       </div>
       <div class="one-third column">
-        <% @states[9,18].each do |state| %>
+        <% @states[9,20].each do |state| %>
           <div class="state-wrapper">
             <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
@@ -96,7 +96,7 @@
         <% end %>
       </div>
       <div class="one-third column">
-        <% @states[27, @states.length].each do |state| %>
+        <% @states[29, @states.length].each do |state| %>
           <div class="state-wrapper">
             <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
