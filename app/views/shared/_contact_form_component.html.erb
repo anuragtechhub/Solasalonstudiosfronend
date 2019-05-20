@@ -1,6 +1,7 @@
 <%= react_component 'ContactForm', {
   all_states: JSON.parse(all_states_json),
   all_locations: JSON.parse(all_locations_msas_json),
+  associated_company: params[:utm_source] || '',
   contact_us_path: contact_us_request_a_tour_path,
   display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : true,
   display_i_would_like_to: defined?(display_i_would_like_to) ? display_i_would_like_to : true,
