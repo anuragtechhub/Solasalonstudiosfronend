@@ -300,6 +300,7 @@ var ContactForm = React.createClass({
 		//console.log('message', message);
 
 		var form_data = {
+			associated_company: this.props.associated_company,
     	location_id: this.state.selected_location,
     	name: this.state.name,
     	email: this.state.email,
