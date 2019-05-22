@@ -57,7 +57,7 @@ var ContactForm = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('render ContactForm', this.props);
+		//console.log('render ContactForm', I18n.t('contact_form.select_a_state'), I18n.locale);
 		
 		return (
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>

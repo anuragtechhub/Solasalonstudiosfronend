@@ -50,6 +50,7 @@ class BlogController < PublicWebsiteController
       redirect_to(show_blog_path(:url_name => @post.url_name), :status => 301) if @post
     end
 
+    p "I18n.locale=#{I18n.locale}"
     p "@post=#{@post.inspect}"
 
     @category = @post.blog_categories.first if @post && @post.blog_categories
