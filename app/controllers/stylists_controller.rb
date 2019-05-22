@@ -17,6 +17,10 @@ class StylistsController < PublicWebsiteController
       redirect_to show_salon_professional_path(:url_name => @stylist.url_name) if @stylist
     end
 
+    if @stylist && @stylist.reserved
+      redirect_to salon_stylists_path(@stylist.location.url_name)
+    end
+
     @location = @stylist.location if (@stylist && @stylist.location)
     if @location
       @lat = @location.latitude

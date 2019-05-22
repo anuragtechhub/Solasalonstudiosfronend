@@ -117,7 +117,8 @@ en:
   contact_for_leasing_information: Contact %{general_contact_name} for leasing information
   phone_result: "<strong>p:</strong> %{phone_number}"
   email_result: "<strong>e:</strong> %{email_address}"  
-
+  reserved_studio: "Reserved: Studio"
+  
   header:
     rent_studio_button: Rent a Studio
     contact_us: Contact Us

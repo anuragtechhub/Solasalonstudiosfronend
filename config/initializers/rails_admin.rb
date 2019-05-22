@@ -1191,6 +1191,9 @@ RailsAdmin.config do |config|
             value.html_safe
           end
         end
+        field :reserved do
+          help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
+        end
         field :status
       end
       group :contact do
@@ -1374,6 +1377,9 @@ RailsAdmin.config do |config|
           # end
         end
         field :biography, :ck_editor
+        field :reserved do
+          help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
+        end
         field :status
       end
       group :contact do

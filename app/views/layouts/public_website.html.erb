@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= render 'shared/public_website/google_tag_manager_head' %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
@@ -32,6 +33,8 @@
   <%= render 'shared/analytics' %>  
 </head>
 <body class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
+
+  <%= render 'shared/public_website/google_tag_manager_body' %>
 
   <%= render 'shared/public_website/header' unless @no_header %>
   <div class="body-content"><%= yield %></div>
