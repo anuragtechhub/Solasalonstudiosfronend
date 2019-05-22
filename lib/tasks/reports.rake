@@ -51,16 +51,17 @@ namespace :reports do
   end
 
   task :request_tour_inquiries => :environment do
-    jan_1 = Date.new(2019, 3, 1)
-    today = Date.today
-    rtis = RequestTourInquiry.where(:created_at => (jan_1..today))
+    #jan_1 = Date.new(2019, 3, 1)
+    #today = Date.today
+    rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
     
     save_path = Rails.root.join('csvs','request_tour_inquiries.csv')
     CSV.open(save_path, "wb") do |csv|
-      csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name"]
+      csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
       rtis.each do |rti|
         if rti.location
-          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name]
+          stylist = Stylist.find_by(:email_address => rti.email)
+          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, stylist ? 'Yes' : 'No', rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
         end
       end
     end
@@ -82,6 +83,10 @@ namespace :reports do
         send_all_stylists_report(report.email_address)
       elsif report.report_type == 'solapro_solagenius_penetration'
         send_solapro_solagenius_penetration_report(report.email_address)
+      elsif report.report_type == 'request_tour_inquiries'
+        send_all_request_tour_inquiries_report(report.email_address)
+      elsif report.report_type == 'all_booking_user_report'
+        send_all_booking_user_report(report.email_address)
       end
       report.processed_at = DateTime.now
       report.save
@@ -419,6 +424,72 @@ namespace :reports do
     #mail.deliver
   end
 
+  def send_all_booking_user_report(email_address=nil)
+    return unless email_address
+    p "send_all_booking_user_report"
+    
+    #jan_1 = Date.new(2019, 3, 1)
+    #today = Date.today
+    #rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
+    start_date = Date.new(2019,1,1)
+    end_date = Date.today
+    analytics = Analytics.new
+    app_data = analytics.booking_complete_data('81802112', start_date, end_date)
+    
+    p "app_data=#{app_data.inspect}"
+
+    csv_report = CSV.generate do |csv|
+      csv << ['Name', 'Phone', 'Email', 'Booking Date']
+      app_data[:booking_completes].each do |booking_complete|
+        if booking_complete["booking_user"]
+          p "WE HAVE A BOOKING USER #{booking_complete["booking_user"]}"
+          csv << power_of_now([booking_complete["booking_user"]["name"], booking_complete["booking_user"]["phone"], booking_complete["booking_user"]["email"], Date.parse(booking_complete["date"]).strftime("%A %B %e, %Y")])
+        else 
+          p "We DO NOT have a booking user #{booking_complete}" 
+        end
+      end
+      # csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
+      # rtis.each do |rti|
+      #   if rti.location
+      #     stylist = Stylist.find_by(:email_address => rti.email)
+      #     csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, stylist ? 'Yes' : 'No', rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
+      #   end
+      # end
+    end
+
+    p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'All Booking Users Report', csv_report).deliver
+    p "mail?=#{mail}"
+    #mail.deliver
+  end
+
+  def send_all_request_tour_inquiries_report(email_address=nil)
+    return unless email_address
+    p "send_all_request_tour_inquiries_report"
+    
+    #jan_1 = Date.new(2019, 3, 1)
+    #today = Date.today
+    rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
+    p "rtis.size=#{rtis.size}"
+    
+    csv_report = CSV.generate do |csv|
+      csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
+      rtis.each do |rti|
+        if rti.location
+          stylist = Stylist.find_by(:email_address => rti.email)
+          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, stylist ? 'Yes' : 'No', rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
+        end
+      end
+    end
+
+    #p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'All Contact Form (Request Tour Inquiry) Submissions', csv_report).deliver
+    #p "mail?=#{mail}"
+    #mail.deliver
+  end
+
   def send_all_stylists_report(email_address=nil)
     return unless email_address
     p "send all stylists"
@@ -711,8 +782,10 @@ namespace :reports do
       booking_data = []
 
       (start_date..end_date).each do |date|
+        sleep 0.5
+        p "done slept"
         booking_completes = get_ga_data(analytics, profile_id, date, date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
-        p "booking_completes! #{date}, data=#{booking_completes.inspect}"
+        p "booking_completes! #{date}"#, data=#{booking_completes.inspect}"
         if booking_completes && booking_completes.length > 0
           booking_completes.each do |booking_complete|
             booking_complete_data = JSON.parse(booking_complete[0])
@@ -727,8 +800,11 @@ namespace :reports do
       data[:bookings_total] = data[:booking_completes].length
       total_revenue = 0.0
       data[:booking_completes].each do |booking_complete|
-        p "total=#{booking_complete["total"][1..-1].to_f}"
-        total_revenue += booking_complete["total"][1..-1].to_f
+        #p "booking_complete=#{booking_complete}"
+        if booking_complete && booking_complete["total"]
+          p "total=#{booking_complete["total"][1..-1].to_f}"
+          total_revenue += booking_complete["total"][1..-1].to_f
+        end
       end
       data[:bookings_revenue] = total_revenue
 
