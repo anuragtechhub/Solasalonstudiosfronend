@@ -73,24 +73,25 @@ var ContactForm = React.createClass({
 					{
 						this.state.selected_state && !this.props.location_view
 						?
-						<div className="row">
-							<div className="six columns"> 
-								<SolaSelect className="location-select" 
-												displayName={true} 
-												filteredBy={this.state.selected_state}
-												placeholder={I18n.t('contact_form.select_a_location')} 
-												options={this.props.all_locations} 
-												name={this.state.selected_location_name} 
-												value={this.state.selected_location} 
-												onChange={this.onChangeSelectedLocation} /> 
-							</div>
-							<div className="six columns">
-								<div className="dont-see-your-location">
-									<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
-								</div>
-							</div>
-						</div>
+						<SolaSelect className="location-select" 
+										displayName={true} 
+										filteredBy={this.state.selected_state}
+										placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
+										options={this.props.all_locations} 
+										name={this.state.selected_location_name} 
+										value={this.state.selected_location} 
+										onChange={this.onChangeSelectedLocation} /> 
 						: 
+						null
+					}
+
+					{
+						this.state.selected_state && !this.props.location_view
+						?
+						<div className="dont-see-your-location">
+							<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
+						</div>
+						:
 						null
 					}
 
@@ -300,7 +301,11 @@ var ContactForm = React.createClass({
 		//console.log('message', message);
 
 		var form_data = {
-			associated_company: this.props.associated_company,
+			source: this.props.source,
+			campaign: this.props.campaign,
+			medium: this.props.medium,
+			content: this.props.content,
+
     	location_id: this.state.selected_location,
     	name: this.state.name,
     	email: this.state.email,

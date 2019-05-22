@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190520172356) do
+ActiveRecord::Schema.define(version: 20190522194233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -455,7 +455,10 @@ ActiveRecord::Schema.define(version: 20190520172356) do
     t.boolean  "dont_see_your_location",       default: false
     t.text     "services"
     t.string   "send_email_to_prospect"
-    t.string   "associated_company"
+    t.string   "content"
+    t.string   "source"
+    t.string   "medium"
+    t.string   "campaign"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree

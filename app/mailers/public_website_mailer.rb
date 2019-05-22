@@ -30,7 +30,11 @@ class PublicWebsiteMailer < ActionMailer::Base
     if requestTourInquiry && requestTourInquiry.location && requestTourInquiry.location.email_address_for_inquiries && requestTourInquiry.location.email_address_for_inquiries.present?
       @inquiry = requestTourInquiry
       #requestTourInquiry.location.email_address_for_inquiries
-      mail(to: 'jennie@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: 'Sola Contact Form Inquiry') #requestTourInquiry.location.email_address_for_inquiries
+      @subject = 'Sola Contact Form Inquiry'
+      if @inqury && @inquiry.send_email_to_prospect == 'modern_salon_2019_05'
+        @subject = 'Download Modern Salon Guide'
+      end
+      mail(to: 'jennie@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 
