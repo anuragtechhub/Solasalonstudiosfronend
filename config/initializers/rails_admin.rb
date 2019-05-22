@@ -51,6 +51,10 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'TerminatedStylist' do
+    visible false
+  end
+
   config.model 'Account' do
     visible false
   end

@@ -31,7 +31,7 @@ class Stylist < ActiveRecord::Base
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
   before_destroy :remove_from_ping_hd
-  after_destroy :remove_from_mailchimp, :inactivate_with_hubspot, :touch_stylist
+  after_destroy :remove_from_mailchimp, :inactivate_with_hubspot, :touch_stylist, :create_terminated_stylist
 
   #has_one :studio
   has_many :leases, -> { order 'created_at desc' }
@@ -637,6 +637,17 @@ class Stylist < ActiveRecord::Base
         errors[:url_name] << 'already in use by another salon professional. Please enter a unique URL name and try again'
       end
     end
+  end
+
+  def create_terminated_stylist
+    TerminatedStylist.create({
+      location_id: self.location_id,
+      stylist_created_at: self.created_at,
+      name: self.name,
+      email_address: self.email_address,
+      phone_number: self.phone_number,
+      studio_number: self.studio_number,
+    })
   end
 
   def remove_from_mailchimp

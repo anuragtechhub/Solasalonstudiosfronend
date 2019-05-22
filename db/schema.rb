@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190502162054) do
+ActiveRecord::Schema.define(version: 20190522235041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -449,8 +449,16 @@ ActiveRecord::Schema.define(version: 20190502162054) do
     t.text     "request_url"
     t.integer  "visit_id"
     t.text     "contact_preference"
-    t.boolean  "newsletter",          default: true
+    t.boolean  "newsletter",                   default: true
     t.text     "how_can_we_help_you"
+    t.boolean  "i_would_like_to_be_contacted", default: true
+    t.boolean  "dont_see_your_location",       default: false
+    t.text     "services"
+    t.string   "send_email_to_prospect"
+    t.string   "content"
+    t.string   "source"
+    t.string   "medium"
+    t.string   "campaign"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
@@ -654,6 +662,19 @@ ActiveRecord::Schema.define(version: 20190502162054) do
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree
   add_index "stylists", ["url_name"], name: "index_stylists_on_url_name", using: :btree
+
+  create_table "terminated_stylists", force: true do |t|
+    t.datetime "stylist_created_at"
+    t.string   "name"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "studio_number"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "terminated_stylists", ["location_id"], name: "index_terminated_stylists_on_location_id", using: :btree
 
   create_table "testimonials", force: true do |t|
     t.string   "name"
