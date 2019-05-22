@@ -22,7 +22,7 @@ var ContactForm = React.createClass({
 	},
 
 	componentDidMount: function () {
-		$(this.refs.first_input).tooltipster({theme: 'tooltipster-noir', timer: 4000, trigger: 'foo'});
+		$(this.refs.submit_button).tooltipster({theme: 'tooltipster-noir', timer: 4000, trigger: 'foo'});
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
@@ -30,13 +30,13 @@ var ContactForm = React.createClass({
 
 		if (this.state.success && prevState.success != this.state.success) {
 			//console.log('success!')
-			$(this.refs.first_input).tooltipster('content', this.state.success).tooltipster('show');
+			$(this.refs.submit_button).tooltipster('content', this.state.success).tooltipster('show');
 			setTimeout(function () {
 				self.setState({success: null});
 			}, 1000);
 		} else if (this.state.error && prevState.error != this.state.error) {
 			//console.log('error!')
-			$(this.refs.first_input).tooltipster('content', this.state.error).tooltipster('show');
+			$(this.refs.submit_button).tooltipster('content', this.state.error).tooltipster('show');
 			setTimeout(function () {
 				self.setState({error: null});
 			}, 1000);
@@ -172,7 +172,7 @@ var ContactForm = React.createClass({
 						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
 					</div>
 
-					<button className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
+					<button ref="submit_button" className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
 					{
 						this.props.display_i_would_like_to_be_contacted 
