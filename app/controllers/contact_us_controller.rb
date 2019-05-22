@@ -69,7 +69,24 @@ class ContactUsController < PublicWebsiteController
       if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
         unless banned_ip_addresses.include? request.remote_ip
-          rti = RequestTourInquiry.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :location_id => params[:location_id], :message => params[:message], :request_url => params[:request_url], :contact_preference => params[:contact_preference], :how_can_we_help_you => params[:how_can_we_help_you], :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted], :dont_see_your_location => params[:dont_see_your_location], :services => params[:services], :send_email_to_prospect => params[:send_email_to_prospect], :associated_company => params[:associated_company])
+          rti = RequestTourInquiry.create({
+            :name => params[:name], 
+            :email => params[:email], 
+            :phone => params[:phone], 
+            :location_id => params[:location_id], 
+            :message => params[:message], 
+            :request_url => params[:request_url], 
+            :contact_preference => params[:contact_preference], 
+            :how_can_we_help_you => params[:how_can_we_help_you], 
+            :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted], 
+            :dont_see_your_location => params[:dont_see_your_location], 
+            :services => params[:services], 
+            :send_email_to_prospect => params[:send_email_to_prospect], 
+            :source => params[:source], 
+            :campaign => params[:campaign], 
+            :content => params[:content], 
+            :medium => params[:medium],
+          })
           rti.visit = save_visit
           rti.save
 
@@ -89,11 +106,15 @@ class ContactUsController < PublicWebsiteController
           #   end
           # end
         end
+        @success = 'Thank you! We will get in touch soon'
+        if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
+          @success = 'Thank you for downloading our free guide! Please check your email.'
+        end
         if params[:message]
           # if there's a message, this is a general contact us submission
-          render :json => {:success => 'Thank you! We will get in touch soon'}
+          render :json => {:success => @success}
         else
-          render :json => {:success => 'Thank you! We will get in touch soon'}
+          render :json => {:success => @success}
         end
       else
         render :json => {:error => 'Please enter your name, a valid email address and phone number'}
@@ -102,7 +123,11 @@ class ContactUsController < PublicWebsiteController
       redirect_to :contact_us
     end
   rescue Gibbon::MailChimpError => e
-    render :json => {:success => 'Thank you! We will get in touch soon'}
+    @success = 'Thank you! We will get in touch soon'
+    if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
+      @success = 'Thank you for downloading our free guide! Please check your email.'
+    end
+    render :json => {:success => @success}
   end
 
   # don't think this is used anymore (was for Sola 5000 page)

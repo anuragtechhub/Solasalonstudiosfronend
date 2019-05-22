@@ -8,7 +8,7 @@
              <div class="container">
                <div class="header-in">
                  <div class="logo">
-                   <a href="https://www.solasalonstudios.com"><%= image_tag "goingindependent/logo.png", :alt => "img", :width => "88", :height => "52" %></a>
+                   <a href="https://www.solasalonstudios.com"><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('brand_name')) %></a>
                    </div>
                  </div>
                </div>
@@ -68,16 +68,17 @@
                     <li>Steps to getting started as an independent salon owner</li>
                     <li>Tips for building your culture and salon marketing</li>
                   </ul>
-                  <small>Complete this form to get your free guide.</small>
+                  <!--<small>Complete this form to get your free guide.</small>-->
                       </div>
                   <div class="guide-in-rgt col-md-6">
                     <%= render 'shared/contact_form_component', {
-                      :title => 'Get My Copy', 
-                      :submit_button_text => 'Send Me The Special Report', 
+                      :title => 'Complete this form to get your free guide', 
+                      :submit_button_text => 'Get My Guide to Going Independent', 
                       :display_i_would_like_to => false, 
                       :display_i_would_like_to_be_contacted => true,
                       :display_service_checkboxes => true,
-                      :send_email_to_prospect => 'modern_salon_2019_05' }
+                      :send_email_to_prospect => 'modern_salon_2019_05',
+                      :location_placeholder => 'Choose the Sola location nearest to you' }
                     %>
                   </div>
               </div>
@@ -182,9 +183,12 @@
                  <%= image_tag "https://s3.amazonaws.com/solasalonstudios/mysola_contact_bg.jpg", :alt => "img", :class => 'u-full-width' %>
                  </figure>
                  <div class="watch-in">
-                 <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video" rel="72pips9fvwQ"><%= image_tag "goingindependent/vedio-icon.png", :alt => "img", :width => "48", :height => "49" %></a>
-                     <p>Watch our video to see what 
-                        people are saying about #MySola</p>
+                    <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video giant-video-button-wrapper" rel="72pips9fvwQ">
+                      <div class="giant-video-btn">
+                        <span class="fa fa-5x fa-play"></span>
+                      </div>
+                      <div class="text">Watch our video to see what<br />people are saying about #MySola</div>
+                    </a>
                  </div>
              </div>
                 <!-- watch ends here -->
