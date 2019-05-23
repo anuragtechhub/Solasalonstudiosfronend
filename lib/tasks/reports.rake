@@ -475,10 +475,11 @@ namespace :reports do
     
     csv_report = CSV.generate do |csv|
       csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
-      rtis.each do |rti|
+      rtis.each_with_index do |rti, idx|
+        p "#{idx}"
         if rti.location
           stylist = Stylist.find_by(:email_address => rti.email)
-          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, stylist ? 'Yes' : 'No', rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
+          csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, (stylist ? 'Yes' : 'No'), rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
         end
       end
     end
