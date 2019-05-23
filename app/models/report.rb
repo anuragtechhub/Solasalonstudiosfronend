@@ -8,6 +8,7 @@ class Report < ActiveRecord::Base
     	['All Locations', 'all_locations'],
     	['All Contact Form (Request Tour Inquiry) Submissions', 'request_tour_inquiries'], 
     	['All Stylists', 'all_stylists'], 
+      ['All Terminated Stylists Report', 'all_terminated_stylists_report'],
     	['Sola Pro / SolaGenius Penetration', 'solapro_solagenius_penetration']
     ]
   end

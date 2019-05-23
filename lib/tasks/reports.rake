@@ -87,6 +87,8 @@ namespace :reports do
         send_all_request_tour_inquiries_report(report.email_address)
       elsif report.report_type == 'all_booking_user_report'
         send_all_booking_user_report(report.email_address)
+      elsif report.report_type == 'all_terminated_stylists_report'
+        send_all_terminated_stylists_report(report.email_address)
       end
       report.processed_at = DateTime.now
       report.save
@@ -424,6 +426,31 @@ namespace :reports do
     #mail.deliver
   end
 
+  def send_all_terminated_stylists_report(email_address=nil)
+    return unless email_address
+    p "send_all_terminated_stylists_report"
+
+    csv_report = CSV.generate do |csv|
+      csv << ['Name', 'Phone', 'Email', 'Studio Number', 'Created At', 'Terminated At']
+      TerminatedStylist.all.order(:created_at => :desc).each do |terminated_stylist|
+        csv << [terminated_stylist.name, terminated_stylist.phone_number, terminated_stylist.email_address, terminated_stylist.studio_number, terminated_stylist.stylist_created_at, terminated_stylist.created_at]
+      end
+      # csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
+      # rtis.each do |rti|
+      #   if rti.location
+      #     stylist = Stylist.find_by(:email_address => rti.email)
+      #     csv << [rti.name, rti.email, rti.phone, rti.message, rti.request_url, rti.created_at, rti.location.name, stylist ? 'Yes' : 'No', rti.how_can_we_help_you, rti.contact_preference]#, rti.source, rti.medium, rti.campaign, rti.content]
+      #   end
+      # end
+    end
+
+    #p "csv_report=#{csv_report}"
+
+    mail = ReportsMailer.send_report(email_address, 'All Terminated Stylists Report', csv_report).deliver
+    p "mail?=#{mail}"
+    #mail.deliver
+  end
+
   def send_all_booking_user_report(email_address=nil)
     return unless email_address
     p "send_all_booking_user_report"
@@ -443,7 +470,7 @@ namespace :reports do
       app_data[:booking_completes].each do |booking_complete|
         if booking_complete["booking_user"]
           p "WE HAVE A BOOKING USER #{booking_complete["booking_user"]}"
-          csv << power_of_now([booking_complete["booking_user"]["name"], booking_complete["booking_user"]["phone"], booking_complete["booking_user"]["email"], Date.parse(booking_complete["date"]).strftime("%A %B %e, %Y")])
+          csv << [booking_complete["booking_user"]["name"], booking_complete["booking_user"]["phone"], booking_complete["booking_user"]["email"], booking_complete["date"]]
         else 
           p "We DO NOT have a booking user #{booking_complete}" 
         end
@@ -457,10 +484,10 @@ namespace :reports do
       # end
     end
 
-    p "csv_report=#{csv_report}"
+    #p "csv_report=#{csv_report}"
 
     mail = ReportsMailer.send_report(email_address, 'All Booking Users Report', csv_report).deliver
-    p "mail?=#{mail}"
+    #p "mail?=#{mail}"
     #mail.deliver
   end
 
