@@ -21,6 +21,9 @@ namespace :reports do
   #     file << pdf
   #   end    
   # end
+  task :all_booking_user_report => :environment do
+    send_all_booking_user_report('jeff@jeffbail.com')
+  end
 
   # rake reports:locations_contact_form_submissions[2018-01-01,2018-12-01,"jeff@jeffbail.com"]
   # rake reports:locations_contact_form_submissions[2017-11-01,2017-12-01,"jeff@jeffbail.com jeff+1@jeffbail.com jeff+2@jeffbail.com"]
@@ -84,9 +87,9 @@ namespace :reports do
       elsif report.report_type == 'solapro_solagenius_penetration'
         send_solapro_solagenius_penetration_report(report.email_address)
       elsif report.report_type == 'request_tour_inquiries'
-        send_all_request_tour_inquiries_report(report.email_address)
-      elsif report.report_type == 'all_booking_user_report'
-        send_all_booking_user_report(report.email_address)
+        send_all_request_tour_inquiries_report(report.email_address, report.parameters)
+      #elsif report.report_type == 'all_booking_user_report'
+      #  send_all_booking_user_report(report.email_address)
       elsif report.report_type == 'all_terminated_stylists_report'
         send_all_terminated_stylists_report(report.email_address)
       end
@@ -491,15 +494,33 @@ namespace :reports do
     #mail.deliver
   end
 
-  def send_all_request_tour_inquiries_report(email_address=nil)
+  def send_all_request_tour_inquiries_report(email_address=nil, params=nil)
     return unless email_address
-    p "send_all_request_tour_inquiries_report"
+    p "send_all_request_tour_inquiries_report params=#{params}"
+
+    start_date = Date.new(2019,1,1)
+    end_date = Date.today
+
+    if params
+      params = params.split(',').map!(&:strip)
+      p "params=#{params}"
+      params.each do |param|
+        if param.include? 'start_date'
+          start_date = Date.parse(param.split('=')[1])
+        elsif param.include? 'end_date'
+          end_date = Date.parse(param.split('=')[1])
+        end
+      end
+    end
     
+    p "start_date=#{start_date}"
+    p "end_date=#{end_date}"
+
     #jan_1 = Date.new(2019, 3, 1)
     #today = Date.today
-    rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
+    rtis = RequestTourInquiry.where('created_at >= ? AND created_at <= ?', start_date, end_date).order(:created_at => :desc)#where(:created_at => (jan_1..today))
     p "rtis.size=#{rtis.size}"
-    
+    #return
     csv_report = CSV.generate do |csv|
       csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
       rtis.each_with_index do |rti, idx|
@@ -513,7 +534,7 @@ namespace :reports do
 
     #p "csv_report=#{csv_report}"
 
-    mail = ReportsMailer.send_report(email_address, 'All Contact Form (Request Tour Inquiry) Submissions', csv_report).deliver
+    mail = ReportsMailer.send_report(email_address, 'All Contact Form Submissions', csv_report).deliver
     #p "mail?=#{mail}"
     #mail.deliver
   end
