@@ -65,6 +65,7 @@ var BookingModal = React.createClass({
 				location_id: this.props.location_id,
 				location: this.props.location,
 				query: this.props.query,
+				referring_url: this.props.referring_url,
 			}));
 		}
 	},
@@ -280,6 +281,7 @@ var BookingModal = React.createClass({
 						email: self.state.email_address,
 					},
 					org_user_id: self.props.professional.org_user_id,
+					referring_url: self.props.referring_url,
 				}));
 				$(self.refs.BookingCompleteForm).submit();
 			}

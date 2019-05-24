@@ -24,6 +24,7 @@
         lng: params[:lng],
         path: booknow_results_path, 
         query: params[:query],
+        referring_url: request.referrer,
       } %>
       <h2 class="booknow-by-solagenius">BOOK<strong>NOW</strong> by SOLAGENIUS</h2>  
     </div>  

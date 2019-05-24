@@ -67,6 +67,7 @@ var SolaSearch = React.createClass({
 			location_id: this.state.location_id,
 			location: this.state.location,
 			query: this.state.query,
+			referring_url: this.props.referring_url,
 		}));
 	},
 
@@ -101,7 +102,8 @@ var SolaSearch = React.createClass({
 					pagination={this.state.pagination}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
-					results_path={this.state.results_path} 
+					results_path={this.state.results_path}
+					referring_url={this.props.referring_url} 
 				/>
 				<LocationsMap 
 					display={this.state.display}
@@ -132,6 +134,7 @@ var SolaSearch = React.createClass({
 					step={this.state.step}
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
+					referring_url={this.props.referring_url} 
 				/>
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
