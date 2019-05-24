@@ -133,6 +133,7 @@ var SearchBar = React.createClass({
 			location_id: this.state.location_id,
 			location: this.state.location,
 			query: this.state.query,
+			referring_url: this.props.referring_url
 		});
 	},
 
