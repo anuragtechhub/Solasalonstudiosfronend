@@ -98,7 +98,7 @@
 	/*--banner ends here--*/
 	/*-- main starts here--*/
 	.main-cont{position: relative;}
-	.main-cont:before{content: "";width: 300px;height: 192px;background:asset_url('goingindependent/border.png') no-repeat;position: absolute;top: -23px;left: 0px;background-size: cover;z-index: -1;width: 239px;height: 1609px;}
+	.main-cont:before{content: "";width: 300px;height: 192px;background:asset_url('goingindependent/border.png') repeat-y;position: absolute;top: -23px;left: 0px;z-index: -1;width: 239px;height: 1809px;}
 	/*-- Curious starts here--*/
 	.Curious{}
 	.Curious-in{padding: 43px 24px 43px 41px;}
@@ -190,6 +190,33 @@
 	    color: #4A4A4A;
 		}
 	}
+	.whitepaper-mobile {
+		display: none;
+	}
+}
+
+@media (max-width: 1275px) { 
+	.goingindependent {
+		.watch-in {
+			top: 46%;
+		}
+		.Salon-in-rgt img {
+			max-height: 333px;
+			right: -90px;
+		}
+	}
+}
+
+@media (max-width: 1100px) { 
+	.goingindependent {
+		.watch-in {
+			top: 46%;
+		}
+		.Salon-in-rgt img {
+			max-height: 280px;
+			right: -120px;
+		}
+	}
 }
 
 @media (max-width: 1000px) { 
@@ -210,20 +237,104 @@
 	      }
 	    }
 	  }
+
+		.Salon-in-rgt img {
+			max-height: 240px;
+			right: -200px;
+		}
+
+	  // .whitepaper-mobile {
+	  // 	display: inline-block;
+	  // 	margin: 0 auto;
+	  // }
+
+	  .main-cont:before {
+	  	background: transparent;
+	  } 
+	}
+}
+
+@media (max-width: 900px) {
+	.goingindependent {
+		.Salon {
+	  	background: #9dd5ff url(https://s3.amazonaws.com/solasalonstudios/modernsalon2019/modernsalonhero.jpg) no-repeat ;//-210px 0;
+	  	background-size: cover;
+	  }
+
+	  .Salon-cont {
+	  	padding: 30px;
+	  	margin: 0 auto;
+	  	right: -40px;
+    	position: relative;
+	  }
+
+	  .Salon-cont h1 {
+	  	width: auto;
+	  	font-size: 30px;
+	  	line-height: 36px;
+	  }
+
+	  .Salon-cont h2 {
+	  	margin-top: 20px;
+	  	font-size: 20px;
+	  	line-height: 20px;
+	  }
+
+	  .Salon-in-lft {
+	  	display: block;
+    	max-width: 100%;
+    	margin: 0 auto;
+	  }
+
+	  .Salon-in-rgt {
+	  	display: none;
+	  }
 	}
 }
 
 @media (max-width: 700px) {
 	.goingindependent {
+		.contact-form {
+			margin-top: -20px;
+		}
+		
+		.Salon {
+	  	background: #9dd5ff url(https://s3.amazonaws.com/solasalonstudios/modernsalon2019/modernsalonhero.jpg) no-repeat -210px 0;
+	  	background-size: cover;
+	  }
+
+	  .Salon-cont {
+	  	max-width: 100%;
+	  	right: 0;
+	  }
+
 		.Salon-in-lft-in {
-			padding: 50px;
+			padding: 50px 0;
+		}
+		.sola-benefits {
+			margin-top: 0px;
+			padding-top: 30px;
+
+			p {
+				margin-bottom: 20px;
+			}
 		}
 		.sola-benefits .benefit-tile .title {
 			font-size: 14px;
 		}
+		.hashtag-in p {
+			font-size: 14px;
+			line-height: 20px;
+		}
 		.watch-in {
-			margin-top: -30px;
+			margin-top: -15px;
 			zoom: 0.8;
+		}
+		.watch .u-full-width {
+			height: 200px;
+			width: auto;
+			position: relative;
+			left: -75px;
 		}
 	}
 }
