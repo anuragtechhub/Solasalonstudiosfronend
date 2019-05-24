@@ -161,6 +161,7 @@ var ContactForm = React.createClass({
 						this.props.display_service_checkboxes
 						?
 						<div className={"service-checkboxes " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
+							<label>{I18n.t('contact_form.what_services_do_you_specialize_in')}</label>
 							{this.renderServiceCheckboxes()}
 							<div className="clearfix">&nbsp;</div>
 						</div>
@@ -187,8 +188,6 @@ var ContactForm = React.createClass({
 						:
 						null
 					}
-
-					{this.props.display_i_would_like_to_be_contacted && this.state.i_would_like_to_be_contacted ? <div className="contact-preference-bottom">{this.renderContactPreference()}</div> : null}
 
 					<div className={"form-group newsletter " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
 						<label>
