@@ -72,21 +72,26 @@
 	/*--header ends here--*/
 	/*--banner starts here--*/
 	/*--Salon starts here--*/
-	.Salon{}
-	.Salon-in{}
-	.Salon-in-lft{}
-	.Salon-in-lft-in{background: asset_url('goingindependent/img1.jpg') no-repeat;width: 100%;border-radius: 0 0 10px 0px;background-size: cover;height: auto;padding: 53px 0px 67px 134px;}
+	.Salon{background: asset_url('https://s3.amazonaws.com/solasalonstudios/modernsalon2019/modernsalonhero.jpg') no-repeat;width: 100%;background-size: cover;height: auto;}
+	.Salon-in-lft {display: flex;padding: 53px 0px 67px 134px;}
 	.Salon-in-lft figure{}
 	.Salon-in-lft figure img{}
+	.Salon-in-lft-in {
+		justify-content: center;
+    display: flex;
+    flex: 1;
+    align-items: center;
+	}
 	.Salon-cont{max-width: 344px;margin: 0 auto;}
-	.Salon-cont h1{font-size: 43px;line-height: 51px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;}
-	.Salon-in-rgt{}
+	.Salon-cont h1{font-size: 44px;line-height: 51px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;width: 580px;}
+	.Salon-cont h2{font-size: 23px;line-height: 31px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;width: 580px;margin-top: 10px;}
+	//.Salon-in-rgt{ text-align: right;}
 	.Salon-in-rgt-blk{}
-	.Salon-in-rgt-blk figure{}
-	.Salon-in-rgt-blk figure img{position: relative;z-index: 9;}
+	.Salon-in-rgt-blk {}
+	.Salon-in-rgt img{ position: relative; z-index: 9; max-height: 380px; width: auto; margin: 30px 0 40px 0;}
 	.Salon-in-rgt-blk{position: relative;max-width: 462px;margin: 0 auto;margin-top: 35px;}
-	.Salon-in-rgt-blk figure:after{content: "";width: 117px;height: 117px;background: rgba(189,225,251,1);background: -moz-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(189,225,251,1)), color-stop(25%, rgba(189,225,251,1)), color-stop(100%, rgba(159,213,255,1)));background: -webkit-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -o-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -ms-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: linear-gradient(to bottom, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bde1fb', endColorstr='#9fd5ff', GradientType=0 );position: absolute;bottom: 20px;left: -16px;border-radius: 11px;z-index: -1;}
-	.Salon-in-rgt-blk figure:before{content: "";width: 300px;height: 192px;background:#5f99d0;position: absolute;top: -40px;border-radius: 0 0 5px 5px;right: 38px;z-index: -1;}
+	// .Salon-in-rgt-blk figure:after{content: "";width: 117px;height: 117px;background: rgba(189,225,251,1);background: -moz-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(189,225,251,1)), color-stop(25%, rgba(189,225,251,1)), color-stop(100%, rgba(159,213,255,1)));background: -webkit-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -o-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: -ms-linear-gradient(top, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);background: linear-gradient(to bottom, rgba(189,225,251,1) 0%, rgba(189,225,251,1) 25%, rgba(159,213,255,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bde1fb', endColorstr='#9fd5ff', GradientType=0 );position: absolute;bottom: 20px;left: -16px;border-radius: 11px;z-index: -1;}
+	// .Salon-in-rgt-blk figure:before{content: "";width: 300px;height: 192px;background:#5f99d0;position: absolute;top: -40px;border-radius: 0 0 5px 5px;right: 38px;z-index: -1;}
 	/*--Salon ends here--*/
 	/*--banner ends here--*/
 	/*-- main starts here--*/
@@ -127,6 +132,10 @@
 	/*--hashtag starts here--*/
 	.hashtag{background: #f8f8f8;margin-top:29px;}
 	.hashtag-in{padding: 50px 0 42px 0;}
+	.hashtag-in .fa {    
+		font-weight: bold;
+    font-size: 15px;
+  }
 	.hashtag-in a, .hashtag-in a:link, .hashtag-in a:visited, .hashtag-in a:hover, .hashtag-in a:active {box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);background: rgba(251,166,225,1);
 	background: -moz-linear-gradient(top, rgba(251,166,225,1) 0%, rgba(236,113,195,1) 0%, rgba(253,137,214,1) 0%, rgba(233,63,171,1) 66%, rgba(233,63,171,1) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(251,166,225,1)), color-stop(0%, rgba(236,113,195,1)), color-stop(0%, rgba(253,137,214,1)), color-stop(66%, rgba(233,63,171,1)), color-stop(100%, rgba(233,63,171,1)));
