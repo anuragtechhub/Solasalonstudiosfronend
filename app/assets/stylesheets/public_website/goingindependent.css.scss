@@ -109,7 +109,7 @@
 	.guide{}
 	.guide-in{}
 	.guide-in-lft{}
-	.guide-in-lft h3{font-size: 37.99px;line-height: 39px;color: #555555;@include chalet_new_york;padding: 0 0 27px 0;letter-spacing: 0.1px;}
+	.guide-in-lft h3{font-size: 33px;line-height: 39px;color: #555555;@include chalet_new_york;padding: 0 0 27px 0;letter-spacing: 0.1px; white-space: nowrap;}
 	.guide-in-lft p{font-size: 18px;line-height: 34px;color: #7b7b7b;@include chalet_paris;font-weight: 400;letter-spacing: -0.1px;-webkit-font-smoothing: subpixel-antialiased;-moz-osx-font-smoothing: subpixel-antialiased;}
 	.guide-in-lft span{font-size: 22px;line-height: 29px;color: #555555;@include chalet_new_york;padding: 0 0 0 0;letter-spacing: -0.2px;display:block;margin-top: 29px;}
 	.guide-in-lft ul{padding: 8px 0px 28px 15px;list-style: disc;}
