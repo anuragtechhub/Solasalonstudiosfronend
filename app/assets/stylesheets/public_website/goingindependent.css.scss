@@ -54,20 +54,22 @@
       }   
   }
 
-	.logo {margin: 0 auto;text-align: center;display: block;}
+	.logo {margin: 0 auto; padding-top:5px; text-align: center;display: block;}
 	.logo a{}
-	.logo a img{}
+	.logo a img{width: 133px;
+    height: 81px;}
 
 	/*--header starts here--*/
-	.header{background: rgba(152,208,251,1);
-	background: -moz-linear-gradient(left, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(152,208,251,1)), color-stop(28%, rgba(152,208,251,1)), color-stop(45%, rgba(152,208,251,1)), color-stop(97%, rgba(100,158,212,1)), color-stop(100%, rgba(100,158,212,1)));
-	background: -webkit-linear-gradient(left, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
-	background: -o-linear-gradient(left, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
-	background: -ms-linear-gradient(left, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
-	background: linear-gradient(to right, rgba(152,208,251,1) 0%, rgba(152,208,251,1) 28%, rgba(152,208,251,1) 45%, rgba(100,158,212,1) 97%, rgba(100,158,212,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#98d0fb', endColorstr='#649ed4', GradientType=1 );}
-	.header-in{padding: 23px 0;}
+	.header{
+	  height: 92px;
+
+	  background: #72C4E7; /* For browsers that do not support gradients */
+	  background: -webkit-linear-gradient(left, #72C4E7, #459DD3); /* For Safari 5.1 to 6.0 */
+	  background: -o-linear-gradient(right, #72C4E7, #459DD3); /* For Opera 11.1 to 12.0 */
+	  background: -moz-linear-gradient(right, #72C4E7, #459DD3); /* For Firefox 3.6 to 15 */
+	  background: linear-gradient(to right, #72C4E7, #459DD3); /* Standard syntax */
+	}
+	//.header-in{padding: 23px 0;}
 
 	/*--header ends here--*/
 	/*--banner starts here--*/
@@ -187,6 +189,27 @@
 	    font-weight: 300;
 	    color: #4A4A4A;
 		}
+	}
+}
+
+@media (max-width: 1000px) { 
+	.goingindependent {
+		.header {
+	    height: 70px;
+
+	    .logo  {
+	      width: 88.67px;
+	      display: block;
+	      margin: 0 auto;
+	      padding-top: 0;
+
+	      img {
+	        margin-top: 8px;
+	        width: 88.67px;
+	        height: 54px;
+	      }
+	    }
+	  }
 	}
 }
 
