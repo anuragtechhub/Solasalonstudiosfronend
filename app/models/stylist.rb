@@ -253,9 +253,10 @@ class Stylist < ActiveRecord::Base
     versions.order(:created_at => :desc).each do |version|
       reified_version = version.reify
       if reified_version && reified_version.encrypted_password.present?
-        return version.created_at
+        return version.created_at.to_date
       end
     end
+    return nil
   end
 
   def canonical_path
