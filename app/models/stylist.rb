@@ -249,6 +249,15 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def sola_pro_start_date
+    versions.order(:created_at => :desc).each do |version|
+      reified_version = version.reify
+      if reified_version && reified_version.encrypted_password.present?
+        return version.created_at
+      end
+    end
+  end
+
   def canonical_path
     "/salon-professional/#{url_name}"
   end
