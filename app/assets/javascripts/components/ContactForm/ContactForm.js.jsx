@@ -95,6 +95,18 @@ var ContactForm = React.createClass({
 						null
 					}
 
+					{
+						this.state.dont_see_your_location 
+						? 
+						<div className="zipcode">
+							<div className="form-group">
+								<input className="form-control" name="zip_code" value={this.state.zip_code} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.zip_code")} /> 
+							</div>
+						</div>
+						:
+						null
+					}
+
 					<div className="form-group" ref="first_input">
 						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
@@ -218,7 +230,7 @@ var ContactForm = React.createClass({
 
 	renderServiceCheckboxes: function () {
 		var self = this;
-		var services = ['Hair', 'Skincare', 'Makeup', 'Massage', 'Nails', 'Other (please specify with open form field)'];
+		var services = ['Hair', 'Skincare', 'Makeup', 'Massage', 'Nails', 'Other'];
 
 		var servicesRendered = services.map(function (service) {
 			return (
@@ -316,7 +328,8 @@ var ContactForm = React.createClass({
     	message: this.state.message,
     	request_url: this.props.request_url,
     	send_email_to_prospect: this.props.send_email_to_prospect,
-    	services: this.state.selected_services.join(', ')
+    	services: this.state.selected_services.join(', '),
+    	zip_code: this.state.zip_code,
 		};
 
 		//console.log('form_data', form_data);
@@ -330,7 +343,7 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
 				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});

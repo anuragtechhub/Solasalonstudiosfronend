@@ -35,6 +35,13 @@ class PublicWebsiteMailer < ActionMailer::Base
         @subject = 'Download Modern Salon Guide'
       end
       mail(to: 'jennie@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
+    else
+      @inquiry = requestTourInquiry
+      @subject = 'Sola Contact Form Inquiry'
+      if @inqury && @inquiry.send_email_to_prospect == 'modern_salon_2019_05'
+        @subject = 'Download Modern Salon Guide'
+      end
+      mail(to: 'megan@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 

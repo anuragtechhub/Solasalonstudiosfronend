@@ -29,7 +29,7 @@ class RequestTourInquiry < ActiveRecord::Base
       Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
         email: self.email,
         name: self.name,
-        phone_number: self.phone,
+        phone: self.phone,
         message: self.message,
         request_url: self.request_url,
         location_id: self.location_id || '',
@@ -38,6 +38,7 @@ class RequestTourInquiry < ActiveRecord::Base
         would_you_like_to_subscribe_to_our_newsletter_: self.newsletter,
         i_would_like_to_be_contacted: self.i_would_like_to_be_contacted,
         dont_see_your_location: self.dont_see_your_location,
+        zip: self.zip_code,
         services: self.services,
         source: self.source,
         medium: self.medium,

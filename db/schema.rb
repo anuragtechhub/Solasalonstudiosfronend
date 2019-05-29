@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190522194233) do
+ActiveRecord::Schema.define(version: 20190529163345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -436,6 +436,7 @@ ActiveRecord::Schema.define(version: 20190522194233) do
     t.datetime "processed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "parameters"
   end
 
   create_table "request_tour_inquiries", force: true do |t|
@@ -459,6 +460,7 @@ ActiveRecord::Schema.define(version: 20190522194233) do
     t.string   "source"
     t.string   "medium"
     t.string   "campaign"
+    t.string   "zip_code"
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
@@ -656,12 +658,26 @@ ActiveRecord::Schema.define(version: 20190522194233) do
     t.boolean  "force_show_book_now_button",     default: false
     t.string   "sg_booking_url"
     t.boolean  "walkins"
+    t.boolean  "reserved",                       default: false
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree
   add_index "stylists", ["url_name"], name: "index_stylists_on_url_name", using: :btree
+
+  create_table "terminated_stylists", force: true do |t|
+    t.datetime "stylist_created_at"
+    t.string   "name"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "studio_number"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "terminated_stylists", ["location_id"], name: "index_terminated_stylists_on_location_id", using: :btree
 
   create_table "testimonials", force: true do |t|
     t.string   "name"
