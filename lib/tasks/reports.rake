@@ -485,14 +485,17 @@ namespace :reports do
     data[:salon_professionals_on_sola_pro] = location.stylists.where("encrypted_password IS NOT NULL AND encrypted_password <> ''").size
 
     # contact form submissions
-    data[:contact_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', start_date, end_date, location.id).count
-    data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, location.id).count
-    data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, location.id).count
+    data[:contact_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you != ?)', start_date, end_date, location.id, 'Book an appointment with a salon professional').count
+    data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you != ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, location.id, 'Book an appointment with a salon professional').count
+    data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you != ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, location.id, 'Book an appointment with a salon professional').count
+
+    # book_an_appointment_inquiries
+    data[:book_an_appointment_inquiries_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you = ?)', start_date, end_date, location.id, 'Book an appointment with a salon professional').count
+    data[:book_an_appointment_inquiries_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you = ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, location.id, 'Book an appointment with a salon professional').count
+    data[:book_an_appointment_inquiries_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND how_can_we_help_you = ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, location.id, 'Book an appointment with a salon professional').count
 
     #data[:contact_form_submissions_prev_month] = 1 if data[:contact_form_submissions_prev_month] == 0
     #data[:contact_form_submissions_prev_year] = 1 if data[:contact_form_submissions_prev_year] == 0
-
-    #JARBY
 
     locals = {
       :@data => data
