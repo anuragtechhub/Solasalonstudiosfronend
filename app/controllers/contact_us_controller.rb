@@ -90,6 +90,7 @@ class ContactUsController < PublicWebsiteController
               :campaign => params[:campaign], 
               :content => params[:content], 
               :medium => params[:medium],
+              :hutk => params[:hutk],
             })
             rti.visit = save_visit
             rti.save

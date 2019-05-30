@@ -316,6 +316,7 @@ var ContactForm = React.createClass({
 			campaign: this.props.campaign,
 			medium: this.props.medium,
 			content: this.props.content,
+			hutk: this.props.hutk,
 
     	location_id: this.state.selected_location,
     	name: this.state.name,

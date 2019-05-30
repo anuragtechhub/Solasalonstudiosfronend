@@ -44,6 +44,7 @@ class RequestTourInquiry < ActiveRecord::Base
         medium: self.medium,
         campaign: self.campaign,
         content: self.content,
+        hutk: self.hutk,
       })
     else
       p "No HUBSPOT API KEY, no sync"

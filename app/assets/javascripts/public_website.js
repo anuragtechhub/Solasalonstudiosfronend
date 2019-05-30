@@ -23,6 +23,33 @@
 
 $(function () {
 
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+  };
+  //window.getUrlParameter = getUrlParameter;
+
+  var utm_params = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+  for (var i = 0, ilen = utm_params.length; i < ilen; i++) {
+    var utm_param = utm_params[i];
+    var param_value = getUrlParameter(utm_param);
+    
+    if (param_value) {
+      //console.log('utm param', utm_param, param_value);
+      Cookies.set(utm_param, param_value, {expires: 30, path: '/'});
+    }
+  }
+
   $('.sola-select').not('.no-autobind').solaselect();
 
   // phone number click tracking

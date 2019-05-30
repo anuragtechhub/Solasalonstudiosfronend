@@ -6,6 +6,7 @@
   medium: params[:utm_medium] || cookies[:utm_medium] || '',
   campaign: params[:utm_campaign] || cookies[:utm_campaign] || '',
   content: params[:utm_content] || cookies[:utm_content] || '',
+  hutk: cookies[:hubspotutk] || '',
 
   contact_us_path: contact_us_request_a_tour_path,
   display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : true,
