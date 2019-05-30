@@ -22,15 +22,17 @@
             <div class="Salon-in-lft  p-0 col-md-6">
                 <div class="Salon-in-lft-in">
               <div class="Salon-cont">
-                <h1>Everything You Need to Know About Becoming an Independent Salon Owner </h1>
-                <h2>Free Download Below</h2>
+                <h1><a href="#get-your-free-guide" class="get-your-free-guide">Everything You Need to Know About Becoming an Independent Salon Owner</a></h1>
+                <h2><a href="#get-your-free-guide" class="get-your-free-guide">Free Download Below</a></h2>
                 </div>
               </div>
                 </div>
               <div class="Salon-in-rgt col-md-6">
                   <div class="Salon-in-rgt-blk">
-                <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/whitepaper.png", :alt => "img" %>
-                      </div>
+                    <a href="#get-your-free-guide" class="get-your-free-guide">
+                      <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/whitepaper.png", :alt => "img" %>
+                    </a>
+                  </div>
               </div>
             </div>
           </div>
@@ -57,7 +59,8 @@
           <div class="container">
               <div class="guide-in d-flex flex-wrap">
                   <div class="guide-in-lft col-md-6">
-              <h3>Be your own boss:</h3>
+                  
+                  <h3>Be your own boss:</h3>
                   <p>Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about freedom and control.
                   </p>
                   <span>In this guide to going independent, we will walk you through:</span>
@@ -71,6 +74,7 @@
                   <!--<small>Complete this form to get your free guide.</small>-->
                       </div>
                   <div class="guide-in-rgt col-md-6">
+                    <a id="get-your-free-guide" name="get-your-free-guide"></a>
                     <%= render 'shared/contact_form_component', {
                       :title => 'Complete this form to get your free guide', 
                       :submit_button_text => 'Get My Guide', 

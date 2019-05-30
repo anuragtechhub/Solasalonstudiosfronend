@@ -87,6 +87,18 @@
 	.Salon-cont{max-width: 344px;margin: 0 auto;}
 	.Salon-cont h1{font-size: 44px;line-height: 51px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;width: 580px;}
 	.Salon-cont h2{font-size: 23px;line-height: 31px;color: #fff;@include chalet_new_york;letter-spacing: 0.6px;width: 580px;margin-top: 10px;}
+	.Salon-cont {
+		h1, h2 {
+			a, a:link, a:visited, a:hover, a:active {
+				color: #FFF;
+				text-decoration: none;
+			}
+			
+			// a:hover, a:active {
+			// 	text-decoration: underline;
+			// }
+		}
+	}
 	//.Salon-in-rgt{ text-align: right;}
 	.Salon-in-rgt-blk{}
 	.Salon-in-rgt-blk {}
