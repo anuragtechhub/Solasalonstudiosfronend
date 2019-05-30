@@ -1087,6 +1087,9 @@ RailsAdmin.config do |config|
       field :how_can_we_help_you
       field :message
       field :contact_preference
+      field :services
+      field :dont_see_your_location
+      field :zip_code
       field :request_url do
         label 'Request URL'
       end
@@ -1115,6 +1118,9 @@ RailsAdmin.config do |config|
       field :how_can_we_help_you
       field :message
       field :contact_preference
+      field :services
+      field :dont_see_your_location
+      field :zip_code
       field :request_url do
         label 'Request URL'
       end
