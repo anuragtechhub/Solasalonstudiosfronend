@@ -341,58 +341,58 @@ $(function () {
   // footer tooltip init
   $('.footer-newsletter-sign-up').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
-  // request franchising info
-  var $franchsing_modal = $('.request-franchising-modal').modal();
+  // // request franchising info
+  // var $franchsing_modal = $('.request-franchising-modal').modal();
 
-  // open send a message modal
-  $('.request-franchising-info').on('click', function () {
-    var $this = $(this);
-    if ($this.data('type') == 'int-franchising') {
-      $('.us-franchising').hide();
-      $('.int-franchising').show();
-      $('input[name=request_type]').val('International');
-    } else {
-      $('.us-franchising').show();
-      $('.int-franchising').hide();
-      $('input[name=request_type]').val('United States');
-    }
+  // // open send a message modal
+  // $('.request-franchising-info').on('click', function () {
+  //   var $this = $(this);
+  //   if ($this.data('type') == 'int-franchising') {
+  //     $('.us-franchising').hide();
+  //     $('.int-franchising').show();
+  //     $('input[name=request_type]').val('International');
+  //   } else {
+  //     $('.us-franchising').show();
+  //     $('.int-franchising').hide();
+  //     $('input[name=request_type]').val('United States');
+  //   }
 
-    $franchsing_modal.data('modal').open();
-    return false;
-  });
+  //   $franchsing_modal.data('modal').open();
+  //   return false;
+  // });
 
-  // form handler
-  $('#franchising_request').on('submit', function () {
-    var $form = $(this);
+  // // form handler
+  // $('#franchising_request').on('submit', function () {
+  //   var $form = $(this);
 
-    $form.find('.loading').show();
+  //   $form.find('.loading').show();
 
-    if ($('#g-recaptcha-response').val() !== '') {
-      $.ajax({
-        method: 'POST',
-        url: $form.attr('action'),
-        data: $form.serialize()
-      }).done(function(data) {
-        $form.find('.loading').hide();
-        refreshCaptcha();
-        if (data && data.success) {
-          $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
-          setTimeout(function () {
-            $franchsing_modal.data('modal').fadeOut();
-          }, 3300);
-        } else {
-          $form.tooltipster('content', data.error).tooltipster('show');
-        }
-      });
+  //   if ($('#g-recaptcha-response').val() !== '') {
+  //     $.ajax({
+  //       method: 'POST',
+  //       url: $form.attr('action'),
+  //       data: $form.serialize()
+  //     }).done(function(data) {
+  //       $form.find('.loading').hide();
+  //       refreshCaptcha();
+  //       if (data && data.success) {
+  //         $form.find('input, textarea').val('').blur().end().tooltipster('content', data.success).tooltipster('show');
+  //         setTimeout(function () {
+  //           $franchsing_modal.data('modal').fadeOut();
+  //         }, 3300);
+  //       } else {
+  //         $form.tooltipster('content', data.error).tooltipster('show');
+  //       }
+  //     });
 
-    } else {
-      $form.tooltipster('content', 'No robots allowed. Please check the box to prove you are a human').tooltipster('show');
-    }
+  //   } else {
+  //     $form.tooltipster('content', 'No robots allowed. Please check the box to prove you are a human').tooltipster('show');
+  //   }
 
-    return false;
-  });
+  //   return false;
+  // });
 
-  $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
+  // $('#franchising_request').tooltipster({theme: 'tooltipster-noir', timer: 3000, trigger: 'foo'});
 
   // align learn more buttons
   // $('.learn-more-button').each(function () {
