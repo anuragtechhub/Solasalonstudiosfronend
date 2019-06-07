@@ -181,9 +181,15 @@ var ContactForm = React.createClass({
 						null
 					}
 
-					<div className={"form-group " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
-						<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
-					</div>
+					{
+						this.props.display_leave_a_message
+						?
+						<div className={"form-group " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
+							<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}></textarea> 
+						</div>
+						:
+						null
+					}
 
 					<button ref="submit_button" className="button block primary" disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>{this.props.submit_button_text}</button>
 					
@@ -330,6 +336,7 @@ var ContactForm = React.createClass({
     	request_url: this.props.request_url,
     	send_email_to_prospect: this.props.send_email_to_prospect,
     	services: this.state.selected_services.join(', '),
+    	state: this.state.selected_state,
     	zip_code: this.state.zip_code,
 		};
 

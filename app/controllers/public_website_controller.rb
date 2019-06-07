@@ -41,19 +41,23 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_states
-    cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
-    all_states = Rails.cache.fetch(cache_key) do
-      return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
-    end
-    return all_states
+    # cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
+    # all_states = Rails.cache.fetch(cache_key) do
+    #   return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
+    # end
+    # p "all_states=#{all_states}"
+    # return all_states
+    return state_names
   end
 
   def all_states_json
-    cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
-    json = Rails.cache.fetch(cache_key) do
-      return all_states.to_json
-    end
-    return json
+    # cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
+    # json = Rails.cache.fetch(cache_key) do
+    #   return all_states.to_json
+    # end
+    # p "all_states_json=#{json}"
+    # return json
+    return all_states.to_json
   end
 
   def all_locations_msas
@@ -83,6 +87,10 @@ class PublicWebsiteController < ApplicationController
       return all_locations_msas.to_json
     end
     return json
+  end
+
+  def state_names
+    %w(Alaska Alabama Arkansas Arizona California Colorado Connecticut District\ of\ Columbia Delaware Florida Georgia Hawaii Iowa Idaho Illinois Indiana Kansas Kentucky Louisiana Massachusetts Maryland Maine Michigan Minnesota Missouri Mississippi Montana North\ Carolina North\ Dakota Nebraska New\ Hampshire New\ Jersey New\ Mexico Nevada New\ York Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina South\ Dakota Tennessee Texas Utah Virginia Vermont Washington Wisconsin West\ Virginia Wyoming)
   end
 
   def set_locale

@@ -72,6 +72,13 @@ class ContactUsController < PublicWebsiteController
           render :json => {:error => 'Please enter your zip code'}
         else
           unless banned_ip_addresses.include? request.remote_ip
+            # if params[:state].blank? && params[:zip_code].present?
+            #   json = ZipCodes.identify(params[:zip_code])
+            #   if json && json[:state_name]
+            #     params[:state] = json[:state_name]
+            #   end
+            # end
+
             rti = RequestTourInquiry.create({
               :name => params[:name], 
               :email => params[:email], 
@@ -84,6 +91,7 @@ class ContactUsController < PublicWebsiteController
               :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted], 
               :dont_see_your_location => params[:dont_see_your_location],
               :zip_code => params[:zip_code],
+              :state => params[:state],
               :services => params[:services], 
               :send_email_to_prospect => params[:send_email_to_prospect], 
               :source => params[:source], 

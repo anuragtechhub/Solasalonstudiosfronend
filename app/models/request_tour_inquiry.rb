@@ -38,6 +38,7 @@ class RequestTourInquiry < ActiveRecord::Base
         would_you_like_to_subscribe_to_our_newsletter_: self.newsletter,
         i_would_like_to_be_contacted: self.i_would_like_to_be_contacted,
         dont_see_your_location: self.dont_see_your_location,
+        state: self.state,
         zip: self.zip_code,
         services: self.services,
         source: self.source,

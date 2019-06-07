@@ -1089,6 +1089,7 @@ RailsAdmin.config do |config|
       field :contact_preference
       field :services
       field :dont_see_your_location
+      field :state
       field :zip_code
       field :request_url do
         label 'Request URL'
@@ -1120,6 +1121,7 @@ RailsAdmin.config do |config|
       field :contact_preference
       field :services
       field :dont_see_your_location
+      field :state
       field :zip_code
       field :request_url do
         label 'Request URL'
