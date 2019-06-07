@@ -16,6 +16,14 @@
     margin-bottom: 30px;
 	}
 
+  h3 {
+    @include chalet_london;
+    font-style: normal;
+    font-weight: 400;     
+    margin-top: -15px;
+    margin-bottom: 30px;
+  }
+
   .sola-select {
     .option-placeholder {
       width: 100%;
@@ -41,15 +49,24 @@
 		}
 	}
 
+  .state-location-row {
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+  }
+
   .dont-see-your-location {
     //margin-top: 3px;
     margin-bottom: 10px;
     //margin-left: 7px;
     font-size: 11px;
-    // white-space: nowrap;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
+    // margin-top: -20px;
+    // margin-bottom: 15px;
+
     zoom:1.1;
     transform:scale(1.1);
     -ms-transform:scale(1.1);
@@ -62,6 +79,11 @@
     -o-transform-origin:0 0;
     -moz-transform-origin:0 0;
     -webkit-transform-origin:0 0;
+
+    // float: right;
+    // position: relative;
+    // top: -50px;
+    // right: 20px;
 
     &.disabled {
       opacity: 0.65;

@@ -65,10 +65,33 @@ var ContactForm = React.createClass({
 		return (
 			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
+				{this.props.subtitle ? <h3>{this.props.subtitle}</h3> : null}
 
 				<form onSubmit={this.onSubmit} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
-					{this.props.location_view ? null : <SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />}
+					
+					{
+						this.props.location_view 
+						? 
+						null 
+						: 
+						<div className="row state-location-row">
+							<div className="col-sm-6">
+								<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+							</div>
+							<div className="col-sm-6">
+								{
+									this.state.selected_state && !this.props.location_view
+									?
+									<div className="dont-see-your-location">
+										<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
+									</div>
+									:
+									null
+								}
+							</div>
+						</div>
+					}
 					
 					{
 						this.state.selected_state && !this.props.location_view
@@ -82,16 +105,6 @@ var ContactForm = React.createClass({
 										value={this.state.selected_location} 
 										onChange={this.onChangeSelectedLocation} /> 
 						: 
-						null
-					}
-
-					{
-						this.state.selected_state && !this.props.location_view
-						?
-						<div className="dont-see-your-location">
-							<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
-						</div>
-						:
 						null
 					}
 

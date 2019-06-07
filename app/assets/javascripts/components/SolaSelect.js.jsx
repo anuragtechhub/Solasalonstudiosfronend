@@ -56,10 +56,14 @@ var SolaSelect = React.createClass({
 			} else {
 				//console.log('no match', self.props.filteredBy.trim().toLowerCase(), option.filtered_by.trim().toLowerCase(), self.props.filteredBy.trim().toLowerCase() == option.filtered_by.trim().toLowerCase())
 			}
+		}).filter(function (el) {
+		  return el != null;
 		});
 
+		//console.log('options', options);
+
 		return (
-			<div className={"sola-select-wrapper " + this.props.className || ''}>
+			<div className={"sola-select-wrapper " + this.props.className || ''} style={{display: options.length > 0 ? 'block' : 'none'}}>
 				<div className="sola-select no-autobind">
 		      <div className="row" onClick={this.onToggle} tabIndex={typeof this.props.tabIndex != 'undefined' ? this.props.tabIndex : ''}>
 		        <div className="option-placeholder"><h3>{this.props.displayName && this.props.name ? this.props.name : (this.props.value || this.props.placeholder)}</h3></div>
