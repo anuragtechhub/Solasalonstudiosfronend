@@ -8,6 +8,7 @@
   content: params[:utm_content] || cookies[:utm_content] || '',
   hutk: cookies[:hubspotutk] || '',
 
+  always_enabled: defined?(always_enabled) ? always_enabled : false,
   contact_us_path: contact_us_request_a_tour_path,
   display_leave_a_message: defined?(display_leave_a_message) ? display_leave_a_message : true,
   display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : true,
