@@ -22,7 +22,18 @@ var ContactForm = React.createClass({
 	},
 
 	componentDidMount: function () {
+		var self = this;
 		$(this.refs.submit_button).tooltipster({theme: 'tooltipster-noir', timer: 4000, trigger: 'foo'});
+		$(window).on('resize.contact_form', function () {
+			var $root = $(self.refs.root);
+			//console.log('width', $root.width());
+			if ($root.width() < 400) {
+				$('.dont-see-your-location-col').css({'max-width': '100%', left: '25px', top: '-12px'});
+			} else {
+				$('.dont-see-your-location-col').css({'max-width': '50%', left: 'auto', top: 'auto'});
+			}
+		});
+		$(window).trigger('resize.contact_form');
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
@@ -64,7 +75,7 @@ var ContactForm = React.createClass({
 		//console.log('render ContactForm', this.props);
 		
 		return (
-			<div className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
+			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
 				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
 				{this.props.subtitle ? <h3>{this.props.subtitle}</h3> : null}
 
@@ -80,7 +91,7 @@ var ContactForm = React.createClass({
 							<div className="col-sm-6">
 								<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
 							</div>
-							<div className="col-sm-6">
+							<div className="col-sm-6 dont-see-your-location-col">
 								{
 									this.state.selected_state && !this.props.location_view
 									?
