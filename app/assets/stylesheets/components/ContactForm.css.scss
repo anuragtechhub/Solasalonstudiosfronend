@@ -49,6 +49,19 @@
 		}
 	}
 
+  .required-label {
+    font-size: 12px;
+
+    .required {
+      font-weight: bold;
+      color: red;
+      position: relative;
+      top: 4px;
+      left: 2px;
+      font-size: 16px;
+    }
+  }
+
   .state-location-row {
     margin-left: -15px !important;
     margin-right: -15px !important;

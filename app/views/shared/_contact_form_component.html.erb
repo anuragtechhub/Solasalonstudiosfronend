@@ -16,6 +16,7 @@
   location_view: defined?(location_view) ? location_view : false,
   location_placeholder: defined?(location_placeholder) ? location_placeholder : nil,
   request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
+  required_fields: defined?(required_fields) ? required_fields : nil,
   selected_location: defined?(location_id) ? location_id : nil,
   selected_location_name: defined?(location_name) ? location_name : nil,
   selected_state: defined?(location_state) ? location_state : nil,

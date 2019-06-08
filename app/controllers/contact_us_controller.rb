@@ -66,9 +66,25 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-      if params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& params[:message].present? && params[:contact_preference].present?
+      
+      if params[:required_fields].present?
+        all_good = true
+        #p "required_fields=#{params[:required_fields]}"
+        params[:required_fields].each do |required_field|
+          if required_field == 'email' && params[required_field].present? && is_valid_email?(params[required_field])
+            # all good
+          elsif params[required_field] && params[required_field].present?
+            # all good
+          else
+            all_good = false
+            break
+          end
+        end
+      end
+ 
+      if (params[:required_fields].present? && all_good) || (params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present?) #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
-        if params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
+        if params[:required_fields].blank? && params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           render :json => {:error => 'Please enter your zip code'}
         else
           unless banned_ip_addresses.include? request.remote_ip
@@ -131,7 +147,9 @@ class ContactUsController < PublicWebsiteController
           end
         end
       else
-        if params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
+        if params[:required_fields].present?
+          render :json => {:error => "Please enter your #{params[:required_fields].to_sentence}"}
+        elsif params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           p "params[:dont_see_your_location]=#{params[:dont_see_your_location]}"
           p "is_valid_zip_code?(params[:zip_code])=#{is_valid_zip_code?(params[:zip_code])}"
           render :json => {:error => 'Please enter your zip code, name, a valid email address and phone number'}

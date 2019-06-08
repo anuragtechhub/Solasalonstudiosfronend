@@ -120,12 +120,10 @@ var ContactForm = React.createClass({
 						null
 					}
 
-					<div className="form-group" ref="first_input">
-						<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
-					</div>
-					<div className="form-group">
-						<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} />
-					</div>
+					{this.renderName()}
+
+					{this.renderEmail()}
+
 					<div className="form-group"> 
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
 					</div>
@@ -247,6 +245,22 @@ var ContactForm = React.createClass({
 		);
 	},
 
+	renderName: function () {
+		return (
+			<div className="form-group" ref="first_input">
+				<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} /> 
+			</div>
+		);
+	},
+
+	renderEmail: function () {
+		return (
+			<div className="form-group">
+				<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)} />
+			</div>
+		);
+	},
+
 	renderServiceCheckboxes: function () {
 		var self = this;
 		var services = ['Hair', 'Skincare', 'Makeup', 'Massage', 'Nails', 'Other'];
@@ -347,6 +361,7 @@ var ContactForm = React.createClass({
     	phone: this.state.phone,
     	message: this.state.message,
     	request_url: this.props.request_url,
+    	required_fields: this.props.required_fields,
     	send_email_to_prospect: this.props.send_email_to_prospect,
     	services: this.state.selected_services.join(', '),
     	state: this.state.selected_state,
@@ -365,7 +380,11 @@ var ContactForm = React.createClass({
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
 				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
-				ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
+				try {
+					ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
+				} catch (e) {
+					// shhh...
+				}
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
 			}
