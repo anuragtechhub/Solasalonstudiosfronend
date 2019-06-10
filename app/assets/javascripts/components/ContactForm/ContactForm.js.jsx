@@ -140,7 +140,7 @@ var ContactForm = React.createClass({
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
 					</div>
 
-					{this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>}
+					{/*this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>*/}
 
 					{
 						this.props.display_i_would_like_to
