@@ -32,6 +32,8 @@ class RequestTourInquiry < ActiveRecord::Base
         phone: self.phone,
         message: self.message,
         request_url: self.request_url,
+        canada_prospect: self.canada_locations,
+        location_name: self.location.present? ? self.location.name : '',
         location_id: self.location_id || '',
         hs_persona: 'persona_2',
         how_can_we_help_you: self.how_can_we_help_you,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190607230914) do
+ActiveRecord::Schema.define(version: 20190611190523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -463,6 +463,7 @@ ActiveRecord::Schema.define(version: 20190607230914) do
     t.string   "zip_code"
     t.string   "hutk"
     t.string   "state"
+    t.boolean  "canada_locations",             default: false
   end
 
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree

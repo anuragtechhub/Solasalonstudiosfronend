@@ -21,7 +21,7 @@
     font-style: normal;
     font-weight: 400;     
     margin-top: -15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .sola-select {
@@ -388,4 +388,18 @@
 
 .location-page .contact-form {
   margin-top: -10px;
+}
+
+.modern-salon.contact-form {
+  .state-location-row {
+    margin-top: 20px;
+    margin-bottom: -20px;
+  }
+  .location-select {
+    margin-top: 20px;
+    margin-bottom: -10px;
+  }
+  .zipcode {
+    margin-top: 10px;
+  }
 }

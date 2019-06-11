@@ -99,6 +99,7 @@ class ContactUsController < PublicWebsiteController
               :name => params[:name], 
               :email => params[:email], 
               :phone => params[:phone], 
+              :canada_locations => params[:canada_locations],
               :location_id => params[:location_id], 
               :message => params[:message], 
               :request_url => params[:request_url], 
