@@ -73,7 +73,7 @@ var ModernSalonContactForm = React.createClass({
 
 	render: function () {
 		var self = this;
-		//console.log('render ContactForm', this.props);
+		//console.log('render ContactForm', this.props.all_states_ca);
 		
 		return (
 			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.props.root_class_name || '')}>
@@ -110,7 +110,7 @@ var ModernSalonContactForm = React.createClass({
 					{this.renderLocations()}
 
 					{
-						this.state.dont_see_your_location 
+						this.state.dont_see_your_location || (this.state.selected_state == 'Other')
 						? 
 						<div className="zipcode">
 							<div className="form-group">
@@ -198,7 +198,7 @@ var ModernSalonContactForm = React.createClass({
 	},
 
 	renderDontSeeYourLocation: function () {
-		if (this.state.selected_state && !this.props.location_view) {
+		if (this.state.selected_state && !this.props.location_view && this.state.selected_state != 'Other') {
 			return (
 				<div className="dont-see-your-location">
 					<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
@@ -346,7 +346,7 @@ var ModernSalonContactForm = React.createClass({
     	email: this.state.email,
     	canada_locations: this.state.canada_locations,
     	contact_preference: this.capitalize(this.state.contact_preference),
-    	dont_see_your_location: this.state.dont_see_your_location,
+    	dont_see_your_location: this.state.dont_see_your_location || (this.state.selected_state == 'Other'),
     	how_can_we_help_you: this.state.how_can_we_help_you,
     	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
     	phone: this.state.phone,
