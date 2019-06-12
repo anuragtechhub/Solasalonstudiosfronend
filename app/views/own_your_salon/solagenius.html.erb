@@ -82,6 +82,13 @@
 
 </div>
 
+<div class="floating-find-a-studio">
+  <%= link_to "https://sola.glossgenius.com/signup?utm_source=sola&utm_medium=Landing%20Page&utm_campaign=BookNow", :class => "button primary" do %>
+    <%= t('page.sola_genius.sign_up') %>
+  <% end %>
+</div>
+
+
 <% content_for(:scripts) { javascript_include_tag('solagenius') } %>
 <% content_for(:title) { 'SolaGenius' } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/solagenius" } %>
