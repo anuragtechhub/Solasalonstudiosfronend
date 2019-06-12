@@ -4,7 +4,7 @@ class RequestTourInquiry < ActiveRecord::Base
   
   belongs_to :location
   belongs_to :visit
-  after_create :send_notification_email, :sync_with_hubspot
+  after_create :send_notification_email, :send_prospect_email, :sync_with_hubspot
 
   def location_name
     location.display_name if location
@@ -29,13 +29,25 @@ class RequestTourInquiry < ActiveRecord::Base
       Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
         email: self.email,
         name: self.name,
-        phone_number: self.phone,
+        phone: self.phone,
         message: self.message,
         request_url: self.request_url,
+        canada_prospect: self.canada_locations,
+        location_name: self.location.present? ? self.location.name : '',
         location_id: self.location_id || '',
         hs_persona: 'persona_2',
         how_can_we_help_you: self.how_can_we_help_you,
-        would_you_like_to_subscribe_to_our_newsletter_: self.newsletter
+        would_you_like_to_subscribe_to_our_newsletter_: self.newsletter,
+        i_would_like_to_be_contacted: self.i_would_like_to_be_contacted,
+        dont_see_your_location: self.dont_see_your_location,
+        state: self.state,
+        zip: self.zip_code,
+        services: self.services,
+        source: self.source,
+        medium: self.medium,
+        campaign: self.campaign,
+        content: self.content,
+        hutk: self.hutk,
       })
     else
       p "No HUBSPOT API KEY, no sync"
@@ -84,7 +96,20 @@ class RequestTourInquiry < ActiveRecord::Base
   private
 
   def send_notification_email
-    email = PublicWebsiteMailer.request_a_tour(self)
-    email.deliver if email
+    if i_would_like_to_be_contacted
+      p "contact me!"
+      email = PublicWebsiteMailer.request_a_tour(self)
+      email.deliver if email
+    else
+      p "do not contact me!"
+    end
+  end
+
+  def send_prospect_email
+    if send_email_to_prospect == 'modern_salon_2019_05'
+      p "send prospect the modern salon 2019_05 email!"
+      email = PublicWebsiteMailer.modern_salon_2019_05(self)
+      email.deliver if email
+    end
   end
 end

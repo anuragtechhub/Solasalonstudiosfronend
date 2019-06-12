@@ -70,6 +70,7 @@ gem 'paper_trail', '~> 3.0.6'
 gem 'geocoder'
 gem 'geokit-rails'
 gem 'area'
+#gem 'zip-codes'
 
 gem 'htmlcompressor'
 

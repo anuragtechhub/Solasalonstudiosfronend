@@ -1,10 +1,11 @@
-var ContactForm = React.createClass({
+var ModernSalonContactForm = React.createClass({
 
 	getInitialState: function () {
 		return {
 			name: '',
 			email: '',
 			contact_preference: 'phone',
+			canada_locations: false,
 			phone: '',
 			message: '',
 			error: null,
@@ -72,65 +73,16 @@ var ContactForm = React.createClass({
 
 	render: function () {
 		var self = this;
+		//console.log('render ContactForm', this.props.all_states_ca);
 		
 		return (
-			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
+			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.props.root_class_name || '')}>
 				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
 				{this.props.subtitle ? <h3>{this.props.subtitle}</h3> : null}
 
 				<form onSubmit={this.onSubmit} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
 					
-					{
-						this.props.location_view 
-						? 
-						null 
-						: 
-						<div className="row state-location-row">
-							<div className="col-sm-6">
-								<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
-							</div>
-							<div className="col-sm-6 dont-see-your-location-col">
-								{
-									this.state.selected_state && !this.props.location_view
-									?
-									<div className="dont-see-your-location">
-										<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
-									</div>
-									:
-									null
-								}
-							</div>
-						</div>
-					}
-					
-					{
-						this.state.selected_state && !this.props.location_view
-						?
-						<SolaSelect className="location-select" 
-										displayName={true} 
-										filteredBy={this.state.selected_state}
-										placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
-										options={this.props.all_locations} 
-										name={this.state.selected_location_name} 
-										value={this.state.selected_location} 
-										onChange={this.onChangeSelectedLocation} /> 
-						: 
-						null
-					}
-
-					{
-						this.state.dont_see_your_location 
-						? 
-						<div className="zipcode">
-							<div className="form-group">
-								<input className="form-control" name="zip_code" value={this.state.zip_code} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.zip_code")} /> 
-							</div>
-						</div>
-						:
-						null
-					}
-
 					{this.renderName()}
 
 					{this.renderEmail()}
@@ -139,53 +91,31 @@ var ContactForm = React.createClass({
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
 					</div>
 
-					{/*this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>*/}
+					<div className="row state-location-row">
+						<div className="col-sm-6">
+							{
+								this.state.canada_locations
+								?
+								<SolaSelect className="state-select" placeholder="Select a province" options={this.props.all_states_ca} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+								:
+								<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+							}
+						</div>
+						<div className="col-sm-6 dont-see-your-location-col">
+							{this.renderCanadaLocations()}
+							{this.renderDontSeeYourLocation()}
+						</div>
+					</div>
+					
+					{this.renderLocations()}
 
 					{
-						this.props.display_i_would_like_to
-						?
-						<div className={"form-group how-can-we-help-you " + (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location) ? 'disabled' : '')}>
-							<label>{I18n.t('contact_form.i_would_like_to')}</label>
-							<div className="form-inline-rows">
-								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.request_leasing_information')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.request_leasing_information')} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> {I18n.t('contact_form.request_leasing_information')}</label>
-								</div>
-								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.book_an_appointment')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.book_an_appointment')} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> {I18n.t('contact_form.book_an_appointment')}</label>
-								</div>
-								<div className="form-inline">
-									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.other')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.other')} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> {I18n.t('contact_form.other')}</label>
-								</div>
+						this.state.dont_see_your_location || (this.state.selected_state == 'Other')
+						? 
+						<div className="zipcode">
+							<div className="form-group">
+								<input className="form-control" name="zip_code" value={this.state.zip_code} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.zip_code")} /> 
 							</div>
-							{/*<SolaSelect className="how_can_we_help_you-select" 
-													placeholder={I18n.t('contact_form.how_can_we_help_you')} 
-													options={[
-														{	option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.request_leasing_information'),
-															name: I18n.t('contact_form.request_leasing_information')
-														}},
-														{ option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.book_an_appointment'),
-															name: I18n.t('contact_form.book_an_appointment')
-														}},
-														{ option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.other'),
-															name: I18n.t('contact_form.other')
-														}},
-													]} 
-													name="how_can_we_help_you" 
-													value={this.state.how_can_we_help_you}
-													onChange={this.onChangeHowCanWeHelpYou}
-													tabIndex={0} />*/}
-			
-							{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>
-								<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
-								<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
-								<option value="other">{I18n.t('contact_form.other')}</option>
-							</select>*/}
 						</div>
 						:
 						null
@@ -243,6 +173,16 @@ var ContactForm = React.createClass({
 		);
 	},
 
+	renderCanadaLocations: function () {
+		if (!this.state.selected_state) {
+			return (
+				<div className="dont-see-your-location">
+					<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> Canada Locations</label>
+				</div>
+			);
+		}
+	},
+
 	renderContactPreference: function () {
 		var self = this;
 		return (
@@ -255,6 +195,42 @@ var ContactForm = React.createClass({
 				</div>
 			</div>
 		);
+	},
+
+	renderDontSeeYourLocation: function () {
+		if (this.state.selected_state && !this.props.location_view && this.state.selected_state != 'Other') {
+			return (
+				<div className="dont-see-your-location">
+					<label><input type="checkbox" className="form-control" name="dont_see_your_location" checked={this.state.dont_see_your_location} onChange={this.onChangeInput} disabled={!this.state.selected_state} /> {I18n.t('contact_form.dont_see_your_location')}</label>
+				</div>
+			);
+		}
+	},
+
+	renderLocations: function () {
+		if (this.state.selected_state && this.state.canada_locations) {
+			return (
+				<SolaSelect className="location-select" 
+								displayName={true} 
+								filteredBy={this.state.selected_state}
+								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
+								options={this.props.all_locations_ca} 
+								name={this.state.selected_location_name} 
+								value={this.state.selected_location} 
+								onChange={this.onChangeSelectedLocation} /> 
+			);
+		} else if (this.state.selected_state) {
+			return (
+				<SolaSelect className="location-select" 
+								displayName={true} 
+								filteredBy={this.state.selected_state}
+								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
+								options={this.props.all_locations} 
+								name={this.state.selected_location_name} 
+								value={this.state.selected_location} 
+								onChange={this.onChangeSelectedLocation} /> 
+			);
+		}
 	},
 
 	renderName: function () {
@@ -368,8 +344,9 @@ var ContactForm = React.createClass({
     	location_id: this.state.selected_location,
     	name: this.state.name,
     	email: this.state.email,
+    	canada_locations: this.state.canada_locations,
     	contact_preference: this.capitalize(this.state.contact_preference),
-    	dont_see_your_location: this.state.dont_see_your_location,
+    	dont_see_your_location: this.state.dont_see_your_location || (this.state.selected_state == 'Other'),
     	how_can_we_help_you: this.state.how_can_we_help_you,
     	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
     	phone: this.state.phone,
@@ -393,7 +370,7 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				self.setState({loading: false, success: response.responseJSON.success, canada_locations: false, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
 				try {
 					ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 				} catch (e) {

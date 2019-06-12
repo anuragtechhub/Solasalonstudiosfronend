@@ -34,7 +34,7 @@
 </head>
 <body class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
 
-  <%= render 'shared/public_website/header' %>
+  <%= render 'shared/public_website/header' unless @no_header %>
   <div class="body-content"><%= yield %></div>
   <%= render 'shared/public_website/footer' %>
 

@@ -43,6 +43,12 @@
       <% end %>
     <% end %>
 
+    <% if @reserved_stylists && @reserved_stylists.size > 0 %>
+      <% @reserved_stylists.each_with_index do |stylist, index| %>
+        <%= render 'shared/public_website/reserved_stylist_result', :stylist => stylist %>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
 

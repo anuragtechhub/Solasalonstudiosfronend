@@ -1,6 +1,8 @@
-<%= react_component 'ContactForm', {
+<%= react_component 'ModernSalonContactForm', {
   all_states: JSON.parse(all_states_json),
+  all_states_ca: JSON.parse(all_states_ca_json).push('Other'),
   all_locations: JSON.parse(all_locations_msas_json),
+  all_locations_ca: JSON.parse(all_locations_ca_msas_json),
   
   source: params[:utm_source] || cookies[:utm_source] || '',
   medium: params[:utm_medium] || cookies[:utm_medium] || '',
@@ -18,6 +20,7 @@
   location_placeholder: defined?(location_placeholder) ? location_placeholder : nil,
   request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
   required_fields: defined?(required_fields) ? required_fields : nil,
+  root_class_name: defined?(root_class_name) ? root_class_name : nil,
   selected_location: defined?(location_id) ? location_id : nil,
   selected_location_name: defined?(location_name) ? location_name : nil,
   selected_state: defined?(location_state) ? location_state : nil,

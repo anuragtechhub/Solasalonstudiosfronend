@@ -1091,6 +1091,10 @@ RailsAdmin.config do |config|
       field :how_can_we_help_you
       field :message
       field :contact_preference
+      field :services
+      field :dont_see_your_location
+      field :state
+      field :zip_code
       field :request_url do
         label 'Request URL'
       end
@@ -1119,6 +1123,10 @@ RailsAdmin.config do |config|
       field :how_can_we_help_you
       field :message
       field :contact_preference
+      field :services
+      field :dont_see_your_location
+      field :state
+      field :zip_code
       field :request_url do
         label 'Request URL'
       end
@@ -1194,6 +1202,9 @@ RailsAdmin.config do |config|
           pretty_value do
             value.html_safe
           end
+        end
+        field :reserved do
+          help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
         end
         field :status
       end
@@ -1378,6 +1389,9 @@ RailsAdmin.config do |config|
           # end
         end
         field :biography, :ck_editor
+        field :reserved do
+          help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
+        end
         field :status
       end
       group :contact do

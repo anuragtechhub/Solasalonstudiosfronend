@@ -154,6 +154,10 @@ class Stylist < ActiveRecord::Base
     [['Visible', true], ['Hidden', false]]
   end
 
+  def reserved_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def phone_number_display_enum
     [['Visible', true], ['Hidden', false]]
   end

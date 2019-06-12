@@ -1,4 +1,8 @@
-<h3>Sola Contact Us Inquiry</h3>
+<% if @inquiry.send_email_to_prospect == 'modern_salon_2019_05' %>
+	<p><em>This contact form was generated from Modern Salon and Sola's downloadable "Guide to Going Independent"</em></p>
+<% end %>
+
+<h3><%= @subject %></h3>
 
 <hr>
 
@@ -14,7 +18,9 @@
 <% if @inquiry.how_can_we_help_you.present? %>
   <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
 <% end %>
+<% if @inquiry.services.present? %>
+	<p><strong>Services:</strong> <%= @inquiry.services %></p>
+<% end %>
 <% if @inquiry.message.present? %>
   <p><strong>Message:</strong> <%= @inquiry.message %></p>
 <% end %>
-<p><strong>Contact Preference:</strong> <%= @inquiry.contact_preference %></p>
