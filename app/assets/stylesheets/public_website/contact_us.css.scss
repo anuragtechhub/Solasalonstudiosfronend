@@ -432,6 +432,37 @@ body.contact-us {
   }
 }
 
+.contact-book-now {
+  width: 100%;
+  max-width: 315px;
+  height: 60px !important;
+  text-align: center !important;
+  letter-spacing: 1px !important;
+  padding-top: 20px !important;
+  font-size: 15px !important;
+  margin-bottom: 20px !important;
+
+  background: #fd6dc8 !important; /* Old browsers */
+  background: -moz-linear-gradient(top,  #fd6dc8 0%, #ed0f8b 100%) !important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #fd6dc8 0%,#ed0f8b 100%) !important; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #fd6dc8 0%,#ed0f8b 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd6dc8', endColorstr='#ed0f8b',GradientType=0 ) !important; /* IE6-9 */
+}
+
+.contact-salon-professionals {
+  width: 100%;
+  max-width: 315px;
+  height: 60px !important;
+  text-align: left !important;
+  text-overflow: unset !important;
+
+  background: #72c4e7 !important; /* Old browsers */
+  background: -moz-linear-gradient(top,  #72c4e7 0%, #459dd3 100%) !important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #72c4e7 0%,#459dd3 100%) !important; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #72c4e7 0%,#459dd3 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#72c4e7', endColorstr='#459dd3',GradientType=0 ) !important; /* IE6-9 */
+}
+
 @media (max-width : 1150px) {
   .contact-2019 {
     .owl-carousel .owl-item .item .item-content {
