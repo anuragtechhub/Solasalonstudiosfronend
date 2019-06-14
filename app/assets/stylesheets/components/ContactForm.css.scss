@@ -8,7 +8,7 @@
 	position: relative;
 	
 	h2 {
-		@include chalet_london;
+		@include chalet_new_york;
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
@@ -17,7 +17,7 @@
 	}
 
   h3 {
-    @include chalet_london;
+    @include chalet_new_york;
     font-style: normal;
     font-weight: 400;     
     margin-top: -15px;
@@ -29,11 +29,21 @@
       width: 100%;
 
       h3 {
+        @include chalet_new_york;
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
       }
     }
+
+    .options .option {
+      @include chalet_paris;
+      font-weight: 600;
+    }
+  }
+
+  label {
+    @include chalet_new_york;
   }
 
 	.sola-select-wrapper {
@@ -65,6 +75,14 @@
   .state-location-row {
     margin-left: -15px !important;
     //margin-right: -15px !important;
+  }
+
+  .choose-a-sola-location {
+    margin-left: -15px !important;
+
+    label {
+      font-size: 12px;
+    }
   }
 
   .dont-see-your-location {
@@ -116,6 +134,28 @@
     } 
   }
 
+  .i-live-in-canada {
+    top: 0;
+    left: 0;
+    margin-bottom: -5px;
+    zoom:1;
+    transform:scale(1);
+    -ms-transform:scale(1);
+    -webkit-transform:scale(1);
+    -o-transform:scale(1);
+    -moz-transform:scale(1);
+
+    label {
+      @include chalet_paris;
+      font-weight: 600;
+      margin-bottom: 3px !important;
+    }
+
+    input {
+      top: 2px;
+    }
+  }
+
   .how_can_we_help_you-select {
     .sola-select {
       top: 0;
@@ -140,6 +180,7 @@
 	}
 
 	.button {
+    @include chalet_paris;
 		margin-bottom: 0;
 		padding: 17px 15px 15px 15px;
 		height: 47px;
@@ -224,7 +265,7 @@
     input {
       float: left;
       position: relative;
-      top: 3px;
+      top: 1px;
       width: 16px;
       height: 16px;
       margin-right: 1px;
@@ -236,6 +277,8 @@
     }
 
     .text {
+      @include chalet_paris;
+      font-weight: 600;
       display: block;
       float: left;
       clear: none;
@@ -330,7 +373,7 @@
 
     input {
       position: relative;
-      top: 1px;
+      top: 2px;
       width: 16px;
       height: 16px;
       margin-right: 0;
@@ -342,6 +385,8 @@
     }
 
     .text {
+      @include chalet_paris;
+      font-weight: 600;
       margin-left: 5px;
       line-height: 13px;
       margin-top: 3px;

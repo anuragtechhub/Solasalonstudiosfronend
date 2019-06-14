@@ -77,8 +77,7 @@ var ModernSalonContactForm = React.createClass({
 		
 		return (
 			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.props.root_class_name || '')}>
-				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
-				{this.props.subtitle ? <h3>{this.props.subtitle}</h3> : null}
+				{this.props.location_view ? null : <h2 style={{marginBottom: '10px'}}>{this.props.title}</h2>}
 
 				<form onSubmit={this.onSubmit} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
@@ -89,6 +88,15 @@ var ModernSalonContactForm = React.createClass({
 
 					<div className="form-group"> 
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+					</div>
+
+					<div className="row">
+						<div className="col-sm-12 choose-a-sola-location">
+							<label>Choose a Sola location near you (optional)</label>
+							<div className="dont-see-your-location i-live-in-canada">
+								<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> I live in Canada</label>
+							</div>
+						</div>
 					</div>
 
 					<div className="row state-location-row">
@@ -102,7 +110,6 @@ var ModernSalonContactForm = React.createClass({
 							}
 						</div>
 						<div className="col-sm-6 dont-see-your-location-col">
-							{this.renderCanadaLocations()}
 							{this.renderDontSeeYourLocation()}
 						</div>
 					</div>
@@ -171,16 +178,6 @@ var ModernSalonContactForm = React.createClass({
 				</form>
 			</div>
 		);
-	},
-
-	renderCanadaLocations: function () {
-		if (!this.state.selected_state) {
-			return (
-				<div className="dont-see-your-location">
-					<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> Canada Locations</label>
-				</div>
-			);
-		}
 	},
 
 	renderContactPreference: function () {
