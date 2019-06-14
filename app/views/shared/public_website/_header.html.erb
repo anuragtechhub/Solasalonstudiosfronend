@@ -11,6 +11,9 @@
           <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <li class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% end %>
+        <% if I18n.locale.to_s == 'en' %>
+          <li class="border-left nav-booknow-button"><%= link_to :booknow_search do %>Book Now<% end %></li>
+        <% end %>
         <li class="border-left"><%= link_to :contact_us do %><%= raw t 'header.contact_us' %><% end %></li>
         <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
         <li class="border-left country-switcher-wrapper"><%= render 'shared/country_switcher' %></li>
