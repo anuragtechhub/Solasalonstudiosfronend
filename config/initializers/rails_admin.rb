@@ -1083,7 +1083,10 @@ RailsAdmin.config do |config|
       field :name
       field :email
       field :phone
-      field :location
+      field :location do
+        searchable [:name]
+        queryable true
+      end
       field :created_at
       field :newsletter do
         hide
