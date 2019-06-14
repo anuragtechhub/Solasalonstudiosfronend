@@ -1080,6 +1080,27 @@ RailsAdmin.config do |config|
     label_plural 'Contact Inquiries'
     list do
       filters [:created_at]
+      field :name
+      field :email
+      field :phone
+      field :location
+      field :created_at
+      field :newsletter do
+        hide
+        searchable false
+      end
+      field :canada_locations do
+        hide
+        searchable false
+      end
+      field :dont_see_your_location do 
+        hide
+        searchable false
+      end
+      field :i_would_like_to_be_contacted do
+        hide
+        searchable false
+      end
     end
     show do
       field :location_name do
