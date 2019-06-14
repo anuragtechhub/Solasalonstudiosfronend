@@ -178,13 +178,19 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
 
 a.book-now-button, a.book-now-button:link, a.book-now-button:visited, a.book-now-button:hover, a.book-now-button:active {
   @include chalet_new_york;
-  font-size: 16px;
-  height: 44px !important;
-  padding: 12px 20px !important;
+  font-size: 15px;
+  height: 48px !important;
+  padding: 14px 28px !important;
   margin-right: 15px;
   top: 12px;
   position: relative;  
+  text-transform: uppercase;
 
+  background: #fd6dc8 !important; /* Old browsers */
+  background: -moz-linear-gradient(top,  #fd6dc8 0%, #ed0f8b 100%) !important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #fd6dc8 0%,#ed0f8b 100%) !important; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #fd6dc8 0%,#ed0f8b 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd6dc8', endColorstr='#ed0f8b',GradientType=0 ) !important; /* IE6-9 */
   &.solagenius-button {
     
   }
