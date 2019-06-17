@@ -68,7 +68,7 @@ class PublicWebsiteMailer < ActionMailer::Base
     if requestTourInquiry && requestTourInquiry.email && requestTourInquiry.email.present?
       @inquiry = requestTourInquiry
       #requestTourInquiry.location.email_address_for_inquiries
-      attachments["your_guide_to_going_independent.pdf"] = File.read("#{Rails.root}/lib/your_guide_to_going_independent.pdf")
+      attachments["Your Guide To Going Independent.pdf"] = File.read("#{Rails.root}/lib/your_guide_to_going_independent.pdf")
       mail(to: requestTourInquiry.email, from: ("Sola Salon Studios <hello@solasalonstudios.com>"), subject: 'Your Guide to Going Independent') #requestTourInquiry.location.email_address_for_inquiries
     end
   end
