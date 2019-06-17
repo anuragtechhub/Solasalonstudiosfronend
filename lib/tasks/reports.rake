@@ -157,7 +157,7 @@ namespace :reports do
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[3,2019-04-01]
+  # rake reports:location[530,2019-05-01]
   task :location, [:location_id, :start_date] => :environment do |task, args|
     p "begin location report..."
 
@@ -176,7 +176,7 @@ namespace :reports do
 
   # rake reports:location_with_email[380]
   # rake reports:location_with_email[2]
-  # rake reports:location_with_email[8,2017-07-01]
+  # rake reports:location_with_email[530,2019-05-01]
   task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
     p "begin location with email report..."
 
@@ -1111,15 +1111,22 @@ namespace :reports do
       data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : nil
 
       stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
-      #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
-      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-      data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] ? data[:professional_phone_number_clicks_current_month][0][1] : nil
+      p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
       
-      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-      data[:professional_phone_number_clicks_prev_month] = data[:professional_phone_number_clicks_prev_month] ? data[:professional_phone_number_clicks_prev_month][0][1] : nil
+      if stylist_phone_number_filters.present?
+        data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
+        data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] ? data[:professional_phone_number_clicks_current_month][0][1] : nil
+        
+        data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
+        data[:professional_phone_number_clicks_prev_month] = data[:professional_phone_number_clicks_prev_month] ? data[:professional_phone_number_clicks_prev_month][0][1] : nil
 
-      data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-      data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : nil
+        data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
+        data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : nil
+      else
+        data[:professional_phone_number_clicks_current_month] = 0
+        data[:professional_phone_number_clicks_prev_month] = 0
+        data[:professional_phone_number_clicks_prev_year] = 0
+      end
 
       data
     end
