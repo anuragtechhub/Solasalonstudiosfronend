@@ -61,6 +61,11 @@ var ContactForm = React.createClass({
 			} else {
 				$why_sola.addClass('max-height')
 			}
+			if (!this.state.dont_see_your_location) {
+				$why_sola.removeClass('dont-see-location')
+			} else {
+				$why_sola.addClass('dont-see-location')
+			}
 		}
 	},
 
@@ -74,7 +79,7 @@ var ContactForm = React.createClass({
 		var self = this;
 		
 		return (
-			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '')}>
+			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.state.dont_see_your_location ? 'dont-see-location ' : '')}>
 				{this.props.location_view ? null : <h2>{this.props.title}</h2>}
 				{this.props.subtitle ? <h3>{this.props.subtitle}</h3> : null}
 
