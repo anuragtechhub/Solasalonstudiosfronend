@@ -1,4 +1,7 @@
 <div class="twelve columns search-result search-result-clickable" data-href="<%= show_salon_professional_path(stylist).gsub(/\./, '') %>">
+  <% if (stylist.has_sola_genius_account || stylist.force_show_book_now_button) %>
+    <%= link_to(t('page.salon_professional.book_now').html_safe, url_helper(stylist.sg_booking_url.present? ? stylist.sg_booking_url : stylist.booking_url), :class => "button primary book-now-button solagenius-button", :target => '_blank') %>
+  <% end %>  
   <h3 class="name">
     <%= link_to show_salon_professional_path(stylist) do %>
       <%= stylist.website_name.present? ? stylist.website_name.html_safe : stylist.name.html_safe %>
@@ -14,9 +17,6 @@
     </p>
   <% end %>
   <p class="address">
-    <% if (stylist.has_sola_genius_account || stylist.force_show_book_now_button) %>
-      <%= link_to(t('page.salon_professional.book_now').html_safe, url_helper(stylist.sg_booking_url.present? ? stylist.sg_booking_url : stylist.booking_url), :class => "button primary book-now-button solagenius-button", :target => '_blank') %>
-    <% end %>
     <%= ((stylist.phone_number.present? || stylist.website_phone_number.present?) && stylist.phone_number_display) ? (stylist.website_phone_number.present? ? stylist.website_phone_number : stylist.phone_number) : '&nbsp;'.html_safe %>
   </p>
   <div class="view-profile"><%= link_to t('page.search.view_webpage').html_safe, show_salon_professional_path(stylist).gsub(/\./, ''), :class => 'bold-link' %></div>

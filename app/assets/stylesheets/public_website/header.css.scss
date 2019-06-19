@@ -91,6 +91,18 @@
       }
     }
   }
+
+  .nav-booknow-button {
+    background: #fd6dc8 !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fd6dc8 0%, #ed0f8b 100%) !important; /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #fd6dc8 0%,#ed0f8b 100%) !important; /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #fd6dc8 0%,#ed0f8b 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fd6dc8', endColorstr='#ed0f8b',GradientType=0 ) !important; /* IE6-9 */
+  }
+}
+
+.mobile-nav-booknow-button {
+  color: $brand-pink !important;
 }
 
 #header {
