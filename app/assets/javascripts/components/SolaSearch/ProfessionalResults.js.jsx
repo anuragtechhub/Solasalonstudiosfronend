@@ -4,16 +4,35 @@ var ProfessionalResults = React.createClass({
 		var self = this;
 
 		var professionals = this.props.professionals.map(function (professional) {
-			return <ProfessionalResult 
+			var availabilities = self.getAvailabilities(professional);
+			if (availabilities && availabilities.length) {
+				return <ProfessionalResult 
 								key={professional.booking_page_url} 
 								{...professional} 
-								availabilities={self.getAvailabilities(professional)} 
+								availabilities={availabilities} 
 								date={self.props.date}
 								fingerprint={self.props.fingerprint}
 								gloss_genius_api_key={self.props.gloss_genius_api_key}
 								gloss_genius_api_url={self.props.gloss_genius_api_url}
 								onShowBookingModal={self.props.onShowBookingModal} 
 								professional={professional} />
+			}
+		});
+
+		var professionals_with_no_availability = this.props.professionals.map(function (professional) {
+			var availabilities = self.getAvailabilities(professional);
+			if (availabilities && availabilities.length == 0) {
+				return <ProfessionalResult 
+								key={professional.booking_page_url} 
+								{...professional} 
+								availabilities={availabilities} 
+								date={self.props.date}
+								fingerprint={self.props.fingerprint}
+								gloss_genius_api_key={self.props.gloss_genius_api_key}
+								gloss_genius_api_url={self.props.gloss_genius_api_url}
+								onShowBookingModal={self.props.onShowBookingModal} 
+								professional={professional} />
+			}
 		});
 
 		return (
@@ -44,6 +63,7 @@ var ProfessionalResults = React.createClass({
 					<div className="SearchResultsCount" style={{display: 'none'}}>{professionals.length} {I18n.t('sola_search.professionals_for_query', {query: this.props.query})}</div>
 				</div>
 				{professionals}
+				{professionals_with_no_availability}
 				{this.renderPagination()}
 			</div>
 		);
