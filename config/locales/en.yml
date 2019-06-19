@@ -89,7 +89,12 @@ en:
     contact_your_sola_pro_directly: Contact Your Sola Pro directly
     if_you_do_not_see: <strong>If you do not see your Sola professional in the search results below, please contact them directly for booking.</strong>
     booknow_search_results: The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).
-
+    please_try_your_search_again: Please Try Your Search Again
+    unable_to_find_results: We were unable to find results that matched your search criteria
+    no_results_note_1: 'Note: The BookNow search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).'
+    no_results_note_2: If you do not see your Sola professional in the search results, please contact them directly for booking inquiries.
+    contact_your_sola_pro_directly: Contact Your Sola Pro Directly
+    
   contact_form:
     contact_a_sola_near_you: Contact A Sola Near You
     select_a_state: Select a State
