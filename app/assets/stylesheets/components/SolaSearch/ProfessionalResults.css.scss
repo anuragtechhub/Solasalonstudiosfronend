@@ -405,7 +405,37 @@
 @media (max-width: 1144px) {
 	.ProfessionalResults {
 		.no-results {
+			padding: 0 20px;
 
+			img.no-results-icon {
+				margin-top: 15px;
+				max-width: 150px;
+			}
+			h2 {
+				font-size: 21px;
+				line-height: 21px;
+				margin-bottom: 25px;
+			}
+			h3 {
+				font-size: 17px;
+				line-height: 25px;
+				margin-bottom: 20px;
+			}
+			p {
+				font-size: 14px;
+				line-height: 22px;
+				margin-bottom: 20px;
+
+				&.first {
+					display: none;
+				}
+			}
+			a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
+				margin-bottom: 20px;
+				font-size: 17px;
+				line-height: 17px;
+				padding: 15px 30px;
+			}
 		}
 	}
 }

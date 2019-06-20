@@ -84,7 +84,7 @@ var ProfessionalResults = React.createClass({
 						<img className="no-results-icon" src="//solasalonstudios.s3.amazonaws.com/book_now_no_results.png" />
 						<h2>{I18n.t('sola_search.please_try_your_search_again')}</h2>
 						<h3>{I18n.t('sola_search.unable_to_find_results')}</h3>
-						<p dangerouslySetInnerHTML={{__html: I18n.t('sola_search.no_results_note_1')}}></p>
+						<p className="first" dangerouslySetInnerHTML={{__html: I18n.t('sola_search.no_results_note_1')}}></p>
 						<div>
 							<a href="#" className="btn">{I18n.t('sola_search.contact_your_sola_pro_directly')}</a>
 						</div>
