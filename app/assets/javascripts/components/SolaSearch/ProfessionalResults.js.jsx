@@ -86,7 +86,7 @@ var ProfessionalResults = React.createClass({
 						<h3>{I18n.t('sola_search.unable_to_find_results')}</h3>
 						<p className="first" dangerouslySetInnerHTML={{__html: I18n.t('sola_search.no_results_note_1')}}></p>
 						<div>
-							<a href="#" className="btn">{I18n.t('sola_search.contact_your_sola_pro_directly')}</a>
+							<a href={this.props.find_a_salon_pro_path} className="btn">{I18n.t('sola_search.contact_your_sola_pro_directly')}</a>
 						</div>
 						<p>{I18n.t('sola_search.no_results_note_2')}</p>
 					</div>
