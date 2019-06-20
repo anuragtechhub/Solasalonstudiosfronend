@@ -56,24 +56,6 @@ en-CA:
     what_services_do_you_specialize_in: What service(s) do you specialize in?
     zip_code: Zip Code
 
-  contact_form:
-    contact_a_sola_near_you: Contact A Sola Near You
-    select_a_state: Select a Province
-    select_a_location: Select a Location
-    please_try_again: Please Try Again
-    your_name: Your Name
-    email_address: Email Address
-    phone_number: Phone Number
-    leave_a_message: Leave a Message
-    submit_message: Submit Message
-    how_can_we_help_you: How can we help you?
-    request_leasing_information: Request leasing information
-    book_an_appointment: Book an appointment with a salon professional
-    other: Other
-    how_would_you_prefer_to_be_counted: How would you prefer to be contacted?
-    subscribe_to_newsletter: Subscribe to our monthly newsletter
-    i_would_like_to: 'I would like to:'
-
   header:
     rent_studio_button: Rent a Studio
     contact_us: Contact Us
