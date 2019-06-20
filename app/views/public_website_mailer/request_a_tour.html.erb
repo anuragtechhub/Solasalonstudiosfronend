@@ -12,15 +12,22 @@
   <p><strong>Location:</strong> <%= @inquiry.location.name.html_safe %></p>
 <% end %>
 
+<% if @inquiry.zip_code.present? %>
+  <p><strong>Zip Code:</strong> <%= @inquiry.zip_code %></p>
+<% end %>
+
 <p><strong>Name:</strong> <%= @inquiry.name %></p>
 <p><strong>Email:</strong> <%= @inquiry.email %></p>
 <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
+
 <% if @inquiry.how_can_we_help_you.present? %>
   <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
 <% end %>
+
 <% if @inquiry.services.present? %>
 	<p><strong>Services:</strong> <%= @inquiry.services %></p>
 <% end %>
+
 <% if @inquiry.message.present? %>
   <p><strong>Message:</strong> <%= @inquiry.message %></p>
 <% end %>
