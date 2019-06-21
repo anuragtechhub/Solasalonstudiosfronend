@@ -80,6 +80,13 @@
   		line-height: 25px;
   		margin: 0 auto 30px auto;
   		max-width: 500px;
+
+  		a, a:link, a:visited, a:hover, a:active {
+	  		color: #a1a1a1;
+	  		font-size: 17px;
+	  		line-height: 25px;
+	  		text-decoration: underline;
+  		}
   	}
 
   	a.btn, a.btn:link, a.btn:visited, a.btn:hover, a.btn:active {
