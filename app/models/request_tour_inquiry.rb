@@ -96,12 +96,13 @@ class RequestTourInquiry < ActiveRecord::Base
   private
 
   def send_notification_email
-    if i_would_like_to_be_contacted
+    if i_would_like_to_be_contacted == false && send_email_to_prospect == 'modern_salon_2019_05'
+      p "shhh"
+      p "do not contact me!"
+    else
       p "contact me!"
       email = PublicWebsiteMailer.request_a_tour(self)
       email.deliver if email
-    else
-      p "do not contact me!"
     end
   end
 
