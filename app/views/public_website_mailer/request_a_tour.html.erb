@@ -2,6 +2,14 @@
 	<p><em>This contact form was generated from Modern Salon and Sola's downloadable "Guide to Going Independent"</em></p>
 <% end %>
 
+<% if @inquiry.how_can_we_help_you == 'Book an appointment with a salon professional' %>
+	<% if I18n.locale.to_s == 'en' %>
+		<p><em>This person has received an automated email with more information about how to search and book an appointment with a Sola professional using BookNow.</em></p>
+	<% else %>
+		<p><em>This person has received an automated email with more information about how to search for a Sola professional on the Sola website.</em></p>
+	<% end %>
+<% end %>
+
 <h3><%= @subject %></h3>
 
 <hr>

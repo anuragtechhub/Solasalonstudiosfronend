@@ -376,7 +376,7 @@ var ContactForm = React.createClass({
     	contact_preference: this.capitalize(this.state.contact_preference),
     	dont_see_your_location: this.state.dont_see_your_location,
     	how_can_we_help_you: this.state.how_can_we_help_you,
-    	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
+    	i_would_like_to_be_contacted: true,
     	phone: this.state.phone,
     	message: this.state.message,
     	request_url: this.props.request_url,
@@ -398,7 +398,11 @@ var ContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				if (self.props.location_view) {
+					self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: self.props.selected_location, selected_location_name: self.props.selected_location_name, selected_state: self.props.selected_state, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				} else {
+					self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: I18n.t('contact_form.request_leasing_information'), name: '', email: '', phone: '', message: ''});
+				}
 				try {
 					ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 				} catch (e) {
