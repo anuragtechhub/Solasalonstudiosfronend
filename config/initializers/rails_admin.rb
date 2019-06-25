@@ -1088,6 +1088,12 @@ RailsAdmin.config do |config|
         queryable true
       end
       field :created_at
+      field :send_email_to_prospect do 
+        hide
+        label 'Prospect Origin'
+        searchable true
+        queryable true
+      end
       field :newsletter do
         hide
         searchable false
@@ -1122,6 +1128,9 @@ RailsAdmin.config do |config|
       field :request_url do
         label 'Request URL'
       end
+      field :send_email_to_prospect do 
+        label 'Prospect Origin'
+      end
       field :utm_source do
         label 'UTM Source'
       end
@@ -1153,6 +1162,9 @@ RailsAdmin.config do |config|
       field :zip_code
       field :request_url do
         label 'Request URL'
+      end
+      field :send_email_to_prospect do 
+        label 'Prospect Origin'
       end
       field :utm_source do
         label 'UTM Source'
