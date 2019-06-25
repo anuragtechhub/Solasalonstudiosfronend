@@ -367,6 +367,7 @@ class Stylist < ActiveRecord::Base
         website: self.website_url,
         booking_url: self.booking_url,
         solagenius_booking_url: self.sg_booking_url,
+        solagenius_account_created_at: self.solagenius_account_created_at.present? ? self.solagenius_account_created_at.to_date.strftime('%Q').to_i : nil,
         pinterest_url: self.pinterest_url,
         facebook_url: self.facebook_url,
         twitter_url: self.twitter_url,
