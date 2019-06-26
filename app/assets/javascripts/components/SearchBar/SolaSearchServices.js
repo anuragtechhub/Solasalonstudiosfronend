@@ -66,7 +66,9 @@ var SolaSearchServices = {
     }, {
         "name": "Kid's Cut",
  
-    }],
+    },
+        {"name": "Cut & Color"}
+    ],
     "Weaves": [{
         "name": "Weaves",
  
