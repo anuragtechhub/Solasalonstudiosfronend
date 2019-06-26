@@ -1081,7 +1081,7 @@ RailsAdmin.config do |config|
     label 'Contact Inquiry'
     label_plural 'Contact Inquiries'
     list do
-      filters [:created_at]
+      filters [:created_at, :how_can_we_help_you]
       field :name
       field :email
       field :phone
@@ -1090,6 +1090,10 @@ RailsAdmin.config do |config|
         queryable true
       end
       field :created_at
+      field :how_can_we_help_you do
+        searchable true
+        queryable true
+      end
       field :send_email_to_prospect do 
         hide
         label 'Prospect Origin'
