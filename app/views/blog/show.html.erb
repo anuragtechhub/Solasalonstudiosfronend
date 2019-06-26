@@ -104,7 +104,13 @@
 <% content_for(:title) { @post.title.html_safe } %>
 <% content_for(:og_image) { @post.image(:original) } %>
 <% content_for(:og_description) { clean_html @post.summary } %>
-<% content_for(:meta_description) { clean_html @post.summary } %>
+<% content_for(:meta_description) { 
+  if @post.meta_description.present?
+    @post.meta_description
+  else
+    clean_html @post.summary 
+  end
+} %>
 <% content_for(:fb_conversion_pixel) { 
   if @post.fb_conversion_pixel && @post.fb_conversion_pixel.present?
     @post.fb_conversion_pixel.html_safe

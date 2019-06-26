@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190612172331) do
+ActiveRecord::Schema.define(version: 20190626222313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20190612172331) do
     t.string   "status",                      default: "published"
     t.datetime "publish_date"
     t.boolean  "contact_form_visible",        default: false
+    t.text     "meta_description"
   end
 
   create_table "ckeditor_assets", force: true do |t|

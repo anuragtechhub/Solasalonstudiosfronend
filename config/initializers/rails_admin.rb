@@ -210,6 +210,7 @@ RailsAdmin.config do |config|
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
       end
+      field :meta_description
       field :summary do
         pretty_value do
           value.html_safe if value.present?
@@ -252,6 +253,7 @@ RailsAdmin.config do |config|
         end
         delete_method :delete_image
       end
+      field :meta_description
       field :summary
       field :body, :ck_editor
       field :author
