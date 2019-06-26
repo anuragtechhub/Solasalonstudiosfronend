@@ -104,6 +104,8 @@ var SolaSearch = React.createClass({
 					query={this.state.query} 
 					results_path={this.state.results_path}
 					referring_url={this.props.referring_url} 
+					booknow_search_path={this.props.booknow_search_path}
+					find_a_salon_pro_path={this.props.find_a_salon_pro_path}
 				/>
 				<LocationsMap 
 					display={this.state.display}

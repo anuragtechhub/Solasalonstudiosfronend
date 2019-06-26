@@ -70,11 +70,26 @@ var ProfessionalResults = React.createClass({
 	},
 
 	renderPagination: function () {
-		if (this.props.end_of_results || this.props.professionals.length == 0) {
+		if (this.props.end_of_results && this.props.professionals.length > 0) {
 			//console.log('renderPagination END OF RESULTS');
 			return (
 				<div className="SearchPagination text-center">
 					<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.end_of_results')}</em>
+				</div>
+			);
+		} else if (this.props.professionals.length == 0) {
+			return (
+				<div className="SearchPagination text-center">
+					<div className="no-results">
+						<img className="no-results-icon" src="//solasalonstudios.s3.amazonaws.com/book_now_no_results.png" />
+						<h2>{I18n.t('sola_search.please_try_your_search_again')}</h2>
+						<h3>{I18n.t('sola_search.unable_to_find_results')}</h3>
+						<div>
+							<a href={this.props.booknow_search_path} className="btn">{I18n.t('sola_search.search_again')}</a>
+						</div>						
+						<p className="first" dangerouslySetInnerHTML={{__html: I18n.t('sola_search.no_results_note_1')}}></p>
+						<p><a href={this.props.find_a_salon_pro_path}>{I18n.t('sola_search.browse_all_sola_beauty_professionals')}</a></p>
+					</div>
 				</div>
 			);
 		} else {
