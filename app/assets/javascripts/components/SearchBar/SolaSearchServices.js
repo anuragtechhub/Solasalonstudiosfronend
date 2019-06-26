@@ -341,6 +341,7 @@ var SolaSearchServices = {
 
     }],
     "Massages & Spa": [
+        {"name": "All", value: 'Massage'},
         {"name": "Hot Stone"},
         {"name": "Swedish"},
         {"name": "Deep Tissue"},

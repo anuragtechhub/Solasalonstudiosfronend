@@ -41,10 +41,10 @@ var SearchServicesAndSuggestions = React.createClass({
 		if (prevProps.query != this.props.query) {
 			//console.log('the query has changed', this.props.query);
 
-			$(this.refs.dropdown).find('a').wrapInTag({
-			  tag: 'strong',
-			  words: [this.props.query]
-			});
+			// $(this.refs.dropdown).find('a').wrapInTag({
+			//   tag: 'strong',
+			//   words: [this.props.query]
+			// });
 
 			// only get suggestions when query is at least 2 characters
 			if (this.props.query && this.props.query.length >= 2) {
@@ -95,7 +95,7 @@ var SearchServicesAndSuggestions = React.createClass({
 			if (k.toLowerCase().indexOf(matchString) != -1 || k.toLowerCase().replace(/[^a-zA-Z ]/, '').indexOf(matchString) != -1) {
 				// category match
 				matches.push(
-					<a key={k} href="#" data-category={k} className="service-match" onClick={self.onSelectService.bind(null, k)}>{k}</a>
+					<a key={k} href="#" data-category={k} className="service-match" onClick={self.onSelectService.bind(null, k)}><HighlightText words={[self.props.query]}>{k}</HighlightText></a>
 				);
 
 				// if category matches, then all sub-services match
@@ -103,7 +103,7 @@ var SearchServicesAndSuggestions = React.createClass({
 					if (matched_services.indexOf(SolaSearchServices[k][j].name) == -1) {
 						matched_services.push(SolaSearchServices[k][j].name);
 						matches.push(
-							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name} ({k})</a>
+							<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].value || SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].value || SolaSearchServices[k][j].name}><HighlightText words={[self.props.query]}>{SolaSearchServices[k][j].name} ({k})</HighlightText></a>
 						);
 					}
 				}
@@ -113,7 +113,7 @@ var SearchServicesAndSuggestions = React.createClass({
 						if (matched_services.indexOf(SolaSearchServices[k][j].name) == -1) {
 							matched_services.push(SolaSearchServices[k][j].name);
 							matches.push(
-								<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].name}>{SolaSearchServices[k][j].name}</a>
+								<a key={k + '_' + SolaSearchServices[k][j].name} href="#" onClick={self.onSelectService.bind(null, SolaSearchServices[k][j].value || SolaSearchServices[k][j].name)} className="service-match" data-service={SolaSearchServices[k][j].value || SolaSearchServices[k][j].name}><HighlightText words={[self.props.query]}>{SolaSearchServices[k][j].name}</HighlightText></a>
 							);
 						}
 					}
@@ -149,12 +149,12 @@ var SearchServicesAndSuggestions = React.createClass({
 		
 		for (var k in SolaSearchServices) {
 			categories.push(
-				<a key={k} href="#" data-category={k} className={this.state.activeCategory == k ? 'active' : ''} onClick={this.onChangeActiveCategory}>{k}</a>
+				<a key={k} href="#" data-category={k} className={this.state.activeCategory == k ? 'active' : ''} onClick={self.onChangeActiveCategory.bind(null, k)}><HighlightText words={[self.props.query]}>{k}</HighlightText></a>
 			);
 
 			var category_services = SolaSearchServices[k].map(function (service) {
 				return (
-					<a key={service.name} href="#" data-service={service.name} onClick={self.onSelectService.bind(null, service.name)}>{service.name}</a>
+					<a key={service.name} href="#" data-service={service.value || service.name} onClick={self.onSelectService.bind(null, service.value || service.name)}><HighlightText words={[self.props.query]}>{service.name}</HighlightText></a>
 				);
 			});
 
@@ -193,9 +193,10 @@ var SearchServicesAndSuggestions = React.createClass({
 	},
 
 	renderProfessionals: function () {
+		var self = this;
 		if (this.state.professionals && this.state.professionals.length > 0) {
 			var professionals = this.state.professionals.map(function (professional) {
-				return <a key={professional.booking_page_url} href={'//' + professional.booking_page_url} className="professional-match">{professional.full_name}</a>
+				return <a key={professional.booking_page_url} href={'//' + professional.booking_page_url} className="professional-match"><HighlightText words={[self.props.query]}>{professional.full_name}</HighlightText></a>
 			});
 
 			return (
@@ -247,11 +248,11 @@ var SearchServicesAndSuggestions = React.createClass({
 		this.props.onChangeQuery(e.target.value)
 	},
 
-	onChangeActiveCategory: function (e) {
-		//console.log('onChangeActiveCategory', e.target.dataset.category);
+	onChangeActiveCategory: function (category, e) {
+		//console.log('onChangeActiveCategory', category, e.target.dataset.category);
 		e.preventDefault();
 		e.stopPropagation();
-		this.setState({activeCategory: e.target.dataset.category});
+		this.setState({activeCategory: category});
 	},
 
 	onFocus: function () {
@@ -269,6 +270,7 @@ var SearchServicesAndSuggestions = React.createClass({
 
 	onSelectService: function (service, event) {
 		event.preventDefault();
+		//console.log('onSelectService', service);
 		this.setState({dropdownOpen: false});
 		this.props.onChangeQuery(service);
 	},
