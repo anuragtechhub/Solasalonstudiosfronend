@@ -1217,8 +1217,9 @@ RailsAdmin.config do |config|
         label 'URL Name'
       end
       field :email_address
-      field :location_name do
-        label 'Location'
+      field :location do
+        searchable [:name]
+        queryable true
       end
       field :business_name
       field :studio_number
@@ -1685,6 +1686,8 @@ RailsAdmin.config do |config|
       #   end
       # end
       field :location_name
+      field :location_city
+      field :location_state
       field :business_name
       field :studio_number
       field :work_hours

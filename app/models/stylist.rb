@@ -231,6 +231,14 @@ class Stylist < ActiveRecord::Base
     url_name
   end
 
+  def location_city
+    return location.city if location
+  end
+
+  def location_state
+    return location.state if location
+  end
+
   def update_computed_fields
     self.location_name = location.name if location && location.name
     if location && location.msa
