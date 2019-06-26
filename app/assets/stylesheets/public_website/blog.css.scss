@@ -81,6 +81,30 @@
       }
     }
 
+    h1 {
+      @include chalet_new_york;
+      font-weight: bold !important;
+      font-size: 27px !important;
+      line-height: 31px !important;
+      margin-bottom: 20px !important;
+    }
+
+    h2 {
+      @include chalet_new_york;
+      font-weight: bold !important;
+      font-size: 23px !important;
+      line-height: 27px !important;
+      margin-bottom: 20px !important;
+    }
+
+    h3 {
+      @include chalet_new_york;
+      font-weight: bold !important;
+      font-size: 19px !important;
+      line-height: 23px !important;
+      margin-bottom: 20px !important;
+    }
+
     p, .p { 
       margin-bottom: 20px !important;
     }
