@@ -26,8 +26,9 @@
 
 <p><strong>Name:</strong> <%= @inquiry.name %></p>
 <p><strong>Email:</strong> <%= @inquiry.email %></p>
+<% if @inquiry.phone.present? %>
 <p><strong>Phone:</strong> <%= @inquiry.phone %></p>
-
+<% end %>
 <% if @inquiry.how_can_we_help_you.present? %>
   <p><strong>How Can We Help You?:</strong> <%= @inquiry.how_can_we_help_you %></p>
 <% end %>
