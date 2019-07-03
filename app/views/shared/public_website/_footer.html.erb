@@ -20,6 +20,9 @@
               <li><%= link_to raw(t('page.testimonials.title')), :testimonials %></li>
               <!--<li><%= link_to raw(t('page.faqs.title')), :faqs %></li>-->
               <li><%= link_to raw(t('page.blog.title')), :blog %></li>
+              <% if I18n.locale.to_s == 'en' || I18n.locale.to_s == 'en-CA' %>  
+              <li><%= link_to raw(t('page.footer.franchising')), 'https://pages.solasalonstudios.com/signup?source=UAT&medium=UAT&utm_source=UAT&utm_medium=UAT' %></li>
+              <% end %>
             </ul>
           </div>
           <div class="one-half column last">

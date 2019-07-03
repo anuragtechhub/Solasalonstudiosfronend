@@ -33,6 +33,9 @@
       <ul class="sola-nav">
         <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', 'data-nav' => "own-your-salon" %></h4></li>
         <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
+        <% if I18n.locale.to_s != 'pt-BR' %>
+          <li><h4><%= link_to raw(t('page.franchising.title')), 'https://pages.solasalonstudios.com/signup?source=UAT&medium=UAT&utm_source=UAT&utm_medium=UAT' %></h4></li>
+        <% end %>
         <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
         <% if I18n.locale.to_s != 'pt-BR' %>
           <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>

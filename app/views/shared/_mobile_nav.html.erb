@@ -75,6 +75,9 @@
 	        <% end %>
 		    </ul>
 			</li>
+			<% if I18n.locale.to_s != 'pt-BR' %>
+				<li><%= link_to raw(t('page.franchising.title')), 'https://pages.solasalonstudios.com/signup?source=UAT&medium=UAT&utm_source=UAT&utm_medium=UAT' %></li>
+			<% end %>
 			<li><%= link_to raw(t('page.locations.title')), :locations %></li>
 			<% if I18n.locale.to_s != 'pt-BR' %>
 				<li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
