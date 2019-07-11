@@ -110,6 +110,12 @@ class BooknowController < PublicWebsiteController
     #     params[:location] = 'Denver, CO'
     #   end
     # end
+    if params[:lat].blank? || params[:lng].blank?
+      p "blank lat/lng yo!"
+      results = Geocoder.search(params[:location])
+      params[:lat], params[:lng] = results.first.coordinates
+      p "we loaded em #{params[:lat]}, #{params[:lng]}"
+    end
 
     query_string = "query=#{CGI.escape params[:query]}&latitude=#{params[:lat]}&longitude=#{params[:lng]}&radius=25"
 

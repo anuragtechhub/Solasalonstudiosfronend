@@ -98,7 +98,7 @@ var SearchBar = React.createClass({
 		
 
 		var hasQuery = this.hasQuery();
-		var hasLatLng = this.hasLatLng();
+		var hasLatLng = this.state.location && this.state.location != '';//this.hasLatLng();
 
 		if (hasQuery && hasLatLng && this.state.date) {
 			// all good - proceed to search results
