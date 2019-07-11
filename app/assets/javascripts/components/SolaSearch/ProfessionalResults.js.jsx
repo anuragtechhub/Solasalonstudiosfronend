@@ -70,6 +70,7 @@ var ProfessionalResults = React.createClass({
 	},
 
 	renderPagination: function () {
+		//console.log('renderPagination', this.props.availabilities, this.props.professionals)
 		if (this.props.end_of_results && this.props.professionals.length > 0) {
 			//console.log('renderPagination END OF RESULTS');
 			return (
@@ -90,6 +91,12 @@ var ProfessionalResults = React.createClass({
 						<p className="first" dangerouslySetInnerHTML={{__html: I18n.t('sola_search.no_results_note_1')}}></p>
 						<p><a href={this.props.find_a_salon_pro_path}>{I18n.t('sola_search.browse_all_sola_beauty_professionals')}</a></p>
 					</div>
+				</div>
+			);
+		} else if (jQuery.isEmptyObject(this.props.availabilities)) {
+			return (
+				<div className="SearchPagination text-center">
+					<em style={{fontSize: 15, color: '#AFAFAF', display: 'block', margin: '30px 0'}}>{I18n.t('sola_search.loading')}</em>
 				</div>
 			);
 		} else {
