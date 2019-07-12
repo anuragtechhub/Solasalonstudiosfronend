@@ -7,7 +7,7 @@ class PublicWebsiteController < ApplicationController
 
   before_action :set_locale, :auth_if_test#, :auth_if_canada
 
-  helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_locations_msas_json, :all_states_ca, :all_locations_ca_msas, :all_states_ca_json, :all_locations_ca_msas_json
+  helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_locations_msas_json, :all_states_ca, :all_locations_ca_msas, :all_states_ca_json, :all_locations_ca_msas_json, :merge_solagenius_utm_params
 
   #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if => 
 
@@ -18,6 +18,19 @@ class PublicWebsiteController < ApplicationController
   #     end
   #   end
   # end
+  require 'uri'
+
+  def merge_solagenius_utm_params(url)
+    callback = Addressable::URI.parse(url)
+    callback.query_values = (callback.query_values || {}).merge({
+      :utm_source => 'sola',
+      :utm_campaign => 'sola_booknow',
+      :utm_medium => 'referral'
+    })
+    return callback.to_s
+  rescue => e
+    return url
+  end
 
   def auth_if_test
     #p "request.fullpath=#{request.fullpath}, #{request.fullpath.include?('sejasola')}"

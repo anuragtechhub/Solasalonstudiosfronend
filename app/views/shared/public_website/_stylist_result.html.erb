@@ -1,6 +1,6 @@
 <div class="twelve columns search-result search-result-clickable" data-href="<%= show_salon_professional_path(stylist).gsub(/\./, '') %>">
   <% if (stylist.has_sola_genius_account || stylist.force_show_book_now_button) %>
-    <%= link_to(t('page.salon_professional.book_now').html_safe, url_helper(stylist.sg_booking_url.present? ? stylist.sg_booking_url : stylist.booking_url), :class => "button primary book-now-button solagenius-button", :target => '_blank') %>
+    <%= link_to(t('page.salon_professional.book_now').html_safe, url_helper(stylist.sg_booking_url.present? ? merge_solagenius_utm_params(stylist.sg_booking_url) : stylist.booking_url), :class => "button primary book-now-button solagenius-button", :target => '_blank') %>
   <% end %>  
   <h3 class="name">
     <%= link_to show_salon_professional_path(stylist) do %>
