@@ -36,14 +36,14 @@ var BookingModalReview = React.createClass({
 		return (
 			<div className="Header">
 				<div className="ProfessionalCoverImage">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Landing Page" data-glabel={this.props.professional.booking_page_url}>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Landing Page" data-glabel={this.props.professional.booking_page_url}>
 						<img style={{height: this.state.height, width: this.state.width, top: this.state.top, left: this.state.left}} src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : (this.props.professional.cover_image != this.state.glossDefaultCoverImageUrl ? this.props.professional.cover_image : this.state.defaultCoverImageUrl)} alt={this.props.professional.full_name} onError={this.onCoverImageError} onLoad={this.onCoverImageLoad} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
 				</div>
 				<div className="ProfessionalInfo">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.professional.full_name}</a>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.professional.full_name}</a>
 					<div className="ProfessionalAddress">{this.props.professional.business_address}</div>
-					<a href={'//' + this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact'} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}>{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact')} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}>{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
 				</div>
 			</div>
 		);
@@ -80,6 +80,16 @@ var BookingModalReview = React.createClass({
 	/**
 	* Helper functions
 	*/
+
+	bookingPageUrl: function (url) {
+		var params = '?utm_source=sola&utm_campaign=sola_booknow&utm_medium=referral';
+		
+		if (url.endsWith('/')) {
+			return url.slice(0, -1) + params;
+		} else {
+			return url + params;
+		}
+	},
 
 	scaleImage: function (srcwidth, srcheight, targetwidth, targetheight, fLetterBox) {
     var result = { width: 0, height: 0, fScaleToTargetWidth: true };

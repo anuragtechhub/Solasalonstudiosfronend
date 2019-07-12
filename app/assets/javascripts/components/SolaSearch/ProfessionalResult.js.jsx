@@ -43,13 +43,13 @@ var ProfessionalResult = React.createClass({
 			<div className="ProfessionalResult">
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
 				<div className="ProfessionalCoverImage">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url}>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url}>
 						<img style={{height: this.state.height, width: this.state.width, top: this.state.top, left: this.state.left}} src={this.state.useDefaultCoverImage ? this.state.defaultCoverImageUrl : (this.props.cover_image != this.state.glossDefaultCoverImageUrl ? this.props.cover_image : this.state.defaultCoverImageUrl)} alt={this.props.full_name} onError={this.onCoverImageError} onLoad={this.onCoverImageLoad} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url} />
 					</a>
 				</div>
 				
 				<div className="ProfessionalResultDetails">
-					<a href={'//' + this.props.professional.booking_page_url} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.full_name}</a>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.full_name}</a>
 					<div className="ProfessionalAddress">{this.props.business_address}</div>
 					<ProfessionalServicesDropdown
 						services={this.props.professional.matched_services}
@@ -109,6 +109,16 @@ var ProfessionalResult = React.createClass({
 	/**
 	* Helper functions
 	*/
+
+	bookingPageUrl: function (url) {
+		var params = '?utm_source=sola&utm_campaign=sola_booknow&utm_medium=referral';
+		
+		if (url.endsWith('/')) {
+			return  url.substring(0, url.length - 1) + params;
+		} else {
+			return url + params;
+		}
+	},
 
 	getAvailabilities: function () {
 		var self = this;
