@@ -36,14 +36,14 @@ class PublicWebsiteMailer < ActionMailer::Base
       elsif @inquiry && @inquiry.how_can_we_help_you == 'Book an appointment with a salon professional'
         @subject = 'Book an Appointment Inquiry'
       end
-      mail(to: 'jeff@jeffbail.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: requestTourInquiry.location.email_address_for_inquiries, from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
     else
       @inquiry = requestTourInquiry
       @subject = 'Sola Contact Form Inquiry'
       if @inqury && @inquiry.send_email_to_prospect == 'modern_salon_2019_05'
         @subject = 'Download Modern Salon Guide'
       end
-      mail(to: 'jeff@jeffbail.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
+      mail(to: 'hello@solasalonstudios.com', from: ("Sola Salon Studios <inquiry@solasalonstudios.com>"), subject: @subject) #requestTourInquiry.location.email_address_for_inquiries
     end
   end
 
