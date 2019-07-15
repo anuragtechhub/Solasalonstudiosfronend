@@ -40,8 +40,8 @@ en-CA:
     select_a_location: Select a Location
     dont_see_your_location: Don't see a location near you?
     please_try_again: Please Try Again
-    your_name: Your Name
-    email_address: Email Address
+    your_name: Your Name *
+    email_address: Email Address *
     phone_number: Phone Number
     leave_a_message: Leave a Message (Optional)
     submit_message: Submit Message

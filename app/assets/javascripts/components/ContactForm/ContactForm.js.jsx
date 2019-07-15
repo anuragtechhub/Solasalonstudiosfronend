@@ -404,6 +404,8 @@ var ContactForm = React.createClass({
 					self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
 				}
 				try {
+					ga('solasalonstudios.set', 'page', window.location.pathname + '/contact-form-success');
+					ga('solasalonstudios.send', 'pageview');
 					ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
 				} catch (e) {
 					// shhh...
