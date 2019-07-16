@@ -11,7 +11,9 @@ var SearchLocation = React.createClass({
     	var place = autocomplete.getPlace();
     	//console.log('place_changed', place);
     	//console.log('place.geometry.location', place.geometry.location.lat(), place.geometry.location.lng());
-    	self.props.onChangeLocation(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
+    	if (place && place.geometry && place.geometry.location) {
+    		self.props.onChangeLocation(place.formatted_address, place.geometry.location.lat(), place.geometry.location.lng());
+    	}
     });
 
 		google.maps.event.addDomListener(this.refs.input, 'keydown', function (event) { 
