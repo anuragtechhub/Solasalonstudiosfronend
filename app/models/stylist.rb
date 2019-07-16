@@ -408,6 +408,8 @@ class Stylist < ActiveRecord::Base
         has_sola_pro: self.has_sola_pro_login,
         has_solagenius: self.has_sola_genius_account,
         hs_persona: 'persona_1',
+        total_booknow_bookings: self.total_booknow_bookings,
+        total_booknow_revenue: self.total_booknow_revenue
       }])
     else
       p "No HUBSPOT API KEY, no sync"

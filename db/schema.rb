@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190626222313) do
+ActiveRecord::Schema.define(version: 20190716230213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,24 @@ ActiveRecord::Schema.define(version: 20190626222313) do
     t.boolean  "contact_form_visible",        default: false
     t.text     "meta_description"
   end
+
+  create_table "book_now_bookings", force: true do |t|
+    t.string   "time_range"
+    t.integer  "location_id"
+    t.string   "query"
+    t.json     "services"
+    t.integer  "stylist_id"
+    t.string   "booking_user_name"
+    t.string   "booking_user_phone"
+    t.string   "booking_user_email"
+    t.string   "referring_url"
+    t.string   "total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "book_now_bookings", ["location_id"], name: "index_book_now_bookings_on_location_id", using: :btree
+  add_index "book_now_bookings", ["stylist_id"], name: "index_book_now_bookings_on_stylist_id", using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -664,6 +682,8 @@ ActiveRecord::Schema.define(version: 20190626222313) do
     t.boolean  "walkins"
     t.boolean  "reserved",                       default: false
     t.datetime "solagenius_account_created_at"
+    t.integer  "total_booknow_bookings"
+    t.string   "total_booknow_revenue"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree

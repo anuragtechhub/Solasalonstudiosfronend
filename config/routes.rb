@@ -84,6 +84,7 @@ Solasalonstudios::Application.routes.draw do
   match 'booknow' => 'booknow#search', :via => [:get, :post], :as => :booknow_search
   match 'booknow/results(.:format)' => 'booknow#results', :via => [:get, :post], :as => :booknow_results
   match 'booknow/booking-complete' => 'booknow#booking_complete', :via => [:get, :post], :as => :booknow_booking_complete
+  match 'booknow/save-booknow-booking' => 'booknow#save_booking', :via => [:post], :as => :save_booknow_booking
 
   match 'contact-us-request-a-tour' => 'contact_us#request_a_tour', :via => [:post], :as => :contact_us_request_a_tour
   match 'partner-inquiry' => 'contact_us#partner_inquiry', :via => [:get, :post], :as => :partner_inquiry

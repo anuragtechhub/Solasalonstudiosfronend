@@ -59,6 +59,12 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'BookNowBooking' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+  end
+
   config.model 'Admin' do
     # visible do
     #   bindings[:controller]._current_user.franchisee != true
@@ -1268,6 +1274,16 @@ RailsAdmin.config do |config|
         field :work_hours
         field :accepting_new_clients
         field :walkins
+        field :total_booknow_bookings do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
+        field :total_booknow_revenue do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
       end
       group :website do
         field :website_url do
@@ -1699,6 +1715,16 @@ RailsAdmin.config do |config|
       field :work_hours
       field :accepting_new_clients    
       field :walkins 
+      field :total_booknow_bookings do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      field :total_booknow_revenue do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
       field :booking_url
       field :sg_booking_url do
         visible do

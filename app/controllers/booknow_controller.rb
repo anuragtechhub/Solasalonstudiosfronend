@@ -78,6 +78,27 @@ class BooknowController < PublicWebsiteController
     }
 	end
 
+  def save_booking
+    #p "save_booking..."
+
+    bnb = BookNowBooking.create({
+      location_id: params[:location_id],
+      stylist_id: params[:stylist_id],
+      time_range: params[:time_range],
+      services: params[:services],
+      query: params[:query],
+      booking_user_name: params[:booking_user_name],
+      booking_user_phone: params[:booking_user_phone],
+      booking_user_email: params[:booking_user_email],
+      referring_url: params[:referring_url],
+      total: params[:total]
+    })
+
+    #p "bnb=#{bnb.inspect}"
+ 
+    head :ok 
+  end
+
   private
 
   def fallback_results_response

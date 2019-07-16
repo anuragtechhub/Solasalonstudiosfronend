@@ -119,6 +119,7 @@ var SolaSearch = React.createClass({
 				/>
 				<BookingModal 
 					booking_complete_path={this.state.booking_complete_path}
+					save_booknow_booking_path={this.props.save_booknow_booking_path}
 					date={this.state.time ? this.state.time.start : new Date()}
 					fingerprint={this.state.fingerprint}
 					gloss_genius_api_key={this.state.gloss_genius_api_key}

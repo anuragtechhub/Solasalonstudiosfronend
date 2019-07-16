@@ -264,6 +264,26 @@ var BookingModal = React.createClass({
 				self.setState({loading: false, error: json_response.error});
 			} else {
 				//console.log('booking SUCCESS!!!', self.props.professional, self.props.location_id);
+
+				$.ajax({
+					data: {
+						location_id: self.props.location_id || self.props.professional.org_location_id,
+						query: self.props.query,
+						services: self.state.services,
+						total: self.calculateServicesTotal(),
+						time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
+						booking_user_name: self.state.your_name,
+						booking_user_phone: self.state.phone_number,
+						booking_user_email: self.state.email_address,
+						stylist_id: self.props.professional.org_user_id,
+						referring_url: self.props.referring_url,
+					},
+					method: 'POST',
+			    url: self.props.save_booknow_booking_path,
+				}).complete(function (response) {
+					// saved book now booking
+				});	
+
 				ga('solasalonstudios.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
 					date: self.state.date.format('YYYY-MM-DD'),
 					fingerprint: self.props.fingerprint,

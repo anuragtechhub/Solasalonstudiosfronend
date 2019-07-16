@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-07-16
+  time_range: MyString
+  fingerprint: MyString
+  lat: MyString
+  lng: MyString
+  location_id: 
+  query: MyString
+  services: 
+  stylist_id: 
+  booking_user_name: MyString
+  booking_user_phone: MyString
+  booking_user_email: MyString
+  referring_url: MyString
+  total: MyString
+
+two:
+  date: 2019-07-16
+  time_range: MyString
+  fingerprint: MyString
+  lat: MyString
+  lng: MyString
+  location_id: 
+  query: MyString
+  services: 
+  stylist_id: 
+  booking_user_name: MyString
+  booking_user_phone: MyString
+  booking_user_email: MyString
+  referring_url: MyString
+  total: MyString
