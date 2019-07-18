@@ -22,7 +22,7 @@
             <% end %>          
           </div>
 
-          <%= render 'shared/contact_form_component', :display_i_would_like_to => false, :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
+          <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
 
         </div>
       </div> <!-- .one-third -->
@@ -63,39 +63,7 @@
 
         <!-- mobile lease form -->
         <div class="mobile-lease-form">
-          <%= form_tag :contact_us_request_a_tour, :method => :post, :class => 'request-a-tour-form contact-us-request-a-tour', :autocomplete => 'off' do %>
-            <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
-            <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
-
-            <div class="contact-information">
-              <% if @location.general_contact_name.present? %>
-                <div class="contact-name"><span class="fa fa-user"></span> <%= @location.general_contact_name %></div>
-              <% end %>
-
-              <% if @location.general_contact_name.present? %>
-                <div class="contact-phone-number"><a href="tel:<%= @location.phone_number %>"><span class="fa fa-phone"></span> <%= @location.phone_number %></a></div>
-              <% end %>
-
-              <% if @location.email_address_for_inquiries.present? %>
-                <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
-              <% end %>          
-            </div>
-            
-            <input name="name" autocomplete="off" type="text" placeholder="<%= t('page.locations.your_name').html_safe %>">
-            <input name="email" autocomplete="off" type="text" placeholder="<%= t('page.locations.email_address').html_safe %>">
-            <input name="phone" autocomplete="off" type="text" placeholder="<%= t('page.locations.phone_number').html_safe %>">
-            <textarea name="message" autocomplete="off" placeholder="<%= t('page.locations.leave_a_message').html_safe %>"></textarea>
-            <input name="location_id" type="hidden" value="<%= @location.id %>">
-            <input name="request_url" type="hidden" value="<%= request.original_url %>">
-            <% if I18n.locale && I18n.locale.to_s == 'en-CA' %>
-              <label class="receive-newsletter">
-                <span class="input"><input type="checkbox" name="receive_newsletter" value="yes" checked="checked"/></span>
-                <span class="text"><%= t 'page.contact.receive_newsletter' %></span>
-              </label>
-            <% end %>
-            <button class="button primary block contact-us-request-a-tour-submit"><%= t('page.locations.submit_request').html_safe %></button>
-            <button class="button primary block contact-us-request-a-tour-submitting" disabled="disabled" style="display:none;opacity:0.5;"><%= t('page.locations.submitting_request').html_safe %></button>
-          <% end %>
+          <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
         </div>
 
         <!-- about this location -->

@@ -437,12 +437,51 @@
 .location-page .contact-form {
   margin-top: -10px;
 
+  .form-inline-rows .form-inline label {
+    white-space: normal;
+  }
+
+  .form-inline-rows .form-inline input {
+    margin-left: -5px;
+    margin-right: -7px;
+    top: 2px;
+  }
+
   .service-checkboxes input {
     margin-right: -5px;
     margin-left: -5px;
     top: 2px;
   }
 }
+
+@media (max-width: 1060px) {
+  .location-page .contact-form {
+    .form-inline-rows .form-inline input {
+      margin-left: 0;
+      margin-right: -2px;
+      top: 0;
+    }
+
+    .service-checkboxes input {
+      margin-right: 0;
+      margin-left: 0;
+      top: 2px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .location-page .contact-form {
+    .form-inline-rows .form-inline input {
+      top: 2px;
+    }
+
+    .service-checkboxes input {
+      top: 2px;
+    }
+  }
+}
+
 
 .modern-salon.contact-form {
   .state-location-row {
