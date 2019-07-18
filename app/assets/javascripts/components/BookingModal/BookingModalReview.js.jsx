@@ -43,7 +43,7 @@ var BookingModalReview = React.createClass({
 				<div className="ProfessionalInfo">
 					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ProfessionalName">{this.props.professional.full_name}</a>
 					<div className="ProfessionalAddress">{this.props.professional.business_address}</div>
-					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact')} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}>{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</a>
+					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url + (this.props.professional.booking_page_url.endsWith('/') ? '' : '/') + 'contact')} target={this.props.professional.booking_page_url + 'contact'} className="Contact ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Contact Page" data-glabel={this.props.professional.booking_page_url + 'contact'}><span className="contact-text">{I18n.t('sola_search.contact')}&nbsp;{this.props.professional.full_name}</span></a>
 				</div>
 			</div>
 		);

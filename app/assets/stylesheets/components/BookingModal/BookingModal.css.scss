@@ -70,6 +70,10 @@
 		bottom: 0;
 		height: 100%;
 		margin-top: 0;
+
+		.BookingModalFooter {
+			height: 115px;
+		}
 	}
 
 	.error {
@@ -143,10 +147,11 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		height: 100px;
+		height: 107px;
 		background: #FFF;
 		border-top: 1px solid #EEE;
 		padding: 15px 25px;
+		z-index: 9;
 
 		.ChargedAfterAppointment {
 			color: #9B9B9B;	
@@ -326,7 +331,7 @@
 	.Body {
 
 		.DateRow {
-			padding: 20px 25px;
+			padding: 15px 25px;
 			border-bottom: 1px solid #EEE;
 
 			.fa {
@@ -357,7 +362,7 @@
 		}
 
 		.TimeRow {
-			padding: 20px 25px;
+			padding: 15px 25px;
 			border-bottom: 1px solid #EEE;
 
 			.fa {
@@ -430,7 +435,7 @@
 		}	
 
 		.ServicesRow {
-			padding: 20px 25px;
+			padding: 15px 25px;
 
 			.ServiceTitle {
 				display: inline-block;
@@ -440,6 +445,8 @@
 				font-size: 18px;	
 				font-weight: 300;	
 				line-height: 24px;
+				position: relative;
+				top: 3px;
 			}
 
 			a, a:link, a:visited, a:hover, a:active {
@@ -639,6 +646,11 @@
 			line-height: 20px;
 			margin-bottom: 0;
 			text-decoration: none;
+
+			span.contact-text {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
 		}
 	}
 }
@@ -827,6 +839,10 @@
 			.ChargedAfterAppointment {
 				text-align: right;
 				clear: none;
+				font-size: 12px;
+				line-height: 14px;
+				position: relative;
+				top: -3px;
 			}
 			.Total {
 				margin-top: 0;
