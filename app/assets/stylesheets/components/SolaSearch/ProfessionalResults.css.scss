@@ -125,6 +125,24 @@
 		background: #FFF;
 		padding: 21px;
 		border-top: 1px solid #EEE;
+		margin-bottom: 1px;
+
+		&:hover {
+			background: #f5f9fb;
+			outline: 1px solid lighten($brand-primary, 15%);
+
+			.ProfessionalServicesDropdown .dropdown-toggle, .ProfessionalServicesDropdown .dropdown-menu {
+				background: #FFF !important;
+
+				&:hover, &:active, &:focus {
+					background: #FFF !important;
+				}
+			}
+
+			.ProfessionalAvailabilities .back-button, .ProfessionalAvailabilities .forward-button {
+				background: #f5f9fb;
+			}
+		}
 
 		.ProfessionalResultDetails {
 			position: absolute;
@@ -380,6 +398,7 @@
 			a.availability-button, a.availability-button:link, a.availability-button:visited, a.availability-button:hover, a.availability-button:active {
 				text-decoration: none;
 				color: $brand-pink;	
+				background: #FFF;
 				@include helvetica;
 				font-size: 13px;	
 				font-weight: 300;	

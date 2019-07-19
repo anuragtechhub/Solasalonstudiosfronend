@@ -9,6 +9,9 @@ var ProfessionalResults = React.createClass({
 				return <ProfessionalResult 
 								key={professional.booking_page_url} 
 								{...professional} 
+								map={self.props.map}
+								center={self.props.center}
+								zoom={self.props.zoom}
 								availabilities={availabilities} 
 								date={self.props.date}
 								fingerprint={self.props.fingerprint}
@@ -25,6 +28,9 @@ var ProfessionalResults = React.createClass({
 				return <ProfessionalResult 
 								key={professional.booking_page_url} 
 								{...professional} 
+								map={self.props.map}
+								center={self.props.center}
+								zoom={self.props.zoom}
 								availabilities={availabilities} 
 								date={self.props.date}
 								fingerprint={self.props.fingerprint}

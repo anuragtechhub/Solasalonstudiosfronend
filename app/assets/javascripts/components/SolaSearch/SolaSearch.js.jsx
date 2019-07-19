@@ -21,6 +21,9 @@ var SolaSearch = React.createClass({
 			location_name: this.props.location_name,
 			locations: this.props.locations || [],
 			loading: false,
+			map: null,
+			center: null,
+			zoom: null,
 			mode: this.props.mode || 'list',
 			pagination: true,
 			professional: this.props.professional,
@@ -94,6 +97,9 @@ var SolaSearch = React.createClass({
 					location={this.state.location}
 					location_id={this.state.location_id}
 					location_name={this.state.location_name}
+					map={this.state.map}
+					center={this.state.center}
+					zoom={this.state.zoom}
 					fingerprint={this.state.fingerprint}
 					gloss_genius_api_key={this.state.gloss_genius_api_key}
 					gloss_genius_api_url={this.state.gloss_genius_api_url}
@@ -114,6 +120,8 @@ var SolaSearch = React.createClass({
 					locations={this.state.locations} 
 					mode={this.state.mode}
 					onChangeLocationId={this.onChangeLocationId}
+					onSetMap={this.onSetMap}
+					onSetMapDefaults={this.onSetMapDefaults}
 					onShowSideTabPopUp={this.onShowSideTabPopUp}
 					zoom={this.state.zoom}
 				/>
@@ -265,6 +273,14 @@ var SolaSearch = React.createClass({
 				}	
 			});
 		} 
+	},
+	
+	onSetMap: function (map) {
+		this.setState({map: map});
+	},
+
+	onSetMapDefaults: function (center, zoom) {
+		this.setState({center: center, zoom: zoom});
 	},
 
 

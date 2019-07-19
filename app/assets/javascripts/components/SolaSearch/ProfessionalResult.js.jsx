@@ -40,7 +40,7 @@ var ProfessionalResult = React.createClass({
 		//console.log('ProfessionalResult availabilities', this.props.availabilities, this.state.loading);
 
 		return (
-			<div className="ProfessionalResult">
+			<div className="ProfessionalResult" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
 				<div className="ProfessionalCoverImage">
 					<a href={'//' + this.bookingPageUrl(this.props.professional.booking_page_url)} target={this.props.professional.booking_page_url} className="ga-et" data-gcategory="BookNow" data-gaction="View SolaGenius Professional Page" data-glabel={this.props.professional.booking_page_url}>
@@ -102,6 +102,37 @@ var ProfessionalResult = React.createClass({
 		//})();
 
 		// console.log('cover image load!', this.width, this.height, $(e.currentTarget).width(), $(e.currentTarget).width());
+	},
+
+	onMouseEnter: function () {
+		console.log('onMouseEnter', this.props.professional.location_latitude, this.props.professional.location_longitude, this.props.map);
+		if (this.props.map) {
+			// function smoothZoom (map, max, cnt) {
+			// 	console.log('smoothZoom!', map, max, cnt);
+		 //    if (cnt >= max) {
+		 //        return;
+		 //    }
+		 //    else {
+		 //        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+		 //            google.maps.event.removeListener(z);
+		 //            smoothZoom(map, max, cnt + 1);
+		 //        });
+		 //        setTimeout(function(){map.setZoom(cnt)}, 50);
+		 //    }
+			// } 
+			this.props.map.panTo(new google.maps.LatLng(this.props.professional.location_latitude, this.props.professional.location_longitude));
+			this.props.map.setZoom(16);
+			//smoothZoom(this.props.map, 16, this.props.map.getZoom());		
+		}
+	},
+
+	onMouseLeave: function () {
+		console.log('onMouseLeave', this.props.map, this.props.center, this.props.zoom);
+
+		// this.props.map.setCenter(this.props.center);
+		// this.props.map.setZoom(this.props.zoom);
+			this.props.map.panTo(this.props.center);
+			this.props.map.setZoom(this.props.zoom);
 	},
 
 
@@ -182,6 +213,6 @@ var ProfessionalResult = React.createClass({
     result.targettop = Math.floor((targetheight - result.height) / 2);
 
     return result;
-	}
+	},
 
 });

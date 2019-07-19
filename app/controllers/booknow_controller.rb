@@ -35,7 +35,8 @@ class BooknowController < PublicWebsiteController
         if location
           #p "professional['business_address']=#{professional['business_address']}, #{location.full_address}"
           professional['business_address'] = location.full_address
-          
+          professional['location_latitude'] = location.latitude
+          professional['location_longitude'] = location.longitude
           @professionals << professional
         else
           # do not add them - missing ids

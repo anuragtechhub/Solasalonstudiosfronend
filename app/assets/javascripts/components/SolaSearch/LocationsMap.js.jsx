@@ -40,6 +40,7 @@ var LocationsMap = React.createClass({
 	    },
 	  });
 
+	  this.props.onSetMap(map);
 	  this.setState({map: map});
 
 	  if (self.props.locations.length) {
@@ -106,6 +107,7 @@ var LocationsMap = React.createClass({
 	},
 
 	processMarkers: function () {
+		var self = this;
 		if (!this.state.map) {
 			//console.log('no map - returning')
 			return;
@@ -139,6 +141,7 @@ var LocationsMap = React.createClass({
 
 		this.state.map.map.setCenter(latlngbounds.getCenter());
 		this.state.map.map.setZoom(this.getZoomByBounds(this.state.map.map, latlngbounds));
+		this.props.onSetMapDefaults(latlngbounds.getCenter(), this.getZoomByBounds(this.state.map.map, latlngbounds))
 	},
 
 
