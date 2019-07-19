@@ -105,34 +105,19 @@ var ProfessionalResult = React.createClass({
 	},
 
 	onMouseEnter: function () {
-		console.log('onMouseEnter', this.props.professional.location_latitude, this.props.professional.location_longitude, this.props.map);
+		//console.log('onMouseEnter', this.props.professional.location_latitude, this.props.professional.location_longitude, this.props.map);
 		if (this.props.map) {
-			// function smoothZoom (map, max, cnt) {
-			// 	console.log('smoothZoom!', map, max, cnt);
-		 //    if (cnt >= max) {
-		 //        return;
-		 //    }
-		 //    else {
-		 //        z = google.maps.event.addListener(map, 'zoom_changed', function(event){
-		 //            google.maps.event.removeListener(z);
-		 //            smoothZoom(map, max, cnt + 1);
-		 //        });
-		 //        setTimeout(function(){map.setZoom(cnt)}, 50);
-		 //    }
-			// } 
 			this.props.map.panTo(new google.maps.LatLng(this.props.professional.location_latitude, this.props.professional.location_longitude));
 			this.props.map.setZoom(16);
-			//smoothZoom(this.props.map, 16, this.props.map.getZoom());		
 		}
 	},
 
 	onMouseLeave: function () {
-		console.log('onMouseLeave', this.props.map, this.props.center, this.props.zoom);
-
-		// this.props.map.setCenter(this.props.center);
-		// this.props.map.setZoom(this.props.zoom);
+		//console.log('onMouseLeave', this.props.map, this.props.center, this.props.zoom);
+		if (this.props.map && this.props.center && this.props.zoom) {
 			this.props.map.panTo(this.props.center);
 			this.props.map.setZoom(this.props.zoom);
+		}
 	},
 
 
