@@ -62,7 +62,23 @@
         </div>
 
         <!-- mobile lease form -->
-        <div class="mobile-lease-form">
+        <div class="mobile-lease-form request-a-tour-form">
+          <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
+          <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
+
+          <div class="contact-information">
+            <% if @location.general_contact_name.present? %>
+              <div class="contact-name"><span class="fa fa-user"></span> <%= @location.general_contact_name %></div>
+            <% end %>
+
+            <% if @location.general_contact_name.present? %>
+              <div class="contact-phone-number"><a href="tel:<%= @location.phone_number %>"><span class="fa fa-phone"></span> <%= @location.phone_number %></a></div>
+            <% end %>
+
+            <% if @location.email_address_for_inquiries.present? %>
+              <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
+            <% end %>          
+          </div>
           <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
         </div>
 
