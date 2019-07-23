@@ -113,17 +113,17 @@ class PublicWebsiteMailer < ActionMailer::Base
     #     }
     #   }
     # }`
-    if franchisingRequest && franchisingRequest.request_type.present?
-        headers['X-SMTPAPI'] = '{"category": "#{franchisingRequest.request_type} Franchising Request"}'
-    else 
-        headers['X-SMTPAPI'] = '{"category": "Franchising Request"}'
-    end
+    # if franchisingRequest && franchisingRequest.request_type.present?
+    #     headers['X-SMTPAPI'] = '{"category": "#{franchisingRequest.request_type} Franchising Request"}'
+    # else 
+    #     headers['X-SMTPAPI'] = '{"category": "Franchising Request"}'
+    # end
     
-    if franchisingRequest
-      @message = franchisingRequest
-      ##{franchisingRequest.request_type.present? ? franchisingRequest.request_type : ''} 
-      mail(to: 'ben@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: "Franchising Request")
-    end
+    # if franchisingRequest
+    #   @message = franchisingRequest
+    #   ##{franchisingRequest.request_type.present? ? franchisingRequest.request_type : ''} 
+    #   mail(to: 'ben@solasalonstudios.com', from: "Sola Salon Studios <inquiry@solasalonstudios.com>", subject: "Franchising Request")
+    # end
   end
 
   def partner_inquiry(partnerInquiry)

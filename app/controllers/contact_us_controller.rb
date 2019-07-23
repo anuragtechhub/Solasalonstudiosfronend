@@ -39,27 +39,27 @@ class ContactUsController < PublicWebsiteController
   end
 
   def franchising_request
-    if request.post?
-      #captcha_verified = verify_recaptcha
-      if params[:name].present? && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& captcha_verified
-        fr = FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message], :request_url => params[:request_url], :request_type => params[:request_type])
-        fr.visit = save_visit
-        fr.save
-        if params[:email]
-          gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-          gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
-        end
-        render :json => {:success => 'Thank you! We will get in touch soon'}
-      else
-        #if captcha_verified
-          render :json => {:error => 'Please enter your name, a valid email address and phone number'}
-        #else
-        #  render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
-        #end
-      end
-    else
-      redirect_to :contact_us, :status => 301
-    end
+    # if request.post?
+    #   #captcha_verified = verify_recaptcha
+    #   if params[:name].present? && params[:email].present? && is_valid_email?(params[:email]) && params[:phone].present? #&& captcha_verified
+    #     fr = FranchisingRequest.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :market => params[:market], :message => params[:message], :request_url => params[:request_url], :request_type => params[:request_type])
+    #     fr.visit = save_visit
+    #     fr.save
+    #     if params[:email]
+    #       gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+    #       gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+    #     end
+    #     render :json => {:success => 'Thank you! We will get in touch soon'}
+    #   else
+    #     #if captcha_verified
+    #       render :json => {:error => 'Please enter your name, a valid email address and phone number'}
+    #     #else
+    #     #  render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
+    #     #end
+    #   end
+    # else
+    #   redirect_to :contact_us, :status => 301
+    # end
   rescue Gibbon::MailChimpError => e
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end

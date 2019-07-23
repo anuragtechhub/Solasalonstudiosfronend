@@ -103,30 +103,7 @@
 
 
 
-<div class="request-franchising-modal modal-content clearfix" data-width="700" data-modal-class="franchising-modal">
-  <div class="half-column left">
-    <span class="forbes-image" />
-  </div>
 
-  <div class="half-column">
-    <h4 style="margin-bottom:15px;"><%= t('page.contact.franchising').html_safe %></h4>
-    <p style="margin-bottom:30px" class="us-franchising"><%= t('page.contact.franchising_text').html_safe %></p>
-    <p style="margin-bottom:30px;" class="int-franchising"><%= t('page.contact.international_franchising_text').html_safe %></p>
-    <%= form_tag :franchising_request, :id => 'franchising_request' do %>
-      <input type="text" name="name" placeholder="<%= t('page.contact.full_name').html_safe %>" />
-      <input type="text" name="email" placeholder="<%= t('page.contact.email_address').html_safe %>" />
-      <input type="text" name="phone" placeholder="<%= t('page.contact.phone_number').html_safe %>" />
-      <input type="text" name="market" class="us-franchising" placeholder="<%= t('page.contact.market').html_safe %>" />
-      <input type="text" name="market" class="int-franchising" placeholder="<%= t('page.contact.country').html_safe %>" />
-      <textarea name="message" placeholder="<%= t('page.contact.leave_a_message').html_safe %>"></textarea>
-      <div class="recaptchaContainer"><%= recaptcha_tags %></div>
-      <button class="primary block"><%= t('page.contact.submit_message').html_safe %></button>
-      <div class="loading"><div class="spinner"></div></div>
-      <input name="request_url" type="hidden" value="<%= request.original_url %>">
-      <input name="request_type" type="hidden" value="">
-    <% end %>
-  </div>
-</div>
 
 </div>
 
