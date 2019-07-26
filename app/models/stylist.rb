@@ -15,6 +15,7 @@ class Stylist < ActiveRecord::Base
   has_paper_trail
   
   scope :open, -> { where(:status => 'open') }
+  scope :not_reserved, -> { where(:reserved => false) }
 
   after_initialize do
     if new_record?
@@ -485,7 +486,7 @@ class Stylist < ActiveRecord::Base
     # p "curl -d 'location=#{self.location_id}' -d 'data=[{\"id\":#{self.id},\"name\":#{self.name},\"studio_number\":#{self.studio_number},\"walkins\":#{self.walkins}}]' 'https://ccottle-dev-app.trudigital.net/core/sola'"
     # sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=[{"id":#{self.id},"name":#{self.name},"studio_number":#{self.studio_number},"walkins":#{self.walkins}}]' 'https://ccottle-dev-app.trudigital.net/core/sola'`
     data = []
-    self.location.stylists.each do |stylist|
+    self.location.stylists.not_reserved.each do |stylist|
       data << {
         id: stylist.id,
         name: stylist.name,
@@ -504,6 +505,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def sync_with_ping_hd
+    return true if self.reserved
     url = "https://go.engagephd.com/Sola.aspx" #"https://go.engagephd.com/api/Engage/Sola" #"http://dev.pinghd.com/api/Engage/Sola"
     
     p "url=#{url}"
