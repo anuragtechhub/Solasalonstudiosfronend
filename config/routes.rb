@@ -12,7 +12,7 @@ Solasalonstudios::Application.routes.draw do
   get 'sitemap.xml' => 'home#sitemap'
  
   #get '5000' => 'home#sola_5000', :as => :sola_5000
-
+  get 'franchising' => 'home#franchising'
 
 
   # About Us URLs

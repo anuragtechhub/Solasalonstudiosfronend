@@ -14,6 +14,10 @@ class HomeController < PublicWebsiteController
   def five_thousand
   end
 
+  def franchising
+    redirect_to 'https://pages.solasalonstudios.com/signup?utm_campaign=fran_dev&utm_source=referral&utm_medium=website'
+  end 
+
   def new_cms
     render :layout => 'fullscreen'
   end
