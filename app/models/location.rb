@@ -390,6 +390,25 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def get_moz_token
+    moz = Moz.first || Moz.new
+    if moz.token.present? && (moz.updated_at.to_date - DateTime.now.to_date).to_i.abs < 24
+      p "still within the token date range! return it #{moz.token}"
+      return moz.token
+    else
+      p "get a fresh moz token #{ENV['MOZ_USER']}, #{ENV['MOZ_PASS']}"
+
+      token_response = `curl -X POST https://localapp.moz.com/api/users/login \
+        -H 'Content-Type: application/json' \
+        -d '{
+          "email": "<%= ENV['MOZ_USER'] %>",
+          "password": "<%= ENV['MOZ_PASS'] %>"
+      }'`
+
+      p "token_response=#{token_response}"
+    end
+  end
+
   private
 
   def url_name_uniqueness

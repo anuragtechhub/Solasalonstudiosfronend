@@ -14,7 +14,7 @@ RailsAdmin.config do |config|
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
 
-  # config.excluded_models << 'ResetPassword'
+  config.excluded_models << 'Moz'
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
   # config.excluded_models << 'BlogBlogCategory'
