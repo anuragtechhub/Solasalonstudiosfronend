@@ -401,12 +401,21 @@ class Location < ActiveRecord::Base
       token_response = `curl -X POST https://localapp.moz.com/api/users/login \
         -H 'Content-Type: application/json' \
         -d '{
-          "email": "<%= ENV['MOZ_USER'] %>",
-          "password": "<%= ENV['MOZ_PASS'] %>"
+          "email": "#{ENV['MOZ_USER']}",
+          "password": "#{ENV['MOZ_PASS']}"
       }'`
 
-      p "token_response=#{token_response}"
+      json_token_response = JSON.parse(token_response)
+
+      p "json_token_response=#{json_token_response}"
+
+      moz.token = json_token_response['response']['access_token']
+      moz.save
+
+      return moz.token
     end
+  rescue => e 
+    p "error with get moz token #{e}"
   end
 
   private
