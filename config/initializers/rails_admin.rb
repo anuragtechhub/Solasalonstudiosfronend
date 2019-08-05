@@ -936,6 +936,7 @@ RailsAdmin.config do |config|
       end
     end
     export do
+      field :id
       field :name
       field :url_name
       field :address_1
