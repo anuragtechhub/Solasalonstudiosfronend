@@ -46,7 +46,7 @@ $(function () {
     
     if (param_value) {
       //console.log('utm param', utm_param, param_value);
-      Cookies.set(utm_param, param_value, {expires: 30, path: '/'});
+      Cookies.set(utm_param, param_value);
     }
   }
 
