@@ -406,7 +406,7 @@ var ContactForm = React.createClass({
 				try {
 					//ga('solasalonstudios.set', 'page', window.location.pathname + '/contact-form-success');
 					//ga('solasalonstudios.send', 'pageview');
-					gtag('config', 'GA_MEASUREMENT_ID', {
+					gtag('config', window.getGoogleAnalyticsMeasurementId(), {
 					  'page_path': window.location.pathname + '/contact-form-success'
 					});
 
