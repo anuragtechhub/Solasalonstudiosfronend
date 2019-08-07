@@ -434,6 +434,16 @@ $(function () {
   //     to : '#e157f9',                                                          
   //     direction : 'right'
   //   });
-  // });  
+  // }); 
+
+  window.getGoogleAnalyticsMeasurementId = function () {
+    if (I18n.locale == 'en') {
+      return 'UA-90102405-1';
+    } else if (I18n.locale == 'en-CA') {
+      return 'UA-34803522-1';
+    } else if (I18n.local == 'pt-BR') {
+      return 'UA-126894634-1';
+    }
+  } 
 
 });
