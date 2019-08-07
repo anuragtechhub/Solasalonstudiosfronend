@@ -68,6 +68,7 @@ Solasalonstudios::Application.routes.draw do
   get 'sola-sessions' => 'own_your_salon#sola_sessions', :as => :sola_sessions
   get 'solagenius' => 'own_your_salon#solagenius', :as => :solagenius
   get 'why-sola' => 'own_your_salon#why_sola', :as => :why_sola
+  get 'why-sola-2' => 'own_your_salon#why_sola_2', :as => :why_sola2
 
 
 
