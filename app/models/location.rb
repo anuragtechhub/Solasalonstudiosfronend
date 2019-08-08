@@ -431,39 +431,75 @@ class Location < ActiveRecord::Base
     end
   end
 
-  def submit_to_moz
+  def submit_to_moz  
     p "submit to moz"
-    require 'net/https'
-    require 'json'
+    # require 'Indirizzo'
+    # indir_address = Indirizzo::Address.new(self.address_1)
 
-    http = Net::HTTP.new('moz.com', 443)
-    #http = Net::HTTP.new('sandbox.moz.com', 443)
-    http.use_ssl = true
+    businessId = self.country == 'US' ? 505116 : 505117
 
-    http.start do |http|
-      req = Net::HTTP::Post.new("/local/api/v1/submissions?access_token=JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb")
+    moz_response = `curl -X POST \
+      https://localapp.moz.com/api/locations \
+      -H 'accessToken: XXXXXXXXXX' \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "businessId": #{businessId},
+        "name": "Sola Salon Studios",
+        "street": "#{self.address_1}",
+        "addressExtra": "#{self.address_2}",
+        "city": "#{self.city}",
+        "province": "#{self.state_province}",
+        "zip": "#{self.postal_code}",
+        "country": "#{self.country}",
+        "phone": "#{self.phone_number}",
+        "website": "https://www.solasalonstudios.com/locations/#{self.url_name}",
+        "email": "#{self.email_address_for_inquiries}",
+        "lat": #{self.latitude},
+        "lng": #{self.longitude}
+    }'` 
 
-      form_data = {}
-      #form_data['access_token'] = 'JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb' #production
-      #form_data['access_token'] = 'lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL' #sandbox
-      form_data['name'] = 'Sola Salon Studios'#self.name
-      form_data['address1'] = self.address_1
-      form_data['address2'] = self.address_2
-      form_data['city'] = self.city
-      form_data['stateProvince'] = self.state_province
-      form_data['country'] = 'US'
-      form_data['postalCode'] = self.postal_code
-      form_data['phone'] = self.phone_number
-      form_data['email'] = self.email_address_for_inquiries
-      form_data['description'] = self.description
-      form_data['categories'] = ['Beauty Salon', 'Hair Salon']
-      form_data['destinationURL'] = "https://www.solasalonstudios.com/store/#{self.url_name}" #"https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}"
+    # categories
+    # descriptionLong
+    # descriptionShort
+    # keywords
+    # mainPhoto (the first photo?)
+    # openingHours
+    # photos
+    # services
+    # socialProfiles
 
-      req.set_form_data(form_data)
-      resp = http.request(req)
-      p "resp=#{resp.inspect}"
-      p "resp.body=#{resp.body}"
-    end
+    p "moz_response=#{moz_response}"   
+    # require 'net/https'
+    # require 'json'
+
+    # http = Net::HTTP.new('moz.com', 443)
+    # #http = Net::HTTP.new('sandbox.moz.com', 443)
+    # http.use_ssl = true
+
+    # http.start do |http|
+    #   req = Net::HTTP::Post.new("/local/api/v1/submissions?access_token=JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb")
+
+    #   form_data = {}
+    #   #form_data['access_token'] = 'JdoGE2CnK7Uj_w9hfkgQduHuKGWLsyGb' #production
+    #   #form_data['access_token'] = 'lZfBtREX70Cmn-KkixAWB9uX8l7uW6FL' #sandbox
+    #   form_data['name'] = 'Sola Salon Studios'#self.name
+    #   form_data['address1'] = self.address_1
+    #   form_data['address2'] = self.address_2
+    #   form_data['city'] = self.city
+    #   form_data['stateProvince'] = self.state_province
+    #   form_data['country'] = 'US'
+    #   form_data['postalCode'] = self.postal_code
+    #   form_data['phone'] = self.phone_number
+    #   form_data['email'] = self.email_address_for_inquiries
+    #   form_data['description'] = self.description
+    #   form_data['categories'] = ['Beauty Salon', 'Hair Salon']
+    #   form_data['destinationURL'] = "https://www.solasalonstudios.com/store/#{self.url_name}" #"https://www.solasalonstudios.com/locations/#{self.state}/#{self.city}/#{self.url_name}"
+
+    #   req.set_form_data(form_data)
+    #   resp = http.request(req)
+    #   p "resp=#{resp.inspect}"
+    #   p "resp.body=#{resp.body}"
+    # end
   end
 
   def update_computed_fields

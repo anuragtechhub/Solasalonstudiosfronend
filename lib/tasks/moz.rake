@@ -19,4 +19,18 @@ namespace :moz do
     end
   end
 
+  task :businesses => :environment do
+    moz_token = Moz.first.token
+    moz_response = `curl -X GET \
+      https://localapp.moz.com/api/businesses \
+      -H 'accessToken: #{moz_token}' \
+      -H 'Content-Type: application/json'` 
+    #p "moz_response=#{moz_response}"  
+    json_response = JSON.parse(moz_response)
+    #p "businesses=#{json_response["response"]["businesses"]}"
+    json_response["response"]["businesses"].each do |business|
+      p "business=#{business}"
+    end
+  end
+
 end
