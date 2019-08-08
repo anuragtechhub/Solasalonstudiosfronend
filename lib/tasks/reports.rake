@@ -104,7 +104,10 @@ namespace :reports do
     p "begin locations report..."
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month    
+    end_date = start_date.end_of_month
+
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day    
 
     Location.where(:status => :open).order(:created_at => :asc).each do |location|
       p "START location=#{location.id}, #{location.name}"
@@ -121,6 +124,9 @@ namespace :reports do
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month    
+
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
 
     Location.where(:status => :open).order(:id => :asc).each do |location|
       sleep 1
@@ -142,6 +148,9 @@ namespace :reports do
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month    
+
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
 
     Location.where(:status => :open).where('id >= ?', args.gid).order(:id => :asc).uniq.each do |location|
       sleep 1
@@ -165,6 +174,9 @@ namespace :reports do
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month
 
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
+
     p "location=#{location.id}, #{location.name}"
     p "start_date=#{start_date.inspect}"
     p "end_date=#{end_date.inspect}"
@@ -184,6 +196,9 @@ namespace :reports do
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = start_date.end_of_month
 
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
+
     p "location=#{location.id}, #{location.name}"
     p "start_date=#{start_date.inspect}"
     p "end_date=#{end_date.inspect}"
@@ -198,6 +213,9 @@ namespace :reports do
     if Time.now.day == 14 || Time.now.day == 28
       start_date = DateTime.now
       end_date = start_date - 14.days
+
+      start_date = start_date.beginning_of_day
+      end_date = end_date.end_of_day  
 
       analytics = Analytics.new
       if start_date && end_date
@@ -243,6 +261,9 @@ namespace :reports do
     start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
     end_date = start_date.end_of_month if start_date
 
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
+
     analytics = Analytics.new
     if start_date && end_date
       #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
@@ -285,6 +306,9 @@ namespace :reports do
     # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
     start_date = Date.parse(args.start_date).beginning_of_month if args.start_date.present?
     end_date = start_date.end_of_month if start_date
+
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
 
     analytics = Analytics.new
     if start_date && end_date
@@ -332,6 +356,9 @@ namespace :reports do
     # start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
     # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
 
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
+
     analytics = Analytics.new
     if start_date && end_date
       #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
@@ -371,6 +398,9 @@ namespace :reports do
     # puts ARGV.inspect
     # start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
     # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
+
+    start_date = start_date.beginning_of_day
+    end_date = end_date.end_of_day  
 
     analytics = Analytics.new
     if start_date && end_date
