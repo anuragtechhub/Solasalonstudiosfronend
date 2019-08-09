@@ -129,7 +129,7 @@ var ModernSalonContactForm = React.createClass({
 					}
 
 					{
-						this.props.display_service_checkboxes && this.state.how_can_we_help_you == I18n.t('contact_form.request_leasing_information')
+						this.props.display_service_checkboxes
 						?
 						<div className={"service-checkboxes " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
 							<label>{I18n.t('contact_form.what_services_do_you_specialize_in')}</label>
