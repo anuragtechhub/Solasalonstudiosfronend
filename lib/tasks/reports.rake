@@ -100,26 +100,26 @@ namespace :reports do
 
   # rake reports:locations
   # rake reports:locations[2019-01-01]
-  task :locations, [:start_date] => :environment do |task, args|
-    p "begin locations report..."
+  # task :locations, [:start_date] => :environment do |task, args|
+  #   p "begin locations report..."
     
-    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month
+  #   start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+  #   end_date = start_date.end_of_month
 
-    start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day    
+  #   start_date = start_date.beginning_of_day
+  #   end_date = end_date.end_of_day    
 
-    Location.where(:status => :open).order(:created_at => :asc).each do |location|
-      p "START location=#{location.id}, #{location.name}"
+  #   Location.where(:status => :open).order(:created_at => :asc).each do |location|
+  #     p "START location=#{location.id}, #{location.name}"
 
-      location_ga_report(location, start_date, end_date, false)
-      p "FINISHED WITH location=#{location.id}, #{location.name}"
-    end
-  end 
+  #     location_ga_report(location, start_date, end_date, false)
+  #     p "FINISHED WITH location=#{location.id}, #{location.name}"
+  #   end
+  # end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-12-01]
-  task :locations_with_email, [:start_date] => :environment do |task, args|
+  # rake reports:locations_with_email[2017-12-01,'US']
+  task :locations_with_email, [:start_date, :country] => :environment do |task, args|
     p "begin locations report..."
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
@@ -128,11 +128,19 @@ namespace :reports do
     start_date = start_date.beginning_of_day
     end_date = end_date.end_of_day  
 
-    Location.where(:status => :open).order(:id => :asc).each do |location|
+    if args.country == 'US'
+      @url = 'solasalonstudios.com'
+      @ga_id = '81802112'
+    elsif args.country == 'CA'
+      @url = 'solasalonstudios.ca'
+      @ga_id = '137712009'
+    end
+
+    Location.where(:status => :open, :country => args.country).order(:id => :asc).each do |location|
       sleep 1
       p "START location=#{location.id}, #{location.name}"
       begin
-        location_ga_report(location, start_date, end_date, true)
+        location_ga_report(location, start_date, end_date, true, @ga_id)
         p "FINISHED WITH location=#{location.id}, #{location.name}"
 
       rescue Exception => e
@@ -142,8 +150,8 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-12-01,343]
-  task :locations_with_email_starting_at, [:start_date, :gid] => :environment do |task, args|
+  # rake reports:locations_with_email_starting_at[2017-12-01,343,'US']
+  task :locations_with_email_starting_at, [:start_date, :gid, :country, :country] => :environment do |task, args|
     p "begin locations report..."
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
@@ -152,11 +160,19 @@ namespace :reports do
     start_date = start_date.beginning_of_day
     end_date = end_date.end_of_day  
 
-    Location.where(:status => :open).where('id >= ?', args.gid).order(:id => :asc).uniq.each do |location|
+    if args.country == 'US'
+      @url = 'solasalonstudios.com'
+      @ga_id = '81802112'
+    elsif args.country == 'CA'
+      @url = 'solasalonstudios.ca'
+      @ga_id = '137712009'
+    end
+
+    Location.where(:status => :open, :country => args.country).where('id >= ?', args.gid).order(:id => :asc).uniq.each do |location|
       sleep 1
       p "START location=#{location.id}, #{location.name}"
       begin
-        location_ga_report(location, start_date, end_date, true)
+        location_ga_report(location, start_date, end_date, true, @ga_id)
         p "FINISHED WITH location=#{location.id}, #{location.name}"
       rescue Exception => e
         p "ERROR with location=#{location.id}, #{location.name}, #{e.inspect}"
@@ -166,8 +182,9 @@ namespace :reports do
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[571,2019-07-01]
-  task :location, [:location_id, :start_date] => :environment do |task, args|
+  # rake reports:location[571,2019-07-01,'US']
+  # rake reports:location[380,2019-07-01,'CA']
+  task :location, [:location_id, :start_date, :country] => :environment do |task, args|
     p "begin location report..."
 
     location = Location.find(args.location_id) if args.location_id.present?
@@ -177,36 +194,44 @@ namespace :reports do
     start_date = start_date.beginning_of_day
     end_date = end_date.end_of_day  
 
+    if args.country == 'US'
+      @url = 'solasalonstudios.com'
+      @ga_id = '81802112'
+    elsif args.country == 'CA'
+      @url = 'solasalonstudios.ca'
+      @ga_id = '137712009'
+    end
+
     p "location=#{location.id}, #{location.name}"
     p "start_date=#{start_date.inspect}"
     p "end_date=#{end_date.inspect}"
 
     if location && start_date && end_date
-      location_ga_report(location, start_date, end_date, false)
+      location_ga_report(location, start_date, end_date, false, @ga_id)
     end
   end
 
   # rake reports:location_with_email[380]
   # rake reports:location_with_email[2]
   # rake reports:location_with_email[530,2019-05-01]
-  task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
-    p "begin location with email report..."
+  # task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
+  #   p "begin location with email report..."
 
-    location = Location.find(args.location_id) if args.location_id.present?
-    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month
+  #   location = Location.find(args.location_id) if args.location_id.present?
+  #   start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+  #   end_date = start_date.end_of_month
 
-    start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+  #   start_date = start_date.beginning_of_day
+  #   end_date = end_date.end_of_day  
 
-    p "location=#{location.id}, #{location.name}"
-    p "start_date=#{start_date.inspect}"
-    p "end_date=#{end_date.inspect}"
+  #   p "location=#{location.id}, #{location.name}"
+  #   p "start_date=#{start_date.inspect}"
+  #   p "end_date=#{end_date.inspect}"
 
-    if location && start_date && end_date
-      location_ga_report(location, start_date, end_date, true)
-    end
-  end
+  #   if location && start_date && end_date
+  #     location_ga_report(location, start_date, end_date, true)
+  #   end
+  # end
 
   # rake reports:booknow_biweekly["olivia@solasalonstudios.com"]
   task :booknow_biweekly, [:email_address] => :environment do |task, args|
@@ -1141,28 +1166,28 @@ namespace :reports do
 
       data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
       #p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
-      data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] ? data[:location_phone_number_clicks_current_month][0][1] : 0
+      data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] && data[:location_phone_number_clicks_current_month][0] ? data[:location_phone_number_clicks_current_month][0][1] : 0
       
       data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
       #p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
-      data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] ? data[:location_phone_number_clicks_prev_month][0][1] : 0
+      data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] && data[:location_phone_number_clicks_prev_month][0] ? data[:location_phone_number_clicks_prev_month][0][1] : 0
 
       data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
       #p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
-      data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
+      data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] && data[:location_phone_number_clicks_prev_year][0] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
 
       stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
       #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
       
       if stylist_phone_number_filters.present?
         data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-        data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] ? data[:professional_phone_number_clicks_current_month][0][1] : 0
+        data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] && data[:professional_phone_number_clicks_current_month][0] ? data[:professional_phone_number_clicks_current_month][0][1] : 0
         
         data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-        data[:professional_phone_number_clicks_prev_month] = data[:professional_phone_number_clicks_prev_month] ? data[:professional_phone_number_clicks_prev_month][0][1] : 0
+        data[:professional_phone_number_clicks_prev_month] = data[:professional_phone_number_clicks_prev_month] && data[:professional_phone_number_clicks_prev_month][0] ? data[:professional_phone_number_clicks_prev_month][0][1] : 0
 
         data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
-        data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : 0
+        data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] && data[:professional_phone_number_clicks_prev_year][0] ? data[:professional_phone_number_clicks_prev_year][0][1] : 0
       else
         data[:professional_phone_number_clicks_current_month] = 0
         data[:professional_phone_number_clicks_prev_month] = 0
@@ -1388,20 +1413,38 @@ namespace :reports do
         data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
       end
 
-      # leasing form submissions
-      data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Request leasing information').count
-      data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information').count
-      data[:leasing_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Request leasing information').count
+      if url == 'solasalonstudios.com'
+        # leasing form submissions
+        data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Request leasing information').count
+        data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information').count
+        data[:leasing_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Request leasing information').count
 
-      # book an appointment form submissions
-      data[:book_an_appointment_inquiries_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Book an appointment with a salon professional').count
-      data[:book_an_appointment_inquiries_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Book an appointment with a salon professional').count
-      data[:book_an_appointment_inquiries_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Book an appointment with a salon professional').count
+        # book an appointment form submissions
+        data[:book_an_appointment_inquiries_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Book an appointment with a salon professional').count
+        data[:book_an_appointment_inquiries_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Book an appointment with a salon professional').count
+        data[:book_an_appointment_inquiries_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Book an appointment with a salon professional').count
 
-      # other form submissions
-      data[:other_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date, end_date, 'Other').count
-      data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other').count
-      data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other').count
+        # other form submissions
+        data[:other_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date, end_date, 'Other').count
+        data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other').count
+        data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other').count
+      elsif url == 'solasalonstudios.ca'
+        canadian_location_ids = Location.where(:country => 'CA').map(&:id)
+        # leasing form submissions
+        data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date, end_date, 'Request leasing information', canadian_location_ids).count
+        data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information', canadian_location_ids).count
+        data[:leasing_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Request leasing information', canadian_location_ids).count
+
+        # book an appointment form submissions
+        data[:book_an_appointment_inquiries_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date, end_date, 'Book an appointment with a salon professional', canadian_location_ids).count
+        data[:book_an_appointment_inquiries_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Book an appointment with a salon professional', canadian_location_ids).count
+        data[:book_an_appointment_inquiries_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Book an appointment with a salon professional', canadian_location_ids).count
+
+        # other form submissions
+        data[:other_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL) AND location_id IN (?)', start_date, end_date, 'Other', canadian_location_ids).count
+        data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL) AND location_id IN (?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other', canadian_location_ids).count
+        data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL) AND location_id IN (?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other', canadian_location_ids).count
+      end
 
       # phone number clicks
       data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0
