@@ -388,8 +388,9 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2019-07-01]
-  task :solasalonstudios, [:start_date] => :environment do |task, args|
+  # rake reports:solasalonstudios[2019-07-01,'US']
+  # rake reports:solasalonstudios[2019-07-01,'CA']
+  task :solasalonstudios, [:start_date, :country] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"
     # p "args.start_date=#{args.start_date}, args.end_date=#{args.end_date}"
@@ -398,18 +399,26 @@ namespace :reports do
     # puts ARGV.inspect
     # start_date = Date.parse ARGV[1] if ARGV && ARGV.length == 3
     # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
+    if args.country == 'US'
+      @url = 'solasalonstudios.com'
+      @ga_id = '81802112'
+    elsif args.country == 'CA'
+      @url = 'solasalonstudios.ca'
+      @ga_id = '137712009'
+    end
 
     start_date = start_date.beginning_of_day
     end_date = end_date.end_of_day  
 
     analytics = Analytics.new
-    if start_date && end_date
-      data = analytics.solasalonstudios_data('81802112', start_date, end_date)
-    else
-      data = analytics.solasalonstudios_data
-    end
+    #if start_date && end_date
+      data = analytics.solasalonstudios_data(@ga_id, start_date, end_date, @url)
+    #else
+    #  data = analytics.solasalonstudios_data(@ga_id)
+    #end
     locals = {
-      :@data => data
+      :@data => data,
+      :@url => @url
     }
 
     p "got data #{locals.inspect}"
@@ -420,7 +429,7 @@ namespace :reports do
     p "let's render PDF"
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solasalonstudios_ga', locals), :footer => {:center => '[page]', :font_size => 7})
     p "pdf rendered..."
-    save_path = Rails.root.join('pdfs','solasalonstudios.pdf')
+    save_path = Rails.root.join('pdfs',"#{@url.gsub(/\./, '_')}.pdf")
     File.open(save_path, 'wb') do |file|
       file << pdf
     end   
@@ -641,10 +650,10 @@ namespace :reports do
 
   ##### report functions #######
 
-  def location_ga_report(location, start_date, end_date, send_email=false)
+  def location_ga_report(location, start_date, end_date, send_email=false, ga_id='81802112')
     analytics = Analytics.new
     if start_date && end_date
-      data = analytics.location_data('81802112', location, start_date, end_date)
+      data = analytics.location_data(ga_id, location, start_date, end_date)
     else
       data = analytics.location_data
     end
@@ -1297,7 +1306,7 @@ namespace :reports do
     end
 
     desc 'solasalonstudios_data', 'Retrieve solasalonstudios.com Google Analytics data'
-    def solasalonstudios_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+    def solasalonstudios_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month, url="solasalonstudios.com")
       analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
@@ -1351,7 +1360,7 @@ namespace :reports do
       # blogs - url, visits
       data[:blogs] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
       data[:blogs][0..9].each_with_index do |blog, idx|
-        blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
+        blog << get_page_title("https://www.#{url}#{blog[0]}")
         data[:blogs][idx] = blog
       end
       data[:blogs_page_views] = 0
@@ -1366,7 +1375,7 @@ namespace :reports do
       # exit pages
       data[:exit_pages] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
       data[:exit_pages].each_with_index do |exit_page, idx|
-        exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
+        exit_page << get_page_title("https://www.#{url}#{exit_page[0]}")
         data[:exit_pages][idx] = exit_page
       end
 
@@ -1512,6 +1521,10 @@ namespace :reports do
 
     desc 'get_page_title, url', 'Retrieves a page title from a URL'
     def get_page_title(url)
+      if url.index('contact-form-success')
+        url = url[0...url.index('contact-form-success')]
+      end
+      
       page_title = Mechanize.new.get(url).title
       if page_title.split('-').size > 1
         page_title = page_title[0..(page_title.rindex('-') - 2)].strip
