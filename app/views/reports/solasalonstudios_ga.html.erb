@@ -79,25 +79,65 @@
     <td class="value percentage"><%= number_to_percentage (100 * (@data[:devices][0][1].to_i - @data[:devices_prev_year][0][1].to_i) / @data[:devices_prev_year][0][1].to_i), :precision => 0 %></td>
   </tr> 
   <tr>
-    <td class="label" style="text-align:left">Contact Form Submissions</td>
-    <td class="value"><%= number_with_delimiter @data[:contact_form_submissions_current_month] %></td>
-    <td class="value"><%= number_with_delimiter @data[:contact_form_submissions_prev_month] %></td>
+    <td class="label" style="text-align:left">Request Leasing Information Form Submissions</td>
+    <td class="value"><%= number_with_delimiter @data[:leasing_form_submissions_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:leasing_form_submissions_prev_month] %></td>
     <td class="value percentage">
-      <% if @data[:contact_form_submissions_prev_month].nil? || @data[:contact_form_submissions_prev_month].to_i == 0 %>
+      <% if @data[:leasing_form_submissions_prev_month].nil? || @data[:leasing_form_submissions_prev_month].to_i == 0 %>
         N/A
       <% else %>
-        <%= number_to_percentage (100 * (@data[:contact_form_submissions_current_month].to_i - @data[:contact_form_submissions_prev_month].to_i) / @data[:contact_form_submissions_prev_month].to_i), :precision => 0 %>
+        <%= number_to_percentage (100 * (@data[:leasing_form_submissions_current_month].to_i - @data[:leasing_form_submissions_prev_month].to_i) / @data[:leasing_form_submissions_prev_month].to_i), :precision => 0 %>
       <% end %>
     </td>
-    <td class="value"><%= number_with_delimiter @data[:contact_form_submissions_prev_year] %></td>
+    <td class="value"><%= number_with_delimiter @data[:leasing_form_submissions_prev_year] %></td>
     <td class="value percentage">
-      <% if @data[:contact_form_submissions_prev_year].nil? || @data[:contact_form_submissions_prev_year].to_i == 0 %>
+      <% if @data[:leasing_form_submissions_prev_year].nil? || @data[:leasing_form_submissions_prev_year].to_i == 0 %>
         N/A
       <% else %>
-        <%= number_to_percentage (100 * (@data[:contact_form_submissions_current_month].to_i - @data[:contact_form_submissions_prev_year].to_i) / @data[:contact_form_submissions_prev_year].to_i), :precision => 0 %>
+        <%= number_to_percentage (100 * (@data[:leasing_form_submissions_current_month].to_i - @data[:leasing_form_submissions_prev_year].to_i) / @data[:leasing_form_submissions_prev_year].to_i), :precision => 0 %>
       <% end %>
     </td>
   </tr> 
+  <tr>
+    <td class="label" style="text-align:left">Book Appointment Form Submissions</td>
+    <td class="value"><%= number_with_delimiter @data[:book_an_appointment_inquiries_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:book_an_appointment_inquiries_prev_month] %></td>
+    <td class="value percentage">
+      <% if @data[:book_an_appointment_inquiries_prev_month].nil? || @data[:book_an_appointment_inquiries_prev_month].to_i == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:book_an_appointment_inquiries_current_month].to_i - @data[:book_an_appointment_inquiries_prev_month].to_i) / @data[:book_an_appointment_inquiries_prev_month].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+    <td class="value"><%= number_with_delimiter @data[:book_an_appointment_inquiries_prev_year] %></td>
+    <td class="value percentage">
+      <% if @data[:book_an_appointment_inquiries_prev_year].nil? || @data[:book_an_appointment_inquiries_prev_year].to_i == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:book_an_appointment_inquiries_current_month].to_i - @data[:book_an_appointment_inquiries_prev_year].to_i) / @data[:book_an_appointment_inquiries_prev_year].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+  </tr> 
+  <tr>
+    <td class="label" style="text-align:left">Other Form Submissions</td>
+    <td class="value"><%= number_with_delimiter @data[:other_form_submissions_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:other_form_submissions_prev_month] %></td>
+    <td class="value percentage">
+      <% if @data[:other_form_submissions_prev_month].nil? || @data[:other_form_submissions_prev_month].to_i == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:other_form_submissions_current_month].to_i - @data[:other_form_submissions_prev_month].to_i) / @data[:other_form_submissions_prev_month].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+    <td class="value"><%= number_with_delimiter @data[:other_form_submissions_prev_year] %></td>
+    <td class="value percentage">
+      <% if @data[:other_form_submissions_prev_year].nil? || @data[:other_form_submissions_prev_year].to_i == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:other_form_submissions_current_month].to_i - @data[:other_form_submissions_prev_year].to_i) / @data[:other_form_submissions_prev_year].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+  </tr>     
   <tr>
     <td class="label" style="text-align:left">Location Phone Number Clicks</td>
     <td class="value"><%= number_with_delimiter @data[:location_phone_number_clicks_current_month] %></td>

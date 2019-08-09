@@ -388,7 +388,7 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2019-04-01]
+  # rake reports:solasalonstudios[2019-07-01]
   task :solasalonstudios, [:start_date] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"
@@ -1131,19 +1131,19 @@ namespace :reports do
       # location phone number clicks
 
       data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-      p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
+      #p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
       data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] ? data[:location_phone_number_clicks_current_month][0][1] : 0
       
       data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-      p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
+      #p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
       data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] ? data[:location_phone_number_clicks_prev_month][0][1] : 0
 
       data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-      p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
+      #p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
       data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
 
       stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
-      p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
+      #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
       
       if stylist_phone_number_filters.present?
         data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
@@ -1321,35 +1321,35 @@ namespace :reports do
       end
 
       # unique visits - visits, new visitors, returning visitors
-      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:pageviews')
-      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:pageviews')
-      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:userType', 'ga:pageviews')
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
 
       # referrals - source, % of traffic
       # ga:medium
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:acquisitionTrafficChannel', 'ga:pageviews', '-ga:pageviews')[0..4]
 
       # top referrers - site, visits
-      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
+      data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # devices - mobile, desktop, mobile % change vs same month a year ago
-      data[:devices] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:deviceCategory')
+      data[:devices] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:deviceCategory')
       tablets = data[:devices].pop
       data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
       
-      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:deviceCategory')
+      data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.end_of_day.strftime('%F'), 'ga:deviceCategory')
       tablets = data[:devices_prev_month].pop
       data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
 
-      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'ga:deviceCategory')
+      data[:devices_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.end_of_day.strftime('%F'), 'ga:deviceCategory')
       tablets = data[:devices_prev_year].pop
       data[:devices_prev_year][1][1] = data[:devices_prev_year][1][1].to_i + tablets[1].to_i
 
       # locations - top regions that visited (city, visits)
-      data[:top_regions] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
+      data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews')[0..6]
 
       # blogs - url, visits
-      data[:blogs] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
+      data[:blogs] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:pageviews ga:avgSessionDuration ga:bounceRate', '-ga:pageviews', 'ga:pagePath=~/blog/*')
       data[:blogs][0..9].each_with_index do |blog, idx|
         blog << get_page_title("https://www.solasalonstudios.com#{blog[0]}")
         data[:blogs][idx] = blog
@@ -1364,14 +1364,14 @@ namespace :reports do
       end
 
       # exit pages
-      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
+      data[:exit_pages] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:exitPagePath', 'ga:exits', '-ga:exits')[0..6]
       data[:exit_pages].each_with_index do |exit_page, idx|
         exit_page << get_page_title("https://www.solasalonstudios.com#{exit_page[0]}")
         data[:exit_pages][idx] = exit_page
       end
 
       # time on site, pages/session
-      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession')
       data[:time_on_site] = 0.0
       data[:pageviews_per_session] = 0.0
       data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
@@ -1379,21 +1379,31 @@ namespace :reports do
         data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
       end
 
-      # contact form submissions
-      data[:contact_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', start_date, end_date).count
-      data[:contact_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month).count
-      data[:contact_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month).count
+      # leasing form submissions
+      data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Request leasing information').count
+      data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information').count
+      data[:leasing_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Request leasing information').count
+
+      # book an appointment form submissions
+      data[:book_an_appointment_inquiries_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Book an appointment with a salon professional').count
+      data[:book_an_appointment_inquiries_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Book an appointment with a salon professional').count
+      data[:book_an_appointment_inquiries_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Book an appointment with a salon professional').count
+
+      # other form submissions
+      data[:other_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date, end_date, 'Other').count
+      data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other').count
+      data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other').count
 
       # phone number clicks
-      data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || nil
-      data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || nil
-      data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')
-      data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : nil
+      data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0
+      data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0
+      data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')
+      data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
 
-      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || nil
-      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || nil
-      data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month, (end_date - 1.year).beginning_of_month, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')
-      data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : nil
+      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 0
+      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 0
+      data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')
+      data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : 0
 
       data
     end
