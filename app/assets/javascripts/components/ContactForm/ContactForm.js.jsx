@@ -209,6 +209,18 @@ var ContactForm = React.createClass({
 					}
 
 					{
+						this.state.how_can_we_help_you == I18n.t('contact_form.book_an_appointment')
+						?
+						<div className={"service-checkboxes " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
+							<label>{I18n.t('contact_form.what_services_would_you_like_to_book')}</label>
+							{this.renderAppointmentServiceCheckboxes()}
+							<div className="clearfix">&nbsp;</div>
+						</div>
+						:
+						null
+					}
+
+					{
 						this.props.display_leave_a_message
 						?
 						<div className={"form-group " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
@@ -280,6 +292,24 @@ var ContactForm = React.createClass({
 		);
 	},
 
+	renderAppointmentServiceCheckboxes: function () {
+		var self = this;
+		var services = ['Hair', 'Highlights (Color)', 'Nails', 'Eyelash Extensions', 'Pedicure', 'Other'];
+
+		var servicesRendered = services.map(function (service) {
+			return (
+				<label key={service}>
+					<input type="checkbox" name="selected_services" value={service} checked={self.state.selected_services.indexOf(service) != -1} onChange={self.onChangeInput} disabled={self.isDisabled(!self.state.selected_state || (!self.state.selected_location && !self.state.dont_see_your_location))} /> 
+					<span className="text">{service}</span>
+				</label>
+			);
+		});
+
+		return (
+			<div className="services">{servicesRendered}</div>
+		);
+	},
+
 	renderServiceCheckboxes: function () {
 		var self = this;
 		var services = ['Hair', 'Skincare', 'Makeup', 'Massage', 'Nails', 'Other'];
@@ -319,6 +349,9 @@ var ContactForm = React.createClass({
 			} else if (value == false) {
 				this.state.selected_services.splice(this.state.selected_services.indexOf(e.target.value), 1);
 			}
+		} else if (e.target.name == 'how_can_we_help_you') {
+			this.state[e.target.name] = value;
+			this.state['selected_services'] = [];
 		} else {
 			this.state[e.target.name] = value;
 		}
