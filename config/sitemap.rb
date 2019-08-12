@@ -39,7 +39,7 @@ SitemapGenerator::Sitemap.create do
   end
 
   add '/salon-professionals'
-  Stylist.where(:status => 'open').find_each do |stylist|
+  Stylist.where(:status => 'open').not_reserved.find_each do |stylist|
     add stylist.canonical_path, :lastmod => stylist.updated_at
   end
 
