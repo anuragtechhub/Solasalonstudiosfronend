@@ -261,3 +261,6 @@
 <% content_for(:title) { t('page.why_sola.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/why-sola" } %>
 <% content_for(:meta_description) { t('page.why_sola.meta_description') } %>
+<% content_for(:meta_tags) do %>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<% end %>
