@@ -15,6 +15,9 @@ class OwnYourSalonController < PublicWebsiteController
 	def why_sola
 	end
 
+  def why_sola_2
+  end
+
 	# redirects for old urls
 
   def index

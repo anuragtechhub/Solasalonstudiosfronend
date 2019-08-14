@@ -10,11 +10,26 @@
 
 	.hero-carousel {
 
+
 		.button {
 			margin: 40px 0 0 0;
 		}
 	}
 
+}
+
+.locale-en, .locale-en-CA {
+	.why-sola-2 {
+		.owl-carousel .item .item-content h1 {
+			margin-left: auto !important;
+			margin-right: auto !important;
+		}
+		.hero-carousel {
+			h1 {
+				color: #2d5391;
+			}
+		}
+	}
 }
 
 .sola-freedom {
