@@ -441,6 +441,8 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
+        "descriptionLong": "#{self.moz_long_description}",
+        "descriptionShort": "#{self.moz_short_description}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -489,6 +491,8 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
+        "descriptionLong": "#{self.moz_long_description}",
+        "descriptionShort": "#{self.moz_short_description}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -511,21 +515,10 @@ class Location < ActiveRecord::Base
     # openingHours
     # photos
     # services
-    # socialProfiles
+    # DONE - socialProfiles
 
     p "moz_response=#{moz_response}"   
     json_response = JSON.parse(moz_response)    
-  end
-
-  def moz_social_profiles
-    social_profiles = []
-
-    social_profiles << {type: 'FACEBOOK', url: self.facebook_url} if self.facebook_url.present?
-    social_profiles << {type: 'TWITTER', url: self.twitter_url} if self.twitter_url.present?
-    social_profiles << {type: 'INSTAGRAM', url: self.instagram_url} if self.instagram_url.present?
-    social_profiles << {type: 'PINTEREST', url: self.pinterest_url} if self.pinterest_url.present?
-
-    return social_profiles
   end
 
   def submit_to_moz  
@@ -571,6 +564,33 @@ class Location < ActiveRecord::Base
     # end
   rescue => e
     p "Error with Moz location submission #{e}"
+  end
+
+  def moz_short_description
+    short_description = ActionView::Base.full_sanitizer.sanitize(self.description).strip
+    if short_description.length > 197
+      short_description = short_description[0...197] + '...'
+    end
+    return short_description
+  end
+
+  def moz_long_description
+    long_description = ActionView::Base.full_sanitizer.sanitize(self.description).strip
+    if long_description.length > 997
+      long_description = long_description[0...997] + '...'
+    end
+    return long_description
+  end
+
+  def moz_social_profiles
+    social_profiles = []
+
+    social_profiles << {type: 'FACEBOOK', url: self.facebook_url} if self.facebook_url.present?
+    social_profiles << {type: 'TWITTER', url: self.twitter_url} if self.twitter_url.present?
+    social_profiles << {type: 'INSTAGRAM', url: self.instagram_url} if self.instagram_url.present?
+    social_profiles << {type: 'PINTEREST', url: self.pinterest_url} if self.pinterest_url.present?
+
+    return social_profiles
   end
 
   def update_computed_fields
