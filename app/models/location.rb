@@ -133,6 +133,8 @@ class Location < ActiveRecord::Base
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
   validates :country, inclusion: { in: ENV['LOCATION_COUNTRY_INCLUSION'].split(','), message: "is not valid" }
+  validates :description_short, length: { maximum: 200 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
+  validates :description_long, length: { maximum: 1000 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
   def msa_name
@@ -434,6 +436,8 @@ class Location < ActiveRecord::Base
   def moz_create
     p "begin moz_create..."
 
+    businessId = self.country == 'US' ? 505116 : 505117
+
     moz_response = `curl -X POST \
       https://localapp.moz.com/api/locations \
       -H 'accessToken: #{self.get_moz_token}' \
@@ -441,8 +445,8 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
-        "descriptionLong": "#{self.moz_long_description}",
-        "descriptionShort": "#{self.moz_short_description}",
+        "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
+        "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -491,8 +495,8 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
-        "descriptionLong": "#{self.moz_long_description}",
-        "descriptionShort": "#{self.moz_short_description}",
+        "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
+        "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -526,11 +530,11 @@ class Location < ActiveRecord::Base
 
     businessId = self.country == 'US' ? 505116 : 505117
 
-    if self.moz_id.present?
-      self.moz_update
-    else
+    #if self.moz_id.present?
+    #  self.moz_update
+    #else
       self.moz_create
-    end
+    #end
     # require 'net/https'
     # require 'json'
 
