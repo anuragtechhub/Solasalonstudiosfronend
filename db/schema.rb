@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190814010535) do
+ActiveRecord::Schema.define(version: 20190816155955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -386,6 +386,8 @@ ActiveRecord::Schema.define(version: 20190814010535) do
     t.boolean  "service_request_enabled",     default: false
     t.boolean  "rent_manager_enabled",        default: false
     t.integer  "moz_id"
+    t.text     "description_short"
+    t.text     "description_long"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

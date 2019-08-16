@@ -414,6 +414,8 @@ RailsAdmin.config do |config|
             value.html_safe
           end
         end
+        field :description_long 
+        field :description_short
         field :admin do
           label 'Franchisee'
           visible do
@@ -644,6 +646,12 @@ RailsAdmin.config do |config|
           end
         end
         field :description, :ck_editor
+        field :description_long do
+          help 'This description is a max of 1000 characters and may not contain HTML or special characters. It is used for online directory listings (e.g. Google My Business)'
+        end
+        field :description_short do
+          help 'This description is a max of 200 characters and may not contain HTML or special characters. It is used for online directory listings (e.g. Google My Business)'
+        end        
         field :msa do
           label "MSA"
           visible do
