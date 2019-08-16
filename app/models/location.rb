@@ -133,8 +133,8 @@ class Location < ActiveRecord::Base
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
   validates :country, inclusion: { in: ENV['LOCATION_COUNTRY_INCLUSION'].split(','), message: "is not valid" }
-  validates :description_short, length: { maximum: 200 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
-  validates :description_long, length: { maximum: 1000 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
+  validates :description_short, :allow_blank => true, length: { maximum: 200 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
+  validates :description_long, :allow_blank => true, length: { maximum: 1000 }, format: { with: /[0-9\p{L}\(\)\[\] \?:;\/!\\,\.\-%\\&=\r\n\t_\*§²`´·"'\+¡¿@°€£$]/ }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
   def msa_name
@@ -478,7 +478,8 @@ class Location < ActiveRecord::Base
       p "SUCCESS!!!"
       #self.moz_id = #1621670
       self.update_column(:moz_id, json_response["response"]["location"]["id"])
-    elsif json_response && json_response["status"] == "CONFLICT"
+    elsif json_response && json_response["status"] == "CONFLICT" && json_response["response"]["duplicates"] && json_response["response"]["duplicates"].length == 1
+      self.update_column(:moz_id, json_response["response"]["duplicates"][0])
       p "This location already exists in Moz! #{json_response["response"]["duplicates"]}"
     end
   end
@@ -530,11 +531,11 @@ class Location < ActiveRecord::Base
 
     businessId = self.country == 'US' ? 505116 : 505117
 
-    #if self.moz_id.present?
-    #  self.moz_update
-    #else
+    if self.moz_id.present?
+     self.moz_update
+    else
       self.moz_create
-    #end
+    end
     # require 'net/https'
     # require 'json'
 
