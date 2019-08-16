@@ -397,6 +397,8 @@ RailsAdmin.config do |config|
       end
       field :admin do
         label 'Franchisee'
+        searchable [:email, :email_address]
+        queryable true
         visible do
           bindings[:controller]._current_user.franchisee != true
         end
