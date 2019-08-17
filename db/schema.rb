@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190816155955) do
+ActiveRecord::Schema.define(version: 20190817222412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -388,6 +388,8 @@ ActiveRecord::Schema.define(version: 20190816155955) do
     t.integer  "moz_id"
     t.text     "description_short"
     t.text     "description_long"
+    t.time     "open_time"
+    t.time     "close_time"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

@@ -474,6 +474,46 @@ class Location < ActiveRecord::Base
     categories
   end
 
+  def moz_opening_hours
+    [
+        {
+            "dayOfWeek": 1,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 2,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 3,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 4,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 5,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 6,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        },
+        {
+            "dayOfWeek": 7,
+            "from1": self.open_time.present? ? self.open_time.strftime('%R') : '08:00',
+            "to1": self.close_time.present? ? self.close_time.strftime('%R') : '20:00'
+        }
+    ].to_json
+  end
+
   def moz_create
     p "begin moz_create..."
 
@@ -490,6 +530,7 @@ class Location < ActiveRecord::Base
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
         "keywords": "#{self.keywords}",
+        "openingHours": #{self.moz_opening_hours},
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -542,6 +583,7 @@ class Location < ActiveRecord::Base
         "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
+        "openingHours": #{self.moz_opening_hours},
         "keywords": "#{self.keywords}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
