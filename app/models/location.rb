@@ -514,6 +514,10 @@ class Location < ActiveRecord::Base
     ].to_json
   end
 
+  def moz_payment_options
+    ['VISA', 'MASTERCARD', 'AMEX']
+  end
+
   def moz_create
     p "begin moz_create..."
 
@@ -530,7 +534,9 @@ class Location < ActiveRecord::Base
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
         "keywords": "#{self.keywords}",
+        "services": "#{self.keywords}",
         "openingHours": #{self.moz_opening_hours},
+        "paymentOptions": #{self.moz_payment_options},
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -566,6 +572,8 @@ class Location < ActiveRecord::Base
       self.update_column(:moz_id, json_response["response"]["duplicates"][0])
       p "This location already exists in Moz! #{json_response["response"]["duplicates"]}"
     end
+
+    self.submit_photos_to_moz
   end
 
   def moz_update
@@ -584,7 +592,9 @@ class Location < ActiveRecord::Base
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
         "openingHours": #{self.moz_opening_hours},
+        "paymentOptions": #{self.moz_payment_options},
         "keywords": "#{self.keywords}",
+        "services": "#{self.keywords}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -610,7 +620,32 @@ class Location < ActiveRecord::Base
     # DONE - socialProfiles
 
     p "moz_response=#{moz_response}"   
-    json_response = JSON.parse(moz_response)    
+    json_response = JSON.parse(moz_response)  
+
+    self.submit_photos_to_moz  
+  end
+
+  def submit_photos_to_moz
+    require 'base64'
+
+    p "Lastly, we submit photos to Moz..."
+
+    # logo
+    c = Curl::Easy.new("https://localapp.moz.com/api/photos") do |curl|
+      curl.headers["accessToken"] = self.get_moz_token
+      curl.verbose = true
+      curl.multipart_form_post = true
+    end
+
+    c.http_post(Curl::PostField.content('description', "Sola Salon Studios logo"),
+      Curl::PostField.content('identifier', "Sola Salon Studios logo"),
+      Curl::PostField.content('locationId', self.moz_id.to_s),
+      Curl::PostField.content('logo', true.to_s),
+      Curl::PostField.content('main', false.to_s),
+      Curl::PostField.content('type', "LOGO"),
+      Curl::PostField.file('photo', File.join(Rails.root, 'app', 'assets', 'images', 'logo_blue.png')))
+
+    p "response?=#{c.body_str}"
   end
 
   def submit_to_moz  
