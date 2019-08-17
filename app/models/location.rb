@@ -152,6 +152,12 @@ class Location < ActiveRecord::Base
     services.uniq.sort
   end
 
+  def keywords
+    service_keywords = self.services
+    service_keywords.delete('Other')
+    service_keywords.join(', ')
+  end
+
   def status_enum
     [['Open', 'open'], ['Closed', 'closed']]
   end
@@ -433,6 +439,41 @@ class Location < ActiveRecord::Base
     end
   end
 
+  # def get_moz_categories
+  #   moz_response = `curl -X GET \
+  #     https://localapp.moz.com/api/categories \
+  #     -H 'accessToken: #{self.get_moz_token}' \
+  #     -H 'Content-Type: application/json' \
+  #     -d '{
+  #       "language": "en",
+  #       "max": 1000
+  #   }'` 
+
+  #   p "moz_response=#{moz_response}"
+
+  #   json_response = JSON.parse(moz_response)
+
+  #   p "json_response=#{json_response}"
+  # end
+  def moz_categories
+    categories = [109] # Beauty Salon
+    
+    self.services.each do |service|
+      categories << 106 if service == 'Hair' && categories.length < 5
+      categories << 117 if service == 'Massage' && categories.length < 5
+      categories << 1126 if service == 'Nails' && categories.length < 5      
+      categories << 114 if service == 'Brows' && categories.length < 5
+      categories << 116 if service == 'Makeup' && categories.length < 5
+      categories << 112 if service == 'Skincare' && categories.length < 5
+      categories << 2555 if service == 'Teeth Whitening' && categories.length < 5
+      categories << 108 if service == 'Hair Extensions' && categories.length < 5  
+      categories << 111 if service == 'Hair Removal' && categories.length < 5  
+      categories << 113 if service == 'Permanent Makeup' && categories.length < 5
+    end
+
+    categories
+  end
+
   def moz_create
     p "begin moz_create..."
 
@@ -445,8 +486,10 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
+        "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
+        "keywords": "#{self.keywords}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -496,8 +539,10 @@ class Location < ActiveRecord::Base
       -d '{
         "businessId": #{businessId},
         "name": "Sola Salon Studios",
+        "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
+        "keywords": "#{self.keywords}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
