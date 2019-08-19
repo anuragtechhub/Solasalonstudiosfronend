@@ -627,6 +627,8 @@ class Location < ActiveRecord::Base
 
   def submit_photos_to_moz
     require 'base64'
+    require "down"
+    require "fileutils"
 
     p "Lastly, we submit photos to Moz..."
 
@@ -638,15 +640,48 @@ class Location < ActiveRecord::Base
     end
 
     c.http_post(Curl::PostField.content('description', "Sola Salon Studios logo"),
-      Curl::PostField.content('identifier', "Sola Salon Studios logo"),
+      Curl::PostField.content('identifier', "#{self.id.to_s + '_logo'}"),
       Curl::PostField.content('locationId', self.moz_id.to_s),
       Curl::PostField.content('logo', true.to_s),
       Curl::PostField.content('main', false.to_s),
       Curl::PostField.content('type', "LOGO"),
       Curl::PostField.file('photo', File.join(Rails.root, 'app', 'assets', 'images', 'logo_blue.png')))
 
-    p "response?=#{c.body_str}"
+    p "logo response?=#{c.body_str}"
+
+    # images
+    self.images.each_with_index do |image, idx|
+      p "image #{idx}! url=#{image.url(:carousel)}"
+      c = Curl::Easy.new("https://localapp.moz.com/api/photos") do |curl|
+        curl.headers["accessToken"] = self.get_moz_token
+        curl.verbose = true
+        curl.multipart_form_post = true
+      end
+
+      tempfile = Down.download(image.url(:carousel))
+      FileUtils.mv(tempfile.path, File.join(Rails.root, 'app', 'assets', 'images', "#{self.id.to_s + '_' + idx.to_s}"))
+
+      c.http_post(Curl::PostField.content('description', "Sola Salon Studios image"),
+        Curl::PostField.content('identifier', "#{self.id.to_s + '_' + idx.to_s}"),
+        Curl::PostField.content('locationId', self.moz_id.to_s),
+        Curl::PostField.content('logo', false.to_s),
+        Curl::PostField.content('main', idx == 0 ? true.to_s : false.to_s),
+        Curl::PostField.content('type', idx == 0 ? "MAIN" : "PHOTO"),
+        Curl::PostField.file('photo', File.join(Rails.root, 'app', 'assets', 'images', "#{self.id.to_s + '_' + idx.to_s}") ))
+
+      p "image #{idx} response?=#{c.body_str}"
+    end
   end
+
+  # def make_image_local(filename, url)
+  #   file = Tempfile.new(filename) 
+  #   file.binmode
+  #   file << open(url).read
+  #   file.close
+  #   file = File.open(file.path)
+
+  #   return file
+  # end
 
   def submit_to_moz  
     p "submit to moz"
