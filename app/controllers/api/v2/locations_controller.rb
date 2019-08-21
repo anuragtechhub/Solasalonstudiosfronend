@@ -17,7 +17,7 @@ class Api::V2::LocationsController < ApiController
 
   def show
     @location = Location.find_by(:id => params[:id])
-    @stylists = @location.stylists
+    @stylists = @location.stylists.not_reserved
     cache_key = "/api/v2/show/#{Location.order(:updated_at => :desc).first.updated_at}/#{@stylists.order(:updated_at => :desc).first.updated_at}"
     p "SHOW cache_key=#{cache_key}"
     json = Rails.cache.fetch(cache_key) do 

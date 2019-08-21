@@ -496,7 +496,7 @@ class Stylist < ActiveRecord::Base
     end
 
     p "curl -d 'location=#{self.location_id}' -d 'data=#{data.to_json}' 'https://app.trudigital.net/core/sola'"
-    sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=#{data.to_json}' 'https://app.trudigital.net/core/sola'`
+    sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=#{data.length == 0 ? [nil].to_json : data.to_json}' 'https://app.trudigital.net/core/sola'`
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e

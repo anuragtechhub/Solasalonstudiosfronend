@@ -246,7 +246,7 @@ class Location < ActiveRecord::Base
   def salon_professionals
     pros = []
     if stylists && stylists.size > 0
-      stylists.each do |stylist|
+      stylists.not_reserved.each do |stylist|
         pros << {:id => stylist.id, :name => stylist.name, :studio_number => stylist.studio_number, :business_name => stylist.business_name}
       end
     end
