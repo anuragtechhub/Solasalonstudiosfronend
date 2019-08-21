@@ -21,6 +21,7 @@ class Location < ActiveRecord::Base
   after_save :update_computed_fields
   after_validation :geocode, if: Proc.new { |location| location.latitude.blank? && location.longitude.blank? }
   geocoded_by :full_address
+  #after_destroy :moz_delete, :touch_location
   after_destroy :touch_location
 
   after_initialize do
@@ -606,7 +607,8 @@ class Location < ActiveRecord::Base
         "email": "#{self.email_address_for_inquiries}",
         "lat": #{self.latitude},
         "lng": #{self.longitude},
-        "socialProfiles": #{self.moz_social_profiles.to_json}
+        "socialProfiles": #{self.moz_social_profiles.to_json},
+        "status": "ACTIVE"
     }'` 
 
     # categories
@@ -683,13 +685,67 @@ class Location < ActiveRecord::Base
   #   return file
   # end
 
+  def moz_delete
+    p "begin moz delete..."
+
+    businessId = self.country == 'US' ? 505116 : 505117
+
+    inactivate_response = `curl -X PATCH \
+      https://localapp.moz.com/api/locations/#{self.moz_id} \
+      -H 'accessToken: #{self.get_moz_token}' \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "businessId": #{businessId},
+        "name": "Sola Salon Studios",
+        "categories": #{self.moz_categories},
+        "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
+        "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
+        "openingHours": #{self.moz_opening_hours},
+        "paymentOptions": #{self.moz_payment_options},
+        "keywords": "#{self.keywords}",
+        "services": "#{self.keywords}",
+        "street": "#{self.address_1}",
+        "addressExtra": "#{self.address_2}",
+        "city": "#{self.city}",
+        "province": "#{self.state_province}",
+        "zip": "#{self.postal_code}",
+        "country": "#{self.country}",
+        "phone": "#{self.phone_number}",
+        "website": "https://www.solasalonstudios.com/locations/#{self.url_name}",
+        "email": "#{self.email_address_for_inquiries}",
+        "lat": #{self.latitude},
+        "lng": #{self.longitude},
+        "socialProfiles": #{self.moz_social_profiles.to_json},
+        "status": "INACTIVE"
+    }'` 
+
+    p "inactivate_response=#{inactivate_response}"
+
+    delete_response = `curl -X DELETE \
+      https://localapp.moz.com/api/locations \
+      -H 'accessToken: #{self.get_moz_token}' \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "locations": [#{self.moz_id}],
+    }'` 
+
+    p "delete response=#{delete_response}"
+  end
+
   def submit_to_moz  
     p "submit to moz"
 
     businessId = self.country == 'US' ? 505116 : 505117
 
     if self.moz_id.present?
-     self.moz_update
+      if self.status_changed? && self.status == 'closed' && self.status_was != 'closed'
+        p "we just closed a location!!! delete from moz"
+        self.moz_delete
+      else
+        p "update the location as usual"
+        self.moz_update
+      end
+     
     else
       self.moz_create
     end
