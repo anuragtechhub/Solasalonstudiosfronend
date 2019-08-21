@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-.BookingModalOverlay {
+.BookingModalOverlay, .CheckAvailabilityModalOverlay {
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -11,7 +11,7 @@
 	z-index: 9999;
 }
 
-.BookingModal {
+.BookingModal, .CheckAvailabilityModal {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -71,7 +71,7 @@
 		height: 100%;
 		margin-top: 0;
 
-		.BookingModalFooter {
+		.BookingModalFooter, .CheckAvailabilityModalFooter {
 			height: 115px;
 		}
 	}
@@ -90,7 +90,7 @@
 		border-radius: 4px;
 	}
 
-	.BookingModalHeader {
+	.BookingModalHeader, .CheckAvailabilityModalHeader {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -131,7 +131,7 @@
 		}
 	}
 
-	.BookingModalBody {
+	.BookingModalBody, .CheckAvailabilityModalBody {
 		position: absolute;
 		top: 48px;
 		bottom: 100px;
@@ -142,7 +142,7 @@
 		z-index: 9;
 	}
 
-	.BookingModalFooter {
+	.BookingModalFooter, .CheckAvailabilityModalFooter {
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -755,7 +755,7 @@
 		}
 	}
 
-	.BookingModal {
+	.BookingModal, .CheckAvailabilityModal {
 		.BookingModalReview {
 
 			.ProfessionalName {
