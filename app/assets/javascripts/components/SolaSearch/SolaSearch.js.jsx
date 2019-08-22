@@ -6,6 +6,7 @@ var SolaSearch = React.createClass({
 			availabilities: this.props.availabilities || {},
 			booking_complete_path: this.props.booking_complete_path,
 			bookingModalVisible: false,
+			checkAvailabilityModalVisible: false,
 			date: this.props.date ? moment(this.props.date, "YYYY-MM-DD") : moment(),
 			display: this.props.displayMode || 'desktop',
 			//end_of_results: this.props.professionals && this.props.professionals.length >= 9 ? false : true,
@@ -105,6 +106,7 @@ var SolaSearch = React.createClass({
 					gloss_genius_api_url={this.state.gloss_genius_api_url}
 					onLoadMoreProfessionals={this.onLoadMoreProfessionals}
 					onShowBookingModal={this.onShowBookingModal}
+					onShowCheckAvailabilityModal={this.onShowCheckAvailabilityModal}
 					pagination={this.state.pagination}
 					professionals={this.state.professionals} 
 					query={this.state.query} 
@@ -145,6 +147,20 @@ var SolaSearch = React.createClass({
 					step={this.state.step}
 					time={this.state.time} 
 					visible={this.state.bookingModalVisible} 
+					referring_url={this.props.referring_url} 
+				/>
+				<CheckAvailabilityModal 
+					date={this.state.time ? this.state.time.start : new Date()}
+					fingerprint={this.state.fingerprint}
+					lat={this.state.lat}
+					lng={this.state.lng}
+					location={this.state.location}
+					location_id={this.state.location_id}
+					location_name={this.state.location_name}
+					onHideCheckAvailabilityModal={this.onHideCheckAvailabilityModal}
+					professional={this.state.professional} 
+					query={this.state.query} 
+					visible={this.state.checkAvailabilityModalVisible} 
 					referring_url={this.props.referring_url} 
 				/>
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
@@ -208,6 +224,20 @@ var SolaSearch = React.createClass({
 		}
 	},
 
+	onHideCheckAvailabilityModal: function (e) {
+		//console.log('onHideCheckAvailabilityModal', e);
+		if (e && e.target) {
+			var $target = $(e.target);
+			if ($target.hasClass('HideCheckAvailabilityModal')) {
+				this.setState({checkAvailabilityModalVisible: false, professional: null});
+			} else {
+				// do nothing 
+			}
+		} else {
+			this.setState({checkAvailabilityModalVisible: false, professional: null});
+		}
+	},
+
   onShowSideTabPopUp: function () {
   	this.setState({sideTabPopUpVisible: true});
   },
@@ -224,6 +254,15 @@ var SolaSearch = React.createClass({
 		//console.log('onShowBookingModal', professional, time, selectedService);
 		//console.log('onShowBookingModal', professional, time, professional.matched_services[0]);
 		this.setState({bookingModalVisible: true, professional: professional, time: time, services: [selectedService]});
+	},
+
+	onShowCheckAvailabilityModal: function (professional, event) {
+		if (event && typeof event.preventDefault == 'function') {
+			event.preventDefault();
+		}
+
+		//console.log('onShowCheckAvailabilityModal', professional);
+		this.setState({checkAvailabilityModalVisible: true, professional: professional});
 	},
 
 	onLoadMoreProfessionals: function () {

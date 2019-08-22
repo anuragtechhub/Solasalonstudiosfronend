@@ -61,6 +61,7 @@ var ProfessionalResult = React.createClass({
 						booking_page_url={this.props.booking_page_url} 
 						full_name={this.props.full_name} 
 						onShowBookingModal={this.props.onShowBookingModal} 
+						onShowCheckAvailabilityModal={this.props.onShowCheckAvailabilityModal}
 						professional={this.props.professional} 
 						selectedService={this.state.selectedService}
 					/>

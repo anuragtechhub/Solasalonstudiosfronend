@@ -75,7 +75,7 @@ var CheckAvailabilityModal = React.createClass({
 
 		if (this.props.visible) {
 			return (
-				<div className="CheckAvailabilityModalOverlay HideCheckAvailabilityModalModal">
+				<div className="CheckAvailabilityModalOverlay HideCheckAvailabilityModal">
 					<div className={"CheckAvailabilityModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="CheckAvailabilityModal">
 						<CheckAvailabilityModalHeader {...this.props} {...this.state} />
 						<CheckAvailabilityModalBody {...this.props} {...this.state} />
