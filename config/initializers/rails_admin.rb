@@ -416,13 +416,19 @@ RailsAdmin.config do |config|
             value.html_safe
           end
         end
-        field :description_long 
-        field :description_short
+        field :description_long do
+          visible false
+        end
+        field :description_short do
+          visible false
+        end
         field :open_time do
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location opens.'
+          visible false
         end
         field :close_time do
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
+          visible false
         end
         field :admin do
           label 'Franchisee'
@@ -655,15 +661,19 @@ RailsAdmin.config do |config|
         end
         field :description, :ck_editor
         field :description_long do
+          visible false
           help 'This description is a max of 1000 characters and may not contain HTML or special characters. It is used for online directory listings (e.g. Google My Business)'
         end
         field :description_short do
+          visible false
           help 'This description is a max of 200 characters and may not contain HTML or special characters. It is used for online directory listings (e.g. Google My Business)'
         end 
         field :open_time do
+          visible false
           help 'This time will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location opens.'
         end
         field :close_time do
+          visible false
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
         end   
         field :msa do
