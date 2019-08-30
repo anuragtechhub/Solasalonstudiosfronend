@@ -319,7 +319,7 @@
     	right: 0;
 
     	&.UnknownAvailability {
-    		bottom: 10px;
+    		bottom: -5px;
     	}
 
     	.back-button, .forward-button {
@@ -418,7 +418,7 @@
 
 				&.check-availability {
 					position: relative;
-    			bottom: -15px;
+    			//bottom: -15px;
 					color: #000000;	
 					border: 1px solid #DBDBDB;
 					width: auto;

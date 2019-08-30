@@ -48,6 +48,7 @@ var ProfessionalAvailabilities = React.createClass({
 					<div className="fa fa-chevron-left back-button" onClick={this.goBack} style={{display: this.state.scrollLeft <= 0 ? 'none' : 'block'}}></div>
 					<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
 						{availabilities}
+						{this.renderLoadMoreAvailabilityButton()}
 					</div>
 					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
 				</div>
@@ -62,10 +63,18 @@ var ProfessionalAvailabilities = React.createClass({
 		} else {
 			return (
 				<div className="ProfessionalAvailabilities UnknownAvailability">
-					<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url} onClick={self.props.onShowCheckAvailabilityModal.bind(null, self.props.professional)}>{I18n.t('sola_search.check_availability')}</a>
+					{this.renderLoadMoreAvailabilityButton()}
 				</div>
 			);
 		}
+	},
+
+	renderLoadMoreAvailabilityButton: function () {
+		//<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url} onClick={self.props.onLoadMoreAvailabilities}>{I18n.t('sola_search.load_more_availability')}</a>
+		var self = this;
+		return (
+			<a href="#load-more-availabilitiy" className="availability-button check-availability" onClick={self.props.onLoadMoreAvailabilities}>{I18n.t('sola_search.load_more_availability')}</a>
+		);
 	},
 
 	displayForwardButton: function () {

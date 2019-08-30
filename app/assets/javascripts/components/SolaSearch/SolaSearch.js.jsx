@@ -149,7 +149,7 @@ var SolaSearch = React.createClass({
 					visible={this.state.bookingModalVisible} 
 					referring_url={this.props.referring_url} 
 				/>
-				<CheckAvailabilityModal 
+				{/*<CheckAvailabilityModal 
 					date={this.state.time ? this.state.time.start : new Date()}
 					fingerprint={this.state.fingerprint}
 					gloss_genius_api_key={this.state.gloss_genius_api_key}
@@ -165,7 +165,7 @@ var SolaSearch = React.createClass({
 					query={this.state.query} 
 					visible={this.state.checkAvailabilityModalVisible} 
 					referring_url={this.props.referring_url} 
-				/>
+				/>*/}
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
 				{

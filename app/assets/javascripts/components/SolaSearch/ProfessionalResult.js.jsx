@@ -3,6 +3,7 @@ var ProfessionalResult = React.createClass({
 	getInitialState: function () {
 		return {
 			availabilities: this.props.availabilities,
+			date: this.props.date,
 			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.png',
 			glossDefaultCoverImageUrl: 'https://s3-us-west-2.amazonaws.com/glossgenius-static-v2/user_avatar.jpg',
 			loading: false,
@@ -38,7 +39,7 @@ var ProfessionalResult = React.createClass({
 
 	render: function () {
 		//console.log('ProfessionalResult availabilities', this.props.availabilities, this.state.loading);
-
+		console.log('this.state.date', this.state.date);
 		return (
 			<div className="ProfessionalResult" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
@@ -61,7 +62,7 @@ var ProfessionalResult = React.createClass({
 						booking_page_url={this.props.booking_page_url} 
 						full_name={this.props.full_name} 
 						onShowBookingModal={this.props.onShowBookingModal} 
-						onShowCheckAvailabilityModal={this.props.onShowCheckAvailabilityModal}
+						onLoadMoreAvailabilities={this.onLoadMoreAvailabilities}
 						professional={this.props.professional} 
 						selectedService={this.state.selectedService}
 					/>
@@ -103,6 +104,34 @@ var ProfessionalResult = React.createClass({
 		//})();
 
 		// console.log('cover image load!', this.width, this.height, $(e.currentTarget).width(), $(e.currentTarget).width());
+	},
+
+	onLoadMoreAvailabilities: function (e) {
+		e.preventDefault();
+		console.log('onLoadMoreAvailabilities!');
+		var self = this;
+		
+		var services_guids = {};
+		services_guids[this.props.professional.guid] = this.state.selectedService.guid;
+		//console.log('services_guids', services_guids);
+		var date = this.state.date.add(2, 'days')
+		self.setState({loading: true, date: date});
+
+		$.ajax({
+			data: {
+				date: date.tz(self.props.professional.timezone).format("YYYY-MM-DD"),
+				services_guids: services_guids
+			},
+	    headers: {
+	    	"api_key": this.props.gloss_genius_api_key,
+	    	"device_id": this.props.fingerprint,
+	    },
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'availabilities',
+		}).done(function (response) {
+			console.log('getAvailabilities response', JSON.parse(response));
+			self.setState({availabilities: JSON.parse(response)[self.props.professional.guid], loading: false});
+		}); 		
 	},
 
 	onMouseEnter: function () {

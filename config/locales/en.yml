@@ -97,7 +97,8 @@ en:
     search_again: Search Again
     browse_all_sola_beauty_professionals: Browse all Sola beauty professionals
     load_more: Load More
-
+    load_more_availability: Load More Availability
+    
   contact_form:
     contact_a_sola_near_you: Contact A Sola Near You
     select_a_state: Select a State
