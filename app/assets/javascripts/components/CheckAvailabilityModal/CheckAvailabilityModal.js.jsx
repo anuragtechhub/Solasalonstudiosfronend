@@ -2,6 +2,7 @@ var CheckAvailabilityModal = React.createClass({
 
 	getInitialState: function () {
 		return {
+			availabilities: [],
 			date: this.props.date ? moment(this.props.date) : moment(),
 			temp_date: this.props.date ? moment(this.props.date) : moment(),
 
@@ -35,6 +36,11 @@ var CheckAvailabilityModal = React.createClass({
 	componentWillReceiveProps: function (nextProps) {
 		this.setState({date: moment(nextProps.date), temp_date: moment(nextProps.date)});
 
+		if ((!this.props.professional && nextProps.professional) || (this.props.professional && nextProps.professional && this.props.professional.guid != nextProps.professional.guid)) {
+			//console.log('setting availabilities!');
+			this.setState({availabilities: nextProps.professional.availabilities})
+		}
+
 		if (nextProps.visible && !this.props.visible) {
 			ga('solasalonstudios.send', 'event', 'BookNow', 'Open Check Availability Modal', JSON.stringify({
 				date: this.state.date.format('YYYY-MM-DD'),
@@ -62,6 +68,10 @@ var CheckAvailabilityModal = React.createClass({
 		    height: 'auto'
 			});
 		}
+
+		if ((this.props.professional && !prevProps.professional) || (this.props.professional && prevProps.professional && this.props.professional.guid != prevProps.professional.guid)) {
+			this.loadAvailability();
+		}
 	},
 
 
@@ -72,7 +82,7 @@ var CheckAvailabilityModal = React.createClass({
 
 	render: function () {
 		if (this.props.visible) {
-			console.log('CheckAvailabilityModal', this.props);
+			//console.log('CheckAvailabilityModal', this.props.professional, this.state.availabilities);
 
 			return (
 				<div className="CheckAvailabilityModalOverlay HideCheckAvailabilityModal">
@@ -99,7 +109,7 @@ var CheckAvailabilityModal = React.createClass({
 		e.stopPropagation();
 		e.preventDefault();
 
-		console.log('onSubmit CheckAvailabilityModal');
+		//console.log('onSubmit CheckAvailabilityModal');
 		this.loadAvailability();
 	},
 
@@ -109,13 +119,11 @@ var CheckAvailabilityModal = React.createClass({
 	* Helper functions
 	*/
 
-	loadAvailability: function () {
-		console.log('loadAvailability');
-		
+	loadAvailability: function () {		
 		var self = this;
 		var services_guids = this.getServicesGuids();
 		
-		console.log('services_guids', services_guids);
+		self.setState({loading: true});
 
 		$.ajax({
 			data: {
@@ -130,12 +138,32 @@ var CheckAvailabilityModal = React.createClass({
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
 			var new_availabilities = JSON.parse(response);
-			console.log('loadAvailability response', new_availabilities);
+			//console.log('loadAvailability response', new_availabilities, self.state.availabilities);
+			var availabilities = self.state.availabilities.slice(0);
+			
 			// if (self.state.availabilities) {
 			// 	//console.log('availabilities already defined!');
-			// 	for (var i in new_availabilities) {
-			// 		self.state.availabilities[i] = new_availabilities[i];
-			// 	}
+			for (var i in new_availabilities) {
+				
+				
+				for (var j = 0, jlen = new_availabilities[i].length; j < jlen; j++) {
+					//console.log('new_availabilities[i]', new_availabilities[i][j].date);
+					var match = false;
+					for (var k = 0, klen = self.state.availabilities.length; k < klen; k++) {
+						if (self.state.availabilities[k].date == new_availabilities[i][j].date) {
+							//console.log('match!');
+							match = true;
+							break;
+						}
+					}
+					
+					if (!match) {
+						availabilities.push(new_availabilities[i][j]);
+					}
+				}
+				
+			}
+			self.setState({loading: false, availabilities: availabilities});
 			// 	self.setState({availabilities: self.state.availabilities});
 			// } else {
 			// 	self.setState({availabilities: new_availabilities});
