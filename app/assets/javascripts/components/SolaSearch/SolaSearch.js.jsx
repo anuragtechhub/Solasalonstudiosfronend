@@ -152,6 +152,8 @@ var SolaSearch = React.createClass({
 				<CheckAvailabilityModal 
 					date={this.state.time ? this.state.time.start : new Date()}
 					fingerprint={this.state.fingerprint}
+					gloss_genius_api_key={this.state.gloss_genius_api_key}
+					gloss_genius_api_url={this.state.gloss_genius_api_url}
 					lat={this.state.lat}
 					lng={this.state.lng}
 					location={this.state.location}

@@ -111,13 +111,15 @@ var CheckAvailabilityModal = React.createClass({
 
 	loadAvailability: function () {
 		console.log('loadAvailability');
+		
 		var self = this;
 		var services_guids = this.getServicesGuids();
+		
 		console.log('services_guids', services_guids);
 
 		$.ajax({
 			data: {
-				date: this.state.date.format("YYYY-MM-DD"),
+				date: this.state.date.add(3, 'days').format("YYYY-MM-DD"),
 				services_guids: services_guids
 			},
 	    headers: {
