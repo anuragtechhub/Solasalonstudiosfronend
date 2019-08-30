@@ -39,7 +39,7 @@ var ProfessionalResult = React.createClass({
 
 	render: function () {
 		//console.log('ProfessionalResult availabilities', this.props.availabilities, this.state.loading);
-		console.log('this.state.date', this.state.date);
+		//console.log('this.state.date', this.state.date);
 		return (
 			<div className="ProfessionalResult" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
 				{/*<ProfessionalServicesDropdown booking_page_url={this.props.booking_page_url} services={this.props.all_services} />*/}
@@ -108,13 +108,13 @@ var ProfessionalResult = React.createClass({
 
 	onLoadMoreAvailabilities: function (e) {
 		e.preventDefault();
-		console.log('onLoadMoreAvailabilities!');
+		//console.log('onLoadMoreAvailabilities!');
 		var self = this;
 		
 		var services_guids = {};
 		services_guids[this.props.professional.guid] = this.state.selectedService.guid;
 		//console.log('services_guids', services_guids);
-		var date = this.state.date.add(2, 'days')
+		var date = this.state.date.add(3, 'days')
 		self.setState({loading: true, date: date});
 
 		$.ajax({
@@ -129,8 +129,27 @@ var ProfessionalResult = React.createClass({
 			method: 'POST',
 	    url: this.props.gloss_genius_api_url + 'availabilities',
 		}).done(function (response) {
-			console.log('getAvailabilities response', JSON.parse(response));
-			self.setState({availabilities: JSON.parse(response)[self.props.professional.guid], loading: false});
+			//console.log('getAvailabilities response', JSON.parse(response));
+			var availabilities = self.state.availabilities.slice(0);
+			var new_availabilities = JSON.parse(response)[self.props.professional.guid];
+
+			for (var j = 0, jlen = new_availabilities.length; j < jlen; j++) {
+				//console.log('new_availabilities[i]', new_availabilities[i][j].date);
+				var match = false;
+				for (var k = 0, klen = self.state.availabilities.length; k < klen; k++) {
+					if (self.state.availabilities[k].date == new_availabilities[j].date) {
+						//console.log('match!');
+						match = true;
+						break;
+					}
+				}
+				
+				if (!match) {
+					availabilities.push(new_availabilities[j]);
+				}
+			}
+			
+			self.setState({availabilities: availabilities, loading: false});
 		}); 		
 	},
 
