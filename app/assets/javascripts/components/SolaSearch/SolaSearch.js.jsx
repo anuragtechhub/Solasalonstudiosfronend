@@ -160,6 +160,7 @@ var SolaSearch = React.createClass({
 					location_id={this.state.location_id}
 					location_name={this.state.location_name}
 					onHideCheckAvailabilityModal={this.onHideCheckAvailabilityModal}
+					onShowBookingModal={this.onShowBookingModal}
 					professional={this.state.professional} 
 					query={this.state.query} 
 					visible={this.state.checkAvailabilityModalVisible} 
