@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-.BookingModalOverlay {
+.BookingModalOverlay, .CheckAvailabilityModalOverlay {
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -11,7 +11,123 @@
 	z-index: 9999;
 }
 
-.BookingModal {
+.CheckAvailabilityModal {
+	.ProfessionalAvailabilities {
+			position: absolute;
+    	top: 0;
+    	left: 15px;
+    	right: 15px;
+
+    	&.UnknownAvailability {
+    		bottom: 10px;
+    	}
+
+    	.back-button, .forward-button {
+    		display: inline-block;
+    		font-size: 17px;
+    		line-height: 17px;
+    		position: absolute;
+    		top: 50%;
+    		background: #FFF;
+    		padding: 9px 7px;
+    		z-index: 9;
+    		height: 39px;
+    		border-radius: 3px;
+    		cursor: pointer;
+    		color: #000;
+    		margin-top: 1px;
+
+    		// &:hover, &:active {
+    		// 	color: #AFAFAF;
+    		// }
+    	}
+
+    	.back-button {
+    		left: -8px;
+    	}
+
+    	.forward-button {
+    		right: -8px;
+    	}
+
+    	.ProfessionalAvailabilitiesWrapper {
+	    	width: 100%;
+	    	height: 69px;
+	    	overflow: hidden;
+	    	overflow-x: scroll;
+	    	white-space: nowrap;
+	    	position: relative;
+    		bottom: -18px;
+    		//padding: 0 33px;
+    		
+    		&::-webkit-scrollbar {
+					//width: 0px;  /* remove scrollbar space */
+					background: transparent;  /* optional: just make scrollbar invisible */
+				}
+    	}
+
+    	.availability-date {
+    		display: inline-block;
+    		vertical-align: bottom;
+    		margin-left: 15px;
+
+    		&:first-child {
+    			margin-left: 0;
+    		}
+
+    		// &:last-child {
+    		// 	margin-right: 15px;
+    		// }
+    		// float: left;
+    		// clear: none;
+    		// white-space: nowrap;
+
+    		.date {
+    			//position: relative;
+    			//top: -10px;
+    			margin: 0 0 3px 0;
+    			color: #4A4A4A;	
+    			@include helvetica;
+    			font-size: 11px;	
+    			font-style: italic;	
+    			font-weight: 300;	
+    			line-height: 16px;
+    		}
+    	}
+
+			a.availability-button, a.availability-button:link, a.availability-button:visited, a.availability-button:hover, a.availability-button:active {
+				text-decoration: none;
+				color: $brand-pink;	
+				background: #FFF;
+				@include helvetica;
+				font-size: 13px;	
+				font-weight: 300;	
+				line-height: 16px;
+				border: 1px solid $brand-pink;
+				border-radius: 3px;
+				padding: 8px 12px;
+				margin-right: 10px;
+				width: 80px;
+				text-align: center;
+				display: inline-block;
+
+				&:hover, &:active {
+					border: 1px solid $brand-pink-hover;
+					color: $brand-pink-hover;
+				}
+
+				&.check-availability {
+					position: relative;
+    			bottom: -15px;
+					color: #000000;	
+					border: 1px solid #DBDBDB;
+					width: auto;
+				}
+			}
+		}
+}
+
+.BookingModal, .CheckAvailabilityModal {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -71,7 +187,7 @@
 		height: 100%;
 		margin-top: 0;
 
-		.BookingModalFooter {
+		.BookingModalFooter, .CheckAvailabilityModalFooter {
 			height: 115px;
 		}
 	}
@@ -90,7 +206,7 @@
 		border-radius: 4px;
 	}
 
-	.BookingModalHeader {
+	.BookingModalHeader, .CheckAvailabilityModalHeader {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -131,7 +247,7 @@
 		}
 	}
 
-	.BookingModalBody {
+	.BookingModalBody, .CheckAvailabilityModalBody {
 		position: absolute;
 		top: 48px;
 		bottom: 100px;
@@ -142,7 +258,7 @@
 		z-index: 9;
 	}
 
-	.BookingModalFooter {
+	.BookingModalFooter, .CheckAvailabilityModalFooter {
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -205,6 +321,9 @@
 	    	pointer-events: none;
 	    }
 		}
+	}
+	.CheckAvailabilityModalFooter .Button {
+		text-align: center;
 	}
 }
 
@@ -755,7 +874,7 @@
 		}
 	}
 
-	.BookingModal {
+	.BookingModal, .CheckAvailabilityModal {
 		.BookingModalReview {
 
 			.ProfessionalName {
@@ -835,7 +954,7 @@
 			}				
 		}
 
-		.BookingModalFooter {
+		.BookingModalFooter, .CheckAvailabilityModalFooter {
 			.ChargedAfterAppointment {
 				text-align: right;
 				clear: none;

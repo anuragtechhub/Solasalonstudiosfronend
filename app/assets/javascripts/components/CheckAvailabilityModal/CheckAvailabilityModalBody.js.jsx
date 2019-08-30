@@ -1,4 +1,4 @@
-var ProfessionalAvailabilities = React.createClass({
+var CheckAvailabilityModalBody = React.createClass({
 
 	getInitialState: function () {
 		return {
@@ -44,37 +44,28 @@ var ProfessionalAvailabilities = React.createClass({
 				);
 			});
 			return (
-				<div className="ProfessionalAvailabilities">
-					<div className="fa fa-chevron-left back-button" onClick={this.goBack} style={{display: this.state.scrollLeft <= 0 ? 'none' : 'block'}}></div>
-					<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
-						{availabilities}
-						{this.renderLoadMoreAvailabilityButton()}
+				<div className="CheckAvailabilityModalBody">
+					<div className="ProfessionalAvailabilities">
+						<div className="fa fa-chevron-left back-button" onClick={this.goBack} style={{display: this.state.scrollLeft <= 0 ? 'none' : 'block'}}></div>
+						<div className="ProfessionalAvailabilitiesWrapper" ref="availabilities" onScroll={this.onScroll}>
+							{availabilities}
+						</div>
+						<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
 					</div>
-					<div className="fa fa-chevron-right forward-button" onClick={this.goForward} style={{display: (this.displayForwardButton() ? 'block' : 'none')}}></div>
 				</div>
 			);
 		} else if (typeof this.props.availabilities == 'undefined') {
 			// loading
 			return (
-				<div className="ProfessionalAvailabilities UnknownAvailability">
-					<div className="loading"><div className="spinner spinner-sm"></div></div>
+				<div className="CheckAvailabilityModalBody">
+					<div className="ProfessionalAvailabilities UnknownAvailability">
+						<div className="loading"><div className="spinner spinner-sm"></div></div>
+					</div>
 				</div>
 			);
 		} else {
-			return (
-				<div className="ProfessionalAvailabilities UnknownAvailability">
-					{this.renderLoadMoreAvailabilityButton()}
-				</div>
-			);
+			return null
 		}
-	},
-
-	renderLoadMoreAvailabilityButton: function () {
-		//<a href={'http://' + this.props.booking_page_url} className="availability-button check-availability" target={this.props.booking_page_url} onClick={self.props.onLoadMoreAvailabilities}>{I18n.t('sola_search.load_more_availability')}</a>
-		var self = this;
-		return (
-			<a href="#load-more-availabilitiy" className="availability-button check-availability" onClick={self.props.onLoadMoreAvailabilities}>{I18n.t('sola_search.load_more_availability')}</a>
-		);
 	},
 
 	displayForwardButton: function () {

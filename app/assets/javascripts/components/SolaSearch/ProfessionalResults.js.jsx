@@ -18,6 +18,7 @@ var ProfessionalResults = React.createClass({
 								gloss_genius_api_key={self.props.gloss_genius_api_key}
 								gloss_genius_api_url={self.props.gloss_genius_api_url}
 								onShowBookingModal={self.props.onShowBookingModal} 
+								onShowCheckAvailabilityModal={self.props.onShowCheckAvailabilityModal}
 								professional={professional} />
 			}
 		});
@@ -37,6 +38,7 @@ var ProfessionalResults = React.createClass({
 								gloss_genius_api_key={self.props.gloss_genius_api_key}
 								gloss_genius_api_url={self.props.gloss_genius_api_url}
 								onShowBookingModal={self.props.onShowBookingModal} 
+								onShowCheckAvailabilityModal={self.props.onShowCheckAvailabilityModal}
 								professional={professional} />
 			}
 		});
