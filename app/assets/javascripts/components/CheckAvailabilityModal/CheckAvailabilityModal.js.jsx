@@ -49,7 +49,7 @@ var CheckAvailabilityModal = React.createClass({
 		}
 	},
 
-	componentDidUpdate: function () {
+	componentDidUpdate: function (prevProps, prevState) {
 		// disable / enable scrolling
 		if (this.props.visible) {
 			$('html, body').css({
@@ -71,15 +71,15 @@ var CheckAvailabilityModal = React.createClass({
 	*/
 
 	render: function () {
-		//console.log('CheckAvailabilityModal', this.props.time);
-
 		if (this.props.visible) {
+			console.log('CheckAvailabilityModal', this.props);
+
 			return (
 				<div className="CheckAvailabilityModalOverlay HideCheckAvailabilityModal">
 					<div className={"CheckAvailabilityModal" + (this.state.fullHeight ? ' FullHeight ' : '') + (this.state.fullWidth ? ' FullWidth ' : '')} ref="CheckAvailabilityModal">
 						<CheckAvailabilityModalHeader {...this.props} {...this.state} />
 						<CheckAvailabilityModalBody {...this.props} {...this.state} />
-						<CheckAvailabilityModalFooter {...this.props} {...this.state} />
+						<CheckAvailabilityModalFooter {...this.props} {...this.state} onSubmit={this.onSubmit} />
 						{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
 					</div>
 				</div>
@@ -95,10 +95,62 @@ var CheckAvailabilityModal = React.createClass({
 	* Change handlers
 	*/
 
+	onSubmit: function (e) {
+		e.stopPropagation();
+		e.preventDefault();
+
+		console.log('onSubmit CheckAvailabilityModal');
+		this.loadAvailability();
+	},
+
 
 
 	/**
 	* Helper functions
 	*/
+
+	loadAvailability: function () {
+		console.log('loadAvailability');
+		var self = this;
+		var services_guids = this.getServicesGuids();
+		console.log('services_guids', services_guids);
+
+		$.ajax({
+			data: {
+				date: this.state.date.format("YYYY-MM-DD"),
+				services_guids: services_guids
+			},
+	    headers: {
+	    	"api_key": this.props.gloss_genius_api_key,
+	    	"device_id": this.props.fingerprint,
+	    },
+			method: 'POST',
+	    url: this.props.gloss_genius_api_url + 'availabilities',
+		}).done(function (response) {
+			var new_availabilities = JSON.parse(response);
+			console.log('loadAvailability response', new_availabilities);
+			// if (self.state.availabilities) {
+			// 	//console.log('availabilities already defined!');
+			// 	for (var i in new_availabilities) {
+			// 		self.state.availabilities[i] = new_availabilities[i];
+			// 	}
+			// 	self.setState({availabilities: self.state.availabilities});
+			// } else {
+			// 	self.setState({availabilities: new_availabilities});
+			// }
+		}); 		
+	},
+
+	getServicesGuids: function () {
+		var guids = {};
+
+		guids[this.props.professional.guid] = [];
+
+		for (var i = 0, ilen = this.props.professional.matched_services.length; i < ilen; i++) {
+			guids[this.props.professional.guid].push(this.props.professional.matched_services[i].guid);
+		}
+
+		return guids;
+	},	
 
 });
