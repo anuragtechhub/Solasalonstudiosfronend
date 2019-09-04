@@ -278,7 +278,7 @@ namespace :reports do
   end
 
   # rake reports:booknow
-  # rake reports:booknow[2019-04-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booknow[2019-08-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
   task :booknow, [:start_date, :email_address] => :environment do |task, args|
     p "begin booknow analytics report..."
     # p "args=#{args.inspect}"
@@ -324,7 +324,7 @@ namespace :reports do
   end
 
   # rake reports:booking_complete
-  # rake reports:booking_complete[2019-04-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booking_complete[2019-08-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
   task :booking_complete, [:start_date, :email_address] => :environment do |task, args|
     p "begin booking_complete report..."
     # p "args=#{args.inspect}"
@@ -919,7 +919,7 @@ namespace :reports do
       
       booking_data = []
 
-      (start_date..end_date).each do |date|
+      (start_date.to_date..end_date.to_date).each do |date|
         sleep 0.5
         p "done slept"
         booking_completes = get_ga_data(analytics, profile_id, date, date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
@@ -960,8 +960,8 @@ namespace :reports do
       }
 
       # # unique visits - visits, new visitors, returning visitors
-      # data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:screenviews')
-      # data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:screenviews')
+      # data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:screenviews')
+      # data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:screenviews')
 
       # # time on site, pages/session
       # data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
@@ -985,9 +985,9 @@ namespace :reports do
       # end
 
 
-      data[:overview] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow')
+      data[:overview] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow')
 
-      results = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Results')
+      results = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Results')
       top_results_locations = {}
       top_results_queries = {}
       p "results=#{results}"
@@ -1019,7 +1019,7 @@ namespace :reports do
         data[:results_queries] = top_results_queries.sort_by{ |k,v| v }.reverse[0..9]
       end
 
-      booking_completes = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
+      booking_completes = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
       top_booking_complete_locations = {}
       p "booking_completes=#{booking_completes}"
       if booking_completes && booking_completes.length > 0
@@ -1043,7 +1043,7 @@ namespace :reports do
         data[:booking_complete_locations] = top_booking_complete_locations.sort_by{ |k,v| v }.reverse[0..9]
       end
 
-      open_booking_modals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Open Booking Modal')
+      open_booking_modals = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Open Booking Modal')
       top_open_booking_modal_locations = {}
       p "open_booking_modals=#{open_booking_modals}"
       if open_booking_modals && open_booking_modals.length > 0
