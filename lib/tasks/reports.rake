@@ -118,7 +118,7 @@ namespace :reports do
   # end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2017-12-01,'US']
+  # rake reports:locations_with_email[2019-08-01,'US']
   task :locations_with_email, [:start_date, :country] => :environment do |task, args|
     p "begin locations report..."
     
@@ -150,7 +150,7 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2017-12-01,343,'US']
+  # rake reports:locations_with_email_starting_at[2019-08-01,326,'US']
   task :locations_with_email_starting_at, [:start_date, :gid, :country, :country] => :environment do |task, args|
     p "begin locations report..."
     
@@ -370,7 +370,7 @@ namespace :reports do
   end
 
   # rake reports:solapro
-  # rake reports:solapro[2019-04-01]
+  # rake reports:solapro[2019-08-01]
   task :solapro, [:start_date] => :environment do |task, args|
     p "begin solapro analytics report..."
     # p "args=#{args.inspect}"
@@ -413,8 +413,8 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2019-07-01,'US']
-  # rake reports:solasalonstudios[2019-07-01,'CA']
+  # rake reports:solasalonstudios[2019-08-01,'US']
+  # rake reports:solasalonstudios[2019-08-01,'CA']
   task :solasalonstudios, [:start_date, :country] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"
@@ -1283,8 +1283,8 @@ namespace :reports do
       }
 
       # unique visits - visits, new visitors, returning visitors
-      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:userType', 'ga:screenviews')
-      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:userType', 'ga:screenviews')
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:screenviews')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:screenviews')
 
       # time on site, pages/session
       data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
@@ -1297,7 +1297,7 @@ namespace :reports do
         end
       end
 
-      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
+      data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
       if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
         data[:time_on_site_prev_month] = 0.0
         data[:pageviews_per_session_prev_month] = 0.0
@@ -1308,24 +1308,24 @@ namespace :reports do
       end
 
       # deals viewed
-      data[:deals_viewed] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Deals')
-      data[:deals_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Deals')
+      data[:deals_viewed] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Deals')
+      data[:deals_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Deals')
 
       # videos viewed
-      data[:videos_viewed] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
-      data[:videos_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
+      data[:videos_viewed] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
+      data[:videos_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
 
       # top deals 
-      data[:top_deals] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deals')[0..4]
+      data[:top_deals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deals')[0..4]
 
       # top tools
-      data[:top_tools] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Tools and Resources')[0..4]
+      data[:top_tools] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Tools and Resources')[0..4]
 
       # top videos
-      data[:top_videos] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Videos')[0..4]
+      data[:top_videos] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Videos')[0..4]
 
       # top brands
-      data[:top_brands] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Brands')[0..4]
+      data[:top_brands] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Brands')[0..4]
 
       data
     end

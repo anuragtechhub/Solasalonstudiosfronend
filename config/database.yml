@@ -11,7 +11,7 @@ development:
   password: 2funky4u
   pool: 5
   timeout: 5000
-  sslmode: require
+  sslmode: prefer
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,7 +24,7 @@ test:
   password: 2funky4u
   pool: 5
   timeout: 5000
-  sslmode: require
+  sslmode: prefer
 
 production:
   adapter: postgresql
@@ -34,4 +34,4 @@ production:
   password: 2funky4u
   pool: 5
   timeout: 5000
-  sslmode: require
+  sslmode: prefer
