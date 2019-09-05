@@ -28,7 +28,7 @@ class StylistsController < PublicWebsiteController
       @zoom = 14
       @locations = [@location]
     end
-    redirect_to(:salon_professionals, :status => 301) unless @stylist && @location
+    redirect_to(:salon_professionals, :status => 301) unless @stylist && @location && @location.status == 'open'
   end
 
   def send_a_message

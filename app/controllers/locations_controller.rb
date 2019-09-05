@@ -96,8 +96,8 @@ class LocationsController < PublicWebsiteController
   end
 
   def salon
-    @location = Location.find_by(:url_name => params[:url_name])
-    @articles = Article.where(:location_id => @location.id).order('created_at DESC')
+    @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
+    @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
     
     if @location
       @lat = @location.latitude
@@ -145,7 +145,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def stylists
-    @location = Location.find_by(:url_name => params[:url_name])
+    @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
 
     if @location && @location.stylists
       @stylists = @location.stylists.where(:reserved => false)
