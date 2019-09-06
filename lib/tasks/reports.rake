@@ -44,7 +44,7 @@ namespace :reports do
       months.each do |month|
         p "month=#{month}"
         locations.each do |location|
-          csv << [month.strftime('%B %Y'), location.name, RequestTourInquiry.where('location_id = ? AND how_can_we_help_you != "Book an appointment with a salon professional" AND (created_at <= ? AND created_at >= ?)', location.id, month.end_of_month, month.beginning_of_month).count]
+          csv << [month.strftime('%B %Y'), location.name, RequestTourInquiry.where('location_id = ? AND how_can_we_help_you != ? AND (created_at <= ? AND created_at >= ?)', location.id, "Book an appointment with a salon professional", month.end_of_month, month.beginning_of_month).count]
         end
       end
 
