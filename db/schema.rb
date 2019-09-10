@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190817222412) do
+ActiveRecord::Schema.define(version: 20190910212258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -390,6 +390,9 @@ ActiveRecord::Schema.define(version: 20190817222412) do
     t.text     "description_long"
     t.time     "open_time"
     t.time     "close_time"
+    t.boolean  "walkins_enabled",             default: false
+    t.integer  "max_walkins_time",            default: 4
+    t.time     "walkins_end_of_day"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

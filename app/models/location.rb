@@ -167,6 +167,10 @@ class Location < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def walkins_enabled_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def country_enum
     countries = []
     
