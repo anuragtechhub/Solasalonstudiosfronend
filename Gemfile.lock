@@ -226,6 +226,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    naturally (2.2.0)
     nested_form (0.3.2)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
@@ -421,6 +422,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mechanize
+  naturally
   nokogiri
   oj
   oj_mimic_json
