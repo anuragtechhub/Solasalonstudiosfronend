@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190910212258) do
+ActiveRecord::Schema.define(version: 20190910222528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -391,7 +391,7 @@ ActiveRecord::Schema.define(version: 20190910212258) do
     t.time     "open_time"
     t.time     "close_time"
     t.boolean  "walkins_enabled",             default: false
-    t.integer  "max_walkins_time",            default: 4
+    t.integer  "max_walkins_time",            default: 60
     t.time     "walkins_end_of_day"
   end
 
@@ -698,6 +698,7 @@ ActiveRecord::Schema.define(version: 20190910212258) do
     t.datetime "solagenius_account_created_at"
     t.integer  "total_booknow_bookings"
     t.string   "total_booknow_revenue"
+    t.datetime "walkins_expiry"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
