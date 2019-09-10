@@ -21,4 +21,21 @@ namespace :stylist do
   	end
   end
 
+  task :turn_off_walkins => :environment do
+    Stylist.where('walkins = ? AND walkins_expiry <= ?', true, DateTime.now).each do |stylist|
+      begin
+        p "gotta turn off walkins for #{stylist.id}, #{stylist.email_address}"
+        stylist.walkins = false
+        stylist.walkins_expiry = nil
+        if stylist.save
+          p "walkins settings for stylist updated successfully!"
+        else
+          p "walkins settings for stylist NOT updated successfully: #{stylist.errors.inspect}"
+        end
+      rescue => e 
+        p "error updating walkins settings for stylist #{stylist.id}, #{e}"
+      end
+    end
+  end
+
 end
