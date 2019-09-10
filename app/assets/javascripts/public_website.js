@@ -23,6 +23,17 @@
 
 $(function () {
 
+  // cookie privacy banner close
+  if (Cookies.get('cookie_banner') != 'accepted') {
+    $('.cookie-banner').show();
+  }
+
+  $(document.body).on('click', '.cookie-banner a', function (e) {
+    e.preventDefault();
+    $('.cookie-banner').hide();
+    Cookies.set('cookie_banner', 'accepted');
+  });
+
   var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),

@@ -23,7 +23,12 @@ en:
       leases/recurring_charge_4:
         amount: "Recurring weekly charge 4 weekly fee" 
         start_date: "Recurring weekly charge 4 start date"
-        end_date: "Recurring weekly charge 4 end date"     
+        end_date: "Recurring weekly charge 4 end date"   
+
+  cookie_banner:
+    please_accept_our_privacy_terms: Please accept our privacy terms  
+    accept_and_continue: Accept and continue to site
+    we_use_cookies_text: We use cookies on our site to help provide personalized content and the best experience for you! By using this site, you accept our use of cookies.
 
   sola_search:
     booknow: BookNow
