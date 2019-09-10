@@ -114,7 +114,7 @@ var ProfessionalResult = React.createClass({
 		var services_guids = {};
 		services_guids[this.props.professional.guid] = this.state.selectedService.guid;
 		//console.log('services_guids', services_guids);
-		var date = this.state.date.add(3, 'days')
+		var date = this.state.date.clone().add(3, 'days')
 		self.setState({loading: true, date: date});
 
 		$.ajax({
