@@ -171,6 +171,10 @@ class Location < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def walkins_timezone_enum
+    [['Pacific Time', 'Pacific Time'], ['Mountain Time', 'Mountain Time'], ['Central Time', 'Central Time'], ['Eastern Time', 'Eastern Time']]
+  end
+
   def country_enum
     countries = []
     

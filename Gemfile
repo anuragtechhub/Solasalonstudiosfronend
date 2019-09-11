@@ -56,6 +56,7 @@ gem "paperclip"
 gem "curb"
 gem "down"
 gem "naturally"
+gem "tzinfo"
 
 # gem 'aws-sdk-v1'
 # gem 'aws-sdk', '~> 2'

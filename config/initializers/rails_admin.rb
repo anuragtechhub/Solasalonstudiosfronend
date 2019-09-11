@@ -644,6 +644,9 @@ RailsAdmin.config do |config|
         field :walkins_end_of_day do
           help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
         end
+        field :walkins_timezone do
+          help 'In order to turn off walkins automatically at the correct time, please select the timezone of this location'
+        end
       end
       group :rent_manager do
         label 'Rent Manager'
@@ -977,6 +980,9 @@ RailsAdmin.config do |config|
         end
         field :walkins_end_of_day do
           help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
+        end
+        field :walkins_timezone do
+          help 'In order to turn off walkins automatically at the correct time, please select the timezone of this location'
         end
       end
       group :rent_manager do
