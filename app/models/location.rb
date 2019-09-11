@@ -197,6 +197,20 @@ class Location < ActiveRecord::Base
     return ActiveSupport::TimeZone.new("Eastern Time (US & Canada)") if self.walkins_timezone == 'Eastern Time'
   end
 
+  def walkins_offset
+    location_end_offset = DateTime.now.in_time_zone(self.walkins_timezone_offset).utc_offset / 60 / 60 * 100
+    if location_end_offset.abs < 1000
+      if location_end_offset < 0
+        location_end_offset = '-0' + location_end_offset.abs.to_s
+      else
+        location_end_offset = '+0' + location_end_offset.abs.to_s
+      end
+    else 
+      location_end_offset = '+' + location_end_offset.abs.to_s
+    end
+    return location_end_offset
+  end
+
   def country_enum
     countries = []
     
