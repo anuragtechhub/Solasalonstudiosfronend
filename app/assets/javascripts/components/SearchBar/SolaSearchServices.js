@@ -1,8 +1,5 @@
 var SolaSearchServices = {
     "Barber": [{
-        "name": "Barber",
- 
-    },{
         "name": "Men's Cut",
  
     }, {
@@ -40,9 +37,6 @@ var SolaSearchServices = {
  
     }],
     "Haircut": [{
-        "name": "Haircut",
-
-    },{
         "name": "Men's Cut",
  
     }, {
@@ -70,9 +64,6 @@ var SolaSearchServices = {
         {"name": "Cut & Color"}
     ],
     "Weaves": [{
-        "name": "Weaves",
- 
-    }, {
         "name": "Full Weave",
  
     }, {
@@ -95,12 +86,6 @@ var SolaSearchServices = {
  
     }],
     "Braids": [{
-        "name": "Braids",
- 
-    }, {
-        "name": "Crochet Braids",
- 
-    }, {
         "name": "Dreadlocks",
  
     }, {
@@ -120,9 +105,6 @@ var SolaSearchServices = {
  
     }],
     "Twists": [{
-        "name": "Twists",
- 
-    }, {
         "name": "Havana",
  
     }, {
@@ -136,9 +118,6 @@ var SolaSearchServices = {
  
     }],
     "Color": [{
-        "name": "Color",
- 
-    }, {
         "name": "Color Touch-UP",
  
     }, {
@@ -164,9 +143,6 @@ var SolaSearchServices = {
  
     }],
     "Natural Hair": [{
-        "name": "Natural Hair",
- 
-    },{
         "name": "Shampoo",
  
     }, {
@@ -199,9 +175,6 @@ var SolaSearchServices = {
         "name": "Blowout",
  
     }, {
-        "name": "Style",
- 
-    }, {
         "name": "Flat Iron",
  
     }, {
@@ -218,9 +191,6 @@ var SolaSearchServices = {
  
     }],
     "Nails": [{
-        "name": "Nails",
- 
-    },{
         "name": "Manicure",
  
     }, {
@@ -246,9 +216,6 @@ var SolaSearchServices = {
  
     }],
     "Eyebrows": [{
-        "name": "Eyebrows",
- 
-    },{
         "name": "Brow Tint",
  
     }, {
@@ -271,9 +238,6 @@ var SolaSearchServices = {
  
     }],
     "Eyelashes": [{
-        "name": "Eyelash Extensions",
- 
-    }, {
         "name": "Eyelash Full Set",
  
     }, {
@@ -330,9 +294,6 @@ var SolaSearchServices = {
  
     }],
     "Make-Up": [{
-        "name": "Make-Up",
-
-    }, {
         "name": "Makeup Application (Full Face)",
 
     }, {
@@ -355,9 +316,6 @@ var SolaSearchServices = {
         {"name": "Prenatal"},
     ],
     "Tanning": [{
-        "name": "Tanning",
- 
-    }, {
         "name": "Airbrush Tanning",
  
     }, {
@@ -365,9 +323,6 @@ var SolaSearchServices = {
  
     }],
     "Waxing": [{
-        "name": "Waxing",
- 
-    }, {
         "name": "Brow Wax",
  
     }, {
@@ -387,9 +342,6 @@ var SolaSearchServices = {
  
     }],
     "Wedding": [{
-        "name": "Wedding",
- 
-    }, {
         "name": "Consultation",
  
     }, {
