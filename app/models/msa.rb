@@ -8,6 +8,7 @@ class Msa < ActiveRecord::Base
   after_destroy :touch_msa
   has_many :locations
 
+  validates :name, :presence => true, :uniqueness => true
   validates :url_name, :presence => true, :uniqueness => true
 
   def fix_url_name
