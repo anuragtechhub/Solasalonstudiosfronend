@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190817222412) do
+ActiveRecord::Schema.define(version: 20190917223305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -390,6 +390,10 @@ ActiveRecord::Schema.define(version: 20190817222412) do
     t.text     "description_long"
     t.time     "open_time"
     t.time     "close_time"
+    t.boolean  "walkins_enabled",             default: false
+    t.integer  "max_walkins_time",            default: 60
+    t.time     "walkins_end_of_day"
+    t.string   "walkins_timezone"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
@@ -695,6 +699,7 @@ ActiveRecord::Schema.define(version: 20190817222412) do
     t.datetime "solagenius_account_created_at"
     t.integer  "total_booknow_bookings"
     t.string   "total_booknow_revenue"
+    t.datetime "walkins_expiry"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
@@ -819,6 +824,7 @@ ActiveRecord::Schema.define(version: 20190817222412) do
     t.integer  "image_10_file_size"
     t.datetime "image_10_updated_at"
     t.boolean  "microblading"
+    t.boolean  "reserved",              default: false
   end
 
   add_index "update_my_sola_websites", ["stylist_id"], name: "index_update_my_sola_websites_on_stylist_id", using: :btree

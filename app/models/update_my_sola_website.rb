@@ -206,6 +206,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.email_address = email_address
     stylist.phone_number = phone_number
     
+    stylist.reserved = reserved
+
     stylist.business_name = business_name
     stylist.work_hours = work_hours
     stylist.biography = biography
