@@ -1906,6 +1906,9 @@ RailsAdmin.config do |config|
           #   end
           # end
         end
+        field :reserved do
+          help ' '
+        end
       end
       group :social do
         field :facebook_url do
