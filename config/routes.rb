@@ -21,10 +21,10 @@ Solasalonstudios::Application.routes.draw do
   get "about" => 'about_us#index'
   
   get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
-  # get "leadership" => 'about_us#leadership', :as => :leadership
+  get "leadership" => 'about_us#leadership', :as => :leadership
   get "our-story" => 'about_us#our_story', :as => :our_story 
   # get 'leadership/r-randall-clark' => 'about_us#randall_clark', :as => :randall_clark
-  # get 'leadership/rodrigo-miranda' => 'about_us#rodrigo_miranda', :as => :rodrigo_miranda
+  get 'leadership/rodrigo-miranda' => 'about_us#rodrigo_miranda', :as => :rodrigo_miranda
   # get 'leadership/ben-jones' => 'about_us#ben_jones', :as => :ben_jones
   # get 'leadership/jennie-wolff' => 'about_us#jennie_wolff', :as => :jennie_wolff
   # get 'leadership/myrle-mcneal' => 'about_us#myrle_mcneal', :as => :myrle_mcneal

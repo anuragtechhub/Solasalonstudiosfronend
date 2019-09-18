@@ -1,7 +1,9 @@
 class AboutUsController < PublicWebsiteController
   
   def index
-    redirect_to :who_we_are, :status => 301
+    if I18n.locale.to_s != 'pt-BR'
+      redirect_to :who_we_are, :status => 301
+    end
   end
 
   def leadership
