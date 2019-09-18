@@ -167,6 +167,50 @@ class Location < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def max_walkins_time_enum
+    (15..480).to_a.in_groups_of(15).collect(&:first).collect { |t| [humanize(t * 60), t] }  
+  end
+
+  def walkins_enabled_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def walkins_timezone_enum
+    [['Pacific Time', 'Pacific Time'], ['Mountain Time', 'Mountain Time'], ['Central Time', 'Central Time'], ['Eastern Time', 'Eastern Time']]
+  end
+
+  def humanize(secs)
+    [[60, :seconds], [60, :minutes], [24, :hours], [Float::INFINITY, :days]].map{ |count, name|
+      if secs > 0
+        secs, n = secs.divmod(count)
+
+        "#{n.to_i} #{name}" unless n.to_i==0
+      end
+    }.compact.reverse.join(' ')
+  end
+  # DateTime.now.in_time_zone(ActiveSupport::TimeZone.new("Eastern Time (US & Canada)"))
+  # DateTime.now.in_time_zone(self.walkins_timezone_offset)
+  def walkins_timezone_offset
+    return ActiveSupport::TimeZone.new("Pacific Time (US & Canada)") if self.walkins_timezone == 'Pacific Time'
+    return ActiveSupport::TimeZone.new("Mountain Time (US & Canada)") if self.walkins_timezone == 'Mountain Time'
+    return ActiveSupport::TimeZone.new("Central Time (US & Canada)") if self.walkins_timezone == 'Central Time'
+    return ActiveSupport::TimeZone.new("Eastern Time (US & Canada)") if self.walkins_timezone == 'Eastern Time'
+  end
+
+  def walkins_offset
+    location_end_offset = DateTime.now.in_time_zone(self.walkins_timezone_offset).utc_offset / 60 / 60 * 100
+    if location_end_offset.abs < 1000
+      if location_end_offset < 0
+        location_end_offset = '-0' + location_end_offset.abs.to_s
+      else
+        location_end_offset = '+0' + location_end_offset.abs.to_s
+      end
+    else 
+      location_end_offset = '+' + location_end_offset.abs.to_s
+    end
+    return location_end_offset
+  end
+
   def country_enum
     countries = []
     

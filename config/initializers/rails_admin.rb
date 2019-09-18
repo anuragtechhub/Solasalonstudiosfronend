@@ -632,6 +632,23 @@ RailsAdmin.config do |config|
           help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
         end
       end
+      group :walkins do
+        visible false
+        label "Walk-Ins"
+        active false
+        field :walkins_enabled do
+          help 'If set to yes, there will be a toggle switch inside Sola Pro to turn on/off taking walk-ins for each salon professional at this location.'
+        end
+        field :max_walkins_time do
+          help 'This field will set the maximum duration a salon professional at this location may set their taking walk-ins setting inside Sola Pro.'
+        end
+        field :walkins_end_of_day do
+          help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
+        end
+        field :walkins_timezone do
+          help 'In order to turn off walkins automatically at the correct time, please select the timezone of this location'
+        end
+      end
       group :rent_manager do
         label 'Rent Manager'
         active false
@@ -951,6 +968,23 @@ RailsAdmin.config do |config|
         end
         field :callfire_list_ids do
           help 'To sync to more than one CallFire list, please comma separate list IDs (e.g. 123abc, 456xyz, 789def)'
+        end
+      end
+      group :walkins do
+        visible false
+        label "Walk-Ins"
+        active false
+        field :walkins_enabled do
+          help 'If set to yes, there will be a toggle switch inside Sola Pro to turn on/off taking walk-ins for each salon professional at this location.'
+        end
+        field :max_walkins_time do
+          help 'This field will set the maximum duration a salon professional at this location may set their taking walk-ins setting inside Sola Pro.'
+        end
+        field :walkins_end_of_day do
+          help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
+        end
+        field :walkins_timezone do
+          help 'In order to turn off walkins automatically at the correct time, please select the timezone of this location'
         end
       end
       group :rent_manager do
