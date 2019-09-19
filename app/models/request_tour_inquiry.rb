@@ -34,11 +34,20 @@ class RequestTourInquiry < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def get_cms_lead_timestamp
+    rti = RequestTourInquiry.where(:email => self.email).order(:created_at => :desc).first
+    if rti
+      return rti.created_at
+    else
+      return self.created_at || DateTime.now
+    end
+  end
+
   def sync_with_hubspot
     p "sync_with_hubspot!"
 
     if ENV['HUBSPOT_API_KEY'].present?
-      p "HUBSPOT API KEY IS PRESENT, lets sync.."
+      p "HUBSPOT API KEY IS PRESENT, lets sync.. #{get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i}"
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
 
@@ -66,7 +75,10 @@ class RequestTourInquiry < ActiveRecord::Base
         campaign: self.campaign,
         content: self.content,
         hutk: self.hutk,
+        cms_lead_timestamp: get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i,
       })
+
+
     else
       p "No HUBSPOT API KEY, no sync"
     end
