@@ -297,6 +297,66 @@ class Stylist < ActiveRecord::Base
     self.sync_with_ping_hd
   end
 
+  def get_hubspot_owners
+    p "get_hubspot_owners"
+
+    if ENV['HUBSPOT_API_KEY'].present?
+      p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owners.."
+
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+      all_owners = Hubspot::Owner.all
+
+      # p "all_owners=#{all_owners.inspect}"
+      if all_owners
+        all_owners = all_owners.map{|o| o.email}
+        p "all_owners=#{all_owners}"
+      end
+    else
+      p "No HUBSPOT API KEY, get_hubspot_owners"
+    end
+  rescue => e
+    # shh...
+    p "error get_hubspot_owners #{e}"
+  end
+
+  def get_hubspot_owner_id(email_address=nil)
+    if email_address.blank? && location && location.admin
+      email_address = location.admin.email_address
+    end
+    return nil unless email_address.present?
+    
+    p "get_hubspot_owner #{email_address}"
+
+    if ENV['HUBSPOT_API_KEY'].present?
+      p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owner.."
+
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+      all_owners = Hubspot::Owner.all
+
+      # p "all_owners=#{all_owners.inspect}"
+      if all_owners
+        all_owners.each do |owner|
+          if owner.email == email_address
+            p "matching owner!!! #{owner.inspect}"
+            p "owner.owner_id=#{owner.owner_id}"
+            return owner.owner_id
+          end
+        end
+      end
+
+      return nil
+    else
+      p "No HUBSPOT API KEY, v"
+      return nil
+    end
+  rescue => e
+    # shh...
+    p "error get_hubspot_owner #{e}"
+    return nil
+  end
+
   def inactivate_with_hubspot
     p "inactivate_with_hubspot!"
 
@@ -305,7 +365,7 @@ class Stylist < ActiveRecord::Base
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
 
-      Hubspot::Contact.create_or_update!([{
+      contact_properties = {
         email: self.email_address, 
         firstname: self.first_name, 
         lastname: self.last_name,
@@ -347,7 +407,15 @@ class Stylist < ActiveRecord::Base
         has_sola_pro: self.has_sola_pro_login,
         has_solagenius: self.has_sola_genius_account,
         hs_persona: 'persona_7',
-      }])
+      }
+
+      hubspot_owner_id = get_hubspot_owner_id
+      if hubspot_owner_id.present?
+        p "yes, there is an owner #{hubspot_owner_id}"
+        contact_properties[:hubspot_owner_id] = hubspot_owner_id
+      end
+
+      Hubspot::Contact.create_or_update!([contact_properties])
     else
       p "No HUBSPOT API KEY, inactivate_with_hubspot"
     end
@@ -364,7 +432,7 @@ class Stylist < ActiveRecord::Base
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
 
-      Hubspot::Contact.create_or_update!([{
+      contact_properties = {
         email: self.email_address, 
         firstname: self.first_name, 
         lastname: self.last_name,
@@ -409,7 +477,15 @@ class Stylist < ActiveRecord::Base
         hs_persona: 'persona_1',
         total_booknow_bookings: self.total_booknow_bookings,
         total_booknow_revenue: self.total_booknow_revenue
-      }])
+      }
+
+      hubspot_owner_id = get_hubspot_owner_id
+      if hubspot_owner_id.present?
+        p "yes, there is an owner #{hubspot_owner_id}"
+        contact_properties[:hubspot_owner_id] = hubspot_owner_id
+      end
+
+      Hubspot::Contact.create_or_update!([contact_properties])
     else
       p "No HUBSPOT API KEY, no sync"
     end
