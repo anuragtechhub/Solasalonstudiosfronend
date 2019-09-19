@@ -720,6 +720,31 @@ namespace :reports do
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/location_ga', locals), :footer => {:center => '[page]', :font_size => 7})
     p "pdf rendered..."
     
+    begin
+      if data[:unique_visits]
+        unique_visits_total = data[:unique_visits][0][1].to_i + data[:unique_visits][1][1].to_i
+      end
+      if data[:unique_visits_prev_month]
+        unique_visits_prev_month_total = data[:unique_visits_prev_month][0][1].to_i + data[:unique_visits_prev_month][1][1].to_i
+      end
+
+      if unique_visits_total && unique_visits_prev_month_total
+        unique_visits_diff = unique_visits_total - unique_visits_prev_month_total
+        unique_visits_percent_diff = (unique_visits_diff.to_f / unique_visits_prev_month_total.to_f) * 100
+        p "unique_visits_prev_month_total=#{unique_visits_prev_month_total}"
+        p "unique_visits_total=#{unique_visits_total}"
+        p "unique_visits_diff=#{unique_visits_diff}"
+        p "unique_visits_percent_diff=#{unique_visits_percent_diff}"
+        if unique_visits_percent_diff <= -40
+          p "send Campbell pageview drop alert email"
+          ReportsMailer.location_pageview_drop_report(location, pdf).deliver
+          p "email to Campbell sent!"
+        end
+      end
+    rescue => e 
+      p "error trying to send Campbell the pageview drop alert email #{e}"
+    end
+
     if send_email
       p "send email..."
       ReportsMailer.location_report(location, pdf).deliver

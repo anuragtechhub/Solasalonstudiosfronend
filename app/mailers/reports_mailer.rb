@@ -8,6 +8,13 @@ class ReportsMailer < ActionMailer::Base
     mail(to: report_email_address, bcc: ['jeff@jeffbail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
   end
 
+  def location_pageview_drop_report(location, report_pdf)
+    @location = location
+    report_email_address = @location.email_address_for_reports.present? ? @location.email_address_for_reports : @location.email_address_for_inquiries
+    attachments["#{@location.url_name}.pdf"] = report_pdf
+    mail(to: 'campbell@solasalonstudios.com', bcc: ['jeff@jeffbail.com'], subject: "PageView Drop Alert for #{@location.name}")
+  end
+
   def send_report(email_address, subject, csv_file)
   	attachments['report.csv'] = csv_file
   	mail(to: email_address, subject: subject)
