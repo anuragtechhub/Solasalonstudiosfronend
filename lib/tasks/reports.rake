@@ -703,6 +703,10 @@ namespace :reports do
     data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL))', start_date.prev_month.beginning_of_month.beginning_of_day, end_date.prev_month.end_of_month.end_of_day, location.id, 'Other').count
     data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ? AND location_id = ? AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL))', (start_date - 1.year).beginning_of_month.beginning_of_day, (end_date - 1.year).end_of_month.end_of_day, location.id, 'Other').count
 
+    data[:total_form_submissions_current_month] = data[:other_form_submissions_current_month] + data[:book_an_appointment_inquiries_current_month] + data[:leasing_form_submissions_current_month]
+    data[:total_form_submissions_prev_month] = data[:other_form_submissions_prev_month] + data[:book_an_appointment_inquiries_prev_month] + data[:leasing_form_submissions_prev_month]
+    data[:total_form_submissions_prev_year] = data[:other_form_submissions_prev_year] + data[:book_an_appointment_inquiries_prev_year] + data[:leasing_form_submissions_prev_year]
+
     locals = {
       :@data => data
     }
@@ -1445,6 +1449,10 @@ namespace :reports do
         data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL) AND location_id IN (?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other', canadian_location_ids).count
         data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL) AND location_id IN (?)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other', canadian_location_ids).count
       end
+
+      data[:total_form_submissions_current_month] = data[:other_form_submissions_current_month] + data[:book_an_appointment_inquiries_current_month] + data[:leasing_form_submissions_current_month]
+      data[:total_form_submissions_prev_month] = data[:other_form_submissions_prev_month] + data[:book_an_appointment_inquiries_prev_month] + data[:leasing_form_submissions_prev_month]
+      data[:total_form_submissions_prev_year] = data[:other_form_submissions_prev_year] + data[:book_an_appointment_inquiries_prev_year] + data[:leasing_form_submissions_prev_year]
 
       # phone number clicks
       data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0

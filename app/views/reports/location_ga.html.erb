@@ -193,7 +193,27 @@
         <%= number_to_percentage (100 * (@data[:other_form_submissions_current_month].to_i - @data[:other_form_submissions_prev_year].to_i) / @data[:other_form_submissions_prev_year].to_i), :precision => 0 %>
       <% end %>
     </td>
-  </tr>         
+  </tr>  
+  <tr>
+    <td class="label" style="text-align:left">Total Contact Forms</td>
+    <td class="value"><%= number_with_delimiter @data[:total_form_submissions_current_month] %></td>
+    <td class="value"><%= number_with_delimiter @data[:total_form_submissions_prev_month] %></td>
+    <td class="value percentage">
+      <% if @data[:total_form_submissions_prev_month].nil? || @data[:total_form_submissions_prev_month].to_i == 0 || @data[:total_form_submissions_current_month].to_i == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:total_form_submissions_current_month].to_i - @data[:total_form_submissions_prev_month].to_i) / @data[:total_form_submissions_prev_month].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+    <td class="value"><%= number_with_delimiter @data[:total_form_submissions_prev_year] %></td>
+    <td class="value percentage">
+      <% if @data[:total_form_submissions_prev_year].nil? || @data[:total_form_submissions_prev_year].to_i == 0 || (@data[:total_form_submissions_current_month].to_i - @data[:total_form_submissions_prev_year].to_i) == 0 %>
+        N/A
+      <% else %>
+        <%= number_to_percentage (100 * (@data[:total_form_submissions_current_month].to_i - @data[:total_form_submissions_prev_year].to_i) / @data[:total_form_submissions_prev_year].to_i), :precision => 0 %>
+      <% end %>
+    </td>
+  </tr>           
   <tr>
     <td class="label" style="text-align:left">Location Phone Number Clicks</td>
     <td class="value"><%= number_with_delimiter @data[:location_phone_number_clicks_current_month] %></td>
