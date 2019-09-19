@@ -6,6 +6,22 @@ class RequestTourInquiry < ActiveRecord::Base
   belongs_to :visit
   after_create :send_notification_email, :send_prospect_email, :sync_with_hubspot
 
+  def first_name
+    if name.present?
+      return FullNameSplitter.split(name)[0]
+    else
+      return ''
+    end
+  end
+
+  def last_name
+    if name.present?
+      return FullNameSplitter.split(name)[1]
+    else
+      return ''
+    end
+  end
+
   def location_name
     location.display_name if location
   end
@@ -29,6 +45,8 @@ class RequestTourInquiry < ActiveRecord::Base
       Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
         email: self.email,
         name: self.name,
+        firstname: self.first_name,
+        lastname: self.last_name,
         phone: self.phone,
         message: self.message,
         request_url: self.request_url,
