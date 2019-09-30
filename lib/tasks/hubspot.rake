@@ -9,7 +9,7 @@ namespace :hubspot do
 
         contactCount = 0
         contacts = []
-        vidOffset = nil
+        vidOffset = 49906551#nil
         hasMore = true
         startTime = DateTime.now
 
@@ -30,8 +30,7 @@ namespace :hubspot do
 
           contacts.each do |contact|
             contactCount = contactCount + 1
-            
-            vid = get_vid(contact)
+            p "contactCount=#{contactCount}"
             firstname = get_firstname(contact)
             lastname = get_lastname(contact)
             #email = get_email(contact)
@@ -40,6 +39,7 @@ namespace :hubspot do
               #p "do nothing - contact has a first and last name --- contactCount=#{contactCount} vid=#{vid}, firstname=#{firstname}, lastname=#{lastname}, email=#{email}"
             else
               #p "UPDATE CONTACT FIRST AND LAST NAME (if possible) --- contactCount=#{contactCount} vid=#{vid}, firstname=#{firstname}, lastname=#{lastname}"#, email=#{email}"
+              vid = get_vid(contact)
               full_contact = Hubspot::Contact.find_by_id(vid)
               if full_contact['sola_id'].present?
                 #stylist = Stylist.find_by(:id => full_contact['sola_id'])
