@@ -118,7 +118,7 @@ namespace :reports do
   # end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2019-09-01,'US']
+  # rake reports:locations_with_email[2019-09-01,'CA']
   task :locations_with_email, [:start_date, :country] => :environment do |task, args|
     p "begin locations report..."
     
@@ -150,7 +150,7 @@ namespace :reports do
   end 
 
   # rake reports:locations_with_email_starting_at
-  # rake reports:locations_with_email_starting_at[2019-08-01,326,'US']
+  # rake reports:locations_with_email_starting_at[2019-09-01,316,'US']
   task :locations_with_email_starting_at, [:start_date, :gid, :country, :country] => :environment do |task, args|
     p "begin locations report..."
     
@@ -278,7 +278,7 @@ namespace :reports do
   end
 
   # rake reports:booknow
-  # rake reports:booknow[2019-08-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booknow[2019-09-01] || rake reports:booknow[2019-01-01,"jeff@jeffbail.com"]
   task :booknow, [:start_date, :email_address] => :environment do |task, args|
     p "begin booknow analytics report..."
     # p "args=#{args.inspect}"
@@ -324,7 +324,7 @@ namespace :reports do
   end
 
   # rake reports:booking_complete
-  # rake reports:booking_complete[2019-08-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
+  # rake reports:booking_complete[2019-09-01] || rake reports:booking_complete[2019-01-01,"jeff@jeffbail.com"]
   task :booking_complete, [:start_date, :email_address] => :environment do |task, args|
     p "begin booking_complete report..."
     # p "args=#{args.inspect}"
@@ -370,7 +370,7 @@ namespace :reports do
   end
 
   # rake reports:solapro
-  # rake reports:solapro[2019-08-01]
+  # rake reports:solapro[2019-09-01]
   task :solapro, [:start_date] => :environment do |task, args|
     p "begin solapro analytics report..."
     # p "args=#{args.inspect}"
@@ -413,8 +413,8 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2019-08-01,'US']
-  # rake reports:solasalonstudios[2019-08-01,'CA']
+  # rake reports:solasalonstudios[2019-09-01,'US']
+  # rake reports:solasalonstudios[2019-09-01,'CA']
   task :solasalonstudios, [:start_date, :country] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
     # p "args=#{args.inspect}"
