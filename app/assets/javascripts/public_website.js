@@ -72,17 +72,17 @@ $(function () {
     var stylist_id = $('#i_s').val();
 
     if (location_id) {
-      //ga('solasalonstudios.send', 'event', 'Location Phone Number', 'click', location_id);
-      gtag('event', 'click', {
-        event_category: 'Location Phone Number',
-        event_label: location_id
-      });
+      ga('gtm1.send', 'event', 'Location Phone Number', 'click', location_id);
+      // gtag('event', 'click', {
+      //   event_category: 'Location Phone Number',
+      //   event_label: location_id
+      // });
     } else if (stylist_id) {
-      // ga('solasalonstudios.send', 'event', 'Professional Phone Number', 'click', stylist_id);
-      gtag('event', 'click', {
-        event_category: 'Professional Phone Number',
-        event_label: stylist_id
-      });
+      ga('gtm1.send', 'event', 'Professional Phone Number', 'click', stylist_id);
+      // gtag('event', 'click', {
+      //   event_category: 'Professional Phone Number',
+      //   event_label: stylist_id
+      // });
     }
   });
 
@@ -188,11 +188,11 @@ $(function () {
       $target = $target.parent('.ga-et');
     }
     //console.log("ga event tracking", $target.data('gcategory'), $target.data('gaction'), $target.data('glabel'))
-    //ga('solasalonstudios.send', 'event', $target.data('gcategory'), $target.data('gaction'), JSON.stringify($target.data('glabel')));
-    gtag('event', $target.data('gaction'), {
-      event_category: $target.data('gcategory'),
-      event_label: JSON.stringify($target.data('glabel'))
-    });
+    ga('gtm1.send', 'event', $target.data('gcategory'), $target.data('gaction'), JSON.stringify($target.data('glabel')));
+    // gtag('event', $target.data('gaction'), {
+    //   event_category: $target.data('gcategory'),
+    //   event_label: JSON.stringify($target.data('glabel'))
+    // });
   });
 
   // animated scrolling
@@ -336,11 +336,11 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        //ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
-        gtag('event', 'submission', {
-          event_category: 'Location Contact Form',
-          event_label: JSON.stringify($.deparam($form.serialize()))
-        });
+        ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
+        // gtag('event', 'submission', {
+        //   event_category: 'Location Contact Form',
+        //   event_label: JSON.stringify($.deparam($form.serialize()))
+        // });
 
         var path = window.location.pathname;
         if (path.indexOf('contact-us-success') == -1) {

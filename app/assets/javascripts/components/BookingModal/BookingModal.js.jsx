@@ -57,29 +57,29 @@ var BookingModal = React.createClass({
 		//}
 
 		if (nextProps.visible && !this.props.visible) {
-			// ga('solasalonstudios.send', 'event', 'BookNow', 'Open Booking Modal', JSON.stringify({
-			// 	date: this.state.date.format('YYYY-MM-DD'),
-			// 	fingerprint: this.props.fingerprint,
-			// 	lat: this.props.lat,
-			// 	lng: this.props.lng,
-			// 	location_id: this.props.location_id,
-			// 	location: this.props.location,
-			// 	query: this.props.query,
-			// 	referring_url: this.props.referring_url,
-			// }));
-      gtag('event', 'Open Booking Modal', {
-        event_category: 'BookNow',
-        event_label: JSON.stringify({
-					date: this.state.date.format('YYYY-MM-DD'),
-					fingerprint: this.props.fingerprint,
-					lat: this.props.lat,
-					lng: this.props.lng,
-					location_id: this.props.location_id,
-					location: this.props.location,
-					query: this.props.query,
-					referring_url: this.props.referring_url,
-				})
-      });
+			ga('gtm1.send', 'event', 'BookNow', 'Open Booking Modal', JSON.stringify({
+				date: this.state.date.format('YYYY-MM-DD'),
+				fingerprint: this.props.fingerprint,
+				lat: this.props.lat,
+				lng: this.props.lng,
+				location_id: this.props.location_id,
+				location: this.props.location,
+				query: this.props.query,
+				referring_url: this.props.referring_url,
+			}));
+    //   gtag('event', 'Open Booking Modal', {
+    //     event_category: 'BookNow',
+    //     event_label: JSON.stringify({
+				// 	date: this.state.date.format('YYYY-MM-DD'),
+				// 	fingerprint: this.props.fingerprint,
+				// 	lat: this.props.lat,
+				// 	lng: this.props.lng,
+				// 	location_id: this.props.location_id,
+				// 	location: this.props.location,
+				// 	query: this.props.query,
+				// 	referring_url: this.props.referring_url,
+				// })
+    //   });
 		}
 	},
 
@@ -297,48 +297,48 @@ var BookingModal = React.createClass({
 					// saved book now booking
 				});	
 
-				// ga('solasalonstudios.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
-				// 	date: self.state.date.format('YYYY-MM-DD'),
-				// 	fingerprint: self.props.fingerprint,
-				// 	lat: self.props.lat,
-				// 	lng: self.props.lng,
-				// 	location_id: self.props.location_id || self.props.professional.org_location_id,
-				// 	location: self.props.location,
-				// 	query: self.props.query,
-				// 	services: self.state.services,
-				// 	total: self.calculateServicesTotal(),
-				// 	time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
-				// 	booking_user: {
-				// 		name: self.state.your_name,
-				// 		phone: self.state.phone_number,
-				// 		email: self.state.email_address,
-				// 	},
-				// 	org_user_id: self.props.professional.org_user_id,
-				// 	referring_url: self.props.referring_url,
-				// }));
+				ga('gtm1.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
+					date: self.state.date.format('YYYY-MM-DD'),
+					fingerprint: self.props.fingerprint,
+					lat: self.props.lat,
+					lng: self.props.lng,
+					location_id: self.props.location_id || self.props.professional.org_location_id,
+					location: self.props.location,
+					query: self.props.query,
+					services: self.state.services,
+					total: self.calculateServicesTotal(),
+					time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
+					booking_user: {
+						name: self.state.your_name,
+						phone: self.state.phone_number,
+						email: self.state.email_address,
+					},
+					org_user_id: self.props.professional.org_user_id,
+					referring_url: self.props.referring_url,
+				}));
 
-	      gtag('event', 'Booking Complete', {
-	        event_category: 'BookNow',
-	        event_label: JSON.stringify({
-						date: self.state.date.format('YYYY-MM-DD'),
-						fingerprint: self.props.fingerprint,
-						lat: self.props.lat,
-						lng: self.props.lng,
-						location_id: self.props.location_id || self.props.professional.org_location_id,
-						location: self.props.location,
-						query: self.props.query,
-						services: self.state.services,
-						total: self.calculateServicesTotal(),
-						time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
-						booking_user: {
-							name: self.state.your_name,
-							phone: self.state.phone_number,
-							email: self.state.email_address,
-						},
-						org_user_id: self.props.professional.org_user_id,
-						referring_url: self.props.referring_url,
-					})
-	      });
+	    //   gtag('event', 'Booking Complete', {
+	    //     event_category: 'BookNow',
+	    //     event_label: JSON.stringify({
+					// 	date: self.state.date.format('YYYY-MM-DD'),
+					// 	fingerprint: self.props.fingerprint,
+					// 	lat: self.props.lat,
+					// 	lng: self.props.lng,
+					// 	location_id: self.props.location_id || self.props.professional.org_location_id,
+					// 	location: self.props.location,
+					// 	query: self.props.query,
+					// 	services: self.state.services,
+					// 	total: self.calculateServicesTotal(),
+					// 	time_range: moment(self.state.time.start).tz(self.props.professional.timezone).format('h:mm A') + ' - ' + moment(self.state.time.end).tz(self.props.professional.timezone).format('h:mm A'),
+					// 	booking_user: {
+					// 		name: self.state.your_name,
+					// 		phone: self.state.phone_number,
+					// 		email: self.state.email_address,
+					// 	},
+					// 	org_user_id: self.props.professional.org_user_id,
+					// 	referring_url: self.props.referring_url,
+					// })
+	    //   });
 				
 				$(self.refs.BookingCompleteForm).submit();
 			}
