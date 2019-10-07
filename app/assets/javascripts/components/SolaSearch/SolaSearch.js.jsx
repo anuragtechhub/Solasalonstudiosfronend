@@ -62,17 +62,32 @@ var SolaSearch = React.createClass({
 		}).trigger('resize.SolaSearch');
 
 		// track search results
-		ga('solasalonstudios.send', 'event', 'BookNow', 'Results', JSON.stringify({
-			number_of_results: this.state.professionals.length >= 10 ? '10+' : this.state.professionals.length,
-			date: this.state.date.format('YYYY-MM-DD'),
-			fingerprint: this.state.fingerprint,
-			lat: this.state.lat,
-			lng: this.state.lng,
-			location_id: this.state.location_id,
-			location: this.state.location,
-			query: this.state.query,
-			referring_url: this.props.referring_url,
-		}));
+		// ga('solasalonstudios.send', 'event', 'BookNow', 'Results', JSON.stringify({
+		// 	number_of_results: this.state.professionals.length >= 10 ? '10+' : this.state.professionals.length,
+		// 	date: this.state.date.format('YYYY-MM-DD'),
+		// 	fingerprint: this.state.fingerprint,
+		// 	lat: this.state.lat,
+		// 	lng: this.state.lng,
+		// 	location_id: this.state.location_id,
+		// 	location: this.state.location,
+		// 	query: this.state.query,
+		// 	referring_url: this.props.referring_url,
+		// }));
+
+		gtag('event', 'Results', {
+			event_category: 'BookNow',
+			event_label: JSON.stringify({
+				number_of_results: this.state.professionals.length >= 10 ? '10+' : this.state.professionals.length,
+				date: this.state.date.format('YYYY-MM-DD'),
+				fingerprint: this.state.fingerprint,
+				lat: this.state.lat,
+				lng: this.state.lng,
+				location_id: this.state.location_id,
+				location: this.state.location,
+				query: this.state.query,
+				referring_url: this.props.referring_url,
+			})
+		})
 	},
 
 

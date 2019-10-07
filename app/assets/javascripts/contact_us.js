@@ -95,7 +95,12 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
+        //ga('solasalonstudios.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
+
+        gtag('event', 'submission', {
+          event_category: 'Location Contact Form',
+          event_label: JSON.stringify($.deparam($form.serialize()))
+        });
 
         if (typeof window.contactUsFormSuccessHandler == 'function') {
           window.contactUsFormSuccessHandler(data);
