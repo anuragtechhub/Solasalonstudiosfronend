@@ -62,17 +62,29 @@ var SolaSearch = React.createClass({
 		}).trigger('resize.SolaSearch');
 
 		// track search results
-		ga('gtm1.send', 'event', 'BookNow', 'Results', JSON.stringify({
-			number_of_results: this.state.professionals.length >= 10 ? '10+' : this.state.professionals.length,
-			date: this.state.date.format('YYYY-MM-DD'),
-			fingerprint: this.state.fingerprint,
-			lat: this.state.lat,
-			lng: this.state.lng,
-			location_id: this.state.location_id,
-			location: this.state.location,
-			query: this.state.query,
-			referring_url: this.props.referring_url,
-		}));
+		var googleAnalyticsCheckCount = 0;
+	  function checkIfGoogleAnalyticsLoaded() {
+	    if (typeof ga != 'undefined') {
+				ga('gtm1.send', 'event', 'BookNow', 'Results', JSON.stringify({
+					number_of_results: self.state.professionals.length >= 10 ? '10+' : self.state.professionals.length,
+					date: self.state.date.format('YYYY-MM-DD'),
+					fingerprint: self.state.fingerprint,
+					lat: self.state.lat,
+					lng: self.state.lng,
+					location_id: self.state.location_id,
+					location: self.state.location,
+					query: self.state.query,
+					referring_url: self.props.referring_url,
+				}));
+	    } else {
+	      if (googleAnalyticsCheckCount < 10) {
+	        googleAnalyticsCheckCount++;
+	        setTimeout(checkIfGoogleAnalyticsLoaded, 500);
+	      }
+	    }
+	  }
+	  checkIfGoogleAnalyticsLoaded();
+
 
 		// gtag('event', 'Results', {
 		// 	event_category: 'BookNow',
