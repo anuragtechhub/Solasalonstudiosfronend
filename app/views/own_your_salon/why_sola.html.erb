@@ -2,32 +2,7 @@
 
 <div class="why-sola">
 
-  <div class="hero-carousel owl-carousel owl-theme">
-    <div class="item">
-      <% if I18n.locale.to_s == 'pt-BR' %>
-        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
-      <% else %>
-        <div class="img-wrap"><%= image_tag 'WhySola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
-      <% end %>
-      <div class="item-content overlayed">
-        <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
-        <h1 class="chalet-new-york"><%= t('page.why_sola.hero_heading2').html_safe %></h1>
-        <% if I18n.locale.to_s == 'pt-BR' %>
-          <%= link_to '//www.youtube.com/watch?v=D2vtblujRzo', :class => "button primary play-video rounded-play-button" do %>
-            <%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>
-        <% else %>
-          <%= link_to '//www.youtube.com/watch?v=eq_UTfsHnkE', :class => "button primary play-video rounded-play-button" do %>
-            <%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>
-        <% end %>
-        <div class="learn-more-button">
-          <h5><%= t('page.why_sola.learn_more') %></h5>
-          <span class="fa fa-angle-down"></span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'why_sola_hero' %>
 
   <div class="container content-container">
     <div class="row">
