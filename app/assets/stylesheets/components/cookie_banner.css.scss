@@ -5,21 +5,32 @@
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	right: 0;
-	padding: 30px 15px;
+	right: auto;
+	padding: 20px 0px;
 	background: #FFF;
 	z-index: 9;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	max-width: 350px;
+	width: 100%;
+
+	.container {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 
 	h3 {
 		@include chalet_london;
 		font-weight: 600;
 		color: #434344;
+		font-size: 19px;
+		line-height: 23px;
 	}
 
 	p {
 		line-height: 1.3em;
-		margin-bottom: 15px;
+		margin-bottom: 13px;
+		font-size: 15px;
+		line-height: 19px;
 	}
 
 	a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
@@ -31,11 +42,5 @@
     height: auto;
     line-height: 13px;		
     max-width: 100%;
-	}
-}
-
-@media (max-width: 550px) {
-	.cookie-banner {
-		padding: 15px;
 	}
 }
