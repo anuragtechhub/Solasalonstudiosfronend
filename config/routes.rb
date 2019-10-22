@@ -160,14 +160,14 @@ Solasalonstudios::Application.routes.draw do
   # match 'sessions/denver' => 'sessions#denver', :via => [:get, :post]
   # match 'sessions/minneapolis' => 'sessions#minneapolis', :via => [:get, :post]
   # match 'sessions/orange-county' => 'sessions#orange_county', :via => [:get, :post], :as => :oc_session
-  match 'sessions/charlotte' => 'sessions#index', :via => [:get, :post], :as => :charlotte_session
-  match 'sessions/dallas' => 'sessions#index', :via => [:get, :post], :as => :dallas_session
-  match 'sessions/dc' => 'sessions#index', :via => [:get, :post], :as => :dc_session
-  match 'sessions/west-palm-beach' => 'sessions#index', :via => [:get, :post], :as => :west_palm_beach_session
-  match 'sessions/san-jose' => 'sessions#index', :via => [:get, :post], :as => :san_jose_session
-  match 'sessions/chicago' => 'sessions#index', :via => [:get, :post], :as => :chicago_session
-  match 'sessions/san-diego' => 'sessions#san_diego', :via => [:get, :post], :as => :san_diego_session
-  match 'sessions/nashville' => 'sessions#nashville', :via => [:get, :post], :as => :nashville_session
+  # match 'sessions/charlotte' => 'sessions#index', :via => [:get, :post], :as => :charlotte_session
+  # match 'sessions/dallas' => 'sessions#index', :via => [:get, :post], :as => :dallas_session
+  # match 'sessions/dc' => 'sessions#index', :via => [:get, :post], :as => :dc_session
+  # match 'sessions/west-palm-beach' => 'sessions#index', :via => [:get, :post], :as => :west_palm_beach_session
+  # match 'sessions/san-jose' => 'sessions#index', :via => [:get, :post], :as => :san_jose_session
+  # match 'sessions/chicago' => 'sessions#index', :via => [:get, :post], :as => :chicago_session
+  # match 'sessions/san-diego' => 'sessions#san_diego', :via => [:get, :post], :as => :san_diego_session
+  # match 'sessions/nashville' => 'sessions#nashville', :via => [:get, :post], :as => :nashville_session
 
   namespace :api do
     namespace :v1 do

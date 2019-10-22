@@ -28,19 +28,23 @@
       </div>
     </div>
 
+    <!--
     <div class="row session-row">
       <div class="one-third column">
         <h2><%= t('page.sola_sessions.upcoming_sessions') %></h2>
       </div>
       <div class="two-thirds column">
+        
         <%= link_to :nashville_session, :class => "upcoming-session" do %>
           <div class="event-icon nashville"></div>
           <h4>Nashville, TN</h4>
           <p>September 16th</p>
           <span class="forward-arrow-black">&nbsp;</span>
         <% end %>
+      
       </div>
     </div>
+    -->
 
     <div class="row session-row past-sessions">
       <div class="twelve columns">
@@ -50,6 +54,14 @@
           <div class="white-border">&nbsp;</div>
 
           <div class="owl-carousel owl-theme" data-items="2" data-itemsdesktopsmall="[960, 1]" data-autoplayoff="true" data-paginationoff="true">
+            <div class="event">
+              <%= image_tag "https://solasalonstudios.s3.amazonaws.com/past-event-nashville-R1.jpg" %>
+              <div class="buttons">
+                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--nashville1" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white">&nbsp;</span></a>
+                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Nashville/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white">&nbsp;</span></a>
+              </div>
+            </div>
+
             <div class="event">
               <%= image_tag "https://solasalonstudios.s3.amazonaws.com/past-event-San-Diego-R2.jpg" %>
               <div class="buttons">
