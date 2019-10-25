@@ -53,6 +53,17 @@ namespace :reports do
     mail = ReportsMailer.location_contact_form_submission_report(email_addresses, csv_report, start_date, end_date).deliver
   end
 
+  task :locations_studios => :environment do
+    locations = Location.where(:status => 'open')
+    save_path = Rails.root.join('csv','locations_studios.csv')
+    CSV.open(save_path, "wb") do |csv|
+      csv << ["Location Name", "Location City", "Location State", "Number of Studios", "Services"]
+      locations.each do |location|
+        csv << [location.name, location.city, location.state, location.stylists.size, location.services.join(', ')]
+      end
+    end
+  end
+
   task :request_tour_inquiries => :environment do
     #jan_1 = Date.new(2019, 3, 1)
     #today = Date.today
