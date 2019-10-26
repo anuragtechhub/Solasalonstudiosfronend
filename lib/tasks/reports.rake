@@ -64,6 +64,20 @@ namespace :reports do
     end
   end
 
+  task :stylists_services => :environment do
+    stylists = Stylist.where(:status => 'open')
+    save_path = Rails.root.join('csv','stylists_services.csv')
+    CSV.open(save_path, "wb") do |csv|
+      csv << ["Stylist Name", "Stylist Email Address", "Stylist Phone Number", "Studio Number", "Business Name", 'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
+              'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service', "Location Name", "Location City", "Location State"]
+      stylists.each do |stylist|
+        next if stylist.location.nil?
+        csv << [stylist.name, stylist.email_address, stylist.phone_number, stylist.studio_number, stylist.business_name, stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal, stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading,
+                stylist.nails, stylist.permanent_makeup, stylist.skin, stylist.tanning, stylist.teeth_whitening, stylist.threading, stylist.waxing, stylist.other_service, stylist.location.name, stylist.location.city, stylist.location.state]
+      end
+    end
+  end
+
   task :request_tour_inquiries => :environment do
     #jan_1 = Date.new(2019, 3, 1)
     #today = Date.today
