@@ -95,7 +95,28 @@ class LocationsController < PublicWebsiteController
     redirect_to(:locations, :status => 301) unless @locations.size > 0 && @lat && @lng
   end
 
+  def contact_form_success
+    @success_redirect_url = location_contact_form_success_path  
+    @contact_form_success = true
+    @scroll_top = params[:s_t]
+    @success = 'Thank you! We will get in touch soon'
+
+    @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
+    @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
+    
+    if @location
+      @lat = @location.latitude
+      @lng = @location.longitude
+      @zoom = 14
+      @locations = [@location]
+      render 'salon'
+    else
+      redirect_to :locations, :status => 301
+    end
+  end
+
   def salon
+    @success_redirect_url = location_contact_form_success_path 
     @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
     @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
     

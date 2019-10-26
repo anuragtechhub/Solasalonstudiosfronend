@@ -23,7 +23,9 @@ var ContactForm = React.createClass({
 
 	componentDidMount: function () {
 		var self = this;
+
 		$(this.refs.submit_button).tooltipster({theme: 'tooltipster-noir', timer: 4000, trigger: 'foo'});
+		
 		$(window).on('resize.contact_form', function () {
 			var $root = $(self.refs.root);
 			//console.log('width', $root.width());
@@ -33,7 +35,23 @@ var ContactForm = React.createClass({
 				$('.dont-see-your-location-col').css({'max-width': '50%', left: 'auto', top: 'auto'});
 			}
 		});
+
 		$(window).trigger('resize.contact_form');
+
+		// handle contact form success
+		if (this.props.contact_form_success) {
+			if ($(this.refs.submit_button).is(":visible")) {
+				$(this.refs.submit_button).tooltipster('content', this.props.success).tooltipster('show');
+				
+				setTimeout(function () {
+					self.setState({success: null});
+				}, 1000);
+
+				if (this.props.scroll_top) {
+					$(window).scrollTop(this.props.scroll_top);
+				}	
+			}		
+		}
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
@@ -427,29 +445,37 @@ var ContactForm = React.createClass({
 	    url: this.props.contact_us_path,
 	    data: form_data,
 		}).complete(function (response) {
-			//console.log('onSubmit contact form is done', response.responseJSON);
+			// console.log('onSubmit contact form is done', response.responseJSON);
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				if (self.props.location_view) {
-					self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: self.props.selected_location, selected_location_name: self.props.selected_location_name, selected_state: self.props.selected_state, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
-				} else {
-					self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
-				}
+				// if (self.props.location_view) {
+				// 	self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: self.props.selected_location, selected_location_name: self.props.selected_location_name, selected_state: self.props.selected_state, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
+				// } else {
+				// 	self.setState({loading: false, success: response.responseJSON.success, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
+				// }
 				try {
-					ga('gtm1.set', 'page', window.location.pathname + '/contact-form-success');
-					ga('gtm1.send', 'pageview');
+					// ga('gtm1.set', 'page', window.location.pathname + '/contact-form-success');
+					// ga('gtm1.send', 'pageview');
 					// gtag('config', window.getGoogleAnalyticsMeasurementId(), {
 					//   'page_path': window.location.pathname + '/contact-form-success'
 					// });
 
 					ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
+
 					// gtag('event', 'submission', {
      //      	event_category: 'Location Contact Form',
      //      	event_label: JSON.stringify(form_data)
      //    	});
 				} catch (e) {
-					// shhh...
+					// console.log('err!', e);
+				} finally {
+					// console.log('redirect', window.location.pathname + '/contact-form-success');
+					var redirect_url = window.location.pathname + '/contact-form-success';
+					if (self.props.success_redirect_url) {
+						redirect_url = self.props.success_redirect_url;
+					}
+					window.location.href = redirect_url + '?s_t=' + ($(window).scrollTop() - 116)
 				}
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});

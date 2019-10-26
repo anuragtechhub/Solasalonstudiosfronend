@@ -15,11 +15,20 @@ class ContactUsController < PublicWebsiteController
     end
 
     #@last_location = Location.order(:updated_at => :desc).first
-    #@last_msa = Msa.order(:updated_at => :desc).first    
+    #@last_msa = Msa.order(:updated_at => :desc).first  
+    @success_redirect_url = contact_us_contact_form_success_path  
 
     if I18n.locale.to_s == 'pt-BR'
       render 'index_br'
     end
+  end
+
+  def contact_form_success
+    @success_redirect_url = contact_us_contact_form_success_path  
+    @contact_form_success = true
+    @scroll_top = params[:s_t]
+    @success = 'Thank you! We will get in touch soon'
+    render 'index'
   end
 
   def thank_you

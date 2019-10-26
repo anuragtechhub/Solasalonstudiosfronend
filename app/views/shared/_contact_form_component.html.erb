@@ -8,8 +8,10 @@
   content: params[:utm_content] || cookies[:utm_content] || '',
   hutk: cookies[:hubspotutk] || '',
 
+
   always_enabled: defined?(always_enabled) ? always_enabled : false,
   contact_us_path: contact_us_request_a_tour_path,
+  contact_form_success: defined?(@contact_form_success) ? true : false,
   display_leave_a_message: defined?(display_leave_a_message) ? display_leave_a_message : true,
   display_service_checkboxes: defined?(display_service_checkboxes) ? display_service_checkboxes : true,
   display_i_would_like_to: defined?(display_i_would_like_to) ? display_i_would_like_to : true,
@@ -18,11 +20,14 @@
   location_placeholder: defined?(location_placeholder) ? location_placeholder : nil,
   request_url: "#{request.protocol}#{request.host_with_port}#{request.fullpath}",
   required_fields: defined?(required_fields) ? required_fields : nil,
+  scroll_top: defined?(@scroll_top) ? @scroll_top : nil,
   selected_location: defined?(location_id) ? location_id : nil,
   selected_location_name: defined?(location_name) ? location_name : nil,
   selected_state: defined?(location_state) ? location_state : nil,
   send_email_to_prospect: defined?(send_email_to_prospect) ? send_email_to_prospect : '',
   submit_button_text: defined?(submit_button_text) ? submit_button_text : I18n.t("contact_form.submit_message"),
+  success_redirect_url: defined?(@success_redirect_url) ? @success_redirect_url : nil,
+  success: defined?(@success) ? @success : nil,
   title: defined?(title) ? title : I18n.t('contact_form.contact_a_sola_near_you'),
   subtitle: defined?(subtitle) ? subtitle : nil,
 } %>

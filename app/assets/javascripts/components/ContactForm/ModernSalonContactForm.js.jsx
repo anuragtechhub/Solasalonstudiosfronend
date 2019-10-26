@@ -35,6 +35,21 @@ var ModernSalonContactForm = React.createClass({
 			}
 		});
 		$(window).trigger('resize.contact_form');
+
+		// handle contact form success
+		if (this.props.contact_form_success) {
+			if ($(this.refs.submit_button).is(":visible")) {
+				$(this.refs.submit_button).tooltipster('content', this.props.success).tooltipster('show');
+				
+				setTimeout(function () {
+					self.setState({success: null});
+				}, 1000);
+
+				if (this.props.scroll_top) {
+					$(window).scrollTop(this.props.scroll_top);
+				}	
+			}		
+		}		
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
@@ -367,10 +382,10 @@ var ModernSalonContactForm = React.createClass({
 			if (response.responseJSON && response.responseJSON.error) {
 				self.setState({loading: false, error: response.responseJSON.error});
 			} else if (response.responseJSON && response.responseJSON.success) {
-				self.setState({loading: false, success: response.responseJSON.success, canada_locations: false, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
+				// self.setState({loading: false, success: response.responseJSON.success, canada_locations: false, selected_services: [], zip_code: '', selected_location: null, selected_location_name: null, selected_state: null, dont_see_your_location: false, contact_preference: 'phone', how_can_we_help_you: '', name: '', email: '', phone: '', message: ''});
 				try {
-					ga('gtm1.set', 'page', window.location.pathname + '/contact-form-success');
-					ga('gtm1.send', 'pageview');
+					// ga('gtm1.set', 'page', window.location.pathname + '/contact-form-success');
+					// ga('gtm1.send', 'pageview');
 					// gtag('config', window.getGoogleAnalyticsMeasurementId(), {
 					//   'page_path': window.location.pathname + '/contact-form-success'
 					// });
@@ -382,6 +397,13 @@ var ModernSalonContactForm = React.createClass({
      //    	});
 				} catch (e) {
 					// shhh...
+				} finally {
+					// console.log('redirect', window.location.pathname + '/contact-form-success');
+					var redirect_url = window.location.pathname + '/contact-form-success';
+					if (self.props.success_redirect_url) {
+						redirect_url = self.props.success_redirect_url;
+					}
+					window.location.href = redirect_url + '?s_t=' + ($(window).scrollTop() - 116)
 				}
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});

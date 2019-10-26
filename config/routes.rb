@@ -32,6 +32,7 @@ Solasalonstudios::Application.routes.draw do
 
 
   get "contact-us" => "contact_us#index", :as => :contact_us
+  get "contact-us/contact-form-success" => 'contact_us#contact_form_success', :as => :contact_us_contact_form_success
   get "contact-us-thank-you" => 'contact_us#thank_you', :as => :contact_us_thank_you
   get 'contact_us' => "contact_us#index"
 
@@ -103,7 +104,7 @@ Solasalonstudios::Application.routes.draw do
   get '/locations/6th-avenue' => 'locations#sixthaveredirect', :via => [:get, :post]
 
   get "locations/:url_name" => 'locations#salon', :as => :salon_location
-  get "locations/:url_name/contact-us-success" => 'locations#salon'
+  get "locations/:url_name/contact-form-success" => 'locations#contact_form_success', :as => :location_contact_form_success
   match 'find-salon-location' => 'locations#find_salon', :via => [:get, :post], :as => :find_salon_location
   match 'locations-usa' => 'locations#usa', :via => [:get, :post], :as => :locations_usa
   
@@ -132,6 +133,7 @@ Solasalonstudios::Application.routes.draw do
   get 'stylistsearch' => 'stylists#index'
   get 'salon-professional/:url_name' => 'stylists#show', :as => :show_salon_professional
   get 'goingindependent' => 'stylists#going_independent', :as => :going_independent
+  get "goingindependent/contact-form-success" => 'stylists#going_independent_contact_form_success', :as => :going_independent_contact_form_success
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message
 
   get "article/:url_name" => 'article#show', :as => :show_article

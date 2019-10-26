@@ -52,7 +52,19 @@ class StylistsController < PublicWebsiteController
     end
   end
 
+  def going_independent_contact_form_success
+    @success_redirect_url = going_independent_contact_form_success_path  
+    @contact_form_success = true
+    @scroll_top = params[:s_t]
+    @success = 'Thank you! We will get in touch soon'    
+    @body_class = 'goingindependent'
+    @no_header = true
+    
+    render 'going_independent'
+  end
+
   def going_independent
+    @success_redirect_url = going_independent_contact_form_success_path  
     @body_class = 'goingindependent'
     @no_header = true
   end
