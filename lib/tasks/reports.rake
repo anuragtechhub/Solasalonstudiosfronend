@@ -143,7 +143,7 @@ namespace :reports do
   # end 
 
   # rake reports:locations_with_email
-  # rake reports:locations_with_email[2019-09-01,'CA']
+  # rake reports:locations_with_email[2019-10-01,'US']
   task :locations_with_email, [:start_date, :country] => :environment do |task, args|
     p "begin locations report..."
     
@@ -207,7 +207,7 @@ namespace :reports do
 
   # rake reports:location[401]
   # rake reports:location[2]
-  # rake reports:location[571,2019-07-01,'US']
+  # rake reports:location[571,2019-10-01,'US']
   # rake reports:location[380,2019-07-01,'CA']
   task :location, [:location_id, :start_date, :country] => :environment do |task, args|
     p "begin location report..."
@@ -438,7 +438,7 @@ namespace :reports do
   end
 
   # rake reports:solasalonstudios
-  # rake reports:solasalonstudios[2019-09-01,'US']
+  # rake reports:solasalonstudios[2019-10-01,'US']
   # rake reports:solasalonstudios[2019-09-01,'CA']
   task :solasalonstudios, [:start_date, :country] => :environment do |task, args|
     p "begin solasalonstudios analytics report..."
@@ -1155,11 +1155,21 @@ namespace :reports do
 
       sleep 1
 
+      p "begin unique pageviews"
+      # unique visits - visits, new visitors, returning visitors
+      data[:unique_pageviews] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
+      data[:unique_pageviews_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
+      data[:unique_pageviews_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
+      p "end unique pageviews"
+      p "data[:unique_pageviews]=#{data[:unique_pageviews]}"
+      p "data[:unique_pageviews_prev_month]=#{data[:unique_pageviews_prev_month]}"
+      p "data[:unique_pageviews_prev_year]=#{data[:unique_pageviews_prev_year]}"
+
       p "begin unique visits"
       # unique visits - visits, new visitors, returning visitors
-      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
-      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
-      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, start_date, end_date))
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
       p "end unique visits"
 
       # referrals - source, % of traffic
@@ -1408,10 +1418,16 @@ namespace :reports do
         data[key_sym] = data_month
       end
 
+      # unique pageviews - visits, new visitors, returning visitors
+      data[:unique_pageviews] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews')
+      data[:unique_pageviews_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+      data[:unique_pageviews_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+
       # unique visits - visits, new visitors, returning visitors
-      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews')
-      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
-      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews')
+      data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:sessions')
+      data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions')
+      data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions')
+
 
       # referrals - source, % of traffic
       # ga:medium

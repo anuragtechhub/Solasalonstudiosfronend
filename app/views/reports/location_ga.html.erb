@@ -40,7 +40,39 @@
     <td class="sublabel sublabel-bottom">% Change</td>
     <td class="sublabel sublabel-bottom">Previous Year</td>
     <td class="sublabel sublabel-bottom">% Change</td>
-  </tr>  
+  </tr>
+  <tr>
+    <%
+      if @data[:unique_pageviews]
+        @data[:unique_pageviews][0] = [nil, 1] if @data[:unique_pageviews][0].nil?
+        @data[:unique_pageviews][1] = [nil, 1] if @data[:unique_pageviews][1].nil?
+
+        @unique_pageviews_this_month = @data[:unique_pageviews][0][1].to_i + @data[:unique_pageviews][1][1].to_i
+      end
+      if @data[:unique_pageviews_prev_month]
+        @data[:unique_pageviews_prev_month][0] = [nil, 1] if @data[:unique_pageviews_prev_month][0].nil?
+        @data[:unique_pageviews_prev_month][1] = [nil, 1] if @data[:unique_pageviews_prev_month][1].nil?
+
+        @unique_pageviews_prev_month = @data[:unique_pageviews_prev_month][0][1].to_i + @data[:unique_pageviews_prev_month][1][1].to_i
+      end
+      if @data[:unique_pageviews_prev_year]
+        @data[:unique_pageviews_prev_year][0] = [nil, 1] if @data[:unique_pageviews_prev_year][0].nil?
+        @data[:unique_pageviews_prev_year][1] = [nil, 1] if @data[:unique_pageviews_prev_year][1].nil?
+
+        @unique_pageviews_prev_year = @data[:unique_pageviews_prev_year][0][1].to_i + @data[:unique_pageviews_prev_year][1][1].to_i
+      end
+    %>
+    <td class="label" style="text-align:left">Page Views</td>
+    <td class="value"><%= @unique_pageviews_this_month ? number_with_delimiter(@unique_pageviews_this_month) : '&nbsp;'.html_safe %></td>
+    <td class="value"><%= @unique_pageviews_prev_month ? number_with_delimiter(@unique_pageviews_prev_month) : '&nbsp;'.html_safe %></td>
+    <td class="value percentage" style="<%= percentage_color(@unique_pageviews_this_month && @unique_pageviews_prev_month ? (100 * (@unique_pageviews_this_month - @unique_pageviews_prev_month) / @unique_pageviews_prev_month) : nil) %>">
+      <%= @unique_pageviews_this_month && @unique_pageviews_prev_month ? number_to_percentage(100 * (@unique_pageviews_this_month - @unique_pageviews_prev_month) / @unique_pageviews_prev_month, :precision => 0) : '&nbsp;'.html_safe %>
+    </td>
+    <td class="value"><%= @unique_pageviews_prev_year ? number_with_delimiter(@unique_pageviews_prev_year) : '&nbsp;'.html_safe %></td>
+    <td class="value percentage" style="<%= percentage_color(@unique_pageviews_this_month && @unique_pageviews_prev_year ? (100 * (@unique_pageviews_this_month - @unique_pageviews_prev_year) / @unique_pageviews_prev_year) : nil) %>">
+      <%= @unique_pageviews_this_month && @unique_pageviews_prev_year ? number_to_percentage(100 * (@unique_pageviews_this_month - @unique_pageviews_prev_year) / @unique_pageviews_prev_year, :precision => 0) : '&nbsp;'.html_safe %>  
+    </td>
+  </tr> 
   <tr>
     <%
       if @data[:unique_visits]
@@ -62,7 +94,7 @@
         @unique_visits_prev_year = @data[:unique_visits_prev_year][0][1].to_i + @data[:unique_visits_prev_year][1][1].to_i
       end
     %>
-    <td class="label" style="text-align:left">Pageviews</td>
+    <td class="label" style="text-align:left">Visits</td>
     <td class="value"><%= @unique_visits_this_month ? number_with_delimiter(@unique_visits_this_month) : '&nbsp;'.html_safe %></td>
     <td class="value"><%= @unique_visits_prev_month ? number_with_delimiter(@unique_visits_prev_month) : '&nbsp;'.html_safe %></td>
     <td class="value percentage" style="<%= percentage_color(@unique_visits_this_month && @unique_visits_prev_month ? (100 * (@unique_visits_this_month - @unique_visits_prev_month) / @unique_visits_prev_month) : nil) %>">
@@ -313,8 +345,8 @@
     
     <div class="col-1-2">
       <div class="section">
-        <div class="section-heading">Pageviews</div>
-        <div class="section-subhead">Visits + 1st Time Visitors</div>
+        <div class="section-heading">Unique Visits</div>
+        <div class="section-subhead">1st Time + Returning Visitors</div>
       </div>
       <table class="tabular" cellpadding="0" cellspacing="0">
         <tr>
