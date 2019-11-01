@@ -53,6 +53,39 @@ namespace :reports do
     mail = ReportsMailer.location_contact_form_submission_report(email_addresses, csv_report, start_date, end_date).deliver
   end
 
+  # rake reports:states_contact_form_submissions[2019-10-01,2019-11-01]
+  task :states_contact_form_submissions, [:start_date, :end_date, :email_addresses] => :environment do |task, args|
+    p "Begin location_contact_form_submission task...#{args.email_addresses}"
+    
+    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+    end_date = args.end_date.present? ? Date.parse(args.end_date).beginning_of_month : start_date.end_of_month
+
+    states_map = {}
+
+    save_path = Rails.root.join('csv','states_contact_form_submissions.csv')
+    CSV.open(save_path, "wb") do |csv|
+      csv << ['Start Date', 'End Date', 'State', 'Contact Form Submissions']
+
+      # Location.select(:state).map(&:state).uniq.reject(&:empty?).sort.each do |state|
+      #   p "state=#{state}"
+      # end
+
+      RequestTourInquiry.where('how_can_we_help_you != ? AND (created_at <= ? AND created_at >= ?)', "Book an appointment with a salon professional", end_date, start_date).each do |rti|
+        if rti.location && rti.location.state
+          if states_map.key?(rti.location.state)
+            states_map[rti.location.state] = states_map[rti.location.state] + 1
+          else
+            states_map[rti.location.state] = 1
+          end
+        end
+      end
+
+      states_map.sort.each do |state, count|
+        csv << [start_date, end_date, state, count]
+      end
+    end
+  end
+
   task :locations_studios => :environment do
     locations = Location.where(:status => 'open')
     save_path = Rails.root.join('csv','locations_studios.csv')
