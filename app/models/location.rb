@@ -574,7 +574,7 @@ class Location < ActiveRecord::Base
       -H 'Content-Type: application/json' \
       -d '{
         "businessId": #{businessId},
-        "locationId": #{self.id},
+        "identifier": #{self.id},
         "name": "Sola Salon Studios",
         "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
@@ -633,7 +633,7 @@ class Location < ActiveRecord::Base
       -H 'Content-Type: application/json' \
       -d '{
         "businessId": #{businessId},
-        "locationId": #{self.id},
+        "identifier": #{self.id},
         "name": "Sola Salon Studios",
         "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
