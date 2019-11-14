@@ -417,18 +417,18 @@ RailsAdmin.config do |config|
           end
         end
         field :description_long do
-          # visible false
+          visible false
         end
         field :description_short do
-          # visible false
+          visible false
         end
         field :open_time do
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location opens.'
-          # visible false
+          visible false
         end
         field :close_time do
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
-          # visible false
+          visible false
         end
         field :admin do
           label 'Franchisee'
