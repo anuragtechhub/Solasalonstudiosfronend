@@ -48,10 +48,10 @@ class RequestTourInquiry < ActiveRecord::Base
 
     if ENV['HUBSPOT_API_KEY'].present?
       p "HUBSPOT API KEY IS PRESENT, lets sync.. #{get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i}"
-
+      
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
 
-      contact_properties = {
+      Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
         email: self.email,
         name: self.name,
         firstname: self.first_name,
@@ -76,16 +76,21 @@ class RequestTourInquiry < ActiveRecord::Base
         content: self.content,
         hutk: self.hutk,
         cms_lead_timestamp: get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i,
+      })
+
+      contact_properties = {
+        email: self.email,
+        firstname: self.first_name,
+        lastname: self.last_name,
       }
 
-      })
       hubspot_owner_id = get_hubspot_owner_id
       if hubspot_owner_id.present?
         p "yes, there is an owner #{hubspot_owner_id}"
         contact_properties[:hubspot_owner_id] = hubspot_owner_id
       end
 
-      Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit(contact_properties)
+      Hubspot::Contact.create_or_update!([contact_properties])
     else
       p "No HUBSPOT API KEY, no sync"
     end
