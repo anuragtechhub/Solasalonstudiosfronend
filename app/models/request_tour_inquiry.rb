@@ -51,7 +51,7 @@ class RequestTourInquiry < ActiveRecord::Base
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
 
-      Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
+      contact_properties = {
         email: self.email,
         name: self.name,
         firstname: self.first_name,
@@ -76,15 +76,82 @@ class RequestTourInquiry < ActiveRecord::Base
         content: self.content,
         hutk: self.hutk,
         cms_lead_timestamp: get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i,
+      }
+
       })
+      hubspot_owner_id = get_hubspot_owner_id
+      if hubspot_owner_id.present?
+        p "yes, there is an owner #{hubspot_owner_id}"
+        contact_properties[:hubspot_owner_id] = hubspot_owner_id
+      end
 
-
+      Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit(contact_properties)
     else
       p "No HUBSPOT API KEY, no sync"
     end
   rescue => e
     # shh...
     p "error sync_with_hubspot #{e}"
+  end
+
+  # def get_hubspot_owners
+  #   #p "get_hubspot_owners"
+
+  #   if ENV['HUBSPOT_API_KEY'].present?
+  #     #p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owners.."
+
+  #     Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+  #     all_owners = Hubspot::Owner.all
+
+  #     # p "all_owners=#{all_owners.inspect}"
+  #     if all_owners
+  #       all_owners = all_owners.map{|o| o.email}
+  #       #p "all_owners=#{all_owners}"
+  #     end
+  #   else
+  #     p "No HUBSPOT API KEY, get_hubspot_owners"
+  #   end
+  # rescue => e
+  #   # shh...
+  #   p "error get_hubspot_owners #{e}"
+  # end
+
+  def get_hubspot_owner_id(email_address=nil)
+    if email_address.blank? && location
+      email_address = location.email_address_for_inquiries
+    end
+    return nil unless email_address.present?
+    
+    #p "get_hubspot_owner #{email_address}"
+
+    if ENV['HUBSPOT_API_KEY'].present?
+      #p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owner.."
+
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
+
+      all_owners = Hubspot::Owner.all
+
+      # p "all_owners=#{all_owners.inspect}"
+      if all_owners
+        all_owners.each do |owner|
+          if owner.email == email_address
+            #p "matching owner!!! #{owner.inspect}"
+            #p "owner.owner_id=#{owner.owner_id}"
+            return owner.owner_id
+          end
+        end
+      end
+
+      return nil
+    else
+      p "No HUBSPOT API KEY, v"
+      return nil
+    end
+  rescue => e
+    # shh...
+    p "error get_hubspot_owner #{e}"
+    return nil
   end
 
   def utm_source
