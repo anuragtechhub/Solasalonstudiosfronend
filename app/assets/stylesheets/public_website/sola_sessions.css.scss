@@ -76,17 +76,18 @@
       float: left;
       margin-right: 20px;
 
-      &.san-diego {
-        background: asset-data-url('sessions/san-diego-circle.png') no-repeat center;
+      &.denver {
+        background: asset-url('https://solasalonstudios.s3.amazonaws.com/Sessions/denver_2020_square.jpg') no-repeat center;
         background-size: 66px 66px;
         border-radius: 33px;
       }
 
-      &.nashville {
-        background: asset-data-url('sessions/nashville-circle.png') no-repeat center;
+      &.portland {
+        background: asset-url('https://solasalonstudios.s3.amazonaws.com/Sessions/portland_2020_square.jpg') no-repeat center;
         background-size: 66px 66px;
         border-radius: 33px;
       }
+
     }
 
 		h4 {

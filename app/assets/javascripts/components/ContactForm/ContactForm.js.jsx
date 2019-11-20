@@ -1,6 +1,7 @@
 var ContactForm = React.createClass({
 
 	getInitialState: function () {
+		console.log('contact form get initial state');
 		return {
 			name: '',
 			email: '',
@@ -95,6 +96,8 @@ var ContactForm = React.createClass({
 
 	render: function () {
 		var self = this;
+
+		console.log('render ContactForm!');
 		
 		return (
 			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.state.dont_see_your_location ? 'dont-see-location ' : '')}>
