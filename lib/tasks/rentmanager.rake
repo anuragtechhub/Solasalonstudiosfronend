@@ -53,9 +53,9 @@ namespace :rentmanager do
               if perfect_match_sola_location
                 p "PERFECT MATCH!!! #{perfect_match_sola_location.id}, #{perfect_match_sola_location.name}, #{perfect_match_sola_location.full_address}"
 
-                perfect_match_sola_location.rent_manager_property_id = property['PropertyID']
-                perfect_match_sola_location.rent_manager_location_id = location['locationID']
-                perfect_match_sola_location.save
+                # perfect_match_sola_location.rent_manager_property_id = property['PropertyID']
+                # perfect_match_sola_location.rent_manager_location_id = location['locationID']
+                perfect_match_sola_location.update_columns(rent_manager_property_id: property['PropertyID'], rent_manager_location_id: location['locationID'])
 
                 matched_properties << perfect_match_sola_location
 
@@ -66,10 +66,10 @@ namespace :rentmanager do
                 if fuzzy_match_sola_location
                   p "Fuzzy Match!  #{fuzzy_match_sola_location.id}, #{fuzzy_match_sola_location.name}, #{fuzzy_match_sola_location.full_address}"
 
-                  fuzzy_match_sola_location.rent_manager_property_id = property['PropertyID']
-                  fuzzy_match_sola_location.rent_manager_location_id = location['locationID']
-                  fuzzy_match_sola_location.save
-
+                  # fuzzy_match_sola_location.rent_manager_property_id = property['PropertyID']
+                  # fuzzy_match_sola_location.rent_manager_location_id = location['locationID']
+                  fuzzy_match_sola_location.update_columns(rent_manager_property_id: property['PropertyID'], rent_manager_location_id: location['locationID'])
+                  p "done updated fuzzy"
                   matched_properties << fuzzy_match_sola_location
 
                   csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, fuzzy_match_sola_location.id, fuzzy_match_sola_location.name, fuzzy_match_sola_location.address_1, fuzzy_match_sola_location.city, carmen_state.code, 'Yes', 'Fuzzy match']
@@ -136,8 +136,8 @@ namespace :rentmanager do
             p "we have primary contact info, lets try to match with that"
             perfect_match_sola_stylist = Stylist.find_by(:location_id => location.id, :email_address => primary_contact['Email']) || Stylist.find_by(:location_id => location.id, :name => "#{primary_contact['FirstName']} #{primary_contact['LastName']}")
             if perfect_match_sola_stylist
-              perfect_match_sola_stylist.rent_manager_id = tenant['TenantID']
-              perfect_match_sola_stylist.save
+              # perfect_match_sola_stylist.rent_manager_id = tenant['TenantID']
+              perfect_match_sola_stylist.update_columns(rent_manager_id: tenant['TenantID'])
 
               matched_tenants << perfect_match_sola_stylist
               csv << [location.rent_manager_location_id, primary_contact['FirstName'], primary_contact['LastName'], primary_contact['Email'], perfect_match_sola_stylist.id, perfect_match_sola_stylist.name, perfect_match_sola_stylist.email_address, location.name, 'Yes', 'Perfect match']
@@ -147,8 +147,8 @@ namespace :rentmanager do
               # try fuzzy match
               fuzzy_match_sola_stylist = Stylist.fuzzy_search(:name => "#{primary_contact['FirstName']} #{primary_contact['LastName']}", :email_address => primary_contact['Email']).where(:location_id => location.id).first
               if fuzzy_match_sola_stylist
-                fuzzy_match_sola_stylist.rent_manager_id = tenant['TenantID']
-                fuzzy_match_sola_stylist.save
+                # fuzzy_match_sola_stylist.rent_manager_id = tenant['TenantID']
+                fuzzy_match_sola_stylist.update_columns(rent_manager_id: tenant['TenantID'])
 
                 matched_tenants << fuzzy_match_sola_stylist
                 csv << [location.rent_manager_location_id, primary_contact['FirstName'], primary_contact['LastName'], primary_contact['Email'], fuzzy_match_sola_stylist.id, fuzzy_match_sola_stylist.name, fuzzy_match_sola_stylist.email_address, location.name, 'Yes', 'Fuzzy match']
@@ -165,8 +165,8 @@ namespace :rentmanager do
 
           perfect_match_sola_stylist = Stylist.find_by(:location_id => location.id, :name => "#{tenant['FirstName']} #{tenant['LastName']}")
           if perfect_match_sola_stylist
-            perfect_match_sola_stylist.rent_manager_id = tenant['TenantID']
-            perfect_match_sola_stylist.save
+            # perfect_match_sola_stylist.rent_manager_id = tenant['TenantID']
+            perfect_match_sola_stylist.update_columns(rent_manager_id: tenant['TenantID'])
 
             matched_tenants << perfect_match_sola_stylist
             csv << [location.rent_manager_location_id, tenant['FirstName'], tenant['LastName'], nil, perfect_match_sola_stylist.id, perfect_match_sola_stylist.name, perfect_match_sola_stylist.email_address, location.name, 'Yes', 'Perfect match']
@@ -175,8 +175,8 @@ namespace :rentmanager do
             # try fuzzy match
             fuzzy_match_sola_stylist = Stylist.fuzzy_search(:name => "#{tenant['FirstName']} #{tenant['LastName']}").where(:location_id => location.id).first
             if fuzzy_match_sola_stylist
-              fuzzy_match_sola_stylist.rent_manager_id = tenant['TenantID']
-              fuzzy_match_sola_stylist.save
+              # fuzzy_match_sola_stylist.rent_manager_id = tenant['TenantID']
+              fuzzy_match_sola_stylist.update_columns(rent_manager_id: tenant['TenantID'])
 
               matched_tenants << fuzzy_match_sola_stylist
               csv << [location.rent_manager_location_id, tenant['FirstName'], tenant['LastName'], nil, fuzzy_match_sola_stylist.id, fuzzy_match_sola_stylist.name, fuzzy_match_sola_stylist.email_address, location.name, 'Yes', 'Fuzzy match']
@@ -202,9 +202,35 @@ namespace :rentmanager do
     p "Start Rent Manager leases task..."
     Stylist.where('rent_manager_id IS NOT NULL').each do |stylist|
       p "get stylist #{stylist.id}/#{stylist.rent_manager_id}, #{stylist.email_address} from Rent Manager"
-      tenant_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants/#{stylist.rent_manager_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+      tenant_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{stylist.location.rent_manager_location_id}/Tenants/#{stylist.rent_manager_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
       tenant_json = JSON.parse(tenant_response)
-      p "tenant_json=#{tenant_json}"
+      # p "tenant_json['Leases']=#{tenant_json['Leases']}"
+      if tenant_json && tenant_json['Leases'] && tenant_json['Leases'].size > 0
+        tenant_json['Leases'].each do |rm_lease|
+          #p "rm_lease=#{rm_lease.inspect}"
+          lease = Lease.find_or_create_by({
+            rent_manager_id: rm_lease["LeaseID"].to_s,
+          })
+          # if lease.new_record?
+            lease.update({
+              location_id: stylist.location_id,
+              stylist_id: stylist.id,
+              create_date: rm_lease["CreateDate"],
+              start_date: rm_lease["StartDate"],
+              end_date: rm_lease["ActiveLeaseRenewal"] ? rm_lease["ActiveLeaseRenewal"]["EndDate"] : nil,
+            })
+          # else
+          #   lease.update_columns({
+          #     location_id: stylist.location_id,
+          #     stylist_id: stylist.id,
+          #     create_date: rm_lease["CreateDate"],
+          #     start_date: rm_lease["StartDate"],
+          #     end_date: rm_lease["ActiveLeaseRenewal"] ? rm_lease["ActiveLeaseRenewal"]["EndDate"] : nil,
+          #   })
+          # end
+          p "lease=#{lease.inspect}"
+        end
+      end
     end
   end
 
