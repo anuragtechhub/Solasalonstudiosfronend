@@ -283,14 +283,14 @@ class Stylist < ActiveRecord::Base
     return false
   end
 
-  # def lease
-  #   if self.leases && self.leases.size > 0
-  #     lease = self.leases.first
-  #     return lease if lease.agreement_file_url.blank?
-  #   end
+  def lease
+    if self.leases && self.leases.size > 0
+      lease = self.leases.first
+      return lease# if lease.agreement_file_url.blank?
+    end
 
-  #   nil
-  # end
+    nil
+  end
 
   def remove_from_ping_hd
     self.status = 'closed'
@@ -406,6 +406,9 @@ class Stylist < ActiveRecord::Base
         country: self.country,
         has_sola_pro: self.has_sola_pro_login,
         has_solagenius: self.has_sola_genius_account,
+        lease_created_at: self.lease ? self.lease.create_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_start_date: self.lease ? self.lease.start_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_end_date: self.lease ? self.lease.end_date.utc.to_date.strftime('%Q').to_i : nil,
         hs_persona: 'persona_7',
       }
 
