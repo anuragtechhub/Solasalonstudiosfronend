@@ -119,6 +119,9 @@ namespace :rentmanager do
 
       locations.each do |location|
         p "Process tenants for location #{location.name}"
+        if location.rent_manager_location_id.blank? || location.rent_manager_property_id.blank?
+          next
+        end
         p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants?propertyid=#{location.rent_manager_property_id}"
         tenants_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
         #p "tenants_response=#{tenants_response.inspect}"
@@ -126,6 +129,7 @@ namespace :rentmanager do
         p "#{tenants_json.length} tenants to process for #{location.name}"
         tenants_json.each do |tenant|
           p "looking up tenant #{tenant['TenantID']}, #{tenant['FirstName']}, #{tenant['LastName']}"
+
           primary_contact = tenant['PrimaryContact']
 
           if primary_contact
@@ -192,6 +196,16 @@ namespace :rentmanager do
     end # csv.open
 
     p "Finish Rent Manager tenants task. #{(matched_tenants + unmatched_tenants).size} total, #{matched_tenants.size} matched, #{unmatched_tenants.size} unmatched."
+  end
+
+  task :leases => :environment do
+    p "Start Rent Manager leases task..."
+    Stylist.where('rent_manager_id IS NOT NULL').each do |stylist|
+      p "get stylist #{stylist.id}/#{stylist.rent_manager_id}, #{stylist.email_address} from Rent Manager"
+      tenant_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Tenants/#{stylist.rent_manager_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
+      tenant_json = JSON.parse(tenant_response)
+      p "tenant_json=#{tenant_json}"
+    end
   end
 
   task :studios => :environment do
