@@ -273,6 +273,20 @@
 
     h2 {
       color: #FFF !important;
+      margin-bottom: 70px;
+
+      &.small {
+        font-size: 27px;
+        line-height: 31px;
+      }
+    }
+
+    .button-wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 25px;
+      text-align: center;
     }
 
     span.button {
@@ -376,6 +390,24 @@
 }
 
 @media (max-width: 1180px) {
+
+  .home-trilogy {
+    margin: 20px 0 40px 0;
+
+    a, a:link, a:visited, a:hover, a:active {
+      h2 {
+
+        font-size: 27px;
+        line-height: 31px;
+
+        &.small {
+          font-size: 21px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+
   .home-container-full-width {
     display: block;
     margin-bottom: -30px;
