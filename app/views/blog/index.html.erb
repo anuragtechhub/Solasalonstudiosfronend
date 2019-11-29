@@ -78,5 +78,17 @@
 
 <% content_for(:scripts) { javascript_include_tag('blog') } %>
 <% content_for(:title) { t('page.blog.our_blog').html_safe } %>
-<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/blog" } %>
+<% content_for(:canonical_url) { 
+  if params[:category_url_name].present?
+    blog_root_url = "https://www.#{root_sola_domain}/blog/category/#{params[:category_url_name]}"
+  else
+    blog_root_url = "https://www.#{root_sola_domain}/blog"
+  end
+
+  if params[:page].present?
+    "#{blog_root_url}?page=#{params[:page]}"
+  else
+     blog_root_url
+  end
+} %>
 <% content_for(:meta_description) { t('page.blog.meta_description') } %>
