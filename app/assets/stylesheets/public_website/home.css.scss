@@ -464,6 +464,14 @@
   }
 }
 
+@media (max-width: 1080px) {
+  .home-trilogy {
+    .three.columns {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
 
 @media (max-width: 767px) {
   .home-container-full-width .for-professionals, .home-container-full-width .for-customers, .home-trilogy .columns {
