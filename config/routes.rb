@@ -47,7 +47,7 @@ Solasalonstudios::Application.routes.draw do
   get 'news' => 'news#index', :as => :news
   match "newsletter/sign-up" => 'newsletter#sign_up', :via => [:get, :post], :as => :newsletter_sign_up
 
-
+  get 'franchise', to: redirect('https://pages.solasalonstudios.com/signup?utm_campaign=entrepreneur_print_ad&utm_source=referral&utm_medium=website', status: 301)
 
   # Own Your Salon URLs
 
