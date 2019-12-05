@@ -18,9 +18,9 @@ class Lease < ActiveRecord::Base
   belongs_to :recurring_charge_4, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_4_id'
   accepts_nested_attributes_for :recurring_charge_4, :allow_destroy => true    
 
-  validates :location, :stylist, :studio, :presence => true
-  validates :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true, :if => lambda { self.studio.present? }
-  validate :end_date_later_than_start_date, :end_date_at_least_a_year_later_than_start_date, :if => lambda { self.studio.present? }
+  # validates :location, :stylist, :studio, :presence => true
+  # validates :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true, :if => lambda { self.studio.present? }
+  # validate :end_date_later_than_start_date, :end_date_at_least_a_year_later_than_start_date, :if => lambda { self.studio.present? }
 
   def ach_authorized_enum
     [['Yes', true], ['No', false]]

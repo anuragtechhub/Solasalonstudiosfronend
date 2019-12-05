@@ -292,6 +292,14 @@ class Stylist < ActiveRecord::Base
     nil
   end
 
+  def leases_at_location
+    return self.location.leases.size if self.location && self.location.leases
+  end
+
+  def studios_at_location
+    return self.location.studios.size if self.location && self.location.studios
+  end
+
   def remove_from_ping_hd
     self.status = 'closed'
     self.sync_with_ping_hd
@@ -406,9 +414,13 @@ class Stylist < ActiveRecord::Base
         country: self.country,
         has_sola_pro: self.has_sola_pro_login,
         has_solagenius: self.has_sola_genius_account,
-        lease_created_at: self.lease ? self.lease.create_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_start_date: self.lease ? self.lease.start_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_end_date: self.lease ? self.lease.end_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_move_in_date: self.lease && self.lease.move_in_date ? self.lease.move_in_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_move_out_date: self.lease && self.lease.move_out_date ? self.lease.move_out_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_created_at: self.lease && self.lease.create_date ? self.lease.create_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_start_date: self.lease && self.lease.start_date ? self.lease.start_date.utc.to_date.strftime('%Q').to_i : nil,
+        lease_end_date: self.lease && self.lease.end_date ? self.lease.end_date.utc.to_date.strftime('%Q').to_i : nil,
+        studios_at_location: self.studios_at_location,
+        leases_at_location: self.leases_at_location,
         hs_persona: 'persona_7',
       }
 

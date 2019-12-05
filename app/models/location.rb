@@ -14,6 +14,7 @@ class Location < ActiveRecord::Base
   belongs_to :msa
   has_many :stylists, -> { where(:status => 'open') }
   has_many :studios
+  has_many :leases
 
   after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create

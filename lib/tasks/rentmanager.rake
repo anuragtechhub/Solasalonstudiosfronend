@@ -201,13 +201,13 @@ namespace :rentmanager do
   task :leases => :environment do
     p "Start Rent Manager leases task..."
     Stylist.where('rent_manager_id IS NOT NULL').each do |stylist|
-      p "get stylist #{stylist.id}/#{stylist.rent_manager_id}, #{stylist.email_address} from Rent Manager"
+      #p "get stylist #{stylist.id}/#{stylist.rent_manager_id}, #{stylist.email_address} from Rent Manager"
       tenant_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{stylist.location.rent_manager_location_id}/Tenants/#{stylist.rent_manager_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
       tenant_json = JSON.parse(tenant_response)
-      # p "tenant_json['Leases']=#{tenant_json['Leases']}"
+      p "tenant_json['Leases']=#{tenant_json['Leases']}"
       if tenant_json && tenant_json['Leases'] && tenant_json['Leases'].size > 0
         tenant_json['Leases'].each do |rm_lease|
-          #p "rm_lease=#{rm_lease.inspect}"
+          p "rm_lease=#{rm_lease.inspect}"
           lease = Lease.find_or_create_by({
             rent_manager_id: rm_lease["LeaseID"].to_s,
           })
@@ -215,6 +215,8 @@ namespace :rentmanager do
             lease.update({
               location_id: stylist.location_id,
               stylist_id: stylist.id,
+              move_in_date: rm_lease["MoveInDate"],
+              move_out_date: rm_lease["MoveOutDate"],
               create_date: rm_lease["CreateDate"],
               start_date: rm_lease["StartDate"],
               end_date: rm_lease["ActiveLeaseRenewal"] ? rm_lease["ActiveLeaseRenewal"]["EndDate"] : nil,

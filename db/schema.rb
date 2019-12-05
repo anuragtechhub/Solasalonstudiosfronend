@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191122234602) do
+ActiveRecord::Schema.define(version: 20191205193743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,7 @@ ActiveRecord::Schema.define(version: 20191122234602) do
     t.integer  "move_in_bonus_amount"
     t.string   "move_in_bonus_payee"
     t.date     "create_date"
+    t.date     "move_out_date"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
