@@ -10,7 +10,6 @@ $(function () {
   */
 
   $('#mobile-top-nav-button').on('click touchstart', function (e) {
-    console.log('click!')
     e.stopPropagation();
     e.preventDefault();
 
@@ -18,14 +17,12 @@ $(function () {
       $mobileNavWrapper.fadeOut('fast');
       $mobileNavMenu.removeClass('open');
       $('body').removeClass('stop-scrolling');
-      console.log('remove stop')
     } else {
       $mobileNavWrapper.fadeIn('fast');
       $mobileNavMenu.addClass('open');
 
       // prevent page scroll
       $('body').addClass('stop-scrolling');
-      console.log('add stop')
     }
   });
 
