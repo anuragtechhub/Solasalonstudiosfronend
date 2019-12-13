@@ -224,6 +224,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.yelp_url = yelp_url
 
     stylist.brows = brows
+    stylist.botox = botox
     stylist.hair = hair
     stylist.hair_extensions = hair_extensions
     stylist.laser_hair_removal = laser_hair_removal

@@ -1379,6 +1379,7 @@ RailsAdmin.config do |config|
         field :yelp_url
       end
       group :services do
+        field :botox
         field :brows
         field :hair
         field :hair_extensions
@@ -1605,6 +1606,7 @@ RailsAdmin.config do |config|
       end
       group :services do
         active false
+        field :botox
         field :brows
         field :hair
         field :hair_extensions
@@ -1814,6 +1816,7 @@ RailsAdmin.config do |config|
       field :makeup
       field :tanning
       field :waxing
+      field :botox
       field :brows
       field :facebook_url
       field :google_plus_url
@@ -2021,6 +2024,7 @@ RailsAdmin.config do |config|
         end
       end
       group :services do
+        field :botox
         field :brows do
           # render do
           #   if value

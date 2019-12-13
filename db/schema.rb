@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191205193743) do
+ActiveRecord::Schema.define(version: 20191213222049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -702,6 +702,7 @@ ActiveRecord::Schema.define(version: 20191205193743) do
     t.integer  "total_booknow_bookings"
     t.string   "total_booknow_revenue"
     t.datetime "walkins_expiry"
+    t.boolean  "botox"
   end
 
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
@@ -827,6 +828,7 @@ ActiveRecord::Schema.define(version: 20191205193743) do
     t.datetime "image_10_updated_at"
     t.boolean  "microblading"
     t.boolean  "reserved",              default: false
+    t.boolean  "botox"
   end
 
   add_index "update_my_sola_websites", ["stylist_id"], name: "index_update_my_sola_websites_on_stylist_id", using: :btree
