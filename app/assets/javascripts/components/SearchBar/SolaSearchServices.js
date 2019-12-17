@@ -264,6 +264,7 @@ var SolaSearchServices = {
         {"name": "Peel"},
         {"name": "Dermaplaning"},
         {"name": "Microdermabraision"},
+        {"name": "Botox"},
         {"name": "Back Facial"},
         {"name": "Microneedling"},
         {"name": "Thermoclear"},
