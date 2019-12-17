@@ -20,7 +20,13 @@
 						<div class="paint-box">
 							<div class="colors">&nbsp;</div>
 							<div class="content">
-								<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
+								<% if I18n.locale.to_s == 'en' %>
+									<h2><%= Location.where(:country => 'US').count %>+</h2>
+								<% elsif I18n.locale.to_s == 'en-CA' %>
+									<h2><%= Location.where(:country => 'US').count %>+</h2>
+								<% else %>
+									<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
+								<% end %>
 								<h3><%= t('page.who_we_are.locations_nationwide').html_safe %></h3>
 							</div>
 						</div>
