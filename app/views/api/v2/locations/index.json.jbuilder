@@ -18,6 +18,7 @@ json.data @locations do |location|
   json.instagram_url location.instagram_url
   json.yelp_url location.yelp_url
   json.images location.images
+  json.floorplan_image location.floorplan_image_file_name.present? ? location.floorplan_image.url(:original) : nil
   json.created_at location.created_at
   json.updated_at location.updated_at  
 end

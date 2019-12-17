@@ -610,6 +610,11 @@ RailsAdmin.config do |config|
           end
         end
         field :image_20_alt_text
+        field :floorplan_image do
+          pretty_value do 
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end          
+        end
       end
       group '360 Tours' do
         label '360 Tours'
@@ -945,6 +950,12 @@ RailsAdmin.config do |config|
         field :image_20_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end  
+        field :floorplan_image do 
+          pretty_value do 
+            "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_floorplan_image
+        end          
       end
       group '360 Tours' do
         label '360 Tours'

@@ -131,6 +131,11 @@ class Location < ActiveRecord::Base
   attr_accessor :delete_image_20
   before_validation { self.image_20.destroy if self.delete_image_20 == '1' }                   
 
+  has_attached_file :floorplan_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/                         
+  attr_accessor :delete_floorplan_image
+  before_validation { self.floorplan_image.destroy if self.delete_floorplan_image == '1' }                   
+
   validates :name, :url_name, :presence => true
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true

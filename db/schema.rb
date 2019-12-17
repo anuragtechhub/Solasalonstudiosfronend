@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191213222049) do
+ActiveRecord::Schema.define(version: 20191217013419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -361,7 +361,7 @@ ActiveRecord::Schema.define(version: 20191213222049) do
     t.text     "tour_iframe_1"
     t.text     "tour_iframe_2"
     t.text     "tour_iframe_3"
-    t.string   "country",                     default: "US"
+    t.string   "country",                      default: "US"
     t.text     "image_1_alt_text"
     t.text     "image_2_alt_text"
     t.text     "image_3_alt_text"
@@ -385,17 +385,21 @@ ActiveRecord::Schema.define(version: 20191213222049) do
     t.string   "email_address_for_reports"
     t.string   "rent_manager_property_id"
     t.string   "rent_manager_location_id"
-    t.boolean  "service_request_enabled",     default: false
-    t.boolean  "rent_manager_enabled",        default: false
+    t.boolean  "service_request_enabled",      default: false
+    t.boolean  "rent_manager_enabled",         default: false
     t.integer  "moz_id"
     t.text     "description_short"
     t.text     "description_long"
     t.time     "open_time"
     t.time     "close_time"
-    t.boolean  "walkins_enabled",             default: false
-    t.integer  "max_walkins_time",            default: 60
+    t.boolean  "walkins_enabled",              default: false
+    t.integer  "max_walkins_time",             default: 60
     t.time     "walkins_end_of_day"
     t.string   "walkins_timezone"
+    t.string   "floorplan_image_file_name"
+    t.string   "floorplan_image_content_type"
+    t.integer  "floorplan_image_file_size"
+    t.datetime "floorplan_image_updated_at"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
