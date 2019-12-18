@@ -618,7 +618,7 @@ namespace :reports do
 
   def send_all_request_tour_inquiries_report(email_address=nil, params=nil)
     return unless email_address
-    p "send_all_request_tour_inquiries_report params=#{params}"
+    p "send_all_request_tour_inquiries_report email_address=#{email_address}, params=#{params}"
 
     start_date = Date.new(2019,1,1)
     end_date = Date.today
@@ -657,7 +657,7 @@ namespace :reports do
     #p "csv_report=#{csv_report}"
 
     mail = ReportsMailer.send_report(email_address, 'All Contact Form Submissions', csv_report).deliver
-    #p "mail?=#{mail}"
+    p "mail?=#{mail}"
     #mail.deliver
   end
 
