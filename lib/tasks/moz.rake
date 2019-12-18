@@ -33,8 +33,33 @@ namespace :moz do
     end
   end
 
-  task :location_ids => :environment do
-
+  task :set_location_ids => :environment do
+    moz_token = Moz.first.token
+    moz_response = `curl -X GET \
+      https://localapp.moz.com/api/locations?max=1000 \
+      -H 'accessToken: #{moz_token}' \
+      -H 'Content-Type: application/json'` 
+    # p "moz_response=#{moz_response}"  
+    json_response = JSON.parse(moz_response)
+    locations = json_response["response"]["locations"]
+    p "locations.size=#{locations.size}"
+    locations.each do |location|
+      # p "location=#{location}"
+      sola_location = Location.fuzzy_search(:address_1 => location["streetAndNumber"], :postal_code => location["zip"])
+      if sola_location && sola_location.size > 0
+        sola_location = sola_location.first
+        p "matching sola_location! #{sola_location.id}, setting moz_id=#{location["id"]}"
+        sola_location.moz_id = location["id"]
+        sola_location.save
+        # moz_id = location["id"]
+      else
+        p "DID NOT MATCH #{location["streetAndNumber"]}, #{location["zip"]}"
+      end
+    end
+    # p "businesses=#{json_response["response"]["businesses"]}"
+    # json_response["response"]["businesses"].each do |business|
+    #   p "business=#{business}"
+    # end
   end
 
   task :sync_locations => :environment do
@@ -47,5 +72,14 @@ namespace :moz do
     end
     p "end moz:sync_locations"
   end
+
+  # def addressFromMozLocation(location=nil)
+  #   return nil unless location
+  #   if location["addressExtra"] && location["addressExtra"].present?
+  #     return "#{location["streetAndNumber"]}, #{location["addressExtra"]}"
+  #   else
+  #     return location["streetAndNumber"]
+  #   end
+  # end
 
 end

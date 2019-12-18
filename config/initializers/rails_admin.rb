@@ -1240,6 +1240,41 @@ RailsAdmin.config do |config|
       field :newsletter
       field :created_at
     end
+    edit do
+      field :location_name do
+        label 'Location'
+      end
+      field :name
+      field :email
+      field :phone
+      field :how_can_we_help_you
+      field :message
+      field :contact_preference
+      field :services
+      field :dont_see_your_location
+      field :state
+      field :zip_code
+      field :request_url do
+        label 'Request URL'
+      end
+      field :send_email_to_prospect do 
+        label 'Prospect Origin'
+      end
+      field :utm_source do
+        label 'UTM Source'
+      end
+      field :utm_medium do
+        label 'UTM Medium'
+      end
+      field :utm_campaign do
+        label 'UTM Campaign'
+      end
+      field :utm_content do
+        label 'UTM Content'
+      end
+      field :newsletter
+      field :created_at
+    end
     export do
       field :location_name do
         label 'Location'

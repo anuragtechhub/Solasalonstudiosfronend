@@ -39,8 +39,8 @@ class Ability
       can :destroy, Location, :admin_id => admin.id 
       can :destroy, Stylist, :location => { :admin_id => admin.id }
 
-      can :read, RequestTourInquiry, :location => { :admin_id => admin.id }
-      can :export, RequestTourInquiry, :location => { :admin_id => admin.id }
+      can :manage, RequestTourInquiry, :location => { :admin_id => admin.id }
+      # can :export, RequestTourInquiry, :location => { :admin_id => admin.id }
 
       can :read, UpdateMySolaWebsite, :location => { :admin_id => admin.id }
       can :update, UpdateMySolaWebsite, :location => { :admin_id => admin.id }
