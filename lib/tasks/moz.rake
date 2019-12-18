@@ -33,4 +33,19 @@ namespace :moz do
     end
   end
 
+  task :location_ids => :environment do
+
+  end
+
+  task :sync_locations => :environment do
+    p "begin moz:sync_locations..."
+    locations = Location.open
+    p "locations.size=#{locations.size}"
+    locations.each_with_index do |location, idx|
+      p "##{idx} location id=#{location.id}, name=#{location.name}"
+      location.submit_to_moz
+    end
+    p "end moz:sync_locations"
+  end
+
 end
