@@ -43,19 +43,31 @@ namespace :moz do
     json_response = JSON.parse(moz_response)
     locations = json_response["response"]["locations"]
     p "locations.size=#{locations.size}"
+    non_match_count = 0
+    match_count = 1
     locations.each do |location|
       # p "location=#{location}"
-      sola_location = Location.fuzzy_search(:address_1 => location["streetAndNumber"], :postal_code => location["zip"])
-      if sola_location && sola_location.size > 0
+      sola_location = Location.where("address_1 LIKE ? AND TRIM(postal_code) = ?", "%#{location['streetNo']}%", location["zip"])#Location.fuzzy_search(:address_1 => location["streetAndNumber"], :postal_code => location["zip"]) || 
+      
+      if sola_location && sola_location.size > 0 
         sola_location = sola_location.first
-        p "matching sola_location! #{sola_location.id}, setting moz_id=#{location["id"]}"
-        sola_location.moz_id = location["id"]
-        sola_location.save
-        # moz_id = location["id"]
+        if sola_location.moz_id.present?
+          #p "matched location, but already has moz_id #{location["streetAndNumber"]}, #{location["streetNo"]}, #{location["zip"]}"
+        else  
+          p "matching sola_location! #{location['streetAndNumber']} | #{sola_location.address_1} --- #{sola_location.id}, setting moz_id=#{location['id']}"
+          match_count = match_count + 1
+          sola_location.moz_id = location["id"]
+          sola_location.save
+          # moz_id = location["id"]
+        end
       else
-        p "DID NOT MATCH #{location["streetAndNumber"]}, #{location["zip"]}"
+        p "DID NOT MATCH #{location['streetAndNumber']}, #{location['streetNo']}, #{location['zip']}|"
+        non_match_count = non_match_count + 1
       end
     end
+
+    p "match_count=#{match_count}"
+    p "non_match_count=#{non_match_count}"
     # p "businesses=#{json_response["response"]["businesses"]}"
     # json_response["response"]["businesses"].each do |business|
     #   p "business=#{business}"
