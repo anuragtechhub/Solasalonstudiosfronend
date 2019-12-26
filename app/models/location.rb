@@ -585,10 +585,10 @@ class Location < ActiveRecord::Base
         "categories": #{self.moz_categories},
         "descriptionLong": "#{self.description_long.present? ? self.description_long : self.moz_long_description}",
         "descriptionShort": "#{self.description_short.present? ? self.description_short : self.moz_short_description}",
-        "keywords": "#{self.keywords}",
-        "services": "#{self.keywords}",
         "openingHours": #{self.moz_opening_hours},
         "paymentOptions": #{self.moz_payment_options},
+        "keywords": "#{self.keywords}",
+        "services": "#{self.keywords}",
         "street": "#{self.address_1}",
         "addressExtra": "#{self.address_2}",
         "city": "#{self.city}",
@@ -600,7 +600,7 @@ class Location < ActiveRecord::Base
         "email": "#{self.email_address_for_inquiries}",
         "lat": #{self.latitude},
         "lng": #{self.longitude},
-        "socialProfiles": #{self.moz_social_profiles.to_json}
+        "socialProfiles": #{self.moz_social_profiles.to_json},
     }'` 
 
     # categories
@@ -841,14 +841,25 @@ class Location < ActiveRecord::Base
     if short_description.length > 197
       short_description = short_description[0...197] + '...'
     end
+    short_description = short_description.gsub(/&nbsp;/, ' ')
+    short_description = short_description.gsub(/&amp;/, 'and')
+    short_description = short_description.gsub(/&[a-zA-Z]*;/, '')
+    short_description = short_description.gsub(/\r/, '')
+    short_description = short_description.gsub(/\n/, ' ')
     return short_description
   end
 
   def moz_long_description
+    long_description = 
     long_description = ActionView::Base.full_sanitizer.sanitize(self.description).strip
     if long_description.length > 997
       long_description = long_description[0...997] + '...'
     end
+    long_description = long_description.gsub(/&nbsp;/, ' ')
+    long_description = long_description.gsub(/&amp;/, 'and')
+    long_description = long_description.gsub(/&[a-zA-Z]*;/, '')
+    long_description = long_description.gsub(/\r/, '')
+    long_description = long_description.gsub(/\n/, ' ')
     return long_description
   end
 
