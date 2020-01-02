@@ -9,23 +9,23 @@
             <h1 class="chalet large-number">12,000+</h1>
             <h1 class="chalet chalet-london">Independent Salon Owners</h1>
             <br />
-            <h1 class="chalet large-number">450+</h1>
+            <h1 class="chalet large-number"><%= Location.where(:country => 'US').count %>+</h1>
             <h1 class="chalet chalet-london">Locations Nationwide</h1>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 vcenter">
           <%= form_tag [:search, :results], :method => :get do %>
             <h1 class="helvetica"><%= t('page.find_salon_pro.body1').html_safe %></h1>
             <div class="filterable-dropdown-search">
               <input name="query" type="text" class="searchbox searchbox-small" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
-              <button type="submit"><span class="search-icon"></span></button>
+              <button type="submit" class="find-salon-pro"><span class="search-icon"></span></button>
             </div>
             <input type="hidden" name="so" value="salon_professionals" />
-            <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
-            <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
           <% end %>
         </div>
       </div>
+      <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
+      <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
     </div>
   </div>
 
@@ -38,23 +38,23 @@
             <h1 class="chalet large-number">12,000+</h1>
             <h1 class="chalet chalet-london">Independent Salon Owners</h1>
             <br />
-            <h1 class="chalet large-number">450+</h1>
+            <h1 class="chalet large-number"><%= Location.where(:country => 'US').count %>+</h1>
             <h1 class="chalet chalet-london">Locations Nationwide</h1>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 vcenter">
           <%= form_tag [:search, :results], :method => :get do %>
             <h1 class="helvetica"><%= t('page.find_salon_pro.body1').html_safe %></h1>
             <div class="filterable-dropdown-search">
               <input name="query" type="text" class="searchbox searchbox-small" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
-              <button type="submit"><span class="search-icon"></span></button>
+              <button type="submit" class="find-salon-pro"><span class="search-icon"></span></button>
             </div>
             <input type="hidden" name="so" value="salon_professionals" />
-            <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
-            <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
           <% end %>
         </div>
       </div>
+      <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
+      <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
     </div>
   </div>
 
@@ -67,23 +67,23 @@
             <h1 class="chalet large-number">12,000+</h1>
             <h1 class="chalet chalet-london">Independent Salon Owners</h1>
             <br />
-            <h1 class="chalet large-number">450+</h1>
+            <h1 class="chalet large-number"><%= Location.where(:country => 'US').count %>+</h1>
             <h1 class="chalet chalet-london">Locations Nationwide</h1>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 vcenter">
           <%= form_tag [:search, :results], :method => :get do %>
             <h1 class="helvetica"><%= t('page.find_salon_pro.body1').html_safe %></h1>
             <div class="filterable-dropdown-search">
               <input name="query" type="text" class="searchbox searchbox-small" placeholder="<%= t('page.find_salon_pro.search_by_name_or_location') %>" />
-              <button type="submit"><span class="search-icon"></span></button>
+              <button type="submit" class="find-salon-pro"><span class="search-icon"></span></button>
             </div>
             <input type="hidden" name="so" value="salon_professionals" />
-            <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
-            <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>
           <% end %>
         </div>
       </div>
+      <h2 class="helvetica"><%= t('page.find_salon_pro.body2').html_safe %></h2>
+      <div class="bn-button-wrapper"><%= link_to :booknow_search, :class => 'bn-button' do %>Book Now<% end %></div>      
     </div>
   </div>  
 

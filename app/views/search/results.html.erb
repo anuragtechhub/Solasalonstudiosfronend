@@ -33,22 +33,41 @@
       <p style="margin-top:50px" class="text-center"><%= t('page.search.no_results_found', :query => params[:query]).html_safe %></p>
     <% end %>
 
-    <% if @locations && @locations.size > 0 %>
-      <h3><%= t('page.search.location_results').html_safe %></h3>
-      <div class="row">
-        <% @locations.each_with_index do |location, index| %>
-          <%= render 'shared/public_website/location_result', :location => location %>
-        <% end %>
-      </div>
-    <% end %>
+    <% if params[:so] == 'salon_professionals' %>
+      <% if @stylists && @stylists.size > 0 %>
+        <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
+        <div class="row">
+          <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+            <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @locations && @locations.size > 0 %>
+        <h3><%= t('page.search.location_results').html_safe %></h3>
+        <div class="row">
+          <% @locations.each_with_index do |location, index| %>
+            <%= render 'shared/public_website/location_result', :location => location %>
+          <% end %>
+        </div>
+      <% end %>      
+    <% else %>
+      <% if @locations && @locations.size > 0 %>
+        <h3><%= t('page.search.location_results').html_safe %></h3>
+        <div class="row">
+          <% @locations.each_with_index do |location, index| %>
+            <%= render 'shared/public_website/location_result', :location => location %>
+          <% end %>
+        </div>
+      <% end %>
 
-    <% if @stylists && @stylists.size > 0 %>
-      <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
-      <div class="row">
-        <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
-          <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
-        <% end %>
-      </div>
+      <% if @stylists && @stylists.size > 0 %>
+        <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
+        <div class="row">
+          <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+            <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 
     <% if @posts && @posts.size > 0 %>

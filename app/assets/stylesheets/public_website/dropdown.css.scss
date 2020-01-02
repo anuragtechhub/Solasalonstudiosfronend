@@ -170,12 +170,27 @@
 			display: none;
 		}
 
+		button.find-salon-pro {
+			display: inline-block;
+			right: 46px;
+	    top: -2px;
+	    height: 48px;		
+		}
+
 		input.searchbox {
 			width: 100%;
 			font-size: 14px;
 			height: 48px;
 			padding: 2px 20px 0 58px;
 			@include border-radius(4px);
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.filterable-dropdown-search {
+		button.find-salon-pro {
+			top: -1px;
 		}
 	}
 }

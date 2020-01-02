@@ -31,3 +31,41 @@
  *= require bootstrap-datepicker
  *= require aos
  */
+
+// .find-a-salon-professional-hero hr {
+	
+// 	width: 88%;
+// 	max-width: 420px;
+// 	margin: 25px auto 20px auto;
+// }
+
+.find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow .filterable-dropdown-search {
+	margin-bottom: 0 !important;
+}
+
+.find-a-salon-professional-hero-next.owl-carousel .item .item-content h2.helvetica {
+	border-top: 1px solid rgba(255,255,255,0.5);
+	max-width: 100%;
+	padding-top: 20px;
+	margin-top: 25px !important;	
+}
+
+@media (max-width: 767px) {
+	.find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow.owl-carousel .item .item-content h2.helvetica {
+		border-top: 1px solid rgba(255,255,255,0.5);
+		max-width: 100%;
+		padding-top: 20px;
+		margin-top: 25px !important;	
+	}
+}
+
+@media (max-width: 550px) {
+	.find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow .filterable-dropdown-search input.searchbox {
+		max-width: initial;
+	}
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
+}
