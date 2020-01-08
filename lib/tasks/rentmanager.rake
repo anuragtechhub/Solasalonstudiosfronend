@@ -12,10 +12,15 @@ namespace :rentmanager do
     end
   end
 
-  task :locations => :environment do
+  # rake rentmanager:locations["jeff@jeffbail.com"]
+  # rake rentmanager:locations["jeff@jeffbail.com jeff+1@jeffbail.com"]
+  task :locations, [:email_addresses] => :environment do |task, args|
     require 'json'
     p "Start Rent Manager locations task..."
 
+    email_addresses = args.email_addresses.split(' ')
+
+    p "email_addresses=#{email_addresses}"
     matched_properties = []
     unmatched_properties = []
 
@@ -100,7 +105,9 @@ namespace :rentmanager do
 
     end # csv.open
     
-    p "Finished Rent Manager locations task. #{(matched_properties + unmatched_properties).size} total, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched."
+    summary = "Rent Manager locations task summary: #{(matched_properties + unmatched_properties).size} total locations, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched."
+    p summary
+    ReportsMailer.rent_manager_locations(email_addresses, summary, File.read(Rails.root.join('csv','rent_manager_locations.csv')))
   end
 
   task :tenants => :environment do

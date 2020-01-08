@@ -43,4 +43,11 @@ class ReportsMailer < ActionMailer::Base
     mail(to: email_addresses, bcc: ['jeff@jeffbail.com'], subject: "Location Contact Form Submissions from #{start_date.strftime('%B %Y')} to #{end_date.strftime('%B %Y')}")
   end
 
+  def rent_manager_locations(email_addresses, summary, locations_csv)
+    if email_addresses.present?
+      @summary = summary
+      attachments['locations.csv'] = locations_csv
+      mail(to: email_addresses, bcc: ['jeff@jeffbail.com'], subject: "Rent Manager Location Match Task Summary")
+    end
+  end
 end
