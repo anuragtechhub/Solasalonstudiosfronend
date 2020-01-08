@@ -107,7 +107,7 @@ namespace :rentmanager do
     
     summary = "Rent Manager locations task summary: #{(matched_properties + unmatched_properties).size} total locations, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched."
     p summary
-    ReportsMailer.rent_manager_locations(email_addresses, summary, File.read(Rails.root.join('csv','rent_manager_locations.csv')))
+    ReportsMailer.rent_manager_locations(email_addresses, summary, File.read(Rails.root.join('csv','rent_manager_locations.csv'))).deliver
   end
 
   task :tenants => :environment do
