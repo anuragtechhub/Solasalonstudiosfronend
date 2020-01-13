@@ -88,7 +88,13 @@
       <% end %>
       <li><%= link_to :contact_us, :class => 'sublink' do %><%= raw t 'header.contact_us' %><% end %></li>
       <li><%= link_to :rent_a_studio, :class => 'sublink' do %><%= raw t 'header.rent_studio_button' %><% end %></li>
-      <li><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in sublink' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+		  <% if I18n.locale.to_s == 'en' %>
+	    	<li>
+	    		<%= link_to 'https://www.thesolastore.com', :class => 'sublink' do %>The Sola Store<% end %>
+	    	</li>
+    	<% else %>
+      	<li><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in sublink' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+     	<% end %>
       <li style="overflow:hidden;border-bottom:0">
       	<div class="social-links">
       		<% if I18n.locale.to_s == 'pt-BR' %>

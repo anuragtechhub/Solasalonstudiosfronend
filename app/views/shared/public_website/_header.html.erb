@@ -15,7 +15,13 @@
           <li class="border-left nav-booknow-button"><%= link_to :booknow_search do %>Book Now<% end %></li>
         <% end %>
         <li class="border-left"><%= link_to :contact_us do %><%= raw t 'header.contact_us' %><% end %></li>
-        <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+        <% if I18n.locale.to_s == 'en' %>
+          <li class="border-left">
+            <%= link_to 'https://www.thesolastore.com' do %>The Sola Store<% end %>    
+          </li>
+        <% else %>
+          <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+        <% end %>
         <li class="border-left country-switcher-wrapper"><%= render 'shared/country_switcher' %></li>
       </ul>
     </div>
