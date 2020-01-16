@@ -609,6 +609,17 @@
           top: 2px;
         }
 
+        &.joico {
+          max-width: 140px;
+          height: auto;
+          top: 1px;
+        }   
+
+        &.samvilla {
+          max-width: 240px;
+          height: auto;
+        } 
+
         &.paulmitchell {
           max-width: 130px;
           height: auto;
@@ -617,6 +628,10 @@
         &.salongenius {
           max-width: 160px;
           height: auto;
+        }
+
+        &.skinauthority {
+          top: 5px;
         }
 
         &.solagenius {

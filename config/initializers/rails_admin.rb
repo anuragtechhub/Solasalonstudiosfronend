@@ -638,9 +638,9 @@ RailsAdmin.config do |config|
         end
       end
       group :walkins do
-        visible do
-          bindings[:object] && [351, 389, 163, 97, 59, 96, 21].include?(bindings[:object].id)
-        end
+        # visible do
+        #   bindings[:object] && [351, 389, 163, 97, 59, 96, 21].include?(bindings[:object].id)
+        # end
         label "Walk-Ins"
         active false
         field :walkins_enabled do
@@ -984,9 +984,9 @@ RailsAdmin.config do |config|
         end
       end
       group :walkins do
-        visible do
-          bindings[:object] && [351, 389, 163, 97, 59, 96, 21].include?(bindings[:object][:id])
-        end
+        # visible do
+        #   bindings[:object] && [351, 389, 163, 97, 59, 96, 21].include?(bindings[:object][:id])
+        # end
         label "Walk-Ins"
         active false
         field :walkins_enabled do

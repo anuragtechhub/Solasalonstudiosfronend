@@ -159,6 +159,7 @@ Solasalonstudios::Application.routes.draw do
   match "forgot-password/reset" => 'forgot_password#reset', :via => [:get, :post], :as => :forgot_password_reset
 
   match 'sessions' => 'sessions#index', :via => [:get, :post]
+  match 'sola-sessions/portland' => 'sessions#portland', :via => [:get, :post], :as => :portland_session
   # match 'sessions/denver' => 'sessions#denver', :via => [:get, :post]
   # match 'sessions/minneapolis' => 'sessions#minneapolis', :via => [:get, :post]
   # match 'sessions/orange-county' => 'sessions#orange_county', :via => [:get, :post], :as => :oc_session
