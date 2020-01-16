@@ -27,7 +27,11 @@
 	<p><%= t('page.our_story.body5').html_safe %></p>
 	<p><%= t('page.our_story.body6').html_safe %></p>
 	<p><%= t('page.our_story.body7').html_safe %></p>
-
+	<% if I18n.locale.to_s != 'pt-BR' %>
+		<p><%= t('page.our_story.body7_1').html_safe %></p>
+		<p><%= t('page.our_story.body7_2').html_safe %></p>
+		<p><%= t('page.our_story.body7_3').html_safe %></p>
+	<% end %>
 	<div class="block-quote-side">
 		<h4><%= t('page.our_story.callout2').html_safe %></h4>
 		<h5>- <%= t 'page.our_story.callout2_name' %></h5>
