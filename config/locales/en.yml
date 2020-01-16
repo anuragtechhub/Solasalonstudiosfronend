@@ -191,13 +191,13 @@ en:
       location_count: 400+
       locations_nationwide: Locations<br>Nationwide
       view_locations: View Locations
-      salon_professional_count: 10,000+
+      salon_professional_count: 15,000+
       salon_professionals: Salon<br>Professionals
       find_a_stylist: Find a Stylist
       heading1: About Sola
       body1: |
         <h4 class='paragraph'>In 2004, Sola Salon Studios was established with the opening of our first location in Denver, CO. Now with more than 400 locations open nationwide, we are proud to offer salon professionals the freedom and benefits of salon ownership without the upfront costs and risks associated with opening a traditional salon. Our innovative salon model empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take control of their lives and their careers. We provide beauty professionals with high-end, fully-equipped salon studios alongside the support and tools they need to launch their salon business in no time.</h4>
-        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind: to help set them up for success. Join the Sola Salon Studios %{diversity_link} &ndash; now nearly 10,000 strong! &ndash; and experience a level of creative independence and career support you won't find anywhere else.</h4>
+        <h4 class='paragraph'>We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind: to help set them up for success. Join the Sola Salon Studios %{diversity_link} &ndash; now nearly 15,000 strong! &ndash; and experience a level of creative independence and career support you won't find anywhere else.</h4>
       diverse_community: diverse community
       heading2: About the Founders
       body3: "Matt Briger and Stratton Smith are true entrepreneurs. In the early 1990s, Stratton was a successful salon owner in St. Louis, MO. In 1995, he sold his six salons and joined Matt to start and run a real estate company in Colorado. But Stratton's passion for the beauty industry never left him, and in 2004 Stratton and Matt left the corporate world to start Sola Salon Studios. They had a simple idea and a clear vision: to put the salon professional first. 11 years later, they continue to prove that they do just that."
@@ -320,7 +320,7 @@ en:
           <li>Sell the retail products you love</li>
           <li>Customize your own salon studio</li>
         </ol>
-        <p>Join our community of nearly 10,000 like-minded salon professionals to experience a level of creative independence and career support you won&#8217;t find anywhere else.</p>
+        <p>Join our community of nearly 15,000 like-minded salon professionals to experience a level of creative independence and career support you won&#8217;t find anywhere else.</p>
       question8: What are the hours of operation?
       answer8: <p>At Sola you have access to your studio 24 hours a day, seven days a week. Our main doors are open during regular business hours; however, if you have a client at 8 am or on a Sunday when the main doors are locked, you can buzz your clients in via the call box. This allows you to take appointments during the hours that best fit your schedule and the schedules of your clients.</p>
       question9: What are the key advantages to renting a studio at Sola?
@@ -344,7 +344,7 @@ en:
       heading1: Find a Sola Salon<br>Professional Near You
       search: Search
       search_by_name_or_location: Search by name or location
-      salon_professional_count: 10,000+
+      salon_professional_count: 15,000+
       salon_professionals: Salon Professionals
       location_count: 400+
       locations_nationwide: Locations Nationwide
@@ -573,7 +573,7 @@ en:
       body4: In 2005, the first franchised Sola location was opened, paving the way for our best-in-class franchisees and onsite operators. And in the blink of an eye, 10 years later, Sola celebrated 5,000 independent beauty professionals across the country.
       body5: Throughout the years, Sola has become more than just another salon suites rental business; we are an all-encompassing independent salon business solution. Our leadership team drives constant innovation for the on-site studio experience as well as providing cutting-edge technology and ongoing educational resources to the Sola community. 
       body6: In 2016, Sola launched Sola Pro, an exclusive app, to host industry deals, special offers and a variety of educational resources to bridge the gap between the professional beauty industry and the Sola community. Shortly after, the first Sola Sessions event kicked off in Denver, providing a unique live education experience to inspire and connect the ever-growing Sola community. With the 2017 addition of our exclusive technology SolaGenius—an all-in-one business platform launched in partnership with GlossGenius, designed to help an independent salon owner manage their schedule, customer relationship management, marketing, analytics and payment processing—we can proudly say that we support our customers along every step of their independent salon journey.
-      body7: "Today, Stratton and Matt's humble commitment has blossomed into a worldwide movement. We are proud to say that Sola Salon Studios is a thriving, diverse and welcoming community of more than 10,000 independent salon professionals across 400+ locations in United States, Canada and, soon, the rest of the world. Our culture has been cultivated around one simple ideal: &quot;freedom to live the life you love.&quot;"
+      body7: "Today, Stratton and Matt's humble commitment has blossomed into a worldwide movement. We are proud to say that Sola Salon Studios is a thriving, diverse and welcoming community of more than 15,000 independent salon professionals across 400+ locations in United States, Canada and, soon, the rest of the world. Our culture has been cultivated around one simple ideal: &quot;freedom to live the life you love.&quot;"
       callout2: "&quot;The goal is for every stylist to live their best life, and that's something different for everybody. At the end of the day, the stylists are the ones who win.&quot;"
       callout2_name: "Matt Briger"
       body8: Sola has blazed the trail for the independent stylist movement, offering new levels of creative freedom to those who are inspired to make the transition. We aim to make your transition to independence as smooth as possible. You are independent and unique at Sola, but you are not alone.
@@ -788,7 +788,7 @@ en:
       carousel_author7: Polly Sanders-Peterson
       carousel_testimonial8: "Sola has made me a better person by helping me stay dedicated and passionate about my career. I've become a better business owner and hairdresser by attending the Sola Sessions to learn new techniques, styles, and trends."
       carousel_author8: Sharon Hinkle
-      join_more_than: Join nearly 10,000 salon professionals!
+      join_more_than: Join nearly 15,000 salon professionals!
       testimonial_quote1: "The business model that has been created by Sola is true. You're in business for yourself, but you're not by yourself. It's great to have Sola as a resource. They have been consistent since the day I signed my lease and that was 11 years ago."
       testimonial_author1: LaShonda Banks
       testimonial_quote2: "Sola made the process of going independent totally seamless. I'm able to control the vibe in my room and I love the personal time I get with every guest. With Sola Pro, I have access to tons of education to keep me inspired. I also recently made the switch to SolaGenius and I love it!"
@@ -824,7 +824,7 @@ en:
       body2: "We take pride in being the largest, fastest-growing salon studio business in the country. At our core, we believe in the beauty professional and have one goal in mind:"
       to_help_set_them_up_for_success: To help set them up for success
       join_our_diverse_community: "Join the Sola Salon Studios diverse community"
-      join_our_diverse_community_text: "Now nearly 10,000 strong!"
+      join_our_diverse_community_text: "Now nearly 15,000 strong!"
       join_our_diverse_community_button_text: "Own Your Salon"
       watch_our_video: Watch our video
       our_mission: Our Mission 
@@ -854,7 +854,7 @@ en:
       search_for_a_salon: Search for a salon studio near you.
       be_in_business_heading: Be In Business For Yourself, Not By Yourself.
       be_in_business_p1: "Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about <strong>freedom and control</strong>. We provide high-end, move-in-ready studios combined with the support and tools you need to experience the freedom and benefits of salon ownership."  
-      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 10,000 independent salon owners to get one step closer to living the life you love!
+      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 15,000 independent salon owners to get one step closer to living the life you love!
       freedom_heading: Sola gives you the freedom to...
       freedom_tile_1: Escape salon politics and drama in your own private, secure studio.
       freedom_tile_2: Set your own pricing for services and products.
@@ -875,7 +875,7 @@ en:
       beautiful_studios: Beautiful Studios
       beautiful_studios_text: A variety of layouts for hairdressers, nail techs, estheticians and more.
       community_support: Community Support
-      community_support_text: Join a community of nearly 10,000 salon professionals to be in business for yourself, not by yourself.
+      community_support_text: Join a community of nearly 15,000 salon professionals to be in business for yourself, not by yourself.
       sola_blog: Sola Blog
       sola_blog_text: Visit the Sola Blog for business and marketing tips, how-tos, Sola success stories and more!
       your_own_sola_webpage: Your Own Sola Webpage
