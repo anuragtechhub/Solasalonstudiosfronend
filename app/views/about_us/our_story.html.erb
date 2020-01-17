@@ -4,14 +4,13 @@
 	<h1><%= t 'page.our_story.title' %></h1>
 
 	<div class="img-wrap">
-		<%= image_tag 'Story_1a.jpg', :class => 'u-full-width' %>
-		<h5><%= t 'page.our_story.founders' %></h5>
+		<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Group-Shot-1.jpg', :class => 'u-full-width' %>
 	</div>
 
 	<h2><%= t('page.our_story.body1').html_safe %></h2>
 
 	<p><%= t('page.our_story.body2').html_safe %></p>
-
+	<p><%= t('page.our_story.body3').html_safe %></p>
 	<div class="img-wrap">
 		<%= image_tag 'Story_2.jpg', :class => 'u-full-width' %>
 		<h5><%= t 'page.our_story.callout1_name' %></h5>
@@ -22,7 +21,7 @@
 		<h5>- <%= t 'page.our_story.callout1_name' %></h5>
 	</div>
 
-	<p><%= t('page.our_story.body3').html_safe %></p>
+	
 	<p><%= t('page.our_story.body4').html_safe %></p>
 	<p><%= t('page.our_story.body5').html_safe %></p>
 	<p><%= t('page.our_story.body6').html_safe %></p>
@@ -30,6 +29,9 @@
 	<% if I18n.locale.to_s != 'pt-BR' %>
 		<p><%= t('page.our_story.body7_1').html_safe %></p>
 		<p><%= t('page.our_story.body7_2').html_safe %></p>
+		<div class="img-wrap">
+			<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Lifestyle-Shot-1.jpg', :class => 'u-full-width' %>
+		</div>
 		<p><%= t('page.our_story.body7_3').html_safe %></p>
 	<% end %>
 	<div class="block-quote-side">
