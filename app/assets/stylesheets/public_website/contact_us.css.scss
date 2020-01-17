@@ -500,7 +500,9 @@ body.contact-us {
 
   body.contact-us {
     .owl-carousel .item .img-wrap img {
-      width: 100%;
+      height: 420px;
+      width: auto;
+      left: -35%;
     }
     .mobile-br {
       display: block !important;
@@ -559,8 +561,9 @@ body.contact-us {
 @media (max-width : 600px) {
   .contact-2019 {
     .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
-      height: auto;
-      width: 100%;
+      height: 420px;
+      width: auto;
+      left: -35%;
     }
     .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
       display: none;

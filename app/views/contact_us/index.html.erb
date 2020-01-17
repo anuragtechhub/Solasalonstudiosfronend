@@ -1,18 +1,14 @@
 <div class="contact-2019">
 
 <div class="owl-carousel owl-theme">
-  <div class="item">
-    <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudios/mysola_contact_bg.jpg', :width => 1800, :height => 607 %></div>
-    <div class="item-content overlayed">
-      <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video giant-video-button-wrapper" rel="72pips9fvwQ">
-        <div class="giant-video-btn">
-          <span class="fa fa-5x fa-play"></span>
+  <div class="hero-carousel owl-carousel owl-theme">
+    <div class="item">
+        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/Why-Sola-NY2020-Desktop-V1-R1.jpg', :width => 2025, :height => 767 %></div>
+        <div class="item-content overlayed">
+          <%= link_to '//www.youtube.com/watch?v=3cGp21sBm8g', :class => "button primary play-video rounded-play-button", :style => 'margin-top:0px;' do %>
+            <%= t('page.why_sola.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span>
+          <% end %>    
         </div>
-        <div class="text">Watch our video to see what<br />people are saying about #MySola</div>
-      </a>
-      <a href="#get-in-touch" class="learn-more-button learn-more-button-circle">
-        <%= image_tag 'down-arrow-circle.png' %>
-      </a>
     </div>
   </div>
 </div>
