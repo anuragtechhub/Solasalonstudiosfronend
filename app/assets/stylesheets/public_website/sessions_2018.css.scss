@@ -992,6 +992,14 @@
 
 @media (max-width: 750px) {
   .session-2018 {
+    .owl-carousel .learn-more-button {
+      margin-left: -55px;
+    }
+
+    .buy-now-button-wrapper {
+      margin: 20px auto 30px auto;
+    }
+
     .speakers-container {
       .three.columns {
         width: 100%;
