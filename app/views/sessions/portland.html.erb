@@ -62,7 +62,7 @@
           <div>
             <h4 class="pink">Sunday, April 26th</h4>
             <p>
-            3pm-5pm: Cutting Class with Roy Jay White (the Hillbilly Barber) Hattori Hanzo Shears
+            3pm-5pm: Cutting Class with Hattori Hanzo Shears Roy Jay White (the Hillbilly Barber)
             <span class="inline-break">&nbsp;</span>
             5pm-7pm: Welcome Reception
             <span class="inline-break">&nbsp;</span>
@@ -73,12 +73,27 @@
         <div class="six columns">
           <h4 class="blue">The Duniway Hotel</h4>
           <p>
-            545 SW Taytlor St., Portland, OR 97204
+            545 SW Taylor St., Portland, OR 97204
             <span class="inline-break">&nbsp;</span>
             <span class="add-to-calendar-wrapper" data-title="Sola Session Portland" data-address="The Duniway Hotel, 545 SW Taytlor St., Portland, OR 97204" data-description="Sola Salons Portland Sessions Cutting Class and Welcome Reception" data-start="April 26, 2020 15:00" data-end="April 26, 2020 19:00"></span>
           </p>        
         </div>
       </div>
+
+    </div>
+  </div>
+
+  <div class="discounted-rooms">
+    <div class="container">
+      <a name="book_a_room" id="book_a_room"></a>
+      <h2 class="text-center">Discounted Rooms Available</h2>
+      <h3 class="text-center">The Duniway Hotel <strong>$199 Per Night</strong></h3>
+      
+      <%= image_tag '//solasessions.s3.amazonaws.com/hotels/duniway.jpg' %>
+
+      <div class="button-wrapper"><a href="https://www3.hilton.com/en/hotels/oregon/the-duniway-portland-a-hilton-hotel-PDXTPHH/index.html" target="_blank" class="button primary">Book Now</a></div>
+      <p style="margin:-12px 0 15px 0">Make sure you enter the code SSS into the group/convention code to receive the discount.</p>
+      <h4>LIMITED AVAILABILITY</h4>
 
     </div>
   </div>
@@ -125,56 +140,50 @@
   <div class="speakers">
     <div class="container">
       <h2 class="bb">Featured Presenters</h2>
+      <p>Click images below for presenter bios.</p>
     </div>
     <div class="container speakers-container"> 
     
       <div class="row">
-        <div class="four columns offset-by-two" data-rel="kovner">
-          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/ninakovner.jpg' %>
-          <span class="name">Nina Kovner</span>
-          <span class="company"><a href="#">Passion Squared</a></span>
-        </div>
-        <div class="four columns" data-rel="villa">
+        <div class="three columns" data-rel="villa">
           <%= image_tag '//solasessions.s3.amazonaws.com/presenters/samvilla.jpg' %>
           <span class="name">Sam Villa</span>
           <span class="company"><a href="#" target="_blank">Sam Villa Brand</a></span>
         </div>
-        <!--
-        <div class="four columns" data-rel="richard">
-          <%= image_tag 'sessions/presenters/richard.png' %>
+        <div class="three columns" data-rel="mannah">
+          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/mannah.jpg' %>
           <span class="name">Richard Mannah</span>
           <span class="company"><a href="#">Joico</a></span>
         </div> 
-        -->
+        <div class="three columns" data-rel="buck">
+          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/buck.jpg' %>
+          <span class="name">Jill Buck</span>
+          <span class="company"><a href="#">Joico</a></span>
+        </div>
+        <div class="three columns" data-rel="kovner">
+          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/ninakovner.jpg' %>
+          <span class="name">Nina Kovner</span>
+          <span class="company"><a href="#">Passion Squared</a></span>
+        </div>
       </div>
     
       <div class="row">
-        <!--
-        <div class="four columns" data-rel="tbd">
-          <%= image_tag 'sessions/presenters/tbd.png' %>
-          <span class="name">TDB</span>
-          <span class="company"><a href="#">Joico</a></span>
-        </div>
-        -->
-        <div class="four columns offset-by-two" data-rel="mosley">
+        <div class="three columns" data-rel="mosley">
           <%= image_tag 'sessions/presenters/mosley.png' %>
           <span class="name">John Mosley</span>
           <span class="company"><a href="#">Popular Nobody</a></span>
         </div>
-        <div class="four columns" data-rel="cardenas">
-          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/cardenas.jpg' %>
-          <span class="name">Kelly Cardenas</span>
-          <span class="company"><a href="#">Kelly Cardenas Salon</a></span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="four columns offset-by-two" data-rel="jennie">
+        <div class="three columns" data-rel="jennie">
           <%= image_tag 'sessions/presenters/jennie.png' %>
           <span class="name">Jennie Wolff</span>
           <span class="company"><a href="#">Sola Salon Studios</a></span>
         </div>
-        <div class="four columns" data-rel="kim">
+        <div class="three columns" data-rel="cardenas">
+          <%= image_tag '//solasessions.s3.amazonaws.com/presenters/cardenas.jpg' %>
+          <span class="name">Kelly Cardenas</span>
+          <span class="company"><a href="#">Kelly Cardenas Salon</a></span>
+        </div>
+        <div class="three columns" data-rel="kim">
           <%= image_tag 'sessions/presenters/kim.png' %>
           <span class="name">Kim Bennett</span>
           <span class="company"><a href="#">Sola Salon Studios</a></span>
@@ -271,19 +280,68 @@
       </div>
     </div>        
 
-    <div class="bio" data-rel="cole" data-modal-class="sessions" data-width="620" data-animated="1">
+    <div class="bio" data-rel="mannah" data-modal-class="sessions" data-width="620" data-animated="1">
       <div class="modal-header">
-        <%= image_tag 'sessions/presenters/cole.png' %>
-        <span class="name">Michael Cole</span>
-        <span class="company"><a href="#" target="_blank">Summit Salon Business Center</a></span>
+        <%= image_tag '//solasessions.s3.amazonaws.com/presenters/mannah.jpg' %>
+        <span class="name">Richard Mannah</span>
+        <span class="company"><a href="#" target="_blank">Joico</a></span>
         <span class="line">&nbsp;</span>
       </div>
       <div class="text">
-        Over the past 30 years Michael has lived the life of a stylist, manager, a multiple salon owner, and an executive chain director. But, he found his true calling in 1984 when he began training salon stylists to become financially successful TOP 20s.
-        <br><br>
-        Michael's breakthrough book, &quot;A Little Off the Top&quot; was the first in a series of DVD videos, CD audios, tracking journals, and organizational tools that have since helped over a million salon professionals break through to a more prosperous and purposeful career. 
-        <br><br> 
-        Today Michael shows no signs of slowing down. His new program, Step Up! – Fast Track to Wealth, is training Top 20 stylists to dramatically improve their personal finances and professional income in record time. You can learn more about Step Up!, read profiles of the people who have attended, and what it means to be a TOP 20 at www.SalonDev.com. 
+        With over 25 years of experience in the hair industry that includes a leadership role at Toni &
+        Guy London and spans across three continents (for major roles, though he's traveled the world
+        on assignment) Richard Mannah has amounted a veritable powerhouse of experience. Manah
+        has amassed laudable credits such as winning awards like London Hairdresser of the Year
+        2011/2012 (British Hairdressing Awards), being a part of the Australian F.A.M.E. Team for the
+        Fellowship for British Hairdressing, working on NY and London Fashion Week projects for
+        Vivienne Westwood, Tommy Hilfiger, Vera Wang, and his work has been published in industry
+        and commercial publications alike – everything from Elle and British Vogue to Creative Head
+        and The Journal.
+        <br /><br />
+        What makes Mannah such an incredible educator
+
+        and mentor beyond his laudable talent? – he's
+        also someone young up-and-comers can relate to
+        and connect with. Having twice taking the title of
+        "Newcomer of the Year" (1999 and again in 2000)
+        – walking the path many of them are embarking
+        on, he's been where many of his students and
+        mentees are now. Right at the beginning of their
+        burgeoning careers, learning and growing and
+        ready for more!  
+        <br /><br />
+        In August 2018 Joico announced Mannah as Joico Guest Artistic Director a crowning
+        achievement, not simply to lead a brand's global education but to find a brand who's value's, an
+        artist can mesh so well with, and represent with pleasure and pride, "...I absolutely love
+        working with [Joico] and what the brand stands for. It's the healthy hair company which
+        believes in education, innovation, team-building, creativity and global growth. All these
+        things are close to my heart...," Mannah shares.  
+        <br /><br />    
+        Mannah's relationship with Joico started in 2017, working on a photo-shoot in Australia, as well
+        as video shoots and events in the U.S. which launched Beach Shake and Body Shake dry-
+        styling texturizing sprays (follow-ups to the wildly successful Hair Shake Liquid-to-Powder
+        Texturizer). He was also a headliner for the brand at their Joico Global Destination Education
+        week-long education get-away in Punta Cana, Dominican Republic, where audiences raved
+        about his stage presentation. Guests were treated to his blend of artistry and passion delievered
+        in only the way Mannah can – with his personal touch and modern flair.
+      </div>
+    </div>
+
+    <div class="bio" data-rel="buck" data-modal-class="sessions" data-width="620" data-animated="1">
+      <div class="modal-header">
+        <%= image_tag '//solasessions.s3.amazonaws.com/presenters/buck.jpg' %>
+        <span class="name">Jill Buck</span>
+        <span class="company"><a href="#" target="_blank">Joico</a></span>
+        <span class="line">&nbsp;</span>
+      </div>
+      <div class="text">
+        A proud mom and active beauty coach, Jill excels in bringing creative solutions from the salon to the screen.
+        <br /><br />
+        Oregon-grown and raised, Jill spent her early years exploring the coast, guiding river trips and carving the slopes just north of the California border. A rugged upbringing and love for the outdoors instilled in her a stubbornness drive to succeed. Graduating a year early from high school, she decided to pursue a career in the hair industry. She went on to Marinello in Las Vegas where she met longtime friend, Riawna Capri. The two started a whirlwind journey that would eventually reunite them years later. 
+        <br /><br />
+        Jill graduated Marinello in 2002 and worked at a salon in Bend, Oregon before moving to Medford to help the opening of Cielo Salon. It was during this time that she got hitched and started a family. In 2011, she moved to Los Angeles and was welcomed into the Nine Zero One family. She operated the Braid Bar on Santa Monica Blvd and steadily grew her clientele. Over the next few years she worked her way up as a Senior Stylist and pursued opportunities to meet new clients and assist some shining stars—Julianne Hough, Nina Dobrev, Jessica Simpson, Selena Gomez, Lili Reinhart among others.
+        <br /><br />
+        "Embrace the chaos, seek creativity and stay positive." Jill understands the whirlwind of the industry but does her best to build solid relationships with each and every client. Relationships matter and so does helping people feel good about themselves. Among her presence in the salon, Jill also works Dancing with the Stars, America's Got Talent, red carpet events, oversees direction of the Beauty Coach video series, tours with Beauty Coach and is the Creative Director for the BeYOUtiful Foundation. "The payoff is seeing the smiles on my client's faces. I want them to be confident, be comfortable and to know I'm always there for them."
       </div>
     </div>
 
@@ -333,27 +391,11 @@
         <%= image_tag 'sessions/partners/sola.gif', :class => 'sola' %>
         <%= image_tag 'sessions/partners/solagenius.png', :class => 'solagenius' %>
         <%= image_tag '//solasessions.s3.amazonaws.com/logos/samvilla.png', :class => 'samvilla' %>
-        
-        
+        <%= image_tag '//solasessions.s3.amazonaws.com/logos/passionsquared.jpg', :class => 'passion_squared' %>
+        <%= image_tag '//solasessions.s3.amazonaws.com/logos/hairdo.jpg', :class => 'hairdo' %>
       </div>
       <br />
       <h4 class="pink text-center">More Coming Soon!</h4>
-    </div>
-  </div>
-
-  <div class="faces-of-sola">
-    <div class="container">
-      <div class="row">
-        <div class="twelve columns">
-          <!--<div class="vertical-center-column">-->
-            <h2 class="bb">Faces of Sola Panel</h2>
-            <p>Coming Soon!</p>
-          <!--</div>-->
-        </div>
-        <!--<div class="six columns">
-          <img src="https://s3.amazonaws.com/solasalonstudios/faces_of_sola.jpg" class="u-full-width" alt="Faces of Sola" />
-        </div>-->
-      </div> 
     </div>
   </div>
 
@@ -364,22 +406,7 @@
   <div class="getting-there">
     <div class="container">
       <h2 class="bb">Getting There and Parking</h2>
-      <p>Coming Soon!</p>
-    </div>
-  </div>
-
-  <div class="discounted-rooms">
-    <div class="container">
-      <a name="book_a_room" id="book_a_room"></a>
-      <h2 class="text-center">Discounted Rooms Available</h2>
-      <h3 class="text-center">The Duniway Hotel <strong>$199 Per Night</strong></h3>
-      
-      <%= image_tag '//solasessions.s3.amazonaws.com/hotels/duniway.jpg' %>
-
-      <div class="button-wrapper"><a href="https://www3.hilton.com/en/hotels/oregon/the-duniway-portland-a-hilton-hotel-PDXTPHH/index.html" target="_blank" class="button primary">Book Now</a></div>
-      <p style="margin:-12px 0 15px 0">Make sure you enter the code SSS into the group/convention code to receive the discount.</p>
-      <h4>LIMITED AVAILABILITY</h4>
-
+      <p>Located on NE Weidler Street in Northeast Portland, the LeftBank Annex is about an 8 minute Uber/Lyft ride from our preferred hotel, the Duniway.</p>
     </div>
   </div>
 

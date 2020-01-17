@@ -561,9 +561,9 @@
   .speakers {
     margin: 50px 0 0 0 !important;
 
-    h2.bb {
-      margin-bottom: 40px !important;
-    }
+    // h2.bb {
+    //   margin-bottom: 40px !important;
+    // }
 
     .row:first-child {
       margin-top: 0px;
@@ -615,6 +615,18 @@
           top: 1px;
         }   
 
+        &.passion_squared {
+          top: 2px;
+          max-width: 240px;
+          height: auto; 
+        }
+
+        &.hairdo {
+          top: 4px;
+          max-width: 16 0px;
+          height: auto;
+        }
+
         &.samvilla {
           max-width: 240px;
           height: auto;
@@ -635,7 +647,7 @@
         }
 
         &.solagenius {
-          max-width: 260px;
+          max-width: 240px;
           height: auto;
         }
 
@@ -973,6 +985,17 @@
           line-height: 19px !important;
           padding: 20px 75px 17px 75px !important;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .session-2018 {
+    .speakers-container {
+      .three.columns {
+        width: 100%;
+        clear: both;
       }
     }
   }
