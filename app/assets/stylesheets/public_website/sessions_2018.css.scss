@@ -622,8 +622,14 @@
         }
 
         &.hairdo {
-          top: 4px;
-          max-width: 16 0px;
+          top: -4px;
+          max-width: 130px;
+          height: auto;
+        }
+
+        &.popular_nobody {
+          top: -8px;
+          max-width: 130px;
           height: auto;
         }
 
@@ -729,12 +735,6 @@
 
         &.easihairpro {
           max-width: 210px;
-          height: auto;
-        }
-
-        &.hairdo {
-          top: -4px;
-          max-width: 130px;
           height: auto;
         }
 
