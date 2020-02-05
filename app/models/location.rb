@@ -832,6 +832,7 @@ class Location < ActiveRecord::Base
     #   p "resp=#{resp.inspect}"
     #   p "resp.body=#{resp.body}"
     # end
+    p "DONE WITH MOZ"
   rescue => e
     p "Error with Moz location submission #{e}"
   end
@@ -876,12 +877,12 @@ class Location < ActiveRecord::Base
 
   def update_computed_fields
     # update stylist location_name
-    if self.name_changed?
-      stylists.each do |stylist|
-        stylist.location_name = self.name
-        stylist.save
-      end
-    end
+    # if self.name_changed?
+    #   stylists.each do |stylist|
+    #     stylist.location_name = self.name
+    #     stylist.save
+    #   end
+    # end
   end
 
   def touch_location
