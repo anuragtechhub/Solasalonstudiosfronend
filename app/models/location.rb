@@ -16,7 +16,7 @@ class Location < ActiveRecord::Base
   has_many :studios
   has_many :leases
 
-  after_save :submit_to_moz
+  # after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
   before_save :fix_url_name
   after_save :update_computed_fields
