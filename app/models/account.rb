@@ -7,6 +7,8 @@ class Account < ActiveRecord::Base
   has_paper_trail
   
   private
+
+  # comment
   
   def generate_api_key
     begin
