@@ -4,7 +4,15 @@ namespace :reports do
   require 'render_anywhere'
 
   require 'openssl'
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+ task :hello => :environment do
+    p 'hello!'
+  end
+
+
+
+
 
   # task :pdf => :environment do
   #   html_renderer = HTMLRenderer.new
@@ -1294,6 +1302,7 @@ namespace :reports do
       data
     end
 
+    desc 'get_stylist_stylist_phone_number_filters_for_location', 'Get stylist phone filters'
     def get_stylist_stylist_phone_number_filters_for_location(location)
       filters = []
       location.stylists.each do |stylist|

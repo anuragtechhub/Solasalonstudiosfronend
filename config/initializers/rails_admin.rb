@@ -716,11 +716,20 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
+        field :store_id do
+          label 'Store ID'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
         field :status
       end
       group :contact do
         field :general_contact_name do
           label 'General Contact Name'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
         end
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'

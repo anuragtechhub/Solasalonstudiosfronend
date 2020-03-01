@@ -5,7 +5,7 @@ class ReportsMailer < ActionMailer::Base
     @location = location
     report_email_address = @location.email_address_for_reports.present? ? @location.email_address_for_reports : @location.email_address_for_inquiries
     attachments["#{@location.url_name}.pdf"] = report_pdf
-    mail(to: report_email_address, bcc: ['jeff@jeffbail.com', 'sola.analytics1@gmail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
+    mail(to: report_email_address, bcc: ['jeff@jeffbail.com', 'sola.analytics1@gmail.com', 'alderavellc@gmail.com'], subject: "Sola Website Analytics Report: #{@location.name}")
   end
 
   def location_pageview_drop_report(location, report_pdf)
