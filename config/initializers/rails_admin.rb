@@ -679,7 +679,12 @@ RailsAdmin.config do |config|
     end
     edit do
       group :general do
-        field :name
+        field :name do
+        label 'Location Name'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end        
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
@@ -727,9 +732,6 @@ RailsAdmin.config do |config|
       group :contact do
         field :general_contact_name do
           label 'General Contact Name'
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
         end
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'
