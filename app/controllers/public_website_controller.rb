@@ -53,18 +53,24 @@ class PublicWebsiteController < ApplicationController
     end
   end
 
-  def all_states()
-    if I18n.locale == :en
-      # USA!
-      return state_names
-    else
-      cache_key = "all_states/{I18n.locale}/#{Location.order(:updated_at => :desc).first.updated_at}"
-      all_states = Rails.cache.fetch(cache_key) do
-        return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
-      end
-      p "all_states=#{all_states}"
-      return all_states
+  def all_states
+    # if I18n.locale == :en
+    #   # USA!
+    #   return state_names
+    # else
+    #   cache_key = "all_states/{I18n.locale}/#{Location.order(:updated_at => :desc).first.updated_at}"
+    #   all_states = Rails.cache.fetch(cache_key) do
+    #     return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
+    #   end
+    #   p "all_states=#{all_states}"
+    #   return all_states
+    # end
+    cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
+    all_states = Rails.cache.fetch(cache_key) do
+      return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     end
+    p "all_states=#{all_states}"
+    return all_states    
   end
 
   def all_states_json
@@ -158,6 +164,10 @@ class PublicWebsiteController < ApplicationController
   def state_names
     %w(Alaska Alabama Arkansas Arizona California Colorado Connecticut District\ of\ Columbia Delaware Florida Georgia Hawaii Iowa Idaho Illinois Indiana Kansas Kentucky Louisiana Massachusetts Maryland Maine Michigan Minnesota Missouri Mississippi Montana North\ Carolina North\ Dakota Nebraska New\ Hampshire New\ Jersey New\ Mexico Nevada New\ York Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina South\ Dakota Tennessee Texas Utah Virginia Vermont Washington Wisconsin West\ Virginia Wyoming)
   end
+
+  # def state_abbreviations
+  #   %w(AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY)
+  # end
 
   def set_locale
     #p "set_locale #{request.domain}"
