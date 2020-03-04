@@ -92,13 +92,15 @@ class LocationsController < PublicWebsiteController
       @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA')#.where.not(:id => 362)
     end
     
+
+
     #Country check
-    # location = @locations.first
-    # if location && location.country == 'US' && I18n.locale == :en
-    #   redirect_to(:locations, :status => 301)
-    # elsif location && location.country == 'CA' && I18n.locale.to_s != 'en-CA'
-    #   redirect_to(:locations, :status => 301)
-    # end  
+    location = @locations.first
+    if location && location.country == 'US' && I18n.locale.to_s != 'en'
+      redirect_to(:locations, :status => 301)
+    elsif location && location.country == 'CA' && I18n.locale.to_s != 'en-CA'
+      redirect_to(:locations, :status => 301)
+    end  
 
     redirect_to(:locations, :status => 301) unless @locations.size > 0 && @lat && @lng
   end
@@ -126,6 +128,14 @@ class LocationsController < PublicWebsiteController
   def salon
     @success_redirect_url = location_contact_form_success_path 
     @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
+
+    #Country check
+    if @location && @location.country == 'US' && I18n.locale.to_s != 'en'
+      redirect_to(:locations, :status => 301)
+    elsif @location && @location.country == 'CA' && I18n.locale.to_s != 'en-CA'
+      redirect_to(:locations, :status => 301)
+    end  
+
     @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
     
     if @location

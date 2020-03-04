@@ -25,7 +25,7 @@ class OwnYourSalonController < PublicWebsiteController
   end
 
   def own_your_salon
-  	redirect to :why_sola, :status => 301
+  	redirect_to :why_sola, :status => 301
   end
 
   def old_sola_pro
