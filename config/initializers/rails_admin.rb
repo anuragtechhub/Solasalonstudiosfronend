@@ -733,6 +733,9 @@ RailsAdmin.config do |config|
         field :general_contact_name do
           label 'General Contact Name'
         end
+        field :email_address_for_hubspot do
+          label 'Email Address For Hubspot'
+        end
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'
         end

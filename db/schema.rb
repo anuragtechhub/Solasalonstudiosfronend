@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200228203956) do
+ActiveRecord::Schema.define(version: 20200304193459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -401,6 +401,7 @@ ActiveRecord::Schema.define(version: 20200228203956) do
     t.integer  "floorplan_image_file_size"
     t.datetime "floorplan_image_updated_at"
     t.string   "store_id"
+    t.string   "email_address_for_hubspot"
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree

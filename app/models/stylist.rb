@@ -331,7 +331,11 @@ class Stylist < ActiveRecord::Base
 
   def get_hubspot_owner_id(email_address=nil)
     if email_address.blank? && location
-      email_address = location.email_address_for_inquiries
+      if location.email_address_for_hubspot.present?
+        email_address = location.email_address_for_hubspot
+      else
+        email_address = location.email_address_for_inquiries
+      end
     end
     return nil unless email_address.present?
     
