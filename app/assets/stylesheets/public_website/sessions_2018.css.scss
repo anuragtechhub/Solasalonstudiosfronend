@@ -667,7 +667,6 @@
           top: 4px;
         }
 
-
         &.dermaquest {
           max-width: 240px;
           height: auto;
@@ -744,6 +743,24 @@
 
         &.opi {
           max-width: 110px
+        }
+
+        &.salon_services {
+          top: 0px;
+          max-width: 142px;
+          height: auto;
+        }
+
+        &.moroccanoil {
+          top: 0px;
+          max-width: 210px;
+          height: auto;
+        }
+
+        &.loma {
+          top: 0px;
+          max-width: 130px;
+          height: auto;
         }
       }
     }
