@@ -733,14 +733,15 @@ RailsAdmin.config do |config|
         field :general_contact_name do
           label 'General Contact Name'
         end
-        field :email_address_for_hubspot do
-          label 'Email Address For Hubspot'
-        end
         field :email_address_for_inquiries do
           label 'Email Address for Inquiries'
         end
         field :email_address_for_reports do
           label 'Email Address for Reports'
+        end
+        field :email_address_for_hubspot do
+          label 'Email Address For Hubspot'
+          help 'If provided Hubspot will use this email address - not the email address for inquries - to match contacts.'
         end
         field :phone_number
       end
