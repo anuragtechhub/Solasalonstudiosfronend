@@ -135,4 +135,4 @@
     }.html_safe
   end
 } %>
-<% content_for(:canonical_url) { @post.canonical_url(I18n.locale) } %>
+<% content_for(:canonical_url) { @post.get_canonical_url(I18n.locale) } %>

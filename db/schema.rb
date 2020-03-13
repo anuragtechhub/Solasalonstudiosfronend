@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200304193459) do
+ActiveRecord::Schema.define(version: 20200312215656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20200304193459) do
     t.datetime "publish_date"
     t.boolean  "contact_form_visible",        default: false
     t.text     "meta_description"
+    t.string   "canonical_url"
   end
 
   create_table "book_now_bookings", force: true do |t|

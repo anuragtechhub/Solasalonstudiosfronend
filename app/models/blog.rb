@@ -101,8 +101,12 @@ class Blog < ActiveRecord::Base
     "/blog/#{url_name}"
   end
 
-  def canonical_url(locale=:en)
-    "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/blog/#{url_name}"
+  def get_canonical_url(locale=:en)
+    if self.canonical_url.present?
+      return self.canonical_url
+    else
+      return "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/blog/#{url_name}"
+    end
   end
 
   private

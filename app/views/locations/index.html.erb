@@ -64,12 +64,13 @@
       <div class="one-third column">
         <% @states[0,9].each do |state| %>
           <div class="state-wrapper">
-            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
+            <h3 class="state">
+              <%= state.state.html_safe %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <span class="text"><%= location.msa.name.html_safe %></span>,  
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -81,12 +82,12 @@
       <div class="one-third column">
         <% @states[9,20].each do |state| %>
           <div class="state-wrapper">
-            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
+            <h3 class="state"><%= state.state.html_safe %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <span class="text"><%= location.msa.name.html_safe %></span>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -98,12 +99,12 @@
       <div class="one-third column">
         <% @states[29, @states.length].each do |state| %>
           <div class="state-wrapper">
-            <h3 class="state"><%= link_to state.state.html_safe, I18n.locale == :en ? locations_by_state_path(beautify_url_segment state.state) : locations_by_province_path(beautify_url_segment state.state) %></h3>
+            <h3 class="state"><%= state.state.html_safe %></h3>
             <% Location.where(:state => state.state, :status => 'open').group_by(&:msa_name).sort.each do |msa_name, locations| %>
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <span class="text"><%= location.msa.name.html_safe %></span>, 
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>

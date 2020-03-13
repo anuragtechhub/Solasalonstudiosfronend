@@ -209,6 +209,9 @@ RailsAdmin.config do |config|
           "#{value}<br><br>#{bindings[:view].link_to('View in website', bindings[:view].main_app.show_blog_preview_path(bindings[:object]))}".html_safe
         end
       end
+      field :canonical_url do
+        label 'Canonical URL Name'
+      end
       field :status
       field :publish_date
       field :image do 
@@ -252,6 +255,9 @@ RailsAdmin.config do |config|
       field :title
       field :url_name do
         label 'URL Name'
+      end
+      field :canonical_url do
+        label 'Canonical URL Name'
       end
       field :image do
         pretty_value do 
@@ -430,17 +436,20 @@ RailsAdmin.config do |config|
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
           visible false
         end
+        field :msa do
+          label "MSA"
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
         field :admin do
           label 'Franchisee'
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :msa do
-          label "MSA"
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
+        field :store_id do
+          label 'Store ID'
         end
         field :status
       end
