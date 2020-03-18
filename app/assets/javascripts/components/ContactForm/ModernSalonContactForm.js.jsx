@@ -13,7 +13,7 @@ var ModernSalonContactForm = React.createClass({
 			newsletter: true,
 			loading: false,
 			dont_see_your_location: false,
-			how_can_we_help_you: '',
+			how_can_we_help_you: 'Request leasing information',
 			i_would_like_to_be_contacted: true,
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
