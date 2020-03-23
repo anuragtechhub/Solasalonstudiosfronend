@@ -1,0 +1,24 @@
+<script type='application/ld+json'>
+{
+  "@context": "http://www.schema.org",
+  "@type": "HairSalon",
+  "name": "<%= @location.name %>",
+  "url": "<%= @location.url_name %>",
+  "image": "<%=@location.image_1_file_name %>",
+  "description": "<%=@location.description%>",
+  "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "<%= @location.address_1 + "," + @location.address_2 %>",
+     "addressLocality": "<%= @location.city %>",
+     "addressRegion": "<%= @location.state %>",
+     "postalCode": "<%= @location.postal_code %>",
+     "addressCountry": "US"
+  },
+  "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": "<%= @location.latitude %>",
+     "longitude": "<%= @location.longitude %>"
+  },
+  "telephone": "<%= @location.phone_number %>"
+}
+</script>

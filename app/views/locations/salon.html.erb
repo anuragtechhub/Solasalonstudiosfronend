@@ -321,3 +321,4 @@
 <% if @location.description %>
   <% content_for(:meta_description) { clean_html @location.description } %>
 <% end %>
+<% content_for(:json_location_data) { render "shared/json_location_data" } %>

@@ -17,6 +17,9 @@
   <% if content_for?(:meta_tags) %>
     <%= yield :meta_tags %>
   <% end %>
+  <% if content_for?(:json_location_data) %>
+    <%= yield :json_location_data %>
+  <% end %>
   <%= render 'shared/og' %>
   <link rel="shortcut icon" type="image/x-icon" href="<%= image_url 'favicon.png' %>" />
   <% if content_for?(:canonical_url) %>
