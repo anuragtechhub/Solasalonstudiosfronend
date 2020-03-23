@@ -3,9 +3,9 @@
   "@context": "http://www.schema.org",
   "@type": "HairSalon",
   "name": "<%= @location.name %>",
-  "url": "<%= @location.url_name %>",
+  "url": "<%= @location.canonical_url %>",
   "image": "<%=@location.image_1_file_name %>",
-  "description": "<%=@location.description%>",
+  "description": "<%= clean_html @location.description %>",
   "address": {
      "@type": "PostalAddress",
      "streetAddress": "<%= @location.address_1 + "," + @location.address_2 %>",
@@ -17,7 +17,7 @@
   "geo": {
      "@type": "GeoCoordinates",
      "latitude": "<%= @location.latitude %>",
-     "longitude": "<%= @location.longitude %>"
+     "longitude": "<%= @location.longitude %>",
   },
   "telephone": "<%= @location.phone_number %>"
 }
