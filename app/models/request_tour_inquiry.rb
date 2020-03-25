@@ -49,6 +49,8 @@ class RequestTourInquiry < ActiveRecord::Base
     if ENV['HUBSPOT_API_KEY'].present?
       p "HUBSPOT API KEY IS PRESENT, lets sync.. #{get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i}"
       
+      stylist = Stylist.find_by(:email_address => self.email)
+
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
 
       Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit({
@@ -62,7 +64,7 @@ class RequestTourInquiry < ActiveRecord::Base
         canada_prospect: self.canada_locations,
         location_name: self.location.present? ? self.location.name : '',
         location_id: self.location_id || '',
-        hs_persona: 'persona_2',
+        hs_persona: stylist ? 'persona_1' : 'persona_2',
         how_can_we_help_you: self.how_can_we_help_you,
         would_you_like_to_subscribe_to_our_newsletter_: self.newsletter,
         i_would_like_to_be_contacted: self.i_would_like_to_be_contacted,

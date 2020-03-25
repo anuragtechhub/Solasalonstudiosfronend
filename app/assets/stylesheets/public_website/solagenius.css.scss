@@ -22,6 +22,18 @@
     height: 35px;
   }
 
+  .gift-cards {
+    margin: 30px auto 0px auto;
+
+    .container {
+      text-align: center;
+
+      .button {
+        display: inline;
+      }
+    }
+  }
+
   .learn-more-button {
     bottom: 30px;
     z-index: 2;
