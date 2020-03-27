@@ -49,6 +49,8 @@ Solasalonstudios::Application.routes.draw do
 
   get 'franchise', to: redirect('https://pages.solasalonstudios.com/signup?utm_campaign=entrepreneur_print_ad&utm_source=referral&utm_medium=website', status: 301)
 
+  get 'covid19', to: redirect('https://solasalonstudios-covid19.com/', status: 301)
+
   # Own Your Salon URLs
 
   # old own paths

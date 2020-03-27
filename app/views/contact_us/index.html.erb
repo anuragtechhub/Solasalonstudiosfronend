@@ -39,7 +39,7 @@
       <div class="contact-us-form-wrapper">
 
         
-          <%= render 'shared/contact_form_component' %>
+          <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :how_can_we_help_you] %>
         
       </div>
 

@@ -80,6 +80,7 @@ class ContactUsController < PublicWebsiteController
         all_good = true
         #p "required_fields=#{params[:required_fields]}"
         params[:required_fields].each do |required_field|
+          #p "required_field=#{required_field},#{params[required_field].present?}"
           if required_field == 'email' && params[required_field].present? && is_valid_email?(params[required_field])
             # all good
           elsif params[required_field] && params[required_field].present?
@@ -91,7 +92,7 @@ class ContactUsController < PublicWebsiteController
         end
       end
  
-      if (params[:required_fields].present? && all_good) || (params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])) #&& params[:message].present? && params[:contact_preference].present?
+      if (params[:required_fields].present? && all_good) && (params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])) #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
         if params[:required_fields].blank? && params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           render :json => {:error => 'Please enter your zip code'}
@@ -157,8 +158,9 @@ class ContactUsController < PublicWebsiteController
           end
         end
       else
+        #p "something is invalid"
         if params[:required_fields].present?
-          render :json => {:error => "Please enter your #{params[:required_fields].to_sentence}"}
+          render :json => {:error => "Please enter your #{params[:required_fields].to_sentence.gsub(/how_can_we_help_you/, 'select an option from the "I would like to" section')}"}
         elsif params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           p "params[:dont_see_your_location]=#{params[:dont_see_your_location]}"
           p "is_valid_zip_code?(params[:zip_code])=#{is_valid_zip_code?(params[:zip_code])}"
