@@ -202,6 +202,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    libv8 (3.16.14.19)
     little-plugger (1.1.4)
     logging (2.2.0)
       little-plugger (~> 1.1)
@@ -317,6 +318,7 @@ GEM
       tilt
     recaptcha (3.3.0)
       json
+    ref (2.0.0)
     remotipart (1.2.1)
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
@@ -365,6 +367,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
     textacular (4.0.1)
       activerecord (>= 3.0, < 5.1)
+    therubyracer (0.12.3)
+      libv8 (~> 3.16.14.15)
+      ref
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (1.4.1)
@@ -404,6 +409,7 @@ DEPENDENCIES
   dotenv-rails
   down
   escape_utils
+  execjs
   fingerprintjs-rails
   fog-aws
   font-awesome-rails
@@ -450,6 +456,7 @@ DEPENDENCIES
   sprockets (~> 2.12.5)
   sprockets-rails
   textacular (~> 4.0)
+  therubyracer
   thor
   tzinfo
   uglifier (>= 1.3.0)

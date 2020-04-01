@@ -54,10 +54,11 @@
 
   <div class="row home-trilogy">
     <div class="three columns">
-      <%= link_to :about_us do %>
-        <%= image_tag 'Home/trilogy-about-us.jpg', :class => 'u-full-width' %>
+      <%= link_to :covid19 do %>
+        <%= image_tag 'Home/homecovid.jpg', :class => 'u-full-width' %>
         <span class="text">
-          <h2><%= t 'page.about.title' %></h2>
+<!--           <h2><%= t 'page.about.title' %></h2> -->
+          <h2 class="small covid-title">COVID-19 Resource Center</h2>
           <span class="button-wrapper"><span class="button"><%= t 'page.home.learn_more' %></span></span>
         </span>
       <% end %>

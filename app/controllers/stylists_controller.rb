@@ -69,6 +69,23 @@ class StylistsController < PublicWebsiteController
     @no_header = true
   end
 
+  def financial_guide_contact_form_success
+    @success_redirect_url = financial_guide_contact_form_success_path  
+    @contact_form_success = true
+    @scroll_top = params[:s_t]
+    @success = 'Thank you! We will get in touch soon'    
+    @body_class = 'financialguide'
+    @no_header = true
+    
+    render 'financial_guide'
+  end
+
+  def financial_guide
+    @success_redirect_url = financial_guide_contact_form_success_path  
+    @body_class = 'financialguide'
+    @no_header = true
+  end
+
   def redirect
     @stylist = Stylist.find_by(:url_name => params[:url_name])
     @location = @stylist.location if (@stylist && @stylist.location)

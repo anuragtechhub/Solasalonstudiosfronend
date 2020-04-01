@@ -49,7 +49,7 @@ Solasalonstudios::Application.routes.draw do
 
   get 'franchise', to: redirect('https://pages.solasalonstudios.com/signup?utm_campaign=entrepreneur_print_ad&utm_source=referral&utm_medium=website', status: 301)
 
-  get 'covid19', to: redirect('https://solasalonstudios-covid19.com/', status: 301)
+  get 'covid19', to: redirect('https://solasalonstudios-covid19.com/', status: 301), :as => :covid19
 
   # Own Your Salon URLs
 
@@ -137,6 +137,9 @@ Solasalonstudios::Application.routes.draw do
   get 'goingindependent' => 'stylists#going_independent', :as => :going_independent
   get "goingindependent/contact-form-success" => 'stylists#going_independent_contact_form_success', :as => :going_independent_contact_form_success
   match 'salon-professional-send-a-message' => 'stylists#send_a_message', :via => [:get, :post], :as => :salon_professional_send_a_message
+
+  #get 'financialguide' => 'stylists#financial_guide', :as => :financial_guide
+  #get "financialguide/contact-form-success" => 'stylists#financial_guide_contact_form_success', :as => :financial_guide_contact_form_success
 
   get "article/:url_name" => 'article#show', :as => :show_article
   get "readmore/:url_name" => 'article#show'

@@ -73,6 +73,32 @@ class PublicWebsiteMailer < ActionMailer::Base
     end
   end
 
+  def financial_guide(requestTourInquiry)
+    # headers['X-SMTPAPI'] = `{
+    #   "category": "Request a Tour",
+    #   "filters" : {
+    #     "clicktrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     },
+    #     "opentrack" : {
+    #       "settings" : {
+    #         "enable" : 1
+    #       }
+    #     }
+    #   }
+    # }`
+    headers['X-SMTPAPI'] = '{"category": "financial_guide"}'
+
+    if requestTourInquiry && requestTourInquiry.email && requestTourInquiry.email.present?
+      @inquiry = requestTourInquiry
+      #requestTourInquiry.location.email_address_for_inquiries
+      attachments["Your Guide To Going Independent.pdf"] = File.read("#{Rails.root}/lib/your_guide_to_going_independent.pdf")
+      mail(to: requestTourInquiry.email, from: ("Sola Salon Studios <hello@solasalonstudios.com>"), subject: '8 Tips for Independent Beauty Professionals to Weather Financial Uncertainty') #requestTourInquiry.location.email_address_for_inquiries
+    end
+  end
+
   def stylist_message(stylistMessage)
     # headers['X-SMTPAPI'] = `{
     #   "category": "Stylist Message",

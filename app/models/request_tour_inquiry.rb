@@ -219,6 +219,10 @@ class RequestTourInquiry < ActiveRecord::Base
       p "send prospect the modern salon 2019_05 email!"
       email = PublicWebsiteMailer.modern_salon_2019_05(self)
       email.deliver if email
+    elsif send_email_to_prospect == 'financial_guide'
+      p "send prospect the financial guide email!"
+      email = PublicWebsiteMailer.financial_guide(self)
+      email.deliver if email
     end
   end
 end
