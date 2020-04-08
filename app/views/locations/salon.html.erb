@@ -80,7 +80,7 @@
               <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
             <% end %>          
           </div>
-          <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state %>
+          <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state, :required_fields => [:name, :email, :how_can_we_help_you]%>
         </div>
 
         <!-- about this location -->
