@@ -20,7 +20,21 @@
       display: inline-block !important;
       width: auto !important;
     }
+
   }
+  .owl-item {
+    li {
+      text-align: center;
+    }
+
+    img {
+      width: auto;
+      height: 720px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
 }
 
 .play-video-gallery-item {
