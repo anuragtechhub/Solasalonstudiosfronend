@@ -25,10 +25,11 @@
           <%= link_to t('page.about.view_locations').html_safe, :locations %>
         </div>
       <% else %>
+      <!-- 
         <div class="info-box">
             <h1 style="margin-top:20px;font-size:25px;line-height:30px;padding:0 20px"><%= t('page.about.coming_soon_to_canada').html_safe %></h1>
             <%= link_to 'Contact Us', :contact_us %>
-          </div>
+          </div> -->
       <% end %>
 
       <% if I18n.locale == :en %>
@@ -63,7 +64,7 @@
   <div class="link"><%= link_to t('page.about.view_gallery').html_safe, :gallery, :class => 'button primary view-image-gallery' %></div>
 </div>
 
-<div class="callout blue callout-testimonial">
+<!-- <div class="callout blue callout-testimonial">
   <div class="container">
     <div class="row">
       <div class="one-third column">
@@ -75,7 +76,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="callout green">
   <div class="container">
