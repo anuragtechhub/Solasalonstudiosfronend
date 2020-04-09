@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200312215656) do
+ActiveRecord::Schema.define(version: 20200409145842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,20 @@ ActiveRecord::Schema.define(version: 20200312215656) do
     t.text     "reason"
     t.text     "attempt"
     t.text     "tls"
+  end
+
+  create_table "franchising_forms", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.boolean  "multi_unit_operator"
+    t.string   "liquid_capital"
+    t.string   "city"
+    t.string   "state"
+    t.boolean  "agree_to_receive_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "franchising_requests", force: true do |t|

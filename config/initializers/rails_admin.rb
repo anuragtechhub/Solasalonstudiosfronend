@@ -327,6 +327,15 @@ RailsAdmin.config do |config|
   end
 
   config.model 'FranchisingRequest' do
+    visible false
+    # visible do
+    #   ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+    # end
+    # label 'Franchsing Inquiry'
+    # label_plural 'Franchising Inquiries'
+  end
+
+  config.model 'FranchsingForm' do
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
