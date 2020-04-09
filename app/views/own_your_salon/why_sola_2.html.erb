@@ -109,7 +109,7 @@
       </div>
 
       <% if I18n.locale.to_s == 'en' %>
-        <%= render 'shared/contact_form_component' %>
+        <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :how_can_we_help_you] %>
       <% end %>
 
       <div class="row mobile-only">
@@ -247,7 +247,7 @@
       <% end %>
 
       <% if I18n.locale.to_s == 'en' %>
-        <%= render 'shared/contact_form_component' %>
+        <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :how_can_we_help_you] %>
       <% end %>
 
     </div>

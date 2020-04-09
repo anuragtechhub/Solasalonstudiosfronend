@@ -75,7 +75,7 @@
         <div class="summary"><%= @post.body.html_safe %></div>
 
         <% if @post.contact_form_visible %>
-          <%= render 'shared/contact_form_component' %>
+          <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :how_can_we_help_you] %>
         <% end %>
 
         <div class="disqus-comments">
