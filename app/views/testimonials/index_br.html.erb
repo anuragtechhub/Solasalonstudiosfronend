@@ -1,0 +1,170 @@
+<div class="testimonials-page">
+
+<%= render 'shared/public_website/about_us_nav', :page => :testimonials %>
+
+<h1 class="title"><%= t('page.testimonials.title').html_safe %></h1>
+
+<div class="container featured-testimonials">
+
+  <div class="owl-carousel owl-theme" data-autoplay="10000">
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial1').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author1').html_safe %></h4>
+    </div>
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial3').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author3').html_safe %></h4>
+    </div>
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial4').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author4').html_safe %></h4>
+    </div>
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial6').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author6').html_safe %></h4>
+    </div>
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial7').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author7').html_safe %></h4>
+    </div>
+
+    <div class="item featured-testimonial">
+      <h1 class="chalet"><%= t('page.testimonials.carousel_testimonial8').html_safe %></h1>
+      <h4><%= t('page.testimonials.carousel_author8').html_safe %></h4>
+    </div>
+      
+  </div>
+
+</div>
+
+<% if I18n.locale.to_s == 'pt-BR' %>
+  <div class="hear-from-members">
+    <a href="//www.youtube.com/watch?v=dxn9VGunMeU" class="button primary play-video rounded-play-button"><%= t('page.testimonials.watch_our_video') %> <span class="fa fa-play-circle">&nbsp;</span></a>
+  </div>
+<% else %>
+  <div class="hear-from-members">
+    <a href="//www.youtube.com/watch?v=72pips9fvwQ" class="button primary play-video rounded-play-button"><%= t('page.testimonials.watch_our_video') %> <span class="fa fa-play-circle">&nbsp;</span></a>
+  </div>
+<% end %>
+
+<% if I18n.locale.to_s != 'pt-BR' %>
+  <%= render 'shared/carousels/sola_spotlight' %>
+<% end %>
+
+<div class="container half-testimonials">
+
+  <h2><%= t('page.testimonials.more_testimonials') %></h2>
+
+  <div class="row">
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote1').html_safe %>&quot;<br /><br /></h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/LaShondaBanks.png' %>
+        <h4><%= t('page.testimonials.testimonial_author1').html_safe %></h4>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote2').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/AshleyLantz.png' %>
+        <h4><%= t('page.testimonials.testimonial_author2').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote3').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/SueScott.png' %>
+        <h4><%= t('page.testimonials.testimonial_author3').html_safe %></h4>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote4').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/MorganCameron.png' %>
+        <h4><%= t('page.testimonials.testimonial_author4').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote5').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/SadeWilliams.png' %>
+        <h4><%= t('page.testimonials.testimonial_author5').html_safe %></h4>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote6').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/ChrisMatthew.png' %>
+        <h4><%= t('page.testimonials.testimonial_author6').html_safe %></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote7').html_safe %>&quot;<br /><br /></h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/JulieNguyen.png' %>
+        <h4><%= t('page.testimonials.testimonial_author7').html_safe %></h4>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote8').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/AmandaFagan.png' %>
+        <h4><%= t('page.testimonials.testimonial_author8').html_safe %></h4>
+      </div>
+    </div> 
+  </div>
+
+  <div class="row last">
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote9').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/AntonioHeath.png' %>
+        <h4><%= t('page.testimonials.testimonial_author9').html_safe %></h4>
+      </div>
+    </div>
+
+    <div class="one-half column half-testimonial">
+      <h3>&quot;<%= t('page.testimonials.testimonial_quote10').html_safe %>&quot;</h3>
+      <div class="testimonial-author">
+        <%= image_tag 'testimonials/JenniferLaVigne.png' %>
+        <h4><%= t('page.testimonials.testimonial_author10').html_safe %></h4>
+      </div>
+    </div>    
+  </div> 
+
+</div>
+
+<div class="container">
+  <div class="cta cta-own">
+    <%= image_tag 'cta/OwnSalon.png' %>
+    <div class="cta-contents">
+      <h2><%= t('page.testimonials.join_our_community').html_safe %></h2>
+      <p><%= t('page.testimonials.join_our_community_text').html_safe %></p>
+      <%= link_to :contact_us, :class => 'button primary' do %><%= t('page.testimonials.join_our_community_button') %><% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<% content_for(:title) { t('page.testimonials.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/testimonials" } %>
+<% content_for(:meta_description) { t('page.testimonials.meta_description') } %>
