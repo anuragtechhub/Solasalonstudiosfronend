@@ -25,6 +25,29 @@ pt-BR:
         start_date: "Recurring weekly charge 4 start date"
         end_date: "Recurring weekly charge 4 end date"              
 
+  contact_form:
+    contact_a_sola_near_you: Entre em contato com um local da Sola perto de você
+    select_a_state: Selecione um Estado
+    select_a_location: Selecione um local
+    dont_see_your_location: Não encontra um local perto de você?
+    please_try_again: Por favor, tente novamente
+    your_name: Seu nome *
+    email_address: Seu email *
+    phone_number: Seu telefone
+    leave_a_message: Deixe uma mensagem (Opcional)
+    submit_message: Enviar mensagem
+    how_can_we_help_you: Como podemos te ajudar? *
+    request_leasing_information: Solicitar informações de leasing
+    book_an_appointment: Marque uma consulta com um profissional de salão
+    other: De outros
+    how_would_you_prefer_to_be_counted: Como você prefere ser contatado?
+    subscribe_to_newsletter: Assine a nossa newsletter mensal
+    i_would_like_to: 'Eu gostaria de:'
+    i_would_like_to_be_contacted: 'Gostaria de ser contatado por um gerente de leasing da Sola para saber mais!'
+    what_services_do_you_specialize_in: Em quais serviços você se especializa?
+    what_services_would_you_like_to_book: Quais serviços você gostaria?
+    zip_code: Código postal
+
   brand_name: Sola Salon Studios
   logo_name: Sola Salon Studios Logotipo
   short_www_name: www.solasalons.com
@@ -761,26 +784,3 @@ pt-BR:
       view_all_locations: Ver todos os locais
       find_a_studio: Encontre um estúdio
       contact_us: Fale conosco
-
-  contact_form:
-    contact_a_sola_near_you: Entre em contato com um local da Sola perto de você
-    select_a_state: Selecione um Estado
-    select_a_location: Selecione um local
-    dont_see_your_location: Não encontra um local perto de você?
-    please_try_again: Por favor, tente novamente
-    your_name: Seu nome *
-    email_address: Seu email *
-    phone_number: Seu telefone
-    leave_a_message: Deixe uma mensagem (Opcional)
-    submit_message: Enviar mensagem
-    how_can_we_help_you: Como podemos te ajudar? *
-    request_leasing_information: Solicitar informações de leasing
-    book_an_appointment: Marque uma consulta com um profissional de salão
-    other: De outros
-    how_would_you_prefer_to_be_counted: Como você prefere ser contatado?
-    subscribe_to_newsletter: Assine a nossa newsletter mensal
-    i_would_like_to: 'Eu gostaria de:'
-    i_would_like_to_be_contacted: 'Gostaria de ser contatado por um gerente de leasing da Sola para saber mais!'
-    what_services_do_you_specialize_in: Em quais serviços você se especializa?
-    what_services_would_you_like_to_book: Quais serviços você gostaria?
-    zip_code: Código postal
