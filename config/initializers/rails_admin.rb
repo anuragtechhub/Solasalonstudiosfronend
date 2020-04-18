@@ -165,6 +165,11 @@ RailsAdmin.config do |config|
       #   end
       # end
       field :location 
+      field :display_setting do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end 
     end 
     edit do
       field :title
@@ -180,7 +185,12 @@ RailsAdmin.config do |config|
       #field :body, :ck_editor
       field :location do
         help 'In order to have an article show up on more than one location page, you will need to create separate articles for each location page'
-      end   
+      end  
+      field :display_setting do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end 
       field :created_at
     end 
   end

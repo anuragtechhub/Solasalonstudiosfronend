@@ -25,6 +25,11 @@ class Article < ActiveRecord::Base
     EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
   end
 
+
+  def display_setting_enum
+    [['Sola Website', 'sola_website'], ['Franchising Website', 'franchising'], ['Both', 'both']]
+  end
+
   private
 
   def generate_url_name

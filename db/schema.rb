@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200409145842) do
+ActiveRecord::Schema.define(version: 20200418171831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20200409145842) do
     t.datetime "updated_at"
     t.string   "legacy_id"
     t.integer  "location_id"
+    t.string   "display_setting",    default: "sola_website"
   end
 
   add_index "articles", ["location_id"], name: "index_articles_on_location_id", using: :btree
