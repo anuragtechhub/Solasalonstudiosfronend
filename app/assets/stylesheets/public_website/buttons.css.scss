@@ -71,6 +71,34 @@ button, input[type=button], input[type=submit], .button, a.button, a.button:link
     }
   }
 
+  &.secondary {
+    border-radius: 4px;
+    border: 0 solid transparent;
+    padding: 19px 20px 17px 20px;
+    background: $brand-pink;
+    color: $brand-pink !important;
+    @include gradient-horizontal(#fefefe, #eeeeee);
+    margin-bottom: 0px;
+
+    &:hover, &:active {
+      color: $brand-pink !important;
+      @include gradient-horizontal(#fefefe, #eeeeee);
+      opacity: 0.5;
+    }  
+
+    &.pill {
+      padding: 13px 25px 10px 25px;
+      font-size: 16px;
+      letter-spacing: 0;
+      border-radius: 40px;
+
+      &.square {
+        border-radius: 4px;
+        padding: 13px 20px 10px 20px;
+      }
+    }
+  }
+
   &.outline-large-white, &.outline-large-white:hover, &.outline-large-white:active, &.outline-large-white:focus {
     padding: 15px 20px 13px 20px;
     background: #FFF;

@@ -190,6 +190,12 @@ body.contact-us {
 }
 
 .contact-2019 {
+  .owl-carousel .owl-item .item .item-content {
+    top: 180px;
+  }
+}
+
+.contact-2019 {
   .owl-carousel .owl-item .item a.play-video {
     overflow: visible;
   }
@@ -470,7 +476,7 @@ body.contact-us {
 @media (max-width : 1150px) {
   .contact-2019 {
     .owl-carousel .owl-item .item .item-content {
-      top: 0;
+      top: 170px;
     }
   }
 }
@@ -478,7 +484,7 @@ body.contact-us {
 @media (max-width : 1050px) {
   .contact-2019 {
     .owl-carousel .owl-item .item .item-content {
-      top: -49px;
+      top: 155px;
     }
   }
 }
@@ -486,7 +492,7 @@ body.contact-us {
 @media (max-width : 865px) {
   .contact-2019 {
     .owl-carousel .owl-item .item .item-content {
-      top: -69px;
+      top: 115px;
     }
   }
 }
@@ -494,7 +500,7 @@ body.contact-us {
 @media (max-width : 767px) {
   .contact-2019 {
     .owl-carousel .owl-item .item .item-content {
-      top: -99px;
+      top: 100px;
     }
   }
 
@@ -565,11 +571,53 @@ body.contact-us {
       width: auto;
       left: -35%;
     }
+  }
+}
+
+@media (max-width : 414px) {
+  .contact-2019 {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -5%;
+    }
     .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
       display: none;
     }
     .owl-carousel .owl-item .item .item-content {
-      top: 0px;
+      top: -20px;
+    }
+  }
+}
+
+@media (max-width : 375px) {
+  .contact-2019 {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -15%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: 20px;
+    }
+  }
+}
+
+@media (max-width : 320px) {
+  .contact-2019 {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -30%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: -20px;
     }
   }
 }

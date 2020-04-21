@@ -16,6 +16,10 @@
 		}
 	}
 
+	 .owl-carousel .owl-item .item .item-content {
+      top: 170px;
+    }
+
 }
 
 .locale-en, .locale-en-CA {
@@ -478,6 +482,12 @@
 }
 
 @media (max-width: 1200px) {
+	.why-sola {
+	    .owl-carousel .owl-item .item .item-content {
+      top: 130px;
+    }
+  }
+
 	.search-for-a-salon {
 		padding: 160px 0 150px 0;
 
@@ -503,51 +513,6 @@
 	}
 }
 
-@media (max-width: 991px) {
-	.search-for-a-salon {
-		&.max-height {
-			padding: 30px 0;
-		}
-
-		.contact-form {
-			display: none;
-			right: auto;
-			top: auto;
-			position: static;
-			max-width: 500px;
-			margin: 60px auto 30px auto;
-			background: #FFF;
-			padding: 20px 15px;
-		}
-		
-		.salon-search-results {
-			margin-top: 25px;
-		}
-
-		.salon-search-result {
-			max-width: 100%;
-			width: 100%;
-		}
-		.search-for-a-salon .salon-search-result .names p, .search-for-a-salon .salon-search-result:link .names p, .search-for-a-salon .salon-search-result:visited .names p {
-			width: 90%;
-		}
-	}
-
-	.sola-freedom {
-		.desktop-only {
-			display: none;
-		}
-		.mobile-only {
-			display: block;
-		}
-		.contact-form {
-			display: block;
-			margin: 10px auto 40px auto;
-    	max-width: 500px;
-		}
-	}
-}
-
 // @media (max-width: 550px) {
 // 	.floating-find-a-studio {
 // 		display: none;
@@ -561,6 +526,11 @@
 // }
 
 @media (max-width: 1025px) {
+	.why-sola {
+	    .owl-carousel .owl-item .item .item-content {
+      top: 125px;
+    }
+  }
 	.sola-freedom {
 
 		.columns {
@@ -618,6 +588,57 @@
 					margin-top: 15px;
 				}
 			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.why-sola {
+	    .owl-carousel .owl-item .item .item-content {
+      top: 70px;
+    }
+  }
+
+	.search-for-a-salon {
+		&.max-height {
+			padding: 30px 0;
+		}
+
+		.contact-form {
+			display: none;
+			right: auto;
+			top: auto;
+			position: static;
+			max-width: 500px;
+			margin: 60px auto 30px auto;
+			background: #FFF;
+			padding: 20px 15px;
+		}
+		
+		.salon-search-results {
+			margin-top: 25px;
+		}
+
+		.salon-search-result {
+			max-width: 100%;
+			width: 100%;
+		}
+		.search-for-a-salon .salon-search-result .names p, .search-for-a-salon .salon-search-result:link .names p, .search-for-a-salon .salon-search-result:visited .names p {
+			width: 90%;
+		}
+	}
+
+	.sola-freedom {
+		.desktop-only {
+			display: none;
+		}
+		.mobile-only {
+			display: block;
+		}
+		.contact-form {
+			display: block;
+			margin: 10px auto 40px auto;
+    	max-width: 500px;
 		}
 	}
 }
@@ -697,4 +718,52 @@
 			}
 		}
 	}
+}
+
+@media (max-width : 414px) {
+  .why-sola {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -20%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: -20px;
+    }
+  }
+}
+
+@media (max-width : 375px) {
+  .why-sola {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -25%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: -20px;
+    }
+  }
+}
+
+@media (max-width : 320px) {
+  .why-sola {
+    .owl-carousel .item .img-wrap, .owl-carousel .item .img-wrap img {
+      height: 420px;
+      width: auto;
+      left: -33%;
+    }
+    .giant-video-button-wrapper .text, .owl-carousel .learn-more-button.learn-more-button-circle img {
+      display: none;
+    }
+    .owl-carousel .owl-item .item .item-content {
+      top: -10px;
+    }
+  }
 }
