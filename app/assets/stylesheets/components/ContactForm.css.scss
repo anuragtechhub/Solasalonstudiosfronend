@@ -504,7 +504,23 @@
 @media (max-width: 575px) {
   .location-page .contact-form {
     .form-inline-rows .form-inline input {
-      top: 2px;
+      top: 2px !important;
+    }
+  }
+
+  .form-inline-rows {
+    .form-inline {
+      label {
+        margin: -1px 3px 3px -3px;
+        white-space: nowrap;
+        //overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      span {
+        position: relative;
+        top: -5px;
+      }
     }
 
     .service-checkboxes input {
