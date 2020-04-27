@@ -1,5 +1,7 @@
 RailsAdmin.config do |config|
   
+  # config.compact_show_view = false
+
   config.authenticate_with do
     warden.authenticate! scope: :admin
   end
@@ -110,6 +112,7 @@ RailsAdmin.config do |config|
           bindings[:controller]._current_user.franchisee != true
         end
       end
+
       field :email_address
       field :password
       field :password_confirmation     
@@ -1228,19 +1231,23 @@ RailsAdmin.config do |config|
         searchable [:name]
         queryable true
       end
-      field :created_at
+      field :i_would_like_to_be_contacted_value do
+        label 'I Would Like To Be Contacted'
+        searchable false
+      end
       field :how_can_we_help_you do
         searchable true
         queryable true
       end
+      field :created_at
       field :send_email_to_prospect do 
         hide
         label 'Prospect Origin'
         searchable true
         queryable true
       end
-      field :newsletter do
-        hide
+      field :newsletter_value do
+        label 'Newsletter Subscription'
         searchable false
       end
       field :canada_locations do
@@ -1248,10 +1255,6 @@ RailsAdmin.config do |config|
         searchable false
       end
       field :dont_see_your_location do 
-        hide
-        searchable false
-      end
-      field :i_would_like_to_be_contacted do
         hide
         searchable false
       end
@@ -1263,6 +1266,9 @@ RailsAdmin.config do |config|
       field :name
       field :email
       field :phone
+      field :i_would_like_to_be_contacted_value do
+        label 'I Would Like To Be Contacted'
+      end
       field :how_can_we_help_you
       field :message
       field :contact_preference
@@ -1288,7 +1294,9 @@ RailsAdmin.config do |config|
       field :utm_content do
         label 'UTM Content'
       end
-      field :newsletter
+      field :newsletter_value do
+        label 'Newsletter Subscription'
+      end
       field :created_at
     end
     edit do

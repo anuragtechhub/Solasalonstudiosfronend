@@ -34,6 +34,10 @@ class RequestTourInquiry < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+  def i_would_like_to_be_contacted_enum
+    [['Yes', true], ['No', false]]
+  end
+
   def get_cms_lead_timestamp
     rti = RequestTourInquiry.where(:email => self.email).order(:created_at => :desc).first
     if rti
@@ -204,7 +208,7 @@ class RequestTourInquiry < ActiveRecord::Base
   private
 
   def send_notification_email
-    if i_would_like_to_be_contacted == false && send_email_to_prospect == 'modern_salon_2019_05'
+    if i_would_like_to_be_contacted == false && (send_email_to_prospect == 'modern_salon_2019_05' || 'financial_guide')
       p "shhh"
       p "do not contact me!"
     else
@@ -224,5 +228,21 @@ class RequestTourInquiry < ActiveRecord::Base
       email = PublicWebsiteMailer.financial_guide(self)
       email.deliver if email
     end
+  end
+end
+
+def i_would_like_to_be_contacted_value 
+  if i_would_like_to_be_contacted 
+    return 'Yes'
+  else
+    return 'No'
+  end
+end
+
+def newsletter_value 
+  if newsletter 
+    return 'Yes'
+  else
+    return 'No'
   end
 end

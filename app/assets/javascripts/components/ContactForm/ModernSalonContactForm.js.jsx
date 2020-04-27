@@ -13,8 +13,9 @@ var ModernSalonContactForm = React.createClass({
 			newsletter: true,
 			loading: false,
 			dont_see_your_location: false,
-			how_can_we_help_you: 'Request leasing information',
+			how_can_we_help_you: this.props.how_can_we_help_you || 'Request leasing information',
 			i_would_like_to_be_contacted: true,
+			is_sola_professional: '',
 			selected_location: this.props.selected_location,
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
@@ -88,7 +89,7 @@ var ModernSalonContactForm = React.createClass({
 
 	render: function () {
 		var self = this;
-		//console.log('render ContactForm', this.props.all_states_ca);
+		console.log('render ContactForm', this.state, this.props);
 		
 		return (
 			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.props.root_class_name || '')}>
@@ -97,6 +98,22 @@ var ModernSalonContactForm = React.createClass({
 				<form onSubmit={this.onSubmit} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
 					
+					{
+						this.props.is_sola_professional
+						?
+						 <div className="form-group is-sola-pro">
+						 	<label>Are you a Sola professional? *</label>
+			 				<div className="form-inline-rows">
+				 				<div className="form-inline">
+								 	<label><input type="radio" className="form-control" name="is_sola_professional" value="yes" checked={this.state.is_sola_professional == "yes"} onChange={this.onChangeInput}/> Yes</label>
+								 	<label><input type="radio" className="form-control" name="is_sola_professional" value="no" checked={this.state.is_sola_professional == "no"} onChange={this.onChangeInput}/> No</label>
+								</div>
+							</div>
+						</div>
+						:
+						null
+					}
+
 					{this.renderName()}
 
 					{this.renderEmail()}
@@ -105,30 +122,43 @@ var ModernSalonContactForm = React.createClass({
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
 					</div>
 
-					<div className="row">
-						<div className="col-sm-12 choose-a-sola-location">
-							<label>Choose a Sola location near you (optional)</label>
-							<div className="dont-see-your-location i-live-in-canada">
-								<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> I live in Canada</label>
+					{
+						this.state.is_sola_professional != 'yes'
+						?
+						<div className="row">
+							<div className="col-sm-12 choose-a-sola-location">
+								<label>Choose a Sola location near you (optional)</label>
+								<div className="dont-see-your-location i-live-in-canada">
+									<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> I live in Canada</label>
+								</div>
 							</div>
 						</div>
-					</div>
+					:
+					null
+					}
 
-					<div className="row state-location-row">
-						<div className="col-sm-6">
-							{
-								this.state.canada_locations
-								?
-								<SolaSelect className="state-select" placeholder="Select a province" options={this.props.all_states_ca} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
-								:
-								<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
-							}
+					{
+						this.state.is_sola_professional != 'yes'
+						?
+						<div className="row state-location-row">
+							<div className="col-sm-6">
+								{
+									this.state.canada_locations
+									?
+									<SolaSelect className="state-select" placeholder="Select a province" options={this.props.all_states_ca} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+									:
+									<SolaSelect className="state-select" placeholder={I18n.t('contact_form.select_a_state')} options={this.props.all_states} value={this.state.selected_state} onChange={this.onChangeSelectedState} />
+								}
+							</div>
+							<div className="col-sm-6 dont-see-your-location-col">
+								{this.renderDontSeeYourLocation()}
+							</div>
 						</div>
-						<div className="col-sm-6 dont-see-your-location-col">
-							{this.renderDontSeeYourLocation()}
-						</div>
-					</div>
-					
+						:
+						null
+					}
+
+
 					{this.renderLocations()}
 
 					{
@@ -144,7 +174,7 @@ var ModernSalonContactForm = React.createClass({
 					}
 
 					{
-						this.props.display_service_checkboxes
+						this.props.display_service_checkboxes && (this.state.is_sola_professional != 'yes')
 						?
 						<div className={"service-checkboxes " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
 							<label>{I18n.t('contact_form.what_services_do_you_specialize_in')}</label>
@@ -168,7 +198,7 @@ var ModernSalonContactForm = React.createClass({
 					<button ref="submit_button" className="button block primary" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}>{this.props.submit_button_text}</button>
 					
 					{
-						this.props.display_i_would_like_to_be_contacted 
+						this.props.display_i_would_like_to_be_contacted && (this.state.is_sola_professional != 'yes')
 						?
 						<div className={"form-group newsletter " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
 							<label>
@@ -180,7 +210,10 @@ var ModernSalonContactForm = React.createClass({
 						:
 						null
 					}
-
+					
+					{
+						// this.state.is_sola_professional != 'yes'
+						// ?
 					<div className={"form-group newsletter " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
 						<label>
 							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
@@ -188,6 +221,9 @@ var ModernSalonContactForm = React.createClass({
 							<div className="clearfix">&nbsp;</div>
 						</label>
 					</div>
+					// :
+					// null
+					}
 
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
 				</form>
@@ -290,7 +326,7 @@ var ModernSalonContactForm = React.createClass({
 	onChangeInput: function (e) {
 		//console.log('onChangeInput', e.target.name, e.target.value);
 		var value = e.target.type == 'checkbox' ? e.target.checked : e.target.value;
-		
+
 
 		if (e.target.name == 'dont_see_your_location' && value == true) {
 			this.state.selected_location = null;
@@ -304,6 +340,18 @@ var ModernSalonContactForm = React.createClass({
 			}
 		} else {
 			this.state[e.target.name] = value;
+		}
+
+		if (e.target.name == 'is_sola_professional') {
+			if (e.target.value == 'yes') {
+				this.state.i_would_like_to_be_contacted = false;
+				this.state.newsletter = true;
+			} else if (e.target.value == 'no') {
+				this.state.i_would_like_to_be_contacted = true;
+				this.state.newsletter = true;
+			}
+		} else {
+			
 		}
 
 		//console.log('this.state.selected_services', this.state.selected_services);
@@ -347,11 +395,11 @@ var ModernSalonContactForm = React.createClass({
 		//console.log('message', message);
 
 		var form_data = {
-			source: this.props.source,
-			campaign: this.props.campaign,
-			medium: this.props.medium,
-			content: this.props.content,
-			hutk: this.props.hutk,
+				source: this.props.source,
+				campaign: this.props.campaign,
+				medium: this.props.medium,
+				content: this.props.content,
+				hutk: this.props.hutk,
 
     	location_id: this.state.selected_location,
     	name: this.state.name,
@@ -360,9 +408,11 @@ var ModernSalonContactForm = React.createClass({
     	contact_preference: this.capitalize(this.state.contact_preference),
     	dont_see_your_location: this.state.dont_see_your_location || (this.state.selected_state == 'Other'),
     	how_can_we_help_you: this.state.how_can_we_help_you,
-    	i_would_like_to_be_contacted: this.state.i_would_like_to_be_contacted,
+    	i_would_like_to_be_contacted: this.state.is_sola_professional == 'yes' ?  false : this.state.i_would_like_to_be_contacted,
+    	is_sola_professional: this.state.is_sola_professional,
     	phone: this.state.phone,
     	message: this.state.message,
+    	newsletter: this.state.newsletter,
     	request_url: this.props.request_url,
     	required_fields: this.props.required_fields,
     	send_email_to_prospect: this.props.send_email_to_prospect,

@@ -432,6 +432,37 @@
     }
   } 
 
+  .is-sola-pro {
+    margin-top: 15px;
+    border-bottom: 1px solid #DFDFDF;
+
+    input {
+      position: relative !important;
+      top: -1px !important;
+      right: -1px !important;
+      margin-right: 2px !important;
+    }
+
+    .form-inline-rows {
+      margin-bottom: 5px;
+    }
+
+    label {
+      font-size: 12px;
+      margin: 0;
+    }
+
+    span {
+      margin: 0 15px 0 0;
+
+    }
+
+    select {
+      width: 100%;
+      background-color: #FFFFFF !important;
+      border: 1px solid #DBDBDB !important;
+    }
+  }
 }
 
 .location-page .contact-form {

@@ -105,13 +105,15 @@ class ContactUsController < PublicWebsiteController
             #   end
             # end
 
-            rti = RequestTourInquiry.create({
+    
+            rti = RequestTourInquiry.new({
               :name => params[:name], 
               :email => params[:email], 
               :phone => params[:phone], 
               :canada_locations => params[:canada_locations],
               :location_id => params[:location_id], 
-              :message => params[:message], 
+              :message => params[:message],
+              :newsletter => params[:newsletter], 
               :request_url => params[:request_url], 
               :contact_preference => params[:contact_preference], 
               :how_can_we_help_you => params[:how_can_we_help_you], 
@@ -129,6 +131,27 @@ class ContactUsController < PublicWebsiteController
             })
             rti.visit = save_visit
             rti.save
+
+
+            # if params[:is_sola_professional] == 'yes' && params[:send_email_to_prospect] == 'financial_guide'
+            #   p "send prospect the financial guide email!"
+            #   email = PublicWebsiteMailer.financial_guide(rti)
+            #   email.deliver if email
+            # else
+            #   rti.visit = save_visit
+            #   rti.save
+            # end
+
+
+            # if params[:i_would_like_to_be_contacted] == true && params[:send_email_to_prospect] == 'financial_guide'
+            #   p "send prospect the financial guide email!"
+            #   email = PublicWebsiteMailer.financial_guide(rti)
+            #   email.deliver if email
+            # else
+            #   rti.visit = save_visit
+            #   rti.save
+            # end
+
 
             # if params[:email]
             #   gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
@@ -160,7 +183,7 @@ class ContactUsController < PublicWebsiteController
       else
         #p "something is invalid"
         if params[:required_fields].present?
-          render :json => {:error => "Please enter your #{params[:required_fields].to_sentence.gsub(/how_can_we_help_you/, 'select an option from the "I would like to" section')}"}
+          render :json => {:error => "Please enter your #{params[:required_fields].to_sentence.gsub(/how_can_we_help_you/, 'select an option from the "I would like to" section').gsub(/is_sola_professional/, 'select whether you are a Sola professional')}"}
         elsif params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           p "params[:dont_see_your_location]=#{params[:dont_see_your_location]}"
           p "is_valid_zip_code?(params[:zip_code])=#{is_valid_zip_code?(params[:zip_code])}"

@@ -433,6 +433,7 @@ var ContactForm = React.createClass({
     	i_would_like_to_be_contacted: true,
     	phone: this.state.phone,
     	message: this.state.message,
+    	newsletter: this.state.newsletter,
     	request_url: this.props.request_url,
     	required_fields: this.props.required_fields,
     	send_email_to_prospect: this.props.send_email_to_prospect,
