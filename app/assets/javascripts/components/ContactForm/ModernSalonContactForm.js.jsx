@@ -212,8 +212,8 @@ var ModernSalonContactForm = React.createClass({
 					}
 					
 					{
-						// this.state.is_sola_professional != 'yes'
-						// ?
+						this.state.is_sola_professional != 'yes'
+						?
 					<div className={"form-group newsletter " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
 						<label>
 							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
@@ -221,8 +221,8 @@ var ModernSalonContactForm = React.createClass({
 							<div className="clearfix">&nbsp;</div>
 						</label>
 					</div>
-					// :
-					// null
+					:
+					null
 					}
 
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
@@ -345,7 +345,7 @@ var ModernSalonContactForm = React.createClass({
 		if (e.target.name == 'is_sola_professional') {
 			if (e.target.value == 'yes') {
 				this.state.i_would_like_to_be_contacted = false;
-				this.state.newsletter = true;
+				this.state.newsletter = false;
 			} else if (e.target.value == 'no') {
 				this.state.i_would_like_to_be_contacted = true;
 				this.state.newsletter = true;
