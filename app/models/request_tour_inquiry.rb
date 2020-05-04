@@ -82,6 +82,7 @@ class RequestTourInquiry < ActiveRecord::Base
         content: self.content,
         hutk: self.hutk,
         cms_lead_timestamp: get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i,
+        store_id: self.location.present? ? self.location.store_id : '',
       })
 
       contact_properties = {
