@@ -15,7 +15,7 @@ class HomeController < PublicWebsiteController
   end
 
   def franchising
-    redirect_to 'https://pages.solasalonstudios.com/signup?utm_campaign=fran_dev&utm_source=referral&utm_medium=website'
+    redirect_to 'https://www.solafranchising.com' #'https://pages.solasalonstudios.com/signup?utm_campaign=fran_dev&utm_source=referral&utm_medium=website'
   end 
 
   def new_cms
