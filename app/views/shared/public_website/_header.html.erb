@@ -5,6 +5,11 @@
         <% if I18n.locale.to_s == 'pt-BR' %>
           <li class="social"><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
           <li class="social last"><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+        <% elsif I18n.locale.to_s == "en-CA"%>      
+          <li class="social"><%= link_to 'https://www.facebook.com/SolaCanada/', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+          <li class="social last"><%= link_to 'https://www.instagram.com/solacanada/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% else %>      
           <li class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
           <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
