@@ -216,6 +216,8 @@ class RequestTourInquiry < ActiveRecord::Base
       email = PublicWebsiteMailer.request_a_tour(self)
       email.deliver if email
     end
+  rescue => e 
+    p "caught an error #{e.inspect}"
   end
 
   def send_prospect_email
@@ -228,21 +230,24 @@ class RequestTourInquiry < ActiveRecord::Base
       email = PublicWebsiteMailer.financial_guide(self)
       email.deliver if email
     end
+  rescue => e 
+    p "caught an error #{e.inspect}"
   end
-end
 
-def i_would_like_to_be_contacted_value 
-  if i_would_like_to_be_contacted 
-    return 'Yes'
-  else
-    return 'No'
+  def i_would_like_to_be_contacted_value 
+    if i_would_like_to_be_contacted 
+      return 'Yes'
+    else
+      return 'No'
+    end
   end
-end
 
-def newsletter_value 
-  if newsletter 
-    return 'Yes'
-  else
-    return 'No'
+  def newsletter_value 
+    if newsletter 
+      return 'Yes'
+    else
+      return 'No'
+    end
   end
+
 end

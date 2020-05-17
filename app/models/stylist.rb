@@ -731,6 +731,8 @@ class Stylist < ActiveRecord::Base
     elsif location && location.country && location.country == 'CA'
       PublicWebsiteMailer.welcome_email_ca(self).deliver
     end
+  rescue => e 
+    p "caught an error #{e.inspect}"
   end
 
   def resend_welcome_email
@@ -740,6 +742,8 @@ class Stylist < ActiveRecord::Base
     elsif location && location.country && location.country == 'CA'
       PublicWebsiteMailer.resend_welcome_email_ca(self).deliver
     end
+  rescue => e 
+    p "caught an error #{e.inspect}"
   end
 
   def as_json(options={})
