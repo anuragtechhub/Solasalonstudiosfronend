@@ -67,6 +67,59 @@
 
 <div class="container">
 
+  <div class="row home-trilogy">
+    <div class="three columns">
+      <%= link_to :covid19 do %>
+        <%= image_tag 'Home/homecovid.jpg', :class => 'u-full-width' %>
+        <span class="text">
+<!--           <h2><%= t 'page.about.title' %></h2> -->
+          <h2 class="small covid-title">COVID-19 Resource Center</h2>
+          <span class="button-wrapper"><span class="button"><%= t 'page.home.learn_more' %></span></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="three columns">
+      <%= link_to :our_studios do %>
+        <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.our_studios.title' %></h2>
+          <span class="button-wrapper"><span class="button"><%= t 'page.home.take_a_tour' %></span></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="three columns">
+      <%= link_to :contact_us do %>
+        <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2><%= t 'page.contact.title' %></h2>
+          <span class="button-wrapper"><span class="button"><%= t 'page.home.get_in_touch' %></span></span>
+        </span>
+      <% end %>
+    </div>
+    <div class="three columns">
+      <%= link_to :going_independent do %>
+        <%= image_tag 'Home/going_independent_home_tile.jpg', :class => 'u-full-width' %>
+        <span class="text">
+          <h2 class="small">Guide to Going Independent</h2>
+          <span class="button-wrapper"><span class="button">Free Download</span></span>
+        </span>
+      <% end %>
+    </div>    
+  </div>
+
+  <div class="owl-carousel owl-theme owl-desktop">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
+
+  <div class="owl-carousel owl-theme owl-mobile">
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+  </div>
+
+</div>
+
+
+<div class="container">
+
   <div class="row tile-row home-tile-row">
     <div class="one-half column">
       <div class="tile-mask tile-for-professionals-own-your-salon">
@@ -159,13 +212,13 @@
       <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Mobile.jpg', :alt => "Sola Pro" %><% end %></div>
     </div>
   <% else %>
-    <div class="owl-carousel owl-theme owl-desktop">
+<!--     <div class="owl-carousel owl-theme owl-desktop">
       <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Desktop_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
     </div>
 
     <div class="owl-carousel owl-theme owl-mobile">
       <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
-    </div>
+    </div> -->
   <% end %>
 
   <div class="block-quote-testimonial">

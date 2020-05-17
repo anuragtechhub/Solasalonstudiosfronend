@@ -14,7 +14,7 @@
           <li><%= image_tag "https://s3.amazonaws.com/solasalonstudiosbr/pages/gallery/slider/gallery#{number}.jpg", :alt => 'Interior of a salon studio' %></li>
         <% end %>
       <% else %>
-        <% (1..22).each do |number| %>
+        <% ((1..29).to_a - [18]).each do |number| %>
           <li><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/gallery_ca/gallery#{number}.jpg", :alt => 'Interior of a salon studio' %></li>
         <% end %>
       <% end %>
@@ -25,6 +25,8 @@
 
   <% if I18n.locale.to_s == 'pt-BR' %>
     <%= render 'br' %>
+  <% elsif I18n.locale.to_s == 'en-CA'%>
+    <%= render 'ca' %>
   <% else %>
     <%= render 'en' %>
   <% end %>
