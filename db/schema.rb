@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200418171831) do
+ActiveRecord::Schema.define(version: 20200522043512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,11 @@ ActiveRecord::Schema.define(version: 20200418171831) do
     t.boolean  "agree_to_receive_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "utm_source"
+    t.string   "utm_campaign"
+    t.string   "utm_medium"
+    t.string   "utm_content"
+    t.string   "utm_term"
   end
 
   create_table "franchising_requests", force: true do |t|
