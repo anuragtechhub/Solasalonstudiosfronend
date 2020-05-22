@@ -7,8 +7,6 @@ class StylistMessage < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :visit
 
-  private
-
   def send_email
     if stylist
       email = PublicWebsiteMailer.stylist_message(self)

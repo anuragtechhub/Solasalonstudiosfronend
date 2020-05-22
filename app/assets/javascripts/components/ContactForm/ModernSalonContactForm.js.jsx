@@ -342,17 +342,18 @@ var ModernSalonContactForm = React.createClass({
 			this.state[e.target.name] = value;
 		}
 
-		if (e.target.name == 'is_sola_professional') {
-			if (e.target.value == 'yes') {
-				this.state.i_would_like_to_be_contacted = false;
-				this.state.newsletter = false;
-			} else if (e.target.value == 'no') {
-				this.state.i_would_like_to_be_contacted = true;
-				this.state.newsletter = true;
-			}
-		} else {
+		// Hide named checkboxes based on Is Sola Pro selection - check OnSubmit functions below don't conflict if re-enabled  
+		// if (e.target.name == 'is_sola_professional') {
+		// 	if (e.target.value == 'yes') {
+		// 		this.state.i_would_like_to_be_contacted = false;
+		// 		this.state.newsletter = true;
+		// 	} else if (e.target.value == 'no') {
+		// 		this.state.i_would_like_to_be_contacted = true;
+		// 		this.state.newsletter = true;
+		// 	}
+		// } else {
 			
-		}
+		// }
 
 		//console.log('this.state.selected_services', this.state.selected_services);
 
@@ -412,7 +413,7 @@ var ModernSalonContactForm = React.createClass({
     	is_sola_professional: this.state.is_sola_professional,
     	phone: this.state.phone,
     	message: this.state.message,
-    	newsletter: this.state.newsletter,
+    	newsletter: this.state.is_sola_professional == 'yes' ?  false : this.state.newsletter,
     	request_url: this.props.request_url,
     	required_fields: this.props.required_fields,
     	send_email_to_prospect: this.props.send_email_to_prospect,

@@ -206,8 +206,6 @@ class RequestTourInquiry < ActiveRecord::Base
     return ''
   end
 
-  private
-
   def send_notification_email
     if i_would_like_to_be_contacted == false && (send_email_to_prospect == 'modern_salon_2019_05' || 'financial_guide')
       p "shhh"
