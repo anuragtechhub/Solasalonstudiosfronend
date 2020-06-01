@@ -485,6 +485,9 @@ RailsAdmin.config do |config|
         field :email_address_for_reports do
           label 'Email Address for Reports'
         end
+        field :email_address_for_hubspot do
+          label 'Email Address For Hubspot'
+        end
         field :phone_number
       end
       group :address do
@@ -773,6 +776,9 @@ RailsAdmin.config do |config|
         field :email_address_for_hubspot do
           label 'Email Address For Hubspot'
           help 'If provided Hubspot will use this email address - not the email address for inquries - to match contacts.'
+          # visible do
+          #   bindings[:controller]._current_user.franchisee != true
+          # end
         end
         field :phone_number
       end

@@ -675,28 +675,28 @@ img.recently-featured-in {
 
 @media (max-width: 550px) {
 
-.owl-desktop {
-  display: none !important;
-}
-
-.owl-mobile {
-  display: block !important;
-
-  .arrow-left, .arrow-right {
+  .owl-desktop {
     display: none !important;
   }
-}
 
-.home-all {
-  display: none !important;
-}
+  .owl-mobile {
+    display: block !important;
 
-.home-mobile {
-  display: block !important;
+    .arrow-left, .arrow-right {
+      display: none !important;
+    }
+  }
 
-  .arrow-left, .arrow-right {
+  .home-all {
     display: none !important;
   }
-}
+
+  .home-mobile {
+    display: block !important;
+
+    .arrow-left, .arrow-right {
+      display: none !important;
+    }
+  }
 
 }
