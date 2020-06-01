@@ -302,7 +302,7 @@ en-CA:
       slider4_heading: Way More Freedom!
       slider4_subhead: '&nbsp;'
       slider4_button: Find out more!
-      slider5_heading: #SolaStrong
+      slider5_heading: "#SolaStrong"
       slider6_heading: Hear From Our Sola Pros 
       watch_our_video: Watch our video
       watch_video: Watch Video
@@ -317,6 +317,7 @@ en-CA:
       testimonial_text: "The business model that has been created by Sola is true. You're in business for yourself, but you're not by yourself. It's great to have Sola as a resource. They have been consistent since the day I signed my lease and that was 11 years ago."
       testimonial_author: LaShonda Banks
       find_a_sola: Find a Sola
+      sola_strong: "#SolaStrong"
 
     leadership:
       title: Leadership Team
