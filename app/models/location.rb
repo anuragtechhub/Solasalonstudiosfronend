@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
 
   # after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
-  before_save :fix_url_name
+  before_save :fix_url_name, :downcase_email_address_for_hubspot
   after_save :update_computed_fields
   after_validation :geocode, if: Proc.new { |location| location.latitude.blank? && location.longitude.blank? }
   geocoded_by :full_address
@@ -425,6 +425,12 @@ class Location < ActiveRecord::Base
       self.url_name = self.url_name.split('_')
       self.url_name = self.url_name.map{ |u| u.downcase }
       self.url_name = self.url_name.join('-')
+    end
+  end
+
+  def downcase_email_address_for_hubspot
+    if self.email_address_for_hubspot.present?
+      self.email_address_for_hubspot = self.email_address_for_hubspot.downcase
     end
   end
 
