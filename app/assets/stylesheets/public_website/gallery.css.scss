@@ -130,14 +130,20 @@ h1.video-title {
       font-size: 21px;
     }
   }
+
   .owl-item {
     li {
       text-align: center;
     }
+  }
 
-    img {
-      width: auto;
-      height: 360px !important;
+  .gallery {
+    .owl-item {
+      img {
+      max-height: 285px !important;
+      max-width: 100% !important;
+      height: auto !important;
+      }
     }
   }
 }
