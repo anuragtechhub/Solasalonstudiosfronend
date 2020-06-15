@@ -1,5 +1,7 @@
 pt-BR:
 
+  contact_form_success: Obrigado! Entraremos em contato em breve
+
   activerecord:
     models: 
       lease: "Electronic license agreement"  

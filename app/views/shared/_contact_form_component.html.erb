@@ -1,5 +1,5 @@
 <%= react_component 'ContactForm', {
-  all_states: JSON.parse(all_states_json),
+  all_states: all_states,
   all_locations: JSON.parse(all_locations_msas_json),
   
   source: params[:utm_source] || cookies[:utm_source] || '',

@@ -1,5 +1,17 @@
 class OwnYourSalonController < PublicWebsiteController
   
+  def contact_form_success
+    @contact_form_success = true
+    @success = I18n.t('contact_form_success')
+    render 'why_sola'
+  end
+
+  def contact_form_success_2
+    @contact_form_success = true
+    @success = I18n.t('contact_form_success')
+    render 'why_sola_2'
+  end
+
 	def our_studios
 	end
 

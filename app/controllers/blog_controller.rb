@@ -1,6 +1,27 @@
 class BlogController < PublicWebsiteController
   http_basic_authenticate_with :name => "admin@solasalonstudios.com", :password => "stylists", :only => :show_preview
 
+  def contact_form_success
+    @contact_form_success = true
+    @success = I18n.t('contact_form_success')
+    @post = Blog.find_by(:url_name => params[:url_name])
+    redirect_to(show_blog_preview_path(@post), :status => 301) if @post && @post.status == 'draft'
+    
+    unless @post
+      @post = Blog.find_by(:url_name => params[:url_name].split('_').join('-'))
+      redirect_to(show_blog_path(:url_name => @post.url_name), :status => 301) if @post
+    end
+
+    p "I18n.locale=#{I18n.locale}"
+    p "@post=#{@post.inspect}"
+
+    @category = @post.blog_categories.first if @post && @post.blog_categories
+    @categories = BlogCategory.order(:name => :asc)
+    redirect_to(:blog, :status => 301) unless @post
+    render 'show'
+  end
+
+
   def index
     @category = BlogCategory.find_by(:url_name => params[:category_url_name])
 

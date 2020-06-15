@@ -53,34 +53,39 @@ class PublicWebsiteController < ApplicationController
     end
   end
 
+  # def all_states_json
+  #   all_states
+  # end
+
+
   def all_states
-    # if I18n.locale == :en
-    #   # USA!
-    #   return state_names
-    # else
-    #   cache_key = "all_states/{I18n.locale}/#{Location.order(:updated_at => :desc).first.updated_at}"
-    #   all_states = Rails.cache.fetch(cache_key) do
-    #     return all_locations.select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
-    #   end
-    #   p "all_states=#{all_states}"
-    #   return all_states
+    if I18n.locale == :en
+      # USA!
+      return all_states_us
+    else
+      return all_states_ca
+    end
+    # cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
+    # all_states = Rails.cache.fetch(cache_key) do
+    #   return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     # end
+    # p "all_states=#{all_states}"
+    # return all_states    
+  end
+
+  def all_states_us   
     cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
     all_states = Rails.cache.fetch(cache_key) do
       return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     end
-    p "all_states=#{all_states}"
-    return all_states    
-  end
 
-  def all_states_json
     # cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
     # json = Rails.cache.fetch(cache_key) do
     #   return all_states.to_json
     # end
     # p "all_states_json=#{json}"
     # return json
-    return all_states.to_json
+    return all_states
   end
 
   def all_states_ca

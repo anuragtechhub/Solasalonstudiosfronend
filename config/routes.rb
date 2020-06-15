@@ -71,8 +71,9 @@ Solasalonstudios::Application.routes.draw do
   get 'sola-sessions' => 'own_your_salon#sola_sessions', :as => :sola_sessions
   get 'solagenius' => 'own_your_salon#solagenius', :as => :solagenius
   get 'why-sola' => 'own_your_salon#why_sola', :as => :why_sola
+  get 'why-sola/contact-form-success' => 'own_your_salon#contact_form_success'
   get 'why-sola-2' => 'own_your_salon#why_sola_2', :as => :why_sola2
-
+  get 'why-sola-2/contact-form-success' => 'own_your_salon#contact_form_success_2'
 
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
@@ -146,6 +147,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "blog" => 'blog#index', :as => :blog
   get "blog/:url_name" => 'blog#show', :as => :show_blog
+  get "blog/:url_name/contact-form-success" => 'blog#contact_form_success'
   get "blog-preview/:url_name" => 'blog#show_preview', :as => :show_blog_preview
   get "blog-readmore/:url_name" => 'blog#show'
   get "blog/category/:category_url_name" => 'blog#index', :as => :blog_category
