@@ -280,24 +280,24 @@ namespace :reports do
   # rake reports:location_with_email[380]
   # rake reports:location_with_email[2]
   # rake reports:location_with_email[530,2020-05-01]
-  task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
-    p "begin location with email report..."
+  # task :location_with_email, [:location_id, :start_date] => :environment do |task, args|
+  #   p "begin location with email report..."
 
-    location = Location.find(args.location_id) if args.location_id.present?
-    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month
+  #   location = Location.find(args.location_id) if args.location_id.present?
+  #   start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
+  #   end_date = start_date.end_of_month
 
-    start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+  #   start_date = start_date.beginning_of_day
+  #   end_date = end_date.end_of_day  
 
-    p "location=#{location.id}, #{location.name}"
-    p "start_date=#{start_date.inspect}"
-    p "end_date=#{end_date.inspect}"
+  #   p "location=#{location.id}, #{location.name}"
+  #   p "start_date=#{start_date.inspect}"
+  #   p "end_date=#{end_date.inspect}"
 
-    if location && start_date && end_date
-      location_ga_report(location, start_date, end_date, true)
-    end
-  end
+  #   if location && start_date && end_date
+  #     location_ga_report(location, start_date, end_date, true)
+  #   end
+  # end
 
   # rake reports:booknow_biweekly["olivia@solasalonstudios.com"]
   task :booknow_biweekly, [:email_address] => :environment do |task, args|
