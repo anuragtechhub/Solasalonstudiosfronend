@@ -571,6 +571,16 @@ body.contact-us {
       left: auto;
       height: auto;
     }
+
+    // Overriding hero.css styling to fit new image, remove later if necessary
+    .owl-carousel .item .item-content {
+      left: 0px;
+      right: 0px;
+  
+      a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+        margin: 150px 0 0 0;
+      }
+    }
   }
 }
 
