@@ -12,6 +12,6 @@ class CreateFranchisingForms < ActiveRecord::Migration
       t.boolean :agree_to_receive_email
 
       t.timestamps
-    end
+    end unless table_exists?(:franchising_forms)
   end
 end

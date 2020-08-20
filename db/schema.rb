@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200522043512) do
+ActiveRecord::Schema.define(version: 20200814124759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
+  enable_extension "dblink"
 
   create_table "accounts", force: true do |t|
     t.string   "api_key"
@@ -142,6 +143,65 @@ ActiveRecord::Schema.define(version: 20200522043512) do
   add_index "book_now_bookings", ["location_id"], name: "index_book_now_bookings_on_location_id", using: :btree
   add_index "book_now_bookings", ["stylist_id"], name: "index_book_now_bookings_on_stylist_id", using: :btree
 
+  create_table "brand_countries", force: true do |t|
+    t.integer  "brand_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_countries", ["brand_id"], name: "index_brand_countries_on_brand_id", using: :btree
+  add_index "brand_countries", ["country_id"], name: "index_brand_countries_on_country_id", using: :btree
+
+  create_table "brand_links", force: true do |t|
+    t.string   "link_text"
+    t.string   "link_url"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  add_index "brand_links", ["brand_id"], name: "index_brand_links_on_brand_id", using: :btree
+
+  create_table "brandables", force: true do |t|
+    t.integer  "brand_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "brandables", ["brand_id"], name: "index_brandables_on_brand_id", using: :btree
+  add_index "brandables", ["item_type", "item_id"], name: "index_brandables_on_item_type_and_item_id", using: :btree
+
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "website_url"
+    t.string   "white_image_file_name"
+    t.string   "white_image_content_type"
+    t.integer  "white_image_file_size"
+    t.datetime "white_image_updated_at"
+    t.string   "introduction_video_heading_title", default: "Introduction"
+    t.string   "events_and_classes_heading_title", default: "Classes"
+  end
+
+  create_table "brands_sola_classes", force: true do |t|
+    t.integer  "brand_id"
+    t.integer  "sola_class_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brands_sola_classes", ["brand_id"], name: "index_brands_sola_classes_on_brand_id", using: :btree
+  add_index "brands_sola_classes", ["sola_class_id"], name: "index_brands_sola_classes_on_sola_class_id", using: :btree
+
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -166,6 +226,80 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "updated_at"
   end
 
+  create_table "deal_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  create_table "deal_category_deals", force: true do |t|
+    t.integer  "deal_id"
+    t.integer  "deal_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deal_category_deals", ["deal_category_id"], name: "index_deal_category_deals_on_deal_category_id", using: :btree
+  add_index "deal_category_deals", ["deal_id"], name: "index_deal_category_deals_on_deal_id", using: :btree
+
+  create_table "deal_countries", force: true do |t|
+    t.integer  "deal_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deal_countries", ["country_id"], name: "index_deal_countries_on_country_id", using: :btree
+  add_index "deal_countries", ["deal_id"], name: "index_deal_countries_on_deal_id", using: :btree
+
+  create_table "deals", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "brand_id"
+    t.text     "description"
+    t.boolean  "is_featured",              default: false
+    t.string   "hover_image_file_name"
+    t.string   "hover_image_content_type"
+    t.integer  "hover_image_file_size"
+    t.datetime "hover_image_updated_at"
+    t.string   "more_info_url"
+  end
+
+  add_index "deals", ["brand_id"], name: "index_deals_on_brand_id", using: :btree
+
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.string   "uuid"
+    t.string   "token"
+    t.string   "userable_type"
+    t.integer  "userable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "platform"
+  end
+
+  add_index "devices", ["userable_id"], name: "index_devices_on_userable_id", using: :btree
+  add_index "devices", ["userable_type"], name: "index_devices_on_userable_type", using: :btree
+  add_index "devices", ["uuid", "userable_type", "userable_id"], name: "index_devices_on_uuid_and_userable_type_and_userable_id", unique: true, using: :btree
+  add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
+
+  create_table "distributors", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "email_events", force: true do |t|
     t.text     "category"
     t.text     "email"
@@ -185,6 +319,31 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.text     "attempt"
     t.text     "tls"
   end
+
+  create_table "events", force: true do |t|
+    t.string   "category"
+    t.string   "action"
+    t.string   "source"
+    t.integer  "brand_id"
+    t.integer  "deal_id"
+    t.integer  "tool_id"
+    t.integer  "sola_class_id"
+    t.integer  "video_id"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "platform"
+    t.integer  "userable_id"
+    t.string   "userable_type"
+  end
+
+  add_index "events", ["brand_id"], name: "index_events_on_brand_id", using: :btree
+  add_index "events", ["deal_id"], name: "index_events_on_deal_id", using: :btree
+  add_index "events", ["sola_class_id"], name: "index_events_on_sola_class_id", using: :btree
+  add_index "events", ["tool_id"], name: "index_events_on_tool_id", using: :btree
+  add_index "events", ["userable_id"], name: "index_events_on_userable_id", using: :btree
+  add_index "events", ["userable_type"], name: "index_events_on_userable_type", using: :btree
+  add_index "events", ["video_id"], name: "index_events_on_video_id", using: :btree
 
   create_table "franchising_forms", force: true do |t|
     t.string   "first_name"
@@ -220,6 +379,58 @@ ActiveRecord::Schema.define(version: 20200522043512) do
 
   add_index "franchising_requests", ["visit_id"], name: "index_franchising_requests_on_visit_id", using: :btree
 
+  create_table "get_featureds", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "salon_name"
+    t.string   "salon_location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "home_button_countries", force: true do |t|
+    t.integer  "home_button_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "home_button_countries", ["country_id"], name: "index_home_button_countries_on_country_id", using: :btree
+  add_index "home_button_countries", ["home_button_id"], name: "index_home_button_countries_on_home_button_id", using: :btree
+
+  create_table "home_buttons", force: true do |t|
+    t.integer  "position"
+    t.string   "action_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "home_hero_image_countries", force: true do |t|
+    t.integer  "country_id"
+    t.integer  "home_hero_image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "home_hero_image_countries", ["country_id"], name: "index_home_hero_image_countries_on_country_id", using: :btree
+  add_index "home_hero_image_countries", ["home_hero_image_id"], name: "index_home_hero_image_countries_on_home_hero_image_id", using: :btree
+
+  create_table "home_hero_images", force: true do |t|
+    t.integer  "position"
+    t.string   "action_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "leases", force: true do |t|
     t.integer  "stylist_id"
     t.integer  "studio_id"
@@ -238,32 +449,30 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.boolean  "ach_authorized",              default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "agreement_file_url"
+    t.text     "agreement_file_url"
     t.integer  "location_id"
     t.boolean  "hair_styling_permitted",      default: false
     t.boolean  "manicure_pedicure_permitted", default: false
     t.boolean  "waxing_permitted",            default: false
     t.boolean  "massage_permitted",           default: false
     t.boolean  "facial_permitted",            default: false
-    t.integer  "recurring_charge_1_id"
-    t.integer  "recurring_charge_2_id"
-    t.integer  "recurring_charge_3_id"
-    t.integer  "recurring_charge_4_id"
     t.boolean  "move_in_bonus",               default: false
     t.boolean  "insurance",                   default: false
     t.integer  "insurance_amount"
     t.string   "insurance_frequency"
     t.integer  "move_in_bonus_amount"
     t.string   "move_in_bonus_payee"
+    t.integer  "nsf_fee_amount"
+    t.string   "other_service"
+    t.boolean  "taxes",                       default: false
+    t.boolean  "parking",                     default: false
+    t.boolean  "cable",                       default: false
+    t.date     "insurance_start_date"
     t.date     "create_date"
     t.date     "move_out_date"
   end
 
   add_index "leases", ["location_id"], name: "index_leases_on_location_id", using: :btree
-  add_index "leases", ["recurring_charge_1_id"], name: "index_leases_on_recurring_charge_1_id", using: :btree
-  add_index "leases", ["recurring_charge_2_id"], name: "index_leases_on_recurring_charge_2_id", using: :btree
-  add_index "leases", ["recurring_charge_3_id"], name: "index_leases_on_recurring_charge_3_id", using: :btree
-  add_index "leases", ["recurring_charge_4_id"], name: "index_leases_on_recurring_charge_4_id", using: :btree
   add_index "leases", ["studio_id"], name: "index_leases_on_studio_id", using: :btree
   add_index "leases", ["stylist_id"], name: "index_leases_on_stylist_id", using: :btree
 
@@ -470,6 +679,27 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "generated_image_updated_at"
   end
 
+  create_table "notifications", force: true do |t|
+    t.integer  "brand_id"
+    t.integer  "deal_id"
+    t.integer  "tool_id"
+    t.integer  "sola_class_id"
+    t.integer  "video_id"
+    t.text     "notification_text"
+    t.boolean  "send_push_notification"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blog_id"
+    t.datetime "date_sent"
+  end
+
+  add_index "notifications", ["blog_id"], name: "index_notifications_on_blog_id", using: :btree
+  add_index "notifications", ["brand_id"], name: "index_notifications_on_brand_id", using: :btree
+  add_index "notifications", ["deal_id"], name: "index_notifications_on_deal_id", using: :btree
+  add_index "notifications", ["sola_class_id"], name: "index_notifications_on_sola_class_id", using: :btree
+  add_index "notifications", ["tool_id"], name: "index_notifications_on_tool_id", using: :btree
+  add_index "notifications", ["video_id"], name: "index_notifications_on_video_id", using: :btree
+
   create_table "partner_inquiries", force: true do |t|
     t.string   "subject"
     t.string   "name"
@@ -485,13 +715,69 @@ ActiveRecord::Schema.define(version: 20200522043512) do
 
   add_index "partner_inquiries", ["visit_id"], name: "index_partner_inquiries_on_visit_id", using: :btree
 
+  create_table "pro_beauty_industries", force: true do |t|
+    t.string   "title"
+    t.text     "short_description"
+    t.text     "long_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "video_url"
+    t.string   "thumbnail_image_file_name"
+    t.string   "thumbnail_image_content_type"
+    t.integer  "thumbnail_image_file_size"
+    t.datetime "thumbnail_image_updated_at"
+    t.string   "flyer_image_file_name"
+    t.string   "flyer_image_content_type"
+    t.integer  "flyer_image_file_size"
+    t.datetime "flyer_image_updated_at"
+    t.integer  "brand_id"
+    t.integer  "pro_beauty_industry_category_id"
+  end
+
+  add_index "pro_beauty_industries", ["brand_id"], name: "index_pro_beauty_industries_on_brand_id", using: :btree
+  add_index "pro_beauty_industries", ["pro_beauty_industry_category_id"], name: "index_pro_beauty_industries_on_pro_beauty_industry_category_id", using: :btree
+
+  create_table "pro_beauty_industry_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_informations", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "link_url"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "product_informations", ["brand_id"], name: "index_product_informations_on_brand_id", using: :btree
+
   create_table "recurring_charges", force: true do |t|
     t.integer  "amount"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "charge_type"
+    t.integer  "lease_id"
+    t.integer  "position"
   end
+
+  add_index "recurring_charges", ["lease_id"], name: "index_recurring_charges_on_lease_id", using: :btree
 
   create_table "reports", force: true do |t|
     t.string   "report_type"
@@ -532,6 +818,28 @@ ActiveRecord::Schema.define(version: 20200522043512) do
   add_index "request_tour_inquiries", ["location_id"], name: "index_request_tour_inquiries_on_location_id", using: :btree
   add_index "request_tour_inquiries", ["visit_id"], name: "index_request_tour_inquiries_on_visit_id", using: :btree
 
+  create_table "reset_passwords", force: true do |t|
+    t.string   "public_id"
+    t.datetime "date_used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "userable_id"
+    t.string   "userable_type"
+  end
+
+  create_table "saved_items", force: true do |t|
+    t.integer  "sola_stylist_id"
+    t.integer  "admin_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "saved_items", ["admin_id"], name: "index_saved_items_on_admin_id", using: :btree
+  add_index "saved_items", ["item_type", "item_id"], name: "index_saved_items_on_item_type_and_item_id", using: :btree
+  add_index "saved_items", ["sola_stylist_id"], name: "index_saved_items_on_sola_stylist_id", using: :btree
+
   create_table "seja_solas", force: true do |t|
     t.string   "nome"
     t.string   "email"
@@ -539,6 +847,33 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "area_de_atuacao"
+  end
+
+  create_table "short_links", force: true do |t|
+    t.string   "url"
+    t.string   "public_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "view_count", limit: 8, default: 0
+    t.string   "title"
+  end
+
+  create_table "side_menu_item_countries", force: true do |t|
+    t.integer  "side_menu_item_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "side_menu_item_countries", ["country_id"], name: "index_side_menu_item_countries_on_country_id", using: :btree
+  add_index "side_menu_item_countries", ["side_menu_item_id"], name: "index_side_menu_item_countries_on_side_menu_item_id", using: :btree
+
+  create_table "side_menu_items", force: true do |t|
+    t.string   "name"
+    t.string   "action_link"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sola10k_images", force: true do |t|
@@ -560,6 +895,95 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "generated_image_updated_at"
     t.string   "color"
   end
+
+  create_table "sola_class_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  create_table "sola_class_countries", force: true do |t|
+    t.integer  "sola_class_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sola_class_countries", ["country_id"], name: "index_sola_class_countries_on_country_id", using: :btree
+  add_index "sola_class_countries", ["sola_class_id"], name: "index_sola_class_countries_on_sola_class_id", using: :btree
+
+  create_table "sola_class_region_countries", force: true do |t|
+    t.integer  "sola_class_region_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sola_class_region_countries", ["country_id"], name: "index_sola_class_region_countries_on_country_id", using: :btree
+  add_index "sola_class_region_countries", ["sola_class_region_id"], name: "index_sola_class_region_countries_on_sola_class_region_id", using: :btree
+
+  create_table "sola_class_region_states", force: true do |t|
+    t.integer  "sola_class_region_id"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sola_class_region_states", ["sola_class_region_id"], name: "index_sola_class_region_states_on_sola_class_region_id", using: :btree
+
+  create_table "sola_class_regions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "sola_classes", force: true do |t|
+    t.string   "title"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "location"
+    t.string   "cost"
+    t.date     "start_date"
+    t.text     "start_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "link_text"
+    t.string   "link_url"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "sola_class_category_id"
+    t.boolean  "is_featured",            default: false
+    t.integer  "admin_id"
+    t.integer  "sola_class_region_id"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.date     "end_date"
+    t.text     "end_time"
+    t.string   "rsvp_email_address"
+    t.string   "rsvp_phone_number"
+    t.string   "address"
+    t.integer  "video_id"
+    t.string   "file_text"
+  end
+
+  add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
+  add_index "sola_classes", ["sola_class_category_id"], name: "index_sola_classes_on_sola_class_category_id", using: :btree
+  add_index "sola_classes", ["sola_class_region_id"], name: "index_sola_classes_on_sola_class_region_id", using: :btree
+  add_index "sola_classes", ["video_id"], name: "index_sola_classes_on_video_id", using: :btree
 
   create_table "studios", force: true do |t|
     t.string   "name"
@@ -683,7 +1107,7 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                  default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,            null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -721,8 +1145,10 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.string   "website_name"
     t.date     "cosmetology_license_date"
     t.boolean  "electronic_license_agreement",   default: false
-    t.boolean  "force_show_book_now_button",     default: false
+    t.string   "rent_manager_contact_id"
+    t.date     "website_go_live_date",           default: '2004-01-01'
     t.string   "sg_booking_url"
+    t.boolean  "force_show_book_now_button",     default: false
     t.boolean  "walkins"
     t.boolean  "reserved",                       default: false
     t.datetime "solagenius_account_created_at"
@@ -736,6 +1162,63 @@ ActiveRecord::Schema.define(version: 20200522043512) do
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree
   add_index "stylists", ["url_name"], name: "index_stylists_on_url_name", using: :btree
+
+  create_table "support_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "supports", force: true do |t|
+    t.string   "title"
+    t.text     "short_description"
+    t.text     "long_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "thumbnail_image_file_name"
+    t.string   "thumbnail_image_content_type"
+    t.integer  "thumbnail_image_file_size"
+    t.datetime "thumbnail_image_updated_at"
+    t.string   "flyer_image_file_name"
+    t.string   "flyer_image_content_type"
+    t.integer  "flyer_image_file_size"
+    t.datetime "flyer_image_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "video_url"
+    t.integer  "support_category_id"
+  end
+
+  add_index "supports", ["support_category_id"], name: "index_supports_on_support_category_id", using: :btree
+
+  create_table "taggables", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggables", ["item_type", "item_id"], name: "index_taggables_on_item_type_and_item_id", using: :btree
+  add_index "taggables", ["tag_id"], name: "index_taggables_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags_videos", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags_videos", ["tag_id"], name: "index_tags_videos_on_tag_id", using: :btree
+  add_index "tags_videos", ["video_id"], name: "index_tags_videos_on_video_id", using: :btree
 
   create_table "terminated_stylists", force: true do |t|
     t.datetime "stylist_created_at"
@@ -757,6 +1240,54 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tool_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  create_table "tool_category_tools", force: true do |t|
+    t.integer  "tool_id"
+    t.integer  "tool_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tool_category_tools", ["tool_category_id"], name: "index_tool_category_tools_on_tool_category_id", using: :btree
+  add_index "tool_category_tools", ["tool_id"], name: "index_tool_category_tools_on_tool_id", using: :btree
+
+  create_table "tool_countries", force: true do |t|
+    t.integer  "tool_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tool_countries", ["country_id"], name: "index_tool_countries_on_country_id", using: :btree
+  add_index "tool_countries", ["tool_id"], name: "index_tool_countries_on_tool_id", using: :btree
+
+  create_table "tools", force: true do |t|
+    t.integer  "brand_id"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "is_featured",        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "link_url"
+    t.string   "youtube_url"
+  end
+
+  add_index "tools", ["brand_id"], name: "index_tools_on_brand_id", using: :btree
 
   create_table "update_my_sola_websites", force: true do |t|
     t.string   "name"
@@ -860,16 +1391,115 @@ ActiveRecord::Schema.define(version: 20200522043512) do
 
   add_index "update_my_sola_websites", ["stylist_id"], name: "index_update_my_sola_websites_on_stylist_id", using: :btree
 
+  create_table "user_access_tokens", force: true do |t|
+    t.integer  "sola_stylist_id"
+    t.string   "key"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "user_access_tokens", ["key"], name: "index_user_access_tokens_on_key", using: :btree
+  add_index "user_access_tokens", ["sola_stylist_id"], name: "index_user_access_tokens_on_sola_stylist_id", using: :btree
+
+  create_table "user_notifications", force: true do |t|
+    t.string   "userable_type"
+    t.integer  "userable_id"
+    t.datetime "dismiss_date"
+    t.integer  "notification_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_notifications", ["notification_id"], name: "index_user_notifications_on_notification_id", using: :btree
+  add_index "user_notifications", ["userable_type", "userable_id"], name: "index_user_notifications_on_userable_type_and_userable_id", using: :btree
+
+  create_table "userable_notifications", force: true do |t|
+    t.string   "userable_type"
+    t.integer  "userable_id"
+    t.integer  "notification_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_dismissed"
+  end
+
+  add_index "userable_notifications", ["notification_id"], name: "index_userable_notifications_on_notification_id", using: :btree
+  add_index "userable_notifications", ["userable_type", "userable_id"], name: "index_userable_notifications_on_userable_type_and_userable_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "public_id"
+  end
+
   create_table "versions", force: true do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
+    t.text     "object_changes"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "video_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position"
+  end
+
+  create_table "video_category_videos", force: true do |t|
+    t.integer  "video_id"
+    t.integer  "video_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "video_category_videos", ["video_category_id"], name: "index_video_category_videos_on_video_category_id", using: :btree
+  add_index "video_category_videos", ["video_id"], name: "index_video_category_videos_on_video_id", using: :btree
+
+  create_table "video_countries", force: true do |t|
+    t.integer  "video_id"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "video_countries", ["country_id"], name: "index_video_countries_on_country_id", using: :btree
+  add_index "video_countries", ["video_id"], name: "index_video_countries_on_video_id", using: :btree
+
+  create_table "video_views", force: true do |t|
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "userable_type"
+    t.integer  "userable_id"
+  end
+
+  add_index "video_views", ["userable_type", "userable_id"], name: "index_video_views_on_userable_type_and_userable_id", using: :btree
+  add_index "video_views", ["video_id"], name: "index_video_views_on_video_id", using: :btree
+
+  create_table "videos", force: true do |t|
+    t.integer  "brand_id"
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "is_featured",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "youtube_url"
+    t.integer  "tool_id"
+    t.string   "duration"
+    t.boolean  "is_introduction", default: false
+    t.string   "link_url"
+    t.string   "link_text"
+  end
+
+  add_index "videos", ["brand_id"], name: "index_videos_on_brand_id", using: :btree
+  add_index "videos", ["tool_id"], name: "index_videos_on_tool_id", using: :btree
 
   create_table "visits", force: true do |t|
     t.string   "ip_address"
@@ -878,5 +1508,20 @@ ActiveRecord::Schema.define(version: 20200522043512) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "watch_laters", force: true do |t|
+    t.integer  "video_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "userable_type"
+    t.integer  "userable_id"
+  end
+
+  add_index "watch_laters", ["userable_type", "userable_id"], name: "index_watch_laters_on_userable_type_and_userable_id", using: :btree
+  add_index "watch_laters", ["video_id"], name: "index_watch_laters_on_video_id", using: :btree
+
+  add_foreign_key "brandables", "brands", name: "brandables_brand_id_fk"
+
+  add_foreign_key "taggables", "tags", name: "taggables_tag_id_fk"
 
 end
