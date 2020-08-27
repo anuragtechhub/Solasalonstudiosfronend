@@ -95,6 +95,10 @@ class RequestTourInquiry < ActiveRecord::Base
       if hubspot_owner_id.present?
         p "yes, there is an owner #{hubspot_owner_id}"
         contact_properties[:hubspot_owner_id] = hubspot_owner_id
+      else
+        # If no hubspot owner is found, remove contact's existing owner (if any)
+        # This will prevent deals being created and assigned to the wrong hubspot owner
+        contact_properties[:hubspot_owner_id] = nil
       end
 
       Hubspot::Contact.create_or_update!([contact_properties])
