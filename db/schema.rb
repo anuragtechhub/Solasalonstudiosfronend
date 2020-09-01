@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200820155846) do
+ActiveRecord::Schema.define(version: 20200825200448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,6 +203,27 @@ ActiveRecord::Schema.define(version: 20200820155846) do
 
   add_index "brands_sola_classes", ["brand_id"], name: "index_brands_sola_classes_on_brand_id", using: :btree
   add_index "brands_sola_classes", ["sola_class_id"], name: "index_brands_sola_classes_on_sola_class_id", using: :btree
+
+  create_table "categoriables", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categoriables", ["category_id"], name: "index_categoriables_on_category_id", using: :btree
+  add_index "categoriables", ["item_id", "item_type"], name: "index_categoriables_on_item_id_and_item_type", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -980,9 +1001,11 @@ ActiveRecord::Schema.define(version: 20200820155846) do
     t.string   "address"
     t.integer  "video_id"
     t.string   "file_text"
+    t.integer  "category_id"
   end
 
   add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
+  add_index "sola_classes", ["category_id"], name: "index_sola_classes_on_category_id", using: :btree
   add_index "sola_classes", ["sola_class_category_id"], name: "index_sola_classes_on_sola_class_category_id", using: :btree
   add_index "sola_classes", ["sola_class_region_id"], name: "index_sola_classes_on_sola_class_region_id", using: :btree
   add_index "sola_classes", ["video_id"], name: "index_sola_classes_on_video_id", using: :btree
@@ -1212,6 +1235,8 @@ ActiveRecord::Schema.define(version: 20200820155846) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tags_videos", force: true do |t|
     t.integer  "tag_id"

@@ -250,7 +250,14 @@ RailsAdmin.config do |config|
       end
       field :contact_form_visible
       field :blog_categories do
+        label 'Old Categories'
+      end
+
+      field :categories do
         label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
       end
       group 'Publish' do
         field :status
@@ -284,7 +291,13 @@ RailsAdmin.config do |config|
       field :author
       field :contact_form_visible
       field :blog_categories do
+        label 'Old Categories'
+      end
+      field :categories do
         label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
       end
       group 'Publish' do
         field :status
@@ -316,9 +329,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'BlogCategory' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
+    visible false
     label 'Blog Category'
     label_plural 'Blog Categories'      
     # edit do 
@@ -332,6 +343,513 @@ RailsAdmin.config do |config|
   end
 
   config.model 'BlogCountry' do
+    visible false
+  end
+
+  config.model 'Brand' do
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :name
+      field :website_url
+    end
+    show do
+      field :name
+      field :website_url
+      field :image do
+        label 'Color Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      # field :white_image do
+      #   label 'White Image'
+      #   help 'Ideal image size is 460 x 280'
+      # end
+      # field :brand_links do
+      #   label 'Links'
+      # end
+      group 'Settings' do
+        field :introduction_video_heading_title
+        field :events_and_classes_heading_title
+      end
+    end
+    edit do
+      field :name
+      field :website_url
+      field :image do
+        label 'Color Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      # field :white_image do
+      #   label 'White Image'
+      #   help 'Ideal image size is 460 x 280'
+      # end
+      # field :brand_links do
+      #   label 'Links'
+      # end
+      group 'Settings' do
+        field :introduction_video_heading_title
+        field :events_and_classes_heading_title
+      end
+      # group 'Countries' do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      #
+      #   field :countries do
+      #     inline_add false
+      #   end
+      # end
+    end
+  end
+
+  config.model 'Categoriable' do
+    visible false
+  end
+
+  config.model 'Deal' do
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :title
+      field :brand
+      field :deal_categories do
+        label 'Categories'
+      end
+      field :description
+      field :is_featured do
+        searchable false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    show do
+      field :title
+      field :description
+      field :brand
+      field :deal_categories do
+        label 'Old Categories'
+      end
+
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+
+      field :image do
+        help 'Ideal image size is 460 x 280'
+      end
+      # field :hover_image do
+      #   help 'Ideal image size is 460 x 280'
+      # end
+      field :file
+      field :more_info_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :brand
+      field :deal_categories do
+        visible do
+          bindings[:object].id.present?
+        end
+        label 'Old Categories'
+      end
+
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+
+      field :image do
+        help 'Ideal image size is 460 x 280'
+        delete_method :delete_image
+      end
+      # field :hover_image do
+      #   help 'Ideal image size is 460 x 280'
+      #   delete_method :delete_hover_image
+      # end
+      field :file do
+        delete_method :delete_file
+      end
+      field :more_info_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+  end
+
+  config.model 'DealCategory' do
+    visible false
+  end
+
+  config.model 'DealCategoryDeal' do
+    visible false
+  end
+
+  config.model 'Taggable' do
+    visible false
+  end
+
+  config.model 'TagsVideo' do
+    visible false
+  end
+
+  config.model 'SolaClass' do
+    label 'Event and Class'
+    label_plural 'Events and Classes'
+    object_label_method do
+      :label
+    end
+    list do
+      field :title
+      # field :sola_class_region do
+      #   label 'Region'
+      # end
+      field :location
+      field :address
+      field :city
+      field :state do
+        label 'State/Province'
+      end
+      field :start_date
+      field :end_date
+    end
+    show do
+      field :title
+      field :description
+      #field :brand
+      field :sola_class_category do
+        label 'Old Category'
+      end
+      field :category
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time
+        field :end_date
+        field :end_time
+      end
+      group 'Where' do
+        # field :sola_class_region do
+        #   label 'Region'
+        # end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+      end
+      group 'Who' do
+        field :brands
+      end
+      field :file
+      field :file_text do
+        help 'Customize the file button text'
+      end
+      # field :image do
+      #   help 'Ideal image size is 460 x 280'
+      # end
+      # field :is_featured do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      # end
+    end
+    edit do
+      field :title
+      field :description
+      # field :brand do
+      #   help 'If you do not see your brand in the dropdown, please leave this space blank.'
+      # end
+      field :sola_class_category do
+        label 'Old Category'
+      end
+      field :category
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+        field :end_date
+        field :end_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+      end
+      group 'Where' do
+
+        # field :sola_class_region do
+        #   label 'Region'
+        #   # inline_add false
+        #   # inline_edit false
+        # end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+        # field :countries do
+        #   label 'Countries'
+        #   visible do
+        #     bindings[:controller]._current_user.franchisee != true
+        #   end
+        #   visible false
+        # end
+      end
+      group 'Who' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :brands
+      end
+      group 'RSVP' do
+        field :rsvp_email_address do
+          label 'Email Address'
+        end
+        field :rsvp_phone_number do
+          label 'Phone Number'
+        end
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :file_text do
+        help 'Customize the file button text'
+      end
+      # field :image do
+      #   help 'Ideal image size is 460 x 280'
+      #   delete_method :delete_image
+      # end
+      # field :is_featured do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      # end
+      field :video
+      # group 'Countries' do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+
+      #   field :countries do
+      #     inline_add false
+      #   end
+      # end
+      # field :countries do
+      #   #help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
+      # end
+    end
+  end
+
+  config.model 'SolaClassCategory' do
+    visible false
+  end
+
+  config.model 'Tool' do
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    label 'Tool and Resource'
+    label_plural 'Tools and Resources'
+    list do
+      field :title
+      field :description
+      field :brand
+      field :tool_categories do
+        label 'Old Categories'
+      end
+
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+
+      field :image
+      field :file
+      field :link_url
+      field :youtube_url
+    end
+    show do
+      field :title
+      field :description
+      field :brand
+      field :tool_categories do
+        label 'Old Categories'
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+      field :image do
+        help 'Ideal image size is 460 x 280'
+      end
+      field :file
+      field :link_url
+      field :youtube_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :brand
+      field :tool_categories do
+        visible do
+          bindings[:object].id.present?
+        end
+        label 'Old Categories'
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+      field :image do
+        help 'Ideal image size is 460 x 280'
+        delete_method :delete_image
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :link_url
+      field :youtube_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+  end
+
+  config.model 'ToolCategory' do
+    visible false
+  end
+
+  config.model 'ToolCategoryTool' do
+    visible false
+  end
+
+  config.model 'Video' do
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :title
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :brand
+      field :video_categories do
+        label 'Old Categories'
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags
+    end
+    show do
+      field :title
+      #field :description
+      field :youtube_url
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :tool do
+        label 'Related Tool or Resource'
+      end
+      field :brand
+      field :video_categories do
+        label 'Old Categories'
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags
+      field :is_introduction
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    edit do
+      field :title
+      #field :description
+      field :youtube_url
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :tool do
+        label 'Related Tool or Resource'
+      end
+      # group :link do
+      #   field :link_url
+      #   field :link_text
+      # end
+      field :brand
+      field :video_categories do
+        visible do
+          bindings[:object].id.present?
+        end
+        label 'Old Categories'
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags
+      field :is_introduction
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      # group 'Countries' do
+      #   visible do
+      #     bindings[:controller]._current_user.franchisee != true
+      #   end
+      #
+      #   field :countries do
+      #     inline_add false
+      #   end
+      # end
+    end
+  end
+
+  config.model 'VideoCategory' do
+    visible false
+  end
+
+  config.model 'VideoCategoryVideo' do
     visible false
   end
 

@@ -39,7 +39,7 @@ namespace :reports do
     p "Begin location_contact_form_submission task...#{args.email_addresses}"
     
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = args.end_date.present? ? Date.parse(args.end_date).beginning_of_month : start_date.end_of_month
+    end_date = args.end_date.present? ? Date.parse(args.end_date) : start_date.end_of_month
     email_addresses = args.email_addresses.split(' ')
 
     p "start_date=#{start_date}, end_date=#{end_date}, email_addresses=#{email_addresses}"
@@ -742,6 +742,9 @@ namespace :reports do
   ##### report functions #######
 
   def location_ga_report(location, start_date, end_date, send_email=false, ga_id='81802112')
+    save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
+    #p "File exists!!" and return if File.file?(save_path)
+
     analytics = Analytics.new
     if start_date && end_date
       data = analytics.location_data(ga_id, location, start_date, end_date)
@@ -816,13 +819,12 @@ namespace :reports do
       ReportsMailer.location_report(location, pdf).deliver
       p "email sent"
     else
-      p "save file..."
-      save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
-      File.open(save_path, 'wb') do |file|
-        file << pdf
-      end  
-      p "file saved" 
-    end 
+    end
+    p "save file..."
+    File.open(save_path, 'wb') do |file|
+      file << pdf
+    end
+    p "file saved"
   end
 
 
@@ -1216,7 +1218,8 @@ namespace :reports do
       # referrals - source, % of traffic
       # ga:medium
       # ga:acquisitionTrafficChannel
-      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:medium', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))[0..4]
+      data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:medium', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
+      data[:referrals] = data[:referrals][0..4] if data[:referrals]
       p "done with referrals"
 
       # top referrers - site, visits

@@ -9,6 +9,12 @@ class Blog < ActiveRecord::Base
   has_many :blog_countries
   has_many :countries, :through => :blog_countries
 
+  has_many :categoriables, as: :item, dependent: :destroy
+  has_many :categories, through: :categoriables
+
+  has_many :taggables, as: :item, dependent: :destroy
+  has_many :tags, through: :taggables
+
   validates :title, :status, :presence => true
   validates :countries, :presence => true
   validates :url_name, :presence => true, :uniqueness => true

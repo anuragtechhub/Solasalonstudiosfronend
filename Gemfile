@@ -138,6 +138,7 @@ gem "hubspot-ruby"
 
 
 gem 'foreigner'
+gem 'friendly_id'
 
 group :development do
   gem 'annotate'
