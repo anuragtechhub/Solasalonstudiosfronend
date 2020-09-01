@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200814124759) do
+ActiveRecord::Schema.define(version: 20200820155846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
   enable_extension "dblink"
+  enable_extension "citext"
 
   create_table "accounts", force: true do |t|
     t.string   "api_key"
@@ -27,7 +28,7 @@ ActiveRecord::Schema.define(version: 20200814124759) do
   end
 
   create_table "admins", force: true do |t|
-    t.string   "email",                  default: "", null: false
+    t.text     "email",                               null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 20200814124759) do
     t.datetime "updated_at"
     t.boolean  "franchisee"
     t.string   "legacy_id"
-    t.string   "email_address"
+    t.text     "email_address",                       null: false
     t.string   "forgot_password_key"
     t.string   "mailchimp_api_key"
     t.string   "callfire_app_login"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20200814124759) do
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["email_address"], name: "index_admins_on_email_address", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "articles", force: true do |t|
@@ -1016,7 +1018,7 @@ ActiveRecord::Schema.define(version: 20200814124759) do
     t.string   "name"
     t.string   "url_name"
     t.text     "biography"
-    t.string   "email_address"
+    t.text     "email_address",                                         null: false
     t.string   "phone_number"
     t.string   "studio_number"
     t.text     "work_hours"
@@ -1158,6 +1160,7 @@ ActiveRecord::Schema.define(version: 20200814124759) do
     t.boolean  "botox"
   end
 
+  add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", unique: true, using: :btree
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree

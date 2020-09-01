@@ -113,7 +113,7 @@ class CmsController < ApplicationController
 
       if params[:q]
         q = "%#{params[:q].downcase.gsub(/\s/, '%')}%"
-        @stylists = @stylists.where('LOWER(name) LIKE ? OR LOWER(email_address) LIKE ? OR LOWER(website_email_address) LIKE ?', q, q, q)
+        @stylists = @stylists.where('LOWER(name) LIKE ? OR email_address LIKE ? OR website_email_address LIKE ?', q, q, q)
       end
 
       @total_count = @stylists.size
