@@ -2183,9 +2183,7 @@ RailsAdmin.config do |config|
         field :studio_number
         field :work_hours
         field :accepting_new_clients
-        field :walkins do
-          read_only true
-        end
+        field :walkins
       end
       group :website do
         active false
