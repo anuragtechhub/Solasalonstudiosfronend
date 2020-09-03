@@ -22,18 +22,16 @@ namespace :stylist do
   end
 
   task :turn_off_walkins => :environment do
-    #now = DateTime.now 
-    # AND walkins_expiry <= ?', true, now
     Stylist.where('walkins = ? AND walkins_expiry IS NOT NULL', true).each do |stylist|
       begin
-        now = DateTime.now.change(:offset => stylist.location.walkins_offset)#.in_time_zone(stylist.location.walkins_timezone_offset)
-        walkins_expiry = stylist.walkins_expiry.change(:offset => stylist.location.walkins_offset)#.in_time_zone(stylist.location.walkins_timezone_offset)
+        offset = stylist.location.walkins_offset
+        now = DateTime.now.change(offset: offset)
+        walkins_expiry = DateTime.parse(stylist.walkins_expiry.to_s).change(offset: offset)
+
         p "now=#{now}, walkins_expiry=#{walkins_expiry}"
         if walkins_expiry <= now
           p "gotta turn off walkins for #{stylist.id}, #{stylist.email_address}"
-          stylist.walkins = false
-          stylist.walkins_expiry = nil
-          if stylist.save
+          if stylist.update_attributes(walkins: false, walkins_expiry: nil)
             p "walkins settings for stylist updated successfully!"
           else
             p "walkins settings for stylist NOT updated successfully: #{stylist.errors.inspect}"
