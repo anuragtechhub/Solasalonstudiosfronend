@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sola_stylist_id: 
+  admin_id: 
+  query: MyText
+
+two:
+  sola_stylist_id: 
+  admin_id: 
+  query: MyText
