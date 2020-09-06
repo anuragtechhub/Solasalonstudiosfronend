@@ -261,6 +261,10 @@ GEM
       paperclip (>= 3.4)
     pg (0.18.4)
     pg_array_parser (0.0.9)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     polyglot (0.3.5)
     postgres_ext (2.4.1)
       activerecord (>= 4.0.0)
@@ -448,6 +452,7 @@ DEPENDENCIES
   paperclip
   paperclip-optimizer
   pg
+  pg_search
   postgres_ext-serializers
   puma
   puma_worker_killer

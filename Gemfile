@@ -140,6 +140,8 @@ gem "hubspot-ruby"
 gem 'foreigner'
 gem 'friendly_id'
 
+gem 'pg_search'
+
 group :development do
   gem 'annotate'
 
