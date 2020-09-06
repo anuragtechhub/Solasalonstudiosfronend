@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200906202350) do
+ActiveRecord::Schema.define(version: 20200906220048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,7 +192,10 @@ ActiveRecord::Schema.define(version: 20200906202350) do
     t.datetime "white_image_updated_at"
     t.string   "introduction_video_heading_title", default: "Introduction"
     t.string   "events_and_classes_heading_title", default: "Classes"
+    t.integer  "views",                            default: 0,              null: false
   end
+
+  add_index "brands", ["views"], name: "index_brands_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "brands_sola_classes", force: true do |t|
     t.integer  "brand_id"
@@ -296,9 +299,11 @@ ActiveRecord::Schema.define(version: 20200906202350) do
     t.integer  "hover_image_file_size"
     t.datetime "hover_image_updated_at"
     t.string   "more_info_url"
+    t.integer  "views",                    default: 0,     null: false
   end
 
   add_index "deals", ["brand_id"], name: "index_deals_on_brand_id", using: :btree
+  add_index "deals", ["views"], name: "index_deals_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "devices", force: true do |t|
     t.string   "name"
@@ -1025,6 +1030,7 @@ ActiveRecord::Schema.define(version: 20200906202350) do
     t.integer  "video_id"
     t.string   "file_text"
     t.integer  "category_id"
+    t.integer  "views",                  default: 0,     null: false
   end
 
   add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
@@ -1032,6 +1038,7 @@ ActiveRecord::Schema.define(version: 20200906202350) do
   add_index "sola_classes", ["sola_class_category_id"], name: "index_sola_classes_on_sola_class_category_id", using: :btree
   add_index "sola_classes", ["sola_class_region_id"], name: "index_sola_classes_on_sola_class_region_id", using: :btree
   add_index "sola_classes", ["video_id"], name: "index_sola_classes_on_video_id", using: :btree
+  add_index "sola_classes", ["views"], name: "index_sola_classes_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "studios", force: true do |t|
     t.string   "name"
@@ -1336,9 +1343,11 @@ ActiveRecord::Schema.define(version: 20200906202350) do
     t.datetime "file_updated_at"
     t.string   "link_url"
     t.string   "youtube_url"
+    t.integer  "views",              default: 0,     null: false
   end
 
   add_index "tools", ["brand_id"], name: "index_tools_on_brand_id", using: :btree
+  add_index "tools", ["views"], name: "index_tools_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "update_my_sola_websites", force: true do |t|
     t.string   "name"
@@ -1547,10 +1556,12 @@ ActiveRecord::Schema.define(version: 20200906202350) do
     t.boolean  "is_introduction", default: false
     t.string   "link_url"
     t.string   "link_text"
+    t.integer  "views",           default: 0,     null: false
   end
 
   add_index "videos", ["brand_id"], name: "index_videos_on_brand_id", using: :btree
   add_index "videos", ["tool_id"], name: "index_videos_on_tool_id", using: :btree
+  add_index "videos", ["views"], name: "index_videos_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "visits", force: true do |t|
     t.string   "ip_address"
