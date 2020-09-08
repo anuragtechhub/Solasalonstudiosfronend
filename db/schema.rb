@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200908213551) do
+ActiveRecord::Schema.define(version: 20200908221616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20200908213551) do
   end
 
   create_table "admins", force: true do |t|
-    t.text     "email",                               null: false
+    t.text     "email",                                  null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -42,12 +42,13 @@ ActiveRecord::Schema.define(version: 20200908213551) do
     t.datetime "updated_at"
     t.boolean  "franchisee"
     t.string   "legacy_id"
-    t.text     "email_address",                       null: false
+    t.text     "email_address",                          null: false
     t.string   "forgot_password_key"
     t.string   "mailchimp_api_key"
     t.string   "callfire_app_login"
     t.string   "callfire_app_password"
     t.string   "sola_pro_country_admin"
+    t.boolean  "onboarded",              default: false, null: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -1215,6 +1216,7 @@ ActiveRecord::Schema.define(version: 20200908213551) do
     t.string   "total_booknow_revenue"
     t.datetime "walkins_expiry"
     t.boolean  "botox"
+    t.boolean  "onboarded",                      default: false,        null: false
   end
 
   add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", unique: true, using: :btree
