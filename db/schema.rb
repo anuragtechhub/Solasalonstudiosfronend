@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200906220048) do
+ActiveRecord::Schema.define(version: 20200908213551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 20200906220048) do
     t.text     "meta_description"
     t.string   "canonical_url"
   end
+
+  add_index "blogs", ["status"], name: "index_blogs_on_status", using: :btree
 
   create_table "book_now_bookings", force: true do |t|
     t.string   "time_range"
@@ -885,9 +887,11 @@ ActiveRecord::Schema.define(version: 20200906220048) do
     t.text     "query",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "kind"
   end
 
   add_index "saved_searches", ["admin_id"], name: "index_saved_searches_on_admin_id", using: :btree
+  add_index "saved_searches", ["kind"], name: "index_saved_searches_on_kind", using: :btree
   add_index "saved_searches", ["query"], name: "index_saved_searches_on_query", using: :btree
   add_index "saved_searches", ["sola_stylist_id"], name: "index_saved_searches_on_sola_stylist_id", using: :btree
 
