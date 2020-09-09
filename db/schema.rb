@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200908221616) do
+ActiveRecord::Schema.define(version: 20200909163809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1040,6 +1040,7 @@ ActiveRecord::Schema.define(version: 20200908221616) do
 
   add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
   add_index "sola_classes", ["category_id"], name: "index_sola_classes_on_category_id", using: :btree
+  add_index "sola_classes", ["end_date"], name: "index_sola_classes_on_end_date", using: :btree
   add_index "sola_classes", ["sola_class_category_id"], name: "index_sola_classes_on_sola_class_category_id", using: :btree
   add_index "sola_classes", ["sola_class_region_id"], name: "index_sola_classes_on_sola_class_region_id", using: :btree
   add_index "sola_classes", ["video_id"], name: "index_sola_classes_on_video_id", using: :btree
