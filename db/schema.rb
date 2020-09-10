@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200909163809) do
+ActiveRecord::Schema.define(version: 20200910200001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -778,9 +778,11 @@ ActiveRecord::Schema.define(version: 20200909163809) do
     t.datetime "flyer_image_updated_at"
     t.integer  "brand_id"
     t.integer  "pro_beauty_industry_category_id"
+    t.integer  "category_id"
   end
 
   add_index "pro_beauty_industries", ["brand_id"], name: "index_pro_beauty_industries_on_brand_id", using: :btree
+  add_index "pro_beauty_industries", ["category_id"], name: "index_pro_beauty_industries_on_category_id", using: :btree
   add_index "pro_beauty_industries", ["pro_beauty_industry_category_id"], name: "index_pro_beauty_industries_on_pro_beauty_industry_category_id", using: :btree
 
   create_table "pro_beauty_industry_categories", force: true do |t|
@@ -1252,8 +1254,10 @@ ActiveRecord::Schema.define(version: 20200909163809) do
     t.datetime "file_updated_at"
     t.string   "video_url"
     t.integer  "support_category_id"
+    t.integer  "category_id"
   end
 
+  add_index "supports", ["category_id"], name: "index_supports_on_category_id", using: :btree
   add_index "supports", ["support_category_id"], name: "index_supports_on_support_category_id", using: :btree
 
   create_table "taggables", force: true do |t|
@@ -1564,6 +1568,7 @@ ActiveRecord::Schema.define(version: 20200909163809) do
     t.string   "link_url"
     t.string   "link_text"
     t.integer  "views",           default: 0,     null: false
+    t.boolean  "webinar",         default: false
   end
 
   add_index "videos", ["brand_id"], name: "index_videos_on_brand_id", using: :btree

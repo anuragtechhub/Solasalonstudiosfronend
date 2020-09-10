@@ -19,6 +19,11 @@ RailsAdmin.config do |config|
   config.excluded_models << 'Moz'
   config.excluded_models << 'SavedSearch'
   config.excluded_models << 'SolaStylist'
+  config.excluded_models << 'Support'
+  config.excluded_models << 'SupportCategory'
+  config.excluded_models << 'ProBeautyIndustry'
+  config.excluded_models << 'ProBeautyIndustryCategory'
+
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
   # config.excluded_models << 'BlogBlogCategory'
@@ -770,6 +775,7 @@ RailsAdmin.config do |config|
       field :duration do
         help '(e.g. 11:10, 1:07:41, 3:42, etc)'
       end
+      field :webinar
       field :brand
       field :video_categories do
         label 'Old Categories'
@@ -781,6 +787,7 @@ RailsAdmin.config do |config|
     end
     show do
       field :title
+      field :webinar
       #field :description
       field :youtube_url
       field :duration do
@@ -806,6 +813,7 @@ RailsAdmin.config do |config|
     end
     edit do
       field :title
+      field :webinar
       #field :description
       field :youtube_url
       field :duration do

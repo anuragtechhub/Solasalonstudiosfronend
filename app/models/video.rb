@@ -13,7 +13,10 @@ class Video < ActiveRecord::Base
   has_many :video_categories, :through => :video_category_videos
   # has_many :notifications, :dependent => :destroy
   has_many :tags_videos
-  has_many :tags, :through => :tags_videos
+
+  has_many :taggables, as: :item, dependent: :destroy
+  has_many :tags, through: :taggables
+
   # has_many :video_views, :dependent => :destroy
   # has_many :watch_laters, :dependent => :destroy
   # has_many :saved_items, dependent: :destroy, inverse_of: :video

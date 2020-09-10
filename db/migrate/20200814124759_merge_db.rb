@@ -1438,6 +1438,7 @@ class MergeDb < ActiveRecord::Migration
       SELECT setval('versions_id_seq', max(id)) FROM versions;
       SELECT setval('video_categories_id_seq', max(id)) FROM video_categories;
       SELECT setval('video_category_videos_id_seq', max(id)) FROM video_category_videos;
+      SELECT setval('video_countries_id_seq', max(id)) FROM video_countries;
       SELECT setval('video_views_id_seq', max(id)) FROM video_views;
       SELECT setval('videos_id_seq', max(id)) FROM videos;
       SELECT setval('watch_laters_id_seq', max(id)) FROM watch_laters;

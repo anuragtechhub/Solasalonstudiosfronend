@@ -9,7 +9,7 @@ class SolaClass < ActiveRecord::Base
   belongs_to :sola_class_region
 
   belongs_to :category
-  #belongs_to :brand
+  belongs_to :brand
   belongs_to :admin
   belongs_to :video
   has_and_belongs_to_many :brands
