@@ -708,9 +708,7 @@
       max-width: 300px;
       height: 180px;
       overflow: visible;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
+      display: contents;
 
       -ms-flex-align: center;
       -webkit-align-items: center;
@@ -868,6 +866,10 @@
     }
 
     .sola-pro-phone-gallery {
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+
       .sola-pro-phone {
         background-size: (425px / 2.5) (694px / 2.5);
         width: (425px / 2.5);
