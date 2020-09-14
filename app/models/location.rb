@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
 
   # after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
-  before_save :fix_url_name, :downcase_email_address_for_inquiries, :downcase_email_address_for_hubspot
+  before_save :fix_url_name, :prepare_emails
   after_save :update_computed_fields
   after_validation :geocode, if: Proc.new { |location| location.latitude.blank? && location.longitude.blank? }
   geocoded_by :full_address
@@ -419,24 +419,13 @@ class Location < ActiveRecord::Base
 
   def fix_url_name
     if self.url_name.present?
-      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
-      self.url_name = self.url_name.gsub('___', '_')
-      self.url_name = self.url_name.gsub('_-_', '_')
-      self.url_name = self.url_name.split('_')
-      self.url_name = self.url_name.map{ |u| u.downcase }
-      self.url_name = self.url_name.join('-')
-    end
-  end
-
-  def downcase_email_address_for_hubspot
-    if self.email_address_for_hubspot.present?
-      self.email_address_for_hubspot = self.email_address_for_hubspot.downcase
-    end
-  end
-
-  def downcase_email_address_for_inquiries
-    if self.email_address_for_inquiries.present?
-      self.email_address_for_inquiries = self.email_address_for_inquiries.downcase
+      self.url_name = self.url_name
+                        .gsub(/[^0-9a-zA-Z]/, '_')
+                        .gsub('___', '_')
+                        .gsub('_-_', '_')
+                        .split('_')
+                        .map{ |u| u.downcase }
+                        .join('-')
     end
   end
 
@@ -901,6 +890,181 @@ class Location < ActiveRecord::Base
     Location.all.first.touch
   end
 
-
-
+  def prepare_emails
+    %i[email_address_for_inquiries email_address_for_reports email_address_for_hubspot].each do |key|
+      if self.try(key).present?
+        public_send("#{key}=", self.try(key).to_s.downcase.gsub(/\s+/, ''))
+      end
+    end
+  end
 end
+
+# == Schema Information
+#
+# Table name: locations
+#
+#  id                           :integer          not null, primary key
+#  name                         :string(255)
+#  url_name                     :string(255)
+#  address_1                    :string(255)
+#  address_2                    :string(255)
+#  city                         :string(255)
+#  state                        :string(255)
+#  postal_code                  :string(255)
+#  email_address_for_inquiries  :string(255)
+#  phone_number                 :string(255)
+#  general_contact_name         :string(255)
+#  description                  :text
+#  facebook_url                 :string(255)
+#  twitter_url                  :string(255)
+#  latitude                     :float
+#  longitude                    :float
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  chat_code                    :text
+#  image_1_file_name            :string(255)
+#  image_1_content_type         :string(255)
+#  image_1_file_size            :integer
+#  image_1_updated_at           :datetime
+#  image_2_file_name            :string(255)
+#  image_2_content_type         :string(255)
+#  image_2_file_size            :integer
+#  image_2_updated_at           :datetime
+#  image_3_file_name            :string(255)
+#  image_3_content_type         :string(255)
+#  image_3_file_size            :integer
+#  image_3_updated_at           :datetime
+#  image_4_file_name            :string(255)
+#  image_4_content_type         :string(255)
+#  image_4_file_size            :integer
+#  image_4_updated_at           :datetime
+#  image_5_file_name            :string(255)
+#  image_5_content_type         :string(255)
+#  image_5_file_size            :integer
+#  image_5_updated_at           :datetime
+#  image_6_file_name            :string(255)
+#  image_6_content_type         :string(255)
+#  image_6_file_size            :integer
+#  image_6_updated_at           :datetime
+#  image_7_file_name            :string(255)
+#  image_7_content_type         :string(255)
+#  image_7_file_size            :integer
+#  image_7_updated_at           :datetime
+#  image_8_file_name            :string(255)
+#  image_8_content_type         :string(255)
+#  image_8_file_size            :integer
+#  image_8_updated_at           :datetime
+#  image_9_file_name            :string(255)
+#  image_9_content_type         :string(255)
+#  image_9_file_size            :integer
+#  image_9_updated_at           :datetime
+#  image_10_file_name           :string(255)
+#  image_10_content_type        :string(255)
+#  image_10_file_size           :integer
+#  image_10_updated_at          :datetime
+#  legacy_id                    :string(255)
+#  image_11_file_name           :string(255)
+#  image_11_content_type        :string(255)
+#  image_11_file_size           :integer
+#  image_11_updated_at          :datetime
+#  image_12_file_name           :string(255)
+#  image_12_content_type        :string(255)
+#  image_12_file_size           :integer
+#  image_12_updated_at          :datetime
+#  image_13_file_name           :string(255)
+#  image_13_content_type        :string(255)
+#  image_13_file_size           :integer
+#  image_13_updated_at          :datetime
+#  image_14_file_name           :string(255)
+#  image_14_content_type        :string(255)
+#  image_14_file_size           :integer
+#  image_14_updated_at          :datetime
+#  image_15_file_name           :string(255)
+#  image_15_content_type        :string(255)
+#  image_15_file_size           :integer
+#  image_15_updated_at          :datetime
+#  image_16_file_name           :string(255)
+#  image_16_content_type        :string(255)
+#  image_16_file_size           :integer
+#  image_16_updated_at          :datetime
+#  image_17_file_name           :string(255)
+#  image_17_content_type        :string(255)
+#  image_17_file_size           :integer
+#  image_17_updated_at          :datetime
+#  image_18_file_name           :string(255)
+#  image_18_content_type        :string(255)
+#  image_18_file_size           :integer
+#  image_18_updated_at          :datetime
+#  image_19_file_name           :string(255)
+#  image_19_content_type        :string(255)
+#  image_19_file_size           :integer
+#  image_19_updated_at          :datetime
+#  image_20_file_name           :string(255)
+#  image_20_content_type        :string(255)
+#  image_20_file_size           :integer
+#  image_20_updated_at          :datetime
+#  status                       :string(255)
+#  admin_id                     :integer
+#  msa_id                       :integer
+#  move_in_special              :text
+#  open_house                   :text
+#  pinterest_url                :string(255)
+#  instagram_url                :string(255)
+#  yelp_url                     :string(255)
+#  mailchimp_list_ids           :text
+#  callfire_list_ids            :text
+#  custom_maps_url              :text
+#  tracking_code                :text
+#  tour_iframe_1                :text
+#  tour_iframe_2                :text
+#  tour_iframe_3                :text
+#  country                      :string(255)      default("US")
+#  image_1_alt_text             :text
+#  image_2_alt_text             :text
+#  image_3_alt_text             :text
+#  image_4_alt_text             :text
+#  image_5_alt_text             :text
+#  image_6_alt_text             :text
+#  image_7_alt_text             :text
+#  image_8_alt_text             :text
+#  image_9_alt_text             :text
+#  image_10_alt_text            :text
+#  image_11_alt_text            :text
+#  image_12_alt_text            :text
+#  image_13_alt_text            :text
+#  image_14_alt_text            :text
+#  image_15_alt_text            :text
+#  image_16_alt_text            :text
+#  image_17_alt_text            :text
+#  image_18_alt_text            :text
+#  image_19_alt_text            :text
+#  image_20_alt_text            :text
+#  email_address_for_reports    :string(255)
+#  rent_manager_property_id     :string(255)
+#  rent_manager_location_id     :string(255)
+#  service_request_enabled      :boolean          default(FALSE)
+#  rent_manager_enabled         :boolean          default(FALSE)
+#  moz_id                       :integer
+#  description_short            :text
+#  description_long             :text
+#  open_time                    :time
+#  close_time                   :time
+#  walkins_enabled              :boolean          default(FALSE)
+#  max_walkins_time             :integer          default(60)
+#  walkins_end_of_day           :time
+#  walkins_timezone             :string(255)
+#  floorplan_image_file_name    :string(255)
+#  floorplan_image_content_type :string(255)
+#  floorplan_image_file_size    :integer
+#  floorplan_image_updated_at   :datetime
+#  store_id                     :string(255)
+#  email_address_for_hubspot    :string(255)
+#
+# Indexes
+#
+#  index_locations_on_admin_id  (admin_id)
+#  index_locations_on_msa_id    (msa_id)
+#  index_locations_on_state     (state)
+#  index_locations_on_status    (status)
+#  index_locations_on_url_name  (url_name)
+#
