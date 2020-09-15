@@ -743,7 +743,7 @@ namespace :reports do
 
   def location_ga_report(location, start_date, end_date, send_email=false, ga_id='81802112')
     save_path = Rails.root.join('pdfs',"location_#{location.url_name}.pdf")
-    #p "File exists!!" and return if File.file?(save_path)
+    p "File exists!!" and return if File.file?(save_path)
 
     analytics = Analytics.new
     if start_date && end_date
@@ -1566,13 +1566,13 @@ namespace :reports do
       data[:total_form_submissions_prev_year] = data[:other_form_submissions_prev_year] + data[:book_an_appointment_inquiries_prev_year] + data[:leasing_form_submissions_prev_year]
 
       # phone number clicks
-      data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0
-      data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')[0][1] || 0
+      data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number').to_a[0].to_a[1] || 0
+      data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number').to_a[0].to_a[1] || 0
       data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Location Phone Number')
       data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
 
-      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 0
-      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')[0][1] || 0
+      data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number').to_a[0].to_a[1] || 0
+      data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number').to_a[0].to_a[1] || 0
       data[:professional_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Professional Phone Number')
       data[:professional_phone_number_clicks_prev_year] = data[:professional_phone_number_clicks_prev_year] ? data[:professional_phone_number_clicks_prev_year][0][1] : 0
 

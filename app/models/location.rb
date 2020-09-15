@@ -24,6 +24,7 @@ class Location < ActiveRecord::Base
   geocoded_by :full_address
   #after_destroy :moz_delete, :touch_location
   after_destroy :touch_location
+  after_save :update_stylists_walkins
 
   after_initialize do
     if new_record?
@@ -896,6 +897,13 @@ class Location < ActiveRecord::Base
         public_send("#{key}=", self.try(key).to_s.downcase.gsub(/\s+/, ''))
       end
     end
+  end
+
+  def update_stylists_walkins
+    return unless self.walkins_enabled_changed?
+    return if self.walkins_enabled
+
+    stylists.update_all(walkins: false)
   end
 end
 

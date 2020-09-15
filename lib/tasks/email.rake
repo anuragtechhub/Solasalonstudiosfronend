@@ -219,16 +219,16 @@ namespace :email do
 	    p "pdf rendered..."
 
 			#if send_email
-	      p "send email..."
-	      ReportsMailer.welcome_email_report(pdf).deliver
-	      p "email sent"
+	    #   p "send email..."
+	    #   ReportsMailer.welcome_email_report(pdf).deliver
+	    #   p "email sent"
 	    # else
-	      # p "save file..."
-	      # save_path = Rails.root.join('pdfs',"welcome_email.pdf")
-	      # File.open(save_path, 'wb') do |file|
-	      #   file << pdf
-	      # end  
-	      # p "file saved" 
+	      p "save file..."
+	      save_path = Rails.root.join('pdfs',"welcome_email.pdf")
+	      File.open(save_path, 'wb') do |file|
+	        file << pdf
+	      end
+	      p "file saved"
 	    # end
 	  # else
 	  # 	p "NOT the 2nd day of the month"
