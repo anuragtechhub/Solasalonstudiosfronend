@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200825200448) do
+ActiveRecord::Schema.define(version: 20200915145611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20200825200448) do
   end
 
   create_table "admins", force: true do |t|
-    t.text     "email",                               null: false
+    t.text     "email",                                  null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -42,12 +42,13 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.datetime "updated_at"
     t.boolean  "franchisee"
     t.string   "legacy_id"
-    t.text     "email_address",                       null: false
+    t.text     "email_address",                          null: false
     t.string   "forgot_password_key"
     t.string   "mailchimp_api_key"
     t.string   "callfire_app_login"
     t.string   "callfire_app_password"
     t.string   "sola_pro_country_admin"
+    t.boolean  "onboarded",              default: false, null: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -127,6 +128,8 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.string   "canonical_url"
   end
 
+  add_index "blogs", ["status"], name: "index_blogs_on_status", using: :btree
+
   create_table "book_now_bookings", force: true do |t|
     t.string   "time_range"
     t.integer  "location_id"
@@ -192,7 +195,10 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.datetime "white_image_updated_at"
     t.string   "introduction_video_heading_title", default: "Introduction"
     t.string   "events_and_classes_heading_title", default: "Classes"
+    t.integer  "views",                            default: 0,              null: false
   end
+
+  add_index "brands", ["views"], name: "index_brands_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "brands_sola_classes", force: true do |t|
     t.integer  "brand_id"
@@ -296,9 +302,11 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.integer  "hover_image_file_size"
     t.datetime "hover_image_updated_at"
     t.string   "more_info_url"
+    t.integer  "views",                    default: 0,     null: false
   end
 
   add_index "deals", ["brand_id"], name: "index_deals_on_brand_id", using: :btree
+  add_index "deals", ["views"], name: "index_deals_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "devices", force: true do |t|
     t.string   "name"
@@ -738,6 +746,17 @@ ActiveRecord::Schema.define(version: 20200825200448) do
 
   add_index "partner_inquiries", ["visit_id"], name: "index_partner_inquiries_on_visit_id", using: :btree
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["content"], name: "index_pg_search_documents_on_content", using: :btree
+  add_index "pg_search_documents", ["searchable_id", "searchable_type"], name: "index_pg_search_documents_on_searchable_id_and_searchable_type", using: :btree
+
   create_table "pro_beauty_industries", force: true do |t|
     t.string   "title"
     t.text     "short_description"
@@ -759,9 +778,11 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.datetime "flyer_image_updated_at"
     t.integer  "brand_id"
     t.integer  "pro_beauty_industry_category_id"
+    t.integer  "category_id"
   end
 
   add_index "pro_beauty_industries", ["brand_id"], name: "index_pro_beauty_industries_on_brand_id", using: :btree
+  add_index "pro_beauty_industries", ["category_id"], name: "index_pro_beauty_industries_on_category_id", using: :btree
   add_index "pro_beauty_industries", ["pro_beauty_industry_category_id"], name: "index_pro_beauty_industries_on_pro_beauty_industry_category_id", using: :btree
 
   create_table "pro_beauty_industry_categories", force: true do |t|
@@ -862,6 +883,20 @@ ActiveRecord::Schema.define(version: 20200825200448) do
   add_index "saved_items", ["admin_id"], name: "index_saved_items_on_admin_id", using: :btree
   add_index "saved_items", ["item_type", "item_id"], name: "index_saved_items_on_item_type_and_item_id", using: :btree
   add_index "saved_items", ["sola_stylist_id"], name: "index_saved_items_on_sola_stylist_id", using: :btree
+
+  create_table "saved_searches", force: true do |t|
+    t.integer  "sola_stylist_id"
+    t.integer  "admin_id"
+    t.text     "query",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "kind"
+  end
+
+  add_index "saved_searches", ["admin_id"], name: "index_saved_searches_on_admin_id", using: :btree
+  add_index "saved_searches", ["kind"], name: "index_saved_searches_on_kind", using: :btree
+  add_index "saved_searches", ["query"], name: "index_saved_searches_on_query", using: :btree
+  add_index "saved_searches", ["sola_stylist_id"], name: "index_saved_searches_on_sola_stylist_id", using: :btree
 
   create_table "seja_solas", force: true do |t|
     t.string   "nome"
@@ -1002,13 +1037,16 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.integer  "video_id"
     t.string   "file_text"
     t.integer  "category_id"
+    t.integer  "views",                  default: 0,     null: false
   end
 
   add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
   add_index "sola_classes", ["category_id"], name: "index_sola_classes_on_category_id", using: :btree
+  add_index "sola_classes", ["end_date"], name: "index_sola_classes_on_end_date", using: :btree
   add_index "sola_classes", ["sola_class_category_id"], name: "index_sola_classes_on_sola_class_category_id", using: :btree
   add_index "sola_classes", ["sola_class_region_id"], name: "index_sola_classes_on_sola_class_region_id", using: :btree
   add_index "sola_classes", ["video_id"], name: "index_sola_classes_on_video_id", using: :btree
+  add_index "sola_classes", ["views"], name: "index_sola_classes_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "studios", force: true do |t|
     t.string   "name"
@@ -1181,9 +1219,10 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.string   "total_booknow_revenue"
     t.datetime "walkins_expiry"
     t.boolean  "botox"
+    t.boolean  "onboarded",                      default: false,        null: false
   end
 
-  add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", unique: true, using: :btree
+  add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", using: :btree
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree
@@ -1215,8 +1254,10 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.datetime "file_updated_at"
     t.string   "video_url"
     t.integer  "support_category_id"
+    t.integer  "category_id"
   end
 
+  add_index "supports", ["category_id"], name: "index_supports_on_category_id", using: :btree
   add_index "supports", ["support_category_id"], name: "index_supports_on_support_category_id", using: :btree
 
   create_table "taggables", force: true do |t|
@@ -1313,9 +1354,11 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.datetime "file_updated_at"
     t.string   "link_url"
     t.string   "youtube_url"
+    t.integer  "views",              default: 0,     null: false
   end
 
   add_index "tools", ["brand_id"], name: "index_tools_on_brand_id", using: :btree
+  add_index "tools", ["views"], name: "index_tools_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "update_my_sola_websites", force: true do |t|
     t.string   "name"
@@ -1524,10 +1567,13 @@ ActiveRecord::Schema.define(version: 20200825200448) do
     t.boolean  "is_introduction", default: false
     t.string   "link_url"
     t.string   "link_text"
+    t.integer  "views",           default: 0,     null: false
+    t.boolean  "webinar",         default: false
   end
 
   add_index "videos", ["brand_id"], name: "index_videos_on_brand_id", using: :btree
   add_index "videos", ["tool_id"], name: "index_videos_on_tool_id", using: :btree
+  add_index "videos", ["views"], name: "index_videos_on_views", order: {"views"=>:desc}, using: :btree
 
   create_table "visits", force: true do |t|
     t.string   "ip_address"
