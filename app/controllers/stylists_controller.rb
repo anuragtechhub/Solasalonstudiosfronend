@@ -98,10 +98,6 @@ class StylistsController < PublicWebsiteController
 
   private
 
-  def banned_ip_addresses
-    ['76.18.136.169', '75.166.129.62', '172.58.20.97', '198.140.189.250', '193.201.224.229', '193.201.224.246', '68.7.28.242', '184.166.232.164', '67.177.141.170', '73.144.195.34', '208.54.80.233', '205.204.186.52']
-  end
-
   def save_visit
     visit = Visit.new
 

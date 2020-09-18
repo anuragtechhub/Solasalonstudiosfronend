@@ -185,5 +185,8 @@ class PublicWebsiteController < ApplicationController
     end
   end
 
+  def banned_ip_addresses
+    ENV['BANNED_IPS'].split(',')
+  end
 end
 
