@@ -162,7 +162,7 @@ var ContactForm = React.createClass({
 					{this.renderEmail()}
 
 					<div className="form-group"> 
-						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} required="required" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 					</div>
 
 					{/*this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>*/}
@@ -299,7 +299,7 @@ var ContactForm = React.createClass({
 		var self = this;
 		return (
 			<div className="form-group" ref="first_input">
-				<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+				<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} required="required" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 			</div>
 		);
 	},
@@ -308,7 +308,7 @@ var ContactForm = React.createClass({
 		var self = this;
 		return (
 			<div className="form-group">
-				<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
+				<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} required="required" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 			</div>
 		);
 	},
