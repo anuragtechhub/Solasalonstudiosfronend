@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200910200001) do
+ActiveRecord::Schema.define(version: 20200920091727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -327,6 +327,27 @@ ActiveRecord::Schema.define(version: 20200910200001) do
   create_table "distributors", force: true do |t|
     t.string   "name"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "education_hero_image_countries", force: true do |t|
+    t.integer  "country_id"
+    t.integer  "education_hero_image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "education_hero_image_countries", ["country_id"], name: "index_education_hero_image_countries_on_country_id", using: :btree
+  add_index "education_hero_image_countries", ["education_hero_image_id"], name: "index_education_hero_image_countries_on_education_hero_image_id", using: :btree
+
+  create_table "education_hero_images", force: true do |t|
+    t.string   "action_link"
+    t.string   "image_content_type"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -1222,7 +1243,7 @@ ActiveRecord::Schema.define(version: 20200910200001) do
     t.boolean  "onboarded",                      default: false,        null: false
   end
 
-  add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", unique: true, using: :btree
+  add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", using: :btree
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree

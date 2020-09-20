@@ -23,6 +23,8 @@ RailsAdmin.config do |config|
   config.excluded_models << 'SupportCategory'
   config.excluded_models << 'ProBeautyIndustry'
   config.excluded_models << 'ProBeautyIndustryCategory'
+  config.excluded_models << 'EducationHeroImage'
+  config.excluded_models << 'EducationHeroImageCountry'
 
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
