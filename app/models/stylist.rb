@@ -818,3 +818,162 @@ class Stylist < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: stylists
+#
+#  id                             :integer          not null, primary key
+#  name                           :string(255)
+#  url_name                       :string(255)
+#  biography                      :text
+#  email_address                  :citext           not null
+#  phone_number                   :string(255)
+#  studio_number                  :string(255)
+#  work_hours                     :text
+#  website_url                    :string(255)
+#  business_name                  :string(255)
+#  hair                           :boolean
+#  skin                           :boolean
+#  nails                          :boolean
+#  massage                        :boolean
+#  teeth_whitening                :boolean
+#  eyelash_extensions             :boolean
+#  makeup                         :boolean
+#  tanning                        :boolean
+#  waxing                         :boolean
+#  brows                          :boolean
+#  accepting_new_clients          :boolean          default(TRUE)
+#  booking_url                    :string(255)
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  location_id                    :integer
+#  legacy_id                      :string(255)
+#  status                         :string(255)
+#  image_1_file_name              :string(255)
+#  image_1_content_type           :string(255)
+#  image_1_file_size              :integer
+#  image_1_updated_at             :datetime
+#  image_2_file_name              :string(255)
+#  image_2_content_type           :string(255)
+#  image_2_file_size              :integer
+#  image_2_updated_at             :datetime
+#  image_3_file_name              :string(255)
+#  image_3_content_type           :string(255)
+#  image_3_file_size              :integer
+#  image_3_updated_at             :datetime
+#  image_4_file_name              :string(255)
+#  image_4_content_type           :string(255)
+#  image_4_file_size              :integer
+#  image_4_updated_at             :datetime
+#  image_5_file_name              :string(255)
+#  image_5_content_type           :string(255)
+#  image_5_file_size              :integer
+#  image_5_updated_at             :datetime
+#  image_6_file_name              :string(255)
+#  image_6_content_type           :string(255)
+#  image_6_file_size              :integer
+#  image_6_updated_at             :datetime
+#  image_7_file_name              :string(255)
+#  image_7_content_type           :string(255)
+#  image_7_file_size              :integer
+#  image_7_updated_at             :datetime
+#  image_8_file_name              :string(255)
+#  image_8_content_type           :string(255)
+#  image_8_file_size              :integer
+#  image_8_updated_at             :datetime
+#  image_9_file_name              :string(255)
+#  image_9_content_type           :string(255)
+#  image_9_file_size              :integer
+#  image_9_updated_at             :datetime
+#  image_10_file_name             :string(255)
+#  image_10_content_type          :string(255)
+#  image_10_file_size             :integer
+#  image_10_updated_at            :datetime
+#  testimonial_id_1               :integer
+#  testimonial_id_2               :integer
+#  testimonial_id_3               :integer
+#  testimonial_id_4               :integer
+#  testimonial_id_5               :integer
+#  testimonial_id_6               :integer
+#  testimonial_id_7               :integer
+#  testimonial_id_8               :integer
+#  testimonial_id_9               :integer
+#  testimonial_id_10              :integer
+#  location_name                  :string(255)
+#  hair_extensions                :boolean
+#  send_a_message_button          :boolean          default(TRUE)
+#  pinterest_url                  :string(255)
+#  facebook_url                   :string(255)
+#  twitter_url                    :string(255)
+#  instagram_url                  :string(255)
+#  yelp_url                       :string(255)
+#  laser_hair_removal             :boolean
+#  threading                      :boolean
+#  permanent_makeup               :boolean
+#  linkedin_url                   :string(255)
+#  other_service                  :string(255)
+#  google_plus_url                :string(255)
+#  encrypted_password             :string(255)      default("")
+#  reset_password_token           :string(255)
+#  reset_password_sent_at         :datetime
+#  remember_created_at            :datetime
+#  sign_in_count                  :integer          default(0), not null
+#  current_sign_in_at             :datetime
+#  last_sign_in_at                :datetime
+#  current_sign_in_ip             :inet
+#  last_sign_in_ip                :inet
+#  msa_name                       :string(255)
+#  phone_number_display           :boolean          default(TRUE)
+#  sola_genius_enabled            :boolean          default(TRUE)
+#  sola_pro_platform              :string(255)
+#  sola_pro_version               :string(255)
+#  image_1_alt_text               :text
+#  image_2_alt_text               :text
+#  image_3_alt_text               :text
+#  image_4_alt_text               :text
+#  image_5_alt_text               :text
+#  image_6_alt_text               :text
+#  image_7_alt_text               :text
+#  image_8_alt_text               :text
+#  image_9_alt_text               :text
+#  image_10_alt_text              :text
+#  microblading                   :boolean
+#  rent_manager_id                :string(255)
+#  date_of_birth                  :date
+#  street_address                 :string(255)
+#  city                           :string(255)
+#  state_province                 :string(255)
+#  postal_code                    :string(255)
+#  emergency_contact_name         :string(255)
+#  emergency_contact_relationship :string(255)
+#  emergency_contact_phone_number :string(255)
+#  cosmetology_license_number     :string(255)
+#  permitted_use_for_studio       :string(255)
+#  country                        :string(255)
+#  website_email_address          :string(255)
+#  website_phone_number           :string(255)
+#  website_name                   :string(255)
+#  cosmetology_license_date       :date
+#  electronic_license_agreement   :boolean          default(FALSE)
+#  rent_manager_contact_id        :string(255)
+#  website_go_live_date           :date             default(Thu, 01 Jan 2004)
+#  sg_booking_url                 :string(255)
+#  force_show_book_now_button     :boolean          default(FALSE)
+#  walkins                        :boolean
+#  reserved                       :boolean          default(FALSE)
+#  solagenius_account_created_at  :datetime
+#  total_booknow_bookings         :integer
+#  total_booknow_revenue          :string(255)
+#  walkins_expiry                 :datetime
+#  botox                          :boolean
+#  onboarded                      :boolean          default(FALSE), not null
+#
+# Indexes
+#
+#  index_stylists_on_email_address         (email_address)
+#  index_stylists_on_location_id           (location_id)
+#  index_stylists_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_stylists_on_status                (status)
+#  index_stylists_on_url_name              (url_name)
+#

@@ -50,7 +50,7 @@ en-CA:
     please_try_again: Please Try Again
     your_name: Your Name *
     email_address: Email Address *
-    phone_number: Phone Number
+    phone_number: Phone Number *
     leave_a_message: Leave a Message (Optional)
     submit_message: Submit Message
     how_can_we_help_you: How can we help you?
