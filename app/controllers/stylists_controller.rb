@@ -1,12 +1,9 @@
 class StylistsController < PublicWebsiteController
-
-  skip_before_filter :verify_authenticity_token, :only => :send_a_message
+  skip_before_action :auth_if_test, only: :show
+  skip_before_filter :verify_authenticity_token, only: :send_a_message
 
   def index
-    # if request.domain == 'solasalonstudios.ca'
-    #   redirect_to 'https://www.solasalonstudios.ca/locations/leaside/salon-professionals'
-    # end
-    redirect_to(:locations, :status => 301) if I18n.locale.to_s == 'pt-BR'
+    redirect_to(:locations, status: 301) if I18n.locale.to_s == 'pt-BR'
   end
 
   def show
@@ -53,35 +50,35 @@ class StylistsController < PublicWebsiteController
   end
 
   def going_independent_contact_form_success
-    @success_redirect_url = going_independent_contact_form_success_path  
+    @success_redirect_url = going_independent_contact_form_success_path
     @contact_form_success = true
     @scroll_top = params[:s_t]
-    @success = 'Thank you! We will get in touch soon'    
+    @success = 'Thank you! We will get in touch soon'
     @body_class = 'goingindependent'
     @no_header = true
-    
+
     render 'going_independent'
   end
 
   def going_independent
-    @success_redirect_url = going_independent_contact_form_success_path  
+    @success_redirect_url = going_independent_contact_form_success_path
     @body_class = 'goingindependent'
     @no_header = true
   end
 
   def financial_guide_contact_form_success
-    @success_redirect_url = financial_guide_contact_form_success_path  
+    @success_redirect_url = financial_guide_contact_form_success_path
     @contact_form_success = true
     @scroll_top = params[:s_t]
-    @success = 'Thank you! We will get in touch soon'    
+    @success = 'Thank you! We will get in touch soon'
     @body_class = 'financialguide'
     @no_header = true
-    
+
     render 'financial_guide'
   end
 
   def financial_guide
-    @success_redirect_url = financial_guide_contact_form_success_path  
+    @success_redirect_url = financial_guide_contact_form_success_path
     @body_class = 'financialguide'
     @no_header = true
   end
