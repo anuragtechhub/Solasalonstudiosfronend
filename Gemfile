@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.6'
+gem 'rails', '4.1.16'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
@@ -68,7 +68,7 @@ gem 'aws-sdk-core'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'
-gem 'rails_admin_example_theme', :git => 'git://github.com/bbenezech/rails_admin_example_theme.git'
+#gem 'rails_admin_example_theme', :git => 'git://github.com/bbenezech/rails_admin_example_theme.git'
 
 gem 'paper_trail', '~> 3.0.6'
 

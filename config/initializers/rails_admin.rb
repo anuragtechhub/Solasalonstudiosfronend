@@ -1,5 +1,5 @@
 RailsAdmin.config do |config|
-  
+
   # config.compact_show_view = false
 
   config.authenticate_with do
@@ -36,14 +36,14 @@ RailsAdmin.config do |config|
   config.actions do
     # root actions
     dashboard                     # mandatory
- 
+
     # collection actions
     index                         # mandatory
     new
     export
     # history_index
     bulk_delete
- 
+
     # member actions
     show
     edit
@@ -81,7 +81,7 @@ RailsAdmin.config do |config|
     #   bindings[:controller]._current_user.franchisee != true
     # end
     label 'My Account'
-    label_plural 'My Account'    
+    label_plural 'My Account'
     list do
       field :email do
         label 'Username'
@@ -112,7 +112,7 @@ RailsAdmin.config do |config|
         field :callfire_app_password
       end
       field :sign_in_count
-      field :last_sign_in_at      
+      field :last_sign_in_at
     end
     edit do
       field :email do
@@ -124,7 +124,7 @@ RailsAdmin.config do |config|
 
       field :email_address
       field :password
-      field :password_confirmation     
+      field :password_confirmation
       field :franchisee do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -157,12 +157,12 @@ RailsAdmin.config do |config|
       field :summary
       field :location
       field :created_at
-    end 
+    end
     show do
       field :title
       field :article_url
-      field :image do 
-        pretty_value do 
+      field :image do
+        pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
       end
@@ -176,19 +176,19 @@ RailsAdmin.config do |config|
       #     value.html_safe
       #   end
       # end
-      field :location 
+      field :location
       field :display_setting do
         visible do
           bindings[:controller]._current_user.franchisee != true
         end
-      end 
-    end 
+      end
+    end
     edit do
       field :title
       field :article_url
-      field :image do 
+      field :image do
         help 'Required. Image dimensions should be 375 x 375'
-        pretty_value do 
+        pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
         delete_method :delete_image
@@ -197,14 +197,14 @@ RailsAdmin.config do |config|
       #field :body, :ck_editor
       field :location do
         help 'In order to have an article show up on more than one location page, you will need to create separate articles for each location page'
-      end  
+      end
       field :display_setting do
         visible do
           bindings[:controller]._current_user.franchisee != true
         end
-      end 
+      end
       field :created_at
-    end 
+    end
   end
 
   config.model 'Blog' do
@@ -224,7 +224,7 @@ RailsAdmin.config do |config|
       field :created_at
     end
     show do
-      field :title 
+      field :title
       field :url_name do
         label 'URL Name'
         pretty_value do
@@ -236,8 +236,8 @@ RailsAdmin.config do |config|
       end
       field :status
       field :publish_date
-      field :image do 
-        pretty_value do 
+      field :image do
+        pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
       end
@@ -278,7 +278,7 @@ RailsAdmin.config do |config|
       end
       group 'Tracking' do
         field :fb_conversion_pixel
-      end  
+      end
     end
     edit do
       field :title
@@ -289,7 +289,7 @@ RailsAdmin.config do |config|
         label 'Canonical URL Name'
       end
       field :image do
-        pretty_value do 
+        pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
         end
         delete_method :delete_image
@@ -317,7 +317,7 @@ RailsAdmin.config do |config|
       group 'Carousel' do
         active false
         field :carousel_image do
-          pretty_value do 
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_carousel_image
@@ -340,8 +340,8 @@ RailsAdmin.config do |config|
   config.model 'BlogCategory' do
     visible false
     label 'Blog Category'
-    label_plural 'Blog Categories'      
-    # edit do 
+    label_plural 'Blog Categories'
+    # edit do
     #   field :name
     #   field :url_name
     # end
@@ -409,6 +409,44 @@ RailsAdmin.config do |config|
       #     inline_add false
       #   end
       # end
+    end
+  end
+
+  config.model 'ClassImage' do
+    visible true
+    list do
+      field :kind, :enum do
+        enum do
+          [['Main',0],['Thumbnail',1]]
+        end
+      end
+      field :name
+      field :image_file_name
+    end
+    show do
+      field :kind, :enum do
+        enum do
+          [['Main',0],['Thumbnail',1]]
+        end
+      end
+      field :name
+      field :image_file_name
+      field :image do
+        label 'Image'
+        help 'Ideal image size is 460 x 280'
+      end
+    end
+    edit do
+      field :kind, :enum do
+        enum do
+          [['Main','main'],['Thumbnail','thumbnail']]
+        end
+      end
+      field :name
+      field :image do
+        label 'Image'
+        help 'Ideal image size is 460 x 280'
+      end
     end
   end
 
@@ -591,6 +629,9 @@ RailsAdmin.config do |config|
       field :sola_class_category do
         label 'Old Category'
       end
+      field :category
+      field :main_image
+      field :thumbnail_image
       field :category
       field :tags
       field :cost
@@ -866,7 +907,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Country' do
-    visible false  
+    visible false
   end
 
   config.model 'FranchisingRequest' do
@@ -938,7 +979,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'Location' do    
+  config.model 'Location' do
     list do
       field :name
       field :url_name do
@@ -1024,7 +1065,7 @@ RailsAdmin.config do |config|
         field :address_1
         field :address_2
         field :city
-        field :state do 
+        field :state do
           label 'State/Province'
         end
         field :postal_code
@@ -1054,130 +1095,130 @@ RailsAdmin.config do |config|
         field :tracking_code
       end
       group :images do
-        field :image_1 do 
-          pretty_value do 
+        field :image_1 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_1_alt_text
-        field :image_2 do 
-          pretty_value do 
+        field :image_2 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_2_alt_text
-        field :image_3 do 
-          pretty_value do 
+        field :image_3 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_3_alt_text
-        field :image_4 do 
-          pretty_value do 
+        field :image_4 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_4_alt_text
-        field :image_5 do 
-          pretty_value do 
+        field :image_5 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_5_alt_text
-        field :image_6 do 
-          pretty_value do 
+        field :image_6 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_6_alt_text
-        field :image_7 do 
-          pretty_value do 
+        field :image_7 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_7_alt_text
-        field :image_8 do 
-          pretty_value do 
+        field :image_8 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_8_alt_text
-        field :image_9 do 
-          pretty_value do 
+        field :image_9 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_9_alt_text
-        field :image_10 do 
-          pretty_value do 
+        field :image_10 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_10_alt_text
-        field :image_11 do 
-          pretty_value do 
+        field :image_11 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_11_alt_text
-        field :image_12 do 
-          pretty_value do 
+        field :image_12 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_12_alt_text
-        field :image_13 do 
-          pretty_value do 
+        field :image_13 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_13_alt_text
-        field :image_14 do 
-          pretty_value do 
+        field :image_14 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_14_alt_text
-        field :image_15 do 
-          pretty_value do 
+        field :image_15 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_15_alt_text
-        field :image_16 do 
-          pretty_value do 
+        field :image_16 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_16_alt_text
-        field :image_17 do 
-          pretty_value do 
+        field :image_17 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_17_alt_text
-        field :image_18 do 
-          pretty_value do 
+        field :image_18 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_18_alt_text
-        field :image_19 do 
-          pretty_value do 
+        field :image_19 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_19_alt_text
-        field :image_20 do 
-          pretty_value do 
+        field :image_20 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_20_alt_text
         field :floorplan_image do
-          pretty_value do 
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
-          end          
+          end
         end
       end
       group '360 Tours' do
@@ -1248,7 +1289,7 @@ RailsAdmin.config do |config|
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
-        end        
+        end
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
@@ -1264,7 +1305,7 @@ RailsAdmin.config do |config|
         field :description_short do
           visible false
           help 'This description is a max of 200 characters and may not contain HTML or special characters. It is used for online directory listings (e.g. Google My Business)'
-        end 
+        end
         field :open_time do
           visible false
           help 'This time will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location opens.'
@@ -1272,7 +1313,7 @@ RailsAdmin.config do |config|
         field :close_time do
           visible false
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
-        end   
+        end
         field :msa do
           label "MSA"
           visible do
@@ -1316,7 +1357,7 @@ RailsAdmin.config do |config|
         field :address_1
         field :address_2
         field :city
-        field :state do 
+        field :state do
           label 'State/Province'
         end
         field :postal_code
@@ -1356,8 +1397,8 @@ RailsAdmin.config do |config|
       end
       group :images do
         active false
-        field :image_1 do 
-          pretty_value do 
+        field :image_1 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_1
@@ -1365,8 +1406,8 @@ RailsAdmin.config do |config|
         field :image_1_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_2 do 
-          pretty_value do 
+        field :image_2 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
@@ -1374,8 +1415,8 @@ RailsAdmin.config do |config|
         field :image_3_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_3 do 
-          pretty_value do 
+        field :image_3 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_3
@@ -1383,8 +1424,8 @@ RailsAdmin.config do |config|
         field :image_3_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_4 do 
-          pretty_value do 
+        field :image_4 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
@@ -1392,8 +1433,8 @@ RailsAdmin.config do |config|
         field :image_4_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_5 do 
-          pretty_value do 
+        field :image_5 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_5
@@ -1401,8 +1442,8 @@ RailsAdmin.config do |config|
         field :image_5_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_6 do 
-          pretty_value do 
+        field :image_6 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
@@ -1410,8 +1451,8 @@ RailsAdmin.config do |config|
         field :image_6_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_7 do 
-          pretty_value do 
+        field :image_7 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_7
@@ -1419,8 +1460,8 @@ RailsAdmin.config do |config|
         field :image_7_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_8 do 
-          pretty_value do 
+        field :image_8 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
@@ -1428,8 +1469,8 @@ RailsAdmin.config do |config|
         field :image_8_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_9 do 
-          pretty_value do 
+        field :image_9 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_9
@@ -1437,8 +1478,8 @@ RailsAdmin.config do |config|
         field :image_9_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_10 do 
-          pretty_value do 
+        field :image_10 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
@@ -1446,8 +1487,8 @@ RailsAdmin.config do |config|
         field :image_10_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_11 do 
-          pretty_value do 
+        field :image_11 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_11
@@ -1455,8 +1496,8 @@ RailsAdmin.config do |config|
         field :image_11_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_12 do 
-          pretty_value do 
+        field :image_12 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_12
@@ -1464,8 +1505,8 @@ RailsAdmin.config do |config|
         field :image_12_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_13 do 
-          pretty_value do 
+        field :image_13 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_13
@@ -1473,8 +1514,8 @@ RailsAdmin.config do |config|
         field :image_13_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_14 do 
-          pretty_value do 
+        field :image_14 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_14
@@ -1482,8 +1523,8 @@ RailsAdmin.config do |config|
         field :image_14_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_15 do 
-          pretty_value do 
+        field :image_15 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_15
@@ -1491,8 +1532,8 @@ RailsAdmin.config do |config|
         field :image_15_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_16 do 
-          pretty_value do 
+        field :image_16 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_16
@@ -1500,8 +1541,8 @@ RailsAdmin.config do |config|
         field :image_16_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_17 do 
-          pretty_value do 
+        field :image_17 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_17
@@ -1509,8 +1550,8 @@ RailsAdmin.config do |config|
         field :image_17_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_18 do 
-          pretty_value do 
+        field :image_18 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_18
@@ -1518,8 +1559,8 @@ RailsAdmin.config do |config|
         field :image_18_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_19 do 
-          pretty_value do 
+        field :image_19 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_19
@@ -1527,21 +1568,21 @@ RailsAdmin.config do |config|
         field :image_19_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_20 do 
-          pretty_value do 
+        field :image_20 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_20
-        end  
+        end
         field :image_20_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end  
-        field :floorplan_image do 
-          pretty_value do 
+        end
+        field :floorplan_image do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_floorplan_image
-        end          
+        end
       end
       group '360 Tours' do
         label '360 Tours'
@@ -1558,7 +1599,7 @@ RailsAdmin.config do |config|
           label 'Tour #3'
           help "If you need help finding your tour iframe code, please <a href='http://www.ambientlight.co.uk/google-maps-business-view-virtual-tours/add-your-tour-to-your-website' target='_blank'>click here</a>".html_safe
         end
-      end      
+      end
       group 'Text and Email Integration' do
         label 'Text and Email Integration'
         active false
@@ -1590,7 +1631,7 @@ RailsAdmin.config do |config|
         field :walkins_timezone do
           label "Walk-ins Time Zone"
           help 'In order to turn off walk-ins automatically at the correct time, please select the time zone of this location'
-        end 
+        end
       end
       group :rent_manager do
         label 'Rent Manager'
@@ -1642,13 +1683,13 @@ RailsAdmin.config do |config|
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
-    list do 
+    list do
       scopes [:completed]
       field :name
       field :instagram_handle
       #field :statement_text
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
@@ -1662,15 +1703,15 @@ RailsAdmin.config do |config|
       field :statement
       field :statement_variant
       field :image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
-      end 
+      end
     end
     show do
       field :name
@@ -1678,12 +1719,12 @@ RailsAdmin.config do |config|
       field :statement
       field :statement_variant
       field :image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
@@ -1691,20 +1732,20 @@ RailsAdmin.config do |config|
       field :approved
       field :approved_at
       field :created_at
-    end    
+    end
   end
 
   config.model 'Sola10kImage' do
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
-    list do 
+    list do
       scopes [:completed]
       field :name
       field :instagram_handle
       #field :statement_text
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
@@ -1718,15 +1759,15 @@ RailsAdmin.config do |config|
       field :statement
       #field :statement_variant
       field :image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
-      end 
+      end
     end
     show do
       field :name
@@ -1734,12 +1775,12 @@ RailsAdmin.config do |config|
       field :statement
       #field :statement_variant
       field :image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
       field :generated_image do
-        pretty_value do 
+        pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
         end
       end
@@ -1747,7 +1788,7 @@ RailsAdmin.config do |config|
       field :approved
       field :approved_at
       field :created_at
-    end    
+    end
   end
 
   config.model 'PartnerInquiry' do
@@ -1776,7 +1817,7 @@ RailsAdmin.config do |config|
         queryable true
       end
       field :created_at
-      field :send_email_to_prospect do 
+      field :send_email_to_prospect do
         hide
         label 'Prospect Origin'
         searchable true
@@ -1790,7 +1831,7 @@ RailsAdmin.config do |config|
         hide
         searchable false
       end
-      field :dont_see_your_location do 
+      field :dont_see_your_location do
         hide
         searchable false
       end
@@ -1815,7 +1856,7 @@ RailsAdmin.config do |config|
       field :request_url do
         label 'Request URL'
       end
-      field :send_email_to_prospect do 
+      field :send_email_to_prospect do
         label 'Prospect Origin'
       end
       field :utm_source do
@@ -1852,7 +1893,7 @@ RailsAdmin.config do |config|
       field :request_url do
         label 'Request URL'
       end
-      field :send_email_to_prospect do 
+      field :send_email_to_prospect do
         label 'Prospect Origin'
       end
       field :utm_source do
@@ -1887,7 +1928,7 @@ RailsAdmin.config do |config|
       field :request_url do
         label 'Request URL'
       end
-      field :send_email_to_prospect do 
+      field :send_email_to_prospect do
         label 'Prospect Origin'
       end
       field :utm_source do
@@ -1934,7 +1975,7 @@ RailsAdmin.config do |config|
 
   config.model 'Stylist' do
     label 'Salon Professional'
-    label_plural 'Salon Professionals' 
+    label_plural 'Salon Professionals'
     list do
       field :name
       field :url_name do
@@ -1978,7 +2019,7 @@ RailsAdmin.config do |config|
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
-      end      
+      end
       group :business do
         field :location
         field :business_name
@@ -2027,7 +2068,7 @@ RailsAdmin.config do |config|
         field :laser_hair_removal
         field :eyelash_extensions do
           label 'Lashes'
-        end 
+        end
         field :makeup
         field :massage
         field :microblading
@@ -2076,62 +2117,62 @@ RailsAdmin.config do |config|
         end
       end
       group :images do
-        field :image_1 do 
-          pretty_value do 
+        field :image_1 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_1_alt_text
-        field :image_2 do 
-          pretty_value do 
+        field :image_2 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_2_alt_text
-        field :image_3 do 
-          pretty_value do 
+        field :image_3 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_3_alt_text
-        field :image_4 do 
-          pretty_value do 
+        field :image_4 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_4_alt_text
-        field :image_5 do 
-          pretty_value do 
+        field :image_5 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_5_alt_text
-        field :image_6 do 
-          pretty_value do 
+        field :image_6 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_6_alt_text
-        field :image_7 do 
-          pretty_value do 
+        field :image_7 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_7_alt_text
-        field :image_8 do 
-          pretty_value do 
+        field :image_8 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_8_alt_text
-        field :image_9 do 
-          pretty_value do 
+        field :image_9 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
         field :image_9_alt_text
-        field :image_10 do 
-          pretty_value do 
+        field :image_10 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
         end
@@ -2148,7 +2189,7 @@ RailsAdmin.config do |config|
         field :testimonial_8
         field :testimonial_9
         field :testimonial_10
-      end 
+      end
     end
     edit do
       group :general do
@@ -2175,7 +2216,7 @@ RailsAdmin.config do |config|
         field :send_a_message_button do
           help 'If set to hidden, the Send a Message button will not be displayed on your salon professional webpage'
         end
-      end      
+      end
       group :business do
         field :location do
           associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
@@ -2254,7 +2295,7 @@ RailsAdmin.config do |config|
         field :laser_hair_removal
         field :eyelash_extensions do
           label 'Lashes'
-        end 
+        end
         field :makeup
         field :massage
         field :microblading
@@ -2273,11 +2314,11 @@ RailsAdmin.config do |config|
           #  {:maxlength => 18}
           # end
         end
-      end 
+      end
       group :images do
         active false
-        field :image_1 do 
-          pretty_value do 
+        field :image_1 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_1
@@ -2285,8 +2326,8 @@ RailsAdmin.config do |config|
         field :image_1_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_2 do 
-          pretty_value do 
+        field :image_2 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
@@ -2294,8 +2335,8 @@ RailsAdmin.config do |config|
         field :image_2_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_3 do 
-          pretty_value do 
+        field :image_3 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_3
@@ -2303,8 +2344,8 @@ RailsAdmin.config do |config|
         field :image_3_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_4 do 
-          pretty_value do 
+        field :image_4 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
@@ -2312,17 +2353,17 @@ RailsAdmin.config do |config|
         field :image_4_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_5 do 
-          pretty_value do 
+        field :image_5 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_5
         end
         field :image_5_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
-        end 
-        field :image_6 do 
-          pretty_value do 
+        end
+        field :image_6 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
@@ -2330,8 +2371,8 @@ RailsAdmin.config do |config|
         field :image_6_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_7 do 
-          pretty_value do 
+        field :image_7 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_7
@@ -2339,8 +2380,8 @@ RailsAdmin.config do |config|
         field :image_7_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_8 do 
-          pretty_value do 
+        field :image_8 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
@@ -2348,8 +2389,8 @@ RailsAdmin.config do |config|
         field :image_8_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_9 do 
-          pretty_value do 
+        field :image_9 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_9
@@ -2357,8 +2398,8 @@ RailsAdmin.config do |config|
         field :image_9_alt_text do
           help 'The alt text for an image describes what the image looks like (used by screen readers, the blind or visually impared and for search engine optimization)'
         end
-        field :image_10 do 
-          pretty_value do 
+        field :image_10 do
+          pretty_value do
             "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
@@ -2414,10 +2455,10 @@ RailsAdmin.config do |config|
       field :sola_pro_version
       # field :location_id do
       #   label 'Location'
-      #   export_value do 
+      #   export_value do
       #     Location.find_by(:id => value).name
       #   end
-      #   pretty_value do 
+      #   pretty_value do
       #     Location.find_by(:id => value).name
       #   end
       # end
@@ -2427,8 +2468,8 @@ RailsAdmin.config do |config|
       field :business_name
       field :studio_number
       field :work_hours
-      field :accepting_new_clients    
-      field :walkins 
+      field :accepting_new_clients
+      field :walkins
       field :total_booknow_bookings do
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -2445,7 +2486,7 @@ RailsAdmin.config do |config|
           bindings[:controller]._current_user.franchisee != true
         end
       end
-      field :send_a_message_button  
+      field :send_a_message_button
       field :hair
       field :skin
       field :nails
@@ -2504,7 +2545,7 @@ RailsAdmin.config do |config|
       group :general do
         field :name do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2514,7 +2555,7 @@ RailsAdmin.config do |config|
         end
         field :biography, :ck_editor do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2526,7 +2567,7 @@ RailsAdmin.config do |config|
       group :contact do
         field :phone_number do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2536,7 +2577,7 @@ RailsAdmin.config do |config|
         end
         field :email_address do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2544,11 +2585,11 @@ RailsAdmin.config do |config|
           #   end
           # end
         end
-      end   
+      end
       group :business do
         field :business_name do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2558,7 +2599,7 @@ RailsAdmin.config do |config|
         end
         field :work_hours do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2570,7 +2611,7 @@ RailsAdmin.config do |config|
       group :website do
         field :website_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2580,7 +2621,7 @@ RailsAdmin.config do |config|
         end
         field :booking_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2595,7 +2636,7 @@ RailsAdmin.config do |config|
       group :social do
         field :facebook_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2605,7 +2646,7 @@ RailsAdmin.config do |config|
         end
         field :google_plus_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2615,7 +2656,7 @@ RailsAdmin.config do |config|
         end
         field :instagram_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2625,7 +2666,7 @@ RailsAdmin.config do |config|
         end
         field :linkedin_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2635,7 +2676,7 @@ RailsAdmin.config do |config|
         end
         field :pinterest_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2645,7 +2686,7 @@ RailsAdmin.config do |config|
         end
         field :twitter_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2655,7 +2696,7 @@ RailsAdmin.config do |config|
         end
         field :yelp_url do
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2711,7 +2752,7 @@ RailsAdmin.config do |config|
           #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
           #   end
           # end
-        end 
+        end
         field :makeup do
           # render do
           #   if value
@@ -2797,7 +2838,7 @@ RailsAdmin.config do |config|
         field :other_service do
           label 'Other'
           help ' '
-          # render do 
+          # render do
           #   if value && value.present?
           #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
           #   else
@@ -2919,7 +2960,7 @@ RailsAdmin.config do |config|
         end
       end
       group :images do
-        field :image_1 do 
+        field :image_1 do
           label 'Image #1'
           help ' '
           render do
@@ -2930,7 +2971,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_2 do 
+        field :image_2 do
           label 'Image #2'
           help ' '
           render do
@@ -2941,7 +2982,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_3 do 
+        field :image_3 do
           label 'Image #3'
           help ' '
           render do
@@ -2952,7 +2993,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_4 do 
+        field :image_4 do
           label 'Image #4'
           help ' '
           render do
@@ -2963,7 +3004,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_5 do 
+        field :image_5 do
           label 'Image #5'
           help ' '
           render do
@@ -2974,7 +3015,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_6 do 
+        field :image_6 do
           label 'Image #6'
           help ' '
           render do
@@ -2985,7 +3026,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_7 do 
+        field :image_7 do
           label 'Image #7'
           help ' '
           render do
@@ -2996,7 +3037,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_8 do 
+        field :image_8 do
           label 'Image #8'
           help ' '
           render do
@@ -3007,7 +3048,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_9 do 
+        field :image_9 do
           label 'Image #9'
           help ' '
           render do
@@ -3018,7 +3059,7 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :image_10 do 
+        field :image_10 do
           label 'Image #10'
           help ' '
           render do
@@ -3030,7 +3071,7 @@ RailsAdmin.config do |config|
           end
         end
       end
-      field :approved 
+      field :approved
     end
   end
 
