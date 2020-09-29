@@ -413,38 +413,33 @@ RailsAdmin.config do |config|
   end
 
   config.model 'ClassImage' do
-    visible true
+    visible false
     list do
-      field :kind, :enum do
-        enum do
-          [['Main',0],['Thumbnail',1]]
-        end
-      end
       field :name
       field :image_file_name
+      field :thumbnail_file_name
     end
     show do
-      field :kind, :enum do
-        enum do
-          [['Main',0],['Thumbnail',1]]
-        end
-      end
       field :name
       field :image_file_name
+      field :thumbnail_file_name
       field :image do
         label 'Image'
         help 'Ideal image size is 460 x 280'
       end
+      field :thumbnail do
+        label 'Thumbnail'
+        help 'Ideal image size is 460 x 280'
+      end
     end
     edit do
-      field :kind, :enum do
-        enum do
-          [['Main','main'],['Thumbnail','thumbnail']]
-        end
-      end
       field :name
       field :image do
         label 'Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      field :thumbnail do
+        label 'Thumbnail'
         help 'Ideal image size is 460 x 280'
       end
     end
@@ -556,6 +551,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'SolaClass' do
+    visible false
     label 'Event and Class'
     label_plural 'Events and Classes'
     object_label_method do
@@ -581,6 +577,9 @@ RailsAdmin.config do |config|
       #field :brand
       field :sola_class_category do
         label 'Old Category'
+      end
+      field :class_image do
+        help 'Ideal image size is 460 x 280'
       end
       field :category
       field :tags
@@ -630,8 +629,7 @@ RailsAdmin.config do |config|
         label 'Old Category'
       end
       field :category
-      field :main_image
-      field :thumbnail_image
+      field :class_image
       field :category
       field :tags
       field :cost

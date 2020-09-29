@@ -13,8 +13,7 @@ class SolaClass < ActiveRecord::Base
   belongs_to :admin
   belongs_to :video
 
-  belongs_to :main_image, -> { main }, class_name: 'ClassImage', primary_key: :id, foreign_key: :main_image_id, inverse_of: :sola_classes
-  belongs_to :thumbnail_image, -> { thumbnail }, class_name: 'ClassImage', primary_key: :id, foreign_key: :thumbnail_image_id, inverse_of: :sola_classes
+  belongs_to :class_image, class_name: 'ClassImage', primary_key: :id, foreign_key: :class_image_id, inverse_of: :sola_classes
 
   has_and_belongs_to_many :brands
 

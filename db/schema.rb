@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200925105832) do
+ActiveRecord::Schema.define(version: 20200929200530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -248,7 +248,6 @@ ActiveRecord::Schema.define(version: 20200925105832) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "class_images", force: true do |t|
-    t.integer  "kind"
     t.string   "name"
     t.string   "image_content_type"
     t.string   "image_file_name"
@@ -256,6 +255,10 @@ ActiveRecord::Schema.define(version: 20200925105832) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail_content_type"
+    t.string   "thumbnail_file_name"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
   create_table "countries", force: true do |t|
@@ -1070,8 +1073,7 @@ ActiveRecord::Schema.define(version: 20200925105832) do
     t.string   "file_text"
     t.integer  "category_id"
     t.integer  "views",                  default: 0,     null: false
-    t.integer  "main_image_id"
-    t.integer  "thumbnail_image_id"
+    t.integer  "class_image_id"
   end
 
   add_index "sola_classes", ["admin_id"], name: "index_sola_classes_on_admin_id", using: :btree
@@ -1628,6 +1630,7 @@ ActiveRecord::Schema.define(version: 20200925105832) do
   add_index "watch_laters", ["userable_type", "userable_id"], name: "index_watch_laters_on_userable_type_and_userable_id", using: :btree
   add_index "watch_laters", ["video_id"], name: "index_watch_laters_on_video_id", using: :btree
 
+  Foreigner.load
   add_foreign_key "brandables", "brands", name: "brandables_brand_id_fk"
 
   add_foreign_key "taggables", "tags", name: "taggables_tag_id_fk"
