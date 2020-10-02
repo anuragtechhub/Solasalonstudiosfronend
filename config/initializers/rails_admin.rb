@@ -2543,418 +2543,288 @@ RailsAdmin.config do |config|
       group :general do
         field :name do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('name')
+          end
         end
         field :biography, :ck_editor do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('biography')
+          end
         end
       end
       group :contact do
         field :phone_number do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('phone_number')
+          end
         end
         field :email_address do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('email_address')
+          end
+        end
+        visible do
+          ['email_address', 'phone_number'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       group :business do
         field :business_name do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('business_name')
+          end
         end
         field :work_hours do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('work_hours')
+          end
+        end
+        visible do
+          ['business_name', 'work_hours'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       group :website do
         field :website_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('website_url')
+          end
         end
         field :booking_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('booking_url')
+          end
         end
         field :reserved do
           help ' '
+          visible do
+            bindings[:object].changed_attributes.keys.include?('reserved')
+          end
+        end
+
+        visible do
+          ['website_url', 'booking_url', 'reserved'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       group :social do
         field :facebook_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('facebook_url')
+          end
         end
         field :google_plus_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('google_plus_url')
+          end
         end
         field :instagram_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('instagram_url')
+          end
         end
         field :linkedin_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('linkedin_url')
+          end
         end
         field :pinterest_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('pinterest_url')
+          end
         end
         field :twitter_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('twitter_url')
+          end
         end
         field :yelp_url do
           help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('yelp_url')
+          end
+        end
+        visible do
+          %w[facebook_url google_plus_url instagram_url linkedin_url pinterest_url twitter_url yelp_url].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       group :services do
-        field :botox
+        field :botox do
+          visible do
+            bindings[:object].changed_attributes.keys.include?('botox')
+          end
+        end
         field :brows do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('brows')
+          end
         end
         field :hair do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('hair')
+          end
         end
         field :hair_extensions do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('hair_extensions')
+          end
         end
         field :laser_hair_removal do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('laser_hair_removal')
+          end
         end
         field :eyelash_extensions do
           label 'Lashes'
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('eyelash_extensions')
+          end
         end
         field :makeup do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('makeup')
+          end
         end
         field :massage do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('massage')
+          end
         end
         field :nails do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('nails')
+          end
         end
         field :permanent_makeup do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('permanent_makeup')
+          end
         end
         field :skin do
           label 'Skincare'
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('skin')
+          end
         end
         field :tanning do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('tanning')
+          end
         end
         field :teeth_whitening do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('teeth_whitening')
+          end
         end
         field :threading do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('threading')
+          end
         end
         field :waxing do
-          # render do
-          #   if value
-          #     "<span style='font-size:21px;position:relative;top:3px;'>&#10004;</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('waxing')
+          end
         end
-        field :other_service do
-          label 'Other'
-          help ' '
-          # render do
-          #   if value && value.present?
-          #     "<span style='position:relative;top:5px;'>#{value}</span>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>No</em>".html_safe
-          #   end
-          # end
+        # field :other_service do
+        #   label 'Other'
+        #   help ' '
+        #   visible do
+        #     bindings[:object].changed_attributes.keys.include?('other_service')
+        #   end
+        # end
+        visible do
+          %w[massage makeup eyelash_extensions laser_hair_removal botox
+             nails permanent_makeup skin tanning hair_extensions hair
+             teeth_whitening threading waxing brows].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
+
       end
       group :testimonials do
         field :testimonial_1 do
           label 'Testimonial #1'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_1')
+          end
         end
         field :testimonial_2 do
           label 'Testimonial #2'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_2')
+          end
         end
         field :testimonial_3 do
           label 'Testimonial #3'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_3')
+          end
         end
         field :testimonial_4 do
           label 'Testimonial #4'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_4')
+          end
         end
         field :testimonial_5 do
           label 'Testimonial #5'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_5')
+          end
         end
         field :testimonial_6 do
           label 'Testimonial #6'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_6')
+          end
         end
         field :testimonial_7 do
           label 'Testimonial #7'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_7')
+          end
         end
         field :testimonial_8 do
           label 'Testimonial #8'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_8')
+          end
         end
         field :testimonial_9 do
           label 'Testimonial #9'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_9')
+          end
         end
         field :testimonial_10 do
           label 'Testimonial #10'
           help ''
-          # render do
-          #   if value && value.present? && value.text.present?
-          #     "<div style='position:relative;top:5px;margin-bottom:15px;'><div style='margin-bottom:5px'>Title: #{value.name}</div><div style='margin-bottom:5px'>Comments: #{value.text}</div><div>Region: #{value.region}</div></div>".html_safe
-          #   else
-          #     "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-          #   end
-          # end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('testimonial_10')
+          end
+        end
+        visible do
+          %w[testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5
+             testimonial_6 testimonial_7 testimonial_8 testimonial_9 testimonial_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       group :images do
@@ -2968,6 +2838,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_1')
+          end
         end
         field :image_2 do
           label 'Image #2'
@@ -2978,6 +2851,9 @@ RailsAdmin.config do |config|
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
+          end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_2')
           end
         end
         field :image_3 do
@@ -2990,6 +2866,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_3')
+          end
         end
         field :image_4 do
           label 'Image #4'
@@ -3000,6 +2879,9 @@ RailsAdmin.config do |config|
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
+          end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_4')
           end
         end
         field :image_5 do
@@ -3012,6 +2894,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_5')
+          end
         end
         field :image_6 do
           label 'Image #6'
@@ -3022,6 +2907,9 @@ RailsAdmin.config do |config|
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
+          end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_6')
           end
         end
         field :image_7 do
@@ -3034,6 +2922,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_7')
+          end
         end
         field :image_8 do
           label 'Image #8'
@@ -3044,6 +2935,9 @@ RailsAdmin.config do |config|
             else
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
+          end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_8')
           end
         end
         field :image_9 do
@@ -3056,6 +2950,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_9')
+          end
         end
         field :image_10 do
           label 'Image #10'
@@ -3067,6 +2964,13 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
+          visible do
+            bindings[:object].changed_attributes.keys.include?('image_10')
+          end
+        end
+        visible do
+          %w[image_1 image_2 image_3 image_4 image_5
+             image_6 image_7 image_8 image_9 image_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         end
       end
       field :approved

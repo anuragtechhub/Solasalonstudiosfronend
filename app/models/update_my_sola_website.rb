@@ -66,7 +66,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
 
   has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/    
+  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
@@ -89,7 +89,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       end
       p "done opening image_1 #{self.image_1.url(:original)}"
     end
-  
+
     #if image_2_url_changed?
     if image_2_url.present?
       p "there is an image_2=#{image_2_url}"
@@ -110,7 +110,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_3 #{error}"
       end
       p "done opening image_3 #{self.image_3.url(:original)}"
-    end    
+    end
 
     #if image_4_url_changed?
     if image_4_url.present?
@@ -121,7 +121,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_4 #{error}"
       end
       p "done opening image_4 #{self.image_4.url(:original)}"
-    end       
+    end
 
     #if image_5_url_changed?
     if image_5_url.present?
@@ -132,7 +132,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_5 #{error}"
       end
       p "done opening image_5 #{self.image_5.url(:original)}"
-    end         
+    end
 
     #if image_6_url_changed?
     if image_6_url.present?
@@ -143,7 +143,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_6 #{error}"
       end
       p "done opening image_6 #{self.image_6.url(:original)}"
-    end 
+    end
 
     #if image_7_url_changed?
     if image_7_url.present?
@@ -154,7 +154,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_7 #{error}"
       end
       p "done opening image_7 #{self.image_7.url(:original)}"
-    end               
+    end
 
     #if image_8_url_changed?
     if image_8_url.present?
@@ -165,7 +165,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_8 #{error}"
       end
       p "done opening image_8 #{self.image_8.url(:original)}"
-    end        
+    end
 
     #if image_9_url_changed?
     if image_9_url.present?
@@ -176,7 +176,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_9 #{error}"
       end
       p "done opening image_9 #{self.image_9.url(:original)}"
-    end      
+    end
 
     #if image_10_url_changed?
     if image_10_url.present?
@@ -187,7 +187,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         p "error opening/saving image_10 #{error}"
       end
       p "done opening image_10 #{self.image_10.url(:original)}"
-    end 
+    end
 
   rescue => error
     p "ERROR with image orient! #{error.inspect}"
@@ -205,11 +205,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.name = name
     stylist.email_address = email_address
     stylist.phone_number = phone_number
-    
+
     if (reserved == true || reserved == false)
       stylist.reserved = reserved
     end
-    
+
     stylist.business_name = business_name
     stylist.work_hours = work_hours
     stylist.biography = biography
@@ -244,7 +244,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.other_service = other_service
 
     if testimonial_1 && testimonial_1.text.present?
-      stylist.testimonial_id_1 = testimonial_id_1 
+      stylist.testimonial_id_1 = testimonial_id_1
     else
       stylist.testimonial_id_1 = nil
     end
@@ -328,7 +328,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     if image_3.present?
       begin
-        stylist.image_3 = URI.parse(image_3.url(:carousel)) 
+        stylist.image_3 = URI.parse(image_3.url(:carousel))
         p "done set image_3 #{self.image_3.url(:original)}"
       rescue => e
         p "image 3 error = #{e.inspect}"
@@ -372,7 +372,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     if image_7.present?
       begin
-        stylist.image_7 = URI.parse(image_7.url(:carousel)) 
+        stylist.image_7 = URI.parse(image_7.url(:carousel))
         p "done set image_7 #{self.image_7.url(:original)}"
       rescue => e
         p "image 7 error = #{e.inspect}"
@@ -383,7 +383,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     if image_8.present?
       begin
-        stylist.image_8 = URI.parse(image_8.url(:carousel)) 
+        stylist.image_8 = URI.parse(image_8.url(:carousel))
         p "done set image_8 #{self.image_8.url(:original)}"
       rescue => e
         p "image 8 error = #{e.inspect}"
@@ -394,7 +394,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     if image_9.present?
       begin
-        stylist.image_9 = URI.parse(image_9.url(:carousel)) 
+        stylist.image_9 = URI.parse(image_9.url(:carousel))
         p "done set image_9 #{self.image_9.url(:original)}"
       rescue => e
         p "image 9 error = #{e.inspect}"
@@ -405,7 +405,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     if image_10.present?
       begin
-        stylist.image_10 = URI.parse(image_10.url(:carousel)) 
+        stylist.image_10 = URI.parse(image_10.url(:carousel))
         p "done set image_10 #{self.image_10.url(:original)}"
       rescue => e
         p "image 10 error = #{e.inspect}"
@@ -423,6 +423,12 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.save
   end
 
+  def changed_attributes
+    @changed_attributes ||= attributes.except('id', 'stylist_id', 'approved').reject do |key, value|
+      stylist.send(key) == value
+    end
+  end
+
   private
 
   def auto_orient_images
@@ -431,42 +437,42 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       p "image_1 changed yo"
       self.image_1 = open(image_1_url)
     end
-  
+
     if image_2_url_changed?
       self.image_2 = open(image_2_url)
     end
 
     if image_3_url_changed?
       self.image_3 = open(image_3_url)
-    end    
+    end
 
     if image_4_url_changed?
       self.image_4 = open(image_4_url)
-    end       
+    end
 
     if image_5_url_changed?
       self.image_5 = open(image_5_url)
-    end         
+    end
 
     if image_6_url_changed?
       self.image_6 = open(image_6_url)
-    end 
+    end
 
     if image_7_url_changed?
       self.image_7 = open(image_7_url)
-    end               
+    end
 
     if image_8_url_changed?
       self.image_8 = open(image_8_url)
-    end        
+    end
 
     if image_9_url_changed?
       self.image_9 = open(image_9_url)
-    end      
+    end
 
     if image_10_url_changed?
       self.image_10 = open(image_10_url)
-    end          
+    end
   end
 
   def email_stylist
