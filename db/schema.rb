@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200929200530) do
+ActiveRecord::Schema.define(version: 20201002094513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20200929200530) do
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["email_address"], name: "index_admins_on_email_address", unique: true, using: :btree
+  add_index "admins", ["email_address"], name: "index_admins_on_email_address", using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "articles", force: true do |t|
@@ -1503,8 +1503,10 @@ ActiveRecord::Schema.define(version: 20200929200530) do
     t.string   "key"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "admin_id"
   end
 
+  add_index "user_access_tokens", ["admin_id"], name: "index_user_access_tokens_on_admin_id", using: :btree
   add_index "user_access_tokens", ["key"], name: "index_user_access_tokens_on_key", using: :btree
   add_index "user_access_tokens", ["sola_stylist_id"], name: "index_user_access_tokens_on_sola_stylist_id", using: :btree
 
