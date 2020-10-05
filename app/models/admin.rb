@@ -3,7 +3,7 @@ class Admin < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
-  
+
   has_many :locations
 
   has_paper_trail
@@ -13,7 +13,15 @@ class Admin < ActiveRecord::Base
   validates :password, :presence => true, :on => :create, :reduce => true
   #validates :password, :length => { :minimum => 7 }
 
-  def title 
+  def self.current
+    Thread.current[:admin]
+  end
+
+  def self.current=(admin)
+    Thread.current[:admin] = admin
+  end
+
+  def title
     email
   end
 
@@ -25,7 +33,7 @@ class Admin < ActiveRecord::Base
     self.forgot_password_key = "#{SecureRandom.urlsafe_base64(3).gsub(/-|_/, '')}#{SecureRandom.hex(3)}".split('').shuffle.join
     if self.save
       email = PublicWebsiteMailer.forgot_password(self)
-      if email && email.deliver 
+      if email && email.deliver
         true
       else
         false

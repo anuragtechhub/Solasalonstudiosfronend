@@ -9,9 +9,12 @@ class SolaClass < ActiveRecord::Base
   belongs_to :sola_class_region
 
   belongs_to :category
-  #belongs_to :brand
+  belongs_to :brand
   belongs_to :admin
   belongs_to :video
+
+  belongs_to :class_image, class_name: 'ClassImage', primary_key: :id, foreign_key: :class_image_id, inverse_of: :sola_classes
+
   has_and_belongs_to_many :brands
 
   has_many :taggables, as: :item, dependent: :destroy
@@ -319,11 +322,18 @@ end
 #  address                :string(255)
 #  video_id               :integer
 #  file_text              :string(255)
+#  category_id            :integer
+#  views                  :integer          default(0), not null
+#  main_image_id          :integer
+#  thumbnail_image_id     :integer
 #
 # Indexes
 #
 #  index_sola_classes_on_admin_id                (admin_id)
+#  index_sola_classes_on_category_id             (category_id)
+#  index_sola_classes_on_end_date                (end_date)
 #  index_sola_classes_on_sola_class_category_id  (sola_class_category_id)
 #  index_sola_classes_on_sola_class_region_id    (sola_class_region_id)
 #  index_sola_classes_on_video_id                (video_id)
+#  index_sola_classes_on_views                   (views DESC)
 #
