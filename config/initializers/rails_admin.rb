@@ -2543,199 +2543,199 @@ RailsAdmin.config do |config|
       group :general do
         field :name do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('name')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('name')
+          # end
         end
         field :biography, :ck_editor do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('biography')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('biography')
+          # end
         end
       end
       group :contact do
         field :phone_number do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('phone_number')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('phone_number')
+          # end
         end
         field :email_address do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('email_address')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('email_address')
+          # end
         end
-        visible do
-          ['email_address', 'phone_number'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   ['email_address', 'phone_number'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       group :business do
         field :business_name do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('business_name')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('business_name')
+          # end
         end
         field :work_hours do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('work_hours')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('work_hours')
+          # end
         end
-        visible do
-          ['business_name', 'work_hours'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   ['business_name', 'work_hours'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       group :website do
         field :website_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('website_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('website_url')
+          # end
         end
         field :booking_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('booking_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('booking_url')
+          # end
         end
         field :reserved do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('reserved')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('reserved')
+          # end
         end
 
-        visible do
-          ['website_url', 'booking_url', 'reserved'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   ['website_url', 'booking_url', 'reserved'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       group :social do
         field :facebook_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('facebook_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('facebook_url')
+          # end
         end
         field :google_plus_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('google_plus_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('google_plus_url')
+          # end
         end
         field :instagram_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('instagram_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('instagram_url')
+          # end
         end
         field :linkedin_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('linkedin_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('linkedin_url')
+          # end
         end
         field :pinterest_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('pinterest_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('pinterest_url')
+          # end
         end
         field :twitter_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('twitter_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('twitter_url')
+          # end
         end
         field :yelp_url do
           help ' '
-          visible do
-            bindings[:object].changed_attributes.keys.include?('yelp_url')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('yelp_url')
+          # end
         end
-        visible do
-          %w[facebook_url google_plus_url instagram_url linkedin_url pinterest_url twitter_url yelp_url].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   %w[facebook_url google_plus_url instagram_url linkedin_url pinterest_url twitter_url yelp_url].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       group :services do
         field :botox do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('botox')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('botox')
+          # end
         end
         field :brows do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('brows')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('brows')
+          # end
         end
         field :hair do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('hair')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('hair')
+          # end
         end
         field :hair_extensions do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('hair_extensions')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('hair_extensions')
+          # end
         end
         field :laser_hair_removal do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('laser_hair_removal')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('laser_hair_removal')
+          # end
         end
         field :eyelash_extensions do
           label 'Lashes'
-          visible do
-            bindings[:object].changed_attributes.keys.include?('eyelash_extensions')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('eyelash_extensions')
+          # end
         end
         field :makeup do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('makeup')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('makeup')
+          # end
         end
         field :massage do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('massage')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('massage')
+          # end
         end
         field :nails do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('nails')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('nails')
+          # end
         end
         field :permanent_makeup do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('permanent_makeup')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('permanent_makeup')
+          # end
         end
         field :skin do
           label 'Skincare'
-          visible do
-            bindings[:object].changed_attributes.keys.include?('skin')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('skin')
+          # end
         end
         field :tanning do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('tanning')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('tanning')
+          # end
         end
         field :teeth_whitening do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('teeth_whitening')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('teeth_whitening')
+          # end
         end
         field :threading do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('threading')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('threading')
+          # end
         end
         field :waxing do
-          visible do
-            bindings[:object].changed_attributes.keys.include?('waxing')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('waxing')
+          # end
         end
         # field :other_service do
         #   label 'Other'
@@ -2744,88 +2744,88 @@ RailsAdmin.config do |config|
         #     bindings[:object].changed_attributes.keys.include?('other_service')
         #   end
         # end
-        visible do
-          %w[massage makeup eyelash_extensions laser_hair_removal botox
-             nails permanent_makeup skin tanning hair_extensions hair
-             teeth_whitening threading waxing brows].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   %w[massage makeup eyelash_extensions laser_hair_removal botox
+        #      nails permanent_makeup skin tanning hair_extensions hair
+        #      teeth_whitening threading waxing brows].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
 
       end
       group :testimonials do
         field :testimonial_1 do
           label 'Testimonial #1'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_1')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_1')
+          # end
         end
         field :testimonial_2 do
           label 'Testimonial #2'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_2')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_2')
+          # end
         end
         field :testimonial_3 do
           label 'Testimonial #3'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_3')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_3')
+          # end
         end
         field :testimonial_4 do
           label 'Testimonial #4'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_4')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_4')
+          # end
         end
         field :testimonial_5 do
           label 'Testimonial #5'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_5')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_5')
+          # end
         end
         field :testimonial_6 do
           label 'Testimonial #6'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_6')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_6')
+          # end
         end
         field :testimonial_7 do
           label 'Testimonial #7'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_7')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_7')
+          # end
         end
         field :testimonial_8 do
           label 'Testimonial #8'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_8')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_8')
+          # end
         end
         field :testimonial_9 do
           label 'Testimonial #9'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_9')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_9')
+          # end
         end
         field :testimonial_10 do
           label 'Testimonial #10'
           help ''
-          visible do
-            bindings[:object].changed_attributes.keys.include?('testimonial_10')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('testimonial_10')
+          # end
         end
-        visible do
-          %w[testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5
-             testimonial_6 testimonial_7 testimonial_8 testimonial_9 testimonial_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   %w[testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5
+        #      testimonial_6 testimonial_7 testimonial_8 testimonial_9 testimonial_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       group :images do
         field :image_1 do
@@ -2838,9 +2838,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_1')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_1')
+          # end
         end
         field :image_2 do
           label 'Image #2'
@@ -2852,9 +2852,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_2')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_2')
+          # end
         end
         field :image_3 do
           label 'Image #3'
@@ -2866,9 +2866,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_3')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_3')
+          # end
         end
         field :image_4 do
           label 'Image #4'
@@ -2880,9 +2880,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_4')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_4')
+          # end
         end
         field :image_5 do
           label 'Image #5'
@@ -2894,9 +2894,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_5')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_5')
+          # end
         end
         field :image_6 do
           label 'Image #6'
@@ -2908,9 +2908,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_6')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_6')
+          # end
         end
         field :image_7 do
           label 'Image #7'
@@ -2922,9 +2922,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_7')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_7')
+          # end
         end
         field :image_8 do
           label 'Image #8'
@@ -2936,9 +2936,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_8')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_8')
+          # end
         end
         field :image_9 do
           label 'Image #9'
@@ -2950,9 +2950,9 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_9')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_9')
+          # end
         end
         field :image_10 do
           label 'Image #10'
@@ -2964,14 +2964,14 @@ RailsAdmin.config do |config|
               "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
             end
           end
-          visible do
-            bindings[:object].changed_attributes.keys.include?('image_10')
-          end
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('image_10')
+          # end
         end
-        visible do
-          %w[image_1 image_2 image_3 image_4 image_5
-             image_6 image_7 image_8 image_9 image_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        end
+        # visible do
+        #   %w[image_1 image_2 image_3 image_4 image_5
+        #      image_6 image_7 image_8 image_9 image_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
+        # end
       end
       field :approved
     end
