@@ -423,11 +423,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.save
   end
 
-  def changed_attributes
-    @changed_attributes ||= attributes.except('id', 'stylist_id', 'approved').reject do |key, value|
-      stylist.send(key) == value
-    end
-  end
+  # def changed_attributes
+  #   @changed_attributes ||= attributes.except('id', 'stylist_id', 'approved').reject do |key, value|
+  #     stylist.send(key) == value
+  #   end
+  # end
 
   private
 
