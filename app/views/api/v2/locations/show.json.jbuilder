@@ -10,7 +10,7 @@ json.data @stylists do |stylist|
   json.accepting_new_clients stylist.accepting_new_clients
   json.walkins stylist.walkins
   json.website_url stylist.website_url
-  json.booking_url (stylist.sg_booking_url || stylist.booking_url)
+  json.booking_url stylist.booking_url
   json.facebook_url stylist.facebook_url
   json.twitter_url stylist.twitter_url
   json.pinterest_url stylist.pinterest_url

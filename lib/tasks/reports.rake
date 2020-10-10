@@ -27,7 +27,7 @@ namespace :reports do
   #   save_path = Rails.root.join('pdfs','report.pdf')
   #   File.open(save_path, 'wb') do |file|
   #     file << pdf
-  #   end    
+  #   end
   # end
   task :all_booking_user_report => :environment do
     send_all_booking_user_report('jeff@jeffbail.com')
@@ -37,7 +37,7 @@ namespace :reports do
   # rake reports:locations_contact_form_submissions[2017-11-01,2017-12-01,"jeff@jeffbail.com jeff+1@jeffbail.com jeff+2@jeffbail.com"]
   task :locations_contact_form_submissions, [:start_date, :end_date, :email_addresses] => :environment do |task, args|
     p "Begin location_contact_form_submission task...#{args.email_addresses}"
-    
+
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = args.end_date.present? ? Date.parse(args.end_date) : start_date.end_of_month
     email_addresses = args.email_addresses.split(' ')
@@ -64,7 +64,7 @@ namespace :reports do
   # rake reports:states_contact_form_submissions[2019-10-01,2019-11-01]
   task :states_contact_form_submissions, [:start_date, :end_date, :email_addresses] => :environment do |task, args|
     p "Begin location_contact_form_submission task...#{args.email_addresses}"
-    
+
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
     end_date = args.end_date.present? ? Date.parse(args.end_date).beginning_of_month : start_date.end_of_month
 
@@ -109,7 +109,7 @@ namespace :reports do
     stylists = Stylist.where(:status => 'open')
     save_path = Rails.root.join('csv','stylists_services.csv')
     CSV.open(save_path, "wb") do |csv|
-      csv << ["Stylist Name", "Stylist Email Address", "Stylist Phone Number", "Studio Number", "Business Name", 'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
+      csv << ["Stylist Name", "Stylist Email Address", "Stylist Phone Number", "Studio Number", "Business Name", 'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading',
               'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service', "Location Name", "Location City", "Location State"]
       stylists.each do |stylist|
         next if stylist.location.nil?
@@ -123,7 +123,7 @@ namespace :reports do
     #jan_1 = Date.new(2019, 3, 1)
     #today = Date.today
     rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
-    
+
     save_path = Rails.root.join('csvs','request_tour_inquiries.csv')
     CSV.open(save_path, "wb") do |csv|
       csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
@@ -144,7 +144,7 @@ namespace :reports do
   end
 
   # compiles and sends unprocessed Reports
-  task :process_unprocessed => :environment do 
+  task :process_unprocessed => :environment do
     Report.where(:processed_at => nil).each do |report|
       if report.report_type == 'all_locations'
         send_all_locations_report(report.email_address)
@@ -168,12 +168,12 @@ namespace :reports do
   # rake reports:locations[2019-01-01]
   # task :locations, [:start_date] => :environment do |task, args|
   #   p "begin locations report..."
-    
+
   #   start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
   #   end_date = start_date.end_of_month
 
   #   start_date = start_date.beginning_of_day
-  #   end_date = end_date.end_of_day    
+  #   end_date = end_date.end_of_day
 
   #   Location.where(:status => :open).order(:created_at => :asc).each do |location|
   #     p "START location=#{location.id}, #{location.name}"
@@ -181,18 +181,18 @@ namespace :reports do
   #     location_ga_report(location, start_date, end_date, false)
   #     p "FINISHED WITH location=#{location.id}, #{location.name}"
   #   end
-  # end 
+  # end
 
   # rake reports:locations_with_email
   # rake reports:locations_with_email[2019-10-01,'US']
   task :locations_with_email, [:start_date, :country] => :environment do |task, args|
     p "begin locations report..."
-    
+
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month    
+    end_date = start_date.end_of_month
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     if args.country == 'US'
       @url = 'solasalonstudios.com'
@@ -213,18 +213,18 @@ namespace :reports do
         p "ERROR with location=#{location.id}, #{location.name}, #{e.inspect}"
       end
     end
-  end 
+  end
 
   # rake reports:locations_with_email_starting_at
   # rake reports:locations_with_email_starting_at[2019-09-01,316,'US']
   task :locations_with_email_starting_at, [:start_date, :gid, :country, :country] => :environment do |task, args|
     p "begin locations report..."
-    
+
     start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-    end_date = start_date.end_of_month    
+    end_date = start_date.end_of_month
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     if args.country == 'US'
       @url = 'solasalonstudios.com'
@@ -244,7 +244,7 @@ namespace :reports do
         p "ERROR with location=#{location.id}, #{location.name}, #{e.inspect}"
       end
     end
-  end 
+  end
 
   # rake reports:location[401]
   # rake reports:location[2]
@@ -258,7 +258,7 @@ namespace :reports do
     end_date = start_date.end_of_month
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     if args.country == 'US'
       @url = 'solasalonstudios.com'
@@ -288,7 +288,7 @@ namespace :reports do
   #   end_date = start_date.end_of_month
 
   #   start_date = start_date.beginning_of_day
-  #   end_date = end_date.end_of_day  
+  #   end_date = end_date.end_of_day
 
   #   p "location=#{location.id}, #{location.name}"
   #   p "start_date=#{start_date.inspect}"
@@ -306,7 +306,7 @@ namespace :reports do
       end_date = start_date - 14.days
 
       start_date = start_date.beginning_of_day
-      end_date = end_date.end_of_day  
+      end_date = end_date.end_of_day
 
       analytics = Analytics.new
       if start_date && end_date
@@ -337,8 +337,8 @@ namespace :reports do
         save_path = Rails.root.join('pdfs','booknow.pdf')
         File.open(save_path, 'wb') do |file|
           file << pdf
-        end   
-        p "file saved" 
+        end
+        p "file saved"
       end
     end
   end
@@ -353,7 +353,7 @@ namespace :reports do
     end_date = start_date.end_of_month if start_date
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     analytics = Analytics.new
     if start_date && end_date
@@ -384,8 +384,8 @@ namespace :reports do
       save_path = Rails.root.join('pdfs','booknow.pdf')
       File.open(save_path, 'wb') do |file|
         file << pdf
-      end   
-      p "file saved" 
+      end
+      p "file saved"
     end
   end
 
@@ -399,7 +399,7 @@ namespace :reports do
     end_date = start_date.end_of_month if start_date
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     analytics = Analytics.new
     if start_date && end_date
@@ -430,8 +430,8 @@ namespace :reports do
       save_path = Rails.root.join('pdfs','booking_complete.pdf')
       File.open(save_path, 'wb') do |file|
         file << pdf
-      end   
-      p "file saved" 
+      end
+      p "file saved"
     end
   end
 
@@ -448,7 +448,7 @@ namespace :reports do
     # end_date = Date.parse ARGV[2] if ARGV && ARGV.length == 3
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     analytics = Analytics.new
     if start_date && end_date
@@ -474,8 +474,8 @@ namespace :reports do
     save_path = Rails.root.join('pdfs','solapro.pdf')
     File.open(save_path, 'wb') do |file|
       file << pdf
-    end   
-    p "file saved" 
+    end
+    p "file saved"
   end
 
   # rake reports:solasalonstudios
@@ -499,7 +499,7 @@ namespace :reports do
     end
 
     start_date = start_date.beginning_of_day
-    end_date = end_date.end_of_day  
+    end_date = end_date.end_of_day
 
     analytics = Analytics.new
     #if start_date && end_date
@@ -523,8 +523,8 @@ namespace :reports do
     save_path = Rails.root.join('pdfs',"#{@url.gsub(/\./, '_')}.pdf")
     File.open(save_path, 'wb') do |file|
       file << pdf
-    end   
-    p "file saved" 
+    end
+    p "file saved"
   end
 
 
@@ -540,14 +540,14 @@ namespace :reports do
   def send_all_locations_report(email_address=nil)
     return unless email_address
     p "send all locations"
-    
+
     csv_report = CSV.generate do |csv|
-      csv << ['ID', 'Name', 'URL Name', 'Address 1', 'Address 2', 'City', 'State', 'Postal Code', 'Country', 'Email Address', 'Phone Number', 'Contact Name', 'Description', 
+      csv << ['ID', 'Name', 'URL Name', 'Address 1', 'Address 2', 'City', 'State', 'Postal Code', 'Country', 'Email Address', 'Phone Number', 'Contact Name', 'Description',
               'Facebook URL', 'Pinterest URL', 'Instagram URL', 'Twitter URL', 'Yelp URL', 'Move In Special', 'Open House']
-      
+
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
         csv << power_of_now([location.id, location.name, location.url_name, location.address_1, location.address_2, location.city, location.state, location.postal_code, location.country,
-                location.email_address_for_inquiries, location.phone_number, location.general_contact_name, location.description, location.facebook_url, location.pinterest_url, 
+                location.email_address_for_inquiries, location.phone_number, location.general_contact_name, location.description, location.facebook_url, location.pinterest_url,
                 location.instagram_url, location.twitter_url, location.yelp_url, location.move_in_special, location.open_house])
       end
     end
@@ -587,7 +587,7 @@ namespace :reports do
   def send_all_booking_user_report(email_address=nil)
     return unless email_address
     p "send_all_booking_user_report"
-    
+
     #jan_1 = Date.new(2019, 3, 1)
     #today = Date.today
     #rtis = RequestTourInquiry.all.order(:created_at => :desc)#where(:created_at => (jan_1..today))
@@ -595,7 +595,7 @@ namespace :reports do
     end_date = Date.today
     analytics = Analytics.new
     app_data = analytics.booking_complete_data('81802112', start_date, end_date)
-    
+
     p "app_data=#{app_data.inspect}"
 
     csv_report = CSV.generate do |csv|
@@ -604,8 +604,8 @@ namespace :reports do
         if booking_complete["booking_user"]
           p "WE HAVE A BOOKING USER #{booking_complete["booking_user"]}"
           csv << [booking_complete["booking_user"]["name"], booking_complete["booking_user"]["phone"], booking_complete["booking_user"]["email"], booking_complete["date"]]
-        else 
-          p "We DO NOT have a booking user #{booking_complete}" 
+        else
+          p "We DO NOT have a booking user #{booking_complete}"
         end
       end
       # csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
@@ -642,7 +642,7 @@ namespace :reports do
         end
       end
     end
-    
+
     p "start_date=#{start_date}"
     p "end_date=#{end_date}"
 
@@ -672,13 +672,13 @@ namespace :reports do
   def send_all_stylists_report(email_address=nil)
     return unless email_address
     p "send all stylists"
-    
+
     csv_report = CSV.generate do |csv|
-      csv << ['ID', 'First Name', 'Last Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL', 'SolaGenius Booking URL',
-              'Pinterest URL', 'Facebook URL', 'Twitter URL', 'Instagram URL', 'Yelp URL', 
-              'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number', 
-              'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading', 
-              'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service', 
+      csv << ['ID', 'First Name', 'Last Name', 'URL Name', 'Email Address', 'Phone Number', 'Website URL', 'Booking URL',
+              'Pinterest URL', 'Facebook URL', 'Twitter URL', 'Instagram URL', 'Yelp URL',
+              'Emergency Contact Name', 'Emergency Contact Relationship', 'Emergency Contact Phone Number',
+              'Brows', 'Hair', 'Hair Exensions', 'Laser Hair Removal', 'Lashes', 'Makeup', 'Massage', 'Microblading',
+              'Nails', 'Permanent Makeup', 'Skincare', 'Tanning', 'Teeth Whitening', 'Threading', 'Waxing', 'Other Service',
               'Studio Number', 'Location ID', 'Location Name', 'Location City', 'Location State', 'Country', 'Has Sola Pro', 'Has SolaGenius', 'Sola Pro Start Date']
 
       Stylist.where('status = ?', 'open').order(:created_at => :desc).each do |stylist|
@@ -704,9 +704,9 @@ namespace :reports do
         #   sola_pro_start_date = 'N/A'
         # end
 
-        csv << power_of_now([stylist.id, stylist.first_name, stylist.last_name, stylist.url_name, stylist.email_address, stylist.phone_number, stylist.website_url, stylist.booking_url, stylist.sg_booking_url,
+        csv << power_of_now([stylist.id, stylist.first_name, stylist.last_name, stylist.url_name, stylist.email_address, stylist.phone_number, stylist.website_url, stylist.booking_url,
                 stylist.pinterest_url, stylist.facebook_url, stylist.twitter_url, stylist.instagram_url, stylist.yelp_url,
-                stylist.emergency_contact_name, stylist.emergency_contact_relationship, stylist.emergency_contact_phone_number, 
+                stylist.emergency_contact_name, stylist.emergency_contact_relationship, stylist.emergency_contact_phone_number,
                 stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal, stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading,
                 stylist.nails, stylist.permanent_makeup, stylist.skin, stylist.tanning, stylist.teeth_whitening, stylist.threading, stylist.waxing, stylist.other_service,
                 stylist.studio_number, stylist.location.id, stylist.location.name, stylist.location.city, stylist.location.state, stylist.country, stylist.has_sola_pro_login, stylist.has_sola_genius_account, stylist.sola_pro_start_date])
@@ -723,7 +723,7 @@ namespace :reports do
   def send_solapro_solagenius_penetration_report(email_address=nil)
     return unless email_address
     p "send solapro solagenius penetration"
-    
+
     csv_report = CSV.generate do |csv|
       csv << ['Location ID', 'Location Name', 'Location City', 'Location State', 'Stylists on Website', 'Has Sola Pro Account', 'Has SolaGenius Account']
       Location.where('status = ?', 'open').order(:created_at => :desc).each do |location|
@@ -788,7 +788,7 @@ namespace :reports do
     p "let's render PDF"
     pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/location_ga', locals), :footer => {:center => '[page]', :font_size => 7})
     p "pdf rendered..."
-    
+
     begin
       if data[:unique_visits]
         unique_visits_total = data[:unique_visits][0][1].to_i + data[:unique_visits][1][1].to_i
@@ -810,7 +810,7 @@ namespace :reports do
           p "email to Campbell sent!"
         end
       end
-    rescue => e 
+    rescue => e
       p "error trying to send Campbell the pageview drop alert email #{e}"
     end
 
@@ -952,7 +952,7 @@ namespace :reports do
   ####### analytics ########
 
   class Analytics < BaseCli
-    
+
     require 'uri'
 
     Analytics = Google::Apis::AnalyticsreportingV4
@@ -961,10 +961,10 @@ namespace :reports do
     def get_location_url(location, start_date, end_date)
       location_start = location.version_at(start_date) || location
       location_end = location.version_at(end_date || start_date) || location
-      
+
       #p "start_date=#{start_date}"
       #p "end_date=#{end_date}"
-      
+
       #p "location_start=#{location_start.updated_at}, #{location_start.url_name}"
       #p "location_end=#{location_end.updated_at}, #{location_end.url_name}"
 
@@ -995,7 +995,7 @@ namespace :reports do
       ]
 
       #p "page_paths.join=#{page_paths.join(',')}"
-      
+
 
       #{}"ga:pagePath=~/locations/#{location_start.url_name}"
 
@@ -1010,10 +1010,10 @@ namespace :reports do
       data = {
         start_date: start_date,
         end_date: end_date
-      }    
+      }
 
       require 'json'
-      
+
       booking_data = []
 
       (start_date.to_date..end_date.to_date).each do |date|
@@ -1275,7 +1275,7 @@ namespace :reports do
       data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
       #p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
       data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] && data[:location_phone_number_clicks_current_month][0] ? data[:location_phone_number_clicks_current_month][0][1] : 0
-      
+
       data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
       #p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
       data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] && data[:location_phone_number_clicks_prev_month][0] ? data[:location_phone_number_clicks_prev_month][0][1] : 0
@@ -1286,11 +1286,11 @@ namespace :reports do
 
       stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
       #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
-      
+
       if stylist_phone_number_filters.present?
         data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
         data[:professional_phone_number_clicks_current_month] = data[:professional_phone_number_clicks_current_month] && data[:professional_phone_number_clicks_current_month][0] ? data[:professional_phone_number_clicks_current_month][0][1] : 0
-        
+
         data[:professional_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
         data[:professional_phone_number_clicks_prev_month] = data[:professional_phone_number_clicks_prev_month] && data[:professional_phone_number_clicks_prev_month][0] ? data[:professional_phone_number_clicks_prev_month][0][1] : 0
 
@@ -1356,7 +1356,7 @@ namespace :reports do
       data[:videos_viewed] = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Video')
       data[:videos_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Video')
 
-      # top deals 
+      # top deals
       top_deals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deal')
       data[:top_deals] = []
       top_deals.each do |top_deal|
@@ -1424,7 +1424,7 @@ namespace :reports do
       data[:videos_viewed] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
       data[:videos_viewed_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventCategory', 'ga:totalEvents', nil, 'ga:eventCategory==Videos')
 
-      # top deals 
+      # top deals
       data[:top_deals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deals')[0..4]
 
       # top tools
@@ -1485,7 +1485,7 @@ namespace :reports do
       data[:devices] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:deviceCategory')
       tablets = data[:devices].pop
       data[:devices][1][1] = data[:devices][1][1].to_i + tablets[1].to_i
-      
+
       data[:devices_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.end_of_day.strftime('%F'), 'ga:deviceCategory')
       tablets = data[:devices_prev_month].pop
       data[:devices_prev_month][1][1] = data[:devices_prev_month][1][1].to_i + tablets[1].to_i
@@ -1596,8 +1596,8 @@ namespace :reports do
           dimensions_arr << dimension
         end
         rr.dimensions = dimensions_arr
-      end     
-      
+      end
+
       if metrics
         metrics_arr = []
         metrics.split(' ').each do |metric_str|
@@ -1605,7 +1605,7 @@ namespace :reports do
           metric.expression = metric_str
           metrics_arr << metric
         end
-        rr.metrics = metrics_arr     
+        rr.metrics = metrics_arr
       end
 
       range = Google::Apis::AnalyticsreportingV4::DateRange.new
@@ -1614,7 +1614,7 @@ namespace :reports do
       rr.date_ranges = [range]
 
       if sort
-        order_by = Google::Apis::AnalyticsreportingV4::OrderBy.new 
+        order_by = Google::Apis::AnalyticsreportingV4::OrderBy.new
         if sort.start_with? '-'
           sort[0] = ''
           order_by.field_name = sort
@@ -1622,7 +1622,7 @@ namespace :reports do
         else
           order_by.field_name = sort
         end
-        
+
         rr.order_bys = [order_by]
       end
 
@@ -1638,7 +1638,7 @@ namespace :reports do
       #puts response.inspect if dimensions == 'ga:deviceCategory'
       #puts response.reports.inspect if dimensions == 'ga:deviceCategory'
 
-      data = response.reports.map{|report| 
+      data = response.reports.map{|report|
         #p "report.data.rows=#{report.data.rows.inspect}"
         return nil if report.data.rows.nil?
         # p "report.data.rows=#{report.data.rows.inspect}" if dimensions == 'ga:deviceCategory'
@@ -1652,7 +1652,7 @@ namespace :reports do
         # p "report.data.rows[1]=#{report.data.rows[1].inspect}"
         return report.data.rows.map{|row|
           #p "row.dimensions=#{row.dimensions.inspect}" if dimensions && dimensions.split(' ').length > 1
-          #p "row.metrics=#{row.metrics.inspect}" 
+          #p "row.metrics=#{row.metrics.inspect}"
           # if metrics && metrics.split(' ').length > 1
           #   row.metrics.each_with_index do |metrics, idx|
           #     p "row.metrics[#{idx}]=#{row.metrics[idx].values.inspect}"
@@ -1686,7 +1686,7 @@ namespace :reports do
       if url.index('contact-form-success')
         url = url[0...url.index('contact-form-success')]
       end
-      
+
       page_title = Mechanize.new.get(url).title
       if page_title.split('-').size > 1
         page_title = page_title[0..(page_title.rindex('-') - 2)].strip
@@ -1694,6 +1694,6 @@ namespace :reports do
       page_title
     end
 
-  end 
+  end
 
 end

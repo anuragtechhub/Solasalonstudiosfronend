@@ -2043,11 +2043,6 @@ RailsAdmin.config do |config|
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
-        field :sg_booking_url do
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
-        end
       end
       group :social do
         field :facebook_url
@@ -2243,11 +2238,6 @@ RailsAdmin.config do |config|
         end
         field :booking_url do
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
-        end
-        field :sg_booking_url do
-          visible do
-            bindings[:controller]._current_user.franchisee != true
-          end
         end
       end
       # group :solagenius do
@@ -2479,11 +2469,6 @@ RailsAdmin.config do |config|
         end
       end
       field :booking_url
-      field :sg_booking_url do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
       field :send_a_message_button
       field :hair
       field :skin

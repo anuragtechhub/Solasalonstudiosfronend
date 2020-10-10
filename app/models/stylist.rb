@@ -13,7 +13,7 @@ class Stylist < ActiveRecord::Base
   devise :registerable, :recoverable, :rememberable, :trackable
 
   has_paper_trail
-  
+
   scope :open, -> { where(:status => 'open') }
   scope :not_reserved, -> { where(:reserved => false) }
 
@@ -114,19 +114,19 @@ class Stylist < ActiveRecord::Base
   before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
 
   has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/    
+  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
   validates :email_address, :presence => true
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :reduce => true#, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
-  
+
   validates :name, :url_name, :location, :presence => true
   #validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
-  
+
   def first_name
     FullNameSplitter.split(name)[0]
   end
@@ -136,7 +136,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def country
-    c = self.location ? Country.find_by(:code => self.location.country) : nil    
+    c = self.location ? Country.find_by(:code => self.location.country) : nil
     return c.name if c
     return nil
   end
@@ -193,7 +193,7 @@ class Stylist < ActiveRecord::Base
     images_array
   end
 
-  def services(show_other = true) 
+  def services(show_other = true)
     services = []
 
     services << 'Brows' if brows
@@ -242,14 +242,14 @@ class Stylist < ActiveRecord::Base
   def update_computed_fields
     self.location_name = location.name if location && location.name
     if location && location.msa
-      self.msa_name = location.msa.name 
+      self.msa_name = location.msa.name
     end
   end
 
   def has_sola_pro_login
     self.encrypted_password.present? || self.sola_pro_version.present? || self.sola_pro_platform.present?
   end
-  
+
   def fix_url_name
     if self.url_name.present?
       self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
@@ -280,8 +280,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def has_sola_genius_account
-    return true if sg_booking_url.present? #&& booking_url.include?('glossgenius.com')
-    return false
+    booking_url.include?('glossgenius.com')
   end
 
   def lease
@@ -338,7 +337,7 @@ class Stylist < ActiveRecord::Base
       end
     end
     return nil unless email_address.present?
-    
+
     #p "get_hubspot_owner #{email_address}"
 
     if ENV['HUBSPOT_API_KEY'].present?
@@ -379,15 +378,15 @@ class Stylist < ActiveRecord::Base
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
 
       contact_properties = {
-        email: self.email_address, 
-        firstname: self.first_name, 
+        email: self.email_address,
+        firstname: self.first_name,
         lastname: self.last_name,
         phone: self.phone_number,
         cms_status: self.status,
         sola_id: self.id,
         website: self.website_url,
         booking_url: self.booking_url,
-        solagenius_booking_url: self.sg_booking_url,
+        solagenius_booking_url: (self.has_sola_genius_account.presence && self.booking_url),
         pinterest_url: self.pinterest_url,
         facebook_url: self.facebook_url,
         twitter_url: self.twitter_url,
@@ -453,15 +452,15 @@ class Stylist < ActiveRecord::Base
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
 
       contact_properties = {
-        email: self.email_address, 
-        firstname: self.first_name, 
+        email: self.email_address,
+        firstname: self.first_name,
         lastname: self.last_name,
         phone: self.phone_number,
         cms_status: self.status,
         sola_id: self.id,
         website: self.website_url,
         booking_url: self.booking_url,
-        solagenius_booking_url: self.sg_booking_url,
+        solagenius_booking_url: (self.has_sola_genius_account.presence && self.booking_url),
         solagenius_account_created_at: self.solagenius_account_created_at.present? ? self.solagenius_account_created_at.to_date.strftime('%Q').to_i : nil,
         pinterest_url: self.pinterest_url,
         facebook_url: self.facebook_url,
@@ -516,7 +515,7 @@ class Stylist < ActiveRecord::Base
 
   def sync_with_tru_digital
     #url = "https://ccottle-dev-app.trudigital.net/core/sola"
-    
+
     # p "url=#{url}"
 
     # payload = {
@@ -534,9 +533,9 @@ class Stylist < ActiveRecord::Base
 
     # sync_with_tru_digital_response = RestClient::Request.execute({
     #   #:headers => {"Content-Type" => "application/json"},
-    #   :method => :post, 
+    #   :method => :post,
     #   :content_type => 'application/json',
-    #   :url => url, 
+    #   :url => url,
     #   :payload => payload.to_json,
     # })
     # data = [{
@@ -556,7 +555,7 @@ class Stylist < ActiveRecord::Base
 
     # sync_with_tru_digital_response = RestClient::Request.execute({
     #   :headers => {"Content-Type" => "application/json"},
-    #   :method => :post, 
+    #   :method => :post,
     #   #:content_type => 'application/json',
     #   :url => "https://ccottle-dev-app.trudigital.net/core/sola",
     #   :payload => [payload].to_json
@@ -601,7 +600,7 @@ class Stylist < ActiveRecord::Base
   def sync_with_ping_hd
     return true if self.reserved
     url = "https://go.engagephd.com/Sola.aspx" #"https://go.engagephd.com/api/Engage/Sola" #"http://dev.pinghd.com/api/Engage/Sola"
-    
+
     p "url=#{url}"
 
     payload = {
@@ -614,16 +613,16 @@ class Stylist < ActiveRecord::Base
       #description: self.biography,
       room: self.studio_number,
       enabled: self.status && self.status == 'closed' ? false : true,
-      walkins: self.walkins 
+      walkins: self.walkins
     }
 
     p "payload=#{payload.inspect}"
 
     sync_with_ping_hd_response = RestClient::Request.execute({
       #:headers => {"Content-Type" => "application/json"},
-      :method => :post, 
+      :method => :post,
       #:content_type => 'application/json',
-      :url => url, 
+      :url => url,
       :payload => payload
     })
 
@@ -637,7 +636,7 @@ class Stylist < ActiveRecord::Base
     if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
       require 'rest-client'
       p "Sync stylist with Rent Manager: rent_manager_property_id=#{location.rent_manager_property_id}, rent_manager_location_id=#{location.rent_manager_location_id}"
-      
+
       payload = {
         "FirstName" => self.first_name,
         "LastName" => self.last_name,
@@ -659,10 +658,10 @@ class Stylist < ActiveRecord::Base
 
       post_tenant_response = RestClient::Request.execute({
         :headers => {"Content-Type" => "application/json"},
-        :method => :post, 
+        :method => :post,
         #:content_type => 'application/json',
-        :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants", 
-        :user => 'solapro', 
+        :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants",
+        :user => 'solapro',
         :password => '20FCEF93-AD4D-4C7D-9B78-BA2492098481',
         :payload => [payload].to_json
       })
@@ -676,7 +675,7 @@ class Stylist < ActiveRecord::Base
       else
         p "no rent_manager_id or same rent_manager_id, so no need to save #{post_tenant_response_json["TenantID"]}, #{self.rent_manager_id}"
       end
-    else 
+    else
       p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
     end
   rescue => e
@@ -722,7 +721,7 @@ class Stylist < ActiveRecord::Base
 
   def image_10_url
     image_10.url(:carousel) if image_10.present?
-  end                
+  end
 
   def send_welcome_email
     #p "SEND WELCOME EMAIL #{location.country}"
@@ -731,7 +730,7 @@ class Stylist < ActiveRecord::Base
     elsif location && location.country && location.country == 'CA'
       PublicWebsiteMailer.welcome_email_ca(self).deliver
     end
-  rescue => e 
+  rescue => e
     p "caught an error #{e.inspect}"
   end
 
@@ -742,7 +741,7 @@ class Stylist < ActiveRecord::Base
     elsif location && location.country && location.country == 'CA'
       PublicWebsiteMailer.resend_welcome_email_ca(self).deliver
     end
-  rescue => e 
+  rescue => e
     p "caught an error #{e.inspect}"
   end
 
@@ -779,7 +778,7 @@ class Stylist < ActiveRecord::Base
     if self.email_address && self.email_address.present?
       #gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
       #gb.lists.unsubscribe(:id => 'e5443d78c6', :email => {:email => self.email_address}, :delete_member => true, :send_goodbye => false, :send_notify => false)
-     
+
       if self.location.mailchimp_list_ids && self.location.mailchimp_list_ids.present?
         admin = self.location.admin
         if admin && admin.mailchimp_api_key && admin.mailchimp_api_key.present?
@@ -798,7 +797,7 @@ class Stylist < ActiveRecord::Base
 
   def remove_from_mailchimp_if_closed
     remove_from_mailchimp if self.status && self.status == 'closed'
-  end 
+  end
 
   def touch_stylist
     Stylist.all.first.touch
@@ -806,9 +805,9 @@ class Stylist < ActiveRecord::Base
 
   def generate_url_name
     if self.name && self.url_name.blank?
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-')
       count = 1
-      
+
       while Stylist.where(:url_name => "#{url}#{count}").size > 0 do
         count = count + 1
       end
