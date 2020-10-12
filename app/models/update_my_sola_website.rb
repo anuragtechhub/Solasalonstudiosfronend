@@ -423,10 +423,25 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.save
   end
 
-  # def changed_attributes
-  #   @changed_attributes ||= attributes.except('id', 'stylist_id', 'approved').reject do |key, value|
-  #     stylist.send(key) == value
+  # def changes_requested
+  #   attrs = attributes.except('id', 'stylist_id', 'approved', 'created_at', 'updated_at').reject do |key, value|
+  #     stylist.send(key) == value || key.include?('image_') || key.include?('testimonial_')
   #   end
+  #   (1..10).each do |number|
+  #     key = "testimonial_#{number}"
+  #     if (value = send(key)).present?
+  #       if (current_value = stylist.send(key)).present? && current_value.attributes.except('id', 'created_at', 'updated_at') !=
+  #         value.attributes.except('id', 'created_at', 'updated_at')
+  #         attrs[key] = value
+  #       end
+  #     end
+  #
+  #     key = "image_#{number}_url"
+  #     if (value = send(key)).present?
+  #       attrs[key] = value if stylist.send(key) != value
+  #     end
+  #   end
+  #   attrs
   # end
 
   private
