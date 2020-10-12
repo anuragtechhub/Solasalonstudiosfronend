@@ -45,11 +45,11 @@ group :production do
   gem 'rails_12factor'
   gem "image_optim"
   gem 'image_optim_pack'
-  gem "paperclip-optimizer"  
+  gem "paperclip-optimizer"
   gem "wkhtmltopdf-heroku"
 end
 
-gem 'rmagick'  
+gem 'rmagick'
 gem 'rack-cors'
 
 gem "paperclip"
@@ -100,7 +100,7 @@ gem "addressable"
 gem 'dotenv-rails', :groups => [:development, :test]
 
 
-gem "i18n-js", ">= 3.0.0.rc11" #">= 3.0.0.rc8" 
+gem "i18n-js", ">= 3.0.0.rc11" #">= 3.0.0.rc8"
 
 gem 'kaminari'
 
@@ -149,3 +149,6 @@ group :development do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
 end
+
+gem 'rollbar'
+gem 'newrelic_rpm'
