@@ -74,6 +74,19 @@ RailsAdmin.config do |config|
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
+
+    show do
+      field :time_range
+      field :location
+      field :query
+      field :services
+      field :stylist
+      field :booking_user_name
+      field :booking_user_phone
+      field :booking_user_email
+      field :total
+      field :created_at
+    end
   end
 
   config.model 'Admin' do

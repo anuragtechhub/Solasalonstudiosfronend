@@ -18,7 +18,7 @@ namespace :rentmanager do
     require 'json'
     p "Start Rent Manager locations task..."
 
-    email_addresses = args.email_addresses.split(' ')
+    email_addresses = args.email_addresses.to_s.split(' ')
 
     p "email_addresses=#{email_addresses}"
     matched_properties = []
@@ -33,7 +33,7 @@ namespace :rentmanager do
       #p "locations_response=#{locations_response.inspect}"
       locations_json = JSON.parse(locations_response)
       #p "locations_json=#{locations_json.inspect}"
-      
+
       locations_json.each do |location|
         p "location locationID=#{location['locationID']}, name=#{location['Name']}, friendlyName=#{location['FriendlyName']}"
         properties_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location['locationID']}/Properties", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
@@ -93,9 +93,9 @@ namespace :rentmanager do
 
               csv << [location['locationID'], property['PropertyID'], property['Name'], street, city, state, nil, nil, nil, nil, nil, 'No', 'Could not be matched because property in Rent Manager was missing street address, city or state.']
             end
-          else 
+          else
             p "property NO PRIMARY ADDRESS --- properyID=#{property['PropertyID']}, name=#{property['Name']}"
-            
+
             unmatched_properties << property
 
             csv << [location['locationID'], property['PropertyID'], property['Name'], nil, nil, nil, nil, nil, nil, nil, nil, 'No', 'Could not be matched because property in Rent Manager did not have a primary address listed.']
@@ -104,7 +104,7 @@ namespace :rentmanager do
       end # locations_json.each
 
     end # csv.open
-    
+
     summary = "Rent Manager locations task summary: #{(matched_properties + unmatched_properties).size} total locations, #{matched_properties.size} matched, #{unmatched_properties.size} unmatched."
     p summary
     ReportsMailer.rent_manager_locations(email_addresses, summary, File.read(Rails.root.join('csv','rent_manager_locations.csv'))).deliver
@@ -258,9 +258,9 @@ namespace :rentmanager do
       p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}"
       units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
       #p "units_response=#{units_response.inspect}"
-      units_json = JSON.parse(units_response)   
-      p "#{units_json.length} units to process for #{location.name}"   
-      
+      units_json = JSON.parse(units_response)
+      p "#{units_json.length} units to process for #{location.name}"
+
       units_json.each do |unit|
         #p "unit=#{unit.inspect}"
         sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
@@ -276,7 +276,7 @@ namespace :rentmanager do
     end
 
     p "Finish Rent Manager studios task. #{locations.size} locations. #{studios_created} studios imported/created"
-  end  
+  end
 
   task :studios_for_location => :environment do
     location = Location.find_by(:rent_manager_location_id => '171')
@@ -288,9 +288,9 @@ namespace :rentmanager do
     p "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}"
     units_response = RestClient::Request.execute method: :get, url: "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/Units?propertyid=#{location.rent_manager_property_id}", user: 'solapro', password: '20FCEF93-AD4D-4C7D-9B78-BA2492098481'
     p "units_response=#{units_response.inspect}"
-    units_json = JSON.parse(units_response)   
-    p "#{units_json.length} units to process for #{location.name}"   
-    
+    units_json = JSON.parse(units_response)
+    p "#{units_json.length} units to process for #{location.name}"
+
     units_json.each do |unit|
       p "unit=#{unit.inspect}"
       sola_unit = Studio.find_or_create_by(:rent_manager_id => unit['UnitID'].to_s, :location_id => location.id)
@@ -302,7 +302,7 @@ namespace :rentmanager do
 
     p "studios_updated=#{studios_updated.size}"
     studios_to_delete = Studio.where('location_id = ? AND id NOT IN (?)', location.id, studios_updated.map{|s| s.id})
-    p "found #{studios_to_delete.size} studios to delete"    
+    p "found #{studios_to_delete.size} studios to delete"
   end
 
 end
