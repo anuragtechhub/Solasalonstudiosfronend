@@ -2843,140 +2843,100 @@ RailsAdmin.config do |config|
       group :images do
         field :image_1 do
           label 'Image #1'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_1
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_1')
           # end
         end
         field :image_2 do
           label 'Image #2'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_2
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_2')
           # end
         end
         field :image_3 do
           label 'Image #3'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_3
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_3')
           # end
         end
         field :image_4 do
           label 'Image #4'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_4
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_4')
           # end
         end
         field :image_5 do
           label 'Image #5'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_5
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_5')
           # end
         end
         field :image_6 do
           label 'Image #6'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_6
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_6')
           # end
         end
         field :image_7 do
           label 'Image #7'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_7
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_7')
           # end
         end
         field :image_8 do
           label 'Image #8'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_8
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_8')
           # end
         end
         field :image_9 do
           label 'Image #9'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_9
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_9')
           # end
         end
         field :image_10 do
           label 'Image #10'
-          help ' '
-          render do
-            if value && value.present?
-              "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' style='max-width:100%;height:auto;' /></a>".html_safe
-            else
-              "<em style='position:relative;top:5px;color:#AFAFAF'>None</em>".html_safe
-            end
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
+          delete_method :delete_image_10
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('image_10')
           # end
