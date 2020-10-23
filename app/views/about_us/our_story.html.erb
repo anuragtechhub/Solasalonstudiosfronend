@@ -21,7 +21,7 @@
 		<h5>- <%= t 'page.our_story.callout1_name' %></h5>
 	</div>
 
-	
+
 	<p><%= t('page.our_story.body4').html_safe %></p>
 	<p><%= t('page.our_story.body5').html_safe %></p>
 	<p><%= t('page.our_story.body6').html_safe %></p>
@@ -42,9 +42,9 @@
 	<div class="img-wrap"><%= image_tag 'Story_3.jpg', :class => 'u-full-width' %></div>
 
 	<p><%= t('page.our_story.body8').html_safe %></p>
-	<p><%= t('page.our_story.body9').html_safe %></p>
-
-	<% if I18n.locale.to_s != 'pt-BR' %>
+  <% if I18n.locale.to_s == 'pt-BR' %>
+	  <p><%= t('page.our_story.body9').html_safe %></p>
+  <% else %>
 		<p><a href="https://www.solafranchising.com"><%= t('page.our_story.interested_in_franchising').html_safe %></a><p>
 	<% end %>
 </div>
