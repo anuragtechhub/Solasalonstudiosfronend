@@ -1,7 +1,7 @@
 <!-- <div class="location-breadcrumb">
   <div class="container">
     <%= link_to t('page.salon_professional.all_locations').html_safe, :locations %> <span class="divider">/</span> <%= link_to @location.state, I18n.locale == :en ? locations_by_state_path(beautify_url_segment @location.state) : locations_by_province_path(beautify_url_segment @location.state) %>
-    <span class="divider">/</span> <%= link_to @location.msa.name.html_safe, region_path(@location.msa.url_name) %>
+    <span class="divider">/</span> <%= link_to(@location.msa.name.html_safe, region_path(@location.msa.url_name)) if @location.msa.prersent? %>
     <span class="divider">/</span> <%= link_to @location.name, salon_location_path(@location.url_name) %>
     <span class="divider">/</span> <%= link_to (@stylist.website_name.present? ? @stylist.website_name.html_safe : @stylist.name.html_safe), show_salon_professional_path(@stylist) %>
   </div>
