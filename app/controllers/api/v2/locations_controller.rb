@@ -17,7 +17,8 @@ class Api::V2::LocationsController < ApiController
 
   def show
     @location = Location.find_by(:id => params[:id])
-    cache_key = "/api/v2/show/#{@location.id}/#{@location.stylists.not_reserved.maximum(:updated_at)}"
+    @stylists = @location.stylists.not_reserved
+    cache_key = "/api/v2/show/#{@location.id}/#{@stylists.maximum(:updated_at)}"
     p "SHOW cache_key=#{cache_key}"
     json = Rails.cache.fetch(cache_key) do
       p "going in the show cache..."
