@@ -33,11 +33,22 @@
  */
 
 // .find-a-salon-professional-hero hr {
-	
+
 // 	width: 88%;
 // 	max-width: 420px;
 // 	margin: 25px auto 20px auto;
 // }
+
+@font-face {
+  font-family: Chalet-ParisSixty;
+  src: asset-url("Chalet-ParisSixty.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Chalet-LondonSixty;
+  font-weight: bold;
+  src: asset-url("Chalet-LondonSixty.otf") format("opentype");
+}
 
 .find-a-salon-professional-hero-next.find-a-salon-professional-hero-next-booknow .filterable-dropdown-search {
 	margin-bottom: 0 !important;
@@ -47,7 +58,7 @@
 	border-top: 1px solid rgba(255,255,255,0.5);
 	max-width: 100%;
 	padding-top: 20px;
-	margin-top: 25px !important;	
+	margin-top: 25px !important;
 }
 
 @media (max-width: 767px) {
@@ -55,7 +66,7 @@
 		border-top: 1px solid rgba(255,255,255,0.5);
 		max-width: 100%;
 		padding-top: 20px;
-		margin-top: 25px !important;	
+		margin-top: 25px !important;
 	}
 }
 
