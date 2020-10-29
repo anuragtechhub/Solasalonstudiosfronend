@@ -3,8 +3,8 @@ pt-BR:
   contact_form_success: Obrigado! Entraremos em contato em breve
 
   activerecord:
-    models:
-      lease: "Electronic license agreement"
+    models: 
+      lease: "Electronic license agreement"  
     attributes:
       leases:
         move_in_date: "Move in date"
@@ -23,9 +23,9 @@ pt-BR:
         start_date: "Recurring weekly charge 3 start date"
         end_date: "Recurring weekly charge 3 end date"
       leases/recurring_charge_4:
-        amount: "Recurring weekly charge 4 weekly fee"
+        amount: "Recurring weekly charge 4 weekly fee" 
         start_date: "Recurring weekly charge 4 start date"
-        end_date: "Recurring weekly charge 4 end date"
+        end_date: "Recurring weekly charge 4 end date"              
 
   contact_form:
     contact_a_sola_near_you: Contate o Sola mais próximo
@@ -57,7 +57,7 @@ pt-BR:
   in: em
   contact_for_leasing_information: Entre em contato com %{general_contact_name} para obter informações sobre arrendamento
   phone_result: "<strong>p:</strong> %{phone_number}"
-  email_result: "<strong>e:</strong> %{email_address}"
+  email_result: "<strong>e:</strong> %{email_address}"  
 
   header:
     rent_studio_button: Tenha seu salão
@@ -149,7 +149,7 @@ pt-BR:
       sola_spotlight: Spotlight do Sola
       read_article: Leia o artigo
       read_more: Leia mais
-
+    
     contact:
       title: Fale conosco
       meta_description: "Entre em contato para saber mais sobre o Sola Salon Studios através do gerente do estúdio mais próximo de você!"
@@ -242,7 +242,7 @@ pt-BR:
           <li>You work in a drama-free environment</li>
         </ol>
       question10: What are the next steps to getting started at Sola?
-      answer10: <p>To reserve your studio, contact us via our Contact Us form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you&#8217;re ready to open for business.</p>
+      answer10: <p>To reserve your studio, contact us via our Contact Us form, or give us a call! We would love to set up a confidential tour of our studios to determine which setup is best for you. After getting the appropriate salon license, most of our stylists move in and start working right away! All you need to do is bring your back bar, towels, personal equipment and any decorations you like, and you&#8217;re ready to open for business.</p>    
 
     find_salon_pro:
       title: Encontre um profissional
@@ -257,7 +257,7 @@ pt-BR:
       body1: "At Sola Salon Studios, each of our studios is independently operated!"
       body2: "To find a salon professional, search for the location nearest to you or search for them by name. To schedule an appointment, please contact your salon professional directly."
       find_a_salon_professional_near_you: Encontre um profissional de salão de beleza
-
+    
     gallery:
       title: Galeria
       meta_description: "Seu estúdio, seu estilo! Veja nossa galeria para dar uma olhada em nossos estúdios personalizáveis e bonitos."
@@ -271,7 +271,7 @@ pt-BR:
       the_sola_sessions: O Sola Sessions
       sola_pro: Sola Pro
       solagenius: SolaGenius
-
+    
     home:
       title: Home
       meta_description: "Lindos estúdios, vantagens exclusivas. No Sola, você simplesmente ganha mais! Arrende um estúdio para se juntar a nossa comunidade e experimentar a liberdade e os benefícios da propriedade de um salão."
@@ -314,7 +314,7 @@ pt-BR:
         <p>Randall Clark é um executivo experiente, com uma astuta perspicácia empresarial e uma crença inabalável na liderança servidora. Essas qualidades, combinadas com sua profunda história de desenvolvimento de negócios, qualificam-no para liderar a comunidade de proprietários de franquias sofisticados do Sola, bem como proprietários independentes de salões de beleza.</p>
         <p>O pensamento estratégico e sistemático de Randall, juntamente com sua dedicação inabalável em proteger a marca Sola e os melhores interesses de nossos clientes, é uma força motriz por trás do sucesso demonstrado pelo Sola e seu crescimento futuro previsto.</p>
         <p>Com 27 anos de experiência como executivo corporativo sênior e diretor de investimento de capital, Randall liderou um conjunto diverso de empresas e patrocinou parcerias estratégicas de investimento, e plataformas operacionais de ativos alternativos para o crescimento sustentável, e a criação significativa de valor corporativo. Como patrocinador de investimentos de participações, ele liderou e completou mais de US$ 3,7 bilhões em volume de transações de investimento, compreendendo mais de US$ 850 milhões em compromissos de capital próprio.</p>
-        <p>Depois de receber seu diploma da Universidade do Arizona, Randall buscou seu Doutorado em Direito (JD) da Faculdade de Direito da Universidade Pepperdine. Ele também atuou como presidente do Rocky Mountain Chapter da Young Presidents Association (YPO e YPO Gold) – uma associação internacional dedicada a melhorar a liderança por meio da educação continuada entre pares e a troca de ideias.</p>
+        <p>Depois de receber seu diploma da Universidade do Arizona, Randall buscou seu Doutorado em Direito (JD) da Faculdade de Direito da Universidade Pepperdine. Ele também atuou como presidente do Rocky Mountain Chapter da Young Presidents Association (YPO e YPO Gold) – uma associação internacional dedicada a melhorar a liderança por meio da educação continuada entre pares e a troca de ideias.</p>  
         <p>Randall se reporta diretamente à diretoria e aos cofundadores do Sola Salon Studios, Matt Briger e Stratton Smith. Ele é responsável por supervisionar a liderança, a estratégia e a execução de todas as iniciativas de crescimento das franquias do Sola Salon Studios, tanto nacional como internacionalmente, incluindo a gestão operacional de todos os locais operados pelo Sola e de propriedade da empresa.</p>
       ben_jones_bio: |
         <p>Ben Jones impulsiona o Sola Salon Studios através do desenvolvimento de estratégias inovadoras e da avaliação de risco para todas as oportunidades de crescimento nacionais e internacionais. Seu profundo conhecimento e compreensão das operações do Sola Salon Studios também se origina de sua experiência como franqueado do Sola, proprietário de três locais do Sola no Colorado.</p>
@@ -331,7 +331,7 @@ pt-BR:
         <p>Myrle ocupou, anteriormente, posições de liderança sênior na AT&T, Sprint e Level 3 Communications. Enquanto atuava como vice-presidente e gerente geral da Level 3, ele se aventurou no setor imobiliário administrando os 75 locais da empresa, totalizando incríveis 3 milhões de pés quadrados de espaço nos Estados Unidos e na Europa. Antes de ingressar no Sola Salon Studios em seu cargo atual, Myrle aperfeiçoou suas habilidades como vice-presidente sênior de operações da Datavail Corporation em Boulder, no Colorado.</p>
         <p>Como líder dos escritórios corporativos do Sola, Myrle e sua equipe desenvolvem e testam novas estratégias e programas em construção, marketing, design e operações para serem usados pela comunidade de franqueados do Sola. A dedicação de Myrle em apoiar seus colegas franqueados e as comunidades de profissionais de salão de beleza sempre crescentes faz dele um membro essencial da equipe de liderança do Sola.</p>
       j_todd_neel_bio: |
-        <p>Todd Neel supervisiona a seleção de local, a construção, o layout do estúdio e o design de cada local do Sola Salon Studios. Ele também é responsável por gerenciar as finanças globais, operações e suporte ao franqueado no nível corporativo. Todd conhece os negócios do Sola Salon Studios por completo – não apenas no nível corporativo –, mas também como franqueado proprietário de 50% em três locais do Sola em Indianápolis</p>
+        <p>Todd Neel supervisiona a seleção de local, a construção, o layout do estúdio e o design de cada local do Sola Salon Studios. Ele também é responsável por gerenciar as finanças globais, operações e suporte ao franqueado no nível corporativo. Todd conhece os negócios do Sola Salon Studios por completo – não apenas no nível corporativo –, mas também como franqueado proprietário de 50% em três locais do Sola em Indianápolis</p> 
         <p>Como o primeiro funcionário contratado pelos cofundadores do Sola, Stratton e Matt, em 2005, Todd ficou impressionado com o poder do Sola desde o início. &quot;No início, os stylists derramaram lágrimas de alegria quando se inscreveram para um estúdio. Eles estavam animados para abrir seu próprio negócio, e depois que diversos stylists gritaram de alegria (ou de exaustão de onde eles estavam), eu sabia que isso era algo grande&quot;</p>
         <p>Como membro da equipe do Sola desde a abertura do primeiro local do Sola em Denver, Todd tem participado do desenvolvimento da empresa a cada passo ao longo do caminho. Seu conhecimento considerável da experiência do Sola e seus relacionamentos significativos com a comunidade franqueada são inestimáveis para o crescimento e sucesso contínuos da marca Sola.</p>
         <p>Antes de ingressar no Sola, Todd passou seis anos como codiretor de aquisições para a Affordable Residential Communities, onde gerenciou sete equipes de aquisição e concluiu a compra de US$ 1,5 bilhões em ativos imobiliários. Sua vasta experiência inclui a gestão de aquisições para a Aramark e trabalho como auditor sênior e contador público certificado.</p>
@@ -344,7 +344,7 @@ pt-BR:
       select_a_state: Selecione um Estado
       all_locations: Todos os locais
       view_location: Ver local
-      locations_in: Locais em
+      locations_in: Locais em 
       find_a_salon_professional: Encontre um profissional de salão de beleza
       find_a_salon_professional_at_location: Encontre um profissional de salão de beleza em %{location}
       there_are_x_professionals: Há %{number} profissionais neste local
@@ -404,9 +404,9 @@ pt-BR:
       all_services: Todos os serviços
       contact_your_salon_professional_directly: "Contate um profissional do Sola para mais informações e para fazer uma reserva."
       view_profile: Ver perfil
-      salon_professionals_at: Profissionais de salão de beleza em
+      salon_professionals_at: Profissionais de salão de beleza em 
       take_a_tour: Faça um tour
-
+    
     news:
       title: Notícias
       meta_description: "Acompanhe as últimas notícias sobre o Sola Salon Studios, destaque na Modern Salon, American Salon, Behind the Chair, Beauty Launchpad, Forbes e mais!"
@@ -422,14 +422,14 @@ pt-BR:
       stay_informed: Mantenha-se informado com boletins informativos e eventos.
       your_email_address: Seu endereço de e-mail
       join: Junte-se
-
+    
     our_studios:
       title: Nossos estúdios
       hero_heading1: O Sola oferece tudo o que você precisa e muito mais! Em estúdios personalizados e prontos para o uso.
       hero_heading2: Temos diversos tamanhos, mas todos são entregues totalmente equipados. Você controla o som ambiente, a temperatura, o seu horário! Liberdade total com toda segurança.
-      studio_amenities: Comodidades do estúdio
+      studio_amenities: Comodidades do estúdio 
       meta_description: Nossos estúdios
-      shampoo_bowl: Pia de xampu
+      shampoo_bowl: Pia de xampu 
       shampoo_bowl_text: Shampoo, enxágue e repetição de shampoo
       view_gallery: Ver galeria de estúdios
       join_our_community: Junte-se a nossa comunidade
@@ -437,7 +437,7 @@ pt-BR:
       join_our_community_button_text: Tenha seu salão
       wash_basin:
         heading: Lavatório
-        body: Use o shampoo e enxague quantas vezes precisar. Com o recurso de água quente instantânea, você economiza tempo e água.
+        body: Use o shampoo e enxague quantas vezes precisar. Com o recurso de água quente instantânea, você economiza tempo e água. 
       products:
         heading: Prateleiras de varejo
         body: Exiba e venda orgulhosamente os produtos que você ama.
@@ -495,7 +495,7 @@ pt-BR:
         <p>Política de Privacidade</p>
         <p>Última revisão e em vigor em 1º de fevereiro de 2017</p>
         <p>O Sola Franchise Corporation e suas subsidiárias, incluindo o Sola Salon Studios Canada, Inc., e o Sola Brasil Franqueadora ltda., como orgulhoso proprietário do Sola Salon Studios®, a marca, sabe que sua privacidade é importante. Esta Política de Privacidade define nossas práticas de privacidade, que se aplicam quando você usa qualquer site, aplicativo móvel ou outra plataforma ou serviço online do Sola, ou de qualquer outra empresa do Sola, que a vincule ou referencie (coletivamente, os “Serviços”, independentemente de quem seja proprietário ou operador dos Serviços, bem como nossas interações com você em plataformas de terceiros (como redes sociais)).</p>
-
+        
         <p>1. Informações que coletamos</p>
         <p>Coletamos informações pessoais sobre nossos usuários de diversas maneiras. Por exemplo, coletamos as informações que você nos fornece, as informações que coletamos através de seu uso dos Serviços e as informações que coletamos de fontes disponíveis publicamente ou de terceiros.</p>
         <p>Informações que você nos fornece. Coletamos as informações que você nos fornece quando usa os Serviços. Por exemplo, quando você visita um de nossos sites ou usa um de nossos Serviços, cria uma conta conosco, participa de uma pesquisa ou promoção, ou tira proveito de nosso serviço Wi-Fi no salão, podemos solicitar informações como seu nome, endereço de e-mail, ano de nascimento, sexo, endereço ou número de telefone celular, para que possamos fornecer Serviços para você. Podemos coletar informações de pagamento, como número de seu cartão de crédito, código de segurança e data de vencimento, para processar uma transação financeira que você solicitou. Também podemos coletar informações sobre os produtos que você compra, incluindo onde e com que frequência você os compra ou o uso de códigos de desconto, ou cupons, para que possamos saber mais sobre seus interesses e atendê-lo melhor.</p>
@@ -505,7 +505,7 @@ pt-BR:
         <p>Informações de localização – como o endereço de IP de seu computador, o sinal de GPS de seu dispositivo móvel ou informações sobre pontos de acesso por WiFi próximos e torres de celular que podem ser transmitidas para nós quando você usa os Serviços.</p>
         <p>Informações de fontes de terceiros. Podemos receber informações sobre você de fontes disponíveis publicamente e comercialmente, conforme permitido por lei, que podemos combinar com outras informações que recebemos de você ou sobre você. Por exemplo, podemos receber informações sobre você de redes sociais se você se conectar aos Serviços por meio desse site.</p>
         <p>Outras informações que coletamos. Também podemos coletar outras informações sobre você, seu dispositivo ou seu uso dos Serviços da maneira que descrevemos a você no momento da coleta ou, de outra forma, com seu consentimento.</p>
-
+        
         <p>2. Como usamos as informações</p>
         <p>Quando você fornecer informações voluntariamente ou se cadastrar.  Se você optar por usar determinados recursos (como enviar mensagens a seu stylist) nos Serviços, talvez seja necessário preencher certos cadastros de informações pessoais e fornecer informações pessoais tais como nome, endereço de e-mail, local, ano de nascimento, e nome de usuário e senha que você escolher. Usamos essas informações para identificar você e fornecer o recurso e os serviços solicitados.</p>
         <p>Para fornecer e gerenciar os produtos e serviços solicitados. Usamos as informações que coletamos para processar qualquer compra de produtos ou serviços, para permitir que você participe dos recursos fornecidos pelos Serviços e oferecer ofertas sob medida, e para aprimorar os Serviços que fornecemos a você. Ocasionalmente, podemos oferecer a você a capacidade de personalizar nossos produtos e serviços, como enviar uma foto ou outras informações. Podemos usar qualquer uma dessas imagens enviadas por você em nossos sites ou serviços ou em plataformas de redes sociais.  Também podemos usar serviços fornecidos por terceiros (tais como plataformas de redes sociais) para veicular anúncios direcionados para você e para outras pessoas em tais plataformas.</p>
@@ -515,7 +515,7 @@ pt-BR:
         <p>Para entregar anúncios direcionados. Podemos usar suas informações, incluindo suas informações de localização, para facilitar a entrega de anúncios direcionados, promoções e ofertas para você, em nosso nome, parceiros de negócios selecionados, e anunciantes, dentro e fora dos Serviços. (Vide a seção “Anúncios baseados em interesses” abaixo).</p>
         <p>Para entender melhor nossos clientes e melhorar nossos serviços. No decorrer da prestação dos Serviços, podemos coletar informações sobre dados demográficos, interesses e comportamentos de nossos usuários, e analisar esses dados. Fazemos isso para melhor entender e atender nossos usuários, e para melhorar nossos produtos e serviços.</p>
         <p>Consentimento. Podemos, de outra forma, usar suas informações com seu consentimento ou sob suas instruções.</p>
-
+        
         <p>3. Compartilhamento de Informações</p>
         <p>Nossas práticas variam dependendo do tipo de informação e de compartilhamento.</p>
         <p>Afiliadas. Podemos compartilhar informações dentro de nossa família de empresas afiliadas para que possamos fornecer ofertas de empresas que possam ser relevantes para você, entender melhor suas preferências e melhorar nossos Serviços.</p>
@@ -528,7 +528,7 @@ pt-BR:
         <p>Outras partes em conexão com uma transação corporativa. Reservamo-nos o direito de transferir qualquer informação que tivermos sobre você no caso de vendermos ou transferirmos todo ou parte de nossos negócios ou ativos para terceiros, como no caso de uma fusão, aquisição, ou em conexão com um reorganização de falências.</p>
         <p>De outra forma, com seu consentimento ou sob suas instruções. Além do compartilhamento descrito nesta Política de Privacidade, podemos compartilhar informações sobre você com terceiros sempre que você consentir ou instruir tal compartilhamento.</p>
         <p>Dados agregados. Também podemos fornecer informações agregadas e dados com identificadores pessoais removidos a terceiros para descrever como nossos clientes estão usando os Serviços.</p>
-
+        
         <p>4. Anúncios on-line e cookies</p>
         <p>Nós e outras empresas que fornecem publicidade e outros serviços em nossos Serviços podem usar cookies, web beacons e tecnologias similares para facilitar a administração e a navegação, para melhor entender e melhorar nossos Serviços, para determinar e melhorar a publicidade mostrada a você aqui ou em outro lugar, e fornecer uma experiência on-line personalizada.</p>
         <p>Anúncios baseados em interesses. Podemos usar terceiros para veicular anúncios em nossos Serviços e em outros sites e plataformas digitais. Essas empresas podem usar cookies, web beacons ou outras tecnologias para relatar certas informações sobre suas visitas a nossos Serviços e a outros sites (como páginas da web que você visita e sua resposta a anúncios), a fim de medir a eficácia de nossas campanhas de marketing e entregar anúncios que são mais relevantes para você, dentro e fora de nossos Serviços. Para saber mais e optar por não ter suas informações usadas por essas empresas para fins de publicidade comportamental on-line, consulte “Opções com respeito a anúncios baseados em interesses” abaixo. Também podemos usar serviços fornecidos por terceiros (tais como plataformas de redes sociais) para veicular anúncios direcionados para você e para outras pessoas em tais plataformas. Podemos fazer isso fornecendo uma versão criptografada do seu endereço de e-mail ou outras informações para o provedor da plataforma.</p>
@@ -539,17 +539,17 @@ pt-BR:
         <p>A maioria dos navegadores aceita cookies automaticamente, mas eles podem ser configurados para não fazer isso. Se você deseja desativar os cookies, consulte o menu de ajuda de seu navegador para saber como desativar os cookies. Se você desativar os cookies, isso poderá interferir no funcionamento dos Serviços.</p>
         <p>Beacons. Nós, juntamente com terceiros, também podemos usar tecnologias chamadas beacons, que transmitem informações do seu dispositivo para um servidor. Os beacons podem ser incorporados em conteúdo on-line, vídeos e e-mails, e podem permitir que um servidor leia determinados tipos de informações a partir de seu dispositivo, saiba quando você visualizou determinado conteúdo ou uma mensagem de e-mail específica, e determine a hora e a data em que você visualizou o beacon e o endereço de IP de seu dispositivo. Nós e terceiros usamos beacons para diversos fins, inclusive para analisar o uso de nossos Serviços e (em conjunto com os cookies) para fornecer conteúdo e anúncios mais relevantes para você, dentro e fora do Serviço.</p>
         <p>DSinais de não rastreamento e mecanismos similares. Alguns navegadores da web podem transmitir sinais “não rastreamento” aos sites com os quais o usuário se comunica. Devido às diferenças na maneira como os navegadores da Web incorporam e ativam esse recurso, nem sempre é claro se os usuários pretendem que esses sinais sejam transmitidos ou se estão cientes deles. Como atualmente não há um padrão do setor sobre o que, se for o caso, os sites devem fazer quando recebem esses sinais, os Serviços atualmente não agem em resposta a esses sinais. Se e quando um padrão final for estabelecido e aceito, iremos reavaliar como responder a esses sinais.</p>
-
+        
         <p>5. Privacidade e opções de acesso disponíveis para você</p>
         <p>Opções com respeito a cookies e tecnologias semelhantes. Você pode bloquear cookies e tecnologias semelhantes em seu navegador ou nas configurações do dispositivo, conforme e se permitido por esse dispositivo.</p>
         <p>Opções com respeito a anúncios baseados em interesses. Você pode cancelar o recebimento de anúncios direcionados de redes de publicidade participantes, provedores de segmento de audiência, fornecedores de veiculação de anúncios e outros prestadores de serviços, visitando sites operados pela National Advertizing Initiative na <a href="http://www.networkadvertising.org" target="_blank">http://www.networkadvertising.org</a>.; The Digital Advertising Alliance at <a href="http://digitaladvertisingalliance.org" target="_blank">http://digitaladvertisingalliance.org</a>; e The Digital Advertising Alliance of Canada at <a href="http://youradchoices.ca" target="_blank">http://youradchoices.ca</a>.</p>
         <p>Gerencie sua conta. Você pode acessar, modificar ou excluir sua conta nas configurações ou na página de perfil, ou entrando em contato conosco em <a href="mailto:info@solasalonstudios.com">info@solasalonstudios.com</a> com tal pedido por escrito.</p>
         <p>Acesso a dados. Sujeito à lei aplicável, você também pode ter o direito de acessar, atualizar e corrigir imprecisões em outras informações pessoais sob nossa custódia e controle, sujeito a certas exceções prescritas por lei. Você pode solicitar acesso, atualização e correções de imprecisões nas informações pessoais que temos sob nossa custódia ou controle enviando por e-mail ou escrevendo para nós nas informações de contato estabelecidas abaixo. Podemos solicitar determinadas informações pessoais com o objetivo de verificar a identidade do indivíduo que busca acesso a seus registros de informações pessoais.</p>
         <p>Promoções por e-mail. Você pode optar por não receber e-mails comerciais, mensagens de texto e outras mensagens eletrônicas nossas seguindo as instruções contidas nessas mensagens.</p>
-
+        
         <p>6. Proteção de dados</p>
         <p>Temos procedimentos físicos, eletrônicos e gerenciais para proteger as informações pessoais sob nossa custódia e controle contra perda, roubo e acesso não autorizado, uso, modificação e divulgação. No entanto, por mais eficazes que sejam essas medidas, nenhum sistema de segurança é impenetrável. Não podemos garantir a proteção de nossos Serviços, nem podemos garantir que as informações que você fornecer não serão interceptadas enquanto nos forem transmitidas pela Internet.</p>
-
+        
         <p>7. Outras informações importantes.</p>
         <p>Privacidade das crianças. Não coletamos intencionalmente informações pessoais de crianças menores de 13 anos sem o consentimento dos pais, a menos que isso seja permitido por lei. Se soubermos que uma criança com menos de 13 anos nos forneceu informações pessoais, a excluiremos de acordo com a lei aplicável.</p>
         <p>Links para sites de terceiros. Nossos Serviços podem conter links para sites e serviços de terceiros que não operamos e estão fora de nosso controle. Não somos responsáveis pela proteção ou pela privacidade de qualquer informação coletada por outros sites ou outros serviços. Por favor, tenha cuidado e analise as declarações de privacidade aplicáveis aos sites e aos serviços de terceiros que você usa.</p>
@@ -572,7 +572,7 @@ pt-BR:
       send_a_message: Envie uma mensagem
       visit_my_website: Visite meu site
       availability: Disponibilidade
-      about: Sobre
+      about: Sobre 
       services: Serviços
       testimonials: Depoimentos
       visit_salon_professional: "Visite %{salon_professional_name} no Sola %{location_name}"
@@ -609,7 +609,7 @@ pt-BR:
       hero_text: "Step up your game with SolaGenius: a cutting edge app designed to supercharge your Sola business."
       run_your_sola_like_a_boss: Run Your Sola Like a Boss
       experience_solagenius: Experience SolaGenius
-
+      
     sola_pro:
       title: Sola Pro
       meta_description: "Inspiração e educação a seu alcance. O aplicativo Sola Pro fornece todas as ferramentas e recursos para ajudar a levar seu estúdio ao próximo nível!"
@@ -625,29 +625,21 @@ pt-BR:
       explore_sola_pro: Explore o Sola Pro
       heading2: Dê uma espiada no Sola Pro
       testimonial_text: "O Sola Pro é um recurso fantástico! Existem inúmeros vídeos sobre como criar sua marca, por que o varejo é imprescindível e como utilizar as mídias sociais para construir seu negócio. As postagens do blog estão cheias de ótimas informações e são constantemente atualizadas! Não importa o quão antenado você possa se sentir em seus negócios, sempre há algo novo para aprender."
-      testimonial_text_new: "Sola pro is an amazing resource! When I have downtime in the salon, I love opening Sola Pro to watch hair tutorials and catch up on the latest webinar replays, as well as browse product specials created just for Sola."
       testimonial_author: Morgan Cameron
-      testimonial_author_new: Tahesa Nelson
       uniquely_made: Feito exclusivamente para o Sola, pelo Sola.
       education: Educação
-      home: Home Screen
-      education_description: Whether you want to listen to the latest Sola Stories podcast episode, watch a recent marketing webinar, learn a new technique from your favorite educator, or read a blog to help you stay inspired, you’ll find an array of different types of education to keep you running your Sola like a boss!
-      home_description: Easily access featured deals, suggested-for-you content, and our favorite webinars from your home page.
+      education_description: Você precisa de inspiração e educação artística pelos melhores da Indústria? Ou talvez esteja interessado em formas de divulgar o seu negócio, acompanhar seus números, comunicar o seu salão. Tudo que precisar, vai estar coberto pelo Sola.
       deals: Ofertas
-      search: Powerfull Search
-      deals_description: Exclusive offers you won’t find anywhere else! Browse a selection of discounts that will save you money on products, online education, styling tools, insurance, and salon software.
-      search_description: Easily find the content you’re looking for by typing your favorite brand into the Search bar. Search results include relevant deals, videos, and webinars.
-      events: Events
-      events_description: With events shifting to virtual for the foreseeable future, now you can stay in the know with upcoming online classes, webinars, Facebook lives, and even local events in your area.
+      deals_description: Nós temos parceria com suas marcas favoritas para trazer ofertas exclusivas para você! Você poderá economizar dinheiro com uma vasta oferta de produtos, ferramentas, equipamentos e muito mais!
+      events_and_classes_calendar: Calendário de cursos e eventos
+      events_and_classes_calendar_description: Clique na sua região para descobrir quais eventos e cursos estarão acontecendo ao seu redor, e “webinars” para ver todos os cursos em vídeos desenvolvidos para elevar o seu negócio ao próximo nível.
       my_sola_pro: Meu Sola Pro
-      my_sola_pro_description: Create a beautiful and dynamic presence on the Sola website by adding images, testimonials, social handles and your booking link to your Sola webpage. A robust Sola webpage will make it easy for potential guests to find you.
+      my_sola_pro_description: Pronto para atualizar a sua página web e criar uma presença incrível e marcante na página do Sola na Internet? Agora você pode através do Sola Pro! Você também poderá salvar vídeos para assistir mais tarde em seu histórico de vídeos.
       blog: Blog
-      blog_description: From studio inspiration to step-by-step tutorials, Sola Spotlights, lifestyle tips, industry happenings, and much more – there’s no shortage of education on ways to keep you inspired to run your Sola like a boss.
-      podcast_description: Tune in to the Sola Stories podcast for stories, business and marketing tips, and best practices to inspire you to chase your dreams, elevate your career and experience the freedom of salon ownership.⁠
+      blog_description: Desde inspiração para o seu estúdio até tutoriais e passo-a-passo, notícias do Sola, estilo de vida, acontecimentos na Indústria, e muito mais - temos tudo que precisar em educação para que possamos mantê-lo inspirado para gerenciar seu Sola como um verdadeiro chefe.
+      perkspot_description: We've partnered with PerkSpot to bring you deals on a range of items and experiences – including airfare, rental cars, show tickets, groceries – and so much more! Don't miss this opportunity to save big on everyday expenses.
       learn_more: Saiba mais
-      shop: Shop
-      shop_description: "From an entire #SolaStrong collection (including laundry bags, reusable masks, apparel and stickers) to drinkware, Sola tees, capes, aprons, wine glasses and more - the Sola Store lets you rock your Sola pride in style!"
-
+      
     sola_sessions:
       title: Sola Sessions
       meta_description: "Inspiration. Education. Community. The Sola Sessions are live educational events exclusive to the Sola community. Learn and collaborate with the industry's best!"
@@ -658,7 +650,7 @@ pt-BR:
       about_sola_sessions: About The Sola Sessions
       about_sola_sessions_text: "COVID Update: Due to developments with the coronavirus pandemic, both Sola Sessions events in 2020 have been postponed until further notice. We are monitoring the situation closely and working with local venues to determine practical next steps. We will keep the Sola community updated with any and all developments, and we hope to see you at a Sola Sessions very soon! In the meantime, check out our <a href='https://solasalonstudios-covid19.com/' target='_blank'>COVID-19 landing page<a/> for the latest in virtual education and as always, head on over to the Sola Pro app for tons of educational content."
       upcoming_sessions: Upcoming Sessions
-      past_sessions: Past Sessions
+      past_sessions: Past Sessions 
       in_the_news: In the News
       testimonial_text: "Magical, unforgettable, and completely amazing! Thank you for filling my tank to overflowing inspirational madness."
       testimonial_author: Sheila Taylor
@@ -666,7 +658,7 @@ pt-BR:
       find_a_sola: Find a Sola
       blog: Blog
       photo_gallery: Photo Gallery
-
+      
 
     testimonials:
       title: Depoimentos
@@ -731,9 +723,9 @@ pt-BR:
       join_our_diverse_community_text: "Agora com a força de quase 15.000 profissionais!"
       join_our_diverse_community_button_text: "Tenha seu salão"
       watch_our_video: Assista nosso vídeo
-      our_mission: Nossa missão
+      our_mission: Nossa missão 
       our_mission_text: "Inspirar e apoiar os profissionais de beleza para sonhar livremente, superar os desafios e vencer, elevarem suas carreiras e experimentarem a liberdade da propriedade de um estúdio próprio de beleza."
-      our_values: Nossos valores
+      our_values: Nossos valores 
       our_values_text: "Tudo o que fazemos é projetado para cuidar de nossos clientes e garantir que eles tenham a melhor experiência possível no estúdio. Somos apaixonados por tudo o que é necessário para transformar um profissional de beleza em um empresário de sucesso. Oferecemos estúdios com sua própria chave, prontos para o uso, juntamente com o suporte, recursos educacionais e soluções tecnológicas de ponta, projetados exclusivamente para nossa comunidade de profissionais independentes. Damos poder ao profissional independente para viver o melhor de sua vida."
       join_our_community: "Junte-se a nossa comunidade"
       join_our_community_text: "Esteja em um negócio por conta própria, mas nunca sozinho."
@@ -749,7 +741,7 @@ pt-BR:
     why_sola:
       title: Por que o Sola?
       meta_description: Por que o Sola?
-      hero_heading1: Todas as ferramentas e o suporte de que você precisa
+      hero_heading1: Todas as ferramentas e o suporte de que você precisa 
       hero_heading2: para assumir o controle da vida que você ama.
       hero_button_text: Por que escolher o Sola?
       learn_more: Saiba mais
@@ -757,7 +749,7 @@ pt-BR:
       become_a_salon_owner: Seja dono do seu próprio salão, hoje!
       search_for_a_salon: Busque um estúdio perto de você.
       be_in_business_heading: Esteja em um negócio por conta própria, mas nunca sozinho.
-      be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os clientes e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."
+      be_in_business_p1: "Profissionais de salão de beleza escolhem o Sola por diversas razões: para criar uma cultura de salão de beleza única, definir sua própria agenda, experimentar mais privacidade com os clientes e ganhar mais dinheiro, para começar. Mas, principalmente, trata-se de <strong>liberdade e controle</strong>. Nós fornecemos estúdios de ponta prontos para o uso, combinados com o suporte e as ferramentas de que você precisa para experimentar a liberdade e os benefícios da propriedade de um salão de beleza."  
       be_in_business_p2: De belos estúdios a ofertas exclusivas, educação e tecnologia, o Sola permite que você viva sua melhor vida, tanto pessoal quanto profissionalmente. Então, junte-se a nossa comunidade de mais de 15.000 proprietários independentes de salões de beleza para ficar um passo mais perto de viver a vida que você ama!
       freedom_heading: O Sola te dá a liberdade para que...
       freedom_tile_1: Fuja da política e do drama dos salões de beleza em seu próprio estúdio privado e seguro.
@@ -784,11 +776,11 @@ pt-BR:
       sola_blog_text: Visite o Blog do Sola para obter dicas de negócios e marketing, tutoriais, histórias de sucesso do Sola e muito mais!
       your_own_sola_webpage: Sua própria página do Sola
       your_own_sola_webpage_text: Crie e gerencie sua própria página no site da Sola para ajudar a vender e a expandir seus negócios.
-      sola_pro: Sola Pro
+      sola_pro: Sola Pro 
       sola_pro_text: Nosso aplicativo exclusivo, Sola Pro, possui ofertas especiais de uma ampla variedade de parceiros da indústria, bem como recursos educacionais para você acessar no seu tempo!
-      sola_sessions: Sola Sessions
+      sola_sessions: Sola Sessions 
       sola_sessions_text: Os eventos educacionais do Sola Sessions – aprenda com os melhores e tenha a oportunidade de interagir com outros profissionais do Sola!
-      solagenius: SolaGenius
+      solagenius: SolaGenius 
       solagenius_text: Our all-in-one app for running your studio business. From credit card processing to 24/7 online scheduling and analytics, SolaGenius has you covered.
       search: Busca
       view_all_locations: Ver todos os locais
