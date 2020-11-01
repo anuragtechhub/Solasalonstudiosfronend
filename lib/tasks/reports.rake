@@ -624,8 +624,7 @@ namespace :reports do
     #mail.deliver
   end
 
-  def send_all_request_tour_inquiries_report
-    (email_address=nil, params=nil)
+  def send_all_request_tour_inquiries_report(email_address=nil, params=nil)
     return unless email_address
     p "send_all_request_tour_inquiries_report email_address=#{email_address}, params=#{params}"
 
