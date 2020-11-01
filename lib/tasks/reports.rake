@@ -6,13 +6,9 @@ namespace :reports do
   require 'openssl'
   # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
- task :hello => :environment do
+  task :hello => :environment do
     p 'hello!'
   end
-
-
-
-
 
   # task :pdf => :environment do
   #   html_renderer = HTMLRenderer.new
@@ -145,22 +141,23 @@ namespace :reports do
 
   # compiles and sends unprocessed Reports
   task :process_unprocessed => :environment do
-    Report.where(:processed_at => nil).each do |report|
-      if report.report_type == 'all_locations'
+    Report.where(processed_at: nil).each do |report|
+      case report.report_type
+      when 'all_locations'
         send_all_locations_report(report.email_address)
-      elsif report.report_type == 'all_stylists'
+      when 'all_stylists'
         send_all_stylists_report(report.email_address)
-      elsif report.report_type == 'solapro_solagenius_penetration'
+      when 'solapro_solagenius_penetration'
         send_solapro_solagenius_penetration_report(report.email_address)
-      elsif report.report_type == 'request_tour_inquiries'
+      when 'request_tour_inquiries'
         send_all_request_tour_inquiries_report(report.email_address, report.parameters)
-      #elsif report.report_type == 'all_booking_user_report'
-      #  send_all_booking_user_report(report.email_address)
-      elsif report.report_type == 'all_terminated_stylists_report'
+      when 'all_terminated_stylists_report'
         send_all_terminated_stylists_report(report.email_address)
       end
       report.processed_at = DateTime.now
       report.save
+    rescue
+      next
     end
   end
 
@@ -624,33 +621,29 @@ namespace :reports do
     #mail.deliver
   end
 
-  def send_all_request_tour_inquiries_report(email_address=nil, params=nil)
+  def send_all_request_tour_inquiries_report
+    (email_address=nil, params=nil)
     return unless email_address
     p "send_all_request_tour_inquiries_report email_address=#{email_address}, params=#{params}"
 
-    start_date = Date.new(2019,1,1)
+    start_date = 1.month.ago
     end_date = Date.today
 
     if params
       params = params.split(',').map!(&:strip)
       p "params=#{params}"
       params.each do |param|
-        if param.include? 'start_date'
-          start_date = Date.parse(param.split('=')[1])
-        elsif param.include? 'end_date'
-          end_date = Date.parse(param.split('=')[1])
-        end
+        start_date = Date.parse(param.split('=')[1]) if param.include? 'start_date'
+        end_date = Date.parse(param.split('=')[1]) if param.include? 'end_date'
       end
     end
 
     p "start_date=#{start_date}"
     p "end_date=#{end_date}"
 
-    #jan_1 = Date.new(2019, 3, 1)
-    #today = Date.today
-    rtis = RequestTourInquiry.where('created_at >= ? AND created_at <= ?', start_date, end_date).order(:created_at => :desc)#where(:created_at => (jan_1..today))
+    rtis = RequestTourInquiry.where('created_at >= ? AND created_at <= ?', start_date, end_date).order(created_at: :desc)
     p "rtis.size=#{rtis.size}"
-    #return
+
     csv_report = CSV.generate do |csv|
       csv << ["Name", "Email", "Phone", "Message", "URL", "Created At", "Location Name", "Matching Sola Stylist Email?", "How Can We Help You?", "Contact Preference"]#, "Source", "Medium", "Campaign", "Content"]
       rtis.each_with_index do |rti, idx|
@@ -663,7 +656,7 @@ namespace :reports do
     end
 
     #p "csv_report=#{csv_report}"
-
+    p "ready to send email"
     mail = ReportsMailer.send_report(email_address, 'All Contact Form Submissions', csv_report).deliver
     p "mail?=#{mail}"
     #mail.deliver

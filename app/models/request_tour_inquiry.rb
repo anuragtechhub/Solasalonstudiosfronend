@@ -1,7 +1,7 @@
 class RequestTourInquiry < ActiveRecord::Base
 
   has_paper_trail
-  
+
   belongs_to :location
   belongs_to :visit
   after_create :send_notification_email, :send_prospect_email, :sync_with_hubspot
@@ -52,7 +52,7 @@ class RequestTourInquiry < ActiveRecord::Base
 
     if ENV['HUBSPOT_API_KEY'].present?
       p "HUBSPOT API KEY IS PRESENT, lets sync.. #{get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i}"
-      
+
       stylist = Stylist.find_by(:email_address => self.email)
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
@@ -142,7 +142,7 @@ class RequestTourInquiry < ActiveRecord::Base
       end
     end
     return nil unless email_address.present?
-    
+
     #p "get_hubspot_owner #{email_address}"
 
     if ENV['HUBSPOT_API_KEY'].present?
@@ -211,15 +211,14 @@ class RequestTourInquiry < ActiveRecord::Base
   end
 
   def send_notification_email
-    if i_would_like_to_be_contacted == false && (send_email_to_prospect == 'modern_salon_2019_05' || 'financial_guide')
-      p "shhh"
+    if i_would_like_to_be_contacted == false && send_email_to_prospect.in?(%w[modern_salon_2019_05 financial_guide])
       p "do not contact me!"
     else
       p "contact me!"
       email = PublicWebsiteMailer.request_a_tour(self)
       email.deliver if email
     end
-  rescue => e 
+  rescue => e
     p "caught an error #{e.inspect}"
   end
 
@@ -233,20 +232,20 @@ class RequestTourInquiry < ActiveRecord::Base
       email = PublicWebsiteMailer.financial_guide(self)
       email.deliver if email
     end
-  rescue => e 
+  rescue => e
     p "caught an error #{e.inspect}"
   end
 
-  def i_would_like_to_be_contacted_value 
-    if i_would_like_to_be_contacted 
+  def i_would_like_to_be_contacted_value
+    if i_would_like_to_be_contacted
       return 'Yes'
     else
       return 'No'
     end
   end
 
-  def newsletter_value 
-    if newsletter 
+  def newsletter_value
+    if newsletter
       return 'Yes'
     else
       return 'No'
