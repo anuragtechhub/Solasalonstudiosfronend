@@ -280,7 +280,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def has_sola_genius_account
-    booking_url.include?('glossgenius.com')
+    booking_url.to_s.include?('glossgenius.com')
   end
 
   def lease
