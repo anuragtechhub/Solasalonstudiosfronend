@@ -211,12 +211,12 @@ class RequestTourInquiry < ActiveRecord::Base
   end
 
   def send_notification_email
-    if i_would_like_to_be_contacted == false && send_email_to_prospect.in?(%w[modern_salon_2019_05 financial_guide])
+    if i_would_like_to_be_contacted == false && send_email_to_prospect.to_s.in?(%w[modern_salon_2019_05 financial_guide])
       p "do not contact me!"
     else
       p "contact me!"
       email = PublicWebsiteMailer.request_a_tour(self)
-      email.deliver if email
+      email.deliver if emailinclude?
     end
   rescue => e
     p "caught an error #{e.inspect}"
