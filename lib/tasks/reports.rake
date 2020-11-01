@@ -142,22 +142,25 @@ namespace :reports do
   # compiles and sends unprocessed Reports
   task :process_unprocessed => :environment do
     Report.where(processed_at: nil).each do |report|
-      case report.report_type
-      when 'all_locations'
-        send_all_locations_report(report.email_address)
-      when 'all_stylists'
-        send_all_stylists_report(report.email_address)
-      when 'solapro_solagenius_penetration'
-        send_solapro_solagenius_penetration_report(report.email_address)
-      when 'request_tour_inquiries'
-        send_all_request_tour_inquiries_report(report.email_address, report.parameters)
-      when 'all_terminated_stylists_report'
-        send_all_terminated_stylists_report(report.email_address)
+      begin
+        case report.report_type
+        when 'all_locations'
+          send_all_locations_report(report.email_address)
+        when 'all_stylists'
+          send_all_stylists_report(report.email_address)
+        when 'solapro_solagenius_penetration'
+          send_solapro_solagenius_penetration_report(report.email_address)
+        when 'request_tour_inquiries'
+          send_all_request_tour_inquiries_report(report.email_address, report.parameters)
+        when 'all_terminated_stylists_report'
+          send_all_terminated_stylists_report(report.email_address)
+        end
+        report.processed_at = DateTime.now
+        report.save
+      rescue => e
+        p "Error #{e}"
+        next
       end
-      report.processed_at = DateTime.now
-      report.save
-    rescue
-      next
     end
   end
 
