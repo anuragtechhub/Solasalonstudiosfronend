@@ -94,8 +94,6 @@ gem 'nokogiri'
 
 gem "recaptcha", :require => "recaptcha/rails"
 
-gem "puma_worker_killer"
-
 gem "addressable"
 gem 'dotenv-rails', :groups => [:development, :test]
 

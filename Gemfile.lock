@@ -137,7 +137,6 @@ GEM
     geokit-rails (2.3.1)
       geokit (~> 1.5)
       rails (>= 3.0)
-    get_process_mem (0.2.0)
     gibbon (1.2.1)
       httparty
       multi_json (>= 1.9.0)
@@ -270,9 +269,6 @@ GEM
       postgres_ext (~> 2.1)
     progress (3.1.1)
     puma (3.12.6)
-    puma_worker_killer (0.0.5)
-      get_process_mem (~> 0.2)
-      puma (>= 2.7, < 4)
     rack (1.5.5)
     rack-cors (0.4.0)
     rack-pjax (0.8.0)
@@ -452,7 +448,6 @@ DEPENDENCIES
   pg_search
   postgres_ext-serializers
   puma
-  puma_worker_killer
   rack-cors
   rack-rewrite (~> 1.5.0)
   rails (= 4.1.16)
