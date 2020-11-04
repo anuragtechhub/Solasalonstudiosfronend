@@ -216,7 +216,7 @@ class RequestTourInquiry < ActiveRecord::Base
     else
       p "contact me!"
       email = PublicWebsiteMailer.request_a_tour(self)
-      email.deliver if emailinclude?
+      email.deliver if email
     end
   rescue => e
     p "caught an error #{e.inspect}"
