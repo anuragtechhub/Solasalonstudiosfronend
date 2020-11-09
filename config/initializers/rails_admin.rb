@@ -25,6 +25,11 @@ RailsAdmin.config do |config|
   config.excluded_models << 'ProBeautyIndustryCategory'
   config.excluded_models << 'EducationHeroImage'
   config.excluded_models << 'EducationHeroImageCountry'
+  config.excluded_models << 'Video'
+  config.excluded_models << 'Tool'
+  config.excluded_models << 'Deal'
+  config.excluded_models << 'Brand'
+  config.excluded_models << 'SolaClass'
 
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
@@ -271,9 +276,6 @@ RailsAdmin.config do |config|
         end
       end
       field :contact_form_visible
-      field :blog_categories do
-        label 'Old Categories'
-      end
 
       field :categories do
         label 'Categories'
@@ -312,9 +314,6 @@ RailsAdmin.config do |config|
       field :body, :ck_editor
       field :author
       field :contact_form_visible
-      field :blog_categories do
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
@@ -484,9 +483,6 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :brand
-      field :deal_categories do
-        label 'Old Categories'
-      end
 
       field :categories do
         label 'Categories'
@@ -513,12 +509,6 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :brand
-      field :deal_categories do
-        visible do
-          bindings[:object].id.present?
-        end
-        label 'Old Categories'
-      end
 
       field :categories do
         label 'Categories'
@@ -587,10 +577,6 @@ RailsAdmin.config do |config|
     show do
       field :title
       field :description
-      #field :brand
-      field :sola_class_category do
-        label 'Old Category'
-      end
       field :class_image do
         help 'Ideal image size is 460 x 280'
       end
@@ -635,12 +621,6 @@ RailsAdmin.config do |config|
     edit do
       field :title
       field :description
-      # field :brand do
-      #   help 'If you do not see your brand in the dropdown, please leave this space blank.'
-      # end
-      field :sola_class_category do
-        label 'Old Category'
-      end
       field :category
       field :class_image
       field :category
@@ -738,9 +718,6 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :brand
-      field :tool_categories do
-        label 'Old Categories'
-      end
 
       field :categories do
         label 'Categories'
@@ -758,9 +735,6 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :brand
-      field :tool_categories do
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
@@ -783,12 +757,6 @@ RailsAdmin.config do |config|
       field :title
       field :description
       field :brand
-      field :tool_categories do
-        visible do
-          bindings[:object].id.present?
-        end
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
@@ -831,9 +799,6 @@ RailsAdmin.config do |config|
       end
       field :webinar
       field :brand
-      field :video_categories do
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
@@ -851,9 +816,6 @@ RailsAdmin.config do |config|
         label 'Related Tool or Resource'
       end
       field :brand
-      field :video_categories do
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
@@ -881,12 +843,6 @@ RailsAdmin.config do |config|
       #   field :link_text
       # end
       field :brand
-      field :video_categories do
-        visible do
-          bindings[:object].id.present?
-        end
-        label 'Old Categories'
-      end
       field :categories do
         label 'Categories'
       end
