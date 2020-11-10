@@ -46,7 +46,7 @@ class LocationsController < PublicWebsiteController
     else
       @all_locations = Location.where(:status => 'open').where(:country => 'CA')#.where.not(:id => 362)
     end
-    
+
     if @msa
       @locations = @all_locations.where('msa_id = ?', @msa.id)
       params[:state] = @locations.first.state
@@ -85,14 +85,12 @@ class LocationsController < PublicWebsiteController
     query_param = "#{params[:state].downcase.gsub(/-/, ' ')}".strip if params[:state]
 
     p "query_param=#{query_param}"
-    
+
     if I18n.locale == :en
       @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'US')
     else
       @locations = Location.where(:status => 'open').where('lower(state) = ?', query_param).where(:country => 'CA')#.where.not(:id => 362)
     end
-    
-
 
     #Country check
     location = @locations.first
@@ -100,20 +98,20 @@ class LocationsController < PublicWebsiteController
       redirect_to(:locations, :status => 301)
     elsif location && location.country == 'CA' && I18n.locale.to_s != 'en-CA'
       redirect_to(:locations, :status => 301)
-    end  
+    end
 
     redirect_to(:locations, :status => 301) unless @locations.size > 0 && @lat && @lng
   end
 
   def contact_form_success
-    @success_redirect_url = location_contact_form_success_path  
+    @success_redirect_url = location_contact_form_success_path
     @contact_form_success = true
     @scroll_top = params[:s_t]
     @success = 'Thank you! We will get in touch soon'
 
     @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
     @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
-    
+
     if @location
       @lat = @location.latitude
       @lng = @location.longitude
@@ -126,7 +124,7 @@ class LocationsController < PublicWebsiteController
   end
 
   def salon
-    @success_redirect_url = location_contact_form_success_path 
+    @success_redirect_url = location_contact_form_success_path
     @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
 
     #Country check
@@ -134,10 +132,10 @@ class LocationsController < PublicWebsiteController
       redirect_to(:locations, :status => 301)
     elsif @location && @location.country == 'CA' && I18n.locale.to_s != 'en-CA'
       redirect_to(:locations, :status => 301)
-    end  
+    end
 
     @articles = Article.where(:location_id => @location.id).order('created_at DESC') if @location
-    
+
     if @location
       @lat = @location.latitude
       @lng = @location.longitude
@@ -175,7 +173,7 @@ class LocationsController < PublicWebsiteController
 
   def salon_redirect
     @location = Location.find_by(:url_name => params[:url_name])
-    
+
     if @location && @location.state && @location.city
       redirect_to salon_location_path(@location.state, @location.city, @location.url_name).gsub(/\./, ''), :status => 301
     else
@@ -190,7 +188,7 @@ class LocationsController < PublicWebsiteController
       @stylists = @location.stylists.where(:reserved => false)
       @reserved_stylists = @location.stylists.where(:reserved => true).order(:studio_number => :asc)
 
-      if (params[:service]) 
+      if (params[:service])
         @stylists = @location.stylists.where(:reserved => false).select { |s| true if (s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service)) }
       end
 
@@ -213,7 +211,7 @@ class LocationsController < PublicWebsiteController
     redirect_to 'https://www.solasalonstudios.com/locations/tacoma-6th-avenue', :status => 301
   end
 
-  private 
+  private
 
   def country_from_locale
     p "country_from_locale=#{I18n.locale.to_s}"
@@ -235,7 +233,7 @@ class LocationsController < PublicWebsiteController
         @zoom = 9
       end
     elsif params[:action] == 'state'
-      coords = Geocoder.coordinates("#{params[:state]}")
+      coords = Geocoder.coordinates("#{I18n.locale == :en ? 'USA' : 'Canada'} #{params[:state]}")
       if coords && coords.size > 1
         @lat = coords[0]
         @lng = coords[1]
