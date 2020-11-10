@@ -22,14 +22,14 @@
           </div>
           <div class="options">
             <div class="option" data-value="<%= locations_path() %>"><%= t('page.locations.all_locations').html_safe %></div>
-            <% @all_locations.select("DISTINCT(state)").order(:state => :asc).each do |location| %>
+            <% @all_locations.select("DISTINCT(state)").where.not(state: '').order(:state => :asc).each do |location| %>
             <div class="option" data-value="<%= I18n.locale == :en ? locations_by_state_path(beautify_url_segment(location.state.downcase)) :  locations_by_province_path(beautify_url_segment(location.state.downcase)) %>"><%= location.state %></div>
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
-    
+
   </div>
 </div>
 
