@@ -226,14 +226,22 @@ class LocationsController < PublicWebsiteController
 
   def map_defaults
     if params[:action] == 'city'
-      coords = Geocoder.coordinates("#{params[:city]}, #{params[:state]}")
+      # TODO store it somewhere
+      cache_key = "#{params[:city]}, #{params[:state]}"
+      coords = Rails.cache.fetch(cache_key) do
+        Geocoder.coordinates(cache_key)
+      end
+
       if coords && coords.size > 1
         @lat = coords[0]
         @lng = coords[1]
         @zoom = 9
       end
     elsif params[:action] == 'state'
-      coords = Geocoder.coordinates("#{I18n.locale == :en ? 'USA' : 'Canada'} #{params[:state]}")
+      cache_key = "#{I18n.locale == :en ? 'USA' : 'Canada'} #{params[:state]}"
+      coords = Rails.cache.fetch(cache_key) do
+        Geocoder.coordinates(cache_key)
+      end
       if coords && coords.size > 1
         @lat = coords[0]
         @lng = coords[1]
