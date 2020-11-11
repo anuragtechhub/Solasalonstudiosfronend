@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201010122444) do
+ActiveRecord::Schema.define(version: 20201111231657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
+  enable_extension "dblink"
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
-  enable_extension "dblink"
-  enable_extension "citext"
 
   create_table "accounts", force: true do |t|
     t.string   "api_key"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20201010122444) do
     t.datetime "updated_at"
     t.string   "name"
   end
+
+  add_index "accounts", ["api_key"], name: "index_accounts_on_api_key", using: :btree
 
   create_table "admins", force: true do |t|
     t.text     "email",                                  null: false
@@ -703,8 +705,10 @@ ActiveRecord::Schema.define(version: 20201010122444) do
   end
 
   add_index "locations", ["admin_id"], name: "index_locations_on_admin_id", using: :btree
+  add_index "locations", ["country"], name: "index_locations_on_country", using: :btree
   add_index "locations", ["msa_id"], name: "index_locations_on_msa_id", using: :btree
   add_index "locations", ["state"], name: "index_locations_on_state", using: :btree
+  add_index "locations", ["status", "country"], name: "index_locations_on_status_and_country", using: :btree
   add_index "locations", ["status"], name: "index_locations_on_status", using: :btree
   add_index "locations", ["url_name"], name: "index_locations_on_url_name", using: :btree
 
@@ -1261,6 +1265,7 @@ ActiveRecord::Schema.define(version: 20201010122444) do
   end
 
   add_index "stylists", ["email_address"], name: "index_stylists_on_email_address", using: :btree
+  add_index "stylists", ["location_id", "status"], name: "index_stylists_on_location_id_and_status", using: :btree
   add_index "stylists", ["location_id"], name: "index_stylists_on_location_id", using: :btree
   add_index "stylists", ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true, using: :btree
   add_index "stylists", ["status"], name: "index_stylists_on_status", using: :btree
