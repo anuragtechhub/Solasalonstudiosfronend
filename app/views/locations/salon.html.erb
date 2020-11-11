@@ -4,7 +4,7 @@
     <div class="row">
       <div class="one-third column request-a-tour-form-column">
         <div class="request-a-tour-form" id="contact-us-request-a-tour">
-          
+
           <h4><%= t('page.locations.ask_about_leasing').html_safe %></h4>
           <p class="contact-this-location"><%= t('page.locations.contact_this_location', {name: @location.name}).html_safe %></p>
 
@@ -19,7 +19,7 @@
 
             <% if @location.email_address_for_inquiries.present? %>
               <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
-            <% end %>          
+            <% end %>
           </div>
 
           <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state, :required_fields => [:name, :email, :phone, :how_can_we_help_you] %>
@@ -29,7 +29,7 @@
       </div> <!-- .one-third -->
 
       <div class="two-thirds column">
-        
+
         <!-- images -->
 
         <div class="location-gallery">
@@ -42,7 +42,7 @@
           <% else %>
             <div class="owl-carousel owl-theme salon-professional salon-carousel" data-autoplayoff="true" data-paginationoff="true">
               <div class="item"><%= image_tag 'sola_location_photo.jpg', :alt => 'An interior photo of a Sola' %></div>
-            </div>      
+            </div>
           <% end %>
           <%= link_to salon_stylists_path(@location.url_name), :class => 'find-a-salon-pro-box' do %>
             <span class="text"><%= t('page.locations.find_a_salon_professional') %></span>
@@ -78,7 +78,7 @@
 
             <% if @location.email_address_for_inquiries.present? %>
               <div class="contact-email-address"><a href="mailto:<%= @location.email_address_for_inquiries %>"><span class="fa fa-envelope"></span> <%= @location.email_address_for_inquiries %></a></div>
-            <% end %>          
+            <% end %>
           </div>
           <%= render 'shared/contact_form_component', :location_view => true, :location_id => @location.id, :location_name => @location.name, :location_state => @location.state, :required_fields => [:name, :email, :how_can_we_help_you]%>
         </div>
@@ -107,13 +107,13 @@
             <li><%= link_to url_helper(@location.pinterest_url), :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
           <% else %>
             <li><%= link_to 'https://www.pinterest.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <% end %> 
+          <% end %>
 
           <% if @location.instagram_url.present? %>
             <li><%= link_to url_helper(@location.instagram_url), :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
           <% else %>
             <li><%= link_to 'https://www.instagram.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% end %>        
+          <% end %>
         </ul>
 
         <!-- move-in special -->
@@ -166,7 +166,7 @@
 
         <!-- map -->
         <div class="row">
-          <div class="salon-map">
+          <div class="salon-map" style="width: 100%;">
             <%
               map_styles = [
                 'feature|saturation:-100|lightness:20',
@@ -180,8 +180,14 @@
                 custom_marker = "<div class='map-popover-infobox'><h4>#{@location.name}</h4><p>#{@location.html_address}</p><a target='_blank' href='http://maps.google.com/maps?daddr=#{@location.full_address}'>Map it!</a></div>"
               end
             %>
-            
-            <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @location.full_address %>&zoom=14&size=625x420<%= map_styles.map{|s| "&style=#{s}"}.join('') %>&maptype=roadmap&markers=icon:https://s3.amazonaws.com/solasalonstudios/MarkerSmall.png|<%= @location.full_address %>&key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8" class="static-map" data-content="<%= custom_marker %>" />
+
+            <iframe
+              width="100%"
+              height="420px"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?q=<%= @location.full_address %>&zoom=14&maptype=roadmap&key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8" class="static-map" allowfullscreen>
+            </iframe>
+
 
             <div class="popover fade show bs-popover-top" role="tooltip" x-placement="top">
               <div class="arrow" style="left: 72px;"></div>
@@ -193,11 +199,11 @@
 
           </div>
         </div>
-        
+
 
         <!-- testimonial -->
         <div class="block-quote-testimonial block-quote-testimonial-side-image">
-          
+
           <div class="content">
             <h3><%= t('page.locations.testimonial_text').html_safe %></h3>
              <%= image_tag 'testimonials/SueScott.png', :class => 'testimonial-portrait', :alt => t('page.locations.testimonial_author') %>
@@ -230,7 +236,7 @@
   <% if I18n.locale.to_s == 'en' %>
     <div class="sola-benefits">
       <div class="container">
-        
+
         <div class="row">
           <div class="columns four">
             <%= link_to :sola_pro, :class => 'benefit-tile' do %>
@@ -262,7 +268,7 @@
               </div>
               <span class="text"><%= t('page.who_we_are.solagenius_text') %></span>
             <% end %>
-          </div>        
+          </div>
         </div>
 
       </div> <!-- container -->
@@ -270,7 +276,7 @@
   <% else %>
     <div class="sola-benefits">
       <div class="container">
-        
+
         <div class="row">
           <div class="columns six">
             <%= link_to :sola_pro, :class => 'benefit-tile' do %>
@@ -293,7 +299,7 @@
               </div>
               <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
             <% end %>
-          </div>       
+          </div>
         </div>
 
       </div> <!-- container -->
@@ -310,13 +316,13 @@
 <% content_for(:scripts) {@location.chat_code.html_safe} if @location.chat_code.present? %>
 <% content_for(:scripts) {@location.tracking_code.html_safe} if @location.tracking_code.present? %>
 <% content_for(:canonical_url) { @location.canonical_url } %>
-<% content_for(:title) { 
+<% content_for(:title) {
   if @location.name.downcase.strip == @location.city.downcase.strip
     @no_title_brand_name = true
     @no_title_dash = true
-    "#{t(:brand_name)} #{t(:in)} #{@location.city}, #{@location.state}" 
+    "#{t(:brand_name)} #{t(:in)} #{@location.city}, #{@location.state}"
   else
-    "#{@location.name.html_safe} #{t(:in)} #{@location.city}, #{@location.state}" 
+    "#{@location.name.html_safe} #{t(:in)} #{@location.city}, #{@location.state}"
   end
 } %>
 <% if @location.description %>
