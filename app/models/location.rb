@@ -32,110 +32,110 @@ class Location < ActiveRecord::Base
     end
   end
 
-  has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_1
   before_validation { self.image_1.destroy if self.delete_image_1 == '1' }
 
-  has_attached_file :image_2, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_2, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_2, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_2
   before_validation { self.image_2.destroy if self.delete_image_2 == '1' }
 
-  has_attached_file :image_3, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_3, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_3, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_3
   before_validation { self.image_3.destroy if self.delete_image_3 == '1' }
 
-  has_attached_file :image_4, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_4, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_4, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_4
   before_validation { self.image_4.destroy if self.delete_image_4 == '1' }
 
-  has_attached_file :image_5, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_5, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_5, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_5
   before_validation { self.image_5.destroy if self.delete_image_5 == '1' }
 
-  has_attached_file :image_6, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_6, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_6, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_6
   before_validation { self.image_6.destroy if self.delete_image_6 == '1' }
 
-  has_attached_file :image_7, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_7, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_7, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_7
   before_validation { self.image_7.destroy if self.delete_image_7 == '1' }
 
-  has_attached_file :image_8, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_8, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_8, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_8
   before_validation { self.image_8.destroy if self.delete_image_8 == '1' }
 
-  has_attached_file :image_9, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
+  has_attached_file :image_9, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image_9, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_9
   before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
 
-  has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/              
+  has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
-  has_attached_file :image_11, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_11, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_11, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_11, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_11
   before_validation { self.image_11.destroy if self.delete_image_11 == '1' }
 
-  has_attached_file :image_12, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_12, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_12, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_12, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_12
   before_validation { self.image_12.destroy if self.delete_image_12 == '1' }
 
-  has_attached_file :image_13, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_13, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_13, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_13, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_13
   before_validation { self.image_13.destroy if self.delete_image_13 == '1' }
 
-  has_attached_file :image_14, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_14, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_14, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_14, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_14
   before_validation { self.image_14.destroy if self.delete_image_14 == '1' }
 
-  has_attached_file :image_15, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_15, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_15, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_15, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_15
   before_validation { self.image_15.destroy if self.delete_image_15 == '1' }
 
-  has_attached_file :image_16, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_16, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_16, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_16, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_16
   before_validation { self.image_16.destroy if self.delete_image_16 == '1' }
 
-  has_attached_file :image_17, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_17, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_17, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_17, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_17
   before_validation { self.image_17.destroy if self.delete_image_17 == '1' }
 
-  has_attached_file :image_18, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_18, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_18, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_18, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_18
   before_validation { self.image_18.destroy if self.delete_image_18 == '1' }
 
-  has_attached_file :image_19, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_19, :content_type => /\Aimage\/.*\Z/       
+  has_attached_file :image_19, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_19, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_19
   before_validation { self.image_19.destroy if self.delete_image_19 == '1' }
 
-  has_attached_file :image_20, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :image_20, :content_type => /\Aimage\/.*\Z/                         
+  has_attached_file :image_20, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :image_20, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image_20
-  before_validation { self.image_20.destroy if self.delete_image_20 == '1' }                   
+  before_validation { self.image_20.destroy if self.delete_image_20 == '1' }
 
-  has_attached_file :floorplan_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https 
-  validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/                         
+  has_attached_file :floorplan_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  validates_attachment_content_type :floorplan_image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_floorplan_image
-  before_validation { self.floorplan_image.destroy if self.delete_floorplan_image == '1' }                   
+  before_validation { self.floorplan_image.destroy if self.delete_floorplan_image == '1' }
 
   validates :name, :url_name, :presence => true
   validate :url_name_uniqueness
@@ -175,7 +175,7 @@ class Location < ActiveRecord::Base
   end
 
   def max_walkins_time_enum
-    (15..480).to_a.in_groups_of(15).collect(&:first).collect { |t| [humanize(t * 60), t] }  
+    (15..480).to_a.in_groups_of(15).collect(&:first).collect { |t| [humanize(t * 60), t] }
   end
 
   def walkins_enabled_enum
@@ -212,7 +212,7 @@ class Location < ActiveRecord::Base
       else
         location_end_offset = '+0' + location_end_offset.abs.to_s
       end
-    else 
+    else
       location_end_offset = '+' + location_end_offset.abs.to_s
     end
     return location_end_offset
@@ -220,10 +220,10 @@ class Location < ActiveRecord::Base
 
   def country_enum
     countries = []
-    
+
     codes = ENV['LOCATION_COUNTRY_INCLUSION'].split(',')
     names = ENV['LOCATION_COUNTRY_NAMES'].split(',')
-    
+
     codes.each_with_index do |code, idx|
       countries << [names[idx].gsub('_', ' '), codes[idx]]
     end
@@ -262,7 +262,7 @@ class Location < ActiveRecord::Base
     address += " #{address_2.strip}" if address_2.present?
     address += ', '
     address += "#{city}, #{state} #{postal_code}"
-    
+
     address
   end
 
@@ -302,7 +302,7 @@ class Location < ActiveRecord::Base
       end
     end
     pros
-  end                
+  end
 
   def to_param
     "#{state}/#{city}/#{url_name}"
@@ -310,7 +310,7 @@ class Location < ActiveRecord::Base
 
   def website_url
     "https://www.solasalonstudios.com/locations/#{url_name}"
-  end  
+  end
 
   def canonical_path
     "/locations/#{url_name}"
@@ -337,7 +337,7 @@ class Location < ActiveRecord::Base
 
     if self.tour_iframe_3.present?
       t << self.tour_iframe_3
-    end    
+    end
 
     return t
   end
@@ -440,9 +440,9 @@ class Location < ActiveRecord::Base
 
   def generate_url_name
     if self.name && self.url_name.blank?
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-')
       count = 1
-      
+
       while Location.where(:url_name => "#{url}#{count}").size > 0 do
         count = count + 1
       end
@@ -475,7 +475,7 @@ class Location < ActiveRecord::Base
 
       return moz.token
     end
-  rescue => e 
+  rescue => e
     p "error with get moz token #{e}"
   end
 
@@ -500,7 +500,7 @@ class Location < ActiveRecord::Base
   #     -d '{
   #       "language": "en",
   #       "max": 1000
-  #   }'` 
+  #   }'`
 
   #   p "moz_response=#{moz_response}"
 
@@ -510,17 +510,17 @@ class Location < ActiveRecord::Base
   # end
   def moz_categories
     categories = [109] # Beauty Salon
-    
+
     self.services.each do |service|
       categories << 106 if service == 'Hair' && categories.length < 5
       categories << 117 if service == 'Massage' && categories.length < 5
-      categories << 1126 if service == 'Nails' && categories.length < 5      
+      categories << 1126 if service == 'Nails' && categories.length < 5
       categories << 114 if service == 'Brows' && categories.length < 5
       categories << 116 if service == 'Makeup' && categories.length < 5
       categories << 112 if service == 'Skincare' && categories.length < 5
       categories << 2555 if service == 'Teeth Whitening' && categories.length < 5
-      categories << 108 if service == 'Hair Extensions' && categories.length < 5  
-      categories << 111 if service == 'Hair Removal' && categories.length < 5  
+      categories << 108 if service == 'Hair Extensions' && categories.length < 5
+      categories << 111 if service == 'Hair Removal' && categories.length < 5
       categories << 113 if service == 'Permanent Makeup' && categories.length < 5
     end
 
@@ -603,7 +603,7 @@ class Location < ActiveRecord::Base
         "lat": #{self.latitude},
         "lng": #{self.longitude},
         "socialProfiles": #{self.moz_social_profiles.to_json},
-    }'` 
+    }'`
 
     # categories
     # descriptionLong
@@ -615,7 +615,7 @@ class Location < ActiveRecord::Base
     # services
     # socialProfiles
 
-    p "moz_response=#{moz_response}"   
+    p "moz_response=#{moz_response}"
     json_response = JSON.parse(moz_response)
 
     if json_response && json_response["status"] == "SUCCESS"
@@ -663,7 +663,7 @@ class Location < ActiveRecord::Base
         "lng": #{self.longitude},
         "socialProfiles": #{self.moz_social_profiles.to_json},
         "status": "ACTIVE"
-    }'` 
+    }'`
 
     # categories
     # descriptionLong
@@ -675,10 +675,10 @@ class Location < ActiveRecord::Base
     # services
     # DONE - socialProfiles
 
-    p "moz_response=#{moz_response}"   
-    json_response = JSON.parse(moz_response)  
+    p "moz_response=#{moz_response}"
+    json_response = JSON.parse(moz_response)
 
-    self.submit_photos_to_moz  
+    self.submit_photos_to_moz
   end
 
   def submit_photos_to_moz
@@ -730,7 +730,7 @@ class Location < ActiveRecord::Base
   end
 
   # def make_image_local(filename, url)
-  #   file = Tempfile.new(filename) 
+  #   file = Tempfile.new(filename)
   #   file.binmode
   #   file << open(url).read
   #   file.close
@@ -771,7 +771,7 @@ class Location < ActiveRecord::Base
         "lng": #{self.longitude},
         "socialProfiles": #{self.moz_social_profiles.to_json},
         "status": "INACTIVE"
-    }'` 
+    }'`
 
     p "inactivate_response=#{inactivate_response}"
 
@@ -781,12 +781,12 @@ class Location < ActiveRecord::Base
       -H 'Content-Type: application/json' \
       -d '{
         "locations": [#{self.moz_id}],
-    }'` 
+    }'`
 
     p "delete response=#{delete_response}"
   end
 
-  def submit_to_moz  
+  def submit_to_moz
     p "submit to moz"
 
     businessId = self.country == 'US' ? 505116 : 505117
@@ -799,7 +799,7 @@ class Location < ActiveRecord::Base
         p "update the location as usual"
         self.moz_update
       end
-     
+
     else
       self.moz_create
     end
@@ -853,7 +853,7 @@ class Location < ActiveRecord::Base
   end
 
   def moz_long_description
-    long_description = 
+    long_description =
     long_description = ActionView::Base.full_sanitizer.sanitize(self.description).strip
     if long_description.length > 997
       long_description = long_description[0...997] + '...'

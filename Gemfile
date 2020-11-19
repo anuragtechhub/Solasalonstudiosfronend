@@ -43,9 +43,9 @@ group :production do
   #gem 'newrelic_rpm'
   #gem 'asset_sync'
   gem 'rails_12factor'
-  gem "image_optim"
-  gem 'image_optim_pack'
-  gem "paperclip-optimizer"
+  #gem "image_optim"
+  #gem 'image_optim_pack'
+  #gem "paperclip-optimizer"
   gem "wkhtmltopdf-heroku"
 end
 
@@ -53,6 +53,7 @@ gem 'rmagick'
 gem 'rack-cors'
 
 gem "paperclip"
+gem "paperclip-compression"
 gem "curb"
 gem "down"
 gem "naturally"

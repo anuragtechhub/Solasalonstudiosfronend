@@ -26,7 +26,7 @@ class Tool < ActiveRecord::Base
   attr_accessor :delete_file
   before_validation { self.file.destroy if self.delete_file == '1' }
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
+  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :large => "460x280#", :small => "300x180#" }, processors: [:thumbnail, :compression], :s3_protocol => :https
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 

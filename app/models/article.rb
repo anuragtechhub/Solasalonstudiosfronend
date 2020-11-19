@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
   validates :location, :presence => true, :if => :franchisee?
   #validates :url_name, :presence => true, :uniqueness => true
 
-  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
+  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_presence :image
   attr_accessor :delete_image
@@ -34,9 +34,9 @@ class Article < ActiveRecord::Base
 
   def generate_url_name
     if self.title
-      url = self.title.downcase.gsub(/[^0-9a-zA-Z]/, '_') 
+      url = self.title.downcase.gsub(/[^0-9a-zA-Z]/, '_')
       count = 1
-      
+
       while Blog.where(:url_name => url).size > 0 do
         url = "#{url}#{count}"
         count = count + 1
@@ -51,7 +51,7 @@ class Article < ActiveRecord::Base
   end
 
   def franchisee?
-    if Thread.current[:current_admin] 
+    if Thread.current[:current_admin]
       Thread.current[:current_admin].franchisee
     end
   end
