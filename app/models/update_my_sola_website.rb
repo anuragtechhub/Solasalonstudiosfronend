@@ -448,44 +448,44 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   def auto_orient_images
     p "auto_orient_images!"
-    if image_1_url_changed?
+    if image_1_url_changed? && image_1_url.present?
       p "image_1 changed yo"
       self.image_1 = open(image_1_url)
     end
 
-    if image_2_url_changed?
+    if image_2_url_changed? && image_2_url.present?
       self.image_2 = open(image_2_url)
     end
 
-    if image_3_url_changed?
+    if image_3_url_changed? && image_3_url.present?
       self.image_3 = open(image_3_url)
     end
 
-    if image_4_url_changed?
+    if image_4_url_changed? && image_4_url.present?
       self.image_4 = open(image_4_url)
     end
 
-    if image_5_url_changed?
+    if image_5_url_changed? && image_5_url.present?
       self.image_5 = open(image_5_url)
     end
 
-    if image_6_url_changed?
+    if image_6_url_changed? && image_6_url.present?
       self.image_6 = open(image_6_url)
     end
 
-    if image_7_url_changed?
+    if image_7_url_changed? && image_7_url.present?
       self.image_7 = open(image_7_url)
     end
 
-    if image_8_url_changed?
+    if image_8_url_changed? && image_8_url.present?
       self.image_8 = open(image_8_url)
     end
 
-    if image_9_url_changed?
+    if image_9_url_changed? && image_9_url.present?
       self.image_9 = open(image_9_url)
     end
 
-    if image_10_url_changed?
+    if image_10_url_changed? && image_10_url.present?
       self.image_10 = open(image_10_url)
     end
   end
