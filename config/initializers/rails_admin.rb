@@ -2501,7 +2501,7 @@ RailsAdmin.config do |config|
           #   bindings[:object].changed_attributes.keys.include?('name')
           # end
         end
-        field :biography, :ck_editor do
+        field :biography do
           help ' '
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('biography')

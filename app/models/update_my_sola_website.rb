@@ -201,6 +201,10 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     p "ERROR with force orient and save! #{error.inspect}"
   end
 
+  def biography
+    ActionView::Base.full_sanitizer.sanitize(self.read_attribute(:biography).to_s).squish
+  end
+
   def publish
     stylist.name = name
     stylist.email_address = email_address

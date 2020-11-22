@@ -135,6 +135,10 @@ class Stylist < ActiveRecord::Base
     FullNameSplitter.split(name)[1]
   end
 
+  def biography
+    ActionView::Base.full_sanitizer.sanitize(self.read_attribute(:biography).to_s).squish
+  end
+
   def country
     c = self.location ? Country.find_by(:code => self.location.country) : nil
     return c.name if c
