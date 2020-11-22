@@ -2691,13 +2691,12 @@ RailsAdmin.config do |config|
           #   bindings[:object].changed_attributes.keys.include?('waxing')
           # end
         end
-        # field :other_service do
-        #   label 'Other'
-        #   help ' '
-        #   visible do
-        #     bindings[:object].changed_attributes.keys.include?('other_service')
-        #   end
-        # end
+        field :other_service do
+          label 'Other'
+          # visible do
+          #   bindings[:object].changed_attributes.keys.include?('other_service')
+          # end
+        end
         # visible do
         #   %w[massage makeup eyelash_extensions laser_hair_removal botox
         #      nails permanent_makeup skin tanning hair_extensions hair
