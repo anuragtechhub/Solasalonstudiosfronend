@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
 
   has_paper_trail
 
-  scope :open, -> { where(:status => 'open') }
+  scope :open, -> { where(status: 'open') }
 
   belongs_to :admin
   belongs_to :msa

@@ -1,5 +1,5 @@
 class SearchController < PublicWebsiteController
-    
+
   require 'uri'
   skip_before_filter :verify_authenticity_token
 
@@ -26,7 +26,7 @@ class SearchController < PublicWebsiteController
 
       if /^[0-9]{5}(?:-[0-9]{4})?$/.match(params[:query])
         # zip code location
-        @locations = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).near(params[:query], 20)
+        @locations = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).open.near(params[:query], 20)
       else
         # locations (default)
         locations1 = Location.near(params[:query].downcase).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
@@ -54,7 +54,7 @@ class SearchController < PublicWebsiteController
       if params[:stylists] != 'hidden'
         stylists_name = Stylist.where('website_name IS NULL OR website_name = ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where(:reserved => false).where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
         stylists_website_name = Stylist.where('website_name IS NOT NULL AND website_name != ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where(:reserved => false).where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.website_name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
-        
+
         # service_type filter?
         #p "params[:service_type]=#{params[:service_type]}"
         if params[:service_type].present? && params[:service_type] != 'all_types'
