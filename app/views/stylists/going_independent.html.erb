@@ -59,7 +59,7 @@
           <div class="container">
               <div class="guide-in d-flex flex-wrap">
                   <div class="guide-in-lft col-md-6">
-                  
+
                   <h3>Be your own boss:</h3>
                   <p>Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about freedom and control.
                   </p>
@@ -78,10 +78,10 @@
                     <%= render 'shared/modern_salon_contact_form_component', {
                       :always_enabled => true,
                       :root_class_name => 'modern-salon',
-                      :title => 'Complete this form to get your free guide', 
+                      :title => 'Complete this form to get your free guide',
                       :subtitle => 'Choose a location near you',
-                      :submit_button_text => 'Get My Guide', 
-                      :display_i_would_like_to => false, 
+                      :submit_button_text => 'Get My Guide',
+                      :display_i_would_like_to => false,
                       :display_i_would_like_to_be_contacted => true,
                       :display_service_checkboxes => true,
                       :display_leave_a_message => false,
@@ -97,10 +97,10 @@
            <!-- perks starts here -->
       <div class="sola-benefits">
         <div class="container">
-      
+
         <h2 class="text-center"><%= t('page.why_sola.beautiful_studios_exclusive_perks').html_safe %></h2>
         <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
-      
+
       <div class="row">
         <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
@@ -134,7 +134,7 @@
             </div>
             <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
           <% end %>
-        </div>        
+        </div>
       </div>
 
       <div class="row">
@@ -169,8 +169,8 @@
               </div>
               <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
             <% end %>
-          </div>  
-        <% end %>      
+          </div>
+        <% end %>
       </div>
 
     </div> <!-- container -->

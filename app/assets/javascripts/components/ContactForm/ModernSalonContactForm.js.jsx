@@ -41,16 +41,16 @@ var ModernSalonContactForm = React.createClass({
 		if (this.props.contact_form_success) {
 			if ($(this.refs.submit_button).is(":visible")) {
 				$(this.refs.submit_button).tooltipster('content', this.props.success).tooltipster('show');
-				
+
 				setTimeout(function () {
 					self.setState({success: null});
 				}, 1000);
 
 				if (this.props.scroll_top) {
 					$(window).scrollTop(this.props.scroll_top);
-				}	
-			}		
-		}		
+				}
+			}
+		}
 	},
 
 	componentDidUpdate: function (prevProps, prevState) {
@@ -90,14 +90,14 @@ var ModernSalonContactForm = React.createClass({
 	render: function () {
 		var self = this;
 		console.log('render ContactForm', this.state, this.props);
-		
+
 		return (
 			<div ref="root" className={"contact-form max-height " + (this.state.selected_state ? 'full-height ' : '') + (this.props.root_class_name || '')}>
 				{this.props.location_view ? null : <h2 style={{marginBottom: '10px'}}>{this.props.title}</h2>}
 
-				<form onSubmit={this.onSubmit} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} ref="form">
+				<form onSubmit={this.onSubmit} disabled={self.isDisabledSubmit(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} ref="form">
 					{/*<input autoComplete="false" name="hidden" type="text" style={{display: 'none'}} />*/}
-					
+
 					{
 						this.props.is_sola_professional
 						?
@@ -118,8 +118,8 @@ var ModernSalonContactForm = React.createClass({
 
 					{this.renderEmail()}
 
-					<div className="form-group"> 
-						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+					<div className="form-group">
+						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 					</div>
 
 					{
@@ -127,7 +127,7 @@ var ModernSalonContactForm = React.createClass({
 						?
 						<div className="row">
 							<div className="col-sm-12 choose-a-sola-location">
-								<label>Choose a Sola location near you (optional)</label>
+								<label>Choose a Sola location near you {this.state.i_would_like_to_be_contacted ? '' : '(optional)'}</label>
 								<div className="dont-see-your-location i-live-in-canada">
 									<label><input type="checkbox" className="form-control" name="canada_locations" checked={this.state.canada_locations} onChange={this.onChangeInput} /> I live in Canada</label>
 								</div>
@@ -163,10 +163,10 @@ var ModernSalonContactForm = React.createClass({
 
 					{
 						this.state.dont_see_your_location || (this.state.selected_state == 'Other')
-						? 
+						?
 						<div className="zipcode">
 							<div className="form-group">
-								<input className="form-control" name="zip_code" value={this.state.zip_code} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.zip_code")} /> 
+								<input className="form-control" name="zip_code" value={this.state.zip_code} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.zip_code")} />
 							</div>
 						</div>
 						:
@@ -181,7 +181,7 @@ var ModernSalonContactForm = React.createClass({
 							{this.renderServiceCheckboxes()}
 							<div className="clearfix">&nbsp;</div>
 						</div>
-						: 
+						:
 						null
 					}
 
@@ -189,20 +189,20 @@ var ModernSalonContactForm = React.createClass({
 						this.props.display_leave_a_message
 						?
 						<div className={"form-group " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
-							<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}></textarea> 
+							<textarea className="form-control" name="message" value={this.state.message} onChange={this.onChangeInput} placeholder={I18n.t("contact_form.leave_a_message")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}></textarea>
 						</div>
 						:
 						null
 					}
 
-					<button ref="submit_button" className="button block primary" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}>{this.props.submit_button_text}</button>
-					
+					<button ref="submit_button" className="button block primary" disabled={self.isDisabledSubmit(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}>{this.props.submit_button_text}</button>
+
 					{
 						this.props.display_i_would_like_to_be_contacted && (this.state.is_sola_professional != 'yes')
 						?
 						<div className={"form-group newsletter " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')} style={{marginBottom: '-8px', marginTop: '10px'}}>
 							<label>
-								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+								<input type="checkbox" name="i_would_like_to_be_contacted" checked={this.state.i_would_like_to_be_contacted} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 								<span className="text">{I18n.t('contact_form.i_would_like_to_be_contacted')}</span>
 								<div className="clearfix">&nbsp;</div>
 							</label>
@@ -210,13 +210,13 @@ var ModernSalonContactForm = React.createClass({
 						:
 						null
 					}
-					
+
 					{
 						this.state.is_sola_professional != 'yes'
 						?
 					<div className={"form-group newsletter " + self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)) ? 'disabled' : '')}>
 						<label>
-							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+							<input type="checkbox" name="newsletter" checked={this.state.newsletter} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 							<span className="text">{I18n.t('contact_form.subscribe_to_newsletter')}</span>
 							<div className="clearfix">&nbsp;</div>
 						</label>
@@ -258,25 +258,25 @@ var ModernSalonContactForm = React.createClass({
 	renderLocations: function () {
 		if (this.state.selected_state && this.state.canada_locations) {
 			return (
-				<SolaSelect className="location-select" 
-								displayName={true} 
+				<SolaSelect className="location-select"
+								displayName={true}
 								filteredBy={this.state.selected_state}
-								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
-								options={this.props.all_locations_ca} 
-								name={this.state.selected_location_name} 
-								value={this.state.selected_location} 
-								onChange={this.onChangeSelectedLocation} /> 
+								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')}
+								options={this.props.all_locations_ca}
+								name={this.state.selected_location_name}
+								value={this.state.selected_location}
+								onChange={this.onChangeSelectedLocation} />
 			);
 		} else if (this.state.selected_state) {
 			return (
-				<SolaSelect className="location-select" 
-								displayName={true} 
+				<SolaSelect className="location-select"
+								displayName={true}
 								filteredBy={this.state.selected_state}
-								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')} 
-								options={this.props.all_locations} 
-								name={this.state.selected_location_name} 
-								value={this.state.selected_location} 
-								onChange={this.onChangeSelectedLocation} /> 
+								placeholder={this.props.location_placeholder || I18n.t('contact_form.select_a_location')}
+								options={this.props.all_locations}
+								name={this.state.selected_location_name}
+								value={this.state.selected_location}
+								onChange={this.onChangeSelectedLocation} />
 			);
 		}
 	},
@@ -285,7 +285,7 @@ var ModernSalonContactForm = React.createClass({
 		var self = this;
 		return (
 			<div className="form-group" ref="first_input">
-				<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> 
+				<input className="form-control" name="name" value={this.state.name} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.your_name")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
 			</div>
 		);
 	},
@@ -306,7 +306,7 @@ var ModernSalonContactForm = React.createClass({
 		var servicesRendered = services.map(function (service) {
 			return (
 				<label key={service}>
-					<input type="checkbox" name="selected_services" value={service} checked={self.state.selected_services.indexOf(service) != -1} onChange={self.onChangeInput} disabled={self.isDisabled(!self.state.selected_state || (!self.state.selected_location && !self.state.dont_see_your_location))} /> 
+					<input type="checkbox" name="selected_services" value={service} checked={self.state.selected_services.indexOf(service) != -1} onChange={self.onChangeInput} disabled={self.isDisabled(!self.state.selected_state || (!self.state.selected_location && !self.state.dont_see_your_location))} />
 					<span className="text">{service}</span>
 				</label>
 			);
@@ -342,7 +342,7 @@ var ModernSalonContactForm = React.createClass({
 			this.state[e.target.name] = value;
 		}
 
-		// Hide named checkboxes based on Is Sola Pro selection - check OnSubmit functions below don't conflict if re-enabled  
+		// Hide named checkboxes based on Is Sola Pro selection - check OnSubmit functions below don't conflict if re-enabled
 		// if (e.target.name == 'is_sola_professional') {
 		// 	if (e.target.value == 'yes') {
 		// 		this.state.i_would_like_to_be_contacted = false;
@@ -352,7 +352,7 @@ var ModernSalonContactForm = React.createClass({
 		// 		this.state.newsletter = true;
 		// 	}
 		// } else {
-			
+
 		// }
 
 		//console.log('this.state.selected_services', this.state.selected_services);
@@ -368,12 +368,12 @@ var ModernSalonContactForm = React.createClass({
 	onChangeSelectedLocation: function (value, name) {
 		//console.log('onChangeSelectedLocation', value, name);
 		this.setState({selected_location: value, selected_location_name: name, dont_see_your_location: false});
-	}, 
+	},
 
 	onChangeSelectedState: function (value) {
 		//console.log('onChangeSelectedState', value);
 		this.setState({selected_state: value, selected_location: null, selected_location_name: null, dont_see_your_location: false});
-	}, 
+	},
 
 	onSubmit: function (e) {
 		var self = this;
@@ -459,7 +459,7 @@ var ModernSalonContactForm = React.createClass({
 			} else {
 				self.setState({loading: false, error: I18n.t('contact_form.please_try_again')});
 			}
-		}); 
+		});
 	},
 
 
@@ -482,6 +482,14 @@ var ModernSalonContactForm = React.createClass({
 		} else {
 			return bool;
 		}
-	}
+	},
+
+  isDisabledSubmit: function (bool) {
+    if (this.props.always_enabled && !this.state.i_would_like_to_be_contacted) {
+      return false;
+    } else {
+      return bool;
+    }
+  }
 
 });
