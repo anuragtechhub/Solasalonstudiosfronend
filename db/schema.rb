@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201111231657) do
+ActiveRecord::Schema.define(version: 20201208153045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -751,6 +751,16 @@ ActiveRecord::Schema.define(version: 20201111231657) do
     t.datetime "generated_image_updated_at"
   end
 
+  create_table "notification_recipients", force: true do |t|
+    t.integer  "notification_id"
+    t.integer  "stylist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notification_recipients", ["notification_id"], name: "index_notification_recipients_on_notification_id", using: :btree
+  add_index "notification_recipients", ["stylist_id"], name: "index_notification_recipients_on_stylist_id", using: :btree
+
   create_table "notifications", force: true do |t|
     t.integer  "brand_id"
     t.integer  "deal_id"
@@ -763,11 +773,14 @@ ActiveRecord::Schema.define(version: 20201111231657) do
     t.datetime "updated_at"
     t.integer  "blog_id"
     t.datetime "date_sent"
+    t.datetime "send_at"
+    t.string   "title"
   end
 
   add_index "notifications", ["blog_id"], name: "index_notifications_on_blog_id", using: :btree
   add_index "notifications", ["brand_id"], name: "index_notifications_on_brand_id", using: :btree
   add_index "notifications", ["deal_id"], name: "index_notifications_on_deal_id", using: :btree
+  add_index "notifications", ["send_at"], name: "index_notifications_on_send_at", using: :btree
   add_index "notifications", ["sola_class_id"], name: "index_notifications_on_sola_class_id", using: :btree
   add_index "notifications", ["tool_id"], name: "index_notifications_on_tool_id", using: :btree
   add_index "notifications", ["video_id"], name: "index_notifications_on_video_id", using: :btree

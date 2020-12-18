@@ -25,12 +25,12 @@ class Deal < ActiveRecord::Base
   attr_accessor :delete_file
   before_validation { self.file.destroy if self.delete_file == '1' }
 
-  has_attached_file :image, :styles => { :large => "460x280#", :small => "300x180#" }, processors: [:thumbnail, :compression], :s3_protocol => :https, :path => ":class/:attachment/:id_partition/:style/:filename"
+  has_attached_file :image, :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, processors: [:thumbnail, :compression], :s3_protocol => :https, :path => ":class/:attachment/:id_partition/:style/:filename"
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 
-  has_attached_file :hover_image, :styles => { :large => "460x280#", :small => "300x180#" }, processors: [:thumbnail, :compression], :s3_protocol => :https, :path => ":class/:attachment/:id_partition/:style/:filename"
+  has_attached_file :hover_image, :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, processors: [:thumbnail, :compression], :s3_protocol => :https, :path => ":class/:attachment/:id_partition/:style/:filename"
   validates_attachment :hover_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   attr_accessor :delete_hover_image
   before_validation { self.hover_image.destroy if self.delete_hover_image == '1' }
@@ -55,9 +55,9 @@ class Deal < ActiveRecord::Base
   # #   self.deal_category
   # # end
   #
-  # def image_url
-  #   image.url(:large) if image.present?
-  # end
+  def image_url
+    image.url(:full_width) if image.present?
+  end
   #
   # def file_url
   #   file.url if file.present?

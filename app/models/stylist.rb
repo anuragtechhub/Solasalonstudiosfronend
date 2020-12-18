@@ -201,7 +201,7 @@ class Stylist < ActiveRecord::Base
     services = []
 
     services << 'Brows' if brows
-    services << 'Botox' if botox
+    services << 'Botox/Fillers' if botox
     services << 'Hair' if hair
     services << 'Hair Extensions' if hair_extensions
     services << 'Laser Hair Removal' if laser_hair_removal

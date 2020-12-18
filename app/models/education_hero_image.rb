@@ -2,7 +2,7 @@ class EducationHeroImage < ActiveRecord::Base
   has_many :education_hero_image_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :education_hero_image_countries
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :large => "1500x1000#" }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "1500x1000#" }, processors: [:thumbnail, :compression], :s3_protocol => :https
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
   validates_attachment :image, content_type: { content_type: %w[image/jpg image/jpeg image/png image/gif] }
@@ -10,7 +10,7 @@ class EducationHeroImage < ActiveRecord::Base
   validates :countries, :image, :position, presence: true
 
   def image_original_url
-    image.url(:original)
+    image.url(:full_width)
   end
 
   def image_large_url

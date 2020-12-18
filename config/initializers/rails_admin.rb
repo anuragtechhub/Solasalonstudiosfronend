@@ -30,6 +30,7 @@ RailsAdmin.config do |config|
   config.excluded_models << 'Deal'
   config.excluded_models << 'Brand'
   config.excluded_models << 'SolaClass'
+  config.excluded_models << 'NotificationRecipient'
 
   # config.excluded_models << 'ExpressionEngine'
   # config.excluded_models << 'BlogCategory'
@@ -2023,7 +2024,9 @@ RailsAdmin.config do |config|
         field :yelp_url
       end
       group :services do
-        field :botox
+        field :botox do
+          label 'Botox/Fillers'
+        end
         field :brows
         field :hair
         field :hair_extensions
@@ -2245,7 +2248,9 @@ RailsAdmin.config do |config|
       end
       group :services do
         active false
-        field :botox
+        field :botox do
+          label 'Botox/Fillers'
+        end
         field :brows
         field :hair
         field :hair_extensions
@@ -2450,7 +2455,9 @@ RailsAdmin.config do |config|
       field :makeup
       field :tanning
       field :waxing
-      field :botox
+      field :botox do
+        label 'Botox/Fillers'
+      end
       field :brows
       field :facebook_url
       field :google_plus_url
@@ -2615,6 +2622,7 @@ RailsAdmin.config do |config|
       end
       group :services do
         field :botox do
+          label 'Botox/Fillers'
           # visible do
           #   bindings[:object].changed_attributes.keys.include?('botox')
           # end
