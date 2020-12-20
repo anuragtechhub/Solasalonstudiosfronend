@@ -35,7 +35,7 @@
       <ul class="contact-info">
         <% if (@stylist.phone_number.present? || @stylist.website_phone_number.present?) && @stylist.phone_number_display %>
           <li>
-            <a href="tel:<%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %>">
+            <a class='stylist-phone-number' href="tel:<%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %>">
               <%= @stylist.website_phone_number.present? ? @stylist.website_phone_number : @stylist.phone_number %>
             </a>
           </li>
