@@ -67,19 +67,6 @@ var BookingModal = React.createClass({
 				query: this.props.query,
 				referring_url: this.props.referring_url,
 			}));
-    //   gtag('event', 'Open Booking Modal', {
-    //     event_category: 'BookNow',
-    //     event_label: JSON.stringify({
-				// 	date: this.state.date.format('YYYY-MM-DD'),
-				// 	fingerprint: this.props.fingerprint,
-				// 	lat: this.props.lat,
-				// 	lng: this.props.lng,
-				// 	location_id: this.props.location_id,
-				// 	location: this.props.location,
-				// 	query: this.props.query,
-				// 	referring_url: this.props.referring_url,
-				// })
-    //   });
 		}
 	},
 
@@ -125,7 +112,6 @@ var BookingModal = React.createClass({
 	},
 
 	renderBookingCompleteForm: function () {
-		//console.log('booking complete form', JSON.stringify(this.state.time));
 		return (
 			<form ref="BookingCompleteForm" method="post" action={this.props.booking_complete_path} style={{display: 'none'}}>
 				<input name="professional" type="hidden" value={JSON.stringify(this.props.professional)} />
@@ -150,10 +136,10 @@ var BookingModal = React.createClass({
 			if (this.state.temp_time == null) {
 				this.setState({error: I18n.t('sola_search.please_select_a_time')});
 			} else {
-				this.setState({step: 'review', ready: false, temp_time: this.state.time, error: null});	
+				this.setState({step: 'review', ready: false, temp_time: this.state.time, error: null});
 			}
 		} else if (this.state.step == 'services') {
-			this.setState({step: 'review', ready: false, temp_services: this.state.services, error: null});						
+			this.setState({step: 'review', ready: false, temp_services: this.state.services, error: null});
 		} else if (this.state.step == 'payment') {
 			this.setState({step: 'info', ready: false, error: null});
 		}
@@ -203,12 +189,12 @@ var BookingModal = React.createClass({
 		} else if (this.state.step == 'services') {
 			// SERVICES
 			if (this.arraysEqual(this.state.services, this.state.temp_services)) {
-				this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});	
+				this.setState({step: 'review', ready: false, services: this.state.temp_services, error: null});
 			} else {
 				this.setState({ready: false, error: null, loading: true}, function () {
 					self.refreshAvailabilityThenGotoTimeStep();
 				});
-			}			
+			}
 		} else if (this.state.step == 'info') {
 			if (!this.validateEmail(this.state.email_address)) {
 				this.setState({error: I18n.t('sola_search.please_enter_your_email_address')});
@@ -295,8 +281,7 @@ var BookingModal = React.createClass({
 			    url: self.props.save_booknow_booking_path,
 				}).complete(function (response) {
 					// saved book now booking
-				});	
-
+				});
 				ga('gtm1.send', 'event', 'BookNow', 'Booking Complete', JSON.stringify({
 					date: self.state.date.format('YYYY-MM-DD'),
 					fingerprint: self.props.fingerprint,
@@ -339,10 +324,10 @@ var BookingModal = React.createClass({
 					// 	referring_url: self.props.referring_url,
 					// })
 	    //   });
-				
+
 				$(self.refs.BookingCompleteForm).submit();
 			}
-		}); 
+		});
 	},
 
 	/**
@@ -386,7 +371,7 @@ var BookingModal = React.createClass({
 		var self = this;
 
 		this.setState({loading: true});
-		
+
 		$.ajax({
 			data: {
 				name: this.state.your_name,
@@ -410,14 +395,14 @@ var BookingModal = React.createClass({
 			} else {
 				self.setState({loading: false, step: 'payment', ready: false, error: null});
 			}
-		}); 
+		});
 	},
 
 	refreshAvailabilityThenGotoTimeStep: function () {
 		var self = this;
 
 		//console.log("refresh availability, then goto 'time' step");
-		
+
 		var services_guids = {};
 		var services = [];
 		for (var i = 0, ilen = this.state.temp_services.length; i < ilen; i++) {
@@ -425,7 +410,7 @@ var BookingModal = React.createClass({
 			services.push(this.state.temp_services[i].guid);
 		}
 		services_guids[this.props.professional.guid] = services;
-		
+
 		//console.log('services_guids', services_guids);
 		//console.log('refreshAvailabilityThenGotoTimeStep this.state.date', moment(this.state.date).format("YYYY-MM-DD"));
 		$.ajax({
@@ -448,7 +433,7 @@ var BookingModal = React.createClass({
 			} else {
 				self.setState({loading: false, ready: false, error: I18n.t('sola_search.no_availability')});
 			}
-		}); 
+		});
 	},
 
 	validateEmail: function (email) {

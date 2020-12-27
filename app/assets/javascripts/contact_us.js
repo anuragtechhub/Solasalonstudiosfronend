@@ -27,7 +27,7 @@ $(function () {
       var state = $(event.target).data('value');
       $('#contact-us-info-disabled').show();
       $('.contact-us-info').hide();
-      
+
       $('.sola-select .options').hide();
       $(window).off('click.solaselect');
       $select.find('.option-placeholder h3').html(state);
@@ -96,12 +96,10 @@ $(function () {
     }).done(function(data) {
       if (data && data.success) {
         ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
-
-        // gtag('event', 'submission', {
-        //   event_category: 'Location Contact Form',
-        //   event_label: JSON.stringify($.deparam($form.serialize()))
-        // });
-
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'Location Contact Form'
+        });
         if (typeof window.contactUsFormSuccessHandler == 'function') {
           window.contactUsFormSuccessHandler(data);
         } else {

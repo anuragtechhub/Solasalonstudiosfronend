@@ -52,6 +52,11 @@ var CheckAvailabilityModal = React.createClass({
 				query: this.props.query,
 				referring_url: this.props.referring_url,
 			}));
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'Open Check Availability Modal'
+      });
 		}
 	},
 
@@ -119,10 +124,10 @@ var CheckAvailabilityModal = React.createClass({
 	* Helper functions
 	*/
 
-	loadAvailability: function () {		
+	loadAvailability: function () {
 		var self = this;
 		var services_guids = this.getServicesGuids();
-		
+
 		self.setState({loading: true});
 
 		$.ajax({
@@ -140,12 +145,12 @@ var CheckAvailabilityModal = React.createClass({
 			var new_availabilities = JSON.parse(response);
 			//console.log('loadAvailability response', new_availabilities, self.state.availabilities);
 			var availabilities = self.state.availabilities.slice(0);
-			
+
 			// if (self.state.availabilities) {
 			// 	//console.log('availabilities already defined!');
 			for (var i in new_availabilities) {
-				
-				
+
+
 				for (var j = 0, jlen = new_availabilities[i].length; j < jlen; j++) {
 					//console.log('new_availabilities[i]', new_availabilities[i][j].date);
 					var match = false;
@@ -156,19 +161,19 @@ var CheckAvailabilityModal = React.createClass({
 							break;
 						}
 					}
-					
+
 					if (!match) {
 						availabilities.push(new_availabilities[i][j]);
 					}
 				}
-				
+
 			}
 			self.setState({loading: false, availabilities: availabilities});
 			// 	self.setState({availabilities: self.state.availabilities});
 			// } else {
 			// 	self.setState({availabilities: new_availabilities});
 			// }
-		}); 		
+		});
 	},
 
 	getServicesGuids: function () {
@@ -181,6 +186,6 @@ var CheckAvailabilityModal = React.createClass({
 		}
 
 		return guids;
-	},	
+	},
 
 });
