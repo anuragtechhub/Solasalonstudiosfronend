@@ -2,23 +2,13 @@
 
   <div class="hero-carousel owl-carousel owl-theme home-all">
     <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/sola_contact_us_desktop.jpg', :width => 2025, :height => 767 %></div>
-        <div class="item-content overlayed">
-          <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
-            <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>    
-        </div>
+        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_ContactUs_Header.jpg', :width => 2025, :height => 769 %></div>
     </div>
   </div>
 
   <div class="hero-carousel owl-carousel owl-theme home-mobile">
     <div class="item">
         <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/home_hero_images/why_sola_strong_2_mobile.jpg', :alt => t('page.home.slider5_heading') %></div>
-        <div class="item-content overlayed">
-          <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
-            <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>    
-        </div>
     </div>
   </div>
 
@@ -29,7 +19,7 @@
       <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
       <h2 class="start-the-convo"><%= t('page.contact.body1').html_safe %></h2>
 
-      <% if I18n.locale == :en %> 
+      <% if I18n.locale == :en %>
         <div>
         <%= link_to :booknow_search, :class => 'button primary pill square contact-book-now' do %>
           <%= t 'page.contact.book_now' %>
@@ -38,7 +28,7 @@
       <% end %>
 
       <%= link_to :salon_professionals, :class => 'button primary pill square contact-salon-professionals' do %>
-        <%= image_tag 'contact_salon_pro.png', :width => (68 / 2), :height => (76 / 2), :style => 'position: relative; left: -4px; margin-right: 10px; top: -1px' %> 
+        <%= image_tag 'contact_salon_pro.png', :width => (68 / 2), :height => (76 / 2), :style => 'position: relative; left: -4px; margin-right: 10px; top: -1px' %>
         <%= t 'page.contact.contact_a_beauty_professional' %>
       <% end %>
     </div>
@@ -47,20 +37,20 @@
 
       <div class="contact-us-form-wrapper">
 
-        
+
           <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :phone, :how_can_we_help_you] %>
-        
+
       </div>
 
     </div>
   </div>
-</div>  
+</div>
 
 <div class="follow-us-on-social">
   <div class="container">
     <h2><%= t 'page.contact.follow_us_on_social' %></h2>
-    <ul class="social">  
-      <% if I18n.locale == :en %>        
+    <ul class="social">
+      <% if I18n.locale == :en %>
         <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
