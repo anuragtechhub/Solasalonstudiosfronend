@@ -447,10 +447,8 @@ namespace :reports do
 
     analytics = Analytics.new
     if start_date && end_date
-      #web_data = analytics.solapro_web_data('105609602', start_date, end_date)
-      app_data = analytics.solapro_app_data('113771223', start_date, end_date)
+      app_data = analytics.solapro_app_data('257267659', start_date, end_date)
     else
-      #web_data = analytics.solapro_web_data
       app_data = analytics.solapro_app_data
     end
     locals = {
@@ -1372,7 +1370,7 @@ namespace :reports do
     end
 
     desc 'solapro_app_data', 'Retrieve Sola Pro app Google Analytics data'
-    def solapro_app_data(profile_id='113771223', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+    def solapro_app_data(profile_id='257267659', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
       analytics = Analytics::AnalyticsReportingService.new
       analytics.authorization = user_credentials_for(Analytics::AUTH_ANALYTICS)
 
