@@ -13,30 +13,30 @@
           <h5><%= t('page.why_sola.learn_more') %></h5>
           <span class="fa fa-angle-down"></span>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
 
 <% else %>
-
+  <%- youtube_url = "https://www.youtube.com/watch?v=#{I18n.locale != :en ? 'zH9uewppEjk' : 'wxZluUXFJ9Y'}" %>
   <div class="hero-carousel owl-carousel owl-theme home-all">
     <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/why_sola_strong_2.jpg', :width => 2025, :height => 767 %></div>
-        <div class="item-content overlayed">
-          <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
+        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_WhySola_Header.jpg', :width => 2025, :height => 769 %></div>
+        <div class="item-content overlayed" style="top:0px;">
+          <%= link_to youtube_url, :class => "button secondary play-video rounded-play-button" do %>
             <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>    
+          <% end %>
         </div>
     </div>
   </div>
 
   <div class="hero-carousel owl-carousel owl-theme home-mobile">
     <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/home_hero_images/why_sola_strong_2_mobile.jpg', :alt => t('page.home.slider5_heading') %></div>
-        <div class="item-content overlayed">
-          <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
+        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_WhySola_Header_mobile.jpg', :alt => t('page.home.slider5_heading') %></div>
+        <div class="item-content overlayed" style="top:-80px;">
+          <%= link_to youtube_url, style: "margin-top:0px;", :class => "button secondary play-video rounded-play-button" do %>
             <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-          <% end %>    
+          <% end %>
         </div>
     </div>
   </div>
