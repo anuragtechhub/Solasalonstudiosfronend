@@ -12,14 +12,14 @@ Solasalonstudios::Application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API_KEY'],
     :domain => 'solasalonstudios.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
