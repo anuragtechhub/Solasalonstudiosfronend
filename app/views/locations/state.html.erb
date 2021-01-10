@@ -41,8 +41,8 @@
 <div class="container content-container" style="margin-top:5px;margin-bottom:10px;">
 
     <% @locations.group_by(&:msa_name).sort.each do |msa_name, locations| %>
-
-      <h2 class="city"><%= link_to msa_name, region_path(Msa.find_by(:name => msa_name).url_name) %></h2>
+      <%- msa = locations.first.msa %>
+      <h2 class="city"><%= link_to msa_name, region_path(msa.url_name) %></h2>
 
       <% locations.sort_by(&:name).each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
