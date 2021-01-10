@@ -518,6 +518,9 @@ namespace :reports do
       file << pdf
     end
     p "file saved"
+    p "send email..."
+    ReportsMailer.solasalonstudios_report(pdf, @url).deliver
+    p "email sent"
   end
 
 

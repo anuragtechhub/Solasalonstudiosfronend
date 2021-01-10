@@ -29,7 +29,7 @@ namespace :email do
   	#if Time.now.day == 2
   		#p "yes its the second day, proceed"
 	    start_date = args.start_date.present? ? Date.parse(args.start_date).beginning_of_month : DateTime.now.prev_month.beginning_of_month
-	    end_date = start_date.end_of_month    
+	    end_date = start_date.end_of_month
 	    p "start_date=#{start_date.strftime('%F')}, end_date=#{end_date.strftime('%F')}"
 
 			sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
@@ -97,7 +97,7 @@ namespace :email do
 			# Retrieve sums of email stats for each category [Needs: Stats object defined, has category ID?] #
 			# GET /categories/stats/sums #
 			p "Retrieve sums of email stats for each category"
-			
+
 			welcome_email_metrics = {
 				"blocks" => 0,
 				"bounces" => 0,
@@ -148,7 +148,7 @@ namespace :email do
 			# Retrieve sums of email stats for each category [Needs: Stats object defined, has category ID?] #
 			# GET /categories/stats/sums #
 			p "Retrieve sums of email stats for each category"
-			
+
 			resend_welcome_email_metrics = {
 				"blocks" => 0,
 				"bounces" => 0,
@@ -208,9 +208,9 @@ namespace :email do
 	        resend_welcome_email_clicks: resend_welcome_email_clicks,
 	        resend_welcome_email_bounce_events: resend_welcome_email_bounce_events,
 	        welcome_email_total_clicks: welcome_email_total_clicks,
-	        resend_welcome_email_total_clicks: resend_welcome_email_total_clicks, 
+	        resend_welcome_email_total_clicks: resend_welcome_email_total_clicks,
 	      }
-	    }			
+	    }
 
 	    html_renderer = HTMLRenderer.new
 
@@ -219,9 +219,9 @@ namespace :email do
 	    p "pdf rendered..."
 
 			#if send_email
-	    #   p "send email..."
-	    #   ReportsMailer.welcome_email_report(pdf).deliver
-	    #   p "email sent"
+	      p "send email..."
+	      ReportsMailer.welcome_email_report(pdf).deliver
+	      p "email sent"
 	    # else
 	      p "save file..."
 	      save_path = Rails.root.join('pdfs',"welcome_email.pdf")
