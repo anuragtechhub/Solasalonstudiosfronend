@@ -5,7 +5,7 @@ class Api::V2::LocationsController < ApiController
   def index
     cache_key = "/api/v2/index/#{Location.order(:updated_at => :desc).first.updated_at}"
     p "INDEX cache_key=#{cache_key}"
-    json = Rails.cache.fetch(cache_key) do
+    json = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
       p "going in the index cache..."
       @locations = Location.where(:status => 'open').order(:created_at => :asc)
       render_to_string('/api/v2/locations/index', formats: 'json')
@@ -20,7 +20,7 @@ class Api::V2::LocationsController < ApiController
     @stylists = @location.stylists.not_reserved
     cache_key = "/api/v2/show/#{@location.id}/#{@stylists.maximum(:updated_at)}"
     p "SHOW cache_key=#{cache_key}"
-    json = Rails.cache.fetch(cache_key) do
+    json = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
       p "going in the show cache..."
       render_to_string('/api/v2/locations/show', formats: 'json')
     end
