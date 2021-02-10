@@ -27,3 +27,5 @@ latest.dump
 **/pdfs
 **/tmp
 /bin
+.env.development
+.env.test
