@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201208153045) do
+ActiveRecord::Schema.define(version: 20210216212225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -337,6 +337,7 @@ ActiveRecord::Schema.define(version: 20201208153045) do
     t.string   "platform"
   end
 
+  add_index "devices", ["token"], name: "index_devices_on_token", unique: true, using: :btree
   add_index "devices", ["userable_id"], name: "index_devices_on_userable_id", using: :btree
   add_index "devices", ["userable_type"], name: "index_devices_on_userable_type", using: :btree
   add_index "devices", ["uuid", "userable_type", "userable_id"], name: "index_devices_on_uuid_and_userable_type_and_userable_id", unique: true, using: :btree
@@ -775,10 +776,12 @@ ActiveRecord::Schema.define(version: 20201208153045) do
     t.datetime "date_sent"
     t.datetime "send_at"
     t.string   "title"
+    t.integer  "country_id"
   end
 
   add_index "notifications", ["blog_id"], name: "index_notifications_on_blog_id", using: :btree
   add_index "notifications", ["brand_id"], name: "index_notifications_on_brand_id", using: :btree
+  add_index "notifications", ["country_id"], name: "index_notifications_on_country_id", using: :btree
   add_index "notifications", ["deal_id"], name: "index_notifications_on_deal_id", using: :btree
   add_index "notifications", ["send_at"], name: "index_notifications_on_send_at", using: :btree
   add_index "notifications", ["sola_class_id"], name: "index_notifications_on_sola_class_id", using: :btree
