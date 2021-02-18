@@ -140,6 +140,7 @@ gem 'foreigner'
 gem 'friendly_id'
 
 gem 'pg_search'
+gem 'pry'
 
 group :development do
   gem 'annotate'
