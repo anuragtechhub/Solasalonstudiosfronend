@@ -1,6 +1,7 @@
 class Api::V2::LocationsController < ApiController
 
 	before_action :set_cors_headers
+  before_action :set_cache_headers
 
   def index
     cache_key = "/api/v2/index/#{Location.order(:updated_at => :desc).first.updated_at}"

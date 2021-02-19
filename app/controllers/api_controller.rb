@@ -11,4 +11,7 @@ class ApiController < ApplicationController
     render :json => {api_key: ['invalid']}, :status => :unprocessable_entity unless account
   end
 
+  def set_cache_headers
+    response.headers["Cache-Control"]='300'
+  end
 end

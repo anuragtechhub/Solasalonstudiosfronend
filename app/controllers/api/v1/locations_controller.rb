@@ -1,6 +1,7 @@
 class Api::V1::LocationsController < ApiController
 
 	before_action :set_cors_headers
+  before_action :set_cache_headers
 
   def index
     @locations = Location.where(:status => 'open')
