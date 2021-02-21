@@ -12,6 +12,6 @@ class ApiController < ApplicationController
   end
 
   def set_cache_headers
-    response.headers["Cache-Control"]='300'
+    response.headers["Cache-Control"]='max-age=300'
   end
 end
