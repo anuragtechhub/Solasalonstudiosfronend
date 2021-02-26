@@ -6,7 +6,7 @@
 	//background: #F8F8F8;
 	//padding: 20px 15px;
 	position: relative;
-	
+
 	h2 {
 		@include chalet_new_york;
     font-style: normal;
@@ -19,7 +19,7 @@
   h3 {
     @include chalet_new_york;
     font-style: normal;
-    font-weight: 400;     
+    font-weight: 400;
     margin-top: -15px;
     margin-bottom: 20px;
   }
@@ -51,7 +51,7 @@
       margin-bottom: 10px;
     }
 
-		&.location-select {  
+		&.location-select {
 
 			.sola-select {
 				display: block;
@@ -94,7 +94,7 @@
     white-space: nowrap;
     // overflow: hidden;
     // text-overflow: ellipsis;
-    
+
     // margin-top: -20px;
     // margin-bottom: 15px;
     position: relative;
@@ -131,7 +131,7 @@
       width: 16px;
       height: 16px;
       margin-right: 2px;
-    } 
+    }
   }
 
   .i-live-in-canada {
@@ -239,8 +239,8 @@
         top: -1;
         width: 16px;
         height: 16px;
-        margin-right: -3px;   
-        zoom: 1.1;     
+        margin-right: -3px;
+        zoom: 1.1;
       }
       // input {
       //   margin-right: 8px;
@@ -252,7 +252,7 @@
     margin-top: 10px;
     margin-bottom: 0;
     font-size: 11px;
-    
+
     &.disabled {
       opacity: 0.65;
       cursor: default;
@@ -270,7 +270,7 @@
       width: 16px;
       height: 16px;
       margin-right: 1px;
-    }    
+    }
 
     .clearfix {
       height: 1px;
@@ -360,7 +360,7 @@
     margin-top: 17px;
     margin-bottom: 7px;
     font-size: 11px;
-    
+
     &.disabled {
       opacity: 0.65;
       cursor: default;
@@ -380,7 +380,7 @@
       height: 16px;
       margin-right: 0;
       zoom: 1.1;
-    }    
+    }
 
     .clearfix {
       height: 1px;
@@ -403,7 +403,7 @@
     right: 0;
     left: 0;
     background: rgba(255, 255, 255, 0.5);
-    z-index: 99;   
+    z-index: 99;
   }
 
   .spinner {
@@ -430,7 +430,7 @@
     	left: auto;
     	margin: 0;
     }
-  } 
+  }
 
   .is-sola-pro {
     margin-top: 15px;
@@ -520,11 +520,21 @@
       span {
         position: relative;
         top: -5px;
+        font-size: 0.9em;
       }
     }
 
     .service-checkboxes input {
       top: 2px;
+    }
+  }
+}
+@media (max-width: 280px) {
+  .form-inline-rows {
+    .form-inline {
+      span {
+        font-size: 0.8em;
+      }
     }
   }
 }
@@ -546,5 +556,5 @@
     margin-right: 3px;
     margin-left: 0;
     top: 2px;
-  }  
+  }
 }

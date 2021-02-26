@@ -1,5 +1,5 @@
 class OwnYourSalonController < PublicWebsiteController
-  
+
   def contact_form_success
     @contact_form_success = true
     @success = I18n.t('contact_form_success')
@@ -25,6 +25,7 @@ class OwnYourSalonController < PublicWebsiteController
 	end
 
 	def why_sola
+    @body_class = 'why-sola'
 	end
 
   def why_sola_2

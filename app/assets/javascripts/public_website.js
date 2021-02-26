@@ -20,8 +20,13 @@
 //= require i18n
 //= require i18n/translations
 //= require_tree ./public_website
+//= require jquery.magnific-popup
 
 $(function () {
+  $('.open-magnific-popup-link').magnificPopup({
+    type: 'inline',
+    midClick: true
+  });
 
   // cookie privacy banner close
   if (Cookies.get('cookie_banner') != 'accepted') {

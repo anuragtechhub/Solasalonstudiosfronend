@@ -2,7 +2,7 @@
 //= require jquery.magnific-popup
 
 $(document).ready(function(e){
-	
+
    $('.slider-main').slick({
         dots: true,
         infinite: false,
@@ -27,7 +27,7 @@ $(document).ready(function(e){
        slidesToScroll: 1
        }
        }
-       
+
        ]
         });
 
@@ -49,7 +49,7 @@ $(document).ready(function(e){
   $('#form, #brazil-contact-form').on('submit', function (e) {
   	e.stopPropagation();
   	e.preventDefault();
-  	
+
   	var $submit = $('#submit');
   	var nome = $('#nome').val();
   	var email = $('#email').val();
@@ -79,7 +79,7 @@ $(document).ready(function(e){
   		setTimeout(function () {
   			$submit.popover('dispose');
   		}, 5000);
-  		
+
   		$('#nome').val('');
   		$('#email').val('');
   		$('#telefone').val('');

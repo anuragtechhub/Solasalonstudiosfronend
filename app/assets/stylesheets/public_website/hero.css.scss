@@ -72,7 +72,7 @@
 
       .mobile-br {
         display: none;
-      }      
+      }
 
       &.left-align {
         align-items: flex-start;
@@ -85,7 +85,7 @@
       &.bottom-middle-align {
         justify-content: flex-end;
         bottom: 15%;
-      }      
+      }
 
       &.bottom-align {
         justify-content: flex-end;
@@ -324,7 +324,7 @@
     width: 100%;
     height: auto;
     z-index: 1;
-  }  
+  }
 }
 
 
@@ -385,7 +385,7 @@
       line-height: 55px;
       font-weight: 300;
       margin-bottom: 20px;
-    }    
+    }
   }
 
   .learn-more {
@@ -426,7 +426,7 @@
 
 /* 1000px and below, the hero goes responsive height */
 @media (max-width: 1000px) {
-  
+
   .hero-carousel {
     height: auto;
     //max-height: 460px;
@@ -448,7 +448,7 @@
         line-height: 42px;
         font-weight: 300;
         margin-bottom: 20px;
-      } 
+      }
     }
 
     .play-button {
@@ -491,7 +491,7 @@
         margin-left: 0px !important;
         margin-right: 0px !important;
       }
-    }    
+    }
   }
 
   .owl-carousel {
@@ -502,13 +502,13 @@
         display: none;
       }
     }
-  }  
+  }
 }
 
 @media (max-width: 550px) {
 
   .locations-hero {
-  
+
     h1, h3 {
       text-align: center;
     }
@@ -525,11 +525,11 @@
   }
 
   .owl-carousel .item .img-wrap {
-    height: 420px;
+    height: 520px;
   }
 
   .owl-carousel .item .img-wrap img {
-    height: 420px;
+    height: 520px;
     width: auto;
     left: -35%;
   }

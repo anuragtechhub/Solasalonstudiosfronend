@@ -161,12 +161,32 @@ en:
     our_studios: Our Studios
 
   footer:
+    in-the-news: In the News
+    our-story: Our Story
+    who-we-are: Who We Are
+    contact-us: Contact Us
+    about_us: About Us
+    find-a-professional: Browse Sola Directory
+    book-appointmensidebart: Book an Appointment
+    gallery: Gallery
+    the-sola-store: The Sola Store
+    book-now: BookNow
+    beauty-hive: BeautyHive
+    sola-genius: SolaGenius
+    sola-pro: Sola Pro
+    education: Education
+    the-sola-difference: The Sola Difference
     rent_studio_button: Rent a Studio
     second_column_heading: More Information
     third_column_heading: Stay in Touch
     join_newsletter: Join our newsletter
     email_placeholder: Your email address
     join_button: Sign Up
+    legal-title: Legal
+    terms-and-conds: Terms and Conditions
+    privacy-policy: Privacy Policy
+    do-not-sell-my-info: Do Not Sell My Info / CCPA
+    ada-accessibility: ADA Accessibility
     legal: Sola Salon Studios - Your Life, Your Style &copy; Copyright
     find_your_sola: Find Your Sola
     franchising: Franchising
@@ -184,7 +204,9 @@ en:
     all_types: All Types
 
   page:
-
+    education:
+      title: Education
+    see_more: See More
     about:
       title: About Us
       meta_description: "Our innovative salon model empowers beauty professionals to take control of their lives and their careers. Be in business for yourself, not by yourself!"
@@ -441,7 +463,9 @@ en:
         <p>As the first employee hired by Sola co-founders Stratton and Matt in 2005, Todd was struck by the power of Sola from the very beginning. &quot;Early on, stylists cried tears of joy when they signed up for a studio. They were excited to open their own business, and after several stylists cried out of joy (or exhaustion of where they were at), I knew this was something big.&quot;</p>
         <p>As a member of the Sola team since the opening of the first Sola location in Denver, Todd has been a part of the development of the company every step along the way. His considerable knowledge of the Sola experience and his meaningful relationships with the franchisee community are invaluable to the continued growth and success of the Sola brand.</p>
         <p>Before joining Sola, Todd spent six years as the codirector of acquisitions for Affordable Residential Communities, where he managed seven acquisition teams and completed the purchase of $1.5 billion in real estate assets. His extensive experience includes managing acquisitions for Aramark and working as a senior auditor and certified public accountant.</p>
-
+    book_now:
+      title: BookNow
+      book_an_appointment: Book an Appointment
     locations:
       title: Locations
       title_long: Sola Locations
@@ -578,7 +602,7 @@ en:
       body6: In 2016, Sola launched Sola Pro, an exclusive app, to host industry deals, special offers and a variety of educational resources to bridge the gap between the professional beauty industry and the Sola community. Shortly after, the first Sola Sessions event kicked off in Denver, providing a unique live education experience to inspire and connect the ever-growing Sola community. With the 2017 addition of our exclusive technology SolaGenius—an all-in-one business platform launched in partnership with GlossGenius, designed to help an independent salon owner manage their schedule, customer relationship management, marketing, analytics and payment processing—we can proudly say that we support our customers along every step of their independent salon journey.
       body7: In 2019, we changed the game once again with our online booking search engine, BookNow, which allows clients to search, discover and book appointments directly on our website. This ground-breaking technology allows us to help drive client bookings for our beauty professionals, so they can spend more time doing what they love behind the chair. One of our Faces of Sola Ashley Lantz has seen incredible growth in her business since the launch of BookNow. “I got to the point where I was getting so many inquiries from the BookNow system a day that I had to actually stop taking new clients all together so I could make sure that I could still get in my regular clients.”
       body7_1: Sola has blazed the trail for the independent stylist movement, offering new levels of creative freedom to those who are inspired to make the transition. We aim to make your transition to independence as smooth as possible. You are independent and unique at Sola, but you are not alone.
-      body7_2: 'Over the past 15 years, the original Sola dream has blossomed into a worldwide movement and a thriving, diverse and welcoming community of more than 15,000 independent salon professionals across 500+ locations in the United States, Canada and Brazil. Our culture has been cultivated around one simple idea: empowering people to have the "freedom to live the life you love."'
+      body7_2: 'Over the past 15 years, the original Sola dream has blossomed into a worldwide movement and a thriving, diverse and welcoming community of more than 16,000+ independent salon professionals across 500+ locations in the United States, Canada and Brazil. Our culture has been cultivated around one simple idea: empowering people to have the "freedom to live the life you love."'
       body7_3: Through our business-building tools, educational offerings, encouraged networking and strong support system, Sola empowers hairdressers, estheticians, nail techs, massage therapists and other like-minded professionals to take full control of their lives and careers. With a bright future ahead, the Sola team continues to identify ways to cultivate growth through innovation, creativity, and most importantly, community.
       callout2: "&quot;At our heart, we are a service business. We are totally committed to the success of our community.&quot;"
       callout2_name: "Christina Russell, CEO"
@@ -870,7 +894,7 @@ en:
       search_for_a_salon: Search for a salon studio near you.
       be_in_business_heading: Be In Business For Yourself, Not By Yourself.
       be_in_business_p1: "Salon professionals choose Sola for many reasons: to create a one-of-a-kind salon culture, set their own schedule, experience more privacy with guests and make more money, for starters. But mainly, it's about <strong>freedom and control</strong>. We provide high-end, move-in-ready studios combined with the support and tools you need to experience the freedom and benefits of salon ownership."
-      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 15,000 independent salon owners to get one step closer to living the life you love!
+      be_in_business_p2: From beautiful studios to exclusive deals, education and technology, Sola empowers you to live your best life, both personally and professionally. So, join our community of more than 16,000+ independent salon owners to get one step closer to living the life you love!
       freedom_heading: Sola gives you the freedom to...
       freedom_tile_1: Escape salon politics and drama in your own private, secure studio.
       freedom_tile_2: Set your own pricing for services and products.
@@ -906,5 +930,80 @@ en:
       view_all_locations: View All Locations
       find_a_studio: Find a Studio
       contact_us: Contact Us
-
-
+      solagenius-subtitle: 'Step up your game with SolaGenius: a cutting edge app designed to supercharge your Sola business'
+      sign-up-for-free-trial: Sign Up for Free Trial
+      gift-cards-available: Gift cards now available
+      book-now-service-header: Our revolutionary online search and booking engine.
+      book-now-service-description: BookNow gives SolaGenius users more visibility and scheduling power than ever before. Get found, get booked and fill your books!
+      watch-video-btn: Watch the Video
+      success-story: Success Story
+      industry-leading-education-logo-text: to help you work smarter, not harder.
+      solagenius-modal:
+        success-story:
+          name: Ashley Lantz
+          paragraph-1: Becoming an independent stylist can be nerve-racking for a number of reasons. One of my main concerns was attracting new clients without having the option of taking walk-ins like I did at my previous salon.
+          paragraph-2: Clients can go to the website and put in what service they’re looking for and BookNow will automatically pull up all SolaGenius users in the client’s preferred area and their available times. I got to a point last year where I had to stop accepting new clients because BookNow was constantly reeling in new guests for me! It’s one of the many benefits of not only being at Sola but being a SolaGenius user as well.
+          sign1: TresPassing Studio
+          sign2: Avondale, AZ
+      education-feature:
+        title:
+          virtual-education: virtual education
+          sola-blog: sola blog
+          sola-stories-podcast: sola stories podcast
+          sola-sessions: sola sessions
+      education-feature-modal:
+        virtual-education:
+          title: 'Virtual Education:'
+          paragraph-1: Free webinars plus on-demand video content created by your favorite brands and educators to help you stay connected, inspired and thriving as an independent business owner.
+          paragraph-2: <ul>
+                          <li>Marketing and Business</li>
+                          <li>Artistic Techniques for All Specialties</li>
+                          <li>Social Media Strategy</li>
+                          <li>How to Set Boundaries</li>
+                          <li>Mental Health</li>
+                          <li>Tips for Entrepreneurial Success</li>
+                          <li>And so much more…</li>
+                        </ul>
+          subtitle: 'Topics include:'
+          button: See Our Webinars
+        sola-blog:
+          title: 'Sola Blog:'
+          paragraph-1: Chock-full of marketing and business information alongside Sola success stories to elevate your business and propel your growth.
+          paragraph-2: ''
+          subtitle: ''
+          button: Check Out Our Blog
+        sola-stories-podcast:
+          title: 'Sola Stories Podcast:'
+          paragraph-1: Join us every week to learn from independent salon owners and industry thought-leaders to inspire you to chase your dreams, elevate your career and experience the freedom of salon ownership.
+          paragraph-2: ''
+          subtitle: ''
+          button: Listen to Our Sola Stories
+        sola-sessions:
+          title: 'Sola Sessions:'
+          paragraph-1: ''
+          paragraph-2: <p>Our in-person, Sola-exclusive education events around the country feature the industry’s top business, marketing and artistic educators. The Sola Sessions harnesses inspiration, education and community to help our Solapreneurs not only be successful artists but thriving business owners as well. We can’t wait to see you all again in person at the Sola Sessions in 2022!</p>
+          subtitle: Inspiration. Education. Community.
+          button: Watch Video
+      beauty-hive:
+        title: BeautyHive
+        subtitle: To help our Sola pros save time and money, we’ve partnered with <strong>BeautyHive</strong>, an online professional beauty retailer, created just for independents!
+        learn-more: Learn More
+        content:
+          title: Introducing a sweeter way to buy professional beauty products!
+          text: At Sola, our goal is to help you succeed as an independent salon owner. That’s why we partnered with BeautyHive to create a more efficient online shopping experience to help you keep your backbar and shelves fully stocked.
+          join: Join the Hive
+        features:
+          cashback: Earn up to 4% back on every order (no matter how small!) with Hive Rewards
+          perks: Receive Sola-exclusive perks, like double-point days and more
+          shipping-orders: Get free shipping on orders over $99
+          same-day-shipping: Enjoy same-day shipping* <div class="note">*Orders must be placed by 2p.m. EST on weekdays</div>
+          real-time-checks: Avoid surprise backorders with real-time inventory checks
+          guarantee:  Have peace of mind from our 100% happiness guarantee — if you’re not satisfied, we’ll work to make it right
+      sidebar:
+        why_sola: Why Sola
+        sola_pro: Sola Pro
+        solagenius: SolaGenius
+        booknow: BookNow
+        education: Education
+        beauty_hive: BeautyHive
+        the_sola_store: The Sola Store

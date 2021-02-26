@@ -1,28 +1,27 @@
+<div id="all-header">
 <div id="top-header">
   <div class="container">
     <div class="row">
       <ul class="nav">
         <% if I18n.locale.to_s == 'pt-BR' %>
           <li class="social"><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social last"><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% elsif I18n.locale.to_s == "en-CA"%>
           <li class="social"><%= link_to 'https://www.facebook.com/SolaCanada/', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-          <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <li class="social last"><%= link_to 'https://www.instagram.com/solacanada/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.instagram.com/solacanada/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% else %>
           <li class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social"><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-          <li class="social"><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-          <li class="social last"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% end %>
+        <li class="social"><%= link_to 'https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg', :target => '_blank' do %><span class="ss-social-regular ss-youtube"></span><% end %></li>
+        <li class="social last"><%= link_to 'https://www.linkedin.com/company/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-linkedin"></span><% end %></li>
         <% if I18n.locale.to_s == 'en' %>
-          <li class="border-left nav-booknow-button"><%= link_to :booknow_search do %>Book Now<% end %></li>
+          <li class="border-left"><%= link_to raw(t('page.franchising.title')), 'https://www.solafranchising.com', :target => '_blank' %></li>
         <% end %>
         <li class="border-left"><%= link_to :contact_us do %><%= raw t 'header.contact_us' %><% end %></li>
         <% if I18n.locale.to_s == 'en' %>
           <li class="border-left">
-            <%= link_to 'https://www.thesolastore.com' do %>The Sola Store<% end %>
+            <%= link_to 'In The News', :news %>
           </li>
         <% else %>
           <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
@@ -42,15 +41,10 @@
       <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('logo_name')) %><% end %>
 
       <ul class="sola-nav">
-        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', 'data-nav' => "own-your-salon" %></h4></li>
-        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
-        <% if I18n.locale.to_s != 'pt-BR' %>
-          <li><h4><%= link_to raw(t('page.franchising.title')), 'https://www.solafranchising.com', :class => 'ga-et', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Header' %></h4></li>
-        <% end %>
         <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
-        <% if I18n.locale.to_s != 'pt-BR' %>
-          <li><h4><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></h4></li>
-        <% end %>
+        <li><h4><%= link_to raw(t('page.book_now.book_an_appointment')), :booknow_search %></h4></li>
+        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h4></li>
+        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
         <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
       </ul>
 
@@ -62,73 +56,6 @@
     </div>
   </div>
 </div>
-
-
-
-<% if I18n.locale.to_s == 'pt-BR' %>
-  <div class="oys-nav has-3" data-nav="own-your-salon">
-    <ul>
-      <li>
-        <%= link_to :why_sola do %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/why-sola/1_own.jpg' %>
-          <h4><%= t 'page.why_sola.title' %></h4>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to :our_studios do %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/our-studios/2_amenities.jpg' %>
-          <h4><%= t 'nav.our_studios' %></h4>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to :sola_pro do %>
-          <%= image_tag 'pro/2020-Sola-Pro-R1.jpg' %>
-          <h4><%= t 'nav.sola_pro' %></h4>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-<% else %>
-  <div class="oys-nav <%= I18n.locale.to_s == 'en' ? 'has-5' : nil %> <%= I18n.locale.to_s == 'pt-BR' ? 'has-3' : nil %>" data-nav="own-your-salon">
-    <ul>
-      <li>
-        <%= link_to :why_sola do %>
-          <%= image_tag 'own_nav/1_own.jpg' %>
-          <h4><%= t 'page.why_sola.title' %></h4>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to :our_studios do %>
-          <%= image_tag 'own_nav/2_amenities.jpg' %>
-          <h4><%= t 'nav.our_studios' %></h4>
-        <% end %>
-      </li>
-      <% if I18n.locale.to_s != 'pt-BR' %>
-        <li>
-          <%= link_to :sola_sessions do %>
-            <%= image_tag 'own_nav/4_sessions.jpg' %>
-            <h4><%= t 'nav.sola_sessions' %></h4>
-          <% end %>
-        </li>
-      <% end %>
-      <li>
-        <%= link_to :sola_pro do %>
-          <%= image_tag 'pro/2020-Sola-Pro-R1.jpg' %>
-          <h4><%= t 'nav.sola_pro' %></h4>
-        <% end %>
-      </li>
-      <% if I18n.locale.to_s == 'en' %>
-        <li>
-          <%= link_to :solagenius do %>
-            <%= image_tag 'own_nav/5_solagenius.jpg' %>
-            <h4><%= t 'nav.solagenius' %></h4>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 
 <% if I18n.locale.to_s == 'pt-BR' %>
   <div class="oys-nav has-4" data-nav="about-us">
@@ -203,3 +130,4 @@
     </ul>
   </div>
 <% end %>
+</div>

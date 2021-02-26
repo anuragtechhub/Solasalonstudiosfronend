@@ -250,7 +250,7 @@
     position: absolute;
     left: 20px;
     right: 20px;
-  } 
+  }
   .sola-genius-hero-heading {
     top: 55%;
 
@@ -262,8 +262,8 @@
 
     font-size: 29px !important;
     line-height: 35px !important;
-  } 
-} 
+  }
+}
 
 .desktop-br {
   display: block;
@@ -314,14 +314,14 @@
 //     text-transform: uppercase;
 //     color: #FFF !important;
 //   }
-// } 
+// }
 
 .sola-genius-phone-gallery-wrapper .arrow-left {
   left: -80px;
   background: asset-url('own/left-arrow.png') no-repeat;
   background-size: 40px 67px;
   width: 40px;
-  height: 67px;  
+  height: 67px;
   opacity: 0.4;
   transition: opacity .25s ease !important;
   -moz-transition: opacity .25s ease !important;
@@ -337,7 +337,7 @@
   background: asset-url('own/right-arrow.png') no-repeat;
   background-size: 40px 67px;
   width: 40px;
-  height: 67px;  
+  height: 67px;
   opacity: 0.4;
   transition: opacity .25s ease !important;
   -moz-transition: opacity .25s ease !important;
@@ -345,7 +345,7 @@
 
   &:hover {
     opacity: 0.2;
-  }  
+  }
 }
 
 .sola-genius {
@@ -361,7 +361,7 @@
     // min-height: 90vh;
     // height: 90vh;
     padding: 0;
-    // background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed; 
+    // background: asset-url('own/sola-letters-background.gif') no-repeat center center fixed;
     // -webkit-background-size: cover;
     // -moz-background-size: cover;
     // -o-background-size: cover;
@@ -376,6 +376,10 @@
 
   .sola-genius-phone-gallery-desktop {
     display: block;
+
+    .one-third:last-of-type {
+      max-width: 366px;
+    }
   }
 
   .sola-genius-phone-gallery-mobile {
@@ -394,7 +398,7 @@
 
     top: 71px;
     left: 63px;
-    
+
     width: (241px / 1.5) + .33 !important;
     height: (433px / 1.5) !important;
 
@@ -466,7 +470,7 @@
       }
       &.credit-card-processing-icon {
         top: 5px;
-      }     
+      }
       &.analytics-and-reports-icon {
         top: 3px;
       }
@@ -603,7 +607,7 @@
     p {
       margin: 30px 0 0 0;
     }
-    
+
     strong {
       font-size: 15px;
       line-height: 17px;
@@ -625,7 +629,7 @@
     margin-top: 0px;
     padding: 120px 0px;
     text-align: center;
-    background: #000 asset-url('Genius_CTA_BG.jpg') no-repeat center center; 
+    background: #000 asset-url('Genius_CTA_BG.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -694,7 +698,7 @@
     margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
     width: (707px / 1.75);
     height: (205px / 1.75);
-  }  
+  }
 
   .sola-genius {
 
@@ -703,7 +707,7 @@
       display: block;
       overflow: hidden;
     }
-    
+
     .owl-theme .owl-controls .owl-pagination {
       display: block;
       bottom: auto !important;
@@ -775,7 +779,7 @@
       width: 100%;
       display: block;
       float: none;
-      margin: 0;
+      margin: 10px auto;
     }
 
     .sola-genius-phone-gallery-wrapper {
@@ -816,7 +820,7 @@
     }
 
     .sola-genius-get-started-desktop {
-      margin: 15px auto 0 auto;
+      margin: 25px auto 0 auto;
       text-align: center;
 
       a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
@@ -824,7 +828,7 @@
         max-width: 350px;
         margin: 0 auto;
       }
-      
+
       p {
         margin-top: 10px;
       }
@@ -872,11 +876,11 @@
           display: block;
         }
       }
-    }  
+    }
 
     .sola-genius-gallery {
       padding: 0;
-      // background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed; 
+      // background: asset-url('own/sola-letters-background-mobile.gif') no-repeat center center fixed;
       // -webkit-background-size: cover;
       // -moz-background-size: cover;
       // -o-background-size: cover;
@@ -927,7 +931,7 @@
     margin: (-102.5px / 1.75) 0 0 (-353.5px / 1.75);
     width: (707px / 1.75);
     height: (205px / 1.75);
-  } 
+  }
 
   .own-your-salon .hero-fullscreen .sola-genius-hero-heading {
     top: 50%;
@@ -958,8 +962,8 @@
       width: 100%;
       padding: 0;
       margin: 0;
-    }    
-  } 
+    }
+  }
 
   .sola-genius .owl-theme .owl-controls .owl-pagination {
     top: -60px;
@@ -985,7 +989,7 @@
 
       top: 43px;
       left: 38px;
-      
+
       width: (241px / 2.5) + .33 !important;
       height: (433px / 2.5) !important;
 
@@ -1029,7 +1033,7 @@
     margin: (-102.5px / 1.95) 0 0 (-353.5px / 1.95);
     width: (707px / 1.95);
     height: (205px / 1.95);
-  }   
+  }
 }
 
 @media (max-width : 540px) {
@@ -1037,13 +1041,13 @@
     margin: (-102.5px / 2.55) 0 0 (-353.5px / 2.55);
     width: (707px / 2.55);
     height: (205px / 2.55);
-  }   
+  }
 }
 
 /* iphone 6 */
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px) { 
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
   .own-your-salon .hero-fullscreen .sola-genius-hero-heading {
     top: 54%;
   }
@@ -1058,10 +1062,10 @@ and (max-device-width : 667px) {
 }
 
 /* iphone 5s */
-@media only screen 
-and (min-device-width : 320px) 
+@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 568px)
-and (device-aspect-ratio: 40/71) { 
+and (device-aspect-ratio: 40/71) {
   .own-your-salon .hero-fullscreen img.introducing_sola_genius {
     top: 34%;
   }
@@ -1091,7 +1095,7 @@ and (device-aspect-ratio: 40/71) {
 
       top: 37px;
       left: 33px;
-      
+
       width: (241px / 2.85) + .33 !important;
       height: (433px / 2.85) !important;
 
@@ -1111,8 +1115,8 @@ and (device-aspect-ratio: 40/71) {
       .arrow-right, .arrow-left {
         display: none;
       }
-    } 
-  } 
+    }
+  }
   .sola-genius .owl-theme .owl-controls .owl-pagination {
     padding-top: 5px;
   }
@@ -1210,7 +1214,7 @@ and (device-aspect-ratio: 40/71) {
     .sola-genius-iphone {
       bottom: -420px;
     }
-    
+
     .owl-carousel .item .item-content .left-align-container {
 
       h2 {
@@ -1250,13 +1254,13 @@ and (device-aspect-ratio: 40/71) {
         font-size: 24px;
         margin-bottom: -10px;
       }
-    }  
+    }
     .sola-genius-pricing {
       padding: 60px 20px;
 
       a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
         @include chalet_new_york;
-        font-size: 18px;  
+        font-size: 18px;
         line-height: 18px;
         display: inline-block;
         padding-top: 18px;
@@ -1264,16 +1268,16 @@ and (device-aspect-ratio: 40/71) {
       }
 
       p {
-        font-size: 14px;  
+        font-size: 14px;
         line-height: 24px;
 
         .large {
-          font-size: 24px;  
+          font-size: 24px;
           line-height: 26px;
         }
 
         strong {
-          font-size: 36px;  
+          font-size: 36px;
           line-height: 40px;
         }
       }
@@ -1283,7 +1287,7 @@ and (device-aspect-ratio: 40/71) {
       h2 {
         margin-top: -50px;
       }
-    }      
+    }
   }
 }
 
@@ -1292,5 +1296,12 @@ and (device-aspect-ratio: 40/71) {
     .owl-carousel .item .img-wrap img {
       left: -25%;
     }
+  }
+}
+
+@media (min-width : 2000px) {
+  .sola-genius .sola-genius-gallery-inner .container {
+    width: 50vw !important;
+    max-width: unset;
   }
 }

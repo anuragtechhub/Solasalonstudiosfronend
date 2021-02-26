@@ -9,7 +9,7 @@ class PublicWebsiteController < ApplicationController
 
   helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_locations_msas_json, :all_states_ca, :all_locations_ca_msas, :all_states_ca_json, :all_locations_ca_msas_json, :merge_solagenius_utm_params
 
-  #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if => 
+  #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if =>
 
   # def auth_if_canada
   #   if I18n.locale != :en
@@ -70,10 +70,10 @@ class PublicWebsiteController < ApplicationController
     #   return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     # end
     # p "all_states=#{all_states}"
-    # return all_states    
+    # return all_states
   end
 
-  def all_states_us   
+  def all_states_us
     cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
     all_states = Rails.cache.fetch(cache_key) do
       return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
@@ -177,7 +177,7 @@ class PublicWebsiteController < ApplicationController
   def set_locale
     #p "set_locale #{request.domain}"
     if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
-      I18n.locale = 'en-CA' 
+      I18n.locale = 'en-CA'
     elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
       I18n.locale = 'pt-BR'
     else

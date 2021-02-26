@@ -1,11 +1,11 @@
 $(function () {
-	
+
 	/* solapro carousel */
   var currentSlideIndex = 0;
   var totalSlides = $('.sola-pro-phone-carousel').find('.item').length;
   $('.sola-pro-phone-carousel').each(function () {
     var $this = $(this);
-    
+
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
@@ -39,7 +39,7 @@ $(function () {
     }
 
     if ($this.data('animation')) {
-      delete options['transitionStyle']; 
+      delete options['transitionStyle'];
       options['animateOut'] = 'fadeOut'
     }
 
@@ -110,12 +110,11 @@ $(function () {
     if ($inner.height() > $window.height()) {
       //console.log('content taller than window...');
       // content taller than window...
-      $('#sola-pro-gallery').height($inner.height());
+      $('#sola-pro-gallery').height($inner.height()+20);
       $inner.width($window.width()).css({top: 0, marginTop: 0});
     } else {
-      //console.log('default...');
-      // default
-      $('#sola-pro-gallery').height($window.height());
+      //const value = document.documentElement.clientWidth > 550 ? '1160px' : '720px';
+      $('#sola-pro-gallery').height('720px');
       $inner.width($window.width()).css({top: '50%', marginTop: -($inner.height() / 2) + 'px'});
     }
 
@@ -126,7 +125,7 @@ $(function () {
       AOS.refresh();
     }
   }).trigger('resize.solapro');
-  
+
   setTimeout(function () {
     $(window).trigger('resize.solapro');
   }, 1);

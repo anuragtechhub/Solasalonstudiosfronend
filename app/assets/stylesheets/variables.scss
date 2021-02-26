@@ -10,7 +10,7 @@ $brand-pink: #EC008C;
 $brand-pink-hover: #f26ab9;
 
 @mixin helvetica() {
-	font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue", 
+	font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue",
 	font-style: normal;
 	font-weight: 400;
 }
@@ -27,7 +27,7 @@ $brand-pink-hover: #f26ab9;
 	font-weight: 400;
   -moz-osx-font-smoothing: antialiased; //auto
 	-webkit-font-smoothing: antialiased; //auto
-	font-smoothing: antialiased; //auto				
+	font-smoothing: antialiased; //auto
 }
 
 @mixin chalet_paris() {
@@ -57,4 +57,14 @@ $brand-pink-hover: #f26ab9;
 	font-family: "Northwell", script, serif;
 	font-style: normal;
 	font-weight: 400;
+}
+
+@mixin times_new_roman() {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: -1.9px;
+}
+
+@mixin playfair() {
+  font-family: 'PlayfairDisplay-Regular', serif;
+  letter-spacing: 0;
 }

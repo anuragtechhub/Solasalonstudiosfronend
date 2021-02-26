@@ -8,7 +8,7 @@ $(function () {
 
   $('.hero-fullscreen .dot').on('click', function () {
     var $this = $(this);
-    
+
     $('.hero-fullscreen .dot').removeClass('active');
     $this.addClass('active');
     $('#amenity-description').html($this.data('html'));
@@ -66,7 +66,7 @@ $(function () {
   var totalSlides = $('.sola-genius-phone-carousel').find('.item').length;
   $('.sola-genius-phone-carousel').each(function () {
     var $this = $(this);
-    
+
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
@@ -100,7 +100,7 @@ $(function () {
     }
 
     if ($this.data('animation')) {
-      delete options['transitionStyle']; 
+      delete options['transitionStyle'];
       options['animateOut'] = 'fadeOut'
     }
 
@@ -187,7 +187,7 @@ $(function () {
       AOS.refresh();
     }
   }).trigger('resize.solagenius');
-  
+
   setTimeout(function () {
     $(window).trigger('resize.solagenius');
   }, 1);
@@ -197,7 +197,7 @@ $(function () {
   var totalSlides = $('.sola-pro-phone-carousel').find('.item').length;
   $('.sola-pro-phone-carousel').each(function () {
     var $this = $(this);
-    
+
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
@@ -231,7 +231,7 @@ $(function () {
     }
 
     if ($this.data('animation')) {
-      delete options['transitionStyle']; 
+      delete options['transitionStyle'];
       options['animateOut'] = 'fadeOut'
     }
 
@@ -318,7 +318,7 @@ $(function () {
       AOS.refresh();
     }
   }).trigger('resize.solapro');
-  
+
   setTimeout(function () {
     $(window).trigger('resize.solapro');
   }, 1);

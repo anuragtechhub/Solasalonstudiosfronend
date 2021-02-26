@@ -1,14 +1,11 @@
 <%= react_component 'ContactForm', {
   all_states: defined?(location_view) ? [] : all_states,
   all_locations: defined?(location_view) ? [] : JSON.parse(all_locations_msas_json),
-
   source: params[:utm_source] || cookies[:utm_source] || '',
   medium: params[:utm_medium] || cookies[:utm_medium] || '',
   campaign: params[:utm_campaign] || cookies[:utm_campaign] || '',
   content: params[:utm_content] || cookies[:utm_content] || '',
   hutk: cookies[:hubspotutk] || '',
-
-
   always_enabled: defined?(always_enabled) ? always_enabled : false,
   contact_us_path: contact_us_request_a_tour_path,
   contact_form_success: defined?(@contact_form_success) ? true : false,

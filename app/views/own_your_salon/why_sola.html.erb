@@ -1,26 +1,49 @@
-<%= render 'shared/public_website/own_your_salon_nav', :page => :why_sola %>
+<div class="sidebar">
+  <div class="page-nav-overlay">
+    <div class="sidebar-content nav">
+      <% %i[why_sola sola_pro solagenius booknow education beauty_hive the_sola_store].each do |section| %>
+        <div class="nav-item">
+          <div class="text"><%= t("page.why_sola.sidebar.#{section}") %></div>
+          <%= link_to "##{section}", class: 'nav-link' do %>
+            <div class="circle"></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/public_website/own_your_salon_nav_new', :page => :why_sola %>
 
 <div class="why-sola">
 
   <%= render 'why_sola_hero' %>
 
-  <div class="container content-container">
+  <div id="why_sola" class="container content-container">
+    <div class="flex-row justify-content-center learn-more-button-wrapper">
+      <div class="learn-more-button d-flex flex-column align-items-center">
+        <a style="color: #D6D6D6;font-size: 1.4em;text-decoration: none;" href="#why_sola"><%= t('page.see_more') %></a>
+        <span class="fa fa-angle-down text-center" style="font-size: 1.4em"></span>
+      </div>
+    </div>
     <div class="row">
       <div class="six columns">
         <h2><%= t('page.why_sola.be_in_business_heading') %></h2>
         <p><%= t('page.why_sola.be_in_business_p1').html_safe %></p>
         <p><%= t('page.why_sola.be_in_business_p2').html_safe %></p>
+      </div>
+      <div class="six columns with-action-button">
         <% if I18n.locale.to_s == 'en' %>
           <h2>Intrigued by the idea of being your own boss?</h2>
           <p>Download our free guide to discover if the independent life is right for you!</p>
-          <p><a href="/goingindependent" class="button primary">Download now</a></p>
+          <p><a href="/goingindependent" class="button primary">Download Now</a></p>
         <% end %>
       </div>
       <div class="six columns">
         <% if I18n.locale.to_s == 'pt-BR' %>
           <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', :class => 'u-full-width' %>
         <% else %>
-          <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/why_sola_content.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :class => 'u-full-width' %>
         <% end %>
       </div>
     </div>
@@ -53,7 +76,7 @@
             <span class="icon chat"></span>
             <span class="text"><%= t('page.why_sola.freedom_tile_4') %></span>
           </div>
-        </div>                        
+        </div>
       </div>
 
       <div class="row">
@@ -80,23 +103,20 @@
             <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
             <%= link_to :locations do %><%= t('page.why_sola.freedom_tile_8_link') %><% end %>
           </div>
-        </div>                        
+        </div>
       </div>
-
-      <% if I18n.locale.to_s == 'en' %>
-        <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :how_can_we_help_you] %>
-      <% end %>
 
       <div class="row mobile-only">
         <div class="three columns">
           <div class="freedom-tile active-tile">
             <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
             <%= link_to :locations do %><%= t('page.why_sola.freedom_tile_8_link') %><% end %>
+            <p class="text-center freedom-text-mobile"><%= t('page.why_sola.freedom_text') %></p>
           </div>
         </div>
       </div>
 
-      <p class="text-center"><%= t('page.why_sola.freedom_text') %></p>
+      <p class="text-center freedom-text-desktop"><%= t('page.why_sola.freedom_text') %></p>
     </div>
   </div>
 
@@ -104,100 +124,251 @@
     <div class="container">
       <h1 class="chalet"><%= t('page.why_sola.flexibility_statement') %></h1>
       <p><%= t('page.why_sola.flexibility_subhead1') %></p>
-      <div class="bottom-copy">
-        <p><%= t('page.why_sola.flexibility_subhead2') %></p>
-        <p><%= t('page.why_sola.flexibility_subhead3') %></p>
+    </div>
+  </div>
+
+  <div class="sola-difference text-center">
+    <h2>
+      Experience the Sola
+      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/difference.png', height: 88 %>
+    </h2>
+  </div>
+
+  <div id="sola_pro" class="sola-pro">
+    <div class="hero-wrapper">
+      <div class="hero-carousel owl-carousel owl-theme">
+        <div class="item">
+          <div class="img-wrap"></div>
+          <div class="item-content overlayed" style="top: 40px;">
+            <div class="center-align-container" style="max-width: 1060px;">
+              <%= image_tag 'pro/Sola-Pro-Logo-2020-7@2x.png', class: 'sola-pro-logo u-full-width' %>
+              <div class="logo-desc"> An exclusive app to keep you educated, inspired, and connected. </div>
+              <%= link_to '#sola-pro-gallery-inner', class: 'arrow-link' do %>
+                <i class="fa fa-angle-down text-center"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sola-pro-gallery" id="sola-pro-gallery">
+      <div class="sola-pro-gallery-inner" id="sola-pro-gallery-inner" data-aos="fade-down" data-aos-offset="200">
+        <%= render 'sola_pro_gallery_desktop' %>
+      </div>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-offset="200">
+      <div class="block-quote-testimonial">
+        <h3><%= t('page.sola_pro.testimonial_text_new') %></h3>
+        <%= image_tag 'pro/TahesaNelson.png' %>
+        <h4><%= t('page.sola_pro.testimonial_author_new') %></h4>
+      </div>
+    </div>
+    <% content_for(:scripts) { javascript_include_tag('sola_pro') } %>
+  </div>
+
+  <div id="solagenius" class="sola-genius">
+    <div class="hero-wrapper">
+      <div class="sologenius-logo">solagenius</div>
+      <div class="solagenius-subtitle"><%= t('page.why_sola.solagenius-subtitle') %></div>
+      <div class="gift-cards">
+        <a class="button primary" href="https://sola.glossgenius.com/signup?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon">
+          <%= t('page.why_sola.sign-up-for-free-trial') %>
+        </a>
+      </div>
+      <%= link_to '#sola-genius-gallery-inner', class: 'arrow-link' do %>
+        <i class="fa fa-angle-down text-center"></i>
+      <% end %>
+    </div>
+
+    <div class="sola-genius-gallery" id="sola-genius-gallery">
+      <div class="sola-genius-gallery-inner" id="sola-genius-gallery-inner">
+        <div class="explore-sola-genius">
+          <h2 data-aos="fade-down" data-aos-offset="200"><%= t('page.sola_genius.run_your_sola_like_a_boss') %></h2>
+        </div>
+        <%= render 'sola_genius_gallery_desktop' %>
       </div>
     </div>
   </div>
 
-  <div class="sola-benefits">
+  <% content_for(:scripts) { javascript_include_tag('solagenius') } %>
+
+  <div id="booknow" class="book-now-service">
     <div class="container">
-      
-      <h2 class="text-center"><%= t('page.why_sola.beautiful_studios_exclusive_perks').html_safe %></h2>
-      <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
-      
-      <div class="row">
-        <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
-          <%= link_to :our_studios, :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <% if I18n.locale.to_s == 'pt-BR' %>
-                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg' %>
-              <% else %>
-                <%= image_tag 'WhySola/OurStudios.jpg' %>
-              <% end %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.beautiful_studios') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.beautiful_studios_text') %></span>
+      <div class="book-now-service-main-content">
+        <div class="book-now-service-text">
+          BOOK<strong>NOW</strong> by SOLAGENIUS
+        </div>
+        <h2 class="book-now-service-header">
+          <%= t('page.why_sola.book-now-service-header') %>
+        </h2>
+        <div class="book-now-service-description">
+          <%= t('page.why_sola.book-now-service-description') %>
+        </div>
+
+        <div class="video-block">
+          <%= link_to '//www.youtube.com/watch?v=6ubV89EdbmI', rel: 'nofollow', class: 'button primary play-video' do %>
+            <i class="fa fa-play-circle-o" aria-hidden="true"></i>
+            <%= t('page.why_sola.watch-video-btn') %>
           <% end %>
         </div>
-        <% if I18n.locale.to_s != 'pt-BR' %>
-          <div class="columns four">
-            <%= link_to :blog, :class => 'benefit-tile' do %>
-              <div class="img-wrap">
-                <%= image_tag 'WhySola/Community_Support.jpg' %>
-                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
-              </div>
-              <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
-            <% end %>
+
+        <%= link_to "#success-story-modal", class: 'open-magnific-popup-link'  do %>
+          <div class="book-now-service-success-story">
+            <div class="book-now-service-success-story-logo">
+              <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/2018-Faces-of-Sola.png' %>
+            </div>
+            <div class="book-now-service-success-story-title">
+              <span><%= t('page.why_sola.success-story') %></span>
+            </div>
           </div>
         <% end %>
-        <div class="columns four">
-          <%= link_to 'https://www.solasalonstudios.com/blog/is-it-time-to-update-your-sola-website', :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <%= image_tag 'WhySola/Webpage.jpg' %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
-          <% end %>
-        </div>        
-      </div>
 
-      <div class="row">
-        <div class="<% if I18n.locale.to_s != 'en' %>offset-by-two<% end %> columns four">
-          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <% if I18n.locale.to_s == 'en' %>
-                <%= image_tag 'WhySola/SolaPro.jpg' %>
-              <% else %>
-                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
-              <% end %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_pro') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.sola_pro_text') %></span>
-          <% end %>
-        </div>
-        <div class="columns four">
-          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
-            <div class="img-wrap">
-              <%= image_tag 'WhySola/SolaSessions.jpg' %>
-              <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_sessions') %></span></div>
-            </div>
-            <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
-          <% end %>
-        </div>
-        <% if I18n.locale.to_s == 'en' %>
-          <div class="columns four">
-            <%= link_to :solagenius, :class => 'benefit-tile' do %>
-              <div class="img-wrap">
-                <%= image_tag 'WhySola/SolaGenius.jpg' %>
-                <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
+        <div class="mfp-hide industry-leading-education-feature-modal" id="success-story-modal">
+          <div class="wrapper">
+            <div class="info-wrapper">
+              <div class="info">
+                <div class="body">
+                  <p class="subtitle"><%= t("page.why_sola.solagenius-modal.success-story.name") %></p>
+                  <p><%= t("page.why_sola.solagenius-modal.success-story.paragraph-1") %></p>
+                  <p><%= t("page.why_sola.solagenius-modal.success-story.paragraph-2").html_safe %></p>
+                  <p class="subtitle"><%= t("page.why_sola.solagenius-modal.success-story.sign1") %></p>
+                  <p class="subtitle"><%= t("page.why_sola.solagenius-modal.success-story.sign2") %></p>
+                </div>
               </div>
-              <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
-            <% end %>
-          </div>  
-        <% end %>      
-      </div>
+            </div>
 
-    </div> <!-- container -->
-  </div> <!-- sola-benefits -->
+            <div class="image success-story">
+              <div class="icon"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-now-service-main-image"></div>
+    <div class="book-now-service-square-image"></div>
+  </div>
+
+  <div id="education" class="industry-leading-education">
+    <div class="container">
+      <div class="industry-leading-education-logo"></div>
+      <div class="industry-leading-education-logo-text">
+        <%= t('page.why_sola.industry-leading-education-logo-text') %>
+      </div>
+      <div class="industry-leading-education-features d-flex flex-wrap flex-lg-nowrap justify-content-center">
+        <% %w[virtual_education sola_blog sola_stories_podcast sola_sessions].each do |feature| %>
+          <% target = '_self'
+             link = case feature
+                    when 'virtual_education'
+                      target = '_blank'
+                      'https://www.youtube.com/playlist?list=PLDtxLW3eBObMYyz3QhRK9yeeL-TmHEJxe'
+                    when 'sola_blog'
+                      '/blog'
+                    when 'sola_stories_podcast'
+                      '/blog/category/sola-stories-podcast'
+                    when 'sola_sessions'
+                      target = '_blank'
+                      'https://www.youtube.com/watch?v=F1BGvPcLSV4'
+                    else
+                      '#'
+                    end
+          %>
+          <% additional_class = case feature
+              when 'sola_sessions'
+                'play-video'
+              else
+                ''
+              end
+          %>
+          <% dashed_feature = feature.humanize.parameterize %>
+          <% modal_id = dashed_feature + '-modal' %>
+          <div class="industry-leading-education-feature-wrapper">
+            <%= link_to "##{modal_id}", class: 'open-magnific-popup-link industry-leading-education-feature' do %>
+              <div class="industry-leading-education-feature-icon" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= dashed_feature %>.png')"></div>
+              <div class="industry-leading-education-feature-title">
+                <%= t("page.why_sola.education-feature.title.#{dashed_feature}") %>
+              </div>
+            <% end %>
+
+            <div class="mfp-hide industry-leading-education-feature-modal" id="<%= modal_id %>">
+              <div class="wrapper">
+                <div class="info-wrapper">
+                  <div class="info">
+                    <div class="title"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.title") %></div>
+                    <div class="body">
+                      <p><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-1") %></p>
+                      <p class="subtitle"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.subtitle") %></p>
+                      <%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-2").html_safe %>
+                      <%= link_to t("page.why_sola.education-feature-modal.#{dashed_feature}.button"), link, target: target, class: "button primary #{additional_class}" %>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="image <%= dashed_feature %>">
+                  <div class="icon"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="beauty_hive">
+    <div class="img-wrap">
+      <div class="wrapper">
+        <div class="beauty-hive-title-wrapper">
+          <i class="beauty-hive-icon"></i>
+          <div class="beauty-hive-title"><%= t('page.why_sola.beauty-hive.title') %></div>
+        </div>
+        <div class="beauty-hive-subtitle">
+          <%= t('page.why_sola.beauty-hive.subtitle').html_safe %>
+        </div>
+        <div class="learn-more"><a href="#more_about_beauty_hive"><%= t('page.why_sola.beauty-hive.learn-more') %></a></div>
+      </div>
+    </div>
+    <div id="more_about_beauty_hive" class="container">
+      <div class="icon-crown"></div>
+      <div class="content d-flex flex-wrap flex-lg-nowrap">
+        <div class="main">
+          <h2><%= t('page.why_sola.beauty-hive.content.title') %></h2>
+          <div class="main-text"><%= t('page.why_sola.beauty-hive.content.text') %></div>
+          <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
+        </div>
+
+        <div class="features">
+          <% %w[cashback perks shipping-orders same-day-shipping real-time-checks guarantee].each do |feature| %>
+            <div class="feature <%= feature %>">
+              <i class="icon <%= feature %>" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= feature %>-icon.png')"></i>
+              <text class="text"><%= t("page.why_sola.beauty-hive.features.#{feature}").html_safe %></text>
+            </div>
+          <% end %>
+          <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="the_sola_store" class="sola-store">
+    <div class="img-wrap">
+      <div class="image-on-hover">
+        <div class="container">
+          <div class="text">From apparel, aprons, capes and masks to water bottles, coffee cups and so much more - the Sola Store lets you rep your Sola pride in style!</div>
+          <%= link_to 'Shop Now', 'https://thesolastore.com/', class: 'button primary', target: '_blank' %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="search-for-a-salon">
     <div class="container">
 
       <h1 class="chalet"><%= t('page.why_sola.dont_just_dream_do') %></h1>
       <h1 class="chalet-new-york"><%= t('page.why_sola.become_a_salon_owner') %></h1>
-      
+
       <% if I18n.locale.to_s != 'pt-BR' %>
         <p><%= t('page.why_sola.search_for_a_salon') %></p>
 
@@ -230,11 +401,11 @@
 
 </div> <!-- why-sola -->
 
-<div class="floating-find-a-studio">
-  <%= link_to :contact_us, :class => "button primary" do %>
-    <%= t('page.why_sola.contact_us') %>
-  <% end %>
-</div>
+<!--<div class="floating-find-a-studio">-->
+  <%#= link_to :contact_us, :class => "button primary" do %>
+    <%#= t('page.why_sola.contact_us') %>
+  <%# end %>
+<!--</div>-->
 
 <% content_for(:scripts) { javascript_include_tag('search_salon') } %>
 <% content_for(:scripts) { javascript_include_tag('why_sola') } %>

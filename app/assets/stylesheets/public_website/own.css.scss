@@ -57,7 +57,7 @@
     }
     // text-transform: uppercase;
     // text-decoration: none;
-    // font-family: 'Dosis', sans-serif;  
+    // font-family: 'Dosis', sans-serif;
     // font-size: 12px;
     // font-weight: bold;
     // line-height: 16px;
@@ -110,7 +110,7 @@
 
       li {
         width: 100%;
-        margin-right: 0; 
+        margin-right: 0;
 
         a, a:link, a:hover, a:active {
           margin: 0;
@@ -184,7 +184,7 @@
   h2.brand {
     color: $brand-pink;
     font-size: 37px;
-    line-height: 45px;    
+    line-height: 45px;
   }
 
   h2.light {
@@ -263,7 +263,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0; 
+    right: 0;
     z-index: 99;
   }
 
@@ -280,17 +280,17 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0; 
+    right: 0;
 
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
     display: -ms-flexbox;      /* TWEENER - IE 10 */
     display: -webkit-flex;     /* NEW - Chrome */
-    display: flex; 
+    display: flex;
 
     flex-direction: column;
     justify-content: center;
-    align-items: center;     
+    align-items: center;
   }
 
   .hero-tabs {
@@ -339,7 +339,7 @@
         width: calc(20% - 3px);
       }
     }
-  }  
+  }
 
   .hero-heading {
     //margin-top: -60px;
@@ -478,24 +478,24 @@
       &.chair {
         top: 56%;
         left: 47%;
-      }    
+      }
 
       &.wash-basin {
         top: 54%;
         left: 59%;
-      } 
+      }
 
       &.tool-cabinet {
         top: 67%;
         left: 74%;
-      }    
+      }
 
       &.cabinetry {
         top: 40%;
         left: 23%;
-      } 
+      }
 
-    }    
+    }
   }
 
   #amenity-description {
@@ -565,7 +565,7 @@
     .gallery-button {
       margin: 60px auto 40px auto;
     }
-  } 
+  }
 
   .sola-pro-benefits {
     margin: 20px auto;
@@ -576,7 +576,7 @@
       list-style: none;
       margin: 30px 0;
     }
-  } 
+  }
 
   .sola-pro-copy {
     position: absolute;
@@ -599,7 +599,7 @@
       clear: both;
       margin-bottom: 5px;
       font-weight: 300;
-    }    
+    }
   }
 
   .sola_pro_logo {
@@ -621,7 +621,7 @@
     width: 565px !important;
     height: 168px !important;
     min-height: auto !important;
-  }  
+  }
 
   .download-buttons {
     margin-top: 40px;
@@ -691,7 +691,7 @@
         line-height: 20px !important;
         margin: -10px 0 0 -5px !important;
       }
-     } 
+     }
 
   }
 }
@@ -735,7 +735,7 @@
   .own-your-salon {
     h2.brand {
       font-size: 24px;
-      line-height: 33px;    
+      line-height: 33px;
     }
     h2.light {
       font-size: 29px;
@@ -842,22 +842,22 @@
     &.chair {
       top: 55%;
       left: 60%;
-    }    
+    }
 
     &.wash-basin {
       top: 44%;
       left: 54%;
-    } 
+    }
 
     &.tool-cabinet {
       top: 50%;
       left: 77%;
-    }    
+    }
 
     &.cabinetry {
       top: 35%;
       left: 90%;
-    } 
+    }
 
   }
 }
@@ -874,14 +874,14 @@
 ul.own-list {
   list-style-type: disc !important;
   margin-bottom: 0;
-  
+
   li {
     font-family: 'Lato', Arial, sans-serif;
     font-size: 17px;
     letter-spacing: 0px;
     line-height: 35px;
     font-weight: 300;
-    color: #474747;    
+    color: #474747;
     margin: 0 0 0 0 !important;
   }
 }
@@ -907,10 +907,10 @@ ul.own-list {
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
-    
+
     &:hover, &:active {
       opacity: 0.4;
-    } 
+    }
   }
 }
 
@@ -996,7 +996,7 @@ ul.own-list {
       width: 322.857px !important;
       height: 96px !important;
       min-height: auto !important;
-    }   
+    }
   }
 }
 
@@ -1011,7 +1011,7 @@ ul.own-list {
       width: (322.857px / 1.5) !important;
       height: (96px / 1.5) !important;
       min-height: auto !important;
-    }   
+    }
 
     .arrow-left {
       left: 10px;
@@ -1056,7 +1056,7 @@ ul.own-list {
       line-height: 19px;
       color: #FFF;
       text-align: center;
-    }    
+    }
   }
 
   .hide-on-mobile {
@@ -1115,22 +1115,22 @@ ul.own-list {
       &.chair {
         top: 52%;
         left: 58%;
-      }    
+      }
 
       &.wash-basin {
         top: 41%;
         left: 52%;
-      } 
+      }
 
       &.tool-cabinet {
         top: 50%;
         left: 75%;
-      }    
+      }
 
       &.cabinetry {
         top: 35%;
         left: 88%;
-      } 
+      }
     }
   }
 

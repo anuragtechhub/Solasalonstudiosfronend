@@ -3,7 +3,7 @@
 
 
 .financialguide {
-	
+
 	.giant-video-button-wrapper {
       position: relative;
       text-decoration: none;
@@ -51,7 +51,7 @@
         white-space: nowrap !important;
         word-spacing: 1px;
         letter-spacing: 1px;
-      }   
+      }
   }
 
 	.logo {margin: 0 auto; padding-top:5px; text-align: center;display: block;}
@@ -74,7 +74,7 @@
 	/*--header ends here--*/
 	/*--banner starts here--*/
 	/*--Salon starts here--*/
-	.Salon{background: asset_url('https://solasalonstudios.s3.amazonaws.com/covid_2020/covidhero.png') center no-repeat;width: 100%;background-size: cover;height: auto;}
+	.Salon{background: asset_url('https://d3p1kyyvw4qtho.cloudfront.net/covid_2020/covidhero.png') center no-repeat;width: 100%;background-size: cover;height: auto;}
 	.Salon-in-lft {display: flex;padding: 60px 0px 127px 0px !important;}
 	.Salon-in-lft figure{}
 	.Salon-in-lft figure img{}
@@ -95,7 +95,7 @@
 				color: #FFF;
 				text-decoration: none;
 			}
-			
+
 			// a:hover, a:active {
 			// 	text-decoration: underline;
 			// }
@@ -148,7 +148,7 @@
 	/*--hashtag starts here--*/
 	.hashtag{background: #f8f8f8;margin-top:10px;}
 	.hashtag-in{padding: 50px 0 42px 0;}
-	.hashtag-in .fa {    
+	.hashtag-in .fa {
 		font-weight: bold;
     font-size: 15px;
   }
@@ -209,7 +209,7 @@
 	}
 }
 
-@media (max-width: 1275px) { 
+@media (max-width: 1275px) {
 	.financialguide {
 		.watch-in {
 			top: 46%;
@@ -221,7 +221,7 @@
 	}
 }
 
-@media (max-width: 1100px) { 
+@media (max-width: 1100px) {
 	.financialguide {
 		.watch-in {
 			top: 46%;
@@ -233,7 +233,7 @@
 	}
 }
 
-@media (max-width: 1000px) { 
+@media (max-width: 1000px) {
 	.financialguide {
 		.header {
 	    height: 70px;
@@ -264,14 +264,14 @@
 
 	  .main-cont:before {
 	  	background: transparent;
-	  } 
+	  }
 	}
 }
 
 @media (max-width: 900px) {
 	.financialguide {
 		.Salon {
-	  	background: #9dd5ff url(https://solasalonstudios.s3.amazonaws.com/covid_2020/covidhero.png) center no-repeat;
+	  	background: #9dd5ff url(https://d3p1kyyvw4qtho.cloudfront.net/covid_2020/covidhero.png) center no-repeat;
 	  	background-size: cover;
 	  	width: auto;
 	  	height: 400px;
@@ -317,9 +317,9 @@
 		.contact-form {
 			margin-top: -20px;
 		}
-		
+
 		.Salon {
-	  	background: #9dd5ff url(https://solasalonstudios.s3.amazonaws.com/covid_2020/covidhero.png) center no-repeat;
+	  	background: #9dd5ff url(https://d3p1kyyvw4qtho.cloudfront.net/covid_2020/covidhero.png) center no-repeat;
 	  	background-size: cover;
 	  	padding: 0px;
 	  	width: auto;

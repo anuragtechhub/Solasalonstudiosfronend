@@ -31,7 +31,7 @@
 			color: #000;
 			text-decoration: none;
 			display: inline-block;
-			padding: 28px 0 23px 0; 
+			padding: 28px 0 23px 0;
 			@include transition(opacity 0.15s ease-in-out);
 			opacity: 1;
 		}
@@ -47,7 +47,21 @@
 			}
 		}
 	}
-
+    .why-sola &.page-nav-overlay {
+      position: sticky;
+      top: 122px;
+      background: #00000040 0% 0% no-repeat padding-box;
+      backdrop-filter: blur(6px);
+      .nav {
+        flex-wrap: nowrap;
+      }
+      a.active {
+        border-bottom: 2px solid white;
+      }
+      @media (max-width: 1200px) {
+        top: 100px;
+      }
+    }
 	&.page-nav-overlay {
 		position: absolute;
 		top: 0;
@@ -114,7 +128,7 @@ a.back-to-parent:hover, a.back-to-parent:active {
 
 		li {
 			a, a:link, a:visited, a:hover, a:active {
-				padding: 10.5px 0 5.5px 0; 
+				padding: 10.5px 0 5.5px 0;
 			}
 		}
 	}

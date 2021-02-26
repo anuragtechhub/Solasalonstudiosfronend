@@ -10,19 +10,19 @@ Solasalonstudios::Application.routes.draw do
   get 'google575b4ff16cfb013a.html' => 'home#google_verification'
   get 'BingSiteAuth.xml' => 'home#bing_verification'
   get 'sitemap.xml' => 'home#sitemap'
- 
+
   #get '5000' => 'home#sola_5000', :as => :sola_5000
-  get 'franchising' => 'home#franchising'
+  get 'franchising' => 'home#franchising', as: :franchising
 
 
   # About Us URLs
 
   get "about-us" => 'about_us#index', :as => :about_us
   get "about" => 'about_us#index'
-  
+
   get "who-we-are" => 'about_us#who_we_are', :as => :who_we_are
   get "leadership" => 'about_us#leadership', :as => :leadership
-  get "our-story" => 'about_us#our_story', :as => :our_story 
+  get "our-story" => 'about_us#our_story', :as => :our_story
   # get 'leadership/r-randall-clark' => 'about_us#randall_clark', :as => :randall_clark
   get 'leadership/rodrigo-miranda' => 'about_us#rodrigo_miranda', :as => :rodrigo_miranda
   # get 'leadership/ben-jones' => 'about_us#ben_jones', :as => :ben_jones
@@ -40,7 +40,7 @@ Solasalonstudios::Application.routes.draw do
 
   get "faq" => 'faq#index', :as => :faqs
   get "testimonials" => 'testimonials#index', :as => :testimonials
-  
+
   get 'gallery' => 'gallery#index', :as => :gallery
   get 'gallery-photos' => 'gallery#index'
 
@@ -77,7 +77,7 @@ Solasalonstudios::Application.routes.draw do
 
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
-  
+
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
   get "rent-a-studio" => 'contact_us#index', :as => :rent_a_studio
@@ -98,7 +98,7 @@ Solasalonstudios::Application.routes.draw do
   get "states/:state" => 'locations#state', :as => :locations_by_state
   get "provinces/:state" => 'locations#state', :as => :locations_by_province
   #get "locations/:state/:city" => 'locations#city', :as => :locations_by_city
-  
+
   get "locations/:url_name/salon-professionals(/:service)" => 'locations#stylists', :as => :salon_stylists
   get "locations/:state/:city/:url_name" => 'locations#old_salon', :as => :old_salon_location
   get "locations/state/:state" => 'locations#state'
@@ -110,7 +110,7 @@ Solasalonstudios::Application.routes.draw do
   get "locations/:url_name/contact-form-success" => 'locations#contact_form_success', :as => :location_contact_form_success
   match 'find-salon-location' => 'locations#find_salon', :via => [:get, :post], :as => :find_salon_location
   match 'locations-usa' => 'locations#usa', :via => [:get, :post], :as => :locations_usa
-  
+
   get "locations-fullscreen" => 'locations#fullscreen', :as => :locations_fullscreen
   get "stores/:url_name" => 'locations#salon_redirect'
   get "store/:url_name" => 'locations#salon_redirect'
@@ -188,7 +188,7 @@ Solasalonstudios::Application.routes.draw do
     namespace :v2 do
       match 'locations' => 'locations#index', :via => [:get, :post]
       match 'locations/:id' => 'locations#show', :via => [:get, :post]
-    end    
+    end
   end
 
   match '/cms/save-lease' => 'cms#save_lease', :via => [:get, :post], :as => :cms_save_lease
@@ -208,5 +208,5 @@ Solasalonstudios::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get "/:url_name" => 'redirect#short'
-  
+
 end

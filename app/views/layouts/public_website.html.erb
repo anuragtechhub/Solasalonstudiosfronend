@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
     <% if content_for?(:title) %>
-      <%= yield :title %> 
+      <%= yield :title %>
     <% end %>
     <%= @no_title_dash ? nil : " - " %>
     <%= @no_title_brand_name ? nil : "#{t :brand_name}" %>
   </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
   <% if content_for?(:meta_description) %>
     <meta name="description" content="<%= yield :meta_description %>">
   <% end %>
@@ -26,7 +26,7 @@
     <link rel="canonical" href="<%= yield :canonical_url %>">
   <% end %>
   <link href='//fonts.googleapis.com/css?family=Dosis:400,700|Lato:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css"> 
+  <link rel="stylesheet" href="https://use.typekit.net/bvh7uvi.css">
   <%= stylesheet_link_tag "public_website", media: "all" %>
   <%= yield :stylesheets %>
   <%= csrf_meta_tags %>
@@ -34,11 +34,11 @@
   <%= yield :fb_conversion_pixel if content_for?(:fb_conversion_pixel) %>
   <script src="//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8&libraries=places"></script>
   <%= javascript_include_tag "public_website" %>
-  <%= yield :scripts %> 
+  <%= yield :scripts %>
   <script>I18n.locale = '<%= I18n.locale.to_s %>'</script>
-  <%= render 'shared/analytics' %>  
+  <%= render 'shared/analytics' %>
 </head>
-<body class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
+<body data-spy='scroll' data-target='.page-nav-overlay' data-offset='100' class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR754KX"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

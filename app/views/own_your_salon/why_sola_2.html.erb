@@ -7,7 +7,7 @@
       <% if I18n.locale.to_s == 'pt-BR' %>
         <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
       <% else %>
-        <div class="img-wrap"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/why_sola_content.png', :width => 1600, :height => 804 %></div>
+        <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :width => 1600, :height => 804 %></div>
       <% end %>
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
@@ -39,13 +39,13 @@
           <h2>Intrigued by the idea of being your own boss?</h2>
           <p>Download our free guide to discover if the independent life is right for you!</p>
           <p><a href="/goingindependent" class="button primary">Download now</a></p>
-        <% end %>        
+        <% end %>
       </div>
       <div class="six columns">
         <% if I18n.locale.to_s == 'pt-BR' %>
           <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', :class => 'u-full-width' %>
         <% else %>
-          <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/why_sola_content.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :class => 'u-full-width' %>
         <% end %>
       </div>
     </div>
@@ -78,7 +78,7 @@
             <span class="icon chat"></span>
             <span class="text"><%= t('page.why_sola.freedom_tile_4') %></span>
           </div>
-        </div>                        
+        </div>
       </div>
 
       <div class="row">
@@ -105,7 +105,7 @@
             <span class="text"><%= t('page.why_sola.freedom_tile_8') %></span>
             <%= link_to :locations do %><%= t('page.why_sola.freedom_tile_8_link') %><% end %>
           </div>
-        </div>                        
+        </div>
       </div>
 
       <% if I18n.locale.to_s == 'en' %>
@@ -138,10 +138,10 @@
 
   <div class="sola-benefits">
     <div class="container">
-      
+
       <h2 class="text-center"><%= t('page.why_sola.beautiful_studios_exclusive_perks').html_safe %></h2>
       <p class="text-center"><%= t('page.why_sola.at_sola_you_get_more') %></p>
-      
+
       <div class="row">
         <div class="<% if I18n.locale.to_s == 'pt-BR' %>offset-by-two<% end %> columns four">
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
@@ -175,7 +175,7 @@
             </div>
             <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
           <% end %>
-        </div>        
+        </div>
       </div>
 
       <div class="row">
@@ -210,8 +210,8 @@
               </div>
               <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
             <% end %>
-          </div>  
-        <% end %>      
+          </div>
+        <% end %>
       </div>
 
     </div> <!-- container -->
@@ -222,7 +222,7 @@
 
       <h1 class="chalet"><%= t('page.why_sola.dont_just_dream_do') %></h1>
       <h1 class="chalet-new-york"><%= t('page.why_sola.become_a_salon_owner') %></h1>
-      
+
       <% if I18n.locale.to_s != 'pt-BR' %>
         <p><%= t('page.why_sola.search_for_a_salon') %></p>
 

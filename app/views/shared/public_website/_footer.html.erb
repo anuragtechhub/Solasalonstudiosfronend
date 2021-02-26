@@ -1,80 +1,51 @@
 <div id="footer">
   <div class="container">
-    
-    <div class="row first">
-      
-      <div class="one-third column first">
-        <%= link_to raw(t('footer.find_your_sola')), :locations, :class => 'button outline-large-white long-text', :style => 'margin-bottom:0;' %>
-        <% if I18n.locale.to_s == 'en' %>
-          <%= link_to 'The Sola Store', 'https://thesolastore.com/', :class => 'button outline-large-white long-text', :style => 'margin-top:15px;margin-bottom:0;' %>
-        <% end %>
-      </div>
-      
-      <div class="one-third column second">
-        <h4><%= raw t 'footer.second_column_heading' %></h4>
-        <div class="row">
-          <div class="one-half column">
-            <ul class="p">
-              <li><%= link_to raw(t('page.contact.title')), :contact_us %></li>
-              <% if I18n.locale.to_s == 'en' %>
-                <li><%= link_to 'BookNow', :booknow_search %></li>
-              <% end %>
-              <li><%= link_to raw(t('page.news.title')), :news %></li>
-              <li><%= link_to raw(t('page.testimonials.title')), :testimonials %></li>
-              <!--<li><%= link_to raw(t('page.faqs.title')), :faqs %></li>-->
-              <li><%= link_to raw(t('page.blog.title')), :blog %></li>
-              <% if I18n.locale.to_s == 'en' || I18n.locale.to_s == 'en-CA' %>  
-              <li><%= link_to raw(t('page.footer.franchising')), 'https://www.solafranchising.com', :class => 'ga-et', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Footer' %></li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="one-half column last">
-            <ul class="p last">
-              <li><%= link_to raw(t('page.own.title')), :own_your_salon %></li>
-              <% if I18n.locale.to_s != 'pt-BR' %>
-                <li><%= link_to raw(t('page.find_salon_pro.title')), :salon_professionals %></li>
-              <% end %>
-              <li><%= link_to raw(t('page.locations.title_long')), :locations %></li>
-              <li><%= link_to raw(t('page.gallery.title')), :gallery %></li>
-              <li><%= link_to raw(t('page.privacy_policy.title')), :privacy_policy %></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="one-third column third">
-        <h4><%= raw t 'footer.third_column_heading' %></h4>
+    <div class="row-first d-flex flex-wrap flex-lg-nowrap justify-content-center">
 
-        <p><%= raw t 'footer.join_newsletter' %></p>
-        
-        <%= form_tag :newsletter_sign_up, :class => 'footer-newsletter-sign-up' do %>
-          <div class="newsletter-sign-up">
-            <input type="email" name="email" class="input" placeholder="<%= raw t 'footer.email_placeholder' %>" >
-            <button type="submit" class="button"><%= raw t 'footer.join_button' %></button>
-          </div>
-        <% end %>
+      <div class="footer-col">
+        <h4><%= t('footer.the-sola-difference') %></h4>
+        <ul class="p">
+          <li><%= link_to t('page.blog.title'), blog_path %></li>
+          <li><%= link_to t('footer.education'), why_sola_path(anchor: :education) %></li>
+          <li><%= link_to t('footer.sola-pro'), why_sola_path(anchor: :sola_pro) %></li>
+          <li><%= link_to t('footer.sola-genius'), why_sola_path(anchor: :solagenius) %></li>
+          <li><%= link_to t('footer.book-now'), why_sola_path(anchor: :booknow) %></li>
+          <li><%= link_to t('footer.beauty-hive'), why_sola_path(anchor: :beauty_hive) %></li>
+          <li><%= link_to t('footer.the-sola-store'), why_sola_path(anchor: :the_sola_store) %></li>
+          <li><%= link_to t('footer.gallery'), gallery_path %></li>
+        </ul>
+      </div>
 
-        <ul class="social">  
-          <% if I18n.locale == :en %>        
-            <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-            <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-            <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-            <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% elsif I18n.locale.to_s == 'pt-BR' %>
-            <li><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-            <li><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% else %>
-            <li><%= link_to 'https://www.facebook.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-            <li><%= link_to 'https://twitter.com/solacanada', :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-            <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-            <li><%= link_to 'https://instagram.com/solacanada/', :target => '_blank', :style => 'margin-right:0;' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-          <% end %>
+      <div class="footer-col">
+        <h4><%= t('footer.second_column_heading') %></h4>
+        <ul class="p">
+          <li><%= link_to t('page.locations.title_long'), :locations %></li>
+          <li><%= link_to t('footer.find-a-professional'), :find_a_professional %></li>
+          <li><%= link_to t('footer.book-appointment'), :booknow_search %></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><%= t('footer.about_us') %></h4>
+        <ul class="p">
+          <li><%= link_to t('footer.contact-us'), :contact_us %></li>
+          <li><%= link_to t('footer.who-we-are'), :who_we_are %></li>
+          <li><%= link_to t('footer.our-story'), :our_story %></li>
+          <li><%= link_to t('footer.in-the-news'), :news %></li>
+          <li><%= link_to t('footer.franchising'), :franchising %></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4><%= t('footer.legal-title') %></h4>
+        <ul class="p">
+          <li><%= link_to t('footer.privacy-policy'), :privacy_policy %></li>
         </ul>
       </div>
 
     </div>
 
-    <div class="row second">
+    <div class="row-second">
       <p><%= raw t 'footer.legal' %> <%= Time.now.year %></p>
     </div>
 

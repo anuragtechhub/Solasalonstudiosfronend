@@ -29,4 +29,5 @@ latest.dump
 /bin
 .env.development
 .env.test
+.byebug_history
 /.idea/*
