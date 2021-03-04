@@ -1,15 +1,15 @@
 <!-- <div class="location-breadcrumb blog-breadcrumb">
   <div class="container">
-    <%= link_to t('page.blog.title').html_safe, :blog %>     
+    <%= link_to t('page.blog.title').html_safe, :blog %>
     <% if @category %>
-      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
+      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.slug) %>
     <% end %>
      <span class="divider">/</span> <%= link_to @post.title.html_safe, show_blog_path(@post) %>
   </div>
 </div> -->
 
 <div class="container content-container">
-  
+
   <div class="row">
     <div class="twelve columns">
       <h4 class="h1"><%= t('page.blog.our_blog').html_safe %></h4>
@@ -36,7 +36,7 @@
           <div class="options">
               <div class="option" data-value="<%= blog_path() %>"><%= t('page.blog.all_categories').html_safe %></div>
             <% @categories.each do |category| %>
-              <div class="option" data-value="<%= blog_category_path(category.url_name) %>"><%= category.name.html_safe %></div>
+              <div class="option" data-value="<%= blog_category_path(category.slug) %>"><%= category.name.html_safe %></div>
             <% end %>
           </div>
         </div>
@@ -56,7 +56,7 @@
     <% end %>
 
     <div class="row">
-      
+
       <div class="one-third column">
         <h1 class="h4 large"><%= @post.title.html_safe %></h1>
         <p class="subtle"><%= t('page.blog.posted_on', :date => @post.publish_date ? @post.publish_date.strftime('%B %e, %Y').html_safe : DateTime.now.strftime('%B %e, %Y').html_safe) %><br><%= @post.author.html_safe %></p>
@@ -70,7 +70,7 @@
           <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         </ul>
       </div>
-      
+
       <div class="two-thirds column">
         <div class="summary"><%= @post.body.html_safe %></div>
 
@@ -104,14 +104,14 @@
 <% content_for(:title) { @post.title.html_safe } %>
 <% content_for(:og_image) { @post.image(:original) } %>
 <% content_for(:og_description) { clean_html @post.summary } %>
-<% content_for(:meta_description) { 
+<% content_for(:meta_description) {
   if @post.meta_description.present?
     @post.meta_description
   else
-    clean_html @post.summary 
+    clean_html @post.summary
   end
 } %>
-<% content_for(:fb_conversion_pixel) { 
+<% content_for(:fb_conversion_pixel) {
   if @post.fb_conversion_pixel && @post.fb_conversion_pixel.present?
     @post.fb_conversion_pixel.html_safe
   else

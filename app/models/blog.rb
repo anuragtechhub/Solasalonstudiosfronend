@@ -29,6 +29,20 @@ class Blog < ActiveRecord::Base
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 
+  scope :published, -> { where(status: 'published') }
+
+  scope :by_country, ->(country) {
+    includes(:countries).where(countries: {code: country})
+  }
+
+  scope :by_category, ->(category_id) {
+    includes(:categories).where(categories: {id: category_id})
+  }
+
+  scope :search_by_query, ->(query) {
+    where('LOWER(title) LIKE :query OR LOWER(body) LIKE :query OR LOWER(author) LIKE :query', query: "%#{query.downcase.gsub(/\s/, '%')}%")
+  }
+
   has_paper_trail
 
   def safe_title

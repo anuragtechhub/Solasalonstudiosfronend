@@ -2,26 +2,26 @@
   <div class="container">
     <%= link_to t('page.blog.title').html_safe, :blog %>
     <% if @category %>
-      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.url_name) %>
+      <span class="divider">/</span> <%= link_to @category.name, blog_category_path(@category.slug) %>
     <% end %>
   </div>
 </div> -->
 
 <div class="container content-container">
-  
+
   <div class="row">
     <div class="twelve columns">
       <h1><%= t('page.blog.our_blog').html_safe %></h1>
       <% if params[:query].present? %>
         <p class="search-results-label"><%= t('page.blog.found').html_safe %> <%= pluralize @posts.total_count, 'result' %></p>
-      <% end %>          
+      <% end %>
     </div>
   </div>
 
   <div class="row">
-    
+
     <div class="search-and-filter-row">
-      
+
       <div class="one-half column">
         <div class="search-with-spyglass">
           <form method="get" action="<%= blog_path %>">
@@ -40,7 +40,7 @@
           <div class="options">
               <div class="option" data-value="<%= blog_path() %>"><%= t('page.blog.all_categories').html_safe %></div>
             <% @categories.each do |category| %>
-              <div class="option" data-value="<%= blog_category_path(category.url_name) %>"><%= category.name.html_safe %></div>
+              <div class="option" data-value="<%= blog_category_path(category.slug) %>"><%= category.name.html_safe %></div>
             <% end %>
           </div>
         </div>
@@ -73,12 +73,12 @@
   <% end %>
 
   <%= paginate @posts %>
-  
+
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('blog') } %>
 <% content_for(:title) { t('page.blog.our_blog').html_safe } %>
-<% content_for(:canonical_url) { 
+<% content_for(:canonical_url) {
   if params[:category_url_name].present?
     blog_root_url = "https://www.#{root_sola_domain}/blog/category/#{params[:category_url_name]}"
   else

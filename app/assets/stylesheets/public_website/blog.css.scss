@@ -105,7 +105,7 @@
       margin-bottom: 20px !important;
     }
 
-    p, .p { 
+    p, .p {
       margin-bottom: 20px !important;
     }
 
@@ -151,7 +151,7 @@
 
   ul.social {
     margin: 15px 0 0 0;
-  }  
+  }
 }
 
 .related-articles {
@@ -165,7 +165,7 @@
     h4, p {
       @include transition(color .3s ease);
     }
-    
+
     h4 {
       line-height: 25px;
       margin: 5px 0 10px 0;
@@ -251,6 +251,7 @@
 
 .blog-select {
   margin-top: 0 !important;
+  width: 200px;
 }
 
 .disqus-comments {
@@ -359,5 +360,5 @@
       padding-bottom: 0;
       margin-bottom: 20px;
     }
-  }  
+  }
 }
