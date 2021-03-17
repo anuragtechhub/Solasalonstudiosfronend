@@ -97,9 +97,11 @@ $(function () {
       if (data && data.success) {
         ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          'event': 'Location Contact Form'
-        });
+
+        setTimeout(function () {
+          window.dataLayer.push({'event': 'Location Contact Form'});
+        }, 2000);
+
         if (typeof window.contactUsFormSuccessHandler == 'function') {
           window.contactUsFormSuccessHandler(data);
         } else {

@@ -461,9 +461,9 @@ var ContactForm = React.createClass({
 				try {
 					ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify(form_data));
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            'event': 'Location Contact Form'
-          });
+          setTimeout(function () {
+            window.dataLayer.push({'event': 'Location Contact Form'});
+          }, 2000);
 				} catch (e) {
 					// console.log('err!', e);
 				} finally {
