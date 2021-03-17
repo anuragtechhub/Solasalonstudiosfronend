@@ -68,29 +68,6 @@ $(function () {
 
   $('.sola-select').not('.no-autobind').solaselect();
 
-  // phone number click tracking
-  $(document.body).on('click', 'a[href^="tel:"]', function (e) {
-    // e.preventDefault();
-    // e.stopPropagation();
-
-    var location_id = $('#i_l').val();
-    var stylist_id = $('#i_s').val();
-
-    if (location_id) {
-      ga('gtm1.send', 'event', 'Location Phone Number', 'click', location_id);
-      // gtag('event', 'click', {
-      //   event_category: 'Location Phone Number',
-      //   event_label: location_id
-      // });
-    } else if (stylist_id) {
-      ga('gtm1.send', 'event', 'Professional Phone Number', 'click', stylist_id);
-      // gtag('event', 'click', {
-      //   event_category: 'Professional Phone Number',
-      //   event_label: stylist_id
-      // });
-    }
-  });
-
   // carousel
   $('.owl-carousel').not('.no-autobind').each(function () {
     var $this = $(this);
@@ -186,19 +163,20 @@ $(function () {
     return false;
   });
 
+  // TODO implement with GTM
   // ga event tracking
-  $(document.body).on('click', '.ga-et', function (e) {
-    var $target = $(e.target);
-    if (!$target.hasClass('.ga-et') && typeof $target.data('gcategory') == 'undefined') {
-      $target = $target.parent('.ga-et');
-    }
-    //console.log("ga event tracking", $target.data('gcategory'), $target.data('gaction'), $target.data('glabel'))
-    ga('gtm1.send', 'event', $target.data('gcategory'), $target.data('gaction'), JSON.stringify($target.data('glabel')));
-    // gtag('event', $target.data('gaction'), {
-    //   event_category: $target.data('gcategory'),
-    //   event_label: JSON.stringify($target.data('glabel'))
-    // });
-  });
+  // $(document.body).on('click', '.ga-et', function (e) {
+  //   var $target = $(e.target);
+  //   if (!$target.hasClass('.ga-et') && typeof $target.data('gcategory') == 'undefined') {
+  //     $target = $target.parent('.ga-et');
+  //   }
+  //   //console.log("ga event tracking", $target.data('gcategory'), $target.data('gaction'), $target.data('glabel'))
+  //   ga('gtm1.send', 'event', $target.data('gcategory'), $target.data('gaction'), JSON.stringify($target.data('glabel')));
+  //   // gtag('event', $target.data('gaction'), {
+  //   //   event_category: $target.data('gcategory'),
+  //   //   event_label: JSON.stringify($target.data('glabel'))
+  //   // });
+  // });
 
   // animated scrolling
   $(document.body).on('click', '[data-animated-scroll]', function () {
@@ -341,11 +319,8 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
         window.dataLayer = window.dataLayer || [];
-        setTimeout(function () {
-          window.dataLayer.push({'event': 'Location Contact Form'});
-        }, 2000);
+        window.dataLayer.push({'event': 'Location Contact Form', 'attributes': {'action': 'submission', 'data': JSON.stringify($.deparam($form.serialize()))}});
 
         var path = window.location.pathname;
         if (path.indexOf('contact-us-success') == -1) {

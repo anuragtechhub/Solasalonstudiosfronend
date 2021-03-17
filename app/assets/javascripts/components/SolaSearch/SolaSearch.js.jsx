@@ -45,14 +45,14 @@ var SolaSearch = React.createClass({
 		if (this.state.professionals.length) {
 			this.getAvailabilities(this.getServicesGuids());
 		}
-		
+
 		var self = this;
 		var $window = $(window);
 
 		// handle booking modal sizing
 		$window.on('resize.SolaSearch', function () {
 			var width = $window.width();
-			
+
 			//console.log('resize SolaSearch', width);
 			if (width <= 991 && self.state.display != 'mobile') {
 				self.setState({display: 'mobile'});
@@ -64,24 +64,19 @@ var SolaSearch = React.createClass({
 		// track search results
 		var googleAnalyticsCheckCount = 0;
 	  function checkIfGoogleAnalyticsLoaded() {
-	    if (typeof ga != 'undefined') {
-				ga('gtm1.send', 'event', 'BookNow', 'Results', JSON.stringify({
-					number_of_results: self.state.professionals.length >= 10 ? '10+' : self.state.professionals.length,
-					date: self.state.date.format('YYYY-MM-DD'),
-					fingerprint: self.state.fingerprint,
-					lat: self.state.lat,
-					lng: self.state.lng,
-					location_id: self.state.location_id,
-					location: self.state.location,
-					query: self.state.query,
-					referring_url: self.props.referring_url,
-				}));
-	    } else {
-	      if (googleAnalyticsCheckCount < 10) {
-	        googleAnalyticsCheckCount++;
-	        setTimeout(checkIfGoogleAnalyticsLoaded, 500);
-	      }
-	    }
+      data = JSON.stringify({
+        number_of_results: self.state.professionals.length >= 10 ? '10+' : self.state.professionals.length,
+        date: self.state.date.format('YYYY-MM-DD'),
+        fingerprint: self.state.fingerprint,
+        lat: self.state.lat,
+        lng: self.state.lng,
+        location_id: self.state.location_id,
+        location: self.state.location,
+        query: self.state.query,
+        referring_url: self.props.referring_url,
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({'event': 'BookNow', 'attributes': {'action': 'Results', 'data': data}});
 	  }
 	  checkIfGoogleAnalyticsLoaded();
 
@@ -111,12 +106,12 @@ var SolaSearch = React.createClass({
 	render: function () {
 		//console.log('render SolaSearch professionals', this.state.professionals);
 		//console.log('render SolaSearch locations', this.state.locations);
-		
+
 		return (
 			<div className={"SolaSearch " + this.state.mode}>
-				<ProfessionalResults 
-					availabilities={this.state.availabilities} 
-					date={this.state.date} 
+				<ProfessionalResults
+					availabilities={this.state.availabilities}
+					date={this.state.date}
 					end_of_results={this.state.end_of_results}
 					fingerprint={this.state.fingerprint}
 					lat={this.state.lat}
@@ -135,18 +130,18 @@ var SolaSearch = React.createClass({
 					onShowBookingModal={this.onShowBookingModal}
 					onShowCheckAvailabilityModal={this.onShowCheckAvailabilityModal}
 					pagination={this.state.pagination}
-					professionals={this.state.professionals} 
-					query={this.state.query} 
+					professionals={this.state.professionals}
+					query={this.state.query}
 					results_path={this.state.results_path}
-					referring_url={this.props.referring_url} 
+					referring_url={this.props.referring_url}
 					booknow_search_path={this.props.booknow_search_path}
 					find_a_salon_pro_path={this.props.find_a_salon_pro_path}
 				/>
-				<LocationsMap 
+				<LocationsMap
 					display={this.state.display}
-					lat={this.state.lat} 
-					lng={this.state.lng} 
-					locations={this.state.locations} 
+					lat={this.state.lat}
+					lng={this.state.lng}
+					locations={this.state.locations}
 					mode={this.state.mode}
 					onChangeLocationId={this.onChangeLocationId}
 					onSetMap={this.onSetMap}
@@ -154,7 +149,7 @@ var SolaSearch = React.createClass({
 					onShowSideTabPopUp={this.onShowSideTabPopUp}
 					zoom={this.state.zoom}
 				/>
-				<BookingModal 
+				<BookingModal
 					booking_complete_path={this.state.booking_complete_path}
 					save_booknow_booking_path={this.props.save_booknow_booking_path}
 					date={this.state.time ? this.state.time.start : new Date()}
@@ -168,15 +163,15 @@ var SolaSearch = React.createClass({
 					location_id={this.state.location_id}
 					location_name={this.state.location_name}
 					onHideBookingModal={this.onHideBookingModal}
-					professional={this.state.professional} 
-					query={this.state.query} 
+					professional={this.state.professional}
+					query={this.state.query}
 					services={this.state.services}
 					step={this.state.step}
-					time={this.state.time} 
-					visible={this.state.bookingModalVisible} 
-					referring_url={this.props.referring_url} 
+					time={this.state.time}
+					visible={this.state.bookingModalVisible}
+					referring_url={this.props.referring_url}
 				/>
-				{/*<CheckAvailabilityModal 
+				{/*<CheckAvailabilityModal
 					date={this.state.time ? this.state.time.start : new Date()}
 					fingerprint={this.state.fingerprint}
 					gloss_genius_api_key={this.state.gloss_genius_api_key}
@@ -188,21 +183,21 @@ var SolaSearch = React.createClass({
 					location_name={this.state.location_name}
 					onHideCheckAvailabilityModal={this.onHideCheckAvailabilityModal}
 					onShowBookingModal={this.onShowBookingModal}
-					professional={this.state.professional} 
-					query={this.state.query} 
-					visible={this.state.checkAvailabilityModalVisible} 
-					referring_url={this.props.referring_url} 
+					professional={this.state.professional}
+					query={this.state.query}
+					visible={this.state.checkAvailabilityModalVisible}
+					referring_url={this.props.referring_url}
 				/>*/}
 				<SideTabPopUpModal visible={this.state.sideTabPopUpVisible} onHideSideTabPopUpModal={this.onHideSideTabPopUpModal} />
 				{this.renderFloatingToggleButton()}
 				{
-					!this.state.sideTabPopUpVisible && this.state.sideTabVisible 
+					!this.state.sideTabPopUpVisible && this.state.sideTabVisible
 					?
 					<div className="side-tab">
 						<span className="text" onClick={this.onShowSideTabPopUp}>{I18n.t('sola_search.dont_see_your_sola_professional')}</span>
 						<span className="close-x" onClick={this.onHideSideTab}></span>
 					</div>
-					: 
+					:
 					null
 				}
 			</div>
@@ -247,7 +242,7 @@ var SolaSearch = React.createClass({
 			if ($target.hasClass('HideBookingModal')) {
 				this.setState({bookingModalVisible: false, professional: null, time: null, services: [], step: 'review'});
 			} else {
-				// do nothing 
+				// do nothing
 			}
 		} else {
 			this.setState({bookingModalVisible: false, professional: null, time: null, services: [], step: 'review'});
@@ -261,7 +256,7 @@ var SolaSearch = React.createClass({
 			if ($target.hasClass('HideCheckAvailabilityModal')) {
 				this.setState({checkAvailabilityModalVisible: false, professional: null});
 			} else {
-				// do nothing 
+				// do nothing
 			}
 		} else {
 			this.setState({checkAvailabilityModalVisible: false, professional: null});
@@ -300,7 +295,7 @@ var SolaSearch = React.createClass({
 
 		if (self.state.professionals && self.state.professionals.length) {
 			//console.log('load more!', self.state.professionals[self.state.professionals.length - 1].cursor);
-			
+
 			self.setState({loading: true});
 
 			$.ajax({
@@ -339,11 +334,11 @@ var SolaSearch = React.createClass({
 					}
 				} else {
 					self.setState({loading: false, pagination: false, end_of_results: true});
-				}	
+				}
 			});
-		} 
+		}
 	},
-	
+
 	onSetMap: function (map) {
 		this.setState({map: map});
 	},
@@ -379,7 +374,7 @@ var SolaSearch = React.createClass({
 
 	getAvailabilities: function (services_guids) {
 		var self = this;
-		
+
 		//console.log('services_guids', services_guids);
 
 		$.ajax({
@@ -405,7 +400,7 @@ var SolaSearch = React.createClass({
 			} else {
 				self.setState({availabilities: new_availabilities});
 			}
-		}); 
+		});
 	},
 
 	getServicesGuids: function (professionals) {
@@ -417,7 +412,7 @@ var SolaSearch = React.createClass({
 
 		for (var i = 0, ilen = professionals.length; i < ilen; i++) {
 			guids[professionals[i].guid] = [];
-			
+
 			// only one service id per professional to start with
 			if (professionals[i].matched_services.length >= 1) {
 				guids[professionals[i].guid].push(professionals[i].matched_services[0].guid);

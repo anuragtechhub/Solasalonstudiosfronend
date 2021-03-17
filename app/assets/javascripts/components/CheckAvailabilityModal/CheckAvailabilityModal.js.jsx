@@ -42,21 +42,19 @@ var CheckAvailabilityModal = React.createClass({
 		}
 
 		if (nextProps.visible && !this.props.visible) {
-			ga('solasalonstudios.send', 'event', 'BookNow', 'Open Check Availability Modal', JSON.stringify({
-				date: this.state.date.format('YYYY-MM-DD'),
-				fingerprint: this.props.fingerprint,
-				lat: this.props.lat,
-				lng: this.props.lng,
-				location_id: this.props.location_id,
-				location: this.props.location,
-				query: this.props.query,
-				referring_url: this.props.referring_url,
-			}));
 
+      data = JSON.stringify({
+        date: this.state.date.format('YYYY-MM-DD'),
+        fingerprint: this.props.fingerprint,
+        lat: this.props.lat,
+        lng: this.props.lng,
+        location_id: this.props.location_id,
+        location: this.props.location,
+        query: this.props.query,
+        referring_url: this.props.referring_url,
+      })
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'event': 'Open Check Availability Modal'
-      });
+      window.dataLayer.push({'event': 'BookNow', 'attributes': {'action': 'Open Check Availability Modal','data': data}});
 		}
 	},
 

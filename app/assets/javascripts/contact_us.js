@@ -95,12 +95,8 @@ $(function () {
       data: $form.serialize()
     }).done(function(data) {
       if (data && data.success) {
-        ga('gtm1.send', 'event', 'Location Contact Form', 'submission', JSON.stringify($.deparam($form.serialize())));
         window.dataLayer = window.dataLayer || [];
-
-        setTimeout(function () {
-          window.dataLayer.push({'event': 'Location Contact Form'});
-        }, 2000);
+        window.dataLayer.push({'event': 'Location Contact Form', 'attributes': {'action': 'submission', 'data': JSON.stringify($.deparam($form.serialize()))}});
 
         if (typeof window.contactUsFormSuccessHandler == 'function') {
           window.contactUsFormSuccessHandler(data);
