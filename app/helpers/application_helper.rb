@@ -34,19 +34,15 @@ module ApplicationHelper
     str = str.gsub(/&quot;/, "'")
     str = str.gsub(/&amp;/, '&')
     str = str.gsub(/&#8217;/, "'")
-    
+
     str.html_safe
   end
 
+  # bullshit
   def beautify_url_segment(url)
-    #url = url.gsub('___', '_')
-    #url = url.gsub('_-_', '_')
-    #url = url.gsub(/[^0-9a-zA-Z]/, '_')
-    url = url.split(/_|\s/)
-    url = url.map{|u| u.downcase}
-    url.join('-')
+    url.downcase.strip.gsub(/\s+/,'_').gsub('_', '-')
   end
-  
+
   def root_sola_domain
     if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
       'solasalonstudios.ca'

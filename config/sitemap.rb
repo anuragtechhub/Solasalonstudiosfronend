@@ -27,9 +27,7 @@ SitemapGenerator::Sitemap.create do
 
   # states
   Location.distinct(:state).pluck(:state).each do |state|
-    url = state.split(/_|\s/)
-    url = url.map{|u| u.downcase}
-    url = url.join('-')
+    url = state.downcase.strip.gsub(/\s+/,'_').gsub('_', '-')
 
     add "/states/#{url}"
   end
@@ -65,5 +63,5 @@ SitemapGenerator::Sitemap.create do
   add '/diversity'
 
   add '/privacy-policy'
-  
+
 end

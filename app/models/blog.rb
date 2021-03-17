@@ -106,14 +106,16 @@ class Blog < ActiveRecord::Base
     url_name
   end
 
+  # TODO replace this bullshit with friendly_id.
   def fix_url_name
     if self.url_name.present?
-      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
-      self.url_name = self.url_name.gsub('___', '_')
-      self.url_name = self.url_name.gsub('_-_', '_')
-      self.url_name = self.url_name.split('_')
-      self.url_name = self.url_name.map{ |u| u.downcase }
-      self.url_name = self.url_name.join('-')
+      self.url_name = self.url_name
+                          .downcase
+                          .gsub(/\s+/,'_')
+                          .gsub(/[^0-9a-zA-Z]/, '_')
+                          .gsub('___', '_')
+                          .gsub('_-_', '_')
+                          .gsub('_', '-')
     end
   end
 

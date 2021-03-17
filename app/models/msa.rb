@@ -11,16 +11,18 @@ class Msa < ActiveRecord::Base
   validates :name, :presence => true#, :uniqueness => true
   validates :url_name, :presence => true, :uniqueness => true
 
+  # TODO replace this bullshit with friendly_id.
   def fix_url_name
     if self.url_name.present?
-      self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_')
-      self.url_name = self.url_name.gsub('___', '_')
-      self.url_name = self.url_name.gsub('_-_', '_')
-      self.url_name = self.url_name.split('_')
-      self.url_name = self.url_name.map{ |u| u.downcase }
-      self.url_name = self.url_name.join('-')
+      self.url_name = self.url_name
+                          .downcase
+                          .gsub(/\s+/,'_')
+                          .gsub(/[^0-9a-zA-Z]/, '_')
+                          .gsub('___', '_')
+                          .gsub('_-_', '_')
+                          .gsub('_', '-')
     end
-  end  
+  end
 
   def canonical_path
     "/regions/#{url_name}"
@@ -32,16 +34,16 @@ class Msa < ActiveRecord::Base
 
   def generate_url_name
     if self.name
-      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-') 
+      url = self.name.downcase.gsub(/[^0-9a-zA-Z]/, '-')
       count = 1
-      
+
       while Msa.where(:url_name => "#{url}#{count}").size > 0 do
         count = count + 1
       end
 
       self.url_name = "#{url}#{count}"
     end
-  end  
+  end
 
   private
 

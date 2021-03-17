@@ -110,29 +110,6 @@ class RequestTourInquiry < ActiveRecord::Base
     p "error sync_with_hubspot #{e}"
   end
 
-  # def get_hubspot_owners
-  #   #p "get_hubspot_owners"
-
-  #   if ENV['HUBSPOT_API_KEY'].present?
-  #     #p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owners.."
-
-  #     Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
-
-  #     all_owners = Hubspot::Owner.all
-
-  #     # p "all_owners=#{all_owners.inspect}"
-  #     if all_owners
-  #       all_owners = all_owners.map{|o| o.email}
-  #       #p "all_owners=#{all_owners}"
-  #     end
-  #   else
-  #     p "No HUBSPOT API KEY, get_hubspot_owners"
-  #   end
-  # rescue => e
-  #   # shh...
-  #   p "error get_hubspot_owners #{e}"
-  # end
-
   def get_hubspot_owner_id(email_address=nil)
     if email_address.blank? && location
       if location.email_address_for_hubspot.present?

@@ -418,15 +418,16 @@ class Location < ActiveRecord::Base
     states[self.state]
   end
 
+  # TODO replace this bullshit with friendly_id.
   def fix_url_name
     if self.url_name.present?
       self.url_name = self.url_name
-                        .gsub(/[^0-9a-zA-Z]/, '_')
-                        .gsub('___', '_')
-                        .gsub('_-_', '_')
-                        .split('_')
-                        .map{ |u| u.downcase }
-                        .join('-')
+                          .downcase
+                          .gsub(/\s+/,'_')
+                          .gsub(/[^0-9a-zA-Z]/, '_')
+                          .gsub('___', '_')
+                          .gsub('_-_', '_')
+                          .gsub('_', '-')
     end
   end
 
