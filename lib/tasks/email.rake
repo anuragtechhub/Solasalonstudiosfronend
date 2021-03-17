@@ -129,17 +129,6 @@ namespace :email do
 					welcome_email_metrics['unique_opens'] += row_metrics['unique_opens']
 					welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
 				end
-
-				#p "welcome_email_metrics=#{welcome_email_metrics.inspect}"
-
-		    # locals = {
-		    #   :@data => {
-		    #     start_date: start_date,
-		    #     end_date: end_date,
-		    #     rows: data_rows,
-		    #     metrics: metrics,
-		    #   }
-		    # }
 			else
 				p "NOT A 200 response, status_code=#{response.status_code}"
 			end
@@ -180,23 +169,12 @@ namespace :email do
 					resend_welcome_email_metrics['unique_opens'] += row_metrics['unique_opens']
 					resend_welcome_email_metrics['spam_reports'] += row_metrics['spam_reports']
 				end
-
-				#p "resend_welcome_email_metrics=#{resend_welcome_email_metrics.inspect}"
-
-		    # locals = {
-		    #   :@data => {
-		    #     start_date: start_date,
-		    #     end_date: end_date,
-		    #     rows: data_rows,
-		    #     metrics: metrics,
-		    #   }
-		    # }
 			else
 				p "NOT A 200 response, status_code=#{response.status_code}"
 			end
 
 	    locals = {
-	      :@data => {
+	      data: {
 	        start_date: start_date,
 	        end_date: end_date,
 	        resend_welcome_email_data_rows: resend_welcome_email_data_rows,

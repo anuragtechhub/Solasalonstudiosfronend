@@ -34,14 +34,13 @@ class ReportsMailer < ActionMailer::Base
 
   def welcome_email_report(report_pdf)
     attachments["welcome_email_report.pdf"] = report_pdf
-    #mail(to: ['jeff@jeffbail.com'], bcc: ['jeff@jeffbail.com'], subject: "Sola Welcome Email Report")
-    mail(to: ['jennie@solasalonstudios.com', 'megan@solasalonstudios.com', 'serge@codeart.us'], bcc: ['jeff@jeffbail.com', 'alderavellc@gmail.com'], subject: "Sola Welcome Email Report")
+    mail(to: ['jennie@solasalonstudios.com', 'megan@solasalonstudios.com'], bcc: ['jeff@jeffbail.com', 'alderavellc@gmail.com'], subject: "Sola Welcome Email Report")
   end
 
   def solasalonstudios_report(report_pdf, url)
     @url = url
     attachments["#{url}.pdf"] = report_pdf
-    mail(to: ['jennie@solasalonstudios.com', 'megan@solasalonstudios.com', 'angela@solasalonstudios.com', 'serge@codeart.us'], bcc: ['jeff@jeffbail.com', 'alderavellc@gmail.com'], subject: "Solasalonstudios analytics report")
+    mail(to: ['jennie@solasalonstudios.com', 'megan@solasalonstudios.com', 'angela@solasalonstudios.com'], bcc: ['jeff@jeffbail.com', 'alderavellc@gmail.com'], subject: "Solasalonstudios analytics report")
   end
 
   def location_contact_form_submission_report(email_addresses, csv_file, start_date, end_date)

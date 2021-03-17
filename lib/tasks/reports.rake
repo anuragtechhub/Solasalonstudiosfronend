@@ -10,21 +10,6 @@ namespace :reports do
     p 'hello!'
   end
 
-  # task :pdf => :environment do
-  #   html_renderer = HTMLRenderer.new
-
-  #   locals = {
-  #     :@name => 'Jeff'
-  #   }
-
-  #   p "pdf! #{html_renderer.build_html(locals)}"
-  #   pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/test', locals), :footer => {:center => '[page]', :font_size => 7})
-
-  #   save_path = Rails.root.join('pdfs','report.pdf')
-  #   File.open(save_path, 'wb') do |file|
-  #     file << pdf
-  #   end
-  # end
   task :all_booking_user_report => :environment do
     send_all_booking_user_report('jeff@jeffbail.com')
   end
@@ -311,10 +296,7 @@ namespace :reports do
         #web_data = analytics.solapro_web_data
         app_data = analytics.booknow_data
       end
-      locals = {
-        :@app_data => app_data,
-        #:@web_data => web_data
-      }
+      locals = { app_data: app_data }
 
       p "got data #{locals.inspect}"
       p "got data..."
@@ -358,10 +340,7 @@ namespace :reports do
       #web_data = analytics.solapro_web_data
       app_data = analytics.booknow_data
     end
-    locals = {
-      :@app_data => app_data,
-      #:@web_data => web_data
-    }
+    locals = { app_data: app_data }
 
     p "got data #{locals.inspect}"
     p "got data..."
@@ -404,10 +383,7 @@ namespace :reports do
       #web_data = analytics.solapro_web_data
       app_data = analytics.booking_complete_data
     end
-    locals = {
-      :@app_data => app_data,
-      #:@web_data => web_data
-    }
+    locals = { app_data: app_data }
 
     p "got data #{locals.inspect}"
     p "got data..."
@@ -451,10 +427,7 @@ namespace :reports do
     else
       app_data = analytics.solapro_app_data
     end
-    locals = {
-      :@app_data => app_data,
-      #:@web_data => web_data
-    }
+    locals = { app_data: app_data }
 
     p "got data #{locals.inspect}"
     p "got data..."
@@ -500,10 +473,7 @@ namespace :reports do
     #else
     #  data = analytics.solasalonstudios_data(@ga_id)
     #end
-    locals = {
-      :@data => data,
-      :@url => @url
-    }
+    locals = { data: data, url: @url }
 
     p "got data #{locals.inspect}"
     p "got data..."
@@ -744,9 +714,7 @@ namespace :reports do
     data[:total_form_submissions_prev_month] = data[:other_form_submissions_prev_month] + data[:book_an_appointment_inquiries_prev_month] + data[:leasing_form_submissions_prev_month]
     data[:total_form_submissions_prev_year] = data[:other_form_submissions_prev_year] + data[:book_an_appointment_inquiries_prev_year] + data[:leasing_form_submissions_prev_year]
 
-    locals = {
-      :@data => data
-    }
+    locals = { data: data }
 
     p "got data #{locals.inspect}"
     p "got data..."

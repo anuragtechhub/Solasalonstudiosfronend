@@ -25,7 +25,7 @@ Solasalonstudios::Application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   config.assets.compile = false #true
-  config.serve_static_assets = true
+  config.serve_static_files = true
   config.assets.digest = true
   config.assets.enabled = true
   config.assets.initialize_on_precompile = false
