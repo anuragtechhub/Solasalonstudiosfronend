@@ -25,7 +25,6 @@ gem 'jquery-rails', '3.1.2'
 gem 'jbuilder', '~> 1.2'
 gem 'oj'
 gem 'oj_mimic_json'
-gem 'postgres_ext-serializers'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
@@ -130,6 +129,9 @@ gem 'thwait'
 # Background processing
 gem 'sidekiq'
 gem 'sidekiq-unique-jobs', '~> 7.0'
+
+# Serializers for API
+gem 'active_model_serializers', '0.10.10'
 
 group :development do
   gem 'annotate'
