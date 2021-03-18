@@ -21,3 +21,22 @@ class Studio < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: studios
+#
+#  id              :integer          not null, primary key
+#  location_name   :string(255)
+#  name            :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  location_id     :integer
+#  rent_manager_id :string(255)
+#  stylist_id      :integer
+#
+# Indexes
+#
+#  index_studios_on_location_id  (location_id)
+#  index_studios_on_stylist_id   (stylist_id)
+#

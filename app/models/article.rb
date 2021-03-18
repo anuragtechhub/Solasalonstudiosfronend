@@ -57,3 +57,28 @@ class Article < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: articles
+#
+#  id                 :integer          not null, primary key
+#  article_url        :text
+#  body               :text
+#  display_setting    :string(255)      default("sola_website")
+#  image_content_type :string(255)
+#  image_file_name    :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  summary            :text
+#  title              :string(255)
+#  url_name           :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  legacy_id          :string(255)
+#  location_id        :integer
+#
+# Indexes
+#
+#  index_articles_on_location_id  (location_id)
+#

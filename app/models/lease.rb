@@ -67,3 +67,54 @@ class Lease < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: leases
+#
+#  id                          :integer          not null, primary key
+#  ach_authorized              :boolean          default(FALSE)
+#  agreement_file_url          :text
+#  cable                       :boolean          default(FALSE)
+#  create_date                 :date
+#  damage_deposit_amount       :integer
+#  end_date                    :date
+#  facial_permitted            :boolean          default(FALSE)
+#  fee_start_date              :date
+#  hair_styling_permitted      :boolean          default(FALSE)
+#  insurance                   :boolean          default(FALSE)
+#  insurance_amount            :integer
+#  insurance_frequency         :string(255)
+#  insurance_start_date        :date
+#  manicure_pedicure_permitted :boolean          default(FALSE)
+#  massage_permitted           :boolean          default(FALSE)
+#  move_in_bonus               :boolean          default(FALSE)
+#  move_in_bonus_amount        :integer
+#  move_in_bonus_payee         :string(255)
+#  move_in_date                :date
+#  move_out_date               :date
+#  nsf_fee_amount              :integer
+#  other_service               :string(255)
+#  parking                     :boolean          default(FALSE)
+#  product_bonus_amount        :integer
+#  product_bonus_distributor   :string(255)
+#  signed_date                 :date
+#  special_terms               :text
+#  start_date                  :date
+#  taxes                       :boolean          default(FALSE)
+#  waxing_permitted            :boolean          default(FALSE)
+#  weekly_fee_year_1           :integer
+#  weekly_fee_year_2           :integer
+#  created_at                  :datetime
+#  updated_at                  :datetime
+#  location_id                 :integer
+#  rent_manager_id             :string(255)
+#  studio_id                   :integer
+#  stylist_id                  :integer
+#
+# Indexes
+#
+#  index_leases_on_location_id  (location_id)
+#  index_leases_on_studio_id    (studio_id)
+#  index_leases_on_stylist_id   (stylist_id)
+#

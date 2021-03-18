@@ -24,29 +24,31 @@ end
 # Table name: pro_beauty_industries
 #
 #  id                              :integer          not null, primary key
-#  title                           :string(255)
-#  short_description               :text
-#  long_description                :text
-#  created_at                      :datetime
-#  updated_at                      :datetime
-#  file_file_name                  :string(255)
 #  file_content_type               :string(255)
+#  file_file_name                  :string(255)
 #  file_file_size                  :integer
 #  file_updated_at                 :datetime
-#  video_url                       :string(255)
-#  thumbnail_image_file_name       :string(255)
-#  thumbnail_image_content_type    :string(255)
-#  thumbnail_image_file_size       :integer
-#  thumbnail_image_updated_at      :datetime
-#  flyer_image_file_name           :string(255)
 #  flyer_image_content_type        :string(255)
+#  flyer_image_file_name           :string(255)
 #  flyer_image_file_size           :integer
 #  flyer_image_updated_at          :datetime
+#  long_description                :text
+#  short_description               :text
+#  thumbnail_image_content_type    :string(255)
+#  thumbnail_image_file_name       :string(255)
+#  thumbnail_image_file_size       :integer
+#  thumbnail_image_updated_at      :datetime
+#  title                           :string(255)
+#  video_url                       :string(255)
+#  created_at                      :datetime
+#  updated_at                      :datetime
 #  brand_id                        :integer
+#  category_id                     :integer
 #  pro_beauty_industry_category_id :integer
 #
 # Indexes
 #
 #  index_pro_beauty_industries_on_brand_id                         (brand_id)
+#  index_pro_beauty_industries_on_category_id                      (category_id)
 #  index_pro_beauty_industries_on_pro_beauty_industry_category_id  (pro_beauty_industry_category_id)
 #

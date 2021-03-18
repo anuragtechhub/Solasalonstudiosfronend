@@ -23,27 +23,29 @@ end
 # Table name: supports
 #
 #  id                           :integer          not null, primary key
-#  title                        :string(255)
-#  short_description            :text
-#  long_description             :text
-#  created_at                   :datetime
-#  updated_at                   :datetime
-#  thumbnail_image_file_name    :string(255)
-#  thumbnail_image_content_type :string(255)
-#  thumbnail_image_file_size    :integer
-#  thumbnail_image_updated_at   :datetime
-#  flyer_image_file_name        :string(255)
-#  flyer_image_content_type     :string(255)
-#  flyer_image_file_size        :integer
-#  flyer_image_updated_at       :datetime
-#  file_file_name               :string(255)
 #  file_content_type            :string(255)
+#  file_file_name               :string(255)
 #  file_file_size               :integer
 #  file_updated_at              :datetime
+#  flyer_image_content_type     :string(255)
+#  flyer_image_file_name        :string(255)
+#  flyer_image_file_size        :integer
+#  flyer_image_updated_at       :datetime
+#  long_description             :text
+#  short_description            :text
+#  thumbnail_image_content_type :string(255)
+#  thumbnail_image_file_name    :string(255)
+#  thumbnail_image_file_size    :integer
+#  thumbnail_image_updated_at   :datetime
+#  title                        :string(255)
 #  video_url                    :string(255)
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  category_id                  :integer
 #  support_category_id          :integer
 #
 # Indexes
 #
+#  index_supports_on_category_id          (category_id)
 #  index_supports_on_support_category_id  (support_category_id)
 #

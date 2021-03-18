@@ -11,3 +11,15 @@ class Testimonial < ActiveRecord::Base
     html.html_safe
   end
 end
+
+# == Schema Information
+#
+# Table name: testimonials
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  region     :string(255)
+#  text       :text
+#  created_at :datetime
+#  updated_at :datetime
+#

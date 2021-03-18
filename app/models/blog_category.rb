@@ -28,3 +28,15 @@ class BlogCategory < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: blog_categories
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  url_name   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  legacy_id  :string(255)
+#

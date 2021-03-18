@@ -288,44 +288,43 @@ end
 # Table name: sola_classes
 #
 #  id                     :integer          not null, primary key
-#  title                  :string(255)
+#  address                :string(255)
 #  city                   :string(255)
-#  state                  :string(255)
-#  postal_code            :string(255)
-#  location               :string(255)
 #  cost                   :string(255)
-#  start_date             :date
-#  start_time             :text
-#  created_at             :datetime
-#  updated_at             :datetime
-#  file_file_name         :string(255)
-#  file_content_type      :string(255)
-#  file_file_size         :integer
-#  file_updated_at        :datetime
-#  link_text              :string(255)
-#  link_url               :string(255)
-#  latitude               :float
-#  longitude              :float
-#  sola_class_category_id :integer
-#  is_featured            :boolean          default(FALSE)
-#  admin_id               :integer
-#  sola_class_region_id   :integer
 #  description            :text
-#  image_file_name        :string(255)
-#  image_content_type     :string(255)
-#  image_file_size        :integer
-#  image_updated_at       :datetime
 #  end_date               :date
 #  end_time               :text
+#  file_content_type      :string(255)
+#  file_file_name         :string(255)
+#  file_file_size         :integer
+#  file_text              :string(255)
+#  file_updated_at        :datetime
+#  image_content_type     :string(255)
+#  image_file_name        :string(255)
+#  image_file_size        :integer
+#  image_updated_at       :datetime
+#  is_featured            :boolean          default(FALSE)
+#  latitude               :float
+#  link_text              :string(255)
+#  link_url               :string(255)
+#  location               :string(255)
+#  longitude              :float
+#  postal_code            :string(255)
 #  rsvp_email_address     :string(255)
 #  rsvp_phone_number      :string(255)
-#  address                :string(255)
-#  video_id               :integer
-#  file_text              :string(255)
-#  category_id            :integer
+#  start_date             :date
+#  start_time             :text
+#  state                  :string(255)
+#  title                  :string(255)
 #  views                  :integer          default(0), not null
-#  main_image_id          :integer
-#  thumbnail_image_id     :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  admin_id               :integer
+#  category_id            :integer
+#  class_image_id         :integer
+#  sola_class_category_id :integer
+#  sola_class_region_id   :integer
+#  video_id               :integer
 #
 # Indexes
 #

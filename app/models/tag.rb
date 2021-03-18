@@ -22,3 +22,7 @@ end
 #  created_at :datetime
 #  updated_at :datetime
 #
+# Indexes
+#
+#  index_tags_on_name  (name) UNIQUE
+#

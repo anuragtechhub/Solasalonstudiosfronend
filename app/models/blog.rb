@@ -173,3 +173,37 @@ class Blog < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id                          :integer          not null, primary key
+#  author                      :string(255)
+#  body                        :text
+#  canonical_url               :string(255)
+#  carousel_image_content_type :string(255)
+#  carousel_image_file_name    :string(255)
+#  carousel_image_file_size    :integer
+#  carousel_image_updated_at   :datetime
+#  carousel_text               :string(255)
+#  contact_form_visible        :boolean          default(FALSE)
+#  fb_conversion_pixel         :text
+#  image_content_type          :string(255)
+#  image_file_name             :string(255)
+#  image_file_size             :integer
+#  image_updated_at            :datetime
+#  meta_description            :text
+#  publish_date                :datetime
+#  status                      :string(255)      default("published")
+#  summary                     :text
+#  title                       :string(255)
+#  url_name                    :string(255)
+#  created_at                  :datetime
+#  updated_at                  :datetime
+#  legacy_id                   :string(255)
+#
+# Indexes
+#
+#  index_blogs_on_status  (status)
+#

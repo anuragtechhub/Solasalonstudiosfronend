@@ -64,3 +64,27 @@ class MySolaImage < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: my_sola_images
+#
+#  id                           :integer          not null, primary key
+#  approved                     :boolean          default(FALSE)
+#  approved_at                  :datetime
+#  generated_image_content_type :string(255)
+#  generated_image_file_name    :string(255)
+#  generated_image_file_size    :integer
+#  generated_image_updated_at   :datetime
+#  image_content_type           :string(255)
+#  image_file_name              :string(255)
+#  image_file_size              :integer
+#  image_updated_at             :datetime
+#  instagram_handle             :string(255)
+#  name                         :string(255)
+#  statement                    :text
+#  statement_variant            :string(255)
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  public_id                    :string(255)
+#

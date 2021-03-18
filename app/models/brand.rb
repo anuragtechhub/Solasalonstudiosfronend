@@ -163,6 +163,7 @@ end
 #  image_updated_at                 :datetime
 #  introduction_video_heading_title :string(255)      default("Introduction")
 #  name                             :string(255)
+#  views                            :integer          default(0), not null
 #  website_url                      :string(255)
 #  white_image_content_type         :string(255)
 #  white_image_file_name            :string(255)
@@ -170,4 +171,8 @@ end
 #  white_image_updated_at           :datetime
 #  created_at                       :datetime
 #  updated_at                       :datetime
+#
+# Indexes
+#
+#  index_brands_on_views  (views DESC)
 #

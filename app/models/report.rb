@@ -14,3 +14,16 @@ class Report < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: reports
+#
+#  id            :integer          not null, primary key
+#  email_address :string(255)
+#  parameters    :string(255)
+#  processed_at  :datetime
+#  report_type   :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#

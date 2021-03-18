@@ -230,3 +230,39 @@ class RequestTourInquiry < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: request_tour_inquiries
+#
+#  id                           :integer          not null, primary key
+#  campaign                     :string(255)
+#  canada_locations             :boolean          default(FALSE)
+#  contact_preference           :text
+#  content                      :string(255)
+#  dont_see_your_location       :boolean          default(FALSE)
+#  email                        :text
+#  how_can_we_help_you          :text
+#  hutk                         :string(255)
+#  i_would_like_to_be_contacted :boolean          default(TRUE)
+#  medium                       :string(255)
+#  message                      :text
+#  name                         :text
+#  newsletter                   :boolean          default(TRUE)
+#  phone                        :text
+#  request_url                  :text
+#  send_email_to_prospect       :string(255)
+#  services                     :text
+#  source                       :string(255)
+#  state                        :string(255)
+#  zip_code                     :string(255)
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  location_id                  :integer
+#  visit_id                     :integer
+#
+# Indexes
+#
+#  index_request_tour_inquiries_on_location_id  (location_id)
+#  index_request_tour_inquiries_on_visit_id     (visit_id)
+#

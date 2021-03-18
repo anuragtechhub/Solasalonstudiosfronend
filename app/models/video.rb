@@ -107,21 +107,24 @@ end
 # Table name: videos
 #
 #  id              :integer          not null, primary key
-#  brand_id        :integer
-#  title           :string(255)
 #  description     :text
+#  duration        :string(255)
 #  is_featured     :boolean          default(FALSE)
+#  is_introduction :boolean          default(FALSE)
+#  link_text       :string(255)
+#  link_url        :string(255)
+#  title           :string(255)
+#  views           :integer          default(0), not null
+#  webinar         :boolean          default(FALSE)
+#  youtube_url     :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
-#  youtube_url     :string(255)
+#  brand_id        :integer
 #  tool_id         :integer
-#  duration        :string(255)
-#  is_introduction :boolean          default(FALSE)
-#  link_url        :string(255)
-#  link_text       :string(255)
 #
 # Indexes
 #
 #  index_videos_on_brand_id  (brand_id)
 #  index_videos_on_tool_id   (tool_id)
+#  index_videos_on_views     (views DESC)
 #

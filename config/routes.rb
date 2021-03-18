@@ -210,3 +210,167 @@ Solasalonstudios::Application.routes.draw do
   get "/:url_name" => 'redirect#short'
 
 end
+
+# == Route Map
+#
+#                                 Prefix Verb     URI Pattern                                                   Controller#Action
+#                               ckeditor          /ckeditor                                                     Ckeditor::Engine
+#                                   home GET      /                                                             home#index
+#                                new_cms GET      /new-cms(.:format)                                            home#new_cms
+#                                   root GET      /                                                             home#index
+#                                        GET      /robots.txt(.:format)                                         home#robots
+#                                        GET      /google575b4ff16cfb013a.html(.:format)                        home#google_verification
+#                                        GET      /BingSiteAuth.xml(.:format)                                   home#bing_verification
+#                                        GET      /sitemap.xml(.:format)                                        home#sitemap
+#                            franchising GET      /franchising(.:format)                                        home#franchising
+#                               about_us GET      /about-us(.:format)                                           about_us#index
+#                                  about GET      /about(.:format)                                              about_us#index
+#                             who_we_are GET      /who-we-are(.:format)                                         about_us#who_we_are
+#                             leadership GET      /leadership(.:format)                                         about_us#leadership
+#                              our_story GET      /our-story(.:format)                                          about_us#our_story
+#                        rodrigo_miranda GET      /leadership/rodrigo-miranda(.:format)                         about_us#rodrigo_miranda
+#                             contact_us GET      /contact-us(.:format)                                         contact_us#index
+#        contact_us_contact_form_success GET      /contact-us/contact-form-success(.:format)                    contact_us#contact_form_success
+#                   contact_us_thank_you GET      /contact-us-thank-you(.:format)                               contact_us#thank_you
+#                                        GET      /contact_us(.:format)                                         contact_us#index
+#                              diversity GET      /diversity(.:format)                                          diversity#index
+#                                   faqs GET      /faq(.:format)                                                faq#index
+#                           testimonials GET      /testimonials(.:format)                                       testimonials#index
+#                                gallery GET      /gallery(.:format)                                            gallery#index
+#                         gallery_photos GET      /gallery-photos(.:format)                                     gallery#index
+#                                   news GET      /news(.:format)                                               news#index
+#                     newsletter_sign_up GET|POST /newsletter/sign-up(.:format)                                 newsletter#sign_up
+#                              franchise GET      /franchise(.:format)                                          redirect(301, https://pages.solasalonstudios.com/signup?utm_campaign=entrepreneur_print_ad&utm_source=referral&utm_medium=website)
+#                                covid19 GET      /covid19(.:format)                                            redirect(301, https://solasalonstudios-covid19.com/)
+#                              amenities GET      /amenities(.:format)                                          own_your_salon#index
+#                         own_your_salon GET      /own-your-salon(.:format)                                     own_your_salon#index
+#                                        GET      /own-your-salon/:tab(.:format)                                own_your_salon#index
+#                                    own GET      /own(.:format)                                                own_your_salon#index
+#                   own_studio_amenities GET      /own/studio-amenities(.:format)                               own_your_salon#studio_amenities
+#                     own_own_your_salon GET      /own/own-your-salon(.:format)                                 own_your_salon#own_your_salon
+#                           own_sola_pro GET      /own/sola-pro(.:format)                                       own_your_salon#old_sola_pro
+#                      own_sola_sessions GET      /own/sola-sessions(.:format)                                  own_your_salon#old_sola_sessions
+#                         own_solagenius GET      /own/solagenius(.:format)                                     own_your_salon#old_solagenius
+#                                own_tab GET      /own/:tab(.:format)                                           own_your_salon#index
+#                            our_studios GET      /our-studios(.:format)                                        own_your_salon#our_studios
+#                               sola_pro GET      /sola-pro(.:format)                                           own_your_salon#sola_pro
+#                          sola_sessions GET      /sola-sessions(.:format)                                      own_your_salon#sola_sessions
+#                             solagenius GET      /solagenius(.:format)                                         own_your_salon#solagenius
+#                               why_sola GET      /why-sola(.:format)                                           own_your_salon#why_sola
+#          why_sola_contact_form_success GET      /why-sola/contact-form-success(.:format)                      own_your_salon#contact_form_success
+#                              why_sola2 GET      /why-sola-2(.:format)                                         own_your_salon#why_sola_2
+#        why_sola_2_contact_form_success GET      /why-sola-2/contact-form-success(.:format)                    own_your_salon#contact_form_success_2
+#                         privacy_policy GET      /privacy-policy(.:format)                                     legal#privacy_policy
+#               request_franchising_info GET      /request-franchising-info(.:format)                           contact_us#index
+#                         request_a_tour GET      /tour/request-a-tour(.:format)                                contact_us#index
+#                          rent_a_studio GET      /rent-a-studio(.:format)                                      contact_us#index
+#                    franchising_request GET|POST /franchising-request(.:format)                                contact_us#franchising_request
+#                         search_results GET|POST /search/results(.:format)                                     search#results
+#                   booknow_landing_page GET|POST /solagenius/booknow(.:format)                                 booknow#landing_page
+#                         booknow_search GET|POST /booknow(.:format)                                            booknow#search
+#                        booknow_results GET|POST /booknow/results(.:format)                                    booknow#results
+#               booknow_booking_complete GET|POST /booknow/booking-complete(.:format)                           booknow#booking_complete
+#                   save_booknow_booking POST     /booknow/save-booknow-booking(.:format)                       booknow#save_booking
+#              contact_us_request_a_tour POST     /contact-us-request-a-tour(.:format)                          contact_us#request_a_tour
+#                        partner_inquiry GET|POST /partner-inquiry(.:format)                                    contact_us#partner_inquiry
+#                              locations GET      /locations(.:format)                                          locations#index
+#                     locations_by_state GET      /states/:state(.:format)                                      locations#state
+#                  locations_by_province GET      /provinces/:state(.:format)                                   locations#state
+#                         salon_stylists GET      /locations/:url_name/salon-professionals(/:service)(.:format) locations#stylists
+#                     old_salon_location GET      /locations/:state/:city/:url_name(.:format)                   locations#old_salon
+#                                        GET      /locations/state/:state(.:format)                             locations#state
+#                   locations_6th_avenue GET      /locations/6th-avenue(.:format)                               locations#sixthaveredirect
+#                         salon_location GET      /locations/:url_name(.:format)                                locations#salon
+#          location_contact_form_success GET      /locations/:url_name/contact-form-success(.:format)           locations#contact_form_success
+#                    find_salon_location GET|POST /find-salon-location(.:format)                                locations#find_salon
+#                          locations_usa GET|POST /locations-usa(.:format)                                      locations#usa
+#                   locations_fullscreen GET      /locations-fullscreen(.:format)                               locations#fullscreen
+#                                        GET      /stores/:url_name(.:format)                                   locations#salon_redirect
+#                                        GET      /store/:url_name(.:format)                                    locations#salon_redirect
+#                                my_sola GET|POST /mysola(.:format)                                             my_sola#index
+#                     show_my_sola_image GET|POST /mysola/:id(.:format)                                         my_sola#show
+#                      s3_presigned_post POST     /mysola-s3-presigned-post(.:format)                           my_sola#s3_presigned_post
+#                  my_sola_image_preview GET|POST /mysola-image-preview/:id(.:format)                           my_sola#image_preview
+#                   my_sola_image_upload GET|POST /mysola-image-upload(.:format)                                my_sola#image_upload
+#                                sola10k GET|POST /sola10k(.:format)                                            sola10k#index
+#                     show_sola10k_image GET|POST /sola10k/:id(.:format)                                        sola10k#show
+#               sola10ks3_presigned_post POST     /sola10k-s3-presigned-post(.:format)                          sola10k#s3_presigned_post
+#                  sola10k_image_preview GET|POST /sola10k-image-preview/:id(.:format)                          sola10k#image_preview
+#                   sola10k_image_upload GET|POST /sola10k-image-upload(.:format)                               sola10k#image_upload
+#                                stylist GET      /stylist(.:format)                                            stylists#index
+#                                        GET      /stylists/:url_name(.:format)                                 stylists#redirect
+#                                        GET      /stylist/:url_name(.:format)                                  stylists#redirect
+#                                        GET      /stylist/:url_name/:url(.:format)                             stylists#redirect
+#                    salon_professionals GET      /salon-professionals(.:format)                                stylists#index
+#                    find_a_professional GET      /findaprofessional(.:format)                                  stylists#index
+#                          stylistsearch GET      /stylistsearch(.:format)                                      stylists#index
+#                show_salon_professional GET      /salon-professional/:url_name(.:format)                       stylists#show
+#                      going_independent GET      /goingindependent(.:format)                                   stylists#going_independent
+# going_independent_contact_form_success GET      /goingindependent/contact-form-success(.:format)              stylists#going_independent_contact_form_success
+#      salon_professional_send_a_message GET|POST /salon-professional-send-a-message(.:format)                  stylists#send_a_message
+#                        financial_guide GET      /financialguide(.:format)                                     stylists#financial_guide
+#   financial_guide_contact_form_success GET      /financialguide/contact-form-success(.:format)                stylists#financial_guide_contact_form_success
+#                           show_article GET      /article/:url_name(.:format)                                  article#show
+#                                        GET      /readmore/:url_name(.:format)                                 article#show
+#                                   blog GET      /blog(.:format)                                               blog#index
+#                              show_blog GET      /blog/:url_name(.:format)                                     blog#show
+#                                        GET      /blog/:url_name/contact-form-success(.:format)                blog#contact_form_success
+#                      show_blog_preview GET      /blog-preview/:url_name(.:format)                             blog#show_preview
+#                                        GET      /blog-readmore/:url_name(.:format)                            blog#show
+#                          blog_category GET      /blog/category/:category_url_name(.:format)                   blog#index
+#                                regions GET      /regions(.:format)                                            locations#index
+#                                        GET      /region/:url_name(.:format)                                   locations#region
+#                                 region GET      /regions/:url_name(.:format)                                  locations#region
+#                 emails_welcome_to_sola GET      /emails/welcome-to-sola(.:format)                             emails#welcome_to_sola
+#                   forgot_password_form GET|POST /forgot-password(.:format)                                    forgot_password#form
+#                  forgot_password_reset GET|POST /forgot-password/reset(.:format)                              forgot_password#reset
+#                               sessions GET|POST /sessions(.:format)                                           sessions#index
+#                       portland_session GET|POST /sola-sessions/portland(.:format)                             sessions#portland
+#                       api_v1_locations GET|POST /api/v1/locations(.:format)                                   api/v1/locations#index
+#                                 api_v1 GET|POST /api/v1/locations/:id(.:format)                               api/v1/locations#show
+#                       api_v2_locations GET|POST /api/v2/locations(.:format)                                   api/v2/locations#index
+#                                 api_v2 GET|POST /api/v2/locations/:id(.:format)                               api/v2/locations#show
+#                         cms_save_lease GET|POST /cms/save-lease(.:format)                                     cms#save_lease
+#                       cms_save_stylist GET|POST /cms/save-stylist(.:format)                                   cms#save_stylist
+#                   cms_locations_select GET|POST /cms/locations-select(.:format)                               cms#locations_select
+#                     cms_studios_select GET|POST /cms/studios-select(.:format)                                 cms#studios_select
+#                    cms_stylists_select GET|POST /cms/stylists-select(.:format)                                cms#stylists_select
+#                  cms_s3_presigned_post GET|POST /cms/s3-presigned-post(.:format)                              cms#s3_presigned_post
+#                               sejasola GET|POST /sejasola(.:format)                                           brazil#sejasola
+#                      new_admin_session GET      /admins/sign_in(.:format)                                     devise/sessions#new
+#                          admin_session POST     /admins/sign_in(.:format)                                     devise/sessions#create
+#                  destroy_admin_session DELETE   /admins/sign_out(.:format)                                    devise/sessions#destroy
+#                         admin_password POST     /admins/password(.:format)                                    devise/passwords#create
+#                     new_admin_password GET      /admins/password/new(.:format)                                devise/passwords#new
+#                    edit_admin_password GET      /admins/password/edit(.:format)                               devise/passwords#edit
+#                                        PATCH    /admins/password(.:format)                                    devise/passwords#update
+#                                        PUT      /admins/password(.:format)                                    devise/passwords#update
+#              cancel_admin_registration GET      /admins/cancel(.:format)                                      devise/registrations#cancel
+#                     admin_registration POST     /admins(.:format)                                             devise/registrations#create
+#                 new_admin_registration GET      /admins/sign_up(.:format)                                     devise/registrations#new
+#                edit_admin_registration GET      /admins/edit(.:format)                                        devise/registrations#edit
+#                                        PATCH    /admins(.:format)                                             devise/registrations#update
+#                                        PUT      /admins(.:format)                                             devise/registrations#update
+#                                        DELETE   /admins(.:format)                                             devise/registrations#destroy
+#                            rails_admin          /admin                                                        RailsAdmin::Engine
+#                                        GET      /:url_name(.:format)                                          redirect#short
+#                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
+#
+# Routes for Ckeditor::Engine:
+#         pictures GET    /pictures(.:format)             ckeditor/pictures#index
+#                  POST   /pictures(.:format)             ckeditor/pictures#create
+#          picture DELETE /pictures/:id(.:format)         ckeditor/pictures#destroy
+# attachment_files GET    /attachment_files(.:format)     ckeditor/attachment_files#index
+#                  POST   /attachment_files(.:format)     ckeditor/attachment_files#create
+#  attachment_file DELETE /attachment_files/:id(.:format) ckeditor/attachment_files#destroy
+#
+# Routes for RailsAdmin::Engine:
+#   dashboard GET         /                                  rails_admin/main#dashboard
+#       index GET|POST    /:model_name(.:format)             rails_admin/main#index
+#         new GET|POST    /:model_name/new(.:format)         rails_admin/main#new
+#      export GET|POST    /:model_name/export(.:format)      rails_admin/main#export
+# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format) rails_admin/main#bulk_delete
+# bulk_action POST        /:model_name/bulk_action(.:format) rails_admin/main#bulk_action
+#        show GET         /:model_name/:id(.:format)         rails_admin/main#show
+#        edit GET|PUT     /:model_name/:id/edit(.:format)    rails_admin/main#edit
+#      delete GET|DELETE  /:model_name/:id/delete(.:format)  rails_admin/main#delete

@@ -85,24 +85,26 @@ end
 # Table name: tools
 #
 #  id                 :integer          not null, primary key
-#  brand_id           :integer
-#  title              :string(255)
 #  description        :text
-#  is_featured        :boolean          default(FALSE)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  file_file_name     :string(255)
 #  file_content_type  :string(255)
+#  file_file_name     :string(255)
 #  file_file_size     :integer
 #  file_updated_at    :datetime
+#  image_content_type :string(255)
+#  image_file_name    :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  is_featured        :boolean          default(FALSE)
 #  link_url           :string(255)
+#  title              :string(255)
+#  views              :integer          default(0), not null
 #  youtube_url        :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  brand_id           :integer
 #
 # Indexes
 #
 #  index_tools_on_brand_id  (brand_id)
+#  index_tools_on_views     (views DESC)
 #

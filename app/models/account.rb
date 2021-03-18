@@ -17,3 +17,18 @@ class Account < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id         :integer          not null, primary key
+#  api_key    :string(255)
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_accounts_on_api_key  (api_key)
+#

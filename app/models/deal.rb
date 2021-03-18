@@ -96,27 +96,29 @@ end
 # Table name: deals
 #
 #  id                       :integer          not null, primary key
-#  title                    :string(255)
-#  created_at               :datetime
-#  updated_at               :datetime
-#  file_file_name           :string(255)
+#  description              :text
 #  file_content_type        :string(255)
+#  file_file_name           :string(255)
 #  file_file_size           :integer
 #  file_updated_at          :datetime
-#  image_file_name          :string(255)
-#  image_content_type       :string(255)
-#  image_file_size          :integer
-#  image_updated_at         :datetime
-#  brand_id                 :integer
-#  description              :text
-#  is_featured              :boolean          default(FALSE)
-#  hover_image_file_name    :string(255)
 #  hover_image_content_type :string(255)
+#  hover_image_file_name    :string(255)
 #  hover_image_file_size    :integer
 #  hover_image_updated_at   :datetime
+#  image_content_type       :string(255)
+#  image_file_name          :string(255)
+#  image_file_size          :integer
+#  image_updated_at         :datetime
+#  is_featured              :boolean          default(FALSE)
 #  more_info_url            :string(255)
+#  title                    :string(255)
+#  views                    :integer          default(0), not null
+#  created_at               :datetime
+#  updated_at               :datetime
+#  brand_id                 :integer
 #
 # Indexes
 #
 #  index_deals_on_brand_id  (brand_id)
+#  index_deals_on_views     (views DESC)
 #

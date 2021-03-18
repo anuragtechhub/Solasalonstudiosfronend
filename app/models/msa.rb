@@ -61,3 +61,22 @@ class Msa < ActiveRecord::Base
     Msa.all.first.touch
   end
 end
+
+# == Schema Information
+#
+# Table name: msas
+#
+#  id            :integer          not null, primary key
+#  description   :text
+#  name          :string(255)
+#  tracking_code :text
+#  url_name      :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  legacy_id     :string(255)
+#
+# Indexes
+#
+#  index_msas_on_name      (name)
+#  index_msas_on_url_name  (url_name)
+#

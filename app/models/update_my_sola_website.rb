@@ -509,3 +509,111 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: update_my_sola_websites
+#
+#  id                    :integer          not null, primary key
+#  approved              :boolean          default(FALSE)
+#  biography             :text
+#  booking_url           :string(255)
+#  botox                 :boolean
+#  brows                 :boolean
+#  business_name         :string(255)
+#  email_address         :string(255)
+#  eyelash_extensions    :boolean
+#  facebook_url          :string(255)
+#  google_plus_url       :string(255)
+#  hair                  :boolean
+#  hair_extensions       :boolean
+#  image_10_content_type :string(255)
+#  image_10_file_name    :string(255)
+#  image_10_file_size    :integer
+#  image_10_updated_at   :datetime
+#  image_10_url          :string(255)
+#  image_1_content_type  :string(255)
+#  image_1_file_name     :string(255)
+#  image_1_file_size     :integer
+#  image_1_updated_at    :datetime
+#  image_1_url           :string(255)
+#  image_2_content_type  :string(255)
+#  image_2_file_name     :string(255)
+#  image_2_file_size     :integer
+#  image_2_updated_at    :datetime
+#  image_2_url           :string(255)
+#  image_3_content_type  :string(255)
+#  image_3_file_name     :string(255)
+#  image_3_file_size     :integer
+#  image_3_updated_at    :datetime
+#  image_3_url           :string(255)
+#  image_4_content_type  :string(255)
+#  image_4_file_name     :string(255)
+#  image_4_file_size     :integer
+#  image_4_updated_at    :datetime
+#  image_4_url           :string(255)
+#  image_5_content_type  :string(255)
+#  image_5_file_name     :string(255)
+#  image_5_file_size     :integer
+#  image_5_updated_at    :datetime
+#  image_5_url           :string(255)
+#  image_6_content_type  :string(255)
+#  image_6_file_name     :string(255)
+#  image_6_file_size     :integer
+#  image_6_updated_at    :datetime
+#  image_6_url           :string(255)
+#  image_7_content_type  :string(255)
+#  image_7_file_name     :string(255)
+#  image_7_file_size     :integer
+#  image_7_updated_at    :datetime
+#  image_7_url           :string(255)
+#  image_8_content_type  :string(255)
+#  image_8_file_name     :string(255)
+#  image_8_file_size     :integer
+#  image_8_updated_at    :datetime
+#  image_8_url           :string(255)
+#  image_9_content_type  :string(255)
+#  image_9_file_name     :string(255)
+#  image_9_file_size     :integer
+#  image_9_updated_at    :datetime
+#  image_9_url           :string(255)
+#  instagram_url         :string(255)
+#  laser_hair_removal    :boolean
+#  linkedin_url          :string(255)
+#  makeup                :boolean
+#  massage               :boolean
+#  microblading          :boolean
+#  nails                 :boolean
+#  name                  :string(255)
+#  other_service         :string(255)
+#  permanent_makeup      :boolean
+#  phone_number          :string(255)
+#  pinterest_url         :string(255)
+#  reserved              :boolean          default(FALSE)
+#  skin                  :boolean
+#  tanning               :boolean
+#  teeth_whitening       :boolean
+#  testimonial_id_1      :integer
+#  testimonial_id_10     :integer
+#  testimonial_id_2      :integer
+#  testimonial_id_3      :integer
+#  testimonial_id_4      :integer
+#  testimonial_id_5      :integer
+#  testimonial_id_6      :integer
+#  testimonial_id_7      :integer
+#  testimonial_id_8      :integer
+#  testimonial_id_9      :integer
+#  threading             :boolean
+#  twitter_url           :string(255)
+#  waxing                :boolean
+#  website_url           :string(255)
+#  work_hours            :text
+#  yelp_url              :string(255)
+#  created_at            :datetime
+#  updated_at            :datetime
+#  stylist_id            :integer
+#
+# Indexes
+#
+#  index_update_my_sola_websites_on_stylist_id  (stylist_id)
+#
