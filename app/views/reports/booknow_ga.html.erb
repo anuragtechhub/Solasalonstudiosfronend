@@ -31,7 +31,7 @@
 	      	<td class="label"><%= k %></td>
 	        <td class="value value-large"><%= number_with_delimiter v %></td>
 	      </tr>
-	    <% end %>
+	    <% end if app_data[:results_locations].present? %>
     </table>
   </div>
 

@@ -3,7 +3,7 @@ class BooknowController < PublicWebsiteController
   require 'uri'
   layout 'booknow'
   skip_before_filter :verify_authenticity_token
-	
+
 
 	def landing_page
     render :layout => 'public_website'
@@ -42,7 +42,7 @@ class BooknowController < PublicWebsiteController
           # do not add them - missing ids
         end
       end
-      
+
       if params[:location_id].present?
         @location = Location.find_by(:id => params[:location_id])
       end
@@ -59,7 +59,7 @@ class BooknowController < PublicWebsiteController
       @date = DateTime.parse(params[:date]) || DateTime.now
       # #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
       # @locations = Location.where(:id => get_location_id(@professionals))
-      
+
       # if params[:location_id].present?
       #   @location = Location.find_by(:id => params[:location_id])
       # end
@@ -96,8 +96,8 @@ class BooknowController < PublicWebsiteController
     })
 
     #p "bnb=#{bnb.inspect}"
- 
-    head :ok 
+
+    head :ok
   end
 
   private

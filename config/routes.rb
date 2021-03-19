@@ -1,4 +1,5 @@
 Solasalonstudios::Application.routes.draw do
+  require 'sidekiq/web'
 
   mount Ckeditor::Engine => '/ckeditor'
 
@@ -206,6 +207,9 @@ Solasalonstudios::Application.routes.draw do
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  authenticate :admin do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   get "/:url_name" => 'redirect#short'
 
@@ -353,6 +357,7 @@ end
 #                                        PUT      /admins(.:format)                                             devise/registrations#update
 #                                        DELETE   /admins(.:format)                                             devise/registrations#destroy
 #                            rails_admin          /admin                                                        RailsAdmin::Engine
+#                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
 #                                        GET      /:url_name(.:format)                                          redirect#short
 #                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
 #

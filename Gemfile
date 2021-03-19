@@ -32,6 +32,7 @@ gem 'bcrypt'
 gem 'puma'
 
 gem 'font-awesome-rails'
+gem 'clockwork'
 
 group :production do
   gem 'rails_12factor'
