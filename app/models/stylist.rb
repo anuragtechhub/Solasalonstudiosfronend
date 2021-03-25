@@ -497,70 +497,6 @@ class Stylist < ActiveRecord::Base
   end
 
   def sync_with_tru_digital
-    #url = "https://ccottle-dev-app.trudigital.net/core/sola"
-
-    # p "url=#{url}"
-
-    # payload = {
-    #   location: self.location_id,
-    #   data: [{
-    #     id: self.id,
-    #     name: self.name,
-    #     studio_number: self.studio_number,
-    #     #enabled: self.status && self.status == 'closed' ? false : true,
-    #     walkins: self.walkins
-    #   }]
-    # }
-
-    # p "payload=#{payload.inspect}"
-
-    # sync_with_tru_digital_response = RestClient::Request.execute({
-    #   #:headers => {"Content-Type" => "application/json"},
-    #   :method => :post,
-    #   :content_type => 'application/json',
-    #   :url => url,
-    #   :payload => payload.to_json,
-    # })
-    # data = [{
-    #   id: self.id,
-    #   name: self.name,
-    #   room: self.studio_number,
-    #   enabled: self.status && self.status == 'closed' ? false : true,
-    #   walkins: self.walkins
-    # }]
-
-    # data = [{
-    #   id: self.id,
-    #   name: self.name,
-    #   studio_number: self.studio_number,
-    #   walkins: self.walkins
-    # }]
-
-    # sync_with_tru_digital_response = RestClient::Request.execute({
-    #   :headers => {"Content-Type" => "application/json"},
-    #   :method => :post,
-    #   #:content_type => 'application/json',
-    #   :url => "https://ccottle-dev-app.trudigital.net/core/sola",
-    #   :payload => [payload].to_json
-    # })
-
-    #sync_with_tru_digital_response = `curl -d "data=[{\"id\": #{self.id}, \"name\": '#{self.name}', \"studio_number\": '#{self.studio_number}', \"walkins\": self.walkins}]" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
-
-    #sync_with_tru_digital_response = `curl -d "data=#{data.to_json}" -d "location=#{self.location_id}" "https://ccottle-dev-app.trudigital.net/core/sola"`
-
-
-
-    # p "curl -X POST \
-    #     'https://ccottle-dev-app.trudigital.net/core/sola' \
-    #     -H 'location: #{self.location_id}' \
-    #     -H 'data: \"#{data.to_json}\"'"
-    # sync_with_tru_digital_response = `curl -X POST \
-    #     'https://ccottle-dev-app.trudigital.net/core/sola' \
-    #     -H 'location: #{self.location_id}' \
-    #     -H 'data: #{data.to_json}'`
-
-    # p "curl -d 'location=#{self.location_id}' -d 'data=[{\"id\":#{self.id},\"name\":#{self.name},\"studio_number\":#{self.studio_number},\"walkins\":#{self.walkins}}]' 'https://ccottle-dev-app.trudigital.net/core/sola'"
-    # sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=[{"id":#{self.id},"name":#{self.name},"studio_number":#{self.studio_number},"walkins":#{self.walkins}}]' 'https://ccottle-dev-app.trudigital.net/core/sola'`
     data = []
     self.location.stylists.not_reserved.each do |stylist|
       data << {
@@ -576,14 +512,12 @@ class Stylist < ActiveRecord::Base
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e
-    # shh...
     p "error sync_with_tru_digital #{e}"
   end
 
   def sync_with_ping_hd
     return true if self.reserved
-    url = "https://go.engagephd.com/Sola.aspx" #"https://go.engagephd.com/api/Engage/Sola" #"http://dev.pinghd.com/api/Engage/Sola"
-
+    url = "https://go.engagephd.com/Sola.aspx"
     p "url=#{url}"
 
     payload = {
@@ -707,18 +641,17 @@ class Stylist < ActiveRecord::Base
   end
 
   def send_welcome_email
-    #p "SEND WELCOME EMAIL #{location.country}"
     if location && location.country && location.country == 'US'
       PublicWebsiteMailer.welcome_email_us(self).deliver
     elsif location && location.country && location.country == 'CA'
       PublicWebsiteMailer.welcome_email_ca(self).deliver
     end
+    ::Stylists::ResendWelcomeEmailJob.perform_in(1.week, self.id)
   rescue => e
     p "caught an error #{e.inspect}"
   end
 
   def resend_welcome_email
-    #p "SEND WELCOME EMAIL #{location.country}"
     if location && location.country && location.country == 'US'
       PublicWebsiteMailer.resend_welcome_email_us(self).deliver
     elsif location && location.country && location.country == 'CA'

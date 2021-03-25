@@ -30,6 +30,7 @@ class Blog < ActiveRecord::Base
   before_validation { self.image.destroy if self.delete_image == '1' }
 
   scope :published, -> { where(status: 'published') }
+  scope :draft, -> { where(status: 'draft') }
 
   scope :by_country, ->(country) {
     includes(:countries).where(countries: {code: country})

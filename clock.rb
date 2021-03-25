@@ -17,7 +17,7 @@ module Clockwork
     `rake sitemap:refresh`
   end
 
-  every(1.hour, 'blog.publish', if: lambda { |t| Rails.env.production? }) do
+  every(1.hour, 'blog.publish') do
     `rake blog:publish`
   end
 
@@ -45,11 +45,7 @@ module Clockwork
     `rake umsw:two_days_before_reminder`
   end
 
-  every(1.day, 'email.resend_welcome_email', at: '12:00', if: lambda { |t| Rails.env.production? }) do
-    `rake email:resend_welcome_email`
-  end
-
-  every(10.minutes, 'stylist.turn_off_walkins', if: lambda { |t| Rails.env.production? }) do
+  every(10.minutes, 'stylist.turn_off_walkins') do
     `rake stylist:turn_off_walkins`
   end
 
