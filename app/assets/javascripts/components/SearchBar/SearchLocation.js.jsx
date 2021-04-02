@@ -16,9 +16,9 @@ var SearchLocation = React.createClass({
     	}
     });
 
-		google.maps.event.addDomListener(this.refs.input, 'keydown', function (event) { 
-	    if (event.keyCode === 13 && $('.pac-container:visible').length) { 
-	    	event.preventDefault(); 
+		google.maps.event.addDomListener(this.refs.input, 'keydown', function (event) {
+	    if (event.keyCode === 13 && $('.pac-container:visible').length) {
+	    	event.preventDefault();
 	    }
 	  });
 
@@ -51,7 +51,7 @@ var SearchLocation = React.createClass({
 		}
 	},
 
-	
+
 
 	/*
 	* Render functions
@@ -60,8 +60,8 @@ var SearchLocation = React.createClass({
 	render: function () {
 		return (
 			<div className="SearchLocation">
-				<span className="fa fa-map-marker">&nbsp;</span>
-				<input ref="input" type="text" placeholder={I18n.t('sola_search.location')} value={this.props.location} onChange={this.onChange} />
+				<span className="fa fa-map-marker" role="presentation">&nbsp;</span>
+				<input ref="input" type="text" placeholder={I18n.t('sola_search.location')} value={this.props.location} onChange={this.onChange} aria-label="location" />
 				{this.props.location != '' ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
 			</div>
 		);

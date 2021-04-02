@@ -1,5 +1,5 @@
 $(function () {
-	
+
  	var $headerNav = $('#header .nav');
   var $window = $(window);
   var $searchForm = $('.nav-search');
@@ -14,7 +14,7 @@ $(function () {
   $('.search-result-clickable .bold-link, .search-result-clickable .book-now-button').on('click', function (e) {
     e.stopPropagation();
   });
-  
+
   $('.search-result-clickable').on('click', function () {
     if ($(this).data('href')) {
       window.location.href = $(this).data('href');
@@ -31,7 +31,11 @@ $(function () {
     e.stopPropagation();
   });
 
-  $('.nav-search-button').on('click touchstart', function () {
+  $('.nav-search-button').on('click touchstart keyup', function (e) {
+    if (e.type === 'keyup' && e.keyCode !== 13) {
+      return false;
+    }
+
   	if ($window.width() > 1000) {
   		// desktop
 	    if ($searchForm.hasClass('open') && !$searchForm.hasClass('animating') && $searchInput.val() == '') {
@@ -85,9 +89,9 @@ $(function () {
     if ($window.width() != windowWidth && $window.height != windowHeight) {
       windowWidth = $window.width();
       windowHeight = $window.height();
-      
+
       closeSearch();
-      
+
       if ($window.width() > 1000) {
         $headerNav.show();
       } else {
@@ -108,7 +112,7 @@ $(function () {
     $searchInput.focus();
     $(document.body).on('click.search', closeSearch);
     setTimeout(function () {
-      $searchForm.removeClass('animating') 
+      $searchForm.removeClass('animating')
     }, 400);
   }
 
@@ -117,7 +121,7 @@ $(function () {
     $searchInput.val('').blur();
     $(document.body).off('click.search').click();
     setTimeout(function () {
-      $searchInput.css('background', 'transparent'); 
+      $searchInput.css('background', 'transparent');
     }, 150);
 
   	if ($mobileSearchModal.hasClass('open')) {
@@ -126,6 +130,6 @@ $(function () {
   		});
   	}
     $('body').off('touchmove.mobileSearch').removeClass('stop-scrolling');
-  } 
+  }
 
 });

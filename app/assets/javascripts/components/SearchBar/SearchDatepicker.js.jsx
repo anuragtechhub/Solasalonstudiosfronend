@@ -6,8 +6,8 @@ var SearchDatePicker = React.createClass({
 			autoclose: true,
 			startDate: new Date(),
 			templates: {
-		    leftArrow: '<i class="fa fa-caret-left"></i>',
-		    rightArrow: '<i class="fa fa-caret-right"></i>'
+		    leftArrow: '<i class="fa fa-caret-left" aria-label="previous value"></i>',
+		    rightArrow: '<i class="fa fa-caret-right" aria-label="next value"></i>'
 			}
 		});
 
@@ -28,9 +28,9 @@ var SearchDatePicker = React.createClass({
 
 		return (
 			<div className="SearchDatePicker">
-				<span className="fa fa-calendar">&nbsp;</span>
-				<input ref="input" type="text" placeholder="mm/dd/yyyy" />{/*placeholder={this.props.date.format('MM/DD/YY')}*/}
-				{this.props.date ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
+				<span className="fa fa-calendar" role="presentation">&nbsp;</span>
+				<input ref="input" type="text" placeholder="mm/dd/yyyy" aria-label="datepicker" />{/*placeholder={this.props.date.format('MM/DD/YY')}*/}
+				{this.props.date ? <span aria-label="Close" className="fa fa-times" role="button" onClick={this.clearInput}>&nbsp;</span> : null}
 			</div>
 		);
 	},

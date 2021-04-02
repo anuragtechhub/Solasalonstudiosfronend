@@ -36,11 +36,11 @@ var SearchBar = React.createClass({
 
 		window.addEventListener("pageshow", function (event) {
 		  var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
-		  
+
 		  if (historyTraversal) {
 		    self.setState({loading: false});
 		  }
-		});		
+		});
 	},
 
 
@@ -48,21 +48,21 @@ var SearchBar = React.createClass({
 	/*
 	* Render functions
 	*/
-	
+
 	render: function () {
 		return (
 			<div className="SearchBar">
-				<form method="post" action={this.props.path} onSubmit={this.onSubmit}>
-					<SearchServicesAndSuggestions 
-						fingerprint={this.state.fingerprint} 
-						gloss_genius_api_key={this.state.gloss_genius_api_key} 
-						gloss_genius_api_url={this.state.gloss_genius_api_url} 
-						query={this.state.query} 
-						onChangeQuery={this.onChangeQuery} 
+				<form method="post" action={this.props.path} onSubmit={this.onSubmit} role="search">
+					<SearchServicesAndSuggestions
+						fingerprint={this.state.fingerprint}
+						gloss_genius_api_key={this.state.gloss_genius_api_key}
+						gloss_genius_api_url={this.state.gloss_genius_api_url}
+						query={this.state.query}
+						onChangeQuery={this.onChangeQuery}
 					/>
 					<SearchLocation location={this.state.location} onChangeLocation={this.onChangeLocation} />
 					<SearchDatePicker date={this.state.date} onChangeDate={this.onChangeDate} />
-					<button type="submit" className="primary">Search</button> 
+					<button type="submit" className="primary">Search</button>
 				</form>
 				{this.state.error ? <div className="error">{this.state.error}</div> : null}
 				{this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null}
@@ -95,7 +95,7 @@ var SearchBar = React.createClass({
 		if (e && typeof e.preventDefault == 'function') {
 			e.preventDefault();
 		}
-		
+
 
 		var hasQuery = this.hasQuery();
 		var hasLatLng = this.state.location && this.state.location != '';//this.hasLatLng();

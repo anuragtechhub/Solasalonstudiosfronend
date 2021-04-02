@@ -74,8 +74,8 @@ var SearchServicesAndSuggestions = React.createClass({
 	render: function () {
 		return (
 			<div className="SearchServicesAndSuggestions">
-				<span className="fa fa-search">&nbsp;</span>
-				<input ref="input" type="text" placeholder={I18n.t('sola_search.services_and_suggestions_placeholder')} onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} />
+				<span className="fa fa-search" role="presentation">&nbsp;</span>
+				<input ref="input" type="text" placeholder={I18n.t('sola_search.services_and_suggestions_placeholder')} onChange={this.onChange} onFocus={this.onFocus} value={this.props.query} aria-label="Service, salon, stylist" />
 				{this.state.tempQuery != '' || this.props.query != '' ? <span className="fa fa-times" onClick={this.clearInput}>&nbsp;</span> : null}
 				<div className="Dropdown" ref="dropdown">
 					{this.state.tempQuery == '' ? this.renderAllCategoriesAndServices() : this.renderCategoriesAndServicesMatches()}
@@ -124,7 +124,7 @@ var SearchServicesAndSuggestions = React.createClass({
 		return (
 			<div className="row" ref="matches" data-matches={matches.length}>
 				<div className="col-sm-12">
-					{	
+					{
 						matches.length > 0
 						?
 						<div>
@@ -146,7 +146,7 @@ var SearchServicesAndSuggestions = React.createClass({
 		var self = this;
 		var categories = [];
 		var services = []
-		
+
 		for (var k in SolaSearchServices) {
 			categories.push(
 				<a key={k} href="#" data-category={k} className={this.state.activeCategory == k ? 'active' : ''} onClick={self.onChangeActiveCategory.bind(null, k)}><HighlightText words={[self.props.query]}>{k}</HighlightText></a>
@@ -292,7 +292,7 @@ var SearchServicesAndSuggestions = React.createClass({
 		var self = this;
 
 		//console.log('getSuggestions', query);
-		
+
 		$.ajax({
 	    url: this.props.gloss_genius_api_url + 'suggestions?query=' + query,
 	    headers: {

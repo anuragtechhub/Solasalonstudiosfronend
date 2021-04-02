@@ -186,6 +186,12 @@
 
     margin-bottom: 0;
 
+    .button-wrapper {
+      a:focus {
+        outline: auto;
+      }
+    }
+
     .tile-content {
       // position: absolute;
       // top: 25%;

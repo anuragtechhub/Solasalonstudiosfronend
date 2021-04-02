@@ -70,8 +70,8 @@ $(function () {
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
-        "<i class='arrow-left'></i>",
-        "<i class='arrow-right'></i>"
+        "<i aria-label='Left' class='arrow-left' role='presentation'></i>",
+        "<i aria-label='Right' class='arrow-right' role='presentation'></i>"
       ],
       lazyEffect: false,
       slideSpeed: 300,
@@ -201,8 +201,8 @@ $(function () {
     var options = {
       navigation: $this.data('nonav') ? false : true,
       navigationText: [
-        "<i class='arrow-left'></i>",
-        "<i class='arrow-right'></i>"
+        "<i aria-label='Left' class='arrow-left' role='presentation'></i>",
+        "<i aria-label='Right' class='arrow-right' role='presentation'></i>"
       ],
       lazyEffect: false,
       slideSpeed: 300,

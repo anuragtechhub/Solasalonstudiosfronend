@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>
     <% if content_for?(:title) %>
-      <%= yield :title %> - 
+      <%= yield :title %> -
     <% end %>
     <%= t :brand_name %>
   </title>

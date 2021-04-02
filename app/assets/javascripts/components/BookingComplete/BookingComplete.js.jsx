@@ -1,5 +1,5 @@
 var BookingComplete = React.createClass({
-	
+
 	getInitialState: function () {
 		return {
 			defaultCoverImageUrl: 'https://s3.amazonaws.com/solasalonstudios/booknow-avatar.png', //https://s3.amazonaws.com/haubby-production-v1/users/avatars/000/000/064/original/image.jpg?1485837902
@@ -45,7 +45,7 @@ var BookingComplete = React.createClass({
 								 data-title={I18n.t('sola_search.appointment_with_stylist', {stylist: this.props.professional.full_name})}
 								 data-description={service_description}
 								 data-address={this.props.professional.business_address.replace(/#/g, '')}
-								 data-timezone={this.props.professional.timezone} 
+								 data-timezone={this.props.professional.timezone}
 								 data-start={moment(this.props.time.start).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}
 								 data-end={moment(this.props.time.end).tz(this.props.professional.timezone).format('YYYY-MM-DDTHH:mm:ss')}></span>
 						</div>
@@ -75,7 +75,7 @@ var BookingComplete = React.createClass({
 
 						<div className="Body">
 							<div className="DateRow">
-								<span className="fa fa-calendar">&nbsp;</span>
+								<span className="fa fa-calendar" role="presentation">&nbsp;</span>
 								<div className="Date">{moment(this.props.time.start).tz(this.props.professional.timezone).format('MMMM Do YYYY')}</div>
 							</div>
 
@@ -85,7 +85,7 @@ var BookingComplete = React.createClass({
 							</div>
 
 							<div className="AddressRow">
-								<span className="fa fa-map-marker">&nbsp;</span>
+								<span className="fa fa-map-marker" role="presentation">&nbsp;</span>
 								<div className="Address">{this.props.professional.business_address}<br /><strong>{this.props.professional.business_name}</strong></div>
 								<a href={'http://maps.google.com/maps?daddr=' + this.props.professional.business_address} target="_blank">{I18n.t('sola_search.map_it')}</a>
 							</div>
@@ -93,7 +93,7 @@ var BookingComplete = React.createClass({
 							<div className="ServicesRow">
 								<div className="ServiceTitle">{I18n.t(this.props.services.length == 1 ? 'sola_search.service' : 'sola_search.services')} ({this.props.services.length})</div>
 								<div className="Services">{services}</div>
-							</div>							
+							</div>
 						</div>
 
 					</div>

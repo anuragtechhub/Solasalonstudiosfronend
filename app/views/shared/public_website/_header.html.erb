@@ -4,27 +4,27 @@
     <div class="row">
       <ul class="nav">
         <% if I18n.locale.to_s == 'pt-BR' %>
-          <li class="social"><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social"><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.facebook.com/Sola-Salon-Studios-Brasil-528942857566893', :target => '_blank', tabindex: 0, 'area-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.instagram.com/solasalonsbrasil/', :target => '_blank', tabindex: 0, 'area-label' => 'instagram' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% elsif I18n.locale.to_s == "en-CA"%>
-          <li class="social"><%= link_to 'https://www.facebook.com/SolaCanada/', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social"><%= link_to 'https://www.instagram.com/solacanada/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.facebook.com/SolaCanada/', :target => '_blank', tabindex: 0, 'area-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.instagram.com/solacanada/', :target => '_blank', tabindex: 0, 'area-label' => 'instagram' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% else %>
-          <li class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-          <li class="social"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li class="social"><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank', tabindex: 0, 'area-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li class="social"><%= link_to 'https://instagram.com/solasalons/', :target => '_blank', tabindex: 0, 'area-label' => 'instagram' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
         <% end %>
-        <li class="social"><%= link_to 'https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg', :target => '_blank' do %><span class="ss-social-regular ss-youtube"></span><% end %></li>
-        <li class="social last"><%= link_to 'https://www.linkedin.com/company/solasalons/', :target => '_blank' do %><span class="ss-social-regular ss-linkedin"></span><% end %></li>
+        <li class="social"><%= link_to 'https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg', :target => '_blank', tabindex: 0, 'area-label' => 'youtube' do %><span class="ss-social-regular ss-youtube"></span><% end %></li>
+        <li class="social last"><%= link_to 'https://www.linkedin.com/company/solasalons/', :target => '_blank', tabindex: 0, 'area-label' => 'linkedin' do %><span class="ss-social-regular ss-linkedin"></span><% end %></li>
         <% if I18n.locale.to_s == 'en' %>
-          <li class="border-left"><%= link_to raw(t('page.franchising.title')), 'https://www.solafranchising.com', :target => '_blank' %></li>
+          <li class="border-left"><%= link_to raw(t('page.franchising.title')), 'https://www.solafranchising.com', :target => '_blank', 'area-label' => 'solafranchising', tabindex: 0 %></li>
         <% end %>
-        <li class="border-left"><%= link_to :contact_us do %><%= raw t 'header.contact_us' %><% end %></li>
+        <li class="border-left"><%= link_to :contact_us, tabindex: 0 do %><%= raw t 'header.contact_us' %><% end %></li>
         <% if I18n.locale.to_s == 'en' %>
           <li class="border-left">
             <%= link_to 'In The News', :news %>
           </li>
         <% else %>
-          <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in' do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
+          <li class="border-left"><%= link_to 'https://www.solaprofessional.com', :class => 'sola-pro-sign-in', tabindex: 0 do %><%= raw t 'header.sola_pro_sign_in' %><% end %></li>
         <% end %>
         <li class="border-left country-switcher-wrapper"><%= render 'shared/country_switcher' %></li>
       </ul>
@@ -38,19 +38,24 @@
 
       <div id="mobile-top-nav-button"></div>
 
-      <%= link_to :home, :class => 'logo' do %><%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('logo_name')) %><% end %>
+      <h1>
+        <%= link_to :home, :class => 'logo' do %>
+          <%= image_tag 'Sola_Logo_@2x.png', :width => 133, :height => 81, :alt => raw(t('logo_name')) %>
+        <% end %>
+      </h1>
 
       <ul class="sola-nav">
-        <li><h4><%= link_to raw(t('page.locations.title')), :locations %></h4></li>
-        <li><h4><%= link_to raw(t('page.book_now.book_an_appointment')), :booknow_search %></h4></li>
-        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon' %></h4></li>
-        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us" %></h4></li>
-        <li><h4><%= link_to raw(t('page.blog.title')), :blog %></h4></li>
+        <li><h4><%= link_to raw(t('page.locations.title')), :locations, tabindex: 0 %></h4></li>
+        <li><h4><%= link_to raw(t('page.book_now.book_an_appointment')), :booknow_search, tabindex: 0 %></h4></li>
+        <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', tabindex: 0 %></h4></li>
+        <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us", tabindex: 0 %></h4></li>
+        <li><h4><%= link_to raw(t('page.blog.title')), :blog, tabindex: 0 %></h4></li>
       </ul>
 
-      <%= form_tag [:search, :results], :method => :get, :class => 'nav-search' do %>
-        <input class="nav-search-input" placeholder="<%= raw t 'header.search_placeholder' %>" type="search" name="query">
-        <span class="nav-search-button search-icon"></span>
+      <%= form_tag [:search, :results], :method => :get, :class => 'nav-search', role: :search do %>
+        <input class="nav-search-input" placeholder="<%= raw t 'header.search_placeholder' %>" type="search" name="query" aria-label="search query">
+        <span tabindex="0" aria-label="search" role="button" class="nav-search-button search-icon"></span>
+        <button type="submit" class="d-none"></button>
       <% end %>
 
     </div>
@@ -61,25 +66,25 @@
   <div class="oys-nav has-4" data-nav="about-us">
     <ul>
       <li>
-        <%= link_to :who_we_are do %>
+        <%= link_to :who_we_are, tabindex: 0 do %>
           <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/about-us/WhoWeAre_Thumb%402x.jpg' %>
           <h4><%= t 'nav.who_we_are' %></h4>
         <% end %>
       </li>
       <li>
-        <%= link_to :our_story do %>
+        <%= link_to :our_story, tabindex: 0 do %>
           <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
           <h4><%= t 'nav.our_story' %></h4>
         <% end %>
       </li>
       <li>
-        <%= link_to :testimonials do %>
+        <%= link_to :testimonials, tabindex: 0 do %>
           <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/testemonials/Testimonials%402x.jpg' %>
           <h4><%= t 'nav.testimonials' %></h4>
         <% end %>
       </li>
       <li>
-        <%= link_to :leadership do %>
+        <%= link_to :leadership, tabindex: 0 do %>
           <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/leadership-team/Rodrigo-menu.jpeg' %>
           <h4><%= t 'nav.leadership' %></h4>
         <% end %>
@@ -90,26 +95,26 @@
   <div class="oys-nav <%= I18n.locale.to_s == 'pt-BR' ? 'has-4' : 'has-4' %>" data-nav="about-us">
     <ul>
       <li>
-        <%= link_to :who_we_are do %>
+        <%= link_to :who_we_are, tabindex: 0 do %>
           <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg' %>
           <h4><%= t 'nav.who_we_are' %></h4>
         <% end %>
       </li>
       <li>
-        <%= link_to :our_story do %>
+        <%= link_to :our_story, tabindex: 0 do %>
           <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
           <h4><%= t 'nav.our_story' %></h4>
         <% end %>
       </li>
       <li>
-        <%= link_to :testimonials do %>
+        <%= link_to :testimonials, tabindex: 0 do %>
           <%= image_tag 'about_nav/Testimonials@2x.jpg' %>
           <h4><%= t 'nav.testimonials' %></h4>
         <% end %>
       </li>
       <% if I18n.locale.to_s == 'pt-BR' %>
       <li>
-        <%= link_to :leadership do %>
+        <%= link_to :leadership, tabindex: 0 do %>
           <% if I18n.locale.to_s == 'pt-BR' %>
             <%= image_tag 'Leadership/Rodrigo-menu.jpeg' %>
           <% else %>
@@ -121,7 +126,7 @@
       <% end %>
       <% if I18n.locale.to_s != 'pt-BR' %>
       <li>
-        <%= link_to :news do %>
+        <%= link_to :news, tabindex: 0 do %>
           <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
           <h4><%= t 'nav.in_the_news' %></h4>
         <% end %>

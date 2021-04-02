@@ -1,10 +1,10 @@
 <div class="home-container-full-width">
   <div class="for-customers tile-for-customers-find-a-stylist">
-    <div class="tile-content">
+    <div class="tile-content" aria-label="main" role="main">
       <h5><%= t('page.home.for_customers') %></h5>
       <h2>
         <%= t('page.home.find_a_sola') %>
-        <span class="mobile-br">&nbsp;</span>
+        <span class="mobile-br" role="presentation">&nbsp;</span>
         <span class="home-services-animation">
           <span class="active"><%= t('services.hairstylist') %></span>
           <span><%= t('services.esthetician') %></span>
@@ -30,18 +30,18 @@
     </div>
   </div>
   <div class="for-professionals tile-for-professionals-own-your-salon">
-    <div class="tile-content">
+    <div class="tile-content" aria-label="main" role="main">
       <h5><%= t('page.home.for_professionals') %></h5>
       <h2><%= t('page.home.own_your_salon') %></h2>
       <ul>
         <li>
-          <h4><%= link_to "//www.youtube.com/watch?v=afOBB5jAjUU", :rel => 'afOBB5jAjUU', :class => 'play-video' do %><span class="forward-arrow-white"></span><%= t('page.home.watch_our_video') %><% end %></h4>
+          <h4><%= link_to "//www.youtube.com/watch?v=afOBB5jAjUU", :rel => 'afOBB5jAjUU', :class => 'play-video' do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.home.watch_our_video') %><% end %></h4>
         </li>
-        <li><h4><%= link_to :why_sola do %><span class="forward-arrow-white"></span><%= t('page.why_sola.title') %><% end %></h4></li>
-        <li><h4><%= link_to :our_studios do %><span class="forward-arrow-white"></span><%= t('page.our_studios.title') %><% end %></h4></li>
+        <li><h4><%= link_to :why_sola, tabindex: 0 do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.why_sola.title') %><% end %></h4></li>
+        <li><h4><%= link_to :our_studios, tabindex: 0 do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.our_studios.title') %><% end %></h4></li>
       </ul>
       <div class="button-wrapper">
-        <%= link_to :why_sola, :class => 'button' do %><%= t('page.home.learn_more') %><% end %>
+        <%= link_to :why_sola, :class => 'button', tabindex: 0, role: :button do %><%= t('page.home.learn_more') %><% end %>
       </div>
       <p><%= t('page.home.tagline').html_safe %></p>
     </div>
@@ -54,54 +54,54 @@
 
   <div class="row home-trilogy">
     <div class="three columns">
-      <%= link_to :covid19 do %>
+      <%= link_to :covid19, tabindex: 0 do %>
         <%= image_tag 'Home/homecovid.jpg', :class => 'u-full-width' %>
         <span class="text">
 <!--           <h2><%= t 'page.about.title' %></h2> -->
           <h2 class="small covid-title">COVID-19 Resource Center</h2>
-          <span class="button-wrapper"><span class="button"><%= t 'page.home.learn_more' %></span></span>
+          <span class="button-wrapper"><span class="button" role="button"><%= t 'page.home.learn_more' %></span></span>
         </span>
       <% end %>
     </div>
     <div class="three columns">
-      <%= link_to :our_studios do %>
+      <%= link_to :our_studios, tabindex: 0 do %>
         <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.our_studios.title' %></h2>
-          <span class="button-wrapper"><span class="button"><%= t 'page.home.take_a_tour' %></span></span>
+          <span class="button-wrapper"><span class="button" role="button"><%= t 'page.home.take_a_tour' %></span></span>
         </span>
       <% end %>
     </div>
     <div class="three columns">
-      <%= link_to :contact_us do %>
+      <%= link_to :contact_us, tabindex: 0 do %>
         <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.contact.title' %></h2>
-          <span class="button-wrapper"><span class="button"><%= t 'page.home.get_in_touch' %></span></span>
+          <span class="button-wrapper"><span class="button" role="button"><%= t 'page.home.get_in_touch' %></span></span>
         </span>
       <% end %>
     </div>
     <div class="three columns">
-      <%= link_to :going_independent do %>
+      <%= link_to :going_independent, tabindex: 0 do %>
         <%= image_tag 'Home/going_independent_home_tile.jpg', :class => 'u-full-width' %>
         <span class="text">
           <h2 class="small">Guide to Going Independent</h2>
-          <span class="button-wrapper"><span class="button">Free Download</span></span>
+          <span class="button-wrapper"><span class="button" role="button">Free Download</span></span>
         </span>
       <% end %>
     </div>
   </div>
 
   <div class="owl-carousel owl-theme owl-desktop inline-carousel" data-autoplay="5000">
-    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :solagenius do %><%= image_tag 'Home/Featured_SolaGenius_Desktop-1.jpg', :alt => "Sola Pro" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', :alt => "Sola Stories" %><% end %></div>
+    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Desktop-1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
   </div>
 
   <div class="owl-carousel owl-theme owl-mobile inline-carousel" data-autoplay="5000">
-    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :solagenius do %><%= image_tag 'Home/Featured_SolaGenius_Mobile-1.jpg', :alt => "Sola Pro" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', :alt => "Sola Stories" %><% end %></div>
+    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Mobile-1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
   </div>
 
   <div class="block-quote-testimonial">

@@ -63,15 +63,15 @@
           <ul>
             <% if I18n.locale.to_s == 'pt-BR' %>
               <li><h4>
-                <%= link_to "//www.youtube.com/watch?v=D2vtblujRzo", :rel => 'D2vtblujRzo', :class => 'play-video' do %><%= t('page.home.watch_our_video') %><span class="forward-arrow-white"></span><% end %>
+                <%= link_to "//www.youtube.com/watch?v=D2vtblujRzo", :rel => 'D2vtblujRzo', :class => 'play-video' do %><%= t('page.home.watch_our_video') %><span class="forward-arrow-white" role="presentation"></span><% end %>
               </h4></li>
             <% else %>
               <li><h4>
-                <%= link_to "//www.youtube.com/watch?v=nbHFs0XjS8s", :rel => 'nbHFs0XjS8s', :class => 'play-video' do %><%= t('page.home.watch_our_video') %><span class="forward-arrow-white"></span><% end %>
+                <%= link_to "//www.youtube.com/watch?v=nbHFs0XjS8s", :rel => 'nbHFs0XjS8s', :class => 'play-video' do %><%= t('page.home.watch_our_video') %><span class="forward-arrow-white" role="presentation"></span><% end %>
               </h4></li>
             <% end %>
-            <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
-            <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><span class="forward-arrow-white"></span><% end %></h4></li>
+            <li><h4><%= link_to :why_sola do %><%= t('page.why_sola.title') %><span class="forward-arrow-white" role="presentation"></span><% end %></h4></li>
+            <li><h4><%= link_to :our_studios do %><%= t('page.our_studios.title') %><span class="forward-arrow-white" role="presentation"></span><% end %></h4></li>
           </ul>
           <%= form_tag [:search, :results], :method => :get do %>
             <div class="filterable-dropdown-search" data-input="service_type">

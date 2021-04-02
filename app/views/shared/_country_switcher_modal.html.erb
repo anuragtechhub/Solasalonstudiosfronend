@@ -1,40 +1,40 @@
 <div class="country-switcher country-switcher-modal">
   <% if I18n.locale == :en %>
-    <div class="country first" data-domain="com">
+    <div class="country first" data-domain="com" tabindex="0">
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-    <div class="country" data-domain="ca">
+    <div class="country" data-domain="ca" tabindex="0">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
-    <div class="country last" data-domain="com.br">
+    <div class="country last" data-domain="com.br" tabindex="0">
       <div class="flag brazil">&nbsp;</div>
       <div class="name">Brazil</div>
-    </div>    
+    </div>
   <% elsif I18n.locale.to_s == "en-CA" %>
-    <div class="country first" data-domain="ca">
+    <div class="country first" data-domain="ca" tabindex="0">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>
-    <div class="country" data-domain="com">
+    <div class="country" data-domain="com" tabindex="0">
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-    <div class="country last" data-domain="com.br">
+    <div class="country last" data-domain="com.br" tabindex="0">
       <div class="flag brazil">&nbsp;</div>
       <div class="name">Brazil</div>
-    </div>  
+    </div>
   <% elsif I18n.locale.to_s == "pt-BR" %>
-    <div class="country first" data-domain="com.br">
+    <div class="country first" data-domain="com.br" tabindex="0">
       <div class="flag brazil">&nbsp;</div>
       <div class="name">Brazil</div>
     </div>
-    <div class="country first" data-domain="com">
+    <div class="country first" data-domain="com" tabindex="0">
       <div class="flag usa">&nbsp;</div>
       <div class="name">United States</div>
     </div>
-    <div class="country last" data-domain="ca">
+    <div class="country last" data-domain="ca" tabindex="0">
       <div class="flag canada">&nbsp;</div>
       <div class="name">Canada</div>
     </div>

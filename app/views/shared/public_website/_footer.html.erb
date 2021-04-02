@@ -1,45 +1,45 @@
-<div id="footer">
+<footer id="footer">
   <div class="container">
     <div class="row-first d-flex flex-wrap flex-lg-nowrap justify-content-center">
 
       <div class="footer-col">
         <h4><%= t('footer.the-sola-difference') %></h4>
         <ul class="p">
-          <li><%= link_to t('page.blog.title'), blog_path %></li>
-          <li><%= link_to t('footer.education'), why_sola_path(anchor: :education) %></li>
-          <li><%= link_to t('footer.sola-pro'), why_sola_path(anchor: :sola_pro) %></li>
-          <li><%= link_to t('footer.sola-genius'), why_sola_path(anchor: :solagenius) %></li>
-          <li><%= link_to t('footer.book-now'), why_sola_path(anchor: :booknow) %></li>
-          <li><%= link_to t('footer.beauty-hive'), why_sola_path(anchor: :beauty_hive) %></li>
-          <li><%= link_to t('footer.the-sola-store'), why_sola_path(anchor: :the_sola_store) %></li>
-          <li><%= link_to t('footer.gallery'), gallery_path %></li>
+          <li><%= link_to t('page.blog.title'), blog_path, tabindex: 0 %></li>
+          <li><%= link_to t('footer.education'), why_sola_path(anchor: :education), tabindex: 0 %></li>
+          <li><%= link_to t('footer.sola-pro'), why_sola_path(anchor: :sola_pro), tabindex: 0 %></li>
+          <li><%= link_to t('footer.sola-genius'), why_sola_path(anchor: :solagenius), tabindex: 0 %></li>
+          <li><%= link_to t('footer.book-now'), why_sola_path(anchor: :booknow), tabindex: 0 %></li>
+          <li><%= link_to t('footer.beauty-hive'), why_sola_path(anchor: :beauty_hive), tabindex: 0 %></li>
+          <li><%= link_to t('footer.the-sola-store'), why_sola_path(anchor: :the_sola_store), tabindex: 0 %></li>
+          <li><%= link_to t('footer.gallery'), gallery_path, tabindex: 0 %></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4><%= t('footer.second_column_heading') %></h4>
         <ul class="p">
-          <li><%= link_to t('page.locations.title_long'), :locations %></li>
-          <li><%= link_to t('footer.find-a-professional'), :find_a_professional %></li>
-          <li><%= link_to t('footer.book-appointment'), :booknow_search %></li>
+          <li><%= link_to t('page.locations.title_long'), :locations, tabindex: 0 %></li>
+          <li><%= link_to t('footer.find-a-professional'), :find_a_professional, tabindex: 0 %></li>
+          <li><%= link_to t('footer.book-appointment'), :booknow_search, tabindex: 0 %></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4><%= t('footer.about_us') %></h4>
         <ul class="p">
-          <li><%= link_to t('footer.contact-us'), :contact_us %></li>
-          <li><%= link_to t('footer.who-we-are'), :who_we_are %></li>
-          <li><%= link_to t('footer.our-story'), :our_story %></li>
-          <li><%= link_to t('footer.in-the-news'), :news %></li>
-          <li><%= link_to t('footer.franchising'), :franchising %></li>
+          <li><%= link_to t('footer.contact-us'), :contact_us, tabindex: 0 %></li>
+          <li><%= link_to t('footer.who-we-are'), :who_we_are, tabindex: 0 %></li>
+          <li><%= link_to t('footer.our-story'), :our_story, tabindex: 0 %></li>
+          <li><%= link_to t('footer.in-the-news'), :news, tabindex: 0 %></li>
+          <li><%= link_to t('footer.franchising'), :franchising, tabindex: 0 %></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4><%= t('footer.legal-title') %></h4>
         <ul class="p">
-          <li><%= link_to t('footer.privacy-policy'), :privacy_policy %></li>
+          <li><%= link_to t('footer.privacy-policy'), :privacy_policy, tabindex: 0 %></li>
         </ul>
       </div>
 
@@ -50,4 +50,4 @@
     </div>
 
   </div>
-</div>
+</footer>
