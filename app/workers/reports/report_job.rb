@@ -24,5 +24,16 @@ module Reports
       'US' => 'solasalonstudios.com',
       'CA' => 'solasalonstudios.ca'
     }
+
+    # The current retry count and exception is yielded. The return value of the
+    # block must be an integer. It is used as the delay, in seconds. A return value
+    # of nil will use the default.
+    sidekiq_retry_in do |count, exception|
+      case exception
+      when Google::Apis::RateLimitError
+        60 * 60 * 24
+        #10 * (count + 1) # (i.e. 10, 20, 30, 40, 50)
+      end
+    end
   end
 end
