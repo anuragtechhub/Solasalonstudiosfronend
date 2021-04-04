@@ -9,6 +9,9 @@ class Location < ActiveRecord::Base
   has_paper_trail
 
   scope :open, -> { where(status: 'open') }
+  scope :with_callfire_ids, -> {
+    where("locations.callfire_list_ids IS NOT NULL AND locations.callfire_list_ids != ''")
+  }
 
   belongs_to :admin
   belongs_to :msa
@@ -477,7 +480,7 @@ class Location < ActiveRecord::Base
       return moz.token
     end
   rescue => e
-    p "error with get moz token #{e}"
+    NewRelic::Agent.notice_error(e)
   end
 
   #private
@@ -837,7 +840,7 @@ class Location < ActiveRecord::Base
     # end
     p "DONE WITH MOZ"
   rescue => e
-    p "Error with Moz location submission #{e}"
+    NewRelic::Agent.notice_error(e)
   end
 
   def moz_short_description

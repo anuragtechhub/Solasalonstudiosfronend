@@ -13,7 +13,7 @@ module Clockwork
     config[:thread] = true
   end
 
-  every(1.day, 'sitemap.refresh', at: '03:50', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'sitemap.refresh', at: '03:50', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake sitemap:refresh`
   end
 
@@ -21,27 +21,27 @@ module Clockwork
     `rake blog:publish`
   end
 
-  every(1.day, 'callfire.stylists', at: '09:00', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
-    `rake callfire:stylists`
+  every(1.day, 'callfire.stylists', at: '09:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    Callfire::StylistsJob.perform_async
   end
 
-  every(1.day, 'callfire.franchises', at: '08:30', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
-    `rake callfire:franchises`
+  every(1.day, 'callfire.franchises', at: '08:30', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    Callfire::FranchisesJob.perform_async
   end
 
-  every(1.day, 'mailchimp.franchises', at: '11:30', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'mailchimp.franchises', at: '11:30', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake mailchimp:franchises`
   end
 
-  every(1.day, 'umsw.auto_approves', at: '06:00', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'umsw.auto_approves', at: '06:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake umsw:auto_approves`
   end
 
-  every(1.day, 'umsw.one_week_before_reminder', at: '06:00', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'umsw.one_week_before_reminder', at: '06:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake umsw:one_week_before_reminder`
   end
 
-  every(1.day, 'umsw.two_days_before_reminder', at: '07:00', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'umsw.two_days_before_reminder', at: '07:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake umsw:two_days_before_reminder`
   end
 
@@ -49,11 +49,11 @@ module Clockwork
     `rake stylist:turn_off_walkins`
   end
 
-  every(1.day, 'stylist.sync_with_hubspot', at: '08:00', if: lambda { |t| Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'stylist.sync_with_hubspot', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
     `rake stylist:sync_with_hubspot`
   end
 
-  every(1.day, 'reports.monthly', at: '09:00', if: lambda { |t| t.mday == 1 && Rails.env.production? && ENV['ALLOW_CLOCKWORK'].present? }) do
+  every(1.day, 'reports.monthly', at: '09:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
     Reports::MonthlyJob.perform_async
   end
 

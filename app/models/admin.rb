@@ -13,6 +13,11 @@ class Admin < ActiveRecord::Base
   validates :password, :presence => true, :on => :create, :reduce => true
   #validates :password, :length => { :minimum => 7 }
 
+  scope :with_callfire_credentials, -> {
+    where.not(callfire_app_login: nil, callfire_app_password: nil).
+      where.not(callfire_app_login: '', callfire_app_password: '')
+  }
+
   def self.current
     Thread.current[:admin]
   end
