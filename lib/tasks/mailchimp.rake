@@ -1,14 +1,15 @@
 namespace :mailchimp do
 
-  task :contact_forms => :environment do 
+  task :contact_forms => :environment do
     gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-    
+
     FranchisingRequest.all.each do |req|
       if req && req.email.present?
         p "FranchisingRequest #{req.email}"
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          NewRelic::Agent.notice_error(e)
           p "FranchisingRequest error adding mailchimp #{e}"
         end
       end
@@ -20,6 +21,7 @@ namespace :mailchimp do
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          NewRelic::Agent.notice_error(e)
           p "RequestTourInquiry error adding mailchimp #{e}"
         end
       end
@@ -31,6 +33,7 @@ namespace :mailchimp do
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          NewRelic::Agent.notice_error(e)
           p "PartnerInquiry error adding mailchimp #{e}"
         end
       end
@@ -53,7 +56,7 @@ namespace :mailchimp do
           p "Processing #{index} of #{stylists.size}"
           if stylist && stylist.email_address && stylist.location
             data = {}
-            
+
             data[:email] = {:email => stylist.email_address}
             data[:merge_vars] = {:MERGE3 => stylist.name, :MERGE5 => stylist.phone_number, :MERGE6 => stylist.location.name, :MMERGE8 => stylist.location.state}
 
@@ -74,7 +77,7 @@ namespace :mailchimp do
           p "Processing #{index} of #{stylists.size}"
           if stylist && stylist.email_address && stylist.location
             data = {}
-            
+
             data[:email] = {:email => stylist.email_address}
             data[:merge_vars] = {:MERGE3 => stylist.name, :MERGE5 => stylist.phone_number, :MERGE6 => stylist.location.name, :MMERGE8 => stylist.location.state}
 
@@ -116,7 +119,7 @@ namespace :mailchimp do
 
             list_ids = location.mailchimp_list_ids.split(',')
             p "list_ids=#{list_ids.inspect}, batch=#{batch.inspect}"
-            
+
             list_ids.each do |list_id|
               gb.lists.batch_subscribe(:id => list_id.strip, :batch => batch, :double_optin => false, :update_existing => true)
             end
@@ -125,12 +128,13 @@ namespace :mailchimp do
           end
         end
       rescue => e
+        NewRelic::Agent.notice_error(e)
         p "error processing franchise mailchimp #{admin.email}, #{e}"
       end
     end
     #else
     #  p "today is not saturday"
-    #end    
+    #end
   end
 
   task :today => :environment do
@@ -143,7 +147,7 @@ namespace :mailchimp do
         p "Processing #{index} of #{stylists.size}"
         if stylist && stylist.email_address && stylist.location
           data = {}
-          
+
           data[:email] = {:email => stylist.email_address}
           data[:merge_vars] = {:MERGE3 => stylist.name, :MERGE5 => stylist.phone_number, :MERGE6 => stylist.location.name, :MMERGE8 => stylist.location.state}
 

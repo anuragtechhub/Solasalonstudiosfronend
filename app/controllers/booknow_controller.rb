@@ -53,16 +53,9 @@ class BooknowController < PublicWebsiteController
         format.json
       end
     rescue StandardError => e
-      p "ERROR WITH THIS CALL - FALLBACK! #{e.inspect}"
+      NewRelic::Agent.notice_error(e)
       redirect_to booknow_search_path(:date => params[:date], :location => params[:location], :lat => params[:lat], :lng => params[:lng], :query => params[:query]), :flash => { :error => "There was a problem with your search. Please try again." }, :status => 301
-      # @professionals = JSON.parse(fallback_results_response)
       @date = DateTime.parse(params[:date]) || DateTime.now
-      # #@locations = Location.near([params[:lat].to_f, params[:lng].to_f], 11)
-      # @locations = Location.where(:id => get_location_id(@professionals))
-
-      # if params[:location_id].present?
-      #   @location = Location.find_by(:id => params[:location_id])
-      # end
     end
 	end
 

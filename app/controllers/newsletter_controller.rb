@@ -14,7 +14,7 @@ class NewsletterController < PublicWebsiteController
           Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
 
           Hubspot::Contact.create_or_update!([{
-            email: params[:email], 
+            email: params[:email],
             hs_persona: 'persona_5',
             country: website_country
           }])
@@ -28,12 +28,8 @@ class NewsletterController < PublicWebsiteController
       end
     end
   rescue => e
-    # shh...
-    p "error newsletter sign up with hubspot #{e}"
+    NewRelic::Agent.notice_error(e)
   end
-  # rescue Gibbon::MailChimpError => e
-  #   render :json => {:success => 'Thank you for subscribing!'}
-  # end
 
   private
 

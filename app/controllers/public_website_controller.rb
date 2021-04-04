@@ -29,7 +29,7 @@ class PublicWebsiteController < ApplicationController
     })
     return callback.to_s
   rescue => e
-    return url
+    NewRelic::Agent.notice_error(e)
   end
 
   def auth_if_test

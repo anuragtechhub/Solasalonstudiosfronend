@@ -50,11 +50,11 @@ namespace :hubspot do
                 firstname = first_name(full_contact['name'])
                 lastname = last_name(full_contact['name'])
                 p "we got a name! #{full_contact['name']}, firstname=#{firstname}, lastname=#{lastname}"
-                full_contact.update!({firstname: firstname, lastname: lastname})  
+                full_contact.update!({firstname: firstname, lastname: lastname})
               else
                 #p "no name - no hope :( --- full_contact=#{full_contact.inspect}"
               end
-              #            
+              #
             end
           end
 
@@ -66,6 +66,7 @@ namespace :hubspot do
 
       p "FINAL contactCount=#{contactCount}, contactCount=#{contactCount}, start_time=#{startTime}, end_time=#{DateTime.now}"
     rescue => e
+      NewRelic::Agent.notice_error(e)
       p "ERRORRRRR! #{e.inspect}, contactCount=#{contactCount}, start_time=#{startTime}, end_time=#{DateTime.now}"
     end
   end

@@ -31,11 +31,11 @@ namespace :sync do
 
     locations = [
       ["6830", 338],
-    ["4171", 208], 
-    ["7564", 401], 
-    ["4568", 226], 
-    ["5509", 313], 
-    ["5510", 314], 		
+    ["4171", 208],
+    ["7564", 401],
+    ["4568", 226],
+    ["5509", 313],
+    ["5510", 314],
     ["7519", 397],
  		["542", 37],
  		["2207", 96],
@@ -352,171 +352,79 @@ namespace :sync do
     end
   end
 
-  # task :imgfix => :environment do
-  #   Blog.all.each do |blog|
-
-  #     blog.body = blog.body.gsub(/<img[^>]+\>/) { |img|
-  #       p "img=#{img}"
-  #       matches = /src="([^"]+)"/.match(img)
-
-  #       if matches && matches.size > 0
-  #         src = matches[1].gsub(/www.solasalonstudios.com/, '69.73.148.8')
-  #         #p "src=#{src}"
-  #         #p "open=#{open(src)}"
-          
-  #         obj = S3_BUCKET.objects[src]
-  #         obj.write(file: open(src), acl: :public_read)
-  #         p "obj.public_url=#{obj.public_url}"
-  #         "<img src=\"#{obj.public_url}\">"
-  #       end
-  #     }
-  #     p ""
-  #     p "blog.body=#{blog.body}"
-  #     if blog.save
-  #       p "blog saved! #{blog.url_name}"
-  #     else
-  #       p "ERROR saving #{blog.errors.inspect}"
-  #     end
-  #   end
-  #   Article.all.each do |article|
-
-  #     article.body = article.body.gsub(/<img[^>]+\>/) { |img|
-  #       p "img=#{img}"
-  #       matches = /src="([^"]+)"/.match(img)
-
-  #       if matches && matches.size > 0
-  #         src = matches[1].gsub(/www.solasalonstudios.com/, '69.73.148.8')
-  #         #p "src=#{src}"
-  #         #p "open=#{open(src)}"
-          
-  #         obj = S3_BUCKET.objects[src]
-  #         obj.write(file: open(src), acl: :public_read)
-  #         p "obj.public_url=#{obj.public_url}"
-  #         "<img src=\"#{obj.public_url}\">"
-  #       end
-  #     }
-  #     p ""
-  #     p "article.body=#{article.body}"
-  #     if article.save
-  #       p "article saved! #{article.url_name}"
-  #     else
-  #       p "ERROR saving #{article.errors.inspect}"
-  #     end
-  #   end    
-  # end
-
   task :stylists1 => :environment do
     sync_stylists(0)
-  end            
+  end
 
   task :stylists2 => :environment do
     sync_stylists(500)
-  end   
+  end
 
   task :stylists3 => :environment do
     sync_stylists(1000)
-  end   
+  end
 
   task :stylists4 => :environment do
     sync_stylists(1500)
-  end     
+  end
 
   task :stylists5 => :environment do
     sync_stylists(2000)
-  end   
+  end
 
   task :stylists6 => :environment do
     sync_stylists(2500)
-  end     
+  end
 
   task :stylists7 => :environment do
     sync_stylists(3000)
-  end   
+  end
 
   task :stylists8 => :environment do
     sync_stylists(3500)
-  end   
+  end
 
   task :stylists9 => :environment do
     sync_stylists(4000)
-  end    
+  end
 
   task :stylists10 => :environment do
     sync_stylists(4500)
-  end      
+  end
 
   task :stylists11 => :environment do
     sync_stylists(5000)
-  end     
+  end
 
   task :stylists12 => :environment do
     sync_stylists(5500)
-  end   
+  end
 
   task :stylists13 => :environment do
     sync_stylists(6000)
-  end   
+  end
 
   task :stylists14 => :environment do
     sync_stylists(6500)
-  end     
+  end
 
   task :stylists15 => :environment do
     sync_stylists(7000)
-  end   
+  end
 
   task :stylists16 => :environment do
     sync_stylists(7500)
-  end 
+  end
 
   task :stylists17 => :environment do
     sync_stylists(8000)
-  end   
+  end
 
   task :stylists => :environment do
     (1..17).each do |num|
       Rake::Task["sync:stylists#{num}"].execute
     end
   end
-
-  # task :franchisees => :environment do
-  #   p 'sync franchisees!'
-  #   db = get_database_client
-  #   results = db.query("SELECT * FROM exp_members WHERE group_id = 7")
-  #   p "results.size = #{results.size}"
-  #   count = results.size
-  #   results.each_with_index do |row, idx|
-  #     p "Processing (#{row['member_id']}) #{idx + 1} of #{count}..."
-
-  #     admin = Admin.find_by(:legacy_id => row['member_id'].to_s) || Admin.new
-      
-  #     admin.franchisee = true
-  #     admin.legacy_id = row['member_id']
-  #     admin.email = row['username']
-  #     admin.email_address = row['email']
-  #     admin.password = 'solastyle777'
-  #     admin.password_confirmation = 'solastyle777'
-
-  #     if admin.save
-  #       p "Saved admin"
-  #     else
-  #       p "ERROR saving admin #{admin.errors.inspect}"
-  #     end
-
-  #     # save admin locations
-  #     location_rows = db.query("SELECT * FROM exp_weblog_titles WHERE weblog_id = 5 AND author_id = #{admin.legacy_id}")
-  #     p "admin locations = #{location_rows.size}"
-  #     location_rows.each do |location_row|
-  #       location = Location.find_by(:legacy_id => location_row['entry_id'].to_s)
-  #       location.admin_id = admin.id if location && admin
-  #       if location && location.save
-  #         p "saved location for admin"
-  #       else
-  #         p "problem saving location #{location_row.inspect} | #{location.inspect}"
-  #       end
-  #     end
-  #   end    
-  # end
 
   task :articles => :environment do
     p 'sync articles!'
@@ -530,7 +438,7 @@ namespace :sync do
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
       article = Article.find_by(:legacy_id => row['entry_id'].to_s) || Article.new
-      
+
       article.created_at = Date.new(meta['year'].to_i, meta['month'].to_i, meta['day'].to_i)
       article.legacy_id = row['entry_id']
       article.title = meta['title'].encode('UTF-8')
@@ -539,17 +447,18 @@ namespace :sync do
       article.summary = filedir_replacement row['field_id_1'].encode('UTF-8')
       article.body = filedir_replacement row['field_id_2'].encode('UTF-8')
       article.article_url = filedir_replacement row['field_id_3'].encode('UTF-8')
-      
+
       p "image #{get_img_src row['field_id_12']}"
       begin
         article.image = open(get_img_src row['field_id_12']) unless row['field_id_12'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image error = #{e.inspect}"
       end
 
       if article.save
         p "Saved (#{row['entry_id']})!"
-      else 
+      else
         p "ERROR saving (#{row['entry_id']}) - #{article.errors.inspect}"
       end
     end
@@ -575,11 +484,12 @@ namespace :sync do
       blog.summary = filedir_replacement(row['field_id_202']).encode('UTF-8')
       blog.body = filedir_replacement(row['field_id_203']).encode('UTF-8')
       blog.author = row['field_id_252'].encode('UTF-8')
-      
+
       p "image #{filedir_replacement row['field_id_201']}"
       begin
         blog.image = open(filedir_replacement row['field_id_201']) unless row['field_id_201'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image error = #{e.inspect}"
       end
 
@@ -595,7 +505,7 @@ namespace :sync do
             category.url_name = blog_category['cat_url_title']
             category.name = blog_category['cat_name']
             category.save
-            
+
             blog.blog_categories << category
           end
         end
@@ -607,7 +517,7 @@ namespace :sync do
 
       if blog.save
         p "Saved (#{row['entry_id']})!"
-      else 
+      else
         p "ERROR saving (#{row['entry_id']}) - #{blog.errors.inspect}"
       end
     end
@@ -617,7 +527,7 @@ namespace :sync do
     db = get_database_client
     Location.all.each do |location|
       if location.legacy_id && location.url_name
-        #p 
+        #p
         #p
         #p "SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{location.legacy_id}) ORDER BY parent_id DESC LIMIT 1"
         row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{location.legacy_id}) AND cat_url_title != '#{location.url_name}' AND parent_id != 0 ORDER BY parent_id ASC LIMIT 1").first
@@ -658,19 +568,19 @@ namespace :sync do
 
   task :locations1 => :environment do
     sync_locations(0)
-  end            
+  end
 
   task :locations2 => :environment do
     sync_locations(50)
-  end   
+  end
 
   task :locations3 => :environment do
     sync_locations(100)
-  end   
+  end
 
   task :locations4 => :environment do
     sync_locations(150)
-  end 
+  end
 
   task :locations5 => :environment do
     sync_locations(200)
@@ -678,11 +588,11 @@ namespace :sync do
 
   task :locations6 => :environment do
     sync_locations(250)
-  end  
+  end
 
   task :locations7 => :environment do
     sync_locations(300)
-  end  
+  end
 
   task :locations => :environment do
     (1..7).each do |num|
@@ -702,7 +612,7 @@ namespace :sync do
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
       location = Location.where(:status => 'open').find_by(:legacy_id => row['entry_id'].to_s) || Location.new
-      
+
       location.legacy_id = row['entry_id']
       location.status = meta['status']
       location.name = meta['title'].encode('UTF-8')
@@ -714,7 +624,7 @@ namespace :sync do
       location.address_1 = row['field_id_16'].encode('UTF-8')
       location.postal_code = row['field_id_23'].encode('UTF-8')
       location.chat_code = row['field_id_304'].encode('UTF-8')
-      
+
       location.email_address_for_inquiries = row['field_id_33'].encode('UTF-8')
       location.general_contact_name = row['field_id_34'].encode('UTF-8')
       location.phone_number = row['field_id_32'].encode('UTF-8')
@@ -725,133 +635,152 @@ namespace :sync do
       p "image 1"
       begin
         location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 1 error = #{e.inspect}"
       end
 
       p "image 2"
       begin
       location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 2 error = #{e.inspect}"
       end
 
       p "image 3"
       begin
       location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 3 error = #{e.inspect}"
       end
 
       p "image 4"
       begin
       location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 4 error = #{e.inspect}"
       end
 
       p "image 5"
       begin
       location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 5 error = #{e.inspect}"
       end
 
       p "image 6"
       begin
       location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 6 error = #{e.inspect}"
       end
 
       p "image 7"
       begin
       location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 7 error = #{e.inspect}"
       end
 
       p "image 8"
       begin
       location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 8 error = #{e.inspect}"
       end
 
       p "image 9"
       begin
       location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 9 error = #{e.inspect}"
       end
 
       p "image 10"
       begin
       location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 10 error = #{e.inspect}"
       end
 
       p "image 11"
       begin
       location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 11 error = #{e.inspect}"
       end
 
       p "image 12"
       begin
       location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 12 error = #{e.inspect}"
       end
 
       p "image 13"
       begin
       location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 13 error = #{e.inspect}"
       end
 
       p "image 14"
       begin
       location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 14 error = #{e.inspect}"
       end
 
       p "image 15"
       begin
       location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 15 error = #{e.inspect}"
       end
 
       p "image 16"
       begin
       location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 16 error = #{e.inspect}"
       end
 
       p "image 17"
       begin
       location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 17 error = #{e.inspect}"
       end
 
       p "image 18"
       begin
       location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 18 error = #{e.inspect}"
       end
 
       p "image 19"
       begin
       location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 19 error = #{e.inspect}"
       end
       location.image_20 = nil
@@ -859,18 +788,19 @@ namespace :sync do
       p "floorplan image"
       begin
         location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image floorplan image error = #{e.inspect}"
       end
 
       #location. = row['field_id_']
       if location.save
         p "Saved #{row['field_id_15']} (#{row['entry_id']})!"
-      else 
+      else
         p "ERROR saving #{row['field_id_15']} (#{row['entry_id']}) - #{location.errors.inspect}"
       end
     end
-  end 
+  end
 
   def sync_stylists(offset)
     p 'sync stylists!'
@@ -889,7 +819,7 @@ namespace :sync do
       stylist = Stylist.find_by(:legacy_id => row['entry_id'].to_s) || Stylist.new
 
       p "gotta stylist"
-      
+
       stylist.legacy_id = row['entry_id']
       stylist.status = meta['status']
       stylist.name = meta['title'].encode('UTF-8')
@@ -905,7 +835,7 @@ namespace :sync do
 
       msa_way = false
       location_row = db.query("SELECT * FROM exp_categories WHERE cat_id IN (SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']}) ORDER BY parent_id DESC LIMIT 1").first
-      if location_row 
+      if location_row
         location = Location.where(:status => 'open').find_by(:name => location_row['cat_name']) || Location.where(:status => 'open').find_by(:url_name => location_row['cat_url_title'])
         if location
           p "*"
@@ -914,7 +844,7 @@ namespace :sync do
           p "we have a location #{location_row['cat_url_title']}!"
           p "*"
           p "*"
-          p "*"          
+          p "*"
           stylist.location = location
         else
           msa_way = true
@@ -926,7 +856,7 @@ namespace :sync do
       if msa_way
         p "going MSA way..."
         msa_ids = db.query("SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']} ORDER BY cat_id DESC")
-        if msa_ids 
+        if msa_ids
           #p "location_row = #{location_row.inspect}"
           p "msa_ids=#{msa_ids.inspect}"
           msa_ids.each do |msa_id|
@@ -942,13 +872,13 @@ namespace :sync do
                 p "we have a location!"
                 p "*"
                 p "*"
-                p "*"          
+                p "*"
                 stylist.location = location
                 break;
               end
             end
           end
-        end  
+        end
       end
 
       stylist.accepting_new_clients = row['field_id_31'] == 'No' ? false : true
@@ -977,72 +907,82 @@ namespace :sync do
       p "image 1"
       begin
         stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 1 error = #{e.inspect}"
       end
 
       p "image 2"
       begin
         stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 2 error = #{e.inspect}"
       end
 
       p "image 3"
       begin
         stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 3 error = #{e.inspect}"
       end
 
       p "image 4"
       begin
         stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 4 error = #{e.inspect}"
       end
 
       p "image 5"
       begin
         stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 5 error = #{e.inspect}"
-      end      
+      end
 
       p "image 6"
       begin
         stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 6 error = #{e.inspect}"
-      end 
+      end
 
       p "image 7"
       begin
         stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 7 error = #{e.inspect}"
-      end 
+      end
 
       p "image 8"
       begin
         stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 8 error = #{e.inspect}"
-      end 
+      end
 
       p "image 9"
       begin
         stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 9 error = #{e.inspect}"
-      end 
+      end
 
       p "image 10"
       begin
         stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
-      rescue => e
+			rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 10 error = #{e.inspect}"
-      end       
+      end
 
       p "thru images"
 
@@ -1092,12 +1032,12 @@ namespace :sync do
 
       if stylist.save
         p "Saved #{row['entry_id']}!"
-      else 
+      else
         p "ERROR saving #{row['entry_id']} - #{stylist.errors.inspect}"
       end
       #location. = row['field_id_']
     end
-  end 
+  end
 
   task :stylist => :environment do
     p 'sync stylists!'
@@ -1115,7 +1055,7 @@ namespace :sync do
       stylist = Stylist.find_by(:legacy_id => row['entry_id'].to_s) || Stylist.new
 
       p "gotta stylist"
-      
+
       stylist.legacy_id = row['entry_id']
       stylist.status = meta['status']
       stylist.name = meta['title'].encode('UTF-8')
@@ -1130,7 +1070,7 @@ namespace :sync do
       p "thru phone number"
 
       msa_ids = db.query("SELECT cat_id FROM exp_category_posts WHERE entry_id = #{row['entry_id']} ORDER BY cat_id DESC")
-      if msa_ids 
+      if msa_ids
         #p "location_row = #{location_row.inspect}"
         p "msa_ids=#{msa_ids.inspect}"
         msa_ids.each do |msa_id|
@@ -1146,7 +1086,7 @@ namespace :sync do
               p "we have a location!"
               p "*"
               p "*"
-              p "*"          
+              p "*"
               stylist.location = location
               break;
             end
@@ -1181,6 +1121,7 @@ namespace :sync do
       begin
         stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -1188,6 +1129,7 @@ namespace :sync do
       begin
         stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -1195,6 +1137,7 @@ namespace :sync do
       begin
         stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -1202,6 +1145,7 @@ namespace :sync do
       begin
         stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -1209,43 +1153,49 @@ namespace :sync do
       begin
         stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 5 error = #{e.inspect}"
-      end      
+      end
 
       p "image 6"
       begin
         stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 6 error = #{e.inspect}"
-      end 
+      end
 
       p "image 7"
       begin
         stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 7 error = #{e.inspect}"
-      end 
+      end
 
       p "image 8"
       begin
         stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 8 error = #{e.inspect}"
-      end 
+      end
 
       p "image 9"
       begin
         stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 9 error = #{e.inspect}"
-      end 
+      end
 
       p "image 10"
       begin
         stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 10 error = #{e.inspect}"
-      end       
+      end
 
       p "thru images"
 
@@ -1295,7 +1245,7 @@ namespace :sync do
 
       if stylist.save
         p "Saved #{row['entry_id']}!"
-      else 
+      else
         p "ERROR saving #{row['entry_id']} - #{stylist.errors.inspect}"
       end
       #location. = row['field_id_']
@@ -1314,7 +1264,7 @@ namespace :sync do
       meta = db.query("SELECT * FROM exp_weblog_titles WHERE entry_id = #{row['entry_id']} LIMIT 1").first
 
       location = Location.where(:status => 'open').find_by(:legacy_id => row['entry_id'].to_s) || Location.new
-      
+
       location.legacy_id = row['entry_id']
       location.status = meta['status']
       location.name = meta['title'].encode('UTF-8')
@@ -1326,7 +1276,7 @@ namespace :sync do
       location.address_1 = row['field_id_16'].encode('UTF-8')
       location.postal_code = row['field_id_23'].encode('UTF-8')
       location.chat_code = row['field_id_304'].encode('UTF-8')
-      
+
       location.email_address_for_inquiries = row['field_id_33'].encode('UTF-8')
       location.general_contact_name = row['field_id_34'].encode('UTF-8')
       location.phone_number = row['field_id_32'].encode('UTF-8')
@@ -1338,6 +1288,7 @@ namespace :sync do
       begin
         location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -1345,6 +1296,7 @@ namespace :sync do
       begin
       location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -1352,6 +1304,7 @@ namespace :sync do
       begin
       location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -1359,6 +1312,7 @@ namespace :sync do
       begin
       location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -1366,6 +1320,7 @@ namespace :sync do
       begin
       location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 5 error = #{e.inspect}"
       end
 
@@ -1373,6 +1328,7 @@ namespace :sync do
       begin
       location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 6 error = #{e.inspect}"
       end
 
@@ -1380,6 +1336,7 @@ namespace :sync do
       begin
       location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 7 error = #{e.inspect}"
       end
 
@@ -1387,6 +1344,7 @@ namespace :sync do
       begin
       location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 8 error = #{e.inspect}"
       end
 
@@ -1394,6 +1352,7 @@ namespace :sync do
       begin
       location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 9 error = #{e.inspect}"
       end
 
@@ -1401,6 +1360,7 @@ namespace :sync do
       begin
       location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 10 error = #{e.inspect}"
       end
 
@@ -1408,6 +1368,7 @@ namespace :sync do
       begin
       location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 11 error = #{e.inspect}"
       end
 
@@ -1415,6 +1376,7 @@ namespace :sync do
       begin
       location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 12 error = #{e.inspect}"
       end
 
@@ -1422,6 +1384,7 @@ namespace :sync do
       begin
       location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 13 error = #{e.inspect}"
       end
 
@@ -1429,6 +1392,7 @@ namespace :sync do
       begin
       location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 14 error = #{e.inspect}"
       end
 
@@ -1436,6 +1400,7 @@ namespace :sync do
       begin
       location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 15 error = #{e.inspect}"
       end
 
@@ -1443,6 +1408,7 @@ namespace :sync do
       begin
       location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 16 error = #{e.inspect}"
       end
 
@@ -1450,6 +1416,7 @@ namespace :sync do
       begin
       location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 17 error = #{e.inspect}"
       end
 
@@ -1457,6 +1424,7 @@ namespace :sync do
       begin
       location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 18 error = #{e.inspect}"
       end
 
@@ -1464,6 +1432,7 @@ namespace :sync do
       begin
       location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image 19 error = #{e.inspect}"
       end
       location.image_20 = nil
@@ -1472,17 +1441,18 @@ namespace :sync do
       begin
         location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
       rescue => e
+				NewRelic::Agent.notice_error(e)
         p "image floorplan image error = #{e.inspect}"
       end
 
       #location. = row['field_id_']
       if location.save
         p "Saved #{row['field_id_15']} (#{row['entry_id']})!"
-      else 
+      else
         p "ERROR saving #{row['field_id_15']} (#{row['entry_id']}) - #{location.errors.inspect}"
       end
     end
-  end 
+  end
 
   def get_database_client
     Mysql2::Client.new(:host => '69.73.148.8', :port => 3306, :database => 'sola_expressengine', :username => 'sola_stylist', :password => 'lostinthedream2014', :local_infile => false, :secure_auth => false)

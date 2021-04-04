@@ -106,8 +106,7 @@ class RequestTourInquiry < ActiveRecord::Base
       p "No HUBSPOT API KEY, no sync"
     end
   rescue => e
-    # shh...
-    p "error sync_with_hubspot #{e}"
+    NewRelic::Agent.notice_error(e)
   end
 
   def get_hubspot_owner_id(email_address=nil)
@@ -146,8 +145,7 @@ class RequestTourInquiry < ActiveRecord::Base
       return nil
     end
   rescue => e
-    # shh...
-    p "error get_hubspot_owner #{e}"
+    NewRelic::Agent.notice_error(e)
     return nil
   end
 
@@ -156,7 +154,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_source"][0]
   rescue => e
-    p "Error getting utm_source #{e}"
+    NewRelic::Agent.notice_error(e)
     return ''
   end
 
@@ -165,7 +163,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_medium"][0]
   rescue => e
-    p "Error getting utm_medium #{e}"
+    NewRelic::Agent.notice_error(e)
     return ''
   end
 
@@ -174,7 +172,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_campaign"][0]
   rescue => e
-    p "Error getting utm_campaign #{e}"
+    NewRelic::Agent.notice_error(e)
     return ''
   end
 
@@ -183,7 +181,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_content"][0]
   rescue => e
-    p "Error getting utm_content #{e}"
+    NewRelic::Agent.notice_error(e)
     return ''
   end
 
@@ -196,7 +194,7 @@ class RequestTourInquiry < ActiveRecord::Base
       email.deliver if email
     end
   rescue => e
-    p "caught an error #{e.inspect}"
+    NewRelic::Agent.notice_error(e)
   end
 
   def send_prospect_email
@@ -210,7 +208,7 @@ class RequestTourInquiry < ActiveRecord::Base
       email.deliver if email
     end
   rescue => e
-    p "caught an error #{e.inspect}"
+    NewRelic::Agent.notice_error(e)
   end
 
   def i_would_like_to_be_contacted_value

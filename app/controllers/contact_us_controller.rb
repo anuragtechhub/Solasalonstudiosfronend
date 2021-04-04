@@ -2,7 +2,7 @@ class ContactUsController < PublicWebsiteController
 
   # Newsletter USA - 09d9824082
   # Newsletter Canada - 82a3e6ea74
-  
+
   skip_before_filter :verify_authenticity_token, :only => [:franchising_request, :request_a_tour]
 
   def index
@@ -15,8 +15,8 @@ class ContactUsController < PublicWebsiteController
     end
 
     #@last_location = Location.order(:updated_at => :desc).first
-    #@last_msa = Msa.order(:updated_at => :desc).first  
-    @success_redirect_url = contact_us_contact_form_success_path  
+    #@last_msa = Msa.order(:updated_at => :desc).first
+    @success_redirect_url = contact_us_contact_form_success_path
 
     if I18n.locale.to_s == 'pt-BR'
       render 'index_br'
@@ -24,7 +24,7 @@ class ContactUsController < PublicWebsiteController
   end
 
   def contact_form_success
-    @success_redirect_url = contact_us_contact_form_success_path  
+    @success_redirect_url = contact_us_contact_form_success_path
     @contact_form_success = true
     @scroll_top = params[:s_t]
     @success = 'Thank you! We will get in touch soon'
@@ -41,7 +41,7 @@ class ContactUsController < PublicWebsiteController
     end
 
     @last_location = Location.order(:updated_at => :desc).first
-    @last_msa = Msa.order(:updated_at => :desc).first 
+    @last_msa = Msa.order(:updated_at => :desc).first
     @thank_you = true
 
     render :index
@@ -70,12 +70,13 @@ class ContactUsController < PublicWebsiteController
     #   redirect_to :contact_us, :status => 301
     # end
   rescue Gibbon::MailChimpError => e
+    NewRelic::Agent.notice_error(e)
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
   def request_a_tour
     if request.post?
-      
+
       if params[:required_fields].present?
         all_good = true
         #p "required_fields=#{params[:required_fields]}"
@@ -91,7 +92,7 @@ class ContactUsController < PublicWebsiteController
           end
         end
       end
- 
+
       if (params[:required_fields].present? && all_good) && (params[:name] && params[:name].present? && params[:email] && params[:email].present? && is_valid_email?(params[:email])) #&& params[:message].present? && params[:contact_preference].present?
         #p "BOUT TO CHECK"
         if params[:required_fields].blank? && params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
@@ -105,27 +106,27 @@ class ContactUsController < PublicWebsiteController
             #   end
             # end
 
-    
+
             rti = RequestTourInquiry.new({
-              :name => params[:name], 
-              :email => params[:email], 
-              :phone => params[:phone], 
+              :name => params[:name],
+              :email => params[:email],
+              :phone => params[:phone],
               :canada_locations => params[:canada_locations],
-              :location_id => params[:location_id], 
+              :location_id => params[:location_id],
               :message => params[:message],
-              :newsletter => params[:newsletter], 
-              :request_url => params[:request_url], 
-              :contact_preference => params[:contact_preference], 
-              :how_can_we_help_you => params[:how_can_we_help_you], 
-              :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted], 
+              :newsletter => params[:newsletter],
+              :request_url => params[:request_url],
+              :contact_preference => params[:contact_preference],
+              :how_can_we_help_you => params[:how_can_we_help_you],
+              :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted],
               :dont_see_your_location => params[:dont_see_your_location],
               :zip_code => params[:zip_code],
               :state => params[:state],
-              :services => params[:services], 
-              :send_email_to_prospect => params[:send_email_to_prospect], 
-              :source => params[:source], 
-              :campaign => params[:campaign], 
-              :content => params[:content], 
+              :services => params[:services],
+              :send_email_to_prospect => params[:send_email_to_prospect],
+              :source => params[:source],
+              :campaign => params[:campaign],
+              :content => params[:content],
               :medium => params[:medium],
               :hutk => params[:hutk],
             })
@@ -196,6 +197,7 @@ class ContactUsController < PublicWebsiteController
       redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
+    NewRelic::Agent.notice_error(e)
     @success = 'Thank you! We will get in touch soon'
     if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
       @success = 'Thank you for downloading our free guide! Please check your email.'
@@ -222,6 +224,7 @@ class ContactUsController < PublicWebsiteController
       redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
+    NewRelic::Agent.notice_error(e)
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 

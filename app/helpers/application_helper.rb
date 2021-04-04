@@ -8,7 +8,8 @@ module ApplicationHelper
 
   def valid_url?(url = nil)
     url && URI.parse(url)
-  rescue URI::InvalidURIError
+  rescue URI::InvalidURIError => e
+    NewRelic::Agent.notice_error(e)
     false
   end
 

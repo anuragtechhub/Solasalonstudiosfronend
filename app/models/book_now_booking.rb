@@ -1,5 +1,5 @@
 class BookNowBooking < ActiveRecord::Base
-  
+
   belongs_to :location
   belongs_to :stylist
 
@@ -7,14 +7,14 @@ class BookNowBooking < ActiveRecord::Base
 
   def services_booked
   	s = []
-  	
+
   	self.services.each do |service|
   		s << service[1]["name"]
   	end
 
   	s.to_sentence
   end
- 
+
   def sync_with_hubspot
     p "sync_with_hubspot!"
 
@@ -39,9 +39,8 @@ class BookNowBooking < ActiveRecord::Base
     else
       p "No HUBSPOT API KEY, no sync"
     end
-  rescue => e
-    # shh...
-    p "error sync_with_hubspot #{e}"
+	rescue => e
+		NewRelic::Agent.notice_error(e)
   end
 
   def update_stylist_metrics
@@ -60,8 +59,7 @@ class BookNowBooking < ActiveRecord::Base
   		stylist.save
   	end
   rescue => e
-  	# shh...
-  	p "error with update_stylist_metrics #{e}"
+		NewRelic::Agent.notice_error(e)
   end
 
 end

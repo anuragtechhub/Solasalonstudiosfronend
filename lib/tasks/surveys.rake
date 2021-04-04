@@ -5,7 +5,7 @@ namespace :surveys do
     send_surveys
   end
 
-  task :send_survey_test => :environment do 
+  task :send_survey_test => :environment do
     response = send_survey('adam@solasalonstudios.com', 'sola_hq', 3846)
 
     p "response=#{response}"
@@ -19,14 +19,14 @@ namespace :surveys do
           p "send survey to #{stylist.email_address}, #{stylist.location.url_name}, #{tomorrow}"
           send_survey(stylist.email_address, stylist.location.url_name, 3846, tomorrow)
           sleep 1
-        rescue
-          p "error sending survey to #{stylist.email_address}"
+        rescue => e
+          NewRelic::Agent.notice_error(e)
         end
       end
     end
   end
 
-  task :survey_location => :environment do 
+  task :survey_location => :environment do
     Stylist.where(:status => 'open', :location_id => 65).order(:id).each do |stylist|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
         begin
@@ -34,7 +34,7 @@ namespace :surveys do
           send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
           sleep 1
         rescue => e
-          p "error sending survey to #{stylist.email_address} #{e.inspect}"
+          NewRelic::Agent.notice_error(e)
         end
       else
         p "not sending survey because the stylist email or location or something is not present"
@@ -48,7 +48,7 @@ namespace :surveys do
     Stylist.where(:status => 'open').order(:id).each_with_index do |stylist, idx|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? #&& !excluded_locations.include?(stylist.location_id)
         begin
-          
+
           p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address.strip}, #{stylist.location.url_name.strip}, #{stylist.location.id}"
           response = send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
           p "#{response}"
@@ -79,14 +79,14 @@ namespace :surveys do
        https://api.customersure.com/feedback_requests`
   end
 
-  task :update_sites => :environment do 
+  task :update_sites => :environment do
     update_sites
   end
 
   task :update_site => :environment do
     location = Location.find(281) # college station
     begin
-      sync_location(location.url_name.strip, location.name.strip, location.city, location.state) 
+      sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
     rescue => e
       p "error syncing location #{e.inspect}"
     end
@@ -101,7 +101,7 @@ namespace :surveys do
       begin
         if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
           p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
-          sync_location(location.url_name.strip, location.name.strip, location.city, location.state) 
+          sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
           sleep 2
         end
       rescue
@@ -112,9 +112,9 @@ namespace :surveys do
 
   def sync_location(site_code, name, city, state)
     p "sync location #{site_code}, #{name}, #{city}, #{state}"
-    
+
     get_site_response = JSON.parse(get_site(site_code))
-    
+
     if get_site_response['message']
       # create
       p "create"
@@ -151,7 +151,7 @@ namespace :surveys do
   end
 
   def create_site(site_code, name, city, state)
-    
+
 
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
         -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \

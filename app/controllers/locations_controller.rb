@@ -159,7 +159,7 @@ class LocationsController < PublicWebsiteController
       redirect_to locations_path(params), :status => 301
     end
   rescue => e
-    p "USA!- redirect3"
+    NewRelic::Agent.notice_error(e)
     redirect_to locations_path(params), :status => 301
   end
 
