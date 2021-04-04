@@ -159,6 +159,7 @@ class LocationsController < PublicWebsiteController
       redirect_to locations_path(params), :status => 301
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     redirect_to locations_path(params), :status => 301
   end

@@ -54,6 +54,7 @@ class BooknowController < PublicWebsiteController
       end
     rescue StandardError => e
       NewRelic::Agent.notice_error(e)
+      Rollbar.error(e)
       redirect_to booknow_search_path(:date => params[:date], :location => params[:location], :lat => params[:lat], :lng => params[:lng], :query => params[:query]), :flash => { :error => "There was a problem with your search. Please try again." }, :status => 301
       @date = DateTime.parse(params[:date]) || DateTime.now
     end

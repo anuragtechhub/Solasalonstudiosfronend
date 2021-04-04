@@ -9,6 +9,7 @@ namespace :mailchimp do
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
           p "FranchisingRequest error adding mailchimp #{e}"
         end
@@ -21,6 +22,7 @@ namespace :mailchimp do
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
           p "RequestTourInquiry error adding mailchimp #{e}"
         end
@@ -33,6 +35,7 @@ namespace :mailchimp do
         begin
           gb.lists.subscribe({:id => '09d9824082', :email => {:email => req.email}, :merge_vars => {}, :double_optin => false})
         rescue => e
+          Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
           p "PartnerInquiry error adding mailchimp #{e}"
         end
@@ -128,6 +131,7 @@ namespace :mailchimp do
           end
         end
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
         p "error processing franchise mailchimp #{admin.email}, #{e}"
       end

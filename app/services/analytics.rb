@@ -112,6 +112,8 @@ class Analytics < BaseCli
             end
           end
         rescue => e
+          Rollbar.error(e)
+          NewRelic::Agent.notice_error(e)
           p "couldnt eval yo"
         end
       end
@@ -135,6 +137,8 @@ class Analytics < BaseCli
             end
           end
         rescue => e
+          Rollbar.error(e)
+          NewRelic::Agent.notice_error(e)
           p "couldnt eval yo"
         end
       end
@@ -157,6 +161,8 @@ class Analytics < BaseCli
             end
           end
         rescue => e
+          Rollbar.error(e)
+          NewRelic::Agent.notice_error(e)
           p "couldnt eval yo"
         end
       end

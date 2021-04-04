@@ -347,6 +347,7 @@ class Stylist < ActiveRecord::Base
       return nil
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return nil
   end
@@ -421,6 +422,7 @@ class Stylist < ActiveRecord::Base
       p "No HUBSPOT API KEY, inactivate_with_hubspot"
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -490,6 +492,7 @@ class Stylist < ActiveRecord::Base
       p "No HUBSPOT API KEY, no sync"
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -509,6 +512,7 @@ class Stylist < ActiveRecord::Base
 
     p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -542,6 +546,7 @@ class Stylist < ActiveRecord::Base
 
     p "sync_with_ping_hd_response=#{sync_with_ping_hd_response.inspect}"
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -592,6 +597,7 @@ class Stylist < ActiveRecord::Base
       p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     p "error sync_with_rent_manager #{e}"
   end
@@ -644,6 +650,7 @@ class Stylist < ActiveRecord::Base
     end
     ::Stylists::ResendWelcomeEmailJob.perform_in(1.week, self.id)
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     p "caught an error #{e.inspect}"
   end
@@ -655,6 +662,7 @@ class Stylist < ActiveRecord::Base
       PublicWebsiteMailer.resend_welcome_email_ca(self).deliver
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     p "caught an error #{e.inspect}"
   end
@@ -705,6 +713,7 @@ class Stylist < ActiveRecord::Base
       end
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     p "error removing from mailchimp! #{e}"
   end

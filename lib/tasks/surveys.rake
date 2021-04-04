@@ -20,6 +20,7 @@ namespace :surveys do
           send_survey(stylist.email_address, stylist.location.url_name, 3846, tomorrow)
           sleep 1
         rescue => e
+          Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
         end
       end
@@ -34,6 +35,7 @@ namespace :surveys do
           send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
           sleep 1
         rescue => e
+          Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
         end
       else
@@ -56,6 +58,8 @@ namespace :surveys do
           p "* * * * * * * * * * * *"
           sleep 1
         rescue => e
+          Rollbar.error(e)
+          NewRelic::Agent.notice_error(e)
           p "error sending survey to #{stylist.email_address} #{e}"
         end
       end
@@ -88,6 +92,8 @@ namespace :surveys do
     begin
       sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
     rescue => e
+      Rollbar.error(e)
+      NewRelic::Agent.notice_error(e)
       p "error syncing location #{e.inspect}"
     end
   end
@@ -104,7 +110,9 @@ namespace :surveys do
           sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
           sleep 2
         end
-      rescue
+      rescue => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
         p "error syncing location"
       end
     end

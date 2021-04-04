@@ -28,6 +28,7 @@ class NewsletterController < PublicWebsiteController
       end
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 

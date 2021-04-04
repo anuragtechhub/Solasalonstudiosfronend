@@ -5,6 +5,7 @@ class UrlValidator < ActiveModel::EachValidator
       uri = URI.parse(value)
       resp = uri.kind_of?(URI::HTTP)
     rescue URI::InvalidURIError => e
+      Rollbar.error(e)
       NewRelic::Agent.notice_error(e)
       resp = false
     end

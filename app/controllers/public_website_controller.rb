@@ -30,6 +30,7 @@ class PublicWebsiteController < ApplicationController
     return callback.to_s
   rescue => e
     NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
   end
 
   def auth_if_test

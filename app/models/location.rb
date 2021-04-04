@@ -480,6 +480,7 @@ class Location < ActiveRecord::Base
       return moz.token
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -840,6 +841,7 @@ class Location < ActiveRecord::Base
     # end
     p "DONE WITH MOZ"
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 

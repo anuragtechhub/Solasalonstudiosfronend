@@ -10,6 +10,7 @@ module Callfire
           push(admin)
         rescue => e
           NewRelic::Agent.notice_error(e)
+          Rollbar.error(e)
         end
       end
     end

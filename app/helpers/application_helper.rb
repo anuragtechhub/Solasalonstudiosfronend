@@ -10,6 +10,7 @@ module ApplicationHelper
     url && URI.parse(url)
   rescue URI::InvalidURIError => e
     NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
     false
   end
 

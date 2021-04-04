@@ -66,6 +66,7 @@ namespace :hubspot do
 
       p "FINAL contactCount=#{contactCount}, contactCount=#{contactCount}, start_time=#{startTime}, end_time=#{DateTime.now}"
     rescue => e
+      Rollbar.error(e)
       NewRelic::Agent.notice_error(e)
       p "ERRORRRRR! #{e.inspect}, contactCount=#{contactCount}, start_time=#{startTime}, end_time=#{DateTime.now}"
     end

@@ -85,6 +85,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_1 = open(image_1_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_1 #{self.image_1.url(:original)}"
@@ -96,6 +97,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_2 = open(image_2_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_2 #{self.image_2.url(:original)}"
@@ -107,6 +109,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_3 = open(image_3_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_3 #{self.image_3.url(:original)}"
@@ -118,6 +121,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_4 = open(image_4_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_4 #{self.image_4.url(:original)}"
@@ -129,6 +133,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_5 = open(image_5_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_5 #{self.image_5.url(:original)}"
@@ -140,6 +145,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_6 = open(image_6_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_6 #{self.image_6.url(:original)}"
@@ -151,6 +157,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_7 = open(image_7_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_7 #{self.image_7.url(:original)}"
@@ -162,6 +169,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_8 = open(image_8_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_8 #{self.image_8.url(:original)}"
@@ -173,6 +181,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_9 = open(image_9_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_9 #{self.image_9.url(:original)}"
@@ -184,12 +193,14 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       begin
         self.image_10 = open(image_10_url)
       rescue => error
+        Rollbar.error(error)
         NewRelic::Agent.notice_error(error)
       end
       p "done opening image_10 #{self.image_10.url(:original)}"
     end
 
   rescue => error
+    Rollbar.error(error)
     NewRelic::Agent.notice_error(error)
   end
 
@@ -198,6 +209,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
     self.save
   rescue => error
+    Rollbar.error(error)
     NewRelic::Agent.notice_error(error)
   end
 
@@ -313,6 +325,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_1 = URI.parse(image_1.url(:carousel))
         p "done set image_1 #{self.image_1.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -324,6 +337,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_2 = URI.parse(image_2.url(:carousel))
         p "done set image_2 #{self.image_2.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -335,6 +349,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_3 = URI.parse(image_3.url(:carousel))
         p "done set image_3 #{self.image_3.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -346,6 +361,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_4 = URI.parse(image_4.url(:carousel))
         p "done set image_4 #{self.image_4.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -357,6 +373,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_5 = URI.parse(image_5.url(:carousel))
         p "done set image_5 #{self.image_5.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -368,6 +385,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_6 = URI.parse(image_6.url(:carousel))
         p "done set image_6 #{self.image_6.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -379,6 +397,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_7 = URI.parse(image_7.url(:carousel))
         p "done set image_7 #{self.image_7.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -390,6 +409,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_8 = URI.parse(image_8.url(:carousel))
         p "done set image_8 #{self.image_8.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -401,6 +421,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_9 = URI.parse(image_9.url(:carousel))
         p "done set image_9 #{self.image_9.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
@@ -412,6 +433,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
         stylist.image_10 = URI.parse(image_10.url(:carousel))
         p "done set image_10 #{self.image_10.url(:original)}"
       rescue => e
+        Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else

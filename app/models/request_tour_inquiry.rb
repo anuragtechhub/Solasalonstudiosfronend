@@ -106,6 +106,7 @@ class RequestTourInquiry < ActiveRecord::Base
       p "No HUBSPOT API KEY, no sync"
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -145,6 +146,7 @@ class RequestTourInquiry < ActiveRecord::Base
       return nil
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return nil
   end
@@ -154,6 +156,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_source"][0]
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return ''
   end
@@ -163,6 +166,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_medium"][0]
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return ''
   end
@@ -172,6 +176,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_campaign"][0]
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return ''
   end
@@ -181,6 +186,7 @@ class RequestTourInquiry < ActiveRecord::Base
     params = CGI::parse(uri.query)
     return params["utm_content"][0]
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     return ''
   end
@@ -194,6 +200,7 @@ class RequestTourInquiry < ActiveRecord::Base
       email.deliver if email
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
@@ -208,6 +215,7 @@ class RequestTourInquiry < ActiveRecord::Base
       email.deliver if email
     end
   rescue => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 

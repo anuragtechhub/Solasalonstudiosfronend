@@ -41,6 +41,7 @@ class BookNowBooking < ActiveRecord::Base
     end
 	rescue => e
 		NewRelic::Agent.notice_error(e)
+		Rollbar.error(e)
   end
 
   def update_stylist_metrics
@@ -60,6 +61,7 @@ class BookNowBooking < ActiveRecord::Base
   	end
   rescue => e
 		NewRelic::Agent.notice_error(e)
+		Rollbar.error(e)
   end
 
 end

@@ -453,6 +453,7 @@ namespace :sync do
         article.image = open(get_img_src row['field_id_12']) unless row['field_id_12'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image error = #{e.inspect}"
       end
 
@@ -490,6 +491,7 @@ namespace :sync do
         blog.image = open(filedir_replacement row['field_id_201']) unless row['field_id_201'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image error = #{e.inspect}"
       end
 
@@ -637,6 +639,7 @@ namespace :sync do
         location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -645,6 +648,7 @@ namespace :sync do
       location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -653,6 +657,7 @@ namespace :sync do
       location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -661,6 +666,7 @@ namespace :sync do
       location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -669,6 +675,7 @@ namespace :sync do
       location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 5 error = #{e.inspect}"
       end
 
@@ -677,6 +684,7 @@ namespace :sync do
       location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 6 error = #{e.inspect}"
       end
 
@@ -685,6 +693,7 @@ namespace :sync do
       location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 7 error = #{e.inspect}"
       end
 
@@ -693,6 +702,7 @@ namespace :sync do
       location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 8 error = #{e.inspect}"
       end
 
@@ -701,6 +711,7 @@ namespace :sync do
       location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 9 error = #{e.inspect}"
       end
 
@@ -709,6 +720,7 @@ namespace :sync do
       location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 10 error = #{e.inspect}"
       end
 
@@ -717,6 +729,7 @@ namespace :sync do
       location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 11 error = #{e.inspect}"
       end
 
@@ -725,6 +738,7 @@ namespace :sync do
       location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 12 error = #{e.inspect}"
       end
 
@@ -733,6 +747,7 @@ namespace :sync do
       location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 13 error = #{e.inspect}"
       end
 
@@ -741,6 +756,7 @@ namespace :sync do
       location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 14 error = #{e.inspect}"
       end
 
@@ -749,6 +765,7 @@ namespace :sync do
       location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 15 error = #{e.inspect}"
       end
 
@@ -757,6 +774,7 @@ namespace :sync do
       location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 16 error = #{e.inspect}"
       end
 
@@ -765,6 +783,7 @@ namespace :sync do
       location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 17 error = #{e.inspect}"
       end
 
@@ -773,6 +792,7 @@ namespace :sync do
       location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 18 error = #{e.inspect}"
       end
 
@@ -781,6 +801,7 @@ namespace :sync do
       location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 19 error = #{e.inspect}"
       end
       location.image_20 = nil
@@ -790,6 +811,7 @@ namespace :sync do
         location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image floorplan image error = #{e.inspect}"
       end
 
@@ -909,6 +931,7 @@ namespace :sync do
         stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -917,6 +940,7 @@ namespace :sync do
         stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -925,6 +949,7 @@ namespace :sync do
         stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -933,6 +958,7 @@ namespace :sync do
         stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -941,6 +967,7 @@ namespace :sync do
         stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 5 error = #{e.inspect}"
       end
 
@@ -949,6 +976,7 @@ namespace :sync do
         stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 6 error = #{e.inspect}"
       end
 
@@ -957,6 +985,7 @@ namespace :sync do
         stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 7 error = #{e.inspect}"
       end
 
@@ -965,6 +994,7 @@ namespace :sync do
         stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 8 error = #{e.inspect}"
       end
 
@@ -973,6 +1003,7 @@ namespace :sync do
         stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 9 error = #{e.inspect}"
       end
 
@@ -981,6 +1012,7 @@ namespace :sync do
         stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
 			rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 10 error = #{e.inspect}"
       end
 
@@ -1122,6 +1154,7 @@ namespace :sync do
         stylist.image_1 = open(get_img_src row['field_id_7']) unless row['field_id_7'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -1130,6 +1163,7 @@ namespace :sync do
         stylist.image_2 = open(get_img_src row['field_id_225']) unless row['field_id_225'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -1138,6 +1172,7 @@ namespace :sync do
         stylist.image_3 = open(get_img_src row['field_id_226']) unless row['field_id_226'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -1146,6 +1181,7 @@ namespace :sync do
         stylist.image_4 = open(get_img_src row['field_id_227']) unless row['field_id_227'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -1154,6 +1190,7 @@ namespace :sync do
         stylist.image_5 = open(get_img_src row['field_id_228']) unless row['field_id_228'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 5 error = #{e.inspect}"
       end
 
@@ -1162,6 +1199,7 @@ namespace :sync do
         stylist.image_6 = open(get_img_src row['field_id_229']) unless row['field_id_229'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 6 error = #{e.inspect}"
       end
 
@@ -1170,6 +1208,7 @@ namespace :sync do
         stylist.image_7 = open(get_img_src row['field_id_230']) unless row['field_id_230'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 7 error = #{e.inspect}"
       end
 
@@ -1178,6 +1217,7 @@ namespace :sync do
         stylist.image_8 = open(get_img_src row['field_id_231']) unless row['field_id_231'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 8 error = #{e.inspect}"
       end
 
@@ -1186,6 +1226,7 @@ namespace :sync do
         stylist.image_9 = open(get_img_src row['field_id_232']) unless row['field_id_232'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 9 error = #{e.inspect}"
       end
 
@@ -1194,6 +1235,7 @@ namespace :sync do
         stylist.image_10 = open(get_img_src row['field_id_233']) unless row['field_id_233'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 10 error = #{e.inspect}"
       end
 
@@ -1289,6 +1331,7 @@ namespace :sync do
         location.image_1 = open(get_img_src row['field_id_20']) unless row['field_id_20'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 1 error = #{e.inspect}"
       end
 
@@ -1297,6 +1340,7 @@ namespace :sync do
       location.image_2 = open(get_img_src row['field_id_21']) unless row['field_id_21'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 2 error = #{e.inspect}"
       end
 
@@ -1305,6 +1349,7 @@ namespace :sync do
       location.image_3 = open(get_img_src row['field_id_234']) unless row['field_id_234'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 3 error = #{e.inspect}"
       end
 
@@ -1313,6 +1358,7 @@ namespace :sync do
       location.image_4 = open(get_img_src row['field_id_235']) unless row['field_id_235'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 4 error = #{e.inspect}"
       end
 
@@ -1321,6 +1367,7 @@ namespace :sync do
       location.image_5 = open(get_img_src row['field_id_236']) unless row['field_id_236'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 5 error = #{e.inspect}"
       end
 
@@ -1329,6 +1376,7 @@ namespace :sync do
       location.image_6 = open(get_img_src row['field_id_237']) unless row['field_id_237'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 6 error = #{e.inspect}"
       end
 
@@ -1337,6 +1385,7 @@ namespace :sync do
       location.image_7 = open(get_img_src row['field_id_238']) unless row['field_id_238'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 7 error = #{e.inspect}"
       end
 
@@ -1345,6 +1394,7 @@ namespace :sync do
       location.image_8 = open(get_img_src row['field_id_239']) unless row['field_id_239'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 8 error = #{e.inspect}"
       end
 
@@ -1353,6 +1403,7 @@ namespace :sync do
       location.image_9 = open(get_img_src row['field_id_240']) unless row['field_id_240'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 9 error = #{e.inspect}"
       end
 
@@ -1361,6 +1412,7 @@ namespace :sync do
       location.image_10 = open(get_img_src row['field_id_241']) unless row['field_id_241'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 10 error = #{e.inspect}"
       end
 
@@ -1369,6 +1421,7 @@ namespace :sync do
       location.image_11 = open(get_img_src row['field_id_242']) unless row['field_id_242'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 11 error = #{e.inspect}"
       end
 
@@ -1377,6 +1430,7 @@ namespace :sync do
       location.image_12 = open(get_img_src row['field_id_243']) unless row['field_id_243'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 12 error = #{e.inspect}"
       end
 
@@ -1385,6 +1439,7 @@ namespace :sync do
       location.image_13 = open(get_img_src row['field_id_244']) unless row['field_id_244'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 13 error = #{e.inspect}"
       end
 
@@ -1393,6 +1448,7 @@ namespace :sync do
       location.image_14 = open(get_img_src row['field_id_245']) unless row['field_id_245'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 14 error = #{e.inspect}"
       end
 
@@ -1401,6 +1457,7 @@ namespace :sync do
       location.image_15 = open(get_img_src row['field_id_246']) unless row['field_id_246'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 15 error = #{e.inspect}"
       end
 
@@ -1409,6 +1466,7 @@ namespace :sync do
       location.image_16 = open(get_img_src row['field_id_247']) unless row['field_id_247'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 16 error = #{e.inspect}"
       end
 
@@ -1417,6 +1475,7 @@ namespace :sync do
       location.image_17 = open(get_img_src row['field_id_248']) unless row['field_id_248'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 17 error = #{e.inspect}"
       end
 
@@ -1425,6 +1484,7 @@ namespace :sync do
       location.image_18 = open(get_img_src row['field_id_249']) unless row['field_id_249'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 18 error = #{e.inspect}"
       end
 
@@ -1433,6 +1493,7 @@ namespace :sync do
       location.image_19 = open(get_img_src row['field_id_250']) unless row['field_id_250'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image 19 error = #{e.inspect}"
       end
       location.image_20 = nil
@@ -1442,6 +1503,7 @@ namespace :sync do
         location.floorplan_image = open(get_img_src row['field_id_308']) unless row['field_id_308'].blank?
       rescue => e
 				NewRelic::Agent.notice_error(e)
+				Rollbar.error(e)
         p "image floorplan image error = #{e.inspect}"
       end
 

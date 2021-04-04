@@ -24,6 +24,8 @@ namespace :stylist do
           end
         end
       rescue => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
         p "error updating walkins settings for stylist #{stylist.id}, #{e}"
       end
     end

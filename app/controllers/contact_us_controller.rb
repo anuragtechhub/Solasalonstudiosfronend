@@ -71,6 +71,7 @@ class ContactUsController < PublicWebsiteController
     # end
   rescue Gibbon::MailChimpError => e
     NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end
 
@@ -198,6 +199,7 @@ class ContactUsController < PublicWebsiteController
     end
   rescue Gibbon::MailChimpError => e
     NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
     @success = 'Thank you! We will get in touch soon'
     if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
       @success = 'Thank you for downloading our free guide! Please check your email.'
@@ -224,6 +226,7 @@ class ContactUsController < PublicWebsiteController
       redirect_to :contact_us, :status => 301
     end
   rescue Gibbon::MailChimpError => e
+    Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
     render :json => {:success => 'Thank you! We will get in touch soon'}
   end
