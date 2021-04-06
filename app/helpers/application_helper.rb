@@ -15,6 +15,8 @@ module ApplicationHelper
   end
 
   def url_helper(url = '')
+    return url unless url.is_a?(String)
+
     url = url.gsub(/http:\/\/https:\/\//, 'http://')
     url = url.gsub(/https:\/\/https:\/\//, 'http://')
     url = url.gsub(/https:\/\/http:\/\//, 'http://')
