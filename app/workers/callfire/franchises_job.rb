@@ -53,7 +53,7 @@ module Callfire
             batch = {}
 
             location.stylists.each_with_index do |stylist, index|
-              next if stylist.name.blak? || stylist.phone_number.blank?
+              next if stylist.name.blank? || stylist.phone_number.blank?
 
               batch["Contact[#{index}][firstName]"] = stylist.name
               batch["Contact[#{index}][homePhone]"] = stylist.phone_number

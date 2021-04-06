@@ -21,10 +21,10 @@ module Callfire
           batch = {}
 
           stylists.each_with_index do |stylist, index|
-            if stylist.name.present? && stylist.phone_number.present?
-              batch["Contact[#{index}][firstName]"] = stylist.name
-              batch["Contact[#{index}][homePhone]"] = stylist.phone_number
-            end
+            next if stylist.name.blank? || stylist.phone_number.blank?
+
+            batch["Contact[#{index}][firstName]"] = stylist.name
+            batch["Contact[#{index}][homePhone]"] = stylist.phone_number
           end
 
           req = Net::HTTP::Post.new('/api/1.1/rest/contact/list/658274003/add')
