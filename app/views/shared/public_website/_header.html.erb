@@ -55,7 +55,6 @@
       <%= form_tag [:search, :results], :method => :get, :class => 'nav-search', role: :search do %>
         <input class="nav-search-input" placeholder="<%= raw t 'header.search_placeholder' %>" type="search" name="query" aria-label="search query">
         <span tabindex="0" aria-label="search" role="button" class="nav-search-button search-icon"></span>
-        <button type="submit" class="d-none"></button>
       <% end %>
 
     </div>
