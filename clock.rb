@@ -56,8 +56,4 @@ module Clockwork
   every(1.day, 'reports.monthly', at: '09:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
     Reports::MonthlyJob.perform_async
   end
-
-  # every(1.day, 'reports.booknow_biweekly', at: '12:00', if: lambda { |t| t.mday.in?([14, 28]) && Rails.env.production? }) do
-  #   Reports::BooknowJob.perform_async(13.days.ago.beginning_of_day, Time.current.end_of_day, 'olivia@solasalonstudios.com')
-  # end
 end

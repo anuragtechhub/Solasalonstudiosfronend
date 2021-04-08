@@ -51,9 +51,7 @@ gem "down"
 gem "naturally"
 gem "tzinfo"
 
-gem 'aws-sdk-v1'
-gem 'aws-sdk', '~> 2'
-gem 'aws-sdk-core'
+gem 'aws-sdk-s3'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'
@@ -99,9 +97,7 @@ gem "therubyracer"
 
 gem 'sitemap_generator'
 
-gem 'fog-aws'
-
-gem 'google-api-client'
+gem 'google-api-client', '0.11.3'
 gem 'thor'
 gem 'hirb'
 

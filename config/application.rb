@@ -59,6 +59,7 @@ module Solasalonstudios
 
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :utc
+    config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'lib')
@@ -71,6 +72,6 @@ module Solasalonstudios
                                  'faq.js', 'sessions.js', 'sessions_2018.js', 'wow.min.js']
     config.assets.precompile += ['bootstrap4hack.css', 'slick.js', 'slick.css', 'slick-theme.css', 'sejasola.css', 'sejasola.js', 'goingindependent.js', 'goingindependent.css']
 
-    config.paperclip_defaults = {:storage => :s3, :s3_credentials => {:bucket => ENV['FOG_DIRECTORY'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}}
+    config.paperclip_defaults = {storage: :s3, s3_credentials: {bucket: ENV['FOG_DIRECTORY'], s3_region: ENV['AWS_REGION'], access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']}}
   end
 end
