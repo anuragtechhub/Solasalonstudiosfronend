@@ -2,13 +2,30 @@
 
   <div class="hero-carousel owl-carousel owl-theme home-all">
     <div class="item">
+      <% if canadian_locale? %>
+        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/sola_contact_us_desktop.jpg', :width => 2025, :height => 767 %></div>
+          <div class="item-content overlayed">
+            <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
+              <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
+            <% end %>
+          </div>
+      <% else %>
         <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_ContactUs_Header.jpg', :width => 2025, :height => 769 %></div>
+      <% end %>
     </div>
   </div>
 
+  <%- mobile_image_url = canadian_locale? ? 'https://solasalonstudios.s3.amazonaws.com/home_hero_images/why_sola_strong_2_mobile.jpg' : 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_ContactUs_Header_mobile.jpg' %>
   <div class="hero-carousel owl-carousel owl-theme home-mobile">
     <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_ContactUs_Header_mobile.jpg', :alt => t('page.home.slider5_heading') %></div>
+      <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag mobile_image_url, :alt => t('page.home.slider5_heading') %></div>
+      <% if canadian_locale? %>
+        <div class="item-content overlayed">
+          <%= link_to 'https://www.youtube.com/watch?v=zxgQkj_qRxE', :class => "button secondary play-video rounded-play-button" do %>
+            <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 

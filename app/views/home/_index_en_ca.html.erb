@@ -1,6 +1,6 @@
 <div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
   <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', :width => 1600, :height => 800 %></div>
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', :alt => t('page.home.slider6_heading'), :width => 1600, :height => 800 %></div>
     <div class="item-content bottom-center-align">
       <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-1" class="button primary play-video rounded-play-button" style="margin-bottom: 0px">
         <%= t('page.home.hear_from_our_sola_pros') %> <span class="fa fa-play-circle">&nbsp;</span>
@@ -8,9 +8,9 @@
     </div>
   </div>
   <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_WhySola_Header.jpg', :alt => t('page.home.slider5_heading'), :width => 2025, :height => 769 %></div>
-    <div class="item-content middle-align" style="top:-150px">
-      <a href="//www.youtube.com/watch?v=wxZluUXFJ9Y" rel="PefdR9zZqWw-1" class="button secondary play-video rounded-play-button">
+    <div class="img-wrap"><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/why_sola_strong_2.jpg', :alt => t('page.home.slider5_heading'), :width => 1600, :height => 800 %></div>
+    <div class="item-content middle-align" style="top:190px">
+      <a href="//www.youtube.com/watch?v=zxgQkj_qRxE" rel="PefdR9zZqWw-1" class="button secondary play-video rounded-play-button">
         <%= t('page.home.sola_strong') %> <span class="fa fa-play-circle"></span>
       </a>
     </div>
@@ -28,7 +28,7 @@
 <div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
   <% if I18n.locale.to_s != 'pt-BR' %>
     <div class="item">
-      <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', :width => 750, :height => 750 %>
+      <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', :alt => t('page.home.slider6_heading'), :width => 750, :height => 750 %>
       <div class="item-content bottom-center-align">
         <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-2" class="button primary play-video rounded-play-button" style="margin-top: 0px">
           <%= t('page.hear_from_our_sola_pros') %> <span class="fa fa-play-circle"></span>
@@ -36,9 +36,9 @@
       </div>
     </div>
     <div class="item">
-      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_WhySola_Header_mobile.jpg', :alt => t('page.home.slider5_heading') %>
-      <div class="item-content middle-align" style="top:-115px; margin-top: 0px">
-        <a href="//www.youtube.com/watch?v=wxZluUXFJ9Y" rel="PefdR9zZqWw-2" class="button secondary play-video rounded-play-button">
+      <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/home_hero_images/why_sola_strong_2_mobile.jpg', :alt => t('page.home.slider5_heading') %>
+      <div class="item-content middle-align" style="top:10; margin-top: 170px">
+        <a href="//www.youtube.com/watch?v=zxgQkj_qRxE" rel="PefdR9zZqWw-2" class="button secondary play-video rounded-play-button">
           <%= t('page.home.sola_strong') %> <span class="fa fa-play-circle">&nbsp;</span>
         </a>
       </div>
