@@ -5,7 +5,7 @@ module WhySolaHelper
     result << :booknow unless canadian_locale?
     result << :education
     result << :beauty_hive unless canadian_locale?
-    result << :the_sola_store
+    result << :the_sola_store unless canadian_locale?
     result
   end
 end

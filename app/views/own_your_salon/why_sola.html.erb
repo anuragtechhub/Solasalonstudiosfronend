@@ -33,7 +33,7 @@
         <p><%= t('page.why_sola.be_in_business_p2').html_safe %></p>
       </div>
       <div class="six columns with-action-button">
-        <% if I18n.locale.to_s == 'en' %>
+        <% if I18n.locale.to_s.in?(['en', 'en-CA']) %>
           <h2>Intrigued by the idea of being your own boss?</h2>
           <p>Download our free guide to discover if the independent life is right for you!</p>
           <p><a href="/goingindependent" class="button primary">Download Now</a></p>
@@ -354,18 +354,18 @@
         </div>
       </div>
     </div>
-  <% end %>
 
-  <div id="the_sola_store" class="sola-store">
-    <div class="img-wrap">
-      <div class="image-on-hover">
-        <div class="container">
-          <div class="text">From apparel, aprons, capes and masks to water bottles, coffee cups and so much more - the Sola Store lets you rep your Sola pride in style!</div>
-          <%= link_to 'Shop Now', 'https://thesolastore.com/', class: 'button primary', target: '_blank' %>
+    <div id="the_sola_store" class="sola-store">
+      <div class="img-wrap">
+        <div class="image-on-hover">
+          <div class="container">
+            <div class="text">From apparel, aprons, capes and masks to water bottles, coffee cups and so much more - the Sola Store lets you rep your Sola pride in style!</div>
+            <%= link_to 'Shop Now', 'https://thesolastore.com/', class: 'button primary', target: '_blank' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div class="search-for-a-salon">
     <div class="container">
