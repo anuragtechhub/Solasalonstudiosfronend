@@ -176,6 +176,9 @@ class PublicWebsiteController < ApplicationController
   # end
 
   def set_locale
+    force_locale = params[:force_locale]
+    return I18n.locale = force_locale if force_locale.present?
+
     #p "set_locale #{request.domain}"
     if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
       I18n.locale = 'en-CA'
