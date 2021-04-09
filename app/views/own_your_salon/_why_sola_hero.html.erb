@@ -1,11 +1,9 @@
-<% if brazilian_locale? %>
+<% if I18n.locale.to_s == 'pt-BR' %>
 
   <div class="hero-carousel owl-carousel owl-theme">
     <div class="item">
-      <div class="img-wrap">
-        <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %>
-      </div>
-      <div class="item-content overlayed <%= I18n.locale.to_s %> %>">
+      <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
+      <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
         <h1 class="chalet-new-york"><%= t('page.why_sola.hero_heading2').html_safe %></h1>
         <%= link_to '//www.youtube.com/watch?v=D2vtblujRzo', :class => "button primary play-video rounded-play-button paralax-hidable-desktop" do %>
@@ -20,30 +18,32 @@
   </div>
 
 <% else %>
-  <%- youtube_url = "https://www.youtube.com/watch?v=#{canadian_locale? ? 'zxgQkj_qRxE' : 'wxZluUXFJ9Y'}" %>
-
+<!--  -->
+  <%- youtube_url = "https://www.youtube.com/watch?v=#{I18n.locale != :en ? 'zH9uewppEjk' : 'wxZluUXFJ9Y'}" %>
   <div class="hero-carousel owl-carousel owl-theme home-all">
-    <div class="item">
-      <div class="img-wrap top-header parallax-dream-again-image <%= I18n.locale.to_s %> %>" data-parallax="scroll" data-z-index="1" data-natural-width="1920" data-natural-heigt="730">
-        <div class="item-content overlayed">
-          <%= link_to youtube_url, :class => "button secondary play-video rounded-play-button paralax-hidable-desktop" do %>
-            <span><%= t('page.why_sola.hero_button2_text') %></span> <span class="fa fa-play-circle"></span>
-          <% end %>
+    <div class="item" style=" ">
+      <!--parallax-window -->
+        <div class="img-wrap top-header parallax-dream-again-image" data-parallax="scroll" data-z-index="1" data-natural-width="1920" data-natural-heigt="730" data-image-src="https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/dream-again-main-3.jpg">
+          <%#= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/dream-again-main-3.jpg', :width => 2025, :height => 769 %>
+          <div class="item-content overlayed" style="top:0px;">
+            <%= link_to youtube_url, :class => "button secondary play-video rounded-play-button paralax-hidable-desktop" do %>
+              <span><%= t('page.why_sola.hero_button2_text') %></span> <span class="fa fa-play-circle"></span>
+            <% end %>
+          </div>
         </div>
-      </div>
+
     </div>
   </div>
 
-  <%- mobile_image_url = canadian_locale? ? 'https://solasalonstudios.s3.amazonaws.com/home_hero_images/why_sola_strong_2_mobile.jpg' : 'https://d3p1kyyvw4qtho.cloudfront.net/Sola_DA_WhySola_Header_mobile.jpg' %>
-
   <div class="hero-carousel owl-carousel owl-theme home-mobile">
     <div class="item">
-      <div class="img-wrap" style="padding-bottom:39%;">
-        <%= image_tag mobile_image_url, :alt => t('page.home.slider5_heading') %>
-      </div>
-      <div class="item-content overlayed <%= I18n.locale.to_s %>">
-        <%= link_to youtube_url, style: "margin-top:0px;", :class => "button secondary play-video rounded-play-button" do %>
-          <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
+      <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/dream-again-main-mobile-3.jpg', :alt => t('page.home.slider5_heading') %></div>
+      <div class="item-content overlayed">
+        <%= link_to youtube_url, style: "margin-top:0px;", :class => "button secondary play-video rounded-play-button paralax-hidable-mobile" do %>
+          <span><%= t('page.why_sola.hero_button2_text') %></span> <span class="fa fa-play-circle"></span>
+        <% end %>
+        <%= link_to '#why_sola', class: 'arrow-link' do %>
+          <i class="fa fa-angle-down text-center"></i>
         <% end %>
       </div>
     </div>

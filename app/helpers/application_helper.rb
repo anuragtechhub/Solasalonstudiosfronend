@@ -57,11 +57,4 @@ module ApplicationHelper
     end
   end
 
-  def canadian_locale?
-    I18n.locale.to_s == 'en-CA'
-  end
-
-  def brazilian_locale?
-    I18n.locale.to_s == 'pt-BR'
-  end
 end
