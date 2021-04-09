@@ -1,7 +1,7 @@
 <div class="sidebar">
   <div class="page-nav-overlay">
     <div class="sidebar-content nav">
-      <% %i[why_sola sola_pro solagenius booknow education beauty_hive the_sola_store].each do |section| %>
+      <% why_sola_sections.each do |section| %>
         <div class="nav-item">
           <div class="text"><%= t("page.why_sola.sidebar.#{section}") %></div>
           <%= link_to "##{section}", class: 'nav-link' do %>
@@ -168,7 +168,8 @@
     <% content_for(:scripts) { javascript_include_tag('sola_pro') } %>
   </div>
 
-  <div id="solagenius" class="sola-genius">
+  <% unless canadian_locale? %>
+    <div id="solagenius" class="sola-genius">
     <div class="hero-wrapper">
       <div class="sologenius-logo">solagenius</div>
       <div class="solagenius-subtitle"><%= t('page.why_sola.solagenius-subtitle') %></div>
@@ -192,9 +193,9 @@
     </div>
   </div>
 
-  <% content_for(:scripts) { javascript_include_tag('solagenius') } %>
+    <% content_for(:scripts) { javascript_include_tag('solagenius') } %>
 
-  <div id="booknow" class="book-now-service">
+    <div id="booknow" class="book-now-service">
     <div class="container">
       <div class="book-now-service-main-content">
         <div class="book-now-service-text">
@@ -250,6 +251,7 @@
     <div class="book-now-service-main-image"></div>
     <div class="book-now-service-square-image"></div>
   </div>
+  <% end %>
 
   <div id="education" class="industry-leading-education">
     <div class="container">
@@ -317,40 +319,42 @@
     </div>
   </div>
 
-  <div id="beauty_hive">
-    <div class="img-wrap">
-      <div class="wrapper">
-        <div class="beauty-hive-title-wrapper">
-          <i class="beauty-hive-icon"></i>
-          <div class="beauty-hive-title"><%= t('page.why_sola.beauty-hive.title') %></div>
+  <% unless canadian_locale? %>
+    <div id="beauty_hive">
+      <div class="img-wrap">
+        <div class="wrapper">
+          <div class="beauty-hive-title-wrapper">
+            <i class="beauty-hive-icon"></i>
+            <div class="beauty-hive-title"><%= t('page.why_sola.beauty-hive.title') %></div>
+          </div>
+          <div class="beauty-hive-subtitle">
+            <%= t('page.why_sola.beauty-hive.subtitle').html_safe %>
+          </div>
+          <div class="learn-more"><a href="#more_about_beauty_hive"><%= t('page.why_sola.beauty-hive.learn-more') %></a></div>
         </div>
-        <div class="beauty-hive-subtitle">
-          <%= t('page.why_sola.beauty-hive.subtitle').html_safe %>
-        </div>
-        <div class="learn-more"><a href="#more_about_beauty_hive"><%= t('page.why_sola.beauty-hive.learn-more') %></a></div>
       </div>
-    </div>
-    <div id="more_about_beauty_hive" class="container">
-      <div class="icon-crown"></div>
-      <div class="content d-flex flex-wrap flex-lg-nowrap">
-        <div class="main">
-          <h2><%= t('page.why_sola.beauty-hive.content.title') %></h2>
-          <div class="main-text"><%= t('page.why_sola.beauty-hive.content.text') %></div>
-          <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
-        </div>
+      <div id="more_about_beauty_hive" class="container">
+        <div class="icon-crown"></div>
+        <div class="content d-flex flex-wrap flex-lg-nowrap">
+          <div class="main">
+            <h2><%= t('page.why_sola.beauty-hive.content.title') %></h2>
+            <div class="main-text"><%= t('page.why_sola.beauty-hive.content.text') %></div>
+            <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
+          </div>
 
-        <div class="features">
-          <% %w[cashback perks shipping-orders same-day-shipping real-time-checks guarantee].each do |feature| %>
-            <div class="feature <%= feature %>">
-              <i class="icon <%= feature %>" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= feature %>-icon.png')"></i>
-              <text class="text"><%= t("page.why_sola.beauty-hive.features.#{feature}").html_safe %></text>
-            </div>
-          <% end %>
-          <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
+          <div class="features">
+            <% %w[cashback perks shipping-orders same-day-shipping real-time-checks guarantee].each do |feature| %>
+              <div class="feature <%= feature %>">
+                <i class="icon <%= feature %>" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= feature %>-icon.png')"></i>
+                <text class="text"><%= t("page.why_sola.beauty-hive.features.#{feature}").html_safe %></text>
+              </div>
+            <% end %>
+            <%= link_to t('page.why_sola.beauty-hive.content.join'), 'https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Website&utm_campaign=Own_Your_Salon', class: 'button primary', target: '_blank' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div id="the_sola_store" class="sola-store">
     <div class="img-wrap">
