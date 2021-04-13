@@ -1218,6 +1218,9 @@ body.why-sola {
             width: 24vw;
             max-width: 360px;
             margin-top: 64px;
+            @media (max-width: 1050px) {
+              font-size: 15px;
+            }
             @include chalet_new_york();
           }
         }
