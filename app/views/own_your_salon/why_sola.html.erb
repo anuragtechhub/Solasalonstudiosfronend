@@ -272,18 +272,12 @@
                       '/blog/category/sola-stories-podcast'
                     when 'sola_sessions'
                       target = '_blank'
-                      'https://www.youtube.com/watch?v=F1BGvPcLSV4'
+                      'https://events.bizzabo.com/solasessions'
                     else
                       '#'
                     end
           %>
-          <% additional_class = case feature
-              when 'sola_sessions'
-                'play-video'
-              else
-                ''
-              end
-          %>
+          <% additional_class = '' %>
           <% dashed_feature = feature.humanize.parameterize %>
           <% modal_id = dashed_feature + '-modal' %>
           <div class="industry-leading-education-feature-wrapper">
