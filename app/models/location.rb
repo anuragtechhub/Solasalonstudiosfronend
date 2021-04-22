@@ -1051,6 +1051,7 @@ end
 #  pinterest_url                :string(255)
 #  postal_code                  :string(255)
 #  rent_manager_enabled         :boolean          default(FALSE)
+#  rockbot_manager_email        :string
 #  service_request_enabled      :boolean          default(FALSE)
 #  state                        :string(255)
 #  status                       :string(255)

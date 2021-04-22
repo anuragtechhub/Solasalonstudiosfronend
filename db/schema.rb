@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210313140534) do
+ActiveRecord::Schema.define(version: 20210422205924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,6 +268,7 @@ ActiveRecord::Schema.define(version: 20210313140534) do
     t.text     "internal_feedback"
   end
 
+  add_index "devices", ["token"], name: "index_devices_on_token", unique: true, using: :btree
   add_index "devices", ["userable_id"], name: "index_devices_on_userable_id", using: :btree
   add_index "devices", ["userable_type"], name: "index_devices_on_userable_type", using: :btree
   add_index "devices", ["uuid", "userable_type", "userable_id"], name: "index_devices_on_uuid_and_userable_type_and_userable_id", unique: true, using: :btree
@@ -432,6 +433,29 @@ ActiveRecord::Schema.define(version: 20210313140534) do
     t.datetime "image_updated_at"
   end
 
+  create_table "hubspot_events", force: :cascade do |t|
+    t.string   "kind"
+    t.datetime "fired_at"
+    t.json     "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hubspot_logs", force: :cascade do |t|
+    t.json     "data"
+    t.integer  "status"
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "kind"
+    t.string   "action"
+  end
+
+  add_index "hubspot_logs", ["location_id"], name: "index_hubspot_logs_on_location_id", using: :btree
+  add_index "hubspot_logs", ["object_type", "object_id"], name: "index_hubspot_logs_on_object_type_and_object_id", using: :btree
+
 # Could not dump table "leases" because of following FrozenError
 #   can't modify frozen String: "false"
 
@@ -482,8 +506,8 @@ ActiveRecord::Schema.define(version: 20210313140534) do
     t.datetime "updated_at"
     t.integer  "blog_id"
     t.datetime "date_sent"
-    t.string   "title",                  limit: 65
     t.datetime "send_at"
+    t.string   "title",                  limit: 65
     t.integer  "country_id"
   end
 
@@ -581,7 +605,12 @@ ActiveRecord::Schema.define(version: 20210313140534) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "charge_type", limit: 255
+    t.integer  "lease_id"
+    t.integer  "position"
   end
+
+  add_index "recurring_charges", ["lease_id"], name: "index_recurring_charges_on_lease_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "report_type",   limit: 255
@@ -999,5 +1028,6 @@ ActiveRecord::Schema.define(version: 20210313140534) do
   add_index "watch_laters", ["video_id"], name: "index_watch_laters_on_video_id", using: :btree
 
   add_foreign_key "brandables", "brands", name: "brandables_brand_id_fk"
+  add_foreign_key "hubspot_logs", "locations"
   add_foreign_key "taggables", "tags", name: "taggables_tag_id_fk"
 end
