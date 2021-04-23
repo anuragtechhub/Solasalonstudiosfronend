@@ -43,6 +43,7 @@ end
 
 gem 'rmagick'
 gem 'rack-cors'
+gem 'rack-attack'
 
 gem "paperclip"
 gem "paperclip-compression"
