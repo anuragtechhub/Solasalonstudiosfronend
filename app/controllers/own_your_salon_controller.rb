@@ -19,6 +19,7 @@ class OwnYourSalonController < PublicWebsiteController
 	end
 
 	def sola_sessions
+    redirect_to '/why-sola?open_modal=sola-sessions-modal#education', status: 301
 	end
 
 	def solagenius
