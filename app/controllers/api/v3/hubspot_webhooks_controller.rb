@@ -3,7 +3,7 @@ class Api::V3::HubspotWebhooksController < ApiController
 
   def create
     check_credentials
-    HubspotEvent.create!({data: params.require(:data), fired_at: Time.current, kind: 'deal'})
+    HubspotEvent.create!({data: params, fired_at: Time.current, kind: 'deal'})
     head :no_content
   rescue ActiveRecord::RecordInvalid => e
     Rollbar.error(e)
