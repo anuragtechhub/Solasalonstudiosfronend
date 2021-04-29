@@ -30,12 +30,4 @@ namespace :stylist do
       end
     end
   end
-
-  task :sync_with_hubspot => :environment do
-    Stylist.open.each do |stylist|
-      p "sync stylist #{stylist.id}, #{stylist.email_address}, #{stylist.location.name if stylist.location}"
-      stylist.sync_with_hubspot
-    end
-  end
-
 end

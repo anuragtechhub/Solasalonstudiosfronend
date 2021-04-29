@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  fired_at: 2021-04-16 21:34:39
+  data: 
+
+two:
+  kind: MyString
+  fired_at: 2021-04-16 21:34:39
+  data:
+
+# == Schema Information
+#
+# Table name: hubspot_events
+#
+#  id         :integer          not null, primary key
+#  data       :json
+#  fired_at   :datetime
+#  kind       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#

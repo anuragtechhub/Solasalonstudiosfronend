@@ -190,6 +190,10 @@ Solasalonstudios::Application.routes.draw do
       match 'locations' => 'locations#index', :via => [:get, :post]
       match 'locations/:id' => 'locations#show', :via => [:get, :post]
     end
+
+    namespace :v3 do
+      resources :hubspot_webhooks, only: %i[create]
+    end
   end
 
   match '/cms/save-lease' => 'cms#save_lease', :via => [:get, :post], :as => :cms_save_lease
@@ -334,6 +338,7 @@ end
 #                                 api_v1 GET|POST /api/v1/locations/:id(.:format)                               api/v1/locations#show
 #                       api_v2_locations GET|POST /api/v2/locations(.:format)                                   api/v2/locations#index
 #                                 api_v2 GET|POST /api/v2/locations/:id(.:format)                               api/v2/locations#show
+#                api_v3_hubspot_webhooks POST     /api/v3/hubspot_webhooks(.:format)                            api/v3/hubspot_webhooks#create
 #                         cms_save_lease GET|POST /cms/save-lease(.:format)                                     cms#save_lease
 #                       cms_save_stylist GET|POST /cms/save-stylist(.:format)                                   cms#save_stylist
 #                   cms_locations_select GET|POST /cms/locations-select(.:format)                               cms#locations_select

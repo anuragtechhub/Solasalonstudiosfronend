@@ -7,16 +7,17 @@ module ApplicationHelper
   end
 
   def valid_url?(url = nil)
-    url && URI.parse(url)
+    url && URI.parse(url.strip)
   rescue URI::InvalidURIError => e
     NewRelic::Agent.notice_error(e)
     Rollbar.error(e)
     false
   end
 
+  # looks like piece of shit
   def url_helper(url = '')
     return url unless url.is_a?(String)
-
+    url = url.strip
     url = url.gsub(/http:\/\/https:\/\//, 'http://')
     url = url.gsub(/https:\/\/https:\/\//, 'http://')
     url = url.gsub(/https:\/\/http:\/\//, 'http://')

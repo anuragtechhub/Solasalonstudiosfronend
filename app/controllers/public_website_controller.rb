@@ -21,7 +21,7 @@ class PublicWebsiteController < ApplicationController
   require 'uri'
 
   def merge_solagenius_utm_params(url)
-    callback = Addressable::URI.parse(url)
+    callback = Addressable::URI.parse(url.strip)
     callback.query_values = (callback.query_values || {}).merge({
       :utm_source => 'sola_salon',
       :utm_campaign => 'book_now_sp',

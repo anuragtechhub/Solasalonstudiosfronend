@@ -31,8 +31,8 @@ class Stylist < ActiveRecord::Base
   after_save :remove_from_mailchimp_if_closed, :sync_with_hubspot, :sync_with_ping_hd, :sync_with_tru_digital#, :sync_with_rent_manager
   #after_create :sync_with_rent_manager
   after_create :send_welcome_email
-  before_destroy :remove_from_ping_hd
-  after_destroy :remove_from_mailchimp, :inactivate_with_hubspot, :touch_stylist, :create_terminated_stylist
+  before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
+  after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
 
   #has_one :studio
   has_many :leases, -> { order 'created_at desc' }
@@ -169,14 +169,6 @@ class Stylist < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
-  # def walkins_enum
-  #   [['Yes', true], ['No', false]]
-  # end
-
-  # def has_sola_genius_account_enum
-  #   [['Yes', true], ['No', false]]
-  # end
-
   # helper function to return images as array
   def images
     images_array = []
@@ -311,189 +303,12 @@ class Stylist < ActiveRecord::Base
     self.sync_with_ping_hd
   end
 
-  def get_hubspot_owner_id(email_address=nil)
-    if email_address.blank? && location
-      if location.email_address_for_hubspot.present?
-        email_address = location.email_address_for_hubspot
-      else
-        email_address = location.email_address_for_inquiries
-      end
-    end
-    return nil unless email_address.present?
-
-    #p "get_hubspot_owner #{email_address}"
-
-    if ENV['HUBSPOT_API_KEY'].present?
-      #p "HUBSPOT API KEY IS PRESENT, lets get_hubspot_owner.."
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
-
-      all_owners = Hubspot::Owner.all
-
-      # p "all_owners=#{all_owners.inspect}"
-      if all_owners
-        all_owners.each do |owner|
-          if owner.email == email_address
-            #p "matching owner!!! #{owner.inspect}"
-            #p "owner.owner_id=#{owner.owner_id}"
-            return owner.owner_id
-          end
-        end
-      end
-
-      return nil
-    else
-      p "No HUBSPOT API KEY, v"
-      return nil
-    end
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    return nil
-  end
-
   def inactivate_with_hubspot
-    p "inactivate_with_hubspot!"
-
-    if ENV['HUBSPOT_API_KEY'].present?
-      p "HUBSPOT API KEY IS PRESENT, lets sync.."
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
-
-      contact_properties = {
-        email: self.email_address,
-        firstname: self.first_name,
-        lastname: self.last_name,
-        phone: self.phone_number,
-        cms_status: self.status,
-        sola_id: self.id,
-        website: self.website_url,
-        booking_url: self.booking_url,
-        solagenius_booking_url: (self.has_sola_genius_account.presence && self.booking_url),
-        pinterest_url: self.pinterest_url,
-        facebook_url: self.facebook_url,
-        twitter_url: self.twitter_url,
-        yelp_url: self.yelp_url,
-        emergency_contact_relationship: self.emergency_contact_relationship,
-        emergency_contact_name: self.emergency_contact_name,
-        emergency_contact_number: self.emergency_contact_phone_number,
-        brows: self.brows,
-        hair: self.hair,
-        hair_extensions: self.hair_extensions,
-        laser_hair_removal: self.laser_hair_removal,
-        lashes: self.eyelash_extensions,
-        makeup: self.makeup,
-        massage: self.massage,
-        microblading: self.microblading,
-        nails: self.nails,
-        permanent_makeup: self.permanent_makeup,
-        skincare: self.skin,
-        tanning: self.tanning,
-        teeth_whitening: self.teeth_whitening,
-        threading: self.threading,
-        waxing: self.waxing,
-        other_service: self.other_service,
-        studio_number: self.studio_number,
-        location_id: self.location_id || '',
-        location_name: self.location ? self.location.name : '',
-        location_city: self.location ? self.location.city : '',
-        location_state: self.location ? self.location.state : '',
-        country: self.country,
-        has_sola_pro: self.has_sola_pro_login,
-        has_solagenius: self.has_sola_genius_account,
-        lease_move_in_date: self.lease && self.lease.move_in_date ? self.lease.move_in_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_move_out_date: self.lease && self.lease.move_out_date ? self.lease.move_out_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_created_at: self.lease && self.lease.create_date ? self.lease.create_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_start_date: self.lease && self.lease.start_date ? self.lease.start_date.utc.to_date.strftime('%Q').to_i : nil,
-        lease_end_date: self.lease && self.lease.end_date ? self.lease.end_date.utc.to_date.strftime('%Q').to_i : nil,
-        studios_at_location: self.studios_at_location,
-        leases_at_location: self.leases_at_location,
-        hs_persona: 'persona_7',
-      }
-
-      hubspot_owner_id = get_hubspot_owner_id
-      if hubspot_owner_id.present?
-        p "yes, there is an owner #{hubspot_owner_id}"
-        contact_properties[:hubspot_owner_id] = hubspot_owner_id
-      end
-
-      Hubspot::Contact.create_or_update!([contact_properties])
-    else
-      p "No HUBSPOT API KEY, inactivate_with_hubspot"
-    end
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
+    ::Hubspot::StylistJob.new.perform(self.id, 'inactivate')
   end
 
   def sync_with_hubspot
-    p "sync_with_hubspot!"
-
-    if ENV['HUBSPOT_API_KEY'].present?
-      p "HUBSPOT API KEY IS PRESENT, lets sync.."
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
-
-      contact_properties = {
-        email: self.email_address,
-        firstname: self.first_name,
-        lastname: self.last_name,
-        phone: self.phone_number,
-        cms_status: self.status,
-        sola_id: self.id,
-        website: self.website_url,
-        booking_url: self.booking_url,
-        solagenius_booking_url: (self.has_sola_genius_account.presence && self.booking_url),
-        solagenius_account_created_at: self.solagenius_account_created_at.present? ? self.solagenius_account_created_at.to_date.strftime('%Q').to_i : nil,
-        pinterest_url: self.pinterest_url,
-        facebook_url: self.facebook_url,
-        twitter_url: self.twitter_url,
-        yelp_url: self.yelp_url,
-        emergency_contact_relationship: self.emergency_contact_relationship,
-        emergency_contact_name: self.emergency_contact_name,
-        emergency_contact_number: self.emergency_contact_phone_number,
-        brows: self.brows,
-        hair: self.hair,
-        hair_extensions: self.hair_extensions,
-        laser_hair_removal: self.laser_hair_removal,
-        lashes: self.eyelash_extensions,
-        makeup: self.makeup,
-        massage: self.massage,
-        microblading: self.microblading,
-        nails: self.nails,
-        permanent_makeup: self.permanent_makeup,
-        skincare: self.skin,
-        tanning: self.tanning,
-        teeth_whitening: self.teeth_whitening,
-        threading: self.threading,
-        waxing: self.waxing,
-        other_service: self.other_service,
-        studio_number: self.studio_number,
-        location_id: self.location_id || '',
-        location_name: self.location ? self.location.name : '',
-        location_city: self.location ? self.location.city : '',
-        location_state: self.location ? self.location.state : '',
-        country: self.country,
-        has_sola_pro: self.has_sola_pro_login,
-        has_solagenius: self.has_sola_genius_account,
-        hs_persona: 'persona_1',
-        total_booknow_bookings: self.total_booknow_bookings,
-        total_booknow_revenue: self.total_booknow_revenue
-      }
-
-      hubspot_owner_id = get_hubspot_owner_id
-      if hubspot_owner_id.present?
-        p "yes, there is an owner #{hubspot_owner_id}"
-        contact_properties[:hubspot_owner_id] = hubspot_owner_id
-      end
-
-      Hubspot::Contact.create_or_update!([contact_properties])
-    else
-      p "No HUBSPOT API KEY, no sync"
-    end
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
+    ::Hubspot::StylistJob.perform_async(self.id, 'sync')
   end
 
   def sync_with_tru_digital
@@ -878,6 +693,7 @@ end
 #  walkins_expiry                 :datetime
 #  waxing                         :boolean
 #  website_email_address          :string(255)
+#  website_go_live_date           :date             default(Thu, 01 Jan 2004)
 #  website_name                   :string(255)
 #  website_phone_number           :string(255)
 #  website_url                    :string(255)
@@ -887,6 +703,7 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
+#  rent_manager_contact_id        :string(255)
 #  rent_manager_id                :string(255)
 #
 # Indexes

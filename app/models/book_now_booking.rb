@@ -3,7 +3,8 @@ class BookNowBooking < ActiveRecord::Base
   belongs_to :location
   belongs_to :stylist
 
-  after_create :sync_with_hubspot, :update_stylist_metrics
+	after_commit :update_stylist_metrics, on: :create
+	after_commit :sync_with_hubspot, on: :create
 
   def services_booked
   	s = []
@@ -16,32 +17,7 @@ class BookNowBooking < ActiveRecord::Base
   end
 
   def sync_with_hubspot
-    p "sync_with_hubspot!"
-
-    if ENV['HUBSPOT_API_KEY'].present?
-      p "HUBSPOT API KEY IS PRESENT, lets sync.."
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
-
-      Hubspot::Form.find("49552c63-f86b-4207-bb27-df3b568da6fa").submit({
-        email: self.stylist.email_address,
-        location_name: self.location.present? ? self.location.name : '',
-        location_id: self.location_id || '',
-        time_range: self.time_range,
-        services_booked: self.services_booked,
-        query: self.query,
-      	booking_user_name: self.booking_user_name,
-      	booking_user_phone: self.booking_user_phone,
-      	booking_user_email: self.booking_user_email,
-      	referring_url: self.referring_url,
-      	total: self.total
-      })
-    else
-      p "No HUBSPOT API KEY, no sync"
-    end
-	rescue => e
-		NewRelic::Agent.notice_error(e)
-		Rollbar.error(e)
+		::Hubspot::BookNowJob.perform_async(self.id)
   end
 
   def update_stylist_metrics

@@ -2900,4 +2900,16 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'HubspotEvent' do
+    visible false
+  end
+
+  config.model 'HubspotLog' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+  end
+
+
+
 end

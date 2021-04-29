@@ -50,7 +50,7 @@ module Clockwork
   end
 
   every(1.day, 'stylist.sync_with_hubspot', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
-    `rake stylist:sync_with_hubspot`
+    Hubspot::StylistsAllJob.perform_async
   end
 
   every(1.day, 'reports.monthly', at: '09:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
