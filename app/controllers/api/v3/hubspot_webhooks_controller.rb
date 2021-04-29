@@ -3,21 +3,14 @@ class Api::V3::HubspotWebhooksController < ApiController
 
   def create
     check_credentials
-    HubspotEvent.create!(event_params)
+    HubspotEvent.create!({data: params.require(:data), fired_at: Time.current, kind: 'deal'})
+    head :no_content
   rescue ActiveRecord::RecordInvalid => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
   private
-
-  def event_params
-    params.permit(webhook: {}).tap do |permitted|
-      permitted[:kind]     = params[:type]
-      permitted[:data]     = permitted.delete(:webhook)
-      permitted[:fired_at] = Time.current
-    end
-  end
 
   def check_credentials
     # TODO: Verify request signatures in workflow webhooks

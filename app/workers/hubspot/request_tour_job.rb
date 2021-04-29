@@ -5,8 +5,6 @@ module Hubspot
       return if ENV['HUBSPOT_API_KEY'].blank?
 
       @report = RequestTourInquiry.find(request_id)
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
       submit_form
       create_contact
     end
@@ -42,6 +40,7 @@ module Hubspot
         cms_lead_timestamp: @report.get_cms_lead_timestamp.utc.to_date.strftime('%Q').to_i,
         store_id: @report.location&.store_id.to_s,
       }
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
       Hubspot::Form.find("f86ac04f-4f02-4eea-8e75-788023163f9c").submit(data)
       HubspotLog.create(status: 'success', data: data, kind: 'request_tour_inquiry', action: 'form')
     rescue => e
@@ -58,6 +57,7 @@ module Hubspot
         lastname: @report.last_name,
         hubspot_owner_id: get_hubspot_owner_id(@report)
       }
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
       Hubspot::Contact.create_or_update!([data])
       HubspotLog.create(status: 'success', data: data, kind: 'request_tour_inquiry', action: 'contact')
     rescue => e
