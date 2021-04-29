@@ -5,8 +5,6 @@ module Hubspot
       return if ENV['HUBSPOT_API_KEY'].blank?
 
       @book_now = BookNowBooking.find(book_now_id)
-
-      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
       data = {
         email: @book_now.stylist.email_address,
         location_name: @book_now.location&.name.to_s,
@@ -20,6 +18,7 @@ module Hubspot
         referring_url: @book_now.referring_url,
         total: @book_now.total
       }
+      Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'], portal_id: ENV['HUBSPOT_PORTAL_ID'])
       Hubspot::Form.find("49552c63-f86b-4207-bb27-df3b568da6fa").submit(data)
       HubspotLog.create(status: 'success', data: data, kind: 'book_now', action: 'form')
     rescue => e

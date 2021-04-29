@@ -5,7 +5,7 @@ module Hubspot
       return if ENV['HUBSPOT_API_KEY'].blank?
       @stylist = Stylist.find(stylist_id)
       return if @stylist.email_address.blank?
-      
+
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
       properties = type == 'inactivate' ? inactivate_properties : contact_properties
       hubspot_owner_id = get_hubspot_owner_id(@stylist)
