@@ -383,6 +383,8 @@ GEM
       rack (< 2.1.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-limit_fetch (3.4.0)
+      sidekiq (>= 4)
     sidekiq-unique-jobs (7.0.4)
       brpoplpush-redis_script (> 0.0.0, <= 2.0.0)
       concurrent-ruby (~> 1.0, >= 1.0.5)
@@ -503,6 +505,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   sendgrid-ruby
   sidekiq
+  sidekiq-limit_fetch
   sidekiq-unique-jobs (~> 7.0)
   sitemap_generator
   sprockets (~> 2.12.5)

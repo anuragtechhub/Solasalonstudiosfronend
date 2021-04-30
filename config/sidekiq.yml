@@ -6,4 +6,10 @@
   - default
   - reports
   - callfire
-  - hubspot
+  - [hubspot, 1]
+:limits:
+  mailers: 5
+  default: 5
+  reports: 5
+  callfire: 5
+  hubspot: 1
