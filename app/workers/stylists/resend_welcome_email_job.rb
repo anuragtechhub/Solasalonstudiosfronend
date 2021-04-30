@@ -9,7 +9,8 @@ module Stylists
       backtrace: true
     )
     def perform(stylist_id)
-      stylist = Stylist.find stylist_id
+      stylist = Stylist.find_by(id: stylist_id)
+      return if stylist.blank?
       return if EmailEvent.where(email: stylist.email_address, category: 'Welcome Email', event: 'open').exists?
 
       stylist.resend_welcome_email

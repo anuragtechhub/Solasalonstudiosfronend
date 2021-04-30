@@ -3,7 +3,8 @@ module Hubspot
 
     def perform(stylist_id, type)
       return if ENV['HUBSPOT_API_KEY'].blank?
-      @stylist = Stylist.find(stylist_id)
+      @stylist = Stylist.find_by(id: stylist_id)
+      return if @stylist.blank?
       return if @stylist.email_address.blank?
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
