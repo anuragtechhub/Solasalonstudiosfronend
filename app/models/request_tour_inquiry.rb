@@ -3,6 +3,8 @@ class RequestTourInquiry < ActiveRecord::Base
 
   belongs_to :location
   belongs_to :visit
+
+  before_validation :process_email
   after_create :send_notification_email, :send_prospect_email
   after_commit :sync_with_hubspot, on: :create
 
@@ -101,6 +103,12 @@ class RequestTourInquiry < ActiveRecord::Base
 
   def newsletter_value
     newsletter ? 'Yes' : 'No'
+  end
+
+  private
+
+  def process_email
+    self.email = self.email.gsub(/\s/, '')
   end
 end
 
