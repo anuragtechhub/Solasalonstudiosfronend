@@ -251,7 +251,10 @@ var ContactForm = React.createClass({
 						null
 					}
 
-					<button ref="submit_button" className="button block primary" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}>{this.props.submit_button_text}</button>
+          <div className="g-recaptcha" data-sitekey="6Lf4z7YaAAAAAOx1qrGEyRa3AZ70bdx8CK_idgbI" data-callback="recaptchaSubmitted"></div>
+          <br/>
+
+					<button ref="submit_button" className="button block primary" disabled={self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)))}>{this.props.submit_button_text}</button>
 
 					{
 						this.props.display_i_would_like_to_be_contacted
@@ -274,7 +277,6 @@ var ContactForm = React.createClass({
 							<div className="clearfix">&nbsp;</div>
 						</label>
 					</div>
-
 					{this.state.loading ? <div className="loading"><div className="spinner">&nbsp;</div></div> : null}
 				</form>
 			</div>
@@ -440,6 +442,7 @@ var ContactForm = React.createClass({
     	services: this.state.selected_services.join(', '),
     	state: this.state.selected_state,
     	zip_code: this.state.zip_code,
+      recaptcha_token: window.recaptchaToken,
 		};
 
 		//console.log('form_data', form_data);

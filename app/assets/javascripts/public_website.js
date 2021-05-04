@@ -22,6 +22,12 @@
 //= require_tree ./public_website
 //= require jquery.magnific-popup
 
+window.captcha = false;
+var recaptchaSubmitted = function(token) {
+  window.captcha = true;
+  window.recaptchaToken = token;
+}
+
 $(function () {
   $('.open-magnific-popup-link').magnificPopup({
     type: 'inline',

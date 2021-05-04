@@ -77,7 +77,6 @@ class ContactUsController < PublicWebsiteController
 
   def request_a_tour
     if request.post?
-
       if params[:required_fields].present?
         all_good = true
         #p "required_fields=#{params[:required_fields]}"
@@ -99,87 +98,91 @@ class ContactUsController < PublicWebsiteController
         if params[:required_fields].blank? && params[:dont_see_your_location].to_s == "true" && !is_valid_zip_code?(params[:zip_code])
           render :json => {:error => 'Please enter your zip code'}
         else
-          unless banned_ip_addresses.include? request.remote_ip
-            # if params[:state].blank? && params[:zip_code].present?
-            #   json = ZipCodes.identify(params[:zip_code])
-            #   if json && json[:state_name]
-            #     params[:state] = json[:state_name]
-            #   end
-            # end
-
-
-            rti = RequestTourInquiry.new({
-              :name => params[:name],
-              :email => params[:email],
-              :phone => params[:phone],
-              :canada_locations => params[:canada_locations],
-              :location_id => params[:location_id],
-              :message => params[:message],
-              :newsletter => params[:newsletter],
-              :request_url => params[:request_url],
-              :contact_preference => params[:contact_preference],
-              :how_can_we_help_you => params[:how_can_we_help_you],
-              :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted],
-              :dont_see_your_location => params[:dont_see_your_location],
-              :zip_code => params[:zip_code],
-              :state => params[:state],
-              :services => params[:services],
-              :send_email_to_prospect => params[:send_email_to_prospect],
-              :source => params[:source],
-              :campaign => params[:campaign],
-              :content => params[:content],
-              :medium => params[:medium],
-              :hutk => params[:hutk],
-            })
-            rti.visit = save_visit
-            rti.save
-
-
-            # if params[:is_sola_professional] == 'yes' && params[:send_email_to_prospect] == 'financial_guide'
-            #   p "send prospect the financial guide email!"
-            #   email = PublicWebsiteMailer.financial_guide(rti)
-            #   email.deliver if email
-            # else
-            #   rti.visit = save_visit
-            #   rti.save
-            # end
-
-
-            # if params[:i_would_like_to_be_contacted] == true && params[:send_email_to_prospect] == 'financial_guide'
-            #   p "send prospect the financial guide email!"
-            #   email = PublicWebsiteMailer.financial_guide(rti)
-            #   email.deliver if email
-            # else
-            #   rti.visit = save_visit
-            #   rti.save
-            # end
-
-
-            # if params[:email]
-            #   gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
-            #   if I18n.locale && I18n.locale.to_s == 'en-CA'
-            #     # Canada
-            #     if params[:receive_newsletter]
-            #       # yes, opted to receive
-            #       gb.lists.subscribe({:id => '82a3e6ea74', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
-            #     else
-            #       # opted to not receive
-            #     end
-            #   else
-            #     # USA
-            #     gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
-            #   end
-            # end
-          end
-          @success = 'Thank you! We will get in touch soon'
-          if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
-            @success = 'Thank you for downloading our free guide! Please check your email.'
-          end
-          if params[:message]
-            # if there's a message, this is a general contact us submission
-            render :json => {:success => @success}
+          unless verify_recaptcha(response: params[:recaptcha_token], private_key: ENV['RECAPTCHA_SECRET_KEY'])
+            render :json => {:error => 'Captcha is wrong!'}
           else
-            render :json => {:success => @success}
+            unless banned_ip_addresses.include? request.remote_ip
+              # if params[:state].blank? && params[:zip_code].present?
+              #   json = ZipCodes.identify(params[:zip_code])
+              #   if json && json[:state_name]
+              #     params[:state] = json[:state_name]
+              #   end
+              # end
+
+
+              rti = RequestTourInquiry.new({
+                :name => params[:name],
+                :email => params[:email],
+                :phone => params[:phone],
+                :canada_locations => params[:canada_locations],
+                :location_id => params[:location_id],
+                :message => params[:message],
+                :newsletter => params[:newsletter],
+                :request_url => params[:request_url],
+                :contact_preference => params[:contact_preference],
+                :how_can_we_help_you => params[:how_can_we_help_you],
+                :i_would_like_to_be_contacted => params[:i_would_like_to_be_contacted],
+                :dont_see_your_location => params[:dont_see_your_location],
+                :zip_code => params[:zip_code],
+                :state => params[:state],
+                :services => params[:services],
+                :send_email_to_prospect => params[:send_email_to_prospect],
+                :source => params[:source],
+                :campaign => params[:campaign],
+                :content => params[:content],
+                :medium => params[:medium],
+                :hutk => params[:hutk],
+              })
+              rti.visit = save_visit
+              rti.save
+
+
+              # if params[:is_sola_professional] == 'yes' && params[:send_email_to_prospect] == 'financial_guide'
+              #   p "send prospect the financial guide email!"
+              #   email = PublicWebsiteMailer.financial_guide(rti)
+              #   email.deliver if email
+              # else
+              #   rti.visit = save_visit
+              #   rti.save
+              # end
+
+
+              # if params[:i_would_like_to_be_contacted] == true && params[:send_email_to_prospect] == 'financial_guide'
+              #   p "send prospect the financial guide email!"
+              #   email = PublicWebsiteMailer.financial_guide(rti)
+              #   email.deliver if email
+              # else
+              #   rti.visit = save_visit
+              #   rti.save
+              # end
+
+
+              # if params[:email]
+              #   gb = Gibbon::API.new('ddd6d7e431d3f8613c909e741cbcc948-us5')
+              #   if I18n.locale && I18n.locale.to_s == 'en-CA'
+              #     # Canada
+              #     if params[:receive_newsletter]
+              #       # yes, opted to receive
+              #       gb.lists.subscribe({:id => '82a3e6ea74', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+              #     else
+              #       # opted to not receive
+              #     end
+              #   else
+              #     # USA
+              #     gb.lists.subscribe({:id => '09d9824082', :email => {:email => params[:email]}, :merge_vars => {}, :double_optin => false})
+              #   end
+              # end
+            end
+            @success = 'Thank you! We will get in touch soon'
+            if rti && rti.send_email_to_prospect == 'modern_salon_2019_05'
+              @success = 'Thank you for downloading our free guide! Please check your email.'
+            end
+            if params[:message]
+              # if there's a message, this is a general contact us submission
+              render :json => {:success => @success}
+            else
+              render :json => {:success => @success}
+            end
           end
         end
       else
