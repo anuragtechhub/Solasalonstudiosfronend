@@ -12,11 +12,14 @@
 
 .hero-carousel .owl-item .parallax-dream-again-image {
   padding-bottom: 40%;
-  background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/dream-again-main-3.jpg');
+  background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/WhySolaHeader1.gif');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center 120px;
   background-size: contain;
+  &.canada {
+    background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Sola_ImagineIf_Canada-GIF.gif');
+  }
   @media (max-width: 1200px) {
     background-position: center 100px;
   }
@@ -1273,6 +1276,28 @@ body.why-sola {
       &.success-story {
         background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/2018-Faces-of-Sola-6256-Crop-2.jpg");
       }
+
+      &.campaign-banner {
+        width: 100%;
+        display: block;
+        background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/SOLASessions_Questex_roller_background.jpg");
+        @media (max-width: 550px) {
+          height: 400px;
+          width: 100%;
+        }
+        img {
+          height: 100%;
+          max-width: 90%;
+          display: block;
+          position: relative;
+          margin: 0 auto;
+          vertical-align: middle;
+          @media (max-width: 550px) {
+            margin: 10px auto;
+            height: 95%;
+          }
+        }
+      }
     }
   }
 }
@@ -1871,7 +1896,7 @@ body.why-sola {
 @media (max-width: 1024px) {
 	.why-sola {
 	    .owl-carousel .owl-item .item .item-content {
-      top: 70px;
+      top: 10px;
     }
   }
 

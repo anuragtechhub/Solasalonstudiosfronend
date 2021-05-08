@@ -404,6 +404,16 @@
     <%#= t('page.why_sola.contact_us') %>
   <%# end %>
 <!--</div>-->
+<div class="mfp-hide industry-leading-education-feature-modal" id="campaign_banner">
+  <div class="wrapper">
+    <div class="image campaign-banner">
+      <%= link_to 'https://events.bizzabo.com/solasessions', target: '_blank' do %>
+        <img src="https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/SOLASessions_Questex_roller_foreground1.png" alt="link"/>
+      <% end %>
+      <div class="icon"></div>
+    </div>
+  </div>
+</div>
 
 <% content_for(:scripts) { javascript_include_tag('search_salon') } %>
 <% content_for(:scripts) { javascript_include_tag('why_sola') } %>
@@ -415,6 +425,11 @@
 
 
 <script type="text/javascript">
+  <% if Time.current < DateTime.parse('19/05/2021') %>
+    $(document).ready(function(){
+      $.magnificPopup.open({items: {src: '#campaign_banner'}, type: 'inline'});
+    });
+  <% end %>
   <% if params[:open_modal].present? %>
     $(document).ready(function(){
       $.magnificPopup.open({items: {src: '#<%= params[:open_modal] %>'}, type: 'inline'});

@@ -1,5 +1,13 @@
 <div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
   <div class="item" style="display:none">
+    <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/WhySolaHeader1.gif', :width => 1600, :height => 800 %></div>
+    <div class="item-content bottom-center-align">
+      <a href="//www.youtube.com/watch?v=U-1b_0MWs-8" rel="U-1b_0MWs-8" class="button primary play-video rounded-play-button" style="margin-bottom: 200px">
+        <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
+      </a>
+    </div>
+  </div>
+  <div class="item" style="display:none">
     <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', :width => 1600, :height => 800 %></div>
     <div class="item-content bottom-center-align">
       <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-1" class="button primary play-video rounded-play-button" style="margin-bottom: 0px">
@@ -27,6 +35,14 @@
 
 <div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
   <% if I18n.locale.to_s != 'pt-BR' %>
+    <div class="item">
+      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/CANADA_whysola_header_mobile.gif', :width => 750, :height => 1060 %>
+      <div class="item-content bottom-center-align">
+        <a href="//www.youtube.com/watch?v=U-1b_0MWs-8" rel="U-1b_0MWs-8" class="button primary play-video rounded-play-button" style="margin-top: 0px">
+          <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle"></span>
+        </a>
+      </div>
+    </div>
     <div class="item">
       <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', :width => 750, :height => 750 %>
       <div class="item-content bottom-center-align">
@@ -114,11 +130,13 @@
   </div>
 
   <div class="owl-carousel owl-theme owl-desktop">
+    <div class="item"><%= link_to :why_sola, tabindex: 0 do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Sola_ImagineIf_WhySola.jpg', :alt => "If why sola" %><% end %></div>
     <div class="item"><%= link_to 'https://www.solasalonstudios.ca/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', :alt => "Sola Stories" %><% end %></div>
     <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
   </div>
 
   <div class="owl-carousel owl-theme owl-mobile">
+    <div class="item"><%= link_to :why_sola do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/homepage_slider.jpg', :alt => "If why sola" %><% end %></div>
     <div class="item"><%= link_to 'https://www.solasalonstudios.ca/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', :alt => "Sola Stories" %><% end %></div>
     <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
   </div>
