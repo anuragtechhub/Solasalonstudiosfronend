@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210422205924) do
+ActiveRecord::Schema.define(version: 20210508111102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -872,7 +872,7 @@ ActiveRecord::Schema.define(version: 20210422205924) do
 
   create_table "testimonials", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.text     "text"
+    t.text     "text",                   null: false
     t.string   "region",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"

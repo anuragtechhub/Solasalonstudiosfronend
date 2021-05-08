@@ -1,5 +1,8 @@
 class Testimonial < ActiveRecord::Base
 
+  before_validation :process_name
+  validates :text, presence: true
+
   has_paper_trail
 
   def to_html
@@ -10,6 +13,14 @@ class Testimonial < ActiveRecord::Base
     html += "<br>"
     html.html_safe
   end
+
+  private
+
+  def process_name
+    return if self.name.blank?
+
+    self.name = self.name.to_s.gsub('undefined', '').strip
+  end
 end
 
 # == Schema Information
@@ -19,7 +30,7 @@ end
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  region     :string(255)
-#  text       :text
+#  text       :text             not null
 #  created_at :datetime
 #  updated_at :datetime
 #
