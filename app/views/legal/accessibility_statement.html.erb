@@ -1,0 +1,10 @@
+<div class="container privacy-policy accessibility-statement">
+  <div class="row">
+    <div class="twelve columns">
+      <%= t('page.accessibility_statement.body').html_safe %>
+    </div>
+  </div>
+</div>
+
+<% content_for(:title) { t('page.accessibility_statement.title').html_safe } %>
+<% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/accessibility-statement" } %>

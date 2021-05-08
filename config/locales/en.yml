@@ -160,6 +160,7 @@ en:
     our_studios: Our Studios
 
   footer:
+    accessibility_statement: Accessibility Statement
     in-the-news: In the News
     our-story: Our Story
     who-we-are: Who We Are
@@ -203,6 +204,9 @@ en:
     all_types: All Types
 
   page:
+    accessibility_statement:
+      title: Accessibility Statement
+      body: "<p>Sola Salon Studios is committed to digital accessibility, and to conforming to the Web Content Accessibility Guidelines (WCAG) 2.1, Level A and AA and complying with Americans with Disabilities Act (ADA) effective communication requirements, and other applicable regulations. </p> <p>To accomplish this, we have partnered with eSSENTIAL Accessibility to administer our accessibility program and oversee its governance. Their accessibility program evaluates our digital products on an ongoing basis in accordance with best practices and is supported by a diverse team of accessibility professionals, including users of assistive technologies. The platform, moreover, goes beyond minimum compliance requirements by making an assistive CX technology application available to customers who have trouble typing, gesturing, moving a mouse, or reading. The application is free to download, and it incorporates tools such as mouse and keyboard replacements, voice recognition, speech enablement, hands-free/touch-free navigation, and more.</p> <p> We want to hear from you if you encounter any accessibility barriers on our digital properties. Please contact our Customer Support at info@solasalonstudios.com. </p>"
     education:
       title: Education
     see_more: See More

@@ -36,6 +36,7 @@
           <li><%= link_to t('footer.our-story'), :our_story, tabindex: 0 %></li>
           <li><%= link_to t('footer.in-the-news'), :news, tabindex: 0 %></li>
           <li><%= link_to t('footer.franchising'), :franchising, tabindex: 0 %></li>
+          <li><%= link_to t('footer.accessibility_statement'), :accessibility_statement, tabindex: 0 %></li>
         </ul>
       </div>
 
@@ -49,7 +50,10 @@
     </div>
 
     <div class="row-second">
-      <p><%= raw t 'footer.legal' %> <%= Time.now.year %></p>
+      <p>
+        <%= raw t 'footer.legal' %> <%= Time.now.year %>
+      </p>
+      <div class="accessibility-div" style="max-width: 100px;"> <a href="https://www.essentialaccessibility.com/sola-salon-studios?utm_source=solasalonstudioshomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=solasalonstudios" target="_blank"><img src="https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/eA_Icon.svg" alt="This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion." title="Click this icon to learn more about our commitment to customers and employees with disabilities."></a></div>
     </div>
 
   </div>

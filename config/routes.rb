@@ -78,6 +78,7 @@ Solasalonstudios::Application.routes.draw do
 
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy
+  get 'accessibility-statement' => 'legal#accessibility_statement', as: :accessibility_statement
 
   get "request-franchising-info" => "contact_us#index", :as => :request_franchising_info
   get "tour/request-a-tour" => 'contact_us#index', :as => :request_a_tour
