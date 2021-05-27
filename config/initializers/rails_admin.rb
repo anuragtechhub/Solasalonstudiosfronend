@@ -1029,6 +1029,9 @@ RailsAdmin.config do |config|
         field :email_address_for_hubspot do
           label 'Email Address For Hubspot'
         end
+        field :emails_for_stylist_website_approvals do
+          label 'Email Addresses For Stylist Website Approvals'
+        end
         field :phone_number
       end
       group :address do
@@ -1318,6 +1321,10 @@ RailsAdmin.config do |config|
           # visible do
           #   bindings[:controller]._current_user.franchisee != true
           # end
+        end
+        field :emails_for_stylist_website_approvals do
+          label 'Email Addresses For Stylist Website Approvals'
+          help "Comma separated emails. If blank - emails will be send to location's owner."
         end
         field :phone_number
       end
@@ -2496,7 +2503,11 @@ RailsAdmin.config do |config|
   end
 
   config.model 'UpdateMySolaWebsite' do
-    visible false
+    visible true
+
+    list do
+      scopes [:pending, :approved]
+    end
 
     edit do
       group :general do
@@ -2909,7 +2920,4 @@ RailsAdmin.config do |config|
       bindings[:controller]._current_user.franchisee != true
     end
   end
-
-
-
 end

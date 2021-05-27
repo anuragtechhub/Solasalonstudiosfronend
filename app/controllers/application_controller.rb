@@ -9,14 +9,7 @@ class ApplicationController < ActionController::Base
     !Rails.env.development?
   end
 
-  before_filter :update_my_sola_catch
   around_filter :do_with_current_admin
-
-  def update_my_sola_catch
-    if request.fullpath.end_with?('update_my_sola_website') || request.fullpath.end_with?('update_my_sola_website/')
-      redirect_to 'https://www.solasalonstudios.com/admin', :flash => {:alert => "Update My Sola Website request approved successfully!"}, :status => 301
-    end
-  end
 
   def do_with_current_admin
     Thread.current[:current_admin] = self.current_admin
@@ -24,13 +17,13 @@ class ApplicationController < ActionController::Base
       yield
     ensure
       Thread.current[:current_admin] = nil
-    end      
+    end
   end
 
   def self.get_asset(name)
     if Rails.application.assets
       asse = Rails.application.assets[name]
-      return asse.to_s if asse 
+      return asse.to_s if asse
     end
     asse = Rails.application.assets_manifest.assets[name]
     return nil unless asse

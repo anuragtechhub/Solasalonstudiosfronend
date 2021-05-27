@@ -270,6 +270,7 @@ end
 #                              why_sola2 GET      /why-sola-2(.:format)                                         own_your_salon#why_sola_2
 #        why_sola_2_contact_form_success GET      /why-sola-2/contact-form-success(.:format)                    own_your_salon#contact_form_success_2
 #                         privacy_policy GET      /privacy-policy(.:format)                                     legal#privacy_policy
+#                accessibility_statement GET      /accessibility-statement(.:format)                            legal#accessibility_statement
 #               request_franchising_info GET      /request-franchising-info(.:format)                           contact_us#index
 #                         request_a_tour GET      /tour/request-a-tour(.:format)                                contact_us#index
 #                          rent_a_studio GET      /rent-a-studio(.:format)                                      contact_us#index

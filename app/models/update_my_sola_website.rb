@@ -74,6 +74,9 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   #before_save :force_orient
   after_update :publish_if_approved
 
+  scope :pending, -> { where(approved: false) }
+  scope :approved, -> { where(approved: true) }
+
   def location
     stylist.location if stylist
   end

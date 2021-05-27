@@ -1,10 +1,25 @@
 <input name="return_to" type="<%= :hidden %>" value="<%= (params[:return_to].presence || request.referer) %>">
   <div class="form-actions">
     <% if @object.class.name == 'UpdateMySolaWebsite' %>
+      <style>
+        .approved_field, .breadcrumb, .nav-tabs {
+          display: none;
+        }
+        .btn-danger {
+          background-color: #dc3545;
+        }
+        .btn-danger:hover, .btn-danger:active, .btn-danger.active {
+          background-color: #bf2937;
+        }
+      </style>
       <button id="approve-update-button" class="btn btn-primary" data-disable-with="Approving update..." name="_save" type="submit">
         <i class="icon-white icon-ok"></i>
         Approve Update
       </button>
+      <%= link_to "/admin/update_my_sola_website/#{@object.id}/delete?method=delete", method: :delete, style: "margin: 0 30px;", class: 'btn btn-danger' do %>
+        <i class="icon-white icon-remove"></i>
+        Reject
+      <% end %>
       <script>
         $(function () {
           $('#approve-update-button').on('click', function () {
@@ -12,11 +27,7 @@
           });
         });
       </script>
-      <style>
-      .approved_field, .breadcrumb, .nav-tabs {
-        display: none;
-      }
-      </style>
+
     <% else %>
       <button class="btn btn-primary" data-disable-with="<%= t("admin.form.save") %>" name="_save" type="submit">
         <i class="icon-white icon-ok"></i>
