@@ -1,41 +1,32 @@
 class Api::V2::LocationsController < ApiController
-
-	before_action :set_cors_headers
+  before_action :set_cors_headers
   before_action :set_cache_headers
 
   def index
-    cache_key = "/api/v2/index/#{Location.order(:updated_at => :desc).first.updated_at}"
-    p "INDEX cache_key=#{cache_key}"
+    cache_key = "/api/v2/index/#{Location.maximum(:updated_at).to_i}"
     json = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
-      p "going in the index cache..."
-      @locations = Location.where(:status => 'open').order(:created_at => :asc)
-      render_to_string('/api/v2/locations/index', formats: 'json')
+      @locations = Location.open.order(:created_at)
+      result = ActiveModelSerializers::SerializableResource.new(
+        @locations,
+        each_serializer: Api::V2::LocationSerializer
+      ).as_json
+      result[:data] = result.delete(:locations)
+      render_to_string json: result
     end
-    #p "index json=#{json}"
-    p "done and returnin json index"
-    render :json => json
+    render json: json
   end
 
   def show
-    @location = Location.find_by(:id => params[:id])
-    @stylists = @location.stylists.not_reserved
-    cache_key = "/api/v2/show/#{@location.id}/#{@stylists.maximum(:updated_at)}"
-    p "SHOW cache_key=#{cache_key}"
+    scope = Stylist.where(location_id: params[:id]).not_reserved
+    cache_key = "/api/v2/show/#{params[:id]}/#{scope.maximum(:updated_at).to_i}"
     json = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
-      p "going in the show cache..."
-      render_to_string('/api/v2/locations/show', formats: 'json')
+      result = ActiveModelSerializers::SerializableResource.new(
+        scope,
+        each_serializer: Api::V2::StylistSerializer
+      ).as_json
+      result[:data] = result.delete(:stylists)
+      render_to_string json: result
     end
-    p "done and returning json show"
     render :json => json
   end
-
-  private
-
-  def set_cors_headers
-  	headers['Access-Control-Allow-Origin'] = '*'
-		headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-		headers['Access-Control-Request-Method'] = '*'
-		headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-	end
-
 end
