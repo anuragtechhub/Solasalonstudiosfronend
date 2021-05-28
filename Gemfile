@@ -130,7 +130,7 @@ gem 'sidekiq-unique-jobs', '~> 7.0'
 gem 'sidekiq-limit_fetch' # limiting, pausing, blocking, querying
 
 # Serializers for API
-gem 'active_model_serializers', '0.10.10'
+gem 'active_model_serializers', '~> 0.10'
 
 group :development do
   gem 'annotate'

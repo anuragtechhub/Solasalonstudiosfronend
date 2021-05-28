@@ -36,11 +36,12 @@ Solasalonstudios::Application.configure do
 
   config.cache_store = :dalli_store,
                     (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                    {:username => ENV["MEMCACHIER_USERNAME"],
-                     :password => ENV["MEMCACHIER_PASSWORD"],
-                     :failover => true,
-                     :socket_timeout => 1.5,
-                     :socket_failure_delay => 0.2
+                    {username: ENV["MEMCACHIER_USERNAME"],
+                     password: ENV["MEMCACHIER_PASSWORD"],
+                     failover: true,
+                     socket_timeout: 1.5,
+                     socket_failure_delay: 0.2,
+                     compress: true
                     }
 
   # Version of your assets, change this if you want to expire all your assets.
@@ -54,7 +55,7 @@ Solasalonstudios::Application.configure do
   config.force_ssl = false
 
   # Set to :debug to see everything in the log.
-  config.log_level = :warn
+  config.log_level = :error
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
