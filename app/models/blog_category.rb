@@ -40,3 +40,7 @@ end
 #  updated_at :datetime
 #  legacy_id  :string(255)
 #
+# Indexes
+#
+#  index_blog_categories_on_url_name  (url_name)
+#

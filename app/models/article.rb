@@ -81,4 +81,5 @@ end
 # Indexes
 #
 #  index_articles_on_location_id  (location_id)
+#  index_articles_on_url_name     (url_name)
 #

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210511202928) do
+ActiveRecord::Schema.define(version: 20210530052138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20210511202928) do
   end
 
   add_index "articles", ["location_id"], name: "index_articles_on_location_id", using: :btree
+  add_index "articles", ["url_name"], name: "index_articles_on_url_name", using: :btree
 
   create_table "blog_blog_categories", force: :cascade do |t|
     t.integer  "blog_id"
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(version: 20210511202928) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "blog_categories", ["url_name"], name: "index_blog_categories_on_url_name", using: :btree
 
   create_table "blog_countries", force: :cascade do |t|
     t.integer  "blog_id"

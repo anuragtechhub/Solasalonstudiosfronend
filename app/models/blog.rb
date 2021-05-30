@@ -206,5 +206,6 @@ end
 #
 # Indexes
 #
-#  index_blogs_on_status  (status)
+#  index_blogs_on_status    (status)
+#  index_blogs_on_url_name  (url_name)
 #

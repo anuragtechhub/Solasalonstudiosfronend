@@ -75,7 +75,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_states_us
-    cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
+    cache_key = "all_states/#{Location.maximum(:updated_at).to_i}"
     all_states = Rails.cache.fetch(cache_key) do
       return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
     end
@@ -90,7 +90,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_states_ca
-      cache_key = "all_states_ca/#{Location.order(:updated_at => :desc).first.updated_at}"
+      cache_key = "all_states_ca/#{Location.maximum(:updated_at).to_i}"
       all_states = Rails.cache.fetch(cache_key) do
         return Location.where(:status => 'open').where(:country => 'CA').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
       end
@@ -109,7 +109,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_locations_msas
-    cache_key = "all_locations_msas/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    cache_key = "all_locations_msas/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
     all_locations_msas = Rails.cache.fetch(cache_key) do
       sml = []
 
@@ -130,7 +130,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_locations_msas_json
-    cache_key = "all_locations_msas_json/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    cache_key = "all_locations_msas_json/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
     json = Rails.cache.fetch(cache_key) do
       return all_locations_msas.to_json
     end
@@ -139,7 +139,7 @@ class PublicWebsiteController < ApplicationController
 
 
   def all_locations_ca_msas
-    cache_key = "all_locations_ca_msas/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    cache_key = "all_locations_ca_msas/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
     all_locations_msas = Rails.cache.fetch(cache_key) do
       sml = []
 
@@ -160,7 +160,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def all_locations_ca_msas_json
-    cache_key = "all_locations_msas_ca_json/#{Location.order(:updated_at => :desc).first.updated_at}/#{Msa.order(:updated_at => :desc).first.updated_at}"
+    cache_key = "all_locations_msas_ca_json/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
     json = Rails.cache.fetch(cache_key) do
       return all_locations_ca_msas.to_json
     end
