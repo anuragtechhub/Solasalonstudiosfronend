@@ -30,7 +30,7 @@ module Clockwork
   end
 
   every(1.day, 'mailchimp.franchises', at: '11:30', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
-    `rake mailchimp:franchises`
+    Mailchimp::FranchisesJob.perform_async
   end
 
   every(1.day, 'umsw.auto_approves', at: '06:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do

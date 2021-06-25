@@ -12,6 +12,9 @@ class Location < ActiveRecord::Base
   scope :with_callfire_ids, -> {
     where("locations.callfire_list_ids IS NOT NULL AND locations.callfire_list_ids != ''")
   }
+  scope :with_mailchimp_list_ids, -> {
+    where("locations.mailchimp_list_ids IS NOT NULL AND locations.mailchimp_list_ids != ''")
+  }
 
   belongs_to :admin
   belongs_to :msa

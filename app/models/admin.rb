@@ -18,6 +18,10 @@ class Admin < ActiveRecord::Base
       where.not(callfire_app_login: '', callfire_app_password: '')
   }
 
+  scope :with_mailchimp_credentials, -> {
+    where.not(mailchimp_api_key: nil).where.not(mailchimp_api_key: '')
+  }
+
   def self.current
     Thread.current[:admin]
   end
