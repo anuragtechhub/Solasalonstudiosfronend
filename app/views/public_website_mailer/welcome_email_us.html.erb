@@ -132,20 +132,21 @@ u + .em_body .em_full_wrap {
 </head>
 
 <body class="em_body" style="margin:0px; padding:0px;" bgcolor="#ffffff">
-
-<table width="100%">
-  <tr>
-      <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://www.solasalonstudios.com/emails/welcome-to-sola" target="_blank" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:13px; line-height:17px; color:#5F5F5F; font-weight:normal;">View in browser</a>
-    </td>
-  </tr>
-  <tr>
-      <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
-  </tr>
-</table>
+<% if @browser.blank? %>
+  <table width="100%">
+    <tr>
+        <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="https://www.solasalonstudios.com/emails/welcome-to-sola" target="_blank" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:13px; line-height:17px; color:#5F5F5F; font-weight:normal;">View in browser</a>
+      </td>
+    </tr>
+    <tr>
+        <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
+    </tr>
+  </table>
+<% end %>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="em_full_wrap" bgcolor="#ffffff">
   <tr>
@@ -216,6 +217,111 @@ u + .em_body .em_full_wrap {
                           </tr>
                         </table></td>
                     </tr>
+                  <tr>
+                    <td height="23" style="height:23px;" class="em_h20">&nbsp;</td>
+                  </tr>
+
+                  <tr>
+                    <td align="center" valign="top">
+                      <table width="704" border="0" cellspacing="0" cellpadding="0" style="width:704px;" align="center" class="em_wrapper">
+                        <tbody>
+                        <tr>
+                          <td align="center" valign="top">
+                            <a style="text-decoration:none; color:#000000;"><img src="https://solasalonstudios.s3.amazonaws.com/own_your_salon/beautyhive-email-seaction.jpg" width="703" height="320" alt="beautyhive-email-section" style="display:block; max-width:703px; font-family:Arial, sans-serif; font-size:14px; line-height:16px; color:#000000;" border="0" class="em_img"></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="center" valign="top" bgcolor="#ffffff">
+                            <table width="704" border="0" cellspacing="0" cellpadding="0" style="width:704px;" align="center" class="em_wrapper">
+                              <tbody>
+                              <tr>
+                                <td width="40" style="width:40px;" class="em_side">&nbsp;</td>
+                                <td align="center" valign="top">
+                                  <table width="624" border="0" cellspacing="0" cellpadding="0" style="width:624px;" align="center" class="em_wrapper">
+                                    <tbody>
+                                    <tr>
+                                      <td height="39" style="height:39px;" class="em_h20">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                        As a new salon owner, you have a lot on your plate. How great would it be to cross the beauty supply store off your to-do list FOREVER?!
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td height="39" style="height:39px;" class="em_h20">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                        Enter BeautyHive – a new online distributor created just for independent salon owners like YOU!
+                                        With a wide range of professional brands like Redken, Olaplex, Schwarzkopf, Framar, Pravana, Matrix, Kenra and more, BeautyHive is your one-stop-shop for all your salon essentials.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td height="39" style="height:39px;" class="em_h20">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                        BeautyHive perks include:
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <ul>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            A Sola-exclusive welcome offer
+                                          </li>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            Same-day shipping
+                                          </li>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            Free shipping on orders of $99+
+                                          </li>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            Earn up to 4% back on every order
+                                          </li>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            No surprise backorders, with real-time inventory checks
+                                          </li>
+                                          <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                            A 100% happiness guarantee
+                                          </li>
+                                        </ul>
+                                      </td>
+                                    </tr>
+                                    <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
+
+                                    <tr>
+                                      <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
+                                        We’re so confident that you’ll love BeautyHive, we’re giving you $100 off your first order!
+                                        Register for a free account and use the code <b>SOLAWELCOME</b> to stock your backbar (or treat yourself 😉).
+                                      </td>
+                                    </tr>
+
+                                    <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
+                                    <tr><td align="center" valign="top"><table width="248" border="0" cellspacing="0" cellpadding="0" style="width:248px;" align="center"> <tbody><tr> <td align="center" valign="middle" bgcolor="#FBED7A" height="41" style="font-family: 'Open Sans', Arial, sans-serif; font-size:14px; color:#ffffff; border-radius:24px; text-transform:uppercase; font-weight:bold;"><a href="https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Email&utm_campaign=Welcome_Email" target="_blank" style="text-decoration:none; color:#000000; line-height:41px; display:block;">Join the Hive</a></td> </tr> </tbody></table></td> </tr>
+                                    <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
+
+                                    <tr>
+                                      <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:14px; line-height:18px; color:#999999; font-weight:300;">
+                                        <i>* Minimum cart value of $200 before taxes and shipping fees is required before code can be applied. One use per customer. Cannot be combined with any other discounts.</i>
+                                      </td>
+                                    </tr>
+
+                                    <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
+
+                                    </tbody>
+                                  </table>
+                                </td>
+                                <td width="40" style="width:40px;" class="em_side">&nbsp;</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
                     <tr>
                       <td height="23" style="height:23px;" class="em_h20">&nbsp;</td>
                     </tr>
@@ -449,86 +555,6 @@ u + .em_body .em_full_wrap {
                           </tr>
                         </table></td>
                     </tr>
-
-                  <tr>
-                    <td height="23" style="height:23px;" class="em_h20">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td align="center" valign="top">
-                      <table width="704" border="0" cellspacing="0" cellpadding="0" style="width:704px;" align="center" class="em_wrapper">
-                        <tbody>
-                          <tr>
-                            <td align="center" valign="top">
-                              <a style="text-decoration:none; color:#000000;"><img src="https://solasalonstudios.s3.amazonaws.com/own_your_salon/beautyhive-email-seaction.jpg" width="703" height="320" alt="beautyhive-email-section" style="display:block; max-width:703px; font-family:Arial, sans-serif; font-size:14px; line-height:16px; color:#000000;" border="0" class="em_img"></a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="center" valign="top" bgcolor="#ffffff">
-                              <table width="704" border="0" cellspacing="0" cellpadding="0" style="width:704px;" align="center" class="em_wrapper">
-                                <tbody>
-                                  <tr>
-                                    <td width="40" style="width:40px;" class="em_side">&nbsp;</td>
-                                    <td align="center" valign="top">
-                                      <table width="624" border="0" cellspacing="0" cellpadding="0" style="width:624px;" align="center" class="em_wrapper">
-                                        <tbody>
-                                          <tr>
-                                            <td height="39" style="height:39px;" class="em_h20">&nbsp;</td>
-                                          </tr>
-                                          <tr>
-                                            <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                              At Sola, our goal is to help you succeed as a salon owner. That’s why we partnered with BeautyHive, an online salon distributor created just for independent beauty pros!
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td height="39" style="height:39px;" class="em_h20">&nbsp;</td>
-                                          </tr>
-                                          <tr>
-                                            <td align="left" valign="top" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                              BeautyHive perks include:
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <td>
-                                              <ul>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  A Sola-exclusive welcome offer
-                                                </li>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  Same-day shipping
-                                                </li>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  Free shipping on orders of $99+
-                                                </li>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  Earn up to 4% back on every order
-                                                </li>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  No surprise backorders, with real-time inventory checks
-                                                </li>
-                                                <li style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:18px; line-height:28px; color:#999999; font-weight:300;">
-                                                  A 100% happiness guarantee
-                                                </li>
-                                              </ul>
-                                            </td>
-                                          </tr>
-                                          <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
-                                          <tr><td align="center" valign="top"><table width="248" border="0" cellspacing="0" cellpadding="0" style="width:248px;" align="center"> <tbody><tr> <td align="center" valign="middle" bgcolor="#FBED7A" height="41" style="font-family: 'Open Sans', Arial, sans-serif; font-size:14px; color:#ffffff; border-radius:24px; text-transform:uppercase; font-weight:bold;"><a href="https://www.beautyhive.com/pages/pro-registration?utm_source=Sola&utm_medium=Email&utm_campaign=Welcome_Email" target="_blank" style="text-decoration:none; color:#000000; line-height:41px; display:block;">Join the Hive</a></td> </tr> </tbody></table></td> </tr>
-                                          <tr><td height="30" style="height:30px;" class="em_h20">&nbsp;</td></tr>
-                                        </tbody>
-                                      </table>
-                                    </td>
-                                    <td width="40" style="width:40px;" class="em_side">&nbsp;</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-
-
                     <tr>
                       <td height="23" style="height:23px;" class="em_h20">&nbsp;</td>
                     </tr>

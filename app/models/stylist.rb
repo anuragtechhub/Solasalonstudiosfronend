@@ -468,19 +468,17 @@ class Stylist < ActiveRecord::Base
   rescue => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
-    p "caught an error #{e.inspect}"
   end
 
   def resend_welcome_email
     if location && location.country && location.country == 'US'
-      PublicWebsiteMailer.resend_welcome_email_us(self).deliver
+      PublicWebsiteMailer.welcome_email_us(self, true).deliver
     elsif location && location.country && location.country == 'CA'
-      PublicWebsiteMailer.resend_welcome_email_ca(self).deliver
+      PublicWebsiteMailer.welcome_email_ca(self, true).deliver
     end
   rescue => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
-    p "caught an error #{e.inspect}"
   end
 
   def as_json(options={})

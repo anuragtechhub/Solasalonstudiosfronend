@@ -132,20 +132,21 @@ u + .em_body .em_full_wrap {
 </head>
 
 <body class="em_body" style="margin:0px; padding:0px;" bgcolor="#ffffff">
-
-<table width="100%">
-  <tr>
-      <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://www.solasalonstudios.ca/emails/welcome-to-sola" target="_blank" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:13px; line-height:17px; color:#5F5F5F; font-weight:normal;">View in browser</a>
-    </td>
-  </tr>
-  <tr>
-      <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
-  </tr>
-</table>
+<% if @browser.blank? %>
+  <table width="100%">
+    <tr>
+        <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="https://www.solasalonstudios.ca/emails/welcome-to-sola" target="_blank" style="font-family:'HelveticaNeue', Arial, sans-serif; font-size:13px; line-height:17px; color:#5F5F5F; font-weight:normal;">View in browser</a>
+      </td>
+    </tr>
+    <tr>
+        <td height="15" style="height:15px; line-height:0px; font-size:0px;"></td>
+    </tr>
+  </table>
+<% end %>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="em_full_wrap" bgcolor="#ffffff">
   <tr>
