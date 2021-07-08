@@ -132,6 +132,18 @@ class Stylist < ActiveRecord::Base
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
 
+  # TMP solution
+  def new_status
+    case status
+    when 'open'
+      'active'
+    when 'closed'
+      'inactive'
+    else
+      status
+    end
+  end
+
   def first_name
     FullNameSplitter.split(name)[0]
   end
