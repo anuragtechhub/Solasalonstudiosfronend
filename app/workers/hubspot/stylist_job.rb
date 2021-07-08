@@ -48,7 +48,7 @@ module Hubspot
         lastname: @stylist.last_name,
         phone: @stylist.phone_number,
         cms_status: @stylist.status,
-        sola_id: @stylist.id,
+        sola_id: (@stylist.status == 'closed' ? '' : @stylist.id),
         website: @stylist.website_url,
         booking_url: @stylist.booking_url,
         solagenius_booking_url: (@stylist.has_sola_genius_account.presence && @stylist.booking_url),

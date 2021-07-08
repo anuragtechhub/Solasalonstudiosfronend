@@ -3,7 +3,7 @@ class StylistsController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token, only: :send_a_message
 
   def index
-    redirect_to(:locations, status: 301) if I18n.locale.to_s == 'pt-BR'
+    redirect_to(:locations, status: 301) and return if I18n.locale.to_s == 'pt-BR'
   end
 
   def show
@@ -11,11 +11,11 @@ class StylistsController < PublicWebsiteController
 
     unless @stylist
       @stylist = Stylist.find_by(:url_name => params[:url_name].split('_').join('-'))
-      redirect_to(show_salon_professional_path(:url_name => @stylist.url_name), :status => 301) if @stylist
+      redirect_to(show_salon_professional_path(:url_name => @stylist.url_name), :status => 301) and return if @stylist
     end
 
     if @stylist && @stylist.reserved
-      redirect_to salon_stylists_path(@stylist.location.url_name)
+      redirect_to(salon_stylists_path(@stylist.location.url_name)) and return
     end
 
     @location = @stylist.location if (@stylist && @stylist.location)
@@ -25,7 +25,7 @@ class StylistsController < PublicWebsiteController
       @zoom = 14
       @locations = [@location]
     end
-    redirect_to(:salon_professionals, :status => 301) unless @stylist && @location && @location.status == 'open'
+    redirect_to(:salon_professionals, :status => 301) and return unless @stylist && @location && @location.status == 'open'
   end
 
   def send_a_message

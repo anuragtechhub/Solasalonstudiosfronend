@@ -1950,6 +1950,7 @@ RailsAdmin.config do |config|
     label 'Salon Professional'
     label_plural 'Salon Professionals'
     list do
+      scopes [:active, :inactive]
       field :name
       field :url_name do
         label 'URL Name'

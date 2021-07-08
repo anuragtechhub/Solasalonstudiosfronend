@@ -14,7 +14,10 @@ class Stylist < ActiveRecord::Base
 
   has_paper_trail
 
-  scope :open, -> { where(:status => 'open') }
+  scope :open, -> { where(status: 'open') }
+  scope :active, -> { open }
+  scope :inactive, -> { where(status: 'closed') }
+
   scope :not_reserved, -> { where(:reserved => false) }
 
   after_initialize do
@@ -151,7 +154,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def status_enum
-    [['Open', 'open'], ['Closed', 'closed']]
+    [['Active', 'open'], ['Inactive', 'closed']]
   end
 
   def send_a_message_button_enum
