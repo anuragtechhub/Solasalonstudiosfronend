@@ -140,3 +140,4 @@ end
 
 gem 'rollbar'
 gem 'newrelic_rpm'
+gem 'browser'

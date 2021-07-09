@@ -262,19 +262,19 @@
       <div class="industry-leading-education-features d-flex flex-wrap flex-lg-nowrap justify-content-center">
         <% %w[virtual_education sola_blog sola_stories_podcast sola_sessions].each do |feature| %>
           <% target = '_self'
-             link = case feature
+             link, button_image = case feature
                     when 'virtual_education'
                       target = '_blank'
-                      'https://www.youtube.com/playlist?list=PLDtxLW3eBObMYyz3QhRK9yeeL-TmHEJxe'
+                      ['https://www.youtube.com/playlist?list=PLDtxLW3eBObMYyz3QhRK9yeeL-TmHEJxe', nil]
                     when 'sola_blog'
-                      '/blog'
+                      ['/blog', nil]
                     when 'sola_stories_podcast'
-                      '/blog/category/sola-stories-podcast'
+                      ['/blog/category/sola-stories-podcast', nil]
                     when 'sola_sessions'
                       target = '_blank'
-                      'https://events.bizzabo.com/solasessions'
+                      ['https://events.bizzabo.com/solasessions', (browser.device.mobile? ? 'SOLASessions_Reimagined_WhySola_480x480.jpg' :'SOLASessions_Reimagined_social_STD_1080x1080.jpg')]
                     else
-                      '#'
+                      ['#', nil]
                     end
           %>
           <% additional_class = '' %>
@@ -282,7 +282,7 @@
           <% modal_id = dashed_feature + '-modal' %>
           <div class="industry-leading-education-feature-wrapper">
             <%= link_to "##{modal_id}", class: 'open-magnific-popup-link industry-leading-education-feature' do %>
-              <div class="industry-leading-education-feature-icon" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= dashed_feature %>.png')"></div>
+              <div class="industry-leading-education-feature-icon" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= button_image.presence || "#{dashed_feature}.png" %>')"></div>
               <div class="industry-leading-education-feature-title">
                 <%= t("page.why_sola.education-feature.title.#{dashed_feature}") %>
               </div>
@@ -425,7 +425,7 @@
 
 
 <script type="text/javascript">
-  <% if Time.current < DateTime.parse('19/05/2021') %>
+  <% if false && Time.current < DateTime.parse('28/09/2021') %>
     $(document).ready(function(){
       $.magnificPopup.open({items: {src: '#campaign_banner'}, type: 'inline'});
     });
