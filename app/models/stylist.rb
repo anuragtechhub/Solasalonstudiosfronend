@@ -34,7 +34,7 @@ class Stylist < ActiveRecord::Base
   after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital#, :sync_with_rent_manager
   after_commit :sync_with_hubspot
   #after_create :sync_with_rent_manager
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
   before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
   after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
 
