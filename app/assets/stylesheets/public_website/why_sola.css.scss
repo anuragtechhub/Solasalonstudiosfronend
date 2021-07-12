@@ -1108,8 +1108,24 @@ body.why-sola {
   }
   @media (min-width: 551px) {
     height: 90vh;
+    &#sola-sessions-modal {
+      height: 65vh;
+    }
   }
 
+  &#sola-sessions-modal {
+    .wrapper {
+      .info-wrapper {
+        .info {
+          .body {
+            .button {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
   overflow: hidden;
   margin: auto 8%;
   background: #FFFFFF 0 0 no-repeat padding-box;
@@ -1246,6 +1262,14 @@ body.why-sola {
         width: 100%;
       }
 
+      @media (max-width: 380px) {
+        height: 260px;
+      }
+
+      @media (max-width: 321px) {
+        height: 230px;
+      }
+
       &.virtual-education {
         @include gradient-directional(#EF019B, #489AD5, -45deg);
         .icon {
@@ -1270,7 +1294,7 @@ body.why-sola {
       }
 
       &.sola-sessions {
-        background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/sola-sessions-full.jpg");
+        background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/SOLASessions_Reimagined_popout_mobile_680x600.jpg");
       }
 
       &.success-story {
