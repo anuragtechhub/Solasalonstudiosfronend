@@ -133,12 +133,12 @@ class Stylist < ActiveRecord::Base
   validates :url_name, :uniqueness => true, :reduce => true
 
   # TMP solution
-  def new_status
+  def hubspot_status
     case status
     when 'open'
-      'active'
+      'Active'
     when 'closed'
-      'inactive'
+      'Inactive'
     else
       status
     end
