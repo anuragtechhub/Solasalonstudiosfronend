@@ -32,7 +32,7 @@ class BooknowController < PublicWebsiteController
       @professional_results.each do |professional|
         sola_professional = professional['org_user_id'] ? Stylist.find_by(:id => professional['org_user_id']) : nil
         location = sola_professional ? sola_professional.location : nil
-        if location
+        if location && sola_professional.open?
           #p "professional['business_address']=#{professional['business_address']}, #{location.full_address}"
           professional['business_address'] = location.full_address
           professional['location_latitude'] = location.latitude
