@@ -11,7 +11,7 @@ class Api::V1::LocationsController < ApiController
   end
 
   def show
-    json = Rails.cache.fetch("/api/v1/show/#{params[:id]}/#{Stylist.where(location_id: params[:id]).not_reserved.maximum(:updated_at).to_i}", expires_in: 12.hours) do
+    json = Rails.cache.fetch("/api/v1/show/#{params[:id]}/#{Stylist.where(location_id: params[:id]).not_reserved.active.maximum(:updated_at).to_i}", expires_in: 12.hours) do
       render_to_string json: Oj.dump(Location.find(params[:id]).
         as_json(methods: [:salon_professionals],
                 only: [:id, :name, :general_contact_name, :email_address_for_inquiries, :phone_number]))
