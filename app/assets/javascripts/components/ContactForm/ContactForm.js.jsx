@@ -1,7 +1,6 @@
 var ContactForm = React.createClass({
 
 	getInitialState: function () {
-		// console.log('contact form get initial state');
 		return {
 			name: '',
 			email: '',
@@ -19,6 +18,9 @@ var ContactForm = React.createClass({
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
 			selected_services: [],
+      valid_form: false,
+      phone_valid: true,
+      email_valid: true
 		};
 	},
 
@@ -29,7 +31,6 @@ var ContactForm = React.createClass({
 
 		$(window).on('resize.contact_form', function () {
 			var $root = $(self.refs.root);
-			//console.log('width', $root.width());
 			if ($root.width() < 400) {
 				$('.dont-see-your-location-col').css({'max-width': '100%', left: '25px', top: '-12px'});
 			} else {
@@ -163,9 +164,8 @@ var ContactForm = React.createClass({
 
 					<div className="form-group">
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} required="required" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
+            <span className={this.state.phone_valid? 'validation-message hidden' : 'validation-message'}>Please enter a valid phone number</span>
 					</div>
-
-					{/*this.props.display_i_would_like_to_be_contacted ? null : <div className="contact-preference-top">{this.renderContactPreference()}</div>*/}
 
 					{
 						this.props.display_i_would_like_to
@@ -183,35 +183,6 @@ var ContactForm = React.createClass({
 									<label><input type="radio" className="form-control" name="how_can_we_help_you" value={I18n.t('contact_form.other')} checked={this.state.how_can_we_help_you == I18n.t('contact_form.other')} onChange={this.onChangeInput} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} /> {I18n.t('contact_form.other')}</label>
 								</div>
 							</div>
-							{/*<SolaSelect className="how_can_we_help_you-select"
-													placeholder={I18n.t('contact_form.how_can_we_help_you')}
-													options={[
-														{	option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.request_leasing_information'),
-															name: I18n.t('contact_form.request_leasing_information')
-														}},
-														{ option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.book_an_appointment'),
-															name: I18n.t('contact_form.book_an_appointment')
-														}},
-														{ option_type: 'option',
-															value: {
-															id: I18n.t('contact_form.other'),
-															name: I18n.t('contact_form.other')
-														}},
-													]}
-													name="how_can_we_help_you"
-													value={this.state.how_can_we_help_you}
-													onChange={this.onChangeHowCanWeHelpYou}
-													tabIndex={0} />*/}
-
-							{/*<select name="how_can_we_help_you" value={this.state.how_can_we_help_you} onChange={this.onChangeInput} disabled={!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)}>
-								<option value="request_leasing_information">{I18n.t('contact_form.request_leasing_information')}</option>
-								<option value="book_an_appointment">{I18n.t('contact_form.book_an_appointment')}</option>
-								<option value="other">{I18n.t('contact_form.other')}</option>
-							</select>*/}
 						</div>
 						:
 						null
@@ -254,7 +225,7 @@ var ContactForm = React.createClass({
           <div className="g-recaptcha" data-sitekey="6Lf4z7YaAAAAAOx1qrGEyRa3AZ70bdx8CK_idgbI" data-callback="recaptchaSubmitted"></div>
           <br/>
 
-					<button ref="submit_button" className="button block primary" disabled={self.isDisabled((!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)))}>{this.props.submit_button_text}</button>
+					<button ref="submit_button" className="button block primary" disabled={self.isDisabled((!this.state.valid_form || (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))))}>{this.props.submit_button_text}</button>
 
 					{
 						this.props.display_i_would_like_to_be_contacted
@@ -311,6 +282,7 @@ var ContactForm = React.createClass({
 		return (
 			<div className="form-group">
 				<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} required="required" disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
+        <span className={this.state.email_valid? 'validation-message hidden' : 'validation-message'}>Please enter a valid email address</span>
 			</div>
 		);
 	},
@@ -379,13 +351,41 @@ var ContactForm = React.createClass({
 			this.state[e.target.name] = value;
 		}
 
-		//console.log('this.state.selected_services', this.state.selected_services);
-
-		this.setState(this.state);
+		this.setState(this.state, function(){ this.validate(e.target.name); });
 	},
 
+  validate: function (target) {
+	  if(target == 'phone') {
+      var phoneRGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      //var phoneRGEX = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+      var phoneResult = phoneRGEX.test(this.state.phone);
+      if (phoneResult == false) {
+        this.setState({phone_valid: false}, function(){ this.setValidForm(); });
+      } else {
+        this.setState({phone_valid: true}, function(){ this.setValidForm(); });
+      }
+    }
+
+    if(target == 'email') {
+      var emailRGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var emailResult = emailRGEX.test(this.state.email);
+      if (emailResult == false) {
+        this.setState({email_valid: false}, function(){ this.setValidForm(); });
+      } else {
+        this.setState({email_valid: true}, function(){ this.setValidForm(); });
+      }
+    }
+  },
+
+  setValidForm: function (){
+    if(this.state.phone_valid && this.state.email_valid) {
+      this.setState({valid_form: true});
+    } else {
+      this.setState({valid_form: false});
+    }
+  },
+
 	onChangeHowCanWeHelpYou: function (value, name) {
-		//console.log('onChangeHowCanWeHelpYou', value, name);
 		this.setState({how_can_we_help_you: name});
 	},
 

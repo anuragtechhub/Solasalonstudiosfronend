@@ -53,7 +53,7 @@
         width: 44px;
         height: 44px;
       }
-    }    
+    }
   }
 }
 
@@ -79,7 +79,7 @@
     background: #FBFBFB;
     border: 1px solid #DBDBDB;
     padding: 25px 15px;
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
   }
 
   textarea {
@@ -97,12 +97,12 @@
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px; 
+  border-radius: 4px;
   color: #3c763d;
   background-color: #dff0d8;
-  border-color: #d6e9c6;   
+  border-color: #d6e9c6;
   font-size: 17px;
-  line-height: 21px; 
+  line-height: 21px;
 }
 
 .receive-newsletter {
@@ -186,7 +186,7 @@ body.contact-us {
         height: 44px;
       }
     }
-  }    
+  }
 }
 
 .contact-2019 {
@@ -219,7 +219,7 @@ body.contact-us {
       height: 71px !important;
       text-transform: uppercase;
       border-radius: 40px;
-      
+
       .fa-play {
         line-height: 23px !important;
         font-size: 23px !important;
@@ -243,7 +243,7 @@ body.contact-us {
         white-space: nowrap !important;
         word-spacing: 1px;
         letter-spacing: 1px;
-      }   
+      }
   }
 
   .content-container {
@@ -279,6 +279,17 @@ body.contact-us {
       button {
         margin-bottom: 0;
       }
+
+      .validation-message {
+        &.hidden {
+          display: none;
+        }
+        color: red;
+      }
+      .error {
+        border: 1px solid red;
+      }
+
     }
   }
 
@@ -317,7 +328,7 @@ body.contact-us {
     background: -moz-linear-gradient(left, rgba(157,213,255,1) 0%, rgba(95,154,208,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, rgba(157,213,255,1) 0%,rgba(95,154,208,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, rgba(157,213,255,1) 0%,rgba(95,154,208,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd5ff', endColorstr='#5f9ad0',GradientType=1 ); /* IE6-9 */    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd5ff', endColorstr='#5f9ad0',GradientType=1 ); /* IE6-9 */
     text-align: center;
 
     h2 {
@@ -378,12 +389,12 @@ body.contact-us {
           }
         }
       }
-    }    
+    }
   }
-  
+
   .ready-to-be-your-own-boss {
     padding: 160px 0;
-    background: asset-url('contact_bg_2.jpg') no-repeat center center; 
+    background: asset-url('contact_bg_2.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -532,7 +543,7 @@ body.contact-us {
     }
   }
   .contact-2019 {
-    
+
     button.primary.pill, input[type=button].primary.pill, input[type=submit].primary.pill, .button.primary.pill, a.button.primary.pill, a.button:link.primary.pill, a.button:visited.primary.pill, a.button:hover.primary.pill, a.button:active.primary.pill {
       font-size: 14px;
     }
@@ -576,7 +587,7 @@ body.contact-us {
     .owl-carousel .item .item-content {
       left: 0px;
       right: 0px;
-  
+
       a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
         margin: 150px 0 0 0;
       }

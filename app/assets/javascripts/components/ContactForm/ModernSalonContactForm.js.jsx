@@ -20,6 +20,9 @@ var ModernSalonContactForm = React.createClass({
 			selected_location_name: this.props.selected_location_name,
 			selected_state: this.props.selected_state,
 			selected_services: [],
+      valid_form: false,
+      phone_valid: true,
+      email_valid: true
 		};
 	},
 
@@ -120,6 +123,7 @@ var ModernSalonContactForm = React.createClass({
 
 					<div className="form-group">
 						<input className="form-control" name="phone" value={this.state.phone} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.phone_number")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
+            <span className={this.state.phone_valid? 'validation-message hidden' : 'validation-message'}>Please enter a valid phone number</span>
 					</div>
 
 					{
@@ -196,7 +200,7 @@ var ModernSalonContactForm = React.createClass({
 					}
           <div className="g-recaptcha" data-sitekey="6Lf4z7YaAAAAAOx1qrGEyRa3AZ70bdx8CK_idgbI" data-callback="recaptchaSubmitted"></div>
           <br/>
-					<button ref="submit_button" className="button block primary" disabled={self.isDisabledSubmit(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))}>{this.props.submit_button_text}</button>
+					<button ref="submit_button" className="button block primary" disabled={self.isDisabledSubmit(!this.state.valid_form || (!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location)))}>{this.props.submit_button_text}</button>
 
 					{
 						this.props.display_i_would_like_to_be_contacted && (this.state.is_sola_professional != 'yes')
@@ -296,6 +300,7 @@ var ModernSalonContactForm = React.createClass({
 		return (
 			<div className="form-group">
 				<input className="form-control" name="email" value={this.state.email} onChange={this.onChangeInput} type="text" placeholder={I18n.t("contact_form.email_address")} disabled={self.isDisabled(!this.state.selected_state || (!this.state.selected_location && !this.state.dont_see_your_location))} />
+        <span className={this.state.email_valid? 'validation-message hidden' : 'validation-message'}>Please enter a valid email address</span>
 			</div>
 		);
 	},
@@ -358,8 +363,39 @@ var ModernSalonContactForm = React.createClass({
 
 		//console.log('this.state.selected_services', this.state.selected_services);
 
-		this.setState(this.state);
+    this.setState(this.state, function(){ this.validate(e.target.name); });
 	},
+
+  validate: function (target) {
+    if(target == 'phone') {
+      var phoneRGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+      //var phoneRGEX = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+      var phoneResult = phoneRGEX.test(this.state.phone);
+      if (phoneResult == false) {
+        this.setState({phone_valid: false}, function(){ this.setValidForm(); });
+      } else {
+        this.setState({phone_valid: true}, function(){ this.setValidForm(); });
+      }
+    }
+
+    if(target == 'email') {
+      var emailRGEX = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var emailResult = emailRGEX.test(this.state.email);
+      if (emailResult == false) {
+        this.setState({email_valid: false}, function(){ this.setValidForm(); });
+      } else {
+        this.setState({email_valid: true}, function(){ this.setValidForm(); });
+      }
+    }
+  },
+
+  setValidForm: function (){
+    if(this.state.phone_valid && this.state.email_valid) {
+      this.setState({valid_form: true});
+    } else {
+      this.setState({valid_form: false});
+    }
+  },
 
 	onChangeHowCanWeHelpYou: function (value, name) {
 		//console.log('onChangeHowCanWeHelpYou', value, name);
