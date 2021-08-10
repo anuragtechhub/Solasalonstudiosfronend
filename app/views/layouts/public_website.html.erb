@@ -40,13 +40,14 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body data-spy='scroll' data-target='.page-nav-overlay' data-offset='100' class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
+  <a class="skip-main" href="#main-content-block">Skip to main content</a>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR754KX"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <%= render 'shared/public_website/header' unless @no_header %>
-  <div class="body-content"><%= yield %></div>
+  <div class="body-content" id="main-content-block" tabindex="-1"><%= yield %></div>
   <%= render 'shared/public_website/footer' %>
 
   <%= render 'shared/country_switcher_modal' %>
