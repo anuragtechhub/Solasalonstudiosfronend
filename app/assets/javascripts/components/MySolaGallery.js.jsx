@@ -6,7 +6,7 @@ var MySolaGallery = React.createClass({
     var images_length = images.length;
     var total_pages = images_length / results_per_page + (images_length % results_per_page > 0 ? 1 : 0) - 1;
     total_pages = total_pages < 1 ? 1 : total_pages;
-    
+
     return {
       current_page: 0,
       images: images,
@@ -47,7 +47,7 @@ var MySolaGallery = React.createClass({
   renderImageOverlay: function (image) {
     if (image && (image.instagram_handle || image.name) && image.overlay) {
       return (
-        <a href={"https://www.instagram.com/" + (image.instagram_handle ? image.instagram_handle.substring(1) : '')} target="_blank" className="overlay">
+        <a href={"https://www.instagram.com/" + (image.instagram_handle ? image.instagram_handle.substring(1) : '')} target="_blank" className="overlay" aria-label="instagram">
          <div className="handle-wrapper"><div className="handle">{image.instagram_handle || image.name}</div></div>
         </a>
       );
@@ -87,7 +87,7 @@ var MySolaGallery = React.createClass({
     } else {
       this.state.images[idx].overlay = false;
     }
-    
+
     this.forceUpdate();
   },
 

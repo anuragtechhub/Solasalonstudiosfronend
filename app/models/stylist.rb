@@ -712,7 +712,6 @@ end
 #  walkins_expiry                 :datetime
 #  waxing                         :boolean
 #  website_email_address          :string(255)
-#  website_go_live_date           :date             default(Thu, 01 Jan 2004)
 #  website_name                   :string(255)
 #  website_phone_number           :string(255)
 #  website_url                    :string(255)
@@ -722,7 +721,6 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
-#  rent_manager_contact_id        :string(255)
 #  rent_manager_id                :string(255)
 #
 # Indexes

@@ -11,10 +11,25 @@
       <br />
       <strong><%= link_to t('page.news.read_more').html_safe, article.article_url, :class => 'pink-link', :target => '_blank' %></strong>
     </p>
+
     <ul class="social <%= defined?(social) && social == 'circle' ? "social-circle" : nil %>">
-      <li><%= link_to "https://www.pinterest.com/pin/create/button/?url=#{article.article_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-      <li><%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.article_url}", :target => '_blank' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-      <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article.article_url}", :target => '_blank' do %><span class="<%= defined?(social) && social == 'circle' ? "fa fa-facebook" : "ss-social-regular ss-facebook" %>"></span><% end %></li>
+      <li>
+        <%= link_to "https://www.pinterest.com/pin/create/button/?url=#{article.article_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank', 'aria-label' => 'go to pinterest' do %>
+          <span class="ss-social-regular ss-pinterest" aria-hidden="true"></span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.article_url}", :target => '_blank', 'aria-label' => 'go to twitter' do %>
+          <span class="ss-social-regular ss-twitter" aria-hidden="true"></span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article.article_url}", :target => '_blank', 'aria-label' => 'go to facebook' do %>
+          <span class="<%= defined?(social) && social == 'circle' ? "fa fa-facebook" : "ss-social-regular ss-facebook" %>" aria-hidden="true"></span>
+        <% end %>
+      </li>
     </ul>
   </div>
 </div>

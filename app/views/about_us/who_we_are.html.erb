@@ -45,17 +45,17 @@
 						<h2><%= t 'page.who_we_are.join_our_diverse_community' %></h2>
 						<p><%= t 'page.who_we_are.join_our_diverse_community_text' %></p>
 						<% if I18n.locale.to_s == 'pt-BR' %>
-							<a href="//www.youtube.com/watch?v=vh3x3xAcPXw" rel="vh3x3xAcPXw-m" class="watch-our-video-mobile play-video">
-								<p><%= t 'page.who_we_are.watch_our_video' %></p>
-								<div class="play-circle play-video">
-									<span class="fa fa-play">&nbsp;</span>
+							<a href="//www.youtube.com/watch?v=vh3x3xAcPXw" rel="vh3x3xAcPXw-m" class="watch-our-video-mobile play-video" aria-label="<%= t('page.who_we_are.watch_our_video') %>">
+								<p aria-hidden="true"><%= t 'page.who_we_are.watch_our_video' %></p>
+								<div class="play-circle play-video" aria-hidden="true">
+									<span class="fa fa-play" aria-hidden="true">&nbsp;</span>
 								</div>
 							</a>
 						<% else %>
-							<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-m" class="watch-our-video-mobile play-video">
-								<p><%= t 'page.who_we_are.watch_our_video' %></p>
-								<div class="play-circle play-video">
-									<span class="fa fa-play">&nbsp;</span>
+							<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-m" class="watch-our-video-mobile play-video" aria-label="<%= t('page.who_we_are.watch_our_video') %>">
+								<p aria-hidden="true"><%= t 'page.who_we_are.watch_our_video' %></p>
+								<div class="play-circle play-video" aria-hidden="true">
+									<span class="fa fa-play" aria-hidden="true">&nbsp;</span>
 								</div>
 							</a>
 						<% end %>
@@ -63,17 +63,17 @@
 				</div>
 				<% if I18n.locale.to_s == 'pt-BR' %>
 					<div class="watch-our-video">
-						<a href="//www.youtube.com/watch?v=vh3x3xAcPXw" rel="vh3x3xAcPXw-d" class="play-circle play-video">
-							<span class="fa fa-play">&nbsp;</span>
+						<a href="//www.youtube.com/watch?v=vh3x3xAcPXw" rel="vh3x3xAcPXw-d" class="play-circle play-video" aria-label="<%= t('page.who_we_are.watch_our_video') %>">
+							<span class="fa fa-play" aria-hidden="true">&nbsp;</span>
 						</a>
-						<p><%= t 'page.who_we_are.watch_our_video' %></p>
+						<p aria-hidden="true"><%= t 'page.who_we_are.watch_our_video' %></p>
 					</div>
 				<% else %>
 					<div class="watch-our-video">
-						<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-d" class="play-circle play-video">
-							<span class="fa fa-play">&nbsp;</span>
+						<a href="//www.youtube.com/watch?v=nbHFs0XjS8s" rel="nbHFs0XjS8s-d" class="play-circle play-video" aria-label="<%= t('page.who_we_are.watch_our_video') %>">
+							<span class="fa fa-play" aria-hidden="true">&nbsp;</span>
 						</a>
-						<p><%= t 'page.who_we_are.watch_our_video' %></p>
+						<p aria-hidden="true"><%= t 'page.who_we_are.watch_our_video' %></p>
 					</div>
 				<% end %>
 			</div>

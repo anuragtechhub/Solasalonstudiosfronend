@@ -2,10 +2,11 @@
   <div class="page-nav-overlay">
     <div class="sidebar-content nav">
       <% why_sola_sections.each do |section| %>
-        <div class="nav-item">
-          <div class="text"><%= t("page.why_sola.sidebar.#{section}") %></div>
-          <%= link_to "##{section}", class: 'nav-link' do %>
-            <div class="circle"></div>
+        <% text = t("page.why_sola.sidebar.#{section}") %>
+        <div class="nav-item" aria-label="<%= text %>">
+          <div class="text" aria-hidden="true"><%= text %></div>
+          <%= link_to "##{section}", class: 'nav-link', 'aria-hidden' => "true" do %>
+            <div class="circle" aria-hidden="true"></div>
           <% end %>
         </div>
       <% end %>
@@ -23,7 +24,7 @@
     <div class="flex-row justify-content-center learn-more-button-wrapper">
       <div class="learn-more-button d-flex flex-column align-items-center">
         <a style="color: #D6D6D6;font-size: 1.4em;text-decoration: none;" href="#why_sola"><%= t('page.see_more') %></a>
-        <span class="fa fa-angle-down text-center" style="font-size: 1.4em"></span>
+        <span class="fa fa-angle-down text-center" style="font-size: 1.4em" aria-hidden="true"></span>
       </div>
     </div>
     <div class="row">
@@ -144,7 +145,7 @@
               <%= image_tag 'pro/Sola-Pro-Logo-2020-7@2x.png', alt: 'A man in a hat looks at the phone', class: 'sola-pro-logo u-full-width' %>
               <div class="logo-desc"> An exclusive app to keep you educated, inspired, and connected. </div>
               <%= link_to '#sola-pro-gallery-inner', class: 'arrow-link' do %>
-                <i class="fa fa-angle-down text-center"></i>
+                <i class="fa fa-angle-down text-center" aria-label="Scroll to sola pro gallery"></i>
               <% end %>
             </div>
           </div>
@@ -178,8 +179,8 @@
           <%= t('page.why_sola.sign-up-for-free-trial') %>
         </a>
       </div>
-      <%= link_to '#sola-genius-gallery-inner', class: 'arrow-link' do %>
-        <i class="fa fa-angle-down text-center"></i>
+      <%= link_to '#sola-genius-gallery-inner', class: 'arrow-link', "aria-label" => "Scroll to sola genius gallery" do %>
+        <i class="fa fa-angle-down text-center" aria-hidden="true"></i>
       <% end %>
     </div>
 

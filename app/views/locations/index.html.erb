@@ -20,7 +20,7 @@
           <span class="spyglass-black"></span>
           <input name="query" type="text" class="searchbox" placeholder="<%= t('page.locations.search_placeholder') %>" value="<%= params[:query] %>" />
           <input name="service_type" type="hidden" value="<%= params[:service_type] %>" />
-          <button type="submit"><span class="search-icon"></span></button>
+          <button type="submit" aria-label="submit search form"><span class="search-icon" aria-hidden="true"></span></button>
         </div>
       <% end %>
     </div>
@@ -70,7 +70,7 @@
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <span class="text"><%= location.msa.name.html_safe %></span>,  
+                    <span class="text"><%= location.msa.name.html_safe %></span>,
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -87,7 +87,7 @@
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <span class="text"><%= location.msa.name.html_safe %></span>, 
+                    <span class="text"><%= location.msa.name.html_safe %></span>,
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -104,7 +104,7 @@
               <% unless msa_name.blank? || locations.size == 0 %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <span class="text"><%= location.msa.name.html_safe %></span>, 
+                    <span class="text"><%= location.msa.name.html_safe %></span>,
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -124,7 +124,7 @@
               <% unless msa_name.blank? %>
                 <% locations.sort_by(&:name).each_with_index do |location, index| %>
                   <div class="link">
-                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>, 
+                    <%= link_to location.msa.name.html_safe, region_path(location.msa.url_name).gsub(/\./, ''), :class => 'text' %>,
                     <%= link_to location.name.html_safe, salon_location_path(location.url_name).gsub(/\./, '') %>
                   </div>
                 <% end %>
@@ -164,8 +164,8 @@
             <img src="https://s3.amazonaws.com/solasalonstudiosbr/location_video_poster.jpg" alt="Veja aqui como chegar no Sola" />
             <span class="fa fa-play-circle"></span>
             <div class="video-overlay"></div>
-          </a>        
-      </div>  
+          </a>
+      </div>
     </div>
   </div>
 </div>
