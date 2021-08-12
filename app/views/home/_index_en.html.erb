@@ -55,12 +55,12 @@
   <div class="row home-trilogy">
     <div class="three columns">
       <%= link_to 'https://pages.solasalonstudios.com/sola-sessions-save-the-date', tabindex: 0, target: '_blank' do %>
-        <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_button_800x608.jpg', :class => 'u-full-width opacity-on-hover' %>
+        <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_button_800x608.jpg', alt: 'The Sola Sessions reimagined a virtual experience. Save the date. September 27th', :class => 'u-full-width opacity-on-hover' %>
       <% end %>
     </div>
     <div class="three columns">
       <%= link_to :our_studios, tabindex: 0 do %>
-        <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/trilogy-our-studios.jpg', alt: 'Our studios. Depicted is a woman in a dark dress.', :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.our_studios.title' %></h2>
           <span class="button-wrapper"><span class="button" role="button"><%= t 'page.home.take_a_tour' %></span></span>
@@ -69,7 +69,7 @@
     </div>
     <div class="three columns">
       <%= link_to :contact_us, tabindex: 0 do %>
-        <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/trilogy-contact-us.jpg', alt: 'Contact us. Depicts a woman in a white t-shirt sitting on a chair', :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.contact.title' %></h2>
           <span class="button-wrapper"><span class="button" role="button"><%= t 'page.home.get_in_touch' %></span></span>
@@ -78,7 +78,7 @@
     </div>
     <div class="three columns">
       <%= link_to :going_independent, tabindex: 0 do %>
-        <%= image_tag 'Home/going_independent_home_tile.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/going_independent_home_tile.jpg', alt: "Guide to Going Independent. Depicted is a hairdresser washing a client's hair.", :class => 'u-full-width' %>
         <span class="text">
           <h2 class="small">Guide to Going Independent</h2>
           <span class="button-wrapper"><span class="button" role="button">Free Download</span></span>
@@ -88,19 +88,19 @@
   </div>
 
   <div class="owl-carousel owl-theme owl-desktop inline-carousel" data-autoplay="5000">
-    <div class="item"><%= link_to :why_sola, tabindex: 0 do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Sola_ImagineIf_WhySola.jpg', :alt => "If why sola" %><% end %></div>
-    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Desktop-1.jpg', :alt => "Sola Genius" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
-    <div class="item"><%= link_to 'https://pages.solasalonstudios.com/sola-sessions-save-the-date', tabindex: 0, target: '_blank' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_banner_desktop_2220x796.jpg', :alt => "Sola Sessions" %><% end %></div>
+    <div class="item"><%= link_to :why_sola, tabindex: 0 do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Sola_ImagineIf_WhySola.jpg', alt: "Sola. Salon life reimagined." %><% end %></div>
+    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', alt: "Sola Stories podcast. New episodes every week." %><% end %></div>
+    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Desktop-1.jpg', alt: "Solagenius. Glossgenius x Sola. Learn more." %><% end %></div>
+    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
+    <div class="item"><%= link_to 'https://pages.solasalonstudios.com/sola-sessions-save-the-date', tabindex: 0, target: '_blank' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_banner_desktop_2220x796.jpg', alt: "The Sola Sessions reimagined a virtual experience. Monday, September 27th. Education from the industry's best." %><% end %></div>
   </div>
 
   <div class="owl-carousel owl-theme owl-mobile inline-carousel" data-autoplay="5000">
-    <div class="item"><%= link_to :why_sola do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/homepage_slider.jpg', :alt => "If why sola" %><% end %></div>
-    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Mobile-1.jpg', :alt => "Sola Genius" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
-    <div class="item"><%= link_to 'https://pages.solasalonstudios.com/sola-sessions-save-the-date', tabindex: 0, target: '_blank' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_banner_mobile_1382x1942.jpg', :alt => "Sola Sessions" %><% end %></div>
+    <div class="item"><%= link_to :why_sola do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/homepage_slider.jpg', :alt => "Salon life reimagined." %><% end %></div>
+    <div class="item"><%= link_to 'https://www.solasalonstudios.com/blog/category/sola-stories-podcast', tabindex: 0 do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', alt: "Sola Stories podcast. New episodes every week." %><% end %></div>
+    <div class="item"><%= link_to :solagenius, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaGenius_Mobile-1.jpg', alt: "Solagenius. Glossgenius x Sola. Learn more." %><% end %></div>
+    <div class="item"><%= link_to :sola_pro, tabindex: 0 do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
+    <div class="item"><%= link_to 'https://pages.solasalonstudios.com/sola-sessions-save-the-date', tabindex: 0, target: '_blank' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/SOLASessions_Reimagined_homepage_banner_mobile_1382x1942.jpg', alt: "The Sola Sessions reimagined a virtual experience. Monday, September 27th. Education from the industry's best." %><% end %></div>
   </div>
 
   <div class="block-quote-testimonial">

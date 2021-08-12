@@ -66,25 +66,25 @@
     <ul>
       <li>
         <%= link_to :who_we_are, tabindex: 0 do %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/about-us/WhoWeAre_Thumb%402x.jpg' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/about-us/WhoWeAre_Thumb%402x.jpg', alt: "Photo of the seats in the salon" %>
           <h4><%= t 'nav.who_we_are' %></h4>
         <% end %>
       </li>
       <li>
         <%= link_to :our_story, tabindex: 0 do %>
-          <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
+          <%= image_tag 'about_nav/Story_Thumb@2x.jpg', alt: "Photo of a master in a pink jacket sitting on a chair" %>
           <h4><%= t 'nav.our_story' %></h4>
         <% end %>
       </li>
       <li>
         <%= link_to :testimonials, tabindex: 0 do %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/testemonials/Testimonials%402x.jpg' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/testemonials/Testimonials%402x.jpg', alt: "Photo of the parehmacher" %>
           <h4><%= t 'nav.testimonials' %></h4>
         <% end %>
       </li>
       <li>
         <%= link_to :leadership, tabindex: 0 do %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/leadership-team/Rodrigo-menu.jpeg' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/main_menu/leadership-team/Rodrigo-menu.jpeg', alt: 'Rodrigo Miranda photo'  %>
           <h4><%= t 'nav.leadership' %></h4>
         <% end %>
       </li>
@@ -95,19 +95,19 @@
     <ul>
       <li>
         <%= link_to :who_we_are, tabindex: 0 do %>
-          <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg' %>
+          <%= image_tag 'about_nav/WhoWeAre_Thumb@2x.jpg', alt: 'Photo of the salon' %>
           <h4><%= t 'nav.who_we_are' %></h4>
         <% end %>
       </li>
       <li>
         <%= link_to :our_story, tabindex: 0 do %>
-          <%= image_tag 'about_nav/Story_Thumb@2x.jpg' %>
+          <%= image_tag 'about_nav/Story_Thumb@2x.jpg', alt: "Photo of a master in a pink jacket sitting on a chair" %>
           <h4><%= t 'nav.our_story' %></h4>
         <% end %>
       </li>
       <li>
         <%= link_to :testimonials, tabindex: 0 do %>
-          <%= image_tag 'about_nav/Testimonials@2x.jpg' %>
+          <%= image_tag 'about_nav/Testimonials@2x.jpg', alt: "Photo of masters with scissors in their hands" %>
           <h4><%= t 'nav.testimonials' %></h4>
         <% end %>
       </li>
@@ -115,9 +115,9 @@
       <li>
         <%= link_to :leadership, tabindex: 0 do %>
           <% if I18n.locale.to_s == 'pt-BR' %>
-            <%= image_tag 'Leadership/Rodrigo-menu.jpeg' %>
+            <%= image_tag 'Leadership/Rodrigo-menu.jpeg', alt: 'Rodrigo Miranda photo' %>
           <% else %>
-            <%= image_tag 'about_nav/Team_Thumb@2x.jpg' %>
+            <%= image_tag 'about_nav/Team_Thumb@2x.jpg', alt: "Photo of the man" %>
           <% end %>
           <h4><%= t 'nav.leadership' %></h4>
         <% end %>
@@ -126,7 +126,7 @@
       <% if I18n.locale.to_s != 'pt-BR' %>
       <li>
         <%= link_to :news, tabindex: 0 do %>
-          <%= image_tag 'about_nav/News_Thumb@2x.jpg' %>
+          <%= image_tag 'about_nav/News_Thumb@2x.jpg', alt: "Photo of the team on the pink couch" %>
           <h4><%= t 'nav.in_the_news' %></h4>
         <% end %>
       </li>

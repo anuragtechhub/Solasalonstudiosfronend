@@ -1,8 +1,20 @@
+<% titles = [
+    'Redhead woman in a jacket sits on a chair',
+    'Dark haired curly woman sitting on a chair',
+    'A man in a black shirt sits on a chair',
+    'A dark-skinned woman in a blue dress sits on a chair',
+    'Blonde woman sitting on a chair',
+    'Woman with pink hair and tattoo sits on a chair',
+    'Dark-haired woman in a dark suit sits on a chair',
+    'Redhead woman in gray jacket sits on a chair',
+    'Blonde woman in beige t-shirt sits on a chair'
+  ]
+%>
 <div class="mysola-2019">
   <div class="hero-carousel owl-carousel owl-theme owl-desktop" data-paginationoff="true" data-autoplay="4000">
     <% (1..9).each do |num| %>
       <div class="item">
-        <div class="img-wrap"><%= image_tag "https://s3.amazonaws.com/mysolaimages/hero/mysola_desktop_#{num}.jpg", :width => 1800, :height => 921 %></div>
+        <div class="img-wrap"><%= image_tag "https://s3.amazonaws.com/mysolaimages/hero/mysola_desktop_#{num}.jpg", alt: "#My Sola is. #{titles[num-1]}", :width => 1800, :height => 921 %></div>
         <div class="learn-more-button">
           <h5><%= t('page.why_sola.learn_more') %></h5>
           <span class="fa fa-angle-down"></span>
@@ -14,7 +26,7 @@
   <div class="hero-carousel owl-carousel owl-theme owl-mobile" data-paginationoff="true" data-autoplay="4000">
     <% (1..9).each do |num| %>
       <div class="item">
-        <div class="img-wrap"><%= image_tag "https://s3.amazonaws.com/mysolaimages/hero/mysola_mobile_#{num}.jpg", :width => 1125, :height => 1125 %></div>
+        <div class="img-wrap"><%= image_tag "https://s3.amazonaws.com/mysolaimages/hero/mysola_mobile_#{num}.jpg", alt: "#My Sola is. #{titles[num-1]}", :width => 1125, :height => 1125 %></div>
         <div class="learn-more-button">
           <h5><%= t('page.why_sola.learn_more') %></h5>
           <span class="fa fa-angle-down"></span>

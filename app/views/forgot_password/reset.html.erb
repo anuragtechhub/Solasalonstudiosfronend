@@ -2,19 +2,19 @@
 
 <div class="devise-sign-in">
 
-  <div style="text-align:center"><%= image_tag 'logo_white.png', :width => 200, :height => 127 %></div>
+  <div style="text-align:center"><%= image_tag 'logo_white.png', alt: "Sola Salon Studios logo", :width => 200, :height => 127 %></div>
 
   <%= form_for :forgot_password_form do |f| %>
-   
+
     <h1>Reset Your Password</h1>
 
     <% if @error %>
       <div id="error"><%= @error.html_safe %></div>
-    <% end %>   
+    <% end %>
 
     <% if @success %>
       <div id="success"><%= @success.html_safe %></div>
-    <% end %>  
+    <% end %>
 
     <div class="field">
       <label>New Password</label>

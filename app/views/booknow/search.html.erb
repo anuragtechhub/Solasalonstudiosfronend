@@ -1,6 +1,6 @@
 <div class="sola-search-hero">
 	<div class="container">
-		<h2>Find your next 
+		<h2>Find your next
       <strong class="home-services-animation">
         <span class="active"><%= t('services.hairstylist') %></span>
         <span><%= t('services.esthetician') %></span>
@@ -18,7 +18,7 @@
       location: params[:location],
       lat: params[:lat],
       lng: params[:lng],
-			path: booknow_results_path,	
+			path: booknow_results_path,
 			query: params[:query],
       referring_url: request.referrer,
 		} %>
@@ -27,14 +27,14 @@
 
 <div class="book-now-search-block">
   <div class="container kelsey-container">
-    <%= image_tag 'booknow/booknow_by_solagenius.gif', :class => 'booknow-by-solagenius' %>
-    
+    <%= image_tag 'booknow/booknow_by_solagenius.gif', alt: "Booknow by solagenius", :class => 'booknow-by-solagenius' %>
+
     <h2>Sola Salon Studios is home to thousands of independently owned and operated boutique salons!</h2>
-    
+
     <p>Customize your search to make an appointment with one of our independent hair dressers, nail techs, estheticians, massage therapists or other beauty service professionals. To learn more about each salon owner, click on their name in the search results.</p>
 
     <div class="callout-pink">
-      <%= image_tag 'booknow/mobile-device.png', :class => 'mobile-device' %>
+      <%= image_tag 'booknow/mobile-device.png', alt: 'Mobile device icon', :class => 'mobile-device' %>
       <div class="text">The BookNow search results only feature Sola professionals who use SolaGenius <span>(GlossGenius for Sola)</span>.</div>
       <div class="clearfix">&nbsp;</div>
     </div>

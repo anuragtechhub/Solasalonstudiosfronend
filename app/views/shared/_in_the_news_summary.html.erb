@@ -1,6 +1,6 @@
 <div class="in-the-news-article" data-href="<%= article.article_url %>">
   <div class="image">
-    <%= link_to article.article_url, :target => '_blank' do %><%= image_tag article.image.url(:directory), :width => 240, :height => 240 %><% end %>
+    <%= link_to article.article_url, :target => '_blank' do %><%= image_tag article.image.url(:directory), alt: "#{article.title} image", :width => 240, :height => 240 %><% end %>
   </div>
   <div class="text">
     <h4><%= link_to article.title.html_safe, article.article_url, :target => '_blank' %></h4>

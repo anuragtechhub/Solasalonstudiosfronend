@@ -30,7 +30,7 @@
               <div class="Salon-in-rgt col-md-6">
                   <div class="Salon-in-rgt-blk">
                     <a href="#get-your-free-guide" class="get-your-free-guide">
-                      <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/whitepaper.png", :alt => "img" %>
+                      <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/whitepaper.png", :alt => "Going independent document photo" %>
                     </a>
                   </div>
               </div>
@@ -106,9 +106,9 @@
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
             <div class="img-wrap">
               <% if I18n.locale.to_s == 'pt-BR' %>
-                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg' %>
+                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg', alt: "Photo of the Sola salon" %>
               <% else %>
-                <%= image_tag 'WhySola/OurStudios.jpg' %>
+                <%= image_tag 'WhySola/OurStudios.jpg', alt: "Photo of the Sola salon" %>
               <% end %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.beautiful_studios') %></span></div>
             </div>
@@ -119,7 +119,7 @@
           <div class="columns four">
             <%= link_to :blog, :class => 'benefit-tile' do %>
               <div class="img-wrap">
-                <%= image_tag 'WhySola/Community_Support.jpg' %>
+                <%= image_tag 'WhySola/Community_Support.jpg', alt: "Photo of a red-haired woman" %>
                 <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
               </div>
               <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
@@ -129,7 +129,7 @@
         <div class="columns four">
           <%= link_to 'https://www.solasalonstudios.com/blog/is-it-time-to-update-your-sola-website', :class => 'benefit-tile' do %>
             <div class="img-wrap">
-              <%= image_tag 'WhySola/Webpage.jpg' %>
+              <%= image_tag 'WhySola/Webpage.jpg', alt: "Photo of the laptop with the Sola Salon website on it" %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span></div>
             </div>
             <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
@@ -142,9 +142,9 @@
           <%= link_to :sola_pro, :class => 'benefit-tile' do %>
             <div class="img-wrap">
               <% if I18n.locale.to_s == 'en' %>
-                <%= image_tag 'WhySola/SolaPro.jpg' %>
+                <%= image_tag 'WhySola/SolaPro.jpg', alt: "Sola Pro App on the Iphone"  %>
               <% else %>
-                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg', alt: "Sola Pro App on the Iphone" %>
               <% end %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_pro') %></span></div>
             </div>
@@ -154,7 +154,7 @@
         <div class="columns four">
           <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
             <div class="img-wrap">
-              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+              <%= image_tag 'WhySola/SolaSessions.jpg', alt: "Photo of the speaker from the Sola Session" %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_sessions') %></span></div>
             </div>
             <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
@@ -164,7 +164,7 @@
           <div class="columns four">
             <%= link_to :solagenius, :class => 'benefit-tile' do %>
               <div class="img-wrap">
-                <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                <%= image_tag 'WhySola/SolaGenius.jpg', alt: "Photo of the sola genius on the phone" %>
                 <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
               </div>
               <span class="text"><%= t('page.why_sola.solagenius_text') %></span>
@@ -189,7 +189,7 @@
               <!-- watch starts here -->
              <div class="watch">
               <figure>
-                 <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/mysola.jpg", :alt => "img", :class => 'u-full-width' %>
+                 <%= image_tag "https://s3.amazonaws.com/solasalonstudios/modernsalon2019/mysola.jpg", :alt => "Photo of people with balloons in the form of letters '2 my Sola'.", :class => 'u-full-width' %>
                  </figure>
                  <div class="watch-in">
                     <a href="https://www.youtube.com/watch?v=72pips9fvwQ" class="play-video giant-video-button-wrapper" rel="72pips9fvwQ">

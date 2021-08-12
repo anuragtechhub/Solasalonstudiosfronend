@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="six columns">
 				<h1><%= t 'page.who_we_are.title' %></h1>
-				
+
 				<h2><%= t 'page.who_we_are.subhead' %></h2>
 				<p><%= t 'page.who_we_are.body1' %></p>
 				<p><%= t 'page.who_we_are.body2' %></p>
@@ -16,7 +16,7 @@
 			<div class="six columns">
 				<div class="img-wrap-paint-box-container">
 					<div class="img-wrap-paint-box">
-						<%= image_tag 'WhoWeAre_1.jpg', :class => 'u-full-width' %>		
+						<%= image_tag 'WhoWeAre_1.jpg', alt: "Who we are. Photo of a smiling master", :class => 'u-full-width' %>
 						<div class="paint-box">
 							<div class="colors">&nbsp;</div>
 							<div class="content">
@@ -37,7 +37,7 @@
 	</div>
 
 	<div class="join-our-diverse-community-container">
-		
+
 		<div class="container">
 			<div class="join-our-diverse-community">
 				<div class="row">
@@ -78,17 +78,17 @@
 				<% end %>
 			</div>
 		</div>
-		
+
 <!-- 		<div class="container inset-subhead-container experience-a-level experience-a-level-desktop">
-			<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
-			<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>	
+			<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", alt: "Who we are. Photo of a smiling master", :class => 'u-full-width' %></div>
+			<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>
 		</div> -->
 
 	</div>
 
 	<div class="container inset-subhead-container experience-a-level">
-		<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", :class => 'u-full-width' %></div>
-		<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>	
+		<div class="img-wrap"><%= image_tag "WhoWeAre_3.jpg", alt: "Who we are. Photo of a smiling master", :class => 'u-full-width' %></div>
+		<h2><%= t 'page.who_we_are.subhead2' %><div class="line">&nbsp;</div></h2>
 	</div>
 
 	<div class="container">
@@ -107,7 +107,7 @@
 
 	<div class="container">
 	  <div class="cta cta-own">
-	    <%= image_tag 'cta/OwnSalon.png' %>
+	    <%= image_tag 'cta/OwnSalon.png', alt: "Own Your Salon image. Photo of the masters." %>
 	    <div class="cta-contents">
 	      <h2><%= t 'page.who_we_are.join_our_community' %></h2>
 	      <p><%= t 'page.who_we_are.join_our_community_text' %></p>
@@ -123,15 +123,15 @@
 	<% if I18n.locale.to_s == 'en' %>
 	  <div class="sola-benefits">
 	    <div class="container">
-	      
+
 	      <div class="row">
 	        <div class="columns four">
 	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
               <% if I18n.locale.to_s == 'en' %>
-                <%= image_tag 'WhySola/SolaPro.jpg' %>
+                <%= image_tag 'WhySola/SolaPro.jpg', alt: "Sola Pro App on the Iphone" %>
               <% else %>
-                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg', alt: "Sola Pro App on the Iphone" %>
               <% end %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
 	            </div>
@@ -141,7 +141,7 @@
 	        <div class="columns four">
 	          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
-	              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+	              <%= image_tag 'WhySola/SolaSessions.jpg', alt: "Photo of the speaker from the Sola Session" %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
 	            </div>
 	            <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
@@ -150,12 +150,12 @@
 	        <div class="columns four">
 	          <%= link_to :solagenius, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
-	              <%= image_tag 'WhySola/SolaGenius.jpg' %>
+	              <%= image_tag 'WhySola/SolaGenius.jpg', alt: "Photo of the sola genius on the phone" %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.solagenius') %></span></div>
 	            </div>
 	            <span class="text"><%= t('page.who_we_are.solagenius_text') %></span>
 	          <% end %>
-	        </div>        
+	        </div>
 	      </div>
 
 	    </div> <!-- container -->
@@ -163,15 +163,15 @@
 	<% else %>
 	  <div class="sola-benefits">
 	    <div class="container">
-	      
+
 	      <div class="row">
 	        <div class="columns six">
 	          <%= link_to :sola_pro, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
               <% if I18n.locale.to_s == 'en' %>
-                <%= image_tag 'WhySola/SolaPro.jpg' %>
+                <%= image_tag 'WhySola/SolaPro.jpg', alt: "Sola Pro App on the Iphone" %>
               <% else %>
-                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg', alt: "Sola Pro App on the Iphone" %>
               <% end %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_pro') %></span></div>
 	            </div>
@@ -181,12 +181,12 @@
 	        <div class="columns six">
 	          <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
 	            <div class="img-wrap">
-	              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+	              <%= image_tag 'WhySola/SolaSessions.jpg', alt: "Photo of the speaker from the Sola Session" %>
 	              <div class="title-wrapper"><span class="title"><%= t('page.who_we_are.sola_sessions') %></span></div>
 	            </div>
 	            <span class="text"><%= t('page.who_we_are.sola_sessions_text') %></span>
 	          <% end %>
-	        </div>       
+	        </div>
 	      </div>
 
 	    </div> <!-- container -->

@@ -4,7 +4,7 @@
 	<h1><%= t 'page.our_story.title' %></h1>
 
 	<div class="img-wrap">
-		<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Group-Shot-1.jpg', :class => 'u-full-width' %>
+		<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Group-Shot-1.jpg', alt: 'Photo of parehmakers with scissors in their hands', :class => 'u-full-width' %>
 	</div>
 
 	<h2><%= t('page.our_story.body1').html_safe %></h2>
@@ -12,7 +12,7 @@
 	<p><%= t('page.our_story.body2').html_safe %></p>
 	<p><%= t('page.our_story.body3').html_safe %></p>
 	<div class="img-wrap">
-		<%= image_tag 'Story_2.jpg', :class => 'u-full-width' %>
+		<%= image_tag 'Story_2.jpg', alt: "Hairdresser in a pink jacket sits on a chair", :class => 'u-full-width' %>
 		<h5><%= t 'page.our_story.callout1_name' %></h5>
 	</div>
 
@@ -30,7 +30,7 @@
 		<p><%= t('page.our_story.body7_1').html_safe %></p>
 		<p><%= t('page.our_story.body7_2').html_safe %></p>
 		<div class="img-wrap">
-			<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Lifestyle-Shot-1.jpg', :class => 'u-full-width' %>
+			<%= image_tag '//solasalonstudios.s3.amazonaws.com/large-Story-Lifestyle-Shot-1.jpg', alt: 'Hairdresser dries his hair with a hairdryer to the client', :class => 'u-full-width' %>
 		</div>
 		<p><%= t('page.our_story.body7_3').html_safe %></p>
 	<% end %>
@@ -39,7 +39,7 @@
 		<h5>- <%= t 'page.our_story.callout2_name' %></h5>
 	</div>
 
-	<div class="img-wrap"><%= image_tag 'Story_3.jpg', :class => 'u-full-width' %></div>
+	<div class="img-wrap"><%= image_tag 'Story_3.jpg', alt: "Photo of a hairdressing chair in the studio", :class => 'u-full-width' %></div>
 
 	<p><%= t('page.our_story.body8').html_safe %></p>
   <% if I18n.locale.to_s == 'pt-BR' %>
@@ -51,7 +51,7 @@
 
 <div class="container our-story">
   <div class="cta cta-own">
-    <%= image_tag 'cta/OwnSalon.png' %>
+    <%= image_tag 'cta/OwnSalon.png', alt: "Own Your Salon image. Photo of the masters." %>
     <div class="cta-contents">
       <h2><%= t 'page.our_story.join_our_community' %></h2>
       <p><%= t 'page.our_story.join_our_community_text' %></p>

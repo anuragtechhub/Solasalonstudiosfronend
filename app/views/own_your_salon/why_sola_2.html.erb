@@ -5,9 +5,9 @@
   <div class="hero-carousel owl-carousel owl-theme">
     <div class="item">
       <% if I18n.locale.to_s == 'pt-BR' %>
-        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', :width => 1600, :height => 800 %></div>
+        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/WhySola_Hero.jpg', alt: "Photo of the master.", :width => 1600, :height => 800 %></div>
       <% else %>
-        <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :width => 1600, :height => 804 %></div>
+        <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', alt: "Photo of hairdressers at work", :width => 1600, :height => 804 %></div>
       <% end %>
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.why_sola.hero_heading1').html_safe %></h1>
@@ -43,9 +43,9 @@
       </div>
       <div class="six columns">
         <% if I18n.locale.to_s == 'pt-BR' %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', alt: "Photo of hairdressers at work", :class => 'u-full-width' %>
         <% else %>
-          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', alt: "Photo of hairdressers at work", :class => 'u-full-width' %>
         <% end %>
       </div>
     </div>
@@ -147,9 +147,9 @@
           <%= link_to :our_studios, :class => 'benefit-tile' do %>
             <div class="img-wrap">
               <% if I18n.locale.to_s == 'pt-BR' %>
-                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg' %>
+                <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+footer/OurStudios.jpg', alt: "Photo of the studio" %>
               <% else %>
-                <%= image_tag 'WhySola/OurStudios.jpg' %>
+                <%= image_tag 'WhySola/OurStudios.jpg', alt: "Photo of the studio" %>
               <% end %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.beautiful_studios') %></span></div>
             </div>
@@ -160,7 +160,7 @@
           <div class="columns four">
             <%= link_to :blog, :class => 'benefit-tile' do %>
               <div class="img-wrap">
-                <%= image_tag 'WhySola/Community_Support.jpg' %>
+                <%= image_tag 'WhySola/Community_Support.jpg', alt: "Photo of a red-haired woman" %>
                 <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_blog') %></span></div>
               </div>
               <span class="text"><%= t('page.why_sola.sola_blog_text') %></span>
@@ -170,7 +170,7 @@
         <div class="columns four">
           <%= link_to 'https://www.solasalonstudios.com/blog/is-it-time-to-update-your-sola-website', :class => 'benefit-tile' do %>
             <div class="img-wrap">
-              <%= image_tag 'WhySola/Webpage.jpg' %>
+              <%= image_tag 'WhySola/Webpage.jpg', alt: "Photo of the laptop with the Sola Salon website on it" %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.your_own_sola_webpage') %></span></div>
             </div>
             <span class="text"><%= t('page.why_sola.your_own_sola_webpage_text') %></span>
@@ -183,9 +183,9 @@
           <%= link_to :sola_pro, :class => 'benefit-tile' do %>
             <div class="img-wrap">
               <% if I18n.locale.to_s == 'en' %>
-                <%= image_tag 'WhySola/SolaPro.jpg' %>
+                <%= image_tag 'WhySola/SolaPro.jpg', alt: "Sola Pro App on the Iphone" %>
               <% else %>
-                <%= image_tag 'WhySola/SolaPro_ca.jpg' %>
+                <%= image_tag 'WhySola/SolaPro_ca.jpg', alt: "Sola Pro App on the Iphone" %>
               <% end %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_pro') %></span></div>
             </div>
@@ -195,7 +195,7 @@
         <div class="columns four">
           <%= link_to :sola_sessions, :class => 'benefit-tile' do %>
             <div class="img-wrap">
-              <%= image_tag 'WhySola/SolaSessions.jpg' %>
+              <%= image_tag 'WhySola/SolaSessions.jpg', alt: "Photo of the speaker from the Sola Session" %>
               <div class="title-wrapper"><span class="title"><%= t('page.why_sola.sola_sessions') %></span></div>
             </div>
             <span class="text"><%= t('page.why_sola.sola_sessions_text') %></span>
@@ -205,7 +205,7 @@
           <div class="columns four">
             <%= link_to :solagenius, :class => 'benefit-tile' do %>
               <div class="img-wrap">
-                <%= image_tag 'WhySola/SolaGenius.jpg' %>
+                <%= image_tag 'WhySola/SolaGenius.jpg', alt: "Photo of the sola genius on the phone" %>
                 <div class="title-wrapper"><span class="title"><%= t('page.why_sola.solagenius') %></span></div>
               </div>
               <span class="text"><%= t('page.why_sola.solagenius_text') %></span>

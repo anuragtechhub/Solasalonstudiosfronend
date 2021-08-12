@@ -5,9 +5,9 @@
   <div class="hero-carousel owl-carousel owl-theme">
     <div class="item">
       <% if I18n.locale.to_s == 'pt-BR' %>
-        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/our_studios/Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+        <div class="img-wrap"><%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/our_studios/Studios_Hero.jpg', alt: "Chairs in the salon", :width => 1600, :height => 800 %></div>
       <% else %>
-        <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', :width => 1600, :height => 800 %></div>
+        <div class="img-wrap"><%= image_tag 'Studios_Hero.jpg', alt: "Master at work on the Sola Session", :width => 1600, :height => 800 %></div>
       <% end %>
       <div class="item-content overlayed">
         <h1 class="chalet"><%= t('page.our_studios.hero_heading1').html_safe %></h1>
@@ -31,7 +31,7 @@
       <% if I18n.locale.to_s == 'pt-BR' %>
         <div class="grid-item one-hundred">
           <div class="front">
-            <%= image_tag 'studios/ShampooBowl.jpg' %>
+            <%= image_tag 'studios/ShampooBowl.jpg', alt: "Shampoo Bowl in the hands of the master" %>
             <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
           </div>
           <div class="back">
@@ -43,7 +43,7 @@
       <% else %>
         <div class="grid-item two-thirds left">
           <div class="front">
-            <%= image_tag 'studios/ShampooBowl.jpg' %>
+            <%= image_tag 'studios/ShampooBowl.jpg', alt: "Shampoo Bowl in the hands of the master" %>
             <h5 class="title"><%= t('page.our_studios.wash_basin.heading') %></h5>
           </div>
           <div class="back">
@@ -55,7 +55,7 @@
 
         <div class="grid-item one-third right">
           <div class="front">
-            <%= image_tag 'studios/Shelving.jpg' %>
+            <%= image_tag 'studios/Shelving.jpg', alt: "Hair care products" %>
             <h5 class="title"><%= t('page.our_studios.products.heading') %></h5>
           </div>
           <div class="back">
@@ -71,7 +71,7 @@
 
       <div class="grid-item one-third left">
         <div class="front">
-          <%= image_tag 'studios/Mirrors.jpg' %>
+          <%= image_tag 'studios/Mirrors.jpg', alt: "Mirros in the studio" %>
           <h5 class="title"><%= t('page.our_studios.mirror.heading') %></h5>
         </div>
         <div class="back">
@@ -83,7 +83,7 @@
 
       <div class="grid-item two-thirds right">
         <div class="front">
-          <%= image_tag 'studios/ToolCabinet.jpg' %>
+          <%= image_tag 'studios/ToolCabinet.jpg', alt: "Tool Cabinet" %>
           <h5 class="title"><%= t('page.our_studios.tool_cabinet.heading') %></h5>
         </div>
         <div class="back">
@@ -98,7 +98,7 @@
 
       <div class="grid-item one-hundred">
         <div class="front">
-          <%= image_tag 'studios/Chair.jpg' %>
+          <%= image_tag 'studios/Chair.jpg', alt: "Chair in the studio" %>
           <h5 class="title"><%= t('page.our_studios.chair.heading') %></h5>
         </div>
         <div class="back">
@@ -114,7 +114,7 @@
 
       <div class="grid-item two-thirds left">
         <div class="front">
-          <%= image_tag 'studios/Cabinet.jpg' %>
+          <%= image_tag 'studios/Cabinet.jpg', alt: "Cabinet photo" %>
           <h5 class="title"><%= t('page.our_studios.cabinetry.heading').html_safe %></h5>
         </div>
         <div class="back">
@@ -126,7 +126,7 @@
 
       <div class="grid-item one-third right">
         <div class="front">
-          <%= image_tag 'studios/Walls.jpg' %>
+          <%= image_tag 'studios/Walls.jpg', alt: "Insulated walls in the studio" %>
           <h5 class="title"><%= t('page.our_studios.insulated_walls.heading') %></h5>
         </div>
         <div class="back">
@@ -135,7 +135,7 @@
           </div>
         </div>
       </div>
-    </div>    
+    </div>
 
   </div>
 
@@ -147,7 +147,7 @@
 
   <div class="container clearfix">
     <div class="cta cta-own">
-      <%= image_tag 'cta/OwnSalon.png' %>
+      <%= image_tag 'cta/OwnSalon.png', alt: "Own Your Salon image. Photo of the masters." %>
       <div class="cta-contents">
         <h2><%= t 'page.our_studios.join_our_community' %></h2>
         <p><%= t('page.our_studios.join_our_community_text').html_safe %></p>

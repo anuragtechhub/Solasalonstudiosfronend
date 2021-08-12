@@ -9,7 +9,7 @@
         <% if blog.carousel_image.present? %>
           <div class="item sola-spotlight">
             <%= link_to show_blog_path(blog.url_name) do %>
-              <%= image_tag blog.carousel_image(:carousel) %>
+              <%= image_tag blog.carousel_image(:carousel), alt: "#{blog.title} image" %>
               <div class="carousel-text-bottom">
                 <h2><%= blog.carousel_text %></h2>
                 <h5><%= t('page.blog.sola_spotlight').html_safe %></h5>

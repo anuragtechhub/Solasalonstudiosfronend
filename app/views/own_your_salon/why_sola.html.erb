@@ -41,9 +41,9 @@
       </div>
       <div class="six columns">
         <% if I18n.locale.to_s == 'pt-BR' %>
-          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://s3.amazonaws.com/solasalonstudiosbr/pages/why_sola/banner+sidebar/WhySola_2.png', alt: "Photo of hairdressers at work", :class => 'u-full-width' %>
         <% else %>
-          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', :class => 'u-full-width' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/why_sola_content.png', alt: "Photo of hairdressers at work", :class => 'u-full-width' %>
         <% end %>
       </div>
     </div>
@@ -130,7 +130,7 @@
   <div class="sola-difference text-center">
     <h2>
       Experience the Sola
-      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/difference.png', height: 88 %>
+      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/difference.png', alt: "Difference", height: 88 %>
     </h2>
   </div>
 
@@ -141,7 +141,7 @@
           <div class="img-wrap"></div>
           <div class="item-content overlayed" style="top: 40px;">
             <div class="center-align-container" style="max-width: 1060px;">
-              <%= image_tag 'pro/Sola-Pro-Logo-2020-7@2x.png', class: 'sola-pro-logo u-full-width' %>
+              <%= image_tag 'pro/Sola-Pro-Logo-2020-7@2x.png', alt: 'A man in a hat looks at the phone', class: 'sola-pro-logo u-full-width' %>
               <div class="logo-desc"> An exclusive app to keep you educated, inspired, and connected. </div>
               <%= link_to '#sola-pro-gallery-inner', class: 'arrow-link' do %>
                 <i class="fa fa-angle-down text-center"></i>
@@ -161,7 +161,7 @@
     <div class="container" data-aos="fade-up" data-aos-offset="200">
       <div class="block-quote-testimonial">
         <h3><%= t('page.sola_pro.testimonial_text_new') %></h3>
-        <%= image_tag 'pro/TahesaNelson.png' %>
+        <%= image_tag 'pro/TahesaNelson.png', alt: "Tahesa Nelson photo" %>
         <h4><%= t('page.sola_pro.testimonial_author_new') %></h4>
       </div>
     </div>
@@ -218,7 +218,7 @@
         <%= link_to "#success-story-modal", class: 'open-magnific-popup-link'  do %>
           <div class="book-now-service-success-story">
             <div class="book-now-service-success-story-logo">
-              <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/2018-Faces-of-Sola.png' %>
+              <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/2018-Faces-of-Sola.png', alt: "Headshot of Sola master" %>
             </div>
             <div class="book-now-service-success-story-title">
               <span><%= t('page.why_sola.success-story') %></span>

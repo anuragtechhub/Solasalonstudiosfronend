@@ -1,4 +1,4 @@
-<%= render 'shared/public_website/about_us_nav', :page => :leadership %>
+<%= render 'shared/public_website/about_us_nav', page: :leadership %>
 
 
 <div class="container content-container">
@@ -12,10 +12,10 @@
 	<div class="leadership-bio">
 		<h2>J. Todd Neel</h2>
 		<p class="title"><%= t 'page.leadership.cfo' %></p>
-		<div class="img-wrap"><%= image_tag 'Leadership/Todd.jpg', :width => 1600, :height => 1000 %></div>
+		<div class="img-wrap"><%= image_tag 'Leadership/Todd.jpg', alt: "J. Todd Neel photo", width: 1600, height: 1000 %></div>
 		<%= t('page.leadership.j_todd_neel_bio').html_safe %>
 	</div>
-	
+
 </div>
 
 <% content_for(:title) { "#{t('page.leadership.title').html_safe} - J. Todd Neel" } %>

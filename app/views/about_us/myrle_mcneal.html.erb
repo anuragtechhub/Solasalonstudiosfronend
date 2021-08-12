@@ -7,14 +7,14 @@
 		<span class="back-arrow-pink"></span>
 		<span class="name"><%= t 'page.leadership.title' %><span>
 	<% end %>
-	
+
 	<div class="leadership-bio">
 		<h2>Myrle McNeal</h2>
 		<p class="title"><%= t 'page.leadership.coo' %></p>
-		<div class="img-wrap"><%= image_tag 'Leadership/Myrle.jpg', :width => 1600, :height => 1000 %></div>
+		<div class="img-wrap"><%= image_tag 'Leadership/Myrle.jpg', alt: 'Myrle McNeil', :width => 1600, :height => 1000 %></div>
 		<%= t('page.leadership.myrle_mcneal_bio').html_safe %>
 	</div>
-	
+
 </div>
 
 <% content_for(:title) { "#{t('page.leadership.title').html_safe} - Myrle McNeil" } %>

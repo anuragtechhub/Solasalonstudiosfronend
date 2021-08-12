@@ -2,9 +2,9 @@
   <div class="blog-post-article news-pr">
 
     <div class="row">
-      
+
       <div class="one-third column">
-        <%= image_tag @article.image.url(:directory), :width => 240, :height => 240, :class => 'news-image' %>
+        <%= image_tag @article.image.url(:directory), alt: "#{@article.title} top image", :width => 240, :height => 240, :class => 'news-image' %>
         <% if @article.article_url %><p><%= link_to "#{t('page.article.view_post').html_safe} &gt;".html_safe, url_helper(@article.article_url), :target => "_blank" %></p><% end %>
         <h4 class="large"><%= @article.title.html_safe %></h4>
         <p class="subtle"><%= t('page.article.posted_on', :date => @article.created_at.strftime('%B %e, %Y')).html_safe %></p>
@@ -15,7 +15,7 @@
           <li><%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => '_blank' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
         </ul>
       </div>
-      
+
       <div class="two-thirds column">
         <div class="summary"><%= @article.body.gsub(/\n/, '<hr class="br" />').html_safe %></div>
       </div>

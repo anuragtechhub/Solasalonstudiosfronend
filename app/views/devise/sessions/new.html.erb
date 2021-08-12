@@ -2,13 +2,13 @@
 
 <div class="devise-sign-in">
 
-  <div style="text-align:center"><%= image_tag 'logo_white.png', :width => 200, :height => 127 %></div>
+  <div style="text-align:center"><%= image_tag 'logo_white.png', alt: "Sola Salon Studios logo", :width => 200, :height => 127 %></div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   
+
     <% if request && request.post? && flash && flash.keys && flash.keys.size > 0 %>
       <div id="error">Invalid username or password</div>
-    <% end %>   
+    <% end %>
 
     <div class="field">
       <%= f.label :username %>

@@ -1,6 +1,6 @@
 <div class="container">
   <div style="margin: 30px">
-    <img src="<%= @my_sola_image.generated_image.url(:original) if @my_sola_image && @my_sola_image.generated_image.present? %>" style="width: 100%; height: auto;" />
+    <img src="<%= @my_sola_image.generated_image.url(:original) if @my_sola_image && @my_sola_image.generated_image.present? %>" alt="<%= @my_sola_image && @my_sola_image.statement_text.present? ? @my_sola_image.statement_text : "#MySola" %>" style="width: 100%; height: auto;" />
   </div>
 </div>
 

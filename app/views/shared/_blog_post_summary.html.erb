@@ -2,7 +2,7 @@
   <div class="row">
     <div class="twelve columns">
       <%= link_to show_blog_path(post), :class => 'blog-list-picture' do %>
-        <% if post.image.present? %><%= image_tag post.image(:original), :class => 'full-width', :width => 960, :height => 306 %><% end %>
+        <% if post.image.present? %><%= image_tag post.image(:original), alt: "#{post.title} image", :class => 'full-width', :width => 960, :height => 306 %><% end %>
         <div class="blog-list-picture-overlay">
           <div class="large-button"><%= t('page.blog.read_article').html_safe %></div>
         </div>

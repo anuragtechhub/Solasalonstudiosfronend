@@ -1,6 +1,6 @@
 <div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
   <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/WhySolaHeader1.gif', :width => 1600, :height => 800 %></div>
+    <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/WhySolaHeader1.gif', alt: "Imagine if you owned your own salon.. banner", :width => 1600, :height => 800 %></div>
     <div class="item-content bottom-center-align">
       <a href="//www.youtube.com/watch?v=U-1b_0MWs-8" rel="U-1b_0MWs-8" class="button primary play-video rounded-play-button" style="margin-bottom: 200px">
         <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', :width => 1600, :height => 800 %></div>
+    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', alt: "photo of the dancing master", :width => 1600, :height => 800 %></div>
     <div class="item-content bottom-center-align">
       <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-1" class="button primary play-video rounded-play-button" style="margin-bottom: 0px">
         <%= t('page.home.hear_from_our_sola_pros') %> <span class="fa fa-play-circle">&nbsp;</span>
@@ -28,7 +28,7 @@
 <div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
   <% if I18n.locale.to_s != 'pt-BR' %>
     <div class="item">
-      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/CANADA_whysola_header_mobile.gif', :width => 750, :height => 1060 %>
+      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/CANADA_whysola_header_mobile.gif', alt: "Imagine if you owned your own salon.. banner", :width => 750, :height => 1060 %>
       <div class="item-content bottom-center-align">
         <a href="//www.youtube.com/watch?v=U-1b_0MWs-8" rel="U-1b_0MWs-8" class="button primary play-video rounded-play-button" style="margin-top: 0px">
           <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle"></span>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="item">
-      <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', :width => 750, :height => 750 %>
+      <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', alt: "photo of the dancing master", :width => 750, :height => 750 %>
       <div class="item-content bottom-center-align">
         <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-2" class="button primary play-video rounded-play-button" style="margin-top: 0px">
           <%= t('page.hear_from_our_sola_pros') %> <span class="fa fa-play-circle"></span>
@@ -76,7 +76,7 @@
   <div class="row home-trilogy">
     <div class="three columns">
       <%= link_to :covid19 do %>
-        <%= image_tag 'Home/homecovid.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/homecovid.jpg', alt: "COVID-19 image", :class => 'u-full-width' %>
         <span class="text">
 <!--           <h2><%= t 'page.about.title' %></h2> -->
           <h2 class="small covid-title">COVID-19 Resource Center</h2>
@@ -86,7 +86,7 @@
     </div>
     <div class="three columns">
       <%= link_to :our_studios do %>
-        <%= image_tag 'Home/trilogy-our-studios.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/trilogy-our-studios.jpg', alt: "Photo of the chair in the salon", :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.our_studios.title' %></h2>
           <span class="button-wrapper"><span class="button"><%= t 'page.home.take_a_tour' %></span></span>
@@ -95,7 +95,7 @@
     </div>
     <div class="three columns">
       <%= link_to :contact_us do %>
-        <%= image_tag 'Home/trilogy-contact-us.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/trilogy-contact-us.jpg', alt: 'Contact us. Depicts a woman in a white t-shirt sitting on a chair', :class => 'u-full-width' %>
         <span class="text">
           <h2><%= t 'page.contact.title' %></h2>
           <span class="button-wrapper"><span class="button"><%= t 'page.home.get_in_touch' %></span></span>
@@ -104,7 +104,7 @@
     </div>
     <div class="three columns">
       <%= link_to :going_independent do %>
-        <%= image_tag 'Home/going_independent_home_tile.jpg', :class => 'u-full-width' %>
+        <%= image_tag 'Home/going_independent_home_tile.jpg', alt: "Guide to Going Independent. Depicted is a hairdresser washing a client's hair.", :class => 'u-full-width' %>
         <span class="text">
           <h2 class="small">Guide to Going Independent</h2>
           <span class="button-wrapper"><span class="button">Free Download</span></span>
@@ -116,14 +116,14 @@
   <div class="owl-carousel owl-theme owl-desktop">
     <div class="item"><%= link_to :why_sola, tabindex: 0 do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Sola_ImagineIf_WhySola.jpg', :alt => "If why sola" %><% end %></div>
     <div class="item"><%= link_to 'https://www.solasalonstudios.ca/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Desktop.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     <div class="item"><%= link_to 'https://pages.solasalonstudios.com/cojilio-x-sola' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/Cojilio_Sola_Banners-new.jpeg', :alt => "Sola Cojilio" %><% end %></div>
   </div>
 
   <div class="owl-carousel owl-theme owl-mobile">
     <div class="item"><%= link_to :why_sola do %><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/homepage_slider.jpg', :alt => "If why sola" %><% end %></div>
     <div class="item"><%= link_to 'https://www.solasalonstudios.ca/blog/category/sola-stories-podcast' do %><%= image_tag 'Home/Featured_Sola_Stories_Mobile.jpg', :alt => "Sola Stories" %><% end %></div>
-    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+    <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     <div class="item"><%= link_to 'https://pages.solasalonstudios.com/cojilio-x-sola' do %><%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/CojilioSolaMob.jpg', :alt => "Sola Cojilio" %><% end %></div>
   </div>
 </div>
@@ -169,7 +169,7 @@
             </div>
           <% end %>
         </div>
-        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', width: '566', height: '407' %></div>
+        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', alt: "Hairdresser doing hair", width: '566', height: '407' %></div>
       </div>
     </div>
 
@@ -209,7 +209,7 @@
             </div>
           <% end %>
         </div>
-        <div class="img-wrap"><%= image_tag 'Home/ForCustomers_BG.jpg', width: '566', height: '407' %></div>
+        <div class="img-wrap"><%= image_tag 'Home/ForCustomers_BG.jpg', alt: "Smiling master", width: '566', height: '407' %></div>
       </div>
     </div>
   </div>
@@ -220,15 +220,15 @@
     </div>
 
     <div class="owl-carousel owl-theme owl-mobile">
-      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Mobile.jpg', :alt => "Sola Pro" %><% end %></div>
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'brazil/Featured_SolaPro_Mobile.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     </div>
   <% else %>
 <!--     <div class="owl-carousel owl-theme owl-desktop">
-      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     </div>
 
     <div class="owl-carousel owl-theme owl-mobile">
-      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     </div> -->
   <% end %>
 

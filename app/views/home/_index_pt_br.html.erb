@@ -92,7 +92,7 @@
             </div>
           <% end %>
         </div>
-        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', width: '566', height: '407' %></div>
+        <div class="img-wrap"><%= image_tag 'Home/ForProfessionals_BG.jpg', alt: "Hairdresser doing hair", width: '566', height: '407' %></div>
       </div>
     </div>
 
@@ -147,11 +147,11 @@
     </div>
   <% else %>
     <div class="owl-carousel owl-theme owl-desktop">
-      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', :alt => "Sola Pro" %><% end %></div>
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'pro/2020-Featured-SolaPro-Desktop-V1-R1.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     </div>
 
     <div class="owl-carousel owl-theme owl-mobile">
-      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', :alt => "Sola Pro" %><% end %></div>
+      <div class="item"><%= link_to :sola_pro do %><%= image_tag 'Home/Featured_SolaPro_Mobile_CAN.jpg', alt: "Sola Pro. Inspiration at Your Fingertips. Learn more." %><% end %></div>
     </div>
   <% end %>
 
