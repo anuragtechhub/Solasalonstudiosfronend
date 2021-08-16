@@ -1333,6 +1333,9 @@ body.why-sola {
       .info-wrapper {
         .info {
           width: 35vw;
+          @media (max-width: 550px) {
+            width: 100%;
+          }
           .body {
             ul {
               li {
