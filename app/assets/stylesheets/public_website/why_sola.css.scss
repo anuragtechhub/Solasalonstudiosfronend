@@ -751,7 +751,7 @@ body.why-sola {
           width: 152px;
           height: 152px;
         }
-        width: 240px;
+        width: 270px;
         height: 240px;
         box-shadow: 0 3px 15px #00000029;
         border-radius: 35px;
@@ -1294,7 +1294,7 @@ body.why-sola {
       }
 
       &.sola-sessions {
-        background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/SOLASessions_Reimagined_popout_mobile_680x600.jpg");
+        background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/SOLASessions_OSN_popout_mobile_680x600.jpg");
       }
 
       &.success-story {
@@ -1319,6 +1319,30 @@ body.why-sola {
           @media (max-width: 550px) {
             margin: 10px auto;
             height: 95%;
+          }
+        }
+      }
+    }
+  }
+  &#sola-sessions-modal {
+    p {
+      margin-bottom: 15px;
+      font: normal normal normal 15px/25px Chalet-ParisSixty;
+    }
+    .wrapper {
+      .info-wrapper {
+        .info {
+          width: 35vw;
+          @media (max-width: 550px) {
+            width: 100%;
+          }
+          .body {
+            ul {
+              li {
+                margin-bottom: 0.5rem;
+                font: normal normal normal 15px/16px Chalet-ParisSixty;
+              }
+            }
           }
         }
       }
