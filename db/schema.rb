@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210530052138) do
+ActiveRecord::Schema.define(version: 20210826152413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -367,7 +367,10 @@ ActiveRecord::Schema.define(version: 20210530052138) do
     t.string   "utm_medium",             limit: 255
     t.string   "utm_content",            limit: 255
     t.string   "utm_term",               limit: 255
+    t.string   "country",                            default: "usa", null: false
   end
+
+  add_index "franchising_forms", ["country"], name: "index_franchising_forms_on_country", using: :btree
 
   create_table "franchising_requests", force: :cascade do |t|
     t.string   "name",         limit: 255

@@ -13,6 +13,7 @@ end
 #  id                     :integer          not null, primary key
 #  agree_to_receive_email :boolean
 #  city                   :string(255)
+#  country                :string           default("usa"), not null
 #  email_address          :string(255)
 #  first_name             :string(255)
 #  last_name              :string(255)
@@ -27,4 +28,8 @@ end
 #  utm_term               :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#
+# Indexes
+#
+#  index_franchising_forms_on_country  (country)
 #

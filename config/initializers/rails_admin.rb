@@ -889,9 +889,12 @@ RailsAdmin.config do |config|
     # label_plural 'Franchising Inquiries'
   end
 
-  config.model 'FranchsingForm' do
+  config.model 'FranchisingForm' do
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      scopes [:usa, :ca]
     end
     label 'Franchsing Inquiry'
     label_plural 'Franchising Inquiries'

@@ -26,10 +26,17 @@ end
 #
 # Table name: recurring_charges
 #
-#  id         :integer          not null, primary key
-#  amount     :integer
-#  end_date   :date
-#  start_date :date
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  amount      :integer
+#  charge_type :string(255)
+#  end_date    :date
+#  position    :integer
+#  start_date  :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#  lease_id    :integer
+#
+# Indexes
+#
+#  index_recurring_charges_on_lease_id  (lease_id)
 #
