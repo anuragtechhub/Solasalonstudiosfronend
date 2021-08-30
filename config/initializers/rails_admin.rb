@@ -2924,4 +2924,76 @@ RailsAdmin.config do |config|
       bindings[:controller]._current_user.franchisee != true
     end
   end
+
+  config.model 'FranchiseArticle' do
+    label 'Franchise Press And Blog'
+    label_plural 'Franchise Press And Blog'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      scopes [:all, :usa, :ca]
+      field :title
+      field :url
+      field :summary
+      field :author do
+        pretty_value do
+          value.html_safe if value.present?
+        end
+      end
+      field :created_at
+    end
+    show do
+      field :country
+      field :slug
+      field :title
+      field :url
+      field :image do
+        pretty_value do
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
+        end
+      end
+      field :summary do
+        pretty_value do
+          value.html_safe if value.present?
+        end
+      end
+      field :body do
+        pretty_value do
+          value.html_safe if value.present?
+        end
+      end
+      field :author do
+        pretty_value do
+          value.html_safe if value.present?
+        end
+      end
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+    end
+    edit do
+      field :country
+      field :title
+      field :url
+      field :image do
+        pretty_value do
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
+        end
+        delete_method :delete_image
+      end
+      field :summary
+      field :body, :ck_editor
+      field :author
+      field :categories do
+        label 'Categories'
+      end
+      field :tags do
+        label 'Tags'
+      end
+    end
+  end
 end

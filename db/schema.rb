@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210826152413) do
+ActiveRecord::Schema.define(version: 20210830143259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,6 +349,26 @@ ActiveRecord::Schema.define(version: 20210826152413) do
   add_index "events", ["userable_id"], name: "index_events_on_userable_id", using: :btree
   add_index "events", ["userable_type"], name: "index_events_on_userable_type", using: :btree
   add_index "events", ["video_id"], name: "index_events_on_video_id", using: :btree
+
+  create_table "franchise_articles", force: :cascade do |t|
+    t.string   "slug",               null: false
+    t.string   "title",              null: false
+    t.text     "url"
+    t.text     "summary"
+    t.text     "body"
+    t.string   "image_content_type"
+    t.string   "image_file_name"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "author"
+    t.integer  "country"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "franchise_articles", ["country"], name: "index_franchise_articles_on_country", using: :btree
+  add_index "franchise_articles", ["slug"], name: "index_franchise_articles_on_slug", unique: true, using: :btree
+  add_index "franchise_articles", ["title"], name: "index_franchise_articles_on_title", using: :btree
 
   create_table "franchising_forms", force: :cascade do |t|
     t.string   "first_name",             limit: 255

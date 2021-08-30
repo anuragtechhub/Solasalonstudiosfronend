@@ -8,6 +8,7 @@ class Category < ActiveRecord::Base
   has_many :tools, through: :categoriables, source: :item, source_type: 'Tool'
   has_many :videos, through: :categoriables, source: :item, source_type: 'Video'
   has_many :tags, through: :categoriables, source: :item, source_type: 'Tag'
+  has_many :franchise_articles, through: :categoriables, source: :item, source_type: 'FranchiseArticle'
 end
 
 # == Schema Information
