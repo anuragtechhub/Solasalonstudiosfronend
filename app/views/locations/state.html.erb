@@ -42,7 +42,9 @@
 
     <% @locations.group_by(&:msa_name).sort.each do |msa_name, locations| %>
       <%- msa = locations.first.msa %>
-      <h2 class="city"><%= link_to msa_name, region_path(msa.url_name) %></h2>
+      <%- if msa.present? %>
+        <h2 class="city"><%= link_to msa_name, region_path(msa.url_name) %></h2>
+      <%- end %>
 
       <% locations.sort_by(&:name).each_with_index do |location, index| %>
         <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
