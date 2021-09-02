@@ -18,6 +18,7 @@ end
 #  image_file_name    :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  kind               :integer          default(0), not null
 #  slug               :string           not null
 #  summary            :text
 #  title              :string           not null

@@ -1,3 +1,30 @@
+module ActiveRecord
+  module RailsAdminEnum
+    def enum(definitions)
+      super
+
+      definitions.each do |name, values|
+        define_method("#{ name }_enum") { self.class.send(name.to_s.pluralize).to_a }
+
+        define_method("#{ name }=") do |value|
+          if value.kind_of?(String) and value.to_i.to_s == value
+            super value.to_i
+          else
+            super value
+          end
+        end
+      end
+    end
+  end
+end
+
+ActiveRecord::Base.send(:extend, ActiveRecord::RailsAdminEnum)
+
+
+
+
+
+
 require Rails.root.join('lib/rails_admin/config/fields/types/citext')
 
 RailsAdmin.config do |config|
@@ -2930,9 +2957,10 @@ RailsAdmin.config do |config|
     label_plural 'Franchise Press And Blog'
     visible do
       bindings[:controller]._current_user.franchisee != true
-    end
+		end
+
     list do
-      scopes [:all, :usa, :ca]
+      scopes [:all, :press, :blog]
       field :title
       field :url
       field :summary
@@ -2944,6 +2972,7 @@ RailsAdmin.config do |config|
       field :created_at
     end
     show do
+      field :kind
       field :country
       field :slug
       field :title
@@ -2976,6 +3005,7 @@ RailsAdmin.config do |config|
       end
     end
     edit do
+      field :kind
       field :country
       field :title
       field :url

@@ -9,10 +9,18 @@ class FranchiseArticle < ActiveRecord::Base
   has_many :tags, through: :taggables
 
   validates :title, :slug, presence: true
-  validates :url, presence: true, unless: :body
-  validates :body, presence: true, unless: :url
+  validates :url, :summary, presence: true, if: :blog?
+  validates :body, presence: true, if: :press?
 
-  enum country: %w[usa ca]
+  enum country: {
+    us: 0,
+    ca: 1
+  }
+
+  enum kind: {
+    blog: 0,
+    press: 1
+  }
 
   has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, processors: [:thumbnail, :compression], :s3_protocol => :https
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -30,10 +38,6 @@ class FranchiseArticle < ActiveRecord::Base
   # scope :all, -> () {
   #   where(country: nil)
   # }
-
-  def country_enum
-    [%w[USA usa], %w[CA ca]]
-  end
 end
 
 # == Schema Information
@@ -48,6 +52,7 @@ end
 #  image_file_name    :string
 #  image_file_size    :integer
 #  image_updated_at   :datetime
+#  kind               :integer          default(0), not null
 #  slug               :string           not null
 #  summary            :text
 #  title              :string           not null
