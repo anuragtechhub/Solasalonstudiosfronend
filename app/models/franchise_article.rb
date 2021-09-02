@@ -8,9 +8,9 @@ class FranchiseArticle < ActiveRecord::Base
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
 
-  validates :title, :slug, presence: true
-  validates :url, :summary, presence: true, if: :blog?
-  validates :body, presence: true, if: :press?
+  validates :title, :slug, :summary, presence: true
+  validates :url, presence: true, if: :press?
+  validates :body, presence: true, if: :blog?
 
   enum country: {
     us: 0,
@@ -34,10 +34,6 @@ class FranchiseArticle < ActiveRecord::Base
   scope :search_by_query, ->(query) {
     where('LOWER(title) LIKE :query OR LOWER(body) LIKE :query OR LOWER(author) LIKE :query', query: "%#{query.downcase.gsub(/\s/, '%')}%")
   }
-
-  # scope :all, -> () {
-  #   where(country: nil)
-  # }
 end
 
 # == Schema Information
