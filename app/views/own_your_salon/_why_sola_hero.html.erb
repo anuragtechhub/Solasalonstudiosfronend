@@ -19,11 +19,11 @@
 
 <% else %>
 <!--  -->
-  <%- youtube_url = "https://www.youtube.com/watch?v=#{I18n.locale != :en ? (I18n.locale.to_s == 'en-CA' ? 'U-1b_0MWs-8' : 'zH9uewppEjk') : 'dDVuCRNTuv8'}" %>
+  <%- youtube_url = "https://www.youtube.com/watch?v=#{I18n.locale != :en ? (I18n.locale.to_s == 'en-CA' ? 'U-1b_0MWs-8' : 'zH9uewppEjk') : '1qJdxa8djUA'}" %>
   <div class="hero-carousel owl-carousel owl-theme home-all">
     <div class="item" style=" ">
       <!--parallax-window -->
-        <div class="img-wrap top-header parallax-dream-again-image <%= 'canada' if I18n.locale.to_s == 'en-CA'%>" data-parallax="scroll" data-z-index="1" data-natural-width="1920" data-natural-heigt="730" data-image-src="https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= I18n.locale.to_s == 'en-CA' ? 'Sola_ImagineIf_Canada-GIF.gif' : 'WhySolaHeader1.gif' %>">
+        <div class="img-wrap top-header parallax-dream-again-image <%= 'canada' if I18n.locale.to_s == 'en-CA'%>" data-parallax="scroll" data-z-index="1" data-natural-width="1920" data-natural-heigt="730" data-image-src="https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= I18n.locale.to_s == 'en-CA' ? 'Sola_ImagineIf_Canada-GIF.gif' : 'Why+Sola+Desktop+Header.jpg' %>">
           <div class="item-content overlayed" style="top:0px;">
             <%= link_to youtube_url, :class => "button secondary play-video rounded-play-button paralax-hidable-desktop", 'aria-label' => 'Play video' do %>
               <span aria-hidden="true"><%= t('page.why_sola.hero_button2_text') %></span> <span class="fa fa-play-circle" aria-hidden="true"></span>
@@ -36,7 +36,7 @@
 
   <div class="hero-carousel owl-carousel owl-theme home-mobile">
     <div class="item">
-      <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/#{I18n.locale.to_s == 'en-CA' ? 'CANADA_whysola_header_mobile.gif' : 'US_whysola_header_mobile.gif'}", :alt => t('page.home.slider5_heading') %></div>
+      <div class="img-wrap" style="padding-bottom:39%;"><%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/#{I18n.locale.to_s == 'en-CA' ? 'CANADA_whysola_header_mobile.gif' : 'Website+Mobile+Header_691x971px_Revised2.jpg'}", :alt => t('page.home.slider5_heading') %></div>
       <div class="item-content overlayed">
         <%= link_to youtube_url, style: "margin-top:0px;", :class => "button secondary play-video rounded-play-button paralax-hidable-mobile", 'aria-label' => 'Play video' do %>
           <span aria-hidden="true"><%= t('page.why_sola.hero_button2_text') %></span> <span class="fa fa-play-circle" aria-hidden="true"></span>
