@@ -76,7 +76,7 @@ module Solasalonstudios
 
     # franchising engine
     config.assets.precompile += %w[
-      franchising/thank_you.css franchising/style.css
+      franchising/thank_you.css franchising/style.css franchising/main_page.js
     ]
 
     config.paperclip_defaults = {storage: :s3, s3_credentials: {bucket: ENV['FOG_DIRECTORY'], s3_region: ENV['AWS_REGION'], access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']}}
