@@ -5,7 +5,9 @@
 @import "common";
 @import "pagination";
 @import "global";
-@import "./wpcp/**/*";
-@import "./wpcp/*";
+@import "wpcp/generatepress/all.min";
+@import "wpcp/generatepress/font-icons.min";
+@import "wpcp/wpfront-notification-bar/wpfront-notification-bar.min";
+@import "wpcp/1275313943b6cb7576f8467b766eee3d";
 @import "franchise_articles";
 @import "ss-social-regular";
