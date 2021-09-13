@@ -1,0 +1,150 @@
+html {
+  -moz-osx-font-smoothing: auto; //antialiased
+  -webkit-font-smoothing: auto; //antialiased
+  font-smoothing: auto; //antialiased
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  @include helvetica;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stop-scrolling {
+  // height: 100%;
+  overflow: hidden;
+  // position: fixed;
+  overflow-y: scroll;
+}
+
+.body-content {
+  position: relative;
+  background: #FFF asset-data-url('background-stripe.png') repeat-y top left;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 1000px) {
+  .body-content {
+    background-position: -160px 0px;
+  }
+}
+
+@media (max-width: 800px) {
+  .body-content {
+    background-position: -260px 0px;
+  }
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: $brand-pink;
+  @include transition(color .25s ease);
+
+  &.pink-link {
+    text-decoration: none;
+    color: $brand-pink;
+
+    &:hover, &:active {
+      color: $brand-pink-hover;
+    }
+  }
+
+  &:hover, &:active {
+    color: $brand-pink-hover;
+  }
+
+  &.tel {
+    text-decoration: none;
+    color: #000 !important;
+  }
+}
+
+h1, h2, h3, h4 {
+  a.pink-link {
+    font-weight: bold;
+  }
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.heading {
+  position: relative;
+  background: #FBFBFB;
+  border-bottom: 1px solid #E7E7E7;
+  margin-bottom: 0px;
+  padding: 30px 0;
+
+
+  h1 {
+    font-size: 54px;
+    line-height: 54px;
+    width: calc(100% - 160px);
+
+    &.salon_professional_name {
+      padding-bottom: 25px;
+      border-bottom: 1px solid #E7E7E7;
+    }
+  }
+
+  h3 {
+    display: inline-block;
+    margin-top: 3px;
+    padding-top: 25px;
+    font-size: 17px;
+    line-height: 17px;
+
+    &.salon_professional_business_name {
+      padding-top: 5px;
+    }
+  }
+
+  .badge {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -60px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .heading .badge {
+    right: 15px;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .heading {
+    padding: 30px;
+
+    h1, h3 {
+      text-align: center;
+      display: block;
+      width: auto;
+    }
+
+    .badge {
+      position: static;
+      top: auto;
+      left: auto;
+      width: 120px;
+      margin: 30px auto 0 auto;
+    }
+  }
+}

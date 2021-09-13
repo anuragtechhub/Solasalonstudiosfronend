@@ -1,0 +1,437 @@
+@import 'franchising/mixins';
+
+.main-container {
+  background: #f5f9fb;
+  max-width: 100%;
+  margin: 0 auto 0 auto;
+  // padding: 150px 0 150px 0;
+}
+
+.thank-you-container {
+  background: #fff;
+  border-radius: 8px;
+  max-width:85%;
+  margin: 225px auto 150px auto;
+  padding: 0 100px 100px 100px;
+}
+
+.thank-you-container h1 {
+  @include northwell;
+  font-size: 96px;
+  letter-spacing: 0px;
+  line-height: 72px;
+  color: #000;
+  padding-top: 50px;
+}
+
+.container-left {
+  margin: 0 10px 0 auto;
+  max-width: 58%;
+}
+
+.thank-you-copy p {
+  @include helvetica;
+  font-size: 20px;
+  line-height: 40px;
+  color: #4A4A4A;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.thank-you-copy a {
+  display: inline;
+  color: #4A9DD4;
+  text-decoration: underline !important;
+}
+
+.thank-you-social ul li a i {
+  font-size: 35px;
+  line-height: 25px;
+  color: #ec008c;
+  margin-top: 25px;
+  padding: 0 18px 0 10px;
+}
+
+/*--Responsive Start Here--*/
+@media screen and (max-width:1170px) {
+  .container{ max-width: 100%;padding: 0 15px;}
+  .contact {padding: 7px 0 0; }
+  .contact a { top: -2px; }
+  .banner-left h1 { font-size: 40px;line-height: 50px;}
+  .banner-right {right: 5%;}
+  .banner-right figure img {
+    max-width: 480px;
+    width: 100%;
+  }
+  .featured-in ul{margin: 0;}
+  .comp-right-in{padding: 0 14px 0 80px;}
+  .comp-right h2{font-size: 40px;line-height: 50px;padding: 0 0 10px;}
+  .comp-right p{line-height: 28px;padding: 0 0 20px;}
+  .location_in ul li{margin: 0 14px;}
+  .union{top: 36%;right: 1%;}
+  /*--Learnmore page start Here--*/
+  .inve-left h4{font-size: 30px;line-height: 40px;}
+  .investors{padding: 158px 0 60px 0;}
+  .site_in h1{font-size: 55px;line-height: 70px;}
+  .site-right-in{padding: 25px 0 0 40px;}
+  .design-left-in{padding: 60px 0 0 3px;}
+  .training-right-in{padding: 10px 0 0 40px;}
+  .mark-left-in{padding: 0px 30px 0 0;}
+  .marketing{padding: 50px 0 50px 0;}
+  .invest_in{padding: 50px 0;}
+  .fund p{width: 40%;}
+  .fund span{width: 50%;}
+  .gross p{width: 48%;}
+  .gross span{width: 52%;}
+  .amazing-right-in{padding: 10px 0 0 10px;}
+  .amazing-right-in h4{padding: 0 0 10px;}
+  .amazing-right-in ul li span{font-size: 16px;line-height: 24px;}
+  /*--Whysola page start Here--*/
+  .inspire-right-in{padding: 0 0 0 30px;}
+  .inspire-right-in h1{padding: 0 0 20px;}
+  .model{max-width: 100%;}
+  .invest-right-in{padding: 45px 10px;}
+}
+@media screen and (max-width:991px) {
+  .logo {width: 40%; }
+  nav{padding-left: 36px;}
+  .banner-right{top: 125px;right: 16px;}
+  .union{top: 34%;right: 1%;}
+  .banner-left h1{font-size: 25px;line-height: 40px;}
+  .comp-right h2{font-size: 34px;line-height: 40px;}
+  .comp-right p{font-size: 14px;line-height: 22px;padding: 0 0 10px;}
+  .sola{padding: 60px 0 50px 0; }
+  .salon a h3{font-size: 24px;line-height: 28px;}
+  .business{padding: 60px 10px 60px ;}
+  .discover p {font-size: 17px;line-height: 30px;}
+  .franch{padding: 60px 0 60px 0;margin: 0 15px;}
+  .franch_in{}
+  .model_in > p{font-size: 22px;}
+  .guide{max-width: 100%;}
+  .guide_in{max-width: 100%;padding: 60px 0 60px 0;}
+  .location_in ul li{margin: 0 10px;}
+  /*--Whysola page start Here--*/
+  .inspire-right-in h1{font-size: 60px;line-height: 80px;}
+  .inspire-right-in p{line-height: 28px;}
+  /*--Learnmore page start Here--*/
+  .site-right-in{padding: 0 0 0 25px;}
+  .site-right h4{padding: 0 0 10px;}
+  .site-right p{line-height: 28px;}
+  .design-left-in{padding: 0;}
+  .design-left p{line-height: 28px;}
+  .training-right-in{padding: 0 0 0 20px;}
+  .training-right-in h4{padding: 0 0 10px;}
+  .training-right-in p{line-height: 24px;letter-spacing: 0;}
+  .mark-left-in{padding: 0 5px 0 0;}
+  .mark-left-in h4{padding: 0 0 10px;}
+  .mark-left-in p{line-height: 24px;letter-spacing: 0;}
+  .entre-in{padding: 40px 0 0 ;}
+  .entre-left{padding: 0;}
+  .entre-left h4{padding: 0 0 5px;}
+  .entre-left p{line-height: 24px;letter-spacing: 0;}
+  .amazing-right-in{padding: 0 0 0 10px;}
+  .amazing-right-in h4{padding: 0;}
+  .amazing-right-in p{line-height: 24px;padding: 0 0 10px;}
+  .amazing-right-in ul li{padding: 0 0 5px;}
+  .amazing-right-in ul li span{letter-spacing: 0.6px;}
+  .amazing-right-in #p1{padding: 5px 0 10px;line-height: 24px;}
+  .gross p, .fund p{font-size: 18px;width: 51%;}
+  .gross span{width: 48%;}
+  .fund span{width: 48%;}
+  .unit span{width: 26%;}
+  .invest-left-in h4{padding: 0 0 10px;}
+  .invest-left-in p{line-height: 26px;}
+  .amazing-right-in h4{font-size: 30px;line-height: 32px;}
+  .amazing-right-in ul li span{font-size: 17px;}
+  .amazing-right-in #p1{font-size: 17px;}
+
+  .thank-you-container {
+    background: #fff;
+    padding: 20px;
+    padding-top: 60px;
+    max-width:85%;
+    margin-top: 150px;
+    margin-bottom: 75px;
+    padding: 80px 20px 80px 20px;
+  }
+
+  .thank-you-container h1 {
+    @include northwell;
+    font-size: 72px;
+    letter-spacing: 0px;
+    line-height: 72px;
+    color: #000;
+    margin: 0 0 50px 0;
+    padding-top: 15px;
+    text-align: center;
+  }
+
+  .container-left {
+    margin: 0 auto 0 auto;
+    max-width: 100%;
+  }
+
+  .thank-you-copy p {
+    @include helvetica;
+    font-size: 16px;
+    line-height: 30px;
+    color: #4A4A4A;
+    font-weight: 500;
+  }
+
+  .thank-you-social {
+    margin: 0 auto 0 auto;
+    max-width: 100%
+  }
+
+  .thank-you-social ul li a i {
+    font-size: 23px;
+    line-height: 23px;
+    color: #ec008c;
+    margin-top: 25px;
+    padding: 0 9px 0 10px;
+  }
+
+
+}
+@media screen and (max-width:767px) {
+  .union {
+    display: none;
+  }
+  .banner-in {
+    padding: 30px 0 0;
+  }
+  .banner-right {
+    top: 42px;
+    left: 0;
+    right: 0;
+    position: relative;
+  }
+  .banner-left h1 {
+    font-size: 32px;
+    line-height: 34px;
+  }
+  .featured {
+    padding: 100px 0 80px 0;
+    background: #fff;
+    margin: 0 15px;
+  }
+  .featured-in {
+    max-width: 100%;
+  }
+  .featured-in ul li {
+    width: 50%;
+  }
+  .comp-right-in {
+    padding: 0;
+  }
+  .comp-right h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .comp-right p {
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .compelling {
+    padding: 75px 0 65px;
+    margin: 0 15px;
+  }
+  .compelling-in {
+  }
+  .location {
+    margin: 0 15px;
+  }
+  .business {
+    padding: 60px 0;
+    background: #fff;
+    margin: 0 15px;
+  }
+  .business-in {
+  }
+  .sola {
+    display: none;
+  }
+  .office {
+    display: block;
+  }
+  .location_in ul li {
+    width: 100%;
+    margin: 0 0 22px;
+  }
+  .sola {
+    padding: 0 0 15px 0;
+  }
+  .sola-in ul li {
+    padding: 0 0 20px;
+  }
+  .sola-in h2 {
+    font-size: 36px;
+    line-height: 40px;
+    padding: 0 0 20px;
+  }
+  .info-right {
+    padding: 0;
+  }
+  .info-right ul li a span br {
+    display: none;
+  }
+  .contact {
+    display: none;
+  }
+  .call {
+    display: block;
+    position: relative;
+    top: -6px;
+  }
+  nav {
+    display: none;
+  }
+  .side_bar nav {
+    padding: 0 !important;
+  }
+  .side_bar nav ul {
+    margin-top: 5px;
+  }
+  .side_bar .menu_icon {
+    display: block;
+  }
+  .open_menu .side_bar {
+    display: block !important;
+    background: #fff;
+  }
+  .menu_icon {
+    background: none;
+    border: 0 none;
+    outline: none;
+    position: relative;
+    top: -3px;
+    left: 0;
+    margin: 0px 0 0 0;
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+  .menu_icon span {
+    width: 30px;
+    height: 4px;
+    background: #fff;
+    display: block;
+    position: relative;
+    margin: 0 5px 0;
+  }
+  .menu_icon span + span {
+    margin: 6px 5px 0;
+  }
+  .open_menu .side_bar {
+    right: 0;
+    padding: 10px 0 0 0;
+  }
+  .open_menu .menu_icon span:nth-child(2) {
+    opacity: 0;
+  }
+  .open_menu .menu_icon span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+  }
+  .open_menu .menu_icon span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: -10px;
+  }
+  nav ul {
+    margin: 30px 0 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+  nav ul li {
+    display: block;
+    margin: 0;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 0 20px 10px;
+    margin: 0 0 10px;
+  }
+  nav ul li a {
+    color: #000;
+  }
+  nav ul li a:hover {
+    color: #499CD3;
+  }
+  .logo {
+    justify-content: center !important;
+    width: 80% !important;
+    position: relative;
+    top: -6px;
+  }
+  .play {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+  .play a {
+    width: 60px;
+    height: 60px;
+  }
+  .play a i {
+    line-height: 62px;
+  }
+  .footer-inner {
+    max-width: 100%;
+  }
+  .studios {
+    display: block;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    position: static;
+    padding-bottom: 0;
+  }
+  .studios-in {
+    max-width: 100%;
+  }
+  .head-in {
+    background: linear-gradient(323.76deg, #79CBEC 11.75%, #499CD3 44.2%);
+  }
+  .head-left {
+    width: 100%;
+  }
+  .head-right {
+    display: none !important;
+  }
+  .info-right > a > span {
+    display: block;
+  }
+  .guide_in h4 {
+    font-size: 18px;
+    line-height: 24px;
+    @include helvetica;
+    font-weight: bold;
+  }
+  .franch_in ul li {
+    padding: 0 0 43px;
+  }
+  .discover p br {
+    display: none;
+  }
+  .franch_in ul li:nth-child(2) {
+    padding: 0;
+  }
+  .comp-left {
+    padding: 0 0 30px;
+  }
+  .sola {
+    padding: 0 0 30px;
+    background: #fff;
+    margin: 0 15px;
+  }
+  .sola-in {
+  }
+  .model {
+    margin: 0 15px;
+  }
+  .head-inner {
+    padding: 14px 0 0;
+  }
+  .banner-left {
+    padding: 100px 0 0;
+  }
+}

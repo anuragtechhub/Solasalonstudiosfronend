@@ -1,0 +1,14 @@
+ca:
+  franchising:
+    brand_name: Sola Salon Studios Franchise Opportunity
+
+    website:
+      franchise_form:
+        state_selector: Province of interest
+
+    franchise_articles:
+      index:
+        read_more: Read More
+        search: Search...
+      show:
+        share_socially: Share Socially

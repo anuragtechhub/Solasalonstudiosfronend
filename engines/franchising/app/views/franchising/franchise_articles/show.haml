@@ -1,0 +1,30 @@
+.container.content-container
+  %article.franchise-article-show
+    = link_to @franchise_article.real_url do
+      .image-cover= image_tag @franchise_article.image.url(:full_width), alt: "article #{@franchise_article.id} image"
+
+    .row.main
+      .col-12.col-md-4
+        %h1.title= @franchise_article.title.html_safe
+        .date-and-author
+          = "Posted on #{@franchise_article.created_at.strftime('%B %e, %Y')}"
+          %br
+          = @franchise_article.author.html_safe
+
+        .share-socially= t('.share_socially')
+        .share
+          %ul.social
+            %li
+              = link_to "https://www.pinterest.com/pin/create/button/?url=#{request.original_url}&media=#{@franchise_article.image(:original)}&description=#{@franchise_article.safe_title}", :target => '_blank' do
+                %span.ss-social-regular.ss-pinterest
+
+            %li
+              = link_to "https://twitter.com/intent/tweet?text=#{@franchise_article.safe_title} #{request.original_url}", :target => '_blank' do
+                %span.ss-social-regular.ss-twitter
+
+            %li
+              = link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}", :target => '_blank' do
+                %span.ss-social-regular.ss-facebook
+
+      .col-12.col-md-8
+        .summary= @franchise_article.body.html_safe

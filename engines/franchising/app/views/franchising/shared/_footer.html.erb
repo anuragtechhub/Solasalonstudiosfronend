@@ -1,0 +1,96 @@
+<% if defined?(@show_franchise_form) %>
+  <%= render 'franchising/shared/franchise_form' %>
+<% end %>
+
+<div class="site-footer">
+  <div data-elementor-type="footer" data-elementor-id="397" class="elementor elementor-397 elementor-location-footer" data-elementor-settings="[]">
+    <div class="elementor-section-wrap">
+      <section class="elementor-section elementor-top-section elementor-element elementor-element-3efd882 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="3efd882" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="elementor-container elementor-column-gap-default">
+          <div class="elementor-row">
+            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-8582004" data-id="8582004" data-element_type="column">
+              <div class="elementor-column-wrap elementor-element-populated">
+                <div class="elementor-widget-wrap">
+                  <div class="elementor-element elementor-element-11521b8 elementor-widget elementor-widget-theme-site-logo elementor-widget-image" data-id="11521b8" data-element_type="widget" data-widget_type="theme-site-logo.default">
+                    <div class="elementor-widget-container">
+                      <div class="elementor-image">
+                        <a href="/">
+                          <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full lazyload" data-src="<%= image_url('wpcp/sola-logo-462w.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                          <noscript>
+                            <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full" src="<%= image_url('wpcp/sola-logo-462w.png') %>"/>
+                          </noscript>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="elementor-element elementor-element-c5ea382 elementor-nav-menu--dropdown-none elementor-nav-menu__align-left elementor-nav-menu--indicator-classic elementor-widget elementor-widget-nav-menu" data-id="c5ea382" data-element_type="widget" data-settings="{&quot;layout&quot;:&quot;horizontal&quot;}" data-widget_type="nav-menu.default">
+                    <div class="elementor-widget-container">
+                      <nav role="navigation" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-underline e--animation-fade">
+                        <ul id="menu-1-c5ea382" class="elementor-nav-menu">
+                          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-406">
+                            <% domain_name = canadian_locale? ? 'ca' : 'com' %>
+                            <%= link_to "solasalonstudios.#{domain_name}", "https://www.solasalonstudios.#{domain_name}",
+                              target: :_blank, rel: 'noopener noreferrer', class: 'elementor-item' %>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-405">
+                            <%= active_link_to 'Privacy Policy', privacy_policy_path, class_active: 'elementor-item-active', class: 'elementor-item' %>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404">
+                            <%= active_link_to 'ADA', ada_path, class_active: 'elementor-item-active', class: 'elementor-item' %>
+                          </li>
+                        </ul>
+                      </nav>
+                      <div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false">
+                        <i class="eicon-menu-bar" aria-hidden="true"></i>
+                        <span class="elementor-screen-only">Menu</span>
+                      </div>
+                      <nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" role="navigation" aria-hidden="true">
+                        <ul id="menu-2-c5ea382" class="elementor-nav-menu">
+                          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-406">
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.solasalonstudios.com/" class="elementor-item">solasalonstudios.com</a>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-405">
+                            <%= active_link_to 'Privacy Policy', privacy_policy_path, class_active: 'elementor-item-active', class: 'elementor-item' %>
+                          </li>
+                          <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-404">
+                            <%= active_link_to 'ADA', ada_path, class_active: 'elementor-item-active', class: 'elementor-item' %>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                  <div class="elementor-element elementor-element-9ee334b elementor-widget elementor-widget-text-editor" data-id="9ee334b" data-element_type="widget" data-widget_type="text-editor.default">
+                    <div class="elementor-widget-container">
+                      <div class="elementor-text-editor elementor-clearfix">
+                        <p class="white small">
+                          © Copyright <%= Time.current.year %>, Sola Salon Studios &#8211; Your Life, Your Style
+                          <br/>
+                          This advertisement is not a franchise offering. A franchise offering can be made by us only in
+                          a state if we are first registered, filed, excluded, exempted, or otherwise qualified to offer
+                          franchises in that state, and only if we provide you with an appropriate franchise disclosure
+                          document.
+                          Follow-up or individualized responses to you that involve either effecting or attempting to
+                          effect the sale of a franchise will be made only if we are first in compliance with state
+                          registration or notice filing requirements, or are covered by an applicable state exclusion or
+                          exemption. Such registration or filing does not constitute approval, recommendation, or
+                          endorsement by any state.
+                          <br/>MN Registration F-8475
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="elementor-element elementor-element-a25d8fa elementor-widget elementor-widget-text-editor" data-id="a25d8fa" data-element_type="widget" data-widget_type="text-editor.default">
+                    <div class="elementor-widget-container">
+                      <div class="elementor-text-editor elementor-clearfix">
+                        <p class="white small bold">Sola Franchise, LLC, 300 Union Boulevard, Ste 600, Lakewood, CO 80228</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,22 @@
 class FranchisingForm < ActiveRecord::Base
+  validates :first_name, :last_name, :email_address, :phone_number, :city, :state, :liquid_capital, presence: true
+  validate :multi_unit_operator_present
+
+  after_create :send_email
+
   scope :usa, -> { where(country: 'usa') }
   scope :ca, -> { where(country: 'ca') }
+
+  def send_email
+    p "FranchisingForm after create, send email!"
+    Franchising::ApplicationMailer.franchising_form(self).deliver_later
+  end
+
+  private
+
+  def multi_unit_operator_present
+    errors.add(:base, 'Multi-unit franchise operator can\'t be blank') unless (multi_unit_operator == true || multi_unit_operator == false)
+  end
 end
 
 # == Schema Information

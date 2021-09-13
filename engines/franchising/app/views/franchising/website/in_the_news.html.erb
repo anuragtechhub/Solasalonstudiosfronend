@@ -1,0 +1,49 @@
+<% content_for(:title) { 'In the News' } %>
+
+<% content_for(:stylesheets) do %>
+  <%= stylesheet_link_tag "franchising/style", media: "all" %>
+<% end %>
+
+<div class="news-container">
+  <div class="container news-hero">
+    <h1>In the News</h1>
+    <h3>Keep up with the latest news about Sola Salon Studios. Follow us on <a href="https://www.linkedin.com/company/solasalons" target="_blank">LinkedIn</a>, <a href="https://www.facebook.com/solasalons" target="_blank">Facebook</a>, <a href="https://www.instagram.com/solasalons/" target="_blank">Instagram</a>, <a href="https://twitter.com/solasalons" target="_blank">Twitter</a> and <a href="https://pinterest.com/solasalons/" target="_blank">Pinterest</a> for regular Sola updates, beauty tips &amp; tricks, industry news and more!</h3>
+  </div>
+
+  <div class="container content-container news-articles">
+    <% @articles.each do |article| %>
+      <div class="news-article">
+        <div class="image">
+          <%= link_to article.article_url, :target => '_blank' do %><%= image_tag article.image.url(:directory), :width => 240, :height => 240 %><% end %>
+        </div>
+        <div class="text">
+          <h4><%= link_to article.title.html_safe, article.article_url, :target => '_blank' %></h4>
+          <h5 class="date"><%= article.created_at.strftime('%B %e, %Y') %></h5>
+          <p>
+            <%= sanitize(article.summary.gsub(/<img[^>]+\>/, '').html_safe, :tags => []) if article.summary %>
+            <br />
+            <br />
+            <strong><%= link_to 'Read More', article.article_url, :class => 'pink-link', :target => '_blank' %></strong>
+          </p>
+          <ul class="social">
+            <li>
+              <%= link_to "https://www.pinterest.com/pin/create/button/?url=#{article.article_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank' do %>
+                <span class="fa fa-pinterest-p"></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.article_url}", :target => '_blank' do %>
+                <span class="fa fa-twitter"></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article.article_url}", :target => '_blank' do %>
+                <span class="fa fa-facebook-official"></span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

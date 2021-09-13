@@ -6,6 +6,12 @@ GIT
       cocaine
       orm_adapter (~> 0.5.0)
 
+PATH
+  remote: engines/franchising
+  specs:
+    franchising (0.0.1)
+      rails (~> 4.2.11.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,6 +34,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     active_model_serializers (0.10.10)
       actionpack (>= 4.1, < 6.1)
       activemodel (>= 4.1, < 6.1)
@@ -129,7 +138,7 @@ GEM
     e2mmap (0.1.0)
     erubis (2.7.0)
     escape_utils (1.2.0)
-    execjs (2.6.0)
+    execjs (2.8.1)
     exifr (1.2.4)
     faraday (1.3.0)
       faraday-net_http (~> 1.0)
@@ -171,6 +180,10 @@ GEM
       multi_json (>= 1.3.0)
       rails (>= 3.1.0)
     haml (4.0.7)
+      tilt
+    hamlit (2.15.1)
+      temple (>= 0.8.2)
+      thor
       tilt
     hike (1.2.3)
     hirb (0.7.3)
@@ -411,6 +424,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    temple (0.8.2)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     textacular (4.0.1)
@@ -426,7 +440,7 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    uglifier (3.0.0)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -442,6 +456,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   active_model_serializers (~> 0.10)
   addressable
   annotate
@@ -464,12 +479,14 @@ DEPENDENCIES
   execjs
   fingerprintjs-rails
   font-awesome-rails
+  franchising!
   friendly_id
   geocoder
   geokit-rails
   gibbon (~> 1.2.0)
   google-api-client (= 0.11.3)
   gridhook
+  hamlit
   hirb
   htmlcompressor
   hubspot-ruby
@@ -517,7 +534,7 @@ DEPENDENCIES
   thor
   thwait
   tzinfo
-  uglifier (>= 1.3.0)
+  uglifier (= 4.2.0)
   wicked_pdf
   wkhtmltopdf-binary
   wkhtmltopdf-heroku

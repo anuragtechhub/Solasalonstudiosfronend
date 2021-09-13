@@ -23,6 +23,8 @@ common: &default_settings
 
   # Logging level for log/newrelic_agent.log
   log_level: info
+  distributed_tracing:
+    enabled: true
 
 
 # Environment-specific settings are in this section.
@@ -30,16 +32,11 @@ common: &default_settings
 # If your application has other named environments, configure them here.
 development:
   <<: *default_settings
-  app_name: <%= ENV['NEW_RELIC_APP_NAME'] %>s
-
-  # NOTE: There is substantial overhead when running in developer mode.
-  # Do not use for production or load testing.
-  developer_mode: true
+  agent_enabled: false
 
 test:
   <<: *default_settings
-  # It doesn't make sense to report to New Relic from automated test runs.
-  # monitor_mode: false
+  agent_enabled: false
 
 staging:
   <<: *default_settings

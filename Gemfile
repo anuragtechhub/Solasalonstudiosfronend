@@ -10,7 +10,7 @@ gem 'pg', '0.20.0'
 gem "sass-rails", "~> 4.0.2"
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '4.2.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -30,7 +30,7 @@ gem 'oj_mimic_json'
 gem 'bcrypt'
 
 gem 'puma'
-
+gem 'hamlit'
 gem 'font-awesome-rails'
 gem 'clockwork'
 
@@ -123,6 +123,7 @@ gem 'pg_search'
 gem 'pry'
 gem 'bigdecimal', '1.3.5'
 gem 'thwait'
+gem 'active_link_to'
 
 # Background processing
 gem 'sidekiq'
@@ -141,3 +142,5 @@ end
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'browser'
+
+gem 'franchising', path: 'engines/franchising'

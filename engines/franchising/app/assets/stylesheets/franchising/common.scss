@@ -1,0 +1,12 @@
+//overriding bootstrap
+.page-item.active .page-link {
+  background-color: #7f8994;
+  border-color: #606871;
+}
+
+.page-link {
+  color: #7f8994;
+  &:not(.active):hover {
+    color: #606871 !important;
+  }
+}

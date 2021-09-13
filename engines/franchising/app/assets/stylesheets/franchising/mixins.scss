@@ -1,0 +1,93 @@
+@mixin background-gradient ($top, $bottom) {
+  background-color: $bottom;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bottom));
+  background: -webkit-linear-gradient(top, $top, $bottom);
+  background: -moz-linear-gradient(top, $top, $bottom);
+  background: -ms-linear-gradient(top, $top, $bottom);
+  background: -o-linear-gradient(top, $top, $bottom);
+}
+
+@mixin border-radius ($amt) {
+  -webkit-border-radius: $amt;
+  -moz-border-radius: $amt;
+  border-radius: $amt;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin helvetica() {
+  font-family: Helvetica, Arial, sans-serif; //"Helvetica Neue",
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin chalet_new_york() {
+  font-family: Chalet-NewYorkSixty, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
+}
+
+@mixin chalet_paris() {
+  font-family: Chalet-ParisSixty, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  -moz-osx-font-smoothing: antialiased; //auto
+  -webkit-font-smoothing: antialiased; //auto
+  font-smoothing: antialiased; //auto
+}
+
+@font-face {
+  font-family: "Northwell";
+  src: font-url('Northwell.eot');
+  src: font-url('Northwell.eot?#iefix') format('embedded-opentype'),
+  font-url('Northwell.woff') format('woff'),
+  font-url('Northwell.ttf')  format('truetype'),
+  font-url('Northwell.svg#Northwell') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin northwell() {
+  font-family: "Northwell", script, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin times_new_roman() {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: -1.9px;
+}
+
+// these fonts are not added to project
+
+//@mixin chalet_london_oblique() {
+//  font-family: "chalet-london-oblique", sans-serif;
+//  font-style: normal;
+//  font-weight: 400;
+//}
+//
+//@mixin playfair() {
+//  font-family: 'PlayfairDisplay-Regular', serif;
+//  letter-spacing: 0;
+//}
+
+//@mixin chalet_london() {
+//  font-family: "chalet-london-sixty", sans-serif;
+//  font-style: normal;
+//  font-weight: 400;
+//}

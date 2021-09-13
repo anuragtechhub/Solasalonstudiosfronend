@@ -1,6 +1,7 @@
 Solasalonstudios::Application.routes.draw do
   require 'sidekiq/web'
 
+  mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV['FRANCHISING_DOMAINS'])
   mount Ckeditor::Engine => '/ckeditor'
 
   get "/" => 'home#index', :as => :home
@@ -223,6 +224,7 @@ end
 # == Route Map
 #
 #                                 Prefix Verb     URI Pattern                                                   Controller#Action
+#                     franchising_engine          /                                                             Franchising::Engine
 #                               ckeditor          /ckeditor                                                     Ckeditor::Engine
 #                                   home GET      /                                                             home#index
 #                                new_cms GET      /new-cms(.:format)                                            home#new_cms
@@ -367,6 +369,9 @@ end
 #                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
 #                                        GET      /:url_name(.:format)                                          redirect#short
 #                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
+#
+# Routes for Franchising::Engine:
+#
 #
 # Routes for Ckeditor::Engine:
 #         pictures GET    /pictures(.:format)             ckeditor/pictures#index

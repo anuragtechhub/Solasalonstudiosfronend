@@ -1,0 +1,31 @@
+var downloadPDF = function () {
+  var req = new XMLHttpRequest();
+
+  if($('body').data('locale') === 'en'){
+    req.open("GET", "/franchising/pdfs/Sola Salon Studios Franchise Guide.pdf", true);
+  } else {
+    req.open("GET", "/franchising/pdfs/Sola_Franchise_Brochure_CAN_9.1.21_Final.pdf", true);
+  }
+
+  req.responseType = "blob";
+
+  req.onload = function () {
+    var blob = req.response;
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "Sola Salon Studios Franchise Guide.pdf";
+    link.click();
+  };
+
+  req.send();
+}
+
+downloadPDF();
+
+jQuery('form').remove();
+<% if @success %>
+  jQuery('.form_submitted.success').removeClass('hidded');
+<% else %>
+  jQuery('.form_submitted.error').removeClass('hidded');
+<% end %>
+jQuery('body').scrollTo('.form_submitted');

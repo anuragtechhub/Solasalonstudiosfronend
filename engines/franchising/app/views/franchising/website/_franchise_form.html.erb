@@ -1,0 +1,189 @@
+<%= form_tag('/franchising_form', multipart: true, id: 'gform_1', method: :post, remote: true) do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="hidden" name="utm_source" value="<%= cookies[:utm_source] || params[:utm_source] %>" />
+  <input type="hidden" name="utm_campaign" value="<%= cookies[:utm_campaign] || params[:utm_campaign] %>" />
+  <input type="hidden" name="utm_medium" value="<%= cookies[:utm_medium] || params[:utm_medium] %>" />
+  <input type="hidden" name="utm_content" value="<%= cookies[:utm_content] || params[:utm_content]%>" />
+  <input type="hidden" name="utm_term" value="<%= cookies[:utm_term] || params[:utm_term] %>" />
+
+
+
+  <div class='gform_body'>
+    <ul id='gform_fields_1' class='gform_fields top_label form_sublabel_below description_below'>
+      <li id='field_1_8'  class='gfield gfield_contains_required field_sublabel_below field_description_below hidden_label gfield_visibility_visible' >
+        <label class='gfield_label'>Interested In<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_radio'>
+          <ul class='gfield_radio' id='input_1_8'>
+            <li class='gchoice_1_8_0'>
+              <input name='input_8' type='radio' value='stylist' id='choice_1_8_0' class="gatekeeper-radio" />
+              <label for='choice_1_8_0' id='label_1_8_0'>I’m a beauty professional interested in leasing a Sola studio.</label>
+            </li>
+            <li class='gchoice_1_8_1'>
+              <input name='input_8' checked="checked" type='radio' value='franchise'  id='choice_1_8_1' class="gatekeeper-radio" />
+              <label for='choice_1_8_1' id='label_1_8_1'>I’m an investor interested in owning a Sola franchise.</label>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <ul id='gform_fields_2' class='hidded gform_fields top_label form_sublabel_below description_below'>
+      <li id='field_1_9'  class='gfield gfield_html gfield_html_formatted gfield_no_follows_desc field_sublabel_below field_description_below gfield_visibility_visible' >
+        <p class="white studio-leasing">
+          <a href="https://www.solasalonstudios.com/" target="_blank">Click here for studio leasing information.</a>
+        </p>
+      </li>
+    </ul>
+    <ul id='gform_fields_3' class='gform_fields top_label form_sublabel_below description_below'>
+      <li id='field_1_1'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_1' >First Name<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_text'>
+          <input name='first_name' id='input_1_1' type='text' value='' class='large' aria-required="true" aria-invalid="false" required/>
+        </div>
+      </li>
+      <li id='field_1_2'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_2' >Last Name<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_text'>
+          <input name='last_name' id='input_1_2' type='text' value='' class='large' aria-required="true" aria-invalid="false" required/>
+        </div>
+      </li>
+      <li id='field_1_3'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_3' >Email<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_email'>
+          <input name='email_address' id='input_1_3' type='email' value='' class='large' aria-required="true" aria-invalid="false" placeholder="Enter a valid email address" required/>
+        </div>
+      </li>
+      <li id='field_1_4'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_4' >Phone Number<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_phone'>
+          <input name='phone_number' id='input_1_4' type='tel' value='' class='large' aria-required="true" aria-invalid="false" required/></div>
+      </li>
+      <li id='field_1_5'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_5'>
+          <%= t('.state_selector') %>
+          <span class='gfield_required'>*</span>
+        </label>
+        <div class='ginput_container ginput_container_select'>
+          <select name='state' id='input_1_5' class='large gfield_select' aria-required="true" aria-invalid="false" required>
+            <option value='' selected='selected' class='gf_placeholder'>Select One</option>
+            <% if canadian_locale? %>
+              <%= canadian_states_options %>
+            <% else %>
+              <option value='Alabama' >Alabama</option>
+              <option value='Alaska' >Alaska</option>
+              <option value='Arizona' >Arizona</option>
+              <option value='Arkansas' >Arkansas</option>
+              <option value='California' >California</option>
+              <option value='Colorado' >Colorado</option>
+              <option value='Connecticut' >Connecticut</option>
+              <option value='Delaware' >Delaware</option>
+              <option value='District of Columbia' >District of Columbia</option>
+              <option value='Florida' >Florida</option>
+              <option value='Georgia' >Georgia</option>
+              <option value='Hawaii' >Hawaii</option>
+              <option value='Idaho' >Idaho</option>
+              <option value='Illinois' >Illinois</option>
+              <option value='Indiana' >Indiana</option>
+              <option value='Iowa' >Iowa</option>
+              <option value='Kansas' >Kansas</option>
+              <option value='Kentucky' >Kentucky</option>
+              <option value='Louisiana' >Louisiana</option>
+              <option value='Maine' >Maine</option>
+              <option value='Maryland' >Maryland</option>
+              <option value='Massachusetts' >Massachusetts</option>
+              <option value='Michigan' >Michigan</option>
+              <option value='Minnesota' >Minnesota</option>
+              <option value='Mississippi' >Mississippi</option>
+              <option value='Missouri' >Missouri</option>
+              <option value='Montana' >Montana</option>
+              <option value='Nebraska' >Nebraska</option>
+              <option value='Nevada' >Nevada</option>
+              <option value='New Hampshire' >New Hampshire</option>
+              <option value='New Jersey' >New Jersey</option>
+              <option value='New Mexico' >New Mexico</option>
+              <option value='New York' >New York</option>
+              <option value='North Carolina' >North Carolina</option>
+              <option value='North Dakota' >North Dakota</option>
+              <option value='Ohio' >Ohio</option>
+              <option value='Oklahoma' >Oklahoma</option>
+              <option value='Oregon' >Oregon</option>
+              <option value='Pennsylvania' >Pennsylvania</option>
+              <option value='Rhode Island' >Rhode Island</option>
+              <option value='South Carolina' >South Carolina</option>
+              <option value='South Dakota' >South Dakota</option>
+              <option value='Tennessee' >Tennessee</option>
+              <option value='Texas' >Texas</option>
+              <option value='Utah' >Utah</option>
+              <option value='Vermont' >Vermont</option>
+              <option value='Virginia' >Virginia</option>
+              <option value='Washington' >Washington</option>
+              <option value='West Virginia' >West Virginia</option>
+              <option value='Wisconsin' >Wisconsin</option>
+              <option value='Wyoming' >Wyoming</option>
+            <% end %>
+          </select>
+        </div>
+      </li>
+      <li id='field_1_12'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_12' >City<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_phone'>
+          <input name='city' id='input_1_12' type='text' value='' class='large' aria-required="true" aria-invalid="false" required/>
+        </div>
+      </li>
+      <li id='field_1_6'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_6' >Liquid Capital Available<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_select'>
+          <select name='liquid_capital' id='input_1_6' class='large gfield_select' aria-required="true" aria-invalid="false" required>
+            <option value='' selected='selected' class='gf_placeholder'>Select One</option>
+            <option value='$0 - $250,000' >$0 - $250,000</option>
+            <option value='$250,000 - $500,000' >$250,000 - $500,000</option>
+            <option value='$500,000 - $1,000,000' >$500,000 - $1,000,000</option>
+            <option value='$1,000,000+' >$1,000,000+</option>
+          </select>
+        </div>
+      </li>
+      <li id='field_1_7'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label'  >I&#039;m interested in multi-unit ownership:<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_radio'>
+          <ul class='gfield_radio' id='input_1_7'>
+            <li class='gchoice_1_7_0'>
+              <input name='multi_unit_operator' type='radio' value='Yes'  id='choice_1_7_0' />
+              <label for='choice_1_7_0' id='label_1_7_0'>Yes</label>
+            </li>
+            <li class='gchoice_1_7_1'>
+              <input name='multi_unit_operator' type='radio' value='No'  id='choice_1_7_1' checked='checked' />
+              <label for='choice_1_7_1' id='label_1_7_1'>No</label>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li id='field_1_11'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label'  >Are you opting in to receive emails from Sola Salon Studios?<span class='gfield_required'>*</span></label>
+        <div class='ginput_container ginput_container_radio'>
+          <ul class='gfield_radio' id='input_1_11'>
+            <li class='gchoice_1_7_0'>
+              <input name='agree_to_receive_email' type='radio' value='Yes' checked='checked'  id='choice_1_11_0' />
+              <label for='choice_1_11_0' id='label_1_11_0'>Yes</label>
+            </li>
+            <li class='gchoice_1_7_0'>
+              <input name='agree_to_receive_email' type='radio' value='No'  id='choice_1_11_1' />
+              <label for='choice_1_11_1' id='label_1_11_1'>No</label>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li id='field_1_10'  class='gfield gfield_html gfield_html_formatted gfield_no_follows_desc field_sublabel_below field_description_below gfield_visibility_visible' >
+        <p class="white" style="font-size:14px;text-align:center;margin-bottom: 0;">*All fields required</p>
+      </li>
+      <li id='field_1_16'  class='gfield field_sublabel_below field_description_below gfield_visibility_visible' >
+        <label class='gfield_label' for='input_1_16' ></label>
+        <div id='input_1_16' class='ginput_container ginput_recaptcha' data-sitekey='6LdDr8IZAAAAAMnkhdd3hCLwnAccmu3OGy9jQcO9'  data-theme='light' data-tabindex='-1' data-size='invisible' data-badge='bottomright'></div>
+      </li>
+      <li>
+        <div class='gform_footer top_label'>
+          <input type='submit' id='gform_submit_button_1' class='gform_button button' value='Submit' />
+        </div>
+      </li>
+    </ul>
+  </div>
+
+<% end %>

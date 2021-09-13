@@ -1,0 +1,104 @@
+<!--Form Block Start Here-->
+<div class="guide">
+   <div class="container">
+      <a name="get-the-franchise-guide" id="get-the-franchise-guide"></a>
+      <div class="guide_in">
+         <h4>Get Our Franchise Guide</h4>
+         <p>Do you have $500K in liquid capital and $1.5M in net worth? Let’s talk about franchise opportunities.</p>
+
+         <ul class="gatekeeper">
+            <li>
+               <label><input type="radio" value="stylist" name="gatekeeper" class="gatekeeper-radio" /> I am interested in leasing at Sola Salon Studios</label>
+               <p class="franchise_formgatekeeper-stylist-link" style="display:none">For more information on Sola Salon Studios rentals, <a href="https://www.solasalonstudios.com/contact-us">click here</a>.</p>
+            </li>
+            <li>
+               <label><input type="radio" value="franchise" name="gatekeeper" class="gatekeeper-radio" /> I am interested in opening a Sola Salon Studios franchise</label>
+            </li>
+         </ul>
+
+         <form class="ways disabled" id="franchising-form">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <input type="hidden" name="utm_source" value="<%= cookies[:utm_source] || params[:utm_source] %>" />
+            <input type="hidden" name="utm_campaign" value="<%= cookies[:utm_campaign] || params[:utm_campaign] %>" />
+            <input type="hidden" name="utm_medium" value="<%= cookies[:utm_medium] || params[:utm_medium] %>" />
+            <input type="hidden" name="utm_content" value="<%= cookies[:utm_content] || params[:utm_content]%>" />
+            <input type="hidden" name="utm_term" value="<%= cookies[:utm_term] || params[:utm_term] %>" />
+
+            <a name="form-errors" id="form-errors"></a>
+            <ul class="errors"></ul>
+
+            <ul>
+               <li>
+                  <ul class="d-flex flex-wrap">
+                     <li class="d-flex col-lg-6 col-md-6 col-sm-6 col-6"><input type="text" name="first_name" id="fname" placeholder="First Name" disabled></li>
+                     <li class="d-flex col-lg-6 col-md-6 col-sm-6 col-6"><input type="text" name="last_name" id="lname" placeholder="Last Name" disabled></li>
+                  </ul>
+               </li>
+               <li>
+                  <input type="email" name="email_address" id="femail" placeholder="Email" disabled>
+               </li>
+               <li>
+                  <input type="text" name="phone_number" id="fnumb" placeholder="Phone" disabled>
+               </li>
+            </ul>
+            <div class="payment-method">
+               <p>Are you a multi-unit franchise operator? </p>
+               <ul class="d-flex flex-wrap">
+                  <li class="d-flex">
+                     <label><input type="radio" name="multi_unit_operator" value="True" disabled><span>Yes</span></label>
+                  </li>
+                  <li>
+                     <label><input type="radio" name="multi_unit_operator" value="False" disabled><span>No</span></label>
+                  </li>
+               </ul>
+            </div>
+            <div class="range">
+               <p> Liquid capital available for investment: </p>
+               <select name="liquid_capital" disabled>
+                  <option value="">Choose range</option>
+                  <option value="Under $500k">Under $500k</option>
+                  <option value="$500k – $1m">$500k – $1m</option>
+                  <option value="$1m – $1.5m">$1m – $1.5m</option>
+                  <option value="$1.5m - $2m">$1.5m - $2m</option>
+                  <option value="$2m+">$2m+</option>
+               </select>
+            </div>
+            <div class="desired">
+               <p>Desired location:</p>
+               <ul class="d-flex flex-wrap">
+                  <li class="d-flex col-lg-6 col-md-6 col-sm-6 col-6">
+                     <input type="text" name="city" placeholder="City" disabled>
+                  </li>
+                  <li class="d-flex col-lg-6 col-md-6 col-sm-6 col-6">
+                     <input type="text" name="state" placeholder="State" disabled>
+                  </li>
+               </ul>
+            </div>
+            <div class="checkbox">
+               <label>
+               <input type="checkbox" name="agree_to_receive_email" disabled>
+               <span> By checking this box, you are opting in to receive emails from Sola Salon Studios.</span>
+               </label>
+            </div>
+            <button type="submit" disabled>Download Now</button>
+         </form>
+         <div class="info d-flex flex-wrap">
+            <div class="info-left col-lg-6 col-md-6 col-sm-12">
+               <span>Ready to get started? </span>
+               <h1>Get in touch!</h1>
+            </div>
+            <div class="info-right col-lg-6 col-md-6 col-sm-12">
+               <ul>
+                  <li><a href="#" class="extra-info"><span>Lori Merrall</span></a></li>
+                  <li><a href="#" class="extra-info"><span>Director of Franchise Development</span></a></li>
+                  <li><a href="tel:4802723404" class="phone"><span>480.272.3404</span></a></li>
+                  <li><a href="mailto:franchise@solasalonstudios.com" class="web"><span>franchise@solasalonstudios.com</span></a></li>
+                  <li><a href="https://www.google.com/maps/place/300+Union+Blvd+%23600,+Lakewood,+CO+80228" class="map"><span>300 Union Blvd., Suite 600 <br>Denver, CO 80028</span></a></li>
+               </ul>
+               <!-- <a href="https://www.google.com/maps/place/300+Union+Blvd+%23600,+Lakewood,+CO+80228"><span>Open Google Maps</span></a> -->
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!--Form Block End Here-->

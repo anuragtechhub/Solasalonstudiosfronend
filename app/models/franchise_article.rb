@@ -1,6 +1,8 @@
 class FranchiseArticle < ActiveRecord::Base
+  include Rails.application.routes.mounted_helpers
   extend FriendlyId
   friendly_id :title, use: :slugged
+  paginates_per 10
 
   has_many :categoriables, as: :item, dependent: :destroy
   has_many :categories, through: :categoriables
@@ -34,6 +36,20 @@ class FranchiseArticle < ActiveRecord::Base
   scope :search_by_query, ->(query) {
     where('LOWER(title) LIKE :query OR LOWER(body) LIKE :query OR LOWER(author) LIKE :query', query: "%#{query.downcase.gsub(/\s/, '%')}%")
   }
+
+  scope :by_country_or_blank, -> (country) { where(country: [nil, country]) }
+
+  def safe_title
+    EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
+  end
+
+  def real_url
+    press? ? url.html_safe : franchising_engine.franchise_article_path(self)
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed?
+  end
 end
 
 # == Schema Information

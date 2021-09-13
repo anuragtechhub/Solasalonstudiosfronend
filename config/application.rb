@@ -1,3 +1,5 @@
+require_relative 'boot'
+
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -71,6 +73,11 @@ module Solasalonstudios
                                  'salon_stylists.js', 'blog.js', 'contact_us.js', 'contact_us_ca.js', 'own_your_salon.js', 'salon_professionals.js',
                                  'faq.js', 'sessions.js', 'sessions_2018.js', 'wow.min.js']
     config.assets.precompile += ['bootstrap4hack.css', 'slick.js', 'slick.css', 'slick-theme.css', 'sejasola.css', 'sejasola.js', 'goingindependent.js', 'goingindependent.css']
+
+    # franchising engine
+    config.assets.precompile += %w[
+      franchising/thank_you.css franchising/style.css
+    ]
 
     config.paperclip_defaults = {storage: :s3, s3_credentials: {bucket: ENV['FOG_DIRECTORY'], s3_region: ENV['AWS_REGION'], access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']}}
   end

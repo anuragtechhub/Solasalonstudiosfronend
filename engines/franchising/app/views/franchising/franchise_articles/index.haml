@@ -1,0 +1,44 @@
+- content_for(:stylesheets) do
+  = stylesheet_link_tag "franchising_articles.css", media: "all"
+
+.container.content-container
+  %article.franchise-articles
+    .row.w-100
+      .search-with-spyglass.col-lg-6.offset-lg-3.col-12.offset-0
+        = form_tag franchise_articles_path, method: :get do
+          = text_field_tag :query, params[:query], class: 'search-input', placeholder: t('.search')
+          = button_tag name: nil, class: 'search-button button primary' do
+            %span.spyglass-white
+
+    - @franchise_articles.each do |article|
+      - target_option = article.press? ? :_blank : :_self
+
+      .franchise-article.row
+        .img-fluid.col-12.col-md-4
+          = link_to article.real_url, target: target_option do
+            = image_tag article.image.url(:directory), alt: "article #{article.id} image", :width => 240, :height => 240, loading: :lazy
+
+        .col-12.col-md-8
+          %h4.title= link_to article.title.html_safe, article.real_url, target: target_option
+          .date= article.created_at.strftime('%B %e, %Y')
+
+          .summary= sanitize(article.summary.gsub(/<img[^>]+\>/, '').html_safe, :tags => [])
+
+          - if article.author.present?
+            .subtitle= article.author.html_safe
+
+          %strong= link_to t('.read_more'), article.real_url, class: 'pink-link', target: target_option
+
+          %ul.social
+            %li
+              = link_to "https://www.pinterest.com/pin/create/button/?url=#{article.real_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank', 'aria-label' => 'go to pinterest' do
+                %span.ss-social-regular.ss-pinterest{'aria-hidden' => true}
+            %li
+              = link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.url}", target: :_blank, 'aria-label' => 'go to twitter' do
+                %span.ss-social-regular.ss-twitter{'aria-hidden' => true}
+            %li
+              = link_to "https://www.facebook.com/sharer/sharer.php?u=#{article.url}", target: :_blank, 'aria-label' => 'go to facebook' do
+                %span.ss-social-regular.ss-facebook{'aria-hidden' => true}
+
+    .pagination-section
+      = paginate @franchise_articles

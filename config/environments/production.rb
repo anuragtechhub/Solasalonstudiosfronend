@@ -23,7 +23,7 @@ Solasalonstudios::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   config.assets.compile = false #true
   config.serve_static_files = true
   config.assets.digest = true
