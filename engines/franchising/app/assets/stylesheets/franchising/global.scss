@@ -54,10 +54,6 @@ a, a:link, a:visited, a:hover, a:active {
     }
   }
 
-  &:hover, &:active {
-    color: $brand-pink-hover;
-  }
-
   &.tel {
     text-decoration: none;
     color: #000 !important;
