@@ -42,7 +42,7 @@ body {
 }
 
 a, a:link, a:visited, a:hover, a:active {
-  color: $brand-pink;
+  //color: $brand-pink;
   @include transition(color .25s ease);
 
   &.pink-link {
