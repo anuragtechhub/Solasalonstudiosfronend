@@ -70,14 +70,17 @@
 
       <li id='field_1_5' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
         <%= label_tag :state, class: 'gfield_label' do %>
-          <%= t('.state_selector') %>
+          <div class="state-selector-label"><%= t('.state_selector') %></div>
           <span class='gfield_required'>*</span>
         <% end %>
         <div class='ginput_container ginput_container_select'>
           <%= select_tag :state, options_for_select(state_options_for_select),
             required: true,
             class: 'state-selector large gfield_select',
-            data: { canadian_state_options: canadian_state_options, usa_state_options: usa_state_options },
+            data: { canadian_state_options: canadian_state_options,
+                    canadian_state_selector_label: I18n.t('franchising.website.franchise_form.state_selector', locale: :ca),
+                    usa_state_selector_label: I18n.t('franchising.website.franchise_form.state_selector', locale: :en),
+                    usa_state_options: usa_state_options },
             'aria-required' => true,
             'aria-invalid' => false %>
         </div>
@@ -150,18 +153,35 @@
 
 
 <script type="text/javascript">
+  const updateStateOptions = function (value) {
+    let html;
+    const $stateSelector = $('.state-selector');
+    if (value === 'ca') {
+      html = $stateSelector.data('canadian-state-options')
+    } else {
+      html = $stateSelector.data('usa-state-options')
+    }
+
+    $stateSelector.html(html);
+  }
+
+  const updateStateSelectorLabel = function (value) {
+    let html;
+    const $stateSelector = $('.state-selector');
+    if (value === 'ca') {
+      html = $stateSelector.data('canadian-state-selector-label')
+    } else {
+      html = $stateSelector.data('usa-state-selector-label')
+    }
+
+    $('.state-selector-label').html(html);
+  }
+
   const addCountrySelectListener = function () {
     $('.country-selector').change(function (e) {
-      let html;
-      const $stateSelector = $('.state-selector');
       const value = e.target.value;
-      if (value === 'ca') {
-        html = $stateSelector.data('canadian-state-options')
-      } else {
-        html = $stateSelector.data('usa-state-options')
-      }
-
-      $stateSelector.html(html);
+      updateStateOptions(value);
+      updateStateSelectorLabel(value);
     })
   }
 
