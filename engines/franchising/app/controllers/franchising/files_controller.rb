@@ -2,7 +2,7 @@ require_dependency 'franchising/application_controller'
 
 module Franchising
 	class FilesController < ApplicationController
-		def guide
+		def pdf_guide
 			source_name = if canadian_locale?
 				'Sola_Franchise_Brochure_CAN_9.1.21_Final.pdf'
 			else

@@ -1,11 +1,7 @@
 var downloadPDF = function () {
   var req = new XMLHttpRequest();
 
-  if($('body').data('locale') === 'en'){
-    req.open("GET", "/franchising/pdfs/Sola Salon Studios Franchise Guide.pdf", true);
-  } else {
-    req.open("GET", "/franchising/pdfs/Sola_Franchise_Brochure_CAN_9.1.21_Final.pdf", true);
-  }
+  req.open("GET", "/pdfs/Sola_Franchise_Guide.pdf", true);
 
   req.responseType = "blob";
 
@@ -13,7 +9,8 @@ var downloadPDF = function () {
     var blob = req.response;
     var link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.download = "Sola Salon Studios Franchise Guide.pdf";
+    link.download = "Sola Franchise Guide.pdf";
+
     link.click();
   };
 
