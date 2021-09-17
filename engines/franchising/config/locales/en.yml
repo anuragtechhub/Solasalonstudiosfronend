@@ -35,7 +35,9 @@ en:
 
     website:
       franchise_form:
+        country_selector: Country of interest
         state_selector: State of interest
+        selector_prompt: Select One
 
     franchise_articles:
       index:
