@@ -14,7 +14,7 @@ class StylistsController < PublicWebsiteController
       redirect_to(show_salon_professional_path(:url_name => @stylist.url_name), :status => 301) and return if @stylist
     end
 
-    if @stylist && @stylist.reserved
+    if @stylist && (@stylist.reserved || @stylist.inactive?)
       redirect_to(salon_stylists_path(@stylist.location.url_name)) and return
     end
 
