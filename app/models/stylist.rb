@@ -148,6 +148,10 @@ class Stylist < ActiveRecord::Base
     self.status == 'open'
   end
 
+  def inactive?
+    !open?
+  end
+
   def first_name
     FullNameSplitter.split(name)[0]
   end
