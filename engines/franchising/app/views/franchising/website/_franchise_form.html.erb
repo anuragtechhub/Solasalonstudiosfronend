@@ -57,72 +57,32 @@
         <div class='ginput_container ginput_container_phone'>
           <input name='phone_number' id='input_1_4' type='tel' value='' class='large' aria-required="true" aria-invalid="false" required/></div>
       </li>
-      <li id='field_1_5'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
-        <label class='gfield_label' for='input_1_5'>
-          <%= t('.state_selector') %>
+
+      <li id='field_1_5' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <%= label_tag :country, class: 'gfield_label' do %>
+          <%= t('.country_selector') %>
           <span class='gfield_required'>*</span>
-        </label>
+        <% end %>
         <div class='ginput_container ginput_container_select'>
-          <select name='state' id='input_1_5' class='large gfield_select' aria-required="true" aria-invalid="false" required>
-            <option value='' selected='selected' class='gf_placeholder'>Select One</option>
-            <% if canadian_locale? %>
-              <%= canadian_states_options %>
-            <% else %>
-              <option value='Alabama' >Alabama</option>
-              <option value='Alaska' >Alaska</option>
-              <option value='Arizona' >Arizona</option>
-              <option value='Arkansas' >Arkansas</option>
-              <option value='California' >California</option>
-              <option value='Colorado' >Colorado</option>
-              <option value='Connecticut' >Connecticut</option>
-              <option value='Delaware' >Delaware</option>
-              <option value='District of Columbia' >District of Columbia</option>
-              <option value='Florida' >Florida</option>
-              <option value='Georgia' >Georgia</option>
-              <option value='Hawaii' >Hawaii</option>
-              <option value='Idaho' >Idaho</option>
-              <option value='Illinois' >Illinois</option>
-              <option value='Indiana' >Indiana</option>
-              <option value='Iowa' >Iowa</option>
-              <option value='Kansas' >Kansas</option>
-              <option value='Kentucky' >Kentucky</option>
-              <option value='Louisiana' >Louisiana</option>
-              <option value='Maine' >Maine</option>
-              <option value='Maryland' >Maryland</option>
-              <option value='Massachusetts' >Massachusetts</option>
-              <option value='Michigan' >Michigan</option>
-              <option value='Minnesota' >Minnesota</option>
-              <option value='Mississippi' >Mississippi</option>
-              <option value='Missouri' >Missouri</option>
-              <option value='Montana' >Montana</option>
-              <option value='Nebraska' >Nebraska</option>
-              <option value='Nevada' >Nevada</option>
-              <option value='New Hampshire' >New Hampshire</option>
-              <option value='New Jersey' >New Jersey</option>
-              <option value='New Mexico' >New Mexico</option>
-              <option value='New York' >New York</option>
-              <option value='North Carolina' >North Carolina</option>
-              <option value='North Dakota' >North Dakota</option>
-              <option value='Ohio' >Ohio</option>
-              <option value='Oklahoma' >Oklahoma</option>
-              <option value='Oregon' >Oregon</option>
-              <option value='Pennsylvania' >Pennsylvania</option>
-              <option value='Rhode Island' >Rhode Island</option>
-              <option value='South Carolina' >South Carolina</option>
-              <option value='South Dakota' >South Dakota</option>
-              <option value='Tennessee' >Tennessee</option>
-              <option value='Texas' >Texas</option>
-              <option value='Utah' >Utah</option>
-              <option value='Vermont' >Vermont</option>
-              <option value='Virginia' >Virginia</option>
-              <option value='Washington' >Washington</option>
-              <option value='West Virginia' >West Virginia</option>
-              <option value='Wisconsin' >Wisconsin</option>
-              <option value='Wyoming' >Wyoming</option>
-            <% end %>
-          </select>
+          <%= select_tag :country, options_for_select([['United States', 'usa'], ['Canada', 'ca']], I18n.locale == :en ? 'usa' : 'ca'), required: true, class: 'country-selector large gfield_select', 'aria-required' => true, 'aria-invalid' => false %>
         </div>
       </li>
+
+      <li id='field_1_5' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
+        <%= label_tag :state, class: 'gfield_label' do %>
+          <%= t('.state_selector') %>
+          <span class='gfield_required'>*</span>
+        <% end %>
+        <div class='ginput_container ginput_container_select'>
+          <%= select_tag :state, options_for_select(state_options_for_select),
+            required: true,
+            class: 'state-selector large gfield_select',
+            data: { canadian_state_options: canadian_state_options, usa_state_options: usa_state_options },
+            'aria-required' => true,
+            'aria-invalid' => false %>
+        </div>
+      </li>
+
       <li id='field_1_12'  class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible' >
         <label class='gfield_label' for='input_1_12' >City<span class='gfield_required'>*</span></label>
         <div class='ginput_container ginput_container_phone'>
@@ -187,3 +147,25 @@
   </div>
 
 <% end %>
+
+
+<script type="text/javascript">
+  const addCountrySelectListener = function () {
+    $('.country-selector').change(function (e) {
+      let html;
+      const $stateSelector = $('.state-selector');
+      const value = e.target.value;
+      if (value === 'ca') {
+        html = $stateSelector.data('canadian-state-options')
+      } else {
+        html = $stateSelector.data('usa-state-options')
+      }
+
+      $stateSelector.html(html);
+    })
+  }
+
+  $(document).ready(function(e) {
+    addCountrySelectListener()
+  })
+</script>
