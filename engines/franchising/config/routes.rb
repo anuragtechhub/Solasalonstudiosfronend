@@ -11,4 +11,6 @@ Franchising::Engine.routes.draw do
 
   resources :franchising_form, only: [:create]
   resources :franchise_articles, only: %i[index show]
+
+	get '/files/franchise-guide', to: 'files#guide', as: :guide_file
 end
