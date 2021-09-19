@@ -981,6 +981,9 @@ RailsAdmin.config do |config|
 
   config.model 'Location' do
     list do
+      field :id do
+        searchable true
+      end
       field :name
       field :url_name do
         label 'URL Name'
