@@ -37,7 +37,7 @@ class FranchiseArticle < ActiveRecord::Base
     where('LOWER(title) LIKE :query OR LOWER(body) LIKE :query OR LOWER(author) LIKE :query', query: "%#{query.downcase.gsub(/\s/, '%')}%")
   }
 
-  scope :by_country_or_blank, -> (country) { where(country: [nil, country]) }
+  scope :by_country_or_blank, -> (country) { where(country: [nil, country.to_s]) }
 
   def safe_title
     EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
