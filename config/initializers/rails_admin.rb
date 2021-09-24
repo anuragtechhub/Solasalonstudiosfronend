@@ -2516,6 +2516,10 @@ RailsAdmin.config do |config|
     visible false
   end
 
+  config.model 'Ckeditor::AttachmentFile' do
+    visible false
+  end
+
   config.model 'Report' do
     visible do
       bindings[:controller]._current_user.franchisee != true
@@ -2950,9 +2954,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'HubspotLog' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
+    visible false
   end
 
   config.model 'FranchiseArticle' do
