@@ -1,9 +1,9 @@
 <%= react_component 'ModernSalonContactForm', {
   all_states: all_states,
-  all_states_ca: JSON.parse(all_states_ca_json).push('Other'),
-  all_locations: JSON.parse(all_locations_msas_json),
-  all_locations_ca: JSON.parse(all_locations_ca_msas_json),
-  
+  all_states_ca: all_states_ca.push('Other'),
+  all_locations: all_locations_msas,
+  all_locations_ca: all_locations_ca_msas,
+
   source: params[:utm_source] || cookies[:utm_source] || '',
   medium: params[:utm_medium] || cookies[:utm_medium] || '',
   campaign: params[:utm_campaign] || cookies[:utm_campaign] || '',

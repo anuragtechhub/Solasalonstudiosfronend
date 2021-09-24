@@ -5,19 +5,10 @@ class PublicWebsiteController < ApplicationController
 
   layout 'public_website'
 
-  before_action :set_locale, :auth_if_test#, :auth_if_canada
+  before_action :set_locale, :auth_if_test
 
-  helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_locations_msas_json, :all_states_ca, :all_locations_ca_msas, :all_states_ca_json, :all_locations_ca_msas_json, :merge_solagenius_utm_params
+  helper_method :all_locations, :all_states, :all_locations_msas, :all_states_json, :all_states_ca, :all_locations_ca_msas, :merge_solagenius_utm_params
 
-  #http_basic_authenticate_with :name => "ohcanada", :password => "tragicallyhip", :if =>
-
-  # def auth_if_canada
-  #   if I18n.locale != :en
-  #     authenticate_or_request_with_http_basic 'canada' do |name, password|
-  #       name == 'ocanada' && password == 'trudeau'
-  #     end
-  #   end
-  # end
   require 'uri'
 
   def merge_solagenius_utm_params(url)
@@ -34,10 +25,7 @@ class PublicWebsiteController < ApplicationController
   end
 
   def auth_if_test
-    #p "request.fullpath=#{request.fullpath}, #{request.fullpath.include?('sejasola')}"
-    #p "ENV['PASSWORD_PROTECT']=#{ENV['PASSWORD_PROTECT']}"
     if ENV['PASSWORD_PROTECT'] == 'YES' && !request.fullpath.include?('sejasola')
-      #p "AUTH IT UP"
       authenticate_or_request_with_http_basic 'test' do |name, password|
         name == 'phish' && password == 'food'
       end
@@ -46,74 +34,42 @@ class PublicWebsiteController < ApplicationController
 
   def all_locations
     if I18n.locale == :en
-      @all_locations ||= Location.where(:status => 'open').where(:country => 'US')
+      @all_locations ||= Location.open.where(country: 'US')
     elsif I18n.locale.to_s == 'en-CA'
-      @all_locations ||= Location.where(:status => 'open').where(:country => 'CA')
+      @all_locations ||= Location.open.where(country: 'CA')
     elsif I18n.locale.to_s == 'pt-BR'
-      @all_locations ||= Location.where(:status => 'open').where(:country => 'BR')
+      @all_locations ||= Location.open.where(country: 'BR')
     end
   end
 
-  # def all_states_json
-  #   all_states
-  # end
-
-
   def all_states
     if I18n.locale == :en
-      # USA!
-      return all_states_us
+      all_states_us
     else
-      return all_states_ca
+      all_states_ca
     end
-    # cache_key = "all_states/#{Location.order(:updated_at => :desc).first.updated_at}"
-    # all_states = Rails.cache.fetch(cache_key) do
-    #   return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
-    # end
-    # p "all_states=#{all_states}"
-    # return all_states
   end
 
   def all_states_us
     cache_key = "all_states/#{Location.maximum(:updated_at).to_i}"
-    all_states = Rails.cache.fetch(cache_key) do
-      return Location.where(:status => 'open').where(:country => 'US').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
+    Rails.cache.fetch(cache_key) do
+      Location.open.where(country: 'US').select("DISTINCT(state)").order(:state).uniq.pluck(:state).map(&:strip).uniq
     end
-
-    # cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
-    # json = Rails.cache.fetch(cache_key) do
-    #   return all_states.to_json
-    # end
-    # p "all_states_json=#{json}"
-    # return json
-    return all_states
   end
 
   def all_states_ca
-      cache_key = "all_states_ca/#{Location.maximum(:updated_at).to_i}"
-      all_states = Rails.cache.fetch(cache_key) do
-        return Location.where(:status => 'open').where(:country => 'CA').select("DISTINCT(state)").order(:state => :asc).uniq.pluck(:state).map(&:strip).uniq
-      end
-      p "all_states=#{all_states}"
-      return all_states
-  end
-
-  def all_states_ca_json
-    # cache_key = "all_states_json/#{Location.order(:updated_at => :desc).first.updated_at}"
-    # json = Rails.cache.fetch(cache_key) do
-    #   return all_states.to_json
-    # end
-    # p "all_states_json=#{json}"
-    # return json
-    return all_states_ca.to_json
+    cache_key = "all_states_ca/#{Location.maximum(:updated_at).to_i}"
+    Rails.cache.fetch(cache_key) do
+      Location.open.where(country: 'CA').select("DISTINCT(state)").order(:state).uniq.pluck(:state).map(&:strip).uniq
+    end
   end
 
   def all_locations_msas
     cache_key = "all_locations_msas/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
-    all_locations_msas = Rails.cache.fetch(cache_key) do
+    Rails.cache.fetch(cache_key) do
       sml = []
 
-      all_locations.group_by(&:msa_name).sort.each do |msa_name, locations|
+      all_locations.includes(:msa).group_by(&:msa_name).sort.each do |msa_name, locations|
         if msa_name
           sml << {option_type: 'msa', value: msa_name, filtered_by: locations.first.state.strip}
           locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
@@ -122,28 +78,16 @@ class PublicWebsiteController < ApplicationController
         end
       end
 
-      #p "all_locations_msas #{sml}"
-
-      return sml
+      sml
     end
-    return all_locations_msas
   end
-
-  def all_locations_msas_json
-    cache_key = "all_locations_msas_json/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
-    json = Rails.cache.fetch(cache_key) do
-      return all_locations_msas.to_json
-    end
-    return json
-  end
-
 
   def all_locations_ca_msas
     cache_key = "all_locations_ca_msas/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
-    all_locations_msas = Rails.cache.fetch(cache_key) do
+    Rails.cache.fetch(cache_key) do
       sml = []
 
-      Location.where(:status => 'open').where(:country => 'CA').group_by(&:msa_name).sort.each do |msa_name, locations|
+      Location.open.includes(:msa).where(country: 'CA').group_by(&:msa_name).sort.each do |msa_name, locations|
         if msa_name
           sml << {option_type: 'msa', value: msa_name, filtered_by: locations.first.state.strip}
           locations.sort{|a, b| a.name.downcase <=> b.name.downcase}.each do |location|
@@ -152,34 +96,18 @@ class PublicWebsiteController < ApplicationController
         end
       end
 
-      #p "all_locations_msas #{sml}"
-
-      return sml
+      sml
     end
-    return all_locations_msas
-  end
-
-  def all_locations_ca_msas_json
-    cache_key = "all_locations_msas_ca_json/#{Location.maximum(:updated_at).to_i}/#{Msa.maximum(:updated_at).to_i}"
-    json = Rails.cache.fetch(cache_key) do
-      return all_locations_ca_msas.to_json
-    end
-    return json
   end
 
   def state_names
     %w(Alaska Alabama Arkansas Arizona California Colorado Connecticut District\ of\ Columbia Delaware Florida Georgia Hawaii Iowa Idaho Illinois Indiana Kansas Kentucky Louisiana Massachusetts Maryland Maine Michigan Minnesota Missouri Mississippi Montana North\ Carolina North\ Dakota Nebraska New\ Hampshire New\ Jersey New\ Mexico Nevada New\ York Ohio Oklahoma Oregon Pennsylvania Rhode\ Island South\ Carolina South\ Dakota Tennessee Texas Utah Virginia Vermont Washington Wisconsin West\ Virginia Wyoming)
   end
 
-  # def state_abbreviations
-  #   %w(AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY)
-  # end
-
   def set_locale
     force_locale = params[:force_locale]
     return I18n.locale = force_locale if force_locale.present?
-
-    #p "set_locale #{request.domain}"
+    
     if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
       I18n.locale = 'en-CA'
     elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
