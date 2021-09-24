@@ -9,7 +9,7 @@ module Franchising
     end
 
     def prompt_option
-      content_tag(:option, t('franchising.website.franchise_form.selector_prompt'), selected: true, value: nil)
+      content_tag(:option, t('franchising.website.franchise_form.selector_prompt'), selected: true, value: '')
     end
 
     def canadian_state_options

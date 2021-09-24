@@ -19,12 +19,12 @@ class Blog < ActiveRecord::Base
   validates :countries, :presence => true
   validates :url_name, :presence => true, :uniqueness => true
 
-  has_attached_file :carousel_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#', :carousel => '400x540#' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  has_attached_file :carousel_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#', :carousel => '400x540#' }, :s3_protocol => :https
   validates_attachment_content_type :carousel_image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_carousel_image
   before_validation { self.carousel_image.destroy if self.delete_carousel_image == '1' }
 
-  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, processors: [:thumbnail, :compression], :s3_protocol => :https
+  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
