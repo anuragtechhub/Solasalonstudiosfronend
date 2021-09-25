@@ -50,10 +50,20 @@ class SearchController < PublicWebsiteController
         end
       end
 
+      # preload stylists
+      @locations = Location.where(id: @locations.map(&:id)).preload(:stylists)
+
       # stylists
       if params[:stylists] != 'hidden'
         stylists_name = Stylist.where('website_name IS NULL OR website_name = ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where(:reserved => false).where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
-        stylists_website_name = Stylist.where('website_name IS NOT NULL AND website_name != ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(:status => 'open').where(:reserved => false).where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.website_name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(:location_id => nil)
+
+        stylists_website_name = Stylist
+          .where('website_name IS NOT NULL AND website_name != ?', '')
+          .joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'")
+          .where(:status => 'open')
+          .where(:reserved => false)
+          .where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.website_name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param)
+          .where.not(:location_id => nil)
 
         # service_type filter?
         #p "params[:service_type]=#{params[:service_type]}"
@@ -79,7 +89,10 @@ class SearchController < PublicWebsiteController
       end
 
       # blog posts
-      @posts = Blog.where('status = ?', 'published').where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param).order(:publish_date => :desc)
+      @posts = Blog.where('status = ?', 'published')
+                   .where('LOWER(title) LIKE ? OR LOWER(body) LIKE ? OR LOWER(author) LIKE ?', query_param, query_param, query_param)
+                   .includes(:blog_categories)
+                   .order(:publish_date => :desc)
 
       @results = @locations.size + @stylists.size + @posts.size
     end

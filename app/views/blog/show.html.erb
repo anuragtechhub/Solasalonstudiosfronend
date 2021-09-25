@@ -49,7 +49,7 @@
 <div class="container">
   <div class="blog-post-article">
 
-    <% if @post.image.present? && !@post.mysola_category %>
+    <% if @post.image.present? && !@post.mysola_category? %>
       <div class="row">
         <div class="twelve columns"><%= link_to show_blog_path(@post) do %><%= image_tag @post.image(:original), alt: "#{@post.title} image", :class => 'full-width blog-post-image' %><% end %></div>
       </div>

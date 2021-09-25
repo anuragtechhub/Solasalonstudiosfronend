@@ -88,11 +88,8 @@ class Blog < ActiveRecord::Base
     blogs
   end
 
-  def mysola_category
-    blog_categories.each do |cat|
-      return true if cat.id == 11
-    end
-    return false
+  def mysola_category?
+    blog_categories.find { |c| c.id == 11 }.present?
   end
 
   def contact_form_visible_enum

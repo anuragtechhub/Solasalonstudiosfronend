@@ -49,7 +49,7 @@
             <%= render 'shared/public_website/location_result', :location => location %>
           <% end %>
         </div>
-      <% end %>      
+      <% end %>
     <% else %>
       <% if @locations && @locations.size > 0 %>
         <h3><%= t('page.search.location_results').html_safe %></h3>
@@ -73,8 +73,8 @@
     <% if @posts && @posts.size > 0 %>
       <h3><%= t('page.search.blog_results').html_safe %></h3>
       <div class="row">
-        <% @posts.each_with_index do |post| %>
-          <% if post.mysola_category %>
+        <% @posts.each do |post| %>
+          <% if post.mysola_category? %>
             <%= render 'shared/mysola_blog_post_summary', :post => post %>
           <% else %>
             <%= render 'shared/blog_post_summary', :post => post %>
