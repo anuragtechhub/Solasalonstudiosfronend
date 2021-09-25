@@ -1,7 +1,7 @@
 var downloadPDF = function () {
   var req = new XMLHttpRequest();
 
-  req.open("GET", "/pdfs/Sola_Franchise_Guide.pdf", true);
+  req.open("GET", "/pdfs/Sola_Franchise_Guide.pdf?country=<%= @ff.country %>", true);
 
   req.responseType = "blob";
 

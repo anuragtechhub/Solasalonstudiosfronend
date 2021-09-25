@@ -32,6 +32,7 @@
   <%= yield :scripts %>
   <script>I18n.locale = "<%= I18n.locale %>";</script>
   <%= render 'shared/analytics' %>
+  <%= render 'shared/hotjar' %>
 </head>
 <body class="booknow-layout <%= @body_class || nil %>">
 

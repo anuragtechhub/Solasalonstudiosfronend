@@ -4,8 +4,8 @@ module Franchising
 	class FranchisingFormController < ApplicationController
 
 		def create
-			ff = FranchisingForm.new(create_params)
-			@success = ff.save
+			@ff = FranchisingForm.new(create_params)
+			@success = @ff.save
 		end
 
 		private

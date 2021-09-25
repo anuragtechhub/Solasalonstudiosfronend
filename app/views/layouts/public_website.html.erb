@@ -38,6 +38,7 @@
   <script>I18n.locale = '<%= I18n.locale.to_s %>'</script>
   <%= render 'shared/analytics' %>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <%= render 'shared/hotjar' %>
 </head>
 <body data-spy='scroll' data-target='.page-nav-overlay' data-offset='100' class="locale-<%= I18n.locale %> <%= @body_class ? @body_class : '' %>">
   <a class="skip-main" href="#main-content-block">Skip to main content</a>
