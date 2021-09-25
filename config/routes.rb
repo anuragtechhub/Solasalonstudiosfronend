@@ -371,7 +371,18 @@ end
 #                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
 #
 # Routes for Franchising::Engine:
-#
+#                   root GET  /                                        franchising/website#index
+#         privacy_policy GET  /privacy-policy(.:format)                franchising/website#privacy_policy
+#                    ada GET  /ada(.:format)                           franchising/website#ada
+#              thank_you GET  /thank-you(.:format)                     franchising/website#thank_you
+#             learn_more GET  /learn-more(.:format)                    franchising/website#learn_more
+#              our_story GET  /our-story(.:format)                     franchising/website#our_story
+#               why_sola GET  /why-sola(.:format)                      franchising/website#why_sola
+#            in_the_news GET  /in-the-news(.:format)                   franchising/website#in_the_news
+# franchising_form_index POST /franchising_form(.:format)              franchising/franchising_form#create
+#     franchise_articles GET  /franchise_articles(.:format)            franchising/franchise_articles#index
+#      franchise_article GET  /franchise_articles/:id(.:format)        franchising/franchise_articles#show
+#                        GET  /pdfs/Sola_Franchise_Guide.pdf(.:format) franchising/files#pdf_guide
 #
 # Routes for Ckeditor::Engine:
 #         pictures GET    /pictures(.:format)             ckeditor/pictures#index

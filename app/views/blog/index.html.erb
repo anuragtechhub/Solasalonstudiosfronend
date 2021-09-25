@@ -49,31 +49,14 @@
     </div>
 
   </div>
-
 </div>
 
 <div class="container">
-
-  <% if @category && @category.id == 11 %>
-    <div class="mysola-posts-container">
-      <% @posts.each_with_index do |post, index| %>
-        <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
-
-        <div class="four columns">
-          <%= render 'shared/mysola_blog_post_summary', :post => post %>
-        </div>
-
-        <% if ((index + 1) % 3) == 0 || index + 1 == @posts.size %></div><% end %>
-      <% end %>
-    </div>
-  <% else %>
-    <% @posts.each do |post| %>
-      <%= render 'shared/blog_post_summary', :post => post %>
-    <% end %>
+  <% @posts.each do |post| %>
+    <%= render 'shared/blog_post_summary', :post => post %>
   <% end %>
 
   <%= paginate @posts %>
-
 </div>
 
 <% content_for(:scripts) { javascript_include_tag('blog') } %>

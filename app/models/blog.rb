@@ -88,10 +88,6 @@ class Blog < ActiveRecord::Base
     blogs
   end
 
-  def mysola_category?
-    blog_categories.find { |c| c.id == 11 }.present?
-  end
-
   def contact_form_visible_enum
     [['Yes', true], ['No', false]]
   end
