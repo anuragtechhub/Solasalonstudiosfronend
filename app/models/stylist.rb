@@ -6,6 +6,11 @@ class Stylist < ActiveRecord::Base
     [:name, :email_address]
   end
 
+  enum inactive_reason: {
+    left: 0,
+    accidental: 1,
+    incorrect: 2
+  }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -132,6 +137,8 @@ class Stylist < ActiveRecord::Base
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
 
+  validates :inactive_reason, presence: true, if: :inactive?
+
   # TMP solution
   def hubspot_status
     case status
@@ -192,6 +199,14 @@ class Stylist < ActiveRecord::Base
 
   def sola_genius_enabled_enum
     [['Yes', true], ['No', false]]
+  end
+
+  def inactive_reason_enum
+    [['Sola Pro has left their salon', 0], ['Accidental account creation', 1], ['Incorrect / duplicate information', 2]]
+  end
+
+  def inactive_reason_human
+    inactive_reason_enum.find{|ar| ar.second == read_attribute(:inactive_reason)}&.first
   end
 
   # helper function to return images as array
@@ -659,6 +674,7 @@ end
 #  image_9_file_name              :string(255)
 #  image_9_file_size              :integer
 #  image_9_updated_at             :datetime
+#  inactive_reason                :integer
 #  instagram_url                  :string(255)
 #  laser_hair_removal             :boolean
 #  last_sign_in_at                :datetime
@@ -716,7 +732,6 @@ end
 #  walkins_expiry                 :datetime
 #  waxing                         :boolean
 #  website_email_address          :string(255)
-#  website_go_live_date           :date             default(Thu, 01 Jan 2004)
 #  website_name                   :string(255)
 #  website_phone_number           :string(255)
 #  website_url                    :string(255)
@@ -726,7 +741,6 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
-#  rent_manager_contact_id        :string(255)
 #  rent_manager_id                :string(255)
 #
 # Indexes

@@ -83,6 +83,7 @@ end
 #  image_9_file_name              :string(255)
 #  image_9_file_size              :integer
 #  image_9_updated_at             :datetime
+#  inactive_reason                :integer
 #  instagram_url                  :string(255)
 #  laser_hair_removal             :boolean
 #  last_sign_in_at                :datetime
@@ -140,7 +141,6 @@ end
 #  walkins_expiry                 :datetime
 #  waxing                         :boolean
 #  website_email_address          :string(255)
-#  website_go_live_date           :date             default(Thu, 01 Jan 2004)
 #  website_name                   :string(255)
 #  website_phone_number           :string(255)
 #  website_url                    :string(255)
@@ -150,7 +150,6 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
-#  rent_manager_contact_id        :string(255)
 #  rent_manager_id                :string(255)
 #
 # Indexes

@@ -144,6 +144,7 @@ end
 #
 # Indexes
 #
+#  index_request_tour_inquiries_on_email        (email)
 #  index_request_tour_inquiries_on_location_id  (location_id)
 #  index_request_tour_inquiries_on_visit_id     (visit_id)
 #

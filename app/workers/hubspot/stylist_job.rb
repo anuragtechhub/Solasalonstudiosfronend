@@ -37,8 +37,9 @@ module Hubspot
         lease_end_date: @stylist&.lease&.end_date&.utc&.to_date&.strftime('%Q')&.to_i,
         studios_at_location: @stylist.studios_at_location,
         leases_at_location: @stylist.leases_at_location,
-        hs_persona: 'persona_7',
-      })
+        inactive_reason: @stylist.inactive_reason_human,
+        hs_persona: 'persona_7'
+      }).compact
     end
 
     def contact_properties
@@ -47,9 +48,8 @@ module Hubspot
         firstname: @stylist.first_name,
         lastname: @stylist.last_name,
         phone: @stylist.phone_number,
-        #cms_status: @stylist.status,
         sola_pro_status: @stylist.hubspot_status,
-        sola_id: (@stylist.status == 'closed' ? '' : @stylist.id),
+        sola_id: @stylist.id,
         website: @stylist.website_url,
         booking_url: @stylist.booking_url,
         solagenius_booking_url: (@stylist.has_sola_genius_account.presence && @stylist.booking_url),

@@ -199,6 +199,9 @@ end
 #
 # Indexes
 #
-#  index_blogs_on_status    (status)
-#  index_blogs_on_url_name  (url_name)
+#  index_blogs_on_author_trigram  (author) USING gin
+#  index_blogs_on_body_trigram    (body) USING gin
+#  index_blogs_on_status          (status)
+#  index_blogs_on_title_trigram   (title) USING gin
+#  index_blogs_on_url_name        (url_name)
 #

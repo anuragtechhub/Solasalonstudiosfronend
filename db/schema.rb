@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210901181915) do
+ActiveRecord::Schema.define(version: 20210925135500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -258,13 +258,13 @@ ActiveRecord::Schema.define(version: 20210901181915) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "name",                            limit: 255
-    t.string   "uuid",                            limit: 255
-    t.string   "token",                           limit: 255
-    t.string   "userable_type",                   limit: 255
-    t.integer  "userable_id"
+    t.string   "uuid",                            limit: 255, null: false
+    t.string   "token",                           limit: 255, null: false
+    t.string   "userable_type",                   limit: 255, null: false
+    t.integer  "userable_id",                                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "platform",                        limit: 255
+    t.string   "platform",                        limit: 255, null: false
     t.string   "app_version"
     t.datetime "internal_rating_popup_showed_at"
     t.datetime "native_rating_popup_showed_at"
@@ -533,8 +533,8 @@ ActiveRecord::Schema.define(version: 20210901181915) do
     t.datetime "updated_at"
     t.integer  "blog_id"
     t.datetime "date_sent"
-    t.datetime "send_at"
     t.string   "title",                  limit: 65
+    t.datetime "send_at"
     t.integer  "country_id"
   end
 
@@ -632,12 +632,7 @@ ActiveRecord::Schema.define(version: 20210901181915) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "charge_type", limit: 255
-    t.integer  "lease_id"
-    t.integer  "position"
   end
-
-  add_index "recurring_charges", ["lease_id"], name: "index_recurring_charges_on_lease_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "report_type",   limit: 255
