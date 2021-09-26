@@ -23,7 +23,11 @@
 
 <div class="search-results-details">
   <div class="container">
-    <p><%= @results %> <%= t('page.search.results') %></p>
+    <% if params[:query].blank? %>
+      <p><center>Please enter a query</center></p>
+    <% else %>
+      <p><%= @results %> <%= t('page.search.results') %></p>
+    <% end %>
   </div>
 </div>
 

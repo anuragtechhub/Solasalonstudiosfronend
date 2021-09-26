@@ -4,7 +4,7 @@ class SearchController < PublicWebsiteController
   skip_before_filter :verify_authenticity_token
 
   def results
-    if params[:query]
+    if params[:query].present?
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
 
       if /^[0-9]{5}(?:-[0-9]{4})?$/.match(params[:query])
