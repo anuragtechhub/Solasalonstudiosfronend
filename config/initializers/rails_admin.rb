@@ -2016,7 +2016,7 @@ RailsAdmin.config do |config|
           help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
         end
         field :status
-        # field :inactive_reason
+        field :inactive_reason
       end
       group :contact do
         field :phone_number
@@ -2211,7 +2211,7 @@ RailsAdmin.config do |config|
           help 'If set to yes, the stylist will not have a Sola webpage, appear in the directory or in searches.'
         end
         field :status
-        # field :inactive_reason
+        field :inactive_reason
       end
       group :contact do
         field :phone_number

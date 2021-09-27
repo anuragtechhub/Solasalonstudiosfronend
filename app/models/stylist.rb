@@ -137,7 +137,7 @@ class Stylist < ActiveRecord::Base
   validate :url_name_uniqueness
   validates :url_name, :uniqueness => true, :reduce => true
 
-  #validates :inactive_reason, presence: true, if: :inactive?
+  validates :inactive_reason, presence: true, if: :inactive?
 
   # TMP solution
   def hubspot_status
