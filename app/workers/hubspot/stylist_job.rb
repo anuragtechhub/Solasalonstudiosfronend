@@ -37,7 +37,6 @@ module Hubspot
         lease_end_date: @stylist&.lease&.end_date&.utc&.to_date&.strftime('%Q')&.to_i,
         studios_at_location: @stylist.studios_at_location,
         leases_at_location: @stylist.leases_at_location,
-        inactive_reason: @stylist.inactive_reason_human,
         hs_persona: 'persona_7'
       }).compact
     end
@@ -49,6 +48,7 @@ module Hubspot
         lastname: @stylist.last_name,
         phone: @stylist.phone_number,
         sola_pro_status: @stylist.hubspot_status,
+        inactive_reason: @stylist.inactive_reason_human,
         sola_id: @stylist.id,
         website: @stylist.website_url,
         booking_url: @stylist.booking_url,
