@@ -2,6 +2,7 @@
 :timeout: 30
 :concurrency: 5
 :queues:
+  - high_priority
   - mailers
   - default
   - reports
@@ -9,6 +10,7 @@
   - [mailchimp, 1]
   - [hubspot, 1]
 :limits:
+  high_priority: 2
   mailers: 5
   default: 5
   reports: 5

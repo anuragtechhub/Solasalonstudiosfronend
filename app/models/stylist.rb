@@ -347,8 +347,8 @@ class Stylist < ActiveRecord::Base
     ::Hubspot::StylistJob.new.perform(self.id, 'inactivate')
   end
 
-  def sync_with_hubspot
-    ::Hubspot::StylistJob.perform_async(self.id, 'sync')
+  def sync_with_hubspot(queue = 'high_priority')
+    ::Hubspot::StylistJob.set(queue: queue).perform_async(self.id, 'sync')
   end
 
   def sync_with_tru_digital

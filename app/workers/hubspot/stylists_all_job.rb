@@ -3,7 +3,7 @@ module Hubspot
 
     def perform
       Stylist.open.find_each do |stylist|
-        stylist.sync_with_hubspot
+        stylist.sync_with_hubspot('hubspot')
       end
     end
   end
