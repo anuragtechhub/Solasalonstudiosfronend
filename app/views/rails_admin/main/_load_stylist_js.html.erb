@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#stylist_status').on('change', function () {
+      setStylistInactiveReasonVisibility();
+    })
+
+    function setStylistInactiveReasonVisibility() {
+      value = $('#stylist_status').val();
+      if(value === 'open'){
+        $('#stylist_inactive_reason_field').hide();
+      } else {
+        $('#stylist_inactive_reason_field').show();
+      }
+    }
+
+    setStylistInactiveReasonVisibility();
+  });
+</script>

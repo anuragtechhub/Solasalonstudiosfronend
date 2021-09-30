@@ -2197,6 +2197,11 @@ RailsAdmin.config do |config|
       end
     end
     edit do
+      field "load_stylist_js", :hidden do
+        def render
+          bindings[:view].render partial: "load_stylist_js"
+        end
+      end
       group :general do
         field :name
         field :url_name do

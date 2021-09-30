@@ -127,6 +127,8 @@ class Stylist < ActiveRecord::Base
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
+  before_validation :set_inactive_reason
+
   validates :email_address, :presence => true
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :reduce => true#, :allow_blank => true, :on => :create
   #validates :email_address, :uniqueness => true, if: 'email_address.present?'
@@ -590,6 +592,10 @@ class Stylist < ActiveRecord::Base
 
       self.url_name = "#{url}#{count}"
     end
+  end
+
+  def set_inactive_reason
+    self.inactive_reason = nil if self.open?
   end
 
 end
