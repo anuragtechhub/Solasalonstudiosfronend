@@ -46,7 +46,9 @@
 
       <ul class="sola-nav">
         <li><h4><%= link_to raw(t('page.locations.title')), :locations, tabindex: 0 %></h4></li>
-        <li><h4><%= link_to raw(t('page.book_now.book_an_appointment')), :booknow_search, tabindex: 0 %></h4></li>
+        <% if english_locale? %>
+          <li><h4><%= link_to raw(t('page.book_now.book_an_appointment')), :booknow_search, tabindex: 0 %></h4></li>
+        <% end %>
         <li><h4><%= link_to raw(t('page.own.title')), :own_your_salon, :class => 'own_your_salon', tabindex: 0 %></h4></li>
         <li><h4><%= link_to raw(t('page.about.title')), :about_us, :class => 'about_us', 'data-nav' => "about-us", tabindex: 0 %></h4></li>
         <li><h4><%= link_to raw(t('page.blog.title')), :blog, tabindex: 0 %></h4></li>

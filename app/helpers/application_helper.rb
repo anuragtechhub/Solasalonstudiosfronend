@@ -65,4 +65,8 @@ module ApplicationHelper
   def brazilian_locale?
     I18n.locale.to_s == 'pt-BR'
   end
+
+  def english_locale?
+    I18n.locale.to_s == 'en'
+  end
 end

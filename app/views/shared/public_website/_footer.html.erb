@@ -8,7 +8,7 @@
           <li><%= link_to t('page.blog.title'), blog_path, tabindex: 0 %></li>
           <li><%= link_to t('footer.education'), why_sola_path(anchor: :education), tabindex: 0 %></li>
           <li><%= link_to t('footer.sola-pro'), why_sola_path(anchor: :sola_pro), tabindex: 0 %></li>
-          <% unless canadian_locale? %>
+          <% if english_locale? %>
             <li><%= link_to t('footer.sola-genius'), why_sola_path(anchor: :solagenius), tabindex: 0 %></li>
             <li><%= link_to t('footer.book-now'), why_sola_path(anchor: :booknow), tabindex: 0 %></li>
             <li><%= link_to t('footer.beauty-hive'), why_sola_path(anchor: :beauty_hive), tabindex: 0 %></li>
@@ -24,7 +24,9 @@
         <ul class="p">
           <li><%= link_to t('page.locations.title_long'), :locations, tabindex: 0 %></li>
           <li><%= link_to t('footer.find-a-professional'), :find_a_professional, tabindex: 0 %></li>
-          <li><%= link_to t('footer.book-appointment'), :booknow_search, tabindex: 0 %></li>
+          <% if english_locale? %>
+            <li><%= link_to t('footer.book-appointment'), :booknow_search, tabindex: 0 %></li>
+          <% end %>
         </ul>
       </div>
 

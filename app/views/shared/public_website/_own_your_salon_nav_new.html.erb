@@ -3,14 +3,14 @@
     <li class="nav-item"><%= link_to t('page.why_sola.title'), "#why_sola", class: 'nav-link' %></li>
     <li class="nav-item"><%= link_to t('page.sola_pro.title'), "#sola_pro", class: 'nav-link' %></li>
 
-    <% unless canadian_locale? %>
+    <% if english_locale? %>
       <li class="nav-item"><%= link_to t('page.sola_genius.title'), "#solagenius", class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to t('page.book_now.title'), "#booknow", class: 'nav-link' %></li>
     <% end %>
 
     <li class="nav-item"><%= link_to t('page.education.title'), "#education", class: 'nav-link' %></li>
 
-    <% unless canadian_locale? %>
+    <% if english_locale? %>
       <li class="nav-item"><%= link_to 'BeautyHive', "#beauty_hive", class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to 'The Sola Store', "#the_sola_store", class: 'nav-link' %></li>
     <% end %>

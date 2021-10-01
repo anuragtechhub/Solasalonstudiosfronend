@@ -169,7 +169,7 @@
     <% content_for(:scripts) { javascript_include_tag('sola_pro') } %>
   </div>
 
-  <% unless canadian_locale? %>
+  <% if english_locale? %>
     <div id="solagenius" class="sola-genius">
     <div class="hero-wrapper">
       <div class="sologenius-logo">solagenius</div>
@@ -314,7 +314,7 @@
     </div>
   </div>
 
-  <% unless canadian_locale? %>
+  <% if english_locale? %>
     <div id="beauty_hive">
       <div class="img-wrap">
         <div class="wrapper">
