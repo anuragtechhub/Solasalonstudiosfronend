@@ -328,14 +328,12 @@ body.why-sola {
 
   }
 }
-.locale-pt-BR {
-  .why-sola {
-    .owl-carousel .owl-item .item .item-content {
-      .play-video {
-        width: 320px;
-        @media (max-width: 550px) {
-          width: 235px;
-        }
+.locale-pt-BR.why-sola {
+  .owl-carousel .owl-item .item .item-content {
+    .play-video {
+      width: 320px;
+      @media (max-width: 550px) {
+        width: 235px;
       }
     }
   }
