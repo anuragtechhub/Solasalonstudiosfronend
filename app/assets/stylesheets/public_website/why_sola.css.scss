@@ -328,16 +328,7 @@ body.why-sola {
 
   }
 }
-.locale-pt-BR.why-sola {
-  .owl-carousel .owl-item .item .item-content {
-    .play-video {
-      width: 320px;
-      @media (max-width: 550px) {
-        width: 235px;
-      }
-    }
-  }
-}
+
 .why-sola {
   margin-top: -35px;
 
@@ -1095,7 +1086,16 @@ body.why-sola {
     }
   }
 }
-
+.locale-pt-BR.why-sola {
+  .owl-carousel .owl-item .item .item-content {
+    .play-video {
+      width: 320px;
+      @media (max-width: 550px) {
+        width: 235px;
+      }
+    }
+  }
+}
 .industry-leading-education-feature-modal {
   @media (max-width: 550px) {
     .wrapper {
