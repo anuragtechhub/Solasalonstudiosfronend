@@ -10,7 +10,7 @@ class BooknowController < PublicWebsiteController
 	end
 
 	def search
-    redirect_to '/' unless english_locale?
+    redirect_to '/' unless I18n.locale.to_s == 'en'
 	end
 
 	def results
