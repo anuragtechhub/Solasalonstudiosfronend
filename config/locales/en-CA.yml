@@ -1,7 +1,5 @@
 en-CA:
-
   contact_form_success: Thank you! We will get in touch soon
-
   activerecord:
     models:
       lease: "Electronic license agreement"
@@ -26,7 +24,6 @@ en-CA:
         amount: "Recurring weekly charge 4 weekly fee"
         start_date: "Recurring weekly charge 4 start date"
         end_date: "Recurring weekly charge 4 end date"
-
   brand_name: Sola Salon Studios
   logo_name: Sola Salon Studios Logo
   short_www_name: www.solasalons.com
@@ -36,12 +33,82 @@ en-CA:
   phone_result: "<strong>p:</strong> %{phone_number}"
   email_result: "<strong>e:</strong> %{email_address}"
   reserved_studio: "Reserved: Studio"
-
   cookie_banner:
     please_accept_our_privacy_terms: Please accept our privacy terms
     accept_and_continue: Accept and continue
     we_use_cookies_text: We use cookies on our site to help provide personalized content and the best experience for you! By using this site, you accept our use of cookies.
-
+  sola_search:
+    booknow: BookNow
+    professionals: Professionals
+    businesses: Businesses
+    current_location: Current Location
+    haircut: Haircut
+    services_and_suggestions_placeholder: Service, salon, stylist
+    please_enter_a_service_and_a_location: Please enter a service (e.g. haircut) and your location
+    please_enter_a_service: Please enter a service (e.g. haircut)
+    please_enter_a_date: Please enter a date
+    please_enter_your_location: Please enter your location
+    your_location: Your location
+    location: Location
+    no_results: No results
+    enter_city_state_or_zipcode: Enter city, state or zip code
+    enter_your_location: Enter your location
+    check_availability: Check Availability
+    professionals_for_query: professionals for '%{query}'
+    back: Back
+    book_appointment: Book Appointment
+    contact: Contact
+    charged_after_appointment: Charged after appointment
+    book_service: Book %{num} Service
+    book_services: Book %{num} Services
+    total: Total
+    change_date: Change Date
+    change_time: Change Time
+    add_service: Add Service
+    add_remove_services: Add/Remove Services
+    change_services: Change or Add Services
+    service: Service
+    services: Services
+    save_services: Save Services
+    min: min
+    your_information: Your Information
+    your_name: Your Name
+    email_address: Email Address
+    phone_number: Phone Number
+    continue: Continue
+    map: Map
+    list: List
+    payment_details: Payment Details
+    loading: Loading...
+    booking_complete: Booking Complete
+    thanks_for_choosing_sola: Thanks for choosing Sola Salon Studios!
+    add_to_calendar: Add to Calendar
+    map_it: Map it!
+    select_a_date: Select a Date
+    select_a_time: Select a Time
+    appointment_with_stylist: Appointment with %{stylist}
+    save: Save
+    no_availability: There is no availability for these services on this date. Please change the date or remove some services and try again.
+    please_select_a_time: Please select a time, then press the Save button.
+    please_enter_your_email_address: Please enter your email address.
+    please_enter_your_name: Please enter your name.
+    please_enter_your_phone_number: Please enter your phone number.
+    price_varies: Price Varies
+    load_more_professionals: Load More Professionals
+    end_of_results: End of results
+    dont_see_your_sola_professional: Don't see your Sola Professional?
+    contact_your_sola_pro_directly: Contact Your Sola Pro directly
+    if_you_do_not_see: <strong>If you do not see your Sola professional in the search results below, please contact them directly for booking.</strong>
+    booknow_search_results: The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).
+    please_try_your_search_again: Please Try Your Search Again
+    unable_to_find_results: We were unable to find results that matched your search criteria.
+    no_results_note_1: "Note: These search results only feature Sola professionals who use Sola's online booking platform, <strong>SolaGenius</strong> (GlossGenius for Sola)."
+    no_results_note_2: If you do not see your Sola professional in the search results, please contact them directly for booking inquiries.
+    contact_your_sola_pro_directly: Contact Your Sola Pro Directly
+    search_again: Search Again
+    browse_all_sola_beauty_professionals: Browse all Sola beauty professionals
+    load_more: Load More
+    load_more_availability: Load More Availability
   contact_form:
     contact_a_sola_near_you: Contact A Sola Near You
     select_a_state: Select a Province
@@ -64,13 +131,11 @@ en-CA:
     what_services_do_you_specialize_in: What service(s) do you specialize in?
     what_services_would_you_like_to_book: What service(s) would you like to book?
     zip_code: Zip Code
-
   header:
     rent_studio_button: Rent a Studio
     contact_us: Contact Us
     search_placeholder: Search by Name or Location
     sola_pro_sign_in: Sola Pro
-
   nav:
     about_us: About Us
     own_your_salon: Own Your Salon
