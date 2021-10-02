@@ -186,13 +186,12 @@ class LocationsController < PublicWebsiteController
     @location = Location.find_by(:url_name => params[:url_name], :status => 'open')
 
     if @location && @location.stylists
-      @stylists = @location.stylists.where(:reserved => false)
-      @reserved_stylists = @location.stylists.where(:reserved => true).order(:studio_number => :asc)
-
-      if (params[:service])
-        @stylists = @location.stylists.where(:reserved => false).select { |s| true if (s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service)) }
+      if params[:service].present?
+        @stylists = @location.stylists.where(reserved: false).select { |s| s.services.include?(params[:service]) || (params[:service].downcase == 'other' && s.other_service) }
+      else
+        @stylists = @location.stylists.where(reserved: false)
+        @reserved_stylists = @location.stylists.where(:reserved => true).order(:studio_number => :asc)
       end
-
       @lat = @location.latitude
       @lng = @location.longitude
       @zoom = 14

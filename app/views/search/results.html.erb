@@ -41,7 +41,7 @@
       <% if @stylists && @stylists.size > 0 %>
         <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
         <div class="row">
-          <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+          <% @stylists.sort_by{ |s| s.name.downcase }.each_with_index do |stylist, index| %>
             <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
           <% end %>
         </div>
@@ -67,7 +67,7 @@
       <% if @stylists && @stylists.size > 0 %>
         <h3><%= t('page.search.salon_professional_results').html_safe %></h3>
         <div class="row">
-          <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+          <% @stylists.sort_by{ |s| s.name.downcase }.each_with_index do |stylist, index| %>
             <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
           <% end %>
         </div>

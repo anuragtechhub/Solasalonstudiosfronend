@@ -39,7 +39,7 @@
 
     <% if @stylists && @stylists.size > 0 %>
       <% non_reserved_stylists = @stylists.select { |s| !(s.name =~ /reserved|leased/i) } %>
-      <% non_reserved_stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+      <% non_reserved_stylists.sort_by{ |s| s.name.downcase }.each_with_index do |stylist, index| %>
         <%= render 'shared/public_website/stylist_result', :stylist => stylist %>
       <% end %>
       <% reserved_stylists = @stylists.select { |s| s.name =~ /reserved|leased/i } %>

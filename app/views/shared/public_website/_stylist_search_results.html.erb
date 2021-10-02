@@ -1,6 +1,6 @@
 <% if @stylists && @stylists.size > 0 %>
   <h2><%= t('page.search.salon_professional_results').html_safe %></h2>
-  <% @stylists.sort_by(&:name).each_with_index do |stylist, index| %>
+  <% @stylists.sort_by{ |s| s.name.downcase }.each_with_index do |stylist, index| %>
     <% if index == 0 || index % 3 == 0 %><div class="row"><% end %>
       <div class="one-third column search-result">
         <h3 class="salon-professional-name"><%= link_to show_salon_professional_path(stylist) do %><%= stylist.website_name.present? ? stylist.website_name.html_safe : stylist.name.html_safe %><%= " - #{stylist.location.name.html_safe}" if stylist.location %><% end %></h3>
