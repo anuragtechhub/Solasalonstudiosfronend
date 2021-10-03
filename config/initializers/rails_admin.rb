@@ -2989,6 +2989,11 @@ RailsAdmin.config do |config|
       field :slug
       field :title
       field :url
+      field :thumbnail do
+        pretty_value do
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
+        end
+      end
       field :image do
         pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
@@ -3017,10 +3022,21 @@ RailsAdmin.config do |config|
       end
     end
     edit do
+      field "load_franchise_article_js", :hidden do
+        def render
+          bindings[:view].render partial: "load_franchise_article_js"
+        end
+      end
       field :kind
       field :country
       field :title
       field :url
+      field :thumbnail do
+        pretty_value do
+          "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?
+        end
+        delete_method :delete_thumbnail
+      end
       field :image do
         pretty_value do
           "<a href='#{value.url(:original)}' target='_blank'><img src='#{value.url(:thumbnail)}' /></a>".html_safe if value.present?

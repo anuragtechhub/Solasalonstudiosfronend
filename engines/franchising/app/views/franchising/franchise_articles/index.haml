@@ -16,7 +16,7 @@
       .franchise-article.row
         .img-fluid.col-12.col-md-4
           = link_to article.real_url, target: target_option do
-            = image_tag article.image.url(:directory), alt: "article #{article.id} image", :width => 240, :height => 240, loading: :lazy
+            = image_tag article.thumbnail.present? ? article.thumbnail.url(:directory) : article.image.url(:directory), alt: "article #{article.id} image", :width => 240, :height => 240, loading: :lazy
 
         .col-12.col-md-8
           %h4.title= link_to article.title.html_safe, article.real_url, target: target_option
@@ -31,7 +31,7 @@
 
           %ul.social
             %li
-              = link_to "https://www.pinterest.com/pin/create/button/?url=#{article.real_url}&media=#{article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank', 'aria-label' => 'go to pinterest' do
+              = link_to "https://www.pinterest.com/pin/create/button/?url=#{article.real_url}&media=#{article.thumbnail.present? ? article.thumbnail(:original) : article.image(:original)}&description=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')}", :target => '_blank', 'aria-label' => 'go to pinterest' do
                 %span.ss-social-regular.ss-pinterest{'aria-hidden' => true}
             %li
               = link_to "https://twitter.com/intent/tweet?text=#{article.safe_title} - #{article.created_at.strftime('%B %e, %Y')} #{article.url}", target: :_blank, 'aria-label' => 'go to twitter' do

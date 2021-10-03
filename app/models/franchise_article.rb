@@ -29,6 +29,11 @@ class FranchiseArticle < ActiveRecord::Base
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 
+  has_attached_file :thumbnail, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
+  validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
+  attr_accessor :delete_thumbnail
+  before_validation { self.thumbnail.destroy if self.delete_thumbnail == '1' }
+
   scope :by_category, ->(category_id) {
     includes(:categories).where(categories: {id: category_id})
   }
@@ -56,21 +61,25 @@ end
 #
 # Table name: franchise_articles
 #
-#  id                 :integer          not null, primary key
-#  author             :string
-#  body               :text
-#  country            :integer
-#  image_content_type :string
-#  image_file_name    :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  kind               :integer          default(0), not null
-#  slug               :string           not null
-#  summary            :text
-#  title              :string           not null
-#  url                :text
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                     :integer          not null, primary key
+#  author                 :string
+#  body                   :text
+#  country                :integer
+#  image_content_type     :string
+#  image_file_name        :string
+#  image_file_size        :integer
+#  image_updated_at       :datetime
+#  kind                   :integer          default(0), not null
+#  slug                   :string           not null
+#  summary                :text
+#  thumbnail_content_type :string
+#  thumbnail_file_name    :string
+#  thumbnail_file_size    :integer
+#  thumbnail_updated_at   :datetime
+#  title                  :string           not null
+#  url                    :text
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #

@@ -1,0 +1,19 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#franchise_article_kind').on('change', function () {
+      setImageVisibility();
+    })
+
+    function setImageVisibility() {
+      value = $('#franchise_article_kind').val();
+      // 1 == 'press'
+      if(value === '1'){
+        $('#franchise_article_image_field').hide();
+      } else {
+        $('#franchise_article_image_field').show();
+      }
+    }
+
+    setImageVisibility();
+  });
+</script>
