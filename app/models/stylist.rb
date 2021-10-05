@@ -354,20 +354,15 @@ class Stylist < ActiveRecord::Base
   end
 
   def sync_with_tru_digital
-    data = []
-    self.location.stylists.not_reserved.each do |stylist|
-      data << {
+    data = self.location.stylists.active.not_reserved.map do |stylist|
+      {
         id: stylist.id,
         name: stylist.name,
         studio_number: stylist.studio_number,
         walkins: stylist.walkins
       }
     end
-
-    p "curl -d 'location=#{self.location_id}' -d 'data=#{data.to_json}' 'https://app.trudigital.net/core/sola'"
-    sync_with_tru_digital_response = `curl -d 'location=#{self.location_id}' -d 'data=#{data.length == 0 ? [nil].to_json : data.to_json}' 'https://app.trudigital.net/core/sola'`
-
-    p "sync_with_tru_digital_response=#{sync_with_tru_digital_response.inspect}"
+    HTTParty.post("https://app.trudigital.net/core/sola", body: {location: self.location_id, data: (data.length == 0 ? [nil] : data).to_json}).body
   rescue => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
