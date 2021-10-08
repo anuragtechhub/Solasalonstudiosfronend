@@ -273,7 +273,7 @@
                       ['/blog/category/sola-stories-podcast', nil]
                     when 'sola_sessions'
                       target = '_blank'
-                      ['http://www.solasessions.com', (browser.device.mobile? ? 'SOLASessions_Reimagined_WhySola_480x480.jpg' : 'SOLASessions_OSN_homepage_button_OSN_800x608.jpg')]
+                      ['http://www.solasessions.com', 'SOLASessions_Reimagined_social_STD_1080x1080.jpg.png']
                     else
                       ['#', nil]
                     end
@@ -282,32 +282,33 @@
           <% dashed_feature = feature.humanize.parameterize %>
           <% modal_id = dashed_feature + '-modal' %>
           <div class="industry-leading-education-feature-wrapper">
-            <%= link_to "##{modal_id}", class: 'open-magnific-popup-link industry-leading-education-feature' do %>
+            <%= link_to (feature == 'sola_sessions' ? "https://events.bizzabo.com/335999" : "##{modal_id}"), class: "#{'open-magnific-popup-link' unless feature == 'sola_sessions'} industry-leading-education-feature", target: (feature == 'sola_sessions' ? '_blank' : '_self') do %>
               <div class="industry-leading-education-feature-icon" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= button_image.presence || "#{dashed_feature}.png" %>')"></div>
               <div class="industry-leading-education-feature-title">
                 <%= t("page.why_sola.education-feature.title.#{dashed_feature}") %>
               </div>
             <% end %>
-
-            <div class="mfp-hide industry-leading-education-feature-modal" id="<%= modal_id %>">
-              <div class="wrapper">
-                <div class="info-wrapper">
-                  <div class="info">
-                    <div class="title"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.title") %></div>
-                    <div class="body">
-                      <p><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-1") %></p>
-                      <p class="subtitle"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.subtitle") %></p>
-                      <%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-2").html_safe %>
-                      <%= link_to t("page.why_sola.education-feature-modal.#{dashed_feature}.button"), link, target: target, class: "button primary #{additional_class}" %>
+            <% unless feature == 'sola_sessions' %>
+              <div class="mfp-hide industry-leading-education-feature-modal" id="<%= modal_id %>">
+                <div class="wrapper">
+                  <div class="info-wrapper">
+                    <div class="info">
+                      <div class="title"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.title") %></div>
+                      <div class="body">
+                        <p><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-1") %></p>
+                        <p class="subtitle"><%= t("page.why_sola.education-feature-modal.#{dashed_feature}.subtitle") %></p>
+                        <%= t("page.why_sola.education-feature-modal.#{dashed_feature}.paragraph-2").html_safe %>
+                        <%= link_to t("page.why_sola.education-feature-modal.#{dashed_feature}.button"), link, target: target, class: "button primary #{additional_class}" %>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="image <%= dashed_feature %>">
-                  <div class="icon"></div>
+                  <div class="image <%= dashed_feature %>">
+                    <div class="icon"></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>
