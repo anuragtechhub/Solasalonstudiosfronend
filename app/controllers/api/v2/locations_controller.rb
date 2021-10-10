@@ -18,7 +18,7 @@ class Api::V2::LocationsController < ApiController
 
   def show
     scope = Stylist.where(location_id: params[:id]).active.not_reserved
-    cache_key = "/api/v2/show/#{params[:id]}/#{scope.maximum(:updated_at).to_i}"
+    cache_key = "/api/v2/show/#{params[:id]}/#{Location.maximum(:updated_at).to_i}-#{scope.maximum(:updated_at).to_i}"
     json = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
       result = ActiveModelSerializers::SerializableResource.new(
         scope,
