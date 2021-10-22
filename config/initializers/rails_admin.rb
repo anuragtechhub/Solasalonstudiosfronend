@@ -75,7 +75,9 @@ RailsAdmin.config do |config|
     # collection actions
     index                         # mandatory
     new
-    export
+    export do
+      except %w[Stylist StylistMessage Report ContactInquiries RequestTourInquiry BookNowBooking]
+    end
     # history_index
     bulk_delete
 
@@ -125,9 +127,6 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Admin' do
-    # visible do
-    #   bindings[:controller]._current_user.franchisee != true
-    # end
     label 'My Account'
     label_plural 'My Account'
     list do
@@ -487,6 +486,19 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Category' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :id
+      field :name
+      field :slug
+      field :created_at
+      field :updated_at
+    end
+  end
+
   config.model 'Categoriable' do
     visible false
   end
@@ -573,6 +585,18 @@ RailsAdmin.config do |config|
 
   config.model 'DealCategoryDeal' do
     visible false
+  end
+
+  config.model 'Tag' do
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :id
+      field :name
+      field :created_at
+      field :updated_at
+    end
   end
 
   config.model 'Taggable' do
