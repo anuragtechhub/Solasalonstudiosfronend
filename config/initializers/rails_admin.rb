@@ -75,9 +75,10 @@ RailsAdmin.config do |config|
     # collection actions
     index                         # mandatory
     new
-    export do
-      except %w[Stylist StylistMessage Report ContactInquiries RequestTourInquiry BookNowBooking]
-    end
+    export
+    # export do
+    #   except %w[Stylist StylistMessage Report ContactInquiries RequestTourInquiry BookNowBooking]
+    # end
     # history_index
     bulk_delete
 
