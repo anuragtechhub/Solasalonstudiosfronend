@@ -1,6 +1,9 @@
 class FranchisingForm < ActiveRecord::Base
   validates :first_name, :last_name, :email_address, :phone_number, :city, :state, :liquid_capital, presence: true
   validate :multi_unit_operator_present
+  validates :country, inclusion: { in: %w[usa ca] }
+  validates :state, inclusion: { in: USA_STATES.values }, if: proc { self.country.to_s == 'usa' }
+  validates :state, inclusion: { in: CA_STATES.values }, if: proc { self.country.to_s == 'ca' }
 
   after_create :send_email
 
