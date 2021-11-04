@@ -14,6 +14,12 @@ module Reports
 
       Reports::Locations::MainJob.perform_async('CA', start_date, end_date)
       Reports::Locations::MainJob.perform_async('US', start_date, end_date)
+
+      # https://bbac.atlassian.net/browse/SSS-227
+      # Stylists report
+      Report.create(email_address: 'dave@radianceholdings.com,christian.rathke@radianceholdings.com',
+                    report_type: 'all_stylists',
+                    subject: "Sola Stylist Data #{Time.current.strftime('%B')}")
     end
   end
 end

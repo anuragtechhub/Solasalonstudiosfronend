@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211003202459) do
+ActiveRecord::Schema.define(version: 20211104124937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -645,6 +645,7 @@ ActiveRecord::Schema.define(version: 20211003202459) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "parameters",    limit: 255
+    t.string   "subject"
   end
 
 # Could not dump table "request_tour_inquiries" because of following FrozenError

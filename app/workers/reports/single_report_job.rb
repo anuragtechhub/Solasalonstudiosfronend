@@ -17,7 +17,7 @@ module Reports
       when 'all_terminated_stylists_report'
         all_terminated_stylists
       end
-      ReportsMailer.send_report(@report.email_address, "#{@report.report_type.titleize} Report", csv_report).deliver
+      ReportsMailer.send_report(@report.email_address, @report.email_subject, csv_report).deliver
       @report.update_column(:processed_at, DateTime.current)
     end
 

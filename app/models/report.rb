@@ -13,6 +13,10 @@ class Report < ActiveRecord::Base
     ]
 	end
 
+	def email_subject
+		subject.presence || "#{report_type.titleize} Report"
+	end
+
   private
 
   def process
@@ -29,6 +33,7 @@ end
 #  parameters    :string(255)
 #  processed_at  :datetime
 #  report_type   :string(255)
+#  subject       :string
 #  created_at    :datetime
 #  updated_at    :datetime
 #
