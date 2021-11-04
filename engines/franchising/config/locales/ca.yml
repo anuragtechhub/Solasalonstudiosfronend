@@ -3,10 +3,25 @@ ca:
     brand_name: Sola Salon Studios Franchise Opportunity
 
     website:
+      first_section:
+        s1: 'Invest in #1 salon studio franchise and capitalize on prime market availability in Canada.'
+
+      why_sola:
+        h1: 'A proven, low-staff model positioned for success in Canada.'
+        s2: 'As a major force in the salon suites category that is sweeping North America, Sola Salons is a recession-resilient franchise opportunity that uniquely understands the Canadian market. <span class="bold">Our real-estate rental model requires minimal staff and drives unparalleled occupancy and retention rate and is backed by 17+ years of salon studio expertise.</span> Demand for salon suite franchises is high, with prime Canadian markets selling fast. Don’t miss this opportunity to find a career you love. The time to join us is now!'
+
+      demand:
+        h2: 'Canadian demand is high. Sola is the solution.'
+
+      available_markets_section:
+        p: 'Now’s your chance to join us by staking your claim in a wide-open Canadian market. With high demand and the brand recognition of Sola Salons, there’s never been a better time to join this empowering, diverse and welcoming community.'
+        open_locations: 590
+
       franchise_form:
         country_selector: Country of interest
         state_selector: Province of interest
         selector_prompt: Select One
+        thank_you: We appreciate your interest in owning a Sola Salon franchise. We received your request and will be in touch within one business day.
 
     franchise_articles:
       index:

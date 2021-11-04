@@ -42,7 +42,7 @@
                                   <div class="elementor-element elementor-element-e28b8ec elementor-widget elementor-widget-text-editor" data-id="e28b8ec" data-element_type="widget" data-widget_type="text-editor.default">
                                     <div class="elementor-widget-container">
                                       <div class="elementor-text-editor elementor-clearfix">
-                                        <h2 class="white">Own the #1 salon studio franchise.</h2></div>
+                                        <h2 class="white"><%= t('franchising.website.first_section.s1') %></h2></div>
                                     </div>
                                   </div>
                                 </div>
@@ -131,7 +131,7 @@
                                   <div class="elementor-element elementor-element-d02d8ff paris no-margin elementor-widget elementor-widget-text-editor" data-id="d02d8ff" data-element_type="widget" data-widget_type="text-editor.default">
                                     <div class="elementor-widget-container">
                                       <div class="elementor-text-editor elementor-clearfix">
-                                        <h2 class="no-margin blue-line">High-caliber franchise. Low-staff model.</h2>
+                                        <h2 class="no-margin blue-line"><%= t('franchising.website.why_sola.h1') %></h2>
                                       </div>
                                     </div>
                                   </div>
@@ -145,11 +145,7 @@
                                     <div class="elementor-widget-container">
                                       <div class="elementor-text-editor elementor-clearfix">
                                         <p class="helvetica">
-                                          When top investors and franchisees seek out the most innovative leader in the
-                                          beauty industry, they choose Sola Salon Studios.
-                                          <span class="bold">
-                                            Our real estate rental model requires minimal staff, drives unparalleled occupancy and retention rates and is steeped in 17+ years of salon studio expertise.
-                                          </span> It’s as simple and rewarding as that.
+                                          <%= raw t('franchising.website.why_sola.s2') %>
                                         </p>
                                       </div>
                                     </div>
@@ -289,7 +285,7 @@
                       <div class="elementor-element elementor-element-a073851 paris elementor-widget elementor-widget-text-editor" data-id="a073851" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
                           <div class="elementor-text-editor elementor-clearfix">
-                            <h2 class="white no-margin large-h2">Demand is high. Sola is the solution.</h2></div>
+                            <h2 class="white no-margin large-h2"><%= t('franchising.website.demand.h2') %></h2></div>
                         </div>
                       </div>
                     </div>
@@ -1079,9 +1075,7 @@
                       <div class="elementor-element elementor-element-78976e3 center elementor-widget__width-initial elementor-widget elementor-widget-text-editor" data-id="78976e3" data-element_type="widget" data-widget_type="text-editor.default">
                         <div class="elementor-widget-container">
                           <div class="elementor-text-editor elementor-clearfix">
-                            <p class="white">The original Sola dream has blossomed into a worldwide movement and a
-                              thriving, diverse and welcoming community around the world. Now’s your chance to join
-                              us.</p></div>
+                            <p class="white"><%= t('franchising.website.available_markets_section.p') %></p></div>
                         </div>
                       </div>
                       <section class="elementor-section elementor-inner-section elementor-element elementor-element-ec9da05 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ec9da05" data-element_type="section">
@@ -1095,7 +1089,7 @@
                                       <div class="elementor-counter">
                                         <div class="elementor-counter-number-wrapper">
                                           <span class="elementor-counter-number-prefix"></span>
-                                          <span class="elementor-counter-number" data-duration="2000" data-to-value="570" data-from-value="0" data-delimiter=",">0</span>
+                                          <span class="elementor-counter-number" data-duration="2000" data-to-value="<%= t('franchising.website.available_markets_section.open_locations') %>" data-from-value="0" data-delimiter=",">0</span>
                                           <span class="elementor-counter-number-suffix">+</span>
                                         </div>
                                         <div class="elementor-counter-title">open locations</div>
@@ -1330,7 +1324,7 @@
                               <%= render 'franchise_form' %>
                               <div class='form_submitted success hidded'>
                                 <center>
-                                  <h1 style="color:white;"> Your request is submitted! </h1>
+                                  <h1 style="color:white;"> <%= t('franchising.website.franchise_form.thank_you') %> </h1>
                                 </center>
                               </div>
                               <div class='form_submitted error hidded'>
