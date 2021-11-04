@@ -3,6 +3,7 @@ class SearchController < PublicWebsiteController
   require 'uri'
   skip_before_filter :verify_authenticity_token
 
+  # TODO: refactor this piece of shit
   def results
     if params[:query].present?
       query_param = "%#{params[:query].downcase.gsub(/\s/, '%')}%"
@@ -16,12 +17,7 @@ class SearchController < PublicWebsiteController
         locations2 = Location.open.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
         locations3 = Location.open.where(:msa_id => Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a).where(:country => (I18n.locale == :en ? 'US' : 'CA'))
 
-        @locations = locations1.open + locations2.open + locations3.open
-        if @locations
-          @locations.uniq!
-          @locations.sort! { |a, b| a.name <=> b.name }
-        end
-
+        @locations = locations1 + locations2 + locations3
         exact_match_location = Location.where(:country => (I18n.locale == :en ? 'US' : 'CA')).where(:status => 'open').where('LOWER(name) = ?', params[:query].downcase).first
         if exact_match_location
           #p "yes exact match location #{exact_match_location.name}"
@@ -31,7 +27,7 @@ class SearchController < PublicWebsiteController
       end
 
       # preload stylists
-      @locations = Location.where(id: @locations.map(&:id)).preload(:stylists)
+      @locations = Location.where(id: @locations.map(&:id)).preload(:stylists).order(:name)
 
       # stylists
       if params[:stylists] != 'hidden'
