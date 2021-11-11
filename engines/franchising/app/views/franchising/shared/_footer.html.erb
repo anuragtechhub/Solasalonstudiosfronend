@@ -15,11 +15,14 @@
                     <div class="elementor-widget-container">
                       <div class="elementor-image">
                         <a href="/">
-                          <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full lazyload" data-src="<%= image_url('wpcp/sola-logo-462w.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                          <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full lazyload" data-src="<%= image_url(canadian_locale? ? 'logo-ca.png' : 'wpcp/sola-logo-462w.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                           <noscript>
-                            <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full" src="<%= image_url('wpcp/sola-logo-462w.png') %>"/>
+                            <img width="462" height="136" alt="Sola Salon Studios Franchise Opportunity" class="attachment-full size-full" src="<%= image_url(canadian_locale? ? 'logo-ca.png' : 'wpcp/sola-logo-462w.png') %>"/>
                           </noscript>
                         </a>
+                        <%- if canadian_locale? %>
+                          <img style="width: 100px; margin-top: 15px; margin-left: 15px;" alt="Canadian Franchise Association logo" class="attachment-full size-full" src="<%= image_url('CFA_Member_logoR.png') %>"/>
+                        <% end %>
                       </div>
                     </div>
                   </div>
@@ -64,27 +67,31 @@
                       <div class="elementor-text-editor elementor-clearfix">
                         <p class="white small">
                           © Copyright <%= Time.current.year %>, Sola Salon Studios &#8211; Your Life, Your Style
-                          <br/>
-                          This advertisement is not a franchise offering. A franchise offering can be made by us only in
-                          a state if we are first registered, filed, excluded, exempted, or otherwise qualified to offer
-                          franchises in that state, and only if we provide you with an appropriate franchise disclosure
-                          document.
-                          Follow-up or individualized responses to you that involve either effecting or attempting to
-                          effect the sale of a franchise will be made only if we are first in compliance with state
-                          registration or notice filing requirements, or are covered by an applicable state exclusion or
-                          exemption. Such registration or filing does not constitute approval, recommendation, or
-                          endorsement by any state.
-                          <br/>MN Registration F-8475
+                          <% unless canadian_locale? %>
+                            <br/>
+                            This advertisement is not a franchise offering. A franchise offering can be made by us only in
+                            a state if we are first registered, filed, excluded, exempted, or otherwise qualified to offer
+                            franchises in that state, and only if we provide you with an appropriate franchise disclosure
+                            document.
+                            Follow-up or individualized responses to you that involve either effecting or attempting to
+                            effect the sale of a franchise will be made only if we are first in compliance with state
+                            registration or notice filing requirements, or are covered by an applicable state exclusion or
+                            exemption. Such registration or filing does not constitute approval, recommendation, or
+                            endorsement by any state.
+                            <br/>MN Registration F-8475
+                          <% end %>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div class="elementor-element elementor-element-a25d8fa elementor-widget elementor-widget-text-editor" data-id="a25d8fa" data-element_type="widget" data-widget_type="text-editor.default">
-                    <div class="elementor-widget-container">
-                      <div class="elementor-text-editor elementor-clearfix">
-                        <p class="white small bold">Sola Franchise, LLC, 300 Union Boulevard, Ste 600, Lakewood, CO 80228</p></div>
+                  <% unless canadian_locale? %>
+                    <div class="elementor-element elementor-element-a25d8fa elementor-widget elementor-widget-text-editor" data-id="a25d8fa" data-element_type="widget" data-widget_type="text-editor.default">
+                      <div class="elementor-widget-container">
+                        <div class="elementor-text-editor elementor-clearfix">
+                          <p class="white small bold">Sola Franchise, LLC, 300 Union Boulevard, Ste 600, Lakewood, CO 80228</p></div>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>

@@ -54,9 +54,9 @@
                                   <div class="elementor-element elementor-element-bd660b5 elementor-widget elementor-widget-image" data-id="bd660b5" data-element_type="widget" data-widget_type="image.default">
                                     <div class="elementor-widget-container">
                                       <div class="elementor-image">
-                                        <img width="232" height="336" alt="Entrepreneur Franchise 500 Ranked #1 in Category 2020" class="attachment-large size-large lazyload" data-src="<%= image_url('wpcp/entrepreneur-2021-207x300.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                                        <img width="232" height="336" alt="Entrepreneur Franchise 500 Ranked #1 in Category 2020" class="attachment-large size-large lazyload" data-src="<%= image_url(canadian_locale? ? 'Entrepreneur-ca.png' : 'wpcp/entrepreneur-2021-207x300.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
                                         <noscript>
-                                          <img width="232" height="336" alt="Entrepreneur Franchise 500 Ranked #1 in Category 2020" class="attachment-large size-large" src="<%= image_url('wpcp/entrepreneur-2021-207x300.png') %>"/>
+                                          <img width="232" height="336" alt="Entrepreneur Franchise 500 Ranked #1 in Category 2020" class="attachment-large size-large" src="<%= image_url(canadian_locale? ? 'Entrepreneur-ca.png' : 'wpcp/entrepreneur-2021-207x300.png') %>"/>
                                         </noscript>
                                       </div>
                                     </div>
@@ -607,26 +607,28 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="swiper-slide">
-                                  <div class="elementor-testimonial">
-                                    <div class="elementor-testimonial__content">
-                                      <div class="elementor-testimonial__text">
-                                        “When my business partner, Dave Donahower, and I started developing Sola in
-                                        2013, there were only 93 locations. To own the 500th location is incredibly
-                                        exciting from a brand perspective and on a personal level.”
+                                <%- unless canadian_locale? %>
+                                  <div class="swiper-slide">
+                                    <div class="elementor-testimonial">
+                                      <div class="elementor-testimonial__content">
+                                        <div class="elementor-testimonial__text">
+                                          “When my business partner, Dave Donahower, and I started developing Sola in
+                                          2013, there were only 93 locations. To own the 500th location is incredibly
+                                          exciting from a brand perspective and on a personal level.”
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="elementor-testimonial__footer">
-                                      <div class="elementor-testimonial__image">
-                                        <img alt="Heather Safrit" class='lazyload' data-src="<%= image_url('wpcp/heather-1.jpg') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-                                        <noscript>
-                                          <img alt="Heather Safrit" src="<%= image_url('wpcp/heather-1.jpg') %>">
-                                        </noscript>
+                                      <div class="elementor-testimonial__footer">
+                                        <div class="elementor-testimonial__image">
+                                          <img alt="Heather Safrit" class='lazyload' data-src="<%= image_url('wpcp/heather-1.jpg') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                          <noscript>
+                                            <img alt="Heather Safrit" src="<%= image_url('wpcp/heather-1.jpg') %>">
+                                          </noscript>
+                                        </div>
+                                        <cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">Heather Safrit</span><span class="elementor-testimonial__title">Multi-Unit Franchisee, Palm Beach County, FL </span></cite>
                                       </div>
-                                      <cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">Heather Safrit</span><span class="elementor-testimonial__title">Multi-Unit Franchisee, Palm Beach County, FL </span></cite>
                                     </div>
                                   </div>
-                                </div>
+                                <% end %>
                                 <div class="swiper-slide">
                                   <div class="elementor-testimonial">
                                     <div class="elementor-testimonial__content">
@@ -646,6 +648,27 @@
                                     </div>
                                   </div>
                                 </div>
+                                <%- if canadian_locale? %>
+                                  <div class="swiper-slide">
+                                    <div class="elementor-testimonial">
+                                      <div class="elementor-testimonial__content">
+                                        <div class="elementor-testimonial__text">
+                                          “We understand things are different in Canada, so we've created systems and tools to better
+                                          support and position our Canadian franchisees for success.”
+                                        </div>
+                                      </div>
+                                      <div class="elementor-testimonial__footer">
+                                        <div class="elementor-testimonial__image">
+                                          <img alt="Lori Merrall" class='lazyload' data-src="<%= image_url('lori-merrall.png') %>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                          <noscript>
+                                            <img alt="Lori Merrall" src="<%= image_url('lori-merrall.png') %>">
+                                          </noscript>
+                                        </div>
+                                        <cite class="elementor-testimonial__cite"><span class="elementor-testimonial__name">Lori Merrall</span><span class="elementor-testimonial__title">Director of Franchise Development at Sola Salons</span></cite>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <% end %>
                               </div>
                               <div class="swiper-pagination"></div>
                               <div class="elementor-swiper-button elementor-swiper-button-prev">
