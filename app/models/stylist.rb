@@ -725,6 +725,7 @@ end
 #  testimonial_id_8               :integer
 #  testimonial_id_9               :integer
 #  threading                      :boolean
+#  tik_tok_url                    :string
 #  total_booknow_bookings         :integer
 #  total_booknow_revenue          :string(255)
 #  twitter_url                    :string(255)

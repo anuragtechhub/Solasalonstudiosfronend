@@ -2087,6 +2087,7 @@ RailsAdmin.config do |config|
         field :pinterest_url
         field :twitter_url
         field :yelp_url
+        field :tik_tok_url
       end
       group :services do
         field :botox do
@@ -2314,6 +2315,9 @@ RailsAdmin.config do |config|
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
         field :yelp_url do
+          help 'Please use the full website address, including the "http://" portion of the URL'
+        end
+        field :tik_tok_url do
           help 'Please use the full website address, including the "http://" portion of the URL'
         end
       end
