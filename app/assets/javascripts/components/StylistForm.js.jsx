@@ -41,14 +41,14 @@ var StylistForm = React.createClass({
 
           {this.state.errors ? this.renderErrors() : null}
           {this.state.success ? this.renderSuccess() : null}
-          
+
           {this.renderElectronicLicenseAgreement()}
-          {this.renderStylistInfo()} 
-          {this.renderWebsiteInfo()}  
-          
+          {this.renderStylistInfo()}
+          {this.renderWebsiteInfo()}
+
           {this.renderButtons()}
         </div>
-        
+
         {/*this.state.loading ? <div className="loading"><div className="spinner"></div></div> : null(*/}
       </div>
     );
@@ -57,11 +57,11 @@ var StylistForm = React.createClass({
   renderButtons: function () {
     return (
       <div className="form-actions">
-        <button className="btn btn-primary" data-disable-with="Save" name="_save" type="button" onClick={this.onSave}><i className="icon-white icon-ok"></i> Save </button> 
-        <span className="extra_buttons"> 
-          <button className="btn btn-info" data-disable-with="Save and add another" name="_add_another" type="button" onClick={this.onSaveAndAddAnother}> Save and add another </button> 
-          <button className="btn btn-info" data-disable-with="Save and edit" name="_add_edit" type="button" onClick={this.onSaveAndEdit}> Save and edit </button> 
-          <button className="btn" data-disable-with="Cancel" name="_continue" type="button" onClick={this.onCancel}> <i className="icon-remove"></i> Cancel </button> 
+        <button className="btn btn-primary" data-disable-with="Save" name="_save" type="button" onClick={this.onSave}><i className="icon-white icon-ok"></i> Save </button>
+        <span className="extra_buttons">
+          <button className="btn btn-info" data-disable-with="Save and add another" name="_add_another" type="button" onClick={this.onSaveAndAddAnother}> Save and add another </button>
+          <button className="btn btn-info" data-disable-with="Save and edit" name="_add_edit" type="button" onClick={this.onSaveAndEdit}> Save and edit </button>
+          <button className="btn" data-disable-with="Cancel" name="_continue" type="button" onClick={this.onCancel}> <i className="icon-remove"></i> Cancel </button>
         </span>
       </div>
     );
@@ -114,7 +114,7 @@ var StylistForm = React.createClass({
         The following errors prevented this stylist from being saved:
         <ul>{errors}</ul>
       </div>
-    );  
+    );
   },
 
   renderRow: function (name, input, help) {
@@ -134,29 +134,29 @@ var StylistForm = React.createClass({
       <ExpandCollapseGroup name="Stylist Info" collapsed={this.state.stylist.location ? true : false}>
         {this.renderRow('Location', <LocationSelect location={this.state.stylist.location} onChange={this.onChangeLocation} />)}
         {this.state.stylist.location == null ? null : this.renderRow('Status', <EnumSelect name="status" value={this.state.stylist.status} values={[['Open', 'open'], ['Closed', 'closed']]} onChange={this.onChange} />)}
-        
+
         {this.state.stylist.location == null ? null : this.renderRow('Name', <input name="name" value={this.state.stylist.name} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Email Address', <input name="email_address" value={this.state.stylist.email_address} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Phone Number', <input name="phone_number" value={this.state.stylist.phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Date of Birth', <Datepicker name="date_of_birth" value={this.state.stylist.date_of_birth} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-        
+
         {this.state.stylist.location == null ? null : this.renderRow('Street Address', <input name="street_address" value={this.state.stylist.street_address} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('City', <input name="city" value={this.state.stylist.city} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('State/Province', <input name="state_province" value={this.state.stylist.state_province} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Postal Code', <input name="postal_code" value={this.state.stylist.postal_code} onChange={this.onChange} maxLength="255" type="text" />)}
         {/*this.state.stylist.location == null ? null : this.renderRow('Country', <input name="country" value={this.state.stylist.country} onChange={this.onChange} maxLength="255" type="text" />)*/}
-        
+
         {this.state.stylist.location == null ? null : this.renderRow('Cosmetology License Number', <input name="cosmetology_license_number" value={this.state.stylist.cosmetology_license_number} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Cosmetology License Date', <Datepicker name="cosmetology_license_date" value={this.state.stylist.cosmetology_license_date} onChange={this.onChange} />, 'You can click the textbox above and use a datepicker or type the date in the format: January 1, 1979')}
-        
+
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Name', <input name="emergency_contact_name" value={this.state.stylist.emergency_contact_name} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Relationship', <input name="emergency_contact_relationship" value={this.state.stylist.emergency_contact_relationship} onChange={this.onChange} maxLength="255" type="text" />)}
         {this.state.stylist.location == null ? null : this.renderRow('Emergency Contact Phone Number', <input name="emergency_contact_phone_number" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />)}
-        
+
         {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password', <input autoComplete="false" data-lpignore="true" name="password" value={this.state.stylist.password} onChange={this.onChange} maxLength="255" type="password" />)}
         {this.state.stylist.location == null ? null : this.props.current_admin.franchisee ? null : this.renderRow('Sola Pro Password Confirmation', <input autoComplete="false" data-lpignore="true" name="password_confirmation" value={this.state.stylist.password_confirmation} onChange={this.onChange} maxLength="255" type="password" />)}
-        
-        {/*this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')*/}          
+
+        {/*this.props.current_admin.franchisee ? null : this.renderRow('Rent Manager ID', <input name="rent_manager_id" value={this.state.stylist.emergency_contact_phone_number} onChange={this.onChange} maxLength="255" type="text" />, 'This should be a tenant ID from Rent Manager')*/}
       </ExpandCollapseGroup>
     );
   },
@@ -173,7 +173,7 @@ var StylistForm = React.createClass({
         <ExpandCollapseGroup name="Website Info" collapsed={true}>
           {this.renderRow('Website Name', <input name="website_name" value={this.state.stylist.website_name} onChange={this.onChange} maxLength="255" type="text" />, 'If you would like a different name listed on the website (other than the name in Account Info), set it here')}
           {this.renderRow('URL Name', <input name="url_name" value={this.state.stylist.url_name} onChange={this.onChange} maxLength="255" type="text" />, 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)')}
-          
+
           {this.renderRow('Biography', <RichTextEditor name="biography" value={this.state.stylist.biography} onChange={this.onChange} />)}
           {this.renderRow('Business Name', <input name="business_name" value={this.state.stylist.business_name} onChange={this.onChange} maxLength="255" type="text" />)}
           {this.renderRow('Studio Number', <input name="studio_number" value={this.state.stylist.studio_number} onChange={this.onChange} maxLength="255" type="text" />)}
@@ -196,6 +196,7 @@ var StylistForm = React.createClass({
             {this.renderRow('Pinterest URL', <input name="pinterest_url" value={this.state.stylist.pinterest_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
             {this.renderRow('Twitter URL', <input name="twitter_url" value={this.state.stylist.twitter_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
             {this.renderRow('Yelp URL', <input name="yelp_url" value={this.state.stylist.yelp_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
+            {this.renderRow('Tik-Tok URL', <input name="tik_tok_url" value={this.state.stylist.tik_tok_url} onChange={this.onChange} maxLength="255" type="text" />, 'Please use the full website address, including the "http://" portion of the URL')}
           </ExpandCollapseGroup>
 
           <ExpandCollapseGroup name="Services" nested={true} collapsed={true}>
@@ -267,7 +268,7 @@ var StylistForm = React.createClass({
     var value = target.type === 'checkbox' ? target.checked : target.value;
     var name = target.name;
 
-    //console.log('onChange', name, value);      
+    //console.log('onChange', name, value);
 
     stylist[name] = value;
     this.setState({stylist: stylist});
@@ -316,7 +317,7 @@ var StylistForm = React.createClass({
         window.location.href = '/admin/stylist/new';
       }, 1000);
     });
-  },  
+  },
 
   onSaveAndEdit: function (e) {
     var self = this;
@@ -371,7 +372,7 @@ var StylistForm = React.createClass({
     if (self.state.lease) {
       data['lease'] = self.state.lease;
     }
-    
+
     console.log('save stylist', data);
 
     $.ajax({
@@ -380,7 +381,7 @@ var StylistForm = React.createClass({
       data: data,
     }).done(function (data) {
       console.log('save stylist returned', data);
-      
+
       if (data.errors) {
         self.setState({loading: false, errors: data.errors, success: null});
         deferred.reject();
@@ -390,9 +391,9 @@ var StylistForm = React.createClass({
       }
 
       self.scrollToTop();
-    }); 
+    });
 
-    return deferred; 
+    return deferred;
   },
 
   scrollToTop: function () {

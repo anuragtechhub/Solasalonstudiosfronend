@@ -56,7 +56,7 @@ module Reports
           next if stylist.location.blank?
           csv << [stylist.id, stylist.first_name, stylist.last_name, stylist.url_name, stylist.email_address, stylist.phone_number,
                   stylist.website_url, stylist.booking_url, stylist.pinterest_url, stylist.facebook_url, stylist.twitter_url,
-                  stylist.instagram_url, stylist.yelp_url, stylist.emergency_contact_name, stylist.emergency_contact_relationship,
+                  stylist.instagram_url, stylist.yelp_url, stylist.tik_tok_url, stylist.emergency_contact_name, stylist.emergency_contact_relationship,
                   stylist.emergency_contact_phone_number, stylist.brows, stylist.hair, stylist.hair_extensions, stylist.laser_hair_removal,
                   stylist.eyelash_extensions, stylist.makeup, stylist.massage, stylist.microblading, stylist.nails,
                   stylist.permanent_makeup, stylist.skin, stylist.tanning, stylist.teeth_whitening, stylist.threading,

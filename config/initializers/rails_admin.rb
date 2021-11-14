@@ -2540,6 +2540,7 @@ RailsAdmin.config do |config|
       field :pinterest_url
       field :twitter_url
       field :yelp_url
+      field :tik_tok_url
     end
   end
 
@@ -2699,6 +2700,7 @@ RailsAdmin.config do |config|
           #   bindings[:object].changed_attributes.keys.include?('yelp_url')
           # end
         end
+        field :tik_tok_url
         # visible do
         #   %w[facebook_url google_plus_url instagram_url linkedin_url pinterest_url twitter_url yelp_url].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
         # end

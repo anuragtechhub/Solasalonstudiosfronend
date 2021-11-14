@@ -180,7 +180,9 @@ class Stylist < ActiveRecord::Base
   end
 
   def social_links_present?
-    facebook_url.present? || pinterest_url.present? || twitter_url.present? || instagram_url.present? || linkedin_url.present? || yelp_url.present? || google_plus_url.present?
+    facebook_url.present? || pinterest_url.present? || twitter_url.present? ||
+      instagram_url.present? || linkedin_url.present? || yelp_url.present? ||
+      google_plus_url.present? || tik_tok_url.present?
   end
 
   def status_enum

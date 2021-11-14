@@ -53,6 +53,7 @@
           <% if @stylist.instagram_url.present? %><li><%= link_to url_helper(@stylist.instagram_url), :target => '_blank' do %><span class="ss-social-regular ss-instagram"></span><% end %></li><% end %>
           <% if @stylist.linkedin_url.present? %><li><%= link_to url_helper(@stylist.linkedin_url), :target => '_blank' do %><span class="ss-social-regular ss-linkedin"></span><% end %></li><% end %>
           <% if @stylist.yelp_url.present? %><li><%= link_to url_helper(@stylist.yelp_url), :target => '_blank' do %><span class="ss-social-regular ss-yelp"></span><% end %></li><% end %>
+          <% if @stylist.tik_tok_url.present? %><li><%= link_to url_helper(@stylist.tik_tok_url), :target => '_blank' do %><span class="ss-social-regular ss-tik-tok"></span><% end %></li><% end %>
           <% if @stylist.google_plus_url.present? %><li><%= link_to url_helper(@stylist.google_plus_url), :target => '_blank' do %><span class="ss-social-regular ss-googleplus"></span><% end %></li><% end %>
         </ul>
       <% end %>
