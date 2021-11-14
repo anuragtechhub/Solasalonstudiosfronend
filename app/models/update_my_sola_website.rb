@@ -243,6 +243,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.pinterest_url = pinterest_url
     stylist.twitter_url = twitter_url
     stylist.yelp_url = yelp_url
+    stylist.tik_tok_url = tik_tok_url
 
     stylist.brows = brows
     stylist.botox = botox
@@ -629,6 +630,7 @@ end
 #  testimonial_id_8      :integer
 #  testimonial_id_9      :integer
 #  threading             :boolean
+#  tik_tok_url           :string
 #  twitter_url           :string(255)
 #  waxing                :boolean
 #  website_url           :string(255)
