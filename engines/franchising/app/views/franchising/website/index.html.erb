@@ -1052,9 +1052,18 @@
                           <div class="elementor-text-editor elementor-clearfix">
                             <p class="white newyork scroll1 pink-line1">World-class support.</p>
                             <p class="white paris scroll2">Integrated marketing expertise.</p>
-                            <p class="white scroll3">Our corporate marketing team creates tested and proven nationally
-                              branded campaigns to attract beauty professionals to rent studios at your locations. Plus,
-                              you’ll receive step-by-step training to execute on a local level.</p></div>
+                            <p class="white scroll3">
+                              <% if canadian_locale? %>
+                                Our corporate marketing team creates proven branded campaigns to attract
+                                beauty professionals to rent studios at your locations. Plus, you'll receive step-by-step
+                                training to execute on a local level.
+                              <% else %>
+                                Our corporate marketing team creates tested and proven nationally
+                                branded campaigns to attract beauty professionals to rent studios at your locations. Plus,
+                                you’ll receive step-by-step training to execute on a local level.
+                              <% end %>
+                            </p>
+                          </div>
                         </div>
                       </div>
                       <div class="elementor-element elementor-element-02d5735 elementor-widget elementor-widget-image" data-id="02d5735" data-element_type="widget" data-widget_type="image.default">
