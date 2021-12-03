@@ -1,22 +1,14 @@
 class HomeController < PublicWebsiteController
-  
+
   def index
-    # if Thread.current[:current_admin] 
-    #   redirect_to :rails_admin
-    # end
-    # if I18n.locale.to_s == 'en'
-    #   render 'index_en'
-    # else 
-    #   render 'index_en_ca'
-    # end
   end
 
   def five_thousand
   end
 
   def franchising
-    redirect_to 'https://www.solafranchising.com' #'https://pages.solasalonstudios.com/signup?utm_campaign=fran_dev&utm_source=referral&utm_medium=website'
-  end 
+    redirect_to "https://www.solafranchising.#{I18n.locale.to_s == 'en-CA' ? 'ca' : 'com'}"
+  end
 
   def new_cms
     render :layout => 'fullscreen'
@@ -39,5 +31,5 @@ class HomeController < PublicWebsiteController
     # send_data data.read, :type => data.
     redirect_to 'https://s3.amazonaws.com/solasitemap/sitemaps/sitemap.xml'
   end
-  
+
 end
