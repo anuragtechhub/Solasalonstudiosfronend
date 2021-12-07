@@ -1,6 +1,12 @@
 Solasalonstudios::Application.routes.draw do
   require 'sidekiq/web'
 
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  authenticate :admin do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 	# engines
   mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV['FRANCHISING_DOMAINS'])
   mount Pro::Engine => '/', as: 'pro_engine', constraints: DomainConstraint.new(ENV['PRO_DOMAINS'])
@@ -213,15 +219,7 @@ Solasalonstudios::Application.routes.draw do
   # Brazil URLs
   match '/sejasola' => 'brazil#sejasola', :via => [:get, :post], :as => :sejasola
 
-
-  devise_for :admins
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  authenticate :admin do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   get "/:url_name" => 'redirect#short'
-
 end
 
 # == Route Map
