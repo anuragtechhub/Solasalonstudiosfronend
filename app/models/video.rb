@@ -1,58 +1,78 @@
 class Video < ActiveRecord::Base
+  include PgSearch::Model
+
+  pg_search_scope :search, against: :title, associated_against: {
+    categories: [:name],
+    brand: :name
+  }
+  multisearchable against: [:stripped_title]
+
+  scope :webinars, -> {
+    where(webinar: true)
+  }
+
+  scope :not_webinars, -> {
+    where.not(webinar: true)
+  }
 
   has_many :categoriables, as: :item, dependent: :destroy
   has_many :categories, through: :categoriables
 
   after_save :touch_brand
-  # before_validation :auto_set_country
-  #
+  before_validation :auto_set_country
+
   belongs_to :brand
   belongs_to :tool
-  #
+
   has_many :video_category_videos, :dependent => :destroy
   has_many :video_categories, :through => :video_category_videos
-  # has_many :notifications, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
   has_many :tags_videos
 
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
 
-  # has_many :video_views, :dependent => :destroy
-  # has_many :watch_laters, :dependent => :destroy
-  # has_many :saved_items, dependent: :destroy, inverse_of: :video
-  #
-  # has_many :video_countries
-  # has_many :countries, :through => :video_countries
-  # has_many :events, :dependent => :destroy
-  #
+  has_many :video_views, :dependent => :destroy
+  has_many :watch_laters, :dependent => :destroy
+  has_many :saved_items, dependent: :destroy, inverse_of: :video
+
+  has_many :video_countries
+  has_many :countries, :through => :video_countries
+  has_many :events, :dependent => :destroy
+
   has_paper_trail
 
   validates :title, :length => { :maximum => 50 }, :presence => true
-  # validates :countries, :youtube_url, :brand, :presence => true
-  #
-  # def is_featured_enum
-  #   [['Yes', true], ['No', false]]
+  validates :countries, :youtube_url, :brand, :presence => true
+
+  def is_featured_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def is_introduction_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def youtube_video_id
+    (Rack::Utils.parse_query URI(youtube_url).query)['v']
+  rescue => e
+    NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
+    Rack::Utils.parse_nested_query(self.youtube_url).first.second
+  end
+
+  def image_url
+    "//img.youtube.com/vi/#{youtube_video_id}/maxresdefault.jpg" #hqdefault
+  end
+
+  # def category
+  #   self.video_category
   # end
-  #
-  # def is_introduction_enum
-  #   [['Yes', true], ['No', false]]
-  # end
-  #
-  # def youtube_video_id
-  #   params = Rack::Utils.parse_nested_query(self.youtube_url)
-  #   params.each do |k, v|
-  #     return v
-  #   end
-  # end
-  #
-  # def image_url
-  #   "//img.youtube.com/vi/#{youtube_video_id}/maxresdefault.jpg" #hqdefault
-  # end
-  #
-  # # def category
-  # #   self.video_category
-  # # end
-  #
+
+  def stripped_title
+    title&.strip
+  end
+
   def brand_name
     self.brand.name if self.brand
   end
@@ -72,31 +92,31 @@ class Video < ActiveRecord::Base
   def tool_id
     tool.id if tool
   end
-  #
-  # def view_count
-  #   VideoView.where(:video_id => self.id).size
-  # end
-  #
-  # def watch_later_for_user(user)
-  #   return false unless user
-  #   return WatchLater.where(:userable_id => user.id, :userable_type => user.class.name, :video_id => self.id).size > 0
-  # end
-  #
-  # def as_json(options={})
-  #   super(:except => [:brand], :methods => [:brand_id, :brand_name, :image_url, :youtube_video_id, :tool_file_url, :tool_title, :tool_id, :view_count])
-  # end
-  #
+
+  def view_count
+    VideoView.where(:video_id => self.id).size
+  end
+
+  def watch_later_for_user(user)
+    return false unless user
+    return WatchLater.where(:userable_id => user.id, :userable_type => user.class.name, :video_id => self.id).size > 0
+  end
+
+  def as_json(options={})
+    super(:except => [:brand], :methods => [:brand_id, :brand_name, :image_url, :youtube_video_id, :tool_file_url, :tool_title, :tool_id, :view_count])
+  end
+
   private
-  #
-  # def auto_set_country
-  #   if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
-  #     country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-  #     if country
-  #       self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
-  #     end
-  #   end
-  # end
-  #
+
+  def auto_set_country
+    if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
+      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
+      if country
+        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+      end
+    end
+  end
+
   def touch_brand
     self.brand.touch if self.brand
   end

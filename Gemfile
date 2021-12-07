@@ -24,7 +24,6 @@ gem 'jquery-rails', '3.1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'oj'
-gem 'oj_mimic_json'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
@@ -53,6 +52,7 @@ gem "naturally"
 gem "tzinfo"
 
 gem 'aws-sdk-s3'
+gem 'aws-sdk-sns'
 
 gem 'devise'
 gem 'rails_admin', '0.6.5'
@@ -145,3 +145,4 @@ gem 'newrelic_rpm'
 gem 'browser'
 
 gem 'franchising', path: 'engines/franchising'
+gem 'pro', path: 'engines/pro'

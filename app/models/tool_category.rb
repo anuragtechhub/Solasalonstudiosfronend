@@ -1,5 +1,4 @@
 class ToolCategory < ActiveRecord::Base
-
   has_many :tool_category_tools
   has_many :tools, :through => :tool_category_tools
 
@@ -8,7 +7,6 @@ class ToolCategory < ActiveRecord::Base
   def to_param
     name.gsub(' ', '-')
   end
-
 end
 
 # == Schema Information

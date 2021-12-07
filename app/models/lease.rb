@@ -1,10 +1,11 @@
 class Lease < ActiveRecord::Base
-
   has_paper_trail
 
   belongs_to :location
   belongs_to :stylist
   belongs_to :studio
+
+  has_many :recurring_charges
 
   belongs_to :recurring_charge_1, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_1_id'
   accepts_nested_attributes_for :recurring_charge_1, :allow_destroy => true
@@ -16,7 +17,7 @@ class Lease < ActiveRecord::Base
   accepts_nested_attributes_for :recurring_charge_3, :allow_destroy => true
 
   belongs_to :recurring_charge_4, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_4_id'
-  accepts_nested_attributes_for :recurring_charge_4, :allow_destroy => true    
+  accepts_nested_attributes_for :recurring_charge_4, :allow_destroy => true
 
   # validates :location, :stylist, :studio, :presence => true
   # validates :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true, :if => lambda { self.studio.present? }
@@ -60,6 +61,22 @@ class Lease < ActiveRecord::Base
     if start_date && end_date && (end_date > start_date) && (((end_date - start_date) / 365).floor < 1)
       errors.add(:end_date, 'must be at least one year later than the start date')
     end
+  end
+
+  def rent_recurring_charges
+    recurring_charges.where(:charge_type => :rent).order(:position => :asc)
+  end
+
+  def tax_recurring_charges
+    recurring_charges.where(:charge_type => :tax).order(:position => :asc)
+  end
+
+  def parking_recurring_charges
+    recurring_charges.where(:charge_type => :parking).order(:position => :asc)
+  end
+
+  def cable_recurring_charges
+    recurring_charges.where(:charge_type => :cable).order(:position => :asc)
   end
 
   def as_json(options={})

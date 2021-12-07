@@ -1,5 +1,4 @@
 class StylistMessage < ActiveRecord::Base
-
   has_paper_trail
 
   after_create :send_email
@@ -13,7 +12,6 @@ class StylistMessage < ActiveRecord::Base
       email.deliver if email
     end
   end
-
 end
 
 # == Schema Information

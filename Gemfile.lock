@@ -12,6 +12,12 @@ PATH
     franchising (0.0.1)
       rails (~> 4.2.11.3)
 
+PATH
+  remote: engines/pro
+  specs:
+    pro (0.0.1)
+      rails (~> 4.2.11.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,21 +71,24 @@ GEM
     area (0.10.0)
       fastercsv (~> 1.5)
     arel (6.0.4)
-    aws-eventstream (1.1.1)
-    aws-partitions (1.441.0)
-    aws-sdk-core (3.113.1)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.532.0)
+    aws-sdk-core (3.122.1)
       aws-eventstream (~> 1, >= 1.0.2)
-      aws-partitions (~> 1, >= 1.239.0)
+      aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.43.0)
-      aws-sdk-core (~> 3, >= 3.112.0)
+    aws-sdk-kms (1.51.0)
+      aws-sdk-core (~> 3, >= 3.122.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.93.0)
-      aws-sdk-core (~> 3, >= 3.112.0)
+    aws-sdk-s3 (1.106.0)
+      aws-sdk-core (~> 3, >= 3.122.0)
       aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sdk-sns (1.48.0)
+      aws-sdk-core (~> 3, >= 3.122.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.3)
+    aws-sigv4 (1.4.0)
       aws-eventstream (~> 1, >= 1.0.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -115,7 +124,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     connection_pool (2.2.3)
     crass (1.0.6)
     curb (0.9.10)
@@ -272,7 +281,6 @@ GEM
       racc (~> 1.4)
     ntlm-http (0.1.1)
     oj (3.11.5)
-    oj_mimic_json (1.0.1)
     orm_adapter (0.5.0)
     os (1.0.1)
     paper_trail (3.0.9)
@@ -288,10 +296,9 @@ GEM
       os (~> 1.0.0)
       paperclip (>= 5.2.1)
     pg (0.20.0)
-    pg_search (1.0.6)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
-      arel
+    pg_search (2.3.0)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     progress (3.1.1)
     pry (0.14.0)
       coderay (~> 1.1)
@@ -466,6 +473,7 @@ DEPENDENCIES
   annotate
   area
   aws-sdk-s3
+  aws-sdk-sns
   bcrypt
   bigdecimal (= 1.3.5)
   browser
@@ -506,12 +514,12 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   oj
-  oj_mimic_json
   paper_trail (~> 3.0.6)
   paperclip
   paperclip-compression
   pg (= 0.20.0)
   pg_search
+  pro!
   pry
   puma
   rack-attack

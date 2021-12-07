@@ -12,6 +12,22 @@ class ClassImage < ActiveRecord::Base
   validates_attachment :thumbnail, content_type: { content_type: %w[image/jpg image/jpeg image/png image/gif] }
   attr_accessor :delete_thumbnail
   before_validation { self.thumbnail.destroy if self.delete_thumbnail == '1' }
+
+  def image_original_url
+    image.url(:full_width)
+  end
+
+  def image_large_url
+    image.url(:large)
+  end
+
+  def thumbnail_original_url
+    thumbnail.url(:full_width)
+  end
+
+  def thumbnail_large_url
+    thumbnail.url(:large)
+  end
 end
 
 # == Schema Information

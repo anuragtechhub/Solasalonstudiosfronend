@@ -1,0 +1,190 @@
+<%- url = "#{ENV['PROTOCOL']}://#{ENV['WEB_HOST']}/admin/update_my_sola_website/#{@update_my_sola_website.id}/edit" -%>
+<%- stylist = @update_my_sola_website.stylist %>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"
+      xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible">
+<meta name="x-apple-disable-message-reformatting">
+<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:wght@400;500;600;700" rel="stylesheet">
+<!--[if gte mso 9]>
+<xml>
+  <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+  </o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<!-- begin css -->
+<style>
+    .detail-table {
+        border: solid 1px grey;
+    }
+    .detail-td {
+        border: solid 1px grey;
+        height:40px;
+        padding:5px;
+    }
+    .property {
+        font-weight:bold;
+        padding:5px;
+    }
+    .value {
+    }
+</style>
+<!-- end css -->
+<!-- begin email -->
+<body bgcolor="#ffffff" align="center" width = "600" style = "background-color:#FFFFFF !important;" yahoo="fix"  class = "MobileAutoWidth">
+<table class ="outer-table">
+  <tbody>
+  <tr>
+    <td>
+      <!-- begin header -->
+      <table class ="inner-table">
+        <tbody>
+        <tr>
+          <td>
+            <h1>Sola Website Update Request</h1>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!-- end header -->
+      <!-- begin section 1 -->
+      <table class ="detail-table">
+        <tbody>
+        <!-- row 1: Submitted by -->
+        <tr>
+          <td class="detail-td property">
+            Submitted by:
+          </td>
+          <td class="detail-td value">
+            <%= stylist.name %>
+          </td>
+        </tr>
+        <!-- end row 1 -->
+        <!-- row 2: Email -->
+        <tr>
+          <td class="detail-td property">
+            Email:
+          </td>
+          <td class="detail-td value">
+            <%= stylist.email_address %>
+          </td>
+        </tr>
+        <!-- end row 2 -->
+        <!-- row 3: Location  -->
+        <tr>
+          <td class="detail-td property">
+            Location:
+          </td>
+          <td class="detail-td value">
+            <%= stylist.location.name %>
+          </td>
+        </tr>
+        <!-- end row 3 -->
+        <!-- row 4: To be Approved by -->
+        <tr>
+          <td class="detail-td property">
+            To be approved by:
+          </td>
+          <td class="detail-td value">
+            <%= stylist.location.admin.email_address %>
+          </td>
+        </tr>
+        <!-- end row 4 -->
+        </tbody>
+      </table>
+      <!-- end section 1 -->
+      <br/>
+      <br/>
+
+      <table class ="inner-table">
+        <tbody>
+        <tr>
+          <td>
+            <h1>Changes Requested:</h1>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <table class ="detail-table">
+        <tbody>
+        <% @update_my_sola_website.changes_requested.each do |key, value| %>
+          <tr>
+            <td class="detail-td property">
+              <%= key.titleize == 'Botox' ? 'Botox/Fillers' : key.titleize %>
+            </td>
+            <td class="detail-td value">
+              <% if key.include?('image') %>
+                <img src="<%= value %>" alt="<%= key %>" style="max-width:400px;" />
+              <% elsif key.include?('testimonial') %>
+                <%= value.attributes.except('id', 'region', 'created_at', 'updated_at') %>
+              <% else %>
+                <%= value %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <!-- begin section 3 -->
+      <table class ="inner-table">
+        <tbody>
+        <tr>
+          <td>
+            <!-- BUTTON 1 -->
+            <center>
+              <table width="100%">
+                <tr>
+                  <td>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td height="20" width="100%" style="font-size: 20px; line-height: 20px;">
+                          &nbsp;
+                        </td>
+                      </tr>
+                    </table>
+                    <table border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                      <tbody>
+                      <tr>
+                        <td align="center">
+                          <table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                            <tr>
+                              <td align="center" bgcolor="#000000" width="150" style="-moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px;">
+                                <a href="<%= url %>" style="padding: 10px;width:150px;display: block;text-decoration: none;border:0;text-align: center;font-weight: bold;font-size: 15px;font-family: sans-serif;color: #ffffff;background: #000000;border: 1px solid #000000;-moz-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px;line-height:17px;" class="button_link">
+                                  Review Updates
+                                </a>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    <table border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td height="20" width="100%" style="font-size: 20px; line-height: 20px;">
+                          &nbsp;
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </center>
+            <!-- END BUTTON 1 -->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <!-- end section 3 -->
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>

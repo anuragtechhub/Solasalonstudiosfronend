@@ -1,6 +1,12 @@
 class UpdateMySolaWebsite < ActiveRecord::Base
-
-  has_paper_trail
+  SOCIAL_PREFIXES = {
+    instagram: 'https://www.instagram.com/',
+    facebook: 'https://www.facebook.com/',
+    twitter: 'https://www.twitter.com/',
+    yelp: 'https://www.yelp.com/biz/',
+    linkedin: 'https://www.linkedin.com/in/',
+    pinterest: 'https://www.pinterest.com/'
+  }.freeze
 
   require 'RMagick'
   require 'uri'
@@ -19,6 +25,23 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   belongs_to :testimonial_8, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_8'
   belongs_to :testimonial_9, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_9'
   belongs_to :testimonial_10, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_10'
+
+  accepts_nested_attributes_for :testimonial_1,
+                                :testimonial_2,
+                                :testimonial_3,
+                                :testimonial_4,
+                                :testimonial_5,
+                                :testimonial_6,
+                                :testimonial_7,
+                                :testimonial_8,
+                                :testimonial_9,
+                                :testimonial_10, reject_if: :all_blank, allow_destroy: false
+
+  before_validation :process_social_links
+  before_save :auto_format_phone_number
+
+  validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :name, :presence => true
 
   has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
@@ -70,9 +93,14 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   attr_accessor :delete_image_10
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
 
-  #before_update :auto_orient_images
-  #before_save :force_orient
+  before_update :auto_orient_images
+  before_save :force_orient
   after_update :publish_if_approved
+
+  # Check the logic. Don't send on destroy..make sure it sends only after update from the api. Probably add attr_reader
+  after_save :email_franchisee
+  # Same here
+  after_save :reserve_stylist
 
   scope :pending, -> { where(approved: false) }
   scope :approved, -> { where(approved: true) }
@@ -453,28 +481,92 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.save
   end
 
-  # def changes_requested
-  #   attrs = attributes.except('id', 'stylist_id', 'approved', 'created_at', 'updated_at').reject do |key, value|
-  #     stylist.send(key) == value || key.include?('image_') || key.include?('testimonial_')
-  #   end
-  #   (1..10).each do |number|
-  #     key = "testimonial_#{number}"
-  #     if (value = send(key)).present?
-  #       if (current_value = stylist.send(key)).present? && current_value.attributes.except('id', 'created_at', 'updated_at') !=
-  #         value.attributes.except('id', 'created_at', 'updated_at')
-  #         attrs[key] = value
-  #       end
-  #     end
-  #
-  #     key = "image_#{number}_url"
-  #     if (value = send(key)).present?
-  #       attrs[key] = value if stylist.send(key) != value
-  #     end
-  #   end
-  #   attrs
-  # end
+  def changes_requested
+    attrs = attributes.except('id', 'stylist_id', 'approved', 'google_plus_url', 'created_at', 'updated_at').reject do |key, value|
+      stylist.send(key) == value || key.include?('image_') || key.include?('testimonial_')
+    end
+    (1..10).each do |number|
+      key = "testimonial_#{number}"
+      if (value = send(key)).present?
+        current_value = stylist.send(key)
+        attrs[key] = value if current_value.blank? || current_value.attributes.except('id', 'created_at', 'updated_at') != value.attributes.except('id', 'created_at', 'updated_at')
+      end
+
+      key = "image_#{number}_url"
+      if (value = send(key)).present?
+        attrs[key] = value if stylist.send(key) != value
+      end
+
+      key = "image_#{number}"
+      if (value = send(key)).present?
+        attrs[key] = value.url
+        attrs.delete("#{key}_url")
+      end
+    end
+    attrs
+  end
+
+  def email_franchisee
+    return if reserved
+    return if updated_at_was.present? && updated_at_was > 15.minutes.ago # Do not spam admin
+
+    unless approved
+      Pro::AppMailer.stylist_website_update_request_submitted(self).deliver
+    end
+  end
+
+  def testimonials
+    {
+      testimonial_1: testimonial_1.to_h,
+      testimonial_2: testimonial_2.to_h,
+      testimonial_3: testimonial_3.to_h,
+      testimonial_4: testimonial_4.to_h,
+      testimonial_5: testimonial_5.to_h,
+      testimonial_6: testimonial_6.to_h,
+      testimonial_7: testimonial_7.to_h,
+      testimonial_8: testimonial_8.to_h,
+      testimonial_9: testimonial_9.to_h,
+      testimonial_10: testimonial_10.to_h
+    }
+  end
+
+  def as_json(options={})
+    super(:methods => [:testimonials])
+  end
 
   private
+
+  def process_social_links
+    SOCIAL_PREFIXES.each do |key, value|
+      attr = "#{key}_url"
+      next if send(attr).blank?
+
+      send("#{attr}=", send(attr).delete('@'))
+      unless send(attr).include?(value.gsub(%r{(http(s)?\:\/\/(www.)?)},''))
+        send("#{attr}=", "#{value}#{send(attr)}")
+      end
+    end
+  end
+
+  def auto_format_phone_number
+    if self.phone_number.present?
+      p "yes phone number is present #{phone_number}"
+      self.phone_number = formatPhoneNumber(self.phone_number)#ActionController::Base.helpers.number_to_phone(self.phone_number.gsub(/\D/, ''), area_code: true, raise: true)
+    else
+      p "NO no phone number present - #{phone_number}"
+    end
+  rescue => e
+    NewRelic::Agent.notice_error(e)
+    Rollbar.error(e)
+    p "bad phone number format! #{e}"
+  end
+
+  def formatPhoneNumber(s)
+    return "" unless s
+    s2 = (""+s).gsub(/\D/, '')
+    m = s2.match(/^(\d{3})(\d{3})(\d{4})$/)
+    return (!m) ? nil : "(" + m[1] + ") " + m[2] + "-" + m[3]
+  end
 
   def auto_orient_images
     p "auto_orient_images!"
@@ -534,6 +626,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     end
   end
 
+  def reserve_stylist
+    return unless reserved
+
+    stylist.update_column(:reserved, true)
+  end
 end
 
 # == Schema Information

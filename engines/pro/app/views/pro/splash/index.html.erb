@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta http-equiv="Content-Language" content="en_US" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>
+    <%= t 'splash.sola_pro' %> - <%= t 'splash.sola_salon_studios' %>
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= render 'pro/shared/og' %>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_url 'favicon.png' %>" />
+  <link href='//fonts.googleapis.com/css?family=Dosis:300,400,700|Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag "pro/splash", media: "all" %>
+  <%= javascript_include_tag "pro/splash" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="splash-page">
+
+  <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <ul class="nav">
+          <li class="border-left"><a class="sola-pro-sign-in" href="<%= "#{ENV['PROTOCOL']}://#{ENV['WEB_HOST']}" %>"><%= t 'splash.sola_salon_studios' %></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="header">
+    <%= image_tag 'pro/Sola_Pro_Logo_Splash.png', :width => 495 / 2, :height => 140 / 2 %>
+  </div>
+
+  <div class="content">
+    <div class="main-card">
+      <div class="app-icon"><%= image_tag 'pro/sola_pro_app_icon.png' %></div>
+      <h1><%= t 'splash.sola_pro' %>:</h1>
+      <h2><%= t 'splash.inspiration_at_your_fingertips' %></h2>
+      <ul>
+        <li><%= t 'splash.education' %></li>
+        <li><%= t 'splash.exclusive_deals' %></li>
+        <li><%= t('splash.events_and_classes_calendar').html_safe %></li>
+        <% if I18n.locale.to_s != 'pt-BR' %><li><%= t 'splash.blog' %></li><% end %>
+        <% if I18n.locale.to_s != 'pt-BR' %><li><%= t 'splash.perkspot' %></li><% end %>
+        <li><%= t 'splash.and_much_more' %></li>
+      </ul>
+      <div class="watch-video">
+        <% if I18n.locale.to_s == 'pt-BR' %>
+          <a href="//www.youtube.com/watch?v=kzE5SSBR_5k" class="play-video" rel="sola-pro-video-1"><%= t 'splash.watch_video' %></a>
+        <% else %>
+          <a href="//www.youtube.com/watch?v=Bpe-puULbws" class="play-video" rel="sola-pro-video-1"><%= t 'splash.watch_video' %></a>
+        <% end %>
+      </div>
+      <div class="download-buttons text-center">
+        <a href="https://itunes.apple.com/us/app/sola-pro/id1062412249?mt=8" target="_blank"><%= image_tag 'pro/ios_appstore.png', :width => 257, :height => 79 %></a>
+        <a href="https://play.google.com/store/apps/details?id=com.solapro&hl=en" target="_blank"><%= image_tag 'pro/android_appstore.png', :width => 266.706611569, :height => 79 %></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <ul>
+      <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank' do %><span class="fa fa-facebook-square"></span><% end %></li>
+      <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank' do %><span class="fa fa-twitter"></span><% end %></li>
+      <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank' do %><span class="fa fa-pinterest-p"></span><% end %></li>
+      <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank' do %><span class="fa fa-instagram"></span><% end %></li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

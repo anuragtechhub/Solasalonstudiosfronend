@@ -1,4 +1,10 @@
 class Deal < ActiveRecord::Base
+  include PgSearch::Model
+
+  pg_search_scope :search, against: [:title, :description], associated_against: {
+    categories: [:name],
+    brand: :name
+  }
 
   has_many :categoriables, as: :item, dependent: :destroy
   has_many :categories, through: :categoriables
@@ -6,18 +12,18 @@ class Deal < ActiveRecord::Base
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
   after_save :touch_brand
-  # before_validation :auto_set_country
-  #
+  before_validation :auto_set_country
+
   belongs_to :brand
-  #
-  has_many :deal_category_deals, :dependent => :destroy
-  has_many :deal_categories, :through => :deal_category_deals
-  # has_many :notifications, :dependent => :destroy
-  #
-  # has_many :deal_countries
-  # has_many :countries, :through => :deal_countries
-  # has_many :events, :dependent => :destroy
-  #
+
+  has_many :deal_category_deals, dependent: :destroy
+  has_many :deal_categories, through: :deal_category_deals
+  has_many :notifications, dependent: :destroy
+
+  has_many :deal_countries
+  has_many :countries, through: :deal_countries
+  has_many :events, dependent: :destroy
+
   has_paper_trail
 
   has_attached_file :file
@@ -37,55 +43,56 @@ class Deal < ActiveRecord::Base
 
   validates :title, :length => { :maximum => 35 }, :presence => true
   validates :description, :length => { :maximum => 400 }, :presence => true
-  # validates :countries, :presence => true
-  #
-  # def display_name
-  #   "#{title} (#{countries && countries.size > 0 ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
+  validates :countries, :presence => true
+
+
+  def display_name
+    "#{title} (#{countries && countries.size > 0 ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
+  end
+
+  def is_featured_enum
+    [['Yes', true], ['No', false]]
+  end
+
+  def to_param
+    title.gsub(' ', '-')
+  end
+
+  # def category
+  #   self.deal_category
   # end
-  #
-  # def is_featured_enum
-  #   [['Yes', true], ['No', false]]
-  # end
-  #
-  # def to_param
-  #   title.gsub(' ', '-')
-  # end
-  #
-  # # def category
-  # #   self.deal_category
-  # # end
-  #
+
   def image_url
     image.url(:full_width) if image.present?
   end
-  #
-  # def file_url
-  #   file.url if file.present?
-  # end
-  #
+
+  def file_url
+    file.url if file.present?
+  end
+
   def brand_id
-    brand.id if brand
+    brand&.id
   end
 
   def brand_name
-    brand.name if brand
+    brand&.name
   end
-  #
-  # def as_json(options={})
-  #   super(:except => [:brand], :methods => [:brand_id, :brand_name, :image_url, :file_url])
-  # end
-  #
+
+  def as_json(options={})
+    super(except: %i[brand], methods: %i[brand_id brand_name image_url file_url])
+  end
+
   private
-  #
-  # def auto_set_country
-  #   if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
-  #     country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-  #     if country
-  #       self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
-  #     end
-  #   end
-  # end
-  #
+
+  def auto_set_country
+    if Admin.current&.id && Admin.current&.franchisee && Admin.current&.sola_pro_country_admin.present?
+      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
+      if country
+        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+      end
+    end
+  end
+
   def touch_brand
     self.brand.touch if self.brand
   end

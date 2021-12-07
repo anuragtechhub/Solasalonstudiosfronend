@@ -1,0 +1,27 @@
+<div class="container content-container content-container-large">
+  <div class="row">
+    <div class="four columns centered">
+      <div class="aligncenter" style="text-align: center;">
+        <%= image_tag 'pro/solaPro-Loading.png', width: 100, style: "margin: 20px 0;" %>
+      </div>
+
+      <h2 class="text-center" style="font-family: Chalet-LondonSixty;font-size: 19px;letter-spacing: 0;">Reset Your Password</h2>
+
+      <%= render 'pro/shared/errors', noliststyle: true %>
+      <%= render 'pro/shared/success' %>
+
+      <p class="instruction-text">Type your new password into the inputs below, then click submit.</p>
+
+      <%= form_for reset_password_path(params[:id]), :html => { :id => "reset-password", :autocomplete => "off", :spellcheck => "false" } do |f| %>
+        <label style="font-family: Chalet-ParisSixty;font-size: 19px;letter-spacing: 1px;">New Password</label>
+        <%= password_field_tag :password, params[:password], :class => 'block' %>
+        <label style="font-family: Chalet-ParisSixty;font-size: 19px;letter-spacing: 1px;">Re-type Password</label>
+        <%= password_field_tag :password_confirmation, params[:password_confirmation], :class => 'block' %>
+        <button type="submit" class="primary block" style="background: linear-gradient(to right, #72C4E7, #459DD3); text-transform: capitalize; font-family: Chalet-LondonSixty;font-size: 19px;letter-spacing: 1px;">Submit</button>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<input type="hidden" id="logged_in" name="logged_in" value="n/a" />

@@ -1,20 +1,21 @@
 class Brand < ActiveRecord::Base
+  include PgSearch::Model
+  multisearchable against: [:stripped_name]
 
-  # before_validation :auto_set_country
+  before_validation :auto_set_country
 
-  has_many :deals, :dependent => :destroy
-  has_many :videos, :dependent => :destroy
-  #has_many :sola_classes
-  has_many :tools, :dependent => :destroy
-  # has_many :brand_links, -> { order 'position' }, :dependent => :destroy
-  # has_many :product_informations, :dependent => :destroy
-  has_and_belongs_to_many :sola_classes
-  # has_many :notifications, :dependent => :destroy
-  #
-  # has_many :brand_countries
-  # has_many :countries, :through => :brand_countries
-  #
-  # has_many :events, :dependent => :destroy
+  has_many :brandables, inverse_of: :brand, dependent: :destroy
+  has_many :deals, inverse_of: :brand, dependent: :destroy
+  has_many :videos, inverse_of: :brand, dependent: :destroy
+  has_many :tools, inverse_of: :brand, dependent: :destroy
+  has_many :brand_links, -> { order 'position' }, inverse_of: :brand, dependent: :destroy
+  has_many :product_informations, inverse_of: :brand, dependent: :destroy
+  has_many :notifications, inverse_of: :brand, dependent: :destroy
+  has_many :brand_countries, inverse_of: :brand, dependent: :destroy
+  has_many :countries, through: :brand_countries
+  has_many :events, inverse_of: :brand, dependent: :destroy
+
+  has_and_belongs_to_many :sola_classes, inverse_of: :brand, dependent: :destroy
 
   has_paper_trail
 
@@ -23,18 +24,8 @@ class Brand < ActiveRecord::Base
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
 
-  # has_attached_file :hover_image, :styles => { :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
-  # validates_attachment :hover_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  # attr_accessor :delete_hover_image
-  # before_validation { self.hover_image.destroy if self.delete_hover_image == '1' }
-
-  #has_attached_file :white_image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => 'decutywx15n1m.cloudfront.net', :styles => { :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
-  #validates_attachment :white_image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  #attr_accessor :delete_white_image
-  #before_validation { self.white_image.destroy if self.delete_white_image == '1' }
-
-  validates :name, :length => { :maximum => 50 }, :uniqueness => true, :presence => true
-  #validates :countries, :presence => true
+  validates :name, length: { maximum: 50 }, uniqueness: true, presence: true
+  validates :countries, presence: true
 
   def display_name
     "#{name} (#{countries && countries.size > 0 ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
@@ -65,23 +56,19 @@ class Brand < ActiveRecord::Base
   end
 
   def brand_videos
-    videos.joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
-      .where("is_introduction != TRUE")
-      .where("video_category_videos.video_category_id != 7")
-      .order(:title => :asc)
-      .uniq
+    videos.where("is_introduction != TRUE").not_webinars.order(title: :asc)
   end
 
   def past_webinar_videos
-    videos.joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
-      .where("is_introduction != TRUE")
-      .where("video_category_videos.video_category_id = 7")
-      .order(:title => :asc)
-      .uniq
+    videos.where("is_introduction != TRUE").webinars.order(title: :asc)
   end
 
   def title
     name
+  end
+
+  def stripped_name
+    name&.strip
   end
 
   def content?
@@ -93,7 +80,8 @@ class Brand < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:only => [:name, :website_url, :introduction_video_heading_title, :events_and_classes_heading_title], :methods => [:classes, :deals, :image_url, :links, :tools, :videos, :title])
+    super(only: %i[name website_url introduction_video_heading_title events_and_classes_heading_title],
+          methods: %i[classes deals image_url links tools videos title])
   end
 
   # country-filtered content
@@ -103,7 +91,7 @@ class Brand < ActiveRecord::Base
       .joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
       .where("is_introduction != TRUE")
       .where("video_category_videos.video_category_id != 7")
-      .order(:title => :asc)
+      .order(:title)
       .uniq
   end
 
@@ -120,7 +108,7 @@ class Brand < ActiveRecord::Base
       .joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
       .where("is_introduction != TRUE")
       .where("video_category_videos.video_category_id = 7")
-      .order(:title => :asc)
+      .order(:title)
       .uniq
   end
 
@@ -128,26 +116,26 @@ class Brand < ActiveRecord::Base
     tools.joins(:tool_countries, :countries).where('countries.code = ?', country).uniq
   end
 
-  # def upcoming_classes_by_country(country='US')
-  #   classes = upcoming_classes
-  #
-  #   regions = SolaClassRegion.joins(:sola_class_region_countries, :countries).where('countries.code = ?', country)
-  #
-  #   return classes.uniq if regions.size == 0
-  #
-  #   classes.where(:sola_class_region_id => regions.pluck(:id)).uniq
-  # end
+  def upcoming_classes_by_country(country='US')
+    classes = upcoming_classes
+
+    regions = SolaClassRegion.joins(:sola_class_region_countries, :countries).where('countries.code = ?', country)
+
+    return classes.uniq if regions.size == 0
+
+    classes.where(:sola_class_region_id => regions.pluck(:id)).uniq
+  end
 
   private
 
-  # def auto_set_country
-  #   if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
-  #     country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-  #     if country
-  #       self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
-  #     end
-  #   end
-  # end
+  def auto_set_country
+    if Admin.current&.id && Admin.current&.franchisee && Admin.current&.sola_pro_country_admin.present?
+      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
+      if country
+        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+      end
+    end
+  end
 
 end
 

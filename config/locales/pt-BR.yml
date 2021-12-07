@@ -1,5 +1,38 @@
 pt-BR:
+  update_my_sola_website_success: 'Atualização realizada com sucesso! Enviaremos um e-mail quando as alterações do seu site estiverem ativas.'
+  walkins_update_success: 'Walkins atualizado com sucesso!'
+  already_in_use: já está em uso
+  invalid_email_or_password: e-mail ou senha inválidos
+  please_fill_out_all_fields: Por favor, preencha todos os campos
+  email_address_already_exists: Já existe um nome de usuário com este e-mail
+  no_such_user: O usuário não existe
+  no_such_item: Esse item não existe
+  could_not_find_sola_professional: Não encontramos um profissional Sola com esse endereço de e-mail
+  passwords_do_not_match: Senhas não combinam
+  please_enter_your_email_address: Por favor, informe o seu e-mail
+  you_must_sign_in: Você deve fazer login in
+  invalid_reset_password_token: Token de redefinição de senha inválido. Por favor, tente novamente.
+  reset_password_token_used: Esse Token de redefinição de senha já foi utilizado. Por favor, solicite novamente a redefinição de senha
+  reset_password_sent_to: Redefinição de senha enviada para o e-mail %{email}
+  could_not_find_salon_professional: Não foi possível encontrar um profissional Sola
+  update_my_sola_website_request_from: Pedido de atualização do Meu Website Sola feito por %{name}
+  forgot_password_reset_instructions: Esqueci as instruções para resetar a senha
+  your_email_is: 'Seu e-mail é: %{email}'
+  click_the_link_below_to_reset_your_sola_pro_password: 'Clique no link abaixo para redefinir a sua senha Sola Pro: '
+  cheers: Saúde
+  update_my_sola_website_approval_email: '%{name} do %{location_name} acabou de enviar uma atualização para Meu Website Sola no Sola Professional. Isso deverá ser aprovado por %{admin_email} para poder entrar ser publicado. Clique no link abaixo para revisar as atualizações:'
 
+  splash:
+    sola_pro: Sola Pro
+    sola_salon_studios: Sola Salon Studios
+    inspiration_at_your_fingertips: Inspiração na ponta dos seus dedos
+    education: Educação
+    exclusive_deals: Promoções Exclusivas
+    events_and_classes_calendar: Eventos & calendário de aulas
+    blog: Blog
+    perkspot: Perkspot
+    and_much_more: E muito mais!
+    watch_video: Vantagens
   contact_form_success: Obrigado! Entraremos em contato em breve
 
   activerecord:

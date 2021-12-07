@@ -1,5 +1,4 @@
 class BlogCategory < ActiveRecord::Base
-
   has_paper_trail
 
   before_save :fix_url_name
@@ -27,6 +26,9 @@ class BlogCategory < ActiveRecord::Base
     end
   end
 
+  def as_json(options={})
+    super(only: %i[name url_name])
+  end
 end
 
 # == Schema Information

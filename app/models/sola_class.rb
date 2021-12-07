@@ -1,7 +1,14 @@
 class SolaClass < ActiveRecord::Base
+  include PgSearch::Model
+
+  pg_search_scope :search, against: [:title, :description], associated_against: {
+    category: [:name]
+  }
+  multisearchable against: [:stripped_title], if: lambda { |record| record.end_date.present? && record.end_date >= Date.current }
+
 
   after_save :touch_brands
-  #after_create :send_notifications
+  after_create :send_notifications
   before_create :save_admin
   before_validation :auto_set_country, :save_region
 
@@ -9,7 +16,7 @@ class SolaClass < ActiveRecord::Base
   belongs_to :sola_class_region
 
   belongs_to :category
-  belongs_to :brand
+  #belongs_to :brand
   belongs_to :admin
   belongs_to :video
 
@@ -20,11 +27,11 @@ class SolaClass < ActiveRecord::Base
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
 
-  #has_many :notifications, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
 
-  # has_many :sola_class_countries
-  # has_many :countries, :through => :sola_class_countries
-  # has_many :events, :dependent => :destroy
+  has_many :sola_class_countries
+  has_many :countries, :through => :sola_class_countries
+  has_many :events, :dependent => :destroy
 
   # after_validation :geocode, :reverse_geocode
   # geocoded_by :city_state
@@ -54,11 +61,17 @@ class SolaClass < ActiveRecord::Base
   validates :description, :length => { :maximum => 400 }, :presence => true
   validates :cost, :length => { :maximum => 40 }
   validates :location, :length => { :maximum => 40 }, :presence => true, :if => :not_webinars
-  # validates :link_url, :url => true
+  validates :link_url, :url => true
   validates :start_date, :presence => true
   validates :end_date, :presence => true
   validate :end_date_is_after_start_date
   #validates :countries, :presence => true
+
+  scope :upcoming, -> { where('end_date >= ?', Date.current) }
+
+  def stripped_title
+    title&.strip
+  end
 
   def city_state
     "#{city}, #{state}"
@@ -248,7 +261,7 @@ class SolaClass < ActiveRecord::Base
   end
 
   def send_notifications
-    AppMailer.new_class_or_event(self).deliver
+    Pro::AppMailer.new_class_or_event(self).deliver
   end
 
   def touch_brands

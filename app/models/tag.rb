@@ -1,16 +1,13 @@
 class Tag < ActiveRecord::Base
-
   has_many :categoriables, as: :item, dependent: :destroy
   has_many :categories, through: :categoriables
 
-  has_many :tags_videos
-  has_many :videos, :through => :tags_videos
-
   has_many :taggables, inverse_of: :tag, dependent: :destroy
-  # has_many :sola_stylist, through: :taggables, source: :item, source_type: 'SolaStylist'
-  #
-  validates :name, uniqueness: true
 
+  has_many :stylists, through: :taggables, source: :item, source_type: 'Stylist'
+  has_many :videos, through: :taggables, source: :item, source_type: 'Video'
+
+  validates :name, uniqueness: true
 end
 
 # == Schema Information

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211104124937) do
+ActiveRecord::Schema.define(version: 20211114200114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -661,31 +661,31 @@ ActiveRecord::Schema.define(version: 20211104124937) do
   end
 
   create_table "saved_items", force: :cascade do |t|
-    t.integer  "sola_stylist_id"
+    t.integer  "stylist_id"
     t.integer  "admin_id"
     t.integer  "item_id"
-    t.string   "item_type",       limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "item_type",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "saved_items", ["admin_id"], name: "index_saved_items_on_admin_id", using: :btree
   add_index "saved_items", ["item_type", "item_id"], name: "index_saved_items_on_item_type_and_item_id", using: :btree
-  add_index "saved_items", ["sola_stylist_id"], name: "index_saved_items_on_sola_stylist_id", using: :btree
+  add_index "saved_items", ["stylist_id"], name: "index_saved_items_on_stylist_id", using: :btree
 
   create_table "saved_searches", force: :cascade do |t|
-    t.integer  "sola_stylist_id"
+    t.integer  "stylist_id"
     t.integer  "admin_id"
-    t.text     "query",                       null: false
+    t.text     "query",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "kind",            limit: 255
+    t.string   "kind",       limit: 255
   end
 
   add_index "saved_searches", ["admin_id"], name: "index_saved_searches_on_admin_id", using: :btree
   add_index "saved_searches", ["kind"], name: "index_saved_searches_on_kind", using: :btree
   add_index "saved_searches", ["query"], name: "index_saved_searches_on_query", using: :btree
-  add_index "saved_searches", ["sola_stylist_id"], name: "index_saved_searches_on_sola_stylist_id", using: :btree
+  add_index "saved_searches", ["stylist_id"], name: "index_saved_searches_on_stylist_id", using: :btree
 
   create_table "seja_solas", force: :cascade do |t|
     t.string   "nome",            limit: 255
@@ -939,16 +939,16 @@ ActiveRecord::Schema.define(version: 20211104124937) do
 #   can't modify frozen String: "false"
 
   create_table "user_access_tokens", force: :cascade do |t|
-    t.integer  "sola_stylist_id"
-    t.string   "key",             limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "stylist_id"
+    t.string   "key",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "admin_id"
   end
 
   add_index "user_access_tokens", ["admin_id"], name: "index_user_access_tokens_on_admin_id", using: :btree
   add_index "user_access_tokens", ["key"], name: "index_user_access_tokens_on_key", using: :btree
-  add_index "user_access_tokens", ["sola_stylist_id"], name: "index_user_access_tokens_on_sola_stylist_id", using: :btree
+  add_index "user_access_tokens", ["stylist_id"], name: "index_user_access_tokens_on_stylist_id", using: :btree
 
   create_table "user_notifications", force: :cascade do |t|
     t.string   "userable_type",   limit: 255

@@ -56,4 +56,30 @@ module Clockwork
   every(1.day, 'reports.monthly', at: '09:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
     Reports::MonthlyJob.perform_async
   end
+
+  # jobs for Pro::Engine
+
+  every(1.day, 'engines.pro.view_update', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake view:update`
+  end
+
+  every(1.day, 'engines.pro.pg_search.multisearch.rebuild.category', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake pg_search:multisearch:rebuild[Category]`
+  end
+
+  every(1.day, 'engines.pro.pg_search.multisearch.rebuild.tool', at: '09:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake pg_search:multisearch:rebuild[Tool]`
+  end
+
+  every(1.day, 'engines.pro.pg_search.multisearch.rebuild.video', at: '09:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake pg_search:multisearch:rebuild[Video]`
+  end
+
+  every(1.day, 'engines.pro.pg_search.multisearch.rebuild.brand', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake pg_search:multisearch:rebuild[Brand]`
+  end
+
+  every(1.day, 'engines.pro.pg_search.multisearch.rebuild.sola_class', at: '08:00', if: lambda { |t| ENV['ALLOW_CLOCKWORK'].present? }) do
+    `rake pg_search:multisearch:rebuild[SolaClass]`
+  end
 end

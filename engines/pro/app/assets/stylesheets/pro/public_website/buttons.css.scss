@@ -1,0 +1,124 @@
+@import '../variables';
+@import '../bootstrap/mixins';
+
+button, input[type=button], input[type=submit], .button, a.button, a.button:link, a.button:visited, a.button:hover, a.button:active {
+
+  font-family: 'Dosis', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  line-height: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  border-radius: 0px;
+  border: 2px solid #000;
+  height: auto;
+  padding: 16px 30px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -moz-transition-property: none !important;
+  -webkit-transition-property: none !important;
+  -o-transition-property: none !important;
+  transition-property: none !important;
+
+
+  &:link, &:visited {
+    color: #000;
+    text-decoration: none;
+  }
+
+  &:hover, &:active {
+    color: #FFF;
+    border: 2px solid transparent;
+    @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+  }
+
+  &.inverted {
+    border: 2px solid #FFF;
+    color: #FFF !important;
+  }
+
+  &.primary {
+    border: 0 solid transparent;
+    padding: 18px 30px;
+    background: $brand-pink;
+    color: #FFF !important;
+
+    &:hover, &:active {
+      color: #FFF !important;
+      @include gradient-vertical(lighten($brand-pink, 30%), $brand-pink);
+    }
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
+
+  &.long-text {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  &.nowrap {
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  &.get-featured-by-sola {
+    color: #FFF;
+    border: 2px solid $brand-pink;
+  }
+
+}
+
+.request-franchising-info {
+  margin-top: 5px;
+}
+
+.download-buttons {
+  zoom: 0.7;
+  margin: 70px auto 20px auto;
+  overflow: visible;
+  white-space: nowrap;
+  text-align: center;
+
+  a {
+    opacity: 0.5;
+
+    &:first-child {
+      margin-right: 40px;
+    }
+
+    &:last-child {
+      margin-left: 40px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .download-buttons {
+    margin-top: 20px;
+
+    a {
+
+      img {
+        max-width: calc(50% - 20px);
+        height: auto;
+      }
+
+      &:first-child {
+        margin-right: 20px;
+      }
+
+      &:last-child {
+        margin-left: 20px;
+      }
+    }
+  }
+}

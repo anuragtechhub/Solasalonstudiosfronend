@@ -1,8 +1,11 @@
 Solasalonstudios::Application.routes.draw do
   require 'sidekiq/web'
 
+	# engines
   mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV['FRANCHISING_DOMAINS'])
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Pro::Engine => '/', as: 'pro_engine', constraints: DomainConstraint.new(ENV['PRO_DOMAINS'])
+
+	mount Ckeditor::Engine => '/ckeditor'
 
   get "/" => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
@@ -225,6 +228,7 @@ end
 #
 #                                 Prefix Verb     URI Pattern                                                   Controller#Action
 #                     franchising_engine          /                                                             Franchising::Engine
+#                             pro_engine          /                                                             Pro::Engine
 #                               ckeditor          /ckeditor                                                     Ckeditor::Engine
 #                                   home GET      /                                                             home#index
 #                                new_cms GET      /new-cms(.:format)                                            home#new_cms
@@ -384,6 +388,132 @@ end
 #      franchise_article GET  /franchise_articles/:id(.:format)        franchising/franchise_articles#show
 #                        GET  /pdfs/Sola_Franchise_Guide.pdf(.:format) franchising/files#pdf_guide
 #
+# Routes for Pro::Engine:
+#                                        root GET      /                                                      pro/splash#index
+#                              api_v1_classes GET|POST /api/v1/classes(.:format)                              pro/api/v1/classes#index {:format=>:json}
+#                                      api_v1 GET|POST /api/v1/classes_load_more/:id(.:format)                pro/api/v1/classes#load_more {:format=>:json}
+#                            api_v1_get_class GET|POST /api/v1/get_class(.:format)                            pro/api/v1/classes#get {:format=>:json}
+#                                api_v1_deals GET|POST /api/v1/deals(.:format)                                pro/api/v1/deals#index {:format=>:json}
+#                      api_v1_deals_load_more GET|POST /api/v1/deals_load_more(.:format)                      pro/api/v1/deals#load_more {:format=>:json}
+#                             api_v1_get_deal GET|POST /api/v1/get_deal(.:format)                             pro/api/v1/deals#get {:format=>:json}
+#                                api_v1_tools GET|POST /api/v1/tools(.:format)                                pro/api/v1/tools#index {:format=>:json}
+#                      api_v1_tools_load_more GET|POST /api/v1/tools_load_more(.:format)                      pro/api/v1/tools#load_more {:format=>:json}
+#                               api_v1_videos GET|POST /api/v1/videos(.:format)                               pro/api/v1/videos#index {:format=>:json}
+#                     api_v1_videos_load_more GET|POST /api/v1/videos_load_more(.:format)                     pro/api/v1/videos#load_more {:format=>:json}
+#                        api_v1_videos_search GET|POST /api/v1/videos_search(.:format)                        pro/api/v1/videos#search {:format=>:json}
+#                   api_v1_videos_recommended GET|POST /api/v1/videos_recommended(.:format)                   pro/api/v1/videos#recommended {:format=>:json}
+#                      api_v1_videos_log_view GET|POST /api/v1/videos_log_view(.:format)                      pro/api/v1/videos#log_view {:format=>:json}
+#                   api_v1_videos_watch_later GET|POST /api/v1/videos_watch_later(.:format)                   pro/api/v1/videos#watch_later {:format=>:json}
+#              api_v1_video_history_load_more GET|POST /api/v1/video_history_load_more(.:format)              pro/api/v1/videos#history_load_more {:format=>:json}
+#          api_v1_video_watch_later_load_more GET|POST /api/v1/video_watch_later_load_more(.:format)          pro/api/v1/videos#watch_later_load_more {:format=>:json}
+#                            api_v1_get_video GET|POST /api/v1/get_video(.:format)                            pro/api/v1/videos#get {:format=>:json}
+#                               api_v1_brands GET|POST /api/v1/brands(.:format)                               pro/api/v1/brands#index {:format=>:json}
+#                                             GET|POST /api/v1/brands/:id(.:format)                           pro/api/v1/brands#show {:format=>:json}
+#                            api_v1_get_brand GET|POST /api/v1/get_brand(.:format)                            pro/api/v1/brands#get {:format=>:json}
+#                                api_v1_blogs GET|POST /api/v1/blogs(.:format)                                pro/api/v1/blogs#index {:format=>:json}
+#                      api_v1_blogs_load_more GET|POST /api/v1/blogs_load_more(.:format)                      pro/api/v1/blogs#load_more {:format=>:json}
+#                         api_v1_blogs_search GET|POST /api/v1/blogs_search(.:format)                         pro/api/v1/blogs#search {:format=>:json}
+#                           api_v1_users_find GET|POST /api/v1/users/find(.:format)                           pro/api/v1/users#find {:format=>:json}
+#                       api_v1_users_page_url GET|POST /api/v1/users/page_url(.:format)                       pro/api/v1/users#page_url {:format=>:json}
+#                   api_v1_users_active_check GET|POST /api/v1/users/active_check(.:format)                   pro/api/v1/users#active_check {:format=>:json}
+#               api_v1_users_platform_version GET|POST /api/v1/users/platform_version(.:format)               pro/api/v1/users#platform_version {:format=>:json}
+#                         api_v1_load_content GET|POST /api/v1/content/load(.:format)                         pro/api/v1/content#load {:format=>:json}
+#                        api_v1_sessions_user GET|POST /api/v1/sessions/user(.:format)                        pro/api/v1/sessions#user {:format=>:json}
+#                     api_v1_sessions_content GET|POST /api/v1/sessions/content(.:format)                     pro/api/v1/sessions#content {:format=>:json}
+#                     api_v1_sessions_sign_in GET|POST /api/v1/sessions/sign_in(.:format)                     pro/api/v1/sessions#sign_in {:format=>:json}
+#                     api_v1_sessions_sign_up GET|POST /api/v1/sessions/sign_up(.:format)                     pro/api/v1/sessions#sign_up {:format=>:json}
+#             api_v1_sessions_forgot_password GET|POST /api/v1/sessions/forgot_password(.:format)             pro/api/v1/sessions#forgot_password {:format=>:json}
+#              api_v1_sessions_reset_password GET|POST /api/v1/sessions/reset_password(.:format)              pro/api/v1/sessions#reset_password {:format=>:json}
+#                                             GET|POST /api/v1/short_links/:public_id(.:format)               pro/api/v1/short_links#get {:format=>:json}
+#                  api_v1_notifications_token GET|POST /api/v1/notifications/token(.:format)                  pro/api/v1/notifications#token {:format=>:json}
+#                api_v1_notifications_dismiss GET|POST /api/v1/notifications/dismiss(.:format)                pro/api/v1/notifications#dismiss {:format=>:json}
+#               api_v1_update_my_sola_website GET|POST /api/v1/update_my_sola_website(.:format)               pro/api/v1/update_my_sola_website#submit {:format=>:json}
+#                              api_v2_classes GET|POST /api/v2/classes(.:format)                              pro/api/v2/classes#index {:format=>:json}
+#                                      api_v2 GET|POST /api/v2/classes_load_more/:id(.:format)                pro/api/v2/classes#load_more {:format=>:json}
+#                            api_v2_get_class GET|POST /api/v2/get_class(.:format)                            pro/api/v2/classes#get {:format=>:json}
+#                                api_v2_deals GET|POST /api/v2/deals(.:format)                                pro/api/v2/deals#index {:format=>:json}
+#                      api_v2_deals_load_more GET|POST /api/v2/deals_load_more(.:format)                      pro/api/v2/deals#load_more {:format=>:json}
+#                             api_v2_get_deal GET|POST /api/v2/get_deal(.:format)                             pro/api/v2/deals#get {:format=>:json}
+#              api_v2_leases_studio_agreement GET|POST /api/v2/leases/studio-agreement(.:format)              pro/api/v2/leases#studio_agreement {:format=>:json}
+# api_v2_leases_save_lease_agreement_file_url GET|POST /api/v2/leases/save_lease_agreement_file_url(.:format) pro/api/v2/leases#save_lease_agreement_file_url {:format=>:json}
+#                                api_v2_tools GET|POST /api/v2/tools(.:format)                                pro/api/v2/tools#index {:format=>:json}
+#                      api_v2_tools_load_more GET|POST /api/v2/tools_load_more(.:format)                      pro/api/v2/tools#load_more {:format=>:json}
+#                               api_v2_videos GET|POST /api/v2/videos(.:format)                               pro/api/v2/videos#index {:format=>:json}
+#                     api_v2_videos_load_more GET|POST /api/v2/videos_load_more(.:format)                     pro/api/v2/videos#load_more {:format=>:json}
+#                        api_v2_videos_search GET|POST /api/v2/videos_search(.:format)                        pro/api/v2/videos#search {:format=>:json}
+#                   api_v2_videos_recommended GET|POST /api/v2/videos_recommended(.:format)                   pro/api/v2/videos#recommended {:format=>:json}
+#                      api_v2_videos_log_view GET|POST /api/v2/videos_log_view(.:format)                      pro/api/v2/videos#log_view {:format=>:json}
+#                   api_v2_videos_watch_later GET|POST /api/v2/videos_watch_later(.:format)                   pro/api/v2/videos#watch_later {:format=>:json}
+#              api_v2_video_history_load_more GET|POST /api/v2/video_history_load_more(.:format)              pro/api/v2/videos#history_load_more {:format=>:json}
+#          api_v2_video_watch_later_load_more GET|POST /api/v2/video_watch_later_load_more(.:format)          pro/api/v2/videos#watch_later_load_more {:format=>:json}
+#                            api_v2_get_video GET|POST /api/v2/get_video(.:format)                            pro/api/v2/videos#get {:format=>:json}
+#                               api_v2_brands GET|POST /api/v2/brands(.:format)                               pro/api/v2/brands#index {:format=>:json}
+#                                             GET|POST /api/v2/brands/:id(.:format)                           pro/api/v2/brands#show {:format=>:json}
+#                            api_v2_get_brand GET|POST /api/v2/get_brand(.:format)                            pro/api/v2/brands#get {:format=>:json}
+#                                api_v2_blogs GET|POST /api/v2/blogs(.:format)                                pro/api/v2/blogs#index {:format=>:json}
+#                      api_v2_blogs_load_more GET|POST /api/v2/blogs_load_more(.:format)                      pro/api/v2/blogs#load_more {:format=>:json}
+#                         api_v2_blogs_search GET|POST /api/v2/blogs_search(.:format)                         pro/api/v2/blogs#search {:format=>:json}
+#                           api_v2_users_find GET|POST /api/v2/users/find(.:format)                           pro/api/v2/users#find {:format=>:json}
+#                       api_v2_users_page_url GET|POST /api/v2/users/page_url(.:format)                       pro/api/v2/users#page_url {:format=>:json}
+#                   api_v2_users_active_check GET|POST /api/v2/users/active_check(.:format)                   pro/api/v2/users#active_check {:format=>:json}
+#               api_v2_users_platform_version GET|POST /api/v2/users/platform_version(.:format)               pro/api/v2/users#platform_version {:format=>:json}
+#                           api_v2_save_event GET|POST /api/v2/save-event(.:format)                           pro/api/v2/events#save {:format=>:json}
+#                         api_v2_load_content GET|POST /api/v2/content/load(.:format)                         pro/api/v2/content#load {:format=>:json}
+#                        api_v2_sessions_user GET|POST /api/v2/sessions/user(.:format)                        pro/api/v2/sessions#user {:format=>:json}
+#                     api_v2_sessions_content GET|POST /api/v2/sessions/content(.:format)                     pro/api/v2/sessions#content {:format=>:json}
+#                     api_v2_sessions_sign_in GET|POST /api/v2/sessions/sign_in(.:format)                     pro/api/v2/sessions#sign_in {:format=>:json}
+#                     api_v2_sessions_sign_up GET|POST /api/v2/sessions/sign_up(.:format)                     pro/api/v2/sessions#sign_up {:format=>:json}
+#             api_v2_sessions_forgot_password GET|POST /api/v2/sessions/forgot_password(.:format)             pro/api/v2/sessions#forgot_password {:format=>:json}
+#              api_v2_sessions_reset_password GET|POST /api/v2/sessions/reset_password(.:format)              pro/api/v2/sessions#reset_password {:format=>:json}
+#             api_v2_sessions_change_password POST     /api/v2/sessions/change_password(.:format)             pro/api/v2/sessions#change_password {:format=>:json}
+#                                             GET|POST /api/v2/short_links/:public_id(.:format)               pro/api/v2/short_links#get {:format=>:json}
+#                  api_v2_notifications_token GET|POST /api/v2/notifications/token(.:format)                  pro/api/v2/notifications#token {:format=>:json}
+#                api_v2_notifications_dismiss GET|POST /api/v2/notifications/dismiss(.:format)                pro/api/v2/notifications#dismiss {:format=>:json}
+#               api_v2_update_my_sola_website GET|POST /api/v2/update_my_sola_website(.:format)               pro/api/v2/update_my_sola_website#submit {:format=>:json}
+#       api_v2_update_my_sola_website_walkins GET|POST /api/v2/update_my_sola_website/walkins(.:format)       pro/api/v2/update_my_sola_website#walkins {:format=>:json}
+#                                api_v3_blogs GET      /api/v3/blogs(.:format)                                pro/api/v3/blogs#index {:format=>:json}
+#                                 api_v3_blog GET      /api/v3/blogs/:id(.:format)                            pro/api/v3/blogs#show {:format=>:json}
+#                               api_v3_brands GET      /api/v3/brands(.:format)                               pro/api/v3/brands#index {:format=>:json}
+#                                api_v3_brand GET      /api/v3/brands/:id(.:format)                           pro/api/v3/brands#show {:format=>:json}
+#                           api_v3_categories GET      /api/v3/categories(.:format)                           pro/api/v3/categories#index {:format=>:json}
+#                                api_v3_deals GET      /api/v3/deals(.:format)                                pro/api/v3/deals#index {:format=>:json}
+#                                 api_v3_deal GET      /api/v3/deals/:id(.:format)                            pro/api/v3/deals#show {:format=>:json}
+#                              api_v3_devices GET      /api/v3/devices(.:format)                              pro/api/v3/devices#index {:format=>:json}
+#                                             POST     /api/v3/devices(.:format)                              pro/api/v3/devices#create {:format=>:json}
+#                               api_v3_device GET      /api/v3/devices/:token(.:format)                       pro/api/v3/devices#show {:format=>:json}
+#                                             PATCH    /api/v3/devices/:token(.:format)                       pro/api/v3/devices#update {:format=>:json}
+#                                             PUT      /api/v3/devices/:token(.:format)                       pro/api/v3/devices#update {:format=>:json}
+#                               api_v3_events POST     /api/v3/events(.:format)                               pro/api/v3/events#create {:format=>:json}
+#                        api_v3_notifications GET      /api/v3/notifications(.:format)                        pro/api/v3/notifications#index {:format=>:json}
+#                                             POST     /api/v3/notifications(.:format)                        pro/api/v3/notifications#create {:format=>:json}
+#                         api_v3_notification DELETE   /api/v3/notifications/:id(.:format)                    pro/api/v3/notifications#destroy {:format=>:json}
+#                         api_v3_registration POST     /api/v3/registration(.:format)                         pro/api/v3/registrations#create {:format=>:json}
+#                      api_v3_reset_passwords POST     /api/v3/reset_passwords(.:format)                      pro/api/v3/reset_passwords#create {:format=>:json}
+#                       api_v3_reset_password PATCH    /api/v3/reset_passwords/:id(.:format)                  pro/api/v3/reset_passwords#update {:format=>:json}
+#                                             PUT      /api/v3/reset_passwords/:id(.:format)                  pro/api/v3/reset_passwords#update {:format=>:json}
+#                          api_v3_saved_items GET      /api/v3/saved_items(.:format)                          pro/api/v3/saved_items#index {:format=>:json}
+#                                             POST     /api/v3/saved_items(.:format)                          pro/api/v3/saved_items#create {:format=>:json}
+#                           api_v3_saved_item GET      /api/v3/saved_items/:id(.:format)                      pro/api/v3/saved_items#show {:format=>:json}
+#                       api_v3_saved_searches GET      /api/v3/saved_searches(.:format)                       pro/api/v3/saved_searches#index {:format=>:json}
+#                                             POST     /api/v3/saved_searches(.:format)                       pro/api/v3/saved_searches#create {:format=>:json}
+#                         api_v3_search_index GET      /api/v3/search(.:format)                               pro/api/v3/search#index {:format=>:json}
+#                              api_v3_session POST     /api/v3/session(.:format)                              pro/api/v3/sessions#create {:format=>:json}
+#                         api_v3_sola_classes GET      /api/v3/sola_classes(.:format)                         pro/api/v3/sola_classes#index {:format=>:json}
+#                           api_v3_sola_class GET      /api/v3/sola_classes/:id(.:format)                     pro/api/v3/sola_classes#show {:format=>:json}
+#                                api_v3_tools GET      /api/v3/tools(.:format)                                pro/api/v3/tools#index {:format=>:json}
+#                                 api_v3_tool GET      /api/v3/tools/:id(.:format)                            pro/api/v3/tools#show {:format=>:json}
+#                        current_api_v3_users GET      /api/v3/users/current(.:format)                        pro/api/v3/users#current {:format=>:json}
+#                    shopify_url_api_v3_users GET      /api/v3/users/shopify_url(.:format)                    pro/api/v3/users#shopify_url {:format=>:json}
+#                                 api_v3_user PATCH    /api/v3/users/:id(.:format)                            pro/api/v3/users#update {:format=>:json}
+#                                             PUT      /api/v3/users/:id(.:format)                            pro/api/v3/users#update {:format=>:json}
+#                               api_v3_videos GET      /api/v3/videos(.:format)                               pro/api/v3/videos#index {:format=>:json}
+#                                api_v3_video GET      /api/v3/videos/:id(.:format)                           pro/api/v3/videos#show {:format=>:json}
+#                             api_v3_webinars GET      /api/v3/webinars(.:format)                             pro/api/v3/webinars#index {:format=>:json}
+#                              api_v3_webinar GET      /api/v3/webinars/:id(.:format)                         pro/api/v3/webinars#show {:format=>:json}
+#                api_v3_education_hero_images GET      /api/v3/education_hero_images(.:format)                pro/api/v3/education_hero_images#index {:format=>:json}
+#       walkins_api_v3_update_my_sola_website POST     /api/v3/update_my_sola_website/walkins(.:format)       pro/api/v3/update_my_sola_websites#walkins {:format=>:json}
+#               api_v3_update_my_sola_website POST     /api/v3/update_my_sola_website(.:format)               pro/api/v3/update_my_sola_websites#create {:format=>:json}
+#
 # Routes for Ckeditor::Engine:
 #         pictures GET    /pictures(.:format)             ckeditor/pictures#index
 #                  POST   /pictures(.:format)             ckeditor/pictures#create
@@ -399,6 +529,5 @@ end
 #      export GET|POST    /:model_name/export(.:format)      rails_admin/main#export
 # bulk_delete POST|DELETE /:model_name/bulk_delete(.:format) rails_admin/main#bulk_delete
 # bulk_action POST        /:model_name/bulk_action(.:format) rails_admin/main#bulk_action
-#        show GET         /:model_name/:id(.:format)         rails_admin/main#show
 #        edit GET|PUT     /:model_name/:id/edit(.:format)    rails_admin/main#edit
 #      delete GET|DELETE  /:model_name/:id/delete(.:format)  rails_admin/main#delete

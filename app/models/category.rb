@@ -1,4 +1,7 @@
 class Category < ActiveRecord::Base
+  include PgSearch::Model
+  multisearchable against: [:stripped_name]
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -9,6 +12,10 @@ class Category < ActiveRecord::Base
   has_many :videos, through: :categoriables, source: :item, source_type: 'Video'
   has_many :tags, through: :categoriables, source: :item, source_type: 'Tag'
   has_many :franchise_articles, through: :categoriables, source: :item, source_type: 'FranchiseArticle'
+
+  def stripped_name
+    name&.strip
+  end
 end
 
 # == Schema Information

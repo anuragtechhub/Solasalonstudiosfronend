@@ -1,5 +1,4 @@
 class Stylist < ActiveRecord::Base
-
   # include Fuzzily::Model
   # fuzzily_searchable :name, :email_address
   def self.searchable_columns
@@ -18,6 +17,32 @@ class Stylist < ActiveRecord::Base
   devise :registerable, :recoverable, :rememberable, :trackable
 
   has_paper_trail
+
+  has_many :reset_passwords, :as => :userable
+  has_many :devices, :as => :userable
+  has_many :user_notifications, :as => :userable
+
+  has_many :notification_recipients, as: :stylist
+  has_many :notifications, through: :notification_recipients
+  has_many :watch_laters, as: :userable
+
+  has_many :saved_items, inverse_of: :stylist, dependent: :destroy
+  has_many :saved_searches, inverse_of: :stylist, dependent: :destroy
+
+  has_many :video_views, :as => :userable
+  has_many :taggables, as: :item, dependent: :destroy
+  has_many :tags, through: :taggables
+  has_many :brandables, as: :item, dependent: :destroy
+  has_many :brands, through: :brandables
+  has_many :categoriables, as: :item, dependent: :destroy
+  has_many :categories, through: :categoriables
+  has_many :events, as: :userable
+
+  has_many :access_tokens, class_name: "UserAccessToken", inverse_of: :stylist, dependent: :delete_all
+
+  has_many :leases, -> { order 'created_at desc' }
+  accepts_nested_attributes_for :leases, :allow_destroy => true
+
 
   scope :open, -> { where(status: 'open') }
   scope :active, -> { open }
@@ -44,9 +69,6 @@ class Stylist < ActiveRecord::Base
   after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
 
   #has_one :studio
-  has_many :leases, -> { order 'created_at desc' }
-  accepts_nested_attributes_for :leases, :allow_destroy => true
-
   belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
   accepts_nested_attributes_for :testimonial_1, :allow_destroy => true
 
@@ -79,53 +101,69 @@ class Stylist < ActiveRecord::Base
 
   has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_1
+  attr_accessor :delete_image_1, :c_image_1_url
   before_validation { self.image_1.destroy if self.delete_image_1 == '1' }
+  before_validation { self.image_1 = open(c_image_1_url) if c_image_1_url.present? }
 
   has_attached_file :image_2, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_2, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_2
+  attr_accessor :delete_image_2, :c_image_2_url
   before_validation { self.image_2.destroy if self.delete_image_2 == '1' }
+  before_validation { self.image_2 = open(c_image_2_url) if c_image_2_url.present? }
 
   has_attached_file :image_3, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_3, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_3
+  attr_accessor :delete_image_3, :c_image_3_url
   before_validation { self.image_3.destroy if self.delete_image_3 == '1' }
+  before_validation { self.image_3 = open(c_image_3_url) if c_image_3_url.present? }
 
   has_attached_file :image_4, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_4, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_4
+  attr_accessor :delete_image_4, :c_image_4_url
   before_validation { self.image_4.destroy if self.delete_image_4 == '1' }
+  before_validation { self.image_4 = open(c_image_4_url) if c_image_4_url.present? }
 
   has_attached_file :image_5, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_5, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_5
+  attr_accessor :delete_image_5, :c_image_5_url
   before_validation { self.image_5.destroy if self.delete_image_5 == '1' }
+  before_validation { self.image_5 = open(c_image_5_url) if c_image_5_url.present? }
 
   has_attached_file :image_6, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_6, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_6
+  attr_accessor :delete_image_6, :c_image_6_url
   before_validation { self.image_6.destroy if self.delete_image_6 == '1' }
+  before_validation { self.image_6 = open(c_image_6_url) if c_image_6_url.present? }
 
   has_attached_file :image_7, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_7, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_7
+  attr_accessor :delete_image_7, :c_image_7_url
   before_validation { self.image_7.destroy if self.delete_image_7 == '1' }
+  before_validation { self.image_7 = open(c_image_7_url) if c_image_7_url.present? }
 
   has_attached_file :image_8, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_8, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_8
+  attr_accessor :delete_image_8, :c_image_8_url
   before_validation { self.image_8.destroy if self.delete_image_8 == '1' }
+  before_validation { self.image_8 = open(c_image_8_url) if c_image_8_url.present? }
 
   has_attached_file :image_9, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_9, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_9
+  attr_accessor :delete_image_9, :c_image_9_url
   before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
+  before_validation { self.image_9 = open(c_image_9_url) if c_image_9_url.present? }
 
   has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
   validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_10
+  attr_accessor :delete_image_10, :c_image_10_url
   before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
+  before_validation { self.image_10 = open(c_image_10_url) if c_image_10_url.present? }
+
+  # (1..10).each do |number|
+  #   define_method "image_#{number}_url" do
+  #     send("image_#{number}").url(:original).gsub('/sola_stylists/', '/stylists/')
+  #   end
+  # end
 
   before_validation :set_inactive_reason
 
@@ -140,6 +178,9 @@ class Stylist < ActiveRecord::Base
   validates :url_name, :uniqueness => true, :reduce => true
 
   validates :inactive_reason, presence: true, if: :inactive?
+
+  validates :password_confirmation, presence: true, if: proc { self.password.present? }
+  validates :password, confirmation: true, if: proc { self.password.present? }
 
   # TMP solution
   def hubspot_status
@@ -171,6 +212,123 @@ class Stylist < ActiveRecord::Base
 
   def biography
     ActionView::Base.full_sanitizer.sanitize(self.read_attribute(:biography).to_s).squish
+  end
+
+  def device_token
+    if self.devices && self.devices.length > 0
+      return self.devices.order(:updated_at => :desc).first.token
+    end
+  end
+
+  def notifications
+    user_notifications.where('dismiss_date IS NULL')
+  end
+
+  def my_sola_website
+    if defined?(location) && location && location.country
+      country = Country.find_by(:code => location.country)
+      if country
+        "#{ENV['PROTOCOL']}://#{Rails.env.test? ? 'test' : 'www'}.#{country.domain}/salon-professional/#{self.url_name}"
+      else
+        "#{ENV['PROTOCOL']}://#{ENV['WEB_HOST']}/salon-professional/#{self.url_name}"
+      end
+    else
+      "#{ENV['PROTOCOL']}://#{ENV['WEB_HOST']}/salon-professional/#{self.url_name}"
+    end
+  end
+
+  def userable_email
+    return self.email if self.class.method_defined?('email') && self.email.present?
+    return self.email_address if self.class.method_defined?('email_address') && self.email_address.present?
+  end
+
+  def video_history_data
+    v_videos = VideoView.where(:id => VideoView.select('DISTINCT ON (video_id) *').where(:userable_id => self.id, :userable_type => self.class.name).map{|v| v.id}).order(:created_at => :desc)
+
+    if v_videos && v_videos.size
+      return {
+        :total_pages => v_videos.size / 12 + (v_videos.size % 12 == 0 ? 0 : 1),
+        :videos => v_videos.limit(12).to_a.map{|v| v.video},
+      }
+    else
+      return {
+        :total_pages => 0,
+        :videos => []
+      }
+    end
+  end
+
+  def watch_later_data
+    w_videos = WatchLater.where(:userable_id => self.id, :userable_type => self.class.name).order(:created_at => :desc)
+
+    if w_videos && w_videos.size
+      return {
+        :total_pages => w_videos.size / 12 + (w_videos.size % 12 == 0 ? 0 : 1),
+        :videos => w_videos.limit(12).to_a.map{|v| v.video},
+      }
+    else
+      return {
+        :total_pages => 0,
+        :videos => []
+      }
+    end
+  end
+
+  def watch_later_video_ids
+    self.watch_laters.pluck(:video_id)
+  end
+
+  def update_my_sola_website
+    umsw = UpdateMySolaWebsite.where(:stylist_id => self.id, :approved => false).order(:created_at => :desc).first
+
+    unless umsw
+      umsw = UpdateMySolaWebsite.new(:stylist_id => self.id) unless @update_my_sola_website
+      umsw = assign_params(umsw, self.attributes, update_my_sola_website_params_permitted)
+      umsw = assign_images(umsw, self)
+      umsw = assign_testimonials(umsw, self)
+    end
+
+    umsw
+  end
+
+  def location_country
+    location.present? ? location.country : 'US'
+  end
+
+  def service_request_enabled
+    location.present? && location.service_request_enabled ? true : false
+  end
+
+  def app_settings
+    {
+      home_buttons: HomeButton.joins(:home_button_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position => :asc),
+      home_hero_images: HomeHeroImage.joins(:home_hero_image_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position => :asc),
+      side_menu_items: SideMenuItem.joins(:side_menu_item_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position => :asc),
+    }
+  end
+
+  def rent_manager_location_id
+    location.rent_manager_location_id if location
+  end
+
+  def rent_manager_enabled
+    location.rent_manager_enabled if location
+  end
+
+  def location_walkins_enabled
+    location.walkins_enabled if location
+  end
+
+  def walkins_offset
+    location.walkins_offset if location
+  end
+
+  def max_walkins_time
+    location.max_walkins_time if location
+  end
+
+  def walkins_end_of_day
+    location.walkins_end_of_day if location
   end
 
   def country
@@ -520,11 +678,146 @@ class Stylist < ActiveRecord::Base
   end
 
   def as_json(options={})
-    super(:methods => [:leases, :location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6, :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10,
-                       :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
+    super(:methods => [:max_walkins_time, :walkins_offset, :walkins_end_of_day, :my_sola_website, :notifications, :update_my_sola_website, :video_history_data, :watch_later_video_ids, :watch_later_data, :app_settings, :leases, :rent_manager_location_id,
+                       :service_request_enabled, :rent_manager_enabled, :tags, :brands, :location_country, :location_walkins_enabled, :leases, :location, :testimonial_1, :testimonial_2, :testimonial_3, :testimonial_4, :testimonial_5, :testimonial_6,
+                       :testimonial_7, :testimonial_8, :testimonial_9, :testimonial_10, :image_1_url, :image_2_url, :image_3_url, :image_4_url, :image_5_url, :image_6_url, :image_7_url, :image_8_url, :image_9_url, :image_10_url])
+  end
+
+  def sync_from_rent_manager
+    if self.rent_manager_id && self.location && self.location.rent_manager_location_id
+      p "url=https://solasalon.apiservices.rentmanager.com/api/#{self.location.rent_manager_location_id}/Tenants/#{self.rent_manager_id}"
+
+      get_tenant_response = RestClient::Request.execute({
+                                                          :headers => {"Content-Type" => "application/json"},
+                                                          :method => :get,
+                                                          #:content_type => 'application/json',
+                                                          :url => "https://solasalon.apiservices.rentmanager.com/api/#{self.location.rent_manager_location_id}/Tenants/#{self.rent_manager_id}",
+                                                          :user => 'solapro',
+                                                          :password => '20FCEF93-AD4D-4C7D-9B78-BA2492098481',
+                                                          #:payload => [payload].to_json
+                                                        })
+
+      #p "get_tenant_response=#{get_tenant_response.inspect}"
+      get_tenant_response_json = JSON.parse(get_tenant_response)
+      p "get_tenant_response_json=#{get_tenant_response_json}"
+
+      if get_tenant_response_json
+        p "we've got JSON, let's set some values"
+
+        if get_tenant_response_json["PrimaryContact"]
+          self.name = get_tenant_response_json["PrimaryContact"]["FirstName"] + " " + get_tenant_response_json["PrimaryContact"]["LastName"]
+          self.email_address = get_tenant_response_json["PrimaryContact"]["Email"]
+
+          if get_tenant_response_json["PrimaryContact"]["CellPhoneNumber"] && get_tenant_response_json["PrimaryContact"]["CellPhoneNumber"]["PhoneNumber"] && get_tenant_response_json["PrimaryContact"]["CellPhoneNumber"]["PhoneNumber"].present?
+            self.phone_number = get_tenant_response_json["PrimaryContact"]["CellPhoneNumber"]["PhoneNumber"]
+          end
+        end
+
+        if get_tenant_response_json["PrimaryAddress"]
+          self.street_address = get_tenant_response_json["PrimaryAddress"]["Street"]
+          self.city = get_tenant_response_json["PrimaryAddress"]["City"]
+          self.state_province = get_tenant_response_json["PrimaryAddress"]["State"]
+          self.postal_code = get_tenant_response_json["PrimaryAddress"]["PostalCode"]
+        end
+
+        self.cosmetology_license_number = get_tenant_response_json["CosmetologyLicenseNumber"] if get_tenant_response_json.key?("CosmetologyLicenseNumber")
+        self.cosmetology_license_date = get_tenant_response_json["CosmetologyLicenseIssueDate"] if get_tenant_response_json.key?("CosmetologyLicenseIssueDate")
+
+        self.emergency_contact_name = get_tenant_response_json["EmergencyContactName"] if get_tenant_response_json.key?("EmergencyContactName")
+        self.emergency_contact_relationship = get_tenant_response_json["EmergencyContactRelationship"] if get_tenant_response_json.key?("EmergencyContactRelationship")
+        self.emergency_contact_phone_number = get_tenant_response_json["EmergencyContactPhoneNumber"] if get_tenant_response_json.key?("EmergencyContactPhoneNumber")
+
+        p "after setting values changed?=#{self.changed}, inspect=#{self.inspect}"
+        self.save
+      end
+    end
   end
 
   private
+
+  def assign_params(obj, params, names)
+    return unless obj && params && names
+
+    names.each do |name|
+      obj.send("#{name.to_s}=", params[name.to_s].kind_of?(Array) ? params[name.to_s][0] : params[name.to_s])
+    end
+
+    obj
+  end
+
+  def assign_images(obj, user)
+    obj.image_1_url = user.image_1.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_1.present?
+    obj.image_2_url = user.image_2.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_2.present?
+    obj.image_3_url = user.image_3.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_3.present?
+    obj.image_4_url = user.image_4.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_4.present?
+    obj.image_5_url = user.image_5.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_5.present?
+    obj.image_6_url = user.image_6.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_6.present?
+    obj.image_7_url = user.image_7.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_7.present?
+    obj.image_8_url = user.image_8.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_8.present?
+    obj.image_9_url = user.image_9.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_9.present?
+    obj.image_10_url = user.image_10.url(:carousel).gsub(/sola_stylists/, 'stylists') if user.image_10.present?
+
+    obj
+  end
+
+  def assign_testimonials(obj, user)
+    obj.testimonial_1 = user.testimonial_1.dup if user.testimonial_1.present?
+    obj.testimonial_2 = user.testimonial_2.dup if user.testimonial_2.present?
+    obj.testimonial_3 = user.testimonial_3.dup if user.testimonial_3.present?
+    obj.testimonial_4 = user.testimonial_4.dup if user.testimonial_4.present?
+    obj.testimonial_5 = user.testimonial_5.dup if user.testimonial_5.present?
+    obj.testimonial_6 = user.testimonial_6.dup if user.testimonial_6.present?
+    obj.testimonial_7 = user.testimonial_7.dup if user.testimonial_7.present?
+    obj.testimonial_8 = user.testimonial_8.dup if user.testimonial_8.present?
+    obj.testimonial_9 = user.testimonial_9.dup if user.testimonial_9.present?
+    obj.testimonial_10 = user.testimonial_10.dup if user.testimonial_10.present?
+
+    obj
+  end
+
+  def update_my_sola_website_params_permitted
+    [:name,
+     :biography,
+     :phone_number,
+     :business_name,
+     :work_hours,
+     :hair,
+     :skin,
+     :nails,
+     :massage,
+     :microblading,
+     :teeth_whitening,
+     :eyelash_extensions,
+     :makeup,
+     :tanning,
+     :waxing,
+     :brows,
+     :website_url,
+     :booking_url,
+     :pinterest_url,
+     :facebook_url,
+     :twitter_url,
+     :instagram_url,
+     :yelp_url,
+     :laser_hair_removal,
+     :threading,
+     :permanent_makeup,
+     :other_service,
+     :google_plus_url,
+     :linkedin_url,
+     :hair_extensions,
+     :image_1_url,
+     :image_2_url,
+     :image_3_url,
+     :image_4_url,
+     :image_5_url,
+     :image_6_url,
+     :image_7_url,
+     :image_8_url,
+     :image_9_url,
+     :image_10_url,
+     :email_address,]
+  end
 
   def url_name_uniqueness
     if self.url_name

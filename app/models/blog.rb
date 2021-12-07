@@ -1,4 +1,9 @@
 class Blog < ActiveRecord::Base
+  include PgSearch::Model
+
+  pg_search_scope :search, against: [:title], associated_against: {
+    categories: [:name]
+  }
 
   after_destroy :touch_blog
   before_create :generate_url_name
@@ -14,6 +19,8 @@ class Blog < ActiveRecord::Base
 
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
+
+  has_many :notifications, :dependent => :destroy
 
   validates :title, :status, :presence => true
   validates :countries, :presence => true
@@ -53,15 +60,10 @@ class Blog < ActiveRecord::Base
   def related_blogs
     blogs = []
 
-    #p "start related blogs..."
-
-    #p "bl.size=#{self.blog_categories.size}"
-
     if self.blog_categories.length > 0
-      #p "we got categories #{blog_categories.size}"
       self.blog_categories.each do |category|
         if category.blogs && category.blogs.length > 0
-          category.blogs.where(:status => 'published').order(:created_at => :desc).each do |blog|
+          category.blogs.where(status: 'published').order(created_at: :desc).each do |blog|
             if blog.id != self.id && !blogs.include?(blog)
               blogs << blog
               break if blogs.length == 3
@@ -72,18 +74,14 @@ class Blog < ActiveRecord::Base
       end
     end
 
-    #p "blogs here=#{blogs.size}"
-
     if blogs.length < 3
-      Blog.order(:created_at => :desc).limit(5).each do |blog|
+      Blog.order(created_at: :desc).limit(5).each do |blog|
         if blog.id != self.id && !blogs.include?(blog)
           blogs << blog
           break if blogs.length == 3
         end
       end
     end
-
-    #p "related_blogs=#{blogs.inspect}"
 
     blogs
   end
@@ -123,6 +121,20 @@ class Blog < ActiveRecord::Base
     else
       return "https://www.solasalonstudios.#{locale != :en ? 'ca' : 'com'}/blog/#{url_name}"
     end
+  end
+
+  def image_url
+    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+  end
+
+  def url
+    #"https://www.solaprofessional.com#{Rails.application.routes.url_helpers.show_blog_path(self)}?_ios=y&_hdr=n"
+  end
+
+  def as_json(options={})
+    super(except: %i[body url_name image_file_name image_file_size image_content_type
+      image_updated_at carousel_image_file_name carousel_image_content_type carousel_image_file_size
+      carousel_image_updated_at carousel_text legacy_id fb_conversion_pixel], methods: %i[blog_blog_categories image_url url])
   end
 
   private

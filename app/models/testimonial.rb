@@ -1,5 +1,4 @@
 class Testimonial < ActiveRecord::Base
-
   before_validation :process_name
   validates :text, presence: true
 

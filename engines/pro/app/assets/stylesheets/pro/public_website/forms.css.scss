@@ -1,0 +1,276 @@
+@import '../mixins';
+@import '../variables';
+
+
+input[type="email"],
+input[type="number"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  font-family: 'Lato', Arial, sans-serif;
+
+  box-shadow: none;
+  box-sizing: border-box;
+  font-size: 14px;
+
+  height: 66px;
+  padding: 20px 15px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #F2F2F2;
+  border: 1px solid #F2F2F2;
+  border-radius: 0px;
+
+  &.large {
+    padding: 30px 15px;
+  }
+
+  &.full-width, &.block {
+    width: 100%;
+    height: auto;
+  }
+
+  &:-webkit-placeholder {
+    color: #AAAAAA;
+  }
+  &:-moz-placeholder {
+    color: #AAAAAA;
+  }
+  &:placeholder {
+    color: #AAAAAA;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #F2F2F2 inset;
+  }
+}
+
+.forgot-password-link-wrapper {
+  margin: 0 0 30px 0;
+  padding: 0;
+
+  a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+  }
+}
+
+.instruction-text {
+  margin-bottom: 40px;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #7F7F7F;
+  margin: -10px 0 15px 0;
+}
+
+.boxed-helper-text {
+  margin: 30px 0 20px 0;
+  text-align: center;
+  padding: 15px 20px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.errors {
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.sola-select-wrapper {
+
+  .column, .columns {
+    float: right;
+    margin: 0;
+
+    &.first {
+      margin-left: 15px !important;
+    }
+  }
+}
+
+.sola-select {
+  margin-top: -10px;
+  position: relative;
+  background: #FFFFFF;
+
+
+  &.form {
+    margin: 0 0 15px 0;
+  }
+
+  .option-placeholder {
+    cursor: pointer;
+    display: block;
+    float: left;
+    border: 1px solid #DBDBDB;
+    text-align: left;
+    padding: 17px 15px;
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+
+    h3 {
+      color: #000 !important;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .arrow {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 15px;
+
+    padding: 0;
+
+    text-align: center;
+
+
+    span {
+      vertical-align: middle;
+      font-size: 10px;
+    }
+  }
+
+  &.sola-select-active .option-placeholder {
+    border: 1px solid $brand-pink;
+  }
+
+  .options {
+    display: none;
+
+    position: absolute;
+    top: 49px;
+    left: 0;
+    right: 0;
+    z-index: 9;
+
+    background: #FFF;
+    border: 1px solid #DBDBDB;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 200px;
+    padding: 12px;
+  }
+
+  &.sola-select-active .options {
+    border-top: 1px solid $brand-pink;
+  }
+
+  .option {
+    cursor: pointer;
+    display: block;
+    clear: both;
+    text-decoration: none;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+
+    &:hover, &:active {
+      color: #000;
+      background: #efefef;
+    }
+  }
+
+  .optgroup {
+    cursor: default;
+    padding: 8px;
+    margin: 15px 0 5px 0;
+
+    h3 {
+      color: darken(#C7C7C7, 20%) !important;
+      margin: 0;
+    }
+  }
+}
+
+
+fieldset.fieldset {
+  border: 2px solid #EFEFEF !important;
+  padding: 30px 30px 15px 30px !important;
+  margin: 0 0 30px 0 !important;
+
+  legend {
+    text-transform: uppercase;
+    //display: inline-block;
+    color: #BFBFBF;
+  }
+}
+
+@mixin chevron($cDirection:"right", $cSize: 20px, $cWidth: 1px, $cColor: #AFAFAF) {
+
+  display: block;
+  width: $cSize;
+  height: $cSize;
+  border-top: 1px solid $cColor;
+  border-right: 1px solid $cColor;
+  border-width: $cWidth;
+
+  @if $cDirection == 'top'    { @include rotate(-45deg);}
+  @if $cDirection == 'right'  { @include rotate(45deg);}
+  @if $cDirection == 'bottom' { @include rotate(135deg);}
+  @if $cDirection == 'left'   { @include rotate(225deg);}
+
+}
+
+.toggle {
+  cursor: pointer;
+  border: 5px solid transparent;
+  position: relative;
+  top: 30px;
+  margin-right: 10px;
+  display: inline-block;
+
+  &:before {
+    content: '';
+    @include chevron('top');
+  }
+
+  &.closed {
+    top: 15px;
+
+    &:before {
+      content: '';
+      @include chevron('bottom');
+    }
+  }
+
+}
+
+@media (max-width: 650px) {
+  .sola-select-wrapper {
+    margin-top: -10px !important;
+    display: block !important;
+    clear: both !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+  .sola-select {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+  }
+}
+
+@media (max-width: 550px) {
+
+  // .sola-select {
+  //   margin-left: 0;
+  //   margin-top: 0;
+  //   margin-bottom: 15px;
+  // }
+}

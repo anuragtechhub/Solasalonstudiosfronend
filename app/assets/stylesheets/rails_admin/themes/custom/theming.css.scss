@@ -17,7 +17,7 @@
 @import 'variables';
 
 // Custom
-li[data-model^="ckeditor"], li.nav-header:not(:first-child) {
+li[data-model^="ckeditor"] {
   display: none !important;
 }
 
@@ -689,7 +689,7 @@ body.rails_admin .form-horizontal.denser .help-block {
   font-size: 13px;
   color: #777;
   max-width: 360px;
-  width: 100%;  
+  width: 100%;
 }
 
 body.rails_admin .form-horizontal.denser .filtering-select {
@@ -897,7 +897,7 @@ body.rails_admin .form-horizontal.denser .filtering-select {
         background-color: $blueDark;
       }
     }
-    
+
     .nav-collapse ul.nav.pull-right {
       display: table;
       li {
@@ -926,5 +926,5 @@ input.currency-input {
   -moz-border-radius-topright: 6px;
   -moz-border-radius-bottomright: 6px;
   border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;  
+  border-bottom-right-radius: 6px;
 }

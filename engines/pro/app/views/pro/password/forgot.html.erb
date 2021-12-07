@@ -1,0 +1,23 @@
+<div class="container content-container content-container-large">
+  <div class="row">
+    <div class="four columns centered">
+      <div class="aligncenter" style="text-align: center;">
+        <%= image_tag 'pro/solaPro-Loading.png', width: 100, style: "margin: 20px 0;" %>
+      </div>
+
+      <h2 class="text-center" style="font-family: Chalet-LondonSixty;font-size: 19px;letter-spacing: 0;">Forgot Password</h2>
+
+      <%= render 'pro/shared/errors', noliststyle: true %>
+      <%= render 'pro/shared/success' %>
+
+      <p class="instruction-text">To reset your password, please enter your email address in the field below. We will send you instructions with necessary steps.</p>
+
+      <%= form_for :forgot_password, :html => { :id => "forgot-password", :autocomplete => "off", :spellcheck => "false" } do |f| %>
+        <label style="font-family: Chalet-ParisSixty;font-size: 19px;letter-spacing: 1px;">Email Address</label>
+        <%= text_field_tag :email, params[:email], :class => 'block' %>
+        <button type="submit" class="primary block" style="background: linear-gradient(to right, #72C4E7, #459DD3); text-transform: capitalize; font-family: Chalet-LondonSixty;font-size: 19px;letter-spacing: 1px;">Submit</button>
+      <% end %>
+
+    </div>
+  </div>
+</div>

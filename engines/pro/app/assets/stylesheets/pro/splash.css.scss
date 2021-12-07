@@ -1,0 +1,269 @@
+@import "normalize";
+@import "skeleton";
+@import "swipebox";
+
+html, body {
+  background: asset-data-url('pro/splashpage_bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.splash-page {
+  overflow: hidden;
+
+  .top-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: #3D93CC;
+    z-index: 2;
+    overflow: hidden;
+
+    ul {
+      list-style: none;
+      float: left;
+
+      li {
+
+      }
+
+      a, a:link, a:visited, a:hover, a:active {
+        position: relative;
+        top: 2px;
+        text-decoration: none;
+        padding: 15px 15px 10px 15px;
+        text-decoration: none;
+        color: #FFF;
+        font-size: 11px;
+        font-weight: normal;
+        border-left: 1px solid #3886BA;
+        border-right: 1px solid #3886BA;
+      }
+    }
+  }
+
+  .header {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    padding: 15px 0 10px 0;
+    background: #5DB9E4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #5DB9E4, #3A8DCC); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #5DB9E4, #3A8DCC); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #5DB9E4, #3A8DCC); /* Standard syntax */
+    text-align: center;
+    z-index: 3;
+
+    img {
+      width: 100%;
+      max-width: (495px / 2.4);
+      height: auto;
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0 7px 0;
+    background: #FFF;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+      font-size: 13px;
+      line-height: 13px;
+      color: #313131;
+      text-decoration: none;
+      padding: 0 5px;
+    }
+  }
+
+  .content {
+    position: absolute;
+    top: 80px;
+    bottom: 41px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+  }
+
+  .main-card {
+    background: #FFF;
+    border-radius: 12px;
+    padding: 25px 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -220px;
+    margin-top: -(600px / 2);
+    width: 420px;
+
+    .app-icon {
+      margin: 0 auto 15px auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Lato', Arial, sans-serif;
+      color: #4c4c4c;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: center;
+      margin: 0 0 15px 0;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-family: 'Lato', Arial, sans-serif;
+      color: #999999;
+      font-size: 23px;
+      font-weight: 400;
+      text-align: center;
+      margin: 0 0 15px 0;
+      letter-spacing: 0;
+    }
+
+    ul {
+      margin: 25px 0 0 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', Arial, sans-serif;
+      color: #4c4c4c;
+      font-size: 17px;
+      line-height: 27px;
+    }
+
+    .watch-video {
+      margin: 30px 0 40px 0;
+      text-align: center;
+
+
+      a, a:link, a:visited, a:hover, a:active {
+        font-family: 'Lato', Arial, sans-serif;
+        color: #EC008C;
+        font-size: 23px;
+        font-weight: 900;
+        text-decoration: none;
+        text-transform: uppercase;
+        background: asset-data-url('pro/small_play_button.png') no-repeat center left;
+        padding-left: 35px;
+      }
+    }
+
+    .download-buttons {
+      //zoom: 0.7;
+      margin: 0 auto 0 auto;
+      overflow: visible;
+      white-space: nowrap;
+      text-align: center;
+
+      a {
+
+        &:first-child {
+          margin-right: 5px;
+        }
+
+        &:last-child {
+          margin-left: 5px;
+        }
+
+        img {
+          width: auto;
+          //max-width: (257px / 1.5);
+          height: 52px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .splash-page .header {
+    padding: 10px 0 3px 0;
+
+    img {
+      width: 100%;
+      max-width: (495px / 3);
+      height: auto;
+    }
+  }
+}
+
+@media (max-height: 800px) {
+  .splash-page .main-card {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-height: 700px) {
+  .splash-page .main-card {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-height: 600px) {
+  .splash-page .main-card {
+    transform: scale(0.5);
+  }
+}
+
+@media (max-height: 500px) {
+  .splash-page .main-card {
+    transform: scale(0.4);
+  }
+}
+
+@media (max-height: 400px) {
+  .splash-page {
+
+    .content {
+      width: 100%;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+
+    .main-card {
+      margin: 0;
+      width: 100%;
+      transform: scale(0.7);
+
+      .download-buttons a img {
+        height: 42px;
+      }
+    }
+
+    .header, .footer, .content, .main-card {
+      position: static;
+      top: auto;
+      bottom: auto;
+      left: auto;
+      right: auto;
+    }
+  }
+}

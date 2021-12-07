@@ -2,10 +2,8 @@ module ActiveRecord
   module RailsAdminEnum
     def enum(definitions)
       super
-
       definitions.each do |name, values|
         define_method("#{ name }_enum") { self.class.send(name.to_s.pluralize).to_a }
-
         define_method("#{ name }=") do |value|
           if value.kind_of?(String) and value.to_i.to_s == value
             super value.to_i
@@ -19,11 +17,6 @@ module ActiveRecord
 end
 
 ActiveRecord::Base.send(:extend, ActiveRecord::RailsAdminEnum)
-
-
-
-
-
 
 require Rails.root.join('lib/rails_admin/config/fields/types/citext')
 
@@ -44,26 +37,18 @@ RailsAdmin.config do |config|
   # end
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
+  config.excluded_models = %w[Account BrandCountry BrandsSolaClasses DealCountry
+    GetFeatured ResetPassword ExpressionEngine SolaClassCountry Testimonial User
+    Moz SavedSearch Support SupportCategory ProBeautyIndustry ProBeautyIndustryCategory
+    EducationHeroImageCountry NotificationRecipient
+    EmailEvent TerminatedStylist DealCategory DealCategoryDeal Taggable TagsVideo BlogCategory
+    BlogBlogCategory BlogCountry Categoriable Visit HubspotEvent HubspotLog SolaClassRegionCountry
+    SolaClassCategory ShortLink RecurringCharge Ckeditor::AttachmentFile Ckeditor::Asset Ckeditor::Picture
+    UserableNotification UserNotification Distributor VideoView VideoCountry WatchLater SavedItem UserAccessToken
+    PgSearchDocument HomeButtonCountry ToolCategory ToolCountry ToolCategoryTool Brandable Country
+    Lease Studio VideoCategoryVideo VideoCategory HomeHeroImageCountry SideMenuItemCountry Device
+    FranchisingRequest BrandLink Event]
 
-  config.excluded_models << 'Moz'
-  config.excluded_models << 'SavedSearch'
-  config.excluded_models << 'SolaStylist'
-  config.excluded_models << 'Support'
-  config.excluded_models << 'SupportCategory'
-  config.excluded_models << 'ProBeautyIndustry'
-  config.excluded_models << 'ProBeautyIndustryCategory'
-  config.excluded_models << 'EducationHeroImage'
-  config.excluded_models << 'EducationHeroImageCountry'
-  config.excluded_models << 'Video'
-  config.excluded_models << 'Tool'
-  config.excluded_models << 'Deal'
-  config.excluded_models << 'Brand'
-  config.excluded_models << 'SolaClass'
-  config.excluded_models << 'NotificationRecipient'
-
-  # config.excluded_models << 'ExpressionEngine'
-  # config.excluded_models << 'BlogCategory'
-  # config.excluded_models << 'BlogBlogCategory'
   config.label_methods.unshift :display_name
 
   config.label_methods = [:title, :name]
@@ -74,8 +59,11 @@ RailsAdmin.config do |config|
 
     # collection actions
     index                         # mandatory
-    new
+    new do
+      except ['Event']
+    end
     export
+    show
     # export do
     #   except %w[Stylist StylistMessage Report ContactInquiries RequestTourInquiry BookNowBooking]
     # end
@@ -83,7 +71,6 @@ RailsAdmin.config do |config|
     bulk_delete
 
     # member actions
-    show
     edit
     delete
     # history_show
@@ -96,19 +83,8 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'EmailEvent' do
-    visible false
-  end
-
-  config.model 'TerminatedStylist' do
-    visible false
-  end
-
-  config.model 'Account' do
-    visible false
-  end
-
   config.model 'BookNowBooking' do
+    navigation_label 'Sola Salons'
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
@@ -127,7 +103,13 @@ RailsAdmin.config do |config|
     end
   end
 
+  # General
+
   config.model 'Admin' do
+    navigation_label 'General'
+    # visible do
+    #   bindings[:controller]._current_user.franchisee != true
+    # end
     label 'My Account'
     label_plural 'My Account'
     list do
@@ -195,7 +177,37 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Category' do
+    navigation_label 'General'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :id
+      field :name
+      field :slug
+      field :created_at
+      field :updated_at
+    end
+  end
+
+  config.model 'Tag' do
+    navigation_label 'General'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :id
+      field :name
+      field :created_at
+      field :updated_at
+    end
+  end
+
+  # Sola Salons
+
   config.model 'Article' do
+    navigation_label 'Sola Salons'
     # visible do
     #   bindings[:controller]._current_user.franchisee != true
     # end
@@ -219,11 +231,6 @@ RailsAdmin.config do |config|
           value.html_safe
         end
       end
-      # field :body do
-      #   pretty_value do
-      #     value.html_safe
-      #   end
-      # end
       field :location
       field :display_setting do
         visible do
@@ -256,6 +263,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Blog' do
+    navigation_label 'Sola Salons'
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
@@ -379,632 +387,8 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'BlogCategory' do
-    visible false
-    label 'Blog Category'
-    label_plural 'Blog Categories'
-    # edit do
-    #   field :name
-    #   field :url_name
-    # end
-  end
-
-  config.model 'BlogBlogCategory' do
-    visible false
-  end
-
-  config.model 'BlogCountry' do
-    visible false
-  end
-
-  config.model 'Brand' do
-    visible do
-      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      field :name
-      field :website_url
-    end
-    show do
-      field :name
-      field :website_url
-      field :image do
-        label 'Color Image'
-        help 'Ideal image size is 460 x 280'
-      end
-      # field :white_image do
-      #   label 'White Image'
-      #   help 'Ideal image size is 460 x 280'
-      # end
-      # field :brand_links do
-      #   label 'Links'
-      # end
-      group 'Settings' do
-        field :introduction_video_heading_title
-        field :events_and_classes_heading_title
-      end
-    end
-    edit do
-      field :name
-      field :website_url
-      field :image do
-        label 'Color Image'
-        help 'Ideal image size is 460 x 280'
-      end
-      # field :white_image do
-      #   label 'White Image'
-      #   help 'Ideal image size is 460 x 280'
-      # end
-      # field :brand_links do
-      #   label 'Links'
-      # end
-      group 'Settings' do
-        field :introduction_video_heading_title
-        field :events_and_classes_heading_title
-      end
-      # group 'Countries' do
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-      #
-      #   field :countries do
-      #     inline_add false
-      #   end
-      # end
-    end
-  end
-
-  config.model 'ClassImage' do
-    visible false
-    list do
-      field :name
-      field :image_file_name
-      field :thumbnail_file_name
-    end
-    show do
-      field :name
-      field :image_file_name
-      field :thumbnail_file_name
-      field :image do
-        label 'Image'
-        help 'Ideal image size is 460 x 280'
-      end
-      field :thumbnail do
-        label 'Thumbnail'
-        help 'Ideal image size is 460 x 280'
-      end
-    end
-    edit do
-      field :name
-      field :image do
-        label 'Image'
-        help 'Ideal image size is 460 x 280'
-      end
-      field :thumbnail do
-        label 'Thumbnail'
-        help 'Ideal image size is 460 x 280'
-      end
-    end
-  end
-
-  config.model 'Category' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      field :id
-      field :name
-      field :slug
-      field :created_at
-      field :updated_at
-    end
-  end
-
-  config.model 'Categoriable' do
-    visible false
-  end
-
-  config.model 'Deal' do
-    visible do
-      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      field :title
-      field :brand
-      field :deal_categories do
-        label 'Categories'
-      end
-      field :description
-      field :is_featured do
-        searchable false
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-    show do
-      field :title
-      field :description
-      field :brand
-
-      field :categories do
-        label 'Categories'
-      end
-      field :tags do
-        label 'Tags'
-      end
-
-      field :image do
-        help 'Ideal image size is 460 x 280'
-      end
-      # field :hover_image do
-      #   help 'Ideal image size is 460 x 280'
-      # end
-      field :file
-      field :more_info_url
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-    edit do
-      field :title
-      field :description
-      field :brand
-
-      field :categories do
-        label 'Categories'
-      end
-      field :tags do
-        label 'Tags'
-      end
-
-      field :image do
-        help 'Ideal image size is 460 x 280'
-        delete_method :delete_image
-      end
-      # field :hover_image do
-      #   help 'Ideal image size is 460 x 280'
-      #   delete_method :delete_hover_image
-      # end
-      field :file do
-        delete_method :delete_file
-      end
-      field :more_info_url
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-  end
-
-  config.model 'DealCategory' do
-    visible false
-  end
-
-  config.model 'DealCategoryDeal' do
-    visible false
-  end
-
-  config.model 'Tag' do
-    visible do
-      bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      field :id
-      field :name
-      field :created_at
-      field :updated_at
-    end
-  end
-
-  config.model 'Taggable' do
-    visible false
-  end
-
-  config.model 'TagsVideo' do
-    visible false
-  end
-
-  config.model 'SolaClass' do
-    visible false
-    label 'Event and Class'
-    label_plural 'Events and Classes'
-    object_label_method do
-      :label
-    end
-    list do
-      field :title
-      # field :sola_class_region do
-      #   label 'Region'
-      # end
-      field :location
-      field :address
-      field :city
-      field :state do
-        label 'State/Province'
-      end
-      field :start_date
-      field :end_date
-    end
-    show do
-      field :title
-      field :description
-      field :class_image do
-        help 'Ideal image size is 460 x 280'
-      end
-      field :category
-      field :tags
-      field :cost
-      field :link_text
-      field :link_url
-      group 'When' do
-        field :start_date
-        field :start_time
-        field :end_date
-        field :end_time
-      end
-      group 'Where' do
-        # field :sola_class_region do
-        #   label 'Region'
-        # end
-        field :location
-        field :address
-        field :city
-        field :state do
-          label 'State/Province'
-        end
-      end
-      group 'Who' do
-        field :brands
-      end
-      field :file
-      field :file_text do
-        help 'Customize the file button text'
-      end
-      # field :image do
-      #   help 'Ideal image size is 460 x 280'
-      # end
-      # field :is_featured do
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-      # end
-    end
-    edit do
-      field :title
-      field :description
-      field :category
-      field :class_image
-      field :category
-      field :tags
-      field :cost
-      field :link_text
-      field :link_url
-      group 'When' do
-        field :start_date
-        field :start_time do
-          help '(e.g 9:30am, 7pm, etc)'
-        end
-        field :end_date
-        field :end_time do
-          help '(e.g 9:30am, 7pm, etc)'
-        end
-      end
-      group 'Where' do
-
-        # field :sola_class_region do
-        #   label 'Region'
-        #   # inline_add false
-        #   # inline_edit false
-        # end
-        field :location
-        field :address
-        field :city
-        field :state do
-          label 'State/Province'
-        end
-        # field :countries do
-        #   label 'Countries'
-        #   visible do
-        #     bindings[:controller]._current_user.franchisee != true
-        #   end
-        #   visible false
-        # end
-      end
-      group 'Who' do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-        field :brands
-      end
-      group 'RSVP' do
-        field :rsvp_email_address do
-          label 'Email Address'
-        end
-        field :rsvp_phone_number do
-          label 'Phone Number'
-        end
-      end
-      field :file do
-        delete_method :delete_file
-      end
-      field :file_text do
-        help 'Customize the file button text'
-      end
-      # field :image do
-      #   help 'Ideal image size is 460 x 280'
-      #   delete_method :delete_image
-      # end
-      # field :is_featured do
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-      # end
-      field :video
-      # group 'Countries' do
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-
-      #   field :countries do
-      #     inline_add false
-      #   end
-      # end
-      # field :countries do
-      #   #help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
-      # end
-    end
-  end
-
-  config.model 'SolaClassCategory' do
-    visible false
-  end
-
-  config.model 'Tool' do
-    visible do
-      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
-    end
-    label 'Tool and Resource'
-    label_plural 'Tools and Resources'
-    list do
-      field :title
-      field :description
-      field :brand
-
-      field :categories do
-        label 'Categories'
-      end
-      field :tags do
-        label 'Tags'
-      end
-
-      field :image
-      field :file
-      field :link_url
-      field :youtube_url
-    end
-    show do
-      field :title
-      field :description
-      field :brand
-      field :categories do
-        label 'Categories'
-      end
-      field :tags do
-        label 'Tags'
-      end
-      field :image do
-        help 'Ideal image size is 460 x 280'
-      end
-      field :file
-      field :link_url
-      field :youtube_url
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-    edit do
-      field :title
-      field :description
-      field :brand
-      field :categories do
-        label 'Categories'
-      end
-      field :tags do
-        label 'Tags'
-      end
-      field :image do
-        help 'Ideal image size is 460 x 280'
-        delete_method :delete_image
-      end
-      field :file do
-        delete_method :delete_file
-      end
-      field :link_url
-      field :youtube_url
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-  end
-
-  config.model 'ToolCategory' do
-    visible false
-  end
-
-  config.model 'ToolCategoryTool' do
-    visible false
-  end
-
-  config.model 'Video' do
-    visible do
-      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      field :title
-      field :duration do
-        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
-      end
-      field :webinar
-      field :brand
-      field :categories do
-        label 'Categories'
-      end
-      field :tags
-    end
-    show do
-      field :title
-      field :webinar
-      #field :description
-      field :youtube_url
-      field :duration do
-        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
-      end
-      field :tool do
-        label 'Related Tool or Resource'
-      end
-      field :brand
-      field :categories do
-        label 'Categories'
-      end
-      field :tags
-      field :is_introduction
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-    end
-    edit do
-      field :title
-      field :webinar
-      #field :description
-      field :youtube_url
-      field :duration do
-        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
-      end
-      field :tool do
-        label 'Related Tool or Resource'
-      end
-      # group :link do
-      #   field :link_url
-      #   field :link_text
-      # end
-      field :brand
-      field :categories do
-        label 'Categories'
-      end
-      field :tags
-      field :is_introduction
-      field :is_featured do
-        visible do
-          bindings[:controller]._current_user.franchisee != true
-        end
-      end
-      # group 'Countries' do
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-      #
-      #   field :countries do
-      #     inline_add false
-      #   end
-      # end
-    end
-  end
-
-  config.model 'VideoCategory' do
-    visible false
-  end
-
-  config.model 'VideoCategoryVideo' do
-    visible false
-  end
-
-  config.model 'Country' do
-    visible false
-  end
-
-  config.model 'FranchisingRequest' do
-    visible false
-    # visible do
-    #   ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
-    # end
-    # label 'Franchsing Inquiry'
-    # label_plural 'Franchising Inquiries'
-  end
-
-  config.model 'FranchisingForm' do
-    visible do
-      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
-    end
-    list do
-      scopes [:usa, :ca]
-    end
-    label 'Franchsing Inquiry'
-    label_plural 'Franchising Inquiries'
-  end
-
-  config.model 'Lease' do
-    visible false
-    # visible do
-    #   bindings[:controller]._current_user.franchisee != true
-    # end
-    edit do
-      field :location
-      field :stylist
-      field :studio
-      field :start_date
-      field :end_date
-      field :move_in_date
-      field :signed_date
-      field :fee_start_date
-      field :weekly_fee_year_1 do
-        partial 'currency_input'
-      end
-      field :weekly_fee_year_2 do
-        partial 'currency_input'
-      end
-      field :damage_deposit_amount do
-        partial 'currency_input'
-      end
-      field :product_bonus_amount do
-        partial 'currency_input'
-      end
-      field :product_bonus_distributor
-      field :sola_provided_insurance
-      field :sola_provided_insurance_frequency
-      field :special_terms
-      field :ach_authorized
-      group :permitted_uses do
-        label "Permitted Uses"
-        field :facial_permitted do
-          label 'Facials'
-        end
-        field :hair_styling_permitted do
-          label 'Hair Styling, Cutting, Coloring'
-        end
-        field :manicure_pedicure_permitted do
-          label 'Manicures / Pedicures'
-        end
-        field :massage_permitted do
-          label 'Massage'
-        end
-        field :waxing_permitted do
-          label 'Waxing'
-        end
-      end
-    end
-  end
-
   config.model 'Location' do
+    navigation_label 'Sola Salons'
     list do
       field :id do
         searchable true
@@ -1033,7 +417,6 @@ RailsAdmin.config do |config|
     end
     show do
       group :general do
-        #field :legacy_id
         field :name
         field :url_name do
           label 'URL Name'
@@ -1117,9 +500,7 @@ RailsAdmin.config do |config|
       group :social do
         field :facebook_url
         field :instagram_url
-        #field :pinterest_url
         field :twitter_url
-        #field :yelp_url
       end
       group :website do
         field :chat_code
@@ -1376,9 +757,6 @@ RailsAdmin.config do |config|
         field :email_address_for_hubspot do
           label 'Email Address For Hubspot'
           help 'If provided Hubspot will use this email address - not the email address for inquries - to match contacts.'
-          # visible do
-          #   bindings[:controller]._current_user.franchisee != true
-          # end
         end
         field :emails_for_stylist_website_approvals do
           label 'Email Addresses For Stylist Website Approvals'
@@ -1394,9 +772,7 @@ RailsAdmin.config do |config|
           label 'State/Province'
         end
         field :postal_code
-        field :country do
-          #help "The country should be the 2 character country code (e.g. 'US' for United States, 'CA' for Canada)"
-        end
+        field :country
         field :latitude do
           help 'The latitude will be automatically set when a valid address is entered. You do not need to set the latitude manually (but you can if you really want to)'
         end
@@ -1419,9 +795,7 @@ RailsAdmin.config do |config|
         active false
         field :facebook_url
         field :instagram_url
-        #field :pinterest_url
         field :twitter_url
-        #field :yelp_url
       end
       group :website do
         active false
@@ -1708,9 +1082,11 @@ RailsAdmin.config do |config|
   config.model 'Msa' do
     label 'MSA'
     label_plural 'MSAs'
+    navigation_label 'Sola Salons'
   end
 
   config.model 'MySolaImage' do
+    navigation_label 'Sola Salons'
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
@@ -1718,7 +1094,6 @@ RailsAdmin.config do |config|
       scopes [:completed]
       field :name
       field :instagram_handle
-      #field :statement_text
       field :generated_image do
         pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
@@ -1767,6 +1142,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Sola10kImage' do
+    navigation_label 'Sola Salons'
     visible do
       ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
@@ -1774,7 +1150,6 @@ RailsAdmin.config do |config|
       scopes [:completed]
       field :name
       field :instagram_handle
-      #field :statement_text
       field :generated_image do
         pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
@@ -1804,7 +1179,6 @@ RailsAdmin.config do |config|
       field :name
       field :instagram_handle
       field :statement
-      #field :statement_variant
       field :image do
         pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
@@ -1825,11 +1199,13 @@ RailsAdmin.config do |config|
   config.model 'PartnerInquiry' do
     label 'Partner Inquiry'
     label_plural 'Partner Inquiries'
+    navigation_label 'Sola Salons'
   end
 
   config.model 'RequestTourInquiry' do
     label 'Contact Inquiry'
     label_plural 'Contact Inquiries'
+    navigation_label 'Sola Salons'
     list do
       filters [:created_at, :how_can_we_help_you]
       field :name
@@ -1979,34 +1355,10 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'Studio' do
-    visible false
-    # visible do
-    #   bindings[:controller]._current_user.franchisee != true
-    # end
-    show do
-      field :name
-      field :location
-      # field :rent_manager_id do
-      #   label 'Rent Manager ID'
-      #   help 'This should be a unit ID from Rent Manager'
-      # end
-      field :stylist
-    end
-    edit do
-      field :name
-      field :location
-      # field :rent_manager_id do
-      #   label 'Rent Manager ID'
-      #   help 'This should be a unit ID from Rent Manager'
-      # end
-      field :stylist
-    end
-  end
-
   config.model 'Stylist' do
     label 'Salon Professional'
     label_plural 'Salon Professionals'
+    navigation_label 'Sola Salons'
     list do
       scopes [:active, :inactive]
       field :name
@@ -2023,7 +1375,6 @@ RailsAdmin.config do |config|
     end
     show do
       group :general do
-        #field :legacy_id
         field :id
         field :created_at
         field :updated_at
@@ -2119,17 +1470,10 @@ RailsAdmin.config do |config|
       group :sola_pro do
         active false
         label 'Sola Pro and SolaGenius'
-        # field :sola_genius_enabled do
-        #   help 'If set to "Yes", the stylist will be able to acess Sola Genius from within the Sola Pro app.'
-        # end
         field :has_sola_pro_login do
           label 'Has Sola Pro account'
           help 'If set to "Yes", the stylist has a Sola Pro account.'
         end
-        # field :has_sola_genius_account do
-        #   label 'Has SolaGenius account'
-        #   help 'If set to "Yes", the stylist has a SolaGenius account.'
-        # end
         field :sola_pro_platform do
           help 'The platform (e.g. iOS or Android) the stylist is using to access Sola Pro.'
         end
@@ -2233,9 +1577,6 @@ RailsAdmin.config do |config|
         field :url_name do
           label 'URL Name'
           help 'The URL name should contain only alphanumberic characters (A-Z and 0-9). No spaces or special characters are permitted. Dashes or underscores can be used to separate words (e.g. my-hair-is-awesome)'
-          # visible do
-          #   bindings[:controller]._current_user.franchisee != true
-          # end
         end
         field :biography, :ck_editor
         field :reserved do
@@ -2284,16 +1625,6 @@ RailsAdmin.config do |config|
           help 'It is critical that you include the "http://" portion of the URL. If you do not have online booking, leave this blank'
         end
       end
-      # group :solagenius do
-      #   active false
-      #   label 'SolaGenius'
-      #   visible do
-      #     bindings[:controller]._current_user.franchisee != true
-      #   end
-      #   field :has_sola_genius_account do
-      #     label 'Has SolaGenius Account?'
-      #   end
-      # end
       group :social do
         active false
         field :facebook_url do
@@ -2466,11 +1797,6 @@ RailsAdmin.config do |config|
         field :password
         field :password_confirmation
       end
-      # group :credentials do
-      #   active false
-      #   field :password
-      #   field :password_confirmation
-      # end
     end
     export do
       field :id
@@ -2490,15 +1816,6 @@ RailsAdmin.config do |config|
       end
       field :sola_pro_platform
       field :sola_pro_version
-      # field :location_id do
-      #   label 'Location'
-      #   export_value do
-      #     Location.find_by(:id => value).name
-      #   end
-      #   pretty_value do
-      #     Location.find_by(:id => value).name
-      #   end
-      # end
       field :location_name
       field :location_city
       field :location_state
@@ -2545,19 +1862,13 @@ RailsAdmin.config do |config|
   end
 
   config.model 'StylistMessage' do
+    navigation_label 'Sola Salons'
     label 'Stylist Message'
     label_plural 'Stylist Messages'
   end
 
-  config.model 'RecurringCharge' do
-    visible false
-  end
-
-  config.model 'Ckeditor::AttachmentFile' do
-    visible false
-  end
-
   config.model 'Report' do
+    navigation_label 'Sola Salons'
     visible do
       bindings[:controller]._current_user.franchisee != true
     end
@@ -2573,11 +1884,8 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'Testimonial' do
-    visible false
-  end
-
   config.model 'UpdateMySolaWebsite' do
+    navigation_label 'Sola Salons'
     visible true
 
     list do
@@ -2588,290 +1896,115 @@ RailsAdmin.config do |config|
       group :general do
         field :name do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('name')
-          # end
         end
         field :biography do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('biography')
-          # end
         end
       end
       group :contact do
         field :phone_number do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('phone_number')
-          # end
         end
         field :email_address do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('email_address')
-          # end
         end
-        # visible do
-        #   ['email_address', 'phone_number'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       group :business do
         field :business_name do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('business_name')
-          # end
         end
         field :work_hours do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('work_hours')
-          # end
         end
-        # visible do
-        #   ['business_name', 'work_hours'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       group :website do
         field :website_url do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('website_url')
-          # end
         end
         field :booking_url do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('booking_url')
-          # end
         end
         field :reserved do
           help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('reserved')
-          # end
         end
-
-        # visible do
-        #   ['website_url', 'booking_url', 'reserved'].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       group :social do
-        field :facebook_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('facebook_url')
-          # end
-        end
-        field :google_plus_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('google_plus_url')
-          # end
-        end
-        field :instagram_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('instagram_url')
-          # end
-        end
-        field :linkedin_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('linkedin_url')
-          # end
-        end
-        field :pinterest_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('pinterest_url')
-          # end
-        end
-        field :twitter_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('twitter_url')
-          # end
-        end
-        field :yelp_url do
-          help ' '
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('yelp_url')
-          # end
-        end
+        field :facebook_url
+        field :google_plus_url
+        field :instagram_url
+        field :linkedin_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
         field :tik_tok_url
-        # visible do
-        #   %w[facebook_url google_plus_url instagram_url linkedin_url pinterest_url twitter_url yelp_url].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       group :services do
         field :botox do
           label 'Botox/Fillers'
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('botox')
-          # end
         end
-        field :brows do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('brows')
-          # end
-        end
-        field :hair do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('hair')
-          # end
-        end
-        field :hair_extensions do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('hair_extensions')
-          # end
-        end
-        field :laser_hair_removal do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('laser_hair_removal')
-          # end
-        end
+        field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
         field :eyelash_extensions do
           label 'Lashes'
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('eyelash_extensions')
-          # end
         end
-        field :makeup do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('makeup')
-          # end
-        end
-        field :massage do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('massage')
-          # end
-        end
-        field :nails do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('nails')
-          # end
-        end
-        field :permanent_makeup do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('permanent_makeup')
-          # end
-        end
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
         field :skin do
           label 'Skincare'
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('skin')
-          # end
         end
-        field :tanning do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('tanning')
-          # end
-        end
-        field :teeth_whitening do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('teeth_whitening')
-          # end
-        end
-        field :threading do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('threading')
-          # end
-        end
-        field :waxing do
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('waxing')
-          # end
-        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
         field :other_service do
           label 'Other'
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('other_service')
-          # end
         end
-        # visible do
-        #   %w[massage makeup eyelash_extensions laser_hair_removal botox
-        #      nails permanent_makeup skin tanning hair_extensions hair
-        #      teeth_whitening threading waxing brows].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
-
       end
       group :testimonials do
         field :testimonial_1 do
           label 'Testimonial #1'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_1')
-          # end
         end
         field :testimonial_2 do
           label 'Testimonial #2'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_2')
-          # end
         end
         field :testimonial_3 do
           label 'Testimonial #3'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_3')
-          # end
         end
         field :testimonial_4 do
           label 'Testimonial #4'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_4')
-          # end
         end
         field :testimonial_5 do
           label 'Testimonial #5'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_5')
-          # end
         end
         field :testimonial_6 do
           label 'Testimonial #6'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_6')
-          # end
         end
         field :testimonial_7 do
           label 'Testimonial #7'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_7')
-          # end
         end
         field :testimonial_8 do
           label 'Testimonial #8'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_8')
-          # end
         end
         field :testimonial_9 do
           label 'Testimonial #9'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_9')
-          # end
         end
         field :testimonial_10 do
           label 'Testimonial #10'
           help ''
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('testimonial_10')
-          # end
         end
-        # visible do
-        #   %w[testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5
-        #      testimonial_6 testimonial_7 testimonial_8 testimonial_9 testimonial_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       group :images do
         field :image_1 do
@@ -2880,9 +2013,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_1
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_1')
-          # end
         end
         field :image_2 do
           label 'Image #2'
@@ -2890,9 +2020,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_2
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_2')
-          # end
         end
         field :image_3 do
           label 'Image #3'
@@ -2900,9 +2027,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_3
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_3')
-          # end
         end
         field :image_4 do
           label 'Image #4'
@@ -2910,9 +2034,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_4
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_4')
-          # end
         end
         field :image_5 do
           label 'Image #5'
@@ -2920,9 +2041,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_5
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_5')
-          # end
         end
         field :image_6 do
           label 'Image #6'
@@ -2930,9 +2048,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_6
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_6')
-          # end
         end
         field :image_7 do
           label 'Image #7'
@@ -2940,9 +2055,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_7
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_7')
-          # end
         end
         field :image_8 do
           label 'Image #8'
@@ -2950,9 +2062,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_8
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_8')
-          # end
         end
         field :image_9 do
           label 'Image #9'
@@ -2960,9 +2069,6 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_9
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_9')
-          # end
         end
         field :image_10 do
           label 'Image #10'
@@ -2970,37 +2076,825 @@ RailsAdmin.config do |config|
             "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
           end
           delete_method :delete_image_10
-          # visible do
-          #   bindings[:object].changed_attributes.keys.include?('image_10')
-          # end
         end
-        # visible do
-        #   %w[image_1 image_2 image_3 image_4 image_5
-        #      image_6 image_7 image_8 image_9 image_10].any?{|k| bindings[:object].changed_attributes.keys.include?(k)}
-        # end
       end
       field :approved
     end
   end
 
-  config.model 'Visit' do
-    visible false
+  # Sola Pro
+
+  config.model 'Brand' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :name
+      field :website_url
+    end
+    show do
+      field :name
+      field :website_url
+      field :image do
+        label 'Color Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      field :brand_links do
+        label 'Links'
+      end
+      group 'Settings' do
+        field :introduction_video_heading_title
+        field :events_and_classes_heading_title
+      end
+    end
+    edit do
+      field :name
+      field :website_url
+      field :image do
+        label 'Color Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      field :brand_links do
+        label 'Links'
+      end
+      group 'Settings' do
+        field :introduction_video_heading_title
+        field :events_and_classes_heading_title
+      end
+      group 'Countries' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+
+        field :countries do
+          inline_add false
+        end
+      end
+    end
   end
 
-  config.model 'HubspotEvent' do
-    visible false
+  config.model 'ClassImage' do
+    navigation_label 'Sola Pro'
+    visible true
+    list do
+      field :name
+      field :image_file_name
+      field :thumbnail_file_name
+    end
+    show do
+      field :name
+      field :image_file_name
+      field :thumbnail_file_name
+      field :image do
+        label 'Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      field :thumbnail do
+        label 'Thumbnail'
+        help 'Ideal image size is 460 x 280'
+      end
+    end
+    edit do
+      field :name
+      field :image do
+        label 'Image'
+        help 'Ideal image size is 460 x 280'
+      end
+      field :thumbnail do
+        label 'Thumbnail'
+        help 'Ideal image size is 460 x 280'
+      end
+    end
   end
 
-  config.model 'HubspotLog' do
-    visible false
+  config.model 'Deal' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :title
+      field :brand
+      field :categories
+      field :tags
+      field :description
+      field :is_featured do
+        searchable false
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    show do
+      field :title
+      field :description
+      field :brand
+      field :categories
+      field :tags
+      field :image do
+        help 'Ideal image size is 460 x 280'
+      end
+      field :file
+      field :more_info_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :brand
+      field :categories
+      field :tags
+      field :image do
+        help 'Ideal image size is 460 x 280'
+        delete_method :delete_image
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :more_info_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      group 'Countries' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+
+        field :countries do
+          inline_add false
+        end
+      end
+    end
+  end
+
+  config.model 'EducationHeroImage' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+  end
+
+  config.model 'SolaClass' do
+    navigation_label 'Sola Pro'
+    label 'Event and Class'
+    label_plural 'Events and Classes'
+    object_label_method do
+      :label
+    end
+    list do
+      field :title
+      field :sola_class_region do
+        label 'Region'
+      end
+      field :location
+      field :address
+      field :city
+      field :state do
+        label 'State/Province'
+      end
+      field :start_date
+      field :end_date
+    end
+    show do
+      field :title
+      field :description
+      field :class_image do
+        help 'Ideal image size is 460 x 280'
+      end
+      field :category
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time
+        field :end_date
+        field :end_time
+      end
+      group 'Where' do
+        field :sola_class_region do
+          label 'Region'
+        end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+      end
+      group 'Who' do
+        field :brands
+      end
+      field :file
+      field :file_text do
+        help 'Customize the file button text'
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :category
+      field :class_image
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+        field :end_date
+        field :end_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+      end
+      group 'Where' do
+
+        field :sola_class_region do
+          label 'Region'
+        end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+        field :countries do
+          label 'Countries'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+          visible false
+        end
+      end
+      group 'Who' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :brands
+      end
+      group 'RSVP' do
+        field :rsvp_email_address do
+          label 'Email Address'
+        end
+        field :rsvp_phone_number do
+          label 'Phone Number'
+        end
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :file_text do
+        help 'Customize the file button text'
+      end
+      field :video
+    end
+  end
+
+  config.model 'HomeButton' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :image
+      field :action_link
+      field :position
+      field :countries
+    end
+    show do
+      field :image
+      field :action_link
+      field :position
+      field :countries
+    end
+    edit do
+      field :image do
+        help 'Image should be 1500 x 500'
+      end
+      field :action_link do
+        help 'This must be either a full URL (e.g. https://www.solasalonstudios.com) or it should be the name of a view inside the Sola Pro app (e.g. BlogsView, BrandsView, DealsView, EducationView, EventsAndClassesView, PerksProgramView, SolaGenius, ToolsAndResourcesView, MySolaProView, or VideosView)'
+      end
+      field :position
+      field :countries do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+  end
+
+  config.model 'HomeHeroImage' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :image
+      field :action_link
+      field :position
+      field :countries
+    end
+    show do
+      field :image
+      field :action_link
+      field :position
+      field :countries
+    end
+    edit do
+      field :image do
+        help 'Image should be 1500 x 1000'
+      end
+      field :action_link do
+        help 'This must be either a full URL (e.g. https://www.solasalonstudios.com) or it should be the name of a view inside the Sola Pro app (e.g. BlogsView, BrandsView, DealsView, EducationView, EventsAndClassesView, PerksProgramView, SolaGenius, ToolsAndResourcesView, MySolaProView, or VideosView)'
+      end
+      field :position
+      field :countries do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+  end
+
+  config.model 'Notification' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    show do
+      group 'Content' do
+        field :blog_id, :enum do
+          label 'Blog'
+          enum do
+            Blog.all.map { |b| [ b.title, b.id ] }
+          end
+        end
+        field :brand do
+          inline_add false
+          inline_edit false
+        end
+        field :deal do
+          inline_add false
+          inline_edit false
+        end
+        field :sola_class do
+          label 'Event or Class'
+          inline_add false
+          inline_edit false
+        end
+        field :tool do
+          label 'Tool or Resource'
+          inline_add false
+          inline_edit false
+        end
+        field :video do
+          inline_add false
+          inline_edit false
+        end
+      end
+      group 'Push Notification' do
+        field :title, :string do
+          required true
+          html_attributes do
+            {maxlength: 65}
+          end
+        end
+        field :notification_text, :string do
+          required true
+          html_attributes do
+            {maxlength: 235}
+          end
+        end
+        field :date_sent
+      end
+      field :stylists
+      field :send_at
+      field :date_sent
+    end
+    edit do
+      group 'Content' do
+        field :blog_id, :enum do
+          label 'Blog'
+          enum do
+            Blog.all.map { |b| [ b.title, b.id ] }
+          end
+        end
+        field :brand do
+          inline_add false
+          inline_edit false
+        end
+        field :deal do
+          inline_add false
+          inline_edit false
+        end
+        field :sola_class do
+          label 'Event or Class'
+          inline_add false
+          inline_edit false
+        end
+        field :tool do
+          label 'Tool or Resource'
+          inline_add false
+          inline_edit false
+        end
+        field :video do
+          inline_add false
+          inline_edit false
+        end
+      end
+      group 'Push Notification' do
+        field :title, :string do
+          required true
+          html_attributes do
+            {maxlength: 65}
+          end
+        end
+        field :notification_text, :string do
+          required true
+          html_attributes do
+            {maxlength: 235}
+          end
+        end
+        field :country do
+          inline_add false
+          inline_edit false
+        end
+      end
+      group 'Recipients' do
+        help 'Will be send to all users if blank'
+        field :stylists do
+          inline_add false
+
+          associated_collection_scope do
+            proc { |scope| scope.where.not(encrypted_password: '') }
+          end
+        end
+      end
+
+      field :send_at do
+        help 'Will be send immediately if blank'
+      end
+    end
+  end
+
+  config.model 'ProductInformation' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+  end
+
+  config.model 'SolaClassRegion' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+    label 'Region'
+    label_plural 'Regions'
+    list do
+      field :name
+      field :countries
+      field :position
+    end
+    edit do
+      field :name
+      field :countries
+      field :position
+    end
+    show do
+      field :name
+      field :countries
+      field :position
+    end
+  end
+
+  config.model 'SideMenuItem' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :name
+      field :action_link
+      field :position
+      field :countries
+    end
+    show do
+      field :name
+      field :action_link
+      field :position
+      field :countries
+    end
+    edit do
+      field :name
+      field :action_link do
+        help 'This must be either a full URL (e.g. https://www.solasalonstudios.com) or it should be the name of a view inside the Sola Pro app (e.g. BlogsView, BrandsView, DealsView, EducationView, EventsAndClassesView, PerksProgramView, SolaGenius, ToolsAndResourcesView, MySolaProView, or VideosView)'
+      end
+      field :position
+      field :countries do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+  end
+
+  config.model 'SolaClassRegionState' do
+    navigation_label 'Sola Pro'
+    label 'State Region'
+    label_plural 'State Regions'
+    visible do
+      bindings[:controller]._current_user.franchisee != true
+    end
+  end
+
+  config.model 'Tool' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    label 'Tool and Resource'
+    label_plural 'Tools and Resources'
+    list do
+      field :title
+      field :description
+      field :brand
+      field :categories
+      field :tags
+      field :image
+      field :file
+      field :link_url
+      field :youtube_url
+    end
+    show do
+      field :title
+      field :description
+      field :brand
+      field :categories
+      field :tags
+      field :image do
+        help 'Ideal image size is 460 x 280'
+      end
+      field :file
+      field :link_url
+      field :youtube_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :brand
+      field :categories
+      field :tags
+      field :image do
+        help 'Ideal image size is 460 x 280'
+        delete_method :delete_image
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :link_url
+      field :youtube_url
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      group 'Countries' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+
+        field :countries do
+          inline_add false
+        end
+      end
+    end
+  end
+
+  config.model 'Video' do
+    navigation_label 'Sola Pro'
+    visible do
+      bindings[:controller]._current_user.sola_pro_country_admin.present? || bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      field :title
+      field :webinar
+      field :is_featured do
+        searchable false
+      end
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :brand
+      field :categories
+      field :tags
+    end
+    show do
+      field :title
+      field :webinar
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      field :youtube_url
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :tool do
+        label 'Related Tool or Resource'
+      end
+      field :brand
+      field :categories
+      field :tags
+      field :is_introduction
+    end
+    edit do
+      field :title
+      field :webinar
+      field :youtube_url
+      field :duration do
+        help '(e.g. 11:10, 1:07:41, 3:42, etc)'
+      end
+      field :tool do
+        label 'Related Tool or Resource'
+      end
+      field :brand
+      field :categories
+      field :tags
+      field :is_introduction
+      field :is_featured do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+      end
+      group 'Countries' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+
+        field :countries do
+          inline_add false
+        end
+      end
+    end
+  end
+
+  config.model 'SolaClass' do
+    label 'Event and Class'
+    label_plural 'Events and Classes'
+    navigation_label 'Sola Pro'
+    object_label_method do
+      :label
+    end
+    list do
+      field :title
+      field :sola_class_region do
+        label 'Region'
+      end
+      field :location
+      field :address
+      field :city
+      field :state do
+        label 'State/Province'
+      end
+      field :start_date
+      field :end_date
+    end
+    show do
+      field :title
+      field :description
+      field :class_image do
+        help 'Ideal image size is 460 x 280'
+      end
+      field :category
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time
+        field :end_date
+        field :end_time
+      end
+      group 'Where' do
+        field :sola_class_region do
+          label 'Region'
+        end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+      end
+      group 'Who' do
+        field :brands
+      end
+      field :file
+      field :file_text do
+        help 'Customize the file button text'
+      end
+    end
+    edit do
+      field :title
+      field :description
+      field :category
+      field :class_image
+      field :tags
+      field :cost
+      field :link_text
+      field :link_url
+      group 'When' do
+        field :start_date
+        field :start_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+        field :end_date
+        field :end_time do
+          help '(e.g 9:30am, 7pm, etc)'
+        end
+      end
+      group 'Where' do
+
+        field :sola_class_region do
+          label 'Region'
+        end
+        field :location
+        field :address
+        field :city
+        field :state do
+          label 'State/Province'
+        end
+        field :countries do
+          label 'Countries'
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+          visible false
+        end
+      end
+      group 'Who' do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
+        field :brands
+      end
+      group 'RSVP' do
+        field :rsvp_email_address do
+          label 'Email Address'
+        end
+        field :rsvp_phone_number do
+          label 'Phone Number'
+        end
+      end
+      field :file do
+        delete_method :delete_file
+      end
+      field :file_text do
+        help 'Customize the file button text'
+      end
+      field :video
+    end
+  end
+
+  ### Franchsing
+
+  config.model 'FranchisingForm' do
+    label 'Franchsing Inquiry'
+    label_plural 'Franchising Inquiries'
+    navigation_label 'Sola Franchise'
+    visible do
+      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+    end
+    list do
+      scopes [:usa, :ca]
+    end
   end
 
   config.model 'FranchiseArticle' do
     label 'Franchise Press And Blog'
     label_plural 'Franchise Press And Blog'
+    navigation_label 'Sola Franchise'
     visible do
       bindings[:controller]._current_user.franchisee != true
-		end
+    end
 
     list do
       scopes [:all, :press, :blog]

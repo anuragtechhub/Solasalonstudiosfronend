@@ -1,4 +1,42 @@
 en-CA:
+  update_my_sola_website_success: 'Website update request saved! We will email you when your website changes are live.'
+  walkins_update_success: 'Walkins updated successfully!'
+  already_in_use: already in use
+  invalid_email_or_password: Invalid email and password combination
+  invalid_current_password: Invalid current password. Please check and try again
+  please_fill_out_all_fields: Please fill out all fields
+  email_address_already_exists: A user with that email address already exists
+  no_such_user: No such user
+  no_such_item: No such item
+  could_not_find_sola_professional: We could not find a salon professional with that email address in the Sola directory
+  passwords_do_not_match: Passwords do not match
+  please_enter_your_email_address: Please enter your email address
+  current_password_is_blank: Current password is blank
+  you_must_sign_in: You must sign in
+  invalid_reset_password_token: Invalid reset password token. Please submit a new forgot password request
+  reset_password_token_used: It appears that this reset password token has already been used. Please submit a new forgot password request
+  reset_password_sent_to: Reset password email sent to %{email}
+  could_not_find_salon_professional: Could not find salon professional
+  update_my_sola_website_request_from: Update My Sola Website Request from %{name}
+  forgot_password_reset_instructions: Forgot Password Reset Instructions
+  your_email_is: 'Your email is: %{email}'
+  click_the_link_below_to_reset_your_sola_pro_password: 'Click the link below to reset your Sola Pro password: '
+  cheers: Cheers
+  update_my_sola_website_approval_email: '%{name} at %{location_name} just submitted an Update My Sola Website Request on Sola Professional. This must be approved by %{admin_email} to take effect on the Sola website. Click the link below to review the updates:'
+  something_went_wrong: Something went wrong. Please try your request again. If the problem persists, please contact techincal support.
+
+  splash:
+    sola_pro: Sola Pro
+    sola_salon_studios: Sola Salon Studios
+    inspiration_at_your_fingertips: Inspiration at Your Fingertips
+    education: Education
+    exclusive_deals: Exclusive Deals
+    events_and_classes_calendar: Events &amp; Classes Calendar
+    blog: Blog
+    perkspot: Perkspot
+    and_much_more: And Much More!
+    watch_video: Watch Video
+
   contact_form_success: Thank you! We will get in touch soon
 
   activerecord:
