@@ -23,7 +23,7 @@ module Hubspot
       return nil if email_address.blank?
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
-      Hubspot::Owner.all&.find{|o| o.email == email_address}&.owner_id
+      Hubspot::Owner.all&.find{|o| o.email == email_address.strip}&.owner_id
     end
   end
 end

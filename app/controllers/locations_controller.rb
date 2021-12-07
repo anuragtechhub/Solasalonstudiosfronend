@@ -49,7 +49,7 @@ class LocationsController < PublicWebsiteController
 
     if @msa
       @locations = @all_locations.where('msa_id = ?', @msa.id)
-      params[:state] = @locations.first.state
+      params[:state] = @locations.first.state if @locations.first.present?
     else
       redirect_to :locations, :status => 301
     end

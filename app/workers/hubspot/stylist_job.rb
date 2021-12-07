@@ -43,7 +43,7 @@ module Hubspot
 
     def contact_properties
       {
-        email: @stylist.email_address,
+        email: @stylist.email_address.strip,
         firstname: @stylist.first_name,
         lastname: @stylist.last_name,
         phone: @stylist.phone_number,

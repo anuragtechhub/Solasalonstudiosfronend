@@ -6,7 +6,7 @@ module Hubspot
 
       Hubspot.configure(hapikey: ENV['HUBSPOT_API_KEY'])
       data = {
-        email: email,
+        email: email.to_s.strip,
         hs_persona: 'persona_5',
         country: website_country
       }

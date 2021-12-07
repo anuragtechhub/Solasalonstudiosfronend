@@ -6,7 +6,7 @@ module Hubspot
 
       @book_now = BookNowBooking.find(book_now_id)
       data = {
-        email: @book_now.stylist.email_address,
+        email: @book_now.stylist.email_address.to_s.strip,
         location_name: @book_now.location&.name.to_s,
         location_id: @book_now.location_id.to_s,
         time_range: @book_now.time_range,
@@ -14,7 +14,7 @@ module Hubspot
         query: @book_now.query,
         booking_user_name: @book_now.booking_user_name,
         booking_user_phone: @book_now.booking_user_phone,
-        booking_user_email: @book_now.booking_user_email,
+        booking_user_email: @book_now.booking_user_email.to_s.strip,
         referring_url: @book_now.referring_url,
         total: @book_now.total
       }
