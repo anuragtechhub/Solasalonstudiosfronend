@@ -176,6 +176,7 @@ module Pro
       :tanning,
       :waxing,
       :brows,
+      :barber,
       :botox,
       :website_url,
       :booking_url,

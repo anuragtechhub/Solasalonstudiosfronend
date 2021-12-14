@@ -394,6 +394,7 @@ class Stylist < ActiveRecord::Base
   def services(show_other = true)
     services = []
 
+    services << 'Barber' if barber
     services << 'Brows' if brows
     services << 'Botox/Fillers' if botox
     services << 'Hair' if hair
@@ -896,6 +897,7 @@ end
 #
 #  id                             :integer          not null, primary key
 #  accepting_new_clients          :boolean          default(TRUE)
+#  barber                         :boolean          default(FALSE), not null
 #  biography                      :text
 #  booking_url                    :string(255)
 #  botox                          :boolean

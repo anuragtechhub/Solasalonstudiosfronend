@@ -225,6 +225,23 @@ end
 # == Route Map
 #
 #                                 Prefix Verb     URI Pattern                                                   Controller#Action
+#                      new_admin_session GET      /admins/sign_in(.:format)                                     devise/sessions#new
+#                          admin_session POST     /admins/sign_in(.:format)                                     devise/sessions#create
+#                  destroy_admin_session DELETE   /admins/sign_out(.:format)                                    devise/sessions#destroy
+#                         admin_password POST     /admins/password(.:format)                                    devise/passwords#create
+#                     new_admin_password GET      /admins/password/new(.:format)                                devise/passwords#new
+#                    edit_admin_password GET      /admins/password/edit(.:format)                               devise/passwords#edit
+#                                        PATCH    /admins/password(.:format)                                    devise/passwords#update
+#                                        PUT      /admins/password(.:format)                                    devise/passwords#update
+#              cancel_admin_registration GET      /admins/cancel(.:format)                                      devise/registrations#cancel
+#                     admin_registration POST     /admins(.:format)                                             devise/registrations#create
+#                 new_admin_registration GET      /admins/sign_up(.:format)                                     devise/registrations#new
+#                edit_admin_registration GET      /admins/edit(.:format)                                        devise/registrations#edit
+#                                        PATCH    /admins(.:format)                                             devise/registrations#update
+#                                        PUT      /admins(.:format)                                             devise/registrations#update
+#                                        DELETE   /admins(.:format)                                             devise/registrations#destroy
+#                            rails_admin          /admin                                                        RailsAdmin::Engine
+#                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
 #                     franchising_engine          /                                                             Franchising::Engine
 #                             pro_engine          /                                                             Pro::Engine
 #                               ckeditor          /ckeditor                                                     Ckeditor::Engine
@@ -352,25 +369,19 @@ end
 #                    cms_stylists_select GET|POST /cms/stylists-select(.:format)                                cms#stylists_select
 #                  cms_s3_presigned_post GET|POST /cms/s3-presigned-post(.:format)                              cms#s3_presigned_post
 #                               sejasola GET|POST /sejasola(.:format)                                           brazil#sejasola
-#                      new_admin_session GET      /admins/sign_in(.:format)                                     devise/sessions#new
-#                          admin_session POST     /admins/sign_in(.:format)                                     devise/sessions#create
-#                  destroy_admin_session DELETE   /admins/sign_out(.:format)                                    devise/sessions#destroy
-#                         admin_password POST     /admins/password(.:format)                                    devise/passwords#create
-#                     new_admin_password GET      /admins/password/new(.:format)                                devise/passwords#new
-#                    edit_admin_password GET      /admins/password/edit(.:format)                               devise/passwords#edit
-#                                        PATCH    /admins/password(.:format)                                    devise/passwords#update
-#                                        PUT      /admins/password(.:format)                                    devise/passwords#update
-#              cancel_admin_registration GET      /admins/cancel(.:format)                                      devise/registrations#cancel
-#                     admin_registration POST     /admins(.:format)                                             devise/registrations#create
-#                 new_admin_registration GET      /admins/sign_up(.:format)                                     devise/registrations#new
-#                edit_admin_registration GET      /admins/edit(.:format)                                        devise/registrations#edit
-#                                        PATCH    /admins(.:format)                                             devise/registrations#update
-#                                        PUT      /admins(.:format)                                             devise/registrations#update
-#                                        DELETE   /admins(.:format)                                             devise/registrations#destroy
-#                            rails_admin          /admin                                                        RailsAdmin::Engine
-#                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
 #                                        GET      /:url_name(.:format)                                          redirect#short
 #                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
+#
+# Routes for RailsAdmin::Engine:
+#   dashboard GET         /                                  rails_admin/main#dashboard
+#       index GET|POST    /:model_name(.:format)             rails_admin/main#index
+#         new GET|POST    /:model_name/new(.:format)         rails_admin/main#new
+#      export GET|POST    /:model_name/export(.:format)      rails_admin/main#export
+# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format) rails_admin/main#bulk_delete
+# bulk_action POST        /:model_name/bulk_action(.:format) rails_admin/main#bulk_action
+#        show GET         /:model_name/:id(.:format)         rails_admin/main#show
+#        edit GET|PUT     /:model_name/:id/edit(.:format)    rails_admin/main#edit
+#      delete GET|DELETE  /:model_name/:id/delete(.:format)  rails_admin/main#delete
 #
 # Routes for Franchising::Engine:
 #                   root GET  /                                        franchising/website#index
@@ -388,6 +399,9 @@ end
 #
 # Routes for Pro::Engine:
 #                                        root GET      /                                                      pro/splash#index
+#                                             GET|POST /r/:public_id(.:format)                                pro/redirect#short_link
+#                             forgot_password GET|POST /forgot-password(.:format)                             pro/password#forgot
+#                              reset_password GET|POST /reset-password/:id(.:format)                          pro/password#reset
 #                              api_v1_classes GET|POST /api/v1/classes(.:format)                              pro/api/v1/classes#index {:format=>:json}
 #                                      api_v1 GET|POST /api/v1/classes_load_more/:id(.:format)                pro/api/v1/classes#load_more {:format=>:json}
 #                            api_v1_get_class GET|POST /api/v1/get_class(.:format)                            pro/api/v1/classes#get {:format=>:json}
@@ -519,13 +533,3 @@ end
 # attachment_files GET    /attachment_files(.:format)     ckeditor/attachment_files#index
 #                  POST   /attachment_files(.:format)     ckeditor/attachment_files#create
 #  attachment_file DELETE /attachment_files/:id(.:format) ckeditor/attachment_files#destroy
-#
-# Routes for RailsAdmin::Engine:
-#   dashboard GET         /                                  rails_admin/main#dashboard
-#       index GET|POST    /:model_name(.:format)             rails_admin/main#index
-#         new GET|POST    /:model_name/new(.:format)         rails_admin/main#new
-#      export GET|POST    /:model_name/export(.:format)      rails_admin/main#export
-# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format) rails_admin/main#bulk_delete
-# bulk_action POST        /:model_name/bulk_action(.:format) rails_admin/main#bulk_action
-#        edit GET|PUT     /:model_name/:id/edit(.:format)    rails_admin/main#edit
-#      delete GET|DELETE  /:model_name/:id/delete(.:format)  rails_admin/main#delete

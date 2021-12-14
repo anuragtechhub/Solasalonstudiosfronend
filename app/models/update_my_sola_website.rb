@@ -273,6 +273,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.yelp_url = yelp_url
     stylist.tik_tok_url = tik_tok_url
 
+    stylist.barber = barber
     stylist.brows = brows
     stylist.botox = botox
     stylist.hair = hair
@@ -639,6 +640,7 @@ end
 #
 #  id                    :integer          not null, primary key
 #  approved              :boolean          default(FALSE)
+#  barber                :boolean
 #  biography             :text
 #  booking_url           :string(255)
 #  botox                 :boolean

@@ -5,7 +5,7 @@ module Pro
                :biography, :booking_url, :reserved,
                :pinterest_url, :linkedin_url, :facebook_url,
                :twitter_url, :instagram_url, :yelp_url, :tik_tok_url, :onboarded,
-               :botox, :brows, :hair, :hair_extensions, :laser_hair_removal,
+               :barber, :botox, :brows, :hair, :hair_extensions, :laser_hair_removal,
                :makeup, :massage, :microblading, :nails, :permanent_makeup,
                :threading, :eyelash_extensions, :teeth_whitening, :tanning,
                :waxing, :walkins, :walkins_expiry, :skin, :other_service, :work_hours,

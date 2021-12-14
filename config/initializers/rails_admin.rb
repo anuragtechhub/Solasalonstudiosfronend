@@ -1441,6 +1441,7 @@ RailsAdmin.config do |config|
         field :tik_tok_url
       end
       group :services do
+        field :barber
         field :botox do
           label 'Botox/Fillers'
         end
@@ -1654,6 +1655,7 @@ RailsAdmin.config do |config|
       end
       group :services do
         active false
+        field :barber
         field :botox do
           label 'Botox/Fillers'
         end
@@ -1847,6 +1849,7 @@ RailsAdmin.config do |config|
       field :makeup
       field :tanning
       field :waxing
+      field :barber
       field :botox do
         label 'Botox/Fillers'
       end
@@ -1939,6 +1942,7 @@ RailsAdmin.config do |config|
         field :tik_tok_url
       end
       group :services do
+        field :barber
         field :botox do
           label 'Botox/Fillers'
         end

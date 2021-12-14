@@ -36,7 +36,7 @@ module Pro
                :image_1, :image_2, :image_3, :image_4, :image_5,
                :image_6, :image_7, :image_8, :image_9, :image_10,
                :hair, :skin, :nails, :massage, :teeth_whitening, :eyelash_extensions,
-               :makeup, :microblading, :tanning, :waxing, :brows, :botox, :laser_hair_removal,
+               :makeup, :microblading, :tanning, :waxing, :brows, :barber, :botox, :laser_hair_removal,
                :threading, :permanent_makeup, :other_service, :hair_extensions, :email_address,
                testimonial_1_attributes: %i[id name region text],
                testimonial_2_attributes: %i[id name region text],
