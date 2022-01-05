@@ -29,11 +29,6 @@ class ReportsMailer < ActionMailer::Base
     mail(to: email_address, bcc: default_bcc, subject: "Booking Complete Report")
   end
 
-  def welcome_email_report(report_pdf)
-    attachments["welcome_email_report.pdf"] = report_pdf
-    mail(to: %w[jennie@solasalonstudios.com megan@solasalonstudios.com], bcc: default_bcc, subject: "Sola Welcome Email Report")
-  end
-
   def solasalonstudios_report(report_pdf, url)
     @url = url
     attachments["#{url}.pdf"] = report_pdf

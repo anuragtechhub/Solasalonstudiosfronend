@@ -4,7 +4,6 @@ module Reports
       start_date = Date.current.prev_month.beginning_of_month.beginning_of_day
       end_date = Date.current.prev_month.end_of_month.end_of_day
 
-      Reports::WelcomeJob.perform_async(start_date, end_date)
       Reports::LocationsContactFormSubmissionsJob.perform_async(start_date, end_date)
       Reports::SolasalonstudiosJob.perform_async(start_date, end_date, 'CA')
       Reports::SolasalonstudiosJob.perform_async(start_date, end_date, 'US')
