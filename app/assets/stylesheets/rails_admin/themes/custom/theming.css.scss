@@ -21,6 +21,13 @@ li[data-model^="ckeditor"] {
   display: none !important;
 }
 
+ul.nav.nav-tabs.main {
+  .icon.export_collection_link { display: none; }
+}
+
+.form-control {
+  height: unset;
+}
 
 // TYPOGRAPHY
 // --------------------------------------------------
@@ -89,7 +96,7 @@ a:hover, a:active {
 }
 
 .progress-bar {
-  background: $red;
+  //background: $red;
   font-weight: bold;
   color: #FFF;
   text-indent: 10px;
@@ -103,13 +110,19 @@ a:hover, a:active {
 
 .navbar {
 
-  .brand {
+  .navbar-brand {
     font-size: 22px !important;
     text-shadow: none;
     margin-top: 2px;
+    padding: 14px 20px 14px;
+    margin-left: -20px;
+    color: white;
+    &:hover {
+      color: white;
+    }
 
     .navbar:hover {
-      color: $linkColorHover;
+      color: white;
     }
 
     img {
@@ -119,8 +132,9 @@ a:hover, a:active {
     }
 
     small {
-      display: inline-block;
-      margin-left: 5px;
+      color: #03c4b6;
+      font-weight: bold;
+      line-height: 1
     }
   }
 
@@ -130,8 +144,7 @@ a:hover, a:active {
 
   .navbar-inner {
     @include box-shadow(none);
-    // padding-left: 20px;
-    // padding-right: 20px;
+    background-color: $blueDark;
   }
 
   .nav > li > a {
@@ -286,12 +299,13 @@ div.subnav {
   text-transform: capitalize;
 }
 
-.root_links {
-  display: none;
-}
-
 a.logout {
-  padding-right: 0 !important;
+  font-size: 17px;
+  .label {
+    text-transform: capitalize;
+    background-color: #03c4b6;
+    border-radius: 3px;
+  }
 }
 
 .link {
@@ -301,6 +315,8 @@ a.logout {
 li.current_user {
   padding-top: 16px;
   color: #EFEFEF;
+  font-size: 17px;
+  line-height: 22px;
 }
 
 

@@ -5,6 +5,7 @@ class RequestTourInquiry < ActiveRecord::Base
   belongs_to :visit
 
   before_validation :process_email
+  before_validation :process_utm
   after_create :send_notification_email, :send_prospect_email
   after_commit :sync_with_hubspot, on: :create
 
@@ -41,42 +42,6 @@ class RequestTourInquiry < ActiveRecord::Base
     ::Hubspot::RequestTourJob.perform_async(self.id)
   end
 
-  def utm_source
-    uri = URI::parse(request_url)
-    CGI::parse(uri.query)["utm_source"][0]
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    return ''
-  end
-
-  def utm_medium
-    uri = URI::parse(request_url)
-    CGI::parse(uri.query)["utm_medium"][0]
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    return ''
-  end
-
-  def utm_campaign
-    uri = URI::parse(request_url)
-    CGI::parse(uri.query)["utm_campaign"][0]
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    return ''
-  end
-
-  def utm_content
-    uri = URI::parse(request_url)
-    CGI::parse(uri.query)["utm_content"][0]
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    return ''
-  end
-
   def send_notification_email
     unless i_would_like_to_be_contacted == false && send_email_to_prospect.to_s.in?(%w[modern_salon_2019_05 financial_guide])
       PublicWebsiteMailer.request_a_tour(self).deliver_later
@@ -110,6 +75,20 @@ class RequestTourInquiry < ActiveRecord::Base
   def process_email
     self.email = self.email.gsub(/\s/, '')
   end
+
+  def process_utm
+    return if request_url.blank?
+
+    uri = URI::parse(request_url)
+    return if uri.query.blank?
+
+    self.utm_source = CGI::parse(uri.query)["utm_source"][0]
+    self.utm_medium = CGI::parse(uri.query)["utm_medium"][0]
+    self.utm_campaign = CGI::parse(uri.query)["utm_campaign"][0]
+    self.utm_content = CGI::parse(uri.query)["utm_content"][0]
+  rescue
+    return
+  end
 end
 
 # == Schema Information
@@ -136,6 +115,10 @@ end
 #  services                     :text
 #  source                       :string(255)
 #  state                        :string(255)
+#  utm_campaign                 :string
+#  utm_content                  :string
+#  utm_medium                   :string
+#  utm_source                   :string
 #  zip_code                     :string(255)
 #  created_at                   :datetime
 #  updated_at                   :datetime

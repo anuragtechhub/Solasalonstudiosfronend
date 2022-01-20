@@ -1,4 +1,10 @@
 en:
+  admin:
+    actions:
+      custom_export:
+        menu: 'Export'
+        breadcrumb: 'Export'
+
   update_my_sola_website_success: 'Website update request saved! We will email you when your website changes are live.'
   walkins_update_success: 'Walkins updated successfully!'
   already_in_use: already in use

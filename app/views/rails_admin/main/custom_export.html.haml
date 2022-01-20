@@ -1,0 +1,55 @@
+- visible_fields = @model_config.export.with(view: self, object: @abstract_model.model.new, controller: self.controller).visible_fields
+
+= form_tag custom_export_path, class: 'form-horizontal' do
+  %fieldset
+    %legend
+      %i.icon-chevron-down
+      Chose dates
+
+    .form-group.control-group.row
+      .col-sm-6.controls
+        = label_tag :from, 'From'
+        = text_field_tag :from, @abstract_model.model.order(created_at: :asc).first.created_at, required: true, data: { datetimepicker: true, options: { "showTodayButton":true,"format":"YYYY-MM-DD" } }, class: 'form-control'
+
+      .col-sm-6.controls
+        = label_tag :to, 'To'
+        = text_field_tag :to, Time.current, data: { datetimepicker: true, options: { "showTodayButton":true,"format":"YYYY-MM-DD" } }, class: 'form-control'
+
+  %fieldset{id: 'fields_to_export'}
+    %legend
+      %i.icon-chevron-down
+      = t('admin.export.select')
+    .form-group.control-group
+      .col-sm-12
+        .checkbox
+          %label{for: 'check_all'}
+            = check_box_tag 'all', 'all', true, { id: 'check_all' }
+            %b= t('admin.export.select_all_fields')
+
+    .form-group.control-group
+      .col-sm-12
+        .well.well-sm{rel: 'tooltip', :'data-original-title' => t('admin.export.click_to_reverse_selection'), onclick: 'jQuery(this).closest(".control-group").find(".controls").find("input").click()', style: 'margin: 0; cursor: pointer;'}
+          %b= t('admin.export.fields_from', name: @model_config.label_plural.downcase)
+        .controls
+          .row
+            - visible_fields.select{ |f| !f.association? || f.association.polymorphic? }.each do |field|
+              - list = field.virtual? ? 'methods' : 'only'
+              .checkbox.col-sm-3
+                - if field.association? && field.association.polymorphic?
+                  %label{for: "schema_#{list}_#{field.method_name}"}
+                    = check_box_tag "schema[#{list}][]", field.method_name, true, { id: "schema_#{list}_#{field.method_name}" }
+                    = field.label + " [id]"
+                  - polymorphic_type_column_name = @abstract_model.properties.detect {|p| field.association.foreign_type == p.name }.name
+                  %label{for: "schema_#{list}_#{polymorphic_type_column_name}"}
+                    = check_box_tag "schema[#{list}][]", polymorphic_type_column_name, true, { id: "schema_#{list}_#{polymorphic_type_column_name}" }
+                    = capitalize_first_letter(field.label) + " [type]"
+                - else
+                  %label{for: "schema_#{list}_#{field.name}"}
+                    = check_box_tag "schema[#{list}][]", field.name, true, { id: "schema_#{list}_#{field.name}" }
+                    = capitalize_first_letter(field.label)
+
+  .form-group.form-actions
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-primary{type: "submit", name: 'csv'}
+        %i.icon-white.icon-download
+        = t("admin.export.confirmation", name: 'csv')

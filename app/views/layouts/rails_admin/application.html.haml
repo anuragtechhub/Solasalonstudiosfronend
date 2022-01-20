@@ -1,28 +1,25 @@
 !!! 5
-%html
+%html{lang: I18n.locale}
   %head
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport; charset=utf-8"}
     %meta{content: "NONE,NOARCHIVE", name: "robots"}
     = csrf_meta_tag
     = stylesheet_link_tag "rails_admin/rails_admin.css", media: :all
-    = javascript_include_tag "//maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8&libraries=places"
+    = javascript_include_tag "https://maps.google.com/maps/api/js?key=AIzaSyD2Oj3CGe7UCPl_stI1vAIZ1WLVuoJ8WF8&libraries=places"
     = javascript_include_tag "rails_admin/rails_admin.js"
-    = javascript_include_tag "rails_admin/customization.js"
-
-
+  %body.rails_admin{class: "#{controller_name} #{action_name} #{@abstract_model.to_s}"}
+    #admin-js{:'data-i18n-options' => I18n.t("admin.js").to_json}
     -# Initialize JS simple i18n
     :javascript
-      RailsAdmin.I18n.init(JSON.parse("#{j I18n.t("admin.js").to_json}"))
-  %body.rails_admin
+      RailsAdmin.I18n.init('#{I18n.locale}', document.getElementById("admin-js").dataset.i18nOptions);
     #loading.label.label-warning{style: 'display:none; position:fixed; right:20px; bottom:20px; z-index:100000'}= t('admin.loading')
-    .navbar.navbar-fixed-top
+    %nav.navbar.navbar-default.navbar-fixed-top
       = render "layouts/rails_admin/navigation"
     .container-fluid
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list= main_navigation
-            %ul.nav.nav-list= static_navigation
-        .span9
-          .row-fluid
-            .content{:'data-pjax-container' => true}= render template: 'layouts/rails_admin/pjax'
+      .row
+        .col-sm-3.col-md-2.sidebar-nav
+          = render "layouts/rails_admin/sidebar_navigation"
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2
+          .content{:'data-pjax-container' => true}= render template: 'layouts/rails_admin/pjax'

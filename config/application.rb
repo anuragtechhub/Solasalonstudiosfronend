@@ -50,7 +50,7 @@ module Solasalonstudios
     end
 
     config.middleware.use Rack::Deflater
-    config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
+    #config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
@@ -66,7 +66,7 @@ module Solasalonstudios
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'lib')
     config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)
-    config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'rails_admin/customization.js', 'aos.js', 'aos.css', 'booknow_landing_page.css']
+    config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'aos.js', 'aos.css', 'booknow_landing_page.css']
     config.assets.precompile += ['fullscreen_hero.js', 'ckeditor/*'] #'digital_directory.css', 'digital_directory.js',
     config.assets.precompile += ['sola_pro.js', 'in_the_news.js', 'our_studios.js', 'why_sola.js', 'search_sola.js', 'solagenius.js', 'search_salon.js']
     config.assets.precompile += ['public_website.css', 'public_website.js', 'mysola.js', 'locations.js', 'locations_ca.js', 'locations_br.js', 'locations_state_select.js',

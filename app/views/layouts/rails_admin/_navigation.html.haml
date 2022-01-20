@@ -1,7 +1,13 @@
 .navbar-inner
   .container-fluid
-    %a.brand.pjax{href: dashboard_path}
-      = 'Sola Salon Studios'
-      %small= 'Admin'
-    .navbar-collapse
+    .navbar-header
+      %button.navbar-toggle.collapsed{ type: 'button', data: { toggle: 'collapse', target: '#secondary-navigation' } }
+        %span.sr-only= t('admin.toggle_navigation')
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand.pjax{href: dashboard_path}
+        = 'Sola Salon Studios'
+        %small= 'Admin'
+    .collapse.navbar-collapse#secondary-navigation
       = render partial: 'layouts/rails_admin/secondary_navigation'

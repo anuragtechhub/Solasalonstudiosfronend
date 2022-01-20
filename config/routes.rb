@@ -2,9 +2,10 @@ Solasalonstudios::Application.routes.draw do
   require 'sidekiq/web'
 
   devise_for :admins
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   authenticate :admin do
     mount Sidekiq::Web => '/sidekiq'
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 
 	# engines
@@ -240,8 +241,8 @@ end
 #                                        PATCH    /admins(.:format)                                             devise/registrations#update
 #                                        PUT      /admins(.:format)                                             devise/registrations#update
 #                                        DELETE   /admins(.:format)                                             devise/registrations#destroy
-#                            rails_admin          /admin                                                        RailsAdmin::Engine
 #                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
+#                            rails_admin          /admin                                                        RailsAdmin::Engine
 #                     franchising_engine          /                                                             Franchising::Engine
 #                             pro_engine          /                                                             Pro::Engine
 #                               ckeditor          /ckeditor                                                     Ckeditor::Engine
@@ -373,15 +374,16 @@ end
 #                         sendgrid_event POST     /sendgrid/event(.:format)                                     gridhook/events#create
 #
 # Routes for RailsAdmin::Engine:
-#   dashboard GET         /                                  rails_admin/main#dashboard
-#       index GET|POST    /:model_name(.:format)             rails_admin/main#index
-#         new GET|POST    /:model_name/new(.:format)         rails_admin/main#new
-#      export GET|POST    /:model_name/export(.:format)      rails_admin/main#export
-# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format) rails_admin/main#bulk_delete
-# bulk_action POST        /:model_name/bulk_action(.:format) rails_admin/main#bulk_action
-#        show GET         /:model_name/:id(.:format)         rails_admin/main#show
-#        edit GET|PUT     /:model_name/:id/edit(.:format)    rails_admin/main#edit
-#      delete GET|DELETE  /:model_name/:id/delete(.:format)  rails_admin/main#delete
+#     dashboard GET         /                                    rails_admin/main#dashboard
+#         index GET|POST    /:model_name(.:format)               rails_admin/main#index
+#           new GET|POST    /:model_name/new(.:format)           rails_admin/main#new
+#        export GET|POST    /:model_name/export(.:format)        rails_admin/main#export
+#   bulk_delete POST|DELETE /:model_name/bulk_delete(.:format)   rails_admin/main#bulk_delete
+# custom_export GET|POST    /:model_name/custom_export(.:format) rails_admin/main#custom_export
+#   bulk_action POST        /:model_name/bulk_action(.:format)   rails_admin/main#bulk_action
+#          show GET         /:model_name/:id(.:format)           rails_admin/main#show
+#          edit GET|PUT     /:model_name/:id/edit(.:format)      rails_admin/main#edit
+#        delete GET|DELETE  /:model_name/:id/delete(.:format)    rails_admin/main#delete
 #
 # Routes for Franchising::Engine:
 #                   root GET  /                                        franchising/website#index

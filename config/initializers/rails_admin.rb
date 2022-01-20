@@ -1,3 +1,27 @@
+Dir[Rails.root.join('app', 'rails_admin', '**/*.rb')].each { |file| require file }
+
+# TODO: temp. remove it after updating to Rails 5
+module ActionController
+  module Live
+    class Response
+      private
+
+      def before_sending
+        # super
+        # request.cookie_jar.commit!
+        # headers.freeze
+      end
+    end
+  end
+end
+# TODO end
+
+module RailsAdmin
+  class EnhancedController < ActionController::Base
+    include ActionController::Live
+  end
+end
+
 module ActiveRecord
   module RailsAdminEnum
     def enum(definitions)
@@ -21,6 +45,7 @@ ActiveRecord::Base.send(:extend, ActiveRecord::RailsAdminEnum)
 require Rails.root.join('lib/rails_admin/config/fields/types/citext')
 
 RailsAdmin.config do |config|
+  config.parent_controller = '::RailsAdmin::EnhancedController'
 
   # config.compact_show_view = false
 
@@ -62,11 +87,11 @@ RailsAdmin.config do |config|
     new do
       except ['Event']
     end
-    export
     show
     # export do
     #   except %w[Stylist StylistMessage Report ContactInquiries RequestTourInquiry BookNowBooking]
     # end
+    export
     # history_index
     bulk_delete
 
@@ -75,6 +100,7 @@ RailsAdmin.config do |config|
     delete
     # history_show
     # show_in_app
+    custom_export
   end
 
   config.model 'SejaSola' do

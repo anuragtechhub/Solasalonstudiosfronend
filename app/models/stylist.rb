@@ -292,7 +292,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def location_country
-    location.present? ? location.country : 'US'
+    location&.country.presence || 'US'
   end
 
   def service_request_enabled
@@ -431,11 +431,11 @@ class Stylist < ActiveRecord::Base
   end
 
   def location_city
-    return location.city if location
+    location&.city
   end
 
   def location_state
-    return location.state if location
+    location&.state
   end
 
   def update_computed_fields
@@ -463,13 +463,7 @@ class Stylist < ActiveRecord::Base
   end
 
   def sola_pro_start_date
-    versions.order(:created_at => :desc).each do |version|
-      reified_version = version.reify
-      if reified_version && reified_version.encrypted_password.present?
-        return version.created_at.to_date
-      end
-    end
-    return nil
+    encrypted_password && created_at.to_date
   end
 
   def canonical_path

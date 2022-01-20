@@ -55,7 +55,7 @@ gem 'aws-sdk-s3'
 gem 'aws-sdk-sns'
 
 gem 'devise'
-gem 'rails_admin', '0.6.5'
+gem 'rails_admin' #, '0.6.5'
 
 gem 'paper_trail', '~> 3.0.6'
 
