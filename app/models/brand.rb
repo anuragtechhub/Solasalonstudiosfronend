@@ -27,6 +27,25 @@ class Brand < ActiveRecord::Base
   validates :name, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :countries, presence: true
 
+  scope :with_content, -> {
+    sql = Arel.sql(<<-SQL.squish)
+      EXISTS (SELECT deals.id FROM deals WHERE deals.brand_id = brands.id)
+      OR
+      EXISTS (SELECT tools.id FROM tools WHERE tools.brand_id = brands.id)
+      OR 
+      EXISTS (SELECT videos.id FROM videos WHERE videos.brand_id = brands.id)
+      OR
+      EXISTS (
+        SELECT sola_classes.id 
+        FROM sola_classes
+        INNER JOIN brands_sola_classes ON sola_classes.id = brands_sola_classes.sola_class_id AND brands_sola_classes.brand_id = brands.id
+        WHERE sola_classes.end_date >= CURRENT_DATE
+      )
+    SQL
+
+    where(sql)
+  }
+
   def display_name
     "#{name} (#{countries && countries.size > 0 ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
   end
@@ -72,11 +91,11 @@ class Brand < ActiveRecord::Base
   end
 
   def content?
-    (deals && deals.length > 0) || (links && links.length > 0) || (tools && tools.length > 0) || (videos && videos.length > 0) || (upcoming_classes && upcoming_classes.length > 0)
+    (deals && deals.length > 0) ||  (tools && tools.length > 0) || (videos && videos.length > 0) || (upcoming_classes && upcoming_classes.length > 0)
   end
 
   def only_deals
-    classes && classes.size == 0 && links && links.size == 0 && tools && tools.size == 0 && videos && videos.size == 0
+    classes && classes.size == 0 && tools && tools.size == 0 && videos && videos.size == 0
   end
 
   def as_json(options={})

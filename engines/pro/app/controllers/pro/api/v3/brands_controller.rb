@@ -3,12 +3,10 @@ module Pro
     load_and_authorize_resource :brand, only: %i[show]
 
     def index
-      @brands = Rails.cache.fetch("/api/v2/brands?country=#{current_user.location_country}") do
-        Brand.includes(:countries)
-             .where(countries: {code: current_user.location_country })
-             .order(:name)
-             .select(&:content?)
-      end
+      @brands = Brand.select(:id, :name)
+                     .with_content.joins(:countries)
+                     .where(countries: {code: current_user.location_country })
+                     .order(:name)
 
       respond_with(@brands)
     end
