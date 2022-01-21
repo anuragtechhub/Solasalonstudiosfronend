@@ -273,7 +273,7 @@
                       ['/blog/category/sola-stories-podcast', nil]
                     when 'sola_sessions'
                       target = '_blank'
-                      ['http://www.solasessions.com', 'SOLASessions_Reimagined_social_STD_1080x1080.jpg.png']
+                      ['https://www.facebook.com/solasalons/videos/1286034231819762', 'Square-OnSaleNow.png']
                     else
                       ['#', nil]
                     end
@@ -282,7 +282,7 @@
           <% dashed_feature = feature.humanize.parameterize %>
           <% modal_id = dashed_feature + '-modal' %>
           <div class="industry-leading-education-feature-wrapper">
-            <%= link_to (feature == 'sola_sessions' ? "https://events.bizzabo.com/335999" : "##{modal_id}"), class: "#{'open-magnific-popup-link' unless feature == 'sola_sessions'} industry-leading-education-feature", target: (feature == 'sola_sessions' ? '_blank' : '_self') do %>
+            <%= link_to (feature == 'sola_sessions' ? "https://www.facebook.com/solasalons/videos/1286034231819762" : "##{modal_id}"), class: "#{'open-magnific-popup-link' unless feature == 'sola_sessions'} industry-leading-education-feature", target: (feature == 'sola_sessions' ? '_blank' : '_self') do %>
               <div class="industry-leading-education-feature-icon" style="background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/<%= button_image.presence || "#{dashed_feature}.png" %>')"></div>
               <div class="industry-leading-education-feature-title">
                 <%= t("page.why_sola.education-feature.title.#{dashed_feature}") %>
