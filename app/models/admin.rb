@@ -2,7 +2,7 @@ class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable #, :validatable
 
   has_many :locations
 
@@ -194,7 +194,7 @@ end
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
 #  email                  :citext           default(""), not null
-#  email_address          :citext           not null
+#  email_address          :citext
 #  encrypted_password     :string(255)      default("")
 #  forgot_password_key    :string(255)
 #  franchisee             :boolean
