@@ -21,6 +21,8 @@ class Location < ActiveRecord::Base
   has_many :stylists, -> { where(:status => 'open') }
   has_many :studios
   has_many :leases
+  has_many :external_ids, as: :objectable, dependent: :destroy
+  has_many :rent_manager_units, class_name: 'RentManager::Unit', inverse_of: :location, dependent: :destroy
 
   # after_save :submit_to_moz
   before_validation :generate_url_name, :on => :create
@@ -485,6 +487,14 @@ class Location < ActiveRecord::Base
   rescue => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
+  end
+
+  def rm_location_id
+    ExternalId.rent_manager.find_by(
+      objectable_type: 'Location',
+      objectable_id: id,
+      name: :location_id
+    )&.value&.to_i
   end
 
   #private

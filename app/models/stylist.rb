@@ -38,6 +38,11 @@ class Stylist < ActiveRecord::Base
   has_many :categories, through: :categoriables
   has_many :events, as: :userable
 
+  has_many :rent_manager_stylist_units, class_name: 'RentManager::StylistUnit'
+  has_many :rent_manager_units, through: :rent_manager_stylist_units, class_name: 'RentManager::Unit'
+
+  has_many :external_ids, as: :objectable, dependent: :destroy
+
   has_many :access_tokens, class_name: "UserAccessToken", inverse_of: :stylist, dependent: :delete_all
 
   has_many :leases, -> { order 'created_at desc' }
@@ -991,6 +996,7 @@ end
 #  reserved                       :boolean          default(FALSE)
 #  reset_password_sent_at         :datetime
 #  reset_password_token           :string(255)
+#  rm_status                      :string
 #  send_a_message_button          :boolean          default(TRUE)
 #  sg_booking_url                 :string(255)
 #  sign_in_count                  :integer          default(0), not null

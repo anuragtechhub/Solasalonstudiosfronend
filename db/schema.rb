@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220131165537) do
+ActiveRecord::Schema.define(version: 20220202180901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,7 +349,22 @@ ActiveRecord::Schema.define(version: 20220131165537) do
   add_index "events", ["userable_id"], name: "index_events_on_userable_id", using: :btree
   add_index "events", ["userable_type"], name: "index_events_on_userable_type", using: :btree
   add_index "events", ["video_id"], name: "index_events_on_video_id", using: :btree
-  
+
+  create_table "external_ids", force: :cascade do |t|
+    t.integer  "objectable_id",             null: false
+    t.string   "objectable_type",           null: false
+    t.integer  "kind",                      null: false
+    t.string   "name",                      null: false
+    t.string   "value",                     null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "rm_location_id",  limit: 8
+  end
+
+  add_index "external_ids", ["kind"], name: "index_external_ids_on_kind", using: :btree
+  add_index "external_ids", ["objectable_id", "objectable_type", "rm_location_id", "kind", "name"], name: "idx_objectable_kind_name", unique: true, using: :btree
+  add_index "external_ids", ["rm_location_id"], name: "index_external_ids_on_rm_location_id", using: :btree
+
   create_table "franchise_articles", force: :cascade do |t|
     t.string   "slug",                                         null: false
     t.string   "title",                                        null: false
@@ -637,6 +652,37 @@ ActiveRecord::Schema.define(version: 20220131165537) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rent_manager_stylist_units", force: :cascade do |t|
+    t.integer  "stylist_id"
+    t.integer  "rent_manager_unit_id"
+    t.integer  "rm_lease_id",          limit: 8
+    t.datetime "move_in_at"
+    t.datetime "move_out_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "rent_manager_stylist_units", ["rent_manager_unit_id"], name: "index_rent_manager_stylist_units_on_rent_manager_unit_id", using: :btree
+  add_index "rent_manager_stylist_units", ["rm_lease_id"], name: "index_rent_manager_stylist_units_on_rm_lease_id", using: :btree
+  add_index "rent_manager_stylist_units", ["stylist_id"], name: "index_rent_manager_stylist_units_on_stylist_id", using: :btree
+
+  create_table "rent_manager_units", force: :cascade do |t|
+    t.integer  "location_id",               null: false
+    t.integer  "rm_unit_id",      limit: 8, null: false
+    t.integer  "rm_property_id",  limit: 8, null: false
+    t.string   "name",                      null: false
+    t.string   "comment"
+    t.integer  "rm_unit_type_id", limit: 8, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "rm_location_id",  limit: 8
+  end
+
+  add_index "rent_manager_units", ["location_id"], name: "index_rent_manager_units_on_location_id", using: :btree
+  add_index "rent_manager_units", ["rm_location_id"], name: "index_rent_manager_units_on_rm_location_id", using: :btree
+  add_index "rent_manager_units", ["rm_property_id"], name: "index_rent_manager_units_on_rm_property_id", using: :btree
+  add_index "rent_manager_units", ["rm_unit_id"], name: "index_rent_manager_units_on_rm_unit_id", using: :btree
 
   create_table "reports", force: :cascade do |t|
     t.string   "report_type",   limit: 255
@@ -1056,5 +1102,8 @@ ActiveRecord::Schema.define(version: 20220131165537) do
 
   add_foreign_key "brandables", "brands", name: "brandables_brand_id_fk"
   add_foreign_key "hubspot_logs", "locations"
+  add_foreign_key "rent_manager_stylist_units", "rent_manager_units"
+  add_foreign_key "rent_manager_stylist_units", "stylists"
+  add_foreign_key "rent_manager_units", "locations"
   add_foreign_key "taggables", "tags", name: "taggables_tag_id_fk"
 end

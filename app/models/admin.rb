@@ -35,8 +35,7 @@ class Admin < ActiveRecord::Base
   #validates :password, :length => { :minimum => 7 }
 
   scope :with_callfire_credentials, -> {
-    where.not(callfire_app_login: nil, callfire_app_password: nil).
-      where.not(callfire_app_login: '', callfire_app_password: '')
+    where.not(callfire_app_login: [nil, ''], callfire_app_password: [nil, ''])
   }
 
   scope :with_mailchimp_credentials, -> {
