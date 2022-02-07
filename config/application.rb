@@ -65,7 +65,7 @@ module Solasalonstudios
     config.assets.initialize_on_precompile = false
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'lib')
-    config.assets.precompile += %w(.svg .eot .woff .ttf .png .jpg)
+    config.assets.precompile += %w(.svg .eot .woff .woff2 .ttf .png .jpg)
     config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'aos.js', 'aos.css', 'booknow_landing_page.css']
     config.assets.precompile += ['fullscreen_hero.js', 'ckeditor/*'] #'digital_directory.css', 'digital_directory.js',
     config.assets.precompile += ['sola_pro.js', 'in_the_news.js', 'our_studios.js', 'why_sola.js', 'search_sola.js', 'solagenius.js', 'search_salon.js']

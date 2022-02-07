@@ -1,185 +1,466 @@
-<%= render 'shared/public_website/own_your_salon_nav', :page => :sola_sessions %>
+<%
+  places = [
+    {
+      title: 'Hotel and Workshop with Dawn Bradley:',
+      subtitle: 'The Source',
+      address: '3330 Brighton Blvd, Denver, CO 80216'
+    },
+    {
+      title: 'Create and Connect. Welcome Reception:',
+      subtitle: "Bigsby's Folly",
+      address: '4563 Wazee St, Denver, CO 80216'
+    },
+    {
+      title: 'Main Event:',
+      subtitle: 'Reelworks',
+      address: '3563 Wazee St, Denver, CO 80216'
+    }
+  ]
+
+  tickets = [
+    {
+      type: :Base,
+      special_price: 119,
+      normal_price: 149,
+      days: {
+        sunday: ['Optional Welcome Reception for an additional $25*'],
+        monday: ['Sola Sessions']
+      }
+    },
+    {
+      type: :VIP,
+      special_price: 219,
+      normal_price: 249,
+      days: {
+        sunday: ['Create & Connect', 'Welcome Reception*'],
+        monday: ['Sola Sessions', 'Cocktail Reception*']
+      }
+    },
+    {
+      type: :Platinum,
+      special_price: 299  ,
+      normal_price: 329,
+      days: {
+        sunday: ['Create & Connect', 'Welcome Reception*'],
+        monday: ['Sola Sessions', 'Cocktail Reception*'],
+        tuesday: ['Workshop with Dawn Bradley']
+      }
+    }
+  ]
+%>
 
 <div class="sola-sessions">
+  <div class="page-nav page-nav-overlay">
+    <ul class="nav">
+      <li class="nav-item"><%= link_to t('page.sola_sessions.about'), "#about", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.join_us'), "#join_us", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.lineup'), "#lineup", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.buy_ticket'), "#buy_ticket", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.where'), "#where", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.book_a_room'), "#book_a_room", class: 'nav-link' %></li>
+      <li class="nav-item"><%= link_to t('page.sola_sessions.health_and_safety'), "#health_and_safety", class: 'nav-link' %></li>
+    </ul>
+  </div>
 
-  <div class="hero-carousel owl-carousel owl-theme">
-    <div class="item">
-      <div class="img-wrap"><%= image_tag 'Sessions_Hero.jpg', alt: "Master at work on the Sola Session", :width => 1785, :height => 894 %></div>
-      <div class="item-content overlayed">
-        <%= image_tag 'Sessions_Logo@2x.png', alt: "The Sola Sessions", :class => 'sessions-logo' %>
-        <h1 class="chalet"><%= t('page.sola_sessions.inspiration_education_community').html_safe %></h1>
-        <%= link_to 'https://www.youtube.com/watch?v=i6AUSUofPUg', :class => "button secondary play-video rounded-play-button" do %><%= t('page.sola_sessions.hero_button_text') %> <span class="fa fa-play-circle">&nbsp;</span><% end %>
-        <div class="learn-more-button">
-          <h5><%= t('page.sola_sessions.learn_more') %></h5>
-          <span class="fa fa-angle-down"></span>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="img-wrap"><%= image_tag 'Sola-Sessions-Logo.png', alt: "Sola Sessions Logo" %></div>
+      <h2>Denver, Colorado</h2>
+      <%= link_to 'Tickets', 'https://www.eventbrite.com/e/the-sola-sessions-tickets-233815357027', class: 'btn btn-primary', target: '_blank' %>
+
+      <div class="flex-row justify-content-center learn-more-button-wrapper">
+        <div class="learn-more-button d-flex flex-column align-items-center">
+          <a href="#about" class="nav-link">Learn More</a>
+          <span class="fa fa-angle-down text-center" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron-divider"></div>
+
+  <div id="about" class="d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+          <h4>Monday, May 16th</h4>
+          <div class="description">
+            Optional additional experiences offered on Sunday, 5/15 and Tuesday, 5/17
+          </div>
+          <p>
+            Join your <span>#SolaFam</span> in Denver, Colorado for a Sola Sessions unlike any other!
+            <span>Engage with</span> the beauty industry’s most <span>dynamic</span> and <span>inspiring</span> educators and <span>change-makers</span>.
+            Learn new skills to <span>elevate your business</span>. <span>Connect</span> with like-minded Sola Bosses.
+            <span>Cultivate connections</span> that last a lifetime.
+            Step into your <span>power to create</span> the career and life of <span>your dreams</span>.
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container content-container">
-
-    <div class="row session-row">
-      <div class="one-third column">
-        <h2><%= t('page.sola_sessions.about_sola_sessions') %></h2>
+  <div id="join_us">
+    <div class="sunday">
+      <div class="container d-flex flex-lg-nowrap flex-wrap align-items-center justify-content-lg-between">
+        <div class="first d-flex flex-column justify-content-center">
+          <h4>
+            Join Us
+          </h4>
+          <div class="mt-5 when">
+            Sunday
+          </div>
+          <div class="what">
+            Create & Connect
+          </div>
+          <div class="where">
+            <span>
+              Bigsby’s Folly
+            </span>
+            <br />
+            <span>
+              4563 Wazee St, Denver, CO 80216
+            </span>
+          </div>
+        </div>
+        <div class="second d-flex justify-content-center align-items-end">
+          <%= image_tag('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/BigsbysFolly_00.png') %>
+        </div>
       </div>
-      <div class="two-thirds column">
-        <p style="margin-bottom: 0;"><%= t('page.sola_sessions.about_sola_sessions_text').html_safe %></p>
+      <div class="container second d-flex flex-lg-nowrap flex-wrap align-items-center justify-content-lg-between">
+        <div class="third d-flex flex-column justify-content-center">
+          <div class="when">1:00pm-5:00pm</div>
+          <div class="what">Sunday Education</div>
+          <div class="details">
+            <ul>
+              <li>VIP Experience with Britt Seva</li>
+              <li>Insightful panel discussions</li>
+              <li>Engaging roundtables</li>
+              <li>Learn and grow with Sola pros</li>
+            </ul>
+          </div>
+        </div>
+        <div class="fourth d-flex flex-column justify-content-center">
+          <div class="when">5:30pm-8:00pm</div>
+          <div class="what">Welcome Reception</div>
+          <div class="details">
+            <ul>
+              <li>Live music</li>
+              <li>Passed apps</li>
+              <li>1 free drink on us (cheers!) … then cash bar</li>
+              <li>Connect with event educators & Sola Fam</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="polka-dot"></div>
+    </div>
+    <div class="monday">
+      <div class="monday-divider"></div>
+      <div class="polka-dot"></div>
+      <div class="container d-flex align-items-start">
+        <div class="first d-flex flex-column justify-content-center">
+          <div class="when">Monday</div>
+          <div class="what">The Main Event</div>
+          <div class="where">
+            Reelworks
+            <br />
+            1399 35th St, Denver, CO 80205
+          </div>
+          <div class="time">
+            9:00AM
+          </div>
+          <div class="name">
+            Vendor Expo Opens
+          </div>
+
+          <div class="time">
+            10:00AM-4:30PM
+          </div>
+          <div class="name">
+            General Sessions
+          </div>
+          <div class="details">
+            <ul>
+              <li>Two stages running all day, covering business & 9artistic education</li>
+              <li>Workshops for alternative services</li>
+              <li>Vendor Expo to connect with your favorite brands</li>
+              <li>SWAG bag filled with goodies from event sponsors</li>
+              <li>Giveaways (Free week of rent? Yes, please!)</li>
+            </ul>
+          </div>
+
+          <div class="time">
+            4:30AM - 6:00PM
+          </div>
+          <div class="name">
+            After Party Reception
+          </div>
+          <div class="details">
+            <ul>
+              <li>Network with Sola Fam and Sessions educators</li>
+              <li>Passed apps</li>
+              <li>First drink on us! …then cash bar</li>
+              <li>Live music</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container images d-flex align-items-start">
+        <div class="d-flex flex-nowrap align-items-start justify-content-lg-between">
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/StephenOdomPhot.png' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Steph.png' %>
+          <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/sola-8028.png' %>
+        </div>
       </div>
     </div>
-
-
-    <div class="row session-row">
-      <div class="one-third column">
-        <h2><%= t('page.sola_sessions.upcoming_sessions') %></h2>
-      </div>
-      <div class="two-thirds column">
-
-        <%= link_to :portland_session, :class => "upcoming-session" do %>
-          <div class="event-icon portland"></div>
-          <h4>Portland, OR: Postponed</h4>
-          <p>April 27th, 2020</p>
-          <span class="forward-arrow-black">&nbsp;</span>
-        <% end %>
-
-        <%= link_to "#", :class => "upcoming-session disabled", :onclick => 'return false' do %>
-          <div class="event-icon denver"></div>
-          <h4>Denver, CO: Postponed</h4>
-          <p>Fall 2020</p>
-          <!--<span class="forward-arrow-black">&nbsp;</span>-->
-        <% end %>
-
-      </div>
-    </div>
-
-
-    <div class="row session-row past-sessions">
-      <div class="twelve columns">
-        <h2><%= t('page.sola_sessions.past_sessions') %></h2>
-
-        <div class="carousel-wrapper">
-          <div class="white-border">&nbsp;</div>
-
-          <div class="owl-carousel owl-theme" data-items="2" data-itemsdesktopsmall="[960, 1]" data-autoplayoff="true" data-paginationoff="true">
-            <div class="event">
-              <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/past-event-nashville-R1.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--nashville1" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Nashville/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
+    <div class="tuesday">
+      <div class="polka-dot"></div>
+      <div class="polka-dot-line"></div>
+      <div class="container d-flex flex-lg-nowrap flex-wrap align-items-start justify-content-lg-between">
+        <div class="first d-flex flex-column justify-content-center align-items-start">
+          <div class="when">
+            Tuesday
+          </div>
+          <div class="what">
+            Workshop with Dawn Bradley
+          </div>
+          <div class="where">
+            <span>
+              The Source Hotel
+            </span>
+            <br />
+            <span>
+              3330 Brighton Blvd, Denver, CO 80216
+            </span>
+          </div>
+          <div class="schedule">
+            <div class="when">
+              10:00Am-1:00pm (lunch included)
             </div>
-
-            <div class="event">
-              <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/past-event-San-Diego-R2.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/what-we-learned-at-the-san-diego-sola-sessions" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-San-Diego/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
+            <div class="what">
+              Healthy Boundaries & Communication
             </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-chicago.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--chicago" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Chicago/n-f7mDtL/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
+            <div class="details">
+              <div class="title">
+                In this intimate workshop, Dawn will teach you:
               </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-west-palm-beach.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--west-palm-beach" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-West-Palm-Beach/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-san-jose.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/inspiration-from-the-san-jose-sola-sessions" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-San-Jose/n-R27Vhk/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-washington-dc.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--washington-d-c" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-DC/n-4C7MJd/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-dallas.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-magic-of-the-dallas-sola-sessions" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="http://solasessions.smugmug.com/The-Sola-Sessions-Dallas" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-charlotte.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--charlotte-recap" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Charlotte/n-NX4x6J/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-newport-beach.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the-sola-sessions--newport-beach-recap" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Orange/n-QXL6tM/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-minneapolis.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__minneapolis_recap" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-Sessions-Minneapolis/n-BjfH8G/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
-            </div>
-
-            <div class="event">
-              <%= image_tag "sessions/past-event-denver.jpg" %>
-              <div class="buttons">
-                <a href="https://www.solasalonstudios.com/blog/the_sola_sessions__denver_recap" class="button outline-large-white"><%= t('page.sola_sessions.blog') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-                <a href="https://solasessions.smugmug.com/The-Sola-SessionsDenver/n-f8zLwV/" target="_blank" class="button outline-large-white"><%= t('page.sola_sessions.photo_gallery') %> <span class="forward-arrow-white" role="presentation">&nbsp;</span></a>
-              </div>
+              <ul>
+                <li>How to set healthy boundaries</li>
+                <li>Effective communication strategies</li>
+                <li>Strategies to recover lost income</li>
+                <li>Tips to create new salon policies</li>
+              </ul>
             </div>
           </div>
         </div>
-
+        <div class="second d-flex justify-content-center align-items-start">
+          <%= image_tag('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/DawnBradleyMeco.png') %>
+        </div>
+        <div class="mobile schedule d-flex flex-column justify-content-center align-items-start d-block d-sm-none">
+          <div class="when">
+            10:00Am-1:00pm (lunch included)
+          </div>
+          <div class="what">
+            Healthy Boundaries & Communication
+          </div>
+          <div class="details">
+            <div class="title">
+              In this intimate workshop, Dawn will teach you:
+            </div>
+            <ul>
+              <li>How to set healthy boundaries</li>
+              <li>Effective communication strategies</li>
+              <li>Strategies to recover lost income</li>
+              <li>Tips to create new salon policies</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="row session-row">
-      <div class="one-third column">
-        <h2><%= t('page.sola_sessions.in_the_news') %></h2>
+  <div id="lineup">
+    <div class="polka-dot"></div>
+    <div class="polka-dot-line"></div>
+    <div class="container">
+      <h4>Lineup</h4>
+      <div class="images">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/britt.jpg' %>
+            <div class="title">Britt Seva / Thrivers Society</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/dawn.jpg' %>
+            <div class="title">Dawn Bradley / Dawn Bradley</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/steven.jpg' %>
+            <div class="title">Steven Wren / Emcee</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/kimi.jpg' %>
+            <div class="title">Kim Bennett / Emcee</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/jennie.jpg' %>
+            <div class="title">Jennie Wolff / Sola Salons</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/comming.jpg' %>
+            <div class="title"></div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/comming.jpg' %>
+            <div class="title"></div>
+          </div>
+          <div class="col-lg-3 col-sm-6 col-6">
+            <%= image_tag 'heads/comming.jpg' %>
+            <div class="title"></div>
+          </div>
+        </div>
       </div>
-      <div class="two-thirds column">
-        <div class="in-the-news">
-          <% Article.where(:id => [91, 73, 68, 62, 61, 53, 51, 48, 47]).order(:id => :desc).each do |article| %>
-            <%= render 'shared/in_the_news_summary', :article => article, :social => 'circle' %>
+    </div>
+  </div>
+
+  <div id="buy_ticket">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-7">
+          <h4>
+            Space is limited. Reserve your spot now!
+            <br>
+            Early Bird Tickets On Sale: Monday, February 7th
+          </h4>
+          <div class="sub-title">
+            All ticket prices will increase on Monday, March 7th
+          </div>
+        </div>
+      </div>
+      <div class="row tickets-wrapper">
+        <% tickets.each do |ticket| %>
+          <% type = ticket[:type] %>
+
+          <div class="col-12 col-lg-4">
+            <div class="ticket-details <%= type.downcase %>">
+              <div class="ticket-main">
+                <div class="ticket-title"><%= "#{type} Ticket" %></div>
+                <div class="ticket-special-price"><%= "$#{ticket[:special_price]}" %></div>
+                <div class="ticket-early-bird"><%= "Early Bird: $#{ticket[:special_price]}" %></div>
+                <div class="ticket-normal-price"><%= "Price increases to $#{ticket[:normal_price]}" %></div>
+              </div>
+
+              <div class="ticket-description">
+                <% ticket[:days].each do |day_title, features| %>
+                  <div class="mb-4">
+                    <div class="ticket-day-title"><%= day_title.capitalize %></div>
+                    <div class="ticket-features">
+                      <% features.each do |feature| %>
+                        <div class="ticket-feature">
+                          <i></i>
+                          <div><%= feature %></div>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="ticket-buy">
+                <a href="https://www.eventbrite.com/e/the-sola-sessions-tickets-233815357027" target="_blank" class="buy-ticket-btn btn">buy ticket</a>
+                <div class="buy-ticket-comment">*Includes One Drink Ticket</div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div id="video">
+    <div class="video-line"></div>
+    <div class="container">
+      <div class="video-white-line"></div>
+      <%= image_tag 'Sola-Sessions-Logo.png', alt: "Sola Sessions Logo", class: "img-logo" %>
+      <a href="https://www.youtube.com/watch?v=F1BGvPcLSV4" class="play-video" rel="sola-sessions-video-1">
+        <%= image_tag 'https://solasalonstudios.s3.amazonaws.com/own_your_salon/Play-Video-02.jpeg', :alt => "Experience the Magic of The Sola Sessions" %>
+
+        <div class="play-btn">
+          <i class="polka-dot"></i>
+          <i class="play-icon"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div id="where">
+    <div class="where-line"></div>
+    <div class="container">
+      <div class="wrapper row justify-content-center align-items-center flex-wrap flex-lg-nowrap">
+        <div class="col-12 col-lg-6">
+          <h4>WHERE</h4>
+          <div class="subtitle">All venues are within a 10-minute walk to one another and our recommended hotel.</div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <% places.each do |place| %>
+            <div class="place-wrapper d-flex align-items-center">
+              <div class="image"></div>
+              <div class="description-wrapper">
+                <div class="title"><%= place[:title] %></div>
+                <div class="place-subtitle"><%= place[:subtitle] %></div>
+                <div class="address"><%= place[:address] %></div>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
     </div>
-
   </div>
 
-  <div class="container">
-    <div class="block-quote-testimonial">
-      <h3><%= t('page.sola_sessions.testimonial_text') %></h3>
-      <h4><%= t('page.sola_sessions.testimonial_author') %></h4>
-      <h4 class="studio-name"><%= t('page.sola_sessions.testimonial_studio_name') %></h4>
+  <div id="book_a_room">
+    <div class="container">
+      <div class="info">
+        <h4>Book a Room</h4>
+        <div class="subtitle">The Source Hotel</div>
+        <div class="title">
+          Discounted Room
+          <br>
+          Rate: $209
+        </div>
+      </div>
+
+      <div class="image-wrapper d-flex justify-content-center align-items-center">
+        <div class="image"></div>
+      </div>
+
+      <div class="btn-section">
+        <div class="description">We’ve secured a discounted rate at the Source Hotel in the heart of Denver’s hip RiNo neighborhood, close to lots of restaurants and a 10-minute walk to the event venues.</div>
+        <a href="https://be.synxis.com/?adult=1&arrive=2022-02-02&chain=10237&child=0&config=DENTS&currency=USD&depart=2022-02-03&group=CORPSOLAMAY22&hotel=77854&level=hotel&locale=en-US&rooms=1&theme=DENTS" target="_blank" class="btn">Book a Room</a>
+      </div>
     </div>
+  </div>
+
+  <div id="health_and_safety" class="d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="row justify-content-center description">
+        <div class="col-12 col-lg-6">
+          <h4>Covid-19 Information</h4>
+          <div>
+            The health and safety of our attendees, educators, and staff is our top priority. Based on guidance from the CDC, health authorities, and local Denver law, we have implemented the following safety measures to provide all attendees with the safest experience possible:
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 list">
+          <div class="mb-3">• To enter the venue, all attendees must either provide proof of vaccination (dated no later than May 1st, 2022) OR proof of a negative COVID-19 test taken within 72 hours of first Sessions experience, along with a government-issued photo ID. In addition to a negative test, we also ask that all non-vaccinated attendees wear a mask when inside the venue.</div>
+          <div class="mb-3">• Full vaccination is defined as 14 days since your second dose of the Pfizer-BioNtech or Moderna COVID-19 vaccine, or a single dose of the Johnson & Johnson vaccine.</div>
+          <div class="mb-3">• There will be ongoing cleaning services with EPA registered products and ample hand sanitizing stations throughout the venue.</div>
+          <div class="mb-3">• We ask that you not attend if: Within 14 days prior to the event, you have tested positive or been exposed to someone who has tested positive for COVID-19; within 48 hours prior to the event, you have experienced symptoms of COVID-19; or within 14 days of the event, you have traveled to any international territory that is subject to travel or quarantine restrictions.</div>
+        </div>
+      </div>
+    </div>
+    <div class="polka-dot"></div>
   </div>
 
 </div>
 
-<% content_for(:scripts) { javascript_include_tag('in_the_news') } %>
 <% content_for(:title) { t('page.sola_sessions.title').html_safe } %>
 <% content_for(:canonical_url) { "https://www.solasalonstudios.#{I18n.locale != :en ? 'ca' : 'com'}/sola-sessions" } %>
 <% content_for(:meta_description) { t('page.sola_sessions.meta_description') } %>

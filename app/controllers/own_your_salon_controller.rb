@@ -19,7 +19,7 @@ class OwnYourSalonController < PublicWebsiteController
 	end
 
 	def sola_sessions
-    redirect_to '/why-sola?open_modal=sola-sessions-modal#education', status: 301
+    @body_class = 'sola-sessions'
 	end
 
 	def solagenius
@@ -28,9 +28,6 @@ class OwnYourSalonController < PublicWebsiteController
 	def why_sola
     @body_class = 'why-sola'
 	end
-
-  def why_sola_2
-  end
 
 	# redirects for old urls
 

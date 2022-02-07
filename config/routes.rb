@@ -84,8 +84,6 @@ Solasalonstudios::Application.routes.draw do
   get 'solagenius' => 'own_your_salon#solagenius', :as => :solagenius
   get 'why-sola' => 'own_your_salon#why_sola', :as => :why_sola
   get 'why-sola/contact-form-success' => 'own_your_salon#contact_form_success'
-  get 'why-sola-2' => 'own_your_salon#why_sola_2', :as => :why_sola2
-  get 'why-sola-2/contact-form-success' => 'own_your_salon#contact_form_success_2'
 
 
   get 'privacy-policy' => 'legal#privacy_policy', :as => :privacy_policy

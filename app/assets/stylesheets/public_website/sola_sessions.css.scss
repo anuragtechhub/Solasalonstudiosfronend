@@ -1,403 +1,1032 @@
-@import 'variables';
-@import 'mixins';
-@import 'bootstrap/mixins';
+$base-color: #9be5ee;
+$sola-sessions-black: #303941;
 
-.sola-sessions {
+@font-face {
+  font-family: 'SofiaProBlack';
+  src:  asset_url('SofiaProBlack.woff2') format('woff2'), asset_url('SofiaProBlack.woff') format('woff');
+}
 
-	.content-container {
-		padding-top: 90px;
-	}
+@font-face {
+  font-family: 'Gill-sans-nova';
+  src:  asset_url('GillSansNovaInline-ExtraLt.woff2') format('woff2'), asset_url('GillSansNovaInline-ExtraLt.woff') format('woff');
+}
 
-	.hero-carousel {
+@mixin sofia_pro_black() {
+  font-family: 'SofiaProBlack', serif;
+  letter-spacing: 0;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased !important;
+}
 
-		img.sessions-logo {
-			max-width: 761px;
-			width: 50%;
-			height: auto;
-			margin: 0 auto;
-		}
+@mixin gill_sans_nova() {
+  font-family: 'Gill-sans-nova', serif;
+  letter-spacing: 0;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased !important;
+}
 
-		h1 {
-			//@include helvetica;
-			// font-size: 18px;
-			// line-height: 24px;
-			margin: 35px 0 !important;
-			font-size: 36px;
-			line-height: 36px;
-		}
+body.sola-sessions .body-content {
+  @include sofia_pro_black();
 
-		.button {
-			margin-bottom: 0 !important;
-		}
-	}
+  a,p,div {
+    @include sofia_pro_black();
+  }
+}
 
-	.session-row {
-		margin-bottom: 60px;
-	}
+.sola-sessions .body-content {
+  background: none;
+  max-width: 1980px;
+  margin: 0 auto;
+}
 
-	.upcoming-session {
-		position: relative;
-		@include border-radius(2px);
-		background-color: #F5F9FB;
-		margin-bottom: 10px;
-		padding: 29px 25px 25px 25px;
-		display: block;
-		text-decoration: none;
-		@include transition(opacity 0.15s ease-in-out);
-		opacity: 1;
+.body-content > .sola-sessions {
+  ul {
+    list-style: inside;
+  }
 
-		&:hover, &:active {
-			opacity: 0.5;
-		}
+  .where {
+    color: #5e5e5e;
+    font-size: 1.5rem;
+  }
 
-		&.disabled {
-			pointer-events: none;
-
-			&:hover, &:active {
-				opacity: 1;
-			}
-		}
-
-		h6 {
-			@include chalet_new_york;
-			color: $brand-pink;
-			margin: 5px 0 0 0;
-			padding: 0;
-			font-size: 18px;
-			line-height: 24px;
-		}
-
-    .event-icon {
-			position: relative;
-    	top: -5px;
-      display: inline-block;
-      width: 66px;
-      height: 66px;
-      float: left;
-      margin-right: 20px;
-
-      &.denver {
-        background: asset-url('https://d3p1kyyvw4qtho.cloudfront.net/Sessions/denver_2020_square.jpg') no-repeat center;
-        background-size: 66px 66px;
-        border-radius: 33px;
+  .jumbotron {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.3);
+      z-index: 2;
+    }
+    position: relative;
+    margin: -70px 0 0 0;
+    background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/Denver-Header-Image-08.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .container {
+      margin-top: 140px;
+      z-index: 3;
+      text-align: center;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 75%;
+        @media (max-width: 991.98px) {
+          width: 90%;
+        }
       }
-
-      &.portland {
-        background: asset-url('https://d3p1kyyvw4qtho.cloudfront.net/Sessions/portland_2020_square.jpg') no-repeat center;
-        background-size: 66px 66px;
-        border-radius: 33px;
+      h2 {
+        @include gill_sans_nova();
+        margin: 40px;
+        color: white;
+        font-size: 5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3rem;
+        line-height: 5rem;
       }
+      .learn-more-button-wrapper {
+        margin-top: 50px;
+        a {
+          color: #ffffff;
+          font-size: 1.5rem;
+          text-decoration: none;
+          text-transform: uppercase;
+        }
+        span {
+          font-size: 2.2rem;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  .jumbotron-divider {
+    margin: 0;
+    height: 10px;
+    background: linear-gradient(to right, #08bed5, #015190);
+  }
 
+  .btn {
+    color: black;
+    padding: 13px 90px 8px 90px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    &.btn-primary {
+      background-color: #69d8e6;
+    }
+  }
+
+  .page-nav {
+    &.page-nav-overlay {
+      position: sticky;
+      @media (max-width: 1200.98px) {
+        top: 100px;
+      }
+      top: 122px;
+      left: 0;
+      right: 0;
+      z-index: 4;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+
+      li {
+
+        a, a:link, a:visited, a:hover, a:active {
+          color: #FFF;
+        }
+
+        &.active {
+          a, a:link, a:visited, a:hover, a:active {
+            color: #FFF;
+            border-bottom: 2px solid #FFF;
+          }
+        }
+      }
+    }
+  }
+
+  #about {
+    padding: 50px 0 0 0;
+    text-align: center;
+    @media (max-width: 991.98px) {
+      text-align: left;
     }
 
-		h4 {
-			margin: 0 0 5px 0;
-		}
+    h4 {
+      @include gill_sans_nova();
+      text-transform: uppercase;
+      font-size: 3rem;
+    }
+    .description {
+      font-size: 1.3rem;
+    }
+    .description, span {
+      color: #05bed5;
+    }
+    p {
+      margin: 35px 0 0 0;
+      font-size: 2.1rem;
+    }
+  }
 
-		p {
-			font-size: 18px;
-			line-height: 24px;
-			font-weight: 300px;
-			margin: 0;
-		}
+  #join_us {
+    .sunday {
+      background-color: #9be4ef;
+      margin-top: 50px;
+      position: relative;
+      .container {
+        padding: 70px 0 30px 0;
+        position: relative;
+        z-index: 3;
+        background-color: #9be4ef;
+        &.second {
+          padding: 0;
+          @media (max-width: 991.98px) {
+            padding: 0 30px 10px 30px;
+          }
+        }
+        @media (max-width: 991.98px) {
+          padding: 70px 30px 30px 30px;
+        }
+        .first {
+          h4 {
+            @include gill_sans_nova();
+            color: white;
+            text-transform: uppercase;
+            font-size: 7rem;
+            @media (max-width: 991.98px) {
+              font-size: 5rem;
+            }
+          }
 
-		.forward-arrow-black {
-			position: absolute;
-			right: 30px;
-			top: 50%;
-			margin-top: -7px;
-		}
-	}
+          .when {
+            color: white;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+          }
+          .what {
+            font-size: 4rem;
+            @media (max-width: 991.98px) {
+              font-size: 3.5rem;
+            }
+          }
+          .where {
+            margin-top: 10px;
+          }
+        }
+        .second {
+          img {
+            width: 70%;
+            border-radius: 10px;
+            @media (max-width: 991.98px) {
+              width: 100%;
+              margin-top: 20px;
+            }
+          }
+        }
+        .third, .fourth {
+          .when {
+            font-size: 1.5rem;
+            @media (max-width: 991.98px) {
+              font-size: 1.5rem;
+            }
+          }
+          .what {
+            font-size: 3rem;
+            color: #ffffff;
+          }
+          .details {
+            padding: 20px 0;
+            font-size: 1.5rem;
+            @media (max-width: 991.98px) {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
 
-	.in-the-news {
+      .polka-dot {
+        @media (max-width: 991.98px) {
+          display: none;
+        }
 
-		.in-the-news-article {
-			position: relative;
-			@include border-radius(2px);
-			background-color: #F5F9FB;
-			margin-bottom: 10px;
-			padding: 29px 25px 20px 25px;
-			display: block;
-			text-decoration: none;
-			@include transition(opacity 0.15s ease-in-out);
-			opacity: 1;
-			cursor: pointer;
+        background-image: radial-gradient(white 8%, rgba(255, 0, 0, 0) 15%);
+        background-position: 0 0;
+        background-size: 25px 25px;
+        width: 120px;
+        height: 300px;
+        position: absolute;
+        left: 0;
+        top: 150px;
+      }
+    }
 
-		  display: -webkit-box;
-		  display: -moz-box;
-		  display: -ms-flexbox;
-		  display: -webkit-flex;
-		  display: flex;
+    .monday {
+      .monday-divider {
+        height: 10px;
+        position: absolute;
+        display: block;
+        top: -5px;
+        z-index: 3;
+        background: linear-gradient(to right, #08bed5, #015190);
+        width: 85%;
+        right: 0;
+        @media (max-width: 991.98px) {
+          width: 55%;
+        }
+      }
+      background-color: #82deea;
+      background-image: url('https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/support-freedom.png');
+      background-repeat: no-repeat;
+      background-position: bottom 30px right -30px;
+      background-size: 25%;
+      position: relative;
+      padding:  0;
+      @media (max-width: 991.98px) {
+        background-image: none;
+      }
 
-		  flex-direction: row;
-		  align-content: center;
-		  justify-content: center;
+      .polka-dot {
+        @media (max-width: 991.98px) {
+          background-image: radial-gradient(#08bed5 8%, rgba(255, 0, 0, 0) 12%);
+          display: block;
+          width: 50%;
+          height: 40px;
+          position: absolute;
+          right: 20px;
+          top: 30px;
+          left: initial;
+        }
 
-			&:hover, &:active {
-				opacity: 0.5;
-			}
+        background-image: radial-gradient(#08bed5 8%, rgba(255, 0, 0, 0) 15%);
+        background-position: 0 0;
+        background-size: 25px 25px;
+        width: 290px;
+        height: 40px;
+        position: absolute;
+        right: 60px;
+        top: 35px;
+        left: initial;
+      }
 
-			img {
-				width: 120px;
-				height: 120px;
-			}
+      .container {
+        padding: 70px 0 230px 0;
+        position: relative;
 
-			h4 {
-				margin: 0 0 0 0;
-				a, a:link, a:visited, a:hover, a:active {
-					color: #000;
-					text-decoration: none;
-				}
-			}
+        @media (max-width: 991.98px) {
+          padding: 70px 30px 20px 30px;
+        }
 
-			p {
-				margin: 0;
-			}
+        .when {
+          color: #ffffff;
+          text-transform: uppercase;
+          font-size: 1.5rem;
+        }
+        .what {
+          font-size: 4rem;
+        }
+        .time {
+          font-size: 1.5rem;
+          margin: 20px 0 0 0;
+        }
+        .name {
+          color: #ffffff;
+          font-size: 3rem;
+        }
+        .details {
+          padding: 20px 0 0 0;
+          font-size: 1.5rem;
+        }
+      }
 
-			.text {
-				flex: 2;
-				margin: 0 30px;
-			}
+      .container.images {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0;
+        z-index: 1;
+        bottom: -16%;
+        @media (max-width: 991.98px) {
+          position: relative;
+          padding: 20px 30px 20px 30px;
+          bottom: 20px;
+        }
+        .d-flex {
+          overflow-x: scroll !important;
+          img {
+            width: 29%;
+            //margin: 0 20px 0 0;
+            border-radius: 10px;
+            @media (max-width: 991.98px) {
+              width: 70%;
+              margin: 0 20px 0 0;
+            }
+          }
+        }
+      }
+    }
+    .tuesday {
+      background-color: #eaebeb;
+      padding: 230px 0 40px 0;
+      position: relative;
+      @media (max-width: 991.98px) {
+        padding: 50px 30px 20px 30px;
+      }
+      .polka-dot {
+        @media (max-width: 991.98px) {
+          display: none;
+        }
+        background-image: radial-gradient(#9be4ef 8%, rgba(255, 0, 0, 0) 15%);
+        background-position: 0 0;
+        background-size: 30px 28px;
+        width: 209px;
+        height: 260px;
+        position: absolute;
+        top: 230px;
+        left: 0;
+      }
 
-			.social {
-				margin: 22px 0 0 0;
+      .polka-dot-line {
+        @media (max-width: 991.98px) {
+          display: none;
+        }
+        background-image: radial-gradient(#9be4ef 8%, rgba(255, 0, 0, 0) 15%);
+        background-position: 0 0;
+        background-size: 30px 28px;
+        width: 350px;
+        height: 50px;
+        position: absolute;
+        top: 250px;
+        right: 167px;
+        z-index: 1;
+      }
 
-				li {
-					width: auto;
-					margin-right: 25px;
+      .container {
+        padding: 0;
+        .first {
+          width: 35%;
+          @media (max-width: 991.98px) {
+            width: 100%;
+          }
+          .when {
+            color: #8b8f93;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+          }
+          .what {
+            color: #08bed5;
+            font-size: 4rem;
+            line-height: 4rem;
+            padding-bottom: 10px;
+          }
+          .where {
+            padding: 0 0 20px 0;
+          }
+          .schedule {
+            padding-top: 20px;
+            @media (max-width: 991.98px) {
+              display: none;
+            }
+            .when {
+              color: #08bed5;
+              font-size: 1.5rem;
+            }
+            .what {
+              color: #8b8f93;
+              font-size: 2.5rem;
+              line-height: 3rem;
+              padding-bottom: 30px;
+            }
+            .details {
+              font-size: 1.5rem;
+              .title {
+                color: #000000;
+                padding: 0 0 10px 0;
+              }
+            }
+          }
+        }
 
-					&:last-child {
-						margin-right: 0;
-					}
+        .second {
+          img {
+            width: 400px;
+            border-radius: 10px;
+            @media (max-width: 991.98px) {
+              width: 100%;
+            }
+          }
+        }
+        .schedule.mobile {
+          padding-top: 20px;
+          .when {
+            color: #08bed5;
+            font-size: 1.5rem;
+          }
+          .what {
+            color: #8b8f93;
+            font-size: 2.5rem;
+            line-height: 3rem;
+            padding-bottom: 20px;
+          }
+          .details {
+            font-size: 1.5rem;
+            .title {
+              color: #000000;
+              padding: 0 0 10px 0;
+            }
+            color: #8b8f93;
+          }
+        }
+      }
+    }
+  }
 
-					a, a:link, a:visited, a:hover, a:active {
-						padding: 0;
-						border: 0;
-						background: transparent;
-						color: #000;
-						font-size: 16px;
-						line-height: 16px;
+  #lineup {
+    padding: 70px 0 50px 0;
+    position: relative;
+    @media (max-width: 991.98px) {
+      padding: 30px 30px 30px 30px;
+    }
+    .polka-dot {
+      background-image: radial-gradient(#9be4ef 8%, rgba(255, 0, 0, 0) 15%);
+      background-position: 0 0;
+      background-size: 30px 28px;
+      width: 250px;
+      height: 360px;
+      position: absolute;
+      top: -50px;
+      left: initial;
+      right: 0;
+      z-index: 1;
+      @media (max-width: 991.98px) {
+        display: block;
+        width: 50px;
+        height: 200px;
+        position: absolute;
+        top: -100px;
+        left: initial;
+        right: 20px;
+        z-index: 1;
+      }
+    }
 
-						span {
-							position: static;
-							top: auto;
+    .polka-dot-line {
+      @media (max-width: 991.98px) {
+        display: none;
+      }
+      background-image: radial-gradient(#9be4ef 8%, rgba(255, 0, 0, 0) 15%);
+      background-position: 0 0;
+      background-size: 30px 28px;
+      width: 50px;
+      height: 200px;
+      position: absolute;
+      top: 70px;
+      left: 40px;
+      right: initial;
+      z-index: 1;
+    }
+    .container {
+      padding: 0;
+      h4 {
+        font-size: 7rem;
+        @media (max-width: 991.98px) {
+          font-size: 5rem;
+        }
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 0.3rem;
+        line-height: 5rem;
+        @include gill_sans_nova();
+      }
+      .images {
+        .row {
+          div {
+            margin: 50px 0 0 0;
+            text-align: center;
+            .title {
+              font-size: 1.5rem;
+              color: #d1d2d4;
+            }
+            img {
+              width: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
 
-							&.ss-twitter, &.ss-pinterest {
-								position: relative;
-								top: 2px;
-							}
-						}
-					}
-				}
-			}
+      }
+    }
+  }
 
-			.forward-arrow {
-				position: relative;
-				top: 53px;
-				right: 10px;
-			}
-		}
-	}
+  #buy_ticket {
+    background-color: #ebecec;
+    .container {
+      padding: 70px 0 30px 0;
+      text-align: center;
+      @media (max-width: 991.98px) {
+        padding: 50px 30px 30px 30px;
+        text-align: left;
+      }
+      h4 {
+        @media (max-width: 991.98px) {
+          font-size: 2.2rem;
+          line-height: 3rem;
+        }
+        font-size: 2.5rem;
+        color: #08bed5;
+        line-height: 4rem;
+        padding: 0;
+        margin: 0;
+      }
+      .sub-title {
+        color: #8b8f93;
+        font-size: 1.7rem;
+      }
 
-	.past-sessions {
-  	margin-top: 3px;
-  	//margin-bottom: 0;
+      .tickets-wrapper {
+        margin-top: 80px;
 
-  	.carousel-wrapper {
-  		position: relative;
+        > div {
+          @media (max-width: 1199.98px) {
+            padding-top: 15px;
+            padding-bottom: 15px;
+          }
+        }
+      }
 
-	    .owl-wrapper-outer {
-	      width: 200%;
+      .ticket-details {
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        overflow: hidden;
 
-	      .owl-item {
-	      	padding-left: 5px;
-	      	padding-right: 5px;
-	      }
-	    }
-  	}
+        .ticket-main, .ticket-description {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 47px 37px;
+        }
 
-		// .white-border {
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 50%;
-		// 	bottom: 0;
-		// 	width: 10px;
-		// 	margin-left: -5px;
-		// 	background: #FFF;
-		// 	z-index: 2;
-		// }
+        .ticket-main {
+          background-color: #ffffff;
 
-  	.event {
+          .ticket-title {
+            font-size: 24px;
+          }
 
-  		.forward-arrow-white {
-  			display: none;
-  		}
+          .ticket-special-price {
+            font-size: 90px;
+            font-weight: 800;
+            color: $sola-sessions-black;
+          }
 
-  		.buttons {
-  			position: absolute;
-  			bottom: 35px;
-  			left: 0;
-  			right: 0;
-  			text-align: center;
+          .ticket-early-bird {
+            font-size: 14px;
+            font-weight: 800;
+          }
 
-  			.button {
-  				display: inline;
-  				background: transparent;
-  				font-size: 14px;
-  				line-height: 14px;
-  				color: #FFF;
-  				padding: 10px 20px;
-  				margin-right: 5px;
+          .ticket-normal-price {
+            font-size: 14px;
+            color: #a3acb2;
+          }
+        }
 
-  				&:last-child {
-  					margin-right: 0;
-  				}
-  			}
-  		}
-  	}
+        .ticket-description {
+          background-color: #f3f4f4;
+          display: flex;
+          flex-direction: column;
+          align-items: start;
 
-	  .owl-theme .owl-controls {
-	    position: absolute;
-	    top: -40px;
-	    right: 62px;
-	    left: auto;
-	  }
+          .ticket-day-title {
+            color: $sola-sessions-black;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-align: left;
+          }
 
-	  .arrow-left, .arrow-right {
-	    border: 2px solid #000;
-	    background-repeat: no-repeat !important;
-	    background-position: center !important;
-	    width: 34px;
-	    height: 32px;
-	  }
+          .ticket-features {
+            .ticket-feature {
+              color: $sola-sessions-black;
+              font-size: 15px;
+              display: flex;
+              align-items: center;
+              margin-bottom: 10px;
 
-	  .arrow-left {
-	    right: auto;
-	    left: -4px;
-	    -webkit-border-top-left-radius: 4px;
-	    -webkit-border-bottom-left-radius: 4px;
-	    -moz-border-radius-topleft: 4px;
-	    -moz-border-radius-bottomleft: 4px;
-	    border-top-left-radius: 4px;
-	    border-bottom-left-radius: 4px;
-      background: asset-data-url('back-arrow-black.png');
-      background-size: (20px / 2) (32px / 2);
+              > i {
+                content: '';
+                width: 16px;
+                height: 13px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                margin-right: 10px;
+              }
 
-	    &:hover, &:active {
-	      background: asset-data-url('back-arrow-black.png');
-	      background-size: (20px / 2) (32px / 2);
-	    }
-	  }
+              > div {
+                max-width: 250px;
+                text-align: left;
+                line-height: 1.3;
+              }
+            }
+          }
+        }
 
-	  .arrow-right {
-	    left: auto;
-	    right: -62px;
-	    -webkit-border-top-right-radius: 4px;
-	    -webkit-border-bottom-right-radius: 4px;
-	    -moz-border-radius-topright: 4px;
-	    -moz-border-radius-bottomright: 4px;
-	    border-top-right-radius: 4px;
-	    border-bottom-right-radius: 4px;
-      background: asset-data-url('forward-arrow-black.png');
-      background-size: (20px / 2) (32px / 2);
+        .ticket-buy {
+          text-align: center;
+          background-color: #f3f4f4;
 
-	    &:hover, &:active {
-	      background: asset-data-url('forward-arrow-black.png');
-	      background-size: (20px / 2) (32px / 2);
-	    }
-	  }
+          .buy-ticket-btn {
+            text-transform: uppercase;
+            color: #ffffff;
+            font-size: 1.5rem;
+          }
 
-	}
+          .buy-ticket-comment {
+            margin-top: 20px;
+            color: #a3acb2;
+            font-size: 14px;
+            padding-bottom: 24px;
+          }
+        }
+
+        &.base {
+          .ticket-title, .ticket-early-bird {
+            color: $sola-sessions-black;
+          }
+          .buy-ticket-btn {
+            background-color: $sola-sessions-black;
+          }
+          .ticket-feature > i {
+            background: asset_url("sessions/icons/check_grey.png");
+          }
+        }
+
+        &.vip {
+          .ticket-title, .ticket-early-bird {
+            color: #05bed5;
+          }
+          .buy-ticket-btn {
+            background-color: #05bed5;
+          }
+          .ticket-feature > i {
+            background: asset_url("sessions/icons/check_light_blue.png");
+          }
+        }
+
+        &.platinum {
+          .ticket-title, .ticket-early-bird {
+            color: #1fa0ef;
+          }
+          .buy-ticket-btn {
+            background-color: #1fa0ef;
+          }
+          .ticket-feature > i {
+            background: asset_url("sessions/icons/check_blue.png");
+          }
+        }
+      }
+    }
+  }
+
+  #video {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("https://solasalonstudios.s3.amazonaws.com/own_your_salon/Denver-Header-Image-09.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 80px 0;
+
+    .video-line {
+      height: 10px;
+      position: absolute;
+      display: block;
+      top: -5px;
+      z-index: 3;
+      background: linear-gradient(to right, #08bed5, #015190);
+      width: 30%;
+      right: 0;
+    }
+
+    .video-white-line {
+      height: 10px;
+      position: absolute;
+      display: block;
+      z-index: 3;
+      background: #ffffff;
+      width: 56px;
+      bottom: 30px;
+      left: -7px;
+    }
+
+    .container {
+      position: relative;
+
+      .img-logo {
+        z-index: 1;
+        position: absolute;
+        bottom: 22px;
+        right: 5%;
+        width: 30%;
+      }
+
+      .play-video {
+        position: relative;
+
+        img {
+          border-radius: 10px;
+          width: 100%;
+        }
+        .polka-dot {
+          background-image: radial-gradient(#FFFFFF 8%, rgba(255, 0, 0, 0) 15%);
+          background-position: 0 0;
+          background-size: 30px 28px;
+          width: 350px;
+          height: 30px;
+          position: absolute;
+          top: 15px;
+          left: -250%;
+        }
+
+        .play-btn {
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          top: -26px;
+          left: 47%;
+          margin: 0;
+          background: url("https://solasalonstudios.s3.amazonaws.com/own_your_salon/play_white.png");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  #where {
+    position: relative;
+
+    .where-line {
+      height: 10px;
+      position: absolute;
+      display: block;
+      z-index: 3;
+      background: linear-gradient(to right, #08bed5, #015190);
+      bottom: 0;
+      top: unset;
+      left: 0;
+      width: 30%;
+    }
+
+    .container {
+      border-bottom: 1px solid #d6d6d6;
+
+      .wrapper {
+        @media (max-width: 1199.98px) {
+          padding: 30px 0;
+        }
+        padding: 100px 0;
+
+        h4 {
+          @media (max-width: 1199.98px) {
+            font-size: 8rem;
+            margin: 0;
+            line-height: 90px;
+          }
+
+          line-height: 130px;
+          font-size: 12rem;
+          text-transform: uppercase;
+          color: $base-color;
+          @include gill_sans_nova();
+        }
+
+        .subtitle {
+          font-size: 20px;
+          width: 74%;
+          color: #a3acb2;
+        }
+
+        .place-wrapper {
+          margin: 30px 0;
+
+          &:nth-of-type(1) {
+            .image { background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/THE-SOURCE_MAIN_EXTERIOR.png"); }
+          }
+
+          &:nth-of-type(2) {
+            .image { background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/BigsbysFolly_001.jpg"); }
+          }
+
+          &:nth-of-type(3) {
+            .image { background-image: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/play_video_01.jpg"); }
+          }
+
+          .image {
+            width: 80px;
+            min-width: 80px;
+            height: 80px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            border-radius: 6px;
+          }
+
+          .description-wrapper {
+            margin-left: 20px;
+
+            .title {
+              font-size: 18px;
+              font-weight: 800;
+            }
+            .place-subtitle, .address {
+              font-size: 14px;
+              color: #a3acb2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #health_and_safety {
+    padding: 160px 0 60px 0;
+    @media (max-width: 991.98px) {
+      padding: 50px 0 60px 0;
+    }
+    background-color: $sola-sessions-black;
+    color: #ffffff;
+    position: relative;
+
+    h4 {
+      color: #ffffff;
+      font-size: 3rem;
+    }
+
+    .description {
+      font-size: 2rem;
+    }
+
+    .list {
+      color: #b1b1b1;
+      font-size: 1.7rem;
+      @media (max-width: 991.98px) {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  #book_a_room {
+    margin: 100px 0 50px 0;
+
+    .container {
+      display: grid;
+      grid-auto-flow: column;
+      @media (max-width: 991.98px) {
+        padding: 0 30px 0 30px;
+      }
+      @media (min-width: 1200px) {
+        grid-template-columns: 1fr 3fr;
+      }
+    }
+
+    .info, .btn-section {
+      grid-column: 1;
+    }
+
+    .btn-section {
+      @media (max-width: 1199.98px) {
+        margin-top: 30px;
+      }
+    }
+
+    .image-wrapper {
+      @media (max-width: 1199.98px) {
+        grid-column: 1;
+      }
+      @media (min-width: 1200px) {
+        grid-row: span 3;
+        margin-left: 100px;
+      }
+    }
+
+    h4 {
+      @include gill_sans_nova();
+      font-size: 4rem;
+      text-transform: uppercase;
+      color: $sola-sessions-black;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: #a3acb2;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #a3acb2;
+    }
+
+    .title {
+      margin-top: 20px;
+      font-size: 3rem;
+      line-height: 4rem;
+    }
+
+    .btn {
+      @media (max-width: 1199.98px) {
+        width: 100%;
+      }
+      margin-top: 24px;
+      background-color: #1ea0ee;
+      color: #ffffff;
+    }
+
+    .image {
+      @media (max-width: 1199.98px) {
+        height: 400px;
+      }
+
+      background: url("https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/book_a_room.jpg");
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  .polka-dot {
+    @media (max-width: 991.98px) {
+      display: none;
+    }
+
+    background-image: radial-gradient($base-color 8%, rgba(255, 0, 0, 0) 15%);
+    background-position: 0 0;
+    background-size: 30px 28px;
+    width: 278px;
+    height: 170px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }
 
-@media (max-width: 1000px) {
-	.sola-sessions {
-		.owl-carousel .item .item-content h1 {
-			margin: 20px 0 !important;
-			font-size: 26px;
-			line-height: 26px;
-		}
-	}
-}
 
-@media (max-width: 960px) {
-	.past-sessions {
-		.white-border {
-			display: none;
-		}
-	}
-	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer {
-		width: 100%;
-	}
-	.sola-sessions .past-sessions .carousel-wrapper .owl-wrapper-outer .owl-item {
-		padding-left: 0;
-		padding-right: 0;
-	}
-}
-
-@media (max-width: 550px) {
-
-	.sola-sessions {
-		.owl-carousel .item .item-content h1 {
-			margin: 35px 0 !important;
-			font-size: 18px;
-			line-height: 18px;
-		}
-	}
-
-	.sola-sessions {
-		.past-sessions {
-
-			.forward-arrow-white {
-				position: relative;
-				top: -1px;
-				display: inline-block !important;
-				left: 5px;
-			}
-
-			.buttons {
-				bottom: 25px !important;
-
-				.button {
-					border: 0 !important;
-				}
-			}
-		}
-
-		.in-the-news {
-			.in-the-news-article {
-				display: block;
-				padding: 29px 25px 25px 25px;
-
-				.image {
-					text-align: center;
-					margin: 0 auto;
-				}
-
-				.text {
-					margin: 0;
-
-					h4 {
-						font-size: 14px;
-						line-height: 16px;
-						margin-top: 15px;
-						margin-bottom: 5px;
-					}
-
-					p {
-						font-size: 14px;
-						line-height: 16px;
-					}
-				}
-
-				.social {
-					margin-top: 15px;
-				}
-
-				.forward-arrow {
-					display: none;
-				}
-			}
-		}
-	}
-}
