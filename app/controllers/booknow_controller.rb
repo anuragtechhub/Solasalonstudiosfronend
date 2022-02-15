@@ -11,7 +11,10 @@ class BooknowController < PublicWebsiteController
 
 	def search
     redirect_to '/' unless I18n.locale.to_s == 'en'
-	end
+  end
+
+  def cojilio_results
+  end
 
 	def results
     results_response = `curl -X GET \

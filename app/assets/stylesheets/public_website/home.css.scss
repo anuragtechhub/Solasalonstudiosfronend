@@ -119,6 +119,12 @@
     position: relative;
   }
 
+  .for-customers.iframe {
+    width: 63%;
+    padding: 0;
+    margin: 0;
+  }
+
   .for-customers.tile-for-customers-find-a-stylist {
     width: 63%;
 
@@ -429,6 +435,14 @@
   .home-container-full-width {
     display: block;
     margin-bottom: -30px;
+    .for-customers.iframe {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      iframe {
+        min-height: 650px !important;
+      }
+    }
 
     .for-customers.tile-for-customers-find-a-stylist {
       background: #AFAFAF asset-url('Home/hero-for-customers-mobile-june2020.jpg') no-repeat center top;

@@ -1,72 +1,22 @@
-<div class="hero-carousel owl-carousel multi-carousel owl-theme home-all">
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/New-Year-Desktop-v1-R1.jpg', alt: "With Sola you can have it all.", :width => 2646, :height => 1006 %></div>
-    <div class="item-content bottom-center-align">
-      <a href="//www.youtube.com/watch?v=ufd5R5uLY-Q" rel="ufd5R5uLY-Q" class="button primary play-video rounded-play-button" style="margin-bottom: 200px">
-        <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle">&nbsp;</span>
-      </a>
-    </div>
+<div class="home-container-full-width">
+  <div class="for-customers iframe">
+    <iframe style="width: 100%; height: 100%; min-height: 100%;" title="Online Booking" allow="geolocation <%= ENV['COJILIO_URL'] %>" src=<%= ENV['COJILIO_URL'] %>/Search/Search/Sola?res=<%= CGI.escape("#{ENV['COJILIO_REDIRECT_URL']}/booknow/cojilio_results") %>></iframe>
   </div>
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-6.jpg', alt: "photo of the dancing master", :width => 1600, :height => 800 %></div>
-    <div class="item-content bottom-center-align">
-      <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-1" class="button primary play-video rounded-play-button" style="margin-bottom: 0px">
-        <%= t('page.home.hear_from_our_sola_pros') %> <span class="fa fa-play-circle">&nbsp;</span>
-      </a>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <div class="img-wrap"><%= image_tag 'Home/Home-Slider-2.jpg', :alt => t('page.home.slider2_heading'), :width => 1600, :height => 800 %></div>
-    <div class="item-content">
-      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
-      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
-      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
-    </div>
-  </div>
-</div>
-
-<div class="hero-carousel owl-carousel owl-theme multi-carousel home-mobile">
-  <% if I18n.locale.to_s != 'pt-BR' %>
-    <div class="item">
-      <%= image_tag 'https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/New-Year-Mobile-v1-R1.jpg', alt: "With Sola you can have it all.", :width => 750, :height => 1060 %>
-      <div class="item-content bottom-center-align">
-        <a href="//www.youtube.com/watch?v=ufd5R5uLY-Q" rel="U-1b_0MWs-8" class="button primary play-video rounded-play-button" style="margin-top: 0px">
-          <%= t('page.why_sola.hero_button2_text') %> <span class="fa fa-play-circle"></span>
-        </a>
+  <div class="for-professionals tile-for-professionals-own-your-salon">
+    <div class="tile-content" aria-label="main" role="main">
+      <h5><%= t('page.home.for_professionals') %></h5>
+      <h2><%= t('page.home.own_your_salon') %></h2>
+      <ul>
+        <li>
+          <h4><%= link_to "//www.youtube.com/watch?v=afOBB5jAjUU", :rel => 'afOBB5jAjUU', :class => 'play-video' do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.home.watch_our_video') %><% end %></h4>
+        </li>
+        <li><h4><%= link_to :why_sola, tabindex: 0 do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.why_sola.title') %><% end %></h4></li>
+        <li><h4><%= link_to :our_studios, tabindex: 0 do %><span class="forward-arrow-white" role="presentation"></span><%= t('page.our_studios.title') %><% end %></h4></li>
+      </ul>
+      <div class="button-wrapper">
+        <%= link_to :why_sola, :class => 'button', tabindex: 0, role: :button do %><%= t('page.home.learn_more') %><% end %>
       </div>
-    </div>
-    <div class="item">
-      <%= image_tag 'Home/Home-Mobile-Slider-6.jpg', alt: "photo of the dancing master", :width => 750, :height => 750 %>
-      <div class="item-content bottom-center-align">
-        <a href="//www.youtube.com/watch?v=aZHyKpEF61c" rel="aZHyKpEF61c-2" class="button primary play-video rounded-play-button" style="margin-top: 0px">
-          <%= t('page.hear_from_our_sola_pros') %> <span class="fa fa-play-circle"></span>
-        </a>
-      </div>
-    </div>
-  <% end %>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-1.jpeg', :alt => t('page.home.slider1_heading'), :width => 750, :height => 750 %>
-    <div class="item-content">
-      <h1><%= t('page.home.slider1_heading').html_safe %></h1>
-      <h3><%= t('page.home.slider1_subhead').html_safe %></h3>
-      <%= link_to :own_your_salon, :class => 'button outline-large-white' do %><%= t('page.home.slider1_button').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-2.jpeg', :alt => t('page.home.slider2_heading'), :width => 750, :height => 750 %>
-    <div class="item-content">
-      <h1 class="large"><%= t('page.home.slider2_heading').html_safe %></h1>
-      <h3 class="less-bottom-margin-mobile"><%= t('page.home.slider2_subhead').html_safe %></h3>
-      <%= link_to :our_studios, :class => 'button outline-large-white' do %><%= t('page.home.slider2_button').html_safe %><% end %>
-    </div>
-  </div>
-  <div class="item" style="display:none">
-    <%= image_tag 'Home/Home-Mobile-Slider-3.jpeg', :alt => t('page.home.slider3_heading'), :width => 750, :height => 750 %>
-    <div class="img-overlay black-25">&nbsp;</div>
-    <div class="item-content">
-      <h1 class="more-bottom-margin-mobile"><%= t('page.home.slider3_heading').html_safe %></h1>
-      <h3 class="mobile-hidden"><%= t('page.home.slider3_subhead').html_safe %></h3>
-      <%= link_to 'https://www.solasalonstudios.com/blog/30-facts-about-the-2018-faces-of-sola', :class => 'button outline-large-white' do %><%= t('page.home.slider3_button').html_safe %><% end %>
+      <p><%= t('page.home.tagline').html_safe %></p>
     </div>
   </div>
 </div>

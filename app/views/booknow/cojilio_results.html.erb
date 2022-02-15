@@ -1,0 +1,46 @@
+<iframe id="CojilioResultFrame" style="width: 100%; min-height: calc( 100vh - 100px );" title="Online Booking" src=""></iframe>
+
+<script type="text/javascript">
+  var res = (new URLSearchParams(window.location.search)).get('pResult')
+  if(res){
+    document.getElementById('CojilioResultFrame').src = ('<%= ENV['COJILIO_URL'] %>/search/search/sola/results?' + (new URLSearchParams(window.location.search)).get('pResult'))
+  }else{
+    document.getElementById('CojilioResultFrame').src = ('<%= ENV['COJILIO_URL'] %>/search/search/sola ')
+  }
+</script>
+<div>
+  <div class="side-tab">
+    <span class="text">Don't see your Sola Professional?</span>
+    <span class="close-x"></span>
+  </div>
+</div>
+
+<div class="SideTabPopUpModalOverlay HideSideTabPopUpModal hidden">
+  <div class="SideTabPopUpModal">
+    <span class="close-x"></span>
+    <p>
+      <strong>If you do not see your Sola professional in the search results below, please contact them directly for booking.</strong>
+    </p>
+    <p>
+      The <strong>BookNow</strong> search results only feature Sola professionals who use SolaGenius (GlossGenius for Sola).</p>
+    <div class="button-wrapper">
+      <a href="/salon-professionals">Contact Your Sola Pro Directly</a>
+    </div>
+  </div>
+</div>
+
+<% @body_class = 'sola-search' %>
+<% @header_class = 'fullwidth' %>
+<% content_for(:title) { t('sola_search.booknow') } %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.side-tab .text').on('click', function () {
+      $('.SideTabPopUpModalOverlay').removeClass('hidden');
+    });
+    $('.close-x').on('click', function () {
+      $(this).parent().parent().addClass('hidden');
+    });
+  });
+</script>
+
