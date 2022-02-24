@@ -19,7 +19,7 @@ class OwnYourSalonController < PublicWebsiteController
 	end
 
 	def sola_sessions
-    redirect_to 'https://www.facebook.com/solasalons/videos/1286034231819762', status: 307
+    redirect_to 'https://www.eventbrite.com/e/the-sola-sessions-tickets-233815357027', status: 307
     @body_class = 'sola-sessions'
 	end
 
