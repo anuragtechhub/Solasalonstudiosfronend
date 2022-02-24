@@ -28,7 +28,7 @@ module Ability
         can [:new], ::Lease
         can [:new, :read, :update, :export, :destroy], ::Lease, location: { admin_id: admin.id }
         can [:new], ::Stylist
-        can [:read, :update, :export], ::Stylist, location: { admin_id: admin.id }
+        can [:read, :update, :export, :custom_export], ::Stylist, location: { admin_id: admin.id }
         can [:read, :update, :export, :destroy], ::Location, admin_id: admin.id
         can :read, ::Studio, location: { admin_id: admin.id }
         can :manage, ::RequestTourInquiry, location: { admin_id: admin.id }
