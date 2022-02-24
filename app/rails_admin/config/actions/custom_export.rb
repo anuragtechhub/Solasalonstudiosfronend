@@ -49,7 +49,10 @@ module RailsAdmin
                 end
                 response.stream.write field_names.to_csv
 
-                query = @model_name.constantize.order(created_at: :desc).where(created_at: from..to)
+                query = @model_name.constantize
+                                   .accessible_by(current_ability)
+                                   .where(created_at: from..to)
+                                   .order(created_at: :desc)
                 query = case @model_name
                 when 'Stylist', 'RequestTourInquiry'
                   query.includes(:location)
