@@ -19,7 +19,7 @@ class OwnYourSalonController < PublicWebsiteController
 	end
 
 	def sola_sessions
-    redirect_to 'https://www.eventbrite.com/e/the-sola-sessions-tickets-233815357027', status: 307 if Rails.env.production?
+    redirect_to 'https://www.eventbrite.com/e/the-sola-sessions-tickets-233815357027', status: 307 if ENV['WEB_HOST'] == 'www.solasalonstudios.com'
     @body_class = 'sola-sessions'
 	end
 
