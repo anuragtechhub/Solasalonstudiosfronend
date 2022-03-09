@@ -63,7 +63,7 @@ RailsAdmin.config do |config|
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
   config.excluded_models = %w[Account BrandCountry BrandsSolaClasses DealCountry
-    GetFeatured ResetPassword ExpressionEngine SolaClassCountry Testimonial User
+    GetFeatured ResetPassword ExpressionEngine SolaClassCountry User
     Moz SavedSearch Support SupportCategory ProBeautyIndustry ProBeautyIndustryCategory
     EducationHeroImageCountry NotificationRecipient
     EmailEvent TerminatedStylist DealCategory DealCategoryDeal Taggable TagsVideo BlogCategory
