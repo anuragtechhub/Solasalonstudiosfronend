@@ -23,8 +23,8 @@ module Rentmanager
       request(path: '/Locations')
     end
 
-    def properties(location_id)
-      request(path: '/Properties?embeds=UserDefinedValues', headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    def properties(location_id, page = 1)
+      request(path: "/Properties?embeds=UserDefinedValues&pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     def user_defined_fields(location_id)
@@ -39,20 +39,20 @@ module Rentmanager
       request(path: "/Roles/#{role_id}/Privileges?embeds=Privilege", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
-    def units(location_id)
-      request(path: '/Units', headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    def units(location_id, page = 1)
+      request(path: "/Units?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     def tenant_leases(location_id, tenant_id)
       request(path: "/Tenants/#{tenant_id}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
-    def tenants(location_id)
-      request(path: '/Tenants', headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    def tenants(location_id, page = 1)
+      request(path: "/Tenants?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
-    def leases(location_id)
-      request(path: '/Leases', headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    def leases(location_id, page = 1)
+      request(path: "/Leases?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     private

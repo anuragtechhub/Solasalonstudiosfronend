@@ -7,6 +7,7 @@
   - default
   - reports
   - callfire
+  - rent_manager
   - notifications
   - [mailchimp, 1]
   - [hubspot, 1]
@@ -18,4 +19,5 @@
   callfire: 5
   mailchimp: 1
   hubspot: 1
+  rent_manager: 1
   notifications: 3
