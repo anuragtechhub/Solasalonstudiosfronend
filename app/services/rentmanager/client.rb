@@ -43,12 +43,8 @@ module Rentmanager
       request(path: "/Units?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
-    def tenant_leases(location_id, tenant_id)
-      request(path: "/Tenants/#{tenant_id}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
-    end
-
     def tenants(location_id, page = 1)
-      request(path: "/Tenants?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+      request(path: "/Tenants?embeds=Contacts.PhoneNumbers&pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     def leases(location_id, page = 1)

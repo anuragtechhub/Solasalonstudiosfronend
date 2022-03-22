@@ -251,7 +251,6 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    libv8 (3.16.14.19)
     loofah (2.13.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -381,7 +380,6 @@ GEM
     recaptcha (3.3.0)
       json
     redis (4.2.5)
-    ref (2.0.0)
     remotipart (1.4.4)
     render_anywhere (0.0.12)
       rails (>= 3.0.7)
@@ -448,9 +446,6 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     textacular (4.0.1)
       activerecord (>= 3.0, < 5.1)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (1.1.0)
     thread_safe (0.3.6)
     thwait (0.2.0)
@@ -551,7 +546,6 @@ DEPENDENCIES
   sprockets (~> 2.12.5)
   sprockets-rails
   textacular (~> 4.0)
-  therubyracer
   thor
   thwait
   tzinfo

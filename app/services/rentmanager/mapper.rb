@@ -38,17 +38,53 @@ module Rentmanager
 
         rm_tenants.each do |rm_tenant|
           tenant_id = rm_tenant['TenantID']
+          # TODO: refactor it 
+          email = rm_tenant['Contacts']&.first['Email']
+          phone = rm_tenant['Contacts']&.first['PhoneNumbers']&.map{|pn| pn['StrippedPhoneNumber'] }&.first
           stylists = Stylist.where(name: rm_tenant['Name'])
           if stylists.count > 1
-            p "More than one stylist with name: #{rm_tenant['Name']}"
-            next
+            location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
+            stylists = stylists.where(location_id: location_id) if location_id.present?
+            if stylists.count > 1 && email.present? && stylists.where(email_address: email).present?
+              stylists = stylists.where(email_address: email)
+            end
           end
+
+          if stylists.blank? && email.present?
+            stylists = Stylist.where(email_address: email)
+            if stylists.count > 1
+              location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
+              stylists = stylists.where(location_id: location_id) if location_id.present?
+            end
+            if stylists.count > 1
+              stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
+            end
+          end
+
+          if stylists.blank? && phone.present?
+            stylists = Stylist.where("NULLIF(regexp_replace(phone_number, '\D','','g'), '') = ?", phone)
+            if stylists.count > 1
+              location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
+              stylists = stylists.where(location_id: location_id) if location_id.present?
+            end
+            if stylists.count > 1
+              stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
+            end
+          end
+
+          if stylists.count > 1 && stylists.active.present? && rm_tenant['Status'] == 'Current'
+            stylists = stylists.active
+          end
+
+          if stylists.count > 1 && stylists.inactive.present? && rm_tenant['Status'] == 'Past'
+            stylists = stylists.inactive
+          end
+
+          next if stylists.count > 1 # TODO process all stylists
+
           stylist = stylists.first
 
-          if stylist.blank?
-            p "Can not find stylist for rm_location_id: #{rm_location_id}, TenantID: #{tenant_id}"
-            next
-          end
+          next if stylist.blank?
 
           stylist.update_column(:rm_status, rm_tenant['Status'])
 

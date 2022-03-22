@@ -94,8 +94,6 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'sprockets', '~> 2.12.5'
 gem 'react-rails', '~> 1.6.1'
 
-gem "therubyracer"
-
 gem 'sitemap_generator'
 
 gem 'google-api-client', '0.11.3'
