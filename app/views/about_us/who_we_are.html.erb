@@ -1,7 +1,6 @@
 <%= render 'shared/public_website/about_us_nav', :page => :who_we_are %>
 
 <div class="who-we-are">
-
 	<div class="container content-container">
 		<div class="row">
 			<div class="six columns">
@@ -20,13 +19,7 @@
 						<div class="paint-box">
 							<div class="colors">&nbsp;</div>
 							<div class="content">
-								<% if I18n.locale.to_s == 'en' %>
-									<h2><%= Location.where(:country => 'US').count %>+</h2>
-								<% elsif I18n.locale.to_s == 'en-CA' %>
-									<h2><%= Location.where(:country => 'US').count %>+</h2>
-								<% else %>
-									<h2><%= t 'page.who_we_are.number_of_locations' %></h2>
-								<% end %>
+								<h2><%= Location.open.where(country: 'US').count / 100 * 100 %>+</h2>
 								<h3><%= t('page.who_we_are.locations_nationwide').html_safe %></h3>
 							</div>
 						</div>
