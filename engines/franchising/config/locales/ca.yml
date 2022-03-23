@@ -4,7 +4,9 @@ ca:
 
     website:
       first_section:
-        s1: 'Invest in the #1 salon studio franchise with prime market availability in Canada.'
+        headline: 'Simple. Successful.'
+        s1: 'Invest in the franchise revolutionizing the salon industry.'
+        cta: 'Lead the Change'
 
       why_sola:
         h1: 'A proven, low-staff model positioned for success in Canada.'
@@ -15,7 +17,7 @@ ca:
 
       available_markets_section:
         p: "Sola's thriving, diverse and welcoming community has blossomed into a worldwide movement. With a wide-open Canadian market, high demand and Sola's brand recognition, there’s never been a better time to join us!"
-        open_locations: 590
+        open_locations: 600
 
       franchise_form:
         country_selector: Country of interest
