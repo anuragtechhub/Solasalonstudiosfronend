@@ -518,16 +518,16 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   def testimonials
     {
-      testimonial_1: testimonial_1.to_h,
-      testimonial_2: testimonial_2.to_h,
-      testimonial_3: testimonial_3.to_h,
-      testimonial_4: testimonial_4.to_h,
-      testimonial_5: testimonial_5.to_h,
-      testimonial_6: testimonial_6.to_h,
-      testimonial_7: testimonial_7.to_h,
-      testimonial_8: testimonial_8.to_h,
-      testimonial_9: testimonial_9.to_h,
-      testimonial_10: testimonial_10.to_h
+      testimonial_1: testimonial_1&.attributes,
+      testimonial_2: testimonial_2&.attributes,
+      testimonial_3: testimonial_3&.attributes,
+      testimonial_4: testimonial_4&.attributes,
+      testimonial_5: testimonial_5&.attributes,
+      testimonial_6: testimonial_6&.attributes,
+      testimonial_7: testimonial_7&.attributes,
+      testimonial_8: testimonial_8&.attributes,
+      testimonial_9: testimonial_9&.attributes,
+      testimonial_10: testimonial_10&.attributes
     }
   end
 
@@ -619,11 +619,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   def publish_if_approved
     if approved_was != true && approved == true
-      #p "publish! this puppy is approved"
       publish_and_save
       email_stylist
-    else
-      #p "do not publish - not approved :("
     end
   end
 
