@@ -232,7 +232,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (1.8.6)
+    json (2.6.1)
     jsonapi-renderer (0.2.2)
     jwt (2.2.2)
     kaminari (1.2.1)
