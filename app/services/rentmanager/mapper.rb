@@ -11,10 +11,10 @@ module Rentmanager
       @client.locations.each do |rm_location|
         rm_location_id = rm_location['LocationID']
         begin
-          sync_properties(rm_location_id)
-          sync_units(rm_location_id)
+          #sync_properties(rm_location_id)
+          #sync_units(rm_location_id)
           sync_tenants(rm_location_id)
-          sync_stylist_units(rm_location_id)
+          #sync_stylist_units(rm_location_id)
         rescue SyncError => e
           puts e.message
           next
@@ -38,7 +38,7 @@ module Rentmanager
 
         rm_tenants.each do |rm_tenant|
           tenant_id = rm_tenant['TenantID']
-          # TODO: refactor it 
+          # TODO: refactor it
           email = rm_tenant['Contacts']&.first['Email']
           phone = rm_tenant['Contacts']&.first['PhoneNumbers']&.map{|pn| pn['StrippedPhoneNumber'] }&.first
           stylists = Stylist.where(name: rm_tenant['Name'])
@@ -80,19 +80,17 @@ module Rentmanager
             stylists = stylists.inactive
           end
 
-          next if stylists.count > 1 # TODO process all stylists
+          next if stylists.blank?
 
-          stylist = stylists.first
+          stylists.each do |stylist|
+            stylist.update_column(:rm_status, rm_tenant['Status'])
 
-          next if stylist.blank?
-
-          stylist.update_column(:rm_status, rm_tenant['Status'])
-
-          stylist.external_ids
-                 .rent_manager
-                 .find_or_initialize_by(name: :tenant_id, rm_location_id: rm_location_id).tap do |e_id|
-            e_id.value = tenant_id
-          end.save!
+            stylist.external_ids
+                   .rent_manager
+                   .find_or_initialize_by(name: :tenant_id, rm_location_id: rm_location_id).tap do |e_id|
+              e_id.value = tenant_id
+            end.save!
+          end
         end
       end
     end

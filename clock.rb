@@ -57,9 +57,9 @@ module Clockwork
     Reports::MonthlyJob.perform_async
   end
 
-  every(1.day, 'reports.monthly', at: '03:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
-    RentManager::SyncJob.perform_async
-  end
+  # every(1.day, 'reports.monthly', at: '03:00', if: lambda { |t| t.mday == 1 && ENV['ALLOW_CLOCKWORK'].present? }) do
+  #   RentManager::SyncJob.perform_async
+  # end
 
   # jobs for Pro::Engine
 
