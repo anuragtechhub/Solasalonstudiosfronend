@@ -11,10 +11,10 @@ module Rentmanager
       @client.locations.each do |rm_location|
         rm_location_id = rm_location['LocationID']
         begin
-          #sync_properties(rm_location_id)
-          #sync_units(rm_location_id)
+          sync_properties(rm_location_id)
+          sync_units(rm_location_id)
           sync_tenants(rm_location_id)
-          #sync_stylist_units(rm_location_id)
+          sync_stylist_units(rm_location_id)
         rescue SyncError => e
           puts e.message
           next
