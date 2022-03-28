@@ -104,7 +104,7 @@
       <div class="sola-address">
         <p class="pl-1">300 Union Blvd, Suite 600<br />Lakewood, CO 80228</p>
         <p class="pl-1"><a href="mailto:hello@solasalonstudios.com" class="pink-link">hello@solasalonstudios.com</a></p>
-        <p><%= link_to t('page.contact.contact_for_franchising_opportunities').html_safe, "https://www.solafranchising.#{I18n.locale.to_s == 'en-CA' ? 'ca' : 'com'}", :class => 'button request-franchising-info primary pill ga-et', :style => 'width:auto', "data-type" => 'us-franchising', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Contact Us' %></p>
+        <p><%= link_to t('page.contact.contact_for_franchising_opportunities').html_safe, t('page.contact.contact_for_franchising_opportunities_url'), :class => 'button request-franchising-info primary pill ga-et', :style => 'width:auto', "data-type" => 'us-franchising', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Contact Us' %></p>
       </div>
     </div>
   </div>
