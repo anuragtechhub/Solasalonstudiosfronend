@@ -15,7 +15,7 @@
         <% end %>
         <li class="social"><%= link_to 'https://www.youtube.com/channel/UCJ8sL_G0TVCYC1irp3HpyZg', :target => '_blank', tabindex: 0, 'aria-label' => 'youtube' do %><span class="ss-social-regular ss-youtube"></span><% end %></li>
         <li class="social last"><%= link_to 'https://www.linkedin.com/company/solasalons/', :target => '_blank', tabindex: 0, 'aria-label' => 'linkedin' do %><span class="ss-social-regular ss-linkedin"></span><% end %></li>
-        <% if I18n.locale.to_s == 'en' || 'en-CA' %>
+        <% if I18n.locale.to_s.in?(['en', 'en-CA']) %>
           <li class="border-left"><%= link_to raw(t('page.franchising.title')), t('page.franchising.url'), :target => '_blank', 'aria-label' => 'solafranchising', tabindex: 0 %></li>
         <% end %>
         <li class="border-left"><%= link_to :contact_us, tabindex: 0 do %><%= raw t 'header.contact_us' %><% end %></li>
