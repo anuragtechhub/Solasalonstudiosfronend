@@ -319,6 +319,7 @@ en:
       sola_salon_studios_headquarters: Sola Salon Studios Headquarters
       sola_franchising: Sola Franchising
       contact_for_franchising_opportunities: Contact For Franchising Opportunities
+      contact_for_franchising_opportunities_url: https://www.solafranchising.com/#get-started
       united_states_franchising: United States Franchising
       international_franchising: International Franchise Licensing
       franchising: Franchising
@@ -408,6 +409,7 @@ en:
 
     franchising:
       title: Franchising
+      url: https://www.solafranchising.com
 
     find_salon_pro:
       title: Find a Salon Professional

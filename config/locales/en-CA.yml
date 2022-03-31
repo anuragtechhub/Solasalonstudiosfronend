@@ -214,6 +214,7 @@ en-CA:
       call_for_leasing_information: Call for leasing information
       sola_salon_studios_headquarters: Sola Salon Studios Headquarters
       contact_for_franchising_opportunities: Contact For Franchising Opportunities
+      contact_for_franchising_opportunities_url: https://www.solafranchising.ca/#get-started
       united_states_franchising: United States Franchising
       international_franchising: International Franchise Licensing
       sola_franchising: Sola Franchising
@@ -302,6 +303,7 @@ en-CA:
 
     franchising:
       title: Franchising
+      url: https://www.solafranchising.ca
 
     find_salon_pro:
       title: Find a Salon Professional
