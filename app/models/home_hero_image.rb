@@ -3,7 +3,7 @@ class HomeHeroImage < ActiveRecord::Base
   has_many :home_hero_image_countries, :dependent => :destroy
   has_many :countries, -> { uniq }, :through => :home_hero_image_countries
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "1500x1000#" }, processors: [:thumbnail, :compression], :s3_protocol => :https, :s3_host_alias => ENV['S3_HOST_ALIAS'], url: ':s3_alias_url'
+  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "1500x1000#" }, processors: [:thumbnail], :s3_protocol => :https, :s3_host_alias => ENV['S3_HOST_ALIAS'], url: ':s3_alias_url'
   attr_accessor :delete_image
   before_validation { self.image.destroy if self.delete_image == '1' }
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }

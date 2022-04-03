@@ -84,6 +84,14 @@ module Solasalonstudios
       pro/application.css pro/splash.css pro/application.js pro/splash.css
     ]
 
-    config.paperclip_defaults = {storage: :s3, s3_credentials: {bucket: ENV['FOG_DIRECTORY'], s3_region: ENV['AWS_REGION'], access_key_id: ENV['AWS_ACCESS_KEY_ID'], secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']}}
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket: ENV['FOG_DIRECTORY'],
+        s3_region: ENV['AWS_REGION'],
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+      }
+    }
   end
 end

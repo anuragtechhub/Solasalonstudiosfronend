@@ -1,3 +1,6 @@
+# TMP
+Redis.exists_returns_integer = false
+
 Sidekiq.options[:dead_max_jobs] = 50_000
 
 REDIS_URL = ENV.fetch('REDISCLOUD_URL') { ENV['REDIS_URL'] }

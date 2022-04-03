@@ -44,8 +44,7 @@ gem 'rmagick'
 gem 'rack-cors'
 gem 'rack-attack'
 
-gem "paperclip"
-gem "paperclip-compression"
+gem 'kt-paperclip'
 gem "curb"
 gem "down"
 gem "naturally"
