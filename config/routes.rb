@@ -204,6 +204,7 @@ Solasalonstudios::Application.routes.draw do
 
     namespace :v3 do
       resources :hubspot_webhooks, only: %i[create]
+      resources :rent_manager_webhooks, only: %i[create]
     end
   end
 
@@ -288,8 +289,6 @@ end
 #                             solagenius GET      /solagenius(.:format)                                         own_your_salon#solagenius
 #                               why_sola GET      /why-sola(.:format)                                           own_your_salon#why_sola
 #          why_sola_contact_form_success GET      /why-sola/contact-form-success(.:format)                      own_your_salon#contact_form_success
-#                              why_sola2 GET      /why-sola-2(.:format)                                         own_your_salon#why_sola_2
-#        why_sola_2_contact_form_success GET      /why-sola-2/contact-form-success(.:format)                    own_your_salon#contact_form_success_2
 #                         privacy_policy GET      /privacy-policy(.:format)                                     legal#privacy_policy
 #                accessibility_statement GET      /accessibility-statement(.:format)                            legal#accessibility_statement
 #               request_franchising_info GET      /request-franchising-info(.:format)                           contact_us#index
@@ -300,6 +299,7 @@ end
 #                   booknow_landing_page GET|POST /solagenius/booknow(.:format)                                 booknow#landing_page
 #                         booknow_search GET|POST /booknow(.:format)                                            booknow#search
 #                        booknow_results GET|POST /booknow/results(.:format)                                    booknow#results
+#                        cojilio_results GET      /booknow/cojilio_results(.:format)                            booknow#cojilio_results
 #               booknow_booking_complete GET|POST /booknow/booking-complete(.:format)                           booknow#booking_complete
 #                   save_booknow_booking POST     /booknow/save-booknow-booking(.:format)                       booknow#save_booking
 #              contact_us_request_a_tour POST     /contact-us-request-a-tour(.:format)                          contact_us#request_a_tour
@@ -362,6 +362,7 @@ end
 #                       api_v2_locations GET|POST /api/v2/locations(.:format)                                   api/v2/locations#index
 #                                 api_v2 GET|POST /api/v2/locations/:id(.:format)                               api/v2/locations#show
 #                api_v3_hubspot_webhooks POST     /api/v3/hubspot_webhooks(.:format)                            api/v3/hubspot_webhooks#create
+#           api_v3_rent_manager_webhooks POST     /api/v3/rent_manager_webhooks(.:format)                       api/v3/rent_manager_webhooks#create
 #                         cms_save_lease GET|POST /cms/save-lease(.:format)                                     cms#save_lease
 #                       cms_save_stylist GET|POST /cms/save-stylist(.:format)                                   cms#save_stylist
 #                   cms_locations_select GET|POST /cms/locations-select(.:format)                               cms#locations_select
@@ -515,6 +516,7 @@ end
 #                           api_v3_sola_class GET      /api/v3/sola_classes/:id(.:format)                     pro/api/v3/sola_classes#show {:format=>:json}
 #                                api_v3_tools GET      /api/v3/tools(.:format)                                pro/api/v3/tools#index {:format=>:json}
 #                                 api_v3_tool GET      /api/v3/tools/:id(.:format)                            pro/api/v3/tools#show {:format=>:json}
+#                   has_password_api_v3_users GET      /api/v3/users/has_password(.:format)                   pro/api/v3/users#has_password {:format=>:json}
 #                        current_api_v3_users GET      /api/v3/users/current(.:format)                        pro/api/v3/users#current {:format=>:json}
 #                    shopify_url_api_v3_users GET      /api/v3/users/shopify_url(.:format)                    pro/api/v3/users#shopify_url {:format=>:json}
 #                                 api_v3_user PATCH    /api/v3/users/:id(.:format)                            pro/api/v3/users#update {:format=>:json}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220202180901) do
+ActiveRecord::Schema.define(version: 20220324175722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -652,6 +652,19 @@ ActiveRecord::Schema.define(version: 20220202180901) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rent_manager_events", force: :cascade do |t|
+    t.integer  "status",         default: 0, null: false
+    t.string   "status_message"
+    t.jsonb    "body",                       null: false
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "rent_manager_events", ["object_type", "object_id"], name: "index_rent_manager_events_on_object_type_and_object_id", using: :btree
+  add_index "rent_manager_events", ["status"], name: "index_rent_manager_events_on_status", using: :btree
 
   create_table "rent_manager_stylist_units", force: :cascade do |t|
     t.integer  "stylist_id"

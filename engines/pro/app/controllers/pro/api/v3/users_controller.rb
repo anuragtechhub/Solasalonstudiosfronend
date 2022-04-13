@@ -1,5 +1,7 @@
 module Pro
   class Api::V3::UsersController < Api::V3::ApiController
+    skip_before_action :authorize_user_from_token!, only: %i[has_password]
+
     def current
       serializer = current_user.is_a?(Admin) ? Api::V3::AdminSerializer : Api::V3::UserSerializer
       respond_with(current_user, serializer: serializer, root: 'user')
@@ -16,6 +18,13 @@ module Pro
       else
         current_user.update!(update_params)
       end
+    end
+
+    def has_password
+      user = Stylist.find_by(email_address: params[:email]) if params[:email].present?
+      raise ActiveRecord::RecordNotFound if user.blank?
+
+      render json: { has_password: user.encrypted_password.present? }
     end
 
     private

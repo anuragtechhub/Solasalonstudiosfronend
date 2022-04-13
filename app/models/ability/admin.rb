@@ -27,7 +27,6 @@ module Ability
         can [:new, :read, :update, :export, :destroy], ::Article, location: { admin_id: admin.id }
         can [:new], ::Lease
         can [:new, :read, :update, :export, :destroy], ::Lease, location: { admin_id: admin.id }
-        can [:new], ::Stylist
         can [:read, :update, :export, :custom_export], ::Stylist, location: { admin_id: admin.id }
         can [:read, :update, :export, :destroy], ::Location, admin_id: admin.id
         can :read, ::Studio, location: { admin_id: admin.id }

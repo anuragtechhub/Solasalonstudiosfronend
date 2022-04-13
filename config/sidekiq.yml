@@ -8,6 +8,7 @@
   - reports
   - callfire
   - rent_manager
+  - rent_manager_webhook
   - notifications
   - [mailchimp, 1]
   - [hubspot, 1]
@@ -20,4 +21,5 @@
   mailchimp: 1
   hubspot: 1
   rent_manager: 1
+  rent_manager_webhook: 1
   notifications: 3

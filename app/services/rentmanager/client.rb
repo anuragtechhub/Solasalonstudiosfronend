@@ -43,8 +43,16 @@ module Rentmanager
       request(path: "/Units?pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
+    def tenant(location_id, tenant_id)
+      request(path: "/Tenants/#{tenant_id}?embeds=Contacts.PhoneNumbers", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    end
+
     def tenants(location_id, page = 1)
       request(path: "/Tenants?embeds=Contacts.PhoneNumbers&pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+    end
+
+    def tenants_save(location_id, body)
+      request(path: "/Tenants?embeds=Contacts,Contacts.PhoneNumbers", http_verb: :post, body: body, headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     def leases(location_id, page = 1)
@@ -83,7 +91,7 @@ module Rentmanager
         elsif no_access?(body)
           raise RmAccessDenied, resp.message
         else
-          raise RmOtherError, resp.message
+          raise RmOtherError, ("#{resp.message}. #{body['DeveloperMessage']}" rescue resp.message)
         end
       rescue *ALL_NET_HTTP_ERRORS => exception
         Rails.logger.error "#{exception.class.name}: #{exception.message}\n#{exception.backtrace.join("\n")}"

@@ -25,6 +25,15 @@ class ExternalId < ActiveRecord::Base
       objectable_type: 'Location',
     )&.location
   end
+
+  def self.find_stylist_by(rm_location_id, rm_tenant_id)
+    rent_manager.find_by(
+      rm_location_id: rm_location_id,
+      name: 'tenant_id',
+      value: rm_tenant_id,
+      objectable_type: 'Stylist',
+      )&.stylist
+  end
 end
 
 # == Schema Information

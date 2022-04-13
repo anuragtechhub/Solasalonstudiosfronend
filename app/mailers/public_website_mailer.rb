@@ -131,4 +131,10 @@ class PublicWebsiteMailer < ActionMailer::Base
 
     mail(to: stylist.email_address, from: "Jennie at Sola <jennie@solasalonstudios.com>", subject: 'Welcome to Sola')
   end
+
+  def password(stylist, password)
+    @password = password
+    @stylist = stylist
+    mail(to: stylist.email_address, from: ("Sola Salon Studios <hello@solasalonstudios.com>"), subject: 'Here’s Your Login Credentials')
+  end
 end

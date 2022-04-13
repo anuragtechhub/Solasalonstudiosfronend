@@ -146,6 +146,7 @@ Pro::Engine.routes.draw do
 			resources :tools, only: %i[index show]
 			resources :users, only: %i[update] do
 				collection do
+          get :has_password
 					get :current
 					get :shopify_url
 				end

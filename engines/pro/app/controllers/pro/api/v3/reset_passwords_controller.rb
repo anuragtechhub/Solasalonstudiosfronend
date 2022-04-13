@@ -7,7 +7,15 @@ module Pro
 
       user = get_user(params[:email])
 
-      if user
+      # Allow to set new password
+      if user.present? && user.encrypted_password.blank? && params[:password].present? && params[:password_confirmation].present?
+        user.update_attributes!({
+          password: params[:password],
+          password_confirmation: params[:password_confirmation],
+        })
+        user_sign_in(user)
+      elsif user.present?
+        # Or send reset password instructions
         reset_password = ResetPassword.create(userable: user)
         Pro::AppMailer.forgot_password(reset_password).deliver
         render json: { success: [t(:reset_password_sent_to, { email: reset_password.email })] }
