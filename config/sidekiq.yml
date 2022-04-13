@@ -20,6 +20,6 @@
   callfire: 5
   mailchimp: 1
   hubspot: 1
-  rent_manager: 1
+  rent_manager: 2
   rent_manager_webhook: 1
   notifications: 3
