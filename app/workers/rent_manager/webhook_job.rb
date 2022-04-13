@@ -54,7 +54,7 @@ module RentManager
 
       #password = SecureRandom.alphanumeric(6)
       #stylist_attributes.merge({ password: password, password_confirmation: password })
-      @stylist = Stylist.create!(stylist_attributes)
+      @stylist = Stylist.create!(stylist_attributes.merge({reserved: true}))
       @stylist.external_ids
              .rent_manager
              .find_or_initialize_by(name: :tenant_id, rm_location_id: @rm_location_id).tap do |e_id|
@@ -87,8 +87,7 @@ module RentManager
         phone_number: rm_tenant['Contacts'].first['PhoneNumbers']&.map{|pn| pn['StrippedPhoneNumber'] }&.first,
         rm_status: rm_tenant['Status'],
         location_id: location&.id,
-        from_webhook: true,
-        reserved: true
+        from_webhook: true
       }.compact
     end
   end
