@@ -22,15 +22,15 @@ module RentManager
 
       case event_type
       when 'Tenant_Edit', 'Tenant_Delete'
-        @stylist = ExternalId.find_stylist_by(@rm_location_id, @tenant_id)
-
-        return if @stylist.blank?
-
-        if event_type == 'Tenant_Delete'
-          stylist_inactive!
-        else
-          update_stylist
-        end
+        # @stylist = ExternalId.find_stylist_by(@rm_location_id, @tenant_id)
+        #
+        # return if @stylist.blank?
+        #
+        # if event_type == 'Tenant_Delete'
+        #   stylist_inactive!
+        # else
+        #   update_stylist
+        # end
       when 'Tenant_Add'
         create_stylist
       end
