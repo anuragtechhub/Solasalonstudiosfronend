@@ -167,6 +167,8 @@ $header-background-dark-color: #2E79B2; // #459DD3
       margin: 0;
       padding: 0;
       float: left;
+      font-size: 18px;
+      font-weight: 600;
 
       h4 {
         @include chalet_new_york;
@@ -187,7 +189,10 @@ $header-background-dark-color: #2E79B2; // #459DD3
         color: #FFF;
 
         &:hover, &:active {
-          color: #AFDFFF;
+          background-color: #F5F9FB;
+          border-radius: 5px;
+          transition: 0.3s;
+          color: #017EB7;
         }
       }
     }
