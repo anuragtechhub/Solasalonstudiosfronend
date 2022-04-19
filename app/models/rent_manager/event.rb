@@ -2,8 +2,8 @@ class RentManager::Event < ActiveRecord::Base
   belongs_to :object, polymorphic: true
 
   enum status: %w[queued processed failed]
-
-  after_commit :process, on: :create
+  # TMP disable 
+  # after_commit :process, on: :create
 
   private
 
