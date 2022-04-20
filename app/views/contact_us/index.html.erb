@@ -1,120 +1,85 @@
 <div class="contact-2019">
+  <div class="container content-container">
+    <a name="get-in-touch" id="get-in-touch"></a>
+    <div class="row">
+      <div class="col-md-6">
+        <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
+        <h2 class="start-the-convo"><%= t('page.contact.body1').html_safe %></h2>
 
-  <div class="hero-carousel owl-carousel owl-theme home-all">
-    <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;">
-          <% if I18n.locale.to_s.in?(%w[en en-CA]) %>
-            <%= link_to 'https://www.youtube.com/watch?v=ufd5R5uLY-Q', tabindex: 0, target: '_blank' do %>
-              <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/New-Year-Desktop-v1-R1.jpg", alt: "With Sola you can have it all.", :width => 2646, :height => 1006 %>
-            <% end %>
-          <% else %>
-            <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/ContactUs22.jpg", alt: "Reimagine Salon life. Imagine Sola.", :width => 2646, :height => 1006 %>
+        <% if I18n.locale == :en %>
+          <div>
+          <%= link_to :booknow_search, :class => 'button primary pill square contact-book-now' do %>
+            <%= t 'page.contact.book_now' %>
           <% end %>
-        </div>
-    </div>
-  </div>
-
-  <div class="hero-carousel owl-carousel owl-theme home-mobile">
-    <div class="item">
-        <div class="img-wrap" style="padding-bottom:39%;">
-          <% if I18n.locale.to_s.in?(%w[en en-CA]) %>
-            <%= link_to 'https://www.youtube.com/watch?v=ufd5R5uLY-Q', tabindex: 0, target: '_blank' do %>
-              <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/New-Year-Mobile-v1-R1.jpg", alt: "With Sola you can have it all." %>
-            <% end %>
-          <% else %>
-            <%= image_tag "https://d3p1kyyvw4qtho.cloudfront.net/own_your_salon/contact_us_header_mobile.jpg", alt: "Reimagine Salon life. Imagine Sola." %>
-          <% end %>
-        </div>
-    </div>
-  </div>
-
-<div class="container content-container">
-  <a name="get-in-touch" id="get-in-touch"></a>
-  <div class="row">
-    <div class="col-md-6">
-      <h1><%= t('page.contact.get_in_touch').html_safe %></h1>
-      <h2 class="start-the-convo"><%= t('page.contact.body1').html_safe %></h2>
-
-      <% if I18n.locale == :en %>
-        <div>
-        <%= link_to :booknow_search, :class => 'button primary pill square contact-book-now' do %>
-          <%= t 'page.contact.book_now' %>
+          </div>
         <% end %>
+
+        <%= link_to :salon_professionals, :class => 'button primary pill square contact-salon-professionals' do %>
+          <%= image_tag 'contact_salon_pro.png', alt: "Scissors and comb icon", :width => (68 / 2), :height => (76 / 2), :style => 'position: relative; left: -4px; margin-right: 10px; top: -1px' %>
+          <%= t 'page.contact.contact_a_beauty_professional' %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="contact-us-form-wrapper">
+
+
+            <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :phone, :how_can_we_help_you] %>
+
         </div>
-      <% end %>
-
-      <%= link_to :salon_professionals, :class => 'button primary pill square contact-salon-professionals' do %>
-        <%= image_tag 'contact_salon_pro.png', alt: "Scissors and comb icon", :width => (68 / 2), :height => (76 / 2), :style => 'position: relative; left: -4px; margin-right: 10px; top: -1px' %>
-        <%= t 'page.contact.contact_a_beauty_professional' %>
-      <% end %>
-    </div>
-
-    <div class="col-md-6">
-
-      <div class="contact-us-form-wrapper">
-
-
-          <%= render 'shared/contact_form_component', :required_fields => [:name, :email, :phone, :how_can_we_help_you] %>
 
       </div>
-
     </div>
   </div>
-</div>
 
-<div class="follow-us-on-social">
+  <div class="follow-us-on-social">
+    <div class="container">
+      <h2><%= t 'page.contact.follow_us_on_social' %></h2>
+      <ul class="social">
+        <% if I18n.locale == :en %>
+          <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank', 'aria-label' => 'instagram' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank', 'aria-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank', 'aria-label' => 'twitter' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank', 'aria-label' => 'pinterest' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+        <% else %>
+          <li><%= link_to 'https://instagram.com/solacanada/', :target => '_blank', 'aria-label' => 'instagram', :style => 'margin-right:0;' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
+          <li><%= link_to 'https://www.facebook.com/solacanada', :target => '_blank', 'aria-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
+          <li><%= link_to 'https://twitter.com/solacanada', :target => '_blank', 'aria-label' => 'twitter' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
+          <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank', 'aria-label' => 'pinterest' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ready-to-be-your-own-boss">
+    <div class="container">
+      <h1><%= t 'page.contact.ready_to_be_your_own_boss' %></h1>
+      <h2><%= t 'page.contact.sola_makes_it_easy' %></h2>
+    </div>
+  </div>
+
   <div class="container">
-    <h2><%= t 'page.contact.follow_us_on_social' %></h2>
-    <ul class="social">
-      <% if I18n.locale == :en %>
-        <li><%= link_to 'https://instagram.com/solasalons/', :target => '_blank', 'aria-label' => 'instagram' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-        <li><%= link_to 'https://www.facebook.com/solasalons', :target => '_blank', 'aria-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-        <li><%= link_to 'https://twitter.com/solasalons', :target => '_blank', 'aria-label' => 'twitter' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-        <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank', 'aria-label' => 'pinterest' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-      <% else %>
-        <li><%= link_to 'https://instagram.com/solacanada/', :target => '_blank', 'aria-label' => 'instagram', :style => 'margin-right:0;' do %><span class="ss-social-regular ss-instagram"></span><% end %></li>
-        <li><%= link_to 'https://www.facebook.com/solacanada', :target => '_blank', 'aria-label' => 'facebook' do %><span class="ss-social-regular ss-facebook"></span><% end %></li>
-        <li><%= link_to 'https://twitter.com/solacanada', :target => '_blank', 'aria-label' => 'twitter' do %><span class="ss-social-regular ss-twitter"></span><% end %></li>
-        <li><%= link_to 'https://www.pinterest.com/solasalons/', :target => '_blank', 'aria-label' => 'pinterest' do %><span class="ss-social-regular ss-pinterest"></span><% end %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="ready-to-be-your-own-boss">
-  <div class="container">
-    <h1><%= t 'page.contact.ready_to_be_your_own_boss' %></h1>
-    <h2><%= t 'page.contact.sola_makes_it_easy' %></h2>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row sola-home-office">
-    <div class="col-md-12">
-      <h1 class="chalet-new-york" style="color:#636363;font-size:44px;line-height:48px;margin:0;"><%= t('page.contact.are_you_interested').html_safe %></h1>
-    </div>
-  </div>
-
-  <div class="row franchising">
-    <div class="col-md-6">
-      <img src="https://d3p1kyyvw4qtho.cloudfront.net/contact-franchising.jpg" alt="3 men sit at the table" class="u-full-width" style="max-width:500px;margin-bottom:15px" />
+    <div class="row sola-home-office">
+      <div class="col-md-12">
+        <h1 class="chalet-new-york" style="color:#636363;font-size:44px;line-height:48px;margin:0;"><%= t('page.contact.are_you_interested').html_safe %></h1>
+      </div>
     </div>
 
-    <div class="col-md-6">
-      <div class="sola-address">
-        <p class="pl-1">300 Union Blvd, Suite 600<br />Lakewood, CO 80228</p>
-        <p class="pl-1"><a href="mailto:hello@solasalonstudios.com" class="pink-link">hello@solasalonstudios.com</a></p>
-        <p><%= link_to t('page.contact.contact_for_franchising_opportunities').html_safe, t('page.contact.contact_for_franchising_opportunities_url'), :class => 'button request-franchising-info primary pill ga-et', :style => 'width:auto', "data-type" => 'us-franchising', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Contact Us' %></p>
+    <div class="row franchising">
+      <div class="col-md-6">
+        <img src="https://d3p1kyyvw4qtho.cloudfront.net/contact-franchising.jpg" alt="3 men sit at the table" class="u-full-width" style="max-width:500px;margin-bottom:15px" />
+      </div>
+
+      <div class="col-md-6">
+        <div class="sola-address">
+          <p class="pl-1">300 Union Blvd, Suite 600<br />Lakewood, CO 80228</p>
+          <p class="pl-1"><a href="mailto:hello@solasalonstudios.com" class="pink-link">hello@solasalonstudios.com</a></p>
+          <p><%= link_to t('page.contact.contact_for_franchising_opportunities').html_safe, t('page.contact.contact_for_franchising_opportunities_url'), :class => 'button request-franchising-info primary pill ga-et', :style => 'width:auto', "data-type" => 'us-franchising', 'data-gcategory' => 'Franchising Link to SolaFranchising.com', 'data-gaction' => 'click', 'data-glabel' => 'Contact Us' %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-
 </div>
 
 <% @body_class = 'contact-us' %>

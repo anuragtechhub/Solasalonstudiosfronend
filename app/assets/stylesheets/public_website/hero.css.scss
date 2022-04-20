@@ -327,6 +327,12 @@
   }
 }
 
+.why-sola .hero-carousel {
+  .owl-item .img-wrap {
+    padding-bottom: 45%;
+  }
+}
+
 
 
 .hero-text {
@@ -527,6 +533,10 @@
   .owl-carousel .item .img-wrap {
     height: 520px;
   }
+
+  //.why-sola .owl-carousel .item .img-wrap {
+  //  height: 810px;
+  //}
 
   .owl-carousel .item .img-wrap img {
     height: 520px;
