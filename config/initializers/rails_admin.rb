@@ -768,7 +768,11 @@ RailsAdmin.config do |config|
             bindings[:controller]._current_user.franchisee != true
           end
         end
-        field :status
+        field :status do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
       end
       group :contact do
         field :general_contact_name do
@@ -788,9 +792,16 @@ RailsAdmin.config do |config|
           label 'Email Addresses For Stylist Website Approvals'
           help "Comma separated emails. If blank - emails will be send to location's owner."
         end
-        field :phone_number
+        field :phone_number do
+          visible do
+            bindings[:controller]._current_user.franchisee != true
+          end
+        end
       end
       group :address do
+        visible do
+          bindings[:controller]._current_user.franchisee != true
+        end
         field :address_1
         field :address_2
         field :city
