@@ -67,7 +67,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, :on => :create
   belongs_to :location
   before_save :update_computed_fields, :fix_url_name
-  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital#, :sync_with_rent_manager
+  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital
   after_commit :sync_with_hubspot
   # after_commit :sync_with_rent_manager, on: :update
 
@@ -562,58 +562,6 @@ class Stylist < ActiveRecord::Base
   rescue => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
-  end
-
-  def sync_with_rent_manager
-    if location && location.rent_manager_property_id.present? && location.rent_manager_location_id.present?
-      require 'rest-client'
-      p "Sync stylist with Rent Manager: rent_manager_property_id=#{location.rent_manager_property_id}, rent_manager_location_id=#{location.rent_manager_location_id}"
-
-      payload = {
-        "FirstName" => self.first_name,
-        "LastName" => self.last_name,
-        "PropertyID" => self.location.rent_manager_property_id
-      }
-
-      payload["TenantID"] = self.rent_manager_id if self.rent_manager_id.present?
-
-      if self.email_address.present?
-        payload["PrimaryContact"] = {
-          "FirstName" => self.first_name,
-          "LastName" => self.last_name,
-          "Email" => self.email_address,
-        }
-      end
-
-      p "payload=#{payload}"
-      p "url=https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants"
-
-      post_tenant_response = RestClient::Request.execute({
-        :headers => {"Content-Type" => "application/json"},
-        :method => :post,
-        #:content_type => 'application/json',
-        :url => "https://solasalon.apiservices.rentmanager.com/api/#{location.rent_manager_location_id}/tenants",
-        :user => 'solapro',
-        :password => '20FCEF93-AD4D-4C7D-9B78-BA2492098481',
-        :payload => [payload].to_json
-      })
-
-      post_tenant_response_json = JSON.parse(post_tenant_response)[0]
-      p "post_tenant_response_json=#{post_tenant_response_json}"
-      if post_tenant_response_json["TenantID"] && post_tenant_response_json["TenantID"] != self.rent_manager_id
-        p "let's store the rent_manager_id #{post_tenant_response_json["TenantID"]}"
-        self.rent_manager_id = post_tenant_response_json["TenantID"]
-        self.save
-      else
-        p "no rent_manager_id or same rent_manager_id, so no need to save #{post_tenant_response_json["TenantID"]}, #{self.rent_manager_id}"
-      end
-    else
-      p "Cannot sync stylist with Rent Manager because location doesn't have both rent_manager_property_id && rent_manager_location_id set."
-    end
-  rescue => e
-    Rollbar.error(e)
-    NewRelic::Agent.notice_error(e)
-    p "error sync_with_rent_manager #{e}"
   end
 
   def image_1_url
