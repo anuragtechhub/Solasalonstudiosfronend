@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToolCountry < ActiveRecord::Base
   belongs_to :tool
   belongs_to :country

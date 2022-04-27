@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class SavedSearch < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :admin
 
   validates :query, presence: true
-  validates :stylist_id, presence: true, if: proc { self.admin_id.blank? }
-  validates :admin_id, presence: true, if: proc { self.stylist_id.blank? }
+  validates :stylist_id, presence: true, if: proc { admin_id.blank? }
+  validates :admin_id, presence: true, if: proc { stylist_id.blank? }
 
   def self.save_for_user(user, query, kind)
     user.saved_searches.find_by(query: query, kind: kind)&.touch ||

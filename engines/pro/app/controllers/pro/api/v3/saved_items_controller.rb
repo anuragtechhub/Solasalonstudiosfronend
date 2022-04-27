@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::SavedItemsController < Api::V3::ApiController
     def index
@@ -15,7 +17,7 @@ module Pro
         saved_item = current_user.saved_items.create(item: item)
       end
 
-      respond_with :api, :v3, saved_item, include: "**"
+      respond_with :api, :v3, saved_item, include: '**'
     end
   end
 end

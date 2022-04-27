@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V1::BrandsController < ApiController
-
     def index
       country = get_userable_country(params[:email])
 
-      last_updated_brand = Brand.select(:updated_at).order(:updated_at => :desc).first
+      last_updated_brand = Brand.select(:updated_at).order(updated_at: :desc).first
       cache_key = "/api/v1/brands?country=#{country}&last_updated=#{last_updated_brand.updated_at}"
 
-      #p "cache_key=#{cache_key}"
+      # p "cache_key=#{cache_key}"
 
       json = Rails.cache.fetch(cache_key) do
         @brands = []
@@ -19,11 +20,11 @@ module Pro
         render_to_string(formats: 'json')
       end
 
-      render :json => json
+      render json: json
     end
 
     def get
-      render :json => Brand.find_by(:id => params[:id])
+      render json: Brand.find_by(id: params[:id])
     end
 
     def show
@@ -41,6 +42,5 @@ module Pro
       #   :tools => @tools
       # }
     end
-
   end
 end

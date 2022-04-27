@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BrandLink < ActiveRecord::Base
   belongs_to :brand
 

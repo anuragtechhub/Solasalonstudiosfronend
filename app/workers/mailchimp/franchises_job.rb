@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Mailchimp
   class FranchisesJob
     include Sidekiq::Worker
 
     sidekiq_options(
-      queue: :mailchimp,
-      retry: 3,
-      unique: :until_executed,
+      queue:             :mailchimp,
+      retry:             3,
+      unique:            :until_executed,
       unique_expiration: 3.days,
-      backtrace: true
+      backtrace:         true
     )
 
     def perform

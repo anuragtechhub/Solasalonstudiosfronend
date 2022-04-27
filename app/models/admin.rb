@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable #, :validatable
+         :recoverable, :rememberable, :trackable # , :validatable
 
   has_many :locations
 
@@ -29,69 +31,69 @@ class Admin < ActiveRecord::Base
 
   has_paper_trail
 
-  #validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
-  #validates :email, :uniqueness => true, if: 'email.present?'
-  validates :password, :presence => true, :on => :create, :reduce => true
-  #validates :password, :length => { :minimum => 7 }
+  # validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, :allow_blank => true
+  # validates :email, :uniqueness => true, if: 'email.present?'
+  validates :password, presence: true, on: :create, reduce: true
+  # validates :password, :length => { :minimum => 7 }
 
-  scope :with_callfire_credentials, -> {
+  scope :with_callfire_credentials, lambda {
     where.not(callfire_app_login: [nil, ''], callfire_app_password: [nil, ''])
   }
 
-  scope :with_mailchimp_credentials, -> {
+  scope :with_mailchimp_credentials, lambda {
     where.not(mailchimp_api_key: nil).where.not(mailchimp_api_key: '')
   }
 
   ### Sola Pro ###
   def device_token
-    if self.devices && self.devices.length > 0
-      return self.devices.order(:updated_at => :desc).first.token
+    if devices&.length&.positive?
+      devices.order(updated_at: :desc).first.token
     end
   end
 
   def notifications
-    user_notifications.where('dismiss_date IS NULL')
+    user_notifications.where(dismiss_date: nil)
   end
 
   def userable_email
-    return self.email if self.class.method_defined?('email') && self.email.present?
-    return self.email_address if self.class.method_defined?('email_address') && self.email_address.present?
+    return email if self.class.method_defined?('email') && email.present?
+    return email_address if self.class.method_defined?('email_address') && email_address.present?
   end
 
   def video_history_data
-    v_videos = VideoView.where(:id => VideoView.select('DISTINCT ON (video_id) *').where(:userable_id => self.id, :userable_type => self.class.name).map{|v| v.id}).order(:created_at)
+    v_videos = VideoView.where(id: VideoView.select('DISTINCT ON (video_id) *').where(userable_id: id, userable_type: self.class.name).map(&:id)).order(:created_at)
 
-    if v_videos && v_videos.size
-      return {
-        :total_pages => v_videos.size / 12 + (v_videos.size % 12 == 0 ? 0 : 1),
-        :videos => v_videos.limit(12).to_a.map{|v| v.video},
+    if v_videos&.size
+      {
+        total_pages: (v_videos.size / 12) + ((v_videos.size % 12).zero? ? 0 : 1),
+        videos:      v_videos.limit(12).to_a.map(&:video)
       }
     else
-      return {
-        :total_pages => 0,
-        :videos => []
+      {
+        total_pages: 0,
+        videos:      []
       }
     end
   end
 
   def watch_later_data
-    w_videos = WatchLater.where(:userable_id => self.id, :userable_type => self.class.name).order(:created_at)
+    w_videos = WatchLater.where(userable_id: id, userable_type: self.class.name).order(:created_at)
 
-    if w_videos && w_videos.size
-      return {
-        :total_pages => w_videos.size / 12 + (w_videos.size % 12 == 0 ? 0 : 1),
-        :videos => w_videos.limit(12).to_a.map{|v| v.video},
+    if w_videos&.size
+      {
+        total_pages: (w_videos.size / 12) + ((w_videos.size % 12).zero? ? 0 : 1),
+        videos:      w_videos.limit(12).to_a.map(&:video)
       }
     else
-      return {
-        :total_pages => 0,
-        :videos => []
+      {
+        total_pages: 0,
+        videos:      []
       }
     end
   end
 
   def watch_later_video_ids
-    self.watch_laters.pluck(:video_id)
+    watch_laters.pluck(:video_id)
   end
 
   def update_my_sola_website
@@ -103,20 +105,18 @@ class Admin < ActiveRecord::Base
       sola_pro_country_admin
     elsif locations && locations.size >= 1
       locations.first.country
+    elsif ENV.fetch('DEFAULT_LOCALE', nil) == 'pt-BR'
+      'BR'
     else
-      if ENV['DEFAULT_LOCALE'] == 'pt-BR'
-        return 'BR'
-      else
-        return 'US'
-      end
+      'US'
     end
   end
 
   def app_settings
     {
-      home_buttons: HomeButton.joins(:home_button_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position),
-      home_hero_images: HomeHeroImage.joins(:home_hero_image_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position),
-      side_menu_items: SideMenuItem.joins(:side_menu_item_countries, :countries).where('countries.code = ?', location_country).uniq.order(:position),
+      home_buttons:     HomeButton.joins(:home_button_countries, :countries).where(countries: { code: location_country }).uniq.order(:position),
+      home_hero_images: HomeHeroImage.joins(:home_hero_image_countries, :countries).where(countries: { code: location_country }).uniq.order(:position),
+      side_menu_items:  SideMenuItem.joins(:side_menu_item_countries, :countries).where(countries: { code: location_country }).uniq.order(:position)
     }
   end
 
@@ -144,13 +144,12 @@ class Admin < ActiveRecord::Base
     !!locations.first&.rent_manager_enabled
   end
 
-  def as_json(options={})
+  def as_json(_options = {})
     super(methods: %i[location_country notifications update_my_sola_website
-      video_history_data watch_later_video_ids watch_later_data app_settings
-      service_request_enabled rent_manager_enabled tags brands])
+                      video_history_data watch_later_video_ids watch_later_data app_settings
+                      service_request_enabled rent_manager_enabled tags brands])
   end
   ### End Sola Pro ###
-
 
   def self.current
     Thread.current[:admin]
@@ -165,14 +164,14 @@ class Admin < ActiveRecord::Base
   end
 
   def location_ids
-    locations.pluck(:id) if locations
+    locations&.ids
   end
 
   def forgot_password
-    self.forgot_password_key = "#{SecureRandom.urlsafe_base64(3).gsub(/-|_/, '')}#{SecureRandom.hex(3)}".split('').shuffle.join
-    if self.save
+    self.forgot_password_key = "#{SecureRandom.urlsafe_base64(3).gsub(/-|_/, '')}#{SecureRandom.hex(3)}".chars.shuffle.join
+    if save
       email = PublicWebsiteMailer.forgot_password(self)
-      if email && email.deliver
+      if email&.deliver
         true
       else
         false

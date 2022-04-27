@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ActiveRecord::Base
   include PgSearch::Model
   multisearchable against: [:stripped_name]

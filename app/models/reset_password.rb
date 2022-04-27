@@ -1,30 +1,28 @@
-class ResetPassword < ActiveRecord::Base
+# frozen_string_literal: true
 
+class ResetPassword < ActiveRecord::Base
   before_create :set_public_id
   belongs_to :userable, polymorphic: true
 
   def email
     if userable_type == 'User'
-      return userable.email
+      userable.email
     else
-      return userable.email_address
+      userable.email_address
     end
   end
 
   private
 
-  def generate_public_id
-    Time.now.to_i.to_s + "#{SecureRandom.urlsafe_base64(4).gsub(/-|_/, '')}#{SecureRandom.hex(4)}".split('').shuffle.join
-  end
-
-  def set_public_id
-    pid = generate_public_id
-    while ResetPassword.where(:public_id => pid).size > 0 do
-      pid = generate_public_id
+    def generate_public_id
+      Time.now.to_i.to_s + "#{SecureRandom.urlsafe_base64(4).gsub(/-|_/, '')}#{SecureRandom.hex(4)}".chars.shuffle.join
     end
-    self.public_id = pid
-  end
 
+    def set_public_id
+      pid = generate_public_id
+      pid = generate_public_id while ResetPassword.where(public_id: pid).size.positive?
+      self.public_id = pid
+    end
 end
 
 # == Schema Information

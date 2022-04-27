@@ -1,50 +1,50 @@
+# frozen_string_literal: true
+
 class StylistsController < PublicWebsiteController
   skip_before_action :auth_if_test, only: :show
-  skip_before_filter :verify_authenticity_token, only: :send_a_message
+  skip_before_action :verify_authenticity_token, only: :send_a_message
 
   def index
-    redirect_to(:locations, status: 301) and return if I18n.locale.to_s == 'pt-BR'
+    redirect_to(:locations, status: :moved_permanently) and return if I18n.locale.to_s == 'pt-BR'
   end
 
   def show
-    @stylist = Stylist.find_by(:url_name => params[:url_name])
+    @stylist = Stylist.find_by(url_name: params[:url_name])
 
     unless @stylist
-      @stylist = Stylist.find_by(:url_name => params[:url_name].split('_').join('-'))
-      redirect_to(show_salon_professional_path(:url_name => @stylist.url_name), :status => 301) and return if @stylist
+      @stylist = Stylist.find_by(url_name: params[:url_name].split('_').join('-'))
+      redirect_to(show_salon_professional_path(url_name: @stylist.url_name), status: :moved_permanently) and return if @stylist
     end
 
     if @stylist && (@stylist.reserved || @stylist.inactive?)
       redirect_to(salon_stylists_path(@stylist.location.url_name)) and return
     end
 
-    @location = @stylist.location if (@stylist && @stylist.location)
+    @location = @stylist.location if @stylist&.location
     if @location
       @lat = @location.latitude
       @lng = @location.longitude
       @zoom = 14
       @locations = [@location]
     end
-    redirect_to(:salon_professionals, :status => 301) and return unless @stylist && @location && @location.status == 'open'
+    redirect_to(:salon_professionals, status: :moved_permanently) and return unless @stylist && @location && @location.status == 'open'
   end
 
   def send_a_message
     if request.post?
       captcha_verified = verify_recaptcha
-      if (params[:name] && params[:name].present? && params[:email] && params[:email].present?) && captcha_verified
+      if (params[:name]&.present? && params[:email] && params[:email].present?) && captcha_verified
         # ensure it's not a banned IP address
         unless banned_ip_addresses.include? request.remote_ip
-          msg = StylistMessage.create(:name => params[:name], :email => params[:email], :phone => params[:phone], :message => params[:message], :stylist_id => params[:stylist_id])
+          msg = StylistMessage.create(name: params[:name], email: params[:email], phone: params[:phone], message: params[:message], stylist_id: params[:stylist_id])
           msg.visit = save_visit
           msg.save
         end
-        render :json => {:success => 'Thank you for your message!'}
+        render json: { success: 'Thank you for your message!' }
+      elsif captcha_verified
+        render json: { error: 'Please enter your name and email address' }
       else
-        if captcha_verified
-          render :json => {:error => 'Please enter your name and email address'}
-        else
-          render :json => {:error => 'No robots allowed. Please check the box to prove you are a human.'}
-        end
+        render json: { error: 'No robots allowed. Please check the box to prove you are a human.' }
       end
     end
   end
@@ -84,28 +84,26 @@ class StylistsController < PublicWebsiteController
   end
 
   def redirect
-    @stylist = Stylist.find_by(:url_name => params[:url_name])
-    @location = @stylist.location if (@stylist && @stylist.location)
+    @stylist = Stylist.find_by(url_name: params[:url_name])
+    @location = @stylist.location if @stylist&.location
     if @stylist && @location
-      redirect_to show_salon_professional_path(@stylist).gsub(/\./, ''), :status => 301
+      redirect_to show_salon_professional_path(@stylist).gsub(/\./, ''), status: :moved_permanently
     else
-      redirect_to :salon_professionals, :status => 301
+      redirect_to :salon_professionals, status: :moved_permanently
     end
   end
 
   private
 
-  def save_visit
-    visit = Visit.new
+    def save_visit
+      visit = Visit.new
 
-    visit.uuid = request.uuid
-    visit.ip_address = request.remote_ip
-    visit.user_agent_string = request.env['HTTP_USER_AGENT']
+      visit.uuid = request.uuid
+      visit.ip_address = request.remote_ip
+      visit.user_agent_string = request.env['HTTP_USER_AGENT']
 
-    if visit.save
-      return visit
-    else
-      return nil
+      if visit.save
+        visit
+      end
     end
-  end
 end

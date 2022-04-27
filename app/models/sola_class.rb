@@ -1,37 +1,38 @@
+# frozen_string_literal: true
+
 class SolaClass < ActiveRecord::Base
   include PgSearch::Model
 
-  pg_search_scope :search, against: [:title, :description], associated_against: {
+  pg_search_scope :search, against: %i[title description], associated_against: {
     category: [:name]
   }
-  multisearchable against: [:stripped_title], if: lambda { |record| record.end_date.present? && record.end_date >= Date.current }
+  multisearchable against: [:stripped_title], if: ->(record) { record.end_date.present? && record.end_date >= Date.current }
 
-
-  after_save :touch_brands
-  after_create :send_notifications
-  before_create :save_admin
   before_validation :auto_set_country, :save_region
+  before_create :save_admin
+  after_create :send_notifications
+  after_save :touch_brands
 
   belongs_to :sola_class_category
   belongs_to :sola_class_region
 
   belongs_to :category
-  #belongs_to :brand
+  # belongs_to :brand
   belongs_to :admin
   belongs_to :video
 
-  belongs_to :class_image, class_name: 'ClassImage', primary_key: :id, foreign_key: :class_image_id, inverse_of: :sola_classes
+  belongs_to :class_image, class_name: 'ClassImage', primary_key: :id, inverse_of: :sola_classes
 
   has_and_belongs_to_many :brands
 
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
 
-  has_many :notifications, :dependent => :destroy
+  has_many :notifications, dependent: :destroy
 
   has_many :sola_class_countries
-  has_many :countries, :through => :sola_class_countries
-  has_many :events, :dependent => :destroy
+  has_many :countries, through: :sola_class_countries
+  has_many :events, dependent: :destroy
 
   # after_validation :geocode, :reverse_geocode
   # geocoded_by :city_state
@@ -44,28 +45,29 @@ class SolaClass < ActiveRecord::Base
 
   has_paper_trail
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-  attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '460x280#', small: '300x180#' }, s3_protocol: :https
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+  attr_accessor :delete_image, :delete_file
 
-  has_attached_file :file, :path => ":class/:attachment/:id_partition/:style/:filename"
-  validates_attachment :file, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "text/plain", "text/html", "application/msword", "application/vnd.ms-works", "application/rtf", "application/pdf", "application/vnd.ms-powerpoint", "application/x-compress", "application/x-compressed", "application/x-gzip", "application/zip", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv", "text/tab-separated-values"] }
-  attr_accessor :delete_file
-  before_validation { self.file.destroy if self.delete_file == '1' }
+  before_validation { image.destroy if delete_image == '1' }
 
-  validates :title, :length => { :maximum => 35 }, :presence => true
-  validates :city, :length => { :maximum => 40 }, :presence => true, :if => :not_webinars
-  validates :state, :length => { :maximum => 40 }, :presence => true, :if => :not_webinars
-  validates :sola_class_region, :presence => true
-  validates :description, :length => { :maximum => 400 }, :presence => true
-  validates :cost, :length => { :maximum => 40 }
-  validates :location, :length => { :maximum => 40 }, :presence => true, :if => :not_webinars
-  validates :link_url, :url => true
-  validates :start_date, :presence => true
-  validates :end_date, :presence => true
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename'
+  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
+
+  before_validation { file.destroy if delete_file == '1' }
+
+  validates :title, length: { maximum: 35 }, presence: true
+  validates :city, length: { maximum: 40 }, presence: true, if: :not_webinars
+  validates :state, length: { maximum: 40 }, presence: true, if: :not_webinars
+  validates :sola_class_region, presence: true
+  validates :description, length: { maximum: 400 }, presence: true
+  validates :cost, length: { maximum: 40 }
+  validates :location, length: { maximum: 40 }, presence: true, if: :not_webinars
+  validates :link_url, url: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
   validate :end_date_is_after_start_date
-  #validates :countries, :presence => true
+  # validates :countries, :presence => true
 
   scope :upcoming, -> { where('end_date >= ?', Date.current) }
 
@@ -78,10 +80,10 @@ class SolaClass < ActiveRecord::Base
   end
 
   def label
-    "#{self.title} (#{self.city})"
+    "#{title} (#{city})"
   end
 
-  def abbreviation_to_state(abbrev=nil)
+  def abbreviation_to_state(abbrev = nil)
     return nil unless abbrev
 
     abbreviations = {
@@ -143,7 +145,7 @@ class SolaClass < ActiveRecord::Base
       'WV' => 'West Virginia',
       'WI' => 'Wisconsin',
       'WY' => 'Wyoming',
-      'ON' => 'Ontario',
+      'ON' => 'Ontario'
     }
 
     abbreviations[abbrev]
@@ -214,19 +216,19 @@ class SolaClass < ActiveRecord::Base
   end
 
   def category
-    self.sola_class_category
+    sola_class_category
   end
 
   def region
-    self.sola_class_region
+    sola_class_region
   end
 
   def brand_name
-    brand.name if brand
+    brand&.name
   end
 
   def brand_id
-    brand.id if brand
+    brand&.id
   end
 
   def image_url
@@ -234,66 +236,63 @@ class SolaClass < ActiveRecord::Base
   end
 
   def file_url
-    file.url if file && file.present?
+    file.url if file&.present?
   end
 
   def brand
-    self.brands.first if self.brands && self.brands.size > 0
+    brands.first if brands&.size&.positive?
   end
 
-  def as_json(options={})
-    super(:except => [:brand, :image, :file], :methods => [:brand_id, :brand_name, :category, :region, :file_url, :link_url, :video])
+  def as_json(_options = {})
+    super(except: %i[brand image file], methods: %i[brand_id brand_name category region file_url link_url video])
   end
 
   private
 
-  def auto_set_country
-    if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
-      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-      if country
-        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+    def auto_set_country
+      if Admin&.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
+        country = Country.where(code: Admin.current.sola_pro_country_admin)
+        if country && countries.none? { |c| c.code == Admin.current.sola_pro_country_admin }
+          countries << country
+        end
       end
     end
-  end
 
-  def not_webinars
-    self.sola_class_region && self.sola_class_region.name != 'Webinars' && self.sola_class_region.name != 'Past Webinars'
-  end
-
-  def send_notifications
-    Pro::AppMailer.new_class_or_event(self).deliver
-  end
-
-  def touch_brands
-    self.brands.each do |brand|
-      brand.touch
-    end
-  end
-
-  def save_region
-    if self.state.length == 2
-      self.state = abbreviation_to_state(self.state.upcase)
+    def not_webinars
+      sola_class_region && sola_class_region.name != 'Webinars' && sola_class_region.name != 'Past Webinars'
     end
 
-    p "save_region self.state=#{self.state}"
-    region_state = SolaClassRegionState.where('LOWER(state) = ?', self.state.downcase).first
-    p "region_state=#{region_state}"
-    self.sola_class_region = region_state.sola_class_region if region_state && region_state.sola_class_region
-    p "self.sola_class_region=#{self.sola_class_region.inspect}"
-  end
-
-  def save_admin
-    if Admin && Admin.current && Admin.current.id
-      self.admin_id = Admin.current.id
+    def send_notifications
+      Pro::AppMailer.new_class_or_event(self).deliver
     end
-  end
 
-  def end_date_is_after_start_date
-    if end_date && start_date && end_date < start_date
-      errors[:base] << "End date cannot be before the start date"
+    def touch_brands
+      brands.each(&:touch)
     end
-  end
 
+    def save_region
+      if state.length == 2
+        self.state = abbreviation_to_state(state.upcase)
+      end
+
+      Rails.logger.debug { "save_region self.state=#{state}" }
+      region_state = SolaClassRegionState.where('LOWER(state) = ?', state.downcase).first
+      Rails.logger.debug { "region_state=#{region_state}" }
+      self.sola_class_region = region_state.sola_class_region if region_state&.sola_class_region
+      Rails.logger.debug { "self.sola_class_region=#{sola_class_region.inspect}" }
+    end
+
+    def save_admin
+      if Admin&.current && Admin.current.id
+        self.admin_id = Admin.current.id
+      end
+    end
+
+    def end_date_is_after_start_date
+      if end_date && start_date && end_date < start_date
+        errors[:base] << 'End date cannot be before the start date'
+      end
+    end
 end
 
 # == Schema Information

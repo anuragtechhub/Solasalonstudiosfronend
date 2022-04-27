@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VideoCountry < ActiveRecord::Base
   belongs_to :video
   belongs_to :country

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::NotificationsController < Api::V3::ApiController
     def index
@@ -11,18 +13,18 @@ module Pro
     end
 
     def destroy
-      current_user.
-        user_notifications.
-        find(params[:id]).
-        update_attribute(:dismiss_date, DateTime.current)
+      current_user
+        .user_notifications
+        .find(params[:id])
+        .update_attribute(:dismiss_date, DateTime.current)
 
       render json: { success: true }
     end
 
     private
 
-    def device_params
-      params.require(:device).permit(:uuid, :token, :name, :platform, :app_version)
-    end
+      def device_params
+        params.require(:device).permit(:uuid, :token, :name, :platform, :app_version)
+      end
   end
 end

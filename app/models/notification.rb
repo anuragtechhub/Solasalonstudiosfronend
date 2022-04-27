@@ -1,5 +1,6 @@
-class Notification < ActiveRecord::Base
+# frozen_string_literal: true
 
+class Notification < ActiveRecord::Base
   belongs_to :blog
   belongs_to :brand
   belongs_to :deal
@@ -14,7 +15,7 @@ class Notification < ActiveRecord::Base
   has_many :notification_recipients
   has_many :stylists, through: :notification_recipients
 
-  before_validation { self.send_at = Time.current + 5.second if self.send_at.blank? }
+  before_validation { self.send_at = 5.seconds.from_now if send_at.blank? }
 
   validates :title, presence: true, length: { maximum: 65 }
   validates :notification_text, presence: true, length: { maximum: 235 }

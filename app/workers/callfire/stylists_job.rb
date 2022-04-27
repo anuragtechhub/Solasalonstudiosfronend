@@ -1,19 +1,20 @@
+# frozen_string_literal: true
+
 module Callfire
   class StylistsJob < ::Callfire::MainJob
-
     def perform
       http_client.start do |http|
-        #get all contacts from the list
+        # get all contacts from the list
         req = Net::HTTP::Get.new('/api/1.1/rest/contact?MaxResults=10000&ContactListId=658274003')
-        req.basic_auth ENV['CALLFIRE_USERNAME'], ENV['CALLFIRE_PASSWORD']
+        req.basic_auth ENV.fetch('CALLFIRE_USERNAME', nil), ENV.fetch('CALLFIRE_PASSWORD', nil)
 
         doc = Nokogiri::XML(http.request(req).body)
-        contact_ids = doc.css("Contact").map{ |c| c.attr('id') }
+        contact_ids = doc.css('Contact').map { |c| c.attr('id') }
 
         # delete all contacts from the list
         req = Net::HTTP::Delete.new('/api/1.1/rest/contact')
-        req.set_form_data({'ContactId' => contact_ids.join(' ')})
-        req.basic_auth ENV['CALLFIRE_USERNAME'], ENV['CALLFIRE_PASSWORD']
+        req.set_form_data({ 'ContactId' => contact_ids.join(' ') })
+        req.basic_auth ENV.fetch('CALLFIRE_USERNAME', nil), ENV.fetch('CALLFIRE_PASSWORD', nil)
         http.request(req)
 
         # re-add all active stylists to list
@@ -29,11 +30,10 @@ module Callfire
 
           req = Net::HTTP::Post.new('/api/1.1/rest/contact/list/658274003/add')
           req.set_form_data(batch)
-          req.basic_auth ENV['CALLFIRE_USERNAME'], ENV['CALLFIRE_PASSWORD']
+          req.basic_auth ENV.fetch('CALLFIRE_USERNAME', nil), ENV.fetch('CALLFIRE_PASSWORD', nil)
           http.request(req)
         end
       end
-
     end
   end
 end

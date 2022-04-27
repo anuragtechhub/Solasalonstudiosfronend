@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SavedItem < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :admin

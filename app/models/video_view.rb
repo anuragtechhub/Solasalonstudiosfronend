@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class VideoView < ActiveRecord::Base
   belongs_to :video
   belongs_to :userable, polymorphic: true
 
-  def as_json(options={})
-    super(:methods => [:video])
+  def as_json(_options = {})
+    super(methods: [:video])
   end
 end
 

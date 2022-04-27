@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class Studio < ActiveRecord::Base
-  
   has_paper_trail
 
   before_save :set_location_name
@@ -7,8 +8,8 @@ class Studio < ActiveRecord::Base
   belongs_to :stylist
 
   def title
-    if self.location_name.present?
-      "#{self.location_name}: #{self.name}"
+    if location_name.present?
+      "#{location_name}: #{name}"
     else
       name
     end
@@ -16,10 +17,9 @@ class Studio < ActiveRecord::Base
 
   private
 
-  def set_location_name
-    self.location_name = self.location.name if self.location
-  end
-
+    def set_location_name
+      self.location_name = location.name if location
+    end
 end
 
 # == Schema Information

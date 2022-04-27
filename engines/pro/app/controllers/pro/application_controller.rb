@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Pro
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    def get_user(email=nil, user_only: false)
+    def get_user(email = nil, user_only: false)
       return if email.blank?
 
       Stylist.open.order(:id).find_by(email_address: email) ||

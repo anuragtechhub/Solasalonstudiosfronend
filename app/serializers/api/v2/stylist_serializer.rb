@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V2::StylistSerializer < ApplicationSerializer
   attributes :id, :name, :email_address,
              :phone_number, :biography, :studio_number,

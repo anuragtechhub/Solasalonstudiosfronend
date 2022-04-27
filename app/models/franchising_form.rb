@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class FranchisingForm < ActiveRecord::Base
   validates :first_name, :last_name, :email_address, :phone_number, :city, :state, :liquid_capital, presence: true
   validate :multi_unit_operator_present
   validates :country, inclusion: { in: %w[usa ca] }
-  validates :state, inclusion: { in: USA_STATES.values }, if: proc { self.country.to_s == 'usa' }
-  validates :state, inclusion: { in: CA_STATES.values }, if: proc { self.country.to_s == 'ca' }
+  validates :state, inclusion: { in: USA_STATES.values }, if: proc { country.to_s == 'usa' }
+  validates :state, inclusion: { in: CA_STATES.values }, if: proc { country.to_s == 'ca' }
 
   after_create :send_email
 
@@ -11,15 +13,15 @@ class FranchisingForm < ActiveRecord::Base
   scope :ca, -> { where(country: 'ca') }
 
   def send_email
-    p "FranchisingForm after create, send email!"
+    Rails.logger.debug 'FranchisingForm after create, send email!'
     Franchising::ApplicationMailer.franchising_form(self).deliver_later
   end
 
   private
 
-  def multi_unit_operator_present
-    errors.add(:base, 'Multi-unit franchise operator can\'t be blank') unless (multi_unit_operator == true || multi_unit_operator == false)
-  end
+    def multi_unit_operator_present
+      errors.add(:base, 'Multi-unit franchise operator can\'t be blank') unless multi_unit_operator == true || multi_unit_operator == false
+    end
 end
 
 # == Schema Information

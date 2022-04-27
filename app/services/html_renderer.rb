@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 ####### html renderer #######
 
 class HTMLRenderer
   include RenderAnywhere
 
-  def build_html(template='reports/test', locals={})
-    html = render :template => template,
-                  :layout => 'reports',
-                  :locals => locals
-    html
+  def build_html(template = 'reports/test', locals = {})
+    render template: template,
+           layout:   'reports',
+           locals:   locals
   end
+
   # Include an additional helper
   # If being used in a rake task, you may need to require the file(s)
   # Ex: require Rails.root.join('app', 'helpers', 'blog_pages_helper')
@@ -30,6 +32,6 @@ class HTMLRenderer
 
   # If you define custom RenderingController, don't forget to override this method
   def rendering_controller
-    @rendering_controller ||= self.class.const_get("RenderingController").new
+    @rendering_controller ||= self.class.const_get('RenderingController').new
   end
 end

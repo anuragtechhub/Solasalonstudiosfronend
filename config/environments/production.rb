@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Solasalonstudios::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -24,25 +26,24 @@ Solasalonstudios::Application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = Uglifier.new(harmony: true)
-  config.assets.compile = false #true
+  config.assets.compile = false # true
   config.serve_static_files = true
   config.assets.digest = true
   config.assets.enabled = true
   config.assets.initialize_on_precompile = false
-  config.static_cache_control = "public, max-age=31536000"
-  config.action_controller.asset_host = ENV['ASSET_HOST']
+  config.static_cache_control = 'public, max-age=31536000'
+  config.action_controller.asset_host = ENV.fetch('ASSET_HOST', nil)
 
   # config.assets.css_compressor = :sass
 
   config.cache_store = :dalli_store,
-                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                    {username: ENV["MEMCACHIER_USERNAME"],
-                     password: ENV["MEMCACHIER_PASSWORD"],
-                     failover: true,
-                     socket_timeout: 1.5,
-                     socket_failure_delay: 0.2,
-                     compress: true
-                    }
+                       (ENV.fetch('MEMCACHIER_SERVERS', nil) || '').split(','),
+                       { username:             ENV.fetch('MEMCACHIER_USERNAME', nil),
+                         password:             ENV.fetch('MEMCACHIER_PASSWORD', nil),
+                         failover:             true,
+                         socket_timeout:       1.5,
+                         socket_failure_delay: 0.2,
+                         compress:             true }
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.2'
@@ -78,13 +79,13 @@ Solasalonstudios::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
-    :user_name => 'apikey',
-    :password => ENV['SENDGRID_API_KEY'],
-    :domain => 'solasalonstudios.com',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    user_name:            'apikey',
+    password:             ENV.fetch('SENDGRID_API_KEY', nil),
+    domain:               'solasalonstudios.com',
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    authentication:       :plain,
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

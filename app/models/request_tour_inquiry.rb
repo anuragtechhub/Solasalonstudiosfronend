@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RequestTourInquiry < ActiveRecord::Base
   has_paper_trail
 
@@ -22,7 +24,7 @@ class RequestTourInquiry < ActiveRecord::Base
   end
 
   def contact_preference_enum
-    [['Phone', 'phone'], ['Email', 'email'], ['Text', 'text']]
+    [%w[Phone phone], %w[Email email], %w[Text text]]
   end
 
   def newsletter_enum
@@ -34,30 +36,31 @@ class RequestTourInquiry < ActiveRecord::Base
   end
 
   def get_cms_lead_timestamp
-    rti = RequestTourInquiry.where(email: self.email).order(created_at: :desc).first
-    rti.present? ? rti.created_at : (self.created_at || Time.current)
+    rti = RequestTourInquiry.where(email: email).order(created_at: :desc).first
+    rti.present? ? rti.created_at : (created_at || Time.current)
   end
 
   def sync_with_hubspot
-    ::Hubspot::RequestTourJob.perform_async(self.id)
+    ::Hubspot::RequestTourJob.perform_async(id)
   end
 
   def send_notification_email
     unless i_would_like_to_be_contacted == false && send_email_to_prospect.to_s.in?(%w[modern_salon_2019_05 financial_guide])
       PublicWebsiteMailer.request_a_tour(self).deliver_later
     end
-  rescue => e
+  rescue StandardError => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
 
   def send_prospect_email
-    if send_email_to_prospect == 'modern_salon_2019_05'
+    case send_email_to_prospect
+    when 'modern_salon_2019_05'
       PublicWebsiteMailer.modern_salon_2019_05(self).deliver_later
-    elsif send_email_to_prospect == 'financial_guide'
+    when 'financial_guide'
       PublicWebsiteMailer.financial_guide(self).deliver_later
     end
-  rescue => e
+  rescue StandardError => e
     Rollbar.error(e)
     NewRelic::Agent.notice_error(e)
   end
@@ -72,23 +75,23 @@ class RequestTourInquiry < ActiveRecord::Base
 
   private
 
-  def process_email
-    self.email = self.email.gsub(/\s/, '')
-  end
+    def process_email
+      self.email = email.gsub(/\s/, '')
+    end
 
-  def process_utm
-    return if request_url.blank?
+    def process_utm
+      return if request_url.blank?
 
-    uri = URI::parse(request_url)
-    return if uri.query.blank?
+      uri = URI.parse(request_url)
+      return if uri.query.blank?
 
-    self.utm_source = CGI::parse(uri.query)["utm_source"][0]
-    self.utm_medium = CGI::parse(uri.query)["utm_medium"][0]
-    self.utm_campaign = CGI::parse(uri.query)["utm_campaign"][0]
-    self.utm_content = CGI::parse(uri.query)["utm_content"][0]
-  rescue
-    return
-  end
+      self.utm_source = CGI.parse(uri.query)['utm_source'][0]
+      self.utm_medium = CGI.parse(uri.query)['utm_medium'][0]
+      self.utm_campaign = CGI.parse(uri.query)['utm_campaign'][0]
+      self.utm_content = CGI.parse(uri.query)['utm_content'][0]
+    rescue StandardError
+      nil
+    end
 end
 
 # == Schema Information

@@ -1,32 +1,34 @@
-class MySolaImage < ActiveRecord::Base
+# frozen_string_literal: true
 
+class MySolaImage < ActiveRecord::Base
   has_paper_trail
 
   include Publically
 
   scope :completed, -> { where("statement <> '' AND statement_variant IS NOT NULL AND image_file_name IS NOT NULL AND generated_image_file_name IS NOT NULL AND(name IS NOT NULL OR instagram_handle IS NOT NULL)") }
 
-  before_save :set_approved_at, :if => :was_just_approved
+  before_save :set_approved_at, if: :was_just_approved
 
-  has_attached_file :image, :styles => { :original => '1080x>' }, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+  has_attached_file :image, styles: { original: '1080x>' }, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
+  attr_accessor :delete_image, :delete_generated_image
 
-  has_attached_file :generated_image, :styles => { :funsize => '400x>' }, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :generated_image, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_generated_image
-  before_validation { self.generated_image.destroy if self.delete_generated_image == '1' }
+  before_validation { image.destroy if delete_image == '1' }
+
+  has_attached_file :generated_image, styles: { funsize: '400x>' }, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :generated_image, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { generated_image.destroy if delete_generated_image == '1' }
 
   def approved_enum
     [['Yes', true], ['No', false]]
   end
 
-  def as_json(options={})
-    super(:methods => [:generated_image_url, :original_image_url, :share_url],
-      :except => [:created_at, :updated_at, :approved, :approved_at,
-        :generated_image_file_name, :generated_image_content_type, :generated_image_file_size, :generated_image_updated_at,
-        :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :statement, :statement_variant]).merge(options)
+  def as_json(options = {})
+    super(methods: %i[generated_image_url original_image_url share_url],
+          except:  %i[created_at updated_at approved approved_at
+                      generated_image_file_name generated_image_content_type generated_image_file_size generated_image_updated_at
+                      image_file_name image_content_type image_file_size image_updated_at statement statement_variant]).merge(options)
   end
 
   def generated_image_url
@@ -42,9 +44,10 @@ class MySolaImage < ActiveRecord::Base
   end
 
   def statement_text
-    if statement_variant == 'mysola_is'
+    case statement_variant
+    when 'mysola_is'
       "#MySola is my #{statement}"
-    elsif statement_variant == 'i_feel'
+    when 'i_feel'
       "I feel #{statement} in #MySola"
     end
   end
@@ -55,14 +58,13 @@ class MySolaImage < ActiveRecord::Base
 
   private
 
-  def set_approved_at
-    approved_at = DateTime.now
-  end
+    def set_approved_at
+      approved_at = DateTime.now
+    end
 
-  def was_just_approved
-    approved == true && approved_was == false
-  end
-
+    def was_just_approved
+      approved == true && approved_was == false
+    end
 end
 
 # == Schema Information

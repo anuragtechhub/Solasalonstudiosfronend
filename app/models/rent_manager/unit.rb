@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RentManager::Unit < ActiveRecord::Base
   belongs_to :location
 

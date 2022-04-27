@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 class BrazilController < PublicWebsiteController
-  
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def sejasola
-    if request.domain == 'solasalonstudios.ca' || request.domain == 'solasalonstudios.com' #|| request.domain == 'localhost'
-      redirect_to :home, :status => 301
+    if request.domain == 'solasalonstudios.ca' || request.domain == 'solasalonstudios.com' # || request.domain == 'localhost'
+      redirect_to :home, status: :moved_permanently
     end
 
     if request.post?
-      p "we gotta post! #{params[:nome]}, #{params[:email]}, #{params[:telefone]}"
-      SejaSola.create(:nome => params[:nome], :email => params[:email], :telefone => params[:telefone], :area_de_atuacao => params[:area_de_atuacao])
+      Rails.logger.debug { "we gotta post! #{params[:nome]}, #{params[:email]}, #{params[:telefone]}" }
+      SejaSola.create(nome: params[:nome], email: params[:email], telefone: params[:telefone], area_de_atuacao: params[:area_de_atuacao])
       PublicWebsiteMailer.sejasola(params[:nome], params[:email], params[:telefone], params[:area_de_atuacao]).deliver
     end
     # elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
@@ -17,23 +18,20 @@ class BrazilController < PublicWebsiteController
     # else
     #   I18n.locale = 'en'
     # end
-    render :layout => false
+    render layout: false
   end
 
   private
 
-  def save_visit
-    visit = Visit.new
+    def save_visit
+      visit = Visit.new
 
-    visit.uuid = request.uuid
-    visit.ip_address = request.remote_ip
-    visit.user_agent_string = request.env['HTTP_USER_AGENT']
+      visit.uuid = request.uuid
+      visit.ip_address = request.remote_ip
+      visit.user_agent_string = request.env['HTTP_USER_AGENT']
 
-    if visit.save
-      return visit
-    else
-      return nil
+      if visit.save
+        visit
+      end
     end
-  end
-
 end

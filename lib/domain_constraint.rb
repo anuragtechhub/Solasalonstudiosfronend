@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class DomainConstraint
   def initialize(domains)
-    @domains = (domains || "").split(",").map(&:strip)
+    @domains = (domains || '').split(',').map(&:strip)
   end
 
   def matches?(request)
-    @domains.present? && @domains.any? { |o| /#{o}/ =~ request.host}
+    @domains.present? && @domains.any? { |o| /#{o}/ =~ request.host }
   end
 end

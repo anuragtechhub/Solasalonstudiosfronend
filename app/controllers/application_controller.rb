@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -9,10 +11,10 @@ class ApplicationController < ActionController::Base
     !Rails.env.development?
   end
 
-  around_filter :do_with_current_admin
+  around_action :do_with_current_admin
 
   def do_with_current_admin
-    Thread.current[:current_admin] = self.current_admin
+    Thread.current[:current_admin] = current_admin
     begin
       yield
     ensure
@@ -27,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
     asse = Rails.application.assets_manifest.assets[name]
     return nil unless asse
-    return File.binread(File.join(Rails.application.assets_manifest.dir, asse))
-  end
 
+    File.binread(File.join(Rails.application.assets_manifest.dir, asse))
+  end
 end

@@ -1,8 +1,9 @@
-class FranchisingRequest < ActiveRecord::Base
+# frozen_string_literal: true
 
+class FranchisingRequest < ActiveRecord::Base
   has_paper_trail
-  
- 	#after_create :send_notification_email
+
+  # after_create :send_notification_email
   belongs_to :visit
 
   # private
@@ -11,7 +12,6 @@ class FranchisingRequest < ActiveRecord::Base
   #   email = PublicWebsiteMailer.franchising_request(self)
   #   email.deliver if email
   # end
-
 end
 
 # == Schema Information

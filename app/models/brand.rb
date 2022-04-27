@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Brand < ActiveRecord::Base
   include PgSearch::Model
   multisearchable against: [:stripped_name]
@@ -19,24 +21,25 @@ class Brand < ActiveRecord::Base
 
   has_paper_trail
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '460x280#', small: '300x180#' }, s3_protocol: :https
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
   attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+
+  before_validation { image.destroy if delete_image == '1' }
 
   validates :name, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :countries, presence: true
 
-  scope :with_content, -> {
+  scope :with_content, lambda {
     sql = Arel.sql(<<-SQL.squish)
       EXISTS (SELECT deals.id FROM deals WHERE deals.brand_id = brands.id)
       OR
       EXISTS (SELECT tools.id FROM tools WHERE tools.brand_id = brands.id)
-      OR 
+      OR#{' '}
       EXISTS (SELECT videos.id FROM videos WHERE videos.brand_id = brands.id)
       OR
       EXISTS (
-        SELECT sola_classes.id 
+        SELECT sola_classes.id#{' '}
         FROM sola_classes
         INNER JOIN brands_sola_classes ON sola_classes.id = brands_sola_classes.sola_class_id AND brands_sola_classes.brand_id = brands.id
         WHERE sola_classes.end_date >= CURRENT_DATE
@@ -47,7 +50,7 @@ class Brand < ActiveRecord::Base
   }
 
   def display_name
-    "#{name} (#{countries && countries.size > 0 ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
+    "#{name} (#{countries&.size&.positive? ? countries.pluck(:name).join(', ') : 'Not assigned to any countries'})"
   end
 
   def to_param
@@ -67,19 +70,19 @@ class Brand < ActiveRecord::Base
   end
 
   def introduction_video
-    videos.where('is_introduction = ?', true).first
+    videos.where(is_introduction: true).first
   end
 
   def upcoming_classes
-    sola_classes.where('end_date >= ?', Date.today).order(:title => :asc, :end_date => :asc, :start_date => :asc) if sola_classes
+    sola_classes&.where('end_date >= ?', Date.today)&.order(title: :asc, end_date: :asc, start_date: :asc)
   end
 
   def brand_videos
-    videos.where("is_introduction != TRUE").not_webinars.order(title: :asc)
+    videos.where('is_introduction != TRUE').not_webinars.order(title: :asc)
   end
 
   def past_webinar_videos
-    videos.where("is_introduction != TRUE").webinars.order(title: :asc)
+    videos.where('is_introduction != TRUE').webinars.order(title: :asc)
   end
 
   def title
@@ -91,71 +94,70 @@ class Brand < ActiveRecord::Base
   end
 
   def content?
-    (deals && deals.length > 0) ||  (tools && tools.length > 0) || (videos && videos.length > 0) || (upcoming_classes && upcoming_classes.length > 0)
+    deals&.length&.positive? || tools&.length&.positive? || videos&.length&.positive? || upcoming_classes&.length&.positive?
   end
 
   def only_deals
-    classes && classes.size == 0 && tools && tools.size == 0 && videos && videos.size == 0
+    classes&.size&.zero? && tools && tools.size.zero? && videos && videos.size.zero?
   end
 
-  def as_json(options={})
-    super(only: %i[name website_url introduction_video_heading_title events_and_classes_heading_title],
+  def as_json(_options = {})
+    super(only:    %i[name website_url introduction_video_heading_title events_and_classes_heading_title],
           methods: %i[classes deals image_url links tools videos title])
   end
 
   # country-filtered content
 
-  def brand_videos_by_country(country='US')
-    videos.joins(:video_countries, :countries).where('countries.code = ?', country)
+  def brand_videos_by_country(country = 'US')
+    videos.joins(:video_countries, :countries).where(countries: { code: country })
       .joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
-      .where("is_introduction != TRUE")
-      .where("video_category_videos.video_category_id != 7")
+      .where('is_introduction != TRUE')
+      .where('video_category_videos.video_category_id != 7')
       .order(:title)
       .uniq
   end
 
-  def deals_by_country(country='US')
-    deals.joins(:deal_countries, :countries).where('countries.code = ?', country).uniq
+  def deals_by_country(country = 'US')
+    deals.joins(:deal_countries, :countries).where(countries: { code: country }).uniq
   end
 
-  def introduction_video_by_country(country='US')
-    videos.joins(:video_countries, :countries).where('countries.code = ?', country).where('is_introduction = ?', true).first
+  def introduction_video_by_country(country = 'US')
+    videos.joins(:video_countries, :countries).where(countries: { code: country }).where(is_introduction: true).first
   end
 
-  def past_webinar_videos_by_country(country='US')
-    videos.joins(:video_countries, :countries).where('countries.code = ?', country)
+  def past_webinar_videos_by_country(country = 'US')
+    videos.joins(:video_countries, :countries).where(countries: { code: country })
       .joins('LEFT OUTER JOIN video_category_videos ON video_category_videos.video_id = videos.id')
-      .where("is_introduction != TRUE")
-      .where("video_category_videos.video_category_id = 7")
+      .where('is_introduction != TRUE')
+      .where('video_category_videos.video_category_id = 7')
       .order(:title)
       .uniq
   end
 
-  def tools_by_country(country='US')
-    tools.joins(:tool_countries, :countries).where('countries.code = ?', country).uniq
+  def tools_by_country(country = 'US')
+    tools.joins(:tool_countries, :countries).where(countries: { code: country }).uniq
   end
 
-  def upcoming_classes_by_country(country='US')
+  def upcoming_classes_by_country(country = 'US')
     classes = upcoming_classes
 
-    regions = SolaClassRegion.joins(:sola_class_region_countries, :countries).where('countries.code = ?', country)
+    regions = SolaClassRegion.joins(:sola_class_region_countries, :countries).where(countries: { code: country })
 
-    return classes.uniq if regions.size == 0
+    return classes.uniq if regions.size.zero?
 
-    classes.where(:sola_class_region_id => regions.pluck(:id)).uniq
+    classes.where(sola_class_region_id: regions.pluck(:id)).uniq
   end
 
   private
 
-  def auto_set_country
-    if Admin.current&.id && Admin.current&.franchisee && Admin.current&.sola_pro_country_admin.present?
-      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-      if country
-        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+    def auto_set_country
+      if Admin.current&.id && Admin.current&.franchisee && Admin.current&.sola_pro_country_admin.present?
+        country = Country.where(code: Admin.current.sola_pro_country_admin)
+        if country && countries.none? { |c| c.code == Admin.current.sola_pro_country_admin }
+          countries << country
+        end
       end
     end
-  end
-
 end
 
 # == Schema Information

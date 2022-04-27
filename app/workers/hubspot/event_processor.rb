@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Hubspot
   class EventProcessor < ::Hubspot::MainJob
-
     def perform(hubspot_event_id)
       hubspot_event = HubspotEvent.find(hubspot_event_id)
       json = hubspot_event.data.with_indifferent_access
@@ -17,7 +18,8 @@ module Hubspot
 
       json.dig(:properties, :services, :value).to_s.downcase.split(', ').each do |service|
         next unless stylist.has_attribute?(service)
-        stylist.update_column(service,true)
+
+        stylist.update_column(service, true)
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Solasalonstudios::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -31,5 +33,5 @@ Solasalonstudios::Application.configure do
   # number of complex assets.
   config.assets.debug = false
 
-  config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_DEFAULT_URL_OPTIONS_HOST'] }
+  config.action_mailer.default_url_options = { host: ENV.fetch('ACTION_MAILER_DEFAULT_URL_OPTIONS_HOST', nil) }
 end

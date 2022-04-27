@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 class SideMenuItem < ActiveRecord::Base
+  has_many :side_menu_item_countries, dependent: :destroy
+  has_many :countries, -> { uniq }, through: :side_menu_item_countries
 
-  has_many :side_menu_item_countries, :dependent => :destroy
-  has_many :countries, -> { uniq }, :through => :side_menu_item_countries
-
-  validates :countries, :name, :position, :action_link, :presence => true
-
+  validates :countries, :name, :position, :action_link, presence: true
 end
 
 # == Schema Information

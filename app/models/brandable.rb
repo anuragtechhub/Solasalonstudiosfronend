@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Brandable < ActiveRecord::Base
   belongs_to :brand, inverse_of: :brandables
   belongs_to :item, inverse_of: :brandables, polymorphic: true

@@ -130,6 +130,9 @@ gem 'sidekiq-limit_fetch' # limiting, pausing, blocking, querying
 # Serializers for API
 gem 'active_model_serializers', '~> 0.10'
 
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+
 group :development do
   gem 'annotate'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

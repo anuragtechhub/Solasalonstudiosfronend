@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class HubspotLog < ActiveRecord::Base
-  enum status: %w[success error]
+  enum status: { 'success' => 0, 'error' => 1 }
 
   belongs_to :object, polymorphic: true
   belongs_to :location

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class UpdateMySolaWebsite < ActiveRecord::Base
   SOCIAL_PREFIXES = {
     instagram: 'https://www.instagram.com/',
-    facebook: 'https://www.facebook.com/',
-    twitter: 'https://www.twitter.com/',
-    yelp: 'https://www.yelp.com/biz/',
-    linkedin: 'https://www.linkedin.com/in/',
+    facebook:  'https://www.facebook.com/',
+    twitter:   'https://www.twitter.com/',
+    yelp:      'https://www.yelp.com/biz/',
+    linkedin:  'https://www.linkedin.com/in/',
     pinterest: 'https://www.pinterest.com/'
   }.freeze
 
@@ -15,16 +17,16 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   belongs_to :stylist
 
-  belongs_to :testimonial_1, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_1'
-  belongs_to :testimonial_2, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_2'
-  belongs_to :testimonial_3, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_3'
-  belongs_to :testimonial_4, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_4'
-  belongs_to :testimonial_5, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_5'
-  belongs_to :testimonial_6, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_6'
-  belongs_to :testimonial_7, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_7'
-  belongs_to :testimonial_8, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_8'
-  belongs_to :testimonial_9, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_9'
-  belongs_to :testimonial_10, :class_name => 'Testimonial', :foreign_key => 'testimonial_id_10'
+  belongs_to :testimonial_1, class_name: 'Testimonial', foreign_key: 'testimonial_id_1'
+  belongs_to :testimonial_2, class_name: 'Testimonial', foreign_key: 'testimonial_id_2'
+  belongs_to :testimonial_3, class_name: 'Testimonial', foreign_key: 'testimonial_id_3'
+  belongs_to :testimonial_4, class_name: 'Testimonial', foreign_key: 'testimonial_id_4'
+  belongs_to :testimonial_5, class_name: 'Testimonial', foreign_key: 'testimonial_id_5'
+  belongs_to :testimonial_6, class_name: 'Testimonial', foreign_key: 'testimonial_id_6'
+  belongs_to :testimonial_7, class_name: 'Testimonial', foreign_key: 'testimonial_id_7'
+  belongs_to :testimonial_8, class_name: 'Testimonial', foreign_key: 'testimonial_id_8'
+  belongs_to :testimonial_9, class_name: 'Testimonial', foreign_key: 'testimonial_id_9'
+  belongs_to :testimonial_10, class_name: 'Testimonial', foreign_key: 'testimonial_id_10'
 
   accepts_nested_attributes_for :testimonial_1,
                                 :testimonial_2,
@@ -41,60 +43,61 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   before_save :auto_format_phone_number
 
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :name, :presence => true
+  validates :name, presence: true
 
-  has_attached_file :image_1, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_1, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_1
-  before_validation { self.image_1.destroy if self.delete_image_1 == '1' }
+  has_attached_file :image_1, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_1, content_type: %r{\Aimage/.*\Z}
+  attr_accessor :delete_image_1, :delete_image_2, :delete_image_3, :delete_image_4, :delete_image_5, :delete_image_6, :delete_image_7, :delete_image_8, :delete_image_9, :delete_image_10
 
-  has_attached_file :image_2, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_2, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_2
-  before_validation { self.image_2.destroy if self.delete_image_2 == '1' }
+  before_validation { image_1.destroy if delete_image_1 == '1' }
 
-  has_attached_file :image_3, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_3, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_3
-  before_validation { self.image_3.destroy if self.delete_image_3 == '1' }
+  has_attached_file :image_2, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_2, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_4, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_4, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_4
-  before_validation { self.image_4.destroy if self.delete_image_4 == '1' }
+  before_validation { image_2.destroy if delete_image_2 == '1' }
 
-  has_attached_file :image_5, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_5, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_5
-  before_validation { self.image_5.destroy if self.delete_image_5 == '1' }
+  has_attached_file :image_3, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_3, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_6, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_6, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_6
-  before_validation { self.image_6.destroy if self.delete_image_6 == '1' }
+  before_validation { image_3.destroy if delete_image_3 == '1' }
 
-  has_attached_file :image_7, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_7, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_7
-  before_validation { self.image_7.destroy if self.delete_image_7 == '1' }
+  has_attached_file :image_4, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_4, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_8, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_8, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_8
-  before_validation { self.image_8.destroy if self.delete_image_8 == '1' }
+  before_validation { image_4.destroy if delete_image_4 == '1' }
 
-  has_attached_file :image_9, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_9, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_9
-  before_validation { self.image_9.destroy if self.delete_image_9 == '1' }
+  has_attached_file :image_5, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_5, content_type: %r{\Aimage/.*\Z}
 
-  has_attached_file :image_10, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :carousel => '630x>' }, :s3_protocol => :https, :source_file_options => {:all => '-auto-orient'}
-  validates_attachment_content_type :image_10, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image_10
-  before_validation { self.image_10.destroy if self.delete_image_10 == '1' }
+  before_validation { image_5.destroy if delete_image_5 == '1' }
 
-  before_update :auto_orient_images
+  has_attached_file :image_6, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_6, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { image_6.destroy if delete_image_6 == '1' }
+
+  has_attached_file :image_7, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_7, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { image_7.destroy if delete_image_7 == '1' }
+
+  has_attached_file :image_8, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_8, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { image_8.destroy if delete_image_8 == '1' }
+
+  has_attached_file :image_9, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_9, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { image_9.destroy if delete_image_9 == '1' }
+
+  has_attached_file :image_10, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { carousel: '630x>' }, s3_protocol: :https, source_file_options: { all: '-auto-orient' }
+  validates_attachment_content_type :image_10, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { image_10.destroy if delete_image_10 == '1' }
+
   before_save :force_orient
+  before_update :auto_orient_images
   after_update :publish_if_approved
 
   # Check the logic. Don't send on destroy..make sure it sends only after update from the api. Probably add attr_reader
@@ -106,146 +109,145 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   scope :approved, -> { where(approved: true) }
 
   def location
-    stylist.location if stylist
+    stylist&.location
   end
 
   def force_orient
-    #if image_1_url_changed?
+    # if image_1_url_changed?
     if image_1_url.present?
-      p "there is an image_1=#{image_1_url}"
+      Rails.logger.debug { "there is an image_1=#{image_1_url}" }
       begin
         self.image_1 = open(image_1_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_1 #{self.image_1.url(:original)}"
+      Rails.logger.debug { "done opening image_1 #{image_1.url(:original)}" }
     end
 
-    #if image_2_url_changed?
+    # if image_2_url_changed?
     if image_2_url.present?
-      p "there is an image_2=#{image_2_url}"
+      Rails.logger.debug { "there is an image_2=#{image_2_url}" }
       begin
         self.image_2 = open(image_2_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_2 #{self.image_2.url(:original)}"
+      Rails.logger.debug { "done opening image_2 #{image_2.url(:original)}" }
     end
 
-    #if image_3_url_changed?
+    # if image_3_url_changed?
     if image_3_url.present?
-      p "there is an image_3=#{image_3_url}"
+      Rails.logger.debug { "there is an image_3=#{image_3_url}" }
       begin
         self.image_3 = open(image_3_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_3 #{self.image_3.url(:original)}"
+      Rails.logger.debug { "done opening image_3 #{image_3.url(:original)}" }
     end
 
-    #if image_4_url_changed?
+    # if image_4_url_changed?
     if image_4_url.present?
-      p "there is an image_4=#{image_4_url}"
+      Rails.logger.debug { "there is an image_4=#{image_4_url}" }
       begin
         self.image_4 = open(image_4_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_4 #{self.image_4.url(:original)}"
+      Rails.logger.debug { "done opening image_4 #{image_4.url(:original)}" }
     end
 
-    #if image_5_url_changed?
+    # if image_5_url_changed?
     if image_5_url.present?
-      p "there is an image_5=#{image_5_url}"
+      Rails.logger.debug { "there is an image_5=#{image_5_url}" }
       begin
         self.image_5 = open(image_5_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_5 #{self.image_5.url(:original)}"
+      Rails.logger.debug { "done opening image_5 #{image_5.url(:original)}" }
     end
 
-    #if image_6_url_changed?
+    # if image_6_url_changed?
     if image_6_url.present?
-      p "there is an image_6=#{image_6_url}"
+      Rails.logger.debug { "there is an image_6=#{image_6_url}" }
       begin
         self.image_6 = open(image_6_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_6 #{self.image_6.url(:original)}"
+      Rails.logger.debug { "done opening image_6 #{image_6.url(:original)}" }
     end
 
-    #if image_7_url_changed?
+    # if image_7_url_changed?
     if image_7_url.present?
-      p "there is an image_7=#{image_7_url}"
+      Rails.logger.debug { "there is an image_7=#{image_7_url}" }
       begin
         self.image_7 = open(image_7_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_7 #{self.image_7.url(:original)}"
+      Rails.logger.debug { "done opening image_7 #{image_7.url(:original)}" }
     end
 
-    #if image_8_url_changed?
+    # if image_8_url_changed?
     if image_8_url.present?
-      p "there is an image_8=#{image_8_url}"
+      Rails.logger.debug { "there is an image_8=#{image_8_url}" }
       begin
         self.image_8 = open(image_8_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_8 #{self.image_8.url(:original)}"
+      Rails.logger.debug { "done opening image_8 #{image_8.url(:original)}" }
     end
 
-    #if image_9_url_changed?
+    # if image_9_url_changed?
     if image_9_url.present?
-      p "there is an image_9=#{image_9_url}"
+      Rails.logger.debug { "there is an image_9=#{image_9_url}" }
       begin
         self.image_9 = open(image_9_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_9 #{self.image_9.url(:original)}"
+      Rails.logger.debug { "done opening image_9 #{image_9.url(:original)}" }
     end
 
-    #if image_10_url_changed?
+    # if image_10_url_changed?
     if image_10_url.present?
-      p "there is an image_10=#{image_10_url}"
+      Rails.logger.debug { "there is an image_10=#{image_10_url}" }
       begin
         self.image_10 = open(image_10_url)
-      rescue => error
-        Rollbar.error(error)
-        NewRelic::Agent.notice_error(error)
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
-      p "done opening image_10 #{self.image_10.url(:original)}"
+      Rails.logger.debug { "done opening image_10 #{image_10.url(:original)}" }
     end
-
-  rescue => error
-    Rollbar.error(error)
-    NewRelic::Agent.notice_error(error)
+  rescue StandardError => e
+    Rollbar.error(e)
+    NewRelic::Agent.notice_error(e)
   end
 
   def force_orient_and_save
     force_orient
 
-    self.save
-  rescue => error
-    Rollbar.error(error)
-    NewRelic::Agent.notice_error(error)
+    save
+  rescue StandardError => e
+    Rollbar.error(e)
+    NewRelic::Agent.notice_error(e)
   end
 
   def biography
-    ActionView::Base.full_sanitizer.sanitize(self.read_attribute(:biography).to_s).squish
+    ActionView::Base.full_sanitizer.sanitize(read_attribute(:biography).to_s).squish
   end
 
   def publish
@@ -253,7 +255,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.email_address = email_address
     stylist.phone_number = phone_number
 
-    if (reserved == true || reserved == false)
+    if reserved == true || reserved == false
       stylist.reserved = reserved
     end
 
@@ -292,188 +294,168 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     stylist.waxing = waxing
     stylist.other_service = other_service
 
-    if testimonial_1 && testimonial_1.text.present?
-      stylist.testimonial_id_1 = testimonial_id_1
-    else
-      stylist.testimonial_id_1 = nil
-    end
+    stylist.testimonial_id_1 = if testimonial_1 && testimonial_1.text.present?
+                                 testimonial_id_1
+                               end
 
-    if testimonial_2 && testimonial_2.text.present?
-      stylist.testimonial_id_2 = testimonial_id_2
-    else
-      stylist.testimonial_id_2 = nil
-    end
+    stylist.testimonial_id_2 = if testimonial_2 && testimonial_2.text.present?
+                                 testimonial_id_2
+                               end
 
-    if testimonial_3 && testimonial_3.text.present?
-      stylist.testimonial_id_3 = testimonial_id_3
-    else
-      stylist.testimonial_id_3 = nil
-    end
+    stylist.testimonial_id_3 = if testimonial_3 && testimonial_3.text.present?
+                                 testimonial_id_3
+                               end
 
-    if testimonial_4 && testimonial_4.text.present?
-      stylist.testimonial_id_4 = testimonial_id_4
-    else
-      stylist.testimonial_id_4 = nil
-    end
+    stylist.testimonial_id_4 = if testimonial_4 && testimonial_4.text.present?
+                                 testimonial_id_4
+                               end
 
-    if testimonial_5 && testimonial_5.text.present?
-      stylist.testimonial_id_5 = testimonial_id_5
-    else
-      stylist.testimonial_id_5 = nil
-    end
+    stylist.testimonial_id_5 = if testimonial_5 && testimonial_5.text.present?
+                                 testimonial_id_5
+                               end
 
-    if testimonial_6 && testimonial_6.text.present?
-      stylist.testimonial_id_6 = testimonial_id_6
-    else
-      stylist.testimonial_id_6 = nil
-    end
+    stylist.testimonial_id_6 = if testimonial_6 && testimonial_6.text.present?
+                                 testimonial_id_6
+                               end
 
-    if testimonial_7 && testimonial_7.text.present?
-      stylist.testimonial_id_7 = testimonial_id_7
-    else
-      stylist.testimonial_id_7 = nil
-    end
+    stylist.testimonial_id_7 = if testimonial_7 && testimonial_7.text.present?
+                                 testimonial_id_7
+                               end
 
-    if testimonial_8 && testimonial_8.text.present?
-      stylist.testimonial_id_8 = testimonial_id_8
-    else
-      stylist.testimonial_id_8 = nil
-    end
+    stylist.testimonial_id_8 = if testimonial_8 && testimonial_8.text.present?
+                                 testimonial_id_8
+                               end
 
-    if testimonial_9 && testimonial_9.text.present?
-      stylist.testimonial_id_9 = testimonial_id_9
-    else
-      stylist.testimonial_id_9 = nil
-    end
+    stylist.testimonial_id_9 = if testimonial_9 && testimonial_9.text.present?
+                                 testimonial_id_9
+                               end
 
-    if testimonial_10 && testimonial_10.text.present?
-      stylist.testimonial_id_10 = testimonial_id_10
-    else
-      stylist.testimonial_id_10 = nil
-    end
+    stylist.testimonial_id_10 = if testimonial_10 && testimonial_10.text.present?
+                                  testimonial_id_10
+                                end
 
     if image_1.present?
-      p "image_1 is present"
+      Rails.logger.debug 'image_1 is present'
       begin
         stylist.image_1 = URI.parse(image_1.url(:carousel))
-        p "done set image_1 #{self.image_1.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_1 #{image_1.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_1 = nil
+      # stylist.image_1 = nil
     end
 
     if image_2.present?
       begin
         stylist.image_2 = URI.parse(image_2.url(:carousel))
-        p "done set image_2 #{self.image_2.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_2 #{image_2.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_2 = nil
+      # stylist.image_2 = nil
     end
 
     if image_3.present?
       begin
         stylist.image_3 = URI.parse(image_3.url(:carousel))
-        p "done set image_3 #{self.image_3.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_3 #{image_3.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_3 = nil
+      # stylist.image_3 = nil
     end
 
     if image_4.present?
       begin
         stylist.image_4 = URI.parse(image_4.url(:carousel))
-        p "done set image_4 #{self.image_4.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_4 #{image_4.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_4 = nil
+      # stylist.image_4 = nil
     end
 
     if image_5.present?
       begin
         stylist.image_5 = URI.parse(image_5.url(:carousel))
-        p "done set image_5 #{self.image_5.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_5 #{image_5.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_5 = nil
+      # stylist.image_5 = nil
     end
 
     if image_6.present?
       begin
         stylist.image_6 = URI.parse(image_6.url(:carousel))
-        p "done set image_6 #{self.image_6.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_6 #{image_6.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_6 = nil
+      # stylist.image_6 = nil
     end
 
     if image_7.present?
       begin
         stylist.image_7 = URI.parse(image_7.url(:carousel))
-        p "done set image_7 #{self.image_7.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_7 #{image_7.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_7 = nil
+      # stylist.image_7 = nil
     end
 
     if image_8.present?
       begin
         stylist.image_8 = URI.parse(image_8.url(:carousel))
-        p "done set image_8 #{self.image_8.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_8 #{image_8.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_8 = nil
+      # stylist.image_8 = nil
     end
 
     if image_9.present?
       begin
         stylist.image_9 = URI.parse(image_9.url(:carousel))
-        p "done set image_9 #{self.image_9.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_9 #{image_9.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_9 = nil
+      # stylist.image_9 = nil
     end
 
     if image_10.present?
       begin
         stylist.image_10 = URI.parse(image_10.url(:carousel))
-        p "done set image_10 #{self.image_10.url(:original)}"
-      rescue => e
+        Rails.logger.debug { "done set image_10 #{image_10.url(:original)}" }
+      rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
       end
     else
-      #stylist.image_10 = nil
+      # stylist.image_10 = nil
     end
 
-    #stylist.save
+    # stylist.save
     stylist
   end
 
@@ -494,8 +476,8 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       end
 
       key = "image_#{number}_url"
-      if (value = send(key)).present?
-        attrs[key] = value if stylist.send(key) != value
+      if (value = send(key)).present? && (stylist.send(key) != value)
+        attrs[key] = value
       end
 
       key = "image_#{number}"
@@ -518,117 +500,118 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   def testimonials
     {
-      testimonial_1: testimonial_1&.attributes,
-      testimonial_2: testimonial_2&.attributes,
-      testimonial_3: testimonial_3&.attributes,
-      testimonial_4: testimonial_4&.attributes,
-      testimonial_5: testimonial_5&.attributes,
-      testimonial_6: testimonial_6&.attributes,
-      testimonial_7: testimonial_7&.attributes,
-      testimonial_8: testimonial_8&.attributes,
-      testimonial_9: testimonial_9&.attributes,
+      testimonial_1:  testimonial_1&.attributes,
+      testimonial_2:  testimonial_2&.attributes,
+      testimonial_3:  testimonial_3&.attributes,
+      testimonial_4:  testimonial_4&.attributes,
+      testimonial_5:  testimonial_5&.attributes,
+      testimonial_6:  testimonial_6&.attributes,
+      testimonial_7:  testimonial_7&.attributes,
+      testimonial_8:  testimonial_8&.attributes,
+      testimonial_9:  testimonial_9&.attributes,
       testimonial_10: testimonial_10&.attributes
     }
   end
 
-  def as_json(options={})
-    super(:methods => [:testimonials])
+  def as_json(_options = {})
+    super(methods: [:testimonials])
   end
 
   private
 
-  def process_social_links
-    SOCIAL_PREFIXES.each do |key, value|
-      attr = "#{key}_url"
-      next if send(attr).blank?
+    def process_social_links
+      SOCIAL_PREFIXES.each do |key, value|
+        attr = "#{key}_url"
+        next if send(attr).blank?
 
-      send("#{attr}=", send(attr).delete('@'))
-      unless send(attr).include?(value.gsub(%r{(http(s)?\:\/\/(www.)?)},''))
-        send("#{attr}=", "#{value}#{send(attr)}")
+        send("#{attr}=", send(attr).delete('@'))
+        unless send(attr).include?(value.gsub(%r{(http(s)?://(www.)?)}, ''))
+          send("#{attr}=", "#{value}#{send(attr)}")
+        end
       end
     end
-  end
 
-  def auto_format_phone_number
-    if self.phone_number.present?
-      p "yes phone number is present #{phone_number}"
-      self.phone_number = formatPhoneNumber(self.phone_number)#ActionController::Base.helpers.number_to_phone(self.phone_number.gsub(/\D/, ''), area_code: true, raise: true)
-    else
-      p "NO no phone number present - #{phone_number}"
-    end
-  rescue => e
-    NewRelic::Agent.notice_error(e)
-    Rollbar.error(e)
-    p "bad phone number format! #{e}"
-  end
-
-  def formatPhoneNumber(s)
-    return "" unless s
-    s2 = (""+s).gsub(/\D/, '')
-    m = s2.match(/^(\d{3})(\d{3})(\d{4})$/)
-    return (!m) ? nil : "(" + m[1] + ") " + m[2] + "-" + m[3]
-  end
-
-  def auto_orient_images
-    p "auto_orient_images!"
-    if image_1_url_changed? && image_1_url.present?
-      p "image_1 changed yo"
-      self.image_1 = open(image_1_url)
+    def auto_format_phone_number
+      if phone_number.present?
+        Rails.logger.debug { "yes phone number is present #{phone_number}" }
+        self.phone_number = formatPhoneNumber(phone_number) # ActionController::Base.helpers.number_to_phone(self.phone_number.gsub(/\D/, ''), area_code: true, raise: true)
+      else
+        Rails.logger.debug { "NO no phone number present - #{phone_number}" }
+      end
+    rescue StandardError => e
+      NewRelic::Agent.notice_error(e)
+      Rollbar.error(e)
+      Rails.logger.debug { "bad phone number format! #{e}" }
     end
 
-    if image_2_url_changed? && image_2_url.present?
-      self.image_2 = open(image_2_url)
+    def formatPhoneNumber(s)
+      return '' unless s
+
+      s2 = s.to_s.gsub(/\D/, '')
+      m = s2.match(/^(\d{3})(\d{3})(\d{4})$/)
+      m ? "(#{m[1]}) #{m[2]}-#{m[3]}" : nil
     end
 
-    if image_3_url_changed? && image_3_url.present?
-      self.image_3 = open(image_3_url)
+    def auto_orient_images
+      Rails.logger.debug 'auto_orient_images!'
+      if image_1_url_changed? && image_1_url.present?
+        Rails.logger.debug 'image_1 changed yo'
+        self.image_1 = open(image_1_url)
+      end
+
+      if image_2_url_changed? && image_2_url.present?
+        self.image_2 = open(image_2_url)
+      end
+
+      if image_3_url_changed? && image_3_url.present?
+        self.image_3 = open(image_3_url)
+      end
+
+      if image_4_url_changed? && image_4_url.present?
+        self.image_4 = open(image_4_url)
+      end
+
+      if image_5_url_changed? && image_5_url.present?
+        self.image_5 = open(image_5_url)
+      end
+
+      if image_6_url_changed? && image_6_url.present?
+        self.image_6 = open(image_6_url)
+      end
+
+      if image_7_url_changed? && image_7_url.present?
+        self.image_7 = open(image_7_url)
+      end
+
+      if image_8_url_changed? && image_8_url.present?
+        self.image_8 = open(image_8_url)
+      end
+
+      if image_9_url_changed? && image_9_url.present?
+        self.image_9 = open(image_9_url)
+      end
+
+      if image_10_url_changed? && image_10_url.present?
+        self.image_10 = open(image_10_url)
+      end
     end
 
-    if image_4_url_changed? && image_4_url.present?
-      self.image_4 = open(image_4_url)
+    def email_stylist
+      PublicWebsiteMailer.stylist_website_is_updated(self).deliver
     end
 
-    if image_5_url_changed? && image_5_url.present?
-      self.image_5 = open(image_5_url)
+    def publish_if_approved
+      if approved_was != true && approved == true
+        publish_and_save
+        email_stylist
+      end
     end
 
-    if image_6_url_changed? && image_6_url.present?
-      self.image_6 = open(image_6_url)
+    def reserve_stylist
+      return unless reserved
+
+      stylist.update_column(:reserved, true)
     end
-
-    if image_7_url_changed? && image_7_url.present?
-      self.image_7 = open(image_7_url)
-    end
-
-    if image_8_url_changed? && image_8_url.present?
-      self.image_8 = open(image_8_url)
-    end
-
-    if image_9_url_changed? && image_9_url.present?
-      self.image_9 = open(image_9_url)
-    end
-
-    if image_10_url_changed? && image_10_url.present?
-      self.image_10 = open(image_10_url)
-    end
-  end
-
-  def email_stylist
-    PublicWebsiteMailer.stylist_website_is_updated(self).deliver
-  end
-
-  def publish_if_approved
-    if approved_was != true && approved == true
-      publish_and_save
-      email_stylist
-    end
-  end
-
-  def reserve_stylist
-    return unless reserved
-
-    stylist.update_column(:reserved, true)
-  end
 end
 
 # == Schema Information

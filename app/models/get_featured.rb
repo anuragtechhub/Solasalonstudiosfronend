@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GetFeatured < ActiveRecord::Base
   validates :name, :email, :phone_number, presence: true
 end

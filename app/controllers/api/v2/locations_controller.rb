@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V2::LocationsController < ApiController
   before_action :set_cors_headers
   before_action :set_cache_headers
@@ -27,6 +29,6 @@ class Api::V2::LocationsController < ApiController
       result[:data] = result.delete(:stylists)
       render_to_string json: result
     end
-    render :json => json
+    render json: json
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::DevicesController < Api::V3::ApiController
     load_and_authorize_resource through: :current_user,
@@ -22,14 +24,14 @@ module Pro
 
     private
 
-    def create_params
-      params.require(:device).permit(:uuid, :name, :token, :platform, :app_version, :internal_rating_popup_showed_at,
-                                     :native_rating_popup_showed_at, :internal_feedback)
-    end
+      def create_params
+        params.require(:device).permit(:uuid, :name, :token, :platform, :app_version, :internal_rating_popup_showed_at,
+                                       :native_rating_popup_showed_at, :internal_feedback)
+      end
 
-    def update_params
-      params.require(:device).permit(:uuid, :name, :platform, :app_version, :internal_rating_popup_showed_at,
-                                     :native_rating_popup_showed_at, :internal_feedback)
-    end
+      def update_params
+        params.require(:device).permit(:uuid, :name, :platform, :app_version, :internal_rating_popup_showed_at,
+                                       :native_rating_popup_showed_at, :internal_feedback)
+      end
   end
 end

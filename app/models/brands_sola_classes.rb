@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BrandsSolaClasses < ActiveRecord::Base
   belongs_to :brand
   belongs_to :sola_class

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::EventsController < Api::V3::ApiController
     def create
@@ -6,15 +8,14 @@ module Pro
 
     private
 
-    def event_params
-      params.require(:event).
-        permit(:category, :action, :value, :source,
-               :platform, :brand_id, :video_id, :tool_id,
-               :sola_class_id, :deal_id).tap do |permitted|
-
-        # set current user
-        permitted[:userable] = current_user
+      def event_params
+        params.require(:event)
+          .permit(:category, :action, :value, :source,
+                  :platform, :brand_id, :video_id, :tool_id,
+                  :sola_class_id, :deal_id).tap do |permitted|
+          # set current user
+          permitted[:userable] = current_user
+        end
       end
-    end
   end
 end

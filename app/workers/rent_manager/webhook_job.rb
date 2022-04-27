@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module RentManager
   class WebhookJob
     include Sidekiq::Worker
 
     sidekiq_options(
-      queue: :rent_manager_webhook,
-      retry: 3,
-      unique: :until_executed,
+      queue:             :rent_manager_webhook,
+      retry:             3,
+      unique:            :until_executed,
       unique_expiration: 3.days,
-      backtrace: true
+      backtrace:         true
     )
 
     def perform(event_id)
@@ -37,7 +39,7 @@ module RentManager
 
       event.update!(object: @stylist)
       event.processed!
-    rescue => e
+    rescue StandardError => e
       if event.present?
         event.update(status_message: e.message, status: 'failed')
       end
@@ -45,51 +47,50 @@ module RentManager
 
     private
 
-    def client
-      @client ||= ::Rentmanager::Client.new
-    end
+      def client
+        @client ||= ::Rentmanager::Client.new
+      end
 
-    def create_stylist
-      return if location.blank?
+      def create_stylist
+        return if location.blank?
 
-      #password = SecureRandom.alphanumeric(6)
-      #stylist_attributes.merge({ password: password, password_confirmation: password })
-      @stylist = Stylist.create!(stylist_attributes.merge({reserved: true}))
-      @stylist.external_ids
-             .rent_manager
-             .find_or_initialize_by(name: :tenant_id, rm_location_id: @rm_location_id).tap do |e_id|
-        e_id.value = @tenant_id
-      end.save!
-      event.update!(object: @stylist)
-      #PublicWebsiteMailer.password(@stylist, password).deliver_now if @stylist.persisted?
-    end
+        # password = SecureRandom.alphanumeric(6)
+        # stylist_attributes.merge({ password: password, password_confirmation: password })
+        @stylist = Stylist.create!(stylist_attributes.merge({ reserved: true }))
+        @stylist.external_ids
+          .rent_manager
+          .find_or_initialize_by(name: :tenant_id, rm_location_id: @rm_location_id).tap do |e_id|
+          e_id.value = @tenant_id
+        end.save!
+        event.update!(object: @stylist)
+        # PublicWebsiteMailer.password(@stylist, password).deliver_now if @stylist.persisted?
+      end
 
-    def update_stylist
-      @stylist.update(stylist_attributes)
-    end
+      def update_stylist
+        @stylist.update(stylist_attributes)
+      end
 
-    def stylist_inactive!
-      @stylist.update!(status: 'closed', inactive_reason: 'left', from_webhook: true)
-    end
+      def stylist_inactive!
+        @stylist.update!(status: 'closed', inactive_reason: 'left', from_webhook: true)
+      end
 
-    def rm_tenant
-      @rm_tenant ||= client.tenant(@rm_location_id, @tenant_id)
-    end
+      def rm_tenant
+        @rm_tenant ||= client.tenant(@rm_location_id, @tenant_id)
+      end
 
-    def location
-      @location ||= ExternalId.find_location_by(@rm_location_id, rm_tenant['PropertyID'])
-    end
+      def location
+        @location ||= ExternalId.find_location_by(@rm_location_id, rm_tenant['PropertyID'])
+      end
 
-    def stylist_attributes
-      {
-        name: rm_tenant['Name'],
-        email_address: rm_tenant['Contacts'].first['Email'],
-        phone_number: rm_tenant['Contacts'].first['PhoneNumbers']&.map{|pn| pn['StrippedPhoneNumber'] }&.first,
-        rm_status: rm_tenant['Status'],
-        location_id: location&.id,
-        from_webhook: true
-      }.compact
-    end
+      def stylist_attributes
+        {
+          name:          rm_tenant['Name'],
+          email_address: rm_tenant['Contacts'].first['Email'],
+          phone_number:  rm_tenant['Contacts'].first['PhoneNumbers']&.map { |pn| pn['StrippedPhoneNumber'] }&.first,
+          rm_status:     rm_tenant['Status'],
+          location_id:   location&.id,
+          from_webhook:  true
+        }.compact
+      end
   end
 end
-

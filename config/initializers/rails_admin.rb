@@ -1,4 +1,6 @@
-Dir[Rails.root.join('app', 'rails_admin', '**/*.rb')].each { |file| require file }
+# frozen_string_literal: true
+
+Dir[Rails.root.join('app', 'rails_admin', '**/*.rb')].sort.each { |file| require file }
 
 # TODO: temp. remove it after updating to Rails 5
 module ActionController
@@ -6,18 +8,18 @@ module ActionController
     class Response
       private
 
-      def before_sending
-        # super
-        # request.cookie_jar.commit!
-        # headers.freeze
-      end
+        def before_sending
+          # super
+          # request.cookie_jar.commit!
+          # headers.freeze
+        end
     end
   end
 end
-# TODO end
+# TODO: end
 
 module RailsAdmin
-  class EnhancedController < ActionController::Base
+  class EnhancedController < ApplicationController
     include ActionController::Live
   end
 end
@@ -26,10 +28,10 @@ module ActiveRecord
   module RailsAdminEnum
     def enum(definitions)
       super
-      definitions.each do |name, values|
-        define_method("#{ name }_enum") { self.class.send(name.to_s.pluralize).to_a }
-        define_method("#{ name }=") do |value|
-          if value.kind_of?(String) and value.to_i.to_s == value
+      definitions.each do |name, _values|
+        define_method("#{name}_enum") { self.class.send(name.to_s.pluralize).to_a }
+        define_method("#{name}=") do |value|
+          if value.is_a?(String) && (value.to_i.to_s == value)
             super value.to_i
           else
             super value
@@ -40,7 +42,7 @@ module ActiveRecord
   end
 end
 
-ActiveRecord::Base.send(:extend, ActiveRecord::RailsAdminEnum)
+ActiveRecord::Base.extend ActiveRecord::RailsAdminEnum
 
 require Rails.root.join('lib/rails_admin/config/fields/types/citext')
 
@@ -63,27 +65,27 @@ RailsAdmin.config do |config|
 
   # config.audit_with :paper_trail, 'Admin', 'PaperTrail::Version'
   config.excluded_models = %w[Account BrandCountry BrandsSolaClasses DealCountry
-    GetFeatured ResetPassword ExpressionEngine SolaClassCountry User
-    Moz SavedSearch Support SupportCategory ProBeautyIndustry ProBeautyIndustryCategory
-    EducationHeroImageCountry NotificationRecipient
-    EmailEvent TerminatedStylist DealCategory DealCategoryDeal Taggable TagsVideo BlogCategory
-    BlogBlogCategory BlogCountry Categoriable Visit HubspotEvent HubspotLog SolaClassRegionCountry
-    SolaClassCategory ShortLink RecurringCharge Ckeditor::AttachmentFile Ckeditor::Asset Ckeditor::Picture
-    UserableNotification UserNotification Distributor VideoView VideoCountry WatchLater SavedItem UserAccessToken
-    PgSearchDocument HomeButtonCountry ToolCategory ToolCountry ToolCategoryTool Brandable Country
-    Lease Studio VideoCategoryVideo VideoCategory HomeHeroImageCountry SideMenuItemCountry Device
-    FranchisingRequest BrandLink Event]
+                              GetFeatured ResetPassword ExpressionEngine SolaClassCountry User
+                              Moz SavedSearch Support SupportCategory ProBeautyIndustry ProBeautyIndustryCategory
+                              EducationHeroImageCountry NotificationRecipient
+                              EmailEvent TerminatedStylist DealCategory DealCategoryDeal Taggable TagsVideo BlogCategory
+                              BlogBlogCategory BlogCountry Categoriable Visit HubspotEvent HubspotLog SolaClassRegionCountry
+                              SolaClassCategory ShortLink RecurringCharge Ckeditor::AttachmentFile Ckeditor::Asset Ckeditor::Picture
+                              UserableNotification UserNotification Distributor VideoView VideoCountry WatchLater SavedItem UserAccessToken
+                              PgSearchDocument HomeButtonCountry ToolCategory ToolCountry ToolCategoryTool Brandable Country
+                              Lease Studio VideoCategoryVideo VideoCategory HomeHeroImageCountry SideMenuItemCountry Device
+                              FranchisingRequest BrandLink Event]
 
   config.label_methods.unshift :display_name
 
-  config.label_methods = [:title, :name]
+  config.label_methods = %i[title name]
 
   config.actions do
     # root actions
-    dashboard                     # mandatory
+    dashboard # mandatory
 
     # collection actions
-    index                         # mandatory
+    index # mandatory
     new do
       except ['Event']
     end
@@ -105,7 +107,7 @@ RailsAdmin.config do |config|
 
   config.model 'SejaSola' do
     visible do
-      ENV['LOCATION_COUNTRY_INCLUSION'] == 'BR'
+      ENV.fetch('LOCATION_COUNTRY_INCLUSION', nil) == 'BR'
     end
   end
 
@@ -275,7 +277,7 @@ RailsAdmin.config do |config|
         delete_method :delete_image
       end
       field :summary, :ck_editor
-      #field :body, :ck_editor
+      # field :body, :ck_editor
       field :location do
         help 'In order to have an article show up on more than one location page, you will need to create separate articles for each location page'
       end
@@ -427,14 +429,14 @@ RailsAdmin.config do |config|
       field :city
       field :state
       field :msa do
-        label "MSA"
+        label 'MSA'
         visible do
           bindings[:controller]._current_user.franchisee != true
         end
       end
       field :admin do
         label 'Franchisee'
-        searchable [:email, :email_address]
+        searchable %i[email email_address]
         queryable true
         visible do
           bindings[:controller]._current_user.franchisee != true
@@ -467,7 +469,7 @@ RailsAdmin.config do |config|
           visible false
         end
         field :msa do
-          label "MSA"
+          label 'MSA'
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
@@ -679,19 +681,19 @@ RailsAdmin.config do |config|
         label 'Rockbot'
         active false
         field :walkins_enabled do
-          label "Walk-ins Enabled"
+          label 'Walk-ins Enabled'
           help 'If set to yes, there will be a toggle switch inside Sola Pro to turn on/off taking walk-ins for each salon professional at this location.'
         end
         field :max_walkins_time do
-          label "Max Walk-ins Time"
+          label 'Max Walk-ins Time'
           help 'This field will set the maximum duration a salon professional at this location may set their taking walk-ins setting inside Sola Pro.'
         end
         field :walkins_end_of_day do
-          label "Walk-ins End of Day"
+          label 'Walk-ins End of Day'
           help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
         end
         field :walkins_timezone do
-          label "Walk-ins Time Zone"
+          label 'Walk-ins Time Zone'
           help 'In order to turn off walk-ins automatically at the correct time, please select the time zone of this location'
         end
         field :floorplan_image do
@@ -721,7 +723,7 @@ RailsAdmin.config do |config|
     edit do
       group :general do
         field :name do
-        label 'Location Name'
+          label 'Location Name'
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
@@ -751,7 +753,7 @@ RailsAdmin.config do |config|
           help 'This will be used in directory listings (e.g. Google My Business) so customers know what time this Sola location closes.'
         end
         field :msa do
-          label "MSA"
+          label 'MSA'
           visible do
             bindings[:controller]._current_user.franchisee != true
           end
@@ -1052,19 +1054,19 @@ RailsAdmin.config do |config|
         label 'Rockbot'
         active false
         field :walkins_enabled do
-          label "Walk-ins Enabled"
+          label 'Walk-ins Enabled'
           help 'If set to yes, there will be a toggle switch inside Sola Pro to turn on/off taking walk-ins for each salon professional at this location.'
         end
         field :max_walkins_time do
-          label "Max Walk-ins Time"
+          label 'Max Walk-ins Time'
           help 'This field will set the maximum duration a salon professional at this location may set their taking walk-ins setting inside Sola Pro.'
         end
         field :walkins_end_of_day do
-          label "Walk-ins End of Day"
+          label 'Walk-ins End of Day'
           help 'If set, this is the time at the end of the day where all salon professionals talking walk-ins at this location should be automatically turned off.'
         end
         field :walkins_timezone do
-          label "Walk-ins Time Zone"
+          label 'Walk-ins Time Zone'
           help 'In order to turn off walk-ins automatically at the correct time, please select the time zone of this location'
         end
         field :floorplan_image do
@@ -1125,7 +1127,7 @@ RailsAdmin.config do |config|
   config.model 'MySolaImage' do
     navigation_label 'Sola Salons'
     visible do
-      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+      ENV.fetch('LOCATION_COUNTRY_INCLUSION', nil) != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     list do
       scopes [:completed]
@@ -1181,7 +1183,7 @@ RailsAdmin.config do |config|
   config.model 'Sola10kImage' do
     navigation_label 'Sola Salons'
     visible do
-      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+      ENV.fetch('LOCATION_COUNTRY_INCLUSION', nil) != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     list do
       scopes [:completed]
@@ -1200,7 +1202,7 @@ RailsAdmin.config do |config|
       field :name
       field :instagram_handle
       field :statement
-      #field :statement_variant
+      # field :statement_variant
       field :image do
         pretty_value do
           "<img src='#{value.url(:original)}' width='640' height='640' style='max-width:320px;height:auto;width:100%;' />".html_safe if value.present?
@@ -1244,7 +1246,7 @@ RailsAdmin.config do |config|
     label_plural 'Contact Inquiries'
     navigation_label 'Sola Salons'
     list do
-      filters [:created_at, :how_can_we_help_you]
+      filters %i[created_at how_can_we_help_you]
       field :name
       field :email
       field :phone
@@ -1397,7 +1399,7 @@ RailsAdmin.config do |config|
     label_plural 'Salon Professionals'
     navigation_label 'Sola Salons'
     list do
-      scopes [:active, :inactive]
+      scopes %i[active inactive]
       field :name
       field :url_name do
         label 'URL Name'
@@ -1605,9 +1607,9 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      field "load_stylist_js", :hidden do
+      field 'load_stylist_js', :hidden do
         def render
-          bindings[:view].render partial: "load_stylist_js"
+          bindings[:view].render partial: 'load_stylist_js'
         end
       end
       group :general do
@@ -1635,17 +1637,17 @@ RailsAdmin.config do |config|
       end
       group :business do
         field :location do
-          associated_collection_cache_all false  # REQUIRED if you want to SORT the list as below
+          associated_collection_cache_all false # REQUIRED if you want to SORT the list as below
           associated_collection_scope do
             # bindings[:object] & bindings[:controller] are available, but not in scope's block!
             admin = bindings[:controller]._current_user
-            Proc.new { |scope|
+            proc do |scope|
               # scoping all Players currently, let's limit them to the team's league
               # Be sure to limit if there are a lot of Players and order them by position
-              if (admin.franchisee == true)
-                scope = scope.where(:admin_id => admin.id)
+              if admin.franchisee == true
+                scope = scope.where(admin_id: admin.id)
               end
-            }
+            end
           end
         end
         field :business_name
@@ -1929,7 +1931,7 @@ RailsAdmin.config do |config|
     visible true
 
     list do
-      scopes [:pending, :approved]
+      scopes %i[pending approved]
     end
 
     edit do
@@ -2359,7 +2361,6 @@ RailsAdmin.config do |config|
         end
       end
       group 'Where' do
-
         field :sola_class_region do
           label 'Region'
         end
@@ -2477,7 +2478,7 @@ RailsAdmin.config do |config|
         field :blog_id, :enum do
           label 'Blog'
           enum do
-            Blog.all.map { |b| [ b.title, b.id ] }
+            Blog.all.map { |b| [b.title, b.id] }
           end
         end
         field :brand do
@@ -2507,13 +2508,13 @@ RailsAdmin.config do |config|
         field :title, :string do
           required true
           html_attributes do
-            {maxlength: 65}
+            { maxlength: 65 }
           end
         end
         field :notification_text, :string do
           required true
           html_attributes do
-            {maxlength: 235}
+            { maxlength: 235 }
           end
         end
         field :date_sent
@@ -2527,7 +2528,7 @@ RailsAdmin.config do |config|
         field :blog_id, :enum do
           label 'Blog'
           enum do
-            Blog.all.map { |b| [ b.title, b.id ] }
+            Blog.all.map { |b| [b.title, b.id] }
           end
         end
         field :brand do
@@ -2557,13 +2558,13 @@ RailsAdmin.config do |config|
         field :title, :string do
           required true
           html_attributes do
-            {maxlength: 65}
+            { maxlength: 65 }
           end
         end
         field :notification_text, :string do
           required true
           html_attributes do
-            {maxlength: 235}
+            { maxlength: 235 }
           end
         end
         field :country do
@@ -2873,7 +2874,6 @@ RailsAdmin.config do |config|
         end
       end
       group 'Where' do
-
         field :sola_class_region do
           label 'Region'
         end
@@ -2922,10 +2922,10 @@ RailsAdmin.config do |config|
     label_plural 'Franchising Inquiries'
     navigation_label 'Sola Franchise'
     visible do
-      ENV['LOCATION_COUNTRY_INCLUSION'] != 'BR' && bindings[:controller]._current_user.franchisee != true
+      ENV.fetch('LOCATION_COUNTRY_INCLUSION', nil) != 'BR' && bindings[:controller]._current_user.franchisee != true
     end
     list do
-      scopes [:usa, :ca]
+      scopes %i[usa ca]
     end
   end
 
@@ -2938,7 +2938,7 @@ RailsAdmin.config do |config|
     end
 
     list do
-      scopes [:all, :press, :blog]
+      scopes %i[all press blog]
       field :title
       field :url
       field :summary
@@ -2988,9 +2988,9 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      field "load_franchise_article_js", :hidden do
+      field 'load_franchise_article_js', :hidden do
         def render
-          bindings[:view].render partial: "load_franchise_article_js"
+          bindings[:view].render partial: 'load_franchise_article_js'
         end
       end
       field :kind

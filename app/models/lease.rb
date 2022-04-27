@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Lease < ActiveRecord::Base
   has_paper_trail
 
@@ -7,17 +9,17 @@ class Lease < ActiveRecord::Base
 
   has_many :recurring_charges
 
-  belongs_to :recurring_charge_1, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_1_id'
-  accepts_nested_attributes_for :recurring_charge_1, :allow_destroy => true
+  belongs_to :recurring_charge_1, class_name: 'RecurringCharge'
+  accepts_nested_attributes_for :recurring_charge_1, allow_destroy: true
 
-  belongs_to :recurring_charge_2, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_2_id'
-  accepts_nested_attributes_for :recurring_charge_2, :allow_destroy => true
+  belongs_to :recurring_charge_2, class_name: 'RecurringCharge'
+  accepts_nested_attributes_for :recurring_charge_2, allow_destroy: true
 
-  belongs_to :recurring_charge_3, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_3_id'
-  accepts_nested_attributes_for :recurring_charge_3, :allow_destroy => true
+  belongs_to :recurring_charge_3, class_name: 'RecurringCharge'
+  accepts_nested_attributes_for :recurring_charge_3, allow_destroy: true
 
-  belongs_to :recurring_charge_4, :class_name => 'RecurringCharge', :foreign_key => 'recurring_charge_4_id'
-  accepts_nested_attributes_for :recurring_charge_4, :allow_destroy => true
+  belongs_to :recurring_charge_4, class_name: 'RecurringCharge'
+  accepts_nested_attributes_for :recurring_charge_4, allow_destroy: true
 
   # validates :location, :stylist, :studio, :presence => true
   # validates :move_in_date, :start_date, :end_date, :damage_deposit_amount, :presence => true, :if => lambda { self.studio.present? }
@@ -64,25 +66,24 @@ class Lease < ActiveRecord::Base
   end
 
   def rent_recurring_charges
-    recurring_charges.where(:charge_type => :rent).order(:position => :asc)
+    recurring_charges.where(charge_type: :rent).order(position: :asc)
   end
 
   def tax_recurring_charges
-    recurring_charges.where(:charge_type => :tax).order(:position => :asc)
+    recurring_charges.where(charge_type: :tax).order(position: :asc)
   end
 
   def parking_recurring_charges
-    recurring_charges.where(:charge_type => :parking).order(:position => :asc)
+    recurring_charges.where(charge_type: :parking).order(position: :asc)
   end
 
   def cable_recurring_charges
-    recurring_charges.where(:charge_type => :cable).order(:position => :asc)
+    recurring_charges.where(charge_type: :cable).order(position: :asc)
   end
 
-  def as_json(options={})
-    super(:methods => [:location, :studio, :recurring_charge_1, :recurring_charge_2, :recurring_charge_3, :recurring_charge_4])
+  def as_json(_options = {})
+    super(methods: %i[location studio recurring_charge_1 recurring_charge_2 recurring_charge_3 recurring_charge_4])
   end
-
 end
 
 # == Schema Information

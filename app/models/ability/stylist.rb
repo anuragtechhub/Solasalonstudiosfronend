@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ability
   class Stylist
     include CanCan::Ability
@@ -20,10 +22,10 @@ module Ability
       can [:read], ::SolaClass
       can [:read], ::Tool
       can [:read], ::EducationHeroImage
-      can [:create, :read, :show, :update], ::Device, userable_id: user.id, userable_type: 'Stylist'
-      can [:read, :manage], ::SavedItem, stylist_id: user.id
-      can [:read, :manage], ::SavedSearch, stylist_id: user.id
-      can [:create, :show], ::Event
+      can %i[create read show update], ::Device, userable_id: user.id, userable_type: 'Stylist'
+      can %i[read manage], ::SavedItem, stylist_id: user.id
+      can %i[read manage], ::SavedSearch, stylist_id: user.id
+      can %i[create show], ::Event
     end
   end
 end

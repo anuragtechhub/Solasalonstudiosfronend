@@ -1,13 +1,13 @@
-class SolaClassCategory < ActiveRecord::Base
+# frozen_string_literal: true
 
+class SolaClassCategory < ActiveRecord::Base
   has_many :sola_classes
 
-  validates :name, :presence => true, :uniqueness => true, :length => { :maximum => 30 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
 
   def to_param
     name.gsub(' ', '-')
   end
-
 end
 
 # == Schema Information

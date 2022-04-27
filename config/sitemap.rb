@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.solasalonstudios.com"
- SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider: 'AWS',
-                                         aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-                                         aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-                                         fog_directory: 'solasitemap',
-                                         fog_region: 'us-east-1')
+SitemapGenerator::Sitemap.default_host = 'https://www.solasalonstudios.com'
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider:          'AWS',
+                                                                    aws_access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+                                                                    aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
+                                                                    fog_directory:         'solasitemap',
+                                                                    fog_region:            'us-east-1')
 SitemapGenerator::Sitemap.public_path = 'tmp/'
-SitemapGenerator::Sitemap.sitemaps_host = "http://solasitemap.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = 'http://solasitemap.s3.amazonaws.com/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.compress = false
 SitemapGenerator::Sitemap.create do
@@ -21,13 +23,13 @@ SitemapGenerator::Sitemap.create do
   add '/about-us'
 
   add '/locations'
-  Location.where(:status => 'open').find_each do |location|
-    add location.canonical_path, :lastmod => location.updated_at
+  Location.where(status: 'open').find_each do |location|
+    add location.canonical_path, lastmod: location.updated_at
   end
 
   # states
   Location.distinct(:state).pluck(:state).each do |state|
-    url = state.downcase.strip.gsub(/\s+/,'_').gsub('_', '-')
+    url = state.downcase.strip.gsub(/\s+/, '_').gsub('_', '-')
 
     add "/states/#{url}"
   end
@@ -37,13 +39,13 @@ SitemapGenerator::Sitemap.create do
   end
 
   add '/salon-professionals'
-  Stylist.where(:status => 'open').not_reserved.find_each do |stylist|
-    add stylist.canonical_path, :lastmod => stylist.updated_at
+  Stylist.where(status: 'open').not_reserved.find_each do |stylist|
+    add stylist.canonical_path, lastmod: stylist.updated_at
   end
 
   add '/blog'
-  Blog.where(:status => 'published').find_each do |blog|
-    add blog.canonical_path, :lastmod => blog.updated_at
+  Blog.where(status: 'published').find_each do |blog|
+    add blog.canonical_path, lastmod: blog.updated_at
   end
 
   add '/contact-us'
@@ -52,7 +54,7 @@ SitemapGenerator::Sitemap.create do
 
   add '/testimonials'
 
-  #add '/faq'
+  # add '/faq'
 
   add '/gallery'
 
@@ -63,5 +65,4 @@ SitemapGenerator::Sitemap.create do
   add '/diversity'
 
   add '/privacy-policy'
-
 end

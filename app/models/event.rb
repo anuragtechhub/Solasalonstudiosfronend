@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 class Event < ActiveRecord::Base
   belongs_to :brand
   belongs_to :deal
   belongs_to :tool
   belongs_to :sola_class
   belongs_to :video
-  belongs_to :userable, :polymorphic => true
+  belongs_to :userable, polymorphic: true
 
-  scope :last_month, -> {
+  scope :last_month, lambda {
     where('events.created_at > ?', 1.month.ago)
   }
 
   def user_email
-    return userable.email_address if userable && userable.methods.include?(:email_address)
-  	return userable.email if userable && userable.methods.include?(:email)
+    return userable.email_address if userable&.methods&.include?(:email_address)
+    return userable.email if userable&.methods&.include?(:email)
   end
 end
 

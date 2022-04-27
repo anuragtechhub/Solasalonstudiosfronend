@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class ReportsMailer < ActionMailer::Base
-  default :from => "Sola Salon Studios <reports@solasalonstudios.com>"
+  default from: 'Sola Salon Studios <reports@solasalonstudios.com>'
 
   def location_report(location, report_pdf)
     @location = location
-    report_email_address = @location.email_address_for_reports.present? ? @location.email_address_for_reports : @location.email_address_for_inquiries
+    report_email_address = @location.email_address_for_reports.presence || @location.email_address_for_inquiries
     attachments["#{@location.url_name}.pdf"] = report_pdf
     mail(to: report_email_address, bcc: %w[jeff@jeffbail.com sola.analytics1@gmail.com alderavellc@gmail.com], subject: "Sola Website Analytics Report: #{@location.name}")
   end
@@ -15,24 +17,24 @@ class ReportsMailer < ActionMailer::Base
   end
 
   def send_report(email_address, subject, csv_file)
-  	attachments['report.csv'] = csv_file
-  	mail(to: email_address, subject: subject)
+    attachments['report.csv'] = csv_file
+    mail(to: email_address, subject: subject)
   end
 
   def booknow_report(email_address, report_pdf)
-    attachments["booknow.pdf"] = report_pdf
-    mail(to: email_address, bcc: default_bcc, subject: "BookNow Report")
+    attachments['booknow.pdf'] = report_pdf
+    mail(to: email_address, bcc: default_bcc, subject: 'BookNow Report')
   end
 
   def booking_complete_report(email_address, report_pdf)
-    attachments["booking_complete.pdf"] = report_pdf
-    mail(to: email_address, bcc: default_bcc, subject: "Booking Complete Report")
+    attachments['booking_complete.pdf'] = report_pdf
+    mail(to: email_address, bcc: default_bcc, subject: 'Booking Complete Report')
   end
 
   def solasalonstudios_report(report_pdf, url)
     @url = url
     attachments["#{url}.pdf"] = report_pdf
-    mail(to: %w[jennie@solasalonstudios.com megan@solasalonstudios.com angela@solasalonstudios.com], bcc: default_bcc, subject: "Solasalonstudios analytics report")
+    mail(to: %w[jennie@solasalonstudios.com megan@solasalonstudios.com angela@solasalonstudios.com], bcc: default_bcc, subject: 'Solasalonstudios analytics report')
   end
 
   def location_contact_form_submission_report(csv_file, start_date, end_date)
@@ -44,13 +46,13 @@ class ReportsMailer < ActionMailer::Base
     if email_addresses.present?
       @summary = summary
       attachments['locations.csv'] = locations_csv
-      mail(to: email_addresses, bcc: default_bcc, subject: "Rent Manager Location Match Task Summary")
+      mail(to: email_addresses, bcc: default_bcc, subject: 'Rent Manager Location Match Task Summary')
     end
   end
 
   private
 
-  def default_bcc
-    %w[jeff@jeffbail.com alderavellc@gmail.com]
-  end
+    def default_bcc
+      %w[jeff@jeffbail.com alderavellc@gmail.com]
+    end
 end

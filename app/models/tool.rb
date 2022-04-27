@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Tool < ActiveRecord::Base
   include PgSearch::Model
 
   pg_search_scope :search, against: :title, associated_against: {
     categories: [:name],
-    brand: :name
+    brand:      :name
   }
   multisearchable against: [:stripped_title]
 
@@ -13,34 +15,35 @@ class Tool < ActiveRecord::Base
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
 
-  after_save :touch_brand
   before_validation :auto_set_country
+  after_save :touch_brand
 
   belongs_to :brand
   has_many :videos
 
-  has_many :tool_category_tools, :dependent => :destroy
-  has_many :tool_categories, :through => :tool_category_tools
-  has_many :notifications, :dependent => :destroy
+  has_many :tool_category_tools, dependent: :destroy
+  has_many :tool_categories, through: :tool_category_tools
+  has_many :notifications, dependent: :destroy
 
   has_many :tool_countries
-  has_many :countries, :through => :tool_countries
-  has_many :events, :dependent => :destroy
+  has_many :countries, through: :tool_countries
+  has_many :events, dependent: :destroy
 
   has_paper_trail
 
-  has_attached_file :file, :path => ":class/:attachment/:id_partition/:style/:filename"
-  attr_accessor :delete_file
-  before_validation { self.file.destroy if self.delete_file == '1' }
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename'
+  attr_accessor :delete_file, :delete_image
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, :s3_protocol => :https
-  attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+  before_validation { file.destroy if delete_file == '1' }
 
-  validates_attachment :file, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "text/plain", "text/html", "application/msword", "application/vnd.ms-works", "application/rtf", "application/pdf", "application/vnd.ms-powerpoint", "application/x-compress", "application/x-compressed", "application/x-gzip", "application/zip", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv", "text/tab-separated-values"] }
-  validates :title, :length => { :maximum => 35 }, :presence => true
-  #validates :description, :length => { :maximum => 400 }, :presence => true
-  validates :countries, :presence => true
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '460x280#', small: '300x180#' }, s3_protocol: :https
+
+  before_validation { image.destroy if delete_image == '1' }
+
+  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
+  validates :title, length: { maximum: 35 }, presence: true
+  # validates :description, :length => { :maximum => 400 }, :presence => true
+  validates :countries, presence: true
 
   scope :with_file, -> { where.not(file_file_name: nil) }
 
@@ -61,36 +64,35 @@ class Tool < ActiveRecord::Base
   end
 
   def file_url
-    file.url if file
+    file&.url
   end
 
   def brand_name
-    brand.name if brand
+    brand&.name
   end
 
   def brand_id
-    brand.id if brand
+    brand&.id
   end
 
-  def as_json(options={})
+  def as_json(_options = {})
     super(except: %i[brand], methods: %i[brand_id brand_name image_url file_url videos])
   end
 
   private
 
-  def auto_set_country
-    if Admin && Admin.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
-      country = Country.where('code = ?', Admin.current.sola_pro_country_admin)
-      if country
-        self.countries << country unless self.countries.any?{|c| c.code == Admin.current.sola_pro_country_admin}
+    def auto_set_country
+      if Admin&.current && Admin.current.id && Admin.current.franchisee && Admin.current.sola_pro_country_admin.present?
+        country = Country.where(code: Admin.current.sola_pro_country_admin)
+        if country && countries.none? { |c| c.code == Admin.current.sola_pro_country_admin }
+          countries << country
+        end
       end
     end
-  end
 
-  def touch_brand
-    self.brand.touch if self.brand
-  end
-
+    def touch_brand
+      brand&.touch
+    end
 end
 
 # == Schema Information

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.page @page
 json.total_count @total_count
 json.items @locations.each do |location|

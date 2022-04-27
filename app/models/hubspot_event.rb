@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HubspotEvent < ActiveRecord::Base
   validates :fired_at, :kind, :data, presence: true
 
@@ -5,9 +7,9 @@ class HubspotEvent < ActiveRecord::Base
 
   private
 
-  def process
-    #::Hubspot::EventProcessor.perform_async(self.id)
-  end
+    def process
+      # ::Hubspot::EventProcessor.perform_async(self.id)
+    end
 end
 
 # == Schema Information

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StylistMessage < ActiveRecord::Base
   has_paper_trail
 
@@ -9,7 +11,7 @@ class StylistMessage < ActiveRecord::Base
   def send_email
     if stylist
       email = PublicWebsiteMailer.stylist_message(self)
-      email.deliver if email
+      email&.deliver
     end
   end
 end

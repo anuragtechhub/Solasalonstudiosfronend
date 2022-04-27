@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::UserSerializer < ApplicationSerializer
     attributes :id, :name, :email_address,
@@ -46,12 +48,12 @@ module Pro
 
     %w[instagram facebook twitter yelp linkedin pinterest].each do |key|
       attr = "#{key}_url"
-      url = UpdateMySolaWebsite::SOCIAL_PREFIXES[key.to_sym].
-        gsub(%r{(http(s)?\:\/\/(www.)?)},'').
-        gsub('/','\/')
+      url = UpdateMySolaWebsite::SOCIAL_PREFIXES[key.to_sym]
+        .gsub(%r{(http(s)?://(www.)?)}, '')
+        .gsub('/', '\/')
       define_method(attr) do
-        object.send(attr).to_s.
-          gsub(%r{(http(s)?:\/\/(www.)?#{url})}, '')
+        object.send(attr).to_s
+          .gsub(%r{(http(s)?://(www.)?#{url})}, '')
       end
     end
   end

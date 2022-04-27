@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VideoCategoryVideo < ActiveRecord::Base
   belongs_to :video
   belongs_to :video_category

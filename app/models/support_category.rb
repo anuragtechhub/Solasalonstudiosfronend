@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class SupportCategory < ActiveRecord::Base
   has_many :supports
 
-  validates :name, :presence => true, :uniqueness => true, :length => { :maximum => 30 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
 end
 
 # == Schema Information

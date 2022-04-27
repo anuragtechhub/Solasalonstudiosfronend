@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Franchising
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
@@ -21,8 +23,7 @@ module Franchising
     end
 
     def locale_str
-      case
-      when I18n.locale == :en
+      if I18n.locale == :en
         'usa'
       else
         I18n.locale.to_s

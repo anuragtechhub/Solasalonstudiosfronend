@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V3::RentManagerWebhooksController < ApiController
-  skip_before_filter :restrict_api_access
+  skip_before_action :restrict_api_access
 
   def create
     RentManager::Event.create!(body: params)

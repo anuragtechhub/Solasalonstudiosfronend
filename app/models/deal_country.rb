@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DealCountry < ActiveRecord::Base
   belongs_to :deal
   belongs_to :country

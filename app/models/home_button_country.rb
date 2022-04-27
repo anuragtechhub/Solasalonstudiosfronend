@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeButtonCountry < ActiveRecord::Base
   belongs_to :home_button
   belongs_to :country

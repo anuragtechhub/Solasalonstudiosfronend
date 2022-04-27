@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SideMenuItemCountry < ActiveRecord::Base
   belongs_to :side_menu_item
   belongs_to :country

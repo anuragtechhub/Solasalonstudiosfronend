@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RentManager::StylistUnit < ActiveRecord::Base
   belongs_to :stylist
   belongs_to :rent_manager_unit, class_name: 'RentManager::Unit'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToolCategoryTool < ActiveRecord::Base
   belongs_to :tool
   belongs_to :tool_category

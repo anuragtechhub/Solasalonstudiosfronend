@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Reports
   class MonthlyJob < ::Reports::ReportJob
     def perform
@@ -17,8 +19,8 @@ module Reports
       # https://bbac.atlassian.net/browse/SSS-227
       # Stylists report
       Report.create(email_address: 'dave@radianceholdings.com,christian.rathke@radianceholdings.com,nathan@radianceholdings.com',
-                    report_type: 'all_stylists',
-                    subject: "Sola Stylist Data #{Time.current.strftime('%B')}")
+                    report_type:   'all_stylists',
+                    subject:       "Sola Stylist Data #{Time.current.strftime('%B')}")
     end
   end
 end

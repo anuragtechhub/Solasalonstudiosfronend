@@ -1,5 +1,6 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   require 'uri'
 
   def valid_email?(email = nil)
@@ -17,15 +18,16 @@ module ApplicationHelper
   # looks like piece of shit
   def url_helper(url = '')
     return url unless url.is_a?(String)
+
     url = url.strip
-    url = url.gsub(/http:\/\/https:\/\//, 'http://')
-    url = url.gsub(/https:\/\/https:\/\//, 'http://')
-    url = url.gsub(/https:\/\/http:\/\//, 'http://')
-    url = url.gsub(/http\/\/www/, 'http://www')
-    url = url.gsub(/https\/\/www/, 'https://www')
+    url = url.gsub(%r{http://https://}, 'http://')
+    url = url.gsub(%r{https://https://}, 'http://')
+    url = url.gsub(%r{https://http://}, 'http://')
+    url = url.gsub(%r{http//www}, 'http://www')
+    url = url.gsub(%r{https//www}, 'https://www')
 
     unless url && (url.starts_with?('http') || url.starts_with?('https'))
-      url = 'http://' + url;
+      url = "http://#{url}"
     end
 
     url
@@ -45,13 +47,14 @@ module ApplicationHelper
 
   # bullshit
   def beautify_url_segment(url)
-    url.downcase.strip.gsub(/\s+/,'_').gsub('_', '-')
+    url.downcase.strip.gsub(/\s+/, '_').gsub('_', '-')
   end
 
   def root_sola_domain
-    if request.domain == 'solasalonstudios.ca' #|| request.domain == 'localhost'
+    case request.domain
+    when 'solasalonstudios.ca' # || request.domain == 'localhost'
       'solasalonstudios.ca'
-    elsif request.domain == 'com.br' || request.domain == 'com.br/' #|| request.domain == 'localhost'
+    when 'com.br', 'com.br/' # || request.domain == 'localhost'
       'solasalonstudios.com.br'
     else
       'solasalonstudios.com'

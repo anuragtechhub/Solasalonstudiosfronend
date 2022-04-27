@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class HomeButton < ActiveRecord::Base
+  has_many :home_button_countries, dependent: :destroy
+  has_many :countries, -> { uniq }, through: :home_button_countries
 
-  has_many :home_button_countries, :dependent => :destroy
-  has_many :countries, -> { uniq }, :through => :home_button_countries
-
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "1500x500#" }, processors: [:thumbnail], :s3_protocol => :https, :s3_host_alias => ENV['S3_HOST_ALIAS'], url: ':s3_alias_url'
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '1500x500#' }, processors: [:thumbnail], s3_protocol: :https, s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), url: ':s3_alias_url'
   attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-  validates :countries, :image, :position, :action_link, :presence => true
+  before_validation { image.destroy if delete_image == '1' }
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+
+  validates :countries, :image, :position, :action_link, presence: true
 
   def image_original_url
     image.url(:full_width)
@@ -18,10 +20,9 @@ class HomeButton < ActiveRecord::Base
     image.url(:large)
   end
 
-  def as_json(options={})
-    super(:methods => [:image_original_url, :image_large_url, :action_link, :position])
+  def as_json(_options = {})
+    super(methods: %i[image_original_url image_large_url action_link position])
   end
-
 end
 
 # == Schema Information

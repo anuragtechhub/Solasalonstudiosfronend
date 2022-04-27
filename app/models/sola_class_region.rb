@@ -1,26 +1,28 @@
+# frozen_string_literal: true
+
 class SolaClassRegion < ActiveRecord::Base
+  has_many :sola_classes # , -> { order 'create' }
 
-  has_many :sola_classes#, -> { order 'create' }
+  has_many :sola_class_region_countries, dependent: :destroy
+  has_many :countries, -> { uniq }, through: :sola_class_region_countries
 
-  has_many :sola_class_region_countries, :dependent => :destroy
-  has_many :countries, -> { uniq }, :through => :sola_class_region_countries
-
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "166x105#" }, :s3_protocol => :https, s3_host_alias: ENV['S3_HOST_ALIAS'], url: ':s3_alias_url'
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '166x105#' }, s3_protocol: :https, s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), url: ':s3_alias_url'
   attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
-  validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
-  validates :name, :countries, :position, :presence => true#, :uniqueness => true, :length => { :maximum => 30 }
+  before_validation { image.destroy if delete_image == '1' }
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
+
+  validates :name, :countries, :position, presence: true # , :uniqueness => true, :length => { :maximum => 30 }
 
   def to_param
     name.gsub(' ', '-')
   end
 
   def future_classes
-    if self.name && self.name == 'Past Webinars'
-      self.sola_classes.where('end_date <= ?', Date.today).order(:created_at => :desc).order(:title, :id)
+    if name && name == 'Past Webinars'
+      sola_classes.where('end_date <= ?', Date.today).order(created_at: :desc).order(:title, :id)
     else
-      self.sola_classes.where('end_date >= ?', Date.today).order(:end_date, :start_date, :title, :id)
+      sola_classes.where('end_date >= ?', Date.today).order(:end_date, :start_date, :title, :id)
     end
   end
 
@@ -32,10 +34,9 @@ class SolaClassRegion < ActiveRecord::Base
     image_file_name.present? ? image.url(:large) : nil
   end
 
-  def as_json(options={})
-    super(:methods => [:image_original_url, :image_large_url])#, :name, :future_classes, :position, :country])
+  def as_json(_options = {})
+    super(methods: %i[image_original_url image_large_url]) # , :name, :future_classes, :position, :country])
   end
-
 end
 
 # == Schema Information

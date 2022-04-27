@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :view do
   task update: :environment do
     Video.find_each do |v|

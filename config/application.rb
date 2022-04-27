@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -10,7 +12,6 @@ ENV['RAILS_ADMIN_THEME'] = 'custom'
 
 module Solasalonstudios
   class Application < Rails::Application
-
     # config.action_dispatch.default_headers = {
     #   'X-Frame-Options' => 'ALLOWALL'
     # }
@@ -50,12 +51,12 @@ module Solasalonstudios
     end
 
     config.middleware.use Rack::Deflater
-    #config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
+    # config.middleware.use HtmlCompressor::Rack, {:remove_input_attributes => false, :remove_http_protocol => false, :remove_https_protocol => false}
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     I18n.config.enforce_available_locales = false
-    config.i18n.default_locale = ENV['DEFAULT_LOCALE']
+    config.i18n.default_locale = ENV.fetch('DEFAULT_LOCALE', nil)
     config.i18n.fallbacks = true
     config.i18n.fallbacks = [:en]
 
@@ -65,9 +66,9 @@ module Solasalonstudios
     config.assets.initialize_on_precompile = false
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts', 'images', 'lib')
-    config.assets.precompile += %w(.svg .eot .woff .woff2 .ttf .png .jpg)
+    config.assets.precompile += %w[.svg .eot .woff .woff2 .ttf .png .jpg]
     config.assets.precompile += ['admin.css', 'rails_admin/rails_admin.css', 'rails_admin/rails_admin.js', 'aos.js', 'aos.css', 'booknow_landing_page.css']
-    config.assets.precompile += ['fullscreen_hero.js', 'ckeditor/*'] #'digital_directory.css', 'digital_directory.js',
+    config.assets.precompile += ['fullscreen_hero.js', 'ckeditor/*'] # 'digital_directory.css', 'digital_directory.js',
     config.assets.precompile += ['sola_pro.js', 'in_the_news.js', 'our_studios.js', 'why_sola.js', 'search_sola.js', 'solagenius.js', 'search_salon.js']
     config.assets.precompile += ['public_website.css', 'public_website.js', 'mysola.js', 'locations.js', 'locations_ca.js', 'locations_br.js', 'locations_state_select.js',
                                  'salon_stylists.js', 'blog.js', 'contact_us.js', 'contact_us_ca.js', 'own_your_salon.js', 'salon_professionals.js',
@@ -85,12 +86,12 @@ module Solasalonstudios
     ]
 
     config.paperclip_defaults = {
-      storage: :s3,
+      storage:        :s3,
       s3_credentials: {
-        bucket: ENV['FOG_DIRECTORY'],
-        s3_region: ENV['AWS_REGION'],
-        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+        bucket:            ENV.fetch('FOG_DIRECTORY', nil),
+        s3_region:         ENV.fetch('AWS_REGION', nil),
+        access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID', nil),
+        secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil)
       }
     }
   end

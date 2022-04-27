@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UserAccessToken < ActiveRecord::Base
   belongs_to :stylist, inverse_of: :access_tokens
   belongs_to :admin, inverse_of: :access_tokens
-  validates :stylist, :key, presence: true, if: proc { self.admin_id.blank? }
-  validates :admin, :key, presence: true, if: proc { self.stylist_id.blank? }
+  validates :stylist, :key, presence: true, if: proc { admin_id.blank? }
+  validates :admin, :key, presence: true, if: proc { stylist_id.blank? }
 
   before_validation :set_key, on: [:create]
 
@@ -20,13 +22,13 @@ class UserAccessToken < ActiveRecord::Base
 
   private
 
-  def set_key
-    self.key ||= loop do
-      key = SecureRandom.uuid
+    def set_key
+      self.key ||= loop do
+        key = SecureRandom.uuid
 
-      break key unless self.class.where(key: key).exists?
+        break key unless self.class.exists?(key: key)
+      end
     end
-  end
 end
 
 # == Schema Information

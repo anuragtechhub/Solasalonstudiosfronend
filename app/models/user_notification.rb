@@ -1,5 +1,6 @@
-class UserNotification < ActiveRecord::Base
+# frozen_string_literal: true
 
+class UserNotification < ActiveRecord::Base
   belongs_to :notification
   belongs_to :userable, polymorphic: true
   after_save :update_badge
@@ -13,17 +14,17 @@ class UserNotification < ActiveRecord::Base
       deets[:type] = deets[:content_object].class.name
     end
 
-    return deets
+    deets
   end
 
-  def as_json(options={})
-    super(:methods => [:details])
+  def as_json(_options = {})
+    super(methods: [:details])
   end
 
   def update_badge
     return if dismiss_date.blank?
 
-    ::Notifications::SendJob.perform_in(30.second,'update_badge', nil, userable_id)
+    ::Notifications::SendJob.perform_in(30.seconds, 'update_badge', nil, userable_id)
   end
 end
 

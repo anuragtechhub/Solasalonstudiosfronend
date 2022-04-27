@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::CategoriesController < Api::V3::ApiController
     load_and_authorize_resource :category, only: %i[index]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Device < ActiveRecord::Base
   belongs_to :userable, polymorphic: true
   validates :uuid, :token, :platform, presence: true

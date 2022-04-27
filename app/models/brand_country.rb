@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BrandCountry < ActiveRecord::Base
   belongs_to :brand
   belongs_to :country

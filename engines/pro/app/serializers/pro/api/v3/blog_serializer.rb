@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::BlogSerializer < ApplicationSerializer
     attributes :id, :title, :image_url,

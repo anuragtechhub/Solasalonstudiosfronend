@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsAdmin
   module Config
     module Actions
@@ -29,16 +31,16 @@ module RailsAdmin
                 response.headers.delete('Content-Length')
                 response.headers['Cache-Control'] = 'no-cache'
                 response.headers['X-Accel-Buffering'] = 'no'
-                #response.headers['Content-Type'] = 'text/event-stream'
+                # response.headers['Content-Type'] = 'text/event-stream'
                 response.headers['Content-Type'] ||= 'text/csv'
 
                 # There's an issue in rack where ActionController::Live doesn't work with the ETags middleware
                 # See https://github.com/rack/rack/issues/1619#issuecomment-606315714
-                #response.headers['ETag'] = '0'
+                # response.headers['ETag'] = '0'
                 response.headers['Last-Modified'] = Time.now.httpdate
 
-                headers['Content-Disposition'] = "attachment; filename=\"#{@model_name.to_s.pluralize}-#{Date.current.to_s}.csv\""
-                #headers['Content-Type'] ||= 'text/csv'
+                headers['Content-Disposition'] = "attachment; filename=\"#{@model_name.to_s.pluralize}-#{Date.current}.csv\""
+                # headers['Content-Type'] ||= 'text/csv'
 
                 @schema = HashHelper.symbolize(params[:schema].slice(:except, :include, :methods, :only).permit!.to_h)
                 @methods = [(@schema[:only] || []) + (@schema[:methods] || [])].flatten.compact
@@ -50,17 +52,17 @@ module RailsAdmin
                 response.stream.write field_names.to_csv
 
                 query = @model_name.constantize
-                                   .accessible_by(current_ability)
-                                   .where(created_at: from..to)
-                                   .order(created_at: :desc)
+                  .accessible_by(current_ability)
+                  .where(created_at: from..to)
+                  .order(created_at: :desc)
                 query = case @model_name
-                when 'Stylist', 'RequestTourInquiry'
-                  query.includes(:location)
-                when 'Location'
-                  query.includes(:stylists)
-                else
-                  query
-                end
+                        when 'Stylist', 'RequestTourInquiry'
+                          query.includes(:location)
+                        when 'Location'
+                          query.includes(:stylists)
+                        else
+                          query
+                        end
 
                 query.find_in_batches(batch_size: 1000) do |batch|
                   joined_csv_rows = batch.map do |object|

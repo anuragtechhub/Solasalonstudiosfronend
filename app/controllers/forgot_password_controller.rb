@@ -1,30 +1,30 @@
+# frozen_string_literal: true
+
 class ForgotPasswordController < ApplicationController
   def form
     if flash[:error]
-      @error = flash[:error];
-      flash[:error] = nil;
+      @error = flash[:error]
+      flash[:error] = nil
     end
 
     if request.post?
-      admin = Admin.where('lower(email) = ?', params[:username].downcase.strip).first#Admin.where(:email => params[:username]).first
-      
-      if params[:username].blank? and admin.blank?
+      admin = Admin.where('lower(email) = ?', params[:username].downcase.strip).first # Admin.where(:email => params[:username]).first
+
+      if params[:username].blank? && admin.blank?
         @error = 'Please enter a username'
       elsif admin.blank?
         @error = "We are unable to find an administrator with the username '#{params[:username]}'"
+      elsif admin&.forgot_password
+        @success = "Success! We sent a forgot password email to #{admin.email_address}"
+        params[:username] = ''
       else
-        if admin && admin.forgot_password
-          @success = "Success! We sent a forgot password email to #{admin.email_address}"
-          params[:username] = ''
-        else
-          @error = 'There was a problem processing your forgot password request. Please try again. If the problem persists, please contact support'
-        end
+        @error = 'There was a problem processing your forgot password request. Please try again. If the problem persists, please contact support'
       end
     end
   end
 
   def reset
-    admin = Admin.where(:email => params[:username], :forgot_password_key => params[:key]).first
+    admin = Admin.where(email: params[:username], forgot_password_key: params[:key]).first
     if admin
       if request.post?
         if params[:password].blank? || params[:password_confirmation].blank?
@@ -43,7 +43,7 @@ class ForgotPasswordController < ApplicationController
         end
       end
     else
-      redirect_to :forgot_password_form, :flash => { :error => "The time alloted to reset your password has expired. Please make a new forgot password request" }, :status => 301
+      redirect_to :forgot_password_form, flash: { error: 'The time alloted to reset your password has expired. Please make a new forgot password request' }, status: :moved_permanently
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeHeroImageCountry < ActiveRecord::Base
   belongs_to :country
   belongs_to :home_hero_image

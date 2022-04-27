@@ -1,76 +1,74 @@
-namespace :surveys do
+# frozen_string_literal: true
 
-  task :locations => :environment do
-    #update_sites
+namespace :surveys do
+  task locations: :environment do
+    # update_sites
     send_surveys
   end
 
-  task :send_survey_test => :environment do
+  task send_survey_test: :environment do
     response = send_survey('adam@solasalonstudios.com', 'sola_hq', 3846)
 
     p "response=#{response}"
   end
 
-  task :send_test => :environment do
-    tomorrow = DateTime.now.tomorrow.change({hour: 10, min: 0, sec: 0}).to_s
-    Stylist.where(:status => 'open', :location_id => [167, 168]).each do |stylist|
-      if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
-        begin
-          p "send survey to #{stylist.email_address}, #{stylist.location.url_name}, #{tomorrow}"
-          send_survey(stylist.email_address, stylist.location.url_name, 3846, tomorrow)
-          sleep 1
-        rescue => e
-          Rollbar.error(e)
-          NewRelic::Agent.notice_error(e)
-        end
+  task send_test: :environment do
+    tomorrow = DateTime.now.tomorrow.change({ hour: 10, min: 0, sec: 0 }).to_s
+    Stylist.where(status: 'open', location_id: [167, 168]).each do |stylist|
+      next unless stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
+
+      begin
+        p "send survey to #{stylist.email_address}, #{stylist.location.url_name}, #{tomorrow}"
+        send_survey(stylist.email_address, stylist.location.url_name, 3846, tomorrow)
+        sleep 1
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
       end
     end
   end
 
-  task :survey_location => :environment do
-    Stylist.where(:status => 'open', :location_id => 65).order(:id).each do |stylist|
+  task survey_location: :environment do
+    Stylist.where(status: 'open', location_id: 65).order(:id).each do |stylist|
       if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
         begin
           p "send survey to #{stylist.id}, #{stylist.email_address}, #{stylist.location.url_name}"
           send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
           sleep 1
-        rescue => e
+        rescue StandardError => e
           Rollbar.error(e)
           NewRelic::Agent.notice_error(e)
         end
       else
-        p "not sending survey because the stylist email or location or something is not present"
+        p 'not sending survey because the stylist email or location or something is not present'
       end
     end
   end
 
   def send_surveys
-    excluded_locations = []#[2, 35, 9, 72, 7, 3, 92, 21, 226, 17, 167, 67, 168, 4]
+    Stylist.where(status: 'open').order(:id).each_with_index do |stylist, idx|
+      next unless stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present?
 
-    Stylist.where(:status => 'open').order(:id).each_with_index do |stylist, idx|
-      if stylist.email_address.present? && stylist.location.present? && stylist.location.url_name.present? #&& !excluded_locations.include?(stylist.location_id)
-        begin
-
-          p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address.strip}, #{stylist.location.url_name.strip}, #{stylist.location.id}"
-          response = send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
-          p "#{response}"
-          p ""
-          p "* * * * * * * * * * * *"
-          sleep 1
-        rescue => e
-          Rollbar.error(e)
-          NewRelic::Agent.notice_error(e)
-          p "error sending survey to #{stylist.email_address} #{e}"
-        end
+      begin
+        p "send survey #{idx + 1} to #{stylist.id}, #{stylist.email_address.strip}, #{stylist.location.url_name.strip}, #{stylist.location.id}"
+        response = send_survey(stylist.email_address.strip, stylist.location.url_name.strip, 3846)
+        p response.to_s
+        p ''
+        p '* * * * * * * * * * * *'
+        sleep 1
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
+        p "error sending survey to #{stylist.email_address} #{e}"
       end
     end
   end
 
-  def send_survey(email, site_code, survey_id, date=DateTime.now.to_s)
+  def send_survey(email, site_code, survey_id, date = DateTime.now.to_s)
     require 'uri'
 
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
-        -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
+        -H 'Authorization: Token token="#{ENV.fetch('CUSTOMER_SURE_API_KEY', nil)}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
@@ -83,38 +81,36 @@ namespace :surveys do
        https://api.customersure.com/feedback_requests`
   end
 
-  task :update_sites => :environment do
+  task update_sites: :environment do
     update_sites
   end
 
-  task :update_site => :environment do
+  task update_site: :environment do
     location = Location.find(281) # college station
     begin
       sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
-    rescue => e
+    rescue StandardError => e
       Rollbar.error(e)
       NewRelic::Agent.notice_error(e)
       p "error syncing location #{e.inspect}"
     end
   end
 
-  task :update_site_test => :environment do
+  task update_site_test: :environment do
     sync_location('sola_hq', 'Sola HQ', 'Denver', 'Colorado')
   end
 
   def update_sites
     Location.all.each do |location|
-      begin
-        if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
-          p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
-          sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
-          sleep 2
-        end
-      rescue => e
-        Rollbar.error(e)
-        NewRelic::Agent.notice_error(e)
-        p "error syncing location"
+      if location.url_name.present? && location.name.present? && location.city.present? && location.state.present?
+        p "sync_location, #{location.url_name}, #{location.name}, #{location.city}, #{location.state}"
+        sync_location(location.url_name.strip, location.name.strip, location.city, location.state)
+        sleep 2
       end
+    rescue StandardError => e
+      Rollbar.error(e)
+      NewRelic::Agent.notice_error(e)
+      p 'error syncing location'
     end
   end
 
@@ -125,11 +121,11 @@ namespace :surveys do
 
     if get_site_response['message']
       # create
-      p "create"
+      p 'create'
       response = create_site(site_code, name, city, state)
     else
       # update
-      p "update"
+      p 'update'
       response = update_site(site_code, name, city, state)
     end
 
@@ -138,7 +134,7 @@ namespace :surveys do
 
   def get_site(site_code)
     `curl -H 'Accept: application/vnd.customersure.v1+json;' \
-     -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
+     -H 'Authorization: Token token="#{ENV.fetch('CUSTOMER_SURE_API_KEY', nil)}"' \
      https://api.customersure.com/sites/#{site_code}`
   end
 
@@ -146,39 +142,35 @@ namespace :surveys do
     require 'uri'
 
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
-        -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
+        -H 'Authorization: Token token="#{ENV.fetch('CUSTOMER_SURE_API_KEY', nil)}"' \
         -H 'Content-Type: application/json' \
         -X PATCH \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{escapeString name}",
-              "city": "#{escapeString city}",
-              "region": "#{escapeString state}"
+              "name": "#{escape_string name}",
+              "city": "#{escape_string city}",
+              "region": "#{escape_string state}"
             }' \
        https://api.customersure.com/sites/#{site_code}`
   end
 
   def create_site(site_code, name, city, state)
-
-
     `curl -i -H 'Accept: application/vnd.customersure.v1+json;' \
-        -H 'Authorization: Token token="#{ENV['CUSTOMER_SURE_API_KEY']}"' \
+        -H 'Authorization: Token token="#{ENV.fetch('CUSTOMER_SURE_API_KEY', nil)}"' \
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
               "site_code": "#{site_code}",
-              "name": "#{escapeString name}",
-              "city": "#{escapeString city}",
-              "region": "#{escapeString state}"
+              "name": "#{escape_string name}",
+              "city": "#{escape_string city}",
+              "region": "#{escape_string state}"
             }' \
        https://api.customersure.com/sites`
   end
 
-  def escapeString(str)
-    #require 'uri'
-    str = str.gsub(/'/, '')
-    #str = URI.escape str
-    str
+  def escape_string(str)
+    # require 'uri'
+    str.gsub(/'/, '')
+    # str = URI.escape str
   end
-
 end

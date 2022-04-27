@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SolaClassRegionCountry < ActiveRecord::Base
   belongs_to :sola_class_region
   belongs_to :country

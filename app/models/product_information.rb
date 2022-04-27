@@ -1,21 +1,23 @@
-class ProductInformation < ActiveRecord::Base
+# frozen_string_literal: true
 
+class ProductInformation < ActiveRecord::Base
   after_save :touch_brand
 
   belongs_to :brand
 
   has_paper_trail
 
-  has_attached_file :file, :path => ":class/:attachment/:id_partition/:style/:filename", s3_protocol: :https, s3_host_alias: ENV['S3_HOST_ALIAS']
-  attr_accessor :delete_file
-  before_validation { self.file.destroy if self.delete_file == '1' }
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename', s3_protocol: :https, s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil)
+  attr_accessor :delete_file, :delete_image
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "460x280#", :small => "300x180#" }, s3_protocol: :https, s3_host_alias: ENV['S3_HOST_ALIAS'], url: ':s3_alias_url'
-  attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+  before_validation { file.destroy if delete_file == '1' }
 
-  validates_attachment :file, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "text/plain", "text/html", "application/msword", "application/vnd.ms-works", "application/rtf", "application/pdf", "application/vnd.ms-powerpoint", "application/x-compress", "application/x-compressed", "application/x-gzip", "application/zip", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv", "text/tab-separated-values"] }
-  validates :title, :length => { :maximum => 35 }, :presence => true
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '460x280#', small: '300x180#' }, s3_protocol: :https, s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), url: ':s3_alias_url'
+
+  before_validation { image.destroy if delete_image == '1' }
+
+  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
+  validates :title, length: { maximum: 35 }, presence: true
 
   def to_param
     title.gsub(' ', '-')
@@ -26,22 +28,22 @@ class ProductInformation < ActiveRecord::Base
   end
 
   def file_url
-    file.url if file
+    file&.url
   end
 
   def brand_name
     brand&.name
   end
 
-  def as_json(options={})
+  def as_json(_options = {})
     super(except: %i[brand], methods: %i[brand_name image_url file_url])
   end
 
   private
 
-  def touch_brand
-    self.brand&.touch
-  end
+    def touch_brand
+      brand&.touch
+    end
 end
 
 # == Schema Information

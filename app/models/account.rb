@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Account < ActiveRecord::Base
-  validates :api_key, :name, :uniqueness => true
+  validates :api_key, :name, uniqueness: true
 
   before_create :generate_api_key
 
@@ -7,13 +9,14 @@ class Account < ActiveRecord::Base
 
   private
 
-  # comment
+    # comment
 
-  def generate_api_key
-    begin
-      self.api_key = SecureRandom.hex
-    end while self.class.exists?(api_key: api_key)
-  end
+    def generate_api_key
+      loop do
+        self.api_key = SecureRandom.hex
+        break unless self.class.exists?(api_key: api_key)
+      end
+    end
 end
 
 # == Schema Information

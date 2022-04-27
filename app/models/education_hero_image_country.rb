@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EducationHeroImageCountry < ActiveRecord::Base
   belongs_to :country
   belongs_to :education_hero_image

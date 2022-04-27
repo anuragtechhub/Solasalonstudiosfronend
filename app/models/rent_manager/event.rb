@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 class RentManager::Event < ActiveRecord::Base
   belongs_to :object, polymorphic: true
 
-  enum status: %w[queued processed failed]
-  # TMP disable 
+  enum status: { 'queued' => 0, 'processed' => 1, 'failed' => 2 }
+  # TMP disable
   # after_commit :process, on: :create
 
   private
 
-  def process
-    if self.queued?
-      ::RentManager::WebhookJob.perform_async(self.id)
+    def process
+      if queued?
+        ::RentManager::WebhookJob.perform_async(id)
+      end
     end
-  end
 end
 
 # == Schema Information

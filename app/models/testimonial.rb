@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Testimonial < ActiveRecord::Base
   before_validation :process_name
   validates :text, presence: true
@@ -5,21 +7,21 @@ class Testimonial < ActiveRecord::Base
   has_paper_trail
 
   def to_html
-    html = "<hr>"
-    html += "<div><strong>Name</strong>: #{self.name}</div>"
-    html += "<div><strong>Text</strong>: #{self.text}</div>"
-    html += "<div><strong>Region</strong>: #{self.region}</div>"
-    html += "<br>"
+    html = '<hr>'
+    html += "<div><strong>Name</strong>: #{name}</div>"
+    html += "<div><strong>Text</strong>: #{text}</div>"
+    html += "<div><strong>Region</strong>: #{region}</div>"
+    html += '<br>'
     html.html_safe
   end
 
   private
 
-  def process_name
-    return if self.name.blank?
+    def process_name
+      return if name.blank?
 
-    self.name = self.name.to_s.gsub('undefined', '').strip
-  end
+      self.name = name.to_s.gsub('undefined', '').strip
+    end
 end
 
 # == Schema Information

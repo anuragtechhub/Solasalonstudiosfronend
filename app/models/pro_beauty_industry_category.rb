@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ProBeautyIndustryCategory < ActiveRecord::Base
   has_many :pro_beauty_industries
 
-  validates :name, :presence => true, :uniqueness => true, :length => { :maximum => 30 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 30 }
 end
 
 # == Schema Information

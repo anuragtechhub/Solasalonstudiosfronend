@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pro
   class Api::V3::DealSerializer < ApplicationSerializer
     attributes :id, :title, :description, :image_url, :file_url, :more_info_url, :views

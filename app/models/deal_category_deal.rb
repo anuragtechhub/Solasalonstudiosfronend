@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DealCategoryDeal < ActiveRecord::Base
   belongs_to :deal
   belongs_to :deal_category

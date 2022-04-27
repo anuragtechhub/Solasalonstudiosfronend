@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 class EducationHeroImage < ActiveRecord::Base
   has_many :education_hero_image_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :education_hero_image_countries
 
-  has_attached_file :image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :full_width => '960>', :large => "1500x1000#" }, :s3_protocol => :https
+  has_attached_file :image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { full_width: '960>', large: '1500x1000#' }, s3_protocol: :https
   attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+
+  before_validation { image.destroy if delete_image == '1' }
   validates_attachment :image, content_type: { content_type: %w[image/jpg image/jpeg image/png image/gif] }
 
   validates :countries, :image, :position, presence: true

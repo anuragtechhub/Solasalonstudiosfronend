@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Support < ActiveRecord::Base
   belongs_to :support_category
   belongs_to :category
@@ -7,15 +9,15 @@ class Support < ActiveRecord::Base
 
   has_paper_trail
 
-  has_attached_file :file, :path => ":class/:attachment/:id_partition/:style/:filename"
-  has_attached_file :thumbnail_image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :large => "410x233!", :small => "232x129!" }
-  has_attached_file :flyer_image, :path => ":class/:attachment/:id_partition/:style/:filename", :styles => { :large => "976x976!", :small => "488x488!" }
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename'
+  has_attached_file :thumbnail_image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { large: '410x233!', small: '232x129!' }
+  has_attached_file :flyer_image, path: ':class/:attachment/:id_partition/:style/:filename', styles: { large: '976x976!', small: '488x488!' }
 
-  validates_attachment :file, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif", "text/plain", "text/html", "application/msword", "application/vnd.ms-works", "application/rtf", "application/pdf", "application/vnd.ms-powerpoint", "application/x-compress", "application/x-compressed", "application/x-gzip", "application/zip", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv", "text/tab-separated-values"] }
-  validates :title, :length => { :maximum => 35 }, :presence => true
-  validates :short_description, :length => { :maximum => 400 }, :presence => true
-  validates :long_description, :length => { :maximum => 460 }, :presence => true
-  validates :video_url, :url => true
+  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
+  validates :title, length: { maximum: 35 }, presence: true
+  validates :short_description, length: { maximum: 400 }, presence: true
+  validates :long_description, length: { maximum: 460 }, presence: true
+  validates :video_url, url: true
 end
 
 # == Schema Information

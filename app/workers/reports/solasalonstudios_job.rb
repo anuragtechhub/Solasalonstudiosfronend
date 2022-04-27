@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Reports
   class SolasalonstudiosJob < ::Reports::ReportJob
     def perform(start_date, end_date, country)
-      start_date = Time.parse(start_date)
-      end_date = Time.parse(end_date)
+      start_date = Time.zone.parse(start_date)
+      end_date = Time.zone.parse(end_date)
       @ga_id = GA_IDS[country]
       @url = URLS[country]
       analytics = Analytics.new
@@ -10,7 +12,7 @@ module Reports
 
       html_renderer = HTMLRenderer.new
 
-      pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solasalonstudios_ga', { data: data, url: @url }), footer: {center: '[page]', font_size: 7})
+      pdf = WickedPdf.new.pdf_from_string(html_renderer.build_html('reports/solasalonstudios_ga', { data: data, url: @url }), footer: { center: '[page]', font_size: 7 })
       ReportsMailer.solasalonstudios_report(pdf, @url).deliver
     end
   end

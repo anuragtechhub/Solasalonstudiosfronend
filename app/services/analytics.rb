@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 # TODO: refactor this piece of shit
 ####### analytics ########
 
 class Analytics < BaseCli
-
   require 'uri'
 
   def get_location_url(location, start_date, end_date)
@@ -29,19 +30,19 @@ class Analytics < BaseCli
       "ga:pagePath==/stores/#{location_start.url_name}",
       "ga:pagePath==/stores/#{location_end.url_name}",
       "ga:pagePath==/stores/#{location_start.url_name.gsub('-', '_')}",
-      "ga:pagePath==/stores/#{location_end.url_name.gsub('-', '_')}",
+      "ga:pagePath==/stores/#{location_end.url_name.gsub('-', '_')}"
     ]
 
     page_paths.join(',')
   end
 
-  def booking_complete_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+  def booking_complete_data(profile_id = '81802112', start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month)
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
       start_date: start_date,
-      end_date: end_date
+      end_date:   end_date
     }
 
     require 'json'
@@ -50,40 +51,41 @@ class Analytics < BaseCli
 
     (start_date.to_date..end_date.to_date).each do |date|
       sleep 0.5
-      p "done slept"
+      Rails.logger.debug 'done slept'
       booking_completes = get_ga_data(analytics, profile_id, date, date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
-      p "booking_completes! #{date}"#, data=#{booking_completes.inspect}"
-      if booking_completes && booking_completes.length > 0
-        booking_completes.each do |booking_complete|
-          next if booking_complete[0] == 'Booking Complete'
-          booking_complete_data = JSON.parse(booking_complete[0])
-          booking_complete_data["booking_date"] = date
-          booking_data << booking_complete_data
-        end
+      Rails.logger.debug { "booking_completes! #{date}" } # , data=#{booking_completes.inspect}"
+      next unless booking_completes&.length&.positive?
+
+      booking_completes.each do |booking_complete|
+        next if booking_complete[0] == 'Booking Complete'
+
+        booking_complete_data = JSON.parse(booking_complete[0])
+        booking_complete_data['booking_date'] = date
+        booking_data << booking_complete_data
       end
     end
 
-    data[:booking_completes] = booking_data.sort_by {|k| k["booking_date"] }
+    data[:booking_completes] = booking_data.sort_by { |k| k['booking_date'] }
     data[:bookings_total] = data[:booking_completes].length
     total_revenue = 0.0
     data[:booking_completes].each do |booking_complete|
-      if booking_complete && booking_complete["total"]
-        p "total=#{booking_complete["total"][1..-1].to_f}"
-        total_revenue += booking_complete["total"][1..-1].to_f
+      if booking_complete && booking_complete['total']
+        Rails.logger.debug { "total=#{booking_complete['total'][1..].to_f}" }
+        total_revenue += booking_complete['total'][1..].to_f
       end
     end
     data[:bookings_revenue] = total_revenue
 
-    return data
+    data
   end
 
-  def booknow_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+  def booknow_data(profile_id = '81802112', start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month)
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
       start_date: start_date,
-      end_date: end_date
+      end_date:   end_date
     }
 
     data[:overview] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow')
@@ -91,102 +93,96 @@ class Analytics < BaseCli
     results = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Results')
     top_results_locations = {}
     top_results_queries = {}
-    p "results=#{results}"
-    if results && results.length > 0
+    Rails.logger.debug { "results=#{results}" }
+    if results&.length&.positive?
       results.each do |result|
-        begin
-          result = eval(result[0])
-          if result[:location]
-            if top_results_locations.key?(result[:location])
-              top_results_locations[result[:location]] = top_results_locations[result[:location]] + 1
-            else
-              top_results_locations[result[:location]] = 1
-            end
-          end
-
-          if result[:query]
-            if top_results_queries.key?(result[:query])
-              top_results_queries[result[:query]] = top_results_queries[result[:query]] + 1
-            else
-              top_results_queries[result[:query]] = 1
-            end
-          end
-        rescue => e
-          Rollbar.error(e)
-          NewRelic::Agent.notice_error(e)
-          p "couldnt eval yo"
+        result = eval(result[0])
+        if result[:location]
+          top_results_locations[result[:location]] = if top_results_locations.key?(result[:location])
+                                                       top_results_locations[result[:location]] + 1
+                                                     else
+                                                       1
+                                                     end
         end
+
+        if result[:query]
+          top_results_queries[result[:query]] = if top_results_queries.key?(result[:query])
+                                                  top_results_queries[result[:query]] + 1
+                                                else
+                                                  1
+                                                end
+        end
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
+        Rails.logger.debug 'couldnt eval yo'
       end
-      data[:results_locations] = top_results_locations.sort_by{ |k,v| v }.reverse[0..9]
-      data[:results_queries] = top_results_queries.sort_by{ |k,v| v }.reverse[0..9]
+      data[:results_locations] = top_results_locations.sort_by { |_k, v| v }.reverse[0..9]
+      data[:results_queries] = top_results_queries.sort_by { |_k, v| v }.reverse[0..9]
     end
 
     booking_completes = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Booking Complete')
     top_booking_complete_locations = {}
-    p "booking_completes=#{booking_completes}"
-    if booking_completes && booking_completes.length > 0
+    Rails.logger.debug { "booking_completes=#{booking_completes}" }
+    if booking_completes&.length&.positive?
       booking_completes.each do |result|
-        begin
-          result = eval(result[0])
+        result = eval(result[0])
 
-          if result[:location]
-            if top_booking_complete_locations.key?(result[:location])
-              top_booking_complete_locations[result[:location]] = top_booking_complete_locations[result[:location]] + 1
-            else
-              top_booking_complete_locations[result[:location]] = 1
-            end
-          end
-        rescue => e
-          Rollbar.error(e)
-          NewRelic::Agent.notice_error(e)
-          p "couldnt eval yo"
+        if result[:location]
+          top_booking_complete_locations[result[:location]] = if top_booking_complete_locations.key?(result[:location])
+                                                                top_booking_complete_locations[result[:location]] + 1
+                                                              else
+                                                                1
+                                                              end
         end
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
+        Rails.logger.debug 'couldnt eval yo'
       end
-      p "top_booking_complete_locations=#{top_booking_complete_locations}"
-      data[:booking_complete_locations] = top_booking_complete_locations.sort_by{ |k,v| v }.reverse[0..9]
+      Rails.logger.debug { "top_booking_complete_locations=#{top_booking_complete_locations}" }
+      data[:booking_complete_locations] = top_booking_complete_locations.sort_by { |_k, v| v }.reverse[0..9]
     end
 
     open_booking_modals = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==BookNow;ga:eventAction==Open Booking Modal')
     top_open_booking_modal_locations = {}
-    p "open_booking_modals=#{open_booking_modals}"
-    if open_booking_modals && open_booking_modals.length > 0
+    Rails.logger.debug { "open_booking_modals=#{open_booking_modals}" }
+    if open_booking_modals&.length&.positive?
       open_booking_modals.each do |result|
-        begin
-          result = eval(result[0])
-          if result[:location]
-            if top_open_booking_modal_locations.key?(result[:location])
-              top_open_booking_modal_locations[result[:location]] = top_open_booking_modal_locations[result[:location]] + 1
-            else
-              top_open_booking_modal_locations[result[:location]] = 1
-            end
-          end
-        rescue => e
-          Rollbar.error(e)
-          NewRelic::Agent.notice_error(e)
-          p "couldnt eval yo"
+        result = eval(result[0])
+        if result[:location]
+          top_open_booking_modal_locations[result[:location]] = if top_open_booking_modal_locations.key?(result[:location])
+                                                                  top_open_booking_modal_locations[result[:location]] + 1
+                                                                else
+                                                                  1
+                                                                end
         end
+      rescue StandardError => e
+        Rollbar.error(e)
+        NewRelic::Agent.notice_error(e)
+        Rails.logger.debug 'couldnt eval yo'
       end
-      p "top_open_booking_modal_locations=#{top_open_booking_modal_locations}"
-      data[:open_booking_modal_locations] = top_open_booking_modal_locations.sort_by{ |k,v| v }.reverse[0..9]
+      Rails.logger.debug { "top_open_booking_modal_locations=#{top_open_booking_modal_locations}" }
+      data[:open_booking_modal_locations] = top_open_booking_modal_locations.sort_by { |_k, v| v }.reverse[0..9]
     end
 
     data
   end
 
-  def location_data(profile_id='81802112', location=nil, start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+  def location_data(profile_id = '81802112', location = nil, start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month)
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
-      start_date: start_date,
-      end_date: end_date,
+      start_date:    start_date,
+      end_date:      end_date,
       location_name: location.name,
-      location_url: "/locations/#{location.url_name}"
+      location_url:  "/locations/#{location.url_name}"
     }
 
     # current year pageviews (by month)
     (1..start_date.month).each do |month|
-      p "current year pageviews #{month}"
+      Rails.logger.debug { "current year pageviews #{month}" }
       data_month = get_ga_data(analytics, profile_id, DateTime.new(start_date.year, month, 1).strftime('%F'), DateTime.new(start_date.year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new(start_date.year, month, 1), DateTime.new(start_date.year, month, 1).end_of_month))
       key_sym = "pageviews_current_#{month}".to_sym
       data[key_sym] = data_month
@@ -195,7 +191,7 @@ class Analytics < BaseCli
 
     # previous year pageviews (by month)
     (1..12).each do |month|
-      p "previous year pageviews #{month}"
+      Rails.logger.debug { "previous year pageviews #{month}" }
       data_month = get_ga_data(analytics, profile_id, DateTime.new((start_date - 1.year).year, month, 1).strftime('%F'), DateTime.new((start_date - 1.year).year, month, 1).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, DateTime.new((start_date - 1.year).year, month, 1), DateTime.new((start_date - 1.year).year, month, 1).end_of_month))
       key_sym = "pageviews_last_#{month}".to_sym
       data[key_sym] = data_month
@@ -204,72 +200,72 @@ class Analytics < BaseCli
 
     sleep 1
 
-    p "begin unique pageviews"
+    Rails.logger.debug 'begin unique pageviews'
     # unique visits - visits, new visitors, returning visitors
     data[:unique_pageviews] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date, end_date))
     data[:unique_pageviews_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
     data[:unique_pageviews_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:pageviews', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
-    p "end unique pageviews"
-    p "data[:unique_pageviews]=#{data[:unique_pageviews]}"
-    p "data[:unique_pageviews_prev_month]=#{data[:unique_pageviews_prev_month]}"
-    p "data[:unique_pageviews_prev_year]=#{data[:unique_pageviews_prev_year]}"
+    Rails.logger.debug 'end unique pageviews'
+    Rails.logger.debug { "data[:unique_pageviews]=#{data[:unique_pageviews]}" }
+    Rails.logger.debug { "data[:unique_pageviews_prev_month]=#{data[:unique_pageviews_prev_month]}" }
+    Rails.logger.debug { "data[:unique_pageviews_prev_year]=#{data[:unique_pageviews_prev_year]}" }
 
-    p "begin unique visits"
+    Rails.logger.debug 'begin unique visits'
     # unique visits - visits, new visitors, returning visitors
     data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, start_date, end_date))
     data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month))
     data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions', nil, get_location_url(location, (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month))
-    p "end unique visits"
+    Rails.logger.debug 'end unique visits'
 
     # referrals - source, % of traffic
     # ga:medium
     # ga:acquisitionTrafficChannel
     data[:referrals] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:medium', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
     data[:referrals] = data[:referrals][0..4] if data[:referrals]
-    p "done with referrals"
+    Rails.logger.debug 'done with referrals'
 
     # top referrers - site, visits
     data[:top_referrers] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:source', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
     data[:top_referrers] = data[:top_referrers][0..6] if data[:top_referrers]
-    p "done with top referrers"
+    Rails.logger.debug 'done with top referrers'
 
     # locations - top regions that visited (city, visits)
     data[:top_regions] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:city', 'ga:pageviews', '-ga:pageviews', get_location_url(location, start_date, end_date))
     data[:top_regions] = data[:top_regions][0..6] if data[:top_regions]
-    p "done with top regions"
+    Rails.logger.debug 'done with top regions'
 
     # time on site, pages/session
     data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:pagePath', 'ga:avgTimeOnPage ga:pageviewsPerSession', nil, get_location_url(location, start_date, end_date))
-    if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
+    if data[:time_on_page_and_pageviews_per_session]&.length&.positive?
       data[:time_on_site] = 0.0
       data[:pageviews_per_session] = 0.0
       data[:pages_with_pageviews] = 0
       data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
-        if top_and_pps[2].to_f > 0
-          data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
-          data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
-          data[:pages_with_pageviews] = data[:pages_with_pageviews] + 1
-        end
+        next unless top_and_pps[2].to_f.positive?
+
+        data[:time_on_site] = data[:time_on_site] + top_and_pps[1].to_f
+        data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
+        data[:pages_with_pageviews] = data[:pages_with_pageviews] + 1
       end
     end
-    p "done with time on site, pages/session"
+    Rails.logger.debug 'done with time on site, pages/session'
 
     # location phone number clicks
 
     data[:location_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-    #p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
+    # p "data[:location_phone_number_clicks_current_month]=#{data[:location_phone_number_clicks_current_month]}"
     data[:location_phone_number_clicks_current_month] = data[:location_phone_number_clicks_current_month] && data[:location_phone_number_clicks_current_month][0] ? data[:location_phone_number_clicks_current_month][0][1] : 0
 
     data[:location_phone_number_clicks_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-    #p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
+    # p "data[:location_phone_number_clicks_prev_month]=#{data[:location_phone_number_clicks_prev_month]}"
     data[:location_phone_number_clicks_prev_month] = data[:location_phone_number_clicks_prev_month] && data[:location_phone_number_clicks_prev_month][0] ? data[:location_phone_number_clicks_prev_month][0][1] : 0
 
     data[:location_phone_number_clicks_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).beginning_of_month.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Location Phone Number;ga:eventLabel==#{location.id}")
-    #p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
+    # p "data[:location_phone_number_clicks_prev_year]=#{data[:location_phone_number_clicks_prev_year]}"
     data[:location_phone_number_clicks_prev_year] = data[:location_phone_number_clicks_prev_year] && data[:location_phone_number_clicks_prev_year][0] ? data[:location_phone_number_clicks_prev_year][0][1] : 0
 
     stylist_phone_number_filters = get_stylist_stylist_phone_number_filters_for_location(location)
-    #p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
+    # p "stylist_phone_number_filters=#{stylist_phone_number_filters}"
 
     if stylist_phone_number_filters.present?
       data[:professional_phone_number_clicks_current_month] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', "ga:eventCategory==Professional Phone Number;#{stylist_phone_number_filters}")
@@ -294,16 +290,16 @@ class Analytics < BaseCli
     location.stylists.each do |stylist|
       filters << "ga:eventLabel==#{stylist.id}"
     end
-    return filters.join(',')
+    filters.join(',')
   end
 
-  def solapro_web_data(profile_id='105609602', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+  def solapro_web_data(profile_id = '105609602', start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month)
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
       start_date: start_date,
-      end_date: end_date
+      end_date:   end_date
     }
 
     # unique visits - visits, new visitors, returning visitors
@@ -312,7 +308,7 @@ class Analytics < BaseCli
 
     # time on site, pages/session
     data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:hostName', 'ga:avgTimeOnPage ga:pageviewsPerSession')
-    if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
+    if data[:time_on_page_and_pageviews_per_session]&.length&.positive?
       data[:time_on_site] = 0.0
       data[:pageviews_per_session] = 0.0
       data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
@@ -321,7 +317,7 @@ class Analytics < BaseCli
       end
     end
     data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'ga:hostName', 'ga:avgTimeOnPage ga:pageviewsPerSession')
-    if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
+    if data[:time_on_page_and_pageviews_per_session_prev_month]&.length&.positive?
       data[:time_on_site_prev_month] = 0.0
       data[:pageviews_per_session_prev_month] = 0.0
       data[:time_on_page_and_pageviews_per_session_prev_month].each do |top_and_pps|
@@ -342,7 +338,8 @@ class Analytics < BaseCli
     top_deals = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventAction', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Deal')
     data[:top_deals] = []
     top_deals.each do |top_deal|
-      next if top_deal[0].include?('click') || !top_deal[0].include?('|') || data[:top_deals].length >= 5
+      next if top_deal[0].include?('click') || top_deal[0].exclude?('|') || data[:top_deals].length >= 5
+
       data[:top_deals] << top_deal
     end
 
@@ -353,7 +350,8 @@ class Analytics < BaseCli
     top_videos = get_ga_data(analytics, profile_id, start_date, end_date, 'ga:eventLabel', 'ga:totalEvents', '-ga:totalEvents', 'ga:eventCategory==Video')
     data[:top_videos] = []
     top_videos.each do |top_video|
-      next if top_video[0].include?('click') || !top_video[0].include?('|') || data[:top_videos].length >= 5
+      next if top_video[0].include?('click') || top_video[0].exclude?('|') || data[:top_videos].length >= 5
+
       data[:top_videos] << top_video
     end
 
@@ -363,13 +361,13 @@ class Analytics < BaseCli
     data
   end
 
-  def solapro_app_data(profile_id='257267659', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month)
+  def solapro_app_data(profile_id = '257267659', start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month)
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
       start_date: start_date,
-      end_date: end_date
+      end_date:   end_date
     }
 
     # unique visits - visits, new visitors, returning visitors
@@ -378,7 +376,7 @@ class Analytics < BaseCli
 
     # time on site, pages/session
     data[:time_on_page_and_pageviews_per_session] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
-    if data[:time_on_page_and_pageviews_per_session] && data[:time_on_page_and_pageviews_per_session].length > 0
+    if data[:time_on_page_and_pageviews_per_session]&.length&.positive?
       data[:time_on_site] = 0.0
       data[:pageviews_per_session] = 0.0
       data[:time_on_page_and_pageviews_per_session].each do |top_and_pps|
@@ -388,7 +386,7 @@ class Analytics < BaseCli
     end
 
     data[:time_on_page_and_pageviews_per_session_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:appName', 'ga:avgScreenviewDuration ga:screenviewsPerSession')
-    if data[:time_on_page_and_pageviews_per_session_prev_month] && data[:time_on_page_and_pageviews_per_session_prev_month].length > 0
+    if data[:time_on_page_and_pageviews_per_session_prev_month]&.length&.positive?
       data[:time_on_site_prev_month] = 0.0
       data[:pageviews_per_session_prev_month] = 0.0
       data[:time_on_page_and_pageviews_per_session_prev_month].each do |top_and_pps|
@@ -420,13 +418,13 @@ class Analytics < BaseCli
     data
   end
 
-  def solasalonstudios_data(profile_id='81802112', start_date=Date.today.beginning_of_month, end_date=Date.today.end_of_month, url="solasalonstudios.com")
+  def solasalonstudios_data(profile_id = '81802112', start_date = Date.today.beginning_of_month, end_date = Date.today.end_of_month, url = 'solasalonstudios.com')
     analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
     analytics.authorization = user_credentials_for(Google::Apis::AnalyticsreportingV4::AUTH_ANALYTICS)
 
     data = {
       start_date: start_date,
-      end_date: end_date
+      end_date:   end_date
     }
 
     # current year pageviews (by month)
@@ -452,7 +450,6 @@ class Analytics < BaseCli
     data[:unique_visits] = get_ga_data(analytics, profile_id, start_date.strftime('%F'), end_date.strftime('%F'), 'ga:userType', 'ga:sessions')
     data[:unique_visits_prev_month] = get_ga_data(analytics, profile_id, start_date.prev_month.beginning_of_month.strftime('%F'), end_date.prev_month.end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions')
     data[:unique_visits_prev_year] = get_ga_data(analytics, profile_id, (start_date - 1.year).beginning_of_month.strftime('%F'), (end_date - 1.year).end_of_month.strftime('%F'), 'ga:userType', 'ga:sessions')
-
 
     # referrals - source, % of traffic
     # ga:medium
@@ -508,7 +505,8 @@ class Analytics < BaseCli
       data[:pageviews_per_session] = data[:pageviews_per_session] + top_and_pps[2].to_f
     end
 
-    if url == 'solasalonstudios.com'
+    case url
+    when 'solasalonstudios.com'
       # leasing form submissions
       data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date, end_date, 'Request leasing information').count
       data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ?', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information').count
@@ -523,8 +521,8 @@ class Analytics < BaseCli
       data[:other_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date, end_date, 'Other').count
       data[:other_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Other').count
       data[:other_form_submissions_prev_year] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND (how_can_we_help_you = ? OR how_can_we_help_you IS NULL)', (start_date - 1.year).beginning_of_month, (end_date - 1.year).end_of_month, 'Other').count
-    elsif url == 'solasalonstudios.ca'
-      canadian_location_ids = Location.where(:country => 'CA').map(&:id)
+    when 'solasalonstudios.ca'
+      canadian_location_ids = Location.where(country: 'CA').map(&:id)
       # leasing form submissions
       data[:leasing_form_submissions_current_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date, end_date, 'Request leasing information', canadian_location_ids).count
       data[:leasing_form_submissions_prev_month] = RequestTourInquiry.where('(created_at >= ? AND created_at <= ?) AND how_can_we_help_you = ? AND location_id IN (?)', start_date.prev_month.beginning_of_month, end_date.prev_month.end_of_month, 'Request leasing information', canadian_location_ids).count
@@ -559,7 +557,7 @@ class Analytics < BaseCli
     data
   end
 
-  def get_ga_data(analytics=nil, profile_id=nil, start_date=nil, end_date=nil, dimensions=nil, metrics=nil, sort=nil, filters_expression=nil)
+  def get_ga_data(analytics = nil, profile_id = nil, start_date = nil, end_date = nil, dimensions = nil, metrics = nil, sort = nil, filters_expression = nil)
     return [] unless analytics && profile_id && start_date && end_date && dimensions
 
     grr = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new
@@ -568,7 +566,7 @@ class Analytics < BaseCli
 
     if dimensions
       dimensions_arr = []
-      dimensions.split(' ').each do |dimension_str|
+      dimensions.split.each do |dimension_str|
         dimension = Google::Apis::AnalyticsreportingV4::Dimension.new
         dimension.name = dimension_str
         dimensions_arr << dimension
@@ -578,7 +576,7 @@ class Analytics < BaseCli
 
     if metrics
       metrics_arr = []
-      metrics.split(' ').each do |metric_str|
+      metrics.split.each do |metric_str|
         metric = Google::Apis::AnalyticsreportingV4::Metric.new
         metric.expression = metric_str
         metrics_arr << metric
@@ -596,7 +594,7 @@ class Analytics < BaseCli
       if sort.start_with? '-'
         sort[0] = ''
         order_by.field_name = sort
-        order_by.sort_order = "DESCENDING"
+        order_by.sort_order = 'DESCENDING'
       else
         order_by.field_name = sort
       end
@@ -612,14 +610,13 @@ class Analytics < BaseCli
 
     response = analytics.batch_get_reports(grr)
 
-    data = response.reports.map{|report|
+    response.reports.map do |report|
       return nil if report.data.rows.nil?
-      return report.data.rows.map{|row|
-        [row.dimensions[0], *row.metrics[0].values]
-      }
-    }
 
-    return data
+      return report.data.rows.map do |row|
+        [row.dimensions[0], *row.metrics[0].values]
+      end
+    end
   end
 
   require 'mechanize'
@@ -636,5 +633,4 @@ class Analytics < BaseCli
     end
     page_title
   end
-
 end

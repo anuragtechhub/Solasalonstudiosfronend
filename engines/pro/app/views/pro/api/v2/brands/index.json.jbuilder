@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.array! @brands do |brand|
   json.id brand.id
   json.name brand.name
@@ -77,5 +79,5 @@ json.array! @brands do |brand|
     json.youtube_video_id video.youtube_video_id
     json.tool_file_url video.tool_file_url
     json.tool_title video.tool_title
-  end  
+  end
 end

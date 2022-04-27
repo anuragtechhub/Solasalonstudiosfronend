@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module WhySolaHelper
   def why_sola_sections
     result = %i[why_sola sola_pro]

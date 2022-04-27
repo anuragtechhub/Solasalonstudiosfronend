@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FranchiseArticle < ActiveRecord::Base
   include Rails.application.routes.mounted_helpers
   extend FriendlyId
@@ -20,29 +22,30 @@ class FranchiseArticle < ActiveRecord::Base
   }
 
   enum kind: {
-    blog: 0,
+    blog:  0,
     press: 1
   }
 
-  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+  has_attached_file :image, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { full_width: '960>', directory: '375x375#', thumbnail: '100x100#' }, s3_protocol: :https
+  validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
+  attr_accessor :delete_image, :delete_thumbnail
 
-  has_attached_file :thumbnail, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960>', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
-  validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
-  attr_accessor :delete_thumbnail
-  before_validation { self.thumbnail.destroy if self.delete_thumbnail == '1' }
+  before_validation { image.destroy if delete_image == '1' }
 
-  scope :by_category, ->(category_id) {
-    includes(:categories).where(categories: {id: category_id})
+  has_attached_file :thumbnail, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { full_width: '960>', directory: '375x375#', thumbnail: '100x100#' }, s3_protocol: :https
+  validates_attachment_content_type :thumbnail, content_type: %r{\Aimage/.*\Z}
+
+  before_validation { thumbnail.destroy if delete_thumbnail == '1' }
+
+  scope :by_category, lambda { |category_id|
+    includes(:categories).where(categories: { id: category_id })
   }
 
-  scope :search_by_query, ->(query) {
+  scope :search_by_query, lambda { |query|
     where('LOWER(title) LIKE :query OR LOWER(body) LIKE :query OR LOWER(author) LIKE :query', query: "%#{query.downcase.gsub(/\s/, '%')}%")
   }
 
-  scope :by_country_or_blank, -> (country) { where(country: [nil, FranchiseArticle.countries[country.to_s]]) }
+  scope :by_country_or_blank, ->(country) { where(country: [nil, FranchiseArticle.countries[country.to_s]]) }
 
   def safe_title
     EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))

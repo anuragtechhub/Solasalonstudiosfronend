@@ -1,19 +1,21 @@
-class Article < ActiveRecord::Base
+# frozen_string_literal: true
 
+class Article < ActiveRecord::Base
   belongs_to :location
 
-  before_create :generate_url_name
   before_save :fix_url_name
-  validates :title, :presence => true
-  validates :article_url, :presence => true
-  validates :location, :presence => true, :if => :franchisee?
-  #validates :url_name, :presence => true, :uniqueness => true
+  before_create :generate_url_name
+  validates :title, presence: true
+  validates :article_url, presence: true
+  validates :location, presence: true, if: :franchisee?
+  # validates :url_name, :presence => true, :uniqueness => true
 
-  has_attached_file :image, :url => ":s3_alias_url", :path => ":class/:attachment/:id_partition/:style/:filename", :s3_host_alias => ENV['S3_HOST_ALIAS'], :styles => { :full_width => '960#', :directory => '375x375#', :thumbnail => '100x100#' }, :s3_protocol => :https
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :image, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { full_width: '960#', directory: '375x375#', thumbnail: '100x100#' }, s3_protocol: :https
+  validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
   validates_attachment_presence :image
   attr_accessor :delete_image
-  before_validation { self.image.destroy if self.delete_image == '1' }
+
+  before_validation { image.destroy if delete_image == '1' }
 
   has_paper_trail
 
@@ -25,37 +27,33 @@ class Article < ActiveRecord::Base
     EscapeUtils.escape_url(title.gsub(/&#8211;/, '-'))
   end
 
-
   def display_setting_enum
-    [['Sola Website', 'sola_website'], ['Franchising Website', 'franchising'], ['Both', 'both']]
+    [['Sola Website', 'sola_website'], ['Franchising Website', 'franchising'], %w[Both both]]
   end
 
   private
 
-  def generate_url_name
-    if self.title
-      url = self.title.downcase.gsub(/[^0-9a-zA-Z]/, '_')
-      count = 1
+    def generate_url_name
+      if title
+        url = title.downcase.gsub(/[^0-9a-zA-Z]/, '_')
+        count = 1
 
-      while Blog.where(:url_name => url).size > 0 do
-        url = "#{url}#{count}"
-        count = count + 1
+        while Blog.where(url_name: url).size.positive?
+          url = "#{url}#{count}"
+          count += 1
+        end
+
+        self.url_name = url
       end
-
-      self.url_name = url
     end
-  end
 
-  def fix_url_name
-    self.url_name = self.url_name.gsub(/[^0-9a-zA-Z]/, '_') if self.url_name.present?
-  end
-
-  def franchisee?
-    if Thread.current[:current_admin]
-      Thread.current[:current_admin].franchisee
+    def fix_url_name
+      self.url_name = url_name.gsub(/[^0-9a-zA-Z]/, '_') if url_name.present?
     end
-  end
 
+    def franchisee?
+      Thread.current[:current_admin]&.franchisee
+    end
 end
 
 # == Schema Information
