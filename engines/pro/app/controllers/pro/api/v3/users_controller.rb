@@ -19,8 +19,7 @@ module Pro
         render json: { errors: [t(:invalid_current_password)] }
       else
         current_user.update!(update_params)
-        serializer = current_user.is_a?(Admin) ? Api::V3::AdminSerializer : Api::V3::UserSerializer
-        respond_with(current_user, serializer: serializer, status: :ok)
+        render json: { success: true, user: current_user }
       end
     end
 
