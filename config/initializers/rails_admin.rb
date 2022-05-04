@@ -720,7 +720,12 @@ RailsAdmin.config do |config|
         end
       end
     end
-    edit do
+    edit do 
+      field 'load_location_js', :hidden do
+        def render
+          bindings[:view].render partial: 'load_location_js'
+        end
+      end
       group :general do
         field :name do
           label 'Location Name'
