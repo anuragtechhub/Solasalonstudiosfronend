@@ -1650,7 +1650,9 @@ RailsAdmin.config do |config|
             end
           end
         end
-        field :business_name
+        field :business_name do 
+          label 'Salon Name'
+        end  
         field :studio_number
         field :work_hours
         field :accepting_new_clients
