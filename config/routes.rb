@@ -191,6 +191,10 @@ Solasalonstudios::Application.routes.draw do
   # match 'sessions/nashville' => 'sessions#nashville', :via => [:get, :post], :as => :nashville_session
 
   namespace :api do
+    namespace :sola_cms, path: '/' do
+      resources :articles
+    end
+
     namespace :v1 do
       match 'locations' => 'locations#index', :via => %i[get post]
       match 'locations/:id' => 'locations#show', :via => %i[get post]
