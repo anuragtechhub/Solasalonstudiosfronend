@@ -98,7 +98,7 @@ RailsAdmin.config do |config|
     bulk_delete
 
     # member actions
-    edit
+    edit 
     delete
     # history_show
     # show_in_app
@@ -2862,6 +2862,11 @@ RailsAdmin.config do |config|
       end
     end
     edit do
+      field :admin_id, :hidden do
+      default_value do
+        bindings[:view]._current_user.id
+      end
+      end
       field :title
       field :description
       field :category
