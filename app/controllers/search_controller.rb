@@ -13,20 +13,16 @@ class SearchController < PublicWebsiteController
         # zip code location
         @locations = Location.where(country: (I18n.locale == :en ? 'US' : 'CA')).open.near(params[:query], 20)
       else
-        # locations (default)
-        locations1 = Location.open.near(params[:query].downcase).where(country: (I18n.locale == :en ? 'US' : 'CA'))
-        locations2 = Location.open.where(country: (I18n.locale == :en ? 'US' : 'CA')).where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(country: (I18n.locale == :en ? 'US' : 'CA'))
-        locations3 = Location.open.where(msa_id: Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a).where(country: (I18n.locale == :en ? 'US' : 'CA'))
-
-        @locations = locations1 + locations2 + locations3
-        exact_match_location = Location.where(country: (I18n.locale == :en ? 'US' : 'CA')).where(status: 'open').where('LOWER(name) = ?', params[:query].downcase).first
-        if exact_match_location
+        @locations = Location.where(country: (I18n.locale == :en ? 'US' : 'CA')).where(status: 'open').where('LOWER(name) = ?', params[:query].downcase)
+        unless @locations
           # p "yes exact match location #{exact_match_location.name}"
-          @locations.unshift(exact_match_location)
-          @locations.uniq!
+          locations1 = Location.open.near(params[:query].downcase).where(country: (I18n.locale == :en ? 'US' : 'CA'))
+          locations2 = Location.open.where(country: (I18n.locale == :en ? 'US' : 'CA')).where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(country: (I18n.locale == :en ? 'US' : 'CA'))
+          locations3 = Location.open.where(msa_id: Msa.where('LOWER(name) LIKE ?', query_param).select(:id).to_a).where(country: (I18n.locale == :en ? 'US' : 'CA'))
+
+          @locations = locations1 + locations2 + locations3
         end
       end
-
       # preload stylists
       @locations = Location.where(id: @locations.map(&:id)).preload(:stylists).order(:name)
 
