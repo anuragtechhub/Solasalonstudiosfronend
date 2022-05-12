@@ -1939,6 +1939,389 @@ RailsAdmin.config do |config|
 
     list do
       scopes %i[pending approved]
+      group :general do
+        field :name do
+          help ' '
+        end
+        field :biography, :ck_editor do
+          pretty_value do
+            value.html_safe if value.present?
+          end
+          help ' '
+        end
+      end
+      group :contact do
+        field :phone_number do
+          help ' '
+        end
+        field :email_address do
+          help ' '
+        end
+      end
+      group :business do
+        field :business_name do
+          help ' '
+        end
+        field :work_hours do
+          help ' '
+        end
+      end
+      group :website do
+        field :website_url do
+          help ' '
+        end
+        field :booking_url do
+          help ' '
+        end
+        field :reserved do
+          help ' '
+        end
+      end
+      group :social do
+        field :facebook_url
+        field :google_plus_url
+        field :instagram_url
+        field :linkedin_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+        field :tik_tok_url
+      end
+      group :services do
+        field :barber
+        field :botox do
+          label 'Botox/Fillers'
+        end
+        field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
+        field :eyelash_extensions do
+          label 'Lashes'
+        end
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
+        field :skin do
+          label 'Skincare'
+        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
+        field :other_service do
+          label 'Other'
+        end
+      end
+      group :testimonials do
+        field :testimonial_1 do
+          label 'Testimonial #1'
+          help ''
+        end
+        field :testimonial_2 do
+          label 'Testimonial #2'
+          help ''
+        end
+        field :testimonial_3 do
+          label 'Testimonial #3'
+          help ''
+        end
+        field :testimonial_4 do
+          label 'Testimonial #4'
+          help ''
+        end
+        field :testimonial_5 do
+          label 'Testimonial #5'
+          help ''
+        end
+        field :testimonial_6 do
+          label 'Testimonial #6'
+          help ''
+        end
+        field :testimonial_7 do
+          label 'Testimonial #7'
+          help ''
+        end
+        field :testimonial_8 do
+          label 'Testimonial #8'
+          help ''
+        end
+        field :testimonial_9 do
+          label 'Testimonial #9'
+          help ''
+        end
+        field :testimonial_10 do
+          label 'Testimonial #10'
+          help ''
+        end
+      end
+      group :images do
+        field :image_1 do
+          label 'Image #1'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_1
+        end
+        field :image_2 do
+          label 'Image #2'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_2
+        end
+        field :image_3 do
+          label 'Image #3'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_3
+        end
+        field :image_4 do
+          label 'Image #4'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_4
+        end
+        field :image_5 do
+          label 'Image #5'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_5
+        end
+        field :image_6 do
+          label 'Image #6'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_6
+        end
+        field :image_7 do
+          label 'Image #7'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_7
+        end
+        field :image_8 do
+          label 'Image #8'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_8
+        end
+        field :image_9 do
+          label 'Image #9'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_9
+        end
+        field :image_10 do
+          label 'Image #10'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_10
+        end
+      end
+      field :approved
+    end
+
+    show do
+      group :general do
+        field :name do
+          help ' '
+        end
+        field :biography, :ck_editor do
+          pretty_value do
+            value.html_safe if value.present?
+          end
+          help ' '
+        end
+      end
+      group :contact do
+        field :phone_number do
+          help ' '
+        end
+        field :email_address do
+          help ' '
+        end
+      end
+      group :business do
+        field :business_name do
+          help ' '
+        end
+        field :work_hours do
+          help ' '
+        end
+      end
+      group :website do
+        field :website_url do
+          help ' '
+        end
+        field :booking_url do
+          help ' '
+        end
+        field :reserved do
+          help ' '
+        end
+      end
+      group :social do
+        field :facebook_url
+        field :google_plus_url
+        field :instagram_url
+        field :linkedin_url
+        field :pinterest_url
+        field :twitter_url
+        field :yelp_url
+        field :tik_tok_url
+      end
+      group :services do
+        field :barber
+        field :botox do
+          label 'Botox/Fillers'
+        end
+        field :brows
+        field :hair
+        field :hair_extensions
+        field :laser_hair_removal
+        field :eyelash_extensions do
+          label 'Lashes'
+        end
+        field :makeup
+        field :massage
+        field :nails
+        field :permanent_makeup
+        field :skin do
+          label 'Skincare'
+        end
+        field :tanning
+        field :teeth_whitening
+        field :threading
+        field :waxing
+        field :other_service do
+          label 'Other'
+        end
+      end
+      group :testimonials do
+        field :testimonial_1 do
+          label 'Testimonial #1'
+          help ''
+        end
+        field :testimonial_2 do
+          label 'Testimonial #2'
+          help ''
+        end
+        field :testimonial_3 do
+          label 'Testimonial #3'
+          help ''
+        end
+        field :testimonial_4 do
+          label 'Testimonial #4'
+          help ''
+        end
+        field :testimonial_5 do
+          label 'Testimonial #5'
+          help ''
+        end
+        field :testimonial_6 do
+          label 'Testimonial #6'
+          help ''
+        end
+        field :testimonial_7 do
+          label 'Testimonial #7'
+          help ''
+        end
+        field :testimonial_8 do
+          label 'Testimonial #8'
+          help ''
+        end
+        field :testimonial_9 do
+          label 'Testimonial #9'
+          help ''
+        end
+        field :testimonial_10 do
+          label 'Testimonial #10'
+          help ''
+        end
+      end
+      group :images do
+        field :image_1 do
+          label 'Image #1'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_1
+        end
+        field :image_2 do
+          label 'Image #2'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_2
+        end
+        field :image_3 do
+          label 'Image #3'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_3
+        end
+        field :image_4 do
+          label 'Image #4'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_4
+        end
+        field :image_5 do
+          label 'Image #5'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_5
+        end
+        field :image_6 do
+          label 'Image #6'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_6
+        end
+        field :image_7 do
+          label 'Image #7'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_7
+        end
+        field :image_8 do
+          label 'Image #8'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_8
+        end
+        field :image_9 do
+          label 'Image #9'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_9
+        end
+        field :image_10 do
+          label 'Image #10'
+          pretty_value do
+            "<a href='#{value.url(:carousel)}' target='_blank'><img src='#{value.url(:carousel)}' /></a>".html_safe if value.present?
+          end
+          delete_method :delete_image_10
+        end
+      end
+      field :approved
     end
 
     edit do
@@ -1946,7 +2329,7 @@ RailsAdmin.config do |config|
         field :name do
           help ' '
         end
-        field :biography do
+        field :biography, :ck_editor do
           help ' '
         end
       end
