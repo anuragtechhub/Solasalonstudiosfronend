@@ -18,16 +18,16 @@ module Pro
     attribute(:class_name) { object.class.name }
 
     # TMP hack
-    attribute(:image_1_url) { object.image_1_url.presence }
-    attribute(:image_2_url) { object.image_2_url.presence }
-    attribute(:image_3_url) { object.image_3_url.presence }
-    attribute(:image_4_url) { object.image_4_url.presence }
-    attribute(:image_5_url) { object.image_5_url.presence }
-    attribute(:image_6_url) { object.image_6_url.presence }
-    attribute(:image_7_url) { object.image_7_url.presence }
-    attribute(:image_8_url) { object.image_8_url.presence }
-    attribute(:image_9_url) { object.image_9_url.presence }
-    attribute(:image_10_url) { object.image_10_url.presence }
+    attribute(:image_1_url) { object.image_1_url.presence || '/image_1s/original/missing.png' }
+    attribute(:image_2_url) { object.image_2_url.presence || '/image_2s/original/missing.png' }
+    attribute(:image_3_url) { object.image_3_url.presence || '/image_3s/original/missing.png' }
+    attribute(:image_4_url) { object.image_4_url.presence || '/image_4s/original/missing.png' }
+    attribute(:image_5_url) { object.image_5_url.presence || '/image_5s/original/missing.png' }
+    attribute(:image_6_url) { object.image_6_url.presence || '/image_6s/original/missing.png' }
+    attribute(:image_7_url) { object.image_7_url.presence || '/image_7s/original/missing.png' }
+    attribute(:image_8_url) { object.image_8_url.presence || '/image_8s/original/missing.png' }
+    attribute(:image_9_url) { object.image_9_url.presence || '/image_9s/original/missing.png' }
+    attribute(:image_10_url) { object.image_10_url.presence || '/image_10s/original/missing.png' }
 
     has_many :brands
     # has_many :tags
