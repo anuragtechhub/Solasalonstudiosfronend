@@ -18,7 +18,7 @@ module Pro
       if params[:user][:password].present? && !current_user.valid_password?(params[:user][:current_password])
         render json: { errors: [t(:invalid_current_password)] }
       else
-        current_user.update!(update_params.reject{|_, v| v.include?("/original/missing.png")})
+        current_user.update!(update_params)
         serializer = current_user.is_a?(Admin) ? Api::V3::AdminSerializer : Api::V3::UserSerializer
         render json: current_user, serializer: serializer, root: 'user'
       end
