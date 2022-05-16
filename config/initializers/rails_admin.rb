@@ -1943,7 +1943,7 @@ RailsAdmin.config do |config|
         field :name do
           help ' '
         end
-        field :biography, :ck_editor do
+        field :biography do
           pretty_value do
             value.html_safe if value.present?
           end
