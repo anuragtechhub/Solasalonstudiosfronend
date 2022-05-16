@@ -246,10 +246,6 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     NewRelic::Agent.notice_error(e)
   end
 
-  def biography
-    ActionView::Base.full_sanitizer.sanitize(read_attribute(:biography).to_s).squish
-  end
-
   def publish
     stylist.name = name
     stylist.email_address = email_address
