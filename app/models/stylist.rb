@@ -217,10 +217,6 @@ class Stylist < ActiveRecord::Base
     FullNameSplitter.split(name)[1]
   end
 
-  def biography
-    ActionView::Base.full_sanitizer.sanitize(read_attribute(:biography).to_s).squish
-  end
-
   def device_token
     if devices&.length&.positive?
       devices.order(updated_at: :desc).first.token
