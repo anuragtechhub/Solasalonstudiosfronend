@@ -14,7 +14,7 @@ class SearchController < PublicWebsiteController
         @locations = Location.where(country: (I18n.locale == :en ? 'US' : 'CA')).open.near(params[:query], 20)
       else
         @locations = Location.where(country: (I18n.locale == :en ? 'US' : 'CA')).where(status: 'open').where('LOWER(name) = ?', params[:query].downcase)
-        unless @locations
+        unless @locations.present?
           # p "yes exact match location #{exact_match_location.name}"
           locations1 = Location.open.near(params[:query].downcase).where(country: (I18n.locale == :en ? 'US' : 'CA'))
           locations2 = Location.open.where(country: (I18n.locale == :en ? 'US' : 'CA')).where('LOWER(state) LIKE ? OR LOWER(city) LIKE ? OR LOWER(name) LIKE ? OR LOWER(url_name) LIKE ?', query_param, query_param, query_param, query_param).where(country: (I18n.locale == :en ? 'US' : 'CA'))
