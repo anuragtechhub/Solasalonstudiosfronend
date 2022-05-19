@@ -2136,11 +2136,10 @@ RailsAdmin.config do |config|
         field :name do
           help ' '
         end
-        field :biography, :ck_editor do
+        field :biography do
           pretty_value do
             value.html_safe if value.present?
           end
-          help ' '
         end
       end
       group :contact do
@@ -2329,9 +2328,7 @@ RailsAdmin.config do |config|
         field :name do
           help ' '
         end
-        field :biography, :ck_editor do
-          help ' '
-        end
+        field :biography, :ck_editor
       end
       group :contact do
         field :phone_number do
