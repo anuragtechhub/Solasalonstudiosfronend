@@ -12,7 +12,7 @@ Solasalonstudios::Application.routes.draw do
 
   # engines
   mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV.fetch('FRANCHISING_DOMAINS', nil))
-  mount Pro::Engine => '/', as: 'pro_engine', constraints: DomainConstraint.new(ENV.fetch('PRO_DOMAINS', nil))
+  mount Pro::Engine => '/', as: 'pro_engine'
   
 
   get '/' => 'home#index', :as => :home
