@@ -3,6 +3,9 @@
 module Pro
   class Api::V1::UsersController < ApiController
     # used by Gloss Genius
+
+    before_action :log_entry
+
     def find
       stylist = Stylist.where(id: params[:org_user_id]).order(created_at: :asc).first if params[:org_user_id]
       stylist ||= get_user(params[:email_address], user_only: true)
@@ -59,6 +62,16 @@ module Pro
       end
 
       render json: { success: true }
+    end
+
+    private
+
+    def log_entry
+      NewRelic::Agent.notice_error(params)
+      Rails.logger.debug {"=======Request from=============="}
+      Rails.logger.debug {request.host}
+      Rails.logger.debug {"=======request parameters=============="}
+      Rails.logger.debug {params}
     end
   end
 end

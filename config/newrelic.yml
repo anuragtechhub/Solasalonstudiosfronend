@@ -21,7 +21,7 @@ common: &default_settings
   # To disable the agent regardless of other settings, uncomment the following:
   # agent_enabled: false
 
-  # Logging level for log/newrelic_agent.log
+  # Logging level for log/NEW_RELIC_LICENSE_KEYnewrelic_agent.log
   log_level: info
   distributed_tracing:
     enabled: true
@@ -40,6 +40,14 @@ test:
 
 staging:
   <<: *default_settings
+  log_level: info
+  application_logging:
+    forwarding:
+      max_samples_stored: 10000
 
 production:
   <<: *default_settings
+  log_level: info
+  application_logging:
+    forwarding:
+      max_samples_stored: 10000
