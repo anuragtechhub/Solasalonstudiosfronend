@@ -3,7 +3,7 @@
 class Api::V2::LocationsController < ApiController
   before_action :set_cors_headers
   before_action :set_cache_headers
-  before_action :store_gloss_genius_logs, only: %i[show] , if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
+  before_action :store_gloss_genius_logs, only: %i[show] , if: -> { ENV['LOG_GLOSS_GENIUS_LOCATION'] == true }
 
   def index
     cache_key = "/api/v2/index/#{Location.maximum(:updated_at).to_i}"
