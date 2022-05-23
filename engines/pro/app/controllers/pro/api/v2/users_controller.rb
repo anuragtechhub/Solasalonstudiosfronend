@@ -3,7 +3,7 @@
 module Pro
   class Api::V2::UsersController < ApiController
     # used by Gloss Genius
-    before_action :log_entry
+    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
 
     def find
       if params[:org_user_id]
@@ -13,7 +13,7 @@ module Pro
       end
 
       if stylist
-        render json: { org_user_id: stylist.id, stylist: true, location_id: (stylist.location ? stylist.location.id : nil), location_name: (stylist.location ? stylist.location.name : nil), created_at: stylist.created_at }
+        render json: { org_user_id: stylist.id, stylist: true, location_id: (stylist.location ? stylist.location.id : nil), location_name: (stylist.location ? stylist.location.name : nil), created_at: stylist.created_at }   
       # elsif franchisee
       #   render :json => {:org_user_id => franchisee.id, :stylist => false}
       else
@@ -24,9 +24,8 @@ module Pro
     # used by Gloss Genius
     def page_url
       stylist = Stylist.find_by(id: params[:id])
-
       if stylist
-        stylist.booking_url = params[:page_url] if params.key?(:page_url)
+        stylist.booking_url = params[:page_url] if params.key?(:page_url)      
         if stylist.booking_url.blank? && params.key?(:sg_booking_url) && stylist.solagenius_account_created_at.blank?
           p "set solagenius_account_created_at to now! v2 #{DateTime.now}"
           stylist.solagenius_account_created_at = DateTime.now
@@ -36,7 +35,6 @@ module Pro
         end
         # stylist.has_sola_genius_account = params[:page_url].present?
         stylist.save(validate: false)
-
         render json: { org_user_id: stylist.id }
       else
         render nothing: true, status: :not_found
@@ -70,12 +68,8 @@ module Pro
 
     private
 
-    def log_entry
-      NewRelic::Agent.notice_error(params)
-      Rails.logger.debug {"=======Request from=============="}
-      Rails.logger.debug {request.host}
-      Rails.logger.debug {"=======request parameters=============="}
-      Rails.logger.debug {params}
-    end
+      def store_gloss_genius_logs
+        store_gloss_genius_log = GlossGeniusLog.create(action_name: request[:action], ip_address: request.remote_ip, host: request.host, request_body: params)
+      end   
   end
 end

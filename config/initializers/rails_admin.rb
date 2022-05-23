@@ -88,6 +88,7 @@ RailsAdmin.config do |config|
     index # mandatory
     new do
       except ['Event']
+      except ['GlossGeniusLog']
     end
     show
     # export do
@@ -98,7 +99,9 @@ RailsAdmin.config do |config|
     bulk_delete
 
     # member actions
-    edit 
+    edit do 
+      except ['GlossGeniusLog']
+    end
     delete
     # history_show
     # show_in_app
@@ -1909,6 +1912,24 @@ RailsAdmin.config do |config|
       field :tik_tok_url
     end
   end
+
+  config.model 'GlossGeniusLog' do 
+    label 'Gloss Genius Log'
+    label_plural 'Gloss Genius Logs'
+
+    list do
+      field :action_name
+      field :ip_address
+      field :host
+      field :request_body 
+    end
+    show do
+      field :action_name
+      field :ip_address
+      field :host
+      field :request_body 
+    end
+  end  
 
   config.model 'StylistMessage' do
     navigation_label 'Sola Salons'

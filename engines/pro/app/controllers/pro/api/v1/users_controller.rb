@@ -3,8 +3,7 @@
 module Pro
   class Api::V1::UsersController < ApiController
     # used by Gloss Genius
-
-    before_action :log_entry
+    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
 
     def find
       stylist = Stylist.where(id: params[:org_user_id]).order(created_at: :asc).first if params[:org_user_id]
@@ -20,7 +19,6 @@ module Pro
     # used by Gloss Genius
     def page_url
       stylist = Stylist.find_by(id: params[:id])
-
       if stylist
         stylist.booking_url = params[:page_url] if params.key?(:page_url)
         if stylist.booking_url.blank? && params.key?(:sg_booking_url) && stylist.solagenius_account_created_at.blank?
@@ -32,7 +30,6 @@ module Pro
         end
         # stylist.has_sola_genius_account = params[:page_url] && params[:page_url].present?
         stylist.save(validate: false)
-
         render json: { org_user_id: stylist.id }
       else
         render nothing: true, status: :not_found
@@ -65,13 +62,9 @@ module Pro
     end
 
     private
-
-    def log_entry
-      NewRelic::Agent.notice_error(params)
-      Rails.logger.debug {"=======Request from=============="}
-      Rails.logger.debug {request.host}
-      Rails.logger.debug {"=======request parameters=============="}
-      Rails.logger.debug {params}
-    end
+      
+      def store_gloss_genius_logs
+        store_gloss_genius_log = GlossGeniusLog.create(action_name: request[:action], ip_address: request.remote_ip, host: request.host, request_body: params)
+      end 
   end
 end

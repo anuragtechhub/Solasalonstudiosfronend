@@ -193,6 +193,8 @@ Solasalonstudios::Application.routes.draw do
     namespace :sola_cms, path: '/' do
       resources :articles
       resources :blogs
+      resources :request_tour_inquiries
+      resources :deals
     end
 
     namespace :v1 do

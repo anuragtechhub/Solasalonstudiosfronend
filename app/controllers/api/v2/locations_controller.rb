@@ -3,6 +3,7 @@
 class Api::V2::LocationsController < ApiController
   before_action :set_cors_headers
   before_action :set_cache_headers
+  before_action :store_gloss_genius_logs, only: %i[show] , if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
 
   def index
     cache_key = "/api/v2/index/#{Location.maximum(:updated_at).to_i}"
@@ -31,4 +32,10 @@ class Api::V2::LocationsController < ApiController
     end
     render json: json
   end
+
+  private
+
+    def store_gloss_genius_logs
+      store_gloss_genius_log = GlossGeniusLog.create(action_name: request[:action], ip_address: request.remote_ip, host: request.host, request_body: params)
+    end 
 end
