@@ -160,5 +160,13 @@ Pro::Engine.routes.draw do
         end
       end
     end
+
+    namespace :v4 do
+      resource :users, only: %[] do
+        collection do
+          get :current
+        end
+      end
+    end
   end
 end

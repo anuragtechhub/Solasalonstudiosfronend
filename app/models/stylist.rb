@@ -681,6 +681,10 @@ class Stylist < ActiveRecord::Base
     end
   end
 
+  def v3_biography
+    ActionView::Base.full_sanitizer.sanitize(read_attribute(:biography).to_s).squish
+  end
+
   private
 
     def assign_params(obj, params, names)
@@ -837,6 +841,7 @@ class Stylist < ActiveRecord::Base
 
       ::RentManager::StylistSyncJob.perform_async(id)
     end
+
 end
 
 # == Schema Information

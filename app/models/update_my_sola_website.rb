@@ -611,7 +611,11 @@ class UpdateMySolaWebsite < ActiveRecord::Base
     end
 
     def remove_unwanted_text
-      self.biography = self.biography.gsub("&nbsp;", " ")
+      begin
+        self.biography = self.biography.gsub("&nbsp;", " ")
+      rescue
+        nil
+      end
     end
 end
 
