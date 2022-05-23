@@ -104,6 +104,7 @@ class UpdateMySolaWebsite < ActiveRecord::Base
   after_save :email_franchisee
   # Same here
   after_save :reserve_stylist
+  before_save :remove_unwanted_text
 
   scope :pending, -> { where(approved: false) }
   scope :approved, -> { where(approved: true) }
@@ -607,6 +608,10 @@ class UpdateMySolaWebsite < ActiveRecord::Base
       return unless reserved
 
       stylist.update_column(:reserved, true)
+    end
+
+    def remove_unwanted_text
+      self.biography = self.biography.gsub("&nbsp;", " ")
     end
 end
 
