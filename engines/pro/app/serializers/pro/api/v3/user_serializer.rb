@@ -4,7 +4,7 @@ module Pro
   class Api::V3::UserSerializer < ApplicationSerializer
     attributes :id, :name, :email_address,
                :phone_number, :business_name, :website_name,
-               :biography, :booking_url, :reserved,
+               :booking_url, :reserved,
                :pinterest_url, :linkedin_url, :facebook_url,
                :twitter_url, :instagram_url, :yelp_url, :tik_tok_url, :onboarded,
                :barber, :botox, :brows, :hair, :hair_extensions, :laser_hair_removal,
@@ -16,7 +16,7 @@ module Pro
     attribute :app_settings
     attribute :my_sola_website
     attribute(:class_name) { object.class.name }
-
+    attribute(:biography) { object.v3_biography }
     # TMP hack
     attribute(:image_1_url) { object.image_1_url.presence }
     attribute(:image_2_url) { object.image_2_url.presence }

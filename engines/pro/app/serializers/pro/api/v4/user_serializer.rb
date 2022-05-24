@@ -16,7 +16,7 @@ module Pro
     attribute :app_settings
     attribute :my_sola_website
     attribute(:class_name) { object.class.name }
-    attribute(:biography) { object.biography.gsub("\r\n", "<br>") }
+    attribute(:biography) { object.biography.gsub("\r\n\r\n", "<br>") }
     # TMP hack
     attribute(:image_1_url) { object.image_1_url.presence }
     attribute(:image_2_url) { object.image_2_url.presence }
