@@ -3,7 +3,7 @@
 module Pro
   class Api::V1::UsersController < ApiController
     # used by Gloss Genius
-    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
+    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == "true" }
 
     def find
       stylist = Stylist.where(id: params[:org_user_id]).order(created_at: :asc).first if params[:org_user_id]

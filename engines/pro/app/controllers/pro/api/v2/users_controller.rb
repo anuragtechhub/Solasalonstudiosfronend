@@ -3,7 +3,7 @@
 module Pro
   class Api::V2::UsersController < ApiController
     # used by Gloss Genius
-    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == true }
+    before_action :store_gloss_genius_logs, only: %i[find page_url], if: -> { ENV['LOG_GLOSS_GENIUS'] == "true" }
 
     def find
       if params[:org_user_id]
