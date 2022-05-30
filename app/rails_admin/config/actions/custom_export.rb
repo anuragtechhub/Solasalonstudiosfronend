@@ -41,34 +41,35 @@ module RailsAdmin
 
                 headers['Content-Disposition'] = "attachment; filename=\"#{@model_name.to_s.pluralize}-#{Date.current}.csv\""
                 # headers['Content-Type'] ||= 'text/csv'
+                if params[:schema].present?
+                  @schema = HashHelper.symbolize(params[:schema].slice(:except, :include, :methods, :only).permit!.to_h)
+                  @methods = [(@schema[:only] || []) + (@schema[:methods] || [])].flatten.compact
+                  @fields = @methods.collect { |method| @model_config.export.fields.select { |f| f.name == method }.first }
 
-                @schema = HashHelper.symbolize(params[:schema].slice(:except, :include, :methods, :only).permit!.to_h)
-                @methods = [(@schema[:only] || []) + (@schema[:methods] || [])].flatten.compact
-                @fields = @methods.collect { |method| @model_config.export.fields.select { |f| f.name == method }.first }
+                  field_names = @fields.collect do |field|
+                    ::I18n.t('admin.export.csv.header_for_root_methods', name: field.label, model: @abstract_model.pretty_name)
+                  end
+                  response.stream.write field_names.to_csv
 
-                field_names = @fields.collect do |field|
-                  ::I18n.t('admin.export.csv.header_for_root_methods', name: field.label, model: @abstract_model.pretty_name)
-                end
-                response.stream.write field_names.to_csv
+                  query = @model_name.constantize
+                    .accessible_by(current_ability)
+                    .where(created_at: from..to)
+                    .order(created_at: :desc)
+                  query = case @model_name
+                          when 'Stylist', 'RequestTourInquiry'
+                            query.includes(:location)
+                          when 'Location'
+                            query.includes(:stylists)
+                          else
+                            query
+                          end
 
-                query = @model_name.constantize
-                  .accessible_by(current_ability)
-                  .where(created_at: from..to)
-                  .order(created_at: :desc)
-                query = case @model_name
-                        when 'Stylist', 'RequestTourInquiry'
-                          query.includes(:location)
-                        when 'Location'
-                          query.includes(:stylists)
-                        else
-                          query
-                        end
-
-                query.find_in_batches(batch_size: 1000) do |batch|
-                  joined_csv_rows = batch.map do |object|
-                    @fields.collect { |field| field.with(object: object).export_value }.to_csv
-                  end.join
-                  response.stream.write(joined_csv_rows)
+                  query.find_in_batches(batch_size: 1000) do |batch|
+                    joined_csv_rows = batch.map do |object|
+                      @fields.collect { |field| field.with(object: object).export_value }.to_csv
+                    end.join
+                    response.stream.write(joined_csv_rows)
+                  end
                 end
               ensure
                 response.stream.close

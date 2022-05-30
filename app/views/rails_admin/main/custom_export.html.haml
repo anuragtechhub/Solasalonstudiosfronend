@@ -1,5 +1,4 @@
 - visible_fields = @model_config.export.with(view: self, object: @abstract_model.model.new, controller: self.controller).visible_fields
-
 = form_tag custom_export_path, class: 'form-horizontal' do
   %fieldset
     %legend
@@ -9,7 +8,7 @@
     .form-group.control-group.row
       .col-sm-6.controls
         = label_tag :from, 'From'
-        = text_field_tag :from, @abstract_model.model.order(created_at: :asc).first.created_at, required: true, data: { datetimepicker: true, options: { "showTodayButton":true,"format":"YYYY-MM-DD" } }, class: 'form-control'
+        = text_field_tag :from, @abstract_model.model.order(created_at: :asc).first&.created_at, required: true, data: { datetimepicker: true, options: { "showTodayButton":true,"format":"YYYY-MM-DD" } }, class: 'form-control'
 
       .col-sm-6.controls
         = label_tag :to, 'To'
@@ -50,6 +49,15 @@
 
   .form-group.form-actions
     .col-sm-offset-2.col-sm-10
-      %button.btn.btn-primary{type: "submit", name: 'csv'}
+      %button.btn.btn-primary{type: "submit", name: 'csv', id: :export_csv}
         %i.icon-white.icon-download
         = t("admin.export.confirmation", name: 'csv')
+
+
+:javascript
+  $("#export_csv").click(function(e) { 
+    if (!$("form").find(".controls").find("input[type=checkbox]").is(":checked")) {
+      alert("Please select atleast one field.");
+      e.preventDefault();
+    }
+  })
