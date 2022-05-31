@@ -10,7 +10,7 @@ class BooknowController < PublicWebsiteController
   end
 
   def search
-    redirect_to '/' unless I18n.locale.to_s == 'en'
+    redirect_to '/', status: :moved_permanently, format: :json
   end
 
   def cojilio_results; end
@@ -26,6 +26,7 @@ class BooknowController < PublicWebsiteController
     # p "#{results_response}"
 
     begin
+      
       @professionals = []
       @professional_results = JSON.parse(results_response)
       @date = params[:date] ? DateTime.parse(params[:date]) : DateTime.now
@@ -58,7 +59,13 @@ class BooknowController < PublicWebsiteController
     rescue StandardError => e
       NewRelic::Agent.notice_error(e)
       Rollbar.error(e)
-      redirect_to booknow_search_path(date: params[:date], location: params[:location], lat: params[:lat], lng: params[:lng], query: params[:query]), flash: { error: 'There was a problem with your search. Please try again.' }, status: :moved_permanently
+      respond_to do |format|
+        # p "format=#{format}"
+        format.html
+        format.json { render :json => {status: :moved_permanently} }
+      end
+      # redirect_to booknow_search_path(date: params[:date], location: params[:location], lat: params[:lat], lng: params[:lng], query: params[:query]), flash: { error: 'There was a problem with your search. Please try again.' }, status: :moved_permanently
+      
       @date = DateTime.parse(params[:date]) || DateTime.now
     end
   end
