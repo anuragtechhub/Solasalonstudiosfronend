@@ -132,6 +132,22 @@ RailsAdmin.config do |config|
       field :total
       field :created_at
     end
+
+    export do
+      field :id
+      field :time_range
+      field :location_id
+      field :query
+      field :services
+      field :stylist_id
+      field :booking_user_name
+      field :booking_user_phone
+      field :booking_user_email
+      field :referring_url
+      field :total
+      field :created_at
+      field :updated_at
+    end
   end
 
   # General
