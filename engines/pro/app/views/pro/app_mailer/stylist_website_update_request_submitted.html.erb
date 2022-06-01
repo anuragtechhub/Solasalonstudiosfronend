@@ -123,6 +123,8 @@
                 <img src="<%= value %>" alt="<%= key %>" style="max-width:400px;" />
               <% elsif key.include?('testimonial') %>
                 <%= value.attributes.except('id', 'region', 'created_at', 'updated_at') %>
+              <% elsif key.include?('biography') %>
+                  <%= value.html_safe %>
               <% else %>
                 <%= value %>
               <% end %>
