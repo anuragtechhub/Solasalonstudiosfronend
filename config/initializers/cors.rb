@@ -4,8 +4,8 @@ Rails.application.config.middleware.insert_before 0, 'Rack::Cors' do
   allow do
     origins '*'
 
-    resource '/assets/*',
+    resource '*',
              headers: :any,
-             methods: [:get]
+             methods: [:get, :post, :delete, :put, :patch, :options]
   end
 end

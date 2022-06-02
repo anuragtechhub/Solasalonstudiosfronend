@@ -1,5 +1,4 @@
-class Api::SolaCms::BlogsController < ApiController
-  skip_before_action :restrict_api_access
+class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
   before_action :set_blog, only: %i[ show update destroy]
 
   #GET /blogs
@@ -28,7 +27,7 @@ class Api::SolaCms::BlogsController < ApiController
     if @blog.update(blog_params)
       render json: {message: "Blog Successfully Updated."}, status: 200
     else
-      render jason: {error: "Unable to Update Blog."}, status: 400
+      render json: {error: "Unable to Update Blog."}, status: 400
     end 
   end 
 
@@ -37,7 +36,7 @@ class Api::SolaCms::BlogsController < ApiController
     if @blog.destroy
       render json: {message: "Blog Successfully Deleted."}, status: 200
     else
-      render jason: {error: "Unable to Delete Blog."}, status: 400
+      render json: {error: "Unable to Delete Blog."}, status: 400
     end
   end
 

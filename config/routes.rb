@@ -194,7 +194,21 @@ Solasalonstudios::Application.routes.draw do
       resources :articles
       resources :blogs
       resources :request_tour_inquiries
+      resources :locations
+      resources :partner_inquiries
+      resources :msas
+      resources :my_sola_images
+      resources :state_regions
+      resources :side_menu_items
+      resources :sola10k_images
+      resources :stylist_messages
+      resources :brands
+      resources :education_hero_images
+      resources :product_informations
       resources :deals
+      resources :tools_and_resources
+      resources :notifications
+      resources :home_buttons
     end
 
     namespace :v1 do

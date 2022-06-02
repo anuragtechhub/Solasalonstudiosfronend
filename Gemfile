@@ -17,7 +17,6 @@ gem 'uglifier', '4.2.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '3.1.2'
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 
@@ -32,6 +31,7 @@ gem 'puma'
 gem 'hamlit'
 gem 'font-awesome-rails'
 gem 'clockwork'
+gem 'kaminari'
 
 group :production do
   gem 'rails_12factor'
@@ -49,7 +49,6 @@ gem "curb"
 gem "down"
 gem "naturally"
 gem "tzinfo"
-
 gem 'aws-sdk-s3'
 gem 'aws-sdk-sns'
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class Api::SolaCms::ArticlesController < ApiController
-  skip_before_action :restrict_api_access
+class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
   before_action :set_article, only: %i[ show update destroy]
+
 
   #GET /articles
   def index
@@ -14,7 +14,7 @@ class Api::SolaCms::ArticlesController < ApiController
   def create
     @article  =  Article.new(article_params)
     if @article.save
-      render json: @article 
+      render json: @article
     else
       render json: {error: "Unable to Create Article " }, status: 400 
     end
@@ -30,7 +30,7 @@ class Api::SolaCms::ArticlesController < ApiController
     if @article.update(article_params)
       render json: {message: "Article Successfully Updated." }, status: 200
     else
-      render jason: {error: "Unable to Update Article."}, status: 400
+      render json: {error: "Unable to Update Article."}, status: 400
     end
   end
 
@@ -39,7 +39,7 @@ class Api::SolaCms::ArticlesController < ApiController
     if @article.destroy
       render json: {message: "Article Successfully Deleted."}, status: 200
     else
-      render jason: {error: "Unable to Delete Article."}, status: 400
+      render json: {error: "Unable to Delete Article."}, status: 400
     end
   end
 
