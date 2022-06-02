@@ -17,6 +17,7 @@ module Pro
           enable_walkins(walkins_expiry)
         else
           disable_walkins
+          render json: { error: ENV.fetch('WALKINS_ERROR') } and return
         end
       end
 
