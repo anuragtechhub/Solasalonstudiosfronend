@@ -9,7 +9,7 @@ module Pro
     end
 
     def walkins
-      if params[:walkins_duration].blank?
+      if params[:walkins_duration].blank? || params[:walkins_duration] == "0"
         disable_walkins
       else
         walkins_expiry = calculate_walkins_expiry
@@ -17,7 +17,7 @@ module Pro
           enable_walkins(walkins_expiry)
         else
           disable_walkins
-          render json: { error: ENV.fetch('WALKINS_ERROR') } and return
+          render status: 400, json: { error: ENV.fetch('WALKINS_ERROR')} and return
         end
       end
 
