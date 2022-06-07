@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Pro
-  class Api::V3::UpdateMySolaWebsitesController < Api::V3::ApiController
+  class Api::V4::UpdateMySolaWebsitesController < Api::V4::ApiController
     def create
       update_my_sola_website
       @update_my_sola_website.update!(update_params)
@@ -9,7 +9,7 @@ module Pro
     end
 
     def walkins
-      if params[:walkins_duration].blank?
+      if params[:walkins_duration].blank? || params[:walkins_duration] == "0"
         disable_walkins
       else
         walkins_expiry = calculate_walkins_expiry
@@ -17,6 +17,7 @@ module Pro
           enable_walkins(walkins_expiry)
         else
           disable_walkins
+          render status: 400, json: { error: ENV.fetch('WALKINS_ERROR')} and return
         end
       end
 

@@ -167,6 +167,11 @@ Pro::Engine.routes.draw do
           get :current
         end
       end
+      resource :update_my_sola_website, only: %i[create] do
+        collection do
+          post :walkins
+        end
+      end
     end
   end
 end
