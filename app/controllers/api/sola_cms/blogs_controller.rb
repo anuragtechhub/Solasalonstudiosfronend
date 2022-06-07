@@ -13,7 +13,9 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     if @blog.save
       render json: @blog 
     else
-      render json: {error: "Unable to Create Blog"}, status: 400
+      Rails.logger.info(@blog.errors.messages)
+      render json: {error: @blog.errors.messages}, status: 400
+       
     end
   end
 
@@ -27,7 +29,8 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     if @blog.update(blog_params)
       render json: {message: "Blog Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Blog."}, status: 400
+      Rails.logger.info(@blog.errors.messages)
+      render json: {error: @blog.errors.messages}, status: 400
     end 
   end 
 
@@ -36,7 +39,8 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     if @blog.destroy
       render json: {message: "Blog Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Blog."}, status: 400
+        render json: {error: @blog.errors.messages}, status: 400
+        Rails.logger.info(@blog.errors.messages)
     end
   end
 
@@ -47,6 +51,6 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :url_name, :canonical_url, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :category_ids, :tag_ids, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, :country_ids)
+    params.require(:blog).permit(:title, :url_name, :canonical_url, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :category_ids, :tag_ids, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, country_ids: [])
   end 
 end
