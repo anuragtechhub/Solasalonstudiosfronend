@@ -26,6 +26,11 @@ module Callfire
 
             batch["Contact[#{index}][firstName]"] = stylist.name
             batch["Contact[#{index}][homePhone]"] = stylist.phone_number
+            data = {
+              name: stylist.name,
+              phone_number: stylist.phone_number
+            }
+            CallfireLog.create(status: 'success', data: data, kind: 'callfire_stylist_job', action: 'form')
           end
 
           req = Net::HTTP::Post.new('/api/1.1/rest/contact/list/658274003/add')
