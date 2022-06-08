@@ -219,6 +219,11 @@ Solasalonstudios::Application.routes.draw do
     namespace :v2 do
       match 'locations' => 'locations#index', :via => %i[get post]
       match 'locations/:id' => 'locations#show', :via => %i[get post]
+      resources :locations do 
+        member do
+          get 'get_location_data'
+        end
+      end  
     end
 
     namespace :v3 do

@@ -33,6 +33,18 @@ class Api::V2::LocationsController < ApiController
     render json: json
   end
 
+  def get_location_data
+    location = Location.find_by(id: params[:id])
+    if location.present?
+      render json: ActiveModelSerializers::SerializableResource.new(
+        location,
+        each_serializer: Api::V2::LocationSerializer
+      ).as_json
+    else
+      render json: { message: "Record Not Found!"} 
+    end  
+  end
+
   private
 
     def store_gloss_genius_logs
