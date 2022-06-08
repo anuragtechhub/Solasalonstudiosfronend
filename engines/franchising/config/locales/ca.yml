@@ -4,9 +4,9 @@ ca:
 
     website:
       first_section:
-        headline: 'Simple. Successful.'
-        s1: 'The most rewarding niche real estate investment. Franchise today.'
-        cta: 'Lead the Change'
+        headline_html: 'Simple. <br> Successful.'
+        s1_html: 'The most rewarding niche real estate investment. <br/> Franchise today.'
+        cta: 'Franchise Today'
 
       why_sola:
         h1: 'A proven, low-staff model positioned for success in Canada.'
