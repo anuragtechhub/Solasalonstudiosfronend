@@ -13,7 +13,6 @@ Solasalonstudios::Application.routes.draw do
   # engines
   mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV.fetch('FRANCHISING_DOMAINS', nil))
   mount Pro::Engine => '/', as: 'pro_engine', constraints: DomainConstraint.new(ENV.fetch('PRO_DOMAINS', nil))
-  
 
   get '/' => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
@@ -205,6 +204,9 @@ Solasalonstudios::Application.routes.draw do
       resources :brands
       resources :education_hero_images
       resources :product_informations
+      resources :tools_and_resources
+      resources :home_buttons
+      resources :admins
       resources :deals
       resources :tools_and_resources
       resources :notifications
