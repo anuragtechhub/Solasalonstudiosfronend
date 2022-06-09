@@ -208,6 +208,7 @@ Solasalonstudios::Application.routes.draw do
       resources :home_buttons
       resources :admins
       resources :deals
+      resources :events_and_classes
       resources :tools_and_resources
       resources :notifications
       resources :home_buttons
