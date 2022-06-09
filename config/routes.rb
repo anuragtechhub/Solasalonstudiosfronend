@@ -212,6 +212,7 @@ Solasalonstudios::Application.routes.draw do
       resources :tools_and_resources
       resources :notifications
       resources :home_buttons
+      resources :videos
     end
 
     namespace :v1 do
