@@ -131,9 +131,9 @@ class Blog < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(except: %i[body url_name image_file_name image_file_size image_content_type
+    super(except: %i[image_file_name image_file_size image_content_type
                      image_updated_at carousel_image_file_name carousel_image_content_type carousel_image_file_size
-                     carousel_image_updated_at carousel_text legacy_id fb_conversion_pixel], methods: %i[blog_blog_categories image_url url])
+                     carousel_image_updated_at legacy_id ], methods: %i[blog_blog_categories image_url url], include: %i[ countries tags blog_categories ])
   end
 
   private
