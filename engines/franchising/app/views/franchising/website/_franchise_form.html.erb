@@ -151,7 +151,7 @@
 
 <% end %>
 
-
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 <script type="text/javascript">
   const updateStateOptions = function (value) {
     let html;
@@ -183,9 +183,15 @@
       updateStateOptions(value);
       updateStateSelectorLabel(value);
     })
-  }
 
+  }
   $(document).ready(function(e) {
     addCountrySelectListener()
   })
+
+$(function() {
+  $(":input").inputmask();
+  $("#input_1_4").inputmask({"mask": "(999) 999-9999"});
+});
+
 </script>
