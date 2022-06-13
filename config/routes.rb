@@ -204,6 +204,7 @@ Solasalonstudios::Application.routes.draw do
       resources :brands
       resources :education_hero_images
       resources :product_informations
+      resources :tags
       resources :tools_and_resources
       resources :home_buttons
       resources :admins
