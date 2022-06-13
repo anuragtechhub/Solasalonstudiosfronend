@@ -215,6 +215,7 @@ Solasalonstudios::Application.routes.draw do
       resources :home_buttons
       resources :rent_manager_units
       resources :videos
+      resources :stylist_units
     end
 
     namespace :v1 do
