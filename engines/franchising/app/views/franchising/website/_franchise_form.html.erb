@@ -151,7 +151,8 @@
 
 <% end %>
 
-<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js">
+</script>
 <script type="text/javascript">
   const updateStateOptions = function (value) {
     let html;
@@ -191,7 +192,7 @@
 
 $(function() {
   $(":input").inputmask();
-  $("#input_1_4").inputmask({"mask": "(999) 999-9999"});
+  $("#input_1_4").inputmask({"mask": "+* (***) ***-****"});
+  $("#input_1_4").val("+1 (***) ***-****");
 });
-
 </script>
