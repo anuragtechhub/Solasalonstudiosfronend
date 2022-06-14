@@ -1144,6 +1144,12 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'ConnectMaintenanceContact' do
+    label 'Connect Maintenence Contact'
+    label_plural 'Connect Maintenence Contacts'
+    navigation_label 'Sola Salons'
+  end
+
   config.model 'Msa' do
     label 'MSA'
     label_plural 'MSAs'
