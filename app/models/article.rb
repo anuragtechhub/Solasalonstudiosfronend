@@ -31,6 +31,14 @@ class Article < ActiveRecord::Base
     [['Sola Website', 'sola_website'], ['Franchising Website', 'franchising'], %w[Both both]]
   end
 
+  def image_url
+    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+  end
+
+  def as_json(_options = {})
+    super(methods: %i[image_url ])
+  end
+
   private
 
     def generate_url_name
@@ -54,6 +62,8 @@ class Article < ActiveRecord::Base
     def franchisee?
       Thread.current[:current_admin]&.franchisee
     end
+    
+
 end
 
 # == Schema Information
