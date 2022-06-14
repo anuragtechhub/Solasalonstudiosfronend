@@ -89,6 +89,7 @@ RailsAdmin.config do |config|
     new do
       except ['Event']
       except ['GlossGeniusLog']
+      except ['CallfireLog']
     end
     show
     # export do
@@ -101,6 +102,7 @@ RailsAdmin.config do |config|
     # member actions
     edit do 
       except ['GlossGeniusLog']
+      except ['CallfireLog']
     end
     delete
     # history_show
