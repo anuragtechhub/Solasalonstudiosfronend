@@ -15,7 +15,6 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     else
       Rails.logger.info(@blog.errors.messages)
       render json: {error: @blog.errors.messages}, status: 400
-       
     end
   end
 
@@ -51,6 +50,6 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :url_name, :canonical_url, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :category_ids, :tag_ids, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, country_ids: [])
-  end 
+    params.require(:blog).permit(:title, :url_name, :canonical_url, :image, :carousel_image, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :category_ids, :tag_ids, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, country_ids: [])
+  end
 end

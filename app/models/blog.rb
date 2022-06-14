@@ -126,6 +126,10 @@ class Blog < ActiveRecord::Base
     image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
   end
 
+  def carousel_image_url
+    carousel_image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+  end 
+
   def url
     # "https://www.solaprofessional.com#{Rails.application.routes.url_helpers.show_blog_path(self)}?_ios=y&_hdr=n"
   end
@@ -133,7 +137,7 @@ class Blog < ActiveRecord::Base
   def as_json(_options = {})
     super(except: %i[image_file_name image_file_size image_content_type
                      image_updated_at carousel_image_file_name carousel_image_content_type carousel_image_file_size
-                     carousel_image_updated_at legacy_id ], methods: %i[blog_blog_categories image_url url], include: %i[ countries tags blog_categories ])
+                     carousel_image_updated_at legacy_id ], methods: %i[blog_blog_categories image_url url carousel_image_url ], include: %i[ countries tags blog_categories ])
   end
 
   private
