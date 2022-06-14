@@ -1,4 +1,4 @@
-class Api::SolaCms::ApiController < ActionController::Base
+class Api::SolaCms::ApiController < ActionController::Base  
   before_action :restrict_api_access, :set_cors_headers
   
   protected

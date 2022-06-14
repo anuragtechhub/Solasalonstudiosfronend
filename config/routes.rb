@@ -213,6 +213,7 @@ Solasalonstudios::Application.routes.draw do
       resources :tools_and_resources
       resources :notifications
       resources :home_buttons
+      resources :categories
       resources :rent_manager_units
       resources :videos
       resources :stylist_units
