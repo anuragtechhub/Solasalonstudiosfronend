@@ -193,6 +193,7 @@ Solasalonstudios::Application.routes.draw do
       resources :articles
       resources :blogs
       resources :request_tour_inquiries
+      resources :book_now_bookings
       resources :locations
       resources :partner_inquiries
       resources :msas

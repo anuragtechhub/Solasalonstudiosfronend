@@ -38,8 +38,8 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     if @blog.destroy
       render json: {message: "Blog Successfully Deleted."}, status: 200
     else
-        render json: {error: @blog.errors.messages}, status: 400
-        Rails.logger.info(@blog.errors.messages)
+      render json: {error: @blog.errors.messages}, status: 400
+      Rails.logger.info(@blog.errors.messages)
     end
   end
 
