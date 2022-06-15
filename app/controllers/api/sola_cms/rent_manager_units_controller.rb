@@ -35,12 +35,12 @@ class Api::SolaCms::RentManagerUnitsController < Api::SolaCms::ApiController
 
   #DELETE /rent_manager_units/:id
   def destroy
-    if @rent_manager_unit.destroy
+    if @rent_manager_unit&.destroy
       render json: {message: "Stylist Unit Successfully Deleted."}, status: 200
     else
+      @rent_manager_unit.errors.messages
       Rails.logger.info(@rent_manager_unit.errors.messages)
-      render json: {error: @rent_manager_unit.errors.messages}, status: 400
-    end
+\    end
   end
 
   private

@@ -13,7 +13,8 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
     if @video.save
       render json: @video
     else
-      render json: {error: "Unable to Create Video"}, status: 400
+      Rails.logger.info(@video.errors.messages)
+      render json: {error: @video.errors.messages}, status: 400
     end
   end
 
@@ -27,16 +28,18 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
     if @video.update(video_params)
       render json: {message: "video Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Video."}, status: 400
+      Rails.logger.info(@video.errors.messages)
+      render json: {error: @video.errors.messages}, status: 400
     end 
   end 
 
   #DELETE /videos/:id
   def destroy
-    if @video.destroy
+    if @video&.destroy
       render json: {message: "Video Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Video."}, status: 400
+      @video.errors.messages
+      Rails.logger.info(@video.errors.messages)
     end
   end
 

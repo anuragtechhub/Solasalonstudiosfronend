@@ -35,11 +35,11 @@ class Api::SolaCms::TagsController < Api::SolaCms::ApiController
 
   #DELETE /tags/:id
   def destroy
-    if @tag.destroy
+    if @tag&.destroy
       render json: {message: "Tag Successfully Deleted."}, status: 200
     else
+      @tag.errors.messages
       Rails.logger.info(@tag.errors.messages)
-      render json: {error: @tag.errors.messages}, status: 400
     end
   end
 

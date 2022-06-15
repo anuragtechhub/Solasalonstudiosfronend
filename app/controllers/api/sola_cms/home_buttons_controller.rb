@@ -13,7 +13,8 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
     if @home_button.save
       render json: @home_button
     else
-      render json: {error: "Unable to Create Home Buttons"}, status: 400
+      Rails.logger.info(@home_button.errors.messages)
+      render json: {error: @home_button.errors.messages}, status: 400
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
     if @home_button.update(home_button_params)
       render json: {message: "Home Button Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Home Buttons."}, status: 400
+      Rails.logger.info(@home_button.errors.messages)
+      render json: {error: @home_button.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /home_buttons/:id
   def destroy
-    if @home_button.destroy
+    if @home_button&.destroy
       render json: {message: "Home Button Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Home Button."}, status: 400
+      @home_button.errors.messages
+      Rails.logger.info(@home_button.errors.messages)
     end
   end 
 

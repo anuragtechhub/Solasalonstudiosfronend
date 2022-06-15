@@ -13,7 +13,8 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
     if @msa.save
       render json: @msa
     else
-      render json: {error: "Unable to Create Location"}, status: 400
+      Rails.logger.info(@msa.errors.messages)
+      render json: {error: @msa.errors.messages}, status: 400
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
     if @msa.update(msa_params)
       render json: {message: "Msa Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Msa."}, status: 400
+      Rails.logger.info(@msa.errors.messages)
+      render json: {error: @msa.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /Msas/:id
   def destroy
-    if @msa.destroy
+    if @msa&.destroy
       render json: {message: "Msa Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete msa."}, status: 400
+      @msa.errors.messages
+      Rails.logger.info(@msa.errors.messages)
     end
   end 
 

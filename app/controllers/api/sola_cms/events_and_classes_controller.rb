@@ -13,7 +13,8 @@ class Api::SolaCms::EventsAndClassesController < Api::SolaCms::ApiController
     if @event_and_class.save
       render json: @event_and_class
     else
-      render json: {error: "Unable to Create Event and Class"}, status: 400
+      render json: {error: @event_and_class.errors.messages}, status: 400
+      Rails.logger.info(@event_and_class.errors.messages)
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::EventsAndClassesController < Api::SolaCms::ApiController
     if @event_and_class.update(sola_class_params)
       render json: {message: "Event and Class Successfully Updated."}, status: 200
     else
-      render json: {error: "Event and Class to Update Msa."}, status: 400
+      render json: {error: @event_and_class.errors.messages}, status: 400
+      Rails.logger.info(@event_and_class.errors.messages)
     end  
   end 
 
   #DELETE /events_and_classes/:id
   def destroy
-    if @event_and_class.destroy
+    if @event_and_class&.destroy
       render json: {message: "Event and Class Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Event and Class."}, status: 400
+      @event_and_class.errors.messages
+      Rails.logger.info(@event_and_class.errors.messages)
     end
   end 
 

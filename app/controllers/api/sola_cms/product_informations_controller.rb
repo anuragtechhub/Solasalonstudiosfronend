@@ -15,7 +15,8 @@ class Api::SolaCms::ProductInformationsController < Api::SolaCms::ApiController
     if @product_information.save
       render json: @product_information
     else
-      render json: {error: "Unable to Create Product Information"}, status: 400
+      Rails.logger.info(@product_information.errors.messages)
+      render json: {error: @product_information.errors.messages}, status: 400
     end
   end
 
@@ -29,16 +30,18 @@ class Api::SolaCms::ProductInformationsController < Api::SolaCms::ApiController
     if @product_information.update(product_information_params)
       render json: {message: "Product Information Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Product Information."}, status: 400
+      Rails.logger.info(@product_information.errors.messages)
+      render json: {error: @product_information.errors.messages}, status: 400
     end   
   end 
 
   #DELETE /product_informations/:id
   def destroy
-    if @product_information.destroy
+    if @product_information&.destroy
       render json: {message: "Product Information Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Product Information."}, status: 400
+      @product_information.errors.messages
+      Rails.logger.info(@product_information.errors.messages)
     end
   end 
 

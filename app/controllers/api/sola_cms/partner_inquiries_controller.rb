@@ -13,7 +13,8 @@ class Api::SolaCms::PartnerInquiriesController < Api::SolaCms::ApiController
     if @partner_inquiry.save
       render json: @partner_inquiry
     else
-      render json: {error: "Unable to Create Partner Inquiry"}, status: 400
+      Rails.logger.info(@partner_inquiry.errors.messages)
+      render json: {error: @partner_inquiry.errors.messages}, status: 400
     end
   end
 
@@ -27,16 +28,18 @@ class Api::SolaCms::PartnerInquiriesController < Api::SolaCms::ApiController
     if @partner_inquiry.update(parner_inquiry_params)
       render json: {message: "Partner Inquiry Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Partner Inquiry."}, status: 400
+      Rails.logger.info(@partner_inquiry.errors.messages)
+      render json: {error: @partner_inquiry.errors.messages}, status: 400
     end
   end
 
   #DELETE /partner_inquiries/:id
   def destroy
-    if @partner_inquiry.destroy
+    if @partner_inquiry&.destroy
       render json: {message: "Partner Inqury Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Partner Inquiry."}, status: 400
+      @partner_inquiry.errors.messages
+      Rails.logger.info(@partner_inquiry.errors.messages)
     end
   end
 

@@ -16,7 +16,8 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
     if @article.save
       render json: @article
     else
-      render json: {error: "Unable to Create Article " }, status: 400 
+      Rails.logger.info(@article.errors.messages)
+      render json: {error: @article.errors.messages}, status: 400 
     end
   end
 
@@ -30,16 +31,18 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
     if @article.update(article_params)
       render json: {message: "Article Successfully Updated." }, status: 200
     else
-      render json: {error: "Unable to Update Article."}, status: 400
+      Rails.logger.info(@article.errors.messages)
+      render json: {error: @article.errors.messages}, status: 400
     end
   end
 
   #DELETE /articles/:id
   def destroy
-    if @article.destroy
+    if @article&.destroy
       render json: {message: "Article Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Article."}, status: 400
+      @article.errors.messages
+      Rails.logger.info(@article.errors.messages)
     end
   end
 

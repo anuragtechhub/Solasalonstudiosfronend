@@ -13,7 +13,8 @@ class Api::SolaCms::StateRegionsController < Api::SolaCms::ApiController
     if @state_region.save
       render json: @state_region
     else
-      render json: {error: "Unable to Create State Region"}, status: 400
+      Rails.logger.info(@state_region.errors.side_menu_item)
+      render json: {error: @state_region.errors.messages}, status: 400
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::StateRegionsController < Api::SolaCms::ApiController
     if @state_region.update(state_region_params)
       render json: {message: "State Region Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update State Region."}, status: 400
+      Rails.logger.info(@state_region.errors.messages)
+      render json: {error: @state_region.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /state_regions/:id
   def destroy
-    if @state_region.destroy
+    if @state_region&.destroy
       render json: {message: "State Region Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete State Region."}, status: 400
+      @state_region.errors.messages
+      render json: {error: @state_region.errors.messages}, status: 400
     end
   end 
 

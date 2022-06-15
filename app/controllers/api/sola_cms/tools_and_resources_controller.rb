@@ -13,7 +13,8 @@ class Api::SolaCms::ToolsAndResourcesController < Api::SolaCms::ApiController
     if @tools_and_resource.save
       render json: @tools_and_resource 
     else
-      render json: {error: "Unable to Create Tool"}, status: 400
+      Rails.logger.info(@tools_and_resource.errors.messages)
+      render json: {error: @tools_and_resource.errors.messages}, status: 400
     end
   end
 
@@ -27,16 +28,18 @@ class Api::SolaCms::ToolsAndResourcesController < Api::SolaCms::ApiController
     if @tools_and_resource.update(tool_params)
       render json: {message: "Tool Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Tool."}, status: 400
+      Rails.logger.info(@tools_and_resource.errors.messages)
+      render json: {error: @tools_and_resource.errors.messages}, status: 400
     end 
   end 
 
   #DELETE /tools_and_resources/:id
   def destroy
-    if @tools_and_resource.destroy
+    if @tools_and_resource&.destroy
       render json: {message: "Tool Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Tool."}, status: 400
+      @tools_and_resource.errors.messages
+      Rails.logger.info(@tools_and_resource.errors.messages)
     end
   end
 

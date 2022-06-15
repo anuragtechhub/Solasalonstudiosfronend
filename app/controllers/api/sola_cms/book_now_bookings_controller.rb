@@ -39,8 +39,8 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
     if @booking&.destroy
       render json: {message: "Booking Successfully Deleted."}, status: 200
     else
+      @booking.errors.messages
       Rails.logger.info(@booking.errors.messages)
-      render json: {errors: format_activerecord_errors(@booking.errors) }, status: 400
     end
   end
 

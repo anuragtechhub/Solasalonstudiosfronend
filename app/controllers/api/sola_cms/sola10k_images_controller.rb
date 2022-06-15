@@ -13,7 +13,8 @@ class Api::SolaCms::Sola10kImagesController < Api::SolaCms::ApiController
     if @sola10k_image.save
       render json: @sola10k_image.to_json
     else
-      render json: {error: "Unable to Create Sola10k Image"}, status: 400
+      Rails.logger.info(@sola10k_image.errors.messages)
+      render json: {error: @sola10k_image.errors.messages}, status: 400
     end
   end
 
@@ -27,16 +28,18 @@ class Api::SolaCms::Sola10kImagesController < Api::SolaCms::ApiController
     if @sola10k_image.update(sola10k_image_params)
       render json: {message: "Sola10k Image Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Sola10k Image."}, status: 400
+      Rails.logger.info(@sola10k_image.errors.messages)
+      render json: {error: @sola10k_image.errors.messages}, status: 400
     end
   end
 
   #DELETE /sola10k_images/:id
   def destroy
-    if @sola10k_image.destroy
+    if @sola10k_image&.destroy
       render json: {message: "Sola10k Image Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Sola10k Image."}, status: 400
+      @sola10k_image.errors.messages
+      Rails.logger.info(@sola10k_image.errors.side_menu_item)
     end
   end
 

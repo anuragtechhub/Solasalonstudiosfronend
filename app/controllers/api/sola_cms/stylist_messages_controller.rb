@@ -13,7 +13,8 @@ class Api::SolaCms::StylistMessagesController < Api::SolaCms::ApiController
     if @stylist_message.save
       render json: @stylist_message
     else
-      render json: {error: "Unable to Create Stylist Message"}, status: 400
+      Rails.logger.info(@stylist_message.errors.messages)
+      render json: {error: @stylist_message.errors.messages}, status: 400
     end
   end
 
@@ -28,16 +29,18 @@ class Api::SolaCms::StylistMessagesController < Api::SolaCms::ApiController
     if @stylist_message.update(stylist_message_params)
       render json: {message: "Stylist Message Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Stylist Message."}, status: 400
+      Rails.logger.info(@stylist_message.errors.messages)
+      render json: {error: @stylist_message.errors.messages}, status: 400
     end
   end
 
   #DELETE /stylist_messages/:id
   def destroy
-    if @stylist_message.destroy
+    if @stylist_message&.destroy
       render json: {message: "Stylist Message Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Stylist Message."}, status: 400
+      @stylist_message.errors.messages
+      Rails.logger.info(@stylist_message.errors.messages)
     end
   end
 

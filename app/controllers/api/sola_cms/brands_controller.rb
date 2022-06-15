@@ -15,12 +15,14 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     if @brand.save
       render json: @brand
     else
-      render json: {error: "Unable to Create Brand"}, status: 400
+      Rails.logger.info(@brand.errors.messages)
+      render json: {error: @brand.errors.messages}, status: 400
     end 
   end 
 
   #GET /brands/:id
   def show
+
     render json: @brand
   end 
 
@@ -29,16 +31,18 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     if @brand.update(brand_params)
       render json: {message: "Brand Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Brand."}, status: 400
+      Rails.logger.info(@brand.errors.messages)
+      render json: {error: @brand.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /brands/:id
   def destroy
-    if @Brand.destroy
+    if @brand&.destroy
       render json: {message: "Brand Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Brand."}, status: 400
+      @brand.errors.messages
+      Rails.logger.info(@brand.errors.messages)
     end
   end 
 

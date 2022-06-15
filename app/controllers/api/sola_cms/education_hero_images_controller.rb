@@ -13,7 +13,8 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
     if @education_hero_image.save
       render json: @education_hero_image
     else
-      render json: {error: "Unable to Create Education hero Image"}, status: 400
+      Rails.logger.info(@education_hero_image.errors.messages)
+      render json: {error: @education_hero_image.errors.messages}, status: 400
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
     if @education_hero_image.update(education_hero_image_params)
       render json: {message: "Education Hero Image Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update education Hero Image."}, status: 400
+      Rails.logger.info(@education_hero_image.errors.messages)
+      render json: {error: @education_hero_image.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /education_hero_images/:id
   def destroy
-    if @education_hero_image.destroy
+    if @education_hero_image&.destroy
       render json: {message: "Education Hero Image Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Education Hero Image."}, status: 400
+      @education_hero_image.errors.messages
+      Rails.logger.info(@education_hero_image.errors.messages)
     end
   end 
 

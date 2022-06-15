@@ -13,7 +13,8 @@ class Api::SolaCms::NotificationsController < Api::SolaCms::ApiController
     if @notification.save
       render json: @notification
     else
-      render json: {error: "Unable to Create Notification"}, status: 400
+      Rails.logger.info(@notification.errors.messages)
+      render json: {error: @notification.errors.messages}, status: 400
     end 
   end 
 
@@ -27,16 +28,18 @@ class Api::SolaCms::NotificationsController < Api::SolaCms::ApiController
     if @notification.update(notification_params)
       render json: {message: "Notification Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Notification."}, status: 400
+      Rails.logger.info(@notification.errors.messages)
+      render json: {error: @notification.errors.messages}, status: 400
     end  
   end 
 
   #DELETE /notifications/:id
   def destroy
-    if @notification.destroy
+    if @notification&.destroy
       render json: {message: "Notification Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Notification."}, status: 400
+      @notification.errors.messages
+      Rails.logger.info(@notification.errors.messages)
     end
   end 
 

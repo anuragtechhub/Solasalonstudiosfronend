@@ -13,7 +13,8 @@ class Api::SolaCms::RequestTourInquiriesController < Api::SolaCms::ApiController
     if @request_tour_inquiry.save
       render json: @request_tour_inquiry
     else
-      render json: {error: "Unable to Create Request Tour Inquiry"}, status: 400
+      Rails.logger.info(@request_tour_inquiry.errors.messages)
+      render json: {error: @request_tour_inquiry.errors.messages}, status: 400
     end
   end
 
@@ -26,15 +27,17 @@ class Api::SolaCms::RequestTourInquiriesController < Api::SolaCms::ApiController
     if @request_tour_inquiry.update(inquiry_params)
       render json: {message: "Request Tour Inquiry Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Request Tour Inquiry."}, status: 400
+      Rails.logger.info(@request_tour_inquiry.errors.messages)
+      render json: {error: @request_tour_inquiry.errors.messages}, status: 400
     end
   end
 
   def destroy
-    if @request_tour_inquiry.destroy
+    if @request_tour_inquiry&.destroy
       render json: {message: "Inqury Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Inquiry."}, status: 400
+      @request_tour_inquiry.errors.messages
+      Rails.logger.info(@request_tour_inquiry.errors.messages)
     end
   end
 

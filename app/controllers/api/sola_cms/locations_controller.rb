@@ -13,7 +13,8 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
     if @location.save
       render json: @location
     else
-      render json: {error: "Unable to Create Location"}, status: 400
+      Rails.logger.info(@location.errors.messages)
+      render json: {error: (@location.errors.messages}, status: 400
     end
   end
 
@@ -27,16 +28,18 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
     if @location.update(location_params)
       render json: {message: "Location Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update Location."}, status: 400
+      Rails.logger.info(@location.errors.messages)
+      render json: {error: (@location.errors.messages}, status: 400
     end
   end
 
   #DELETE /locations/:id
   def destroy
-    if @location.destroy
+    if @location&.destroy
       render json: {message: "location Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Location."}, status: 400
+      @location.errors.messages
+      Rails.logger.info(@location.errors.messages)
     end
   end
 

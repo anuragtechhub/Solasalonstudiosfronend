@@ -15,7 +15,8 @@ class Api::SolaCms::SideMenuItemsController < Api::SolaCms::ApiController
     if @side_menu_item.save
       render json: @side_menu_item
     else
-      render json: {error: "Unable to Create Side Menu Items"}, status: 400
+      Rails.logger.info(@side_menu_item.errors.side_menu_item)
+      render json: {error: @side_menu_item.errors.side_menu_item}, status: 400
     end 
   end 
 
@@ -29,16 +30,18 @@ class Api::SolaCms::SideMenuItemsController < Api::SolaCms::ApiController
     if @side_menu_item.update(side_menu_item_params)
       render json: {message: " Side Menu Items Successfully Updated."}, status: 200
     else
-      render json: {error: "Unable to Update  Side Menu Items."}, status: 400
+      Rails.logger.info(@side_menu_item.errors.side_menu_item)
+      render json: {error: @side_menu_item.errors.side_menu_item}, status: 400
     end  
   end 
 
   #DELETE /side_menu_items/:id
   def destroy
-    if @side_menu_item.destroy
+    if @side_menu_item&.destroy
       render json: {message: " Side Menu Items Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Side Menu Items."}, status: 400
+      @side_menu_item.errors.side_menu_item
+      Rails.logger.info(@side_menu_item.errors.side_menu_item)
     end
   end 
 
