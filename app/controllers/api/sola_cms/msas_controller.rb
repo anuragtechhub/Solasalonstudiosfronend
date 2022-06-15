@@ -50,6 +50,6 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
   end
 
   def msa_params
-    params.require(:msa).permit(:name, :url_name, :legacy_id, :description, :tracking_code)
+    params.require(:msa).permit(:name, :url_name, :legacy_id, :description, :tracking_code, location_ids: [])
   end
 end
