@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Api::SolaCms::BookNowBookingsController < ApiController
+class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
   before_action :set_booking, only: %i[ show update destroy]
 
   #GET /book_now_booking
