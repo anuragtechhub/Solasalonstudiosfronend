@@ -1315,7 +1315,7 @@ RailsAdmin.config do |config|
       end
     end
     show do
-      field :location_name do
+      field :location do
         label 'Location'
       end
       field :name
@@ -1355,7 +1355,7 @@ RailsAdmin.config do |config|
       field :created_at
     end
     edit do
-      field :location_name do
+      field :location do
         label 'Location'
       end
       field :name
@@ -1390,7 +1390,7 @@ RailsAdmin.config do |config|
       field :created_at
     end
     export do
-      field :location_name do
+      field :location_id do
         label 'Location'
       end
       field :name
