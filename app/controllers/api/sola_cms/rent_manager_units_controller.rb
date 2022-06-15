@@ -40,7 +40,7 @@ class Api::SolaCms::RentManagerUnitsController < Api::SolaCms::ApiController
     else
       @rent_manager_unit.errors.messages
       Rails.logger.info(@rent_manager_unit.errors.messages)
-\    end
+    end
   end
 
   private

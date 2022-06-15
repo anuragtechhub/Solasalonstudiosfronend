@@ -14,7 +14,7 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
       render json: @location
     else
       Rails.logger.info(@location.errors.messages)
-      render json: {error: (@location.errors.messages}, status: 400
+      render json: {error: @location.errors.messages}, status: 400
     end
   end
 
@@ -29,7 +29,7 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
       render json: {message: "Location Successfully Updated."}, status: 200
     else
       Rails.logger.info(@location.errors.messages)
-      render json: {error: (@location.errors.messages}, status: 400
+      render json: {error: @location.errors.messages}, status: 400
     end
   end
 
