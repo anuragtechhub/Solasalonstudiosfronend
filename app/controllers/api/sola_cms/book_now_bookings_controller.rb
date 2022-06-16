@@ -52,6 +52,6 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
   end
 
   def booking_params
-    params.require(:booking).permit(:time_range, :location_id, :query, :stylist_id, :booking_user_name, :booking_user_phone, :booking_user_email, :referring_url, :total, services: [:description, :duration, :guid, :image, :name, :price])
+    params.require(:booking).permit(:time_range, :location_id, :query, :services, :stylist_id, :booking_user_name, :booking_user_phone, :booking_user_email, :referring_url, :total)
   end
 end
