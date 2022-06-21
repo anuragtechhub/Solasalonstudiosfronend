@@ -9,7 +9,7 @@ module Pro
       @deals = @deals.search(params[:q]) if params[:q].present?
       @deals = @deals.where(is_featured: params[:featured] == 'true') if params[:featured].present?
       @deals = @deals.where(brand_id: params[:brand_id]) if params[:brand_id].present?
-      @deals = @deals.where(id: Deal.includes(:categories).where(categories: { id: params[:category_id] }).select(:id)) if params[:category_id].present?
+      @deals = @deals.where(id: Deal.includes(:categories).where(categories: { id: params[:category_id] }).pluck(:id)) if params[:category_id].present?
       @deals = history_scope(@deals)
       respond_with(paginate(@deals), include: '**')
     end
