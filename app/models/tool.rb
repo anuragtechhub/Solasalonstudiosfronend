@@ -31,7 +31,7 @@ class Tool < ActiveRecord::Base
 
   has_paper_trail
 
-  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename'
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename',  s3_protocol: :https
   attr_accessor :delete_file, :delete_image
 
   before_validation { file.destroy if delete_file == '1' }
@@ -40,12 +40,18 @@ class Tool < ActiveRecord::Base
 
   before_validation { image.destroy if delete_image == '1' }
 
-  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
+  validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }, s3_protocol: :https
   validates :title, length: { maximum: 35 }, presence: true
   # validates :description, :length => { :maximum => 400 }, :presence => true
   validates :countries, presence: true
 
   scope :with_file, -> { where.not(file_file_name: nil) }
+
+  def as_json(_options = {})
+    super(except: %i[brand image_content_type image_file_name image_file_size image_updated_at  file_file_name file_content_type file_file_size file_updated_at], methods: %i[brand_id brand_name image_url file_url category tag],
+      include: {videos: {only: [:title, :id]}})
+  end
+
 
   def to_param
     title.gsub(' ', '-')
@@ -75,10 +81,13 @@ class Tool < ActiveRecord::Base
     brand&.id
   end
 
-  def as_json(_options = {})
-    super(except: %i[brand], methods: %i[brand_id brand_name image_url file_url videos])
-  end
+  def category
+    self.categories&.map{ | a| {id: a.id, name: a.name} }
+  end 
 
+  def tag
+    self.tags&.map{ | a| {id: a.id, name: a.name} }
+  end   
   private
 
     def auto_set_country

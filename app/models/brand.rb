@@ -102,10 +102,13 @@ class Brand < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(only:    %i[name website_url introduction_video_heading_title events_and_classes_heading_title],
-          methods: %i[classes deals image_url links tools videos title])
+    super(only:    %i[id name website_url introduction_video_heading_title events_and_classes_heading_title],
+          methods: %i[classes deals image_url links tools videos title countries_name ])
   end
 
+  def countries_name
+    self.countries&.map{ | a| {id: a.id, name: a.name} }
+  end
   # country-filtered content
 
   def brand_videos_by_country(country = 'US')

@@ -1145,9 +1145,43 @@ RailsAdmin.config do |config|
   end
 
   config.model 'ConnectMaintenanceContact' do
-    label 'Connect Maintenance Contact'
-    label_plural 'Connect Maintenance Contacts'
+    label 'Maintenance Contact'
+    label_plural 'Maintenance Contacts'
     navigation_label 'Sola Salons'
+
+    list do
+      field :location
+      field :contact_type
+      field :contact_order do
+        default_value 1
+      end 
+      field :contact_first_name
+      field :contact_last_name
+      field :contact_phone_number
+      field :contact_email
+      field :contact_admin
+      field :contact_preference
+      field :request_routing_url
+      field :created_at
+      field :updated_at
+    end 
+    edit do
+      field :location do 
+        inline_add false
+        inline_edit false
+      end 
+      field :contact_type
+      field :contact_order do
+        default_value 1
+      end 
+      field :contact_first_name
+      field :contact_last_name
+      field :contact_phone_number
+      field :contact_email
+      field :contact_admin
+      field :contact_preference
+      field :request_routing_url
+    end 
   end
 
   config.model 'Msa' do

@@ -16,6 +16,7 @@ class BooknowController < PublicWebsiteController
   def cojilio_results; end
 
   def results
+    return if params[:lat].blank? && params[:lng].blank?
     results_response = `curl -X GET \
     '#{ENV.fetch('GLOSS_GENIUS_API_URL', nil)}search?#{gloss_genius_search_query_string}' \
     -H 'api_key: #{ENV.fetch('GLOSS_GENIUS_API_KEY', nil)}' \

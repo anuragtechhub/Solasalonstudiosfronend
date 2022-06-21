@@ -21,7 +21,11 @@ class HomeButton < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(methods: %i[image_original_url image_large_url action_link position])
+    super(methods: %i[image_original_url image_large_url action_link position country_name])
+  end
+
+  def country_name
+    self.countries.map{ |a| {id: a.id, name: a.name} }
   end
 end
 

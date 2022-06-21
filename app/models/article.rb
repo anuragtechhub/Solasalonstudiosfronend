@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   validates :location, presence: true, if: :franchisee?
   # validates :url_name, :presence => true, :uniqueness => true
 
-  has_attached_file :image, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { full_width: '960#', directory: '375x375#', thumbnail: '100x100#' }, s3_protocol: :https
+  has_attached_file :image, url: ':s3_alias_url', path: ':class/:attachment/:id_partition/:style/:filename', s3_host_alias: ENV.fetch('S3_HOST_ALIAS', nil), styles: { full_width: '960>', directory: '375x375#', thumbnail: '100x100#' }, s3_protocol: :https
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
   validates_attachment_presence :image
   attr_accessor :delete_image

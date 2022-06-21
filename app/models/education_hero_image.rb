@@ -12,6 +12,11 @@ class EducationHeroImage < ActiveRecord::Base
 
   validates :countries, :image, :position, presence: true
 
+  def as_json(_options = {})
+    super(include: {countries: {only: [:name, :id]}}, methods: %i[image_original_url image_large_url])
+  end
+
+
   def image_original_url
     image.url(:full_width)
   end

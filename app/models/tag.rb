@@ -10,6 +10,23 @@ class Tag < ActiveRecord::Base
   has_many :videos, through: :taggables, source: :item, source_type: 'Video'
 
   validates :name, uniqueness: true
+
+
+  def as_json(_options = {})
+    super(methods: %i[category video stylist ])
+  end
+
+  def category
+    self.categories&.map{ | a| {id: a.id, name: a.name} }
+  end
+
+  def video
+    self.videos&.map{ | a| {id: a.id, title: a.title} }
+  end 
+
+  def stylist
+    self.stylists&.map{ | a| {id: a.id, name: a.name} }
+  end 
 end
 
 # == Schema Information

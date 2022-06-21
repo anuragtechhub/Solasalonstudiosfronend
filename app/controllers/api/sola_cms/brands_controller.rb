@@ -53,6 +53,6 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
   end
 
   def brand_params
-    params.require(:brand).permit(:name, :website_url, :image, :brand_link_ids, :introduction_video_heading_title, :events_and_classes_heading_title, country_ids: [])
+    params.require(:brand).permit(:name, :website_url, :image,  :introduction_video_heading_title, :events_and_classes_heading_title, brand_link_ids:[], country_ids: [])
   end
 end

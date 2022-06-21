@@ -50,6 +50,6 @@ class Api::SolaCms::ToolsAndResourcesController < Api::SolaCms::ApiController
   end
 
   def tool_params
-    params.require(:tool).permit(:brand_id, :title, :description, :is_featured, :image, :file, :link_url,:youtube_url, :views, country_ids: [])
+    params.require(:tool).permit(:brand_id, :title, :description, :is_featured, :image, :file, :link_url,:youtube_url, :views, country_ids: [], category_ids: [], tag_ids: [], video_ids: [])
   end 
 end

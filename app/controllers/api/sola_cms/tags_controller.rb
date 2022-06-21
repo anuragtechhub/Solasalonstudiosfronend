@@ -50,6 +50,6 @@ class Api::SolaCms::TagsController < Api::SolaCms::ApiController
   end
 
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, category_ids: [], video_ids: [], stylist_ids: [])
   end 
 end

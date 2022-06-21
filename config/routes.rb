@@ -13,7 +13,7 @@ Solasalonstudios::Application.routes.draw do
   # engines
   mount Franchising::Engine => '/', as: 'franchising_engine', constraints: DomainConstraint.new(ENV.fetch('FRANCHISING_DOMAINS', nil))
   mount Pro::Engine => '/', as: 'pro_engine', constraints: DomainConstraint.new(ENV.fetch('PRO_DOMAINS', nil))
-
+ 
   get '/' => 'home#index', :as => :home
   get 'new-cms' => 'home#new_cms'
   root 'home#index'
@@ -23,7 +23,7 @@ Solasalonstudios::Application.routes.draw do
   get 'BingSiteAuth.xml' => 'home#bing_verification'
   get 'sitemap.xml' => 'home#sitemap'
 
-  # get '5000' => 'home#sola_5000', :as => :sola_5000
+  #get '5000' => 'home#sola_5000', :as => :sola_5000
   get 'franchising' => 'home#franchising', as: :franchising
 
   # About Us URLs
@@ -203,21 +203,27 @@ Solasalonstudios::Application.routes.draw do
       resources :sola10k_images
       resources :stylist_messages
       resources :brands
+      resources :class_images
       resources :education_hero_images
       resources :product_informations
       resources :tags
       resources :tools_and_resources
       resources :home_buttons
+      resources :categories
       resources :admins
       resources :deals
       resources :events_and_classes
       resources :tools_and_resources
       resources :notifications
       resources :home_buttons
+      resources :home_hero_images
       resources :categories
       resources :rent_manager_units
       resources :videos
       resources :stylist_units
+      resources :franchising_inquiries
+      resources :countries
+      resources :stylists
     end
 
     namespace :v1 do
@@ -277,8 +283,8 @@ end
 #                            sidekiq_web          /sidekiq                                                      Sidekiq::Web
 #                            rails_admin          /admin                                                        RailsAdmin::Engine
 #                     franchising_engine          /                                                             Franchising::Engine
+#                                    pro          /                                                             Pro::Engine
 #                             pro_engine          /                                                             Pro::Engine
-#                               ckeditor          /ckeditor                                                     Ckeditor::Engine
 #                                   home GET      /                                                             home#index
 #                                new_cms GET      /new-cms(.:format)                                            home#new_cms
 #                                   root GET      /                                                             home#index
@@ -286,7 +292,6 @@ end
 #                                        GET      /google575b4ff16cfb013a.html(.:format)                        home#google_verification
 #                                        GET      /BingSiteAuth.xml(.:format)                                   home#bing_verification
 #                                        GET      /sitemap.xml(.:format)                                        home#sitemap
-#                            franchising GET      /franchising(.:format)                                        home#franchising
 #                               about_us GET      /about-us(.:format)                                           about_us#index
 #                                  about GET      /about(.:format)                                              about_us#index
 #                             who_we_are GET      /who-we-are(.:format)                                         about_us#who_we_are
@@ -390,10 +395,259 @@ end
 #                  forgot_password_reset GET|POST /forgot-password/reset(.:format)                              forgot_password#reset
 #                               sessions GET|POST /sessions(.:format)                                           sessions#index
 #                       portland_session GET|POST /sola-sessions/portland(.:format)                             sessions#portland
+#                  api_sola_cms_articles GET      /api/articles(.:format)                                       api/sola_cms/articles#index
+#                                        POST     /api/articles(.:format)                                       api/sola_cms/articles#create
+#               new_api_sola_cms_article GET      /api/articles/new(.:format)                                   api/sola_cms/articles#new
+#              edit_api_sola_cms_article GET      /api/articles/:id/edit(.:format)                              api/sola_cms/articles#edit
+#                   api_sola_cms_article GET      /api/articles/:id(.:format)                                   api/sola_cms/articles#show
+#                                        PATCH    /api/articles/:id(.:format)                                   api/sola_cms/articles#update
+#                                        PUT      /api/articles/:id(.:format)                                   api/sola_cms/articles#update
+#                                        DELETE   /api/articles/:id(.:format)                                   api/sola_cms/articles#destroy
+#                     api_sola_cms_blogs GET      /api/blogs(.:format)                                          api/sola_cms/blogs#index
+#                                        POST     /api/blogs(.:format)                                          api/sola_cms/blogs#create
+#                  new_api_sola_cms_blog GET      /api/blogs/new(.:format)                                      api/sola_cms/blogs#new
+#                 edit_api_sola_cms_blog GET      /api/blogs/:id/edit(.:format)                                 api/sola_cms/blogs#edit
+#                      api_sola_cms_blog GET      /api/blogs/:id(.:format)                                      api/sola_cms/blogs#show
+#                                        PATCH    /api/blogs/:id(.:format)                                      api/sola_cms/blogs#update
+#                                        PUT      /api/blogs/:id(.:format)                                      api/sola_cms/blogs#update
+#                                        DELETE   /api/blogs/:id(.:format)                                      api/sola_cms/blogs#destroy
+#    api_sola_cms_request_tour_inquiries GET      /api/request_tour_inquiries(.:format)                         api/sola_cms/request_tour_inquiries#index
+#                                        POST     /api/request_tour_inquiries(.:format)                         api/sola_cms/request_tour_inquiries#create
+#  new_api_sola_cms_request_tour_inquiry GET      /api/request_tour_inquiries/new(.:format)                     api/sola_cms/request_tour_inquiries#new
+# edit_api_sola_cms_request_tour_inquiry GET      /api/request_tour_inquiries/:id/edit(.:format)                api/sola_cms/request_tour_inquiries#edit
+#      api_sola_cms_request_tour_inquiry GET      /api/request_tour_inquiries/:id(.:format)                     api/sola_cms/request_tour_inquiries#show
+#                                        PATCH    /api/request_tour_inquiries/:id(.:format)                     api/sola_cms/request_tour_inquiries#update
+#                                        PUT      /api/request_tour_inquiries/:id(.:format)                     api/sola_cms/request_tour_inquiries#update
+#                                        DELETE   /api/request_tour_inquiries/:id(.:format)                     api/sola_cms/request_tour_inquiries#destroy
+#         api_sola_cms_book_now_bookings GET      /api/book_now_bookings(.:format)                              api/sola_cms/book_now_bookings#index
+#                                        POST     /api/book_now_bookings(.:format)                              api/sola_cms/book_now_bookings#create
+#      new_api_sola_cms_book_now_booking GET      /api/book_now_bookings/new(.:format)                          api/sola_cms/book_now_bookings#new
+#     edit_api_sola_cms_book_now_booking GET      /api/book_now_bookings/:id/edit(.:format)                     api/sola_cms/book_now_bookings#edit
+#          api_sola_cms_book_now_booking GET      /api/book_now_bookings/:id(.:format)                          api/sola_cms/book_now_bookings#show
+#                                        PATCH    /api/book_now_bookings/:id(.:format)                          api/sola_cms/book_now_bookings#update
+#                                        PUT      /api/book_now_bookings/:id(.:format)                          api/sola_cms/book_now_bookings#update
+#                                        DELETE   /api/book_now_bookings/:id(.:format)                          api/sola_cms/book_now_bookings#destroy
+#                 api_sola_cms_locations GET      /api/locations(.:format)                                      api/sola_cms/locations#index
+#                                        POST     /api/locations(.:format)                                      api/sola_cms/locations#create
+#              new_api_sola_cms_location GET      /api/locations/new(.:format)                                  api/sola_cms/locations#new
+#             edit_api_sola_cms_location GET      /api/locations/:id/edit(.:format)                             api/sola_cms/locations#edit
+#                  api_sola_cms_location GET      /api/locations/:id(.:format)                                  api/sola_cms/locations#show
+#                                        PATCH    /api/locations/:id(.:format)                                  api/sola_cms/locations#update
+#                                        PUT      /api/locations/:id(.:format)                                  api/sola_cms/locations#update
+#                                        DELETE   /api/locations/:id(.:format)                                  api/sola_cms/locations#destroy
+#         api_sola_cms_partner_inquiries GET      /api/partner_inquiries(.:format)                              api/sola_cms/partner_inquiries#index
+#                                        POST     /api/partner_inquiries(.:format)                              api/sola_cms/partner_inquiries#create
+#       new_api_sola_cms_partner_inquiry GET      /api/partner_inquiries/new(.:format)                          api/sola_cms/partner_inquiries#new
+#      edit_api_sola_cms_partner_inquiry GET      /api/partner_inquiries/:id/edit(.:format)                     api/sola_cms/partner_inquiries#edit
+#           api_sola_cms_partner_inquiry GET      /api/partner_inquiries/:id(.:format)                          api/sola_cms/partner_inquiries#show
+#                                        PATCH    /api/partner_inquiries/:id(.:format)                          api/sola_cms/partner_inquiries#update
+#                                        PUT      /api/partner_inquiries/:id(.:format)                          api/sola_cms/partner_inquiries#update
+#                                        DELETE   /api/partner_inquiries/:id(.:format)                          api/sola_cms/partner_inquiries#destroy
+#                      api_sola_cms_msas GET      /api/msas(.:format)                                           api/sola_cms/msas#index
+#                                        POST     /api/msas(.:format)                                           api/sola_cms/msas#create
+#                   new_api_sola_cms_msa GET      /api/msas/new(.:format)                                       api/sola_cms/msas#new
+#                  edit_api_sola_cms_msa GET      /api/msas/:id/edit(.:format)                                  api/sola_cms/msas#edit
+#                       api_sola_cms_msa GET      /api/msas/:id(.:format)                                       api/sola_cms/msas#show
+#                                        PATCH    /api/msas/:id(.:format)                                       api/sola_cms/msas#update
+#                                        PUT      /api/msas/:id(.:format)                                       api/sola_cms/msas#update
+#                                        DELETE   /api/msas/:id(.:format)                                       api/sola_cms/msas#destroy
+#            api_sola_cms_my_sola_images GET      /api/my_sola_images(.:format)                                 api/sola_cms/my_sola_images#index
+#                                        POST     /api/my_sola_images(.:format)                                 api/sola_cms/my_sola_images#create
+#         new_api_sola_cms_my_sola_image GET      /api/my_sola_images/new(.:format)                             api/sola_cms/my_sola_images#new
+#        edit_api_sola_cms_my_sola_image GET      /api/my_sola_images/:id/edit(.:format)                        api/sola_cms/my_sola_images#edit
+#             api_sola_cms_my_sola_image GET      /api/my_sola_images/:id(.:format)                             api/sola_cms/my_sola_images#show
+#                                        PATCH    /api/my_sola_images/:id(.:format)                             api/sola_cms/my_sola_images#update
+#                                        PUT      /api/my_sola_images/:id(.:format)                             api/sola_cms/my_sola_images#update
+#                                        DELETE   /api/my_sola_images/:id(.:format)                             api/sola_cms/my_sola_images#destroy
+#             api_sola_cms_state_regions GET      /api/state_regions(.:format)                                  api/sola_cms/state_regions#index
+#                                        POST     /api/state_regions(.:format)                                  api/sola_cms/state_regions#create
+#          new_api_sola_cms_state_region GET      /api/state_regions/new(.:format)                              api/sola_cms/state_regions#new
+#         edit_api_sola_cms_state_region GET      /api/state_regions/:id/edit(.:format)                         api/sola_cms/state_regions#edit
+#              api_sola_cms_state_region GET      /api/state_regions/:id(.:format)                              api/sola_cms/state_regions#show
+#                                        PATCH    /api/state_regions/:id(.:format)                              api/sola_cms/state_regions#update
+#                                        PUT      /api/state_regions/:id(.:format)                              api/sola_cms/state_regions#update
+#                                        DELETE   /api/state_regions/:id(.:format)                              api/sola_cms/state_regions#destroy
+#           api_sola_cms_side_menu_items GET      /api/side_menu_items(.:format)                                api/sola_cms/side_menu_items#index
+#                                        POST     /api/side_menu_items(.:format)                                api/sola_cms/side_menu_items#create
+#        new_api_sola_cms_side_menu_item GET      /api/side_menu_items/new(.:format)                            api/sola_cms/side_menu_items#new
+#       edit_api_sola_cms_side_menu_item GET      /api/side_menu_items/:id/edit(.:format)                       api/sola_cms/side_menu_items#edit
+#            api_sola_cms_side_menu_item GET      /api/side_menu_items/:id(.:format)                            api/sola_cms/side_menu_items#show
+#                                        PATCH    /api/side_menu_items/:id(.:format)                            api/sola_cms/side_menu_items#update
+#                                        PUT      /api/side_menu_items/:id(.:format)                            api/sola_cms/side_menu_items#update
+#                                        DELETE   /api/side_menu_items/:id(.:format)                            api/sola_cms/side_menu_items#destroy
+#            api_sola_cms_sola10k_images GET      /api/sola10k_images(.:format)                                 api/sola_cms/sola10k_images#index
+#                                        POST     /api/sola10k_images(.:format)                                 api/sola_cms/sola10k_images#create
+#         new_api_sola_cms_sola10k_image GET      /api/sola10k_images/new(.:format)                             api/sola_cms/sola10k_images#new
+#        edit_api_sola_cms_sola10k_image GET      /api/sola10k_images/:id/edit(.:format)                        api/sola_cms/sola10k_images#edit
+#             api_sola_cms_sola10k_image GET      /api/sola10k_images/:id(.:format)                             api/sola_cms/sola10k_images#show
+#                                        PATCH    /api/sola10k_images/:id(.:format)                             api/sola_cms/sola10k_images#update
+#                                        PUT      /api/sola10k_images/:id(.:format)                             api/sola_cms/sola10k_images#update
+#                                        DELETE   /api/sola10k_images/:id(.:format)                             api/sola_cms/sola10k_images#destroy
+#          api_sola_cms_stylist_messages GET      /api/stylist_messages(.:format)                               api/sola_cms/stylist_messages#index
+#                                        POST     /api/stylist_messages(.:format)                               api/sola_cms/stylist_messages#create
+#       new_api_sola_cms_stylist_message GET      /api/stylist_messages/new(.:format)                           api/sola_cms/stylist_messages#new
+#      edit_api_sola_cms_stylist_message GET      /api/stylist_messages/:id/edit(.:format)                      api/sola_cms/stylist_messages#edit
+#           api_sola_cms_stylist_message GET      /api/stylist_messages/:id(.:format)                           api/sola_cms/stylist_messages#show
+#                                        PATCH    /api/stylist_messages/:id(.:format)                           api/sola_cms/stylist_messages#update
+#                                        PUT      /api/stylist_messages/:id(.:format)                           api/sola_cms/stylist_messages#update
+#                                        DELETE   /api/stylist_messages/:id(.:format)                           api/sola_cms/stylist_messages#destroy
+#                    api_sola_cms_brands GET      /api/brands(.:format)                                         api/sola_cms/brands#index
+#                                        POST     /api/brands(.:format)                                         api/sola_cms/brands#create
+#                 new_api_sola_cms_brand GET      /api/brands/new(.:format)                                     api/sola_cms/brands#new
+#                edit_api_sola_cms_brand GET      /api/brands/:id/edit(.:format)                                api/sola_cms/brands#edit
+#                     api_sola_cms_brand GET      /api/brands/:id(.:format)                                     api/sola_cms/brands#show
+#                                        PATCH    /api/brands/:id(.:format)                                     api/sola_cms/brands#update
+#                                        PUT      /api/brands/:id(.:format)                                     api/sola_cms/brands#update
+#                                        DELETE   /api/brands/:id(.:format)                                     api/sola_cms/brands#destroy
+#     api_sola_cms_education_hero_images GET      /api/education_hero_images(.:format)                          api/sola_cms/education_hero_images#index
+#                                        POST     /api/education_hero_images(.:format)                          api/sola_cms/education_hero_images#create
+#  new_api_sola_cms_education_hero_image GET      /api/education_hero_images/new(.:format)                      api/sola_cms/education_hero_images#new
+# edit_api_sola_cms_education_hero_image GET      /api/education_hero_images/:id/edit(.:format)                 api/sola_cms/education_hero_images#edit
+#      api_sola_cms_education_hero_image GET      /api/education_hero_images/:id(.:format)                      api/sola_cms/education_hero_images#show
+#                                        PATCH    /api/education_hero_images/:id(.:format)                      api/sola_cms/education_hero_images#update
+#                                        PUT      /api/education_hero_images/:id(.:format)                      api/sola_cms/education_hero_images#update
+#                                        DELETE   /api/education_hero_images/:id(.:format)                      api/sola_cms/education_hero_images#destroy
+#      api_sola_cms_product_informations GET      /api/product_informations(.:format)                           api/sola_cms/product_informations#index
+#                                        POST     /api/product_informations(.:format)                           api/sola_cms/product_informations#create
+#   new_api_sola_cms_product_information GET      /api/product_informations/new(.:format)                       api/sola_cms/product_informations#new
+#  edit_api_sola_cms_product_information GET      /api/product_informations/:id/edit(.:format)                  api/sola_cms/product_informations#edit
+#       api_sola_cms_product_information GET      /api/product_informations/:id(.:format)                       api/sola_cms/product_informations#show
+#                                        PATCH    /api/product_informations/:id(.:format)                       api/sola_cms/product_informations#update
+#                                        PUT      /api/product_informations/:id(.:format)                       api/sola_cms/product_informations#update
+#                                        DELETE   /api/product_informations/:id(.:format)                       api/sola_cms/product_informations#destroy
+#                      api_sola_cms_tags GET      /api/tags(.:format)                                           api/sola_cms/tags#index
+#                                        POST     /api/tags(.:format)                                           api/sola_cms/tags#create
+#                   new_api_sola_cms_tag GET      /api/tags/new(.:format)                                       api/sola_cms/tags#new
+#                  edit_api_sola_cms_tag GET      /api/tags/:id/edit(.:format)                                  api/sola_cms/tags#edit
+#                       api_sola_cms_tag GET      /api/tags/:id(.:format)                                       api/sola_cms/tags#show
+#                                        PATCH    /api/tags/:id(.:format)                                       api/sola_cms/tags#update
+#                                        PUT      /api/tags/:id(.:format)                                       api/sola_cms/tags#update
+#                                        DELETE   /api/tags/:id(.:format)                                       api/sola_cms/tags#destroy
+#       api_sola_cms_tools_and_resources GET      /api/tools_and_resources(.:format)                            api/sola_cms/tools_and_resources#index
+#                                        POST     /api/tools_and_resources(.:format)                            api/sola_cms/tools_and_resources#create
+#    new_api_sola_cms_tools_and_resource GET      /api/tools_and_resources/new(.:format)                        api/sola_cms/tools_and_resources#new
+#   edit_api_sola_cms_tools_and_resource GET      /api/tools_and_resources/:id/edit(.:format)                   api/sola_cms/tools_and_resources#edit
+#        api_sola_cms_tools_and_resource GET      /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#show
+#                                        PATCH    /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#update
+#                                        PUT      /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#update
+#                                        DELETE   /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#destroy
+#              api_sola_cms_home_buttons GET      /api/home_buttons(.:format)                                   api/sola_cms/home_buttons#index
+#                                        POST     /api/home_buttons(.:format)                                   api/sola_cms/home_buttons#create
+#           new_api_sola_cms_home_button GET      /api/home_buttons/new(.:format)                               api/sola_cms/home_buttons#new
+#          edit_api_sola_cms_home_button GET      /api/home_buttons/:id/edit(.:format)                          api/sola_cms/home_buttons#edit
+#               api_sola_cms_home_button GET      /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#show
+#                                        PATCH    /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#update
+#                                        PUT      /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#update
+#                                        DELETE   /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#destroy
+#                    api_sola_cms_admins GET      /api/admins(.:format)                                         api/sola_cms/admins#index
+#                                        POST     /api/admins(.:format)                                         api/sola_cms/admins#create
+#                 new_api_sola_cms_admin GET      /api/admins/new(.:format)                                     api/sola_cms/admins#new
+#                edit_api_sola_cms_admin GET      /api/admins/:id/edit(.:format)                                api/sola_cms/admins#edit
+#                     api_sola_cms_admin GET      /api/admins/:id(.:format)                                     api/sola_cms/admins#show
+#                                        PATCH    /api/admins/:id(.:format)                                     api/sola_cms/admins#update
+#                                        PUT      /api/admins/:id(.:format)                                     api/sola_cms/admins#update
+#                                        DELETE   /api/admins/:id(.:format)                                     api/sola_cms/admins#destroy
+#                     api_sola_cms_deals GET      /api/deals(.:format)                                          api/sola_cms/deals#index
+#                                        POST     /api/deals(.:format)                                          api/sola_cms/deals#create
+#                  new_api_sola_cms_deal GET      /api/deals/new(.:format)                                      api/sola_cms/deals#new
+#                 edit_api_sola_cms_deal GET      /api/deals/:id/edit(.:format)                                 api/sola_cms/deals#edit
+#                      api_sola_cms_deal GET      /api/deals/:id(.:format)                                      api/sola_cms/deals#show
+#                                        PATCH    /api/deals/:id(.:format)                                      api/sola_cms/deals#update
+#                                        PUT      /api/deals/:id(.:format)                                      api/sola_cms/deals#update
+#                                        DELETE   /api/deals/:id(.:format)                                      api/sola_cms/deals#destroy
+#        api_sola_cms_events_and_classes GET      /api/events_and_classes(.:format)                             api/sola_cms/events_and_classes#index
+#                                        POST     /api/events_and_classes(.:format)                             api/sola_cms/events_and_classes#create
+#      new_api_sola_cms_events_and_class GET      /api/events_and_classes/new(.:format)                         api/sola_cms/events_and_classes#new
+#     edit_api_sola_cms_events_and_class GET      /api/events_and_classes/:id/edit(.:format)                    api/sola_cms/events_and_classes#edit
+#          api_sola_cms_events_and_class GET      /api/events_and_classes/:id(.:format)                         api/sola_cms/events_and_classes#show
+#                                        PATCH    /api/events_and_classes/:id(.:format)                         api/sola_cms/events_and_classes#update
+#                                        PUT      /api/events_and_classes/:id(.:format)                         api/sola_cms/events_and_classes#update
+#                                        DELETE   /api/events_and_classes/:id(.:format)                         api/sola_cms/events_and_classes#destroy
+#                                        GET      /api/tools_and_resources(.:format)                            api/sola_cms/tools_and_resources#index
+#                                        POST     /api/tools_and_resources(.:format)                            api/sola_cms/tools_and_resources#create
+#                                        GET      /api/tools_and_resources/new(.:format)                        api/sola_cms/tools_and_resources#new
+#                                        GET      /api/tools_and_resources/:id/edit(.:format)                   api/sola_cms/tools_and_resources#edit
+#                                        GET      /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#show
+#                                        PATCH    /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#update
+#                                        PUT      /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#update
+#                                        DELETE   /api/tools_and_resources/:id(.:format)                        api/sola_cms/tools_and_resources#destroy
+#             api_sola_cms_notifications GET      /api/notifications(.:format)                                  api/sola_cms/notifications#index
+#                                        POST     /api/notifications(.:format)                                  api/sola_cms/notifications#create
+#          new_api_sola_cms_notification GET      /api/notifications/new(.:format)                              api/sola_cms/notifications#new
+#         edit_api_sola_cms_notification GET      /api/notifications/:id/edit(.:format)                         api/sola_cms/notifications#edit
+#              api_sola_cms_notification GET      /api/notifications/:id(.:format)                              api/sola_cms/notifications#show
+#                                        PATCH    /api/notifications/:id(.:format)                              api/sola_cms/notifications#update
+#                                        PUT      /api/notifications/:id(.:format)                              api/sola_cms/notifications#update
+#                                        DELETE   /api/notifications/:id(.:format)                              api/sola_cms/notifications#destroy
+#                                        GET      /api/home_buttons(.:format)                                   api/sola_cms/home_buttons#index
+#                                        POST     /api/home_buttons(.:format)                                   api/sola_cms/home_buttons#create
+#                                        GET      /api/home_buttons/new(.:format)                               api/sola_cms/home_buttons#new
+#                                        GET      /api/home_buttons/:id/edit(.:format)                          api/sola_cms/home_buttons#edit
+#                                        GET      /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#show
+#                                        PATCH    /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#update
+#                                        PUT      /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#update
+#                                        DELETE   /api/home_buttons/:id(.:format)                               api/sola_cms/home_buttons#destroy
+#                api_sola_cms_categories GET      /api/categories(.:format)                                     api/sola_cms/categories#index
+#                                        POST     /api/categories(.:format)                                     api/sola_cms/categories#create
+#              new_api_sola_cms_category GET      /api/categories/new(.:format)                                 api/sola_cms/categories#new
+#             edit_api_sola_cms_category GET      /api/categories/:id/edit(.:format)                            api/sola_cms/categories#edit
+#                  api_sola_cms_category GET      /api/categories/:id(.:format)                                 api/sola_cms/categories#show
+#                                        PATCH    /api/categories/:id(.:format)                                 api/sola_cms/categories#update
+#                                        PUT      /api/categories/:id(.:format)                                 api/sola_cms/categories#update
+#                                        DELETE   /api/categories/:id(.:format)                                 api/sola_cms/categories#destroy
+#        api_sola_cms_rent_manager_units GET      /api/rent_manager_units(.:format)                             api/sola_cms/rent_manager_units#index
+#                                        POST     /api/rent_manager_units(.:format)                             api/sola_cms/rent_manager_units#create
+#     new_api_sola_cms_rent_manager_unit GET      /api/rent_manager_units/new(.:format)                         api/sola_cms/rent_manager_units#new
+#    edit_api_sola_cms_rent_manager_unit GET      /api/rent_manager_units/:id/edit(.:format)                    api/sola_cms/rent_manager_units#edit
+#         api_sola_cms_rent_manager_unit GET      /api/rent_manager_units/:id(.:format)                         api/sola_cms/rent_manager_units#show
+#                                        PATCH    /api/rent_manager_units/:id(.:format)                         api/sola_cms/rent_manager_units#update
+#                                        PUT      /api/rent_manager_units/:id(.:format)                         api/sola_cms/rent_manager_units#update
+#                                        DELETE   /api/rent_manager_units/:id(.:format)                         api/sola_cms/rent_manager_units#destroy
+#                    api_sola_cms_videos GET      /api/videos(.:format)                                         api/sola_cms/videos#index
+#                                        POST     /api/videos(.:format)                                         api/sola_cms/videos#create
+#                 new_api_sola_cms_video GET      /api/videos/new(.:format)                                     api/sola_cms/videos#new
+#                edit_api_sola_cms_video GET      /api/videos/:id/edit(.:format)                                api/sola_cms/videos#edit
+#                     api_sola_cms_video GET      /api/videos/:id(.:format)                                     api/sola_cms/videos#show
+#                                        PATCH    /api/videos/:id(.:format)                                     api/sola_cms/videos#update
+#                                        PUT      /api/videos/:id(.:format)                                     api/sola_cms/videos#update
+#                                        DELETE   /api/videos/:id(.:format)                                     api/sola_cms/videos#destroy
+#             api_sola_cms_stylist_units GET      /api/stylist_units(.:format)                                  api/sola_cms/stylist_units#index
+#                                        POST     /api/stylist_units(.:format)                                  api/sola_cms/stylist_units#create
+#          new_api_sola_cms_stylist_unit GET      /api/stylist_units/new(.:format)                              api/sola_cms/stylist_units#new
+#         edit_api_sola_cms_stylist_unit GET      /api/stylist_units/:id/edit(.:format)                         api/sola_cms/stylist_units#edit
+#              api_sola_cms_stylist_unit GET      /api/stylist_units/:id(.:format)                              api/sola_cms/stylist_units#show
+#                                        PATCH    /api/stylist_units/:id(.:format)                              api/sola_cms/stylist_units#update
+#                                        PUT      /api/stylist_units/:id(.:format)                              api/sola_cms/stylist_units#update
+#                                        DELETE   /api/stylist_units/:id(.:format)                              api/sola_cms/stylist_units#destroy
+#                 api_sola_cms_countries GET      /api/countries(.:format)                                      api/sola_cms/countries#index
+#                                        POST     /api/countries(.:format)                                      api/sola_cms/countries#create
+#               new_api_sola_cms_country GET      /api/countries/new(.:format)                                  api/sola_cms/countries#new
+#              edit_api_sola_cms_country GET      /api/countries/:id/edit(.:format)                             api/sola_cms/countries#edit
+#                   api_sola_cms_country GET      /api/countries/:id(.:format)                                  api/sola_cms/countries#show
+#                                        PATCH    /api/countries/:id(.:format)                                  api/sola_cms/countries#update
+#                                        PUT      /api/countries/:id(.:format)                                  api/sola_cms/countries#update
+#                                        DELETE   /api/countries/:id(.:format)                                  api/sola_cms/countries#destroy
+#     api_sola_cms_franchising_inquiries GET      /api/franchising_inquiries(.:format)                          api/sola_cms/franchising_inquiries#index
+#                                        POST     /api/franchising_inquiries(.:format)                          api/sola_cms/franchising_inquiries#create
+#   new_api_sola_cms_franchising_inquiry GET      /api/franchising_inquiries/new(.:format)                      api/sola_cms/franchising_inquiries#new
+#  edit_api_sola_cms_franchising_inquiry GET      /api/franchising_inquiries/:id/edit(.:format)                 api/sola_cms/franchising_inquiries#edit
+#       api_sola_cms_franchising_inquiry GET      /api/franchising_inquiries/:id(.:format)                      api/sola_cms/franchising_inquiries#show
+#                                        PATCH    /api/franchising_inquiries/:id(.:format)                      api/sola_cms/franchising_inquiries#update
+#                                        PUT      /api/franchising_inquiries/:id(.:format)                      api/sola_cms/franchising_inquiries#update
+#                                        DELETE   /api/franchising_inquiries/:id(.:format)                      api/sola_cms/franchising_inquiries#destroy
 #                       api_v1_locations GET|POST /api/v1/locations(.:format)                                   api/v1/locations#index
 #                                 api_v1 GET|POST /api/v1/locations/:id(.:format)                               api/v1/locations#show
 #                       api_v2_locations GET|POST /api/v2/locations(.:format)                                   api/v2/locations#index
 #                                 api_v2 GET|POST /api/v2/locations/:id(.:format)                               api/v2/locations#show
+#      get_location_data_api_v2_location GET      /api/v2/locations/:id/get_location_data(.:format)             api/v2/locations#get_location_data
+#                                        GET      /api/v2/locations(.:format)                                   api/v2/locations#index
+#                                        POST     /api/v2/locations(.:format)                                   api/v2/locations#create
+#                    new_api_v2_location GET      /api/v2/locations/new(.:format)                               api/v2/locations#new
+#                   edit_api_v2_location GET      /api/v2/locations/:id/edit(.:format)                          api/v2/locations#edit
+#                        api_v2_location GET      /api/v2/locations/:id(.:format)                               api/v2/locations#show
+#                                        PATCH    /api/v2/locations/:id(.:format)                               api/v2/locations#update
+#                                        PUT      /api/v2/locations/:id(.:format)                               api/v2/locations#update
+#                                        DELETE   /api/v2/locations/:id(.:format)                               api/v2/locations#destroy
 #                api_v3_hubspot_webhooks POST     /api/v3/hubspot_webhooks(.:format)                            api/v3/hubspot_webhooks#create
 #           api_v3_rent_manager_webhooks POST     /api/v3/rent_manager_webhooks(.:format)                       api/v3/rent_manager_webhooks#create
 #                         cms_save_lease GET|POST /cms/save-lease(.:format)                                     cms#save_lease
@@ -561,11 +815,6 @@ end
 #                api_v3_education_hero_images GET      /api/v3/education_hero_images(.:format)                pro/api/v3/education_hero_images#index {:format=>:json}
 #       walkins_api_v3_update_my_sola_website POST     /api/v3/update_my_sola_website/walkins(.:format)       pro/api/v3/update_my_sola_websites#walkins {:format=>:json}
 #               api_v3_update_my_sola_website POST     /api/v3/update_my_sola_website(.:format)               pro/api/v3/update_my_sola_websites#create {:format=>:json}
-#
-# Routes for Ckeditor::Engine:
-#         pictures GET    /pictures(.:format)             ckeditor/pictures#index
-#                  POST   /pictures(.:format)             ckeditor/pictures#create
-#          picture DELETE /pictures/:id(.:format)         ckeditor/pictures#destroy
-# attachment_files GET    /attachment_files(.:format)     ckeditor/attachment_files#index
-#                  POST   /attachment_files(.:format)     ckeditor/attachment_files#create
-#  attachment_file DELETE /attachment_files/:id(.:format) ckeditor/attachment_files#destroy
+#                        current_api_v4_users GET      /api/v4/users/current(.:format)                        pro/api/v4/users#current {:format=>:json}
+#       walkins_api_v4_update_my_sola_website POST     /api/v4/update_my_sola_website/walkins(.:format)       pro/api/v4/update_my_sola_websites#walkins {:format=>:json}
+#               api_v4_update_my_sola_website POST     /api/v4/update_my_sola_website(.:format)               pro/api/v4/update_my_sola_websites#create {:format=>:json}

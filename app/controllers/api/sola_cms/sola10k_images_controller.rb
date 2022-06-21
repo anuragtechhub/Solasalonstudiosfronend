@@ -50,6 +50,6 @@ class Api::SolaCms::Sola10kImagesController < Api::SolaCms::ApiController
   end 
 
   def sola10k_image_params
-    params.require(:sola10k_image).permit(:approved, :name, :instagram_handle, :statement, :image)
+    params.require(:sola10k_image).permit(:approved, :name, :instagram_handle, :statement, :image, :generated_image)
   end 
 end

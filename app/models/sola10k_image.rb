@@ -9,13 +9,14 @@ class Sola10kImage < ActiveRecord::Base
 
   before_save :set_approved_at, if: :was_just_approved
 
-  has_attached_file :image, styles: { original: '1080x>' }, source_file_options: { all: '-auto-orient' }
+
+  has_attached_file :image, styles: { original: '1080x>' }, source_file_options: { all: '-auto-orient' }, s3_protocol: :https
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
   attr_accessor :delete_image, :delete_generated_image
 
   before_validation { image.destroy if delete_image == '1' }
 
-  has_attached_file :generated_image, styles: { funsize: '540x>', share: '400x>' }, source_file_options: { all: '-auto-orient' }
+  has_attached_file :generated_image, styles: { funsize: '540x>', share: '400x>' }, source_file_options: { all: '-auto-orient' }, s3_protocol: :https
   validates_attachment_content_type :generated_image, content_type: %r{\Aimage/.*\Z}
 
   before_validation { generated_image.destroy if delete_generated_image == '1' }
@@ -26,9 +27,9 @@ class Sola10kImage < ActiveRecord::Base
 
   def as_json(options = {})
     super(methods: %i[generated_image_url original_image_url share_url],
-          except:  %i[created_at updated_at approved approved_at
+          except:  %i[created_at updated_at  approved_at
                       generated_image_file_name generated_image_content_type generated_image_file_size generated_image_updated_at
-                      image_file_name image_content_type image_file_size image_updated_at statement statement_variant]).merge(options)
+                      image_file_name image_content_type image_file_size image_updated_at statement_variant]).merge(options)
   end
 
   def generated_image_url

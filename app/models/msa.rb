@@ -33,6 +33,10 @@ class Msa < ActiveRecord::Base
     "https://www.solasalonstudios.#{locale == :en ? 'com' : 'ca'}/regions/#{url_name}"
   end
 
+  def as_json(_options = {})
+    super(include: {locations: {only: [:name, :id]}})
+  end
+
   def generate_url_name
     if name
       url = name.downcase.gsub(/[^0-9a-zA-Z]/, '-')
@@ -59,6 +63,9 @@ class Msa < ActiveRecord::Base
     def touch_msa
       Msa.all.first.touch
     end
+
+
+
 end
 
 # == Schema Information

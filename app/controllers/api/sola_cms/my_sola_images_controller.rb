@@ -52,6 +52,6 @@ class Api::SolaCms::MySolaImagesController < Api::SolaCms::ApiController
   end
 
   def my_sola_image_params
-    params.require(:my_sola_image).permit(:name, :instagram_handle, :statement, :image_file_name, :generated_image_file_name)
+    params.require(:my_sola_image).permit(:name, :instagram_handle, :statement, :image,  :approved,  :statement_variant,  :generated_image)
   end 
 end

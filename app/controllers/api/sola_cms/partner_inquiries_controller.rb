@@ -50,6 +50,6 @@ class Api::SolaCms::PartnerInquiriesController < Api::SolaCms::ApiController
   end 
 
   def parner_inquiry_params
-    params.require(:partner_inquiry).permit(:subject, :name, :company_name, :email, :phone, :message, :request_url)
+    params.require(:partner_inquiry).permit(:subject, :name, :company_name, :email, :phone, :message, :request_url, :visit_id)
   end 
 end

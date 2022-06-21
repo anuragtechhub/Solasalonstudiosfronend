@@ -1,6 +1,6 @@
 class ConnectMaintenanceContact < ActiveRecord::Base
   belongs_to :location
-  enum contact_preference: [:sms, :email, :phone]
+  enum contact_preference: [:sms, :email, :phone, :url]
 
 end
 
@@ -17,6 +17,7 @@ end
 #  contact_phone_number :string
 #  contact_preference   :integer
 #  contact_type         :string
+#  request_routing_url  :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  location_id          :integer

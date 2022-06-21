@@ -5,6 +5,12 @@ class SideMenuItem < ActiveRecord::Base
   has_many :countries, -> { uniq }, through: :side_menu_item_countries
 
   validates :countries, :name, :position, :action_link, presence: true
+
+
+  def as_json(_options = {})
+      super(include: %i[ countries])
+  end
+
 end
 
 # == Schema Information
