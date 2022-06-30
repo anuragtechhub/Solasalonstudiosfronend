@@ -442,6 +442,9 @@ RailsAdmin.config do |config|
       field :id do
         searchable true
       end
+      field :store_id do
+        searchable true
+      end
       field :name
       field :url_name do
         label 'URL Name'
