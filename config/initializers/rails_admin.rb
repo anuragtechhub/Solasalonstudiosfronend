@@ -1144,6 +1144,7 @@ RailsAdmin.config do |config|
       field :twitter_url
       field :instagram_url
       field :yelp_url
+      field :store_id
     end
   end
 
