@@ -4,8 +4,15 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
 
   #GET /book_now_booking
   def index
-    @bookings = BookNowBooking.all
-    render json: @bookings
+    if params[:search].present?
+      bookings = BookNowBooking.search_booking(params[:search])
+      bookings = paginate(bookings)
+      render json:  { bookings: bookings }.merge(meta: pagination_details(bookings))
+    else  
+      bookings = BookNowBooking.all
+      bookings = paginate(bookings)
+      render json: { bookings: bookings }.merge(meta: pagination_details(bookings))
+    end
   end
 
   #POST /book_now_booking

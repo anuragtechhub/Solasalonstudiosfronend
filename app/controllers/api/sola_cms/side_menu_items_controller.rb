@@ -3,8 +3,15 @@ class Api::SolaCms::SideMenuItemsController < Api::SolaCms::ApiController
 
   #GET /side_menu_items
   def index
-    @side_menu_items = SideMenuItem.all
-    render json: @side_menu_items
+    if params[:search].present?
+      side_menu_items = SideMenuItem.search_by_side_menu_items(params[:search])
+      side_menu_items = paginate(side_menu_items)
+      render json:  { side_menu_items: side_menu_items }.merge(meta: pagination_details(side_menu_items))
+    else  
+      side_menu_items = SideMenuItem.all
+      side_menu_items = paginate(side_menu_items)
+      render json: { side_menu_items: side_menu_items }.merge(meta: pagination_details(side_menu_items))
+    end
   end
 
   #POST /side_menu_items

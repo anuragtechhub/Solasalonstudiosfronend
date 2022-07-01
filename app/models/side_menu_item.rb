@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class SideMenuItem < ActiveRecord::Base
+    include PgSearch::Model
+  pg_search_scope :search_by_side_menu_items, against: [:name],
+  associated_against: {
+    countries: [:name],
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   has_many :side_menu_item_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :side_menu_item_countries
 

@@ -3,6 +3,14 @@
 class FranchiseArticle < ActiveRecord::Base
   include Rails.application.routes.mounted_helpers
   extend FriendlyId
+  include PgSearch::Model
+  pg_search_scope :search_by_name_author_slug_and_url, against: [:author, :title, :url, :slug],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   friendly_id :title, use: :slugged
   paginates_per 10
 

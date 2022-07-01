@@ -2,10 +2,15 @@
 
 class Tool < ActiveRecord::Base
   include PgSearch::Model
-
-  pg_search_scope :search, against: :title, associated_against: {
-    categories: [:name],
-    brand:      :name
+  pg_search_scope :search_by_id_and_brand_name, against: [:id, :title],
+  associated_against: {
+    brand: [:name]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
   }
   multisearchable against: [:stripped_title]
 

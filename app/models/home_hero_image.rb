@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class HomeHeroImage < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_id, against: [:id, :action_link],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   has_many :home_hero_image_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :home_hero_image_countries
 
@@ -21,7 +29,7 @@ class HomeHeroImage < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(methods: %i[image_original_url image_large_url action_link position])
+    super(methods: %i[image_original_url image_large_url action_link position],include: {countries: {only: [:name, :id, :code]}})
   end
 end
 

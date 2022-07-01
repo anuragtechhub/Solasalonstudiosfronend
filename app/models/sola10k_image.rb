@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Sola10kImage < ActiveRecord::Base
+    include PgSearch::Model
+  pg_search_scope :search_by_sola10k_image, against: [:name, :instagram_handle],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   has_paper_trail
 
   include Publically
@@ -29,7 +38,7 @@ class Sola10kImage < ActiveRecord::Base
     super(methods: %i[generated_image_url original_image_url share_url],
           except:  %i[created_at updated_at  approved_at
                       generated_image_file_name generated_image_content_type generated_image_file_size generated_image_updated_at
-                      image_file_name image_content_type image_file_size image_updated_at statement_variant]).merge(options)
+                      image_file_name image_content_type image_file_size image_updated_at])
   end
 
   def generated_image_url

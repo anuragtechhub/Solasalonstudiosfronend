@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class PartnerInquiry < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_inquiries, against: [:id, :subject, :name, :company_name, :email, :phone],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: false
+    }
+  }
+
   has_paper_trail
 
   after_create :send_notification_email

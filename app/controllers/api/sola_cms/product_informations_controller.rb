@@ -5,8 +5,15 @@ class Api::SolaCms::ProductInformationsController < Api::SolaCms::ApiController
 
   #GET /product_informations
   def index
-    @product_informations = ProductInformation.all
-    render json: @product_informations
+    if params[:search].present?
+      product_informations = ProductInformation.search_product_information(params[:search])
+      product_informations = paginate(product_informations)
+      render json:  { product_informations: product_informations }.merge(meta: pagination_details(product_informations))
+    else  
+      product_informations = ProductInformation.all
+      product_informations = paginate(product_informations)
+      render json: { product_informations: product_informations }.merge(meta: pagination_details(product_informations))
+    end
   end
 
   #POST /product_informations

@@ -2,11 +2,18 @@
 
 class Video < ActiveRecord::Base
   include PgSearch::Model
-
-  pg_search_scope :search, against: :title, associated_against: {
-    categories: [:name],
-    brand:      :name
+  pg_search_scope :search_by_title, against: [:title],
+  associated_against: {
+    brand: [:name],
+    categories: [:name]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
   }
+
   multisearchable against: [:stripped_title]
 
   scope :webinars, lambda {
@@ -106,9 +113,9 @@ class Video < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count])
+    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count ], include: %i[categories])
   end
-
+  
   private
 
     def auto_set_country

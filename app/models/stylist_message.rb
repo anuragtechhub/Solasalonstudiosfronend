@@ -1,12 +1,32 @@
 # frozen_string_literal: true
 
 class StylistMessage < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_stylist_message, against: [:name, :id, :email],
+  associated_against: {
+    stylist: [:name],
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   has_paper_trail
 
   after_create :send_email
 
   belongs_to :stylist
   belongs_to :visit
+
+  def as_json(_options = {})
+    super(methods: %i[stylist_name])
+  end
+
+  def stylist_name
+    stylist ? stylist.name : ''
+  end
 
   def send_email
     if stylist

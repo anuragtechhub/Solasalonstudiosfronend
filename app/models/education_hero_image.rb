@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class EducationHeroImage < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_id_and_action_link, against: [:id, :action_link],
+  using: {
+      tsearch: {
+        prefix: true
+      }
+    }
   has_many :education_hero_image_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :education_hero_image_countries
 

@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class SolaClassRegionState < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_state_region, against: [:state, :id],
+  associated_against: {
+    sola_class_region: [:name],
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   belongs_to :sola_class_region
 
   validates :sola_class_region, uniqueness: { scope: :state, message: 'is already mapped to this state' }
@@ -60,8 +72,15 @@ class SolaClassRegionState < ActiveRecord::Base
       %w[Wyoming Wyoming]
     ]
   end
-end
 
+  def as_json(_options = {})
+    super(methods: %i[sola_class_region_name])
+  end
+
+  def sola_class_region_name
+    sola_class_region ? sola_class_region.name : ''
+  end
+end
 # == Schema Information
 #
 # Table name: sola_class_region_states

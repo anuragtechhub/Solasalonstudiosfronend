@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ActiveRecord::Base
+  include PgSearch::Model
   validates :email_address, :report_type, presence: true
   after_create :process
 
@@ -17,6 +18,14 @@ class Report < ActiveRecord::Base
   def email_subject
     subject.presence || "#{report_type.titleize} Report"
   end
+
+  pg_search_scope :search_by_email, against: [:email_address],
+    using: {
+      tsearch: {
+        any_word: true,
+        prefix: true
+      }
+    }
 
   private
 

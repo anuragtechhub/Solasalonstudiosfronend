@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class HomeButton < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_id, against: [:id, :action_link],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   has_many :home_button_countries, dependent: :destroy
   has_many :countries, -> { uniq }, through: :home_button_countries
 

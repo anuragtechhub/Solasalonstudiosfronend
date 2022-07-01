@@ -4,7 +4,17 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
   #GET /brands
   def index
     @brands = Brand.all
-    render json: @brands
+    if params[:search].present? 
+      brands = PgSearch.multisearch(params[:search])
+      brands = paginate(brands)
+      render json:  { brands: brands }.merge(meta: pagination_details(brands))
+    elsif params[:all] == "true"
+      render json: { brands: @brands }
+    else 
+      brands = Brand.all
+      brands = paginate(brands)
+      render json: { brands: brands }.merge(meta: pagination_details(brands))
+    end
   end
 
   #POST /brands

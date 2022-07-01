@@ -2,8 +2,15 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   before_action :get_category, only: %i[ show update destroy]
 
   def index
-    @categories = Category.all
-    render json: @categories
+    if params[:search].present?
+      categories = Category.search_by_name_or_slug_or_id(params[:search])
+      categories = paginate(categories)
+      render json:  { categories: categories }.merge(meta: pagination_details(categories))
+    else  
+      categories = Category.all
+      categories = paginate(categories)
+      render json: { categories: categories }.merge(meta: pagination_details(categories))
+    end
   end
 
   def create
@@ -11,7 +18,8 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
       @category = Category.new(category_params)
       if @category.save
         create_categoriables(@category)
-        render json: {category: @category, categoriables: @category.categoriables}
+        render json: @category
+        # render json: {category: @category, categoriables: @category.categoriables}
       end  
     rescue ActiveRecord::RecordNotUnique => error
       render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." } 
@@ -26,6 +34,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   def update
     begin 
       if @category.update(category_params)
+        create_categoriables(@category)
         render json: {message: "Successfully Updated."}, status: 200
       end  
     rescue ActiveRecord::RecordNotUnique => error
@@ -41,7 +50,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
       @category.errors.messages
       Rails.logger.info(@category.errors.messages)
     end
-  end 
+  end
 
   private
 
@@ -65,5 +74,4 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   def ids_params
     params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_id: [] )
   end
-
 end

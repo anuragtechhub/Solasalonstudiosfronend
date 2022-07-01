@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class RequestTourInquiry < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_request_tour_inquiry, against: [:id, :name, :email],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   has_paper_trail
 
   belongs_to :location
@@ -10,6 +18,11 @@ class RequestTourInquiry < ActiveRecord::Base
   before_validation :process_utm
   after_create :send_notification_email, :send_prospect_email
   after_commit :sync_with_hubspot, on: :create
+
+
+  def as_json(_options = {})
+    super(methods: %i[location_name])
+  end
 
   def first_name
     FullNameSplitter.split(name.to_s)[0].to_s

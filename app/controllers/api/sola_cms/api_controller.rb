@@ -14,4 +14,25 @@ class Api::SolaCms::ApiController < ActionController::Base
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
+
+  def pagination_details(collection)
+    {
+      current_page: collection.current_page,
+      next_page: collection.next_page,
+      prev_page: collection.prev_page, # use collection.previous_page when using will_paginate
+      total_pages: collection.total_pages,
+      current_count: collection.length,
+      total_count: collection.total_count # use collection.total_entries when using will_paginate
+    } if collection.present?
+  end
+
+  def paginate(collection)
+    page = params[:page] || 1
+    per_page = params[:per_page] || 20
+    if collection.kind_of?(Array)
+      Kaminari.paginate_array(collection)
+    else
+      collection
+    end&.page(page).per(per_page)
+  end
 end

@@ -4,8 +4,12 @@ class Blog < ActiveRecord::Base
   include PgSearch::Model
 
   pg_search_scope :search, against: [:title], associated_against: {
-    categories: [:name]
-  }
+    categories: [:name],
+  },using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 
   before_save :fix_url_name, :https_images, :check_publish_date
   before_create :generate_url_name
@@ -134,11 +138,11 @@ class Blog < ActiveRecord::Base
     # "https://www.solaprofessional.com#{Rails.application.routes.url_helpers.show_blog_path(self)}?_ios=y&_hdr=n"
   end
 
-  def as_json(_options = {})
-    super(except: %i[image_file_name image_file_size image_content_type
-                     image_updated_at carousel_image_file_name carousel_image_content_type carousel_image_file_size
-                     carousel_image_updated_at legacy_id ], methods: %i[blog_blog_categories image_url url carousel_image_url ], include: %i[ countries tags blog_categories ])
-  end
+    def as_json(_options = {})
+      super(except: %i[image_file_name image_file_size image_content_type
+                       image_updated_at carousel_image_file_name carousel_image_content_type carousel_image_file_size
+                       carousel_image_updated_at legacy_id ], methods: %i[blog_blog_categories image_url url carousel_image_url ], include: %i[ countries tags blog_categories categories ])
+    end
 
   private
 

@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class Country < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_name, against: [:name],
+  using: {
+      tsearch: {
+        prefix: true
+      }
+    }
   has_many :blog_countries
   has_many :blogs, through: :blog_countries
 

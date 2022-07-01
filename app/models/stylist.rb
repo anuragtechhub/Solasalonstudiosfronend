@@ -3,6 +3,7 @@
 class Stylist < ActiveRecord::Base
   # include Fuzzily::Model
   # fuzzily_searchable :name, :email_address
+  include PgSearch::Model
   def self.searchable_columns
     %i[name email_address]
   end
@@ -188,6 +189,16 @@ class Stylist < ActiveRecord::Base
 
   validates :password_confirmation, presence: true, if: proc { password.present? }
   validates :password, confirmation: true, if: proc { password.present? }
+
+  pg_search_scope :search_stylist, against: [:name, :url_name, :email_address, :business_name, :studio_number],
+  using: {
+    tsearch: {
+      any_word: true,
+      prefix: true
+    }
+  }
+
+
 
   # TMP solution
   def hubspot_status

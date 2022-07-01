@@ -3,8 +3,15 @@ class Api::SolaCms::RequestTourInquiriesController < Api::SolaCms::ApiController
 
   #GET /request_tour_inquiries
   def index
-    @request_tour_inquiries = RequestTourInquiry.all
-    render json: @request_tour_inquiries
+    if params[:search].present?
+      request_tour_inquiries = RequestTourInquiry.search_request_tour_inquiry(params[:search])
+      request_tour_inquiries = paginate(request_tour_inquiries)
+      render json:  { request_tour_inquiries: request_tour_inquiries }.merge(meta: pagination_details(request_tour_inquiries))
+    else  
+      request_tour_inquiries = RequestTourInquiry.all
+      request_tour_inquiries = paginate(request_tour_inquiries)
+      render json: { request_tour_inquiries: request_tour_inquiries }.merge(meta: pagination_details(request_tour_inquiries))
+    end
   end
 
   #POST /request_tour_inquiries

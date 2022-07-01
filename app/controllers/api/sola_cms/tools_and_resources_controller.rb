@@ -3,8 +3,15 @@ class Api::SolaCms::ToolsAndResourcesController < Api::SolaCms::ApiController
 
   #GET /tools_and_resources
   def index
-    @tools_and_resources = Tool.all
-    render json: @tools_and_resources
+    if params[:search].present?
+      tools_and_resources = Tool.search_by_id_and_brand_name(params[:search])
+      tools_and_resources = paginate(tools_and_resources)
+      render json:  { tools_and_resources: tools_and_resources }.merge(meta: pagination_details(tools_and_resources))
+    else  
+      tools_and_resources = Tool.all
+      tools_and_resources = paginate(tools_and_resources)
+      render json: { tools_and_resources: tools_and_resources }.merge(meta: pagination_details(tools_and_resources))
+    end
   end
 
   #POST /tools_and_resources

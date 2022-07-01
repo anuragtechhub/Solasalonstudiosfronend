@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class RentManager::Unit < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_rent_manager_unit, against: [:id, :name],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   belongs_to :location
 
   has_many :rent_manager_stylist_units, class_name: 'RentManager::StylistUnit', inverse_of: :rent_manager_unit, dependent: :destroy

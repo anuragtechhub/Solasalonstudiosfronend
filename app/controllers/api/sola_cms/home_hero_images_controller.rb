@@ -5,8 +5,15 @@ class Api::SolaCms::HomeHeroImagesController < Api::SolaCms::ApiController
 
   #GET /home_hero_images
   def index
-    @home_hero_images = HomeHeroImage.all
-    render json: @home_hero_images
+    if params[:search].present?
+      home_hero_images = HomeHeroImage.search_by_id(params[:search])
+      home_hero_images = paginate(home_hero_images)
+      render json:  { home_hero_images: home_hero_images }.merge(meta: pagination_details(home_hero_images))
+    else  
+      home_hero_images = HomeHeroImage.all
+      home_hero_images = paginate(home_hero_images)
+      render json: { home_hero_images: home_hero_images }.merge(meta: pagination_details(home_hero_images))
+    end
   end
 
   #POST /home_hero_images

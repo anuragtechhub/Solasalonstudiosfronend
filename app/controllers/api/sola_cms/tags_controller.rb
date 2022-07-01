@@ -4,7 +4,17 @@ class Api::SolaCms::TagsController < Api::SolaCms::ApiController
   #GET /tags
   def index
     @tags = Tag.all
-    render json: @tags
+    if params[:search].present? 
+      tags = PgSearch.multisearch(params[:search])
+      tags = paginate(tags)
+      render json:  { tags: tags }.merge(meta: pagination_details(tags))
+    elsif params[:all] == "true"
+      render json: { tags: @tags }
+    else 
+      tags = Tag.all
+      tags = paginate(tags)
+      render json: { tags: tags }.merge(meta: pagination_details(tags))
+    end
   end
 
   #POST /tags

@@ -18,6 +18,14 @@ class Category < ActiveRecord::Base
   def stripped_name
     name&.strip
   end
+  
+  pg_search_scope :search_by_name_or_slug_or_id, against: [:name, :slug, :id],
+    using: {
+      tsearch: {
+        any_word: true,
+        prefix: true
+      }
+    }
 end
 
 # == Schema Information

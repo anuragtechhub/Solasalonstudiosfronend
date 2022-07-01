@@ -3,8 +3,15 @@ class Api::SolaCms::FranchisingInquiriesController < Api::SolaCms::ApiController
 
   #GET /home_buttons
   def index
-    @franchising_inquiries = FranchisingForm.all
-    render json: @franchising_inquiries
+    if params[:search].present?
+      franchising_inquiries = FranchisingForm.search_by_email(params[:search])
+      franchising_inquiries = paginate(franchising_inquiries)
+      render json:  { franchising_inquiries: franchising_inquiries }.merge(meta: pagination_details(franchising_inquiries))
+    else  
+      franchising_inquiries = FranchisingForm.all
+      franchising_inquiries = paginate(franchising_inquiries)
+      render json: { franchising_inquiries: franchising_inquiries }.merge(meta: pagination_details(franchising_inquiries))
+    end
   end
 
   #POST /home_buttons

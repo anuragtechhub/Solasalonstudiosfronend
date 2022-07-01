@@ -1,7 +1,18 @@
 class ConnectMaintenanceContact < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_maintanence_contact, against: [:contact_type, :contact_email, :contact_first_name],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   belongs_to :location
   enum contact_preference: [:sms, :email, :phone, :url]
 
+  def as_json(_options = {})
+    super(include: {location: {only: [:name, :id]}})
+  end
 end
 
 # == Schema Information

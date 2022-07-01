@@ -3,8 +3,15 @@ class Api::SolaCms::StylistMessagesController < Api::SolaCms::ApiController
 
   #GET /stylist_messages
   def index
-    @stylist_messages = StylistMessage.page(params[:page] || 1 )
-    render json: @stylist_messages
+    if params[:search].present?
+      stylist_messages = StylistMessage.search_by_stylist_message(params[:search])
+      stylist_messages = paginate(stylist_messages)
+      render json:  { stylist_messages: stylist_messages }.merge(meta: pagination_details(stylist_messages))
+    else  
+      stylist_messages = StylistMessage.all
+      stylist_messages = paginate(stylist_messages)
+      render json: { stylist_messages: stylist_messages }.merge(meta: pagination_details(stylist_messages))
+    end
   end
   
   #POST /stylist_messages

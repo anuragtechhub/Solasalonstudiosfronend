@@ -3,8 +3,15 @@ class Api::SolaCms::EventsAndClassesController < Api::SolaCms::ApiController
 
   #GET /events_and_classes
   def index
-    @events_and_classes = SolaClass.all
-    render json: @events_and_classes
+   if params[:search].present?
+      event_and_classes = SolaClass.search(params[:search])
+      event_and_classes = paginate(event_and_classes)
+      render json:  { event_and_classes: event_and_classes }.merge(meta: pagination_details(event_and_classes))
+    else  
+      event_and_classes = SolaClass.all
+      event_and_classes = paginate(event_and_classes)
+      render json: { event_and_classes: event_and_classes }.merge(meta: pagination_details(event_and_classes))
+    end
   end
 
   #POST /events_and_classes

@@ -3,6 +3,19 @@
 class Location < ActiveRecord::Base
   # include Fuzzily::Model
   # fuzzily_searchable :name, :address_1, :address_2, :city, :state, :postal_code
+  include PgSearch::Model
+  pg_search_scope :search_by_id, against: [:name, :id, :city, :state, ],
+  associated_against: {
+    msa: [:name],
+    admin: [:email]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   def self.searchable_columns
     %i[address_1 address_2 city state]
   end
@@ -24,6 +37,7 @@ class Location < ActiveRecord::Base
   has_many :leases
   has_many :external_ids, as: :objectable, dependent: :destroy
   has_many :rent_manager_units, class_name: 'RentManager::Unit', inverse_of: :location, dependent: :destroy
+  has_many :connect_maintenance_contacts
 
   # after_save :submit_to_moz
   before_validation :generate_url_name, on: :create
@@ -154,6 +168,10 @@ class Location < ActiveRecord::Base
   validates :description_short, allow_blank: true, length: { maximum: 200 }, format: { with: %r{[0-9\p{L}()\[\] ?:;/!\\,.\-%&=\r\n\t_*§²`´·"'+¡¿@°€£$]} }
   validates :description_long, allow_blank: true, length: { maximum: 1000 }, format: { with: %r{[0-9\p{L}()\[\] ?:;/!\\,.\-%&=\r\n\t_*§²`´·"'+¡¿@°€£$]} }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
+
+  def as_json(_options = {})
+      super(methods: %i[ msa_name franchisee])
+  end
 
   def msa_name
     msa ? msa.name : ''

@@ -3,8 +3,15 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
 
   #GET /videos
   def index
-    @videos = Video.all
-    render json: @videos
+    if params[:search].present?
+      videos = Video.search_by_title(params[:search])
+      videos = paginate(videos)
+      render json:  { videos: videos }.merge(meta: pagination_details(videos))
+    else  
+      videos = Video.all
+      videos = paginate(videos)
+      render json: { videos: videos }.merge(meta: pagination_details(videos))
+    end
   end
 
   #POST /videos

@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 # Ability to connect some models with external db tables
-
 class ExternalId < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_id, against: [:id, :name],
+  using: {
+    tsearch: {
+      prefix: false
+    }
+  }
   belongs_to :objectable, polymorphic: true
-
   belongs_to :stylist, foreign_key: :objectable_id, foreign_type: 'Stylist'
   belongs_to :location, foreign_key: :objectable_id, foreign_type: 'Location'
 
@@ -26,6 +31,14 @@ class ExternalId < ActiveRecord::Base
       value:           rm_property_id,
       objectable_type: 'Location'
     )&.location
+  end
+
+  def as_json(_options = {})
+      super(methods: %i[ objectable_name])
+  end
+
+  def objectable_name
+      objectable ? objectable.name : ''
   end
 
   def self.find_stylist_by(rm_location_id, rm_tenant_id)

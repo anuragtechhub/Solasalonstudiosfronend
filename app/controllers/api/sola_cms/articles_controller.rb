@@ -3,11 +3,30 @@
 class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
   before_action :set_article, only: %i[ show update destroy]
 
-
   #GET /articles
   def index
-    @articles = Article.all
-    render json: @articles
+    if params[:export_csv] == "true"
+      if params[:start_date] && params[:end_date].present?
+        @articles = Article.where(created_at: params[:start_date].to_time..params[:end_date].to_time)
+      else
+        @articles = Article.all
+      end
+      headers = params[:headers].present? ? params[:headers] : Article.column_names
+      respond_to do |format|
+        format.csv {send_data @articles.to_csv(headers), filename: "articles-#{Date.today}.csv"}
+      end
+    else
+      if params[:search].present?
+        @articles = Article.search_by_title_article_url(params[:search])
+      else
+        @articles = Article.all
+        if params[:all] == "true"
+          render json: { articles: @articles } and return
+        end
+      end
+      @articles = paginate(@articles) 
+      render json: { articles: @articles }.merge(meta: pagination_details(@articles))
+    end 
   end
 
   #POST /articles
@@ -45,7 +64,7 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
       Rails.logger.info(@article.errors.messages)
     end
   end
-
+  
   private
 
   def set_article

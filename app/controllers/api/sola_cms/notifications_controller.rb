@@ -3,8 +3,15 @@ class Api::SolaCms::NotificationsController < Api::SolaCms::ApiController
 
   #GET /notifications
   def index
-    @notifications = Notification.all
-    render json: @notifications
+    if params[:search].present?
+      notifications = Notification.search_notification(params[:search])
+      notifications = paginate(notifications)
+      render json:  { notifications: notifications }.merge(meta: pagination_details(notifications))
+    else  
+      notifications = Notification.all
+      notifications = paginate(notifications)
+      render json: { notifications: notifications }.merge(meta: pagination_details(notifications))
+    end
   end
 
   #POST /notifications

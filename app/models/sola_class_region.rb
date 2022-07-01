@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SolaClassRegion < ActiveRecord::Base
+  include PgSearch::Model
   has_many :sola_classes # , -> { order 'create' }
 
   has_many :sola_class_region_countries, dependent: :destroy
@@ -35,8 +36,19 @@ class SolaClassRegion < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(methods: %i[image_original_url image_large_url]) # , :name, :future_classes, :position, :country])
+    super(methods: %i[image_original_url image_large_url countries_name]) # , :name, :future_classes, :position, :country])
   end
+
+  def countries_name
+    self.countries&.map{ |a| {id: a.id, name: a.name}}
+  end
+
+  pg_search_scope :search_regions, against: %i[id name position],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 end
 
 # == Schema Information

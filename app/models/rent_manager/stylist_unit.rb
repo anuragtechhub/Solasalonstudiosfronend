@@ -1,8 +1,34 @@
 # frozen_string_literal: true
 
 class RentManager::StylistUnit < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_id_and_name, against: [:id],
+  associated_against: {
+    stylist: [:name],
+    rent_manager_unit: [:name]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   belongs_to :stylist
   belongs_to :rent_manager_unit, class_name: 'RentManager::Unit'
+
+  def as_json(_options = {})
+    super(methods: %i[rent_manager_unit_name stylist_name])
+  end
+
+  def rent_manager_unit_name
+    rent_manager_unit ? rent_manager_unit.name : ''
+  end
+
+  def stylist_name
+    stylist ? stylist.name : ''
+  end
+
 end
 
 # == Schema Information

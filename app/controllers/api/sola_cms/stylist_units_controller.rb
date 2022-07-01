@@ -3,8 +3,15 @@ class Api::SolaCms::StylistUnitsController < Api::SolaCms::ApiController
 
   #GET /stylist_units
   def index
-    @stylist_units = RentManager::StylistUnit.all
-    render json: @stylist_units
+    if params[:search].present?
+      stylist_units = RentManager::StylistUnit.search_by_id_and_name(params[:search])
+      stylist_units = paginate(stylist_units)
+      render json:  { stylist_units: stylist_units }.merge(meta: pagination_details(stylist_units))
+    else  
+      stylist_units = RentManager::StylistUnit.all
+      stylist_units = paginate(stylist_units)
+      render json: { stylist_units: stylist_units }.merge(meta: pagination_details(stylist_units))
+    end
   end
 
   #POST /stylist_units

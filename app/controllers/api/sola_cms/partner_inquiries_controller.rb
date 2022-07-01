@@ -3,8 +3,15 @@ class Api::SolaCms::PartnerInquiriesController < Api::SolaCms::ApiController
 
   #GET /partner_inquiries
   def index
-    @partner_inquiries = PartnerInquiry.all
-    render json: @partner_inquiries
+    if params[:search].present?
+      partner_inquiries = PartnerInquiry.search_inquiries(params[:search])
+      partner_inquiries = paginate(partner_inquiries)
+      render json:  { partner_inquiries: partner_inquiries }.merge(meta: pagination_details(partner_inquiries))
+    else  
+      partner_inquiries = PartnerInquiry.all
+      partner_inquiries = paginate(partner_inquiries)
+      render json: { partner_inquiries: partner_inquiries }.merge(meta: pagination_details(partner_inquiries))
+    end
   end
   
   #POST /partner_inquiries

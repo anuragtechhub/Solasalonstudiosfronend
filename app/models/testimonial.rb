@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Testimonial < ActiveRecord::Base
+  include PgSearch
   before_validation :process_name
   validates :text, presence: true
 
@@ -14,6 +15,13 @@ class Testimonial < ActiveRecord::Base
     html += '<br>'
     html.html_safe
   end
+
+  pg_search_scope :search_testimonial, against: %i[id name text region],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 
   private
 

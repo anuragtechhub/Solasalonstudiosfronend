@@ -3,8 +3,15 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
 
   #GET /home_buttons
   def index
-    @home_buttons = HomeButton.all
-    render json: @home_buttons
+    if params[:search].present?
+      home_buttons = HomeButton.search_by_id(params[:search])
+      home_buttons = paginate(home_buttons)
+      render json:  { home_buttons: home_buttons }.merge(meta: pagination_details(home_buttons))
+    else  
+      home_buttons = HomeButton.all
+      home_buttons = paginate(home_buttons)
+      render json: { home_buttons: home_buttons }.merge(meta: pagination_details(home_buttons))
+    end
   end
 
   #POST /home_buttons

@@ -4,7 +4,17 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
   #GET /Msas
   def index
     @msas = Msa.all
-    render json: @msas
+    if params[:search].present? 
+      msas = Msa.search_by_id_name_and_location(params[:search])
+      msas = paginate(msas)
+      render json:  { msas: msas }.merge(meta: pagination_details(msas))
+    elsif params[:all] == "true"
+      render json: { msas: @msas }
+    else 
+      msas = Msa.all
+      msas = paginate(msas)
+      render json: { msas: msas }.merge(meta: pagination_details(msas))
+    end
   end
 
   #POST /Msas

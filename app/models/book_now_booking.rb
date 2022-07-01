@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BookNowBooking < ActiveRecord::Base
+  include PgSearch::Model
   belongs_to :location
   belongs_to :stylist
 
@@ -19,6 +20,18 @@ class BookNowBooking < ActiveRecord::Base
 
   def sync_with_hubspot
     ::Hubspot::BookNowJob.perform_async(id)
+  end
+
+  def as_json(_options = {})
+    super(methods: %i[stylist_name location_name ])
+  end
+
+  def stylist_name
+    self.stylist&.name
+  end
+
+  def location_name
+    self.location&.name
   end
 
   def update_stylist_metrics
@@ -40,6 +53,13 @@ class BookNowBooking < ActiveRecord::Base
     NewRelic::Agent.notice_error(e)
     Rollbar.error(e)
   end
+
+  pg_search_scope :search_booking, against: %i[id booking_user_name booking_user_email booking_user_phone query time_range total],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 end
 
 # == Schema Information

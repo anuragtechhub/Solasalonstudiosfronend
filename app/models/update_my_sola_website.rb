@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UpdateMySolaWebsite < ActiveRecord::Base
+  include PgSearch::Model
   SOCIAL_PREFIXES = {
     instagram: 'https://www.instagram.com/',
     facebook:  'https://www.facebook.com/',
@@ -108,6 +109,14 @@ class UpdateMySolaWebsite < ActiveRecord::Base
 
   scope :pending, -> { where(approved: false) }
   scope :approved, -> { where(approved: true) }
+
+  pg_search_scope :search, against: %i[id name biography email_address phone_number business_name work_hours website_url booking_url facebook_url google_plus_url twitter_url linkedin_url tik_tok_url yelp_url pinterest_url],
+    using: {
+      tsearch: {
+        any_word: true,
+        prefix: true
+      }
+    }
 
   def location
     stylist&.location

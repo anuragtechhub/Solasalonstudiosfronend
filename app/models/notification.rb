@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 
 class Notification < ActiveRecord::Base
+
+  include PgSearch::Model
+  pg_search_scope :search_notification, against: [:title],
+  associated_against: {
+    brand: [:name],
+    deal: [:title],
+    tool: [:title],
+    sola_class: [:title],
+    video: [:title]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: false
+    }
+  }
+
   belongs_to :blog
   belongs_to :brand
   belongs_to :deal
@@ -19,6 +36,31 @@ class Notification < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 65 }
   validates :notification_text, presence: true, length: { maximum: 235 }
+
+  def as_json(_options = {})
+      super(methods: %i[ brand_name  tool_name deal_name video_name sola_class_name ])
+  end
+
+  def brand_name
+    brand ? brand.name : ''
+  end
+
+  def tool_name
+    tool ? tool.title : ''
+  end 
+
+  def deal_name
+    deal ? deal.title : ''
+  end 
+
+  def video_name
+    video ? video.title : ''
+  end 
+
+  def sola_class_name
+    sola_class ? sola_class.title : ''
+  end 
+
 
   # TODO: refactor this
   def content_object

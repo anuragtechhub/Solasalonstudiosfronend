@@ -3,8 +3,15 @@ class Api::SolaCms::StateRegionsController < Api::SolaCms::ApiController
 
   #GET /state_regions
   def index
-    @state_regions = SolaClassRegionState.all
-    render json: @state_regions
+    if params[:search].present?
+      state_regions = SolaClassRegionState.search_by_state_region(params[:search])
+      state_regions = paginate(state_regions)
+      render json:  { state_regions: state_regions }.merge(meta: pagination_details(state_regions))
+    else  
+      state_regions = SolaClassRegionState.all
+      state_regions = paginate(state_regions)
+      render json: { state_regions: state_regions }.merge(meta: pagination_details(state_regions))
+    end
   end
 
   #POST /state_regions

@@ -3,18 +3,25 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
 
   #GET /blogs
   def index
-    @blogs = Blog.all
-    render json: @blogs
+    if params[:search].present?
+      blogs = Blog.search(params[:search])
+      blogs = paginate(blogs)
+      render json:  { blogs: blogs }.merge(meta: pagination_details(blogs))
+    else  
+      blogs = Blog.all
+      blogs = paginate(blogs)
+      render json: { blogs: blogs }.merge(meta: pagination_details(blogs))
+    end
   end
 
   #POST /blogs
-  def create 
+  def create  
     @blog  =  Blog.new(blog_params)
     if @blog.save
       render json: @blog 
     else
       Rails.logger.info(@blog.errors.messages)
-      render json: {error: @blog.errors.messages}, status: 400
+      render json: {error: @blog.errors.messages}, status: 400     
     end
   end
 
@@ -38,7 +45,7 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
     if @blog&.destroy
       render json: {message: "Blog Successfully Deleted."}, status: 200
     else
-      @blog.errors.messages
+      render json: {error: @blog.errors.messages}, status: 400
       Rails.logger.info(@blog.errors.messages)
     end
   end
@@ -50,6 +57,6 @@ class Api::SolaCms::BlogsController < Api::SolaCms::ApiController
   end
 
   def blog_params
-    params.require(:blog).permit(:title, :url_name, :canonical_url, :image, :carousel_image, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :category_ids, :tag_ids, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, country_ids: [])
+    params.require(:blog).permit(:title, :url_name, :canonical_url, :image, :carousel_image, :delete_image, :meta_description, :summary, :body, :author, :contact_form_visible, :status, :publish_date, :delete_carousel_image, :carousel_text, :fb_conversion_pixel, country_ids: [], tag_ids: [], category_ids: [])
   end
 end

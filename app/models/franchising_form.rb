@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class FranchisingForm < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_email, against: [:email_address],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
   validates :first_name, :last_name, :email_address, :phone_number, :city, :state, :liquid_capital, presence: true
   validate :multi_unit_operator_present
   validates :country, inclusion: { in: %w[usa ca] }

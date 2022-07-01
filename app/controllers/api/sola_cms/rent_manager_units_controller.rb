@@ -3,8 +3,15 @@ class Api::SolaCms::RentManagerUnitsController < Api::SolaCms::ApiController
 
   #GET /rent_manager_units
   def index
-    @rent_manager_units = RentManager::Unit.all
-    render json: @rent_manager_units
+    if params[:search].present?
+      rent_manager_units = RentManager::Unit.search_rent_manager_unit(params[:search])
+      rent_manager_units = paginate(rent_manager_units)
+      render json:  { rent_manager_units: rent_manager_units }.merge(meta: pagination_details(rent_manager_units))
+    else  
+      rent_manager_units = RentManager::Unit.all
+      rent_manager_units = paginate(rent_manager_units)
+      render json: { rent_manager_units: rent_manager_units }.merge(meta: pagination_details(rent_manager_units))
+    end
   end
 
   #POST /rent_manager_units

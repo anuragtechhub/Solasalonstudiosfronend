@@ -3,8 +3,15 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
 
   #GET /education_hero_images
   def index
-    @education_hero_images = EducationHeroImage.all
-    render json: @education_hero_images
+    if params[:search].present?
+      education_hero_images = EducationHeroImage.search_by_id_and_action_link(params[:search])
+      education_hero_images = paginate(education_hero_images)
+      render json:  { education_hero_images: education_hero_images }.merge(meta: pagination_details(education_hero_images))
+    else  
+      education_hero_images = EducationHeroImage.all
+      education_hero_images = paginate(education_hero_images)
+      render json: { education_hero_images: education_hero_images }.merge(meta: pagination_details(education_hero_images))
+    end
   end
 
   #POST /education_hero_images

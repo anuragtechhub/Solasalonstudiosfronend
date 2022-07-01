@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
 class Article < ActiveRecord::Base
-  belongs_to :location
+  include PgSearch::Model
 
+  pg_search_scope :search_by_title_article_url, against: [:title, :article_url],
+  associated_against: {
+    location: [:name]
+  },
+  using: {
+    tsearch: {
+      prefix: true
+    }
+  }
+
+  belongs_to :location
   before_save :fix_url_name
   before_create :generate_url_name
   validates :title, presence: true
@@ -36,8 +47,21 @@ class Article < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(methods: %i[image_url ])
+    super(methods: %i[image_url location_name ])
   end
+
+  def location_name
+    self.location&.name
+  end
+
+  def self.to_csv(headers)
+    CSV.generate(headers: true) do |csv|
+      csv << headers
+      all.each do |article|
+        csv << headers.map{ |attr| article.send(attr)}
+      end
+    end
+  end 
 
   private
 
@@ -61,9 +85,7 @@ class Article < ActiveRecord::Base
 
     def franchisee?
       Thread.current[:current_admin]&.franchisee
-    end
-    
-
+    end    
 end
 
 # == Schema Information

@@ -74,7 +74,7 @@ RailsAdmin.config do |config|
                               UserableNotification UserNotification Distributor VideoView VideoCountry WatchLater SavedItem UserAccessToken
                               PgSearchDocument HomeButtonCountry ToolCategory ToolCountry ToolCategoryTool Brandable Country
                               Lease Studio VideoCategoryVideo VideoCategory HomeHeroImageCountry SideMenuItemCountry Device
-                              FranchisingRequest BrandLink Event]
+                              FranchisingRequest BrandLink]
 
   config.label_methods.unshift :display_name
 
@@ -120,6 +120,21 @@ RailsAdmin.config do |config|
     navigation_label 'Sola Salons'
     visible do
       bindings[:controller]._current_user.franchisee != true
+    end
+
+    list do
+      field :time_range
+      field :location
+      field :query
+      field :services do 
+        queryable false
+      end  
+      field :stylist
+      field :booking_user_name
+      field :booking_user_phone
+      field :booking_user_email
+      field :total
+      field :created_at
     end
 
     show do
@@ -1148,11 +1163,64 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'RentManager::Event' do 
+    label 'Event'
+    label_plural 'Events'
+    navigation_label 'Rent Manager'
+
+    list do 
+      field :status do 
+        searchable false
+      end 
+      field :status_message
+      field :body do 
+        queryable false
+      end 
+      field :created_at
+      field :updated_at  
+    end  
+  end 
+
+  config.model 'RentManager::StylistUnit' do 
+    label 'Stylist Unit'
+    label_plural 'Stylist Units'
+    navigation_label 'Rent Manager'
+
+    list do 
+      field :id
+      field :stylist
+      field :rent_manager_unit_id
+      field :rm_lease_id 
+      field :move_in_at
+      field :move_out_at
+      field :created_at
+      field :updated_at  
+    end  
+  end  
+
+  config.model 'RentManager::Unit' do 
+    label 'Unit'
+    label_plural 'Units'
+    navigation_label 'Rent Manager'
+
+    list do 
+      field :id
+      field :location 
+      field :rm_unit
+      field :rm_property 
+      field :name
+      field :comment
+      field :rm_unit_type
+      field :rm_location
+      field :created_at
+      field :updated_at  
+    end  
+  end 
+
   config.model 'ConnectMaintenanceContact' do
     label 'Maintenance Contact'
     label_plural 'Maintenance Contacts'
     navigation_label 'Sola Salons'
-
     list do
       field :location
       field :contact_type
@@ -1164,7 +1232,9 @@ RailsAdmin.config do |config|
       field :contact_phone_number
       field :contact_email
       field :contact_admin
-      field :contact_preference
+      field :contact_preference do 
+        queryable false
+      end  
       field :request_routing_url
       field :created_at
       field :updated_at
@@ -1186,7 +1256,7 @@ RailsAdmin.config do |config|
       field :contact_preference
       field :request_routing_url
     end 
-  end
+  end  
 
   config.model 'Msa' do
     label 'MSA'
@@ -1209,7 +1279,9 @@ RailsAdmin.config do |config|
         end
       end
       field :share_url
-      field :approved
+      field :approved do 
+        queryable false
+      end  
     end
     edit do
       field :approved
@@ -1265,7 +1337,10 @@ RailsAdmin.config do |config|
         end
       end
       field :share_url
-      field :approved
+      field :approved do 
+        # searchable false
+        queryable false
+      end  
     end
     edit do
       field :approved
@@ -1973,7 +2048,23 @@ RailsAdmin.config do |config|
       field :yelp_url
       field :tik_tok_url
     end
-  end
+  end 
+
+  config.model 'CallfireLog' do 
+    label 'Call Fire Log'
+    label_plural 'Call Fire Logs'
+
+    list do
+      field :id
+      field :data do 
+        queryable false
+      end  
+      field :kind
+      field :action
+      field :created_at
+      field :updated_at
+    end
+  end 
 
   config.model 'GlossGeniusLog' do 
     label 'Gloss Genius Log'
@@ -1983,7 +2074,9 @@ RailsAdmin.config do |config|
       field :action_name
       field :ip_address
       field :host
-      field :request_body 
+      field :request_body do 
+        queryable false
+      end 
     end
     show do
       field :action_name
@@ -1992,6 +2085,33 @@ RailsAdmin.config do |config|
       field :request_body 
     end
   end  
+  
+  config.model 'ExternalId' do 
+    label 'External'
+    label_plural 'Externals'
+
+    list do
+      field  :id 
+      field :objectable_id
+      field :objectable_type 
+      field :name
+      field :value
+      field :rm_location_id
+      field :created_at
+      field :updated_at
+    end
+    show do 
+      field  :id 
+      field :objectable_id
+      field :objectable_type
+      field :kind  
+      field :name
+      field :value
+      field :rm_location_id
+      field :created_at
+      field :updated_at
+    end  
+  end
 
   config.model 'StylistMessage' do
     navigation_label 'Sola Salons'

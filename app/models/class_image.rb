@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 class ClassImage < ActiveRecord::Base
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name, against: [:name],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
+
+
   has_many :sola_classes, dependent: :restrict_with_error
 
   has_paper_trail
@@ -15,6 +25,10 @@ class ClassImage < ActiveRecord::Base
   validates_attachment :thumbnail, content_type: { content_type: %w[image/jpg image/jpeg image/png image/gif] }
 
   before_validation { thumbnail.destroy if delete_thumbnail == '1' }
+
+  def as_json(_options = {})
+    super(except: %i[ image_content_type image_file_name image_file_size image_updated_at  thumbnail_file_name thumbnail_content_type thumbnail_file_size thumbnail_updated_at], methods: %i[image_original_url image_large_url thumbnail_original_url thumbnail_large_url])
+  end
 
   def image_original_url
     image.url(:full_width)

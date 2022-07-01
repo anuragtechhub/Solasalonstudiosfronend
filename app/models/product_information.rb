@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class ProductInformation < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_product_information, against: [:id, :title],
+  associated_against: {
+    brand: [:name]
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: false
+    }
+  }
+
   after_save :touch_brand
 
   belongs_to :brand

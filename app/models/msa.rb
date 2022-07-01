@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class Msa < ActiveRecord::Base
+  include PgSearch::Model
+  pg_search_scope :search_by_id_name_and_location, against: [:name, :id],
+  associated_against: {
+    locations: [:name],
+  },
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   has_paper_trail
 
   before_validation :generate_url_name, on: :create
