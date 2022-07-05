@@ -169,10 +169,6 @@ class Location < ActiveRecord::Base
   validates :description_long, allow_blank: true, length: { maximum: 1000 }, format: { with: %r{[0-9\p{L}()\[\] ?:;/!\\,.\-%&=\r\n\t_*§²`´·"'+¡¿@°€£$]} }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
-  def as_json(_options = {})
-      super(methods: %i[ msa_name franchisee])
-  end
-
   def msa_name
     msa ? msa.name : ''
   end
