@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220324175722) do
+ActiveRecord::Schema.define(version: 20220714081227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,15 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "brands_sola_classes", ["brand_id"], name: "index_brands_sola_classes_on_brand_id", using: :btree
   add_index "brands_sola_classes", ["sola_class_id"], name: "index_brands_sola_classes_on_sola_class_id", using: :btree
 
+  create_table "callfire_logs", force: :cascade do |t|
+    t.json     "data"
+    t.integer  "status"
+    t.string   "kind"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categoriables", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "item_id"
@@ -216,6 +225,23 @@ ActiveRecord::Schema.define(version: 20220324175722) do
     t.datetime "thumbnail_updated_at"
   end
 
+  create_table "connect_maintenance_contacts", force: :cascade do |t|
+    t.integer  "location_id"
+    t.string   "contact_type"
+    t.integer  "contact_order"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
+    t.string   "contact_phone_number"
+    t.string   "contact_email"
+    t.string   "contact_admin"
+    t.integer  "contact_preference"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "request_routing_url"
+  end
+
+  add_index "connect_maintenance_contacts", ["location_id"], name: "index_connect_maintenance_contacts_on_location_id", using: :btree
+
   create_table "countries", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "code",       limit: 255
@@ -258,13 +284,13 @@ ActiveRecord::Schema.define(version: 20220324175722) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "name",                            limit: 255
-    t.string   "uuid",                            limit: 255, null: false
-    t.string   "token",                           limit: 255, null: false
-    t.string   "userable_type",                   limit: 255, null: false
-    t.integer  "userable_id",                                 null: false
+    t.string   "uuid",                            limit: 255
+    t.string   "token",                           limit: 255
+    t.string   "userable_type",                   limit: 255
+    t.integer  "userable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "platform",                        limit: 255, null: false
+    t.string   "platform",                        limit: 255
     t.string   "app_version"
     t.datetime "internal_rating_popup_showed_at"
     t.datetime "native_rating_popup_showed_at"
@@ -351,14 +377,17 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "events", ["video_id"], name: "index_events_on_video_id", using: :btree
 
   create_table "external_ids", force: :cascade do |t|
-    t.integer  "objectable_id",             null: false
-    t.string   "objectable_type",           null: false
-    t.integer  "kind",                      null: false
-    t.string   "name",                      null: false
-    t.string   "value",                     null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "rm_location_id",  limit: 8
+    t.integer  "objectable_id",               null: false
+    t.string   "objectable_type",             null: false
+    t.integer  "kind",                        null: false
+    t.string   "name",                        null: false
+    t.string   "value",                       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "rm_location_id",    limit: 8
+    t.datetime "active_start_date"
+    t.datetime "active_end_date"
+    t.string   "matching_category"
   end
 
   add_index "external_ids", ["kind"], name: "index_external_ids_on_kind", using: :btree
@@ -433,6 +462,15 @@ ActiveRecord::Schema.define(version: 20220324175722) do
     t.string   "phone_number",   limit: 255
     t.string   "salon_name",     limit: 255
     t.string   "salon_location", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gloss_genius_logs", force: :cascade do |t|
+    t.string   "action_name"
+    t.string   "ip_address"
+    t.string   "host"
+    t.jsonb    "request_body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -680,6 +718,26 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "rent_manager_stylist_units", ["rm_lease_id"], name: "index_rent_manager_stylist_units_on_rm_lease_id", using: :btree
   add_index "rent_manager_stylist_units", ["stylist_id"], name: "index_rent_manager_stylist_units_on_stylist_id", using: :btree
 
+  create_table "rent_manager_tenants", force: :cascade do |t|
+    t.integer  "tenant_id"
+    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "location_id"
+    t.integer  "property_id"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "status"
+    t.datetime "active_start_date"
+    t.datetime "active_end_date"
+    t.datetime "last_transaction_date"
+    t.datetime "last_payment_date"
+    t.datetime "move_in_at"
+    t.datetime "move_out_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "rent_manager_units", force: :cascade do |t|
     t.integer  "location_id",               null: false
     t.integer  "rm_unit_id",      limit: 8, null: false
@@ -745,6 +803,16 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "saved_searches", ["kind"], name: "index_saved_searches_on_kind", using: :btree
   add_index "saved_searches", ["query"], name: "index_saved_searches_on_query", using: :btree
   add_index "saved_searches", ["stylist_id"], name: "index_saved_searches_on_stylist_id", using: :btree
+
+  create_table "scheduled_job_logs", force: :cascade do |t|
+    t.json     "data"
+    t.datetime "fired_at"
+    t.integer  "status"
+    t.string   "kind"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "seja_solas", force: :cascade do |t|
     t.string   "nome",            limit: 255
@@ -943,6 +1011,21 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "tags_videos", ["tag_id"], name: "index_tags_videos_on_tag_id", using: :btree
   add_index "tags_videos", ["video_id"], name: "index_tags_videos_on_video_id", using: :btree
 
+  create_table "tanents", force: :cascade do |t|
+    t.integer  "tanant_id"
+    t.integer  "property_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "active_start"
+    t.datetime "active_end"
+    t.datetime "move_in_at"
+    t.datetime "move_out_at"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "terminated_stylists", force: :cascade do |t|
     t.datetime "stylist_created_at"
     t.string   "name",               limit: 255
@@ -1114,6 +1197,7 @@ ActiveRecord::Schema.define(version: 20220324175722) do
   add_index "watch_laters", ["video_id"], name: "index_watch_laters_on_video_id", using: :btree
 
   add_foreign_key "brandables", "brands", name: "brandables_brand_id_fk"
+  add_foreign_key "connect_maintenance_contacts", "locations"
   add_foreign_key "hubspot_logs", "locations"
   add_foreign_key "rent_manager_stylist_units", "rent_manager_units"
   add_foreign_key "rent_manager_stylist_units", "stylists"
