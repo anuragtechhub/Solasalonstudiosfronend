@@ -21,6 +21,7 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
     end           
   end 
 
+
   def create
     @stylist = Stylist.new(salon_params)
     if @stylist.save
@@ -150,6 +151,11 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
       :tik_tok_url,
       :barber,
       :rm_status,
+      :billing_email,
+      :billing_first_name,
+      :billing_last_name,
+      :billing_phone,
+      :is_deleted,
       testimonial_1_attributes: [:name, :text, :region],
       testimonial_2_attributes: [:name, :text, :region],
       testimonial_3_attributes: [:name, :text, :region],

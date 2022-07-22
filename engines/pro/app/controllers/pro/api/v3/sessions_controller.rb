@@ -12,8 +12,10 @@ module Pro
 
       def user_email_sign_in(options)
         user = find_user(options)
-
-        if user.blank? || !valid_password?(user, options[:password])
+        deleted_user = user.is_deleted
+        if deleted_user
+          render json: { is_deleted: deleted_user, message: "This Stylist is Deleted"}
+        elsif user.blank? || !valid_password?(user, options[:password])
           render status: :unauthorized, json: { errors: [t(:invalid_email_or_password)] }
         else
           user_sign_in(user)

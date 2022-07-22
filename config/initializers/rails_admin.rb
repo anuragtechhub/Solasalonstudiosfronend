@@ -1998,6 +1998,9 @@ RailsAdmin.config do |config|
         end
         field :password
         field :password_confirmation
+        field :is_deleted do
+          label 'Delete Account (Soft Delete)'
+        end 
       end
     end
     export do

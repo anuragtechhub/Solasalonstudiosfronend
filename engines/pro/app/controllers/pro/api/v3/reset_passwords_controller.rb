@@ -8,9 +8,12 @@ module Pro
       raise StandardError, t(:please_enter_your_email_address) if params[:email].blank?
 
       user = get_user(params[:email])
+      deleted_user = user.is_deleted
 
       # Allow to set new password
-      if user.present? && user.encrypted_password.blank? && params[:password].present? && params[:password_confirmation].present?
+      if deleted_user
+        render json: { is_deleted: deleted_user, message: "This Stylist is Deleted"}
+      elsif user.present? && user.encrypted_password.blank? && params[:password].present? && params[:password_confirmation].present?
         user.update!({
                        password:              params[:password],
                        password_confirmation: params[:password_confirmation]

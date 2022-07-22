@@ -4,6 +4,7 @@ class Stylist < ActiveRecord::Base
   # include Fuzzily::Model
   # fuzzily_searchable :name, :email_address
   include PgSearch::Model
+
   def self.searchable_columns
     %i[name email_address]
   end
@@ -13,7 +14,6 @@ class Stylist < ActiveRecord::Base
     accidental: 1,
     incorrect:  2
   }
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, authentication_keys: [:email_address]
@@ -73,8 +73,10 @@ class Stylist < ActiveRecord::Base
   before_save :update_computed_fields, :fix_url_name
   # after_create :send_welcome_email
   before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
+
+  
   after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
-  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital
+  after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital, :deleted_at
   after_commit :sync_with_hubspot
   # after_commit :sync_with_rent_manager, on: :update
 
@@ -179,7 +181,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true # , :allow_blank => true, :on => :create
   # validates :email_address, :uniqueness => true, if: 'email_address.present?'
 
-  validates :name, :url_name, :location, presence: true
+  validates :url_name, :location, presence: true
   validates :status, presence: true
   # validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
@@ -216,8 +218,20 @@ class Stylist < ActiveRecord::Base
     self.status == 'open'
   end
 
+  def deleted_at
+    self.deleted_at =  is_deleted? ? DateTime.current : nil
+  end 
+
+  def is_deleted?
+    self.is_deleted == true
+  end 
+
   def inactive?
     !open?
+  end
+
+  def destroy
+    self.update_columns(deleted_at: DateTime.current ,is_deleted: true)
   end
 
   def first_name
@@ -874,6 +888,7 @@ end
 #  current_sign_in_at             :datetime
 #  current_sign_in_ip             :inet
 #  date_of_birth                  :date
+#  deleted_at                     :datetime
 #  electronic_license_agreement   :boolean          default(FALSE)
 #  email_address                  :citext           not null
 #  emergency_contact_name         :string(255)
@@ -938,6 +953,8 @@ end
 #  image_9_updated_at             :datetime
 #  inactive_reason                :integer
 #  instagram_url                  :string(255)
+#  is_deleted                     :boolean          default(FALSE)
+#  l_name                         :string
 #  laser_hair_removal             :boolean
 #  last_sign_in_at                :datetime
 #  last_sign_in_ip                :inet
@@ -1009,6 +1026,7 @@ end
 #
 # Indexes
 #
+#  index_stylists_on_deleted_at              (deleted_at)
 #  index_stylists_on_email_address           (email_address)
 #  index_stylists_on_location_id             (location_id)
 #  index_stylists_on_location_id_and_status  (location_id,status)
