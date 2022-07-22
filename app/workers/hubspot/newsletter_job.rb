@@ -13,12 +13,10 @@ module Hubspot
       }
       Hubspot::Contact.create_or_update!([data])
       HubspotLog.create(status: 'success', data: data, kind: 'news_letter', action: 'contact')
-      ScheduledJobLog.create(status: 'success', data: data, kind: 'news_letter', fired_at: Time.current)
     rescue StandardError => e
       Rollbar.error(e)
       NewRelic::Agent.notice_error(e)
       HubspotLog.create(status: 'error', data: data, kind: 'news_letter', action: 'contact')
-      ScheduledJobLog.create(status: 'error', data: data, kind: 'news_letter', fired_at: Time.current)
       raise
     end
   end

@@ -127,15 +127,11 @@ class Blog < ActiveRecord::Base
   end
 
   def image_url
-    if image.present?
-      image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
-    end 
+    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
   end
 
   def carousel_image_url
-    if carousel_image.present? 
-      carousel_image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
-    end
+    carousel_image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
   end 
 
   def url

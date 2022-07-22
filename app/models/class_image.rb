@@ -31,19 +31,19 @@ class ClassImage < ActiveRecord::Base
   end
 
   def image_original_url
-    image&.url(:full_width) if image.present?
+    image.url(:full_width)
   end
 
   def image_large_url
-    image&.url(:large) if image.present?
+    image.url(:large)
   end
 
   def thumbnail_original_url
-    thumbnail.url(:full_width) if image.present?
+    thumbnail.url(:full_width)
   end
 
   def thumbnail_large_url
-    thumbnail.url(:large) if image.present?
+    thumbnail.url(:large)
   end
 end
 

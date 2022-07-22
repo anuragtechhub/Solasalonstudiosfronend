@@ -2,10 +2,15 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   before_action :get_category, only: %i[ show update destroy]
 
   def index
-    @categories =  params[:search].present? ? search_categories_by_name_or_slug : Category.all
-    render json: { categories: @categories } and return if params[:all] == "true"
-    @categories = paginate(@categories)
-    render json:  { categories: @categories }.merge(meta: pagination_details(@categories))
+    if params[:search].present?
+      categories = Category.search_by_name_or_slug_or_id(params[:search])
+      categories = paginate(categories)
+      render json:  { categories: categories }.merge(meta: pagination_details(categories))
+    else  
+      categories = Category.all
+      categories = paginate(categories)
+      render json: { categories: categories }.merge(meta: pagination_details(categories))
+    end
   end
 
   def create
@@ -18,7 +23,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
       end  
     rescue ActiveRecord::RecordNotUnique => error
       render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." } 
-      Rails.logger.error(@category.errors.messages)
+      Rails.logger.info(@category.errors.messages)
     end 
   end 
 
@@ -34,7 +39,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
       end  
     rescue ActiveRecord::RecordNotUnique => error
       render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." }   
-      Rails.logger.error(@category.errors.messages)
+      Rails.logger.info(@category.errors.messages)
     end  
   end 
 
@@ -42,8 +47,8 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
     if @category&.destroy
       render json: {message: "Successfully Deleted."}, status: 200
     else
-      Rails.logger.error(@category.errors.messages)
-      render json: {errors: format_activerecord_errors(@category.errors) }, status: 400
+      @category.errors.messages
+      Rails.logger.info(@category.errors.messages)
     end
   end
 
@@ -51,7 +56,6 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
 
   def get_category
     @category = Category.find_by(id: params[:id])
-    render json: { message: 'Record not found' }, status: 400 unless @category.present?
   end
 
   def category_params
@@ -68,11 +72,6 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   end
 
   def ids_params
-    params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_ids: [] )
+    params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_id: [] )
   end
-  
-  def search_categories_by_name_or_slug
-    Category.search_by_name_or_slug_or_id(params[:search])
-  end 
 end
-

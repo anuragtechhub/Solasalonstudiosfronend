@@ -4,7 +4,6 @@ class Stylist < ActiveRecord::Base
   # include Fuzzily::Model
   # fuzzily_searchable :name, :email_address
   include PgSearch::Model
-  
   def self.searchable_columns
     %i[name email_address]
   end
@@ -14,6 +13,7 @@ class Stylist < ActiveRecord::Base
     accidental: 1,
     incorrect:  2
   }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, authentication_keys: [:email_address]
@@ -73,7 +73,6 @@ class Stylist < ActiveRecord::Base
   before_save :update_computed_fields, :fix_url_name
   # after_create :send_welcome_email
   before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
-  before_save :full_name, :first_name, :last_name
   after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
   after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital
   after_commit :sync_with_hubspot
@@ -180,8 +179,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true # , :allow_blank => true, :on => :create
   # validates :email_address, :uniqueness => true, if: 'email_address.present?'
 
-
-  validates :url_name, :location, presence: true
+  validates :name, :url_name, :location, presence: true
   validates :status, presence: true
   # validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
@@ -214,10 +212,6 @@ class Stylist < ActiveRecord::Base
     end
   end
 
-  def full_name
-    self.name = [self[:f_name], self[:middle_name], self[:l_name]].join(' ').squish
-  end 
-
   def open?
     self.status == 'open'
   end
@@ -226,16 +220,12 @@ class Stylist < ActiveRecord::Base
     !open?
   end
 
-  def destroy
-    self.update_columns(deleted_at: DateTime.current ,is_deleted: true)
-  end
-
   def first_name
-    self.f_name = FullNameSplitter.split(name)[0]
+    FullNameSplitter.split(name)[0]
   end
 
   def last_name
-    self.l_name = FullNameSplitter.split(name)[1]
+    FullNameSplitter.split(name)[1]
   end
 
   def device_token
@@ -257,7 +247,7 @@ class Stylist < ActiveRecord::Base
         "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}"
       end
     else
-      "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}" 
+      "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}"
     end
   end
 
@@ -647,13 +637,9 @@ class Stylist < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    if _options[:fields].present?
-      super(only: _options[:fields])
-    else
-      super(methods: %i[max_walkins_time walkins_offset walkins_end_of_day my_sola_website notifications update_my_sola_website video_history_data watch_later_video_ids watch_later_data app_settings leases rent_manager_location_id
+    super(methods: %i[max_walkins_time walkins_offset walkins_end_of_day my_sola_website notifications update_my_sola_website video_history_data watch_later_video_ids watch_later_data app_settings leases rent_manager_location_id
                       service_request_enabled rent_manager_enabled tags brands location_country location_walkins_enabled leases location testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5 testimonial_6
                       testimonial_7 testimonial_8 testimonial_9 testimonial_10 image_1_url image_2_url image_3_url image_4_url image_5_url image_6_url image_7_url image_8_url image_9_url image_10_url])
-    end
   end
 
   def sync_from_rent_manager
@@ -888,7 +874,6 @@ end
 #  current_sign_in_at             :datetime
 #  current_sign_in_ip             :inet
 #  date_of_birth                  :date
-#  deleted_at                     :datetime
 #  electronic_license_agreement   :boolean          default(FALSE)
 #  email_address                  :citext           not null
 #  emergency_contact_name         :string(255)
@@ -896,7 +881,6 @@ end
 #  emergency_contact_relationship :string(255)
 #  encrypted_password             :string(255)      default("")
 #  eyelash_extensions             :boolean
-#  f_name                         :string
 #  facebook_url                   :string(255)
 #  force_show_book_now_button     :boolean          default(FALSE)
 #  google_plus_url                :string(255)
@@ -954,8 +938,6 @@ end
 #  image_9_updated_at             :datetime
 #  inactive_reason                :integer
 #  instagram_url                  :string(255)
-#  is_deleted                     :boolean          default(FALSE)
-#  l_name                         :string
 #  laser_hair_removal             :boolean
 #  last_sign_in_at                :datetime
 #  last_sign_in_ip                :inet
@@ -964,7 +946,6 @@ end
 #  makeup                         :boolean
 #  massage                        :boolean
 #  microblading                   :boolean
-#  middle_name                    :string
 #  msa_name                       :string(255)
 #  nails                          :boolean
 #  name                           :string(255)
@@ -1024,12 +1005,10 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
-#  related_id                     :integer
 #  rent_manager_id                :string(255)
 #
 # Indexes
 #
-#  index_stylists_on_deleted_at              (deleted_at)
 #  index_stylists_on_email_address           (email_address)
 #  index_stylists_on_location_id             (location_id)
 #  index_stylists_on_location_id_and_status  (location_id,status)

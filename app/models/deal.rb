@@ -81,7 +81,7 @@ class Deal < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(except: %i[brand], methods: %i[brand_id brand_name image_url file_url categories_name tags_name countries_name])
+    super(except: %i[brand], methods: %i[brand_id brand_name image_url file_url categories_name tags_name])
   end
 
   def categories_name
@@ -90,10 +90,6 @@ class Deal < ActiveRecord::Base
 
   def tags_name
     self.tags&.map{ |a| {id: a.id, name: a&.name} }
-  end
-
-  def countries_name
-    self.countries&.map{ |a| {id: a.id, name: a&.name} }
   end
 
   private

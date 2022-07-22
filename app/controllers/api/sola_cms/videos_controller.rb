@@ -57,10 +57,6 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
   end
 
   def video_params
-    params.require(:video).permit(:title, :webinar, :youtube_url, :duration, :tool_id, :brand_id,  :is_introduction, :is_featured, country_ids: [], category_ids: [], tag_ids: [] )
-  end
-
-  def search_video
-    Video.search_by_title(params[:search])
+    params.require(:video).permit(:title, :webinar, :youtube_url, :duration, :tool_id, :brand_id,  :is_introduction, :is_featured, country_ids: [], category_ids: [] )
   end 
 end

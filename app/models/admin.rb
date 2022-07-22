@@ -3,16 +3,9 @@
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  include PgSearch::Model
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable # , :validatable
 
-  pg_search_scope :search_admin, against: [:email, :email_address],
-  using: {
-      tsearch: {
-        prefix: true
-      }
-    }
   has_many :locations
 
   #### Sola PRO ####
@@ -151,29 +144,16 @@ class Admin < ActiveRecord::Base
     !!locations.first&.rent_manager_enabled
   end
 
-  # def as_json(_options = {})
-  #   super(methods: %i[location_country notifications update_my_sola_website
-  #                     video_history_data watch_later_video_ids watch_later_data app_settings
-  #                     service_request_enabled rent_manager_enabled tags brands])
-  # end
-
   def as_json(_options = {})
-    super(methods: %i[last_sign_in_at sign_in_count])
+    super(methods: %i[location_country notifications update_my_sola_website
+                      video_history_data watch_later_video_ids watch_later_data app_settings
+                      service_request_enabled rent_manager_enabled tags brands])
   end
-  
   ### End Sola Pro ###
 
   def self.current
     Thread.current[:admin]
   end
-
-  def last_sign_in_at
-    self[:last_sign_in_at]
-  end 
-
-  def sign_in_count
-    self[:sign_in_count]
-  end 
 
   def self.current=(admin)
     Thread.current[:admin] = admin

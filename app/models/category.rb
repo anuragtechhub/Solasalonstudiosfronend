@@ -26,35 +26,6 @@ class Category < ActiveRecord::Base
         prefix: true
       }
     }
-
-
-  def as_json(_options = {})
-    super(methods: %i[blog deal tool tag video franchise_article])
-  end
-
-  def blog
-    self.blogs.map{ |a| { id: a.id, title: a&.title} }
-  end
-
-  def deal
-    self.deals.map{ |a| { id: a.id, title: a&.title} }
-  end
-
-  def tool
-    self.tools.map{ |a| { id: a.id, title: a&.title} }
-  end
-  
-  def tag
-    self.tags.map{ |a| { id: a.id, name: a&.name} }
-  end
-
-  def video
-    self.videos.map{ |a| { id: a.id, title: a&.title} }
-  end
-
-  def franchise_article
-    self.franchise_articles.map{ |a| {id: a.id, title: a&.title} }
-  end
 end
 
 # == Schema Information

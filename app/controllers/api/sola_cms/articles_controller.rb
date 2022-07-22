@@ -6,24 +6,15 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
   #GET /articles
   def index
     if params[:export_csv] == "true"
-      @articles = if params[:start_date] && params[:end_date].present?
-        Article.where(created_at: params[:start_date].to_time..params[:end_date].to_time)
-      else
-        Article.all
-      end
-      
-      @articles = params[:headers].present? ? @articles.map { |m| m.attributes.slice(*params[:headers]) } : @articles
-      render json: @articles and return
-      
       if params[:start_date] && params[:end_date].present?
         @articles = Article.where(created_at: params[:start_date].to_time..params[:end_date].to_time)
-        @articles = params[:headers].present? ? @articles.map { |m| m.attributes.slice(*params[:headers]) } : @articles
-        render json: @articles and return
       else
         @articles = Article.all
       end
-        @articles = Article.all
-        render json: {articles: @articles}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+      headers = params[:headers].present? ? params[:headers] : Article.column_names
+      respond_to do |format|
+        format.csv {send_data @articles.to_csv(headers), filename: "articles-#{Date.today}.csv"}
+      end
     else
       if params[:search].present?
         @articles = Article.search_by_title_article_url(params[:search])

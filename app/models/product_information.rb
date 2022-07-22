@@ -39,8 +39,8 @@ class ProductInformation < ActiveRecord::Base
     image.url(:full_width) if image.present?
   end
 
-  def file_url 
-    file&.url if file.present?
+  def file_url
+    file&.url
   end
 
   def brand_name

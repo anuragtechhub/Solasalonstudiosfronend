@@ -113,7 +113,7 @@ class Video < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count ], include: %i[categories tags countries])
+    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count ], include: %i[categories])
   end
   
   private
