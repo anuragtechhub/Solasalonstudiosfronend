@@ -1748,6 +1748,13 @@ RailsAdmin.config do |config|
         field :testimonial_9
         field :testimonial_10
       end
+      group :rent_manager do
+        active false
+        field :billing_first_name
+        field :billing_last_name
+        field :billing_email
+        field :billing_phone
+      end
     end
     edit do
       field 'load_stylist_js', :hidden do
@@ -1974,6 +1981,13 @@ RailsAdmin.config do |config|
         field :testimonial_8
         field :testimonial_9
         field :testimonial_10
+      end
+      group :rent_manager do
+        active false
+        field :billing_first_name
+        field :billing_last_name
+        field :billing_email
+        field :billing_phone
       end
       group :password do
         active false
