@@ -2,13 +2,13 @@
 
 class RequestTourInquiry < ActiveRecord::Base
   include PgSearch::Model
-  pg_search_scope :search_request_tour_inquiry, against: [:id, :name, :email],
+  pg_search_scope :search_request_tour_inquiry, against: [:id, :name, :email, :phone],
   using: {
     tsearch: {
-      prefix: true,
-      any_word: true
+      prefix: true
     }
   }
+  
   has_paper_trail
 
   belongs_to :location
@@ -19,6 +19,8 @@ class RequestTourInquiry < ActiveRecord::Base
   after_create :send_notification_email, :send_prospect_email
   after_commit :sync_with_hubspot, on: :create
 
+
+  delegate :name, to: :location, prefix: true
 
   def as_json(_options = {})
     super(methods: %i[location_name])

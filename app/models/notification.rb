@@ -38,7 +38,7 @@ class Notification < ActiveRecord::Base
   validates :notification_text, presence: true, length: { maximum: 235 }
 
   def as_json(_options = {})
-      super(methods: %i[ brand_name  tool_name deal_name video_name sola_class_name ])
+    super(methods: %i[ brand_name  tool_name deal_name video_name sola_class_name blog_name country_name ], include: {stylists: {only: [:name, :id]}})
   end
 
   def brand_name
@@ -61,6 +61,14 @@ class Notification < ActiveRecord::Base
     sola_class ? sola_class.title : ''
   end 
 
+
+  def blog_name
+    blog ? blog.title : ''
+  end 
+
+  def country_name
+    country ? country.name : ''
+  end 
 
   # TODO: refactor this
   def content_object

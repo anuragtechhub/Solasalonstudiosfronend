@@ -19,6 +19,7 @@ module Hubspot
       HubspotLog.create(status: 'success', data: properties,
                         object: @stylist, location: @stylist.location,
                         kind: 'stylist', action: 'contact')
+      ScheduledJobLog.create(status: 'success', data: properties, kind: 'stylist', fired_at: Time.current)
     rescue StandardError => e
       raise unless type == 'inactivate'
 
@@ -27,6 +28,8 @@ module Hubspot
       HubspotLog.create(status: 'error', data: properties,
                         object: @stylist, location: @stylist.location,
                         kind: 'stylist', action: 'contact')
+      ScheduledJobLog.create(status: 'error', data: properties, kind: 'stylist', fired_at: Time.current)
+
     end
 
     private

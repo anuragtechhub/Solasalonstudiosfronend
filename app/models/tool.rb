@@ -66,6 +66,7 @@ class Tool < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
+
   def image_url
     image.url(:full_width) if image.present?
   end
@@ -75,7 +76,9 @@ class Tool < ActiveRecord::Base
   end
 
   def file_url
-    file&.url
+    if file.present?
+      file&.url
+    end 
   end
 
   def brand_name

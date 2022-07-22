@@ -207,10 +207,13 @@ Solasalonstudios::Application.routes.draw do
       resources :brands
       resources :class_images
       resources :education_hero_images
-      resources :sola_class_regions
+      resources :sola_class_regions do 
+        collection do 
+          get :get_region_and_state
+        end 
+      end 
       resources :product_informations
       resources :tags
-      resources :tools_and_resources
       resources :home_buttons
       resources :categories
       resources :admins
@@ -228,11 +231,13 @@ Solasalonstudios::Application.routes.draw do
       resources :testimonials
       resources :stylist_units
       resources :franchising_inquiries
+      resources :scheduled_job_logs
       resources :countries
       resources :stylists
       resources :franchise_articles
       resources :maintenance_contacts
       resources :gloss_genius_logs
+      resources :callfire_logs, only: [:index]
     end
 
     namespace :v1 do

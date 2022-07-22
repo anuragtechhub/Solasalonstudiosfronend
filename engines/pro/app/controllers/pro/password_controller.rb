@@ -11,6 +11,8 @@ class Pro::PasswordController < Pro::ApplicationController
       stylist_user = Stylist.where(email_address: params[:email], status: 'open').first
       @admin = Admin.find_by(email: params[:email])
 
+      deleted_user = is_deleted_user unless stylist_user || @admin
+
       if stylist_user
         @reset_password = ResetPassword.create userable: stylist_user
         Pro::AppMailer.forgot_password(@reset_password).deliver
@@ -19,6 +21,8 @@ class Pro::PasswordController < Pro::ApplicationController
         @reset_password = ResetPassword.create userable: @admin
         Pro::AppMailer.forgot_password(@reset_password).deliver
         @success = "Reset password email sent to #{@reset_password.email}"
+      elsif deleted_user
+        render json: { is_deleted: deleted_user.is_deleted, message: "This Stylist is Deleted"}
       else
         raise StandardError, 'We could not find a user with that email address'
       end
@@ -56,5 +60,11 @@ class Pro::PasswordController < Pro::ApplicationController
     NewRelic::Agent.notice_error(e)
     Rollbar.error(e)
     @errors = [e.message]
+  end
+
+  private
+
+  def is_deleted_user
+    Stylist.unscoped.where(email_address: params[:email], status: 'open').first
   end
 end

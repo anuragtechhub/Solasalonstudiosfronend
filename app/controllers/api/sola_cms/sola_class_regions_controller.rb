@@ -45,11 +45,21 @@ class Api::SolaCms::SolaClassRegionsController < Api::SolaCms::ApiController
     end
   end
 
+  def get_region_and_state
+    if params[:region_or_state] == "region"
+      @regions = SolaClassRegion.all.map{ |a| {id: a.id, name: a.name}}
+      render json: @regions
+    elsif params[:region_or_state] == "state"
+      @states = SolaClassRegionState.all.map{ |a| {id: a.id, state: a.state}}
+      render json: @states
+    end 
+  end
+
   private
 
   def get_region
     @region = SolaClassRegion.find_by(id: params[:id])
-     render json: { message: 'Record not found' }, status: 400 unless @region.present?
+   render json: { message: 'Record not found' }, status: 400 unless @region.present?
   end
 
   def region_params

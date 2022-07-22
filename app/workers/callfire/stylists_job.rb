@@ -31,6 +31,8 @@ module Callfire
               phone_number: stylist.phone_number
             }
             CallfireLog.create(status: 'success', data: data, kind: 'callfire_stylist_job', action: 'form')
+            ScheduledJobLog.create(status: 'success', data: data, kind: 'callfire_stylist_job', fired_at: Time.current)
+            
           end
 
           req = Net::HTTP::Post.new('/api/1.1/rest/contact/list/658274003/add')
