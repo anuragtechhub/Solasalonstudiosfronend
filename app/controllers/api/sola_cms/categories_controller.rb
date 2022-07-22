@@ -70,7 +70,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   def ids_params
     params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_ids: [] )
   end
-  
+
   def search_categories_by_name_or_slug
     Category.search_by_name_or_slug_or_id(params[:search])
   end 

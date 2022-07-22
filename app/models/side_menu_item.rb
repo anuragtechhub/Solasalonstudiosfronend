@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class SideMenuItem < ActiveRecord::Base
-    include PgSearch::Model
-
+  include PgSearch::Model
   pg_search_scope :search_by_side_menu_items, against: [:name, :action_link],
   associated_against: {
     countries: [:name],

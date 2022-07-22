@@ -16,7 +16,7 @@ class StylistMessage < ActiveRecord::Base
   has_paper_trail
 
   after_create :send_email
-
+  before_save :downcase_email
   belongs_to :stylist
   belongs_to :visit
 
@@ -26,6 +26,11 @@ class StylistMessage < ActiveRecord::Base
 
   def stylist_name
     stylist ? stylist.name : ''
+  end
+
+
+  def downcase_email
+    self.email.downcase!
   end
 
   def send_email

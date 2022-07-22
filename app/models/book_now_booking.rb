@@ -5,6 +5,7 @@ class BookNowBooking < ActiveRecord::Base
   belongs_to :location
   belongs_to :stylist
 
+  before_save  :downcase_email
   after_commit :update_stylist_metrics, on: :create
   after_commit :sync_with_hubspot, on: :create
 
@@ -60,6 +61,10 @@ class BookNowBooking < ActiveRecord::Base
         prefix: true
       }
     }
+
+  def downcase_email
+    self.booking_user_email.downcase!
+  end
 end
 
 # == Schema Information

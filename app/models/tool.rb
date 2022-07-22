@@ -53,7 +53,7 @@ class Tool < ActiveRecord::Base
   scope :with_file, -> { where.not(file_file_name: nil) }
 
   def as_json(_options = {})
-    super(except: %i[brand image_content_type image_file_name image_file_size image_updated_at  file_file_name file_content_type file_file_size file_updated_at], methods: %i[brand_id brand_name image_url file_url category tag],
+    super(except: %i[brand image_content_type image_file_name image_file_size image_updated_at  file_file_name file_content_type file_file_size file_updated_at], methods: %i[brand_id brand_name image_url file_url category tag country],
       include: {videos: {only: [:title, :id]}})
   end
 
@@ -93,9 +93,14 @@ class Tool < ActiveRecord::Base
     self.categories&.map{ | a| {id: a.id, name: a.name} }
   end 
 
+  def country
+    self.countries&.map{ | a| {id: a.id, name: a.name} }
+  end
+
   def tag
     self.tags&.map{ | a| {id: a.id, name: a.name} }
-  end   
+  end
+
   private
 
     def auto_set_country

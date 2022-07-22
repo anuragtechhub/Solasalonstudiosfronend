@@ -47,7 +47,7 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
       :id, 
       :name,
       :f_name,
-      :middle_name,
+      :m_name,
       :l_name,
       :url_name,
       :biography,
@@ -72,16 +72,16 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
       :location_id,
       :legacy_id,
       :status,
-      :image_1_file_name,
-      :image_2_file_name,
-      :image_3_file_name,
-      :image_4_file_name,
-      :image_5_file_name,
-      :image_6_file_name,
-      :image_7_file_name,
-      :image_8_file_name,
-      :image_9_file_name,
-      :image_10_file_name,
+      :image_1,
+      :image_2,
+      :image_3,
+      :image_4,
+      :image_5,
+      :image_6,
+      :image_7,
+      :image_8,
+      :image_9,
+      :image_10,
       :hair_extensions,
       :send_a_message_button,
       :pinterest_url,
@@ -155,7 +155,6 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
       testimonial_9_attributes: [:name, :text, :region],
       testimonial_10_attributes: [:name, :text, :region])
   end
-
 
   def render_selected_fields
     fields = params[:fields]&.map!{|f| f.to_sym}

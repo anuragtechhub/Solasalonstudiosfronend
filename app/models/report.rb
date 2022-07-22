@@ -4,6 +4,7 @@ class Report < ActiveRecord::Base
   include PgSearch::Model
   validates :email_address, :report_type, presence: true
   after_create :process
+  before_save :downcase_email
 
   def report_type_enum
     [
@@ -26,6 +27,12 @@ class Report < ActiveRecord::Base
         prefix: true
       }
     }
+
+
+  def downcase_email
+    self.email_address.downcase!
+  end
+
 
   private
 
