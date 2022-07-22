@@ -50,30 +50,28 @@ module Rentmanager
               if stylists.count > 1 && email.present? && stylists.where(email_address: email).present?
                 stylists = stylists.where(email_address: email)
               end
-              matching_category = 'Name'
-            end
-            if stylists.blank? && email.present?
-              stylists = Stylist.where(email_address: email)
-              stylists = check_stylists_by_email(stylists, rm_tenant, rm_location_id) if stylists.count > 1
-              matching_category = 'Email'
             end
 
             if stylists.blank? && email.present?
-              stylists = Stylist.where(billing_email: email)
-              stylists = check_stylists_by_billing_email(stylists, rm_tenant, rm_location_id) if stylists.count > 1
-              matching_category = 'Billing Email'
+              stylists = Stylist.where(email_address: email)
+              if stylists.count > 1
+                location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
+                stylists = stylists.where(location_id: location_id) if location_id.present?
+              end
+              if stylists.count > 1
+                stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
+              end
             end
 
             if stylists.blank? && phone.present?
               stylists = Stylist.where("NULLIF(regexp_replace(phone_number, '\D','','g'), '') = ?", phone)
-              stylists = check_stylists_by_phone(stylists, rm_tenant, rm_location_id) if stylists.count > 1
-              matching_category = 'Phone'
-            end
-
-            if stylists.blank? && phone.present?
-              stylists = Stylist.where("NULLIF(regexp_replace(billing_phone, '\D','','g'), '') = ?", phone)
-              stylists = check_stylists_by_billing_phone(stylists, rm_tenant, rm_location_id) if stylists.count > 1
-              matching_category = 'Billing Phone'
+              if stylists.count > 1
+                location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
+                stylists = stylists.where(location_id: location_id) if location_id.present?
+              end
+              if stylists.count > 1
+                stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
+              end
             end
 
             if stylists.count > 1 && stylists.active.present? && rm_tenant['Status'] == 'Current'
@@ -84,9 +82,6 @@ module Rentmanager
               stylists = stylists.inactive
             end
 
-            create_rent_manager_tenant rm_tenant, rm_location_id
-            fetch_best_match_stylists rm_tenant
-
             next if stylists.blank?
 
             stylists.each do |stylist|
@@ -94,7 +89,7 @@ module Rentmanager
 
               stylist.external_ids
                 .rent_manager
-                .find_or_initialize_by(name: :tenant_id, rm_location_id: rm_location_id, active_start_date: rm_tenant['PostingStartDate'], active_end_date: rm_tenant['PostingEndDate']).tap do |e_id|
+                .find_or_initialize_by(name: :tenant_id, rm_location_id: rm_location_id).tap do |e_id|
                 e_id.value = tenant_id
               end.save!
             end
@@ -207,41 +202,6 @@ module Rentmanager
         end
       end
 
-      def fetch_best_match_stylists rm_tenant
-        stylists = Stylist.all
-        stylists.each do |stylist|
-          best_tenant_id = 0
-          external_ids = ExternalId.where(name: 'tenant_id', objectable_id: stylist.id, objectable_type: 'Stylist')
-          external_ids.each do |e_id|
-            latest_start_date = latest_end_date = Time.at(0)
-            start_date = end_date = DateTime.now
-            last_status = "past"
-            if last_status != "current" && rm_tenant['PostingEndDate'].present?
-              end_date = DateTime.parse(rm_tenant['PostingEndDate'])
-              if (end_date > latest_end_date)
-                latest_end_date = end_date
-                best_tenant_id = rm_tenant['TenantID']
-                last_status = rm_tenant['Status'].downcase
-              elsif rm_tenant['Status'].downcase == 'current'
-                best_tenant_id = rm_tenant['TenantID']
-                last_status = 'current'
-              end
-            elsif last_status != "current" && rm_tenant['PostingStartDate'].present?
-              start_date = DateTime.parse(rm_tenant['PostingStartDate'])
-              if start_date > latest_start_date
-                latest_start_date = start_date
-                best_tenant_id = rm_tenant['TenantID']
-                last_status = rm_tenant['Status'].downcase
-              end
-            elsif rm_tenant['Status'].downcase == 'future'
-              best_tenant_id = rm_tenant['TenantID']
-              last_status = 'future'
-            end
-          end
-          stylist.update(rent_manager_id: best_tenant_id) if best_tenant_id > 0
-        end
-      end
-
       def with_pagination
         page = 1
         loop do
@@ -258,71 +218,5 @@ module Rentmanager
         value = obj['UserDefinedValues'].find { |data| data.try('[]', 'Name').to_s == name }.try('[]', 'Value')
         value.to_s.strip if value.present?
       end
-
-      def check_stylists_by_email(stylists, rm_tenant, rm_location_id)
-        if stylists.count > 1
-          location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
-          stylists = stylists.where(location_id: location_id) if location_id.present?
-        end
-        if stylists.count > 1
-          stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
-        end
-        stylists
-      end
-
-      def check_stylists_by_phone(stylists, rm_tenant, rm_location_id)
-        if stylists.count > 1
-          location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
-          stylists = stylists.where(location_id: location_id) if location_id.present?
-        end
-        if stylists.count > 1
-          stylists = stylists.where('name ilike ?', "% #{rm_tenant['LastName']}")
-        end
-        stylists
-      end
-
-      def check_stylists_by_billing_email(stylists, rm_tenant, rm_location_id)
-        if stylists.count > 1
-          location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
-          stylists = stylists.where(location_id: location_id) if location_id.present?
-        end
-        if stylists.count > 1
-          stylists = stylists.where('billing_last_name ilike ?', "% #{rm_tenant['LastName']}")
-        end
-        stylists
-      end
-
-      def check_stylists_by_billing_phone(stylists, rm_tenant, rm_location_id)
-        if stylists.count > 1
-          location_id = ExternalId.where(name: 'property_id', value: rm_tenant['PropertyID'], rm_location_id: rm_location_id).first&.objectable_id
-          stylists = stylists.where(location_id: location_id) if location_id.present?
-        end
-        if stylists.count > 1
-          stylists = stylists.where('billing_last_name ilike ?', "% #{rm_tenant['LastName']}")
-        end
-        stylists
-      end
-
-      def create_rent_manager_tenant rm_tenant, rm_location_id
-        email = rm_tenant['Contacts']&.first['Email']
-        phone = rm_tenant['Contacts']&.first['PhoneNumbers']&.map { |pn| pn['StrippedPhoneNumber'] }&.first
-        last_transaction_date = rm_tenant['Transactions']&.last['TransactionDate']
-        last_payment_date = rm_tenant['Payments']&.last['TransactionDate']
-
-        RentManagerTenant.find_or_initialize_by(tenant_id: rm_tenant['TenantID'], location_id: rm_location_id).tap do |tenant|
-          tenant.name = rm_tenant['Name']
-          tenant.phone = phone
-          tenant.status = rm_tenant['Status']
-          tenant.property_id = rm_tenant['PropertyID']
-          tenant.active_start_date = rm_tenant['PostingStartDate']
-          tenant.active_end_date = rm_tenant['PostingEndDate']
-          tenant.last_transaction_date = last_transaction_date
-          tenant.last_payment_date = last_payment_date
-          tenant.first_name = rm_tenant['FirstName']
-          tenant.last_name = rm_tenant['LastName']
-          tenant.email = email
-        end.save!
-      end
-
   end
 end

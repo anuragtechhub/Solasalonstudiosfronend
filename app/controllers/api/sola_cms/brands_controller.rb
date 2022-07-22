@@ -51,7 +51,7 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     if @brand&.destroy
       render json: {message: "Brand Successfully Deleted."}, status: 200
     else
-      render json: {error: @brand.errors.messages}, status: 400
+      @brand.errors.messages
       Rails.logger.info(@brand.errors.messages)
     end
   end 
@@ -59,8 +59,7 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
   private
 
   def set_brand
-    @brand = Brand.find_by(id: params[:id])
-    render json: { message: 'Record not found' }, status: 400 unless @brand.present?    
+    @brand = Brand.find(params[:id])
   end
 
   def brand_params

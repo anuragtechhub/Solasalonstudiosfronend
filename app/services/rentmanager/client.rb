@@ -49,7 +49,7 @@ module Rentmanager
     end
 
     def tenants(location_id, page = 1)
-      request(path: "/tenants?embeds=Contacts,Contacts.PhoneNumbers,transactions,Payments&fields=PostingStartDate,PostingEndDate,Status,TenantID,FirstName,LastName,Name,PropertyID,Status,CreateDate,UpdateDate,Contacts.PhoneNumbers,Contacts.PhoneNumbers.PhoneNumber,Contacts.Email,Payments.TransactionDate,Transactions.TransactionDate&pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
+      request(path: "/Tenants?embeds=Contacts.PhoneNumbers&pagenumber=#{page}", headers: { 'X-RM12Api-LocationID' => location_id.to_s })
     end
 
     def tenants_save(location_id, body)

@@ -1,26 +1,17 @@
 class ConnectMaintenanceContact < ActiveRecord::Base
   include PgSearch::Model
-  pg_search_scope :search_maintanence_contact_by_column_name, against: [:contact_type, :contact_email, :contact_first_name, :contact_admin, :contact_first_name, :contact_last_name, :contact_phone_number, :request_routing_url],
-   associated_against: {
-    location: [:name]
-  },
+  pg_search_scope :search_maintanence_contact, against: [:contact_type, :contact_email, :contact_first_name],
   using: {
     tsearch: {
       prefix: true,
       any_word: true
     }
   }
-
-  before_save :downcase_email
   belongs_to :location
   enum contact_preference: [:sms, :email, :phone, :url]
 
   def as_json(_options = {})
     super(include: {location: {only: [:name, :id]}})
-  end
-
-  def downcase_email
-    self.contact_email.downcase!
   end
 end
 

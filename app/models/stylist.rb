@@ -70,7 +70,7 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, on: :create
   belongs_to :location
   before_validation :set_inactive_reason
-  before_save :update_computed_fields, :fix_url_name, :downcase_email
+  before_save :update_computed_fields, :fix_url_name
   # after_create :send_welcome_email
   before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
   before_save :full_name, :first_name, :last_name
@@ -231,11 +231,11 @@ class Stylist < ActiveRecord::Base
   end
 
   def first_name
-    self.f_name ? self.f_name : FullNameSplitter.split(name)[0]
+    self.f_name = FullNameSplitter.split(name)[0]
   end
 
   def last_name
-    self.l_name ? self.l_name : FullNameSplitter.split(name)[1]
+    self.l_name = FullNameSplitter.split(name)[1]
   end
 
   def device_token
@@ -246,10 +246,6 @@ class Stylist < ActiveRecord::Base
 
   def notifications
     user_notifications.where(dismiss_date: nil)
-  end
-
-  def downcase_email
-    self.email_address.downcase!
   end
 
   def my_sola_website
@@ -965,7 +961,6 @@ end
 #  last_sign_in_ip                :inet
 #  linkedin_url                   :string(255)
 #  location_name                  :string(255)
-#  m_name                         :string
 #  makeup                         :boolean
 #  massage                        :boolean
 #  microblading                   :boolean

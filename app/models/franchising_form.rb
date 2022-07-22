@@ -15,9 +15,7 @@ class FranchisingForm < ActiveRecord::Base
   validates :state, inclusion: { in: USA_STATES.values }, if: proc { country.to_s == 'usa' }
   validates :state, inclusion: { in: CA_STATES.values }, if: proc { country.to_s == 'ca' }
 
-  before_save :downcase_email
   after_create :send_email
-
 
   scope :usa, -> { where(country: 'usa') }
   scope :ca, -> { where(country: 'ca') }
@@ -25,10 +23,6 @@ class FranchisingForm < ActiveRecord::Base
   def send_email
     Rails.logger.debug 'FranchisingForm after create, send email!'
     Franchising::ApplicationMailer.franchising_form(self).deliver_later
-  end
-
-  def downcase_email
-    self.email_address.downcase!
   end
 
   private

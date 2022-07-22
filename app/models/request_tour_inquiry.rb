@@ -16,11 +16,9 @@ class RequestTourInquiry < ActiveRecord::Base
 
   before_validation :process_email
   before_validation :process_utm
-  before_save :downcase_email
   after_create :send_notification_email, :send_prospect_email
   after_commit :sync_with_hubspot, on: :create
 
-  delegate :name, to: :location, prefix: true
 
   delegate :name, to: :location, prefix: true
 
@@ -88,10 +86,6 @@ class RequestTourInquiry < ActiveRecord::Base
 
   def newsletter_value
     newsletter ? 'Yes' : 'No'
-  end
-  
-  def downcase_email
-    self.email.downcase!
   end
 
   private

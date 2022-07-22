@@ -1,7 +1,6 @@
 class RentManagerTenant < ActiveRecord::Base
 end
 
-
 # == Schema Information
 #
 # Table name: rent_manager_tenants
@@ -25,4 +24,3 @@ end
 #  property_id           :integer
 #  tenant_id             :integer
 #
-

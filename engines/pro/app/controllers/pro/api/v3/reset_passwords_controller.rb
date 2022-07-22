@@ -8,7 +8,6 @@ module Pro
       raise StandardError, t(:please_enter_your_email_address) if params[:email].blank?
 
       user = get_user(params[:email])
-      deleted_user = is_deleted_user unless user
 
       # Allow to set new password
       if user.present? && user.encrypted_password.blank? && params[:password].present? && params[:password_confirmation].present?
@@ -22,8 +21,6 @@ module Pro
         reset_password = ResetPassword.create(userable: user)
         Pro::AppMailer.forgot_password(reset_password).deliver
         render json: { success: [t(:reset_password_sent_to, { email: reset_password.email })] }
-      elsif deleted_user
-        render json: { is_deleted: deleted_user.is_deleted, message: "This Stylist is Deleted"}
       else
         raise StandardError, t(:could_not_find_sola_professional)
       end
@@ -53,10 +50,6 @@ module Pro
         params.require(:reset_password).permit(
           :password, :password_confirmation
         )
-      end
-
-      def is_deleted_user
-        Stylist.unscoped.where(email_address: params[:email], status: 'open').first
       end
   end
 end

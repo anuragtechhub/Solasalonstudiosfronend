@@ -59,7 +59,7 @@ class Api::SolaCms::SolaClassRegionsController < Api::SolaCms::ApiController
 
   def get_region
     @region = SolaClassRegion.find_by(id: params[:id])
-    render json: { message: 'Record not found' }, status: 400 unless @region.present?
+   render json: { message: 'Record not found' }, status: 400 unless @region.present?
   end
 
   def region_params
