@@ -178,6 +178,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, presence: true
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true # , :allow_blank => true, :on => :create
   # validates :email_address, :uniqueness => true, if: 'email_address.present?'
+  validates :billing_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true
 
   validates :url_name, :f_name , :location, presence: true
   validates :status, presence: true
@@ -218,11 +219,11 @@ class Stylist < ActiveRecord::Base
 
   def deleted_at
     self.deleted_at =  is_deleted? ? DateTime.current : nil
-  end 
+  end
 
   def is_deleted?
     self.is_deleted == true
-  end 
+  end
 
   def inactive?
     !open?
@@ -230,7 +231,7 @@ class Stylist < ActiveRecord::Base
 
   def full_name
     self.name = [self[:f_name], self[:m_name], self[:l_name]].compact.join(' ').strip
-  end 
+  end
 
   def destroy
     self.update_columns(deleted_at: DateTime.current ,is_deleted: true)
@@ -741,7 +742,7 @@ class Stylist < ActiveRecord::Base
 
       obj
     end
-    
+
 
     def assign_testimonials(obj, user)
       obj.testimonial_1 = user.testimonial_1.dup if user.testimonial_1.present?
