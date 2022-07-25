@@ -11,9 +11,13 @@ class PartnerInquiry < ActiveRecord::Base
   }
 
   has_paper_trail
-
+  before_save :downcase_email
   after_create :send_notification_email
   belongs_to :visit
+
+  def downcase_email
+    self.email.downcase!
+  end
 
   private
 

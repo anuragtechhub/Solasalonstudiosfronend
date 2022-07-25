@@ -254,6 +254,10 @@ class Stylist < ActiveRecord::Base
     user_notifications.where(dismiss_date: nil)
   end
 
+  def downcase_email
+    self.email_address.downcase!
+  end
+
   def my_sola_website
     if defined?(location) && location && location.country
       country = Country.find_by(code: location.country)

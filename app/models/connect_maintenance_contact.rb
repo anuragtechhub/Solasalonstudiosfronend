@@ -7,11 +7,17 @@ class ConnectMaintenanceContact < ActiveRecord::Base
       any_word: true
     }
   }
+
+  before_save :downcase_email
   belongs_to :location
   enum contact_preference: [:sms, :email, :phone, :url]
 
   def as_json(_options = {})
     super(include: {location: {only: [:name, :id]}})
+  end
+
+  def downcase_email
+    self.contact_email.downcase!
   end
 end
 

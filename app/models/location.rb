@@ -42,7 +42,7 @@ class Location < ActiveRecord::Base
   # after_save :submit_to_moz
   before_validation :generate_url_name, on: :create
   after_validation :geocode, if: proc { |location| location.latitude.blank? && location.longitude.blank? }
-  before_save :fix_url_name, :prepare_emails
+  before_save :fix_url_name, :prepare_emails, :downcase_email
   # after_destroy :moz_delete, :touch_location
   after_destroy :touch_location
   after_save :update_computed_fields
@@ -240,6 +240,14 @@ class Location < ActiveRecord::Base
     else
       "+#{location_end_offset.abs}"
     end
+  end
+
+  def downcase_email
+    self.email_address_for_hubspot.downcase!
+    self.email_address_for_inquiries.downcase!
+    self.email_address_for_reports.downcase!
+    self.emails_for_stylist_website_approvals.downcase!
+    self.rockbot_manager_email.downcase!
   end
 
   def country_enum
