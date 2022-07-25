@@ -56,6 +56,9 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
     params.require(:stylist).permit(
       :id, 
       :name,
+      :f_name,
+      :m_name,
+      :l_name,
       :url_name,
       :biography,
       :email_address,
@@ -166,5 +169,22 @@ class Api::SolaCms::StylistsController < Api::SolaCms::ApiController
       testimonial_8_attributes: [:name, :text, :region],
       testimonial_9_attributes: [:name, :text, :region],
       testimonial_10_attributes: [:name, :text, :region])
+  end
+
+  def render_selected_fields
+    fields = params[:fields]&.map!{|f| f.to_sym}
+    stylists = Stylist.active.select(fields).where("name ilike ?", "%#{params[:search]}%") if params[:status] == 'active' || params[:status] == nil
+    stylists = Stylist.inactive.select(fields).where("name ilike ?", "%#{params[:search]}%") if params[:status] == 'inactive'
+    stylists = paginate(stylists)
+    render json: { stylists: stylists.as_json(fields: fields) }.merge(meta: pagination_details(stylists))
+  end
+
+  def render_all_fields
+    stylists = Stylist.send(params[:status])
+    stylists = stylists.search_stylist(params[:search]) if params[:search].present?
+    meta = {}
+      stylists = paginate(stylists)
+      meta =  pagination_details(stylists)
+    render json: {stylists: stylists, meta: meta}
   end
 end

@@ -70,11 +70,9 @@ class Stylist < ActiveRecord::Base
   before_validation :generate_url_name, on: :create
   belongs_to :location
   before_validation :set_inactive_reason
-  before_save :update_computed_fields, :fix_url_name
+  before_save :update_computed_fields, :fix_url_name, :downcase_email, :full_name
   # after_create :send_welcome_email
   before_destroy :remove_from_ping_hd, :inactivate_with_hubspot
-
-  
   after_destroy :remove_from_mailchimp, :touch_stylist, :create_terminated_stylist
   after_save :remove_from_mailchimp_if_closed, :sync_with_ping_hd, :sync_with_tru_digital, :deleted_at
   after_commit :sync_with_hubspot
@@ -181,7 +179,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true # , :allow_blank => true, :on => :create
   # validates :email_address, :uniqueness => true, if: 'email_address.present?'
 
-  validates :url_name, :location, presence: true
+  validates :url_name, :f_name , :location, presence: true
   validates :status, presence: true
   # validates :other_service, length: {maximum: 18}, allow_blank: true
   validate :url_name_uniqueness
@@ -230,16 +228,20 @@ class Stylist < ActiveRecord::Base
     !open?
   end
 
+  def full_name
+    self.name = [self[:f_name], self[:m_name], self[:l_name]].compact.join(' ').strip
+  end 
+
   def destroy
     self.update_columns(deleted_at: DateTime.current ,is_deleted: true)
   end
 
   def first_name
-    FullNameSplitter.split(name)[0]
+    self.f_name ? self.f_name : FullNameSplitter.split(name)[0]
   end
 
   def last_name
-    FullNameSplitter.split(name)[1]
+    self.l_name ? self.l_name : FullNameSplitter.split(name)[1]
   end
 
   def device_token
@@ -362,7 +364,6 @@ class Stylist < ActiveRecord::Base
   def country
     c = location ? Country.find_by(code: location.country) : nil
     return c.name if c
-
     nil
   end
 
@@ -736,6 +737,7 @@ class Stylist < ActiveRecord::Base
 
       obj
     end
+    
 
     def assign_testimonials(obj, user)
       obj.testimonial_1 = user.testimonial_1.dup if user.testimonial_1.present?
@@ -876,6 +878,10 @@ end
 #  id                             :integer          not null, primary key
 #  accepting_new_clients          :boolean          default(TRUE)
 #  barber                         :boolean          default(FALSE), not null
+#  billing_email                  :string
+#  billing_first_name             :string
+#  billing_last_name              :string
+#  billing_phone                  :string
 #  biography                      :text
 #  booking_url                    :string(255)
 #  botox                          :boolean
@@ -896,6 +902,7 @@ end
 #  emergency_contact_relationship :string(255)
 #  encrypted_password             :string(255)      default("")
 #  eyelash_extensions             :boolean
+#  f_name                         :string
 #  facebook_url                   :string(255)
 #  force_show_book_now_button     :boolean          default(FALSE)
 #  google_plus_url                :string(255)
@@ -960,6 +967,7 @@ end
 #  last_sign_in_ip                :inet
 #  linkedin_url                   :string(255)
 #  location_name                  :string(255)
+#  m_name                         :string
 #  makeup                         :boolean
 #  massage                        :boolean
 #  microblading                   :boolean
@@ -1022,6 +1030,7 @@ end
 #  updated_at                     :datetime
 #  legacy_id                      :string(255)
 #  location_id                    :integer
+#  related_id                     :integer
 #  rent_manager_id                :string(255)
 #
 # Indexes
