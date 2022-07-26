@@ -178,7 +178,7 @@ class Stylist < ActiveRecord::Base
   validates :email_address, presence: true
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true # , :allow_blank => true, :on => :create
   # validates :email_address, :uniqueness => true, if: 'email_address.present?'
-  validates :billing_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true
+  validates :billing_email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }, reduce: true, allow_blank: true
 
   validates :url_name, :f_name , :location, presence: true
   validates :status, presence: true
