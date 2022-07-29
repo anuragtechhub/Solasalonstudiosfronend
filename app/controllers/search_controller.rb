@@ -24,8 +24,9 @@ class SearchController < PublicWebsiteController
         end
       end
       # preload stylists
-      @locations = Location.where(id: @locations.map(&:id)).preload(:stylists).order(:name)
+      @locations = @locations.is_a?(Array) ? Location.where(id: @locations.map(&:id)).preload(:stylists) : @locations.preload(:stylists)
 
+      # @locations = Location.where(id: @locations.map(&:id)).preload(:stylists)
       # stylists
       if params[:stylists] != 'hidden'
         stylists_name = Stylist.where('website_name IS NULL OR website_name = ?', '').joins("INNER JOIN locations ON locations.id = stylists.location_id AND locations.country = '#{I18n.locale == :en ? 'US' : 'CA'}' AND locations.status = 'open'").where(status: 'open').where(reserved: false).where('LOWER(stylists.business_name) LIKE ? OR LOWER(stylists.name) LIKE ? OR LOWER(stylists.url_name) LIKE ?', query_param, query_param, query_param).where.not(location_id: nil)
