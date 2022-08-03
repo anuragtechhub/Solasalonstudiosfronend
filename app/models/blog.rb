@@ -2,15 +2,15 @@
 
 class Blog < ActiveRecord::Base
   include PgSearch::Model
-
-  pg_search_scope :search, against: [:title], associated_against: {
-    categories: [:name],
-  },using: {
-      tsearch: {
-        prefix: true
-      }
+  pg_search_scope :search_blog_by_columns, against: [:title, :url_name, :status, :summary, :author, :created_at, :updated_at],
+  associated_against: {
+  categories: [:name],},
+  using: {
+    tsearch: {
+      prefix: true
     }
-
+  }
+  
   before_save :fix_url_name, :https_images, :check_publish_date
   before_create :generate_url_name
   after_destroy :touch_blog
@@ -127,11 +127,15 @@ class Blog < ActiveRecord::Base
   end
 
   def image_url
-    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+    if image.present?
+      image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+    end 
   end
 
   def carousel_image_url
-    carousel_image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+    if carousel_image.present? 
+      carousel_image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+    end
   end 
 
   def url

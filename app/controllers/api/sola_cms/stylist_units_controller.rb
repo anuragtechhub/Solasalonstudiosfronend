@@ -1,26 +1,20 @@
 class Api::SolaCms::StylistUnitsController < Api::SolaCms::ApiController
-  before_action :set_stylist_unit, only: %i[ show update destroy]
+  before_action :set_stylist_units, only: %i[ show update destroy]
 
   #GET /stylist_units
   def index
-    if params[:search].present?
-      stylist_units = RentManager::StylistUnit.search_by_id_and_name(params[:search])
-      stylist_units = paginate(stylist_units)
-      render json:  { stylist_units: stylist_units }.merge(meta: pagination_details(stylist_units))
-    else  
-      stylist_units = RentManager::StylistUnit.all
-      stylist_units = paginate(stylist_units)
-      render json: { stylist_units: stylist_units }.merge(meta: pagination_details(stylist_units))
-    end
+    @stylist_units = params[:search].present? ? search_stylist_unit : RentManager::StylistUnit.order("#{field} #{order}")
+    @stylist_units = paginate(@stylist_units)
+    render json:  { stylist_units: @stylist_units }.merge(meta: pagination_details(@stylist_units))
   end
 
   #POST /stylist_units
   def create 
     @stylist_unit  =  RentManager::StylistUnit.new(stylist_units_params)
     if @stylist_unit.save
-      render json: @stylist_unit 
+      render json: @stylist_unit, status: 200
     else
-      Rails.logger.info(@stylist_unit.errors.messages)
+      Rails.logger.error(@stylist_unit.errors.messages)
       render json: {error: @stylist_unit.errors.messages}, status: 400
     end
   end
@@ -35,7 +29,7 @@ class Api::SolaCms::StylistUnitsController < Api::SolaCms::ApiController
     if @stylist_unit.update(stylist_units_params)
       render json: {message: "Stylist Unit Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@stylist_unit.errors.messages)
+      Rails.logger.error(@stylist_unit.errors.messages)
       render json: {error: @stylist_unit.errors.messages}, status: 400
     end 
   end 
@@ -45,18 +39,23 @@ class Api::SolaCms::StylistUnitsController < Api::SolaCms::ApiController
     if @stylist_unit&.destroy
       render json: {message: "Stylist Unit Successfully Deleted."}, status: 200
     else
-      @stylist_unit.errors.messages
-      Rails.logger.info(@stylist_unit.errors.messages)
+      Rails.logger.error(@stylist_unit.errors.messages)
+      render json: {errors: format_activerecord_errors(@stylist_unit.errors) }, status: 400
     end
   end
 
   private
 
   def set_stylist_units
-    @stylist_unit = RentManager::StylistUnit.find(params[:id])
+    @stylist_unit = RentManager::StylistUnit.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @stylist_unit.present?
   end
 
   def stylist_units_params
     params.require(:rent_manager_stylist_unit).permit(:stylist_id, :rent_manager_unit_id, :rm_lease_id, :move_in_at, :move_out_at)
-  end 
+  end
+
+  def search_stylist_unit
+    RentManager::StylistUnit.order("#{field} #{order}").search_by_id_and_name(params[:search])
+  end
 end

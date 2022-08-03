@@ -3,22 +3,16 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
 
   #GET /videos
   def index
-    if params[:search].present?
-      videos = Video.search_by_title(params[:search])
-      videos = paginate(videos)
-      render json:  { videos: videos }.merge(meta: pagination_details(videos))
-    else  
-      videos = Video.all
-      videos = paginate(videos)
-      render json: { videos: videos }.merge(meta: pagination_details(videos))
-    end
+    @videos = params[:search].present? ? search_video : Video.order("#{field} #{order}")
+    @videos = paginate(@videos)
+    render json:  { videos: @videos }.merge(meta: pagination_details(@videos))
   end
 
   #POST /videos
   def create 
     @video =  Video.new(video_params)
     if @video.save
-      render json: @video
+      render json: @video, status: 201
     else
       Rails.logger.info(@video.errors.messages)
       render json: {error: @video.errors.messages}, status: 400
@@ -57,6 +51,10 @@ class Api::SolaCms::VideosController < Api::SolaCms::ApiController
   end
 
   def video_params
-    params.require(:video).permit(:title, :webinar, :youtube_url, :duration, :tool_id, :brand_id,  :is_introduction, :is_featured, country_ids: [], category_ids: [] )
+    params.require(:video).permit(:title, :webinar, :youtube_url, :duration, :tool_id, :brand_id,  :is_introduction, :is_featured, country_ids: [], category_ids: [], tag_ids: [] )
+  end
+
+  def search_video
+    Video.order("#{field} #{order}").search_video_by_columns(params[:search])
   end 
 end

@@ -1,10 +1,12 @@
 class ConnectMaintenanceContact < ActiveRecord::Base
   include PgSearch::Model
-  pg_search_scope :search_maintanence_contact, against: [:contact_type, :contact_email, :contact_first_name],
+  pg_search_scope :search_maintanence_contact_by_column_name, against: [:contact_type, :contact_email, :contact_first_name, :contact_admin, :contact_first_name, :contact_last_name, :contact_phone_number, :request_routing_url],
+   associated_against: {
+    location: [:name]
+  },
   using: {
-    tsearch: {
-      prefix: true,
-      any_word: true
+    trigram:{
+      word_similarity: true
     }
   }
 

@@ -6,17 +6,20 @@ class Api::SolaCms::AdminsController < Api::SolaCms::ApiController
 
   #GET /admins
   def index
-    @admins = Admin.all
-    render json: @admins
+    @admins = params[:search].present? ? search_admin : Admin.all
+    render json:{ admins: @admins } and return if params[:all] == "true"
+    @admins = paginate(@admins)
+    render json: { admins: @admins }.merge(meta: pagination_details(@admins))
   end
 
   #POST /admins
   def create
     @admin  =  Admin.new(admin_params)
     if @admin.save
-      render json: @admin
-    else
-      render json: {error: "Unable to Create Admin " }, status: 400 
+      render json: @admin, status: 200
+    else 
+      Rails.logger.error(@admin.errors.messages)
+      render json: {error: @admin.errors.messages}, status: 400
     end
   end
 
@@ -30,7 +33,8 @@ class Api::SolaCms::AdminsController < Api::SolaCms::ApiController
     if @admin.update(admin_params)
       render json: {message: "Admin Successfully Updated." }, status: 200
     else
-      render json: {error: "Unable to Update Admin."}, status: 400
+      Rails.logger.error(@admin.errors.messages)
+      render json: {error: @admin.errors.messages}, status: 400
     end
   end
 
@@ -39,7 +43,8 @@ class Api::SolaCms::AdminsController < Api::SolaCms::ApiController
     if @admin.destroy
       render json: {message: "Admin Successfully Deleted."}, status: 200
     else
-      render json: {error: "Unable to Delete Admin."}, status: 400
+      Rails.logger.error(@admin.errors.messages)
+      render json: {error: @admin.errors.messages}, status: 400
     end
   end
 
@@ -52,4 +57,8 @@ class Api::SolaCms::AdminsController < Api::SolaCms::ApiController
   def admin_params
     params.require(:admin).permit(:email, :email_address, :password, :password_confirmation, :franchisee, :mailchimp_api_key, :callfire_app_login, :callfire_app_password, :sola_pro_country_admin)
   end
+
+  def search_admin
+    Admin.search_admin(params[:search])
+  end 
 end

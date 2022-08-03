@@ -55,8 +55,10 @@ class BookNowBooking < ActiveRecord::Base
     Rollbar.error(e)
   end
 
-  pg_search_scope :search_booking, against: %i[id booking_user_name booking_user_email booking_user_phone query time_range total],
-    using: {
+  pg_search_scope :search_booking, against: %i[id booking_user_name booking_user_email booking_user_phone query time_range total stylist_id],
+  associated_against: {
+    stylist: [:name],
+  },using: {
       tsearch: {
         prefix: true
       }

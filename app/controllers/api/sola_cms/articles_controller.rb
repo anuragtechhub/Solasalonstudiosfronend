@@ -6,36 +6,22 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
   #GET /articles
   def index
     if params[:export_csv] == "true"
-      if params[:start_date] && params[:end_date].present?
-        @articles = Article.where(created_at: params[:start_date].to_time..params[:end_date].to_time)
-      else
-        @articles = Article.all
-      end
-      headers = params[:headers].present? ? params[:headers] : Article.column_names
-      respond_to do |format|
-        format.csv {send_data @articles.to_csv(headers), filename: "articles-#{Date.today}.csv"}
-      end
-    else
-      if params[:search].present?
-        @articles = Article.search_by_title_article_url(params[:search])
-      else
-        @articles = Article.all
-        if params[:all] == "true"
-          render json: { articles: @articles } and return
-        end
-      end
-      @articles = paginate(@articles) 
-      render json: { articles: @articles }.merge(meta: pagination_details(@articles))
-    end 
+      @articles = export_article_by_date
+      render json: @articles and return
+    end
+    @articles = params[:search].present? ? search_article_by_columns : Article.order("#{field} #{order}")
+    render json: { articles: @articles } and return if params[:all] == "true"
+    @articles = paginate(@articles) 
+    render json: { articles: @articles }.merge(meta: pagination_details(@articles))
   end
 
-  #POST /articles
+  #POST /articlesBLOCKED
   def create
     @article  =  Article.new(article_params)
     if @article.save
-      render json: @article
+      render json: @article, status: 200
     else
-      Rails.logger.info(@article.errors.messages)
+      Rails.logger.error(@article.errors.messages)
       render json: {error: @article.errors.messages}, status: 400 
     end
   end
@@ -49,8 +35,7 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
   def update
     if @article.update(article_params)
       render json: {message: "Article Successfully Updated." }, status: 200
-    else
-      Rails.logger.info(@article.errors.messages)
+    else      Rails.logger.error(@article.errors.messages)
       render json: {error: @article.errors.messages}, status: 400
     end
   end
@@ -60,18 +45,33 @@ class Api::SolaCms::ArticlesController < Api::SolaCms::ApiController
     if @article&.destroy
       render json: {message: "Article Successfully Deleted."}, status: 200
     else
-      @article.errors.messages
-      Rails.logger.info(@article.errors.messages)
+      Rails.logger.error(@article.errors.messages)
+      render json: {errors: format_activerecord_errors(@article.errors) }, status: :unprocessable_entity
     end
   end
   
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
+    return render(json: { error: "Record not found!"}, status: 404) unless @article.present?
   end
 
   def article_params
     params.require(:article).permit(:title, :url_name, :summary, :body, :article_url, :image, :created_at, :location_id, :display_setting)
   end
+
+  def export_article_by_date
+    @articles = if params[:start_date] && params[:end_date].present?
+      Article.where(created_at: params[:start_date].to_time..params[:end_date].to_time)
+    else
+      Article.all
+    end
+    params[:headers].present? ? @articles.map { |article| article.attributes.slice(*params[:headers]) } : @articles
+  end 
+
+  def search_article_by_columns
+    Article.order("#{field} #{order}").search_article(params[:search])
+  end
+
 end

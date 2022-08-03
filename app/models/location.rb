@@ -4,15 +4,14 @@ class Location < ActiveRecord::Base
   # include Fuzzily::Model
   # fuzzily_searchable :name, :address_1, :address_2, :city, :state, :postal_code
   include PgSearch::Model
-  pg_search_scope :search_by_id, against: [:name, :id, :city, :state, ],
+  pg_search_scope :search_location_by_columns, against: [:name, :id, :city, :address_1, :store_id, :state, :url_name, :postal_code, :phone_number, :general_contact_name, :country, :created_at, :updated_at],
   associated_against: {
     msa: [:name],
     admin: [:email]
   },
   using: {
     tsearch: {
-      prefix: true,
-      any_word: true
+      prefix: true
     }
   }
 
@@ -31,14 +30,14 @@ class Location < ActiveRecord::Base
   }
 
   belongs_to :admin
+  belongs_to :location_country, class_name: "Country", foreign_key: :country_id
   belongs_to :msa
   has_many :stylists, -> { where(status: 'open') }
   has_many :studios
   has_many :leases
   has_many :external_ids, as: :objectable, dependent: :destroy
   has_many :rent_manager_units, class_name: 'RentManager::Unit', inverse_of: :location, dependent: :destroy
-  has_many :connect_maintenance_contacts
-
+  has_many :connect_maintenance_contacts, dependent: :destroy
   # after_save :submit_to_moz
   before_validation :generate_url_name, on: :create
   after_validation :geocode, if: proc { |location| location.latitude.blank? && location.longitude.blank? }
@@ -169,9 +168,122 @@ class Location < ActiveRecord::Base
   validates :description_long, allow_blank: true, length: { maximum: 1000 }, format: { with: %r{[0-9\p{L}()\[\] ?:;/!\\,.\-%&=\r\n\t_*§²`´·"'+¡¿@°€£$]} }
   # validates :name, :description, :address_1, :city, :state, :postal_code, :phone_number, :email_address_for_inquiries
 
+  def as_json(_options = {})
+    super(methods: %i[ msa_name franchisee image_1_url  image_2_url image_3_url image_4_url image_5_url image_6_url
+          image_7_url image_8_url image_9_url image_10_url image_11_url image_12_url image_13_url image_14_url image_15_url
+          image_16_url image_17_url image_18_url image_19_url image_20_url floorplan_image_url country_name
+    ])
+  end
+
+  def country_name
+    location_country ? location_country.name : ''
+  end
+
   def msa_name
     msa ? msa.name : ''
   end
+  
+  def image_1_url
+    image_1.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/') if image_1.present?
+  end
+
+  def image_2_url
+    image_2.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/') if image_2.present?
+  end
+
+  def image_3_url
+    image_3.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_3.present?
+  end
+
+  def image_4_url
+    image_4.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_4.present?
+  end
+
+  def image_5_url
+    image_5.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_5.present?
+  end
+
+  def image_6_url
+    image_6.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_6.present?
+  end
+
+  def image_7_url
+    image_7.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_7.present?
+  end
+
+  def image_8_url
+    image_8.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_8.present?
+  end
+  
+  def image_9_url
+    image_9.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_9.present?
+  end
+
+  def image_10_url
+    image_10.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_10.present?
+  end
+
+  def image_11_url
+    image_11.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_11.present?
+  end
+
+  def image_12_url
+    image_12.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_12.present?
+  end
+
+  def image_13_url
+    image_13.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_13.present?
+  end
+
+  def image_14_url
+    image_14.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_14.present?
+  end
+
+  def image_15_url
+    image_15.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_15.present?
+  end
+
+  def image_16_url
+    image_16.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_16.present?
+  end
+
+  def image_17_url
+    image_17.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_17.present?
+  end
+
+  def image_18_url
+    image_18.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_18.present?
+  end
+
+  def image_19_url
+    image_19.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_19.present?
+  end
+
+  def image_20_url
+    image_20.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if image_20.present?
+  end
+
+  def floorplan_image_url
+    floorplan_image.url(:carousel).gsub('/solasalonstylists/', '/solasalonstudios/')  if floorplan_image.present?
+  end 
+
+
+  # def image_url
+  #   images = []
+  #   image_urls = []
+  #   for i in 1..20
+  #     images << image_1
+  #     images << image_2
+  #     images << image_3
+  #     images << image_4
+  #   end
+
+  #   images.each do |image|
+  #     image_url = image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+  #     image_urls << image_url
+
+  #   end 
+  # end
 
   def services
     services = []
@@ -243,11 +355,11 @@ class Location < ActiveRecord::Base
   end
 
   def downcase_email
-    self.email_address_for_hubspot.downcase!
-    self.email_address_for_inquiries.downcase!
-    self.email_address_for_reports.downcase!
-    self.emails_for_stylist_website_approvals.downcase!
-    self.rockbot_manager_email.downcase!
+    self.email_address_for_hubspot&.downcase!
+    self.email_address_for_inquiries&.downcase!
+    self.email_address_for_reports&.downcase!
+    self.emails_for_stylist_website_approvals&.downcase!
+    self.rockbot_manager_email&.downcase!
   end
 
   def country_enum
@@ -958,6 +1070,7 @@ end
 #  close_time                           :time
 #  country                              :string(255)      default("US")
 #  custom_maps_url                      :text
+#  deleted_at                           :datetime
 #  description                          :text
 #  description_long                     :text
 #  description_short                    :text
@@ -1072,6 +1185,7 @@ end
 #  image_9_file_size                    :integer
 #  image_9_updated_at                   :datetime
 #  instagram_url                        :string(255)
+#  is_deleted                           :boolean          default(FALSE)
 #  latitude                             :float
 #  longitude                            :float
 #  mailchimp_list_ids                   :text
@@ -1101,6 +1215,7 @@ end
 #  created_at                           :datetime
 #  updated_at                           :datetime
 #  admin_id                             :integer
+#  country_id                           :integer
 #  legacy_id                            :string(255)
 #  moz_id                               :integer
 #  msa_id                               :integer
@@ -1112,9 +1227,11 @@ end
 #
 #  index_locations_on_admin_id            (admin_id)
 #  index_locations_on_country             (country)
+#  index_locations_on_deleted_at          (deleted_at)
 #  index_locations_on_msa_id              (msa_id)
 #  index_locations_on_state               (state)
 #  index_locations_on_status              (status)
 #  index_locations_on_status_and_country  (status,country)
 #  index_locations_on_url_name            (url_name)
+#
 #

@@ -3,14 +3,14 @@ class Api::SolaCms::UpdateMySolaWebsitesController < Api::SolaCms::ApiController
 
   def index
     sola_websites = if params[:status] == 'pending'
-                      UpdateMySolaWebsite.pending
+                      UpdateMySolaWebsite.order("#{field} #{order}").pending
                     elsif params[:status] == 'approved'
-                      UpdateMySolaWebsite.approved
+                      UpdateMySolaWebsite.order("#{field} #{order}").approved
                     else
                       return render json: { message: "Record Not Found."}  
                     end
-    sola_websites = sola_websites.search(params[:search]) if params[:search].present? 
-    sola_websites = paginate(sola_websites)
+      sola_websites = sola_websites.search_website(params[:search]) if params[:search].present? 
+      sola_websites = paginate(sola_websites)
     render json: { sola_websites: sola_websites }.merge(meta: pagination_details(sola_websites))
   end
 
@@ -21,10 +21,10 @@ class Api::SolaCms::UpdateMySolaWebsitesController < Api::SolaCms::ApiController
   def update
     if @sola_website.update(sola_website_params)
       Pro::AppMailer.stylist_website_update_request_submitted(@sola_website).deliver
-      render json: { message: "Sola Website Updated successfully." }
+      render json: { message: "Sola Website Updated successfully." }, status: 200
     else
       Rails.logger.info(@sola_website.errors.messages)
-      render json: { message: @sola_website.errors.full_messages  }
+      render json: { message: @sola_website.errors.messages}
     end  
   end
 
@@ -42,6 +42,10 @@ class Api::SolaCms::UpdateMySolaWebsitesController < Api::SolaCms::ApiController
     @sola_website = UpdateMySolaWebsite.find_by(id: params[:id])
     render json: { message: 'Record not found' }, status: 400 unless @sola_website.present?
   end
+
+  def search_sola_data
+  
+  end 
 
   def sola_website_params
     params.permit(:name, 
@@ -73,50 +77,30 @@ class Api::SolaCms::UpdateMySolaWebsitesController < Api::SolaCms::ApiController
       :google_plus_url,
       :linkedin_url,
       :hair_extensions,
-      :image_1_url,
-      :image_2_url,
-      :image_3_url,
-      :image_4_url,
-      :image_5_url,
-      :image_6_url,
-      :image_7_url,
-      :image_8_url,
-      :image_9_url,
-      :image_10_url,
       :email_address,
       :stylist_id,
       :approved,
-      :image_1_file_name,
-      :image_1_file_size,
-      :image_1_updated_at,
-      :image_2_file_name,
-      :image_2_file_size,
-      :image_2_updated_at,
-      :image_3_file_name,
-      :image_3_file_size,
-      :image_3_updated_at,
-      :image_4_file_name,
-      :image_4_file_size,
-      :image_4_updated_at,
-      :image_5_file_name,
-      :image_5_file_size,
-      :image_5_updated_at,
-      :image_6_file_name,
-      :image_6_file_size,
-      :image_6_updated_at,
-      :image_7_file_name,
-      :image_7_file_size,
-      :image_7_updated_at,
-      :image_8_file_name,
-      :image_8_file_size,
-      :image_8_updated_at,
-      :image_9_file_name,
-      :image_9_file_size,
-      :image_9_updated_at,
-      :image_10_file_name,
-      :image_10_file_size,
-      :image_10_updated_at,
+      :image_1,
+      :image_2,
+      :image_3,
+      :image_4,
+      :image_5,
+      :image_6,
+      :image_7,
+      :image_8,
+      :image_9,
+      :image_10,
       :microblading,
+      :delete_image_1,
+      :delete_image_2,
+      :delete_image_3,
+      :delete_image_4,
+      :delete_image_5,
+      :delete_image_6,
+      :delete_image_7,
+      :delete_image_8,
+      :delete_image_9,
+      :delete_image_10,
       :reserved,
       :botox,
       :tik_tok_url,

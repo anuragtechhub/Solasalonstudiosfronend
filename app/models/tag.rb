@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Tag < ActiveRecord::Base
-    include PgSearch::Model
-  pg_search_scope :search_by_tag_id_and_name, against: [:id, :name],
+  include PgSearch::Model
+  pg_search_scope :search_tag_by_attributes, against: [:id, :name, :created_at, :updated_at],
   using: {
     tsearch: {
       prefix: true,

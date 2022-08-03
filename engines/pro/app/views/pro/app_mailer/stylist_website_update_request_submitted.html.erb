@@ -124,7 +124,7 @@
               <% elsif key.include?('testimonial') %>
                 <%= value.attributes.except('id', 'region', 'created_at', 'updated_at') %>
               <% elsif key.include?('biography') %>
-                  <%= value.html_safe %>
+                  <%= value&.html_safe %>
               <% else %>
                 <%= value %>
               <% end %>

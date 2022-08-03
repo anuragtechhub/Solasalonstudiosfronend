@@ -1,62 +1,61 @@
 class Api::SolaCms::FranchisingInquiriesController < Api::SolaCms::ApiController
   before_action :set_franchising_inquiry, only: %i[ show update destroy]
 
-  #GET /home_buttons
+  #GET /franchise_inquiries
   def index
-    if params[:search].present?
-      franchising_inquiries = FranchisingForm.search_by_email(params[:search])
-      franchising_inquiries = paginate(franchising_inquiries)
-      render json:  { franchising_inquiries: franchising_inquiries }.merge(meta: pagination_details(franchising_inquiries))
-    else  
-      franchising_inquiries = FranchisingForm.all
-      franchising_inquiries = paginate(franchising_inquiries)
-      render json: { franchising_inquiries: franchising_inquiries }.merge(meta: pagination_details(franchising_inquiries))
-    end
+    @franchising_inquiries = params[:search].present? ? search_franchise_inquiries : FranchisingForm.order("#{field} #{order}")
+    @franchising_inquiries = paginate(@franchising_inquiries)
+    render json:  { franchising_inquiries: @franchising_inquiries }.merge(meta: pagination_details(@franchising_inquiries))
   end
 
-  #POST /home_buttons
+  #POST /franchise_inquiries
   def create
     @franchising_inquiry  =  FranchisingForm.new(franchising_inquiry_params)
     if @franchising_inquiry.save
-      render json: @franchising_inquiry
+      render json: @franchising_inquiry, status: 200
     else
-      Rails.logger.info(@franchising_inquiry.errors.messages)
+      Rails.logger.error(@franchising_inquiry.errors.messages)
       render json: {error: @franchising_inquiry.errors.messages}, status: 400
     end 
   end 
 
-  #GET /home_buttons/:id
+  #GET /franchise_inquiries/:id
   def show
-    render json: @franchising_inquiry
+    render json: @franchising_inquiry, status: 200
   end 
 
-  #PUT /home_buttons/:id
+  #PUT /franchise_inquiries/:id
   def update
     if @franchising_inquiry.update(franchising_inquiry_params)
-      render json: {message: "Home Button Successfully Updated."}, status: 200
+      render json: {message: "Franchise inquiry Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@franchising_inquiry.errors.messages)
+      Rails.logger.error(@franchising_inquiry.errors.messages)
       render json: {error: @franchising_inquiry.errors.messages}, status: 400
     end  
   end 
 
-  #DELETE /home_buttons/:id
+  #DELETE /franchise_inquiries/:id
   def destroy
-    if @home_button&.destroy
-      render json: {message: "Home Button Successfully Deleted."}, status: 200
+    if @franchising_inquiry&.destroy
+      render json: {message: "Franchise inquiry Successfully Deleted."}, status: 200
     else
-      @franchising_inquiry.errors.messages
-      Rails.logger.info(@franchising_inquiry.errors.messages)
+      Rails.logger.error(@franchising_inquiry.errors.messages)
+      render json: {errors: format_activerecord_errors(@franchising_inquiry.errors) }, status: 400
     end
   end 
 
   private
 
   def set_franchising_inquiry
-    @franchising_inquiry = FranchisingForm.find(params[:id])
+    @franchising_inquiry = FranchisingForm.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @franchising_inquiry.present?
   end
 
   def franchising_inquiry_params
     params.require(:franchising_form).permit(:first_name, :last_name, :email_address, :phone_number, :multi_unit_operator, :liquid_capital, :city, :state, :agree_to_receive_email, :utm_source, :utm_campaign, :utm_medium, :utm_content, :utm_term, :country)
   end
+
+  def search_franchise_inquiries
+    FranchisingForm.order("#{field} #{order}").search_by_email(params[:search])
+  end 
 end

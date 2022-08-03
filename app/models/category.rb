@@ -19,13 +19,40 @@ class Category < ActiveRecord::Base
     name&.strip
   end
   
-  pg_search_scope :search_by_name_or_slug_or_id, against: [:name, :slug, :id],
-    using: {
-      tsearch: {
-        any_word: true,
-        prefix: true
-      }
+  pg_search_scope :search_categories_by_columns, against: [:name, :slug, :id, :created_at, :updated_at], 
+  using: {
+    tsearch: {
+      prefix: true
     }
+  }
+  
+  def as_json(_options = {})
+    super(methods: %i[blog deal tool tag video franchise_article])
+  end
+
+  def blog
+    self.blogs.map{ |a| { id: a.id, title: a&.title} }
+  end
+
+  def deal
+    self.deals.map{ |a| { id: a.id, title: a&.title} }
+  end
+
+  def tool
+    self.tools.map{ |a| { id: a.id, title: a&.title} }
+  end
+  
+  def tag
+    self.tags.map{ |a| { id: a.id, name: a&.name} }
+  end
+
+  def video
+    self.videos.map{ |a| { id: a.id, title: a&.title} }
+  end
+
+  def franchise_article
+    self.franchise_articles.map{ |a| {id: a.id, title: a&.title} }
+  end
 end
 
 # == Schema Information

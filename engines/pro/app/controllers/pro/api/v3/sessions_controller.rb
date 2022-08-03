@@ -37,5 +37,9 @@ module Pro
           Admin.find_for_authentication(email_address: options[:email]) ||
           Admin.find_for_authentication(email: options[:email])
       end
+
+      def is_deleted_user(options)
+        Stylist.unscoped.where(email_address: options[:email], status: 'open').first
+      end
   end
 end

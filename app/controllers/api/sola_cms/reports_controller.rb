@@ -5,21 +5,15 @@ class Api::SolaCms::ReportsController < Api::SolaCms::ApiController
   before_action :set_report, only: %i[ show update destroy]
 
   def index
-    if params[:search].present?
-      reports = Report.search_by_email(params[:search])
-      reports = paginate(reports)
-      render json:  { reports: reports }.merge(meta: pagination_details(reports))
-    else  
-      reports = Report.all
-      reports = paginate(reports)
-      render json: { reports: reports }.merge(meta: pagination_details(reports))
-    end
+    @reports = params[:search].present? ? search_report : Report.order("#{field} #{order}")
+    @reports = paginate(@reports)
+    render json:  { reports: @reports }.merge(meta: pagination_details(@reports))
   end
 
   def create
     @report  =  Report.new(report_params)
     if @report.save
-      render json: @report
+      render json: @report, status: 200
     else
       Rails.logger.info(@report.errors.messages)
       render json: {error: @report.errors.messages}, status: 400  
@@ -35,7 +29,7 @@ class Api::SolaCms::ReportsController < Api::SolaCms::ApiController
       render json: {message: "Report Updated Successfully." }, status: 200
     else
       Rails.logger.info(@report.errors.messages)
-      render json: { message: @report.errors.full_messages  }
+      render json: { message: @report.errors.full_messages  }, status: 400
     end
   end
 
@@ -58,4 +52,8 @@ class Api::SolaCms::ReportsController < Api::SolaCms::ApiController
   def report_params
     params.require(:report).permit(:report_type, :email_address, :parameters)
   end
+
+  def search_report
+    Report.order("#{field} #{order}").search_by_email(params[:search])
+  end 
 end

@@ -4,25 +4,19 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
 
   #GET /book_now_booking
   def index
-    if params[:search].present?
-      bookings = BookNowBooking.search_booking(params[:search])
-      bookings = paginate(bookings)
-      render json:  { bookings: bookings }.merge(meta: pagination_details(bookings))
-    else  
-      bookings = BookNowBooking.all
-      bookings = paginate(bookings)
-      render json: { bookings: bookings }.merge(meta: pagination_details(bookings))
-    end
+    @bookings = params[:search].present? ? serach_booking_by_columns : BookNowBooking.order("#{field} #{order}")
+    @bookings = paginate(@bookings)
+    render json: { bookings: @bookings }.merge(meta: pagination_details(@bookings))
   end
 
   #POST /book_now_booking
   def create
     @booking  =  BookNowBooking.new(booking_params)
     if @booking.save
-      render json: @booking 
+      render json: @booking, status: 200
     else
-      Rails.logger.info(@booking.errors.messages)
-      render json: {error: @booking.errors.messages}, status: 400  
+      Rails.logger.error(@booking.errors.messages)
+      render json: {error: @booking.errors.messages}, status: 400
     end
   end
 
@@ -36,8 +30,8 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
     if @booking.update(booking_params)
       render json: {message: "Booking Successfully Updated." }, status: 200
     else
-      Rails.logger.info(@booking.errors.messages)
-      render json: {error: @booking.errors.messages}, status: 400 
+      Rails.logger.error(@booking.errors.messages)
+      render json: {error: @booking.errors.messages}, status: 400
     end
   end
 
@@ -46,8 +40,8 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
     if @booking&.destroy
       render json: {message: "Booking Successfully Deleted."}, status: 200
     else
-      @booking.errors.messages
-      Rails.logger.info(@booking.errors.messages)
+      Rails.logger.error(@booking.errors.messages)
+      render json: {errors: format_activerecord_errors(@booking.errors) }, status: 400
     end
   end
 
@@ -60,5 +54,9 @@ class Api::SolaCms::BookNowBookingsController < Api::SolaCms::ApiController
 
   def booking_params
     params.require(:booking).permit(:time_range, :location_id, :query, :stylist_id, :booking_user_name, :booking_user_phone, :booking_user_email, :referring_url, :total, services: [:description, :duration, :guid, :image, :name, :price])
+  end
+
+  def serach_booking_by_columns
+    BookNowBooking.order("#{field} #{order}").search_booking(params[:search])
   end
 end

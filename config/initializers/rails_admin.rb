@@ -88,8 +88,7 @@ RailsAdmin.config do |config|
     index # mandatory
     new do
       except ['Event']
-      except ['GlossGeniusLog']
-      except ['CallfireLog']
+      except ['CallfireLog', 'GlossGeniusLog']
     end
     show
     # export do
@@ -101,8 +100,7 @@ RailsAdmin.config do |config|
 
     # member actions
     edit do 
-      except ['GlossGeniusLog']
-      except ['CallfireLog']
+      except ['GlossGeniusLog', 'CallfireLog']
     end
     delete
     # history_show
@@ -1503,7 +1501,7 @@ RailsAdmin.config do |config|
       field :created_at
     end
     export do
-      field :location_id do
+      field :location_name do
         label 'Location'
       end
       field :name

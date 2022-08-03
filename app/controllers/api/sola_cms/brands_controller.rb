@@ -3,18 +3,10 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
 
   #GET /brands
   def index
-    @brands = Brand.all
-    if params[:search].present? 
-      brands = PgSearch.multisearch(params[:search])
-      brands = paginate(brands)
-      render json:  { brands: brands }.merge(meta: pagination_details(brands))
-    elsif params[:all] == "true"
-      render json: { brands: @brands }
-    else 
-      brands = Brand.all
-      brands = paginate(brands)
-      render json: { brands: brands }.merge(meta: pagination_details(brands))
-    end
+    @brands = params[:search].present? ? search_brand_by_column_name : Brand.order("#{field} #{order}")
+    render json: { brands: @brands } and return if params[:all] == "true"
+    @brands = paginate(@brands)
+    render json:  { brands: @brands }.merge(meta: pagination_details(@brands))
   end
 
   #POST /brands
@@ -23,11 +15,11 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     @countries = Country.where(id: brand_params["country_ids"])
     @brand.countries << @countries
     if @brand.save
-      render json: @brand
+      render json: @brand, status: 200
     else
-      Rails.logger.info(@brand.errors.messages)
+      Rails.logger.error(@brand.errors.messages)
       render json: {error: @brand.errors.messages}, status: 400
-    end 
+    end
   end 
 
   #GET /brands/:id
@@ -41,7 +33,7 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     if @brand.update(brand_params)
       render json: {message: "Brand Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@brand.errors.messages)
+      Rails.logger.error(@brand.errors.messages)
       render json: {error: @brand.errors.messages}, status: 400
     end  
   end 
@@ -51,18 +43,23 @@ class Api::SolaCms::BrandsController < Api::SolaCms::ApiController
     if @brand&.destroy
       render json: {message: "Brand Successfully Deleted."}, status: 200
     else
-      @brand.errors.messages
-      Rails.logger.info(@brand.errors.messages)
+      Rails.logger.error(@brand.errors.messages)
+      render json: {errors: format_activerecord_errors(@brand.errors) }, status: 400
     end
   end 
 
   private
 
   def set_brand
-    @brand = Brand.find(params[:id])
+    @brand = Brand.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @brand.present?
   end
 
   def brand_params
-    params.require(:brand).permit(:name, :website_url, :image,  :introduction_video_heading_title, :events_and_classes_heading_title, brand_link_ids:[], country_ids: [])
+    params.require(:brand).permit(:name, :website_url, :image,  :introduction_video_heading_title, :events_and_classes_heading_title, :delete_image, brand_link_ids:[], country_ids: [])
   end
+
+  def search_brand_by_column_name
+    Brand.order("#{field} #{order}").search_brand_by_column_names(params[:search])
+  end 
 end

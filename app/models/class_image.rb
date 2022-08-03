@@ -10,7 +10,6 @@ class ClassImage < ActiveRecord::Base
       }
     }
 
-
   has_many :sola_classes, dependent: :restrict_with_error
 
   has_paper_trail
@@ -31,19 +30,19 @@ class ClassImage < ActiveRecord::Base
   end
 
   def image_original_url
-    image.url(:full_width)
+    image&.url(:full_width) if image.present?
   end
 
   def image_large_url
-    image.url(:large)
+    image&.url(:large) if image.present?
   end
 
   def thumbnail_original_url
-    thumbnail.url(:full_width)
+    thumbnail&.url(:full_width) if thumbnail.present?
   end
 
   def thumbnail_large_url
-    thumbnail.url(:large)
+    thumbnail&.url(:large) if thumbnail.present?
   end
 end
 

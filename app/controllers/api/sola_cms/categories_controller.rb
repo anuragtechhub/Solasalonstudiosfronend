@@ -2,15 +2,10 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   before_action :get_category, only: %i[ show update destroy]
 
   def index
-    if params[:search].present?
-      categories = Category.search_by_name_or_slug_or_id(params[:search])
-      categories = paginate(categories)
-      render json:  { categories: categories }.merge(meta: pagination_details(categories))
-    else  
-      categories = Category.all
-      categories = paginate(categories)
-      render json: { categories: categories }.merge(meta: pagination_details(categories))
-    end
+    @categories =  params[:search].present? ? search_categories_by_columns : Category.order("#{field} #{order}")
+    render json: { categories: @categories } and return if params[:all] == "true"
+    @categories = paginate(@categories)
+    render json:  { categories: @categories }.merge(meta: pagination_details(@categories))
   end
 
   def create
@@ -18,17 +13,17 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
       @category = Category.new(category_params)
       if @category.save
         create_categoriables(@category)
-        render json: @category
+        render json: @category, status: 200
         # render json: {category: @category, categoriables: @category.categoriables}
       end  
     rescue ActiveRecord::RecordNotUnique => error
-      render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." } 
-      Rails.logger.info(@category.errors.messages)
+      render json: {error: "Name and Sulg already exists, category name and slug must be unique." }, status: 409
+      Rails.logger.error(@category.errors.messages)
     end 
   end 
 
   def show
-    render json: @category
+    render json: @category, status: 200
   end 
 
   def update
@@ -38,8 +33,8 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
         render json: {message: "Successfully Updated."}, status: 200
       end  
     rescue ActiveRecord::RecordNotUnique => error
-      render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." }   
-      Rails.logger.info(@category.errors.messages)
+      render json: {error: "Name and Sulg alredy exists, category name and slug must be unique." }, status: 409 
+      Rails.logger.error(@category.errors.messages)
     end  
   end 
 
@@ -47,8 +42,8 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
     if @category&.destroy
       render json: {message: "Successfully Deleted."}, status: 200
     else
-      @category.errors.messages
-      Rails.logger.info(@category.errors.messages)
+      Rails.logger.error(@category.errors.messages)
+      render json: {errors: format_activerecord_errors(@category.errors) }, status: 400
     end
   end
 
@@ -56,6 +51,7 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
 
   def get_category
     @category = Category.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @category.present?
   end
 
   def category_params
@@ -72,6 +68,11 @@ class Api::SolaCms::CategoriesController < Api::SolaCms::ApiController
   end
 
   def ids_params
-    params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_id: [] )
+    params.require(:category).permit( blog_ids: [], deal_ids: [], tool_ids: [], video_ids: [], tag_ids: [], franchise_article_ids: [] )
   end
+  
+  def search_categories_by_columns
+    Category.order("#{field} #{order}").search_categories_by_columns(params[:search])
+  end 
 end
+

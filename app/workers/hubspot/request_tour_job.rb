@@ -61,10 +61,12 @@ module Hubspot
         Hubspot.configure(hapikey: ENV.fetch('HUBSPOT_API_KEY', nil))
         Hubspot::Contact.create_or_update!([data])
         HubspotLog.create(status: 'success', data: data, kind: 'request_tour_inquiry', action: 'contact')
+        ScheduledJobLog.create(status: 'success', data: data, kind: 'request_tour_inquiry', fired_at: Time.current)       
       rescue StandardError => e
         Rollbar.error(e)
         NewRelic::Agent.notice_error(e)
         HubspotLog.create(status: 'error', data: data, kind: 'request_tour_inquiry', action: 'contact')
+        ScheduledJobLog.create(status: 'error', data: data, kind: 'request_tour_inquiry', fired_at: Time.current)
         raise
       end
   end

@@ -3,15 +3,14 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
 
   #GET /Msas
   def index
-    @msas = Msa.all
     if params[:search].present? 
-      msas = Msa.search_by_id_name_and_location(params[:search])
+      msas = Msa.order("#{field} #{order}").search_by_id_name_and_location(params[:search])
       msas = paginate(msas)
       render json:  { msas: msas }.merge(meta: pagination_details(msas))
     elsif params[:all] == "true"
       render json: { msas: @msas }
     else 
-      msas = Msa.all
+      msas = Msa.order("#{field} #{order}")
       msas = paginate(msas)
       render json: { msas: msas }.merge(meta: pagination_details(msas))
     end
@@ -21,7 +20,7 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
   def create
     @msa  =  Msa.new(msa_params)
     if @msa.save
-      render json: @msa
+      render json: @msa, status: 200
     else
       Rails.logger.info(@msa.errors.messages)
       render json: {error: @msa.errors.messages}, status: 400
@@ -48,18 +47,23 @@ class Api::SolaCms::MsasController < Api::SolaCms::ApiController
     if @msa&.destroy
       render json: {message: "Msa Successfully Deleted."}, status: 200
     else
-      @msa.errors.messages
       Rails.logger.info(@msa.errors.messages)
+      render json: {message: format_activerecord_errors(@msa.errors) }, status: 400
     end
   end 
 
   private
 
   def set_msa
-    @msa = Msa.find(params[:id])
+    @msa = Msa.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @msa.present?
   end
 
   def msa_params
     params.require(:msa).permit(:name, :url_name, :legacy_id, :description, :tracking_code, location_ids: [])
+  end
+
+  def search_msa
+
   end
 end

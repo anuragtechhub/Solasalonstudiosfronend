@@ -30,6 +30,15 @@ class Brand < ActiveRecord::Base
   validates :name, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :countries, presence: true
 
+
+  pg_search_scope :search_brand_by_column_names, against: [:name, :website_url],
+  using: {
+    tsearch: {
+      prefix: true,
+      any_word: true
+    }
+  }
+
   scope :with_content, lambda {
     sql = Arel.sql(<<-SQL.squish)
       EXISTS (SELECT deals.id FROM deals WHERE deals.brand_id = brands.id)

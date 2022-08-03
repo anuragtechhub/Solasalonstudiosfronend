@@ -3,7 +3,7 @@
 class SolaClass < ActiveRecord::Base
   include PgSearch::Model
 
-  pg_search_scope :search, against: %i[title description], associated_against: {
+  pg_search_scope :search, against: %i[title description sola_class_region_id state city address location start_date end_date], associated_against: {
     category: [:name]
   }
   multisearchable against: [:stripped_title], if: ->(record) { record.end_date.present? && record.end_date >= Date.current }
@@ -51,7 +51,7 @@ class SolaClass < ActiveRecord::Base
 
   before_validation { image.destroy if delete_image == '1' }
 
-  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename'
+  has_attached_file :file, path: ':class/:attachment/:id_partition/:style/:filename', s3_protocol: :https
   validates_attachment :file, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'text/plain', 'text/html', 'application/msword', 'application/vnd.ms-works', 'application/rtf', 'application/pdf', 'application/vnd.ms-powerpoint', 'application/x-compress', 'application/x-compressed', 'application/x-gzip', 'application/zip', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'text/csv', 'text/tab-separated-values'] }
 
   before_validation { file.destroy if delete_file == '1' }
@@ -82,6 +82,10 @@ class SolaClass < ActiveRecord::Base
   def label
     "#{title} (#{city})"
   end
+
+  def class_image_name
+    class_image ? class_image.name : ''
+  end 
 
   def abbreviation_to_state(abbrev = nil)
     return nil unless abbrev
@@ -215,8 +219,8 @@ class SolaClass < ActiveRecord::Base
     [['Yes', true], ['No', false]]
   end
 
-  def category
-    sola_class_category
+  def category_name
+    category&.name
   end
 
   def region
@@ -231,10 +235,6 @@ class SolaClass < ActiveRecord::Base
     brand&.id
   end
 
-  def image_url
-    image.url(:full_width) if image.present?
-  end
-
   def file_url
     file.url if file&.present?
   end
@@ -243,8 +243,14 @@ class SolaClass < ActiveRecord::Base
     brands.first if brands&.size&.positive?
   end
 
+
+
+  def tag
+    self.tags&.map{ | a| {id: a.id, name: a.name} }
+  end
+
   def as_json(_options = {})
-    super(except: %i[brand image file], methods: %i[brand_id brand_name category region file_url link_url video])
+    super(except: %i[ image file], methods: %i[brand_id brand_name tag class_image_name category category_name region file_url link_url video], include: {brands: {only: [:name, :id]}})
   end
 
   private

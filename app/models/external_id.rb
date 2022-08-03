@@ -55,15 +55,18 @@ end
 #
 # Table name: external_ids
 #
-#  id              :integer          not null, primary key
-#  kind            :integer          not null
-#  name            :string           not null
-#  objectable_type :string           not null
-#  value           :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  objectable_id   :integer          not null
-#  rm_location_id  :bigint
+#  id                :integer          not null, primary key
+#  active_end_date   :datetime
+#  active_start_date :datetime
+#  kind              :integer          not null
+#  matching_category :string
+#  name              :string           not null
+#  objectable_type   :string           not null
+#  value             :string           not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  objectable_id     :integer          not null
+#  rm_location_id    :bigint
 #
 # Indexes
 #

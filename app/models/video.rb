@@ -2,15 +2,15 @@
 
 class Video < ActiveRecord::Base
   include PgSearch::Model
-  pg_search_scope :search_by_title, against: [:title],
+  pg_search_scope :search_video_by_columns, against: [:title, :webinar, :youtube_url, :duration, :is_featured, :created_at, :updated_at],
   associated_against: {
     brand: [:name],
-    categories: [:name]
+    categories: [:name],
+    countries: [:name]
   },
   using: {
-    tsearch: {
-      prefix: true,
-      any_word: true
+    trigram: {
+      word_similarity: true
     }
   }
 
@@ -43,7 +43,7 @@ class Video < ActiveRecord::Base
 
   has_many :video_views, dependent: :destroy
   has_many :watch_laters, dependent: :destroy
-  has_many :saved_items, dependent: :destroy, inverse_of: :video
+  # has_many :saved_items, dependent: :destroy, inverse_of: :video
 
   has_many :video_countries
   has_many :countries, through: :video_countries
@@ -113,7 +113,7 @@ class Video < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count ], include: %i[categories])
+    super(except: [:brand], methods: %i[brand_id brand_name image_url youtube_video_id tool_file_url tool_title tool_id view_count ], include: %i[categories tags countries])
   end
   
   private

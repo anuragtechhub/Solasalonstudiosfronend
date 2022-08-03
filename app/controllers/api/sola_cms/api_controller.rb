@@ -1,5 +1,6 @@
 class Api::SolaCms::ApiController < ActionController::Base  
   before_action :restrict_api_access, :set_cors_headers
+  rescue_from StandardError, with: :error_render_method
   
   protected
 
@@ -34,5 +35,17 @@ class Api::SolaCms::ApiController < ActionController::Base
     else
       collection
     end&.page(page).per(per_page)
+  end
+
+  def order
+    params[:order_by].presence || 'DESC'
+  end
+
+  def field
+    params[:field].presence || 'created_at'
+  end
+
+  def error_render_method(exception)
+    render json: {error: exception.message}, status: 400
   end
 end

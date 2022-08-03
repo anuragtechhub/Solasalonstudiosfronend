@@ -3,27 +3,21 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
 
   #GET /locations
   def index
-    @locations = Location.all
-    if params[:search].present? 
-      locations = Location.search_by_id(params[:search])
-      locations = paginate(locations)
-      render json:  { locations: locations }.merge(meta: pagination_details(locations))
-    elsif params[:all] == "true"
-      render json: { locations: @locations }
-    else 
-      locations = Location.all
-      locations = paginate(locations)
-      render json: { locations: locations }.merge(meta: pagination_details(locations))
-    end
+    @locations = params[:search].present? ? search_location : Location.order("#{field} #{order}")
+    render json: { locations: @locations } and return if params[:all] == "true"
+    @locations = paginate(@locations)
+    render json:  { locations: @locations }.merge(meta: pagination_details(@locations))
   end
 
   #POST /locations
   def create
     @location  =  Location.new(location_params)
+    country_code = Country.find_by(id: location_params["country_id"]).code
+    @location[:country] = country_code
     if @location.save
-      render json: @location
+      render json: @location, status: 200
     else
-      Rails.logger.info(@location.errors.messages)
+      Rails.logger.error(@location.errors.messages)
       render json: {error: @location.errors.messages}, status: 400
     end
   end
@@ -35,29 +29,41 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
 
   #PUT /locations/:id
   def update
+    country_code = Country.find_by(id: location_params["country_id"]).code
+    @location[:country] = country_code
     if @location.update(location_params)
       render json: {message: "Location Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@location.errors.messages)
+      Rails.logger.error(@location.errors.messages)
       render json: {error: @location.errors.messages}, status: 400
     end
   end
 
   #DELETE /locations/:id
   def destroy
-    if @location&.destroy
-      render json: {message: "location Successfully Deleted."}, status: 200
-    else
-      @location.errors.messages
-      Rails.logger.info(@location.errors.messages)
-    end
+    begin
+      if @location&.destroy
+        render json: {message: "location Successfully Deleted."}, status: 200
+      end
+    rescue ActiveRecord::RecordNotDestroyed => error
+      render json: {error: @location.errors.messages }, status: 400 
+      Rails.logger.error(@location.errors.messages)
+    rescue ActiveRecord::InvalidForeignKey => error
+      render json: {error: "Location Can't be Delete For Now" }, status: 400 
+      Rails.logger.error(@location.errors.messages)
+    end 
   end
 
   private
 
   def set_location
-    @location = Location.find(params[:id])
+    @location = Location.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @location.present?
   end
+  
+  def search_location
+    Location.order("#{field} #{order}").search_location_by_columns(params[:search])
+  end 
 
   def location_params
     params.require(:location).permit(
@@ -65,7 +71,7 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
       :url_name, 
       :address_1, 
       :address_2, 
-      :city, 
+      :city,
       :state, 
       :postal_code, 
       :email_address_for_inquiries, 
@@ -130,7 +136,7 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
       :tour_iframe_1,
       :tour_iframe_2,
       :tour_iframe_3,
-      :country,
+      :country_id,
       :email_address_for_reports,
       :rent_manager_property_id,
       :rent_manager_location_id,
@@ -143,6 +149,35 @@ class Api::SolaCms::LocationsController < Api::SolaCms::ApiController
       :store_id,
       :email_address_for_hubspot,
       :rockbot_manager_email,
+      :legacy_id,
+      :pinterest_url,
+      :yelp_url,
+      :moz_id,
+      :description_short,
+      :description_long,
+      :open_time,
+      :close_time,
+      :delete_image_1,
+      :delete_image_2, 
+      :delete_image_3, 
+      :delete_image_4, 
+      :delete_image_5, 
+      :delete_image_6, 
+      :delete_image_7, 
+      :delete_image_8, 
+      :delete_image_9, 
+      :delete_image_10, 
+      :delete_image_11, 
+      :delete_image_12, 
+      :delete_image_13, 
+      :delete_image_14, 
+      :delete_image_15, 
+      :delete_image_16, 
+      :delete_image_17, 
+      :delete_image_18, 
+      :delete_image_19, 
+      :delete_image_20, 
+      :delete_floorplan_image,
       :emails_for_stylist_website_approvals) 
   end 
 end

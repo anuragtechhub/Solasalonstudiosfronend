@@ -3,24 +3,18 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
 
   #GET /home_buttons
   def index
-    if params[:search].present?
-      home_buttons = HomeButton.search_by_id(params[:search])
-      home_buttons = paginate(home_buttons)
-      render json:  { home_buttons: home_buttons }.merge(meta: pagination_details(home_buttons))
-    else  
-      home_buttons = HomeButton.all
-      home_buttons = paginate(home_buttons)
-      render json: { home_buttons: home_buttons }.merge(meta: pagination_details(home_buttons))
-    end
+    @home_buttons = params[:search].present? ? search_home_button : HomeButton.order("#{field} #{order}")
+    @home_buttons = paginate(@home_buttons)
+    render json:  { home_buttons: @home_buttons }.merge(meta: pagination_details(@home_buttons))
   end
 
   #POST /home_buttons
   def create
     @home_button  =  HomeButton.new(home_button_params)
     if @home_button.save
-      render json: @home_button
+      render json: @home_button, status: 200
     else
-      Rails.logger.info(@home_button.errors.messages)
+      Rails.logger.error(@home_button.errors.messages)
       render json: {error: @home_button.errors.messages}, status: 400
     end 
   end 
@@ -35,7 +29,7 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
     if @home_button.update(home_button_params)
       render json: {message: "Home Button Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@home_button.errors.messages)
+      Rails.logger.error(@home_button.errors.messages)
       render json: {error: @home_button.errors.messages}, status: 400
     end  
   end 
@@ -45,18 +39,22 @@ class Api::SolaCms::HomeButtonsController < Api::SolaCms::ApiController
     if @home_button&.destroy
       render json: {message: "Home Button Successfully Deleted."}, status: 200
     else
-      @home_button.errors.messages
-      Rails.logger.info(@home_button.errors.messages)
+      Rails.logger.error(@home_button.errors.messages)
+      render json: {message: format_activerecord_errors(@home_button.errors) }, status: 400
     end
   end 
-
   private
 
   def home_button
-    @home_button = HomeButton.find(params[:id])
+    @home_button = HomeButton.find_by(id: params[:id])
+    render json: { message: 'Record not found' }, status: 400 unless @home_button.present?
   end
 
   def home_button_params
-    params.require(:home_button).permit(:image, :action_link, :position, country_ids: [])
+    params.require(:home_button).permit(:image, :action_link, :delete_image, :position, country_ids: [])
+  end
+
+  def search_home_button
+    HomeButton.order("#{field} #{order}").search_by_id(params[:search])
   end
 end

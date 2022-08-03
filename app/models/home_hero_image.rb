@@ -4,9 +4,8 @@ class HomeHeroImage < ActiveRecord::Base
   include PgSearch::Model
   pg_search_scope :search_by_id, against: [:id, :action_link],
   using: {
-    tsearch: {
-      prefix: true,
-      any_word: true
+    trigram: {
+      word_similarity: true
     }
   }
   has_many :home_hero_image_countries, dependent: :destroy

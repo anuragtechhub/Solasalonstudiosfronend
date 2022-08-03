@@ -219,11 +219,11 @@ class Stylist < ActiveRecord::Base
 
   def deleted_at
     self.deleted_at =  is_deleted? ? DateTime.current : nil
-  end
+  end 
 
   def is_deleted?
     self.is_deleted == true
-  end
+  end 
 
   def inactive?
     !open?
@@ -231,7 +231,7 @@ class Stylist < ActiveRecord::Base
 
   def full_name
     self.name = [self[:f_name], self[:m_name], self[:l_name]].compact.join(' ').strip
-  end
+  end 
 
   def destroy
     self.update_columns(deleted_at: DateTime.current ,is_deleted: true)
@@ -268,7 +268,7 @@ class Stylist < ActiveRecord::Base
         "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}"
       end
     else
-      "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}"
+      "#{ENV.fetch('PROTOCOL', nil)}://#{ENV.fetch('WEB_HOST', nil)}/salon-professional/#{url_name}" 
     end
   end
 
@@ -657,9 +657,13 @@ class Stylist < ActiveRecord::Base
   end
 
   def as_json(_options = {})
-    super(methods: %i[max_walkins_time walkins_offset walkins_end_of_day my_sola_website notifications update_my_sola_website video_history_data watch_later_video_ids watch_later_data app_settings leases rent_manager_location_id
+    if _options[:fields].present?
+      super(only: _options[:fields])
+    else
+      super(methods: %i[max_walkins_time walkins_offset walkins_end_of_day my_sola_website notifications update_my_sola_website video_history_data watch_later_video_ids watch_later_data app_settings leases rent_manager_location_id
                       service_request_enabled rent_manager_enabled tags brands location_country location_walkins_enabled leases location testimonial_1 testimonial_2 testimonial_3 testimonial_4 testimonial_5 testimonial_6
                       testimonial_7 testimonial_8 testimonial_9 testimonial_10 image_1_url image_2_url image_3_url image_4_url image_5_url image_6_url image_7_url image_8_url image_9_url image_10_url])
+    end
   end
 
   def sync_from_rent_manager

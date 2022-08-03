@@ -3,23 +3,17 @@ class Api::SolaCms::DealsController < Api::SolaCms::ApiController
   before_action :get_deal, only: %i[ show update destroy]
 
   def index
-    if params[:search].present?
-      deals = Deal.search(params[:search])
-      deals = paginate(deals)
-      render json:  { deals: deals }.merge(meta: pagination_details(deals))
-    else  
-      deals = Deal.all
-      deals = paginate(deals)
-      render json: { deals: deals }.merge(meta: pagination_details(deals))
-    end
+    @deals = params[:search].present? ? search_deal : Deal.order("#{field} #{order}")
+    @deals = paginate(@deals)
+    render json:  { deals: @deals }.merge(meta: pagination_details(@deals))
   end
 
   def create
     @deal = Deal.new(deal_params)
     if @deal.save
-      render json: @deal
+      render json: @deal, status: 200
     else
-      Rails.logger.info(@deal.errors.messages)
+      Rails.logger.error(@deal.errors.messages)
       render json: {error: @deal.errors.messages}, status: 400 
     end
   end
@@ -32,8 +26,8 @@ class Api::SolaCms::DealsController < Api::SolaCms::ApiController
     if @deal.update(deal_params)
       render json: {message: "Deal Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@deal.errors.messages)
-      render json: {error: @deal.errors.messages}, status: 400
+      Rails.logger.error(@deal.errors.messages)
+      render json: {errors: format_activerecord_errors(@deal.errors) }, status: 400
     end 
   end
 
@@ -41,7 +35,7 @@ class Api::SolaCms::DealsController < Api::SolaCms::ApiController
     if @deal&.destroy
       render json: { message: "deleted successfully."}
     else
-      Rails.logger.info(@deal.errors.messages)
+      Rails.logger.error(@deal.errors.messages)
       render json: {errors: format_activerecord_errors(@deal.errors) }, status: 400
     end  
   end
@@ -54,6 +48,10 @@ class Api::SolaCms::DealsController < Api::SolaCms::ApiController
   end
 
   def deal_params
-    params.require(:deal).permit(:title, :description, :brand_id, :image, :file, :more_info_url, :is_featured, country_ids: [], category_ids: [], tag_ids: [])
+    params.require(:deal).permit(:title, :description, :brand_id, :image, :file, :more_info_url, :is_featured, :delete_image, :delete_file, country_ids: [], category_ids: [], tag_ids: [])
   end
+
+  def search_deal
+    Deal.order("#{field} #{order}").search(params[:search])
+  end 
 end

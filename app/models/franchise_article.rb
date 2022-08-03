@@ -4,7 +4,7 @@ class FranchiseArticle < ActiveRecord::Base
   include Rails.application.routes.mounted_helpers
   extend FriendlyId
   include PgSearch::Model
-  pg_search_scope :search_by_name_author_slug_and_url, against: [:author, :title, :url, :slug],
+  pg_search_scope :search_by_name_author_slug_and_url, against: [:author, :title, :url, :summary , :created_at],
   using: {
     tsearch: {
       prefix: true,
@@ -14,11 +14,13 @@ class FranchiseArticle < ActiveRecord::Base
   friendly_id :title, use: :slugged
   paginates_per 10
 
+  belongs_to :franchise_country, class_name: "Country", foreign_key: :country_id
   has_many :categoriables, as: :item, dependent: :destroy
   has_many :categories, through: :categoriables
 
   has_many :taggables, as: :item, dependent: :destroy
   has_many :tags, through: :taggables
+
 
   validates :title, :slug, :summary, presence: true
   validates :url, presence: true, if: :press?
@@ -26,7 +28,8 @@ class FranchiseArticle < ActiveRecord::Base
 
   enum country: {
     us: 0,
-    ca: 1
+    ca: 1,
+    br: 2
   }
 
   enum kind: {
@@ -66,6 +69,30 @@ class FranchiseArticle < ActiveRecord::Base
   def should_generate_new_friendly_id?
     title_changed?
   end
+
+  def as_json(_options = {})
+    super(methods: %i[category tag image_url thumbnail_url country_name ])
+  end
+
+  def category
+    self.categories&.map{ | a| {id: a.id, name: a.name} }
+  end
+
+  def tag
+    self.tags&.map{ | a| {id: a.id, name: a.name} }
+  end
+
+  def country_name
+    franchise_country ? franchise_country.name : ''
+  end
+
+  def image_url
+    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/') if image.present?
+  end
+
+  def thumbnail_url
+    thumbnail.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/') if thumbnail.present?
+  end
 end
 
 # == Schema Information
@@ -91,10 +118,12 @@ end
 #  url                    :text
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  country_id             :integer
 #
 # Indexes
 #
 #  index_franchise_articles_on_country  (country)
 #  index_franchise_articles_on_slug     (slug) UNIQUE
 #  index_franchise_articles_on_title    (title)
+#
 #

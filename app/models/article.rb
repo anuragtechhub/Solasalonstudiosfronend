@@ -2,14 +2,15 @@
 
 class Article < ActiveRecord::Base
   include PgSearch::Model
-
-  pg_search_scope :search_by_title_article_url, against: [:title, :article_url],
+  
+  pg_search_scope :search_article, against: [:title, :article_url, :url_name, :summary, :created_at],
   associated_against: {
     location: [:name]
   },
   using: {
     tsearch: {
-      prefix: true
+      prefix: true,
+      any_word: true
     }
   }
 
@@ -43,7 +44,7 @@ class Article < ActiveRecord::Base
   end
 
   def image_url
-    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/')
+    image.url(:full_width).gsub('/solasalonstylists/', '/solasalonstudios/') if image.present?
   end
 
   def as_json(_options = {})

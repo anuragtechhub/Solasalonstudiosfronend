@@ -3,24 +3,18 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
 
   #GET /education_hero_images
   def index
-    if params[:search].present?
-      education_hero_images = EducationHeroImage.search_by_id_and_action_link(params[:search])
-      education_hero_images = paginate(education_hero_images)
-      render json:  { education_hero_images: education_hero_images }.merge(meta: pagination_details(education_hero_images))
-    else  
-      education_hero_images = EducationHeroImage.all
-      education_hero_images = paginate(education_hero_images)
-      render json: { education_hero_images: education_hero_images }.merge(meta: pagination_details(education_hero_images))
-    end
+    @education_hero_images = params[:search].present? ? search_education_hero_images : EducationHeroImage.order("#{field} #{order}")
+    @education_hero_images = paginate(@education_hero_images)
+    render json:  { education_hero_images: @education_hero_images }.merge(meta: pagination_details(@education_hero_images))
   end
 
   #POST /education_hero_images
   def create
     @education_hero_image  =  EducationHeroImage.new(education_hero_image_params)
     if @education_hero_image.save
-      render json: @education_hero_image
+      render json: @education_hero_image, status: 200
     else
-      Rails.logger.info(@education_hero_image.errors.messages)
+      Rails.logger.error(@education_hero_image.errors.messages)
       render json: {error: @education_hero_image.errors.messages}, status: 400
     end 
   end 
@@ -35,7 +29,7 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
     if @education_hero_image.update(education_hero_image_params)
       render json: {message: "Education Hero Image Successfully Updated."}, status: 200
     else
-      Rails.logger.info(@education_hero_image.errors.messages)
+      Rails.logger.error(@education_hero_image.errors.messages)
       render json: {error: @education_hero_image.errors.messages}, status: 400
     end  
   end 
@@ -45,18 +39,23 @@ class Api::SolaCms::EducationHeroImagesController < Api::SolaCms::ApiController
     if @education_hero_image&.destroy
       render json: {message: "Education Hero Image Successfully Deleted."}, status: 200
     else
-      @education_hero_image.errors.messages
-      Rails.logger.info(@education_hero_image.errors.messages)
+      Rails.logger.error(@education_hero_image.errors.messages)
+      render json: {errors: format_activerecord_errors(@education_hero_image.errors) }, status: 400
     end
   end 
 
   private
 
   def set_education_hero_image
-    @education_hero_image = EducationHeroImage.find(params[:id])
+    @education_hero_image = EducationHeroImage.find_by(id: params[:id])
+    return render(json: { error: "Record not found!"}, status: 404) unless @education_hero_image.present?
   end
 
   def education_hero_image_params
     params.require(:education_hero_image).permit(:action_link, :image, :position, country_ids: [])
   end
+
+  def search_education_hero_images
+    EducationHeroImage.order("#{field} #{order}").search_by_id_and_action_link(params[:search])
+  end 
 end
